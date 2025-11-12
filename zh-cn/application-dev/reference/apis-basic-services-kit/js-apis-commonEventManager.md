@@ -4,8 +4,8 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -40,7 +40,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
@@ -113,7 +113,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[事件错误码](./errorcode-CommonEventService.md)。
+以下错误码的详细介绍请参见[事件错误码](./errorcode-CommonEventService.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -182,7 +182,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 
 创建订阅者。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：**从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -203,7 +203,8 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    |
+| 1500001 | The action field in the want parameter is null.    | 
 
 **示例：**
 
@@ -251,10 +252,11 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(
     subscribeInfo,
-    (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
+    (err: BusinessError | null,
+      commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
       if (!err && commonEventSubscriber) {
         console.info(`Succeeded in creating subscriber.`);
-        subscriber = commonEventSubscriber;  // 现在类型匹配
+        subscriber = commonEventSubscriber; // 现在类型匹配
         return;
       }
 
@@ -336,19 +338,21 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
 // 创建订阅者
-commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-  console.info(`Succeeded in creating subscriber.`);
-  subscriber = commonEventSubscriber;
-}).catch((err: BusinessError) : void => {
-  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-});
+commonEventManager.createSubscriber(subscribeInfo)
+  .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+    console.info(`Succeeded in creating subscriber.`);
+    subscriber = commonEventSubscriber;
+  })
+  .catch((err: BusinessError): void => {
+    console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+  });
 ```
 
 ## commonEventManager.createSubscriberSync<sup>10+</sup>
 
 createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
 
-createSubscriberSync的同步接口。
+createSubscriber的同步接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -477,7 +481,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+let subscriber: commonEventManager.CommonEventSubscriber;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -486,19 +490,20 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 // 创建订阅者
 try {
   commonEventManager.createSubscriber(subscribeInfo,
-    (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
-      if(!err) {
+    (err: BusinessError | null,
+      commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
+      if (!err) {
         console.info(`Succeeded in creating subscriber.`);
-        subscriber = commonEventSubscriber;
         // 订阅公共事件
         try {
-          commonEventManager.subscribe(subscriber, (err: BusinessError| null, data: commonEventManager.CommonEventData| undefined | null) => {
-            if (err) {
-              console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
-              return;
-            }
-            console.info(`Succeeded in subscribing, data is ${JSON.stringify(data)}`);
-          });
+          commonEventManager.subscribe(subscriber,
+            (err: BusinessError | null, data: commonEventManager.CommonEventData | undefined | null) => {
+              if (err) {
+                console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+              console.info(`Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+            });
         } catch (error) {
           let err: BusinessError = error as BusinessError;
           console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
@@ -564,7 +569,6 @@ try {
     (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
       if(!err) {
         console.info(`Succeeded in creating subscriber.`);
-        subscriber = commonEventSubscriber;
         // 订阅公共事件
         try {
           commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
@@ -619,14 +623,14 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
 
-// 创建订阅者
+    // 创建订阅者
 try {
   commonEventManager.createSubscriber(
     subscribeInfo,
-    (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
+    (err: BusinessError | null,
+      commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
       if (!err && commonEventSubscriber) {
         console.info(`Succeeded in creating subscriber.`);
-        subscriber = commonEventSubscriber;
 
         // 订阅公共事件 - 使用确定的非空对象
         try {
@@ -644,11 +648,11 @@ try {
           const err = error as BusinessError;
           console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
         }
-          return;
+        return;
       }
 
       if (err) {
-        console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+         console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
       } else {
         console.error(`Failed to create subscriber: commonEventSubscriber is null or undefined`);
       }
@@ -669,7 +673,7 @@ setTimeout(() => {
         (err: BusinessError | null) => {
           if (err) {
             console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-                return;
+            return;
           }
           subscriber = undefined;
           console.info(`Succeeded in unsubscribing.`);
@@ -709,7 +713,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 **返回值：**
 | 类型                                                      | 说明             |
 | --------------------------------------------------------- | ---------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **错误码：**
 

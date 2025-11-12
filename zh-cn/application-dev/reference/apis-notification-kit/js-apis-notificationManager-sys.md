@@ -31,7 +31,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -43,7 +43,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -57,13 +57,13 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | 1600005  | Notification slot disabled.                    |
 | 1600007  | The notification does not exist.                       |
 | 1600008  | The user does not exist.                               |
-| 1600009  | The notification sending frequency reaches the upper limit.            |
-| 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                   |
+| 1600009  | The notification sending frequency reaches the upper limit. |
+| 1600012  | No memory space. |
+| 1600014 | No permission. |
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                              |
+| 2300007  | Network unreachable. |
 
 **示例：**
 
@@ -109,10 +109,10 @@ let publishCallback = (err: BusinessError | null) => {
     }
 }
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 // 通知Request对象
 let notificationRequest: notificationManager.NotificationRequest = {
-    id: 100,
+    id: 1,
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
@@ -154,11 +154,11 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -213,7 +213,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let notificationRequest: notificationManager.NotificationRequest = {
-    id: 100,
+    id: 1,
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
@@ -225,7 +225,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 };
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
 	console.info("publish success");
@@ -265,7 +265,7 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -337,7 +337,7 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -405,7 +405,7 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 
 | 参数名     | 类型                      | 必填 | 说明                     |
 | -------- | ------------------------- | ---- | ------------------------ |
-| slots    | Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)\> | 是   | 要创建的通知渠道对象数组。 |
+| slots    | Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)\> | 是   | 要创建的通知渠道对象数组。数组中的元素个数为0~5。 |
 | callback | AsyncCallback\<void\>     | 是   | 表示被指定通道的回调方法。     |
 
 **错误码：**
@@ -497,7 +497,7 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -580,7 +580,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -589,7 +589,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -606,6 +606,7 @@ let setNotificationEnableCallback = (err: BusinessError): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
@@ -656,11 +657,11 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -669,7 +670,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -677,6 +678,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 ArkTS-Dyn示例：
 ```ts
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
@@ -689,6 +691,7 @@ notificationManager.setNotificationEnable(bundle, false).then(() => {
 ArkTS-Sta示例：
 ```ts
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
@@ -789,7 +792,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -816,6 +819,7 @@ let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void =>
 }
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 
@@ -872,7 +876,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -891,6 +895,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
@@ -978,7 +983,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let isNotificationEnabledCallback = (err: BusinessError | null, data: boolean| undefined | null): void => {
+let isNotificationEnabledCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
     if (err) {
         console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -1028,7 +1033,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
@@ -1057,7 +1062,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 
 notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
 	console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -1094,13 +1099,13 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. | 
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -1121,6 +1126,7 @@ let displayBadgeCallback = (err: BusinessError): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.displayBadge(bundle, false, displayBadgeCallback);
@@ -1173,11 +1179,11 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1197,6 +1203,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.displayBadge(bundle, false).then(() => {
@@ -1248,13 +1255,13 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -1275,6 +1282,7 @@ let isBadgeDisplayedCallback = (err: BusinessError, data: boolean): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
@@ -1330,13 +1338,13 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -1350,7 +1358,8 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+    //需根据实际情况进行替换
+    bundle: "bundleName1",
 };
 
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
@@ -1401,17 +1410,17 @@ ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
-| slotFlags   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 通知渠道标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| slotFlags | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 通知渠道标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 
 **返回值：**
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1431,6 +1440,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 
@@ -1491,7 +1501,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1518,6 +1528,7 @@ let setSlotByBundleCallback = (err: BusinessError): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -1578,11 +1589,11 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise<void> | Promise对象，无返回结果的。 | 
+| Promise<void> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1602,6 +1613,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 
@@ -1670,7 +1682,7 @@ ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1690,9 +1702,10 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
-notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
+notificationManager.getSlotFlagsByBundle(bundle).then((data: number) => {
 	console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
@@ -1707,7 +1720,7 @@ let bundle: notificationManager.BundleOption = {
     //需根据实际情况进行替换
     bundle: "bundleName1",
 };
-notificationManager.getSlotFlagsByBundle(bundle).then((data : long) => {
+notificationManager.getSlotFlagsByBundle(bundle).then((data: long) => {
 	console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError): void => {
     console.error(`getSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
@@ -1741,7 +1754,7 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1768,6 +1781,7 @@ let getSlotsByBundleCallback = (err: BusinessError, data: Array<notificationMana
     }
 }
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
@@ -1823,7 +1837,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1843,6 +1857,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 
@@ -1898,7 +1913,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<lon
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1926,7 +1941,8 @@ let getSlotNumByBundleCallback = (err: BusinessError, data: number): void => {
 }
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+    //需根据实际情况进行替换
+    bundle: "bundleName1",
 };
 
 notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
@@ -1986,7 +2002,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2006,7 +2022,8 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+    //需根据实际情况进行替换
+    bundle: "bundleName1",
 };
 
 notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
@@ -2060,12 +2077,12 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -2127,11 +2144,11 @@ getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -2184,7 +2201,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -2200,15 +2217,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+    //需根据实际情况进行替换
+    bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
-    id: 11,
-    label: ""
+    //需根据实际情况进行替换
+    id: 0,
+    label: "text"
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
     notificationKey: notificationKey,
+    //需根据实际情况进行替换
     extraInfoKeys: ['event']
 }
 let getActiveNotificationByFilterCallback = (err: BusinessError, data: notificationManager.NotificationRequest): void => {
@@ -2228,12 +2248,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
     //需根据实际情况进行替换
-    bundle: "com.example.myapplication",
+    bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     //需根据实际情况进行替换
     id: 0,
-    label: "tetx"
+    label: "text"
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -2241,7 +2261,7 @@ let filter: notificationManager.NotificationFilter = {
     //需根据实际情况进行替换
     extraInfoKeys: ['event']
 }
-let getActiveNotificationByFilterCallback = (err: BusinessError | null, data: notificationManager.NotificationRequest|null|undefined): void => {
+let getActiveNotificationByFilterCallback = (err: BusinessError | null, data: notificationManager.NotificationRequest | null | undefined): void => {
     if (err) {
         console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -2283,7 +2303,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -2299,15 +2319,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+    //需根据实际情况进行替换
+    bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
-    id: 11,
-    label: ""
+    //需根据实际情况进行替换
+    id: 0,
+    label: "text"
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
     notificationKey: notificationKey,
+    //需根据实际情况进行替换
     extraInfoKeys: ['event']
 }
 notificationManager.getActiveNotificationByFilter(filter).then((data: notificationManager.NotificationRequest) => {
@@ -2324,7 +2347,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
     //需根据实际情况进行替换
-    bundle: "com.example.myapplication",
+    bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     //需根据实际情况进行替换
@@ -2337,7 +2360,7 @@ let filter: notificationManager.NotificationFilter = {
     //需根据实际情况进行替换
     extraInfoKeys: ['event']
 }
-notificationManager.getActiveNotificationByFilter(filter).then((data: notificationManager.NotificationRequest|null|undefined) => {
+notificationManager.getActiveNotificationByFilter(filter).then((data: notificationManager.NotificationRequest | null | undefined) => {
 	console.info(`getActiveNotificationByFilter success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError): void => {
     console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
@@ -2370,13 +2393,13 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -2395,8 +2418,9 @@ let removeGroupByBundleCallback = (err: BusinessError): void => {
         console.info("removeGroupByBundle success");
     }
 }
-
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
+//需根据实际情况进行替换
+let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
+//需根据实际情况进行替换
 let groupName: string = "GroupName";
 
 notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
@@ -2413,8 +2437,8 @@ let removeGroupByBundleCallback = (err: BusinessError | null): void => {
         console.info("removeGroupByBundle success");
     }
 }
-
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
+//需根据实际情况进行替换
+let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
 //需根据实际情况进行替换
 let groupName: string = "GroupName";
 
@@ -2448,11 +2472,11 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2470,7 +2494,9 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
+//需根据实际情况进行替换
+let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
+//需根据实际情况进行替换
 let groupName: string = "GroupName";
 
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
@@ -2484,7 +2510,8 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
+//需根据实际情况进行替换
+let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
 //需根据实际情况进行替换
 let groupName: string = "GroupName";
 
@@ -2526,9 +2553,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -2608,7 +2635,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -2616,9 +2643,9 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -2696,7 +2723,7 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: As
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -2785,7 +2812,7 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise\<vo
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -2875,14 +2902,14 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 801 | Capability not supported. |
-| 1600001  | Internal error.                     |
+| 1600001 | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                          |
+| 1600003  | Failed to connect to the service. |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -2947,12 +2974,12 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
-| 1600012  | No memory space.                          |
+| 1600012  | No memory space. |
 
 **示例：**
 
@@ -3167,7 +3194,7 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 | 错误码ID | 错误信息                             |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 801 | Capability not supported. |
@@ -3237,7 +3264,7 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
@@ -3368,7 +3395,7 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 | 类型              | 说明        | 
 |-----------------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -3376,9 +3403,9 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -3439,17 +3466,17 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600003  | Failed to connect to the service. |
 | 1600010  | Distributed operation failed.            |
 | 17700001 | The specified bundle name was not found. |
 
@@ -3467,6 +3494,7 @@ let setDistributedEnableByBundleCallback = (err: BusinessError): void => {
     }
 };
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 let enable: boolean = true;
@@ -3521,11 +3549,11 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 | 类型              | 说明        | 
 |-----------------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3546,6 +3574,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 let enable: boolean = true;
@@ -3599,7 +3628,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3627,6 +3656,7 @@ let isDistributedEnabledByBundleCallback = (err: BusinessError, data: boolean): 
     }
 };
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
@@ -3682,13 +3712,13 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface.  |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -3703,6 +3733,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
@@ -3789,7 +3820,7 @@ let getDeviceRemindTypeCallback = (err: BusinessError | null, data: notification
     if (err) {
         console.error(`getDeviceRemindType failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info(`getDeviceRemindType success, data is ${JSON.stringify(data)}`);
+        console.info(`getDeviceRemindType success, data is ${data}`);
     }
 };
 notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
@@ -3885,7 +3916,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3904,7 +3935,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                              |
+| 2300007  | Network unreachable. |
 
 **示例：**
 
@@ -3921,9 +3952,9 @@ let callback = (err: BusinessError): void => {
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
     id: 1,
@@ -3952,9 +3983,9 @@ let callback = (err: BusinessError | null): void => {
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
     id: 1,
@@ -4001,11 +4032,11 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 | 类型              | 说明        | 
 |-----------------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -4033,9 +4064,9 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
     id: 1,
@@ -4060,9 +4091,9 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
     id: 1,
@@ -4110,11 +4141,11 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 | 类型              | 说明        | 
 |-----------------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -4220,7 +4251,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, ca
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4249,9 +4280,9 @@ let cancelAsBundleCallback = (err: BusinessError): void => {
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
 ```
 
@@ -4267,9 +4298,9 @@ let cancelAsBundleCallback = (err: BusinessError | null): void => {
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
 ```
 
@@ -4303,11 +4334,11 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): P
 
 | 类型              | 说明        | 
 |-----------------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4328,9 +4359,9 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 	console.info("cancelAsBundle success");
 }).catch((err: BusinessError) => {
@@ -4343,9 +4374,9 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = "bundleName1";
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 	console.info("cancelAsBundle success");
 }).catch((err: BusinessError): void => {
@@ -4383,15 +4414,15 @@ ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\
 
 | 类型              | 说明        | 
 |-----------------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                           |
@@ -4409,7 +4440,8 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+    //需根据实际情况进行替换
+    bundle: "bundleName1",
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
 	console.info("cancelAsBundle success");
@@ -4423,7 +4455,8 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+    //需根据实际情况进行替换
+    bundle: "bundleName1",
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
 	console.info("cancelAsBundle success");
@@ -4455,13 +4488,13 @@ ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 | 参数名               | 类型   | 必填 | 说明               |
 | -------------------- | ------ | ---- | ------------------ |
 | representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
-|       id             | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID。 |
+| id | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 通知ID。 |
 
 **返回值：**
 
 | 类型              | 说明        | 
 |-----------------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -4470,7 +4503,7 @@ ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -4485,7 +4518,8 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName"
+    //需根据实际情况进行替换
+    bundle: "bundleName1"
 };
 let id: number = 1;
 notificationManager.cancel(bundle, id).then(() => {
@@ -4500,7 +4534,8 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName"
+    //需根据实际情况进行替换
+    bundle: "bundleName1"
 };
 let id: int = 1;
 notificationManager.cancel(bundle, id).then(() => {
@@ -4539,7 +4574,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4568,10 +4603,11 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
     }
 };
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
-    setNotificationEnableSlotCallback);
+    setNotificationEnableSlotCallback); 
 ```
 
 ArkTS-Sta示例：
@@ -4587,7 +4623,8 @@ let setNotificationEnableSlotCallback = (err: BusinessError | null): void => {
     }
 };
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     setNotificationEnableSlotCallback);
@@ -4623,7 +4660,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4652,7 +4689,8 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
 };
 
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     false,
@@ -4672,7 +4710,8 @@ let setNotificationEnableSlotCallback = (err: BusinessError | null): void => {
 };
 
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     false,
@@ -4710,11 +4749,10 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 | 类型     | 说明         |
 | ------- |------------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4736,7 +4774,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // setNotificationEnableSlot
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true).then(() => {
         console.info("setNotificationEnableSlot success");
@@ -4750,7 +4789,8 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true).then(() => {
         console.info("setNotificationEnableSlot success");
@@ -4787,7 +4827,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4816,7 +4856,8 @@ let isNotificationSlotEnabledCallback = (err: BusinessError, data: boolean): voi
 };
 
 notificationManager.isNotificationSlotEnabled(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     isNotificationSlotEnabledCallback);
 ```
@@ -4834,7 +4875,8 @@ let isNotificationSlotEnabledCallback = (err: BusinessError | null, data: boolea
 };
 
 notificationManager.isNotificationSlotEnabled(
-    { bundle: "ohos.samples.notification", },
+    //需根据实际情况进行替换
+    { bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     isNotificationSlotEnabledCallback);
 ```
@@ -4872,7 +4914,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4892,7 +4934,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // isNotificationSlotEnabled
-notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notification", },
+notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -4904,7 +4946,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notification", },
+notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError): void => {
@@ -4947,8 +4989,8 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 202      | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -4962,7 +5004,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 let enable: boolean = true;
 let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void => {
     if (err) {
@@ -4979,7 +5021,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 let enable: boolean = true;
 let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null): void => {
     if (err) {
@@ -5030,7 +5072,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 801 | Capability not supported. |
@@ -5046,7 +5088,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 let enable: boolean = true;
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(() => {
     console.info('setSyncNotificationEnabledWithoutApp success');
@@ -5060,7 +5102,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 let enable: boolean = true;
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(() => {
     console.info('setSyncNotificationEnabledWithoutApp success');
@@ -5100,7 +5142,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
@@ -5115,7 +5157,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 let getSyncNotificationEnabledWithoutAppCallback = (err: BusinessError, data: boolean): void => {
     if (err) {
         console.error(`getSyncNotificationEnabledWithoutAppCallback failed, code is ${err.code}, message is ${err.message}`);
@@ -5131,7 +5173,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 let getSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
     if (err) {
         console.error(`getSyncNotificationEnabledWithoutAppCallback failed, code is ${err.code}, message is ${err.message}`);
@@ -5193,7 +5235,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
+let userId: number = 1;
 notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boolean) => {
   console.info(`getSyncNotificationEnabledWithoutApp, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -5206,7 +5248,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
-let userId: int = 100;
+let userId: int = 1;
 notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boolean) => {
   console.info(`getSyncNotificationEnabledWithoutApp, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError): void => {
@@ -5221,6 +5263,8 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。
 
 系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5248,7 +5292,7 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
 | 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
 **示例：**
@@ -5256,19 +5300,19 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let onCheckNotification = (info : notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
+let onCheckNotification =(info: notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
     console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
-    if(info.notificationId == 1){
-        let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
+    if (info.notificationId == 1) {
+        let result: notificationManager.NotificationCheckResult = { code: 1, message: "testMsg1" };
         return result;
     } else {
-        let result: notificationManager.NotificationCheckResult =   { code: 0, message: "testMsg0"};
+        let result: notificationManager.NotificationCheckResult = { code: 0, message: "testMsg0" };
         return result;
     }
 }
-try{
+try {
     notificationManager.on("checkNotification", onCheckNotification);
-} catch (err){
+} catch (err) {
     console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -5280,6 +5324,8 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。使用Promise异步回调。
 
 系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5319,14 +5365,14 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-  notificationManager.on('checkNotification',{
+try {
+  notificationManager.on('checkNotification', {
     contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
     slotType: notificationManager.SlotType.LIVE_VIEW ,
     extraInfoKeys: ["event"],
   },
-    async (checkInfo)=>{
-      return { code: 1, message: "INVALID_PARAMETERS"};
+    async (checkInfo) => {
+      return { code: 1, message: "INVALID_PARAMETERS" };
   },);
 } catch (err) {
   console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
@@ -5340,6 +5386,8 @@ onCheckNotification(callback: (checkInfo: NotificationCheckInfo) => Notification
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。
 
 系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5374,7 +5422,7 @@ onCheckNotification(callback: (checkInfo: NotificationCheckInfo) => Notification
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let onCheckNotification = (info : notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
+let onCheckNotification = (info: notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
     console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
     if(info.notificationId == 1){
         let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
@@ -5395,11 +5443,13 @@ try{
 ## notificationManager.onCheckNotification<sup>22+</sup>
 
 onCheckNotification(checkRequest: NotificationCheckRequest,
-    callback: (checkInfo: NotificationCheckInfo) => Promise<NotificationCheckResult>): void
+    callback: (checkInfo: NotificationCheckInfo) => Promise\<NotificationCheckResult\>): void
 
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。使用Promise异步回调。
 
 系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5418,7 +5468,7 @@ onCheckNotification(checkRequest: NotificationCheckRequest,
 | 参数名 | 类型                                                                                                             | 必填 | 说明           |
 | ------ |-----------------------------------------------------------------------------------------------------------------| ---- | -------------- |
 | checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | 通知请求验证内容。 |
-| callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
+| callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) => Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
 
 **错误码：**
 
@@ -5426,9 +5476,9 @@ onCheckNotification(checkRequest: NotificationCheckRequest,
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |  
 | 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -5461,6 +5511,8 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 
 取消通知监听回调。
 
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -5488,7 +5540,7 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 | -------- | ----------------------------------- |
 | 201      | The application does not have permission to call the interface.     |
 | 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
 **示例：**
@@ -5509,6 +5561,8 @@ offCheckNotification(
     callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult): void
 
 取消通知监听回调。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5534,8 +5588,9 @@ offCheckNotification(
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
+| 201      | The application does not have permission to call the interface.     |
 | 202      | Not system application.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 
 **示例：**
@@ -5583,11 +5638,11 @@ ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, butt
 
 | 类型 | 说明 |
 | ---- | ----|
-| Promise<void> | Promise对象，无返回结果的。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -5609,12 +5664,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 包信息
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 // 通知ID
 let notificationId = 1;
 // 按钮信息
 let buttonOptions: notificationManager.ButtonOptions = {
+    //需根据实际情况进行替换
     buttonName: "buttonName1",
 }
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
@@ -5630,12 +5687,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 包信息
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 // 通知ID
 let notificationId: int = 1;
 // 按钮信息
 let buttonOptions: notificationManager.ButtonOptions = {
+    //需根据实际情况进行替换
     buttonName: "buttonName1",
 }
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
@@ -5671,7 +5730,7 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 | 类型 | 说明 |
 | ---- | ----|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5693,7 +5752,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let onResponseCallback = (id:number, option:notificationManager.ButtonOptions) => {
+let onResponseCallback = (id: number, option: notificationManager.ButtonOptions) => {
     console.info(`notificationId: ${id},onResponseCallback: ${JSON.stringify(option)}`);
 }
 let subscriber: notificationManager.SystemLiveViewSubscriber  = {
@@ -5710,7 +5769,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let onResponseCallback = (id:int, option:notificationManager.ButtonOptions) => {
+let onResponseCallback = (id: int, option: notificationManager.ButtonOptions) => {
     console.info(`notificationId: ${id},onResponseCallback: ${JSON.stringify(option)}`);
 }
 let subscriber: notificationManager.SystemLiveViewSubscriber  = {
@@ -5753,11 +5812,11 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 | 类型 | 说明 |
 | ---- | ----|
-| Promise<void> | Promise对象，无返回结果的。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -5779,6 +5838,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
     uid: 1
 };
@@ -5796,6 +5856,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
     uid: 1
 };
@@ -5841,7 +5902,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -5863,6 +5924,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
     uid: 1
 };
@@ -5879,6 +5941,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
     uid: 1
 };
@@ -5919,11 +5982,11 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 | 类型 | 说明 |
 | ---- | ----|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -5998,7 +6061,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -6008,9 +6071,9 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
-| 1600010  | Distributed operation failed.            |
-| 1600012  | No memory space.                    |
+| 1600003  | Failed to connect to the service. |
+| 1600010  | Distributed operation failed.  |
+| 1600012  | No memory space. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -6068,16 +6131,16 @@ ArkTS-Sta: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promi
 
 | 类型            | 说明                      |
 | --------------- | ------------------------- |
-| Promise<void> | Promise对象，无返回结果的。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -6093,7 +6156,8 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: 'com.example.bundleName',
+    //需根据实际情况进行替换
+    bundle: 'bundleName1',
 };
 let badgeNumber: number = 10;
 
@@ -6109,7 +6173,8 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: 'com.example.bundleName',
+    //需根据实际情况进行替换
+    bundle: 'bundleName1',
 };
 let badgeNumber: int = 10;
 
@@ -6157,7 +6222,7 @@ ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -6178,6 +6243,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 
@@ -6195,6 +6261,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
+    //需根据实际情况进行替换
     bundle: "bundleName1",
 };
 
@@ -6235,7 +6302,7 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 | 类型      | 说明        |
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6260,11 +6327,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let trustlist: Array<notificationManager.BundleOption> = [
   {
-    bundle: 'com.example.bundleName',
+    //需根据实际情况进行替换
+    bundle: 'bundleName',
     uid: 0
   },
   {
-    bundle: 'com.example.bundleName1',
+    //需根据实际情况进行替换
+    bundle: 'bundleName1',
     uid: 1
   }
 ]
@@ -6289,11 +6358,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let trustlist: Array<notificationManager.BundleOption> = [
   {
-    bundle: 'com.example.bundleName',
+    //需根据实际情况进行替换
+    bundle: 'bundleName',
     uid: 0
   },
   {
-    bundle: 'com.example.bundleName1',
+    //需根据实际情况进行替换
+    bundle: 'bundleName1',
     uid: 1
   }
 ]
@@ -6340,7 +6411,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 
 | 类型      | 说明        |
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6348,7 +6419,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 801 | Capability not supported. |
@@ -6428,7 +6499,7 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -6564,7 +6635,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 
 | 类型            | 说明                     | 
 |-----------------|-------------------------|
-| Promise\<void\> | Promise对象，无返回结果的。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码**：
 
@@ -6647,7 +6718,7 @@ ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<voi
 
 | 类型            | 说明                     | 
 |-----------------|-------------------------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -6711,7 +6782,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 
 | 类型            | 说明                     | 
 |-----------------|-------------------------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码**：
 
@@ -6977,7 +7048,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 | 名称                                | 值     | 说明                                                         |
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
-| EMERGENCY_INFORMATION<sup>12+</sup> | 10     | 紧急事件。**系统接口**：此接口为系统接口。                               |
+| EMERGENCY_INFORMATION<sup>12+</sup> | 10     | 紧急事件。**系统接口**：此接口为系统接口。 |
 
 
 ## NotificationControlFlagStatus<sup>12+</sup>

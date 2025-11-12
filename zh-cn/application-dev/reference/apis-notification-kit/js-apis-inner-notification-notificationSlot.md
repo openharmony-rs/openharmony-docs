@@ -1,11 +1,11 @@
 # NotificationSlot
 
-描述通知槽。
+描述通知渠道，不同通知渠道对应的通知提醒方式不同。
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## NotificationSlot
 
@@ -13,9 +13,9 @@
 
 | 名称                 | 类型                 | 只读 | 可选 | 说明                   |
 | -------------------- | ---------------------|---- | --- |----------------------|
-| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | 否 | 是  | 通道类型。<br>从API version 7 开始支持，从API version 11 开始废弃，建议使用[notificationType](#notificationtype)替代。               |
+| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | 否 | 是  | 通道类型。<br>从API version 7 开始支持，从API version 11 开始废弃，建议使用[notificationType](#notificationtype)替代。   <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：7  |
 | notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | 否 | 是  | 通道类型。<br/> **ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20        |
-| level | [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | 否 | 是  | 通知级别。<br>从API version 7开始支持，从API version 20开始废弃，建议使用[notificationLevel](#notificationlevel)替代。 |
+| level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | 否 | 是  | 通知级别。<br>从API version 7开始支持，从API version 20开始废弃，建议使用[notificationLevel](#notificationlevel)替代。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：7 |
 | notificationLevel<sup>20+</sup>                 | [notificationManager.SlotLevel](js-apis-notificationManager.md#slotlevel) | 否 | 是  | 通知级别。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：20      |
 | desc                 | string                | 否 | 是  | 通知渠道描述信息。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
 | badgeFlag            | boolean               | 否 | 是  | 是否显示角标。<br> - true：是。<br> - false：否。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20  |

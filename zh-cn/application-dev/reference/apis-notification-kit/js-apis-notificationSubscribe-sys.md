@@ -4,10 +4,10 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口均为系统接口。
+> - 本模块接口均为系统接口。
 
 ## 导入模块
 
@@ -212,7 +212,7 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 | 类型     | 说明               | 
 | ------- |------------------|
-| Promise\<void\> | 无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -225,7 +225,7 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 | 1600012  | No memory space.                    |
 
 **示例：**
@@ -259,7 +259,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 notificationSubscribe.subscribe(subscriber).then(() => {
   console.info("subscribe success");
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -288,7 +288,7 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 类型     | 说明               | 
 | ------- |------------------|
-| Promise\<void\> | 无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -300,7 +300,7 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 | 1600012  | No memory space.                    |
 
 **示例：**
@@ -334,7 +334,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`subscribeSelf fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -444,7 +444,7 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 类型     | 说明         | 
 | ------- |------------|
-| Promise\<void\> | 无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -454,7 +454,7 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -490,7 +490,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -522,16 +522,16 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600003  | Failed to connect to the service.        |
 | 1600007  | The notification is not exist.           |
 | 17700001 | The specified bundle name was not found. |
 
@@ -550,6 +550,7 @@ let removeCallback = (err: BusinessError) => {
   }
 }
 let bundle: notificationManager.BundleOption = {
+  //需根据实际情况进行替换
   bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
@@ -573,6 +574,7 @@ let removeCallback = (err: BusinessError | null) => {
   }
 }
 let bundle: notificationManager.BundleOption = {
+  //需根据实际情况进行替换
   bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
@@ -612,11 +614,11 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 | 类型     | 说明         | 
 | ------- |------------|
-| Promise\<void\> | 无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -637,6 +639,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
+  //需根据实际情况进行替换
   bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
@@ -657,6 +660,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
+  //需根据实际情况进行替换
   bundle: "bundleName1",
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
@@ -666,7 +670,7 @@ let notificationKey: notificationSubscribe.NotificationKey = {
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
-}).catch((err: BusinessError) : void  => {
+}).catch((err: BusinessError): void  => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -733,7 +737,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let hashCode: string = 'hashCode';
-let removeCallback = (err: BusinessError : null) => {
+let removeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -771,7 +775,7 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 
 | 类型     | 说明 | 
 | ------- |--|
-| Promise\<void\> | 无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -779,9 +783,9 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -810,7 +814,7 @@ let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
 	console.info("remove success");
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -913,7 +917,7 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason): Promise\<void\>
 
 | 类型     | 说明               | 
 | ------- |------------------|
-| Promise\<void\> | 无返回结果的Promise对象。 |  
+| Promise\<void\> | Promise对象，无返回结果。 |  
 
 **错误码：**
 
@@ -951,7 +955,7 @@ let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -981,7 +985,7 @@ removeAll(bundle: BundleOption, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1007,6 +1011,7 @@ let removeAllCallback = (err: BusinessError) => {
   }
 }
 let bundle: notificationSubscribe.BundleOption = {
+  //需根据实际情况进行替换
   bundle: "bundleName1",
 };
 notificationSubscribe.removeAll(bundle, removeAllCallback);
@@ -1024,6 +1029,7 @@ let removeAllCallback = (err: BusinessError | null) => {
   }
 }
 let bundle: notificationSubscribe.BundleOption = {
+  //需根据实际情况进行替换
   bundle: "bundleName1",
 };
 notificationSubscribe.removeAll(bundle, removeAllCallback);
@@ -1059,10 +1065,10 @@ removeAll(callback: AsyncCallback\<void\>): void
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -1120,20 +1126,20 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 
 | 类型     | 说明         | 
 | ------- |------------|
-| Promise\<void\> | 无返回结果的Promise对象。 |  
+| Promise\<void\> | Promise对象，无返回结果。 |  
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1600001  | Internal error.                          |
-| 1600002  | Marshalling or unmarshalling error.      |
-| 1600003  | Failed to connect to the service.               |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
 | 17700001 | The specified bundle name was not found. |
 
 **示例：**
@@ -1157,7 +1163,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
 	console.info("removeAll success");
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -1263,7 +1269,7 @@ ArkTS-Sta: removeAll(userId: int): Promise\<void>
 
 | 类型     | 说明         |
 | ------- |------------|
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1273,7 +1279,7 @@ ArkTS-Sta: removeAll(userId: int): Promise\<void>
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1300,7 +1306,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userId: int = 1;
 notificationSubscribe.removeAll(userId).then(() => {
 	console.info("removeAll success");
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -1332,7 +1338,7 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 
 | 类型     | 说明         |
 | ------- |------------|
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1342,7 +1348,7 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600010  | Distributed operation failed.                     |
 | 1600021  | Distributed operation timed out.                    |
 
@@ -1375,8 +1381,8 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 	console.info("distributeOperation success");
-}).catch((err: BusinessError) : void => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+}).catch((err: BusinessError): void => {
+  console.error(`distributeOperation fail: ${JSON.stringify(err.code)}`);
 });
 ```
 
@@ -1388,7 +1394,7 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20 
+**ArkTS-Sta起始版本**：20
 
 | 名称  | 类型   | 可选 | 说明     |
 | ----- | ------ | --- | -------- |
@@ -1416,9 +1422,9 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **系统接口**：此接口为系统接口。
 
-| 名称  | 类型   | 可选 | 说明     |
-| ----- | ------ | --- | -------- |
-| actionName    | string | 是  | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton)中title字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：20 |
-| userInput | string | 是  | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput)中inputKey字段保持一致）。 <br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：20 |
-| operationType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 动作操作类型。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：20 |
-| buttonIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 操作按钮索引。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：20 |
+| 名称  | 类型   | 只读 | 可选 | 说明     |
+| ----- | ------ | --- | --- | -------- |
+| actionName    | string | 否  | 是  | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton)中title字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：22 |
+| userInput | string | 否  | 是  | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput)中inputKey字段保持一致）。 <br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：22 |
+| operationType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 动作操作类型。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22 |
+| buttonIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 操作按钮索引。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22 |
