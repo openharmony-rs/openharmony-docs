@@ -216,13 +216,13 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 | 名称    | 类型                    | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------- | ---- | ---- |----------------------------------------------------------|
-| typeId<sup>11+</sup>     | string | 是   | 否   | 标准化数据类型的ID（即[UTD列表](#uniformdatatype)中对应的枚举值），也可以是自定义UTD。 |
-| belongingToTypes<sup>11+</sup>  | Array\<string>          | 是   | 否   | 标准化数据类型所归属的类型typeId列表。                                   |
-| description<sup>11+</sup>     | string                  | 是   | 否   | 标准化数据类型的简要说明。                                            |
-| referenceURL<sup>11+</sup>     | string                  | 是   | 否   | 标准化数据类型的参考链接URL，用于描述类型的详细信息。                            |
-| iconFile<sup>11+</sup>     | string                  | 是   | 否   | 标准化数据类型的默认图标文件路径，可能为空字符串（即没有默认图标），应用可以自行决定是否使用该默认图标。                                   |
-| filenameExtensions<sup>12+</sup>  | Array\<string>          | 是   | 否   | 标准化数据类型所关联的文件名后缀列表。                                   |
-| mimeTypes<sup>12+</sup>  | Array\<string>          | 是   | 否   | 标准化数据类型所关联的多用途互联网邮件扩展类型列表。                                   |
+| typeId<sup>11+</sup>     | string | 否   | 否   | 标准化数据类型的ID（即[UTD列表](#uniformdatatype)中对应的枚举值），也可以是自定义UTD。 |
+| belongingToTypes<sup>11+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所归属的类型typeId列表。                                   |
+| description<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的简要说明。                                            |
+| referenceURL<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的参考链接URL，用于描述类型的详细信息。                            |
+| iconFile<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的默认图标文件路径，可能为空字符串（即没有默认图标），应用可以自行决定是否使用该默认图标。                                   |
+| filenameExtensions<sup>12+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所关联的文件名后缀列表。                                   |
+| mimeTypes<sup>12+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所关联的多用途互联网邮件扩展类型列表。                                   |
 
 ### belongsTo<sup>11+</sup> 
 
