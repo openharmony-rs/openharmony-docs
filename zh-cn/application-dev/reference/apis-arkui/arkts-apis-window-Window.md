@@ -1709,7 +1709,7 @@ try {
   let isEnabled = windowClass.getImmersiveModeEnabledState();
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(Failed to get the window immersive mode enabled status. Cause code: ${error.code}, message: ${error.message});
+  console.error(`Failed to get the window immersive mode enabled status. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
