@@ -398,8 +398,8 @@ Image加载的SVG图源路径设置方法如下所示：
   <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
   ``` TypeScript
-  //  'images/icon.svg' 需要替换为开发者所需的资源文件
-  Image('images/icon.svg')
+  // 'images/icon.svg'需要替换为开发者所需的资源文件
+  Image('/images/icon.svg')
     .width(50)
     .height(50)
   ```
