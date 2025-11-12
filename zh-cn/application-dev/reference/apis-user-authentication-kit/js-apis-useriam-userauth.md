@@ -1657,7 +1657,7 @@ try {
 
 > **说明：**
 >
-> 从 API version 9 开始支持，从 API version 11 开始废弃。
+> 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[AuthResultInfo](#authresultinfo10)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1678,7 +1678,7 @@ try {
 
 > **说明：**
 >
-> 从 API version 9 开始支持，从 API version 11 开始废弃。
+> 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[AuthTipInfo](#authtipinfo20)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1833,8 +1833,8 @@ on : (name : AuthEventKey, callback : AuthEvent) => void
 
 > **说明：**
 >
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行订阅。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[on](#on10)替代。
+> 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行订阅。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1908,8 +1908,8 @@ off : (name : AuthEventKey) => void
 
 > **说明：**
 >
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 需要使用已经成功订阅事件的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消订阅。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[off](#off10)替代。
+> 需要使用已经成功订阅事件的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消订阅。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1966,8 +1966,8 @@ start : () => void
 
 > **说明：**
 >
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行认证。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[start](#start10)替代。
+> 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行认证。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2021,8 +2021,8 @@ cancel : () => void
 
 > **说明：**
 >
-> - 从 API version 9 开始支持，从 API version 10 开始废弃。
-> - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消认证，此[AuthInstance](#authinstancedeprecated)需要是正在进行认证的对象。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[cancel](#cancel10)替代。
+> 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消认证，此[AuthInstance](#authinstancedeprecated)需要是正在进行认证的对象。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2068,8 +2068,8 @@ getAuthInstance(challenge : Uint8Array, authType : UserAuthType, authTrustLevel 
 
 > **说明：**
 >
-> - 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[getUserAuthInstance](#userauthgetuserauthinstance10)替代。
-> - 每个AuthInstance只能进行一次认证，若需要再次进行认证则需重新获取AuthInstance。
+> 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[getUserAuthInstance](#userauthgetuserauthinstance10)替代。
+> 每个AuthInstance只能进行一次认证，若需要再次进行认证则需重新获取AuthInstance。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2144,14 +2144,17 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 > **错误码返回顺序说明：**
 >
-> - 如果未注册对应执行器，系统不支持该认证能力，需返回12500005。
-> - 如果已注册对应执行器，功能未禁用，但认证安全等级低于业务指定时，需返回12500006。
-> - 如果已注册对应执行器，功能未禁用，但用户未注册凭据时，需返回12500010。
-> - 如果已注册对应执行器，功能未禁用，但密码过期时，需返回12500013。
+> 如果未注册对应执行器，系统不支持该认证能力，需返回12500005。
+>
+> 如果已注册对应执行器，功能未禁用，但认证安全等级低于业务指定时，需返回12500006。
+>
+> 如果已注册对应执行器，功能未禁用，但用户未注册凭据时，需返回12500010。
+>
+> 如果已注册对应执行器，功能未禁用，但密码过期时，需返回12500013。
 
 > **注意：**
 >
-> - 若用户注册的锁屏口令是4位PIN时，其认证可信等级为ATL3，调用该接口查询是否支持ATL4级别的密码认证时，需返回12500010。
+> 若用户注册的锁屏口令是4位PIN时，其认证可信等级为ATL3，调用该接口查询是否支持ATL4级别的密码认证时，需返回12500010。
 
 **错误码：**
 
@@ -2317,7 +2320,7 @@ auth(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLev
 
 > **说明：**
 >
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[start](#startdeprecated)代替。
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[start](#startdeprecated)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2374,7 +2377,7 @@ cancelAuth(contextID : Uint8Array) : number
 
 > **说明：**
 >
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[cancel](#canceldeprecated)代替。
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[cancel](#canceldeprecated)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2418,7 +2421,7 @@ if (cancelCode == userAuth.ResultCode.SUCCESS) {
 
 > **说明：**
 >
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[AuthEvent](#autheventdeprecated)代替。
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[AuthEvent](#autheventdeprecated)代替。
 
 ### onResult<sup>(deprecated)</sup>
 
@@ -2428,7 +2431,7 @@ onResult: (result : number, extraInfo : AuthResult) => void
 
 > **说明：**
 >
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[callback](#callbackdeprecated)代替。
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[callback](#callbackdeprecated)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2475,7 +2478,7 @@ onAcquireInfo ?: (module : number, acquire : number, extraInfo : any) => void
 
 > **说明：**
 >
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[callback](#callbackdeprecated)代替。
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[callback](#callbackdeprecated)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2530,7 +2533,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 > **说明：**
 >
-> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[AuthResultInfo](#authresultinfodeprecated)代替。
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[AuthResultInfo](#authresultinfodeprecated)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2550,7 +2553,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 > **说明：**
 >
-> 从 API version 9 开始废弃，建议使用[UserAuthResultCode](#userauthresultcode9)代替。
+> 从 API version 9 开始废弃，请使用[UserAuthResultCode](#userauthresultcode9)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2672,7 +2675,9 @@ type SecureLevel = string
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从 API version 6 开始支持，从 API version 8 开始废弃。
+> **说明：** 
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[AuthTrustLevel](#authtrustlevel)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2690,7 +2695,9 @@ type AuthType = string
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从 API version 6 开始支持，从 API version 8 开始废弃。
+> **说明：** 
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuthType](#userauthtype)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2708,7 +2715,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，建议使用[constructor](#constructordeprecated)替代。
+> 从 API version 8 开始废弃，请使用[constructor](#constructordeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2735,7 +2742,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，建议使用[UserAuth](#userauthdeprecated)替代。
+> 从 API version 8 开始废弃，请使用[UserAuth](#userauthdeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2745,7 +2752,7 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
+> 从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2787,7 +2794,7 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
+> 从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2831,7 +2838,7 @@ try {
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，建议使用[ResultCode](#resultcodedeprecated)替代。
+> 从 API version 8 开始废弃，请使用[ResultCode](#resultcodedeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
