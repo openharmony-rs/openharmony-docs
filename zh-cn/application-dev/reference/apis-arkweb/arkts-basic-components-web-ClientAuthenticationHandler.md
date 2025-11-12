@@ -87,12 +87,12 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 | 参数名     | 类型   | 必填   | 说明    |
 | ------- | ------ | ---- | ------- |
 | identity | string | 是    | 用于识别凭据的唯一标识值。 |
-| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | 是 | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭据类型；类型为string时，表示证书链文件路径，其功能与接口[confirm<sup>deprecated</sup>](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirmdeprecated)中的证书链验证功能相同。 |
+| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | 是 | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭据类型；类型为string时，表示证书链文件路径。 |
 
 ## cancel<sup>9+</sup>
 
 cancel(): void
-
+c-components-web-ClientAuthenticationHandler.md
 通知Web组件取消相同host和port服务器发送的客户端证书请求事件。同时，相同host和port服务器的请求，不重复上报该事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
