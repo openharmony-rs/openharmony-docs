@@ -76,7 +76,7 @@
 | firstDrawFrame   | boolean   | 是   | 否   | 是否是首桢 |
 | inputHandlingDuration    | number   | 是   | 否   | 手势处理耗时（单位：纳秒） |
 | layoutMeasureDuration  | number   | 是   | 否   | 布局测量耗时（单位：纳秒） |
-| vsyncTimestamp | number   | 是   | 否   | 当前帧的开始时间（单位：纳秒） |
+| vsyncTimestamp | number   | 是   | 否   | 当前帧的开始时间戳（单位：纳秒） |
 
 ## Rect<sup>7+</sup>
 
