@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_AccessibilityValue ArkUI_AccessibilityValue
+```
+
 ## 概述
 
 定义组件无障碍信息值。

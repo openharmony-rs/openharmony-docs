@@ -1,5 +1,9 @@
 # ArkUI_ContextCallback
 
+```
+typedef struct {...} ArkUI_ContextCallback
+```
+
 ## 概述
 
 事件回调类型。

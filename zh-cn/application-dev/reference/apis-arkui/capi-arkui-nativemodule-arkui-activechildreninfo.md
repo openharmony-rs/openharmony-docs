@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
+```
+
 ## 概述
 
 定义ActiveChildrenInfo类信息。

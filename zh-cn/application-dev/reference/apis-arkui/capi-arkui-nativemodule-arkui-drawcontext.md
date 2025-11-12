@@ -1,5 +1,9 @@
 # ArkUI_DrawContext
 
+```
+typedef struct ArkUI_DrawContext ArkUI_DrawContext
+```
+
 ## 概述
 
 定义组件绘制上下文类型结构。

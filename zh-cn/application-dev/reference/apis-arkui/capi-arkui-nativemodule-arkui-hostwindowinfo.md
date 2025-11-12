@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_HostWindowInfo ArkUI_HostWindowInfo
+```
+
 ## 概述
 
 定义窗口属性的HostWindowInfo类信息。
