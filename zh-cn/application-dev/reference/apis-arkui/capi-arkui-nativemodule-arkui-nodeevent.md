@@ -1,5 +1,9 @@
 # ArkUI_NodeEvent
 
+```
+typedef struct ArkUI_NodeEvent ArkUI_NodeEvent
+```
+
 ## 概述
 
 定义组件事件的通用结构类型。
