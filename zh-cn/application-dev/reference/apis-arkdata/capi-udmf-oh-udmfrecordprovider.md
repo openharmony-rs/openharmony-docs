@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfRecordProvider OH_UdmfRecordProvider
+```
+
 ## 概述
 
 定义统一数据对象中的数据提供者。
