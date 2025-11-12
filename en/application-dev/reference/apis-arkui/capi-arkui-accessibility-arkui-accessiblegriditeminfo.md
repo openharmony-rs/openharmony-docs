@@ -4,7 +4,7 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -22,8 +22,8 @@ Configures attributes for specific components including **List**, **Flex**, **Se
 
 | Name| Description    |
 | -- |--------|
-| bool heading | Whether the item is a heading.|
-| bool selected | Whether the item is selected.|
+| bool heading | Whether the item is a heading. **true** for heading, **false** for non-heading.|
+| bool selected | Whether the item is selected. **true** for selected, **false** for unselected.|
 | int32_t columnIndex | Row index of the item.  |
 | int32_t rowIndex | Column index of the item.  |
 | int32_t columnSpan | Number of rows that the item spans.  |
