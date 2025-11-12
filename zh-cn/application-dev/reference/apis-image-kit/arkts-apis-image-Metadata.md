@@ -18,13 +18,13 @@ import { image } from '@kit.ImageKit';
 
 getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
 
-获取图像中属性的值，使用Promise形式返回。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
+获取图像中属性的值。使用Promise异步回调。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -79,15 +79,14 @@ async function GetProperties(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetPropertiesFunc(metadata: image.Metadata): void {
   try {
     let properties: Record<string, string | null> = await metadata.getProperties(["ImageWidth", "ImageLength"]);
-    hilog.info(0x00000, 'GetPropertiesFunc', 'getProperties success!');
+    console.info(0x00000, 'GetPropertiesFunc', 'getProperties success!');
   } catch (err) {
-    hilog.info(0x00000, 'GetPropertiesFunc', 'GetPropertiesFunc failed: ' + err);
+    console.error(0x00000, 'GetPropertiesFunc', 'GetPropertiesFunc failed: ' + err);
   }
 }
 ```
@@ -96,13 +95,13 @@ function GetPropertiesFunc(metadata: image.Metadata): void {
 
 setProperties(records: Record\<string, string | null>): Promise\<void>
 
-批量设置图片元数据中的指定属性的值，使用Promise形式返回。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
+批量设置图片元数据中的指定属性的值。使用Promise异步回调。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -161,7 +160,6 @@ async function SetProperties(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function SetPropertiesFunc(metadata: image.Metadata): void {
@@ -171,9 +169,9 @@ function SetPropertiesFunc(metadata: image.Metadata): void {
   };
   try {
     await metadata.setProperties(properties);
-    hilog.info(0x00000, 'SetPropertiesFunc', 'setProperties success!');
+    console.info(0x00000, 'SetPropertiesFunc', 'setProperties success!');
   } catch (err) {
-    hilog.info(0x00000, 'SetPropertiesFunc', 'SetPropertiesFunc failed: ' + err);
+    console.error(0x00000, 'SetPropertiesFunc', 'SetPropertiesFunc failed: ' + err);
   }
 }
 ```
@@ -182,25 +180,22 @@ function SetPropertiesFunc(metadata: image.Metadata): void {
 
 ArkTS-Dyn: getAllProperties(): Promise\<Record<string, string | null>>
 
-ArkTS-Sta: getAllProperties(): Promise\<Record<string, string | null> | undefined>
+获取图片中所有元数据的属性和值。使用Promise异步回调。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
-获取图片中所有元数据的属性和值，使用Promise形式返回。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
-
 **返回值：**
 
 | 类型                                     | 说明                                        |
 | ---------------------------------------- | ------------------------------------------- |
-| ArkTS-Dyn: Promise\<Record<string, string \| null>><br/>ArkTS-Sta: Promise\<Record<string, string | null> \| undefined> | Promise对象，返回元数据拥有的所有属性的值。 |
+| Promise\<Record<string, string \| null>> | Promise对象，返回元数据拥有的所有属性的值。 |
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -230,17 +225,33 @@ async function GetAllProperties(context: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta: getAllProperties(): Promise\<Record<string, string | null> | undefined>
+
+获取图片中所有元数据的属性和值。使用Promise异步回调。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型                                     | 说明                                        |
+| ---------------------------------------- | ------------------------------------------- |
+| Promise\<Record<string, string | null> \| undefined> | Promise对象，返回元数据拥有的所有属性的值。 |
+
+**示例：**
+
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetAllPropertiesFunc(metadata: image.Metadata): void {
   try {
     let properties = await metadata.getAllProperties();
-    hilog.info(0x00000, 'GetAllPropertiesFunc', 'getAllProperties success!');
+    console.info(0x00000, 'GetAllPropertiesFunc', 'getAllProperties success!');
   } catch (err) {
-    hilog.info(0x00000, 'GetAllPropertiesFunc', 'GetAllPropertiesFunc failed: ' + err);
+    console.error(0x00000, 'GetAllPropertiesFunc', 'GetAllPropertiesFunc failed: ' + err);
   }
 }
 ```
@@ -249,25 +260,22 @@ function GetAllPropertiesFunc(metadata: image.Metadata): void {
 
 ArkTS-Dyn: clone(): Promise\<Metadata>
 
-ArkTS-Sta: clone(): Promise\<Metadata | undefined>
+对元数据进行克隆。使用Promise异步回调。
 
-对元数据进行克隆，用Promise形式返回结果。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
-
 **返回值：**
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise\<[Metadata](arkts-apis-image-Metadata.md)><br/>ArkTS-Sta: Promise\<Metadata \| undefined> | Promise对象，成功返回元数据实例。 |
+| Promise\<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，成功返回元数据实例。 |
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -296,17 +304,33 @@ async function clone(context: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta: clone(): Promise\<Metadata | undefined>
+
+对元数据进行克隆。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型                              | 说明                              |
+| --------------------------------- | --------------------------------- |
+| Promise\<Metadata \| undefined> | Promise对象，成功返回元数据实例。 |
+
+**示例：**
+
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function CloneFunc(metadata: image.Metadata): void {
   try {
     let newMetadata = await metadata.clone();
-    hilog.info(0x00000, 'CloneFunc', 'clone success!');
+    console.info(0x00000, 'CloneFunc', 'clone success!');
   } catch (err) {
-    hilog.info(0x00000, 'CloneFunc', 'CloneFunc failed: ' + err);
+    console.error(0x00000, 'CloneFunc', 'CloneFunc failed: ' + err);
   }
 }
 ```

@@ -22,7 +22,7 @@ import { image } from '@kit.ImageKit';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 类型                         | 只读 | 可选 | 说明               |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
@@ -65,7 +65,6 @@ receiver.getReceivingSurfaceId((err: BusinessError, id: string) => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -75,13 +74,13 @@ function GetReceivingSurfaceIdFunc(): void {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     receiver.getReceivingSurfaceId((err: BusinessError | null, id: string | undefined) => {
       if (err) {
-        hilog.info(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId failed: ' + err);
+        console.error(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId failed: ' + err);
       } else {
-        hilog.info(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId success!');
+        console.info(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'GetReceivingSurfaceIdFunc', 'GetReceivingSurfaceIdFunc failed: ' + err);
+    console.error(0x00000, 'GetReceivingSurfaceIdFunc', 'GetReceivingSurfaceIdFunc failed: ' + err);
   }
 }
 ```
@@ -90,7 +89,7 @@ function GetReceivingSurfaceIdFunc(): void {
 
 getReceivingSurfaceId(): Promise\<string>
 
-用于获取一个surface id供Camera或其他组件使用。使用promise返回结果。
+用于获取一个surface id供Camera或其他组件使用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -119,7 +118,6 @@ receiver.getReceivingSurfaceId().then((id: string) => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetReceivingSurfaceIdFunc(): void {
@@ -127,9 +125,9 @@ function GetReceivingSurfaceIdFunc(): void {
   try {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     await receiver.getReceivingSurfaceId();
-    hilog.info(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId success!');
+    console.info(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId success!');
   } catch (err) {
-    hilog.info(0x00000, 'GetReceivingSurfaceIdFunc', 'GetReceivingSurfaceIdFunc failed: ' + err);
+    console.error(0x00000, 'GetReceivingSurfaceIdFunc', 'GetReceivingSurfaceIdFunc failed: ' + err);
   }
 }
 ```
@@ -171,7 +169,6 @@ receiver.readLatestImage((err: BusinessError, img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -181,13 +178,13 @@ function ReadLatestImageFunc(): void {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     receiver.readLatestImage((err: BusinessError | null, img: image.Image | undefined) => {
       if (err) {
-        hilog.info(0x00000, 'ReadLatestImageFunc', 'readLatestImage failed: ' + err);
+        console.error(0x00000, 'ReadLatestImageFunc', 'readLatestImage failed: ' + err);
       } else {
-        hilog.info(0x00000, 'ReadLatestImageFunc', 'readLatestImage success!');
+        console.info(0x00000, 'ReadLatestImageFunc', 'readLatestImage success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'ReadLatestImageFunc', 'ReadLatestImageFunc failed: ' + err);
+    console.error(0x00000, 'ReadLatestImageFunc', 'ReadLatestImageFunc failed: ' + err);
   }
 }
 ```
@@ -196,7 +193,7 @@ function ReadLatestImageFunc(): void {
 
 readLatestImage(): Promise\<Image>
 
-从ImageReceiver读取最新的图片，并使用promise返回结果。
+从ImageReceiver读取最新的图片。使用Promise异步回调。
 
 **注意**：此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
@@ -227,7 +224,6 @@ receiver.readLatestImage().then((img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function ReadLatestImageFunc(): void {
@@ -235,9 +231,9 @@ function ReadLatestImageFunc(): void {
   try {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     await receiver.readLatestImage();
-    hilog.info(0x00000, 'ReadLatestImageFunc', 'readLatestImage success!');
+    console.info(0x00000, 'ReadLatestImageFunc', 'readLatestImage success!');
   } catch (err) {
-    hilog.info(0x00000, 'ReadLatestImageFunc', 'ReadLatestImageFunc failed: ' + err);
+    console.error(0x00000, 'ReadLatestImageFunc', 'ReadLatestImageFunc failed: ' + err);
   }
 }
 ```
@@ -279,7 +275,6 @@ receiver.readNextImage((err: BusinessError, img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -290,13 +285,13 @@ function ReadNextImageFunc(): void {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     receiver.readNextImage((err: BusinessError | null, img: image.Image | undefined) => {
       if (err) {
-        hilog.info(0x00000, 'ReadNextImageFunc', 'readNextImage failed: ' + err);
+        console.error(0x00000, 'ReadNextImageFunc', 'readNextImage failed: ' + err);
       } else {
-        hilog.info(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc success!');
+        console.info(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc failed: ' + err);
+    console.error(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc failed: ' + err);
   }
 }
 ```
@@ -305,7 +300,7 @@ function ReadNextImageFunc(): void {
 
 readNextImage(): Promise\<Image>
 
-从ImageReceiver读取下一张图片，并使用promise返回结果。
+从ImageReceiver读取下一张图片。使用Promise异步回调。
 
 **注意**：此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
@@ -336,7 +331,6 @@ receiver.readNextImage().then((img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function ReadNextImageFunc(): void {
@@ -344,9 +338,9 @@ function ReadNextImageFunc(): void {
   try {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     await receiver.readNextImage();
-    hilog.info(0x00000, 'ReadNextImageFunc', 'readNextImage success!');
+    console.info(0x00000, 'ReadNextImageFunc', 'readNextImage success!');
   } catch (err) {
-    hilog.info(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc failed: ' + err);
+    console.error(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc failed: ' + err);
   }
 }
 ```
@@ -358,8 +352,6 @@ on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 接收图片时注册回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onImageArrival](#onImageArrival22)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -388,8 +380,6 @@ onImageArrival(callback: AsyncCallback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on9)
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **ArkTS-Sta起始版本：** 22
@@ -403,18 +393,17 @@ onImageArrival(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { image } from '@kit.ImageKit';
 
 function OnImageArrivalFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
   try {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     receiver.onImageArrival(() => {
-      hilog.info(0x00000, 'OnFunc', 'on success!');
+      console.info(0x00000, 'OnFunc', 'on success!');
     });
   } catch (err) {
-    hilog.info(0x00000, 'OnFunc', 'OnFunc failed: ' + err);
+    console.error(0x00000, 'OnFunc', 'OnFunc failed: ' + err);
   }
 }
 ```
@@ -426,8 +415,6 @@ off(type: 'imageArrival', callback?: AsyncCallback\<void>): void
 释放buffer时移除注册回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offImageArrival](#offImageArrival22)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -458,8 +445,6 @@ offImageArrival(callback?: AsyncCallback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off9)
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **ArkTS-Sta起始版本：** 22
@@ -473,21 +458,20 @@ offImageArrival(callback?: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { image } from '@kit.ImageKit';
 
 function OffFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
   try {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     receiver.onImageArrival(() => {
-      hilog.info(0x00000, 'OffFunc', 'on success!');
+      console.info(0x00000, 'OffFunc', 'on success!');
     });
     receiver.offImageArrival(() => {
-      hilog.info(0x00000, 'OffFunc', 'off success!');
+      console.info(0x00000, 'OffFunc', 'off success!');
     });
   } catch (err) {
-    hilog.info(0x00000, 'OffFunc', 'OffFunc failed: ' + err);
+    console.error(0x00000, 'OffFunc', 'OffFunc failed: ' + err);
   }
 }
 ```
@@ -529,7 +513,6 @@ receiver.release((err: BusinessError) => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -539,13 +522,13 @@ function ReleaseFunc(): void {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     receiver.release((err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'ReleaseFunc', 'release failed: ' + err);
+        console.error(0x00000, 'ReleaseFunc', 'release failed: ' + err);
       } else {
-        hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc success!');
+        console.info(0x00000, 'ReleaseFunc', 'ReleaseFunc success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
   }
 }
 ```
@@ -554,7 +537,7 @@ function ReleaseFunc(): void {
 
 release(): Promise\<void>
 
-释放ImageReceiver实例并使用promise返回结果。
+释放ImageReceiver实例。使用Promise异步回调。
 
 ArkTS有内存回收机制，ImageReceiver对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
@@ -585,7 +568,6 @@ receiver.release().then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function ReleaseFunc(): void {
@@ -593,9 +575,9 @@ function ReleaseFunc(): void {
   try {
     let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
     await receiver.release();
-    hilog.info(0x00000, 'ReleaseFunc', 'release success!');
+    console.info(0x00000, 'ReleaseFunc', 'release success!');
   } catch (err) {
-    hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
   }
 }
 ```

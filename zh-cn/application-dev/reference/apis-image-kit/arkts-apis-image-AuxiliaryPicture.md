@@ -18,14 +18,13 @@ import { image } from '@kit.ImageKit';
 
 writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
-读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象，使用Promise形式返回。
+读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
-
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -76,7 +75,6 @@ async function WritePixelsFromBuffer(context: Context) {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -87,7 +85,7 @@ import { image } from '@kit.ImageKit';
         WritePixelsFromBufferFunc(auxPicture);
       }
     } else {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+      console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
     }
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
@@ -101,11 +99,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }
@@ -114,9 +112,9 @@ function WritePixelsFromBufferFunc(auxPicture: image.AuxiliaryPicture): void {
   try {
     let auxBuffer: ArrayBuffer = await auxPicture.readPixelsToBuffer();
     await auxPicture.writePixelsFromBuffer(auxBuffer);
-    hilog.info(0x00000, 'writePixelsFromBufferFunc', 'writePixelsFromBuffer success!');
+    console.info(0x00000, 'writePixelsFromBufferFunc', 'writePixelsFromBuffer success!');
   } catch (err) {
-    hilog.info(0x00000, 'writePixelsFromBufferFunc', 'writePixelsFromBufferFunc failed: ' + err);
+    console.error(0x00000, 'writePixelsFromBufferFunc', 'writePixelsFromBufferFunc failed: ' + err);
   }
 }
 ```
@@ -125,11 +123,9 @@ function WritePixelsFromBufferFunc(auxPicture: image.AuxiliaryPicture): void {
 
 readPixelsToBuffer(): Promise\<ArrayBuffer>
 
-读取图像像素映射数据并将数据写入ArrayBuffer，使用Promise形式返回。
+读取图像像素映射数据并将数据写入ArrayBuffer。使用Promise异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[readPixelsToBuffer](#readpixelstobuffer22)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -173,11 +169,9 @@ async function ReadPixelsToBuffer(context: Context) {
 
 readPixelsToBuffer(): Promise\<ArrayBuffer | undefined>
 
-读取图像像素映射数据并将数据写入ArrayBuffer，使用Promise形式返回。
+读取图像像素映射数据并将数据写入ArrayBuffer。使用Promise异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[readPixelsToBuffer](#readpixelstobuffer13)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -193,7 +187,6 @@ readPixelsToBuffer(): Promise\<ArrayBuffer | undefined>
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -203,7 +196,7 @@ if (context != undefined) {
   if (auxPicture != null) {
     ReadPixelsToBufferFunc(auxPicture);
   } else {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
 }
 
@@ -218,11 +211,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }
@@ -230,9 +223,9 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
 function ReadPixelsToBufferFunc(auxPicture: image.AuxiliaryPicture): void {
   try {
     let auxBuffer = await auxPicture.readPixelsToBuffer();
-    hilog.info(0x00000, 'ReadPixelsToBufferFunc', 'readPixelsToBuffer success!');
+    console.info(0x00000, 'ReadPixelsToBufferFunc', 'readPixelsToBuffer success!');
   } catch (err) {
-    hilog.info(0x00000, 'ReadPixelsToBufferFunc', 'ReadPixelsToBufferFunc failed: ' + err);
+    console.error(0x00000, 'ReadPixelsToBufferFunc', 'ReadPixelsToBufferFunc failed: ' + err);
   }
 }
 ```
@@ -244,8 +237,6 @@ getType(): AuxiliaryPictureType
 获取辅助图的类型。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getType](#gettype22)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -280,8 +271,6 @@ getType(): AuxiliaryPictureType | undefined
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[getType](#gettype13)
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Sta版本：** 22
@@ -296,7 +285,6 @@ getType(): AuxiliaryPictureType | undefined
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -306,7 +294,7 @@ if (context != undefined) {
   if (auxPicture != null) {
     GetTypeFunc(auxPicture);
   } else {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
 }
 
@@ -321,11 +309,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }
@@ -333,9 +321,9 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
 function GetTypeFunc(auxPicture: image.AuxiliaryPicture): void {
   try {
     let type = auxPicture.getType();
-    hilog.info(0x00000, 'GetTypeFunc', 'getType success! Auxiliary Type: ' + type);
+    console.info(0x00000, 'GetTypeFunc', 'getType success! Auxiliary Type: ' + type);
   } catch (err) {
-    hilog.info(0x00000, 'GetTypeFunc', 'GetTypeFunc failed: ' + err);
+    console.error(0x00000, 'GetTypeFunc', 'GetTypeFunc failed: ' + err);
   }
 }
 ```
@@ -350,7 +338,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -413,7 +401,6 @@ async function SetAuxPictureObjMetadata(exifContext: Context) {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -423,7 +410,7 @@ if (context != undefined) {
   if (auxPicture != null) {
     SetMetadataFunc(auxPicture, context);
   } else {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
 }
 
@@ -438,11 +425,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }
@@ -459,10 +446,10 @@ function SetMetadataFunc(auxPicture: image.AuxiliaryPicture, context: common.UIA
     let metadata: image.Metadata | null = await picture.getMetadata(metadataType);
     if (metadata != null) {
        auxPicture.setMetadata(metadataType, metadata);
-       hilog.info(0x00000, 'SetMetadataFunc', 'setMetadata success!');
+       console.info(0x00000, 'SetMetadataFunc', 'setMetadata success!');
     }
   } catch (err) {
-    hilog.info(0x00000, 'SetMetadataFunc', 'SetMetadataFunc failed: ' + err);
+    console.error(0x00000, 'SetMetadataFunc', 'SetMetadataFunc failed: ' + err);
   }
 }
 ```
@@ -473,9 +460,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 从辅助图中获取元数据。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dya。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getMetadata](#getmetadata22)
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -526,11 +511,9 @@ async function GetAuxPictureObjMetadata() {
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
-从辅助图中获取元数据。
+从辅助图中获取元数据。使用Promise异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dya接口是[getMetadata](#getmetadata13)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -560,7 +543,6 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -570,7 +552,7 @@ if (context != undefined) {
   if (auxPicture != null) {
     GetMetadataFunc(auxPicture, context);
   } else {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
 }
 
@@ -585,11 +567,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }
@@ -599,10 +581,10 @@ function GetMetadataFunc(auxPicture: image.AuxiliaryPicture): void {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let metadata = await auxPicture.getMetadata(metadataType);
     if (metadata != null) {
-      hilog.info(0x00000, 'GetMetadataFunc', 'getMetadata success!');
+      console.info(0x00000, 'GetMetadataFunc', 'getMetadata success!');
     }
   } catch (err) {
-    hilog.info(0x00000, 'GetMetadataFunc', 'GetMetadataFunc failed: ' + err);
+    console.error(0x00000, 'GetMetadataFunc', 'GetMetadataFunc failed: ' + err);
   }
 }
 ```
@@ -614,8 +596,6 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 获取有关此辅助图的图像信息。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dya。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getAuxiliaryPictureInfo](#getauxiliarypictureinfo22)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -653,8 +633,6 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dya接口是[getAuxiliaryPictureInfo](#getauxiliarypictureinfo13)
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Sta版本：** 22
@@ -669,7 +647,6 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -679,7 +656,7 @@ if (context != undefined) {
   if (auxPicture != null) {
     GetAuxiliaryPictureInfoFunc(auxPicture);
   } else {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
 }
 
@@ -694,11 +671,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }
@@ -706,12 +683,12 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
 function GetAuxiliaryPictureInfoFunc(auxPicture: image.AuxiliaryPicture): void {
   try {
     let auxInfo = auxPicture.getAuxiliaryPictureInfo();
-    hilog.info(0x00000, 'GetAuxiliaryPictureInfoFunc',
+    console.info(0x00000, 'GetAuxiliaryPictureInfoFunc',
       'getAuxiliaryPictureInfo Type: ' + auxInfo.auxiliaryPictureType +
       ' height: ' + auxInfo.size.height + ' width: ' + auxInfo.size.width + ' rowStride: ' + auxInfo.rowStride +
       ' pixelFormat: ' + auxInfo.pixelFormat + ' colorSpace: ' + auxInfo.colorSpace);
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPictureInfoFunc', 'GetAuxiliaryPictureInfoFunc failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPictureInfoFunc', 'GetAuxiliaryPictureInfoFunc failed: ' + err);
   }
 }
 ```
@@ -726,7 +703,7 @@ setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -767,7 +744,6 @@ async function SetAuxiliaryPictureInfo() {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
@@ -778,7 +754,7 @@ if (context != undefined) {
   if (auxPicture != null) {
     SetAuxiliaryPictureInfoFunc(auxPicture);
   } else {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
 }
 
@@ -793,11 +769,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }
@@ -813,9 +789,9 @@ function SetAuxiliaryPictureInfoFunc(auxPicture: image.AuxiliaryPicture): void {
       colorSpace: colorSpaceManager.create(colorSpaceName),
     };
     auxPicture.setAuxiliaryPictureInfo(info);
-    hilog.info(0x00000, 'SetAuxiliaryPictureInfoFunc', 'SetAuxiliaryPictureInfoFunc success!');
+    console.info(0x00000, 'SetAuxiliaryPictureInfoFunc', 'SetAuxiliaryPictureInfoFunc success!');
   } catch (err) {
-    hilog.info(0x00000, 'SetAuxiliaryPictureInfoFunc', 'SetAuxiliaryPictureInfoFunc failed: ' + err);
+    console.error(0x00000, 'SetAuxiliaryPictureInfoFunc', 'SetAuxiliaryPictureInfoFunc failed: ' + err);
   }
 }
 ```
@@ -830,7 +806,7 @@ release():void
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **示例：**
 
@@ -856,7 +832,6 @@ async function Release() {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -866,7 +841,7 @@ if (context != undefined) {
   if (auxPicture != null) {
     auxPicture.release();
   } else {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    console.error(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
 }
 
@@ -881,11 +856,11 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
     let picture: image.Picture = image.createPicture(pixelMap);
     let auxPicture: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
     if(auxPicture != null) {
-      hilog.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPicture', 'getAuxiliaryPicture success!');
     }
     return auxPicture;
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPicture', 'GetAuxiliaryPicture failed: ' + err);
     return null;
   }
 }

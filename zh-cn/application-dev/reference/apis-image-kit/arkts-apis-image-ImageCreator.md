@@ -21,7 +21,7 @@ import { image } from '@kit.ImageKit';
 
 **ArkTS-Dyn版本：** 9
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 | 名称     | 类型                         | 只读 | 可选 | 说明               |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
@@ -64,7 +64,6 @@ creator.dequeueImage((err: BusinessError, img: image.Image) => {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -75,7 +74,7 @@ if (context != undefined) {
   if (creator != null) {
     DequeueImageFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -86,10 +85,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -98,13 +97,13 @@ function DequeueImageFunc(creator: image.ImageCreator): void {
   try {
     creator.dequeueImage((err: BusinessError | null, img: image.Image | undefined) => {
       if (err) {
-        hilog.info(0x00000, 'DequeueImageFunc', 'dequeueImage failed! err:' + err);
+        console.error(0x00000, 'DequeueImageFunc', 'dequeueImage failed! err:' + err);
       } else {
-        hilog.info(0x00000, 'DequeueImageFunc', 'dequeueImage success!');
+        console.info(0x00000, 'DequeueImageFunc', 'dequeueImage success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'DequeueImageFunc', 'DequeueImageFunc failed: ' + err);
+    console.error(0x00000, 'DequeueImageFunc', 'DequeueImageFunc failed: ' + err);
   }
 }
 ```
@@ -113,7 +112,7 @@ function DequeueImageFunc(creator: image.ImageCreator): void {
 
 dequeueImage(): Promise\<Image>
 
-从空闲队列中获取buffer图片，用于绘制UI内容，并使用promise返回结果。
+从空闲队列中获取buffer图片，用于绘制UI内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -143,7 +142,6 @@ creator.dequeueImage().then((img: image.Image) => {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -153,7 +151,7 @@ if (context != undefined) {
   if (creator != null) {
     DequeueImageFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -164,10 +162,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -175,9 +173,9 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
 function DequeueImageFunc(creator: image.ImageCreator): void {
   try {
     let image: image.Image = await creator.dequeueImage();
-    hilog.info(0x00000, 'DequeueImageFunc', 'dequeueImage success!');
+    console.info(0x00000, 'DequeueImageFunc', 'dequeueImage success!');
   } catch (err) {
-    hilog.info(0x00000, 'DequeueImageFunc', 'DequeueImageFunc failed: ' + err);
+    console.error(0x00000, 'DequeueImageFunc', 'DequeueImageFunc failed: ' + err);
   }
 }
 ```
@@ -231,7 +229,6 @@ creator.dequeueImage().then((img: image.Image) => {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -242,7 +239,7 @@ if (context != undefined) {
   if (creator != null) {
     QueueImageFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -253,10 +250,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -266,13 +263,13 @@ function QueueImageFunc(creator: image.ImageCreator): void {
     let image: image.Image = await creator.dequeueImage();
     creator.queueImage(image, (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'QueueImageFunc', 'queueImage failed! err:' + err);
+        console.error(0x00000, 'QueueImageFunc', 'queueImage failed! err:' + err);
       } else {
-        hilog.info(0x00000, 'QueueImageFunc', 'queueImage success!');
+        console.info(0x00000, 'QueueImageFunc', 'queueImage success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'QueueImageFunc', 'QueueImageFunc failed: ' + err);
+    console.error(0x00000, 'QueueImageFunc', 'QueueImageFunc failed: ' + err);
   }
 }
 ```
@@ -281,7 +278,7 @@ function QueueImageFunc(creator: image.ImageCreator): void {
 
 queueImage(image: Image): Promise\<void>
 
-将绘制好的图片放入队列，并使用promise返回结果。
+将绘制好的图片放入队列。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -329,7 +326,6 @@ creator.dequeueImage().then((img: image.Image) => {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -339,7 +335,7 @@ if (context != undefined) {
   if (creator != null) {
     QueueImageFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -350,10 +346,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -362,9 +358,9 @@ function QueueImageFunc(creator: image.ImageCreator): void {
   try {
     let image: image.Image = await creator.dequeueImage();
     await creator.queueImage(image);
-    hilog.info(0x00000, 'QueueImageFunc', 'queueImage success!');
+    console.info(0x00000, 'QueueImageFunc', 'queueImage success!');
   } catch (err) {
-    hilog.info(0x00000, 'QueueImageFunc', 'QueueImageFunc failed: ' + err);
+    console.error(0x00000, 'QueueImageFunc', 'QueueImageFunc failed: ' + err);
   }
 }
 ```
@@ -376,8 +372,6 @@ on(type: 'imageRelease', callback: AsyncCallback\<void>): void
 监听imageRelease事件，并使用callback返回结果。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onImageRelease](#onimagerelease22)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -407,11 +401,9 @@ creator.on('imageRelease', (err: BusinessError) => {
 
 onImageRelease(callback: AsyncCallback\<void>): void
 
-监听imageRelease事件，并使用callback返回结果。
+监听imageRelease事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on9)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -421,14 +413,12 @@ onImageRelease(callback: AsyncCallback\<void>): void
 
 | 参数名        | 类型                     | 必填 | 说明                 |
 | ------------- | -------------------------| ---- | -------------------- |
-| type          | string                   | 是   | 监听事件类型，如'imageRelease'。 |
 | callback      | AsyncCallback\<void>     | 是   | 回调函数，当监听事件触发成功，err为undefined，否则为错误对象。  |
 
 **示例：**
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -439,7 +429,7 @@ if (context != undefined) {
   if (creator != null) {
     OnFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -450,10 +440,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -462,13 +452,13 @@ function OnFunc(creator: image.ImageCreator): void {
   try{
     creator.onImageRelease('imageRelease', (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'OnFunc', 'on failed: ' + err);
+        console.error(0x00000, 'OnFunc', 'on failed: ' + err);
       } else {
-        hilog.info(0x00000, 'OnFunc', 'on success!');
+        console.info(0x00000, 'OnFunc', 'on success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'OnFunc', 'OnFunc failed: ' + err);
+    console.error(0x00000, 'OnFunc', 'OnFunc failed: ' + err);
   }
 }
 ```
@@ -480,8 +470,6 @@ off(type: 'imageRelease', callback?: AsyncCallback\<void>): void
 释放buffer时，移除注册的回调函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offImageRelease](#offImageRelease22)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -512,8 +500,6 @@ offImageRelease(callback?: AsyncCallback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off13)
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
 **ArkTS-Sta版本：** 22
@@ -522,14 +508,12 @@ offImageRelease(callback?: AsyncCallback\<void>): void
 
 | 参数名        | 类型                     | 必填 | 说明                                         |
 | ------------- | -------------------------|----|--------------------------------------------|
-| type          | string                   | 是  | 监听事件类型，如'imageRelease'。                    |
 | callback      | AsyncCallback\<void>     | 否  | 将被移除的回调函数。 |
 
 **示例：**
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -540,7 +524,7 @@ if (context != undefined) {
   if (creator != null) {
     OffFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -551,10 +535,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -563,20 +547,20 @@ function OffFunc(creator: image.ImageCreator): void {
   try{
     creator.onImageRelease('imageRelease', (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'OffFunc', 'on failed: ' + err);
+        console.error(0x00000, 'OffFunc', 'on failed: ' + err);
       } else {
-        hilog.info(0x00000, 'OffFunc', 'on success!');
+        console.info(0x00000, 'OffFunc', 'on success!');
       }
     });
     creator.offImageRelease('imageRelease', (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'OffFunc', 'off failed: ' + err);
+        console.error(0x00000, 'OffFunc', 'off failed: ' + err);
       } else {
-        hilog.info(0x00000, 'OffFunc', 'off success!');
+        console.info(0x00000, 'OffFunc', 'off success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'OffFunc', 'OffFunc failed: ' + err);
+    console.error(0x00000, 'OffFunc', 'OffFunc failed: ' + err);
   }
 }
 ```
@@ -619,7 +603,6 @@ creator.release((err: BusinessError) => {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -630,7 +613,7 @@ if (context != undefined) {
   if (creator != null) {
     ReleaseFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -641,10 +624,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -653,13 +636,13 @@ function ReleaseFunc(creator: image.ImageCreator): void {
   try {
     creator.release((err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'ReleaseFunc', 'release failed: ' + err);
+        console.error(0x00000, 'ReleaseFunc', 'release failed: ' + err);
       } else {
-        hilog.info(0x00000, 'ReleaseFunc', 'release success!');
+        console.info(0x00000, 'ReleaseFunc', 'release success!');
       }
     })
   } catch (err) {
-    hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
   }
 }
 ```
@@ -668,7 +651,7 @@ function ReleaseFunc(creator: image.ImageCreator): void {
 
 release(): Promise\<void>
 
-释放当前图像，并使用promise返回结果。
+释放当前图像。使用Promise异步回调。
 
 ArkTS有内存回收机制，ImageCreator对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
@@ -700,7 +683,6 @@ creator.release().then(() => {
 ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -710,7 +692,7 @@ if (context != undefined) {
   if (creator != null) {
     ReleaseFunc(creator);
   } else {
-    hilog.info(0x00000, 'GetImageCreator', 'imageCreator is null!');
+    console.error(0x00000, 'GetImageCreator', 'imageCreator is null!');
   }
 }
 
@@ -721,10 +703,10 @@ function GetImageCreator(context: common.UIAbilityContext): image.ImageCreator |
   };
   try {
     let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
-    hilog.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
+    console.info(0x00000, 'GetImageCreator', 'createImageCreator success!');
     return creator;
   } catch (err) {
-    hilog.info(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
+    console.error(0x00000, 'GetImageCreator', 'GetImageCreator failed: ' + err);
     return null;
   }
 }
@@ -733,7 +715,7 @@ function ReleaseFunc(creator: image.ImageCreator): void {
   try {
     await creator.release();
   } catch (err) {
-    hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
   }
 }
 ```

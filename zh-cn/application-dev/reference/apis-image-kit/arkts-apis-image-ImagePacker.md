@@ -19,7 +19,7 @@ import { image } from '@kit.ImageKit';
 
 **ArkTS-Dyn版本：** 6
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 | 名称             | 类型           | 只读 | 可选 | 说明                       |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
@@ -29,7 +29,7 @@ import { image } from '@kit.ImageKit';
 
 packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -70,7 +70,7 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -78,7 +78,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+// 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
 let filePath: string = context.filesDir + "/test.jpg";
 const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
 let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
@@ -91,10 +91,9 @@ imagePackerApi.packToData(imageSourceApi, packOpts)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -104,16 +103,16 @@ if (context != undefined) {
 }
 
 async function ImagePackerFunc(context: common.UIAbilityContext): Promise<void> {
-  //此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  // 此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
   let filePath: string = context.filesDir + "test_image.jpg";
   try {
     let imageSource = image.createImageSource(filePath);
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
     let imagePacker: image.ImagePacker = image.createImagePacker();
     let arrayBuffer: ArrayBuffer = await imagePacker.packToData(imageSource, packOpts);
-    hilog.info(0x00000, 'ImagePackerFunc', 'packToData success!');
+    console.info(0x00000, 'ImagePackerFunc', 'packToData success!');
   } catch (err) {
-    hilog.info(0x00000, 'ImagePackerFunc', 'ImagePackerFunc failed: ' + err);
+    console.error(0x00000, 'ImagePackerFunc', 'ImagePackerFunc failed: ' + err);
   }
 }
 ```
@@ -122,7 +121,7 @@ async function ImagePackerFunc(context: common.UIAbilityContext): Promise<void> 
 
 packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 > **注意：**
 > 接口如果返回401错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -166,7 +165,7 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -186,10 +185,9 @@ image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -210,9 +208,9 @@ async function ImagePackerFunc(): Promise<void> {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
     let imagePacker: image.ImagePacker = image.createImagePacker();
     let arrayBuffer: ArrayBuffer = await imagePacker.packToData(pixelMap, packOpts);
-    hilog.info(0x00000, 'ImagePackerFunc', 'packToData success!');
+    console.info(0x00000, 'ImagePackerFunc', 'packToData success!');
   } catch (err) {
-    hilog.info(0x00000, 'ImagePackerFunc', 'ImagePackerFunc failed: ' + err);
+    console.error(0x00000, 'ImagePackerFunc', 'ImagePackerFunc failed: ' + err);
   }
 }
 ```
@@ -221,13 +219,13 @@ async function ImagePackerFunc(): Promise<void> {
 
 packing(picture: Picture, options: PackingOption): Promise\<ArrayBuffer>
 
-将图像压缩或重新编码，使用Promise形式返回结果。
+将图像压缩或重新编码。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -253,7 +251,7 @@ packing(picture: Picture, options: PackingOption): Promise\<ArrayBuffer>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -285,10 +283,9 @@ async function Packing(context: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
@@ -308,9 +305,9 @@ async function PackingFunc(context: common.UIAbilityContext): Promise<void> {
     const imagePacker: image.ImagePacker = image.createImagePacker();
     let packingOpts: image.PackingOption = { format: "image/jpeg", quality: 98, bufferSize: 10 };
     let arrayBuffer: ArrayBuffer = await imagePacker.packing(picture, packingOpts);
-    hilog.info(0x00000, 'PackingFunc', 'packing success!');
+    console.info(0x00000, 'PackingFunc', 'packing success!');
   } catch (err) {
-    hilog.info(0x00000, 'PackingFunc', 'PackingFunc failed: ' + err);
+    console.error(0x00000, 'PackingFunc', 'PackingFunc failed: ' + err);
   }
 }
 ```
@@ -319,13 +316,13 @@ async function PackingFunc(context: common.UIAbilityContext): Promise<void> {
 
 packToDataFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, options: PackingOptionsForSequence): Promise\<ArrayBuffer>
 
-将多个PixelMap编码成GIF数据。使用Promise形式返回结果。
+将多个PixelMap编码成GIF数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **ArkTS-Dyn版本：** 18
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -351,12 +348,12 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, options: Pack
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
-import image from "@ohos.multimedia.image";
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -381,10 +378,9 @@ Packer.packToDataFromPixelmapSequence(pixelMapList, ops)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function PackToDataFromPixelmapSequenceFunc(context: common.UIAbilityContext): void {
@@ -402,9 +398,9 @@ function PackToDataFromPixelmapSequenceFunc(context: common.UIAbilityContext): v
   let imagePacker: image.ImagePacker = image.createImagePacker();
   try {
     let array: ArrayBuffer = await imagePacker.packToDataFromPixelmapSequence(pixelMapList, opts);
-    hilog.info(0x00000, 'PackToDataFromPixelmapSequenceFunc', 'packToDataFromPixelmapSequence success!');
+    console.info(0x00000, 'PackToDataFromPixelmapSequenceFunc', 'packToDataFromPixelmapSequence success!');
   } catch (err) {
-    hilog.info(0x00000, 'PackToDataFromPixelmapSequenceFunc', 'PackToDataFromPixelmapSequenceFunc failed: ' + err);
+    console.error(0x00000, 'PackToDataFromPixelmapSequenceFunc', 'PackToDataFromPixelmapSequenceFunc failed: ' + err);
   }
 }
 ```
@@ -431,7 +427,7 @@ ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -445,9 +441,8 @@ imagePackerApi.release((err: BusinessError)=>{
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -456,13 +451,13 @@ function ReleaseFunc(): void {
     let imagePacker: image.ImagePacker = image.createImagePacker();
     imagePacker.release((err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'ReleaseFunc', 'release failed: ' + err);
+        console.error(0x00000, 'ReleaseFunc', 'release failed: ' + err);
       } else {
-        hilog.info(0x00000, 'ReleaseFunc', 'release success!');
+        console.info(0x00000, 'ReleaseFunc', 'release success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
   }
 }
 ```
@@ -471,7 +466,7 @@ function ReleaseFunc(): void {
 
 release(): Promise\<void>
 
-释放图片编码实例，使用Promise形式返回释放结果。
+释放图片编码实例。使用Promise异步回调。
 
 ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
@@ -490,7 +485,7 @@ ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -502,18 +497,17 @@ imagePackerApi.release().then(() => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function ReleaseFunc(): void {
   try {
     let imagePacker: image.ImagePacker = image.createImagePacker();
     await imagePacker.release();
-    hilog.info(0x00000, 'ReleaseFunc', 'release success!');
+    console.info(0x00000, 'ReleaseFunc', 'release success!');
   } catch (err) {
-    hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
   }
 }
 ```
@@ -559,7 +553,7 @@ ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption, call
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -568,7 +562,7 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+// 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
 const path: string = context.filesDir + "/test.png";
 const imageSourceApi: image.ImageSource = image.createImageSource(path);
 let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
@@ -584,10 +578,9 @@ imagePackerApi.packToFile(imageSourceApi, file.fd, packOpts, (err: BusinessError
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@ohos.base';
@@ -599,7 +592,7 @@ if (context != undefined) {
 }
 
 function PackToFileFunc(context: common.UIAbilityContext): void {
-  //此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  // 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
   const path: string = context.filesDir + "test_image.png";
   const filePath: string = context.filesDir + "test_source.jpg"
   const imageSource = image.createImageSource(path);
@@ -610,24 +603,24 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
     const imagePacker: image.ImagePacker = image.createImagePacker();
     imagePacker.packToFile(imageSource, file.fd, packOpts, (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'PackToFileFunc', 'packToFile failed: ' + err);
+        console.error(0x00000, 'PackToFileFunc', 'packToFile failed: ' + err);
       } else {
-        hilog.info(0x00000, 'PackToFileFunc', 'packToFile success!');
+        console.info(0x00000, 'PackToFileFunc', 'packToFile success!');
       }
     })
   } catch (err) {
-    hilog.info(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
+    console.error(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
   }
 }
 ```
 
 ## packToFile<sup>11+</sup>
 
-ArkTS-Dyn: packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<void>
+ArkTS-Dyn: packToFile(source: ImageSource, fd: number, options: PackingOption): Promise\<void>
 
-ArkTS-Sta: packToFile (source: ImageSource, fd: int, options: PackingOption): Promise\<void>
+ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption): Promise\<void>
 
-指定编码参数，将ImageSource直接编码进文件。使用Promise形式返回结果。
+指定编码参数，将ImageSource直接编码进文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -667,7 +660,7 @@ ArkTS-Sta: packToFile (source: ImageSource, fd: int, options: PackingOption): Pr
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -676,7 +669,7 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+// 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
 const path: string = context.filesDir + "/test.png";
 const imageSourceApi: image.ImageSource = image.createImageSource(path);
 let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
@@ -690,10 +683,9 @@ imagePackerApi.packToFile(imageSourceApi, file.fd, packOpts).then(() => {
 }) 
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -704,7 +696,7 @@ if (context != undefined) {
 }
 
 function PackToFileFunc(context: common.UIAbilityContext): void {
-  //此处'test_image.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  // 此处'test_image.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
   const path: string = context.filesDir + "test_image.png";
   const filePath: string = context.filesDir + "test_source.jpg"
   const imageSource = image.createImageSource(path);
@@ -714,9 +706,9 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
     let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePacker: image.ImagePacker = image.createImagePacker();
     await imagePacker.packToFile(imageSource, file.fd, packOpts);
-    hilog.info(0x00000, 'PackToFileFunc', 'packToFile success!');
+    console.info(0x00000, 'PackToFileFunc', 'packToFile success!');
   } catch (err) {
-    hilog.info(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
+    console.error(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
   }
 }
 ```
@@ -765,7 +757,7 @@ ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption,  callba
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -791,10 +783,9 @@ image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 import { fileIo } from '@kit.CoreFileKit';
@@ -820,13 +811,13 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
     const imagePacker: image.ImagePacker = image.createImagePacker();
     imagePacker.packToFile(pixelMap, file.fd, packOpts, (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'PackToFileFunc', 'packToFile failed: ' + err);
+        console.error(0x00000, 'PackToFileFunc', 'packToFile failed: ' + err);
       } else {
-        hilog.info(0x00000, 'PackToFileFunc', 'packToFile success!');
+        console.info(0x00000, 'PackToFileFunc', 'packToFile success!');
       }
     })
   } catch (err) {
-    hilog.info(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
+    console.error(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
   }
 }
 ```
@@ -837,7 +828,7 @@ ArkTS-Dyn: packToFile(source: PixelMap, fd: number, options: PackingOption): Pro
 
 ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption): Promise\<void>
 
-指定编码参数，将PixelMap直接编码进文件。使用Promise形式返回结果。
+指定编码参数，将PixelMap直接编码进文件。使用Promise异步回调。
 
 > **注意：**
 > 接口如果返回62980115错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -880,7 +871,7 @@ ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption): Promis
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -905,10 +896,9 @@ image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -932,9 +922,9 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
     const imagePacker: image.ImagePacker = image.createImagePacker();
     await imagePacker.packToFile(pixelMap, file.fd, packOpts);
-    hilog.info(0x00000, 'PackToFileFunc', 'packToFile success!');
+    console.info(0x00000, 'PackToFileFunc', 'packToFile success!');
   } catch (err) {
-    hilog.info(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
+    console.error(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
   }
 }
 ```
@@ -945,7 +935,7 @@ ArkTS-Dyn: packToFile(picture: Picture, fd: number, options: PackingOption): Pro
 
 ArkTS-Sta: packToFile(picture: Picture, fd: int, options: PackingOption): Promise\<void>
 
-指定编码参数，将Picture直接编码进文件。使用Promise形式返回结果。
+指定编码参数，将Picture直接编码进文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -978,7 +968,7 @@ ArkTS-Sta: packToFile(picture: Picture, fd: int, options: PackingOption): Promis
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -1014,10 +1004,9 @@ async function PackToFile(context: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -1033,7 +1022,7 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
   const filePath: string = context.filesDir + "test_source.jpg";
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
-    //此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+    // 此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
     const rawFile = await resourceMgr.getRawFileContent("test_image.jpg");
     let imageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
     let pixelMap: image.PixelMap = await imageSource.createPixelMap();
@@ -1042,9 +1031,9 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
     let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98, bufferSize: 10 };
     await imagePacker.packToFile(picture, file.fd, packOpts);
-    hilog.info(0x00000, 'PackToFileFunc', 'packToFile success!');
+    console.info(0x00000, 'PackToFileFunc', 'packToFile success!');
   } catch (err) {
-    hilog.info(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
+    console.error(0x00000, 'PackToFileFunc', 'PackToFileFunc failed: ' + err);
   }
 }
 ```
@@ -1055,13 +1044,13 @@ ArkTS-Dyn: packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd
 
 ArkTS-Sta: packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: int, options: PackingOptionsForSequence): Promise\<void>
 
-指定编码参数，将多个PixelMap编码成GIF文件。使用Promise形式返回结果。
+指定编码参数，将多个PixelMap编码成GIF文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **ArkTS-Dyn版本：** 18
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1088,13 +1077,13 @@ ArkTS-Sta: packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
 import fs from '@ohos.file.fs';
-import image from "@ohos.multimedia.image";
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1121,10 +1110,9 @@ Packer.packToFileFromPixelmapSequence(pixelMapList, file.fd, ops)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -1146,9 +1134,9 @@ function PackToFileFromPixelmapSequenceFunc(context: common.UIAbilityContext): v
   let imagePacker: image.ImagePacker = image.createImagePacker();
   try {
     await imagePacker.packToFileFromPixelmapSequence(pixelMapList, file.fd, opts);
-    hilog.info(0x00000, 'PackToFileFromPixelmapSequenceFunc', 'packToFileFromPixelmapSequence success!');
+    console.info(0x00000, 'PackToFileFromPixelmapSequenceFunc', 'packToFileFromPixelmapSequence success!');
   } catch (err) {
-    hilog.info(0x00000, 'PackToFileFromPixelmapSequenceFunc', 'PackToFileFromPixelmapSequenceFunc failed: ' + err);
+    console.error(0x00000, 'PackToFileFromPixelmapSequenceFunc', 'PackToFileFromPixelmapSequenceFunc failed: ' + err);
   }
 }
 ```
@@ -1165,7 +1153,11 @@ packing(source: ImageSource, option: PackingOption, callback: AsyncCallback\<Arr
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1184,7 +1176,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+// 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
 let filePath: string = context.filesDir + "/test.jpg";
 const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
 let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
@@ -1202,7 +1194,7 @@ imagePackerApi.packing(imageSourceApi, packOpts, (err: BusinessError, data: Arra
 
 packing(source: ImageSource, option: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1210,7 +1202,11 @@ packing(source: ImageSource, option: PackingOption): Promise\<ArrayBuffer>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1234,7 +1230,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+// 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
 let filePath: string = context.filesDir + "/test.jpg";
 const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
 let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
@@ -1262,7 +1258,11 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback\<ArrayB
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1298,7 +1298,7 @@ image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
 
 packing(source: PixelMap, option: PackingOption): Promise\<ArrayBuffer>
 
-图片压缩或重新编码，使用Promise形式返回结果。
+图片压缩或重新编码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1309,7 +1309,11 @@ packing(source: PixelMap, option: PackingOption): Promise\<ArrayBuffer>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 

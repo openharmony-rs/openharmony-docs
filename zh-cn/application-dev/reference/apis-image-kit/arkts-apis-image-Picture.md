@@ -16,27 +16,24 @@ import { image } from '@kit.ImageKit';
 
 ## getMainPixelmap<sup>13+</sup>
 
-ArkTS-Dyn: getMainPixelmap(): PixelMap
-
-ArkTS-Sta: getMainPixelmap(): PixelMap | undefined
+getMainPixelmap(): PixelMap
 
 获取主图的pixelmap。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
-
 **返回值：**
 
 | 类型                | 说明                   |
 | ------------------- | ---------------------- |
-| ArkTS-Dyn: [PixelMap](arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 同步返回PixelMap对象。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 同步返回PixelMap对象。 |
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -60,40 +57,54 @@ async function GetMainPixelmap() {
 }
 ```
 
-ArkTS-Sta示例:
+getMainPixelmap(): PixelMap | undefined
+
+获取主图的pixelmap。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型                | 说明                   |
+| ------------------- | ---------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 同步返回PixelMap对象。 |
+
+**示例：**
+
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetMainPixelmapFunc(picture: image.Picture): void {
   try {
     let pixelMap = picture.getMainPixelmap();
-    hilog.info(0x00000, 'GetMainPixelmapFunc', 'getMainPixelmap success!');
+    console.info(0x00000, 'GetMainPixelmapFunc', 'getMainPixelmap success!');
   } catch (err) {
-    hilog.info(0x00000, 'GetMainPixelmapFunc', 'GetMainPixelmapFunc failed: ' + err);
+    console.error(0x00000, 'GetMainPixelmapFunc', 'GetMainPixelmapFunc failed: ' + err);
   }
 }
 ```
 
 ## getHdrComposedPixelmap<sup>13+</sup>
 
-ArkTS-Dyn: getHdrComposedPixelmap(): Promise\<PixelMap>
+getHdrComposedPixelmap(): Promise\<PixelMap>
 
-ArkTS-Sta: getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
+合成hdr图并获取hdr图的pixelmap。使用Promise异步回调。
 
-合成hdr图并获取hdr图的pixelmap，使用Promise形式返回结果。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
-
 **返回值：**
 
 | 类型                          | 说明                        |
 | ----------------------------- | --------------------------- |
-| ArkTS-Dyn: Promise\<[PixelMap](arkts-apis-image-PixelMap.md)><br/>ArkTS-Sta: Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -106,7 +117,6 @@ ArkTS-Sta: getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -130,17 +140,42 @@ async function GetHdrComposedPixelmap() {
 }
 ```
 
-ArkTS-Sta示例:
+getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
+
+合成hdr图并获取hdr图的pixelmap。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型                          | 说明                        |
+| ----------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7600901  | Inner unknown error. Please check the logs for detailed information. |
+| 7600201  | Unsupported operation. e.g.,1. The picture does not has a gainmap. 2. MainPixelMap's allocator type is not DMA. |
+
+**示例：**
+
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetHdrComposedPixelmapFunc(picture: image.Picture): void {
   try {
     let pixelMap = await picture.getHdrComposedPixelmap();
-    hilog.info(0x00000, 'GetHdrComposedPixelmapFunc', 'getHdrComposedPixelmap success!');
+    console.info(0x00000, 'GetHdrComposedPixelmapFunc', 'getHdrComposedPixelmap success!');
   } catch (err) {
-    hilog.info(0x00000, 'GetHdrComposedPixelmapFunc', 'GetHdrComposedPixelmapFunc failed: ' + err);
+    console.error(0x00000, 'GetHdrComposedPixelmapFunc', 'GetHdrComposedPixelmapFunc failed: ' + err);
   }
 }
 ```
@@ -155,7 +190,7 @@ getGainmapPixelmap(): PixelMap | null
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -195,20 +230,19 @@ async function GetGainmapPixelmap() {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetGainmapPixelmapFunc(picture: image.Picture): void {
   try {
     let pixelMap: image.PixelMap | null = picture.getGainmapPixelmap();
     if (pixelMap == null) {
-      hilog.info(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap is null!');
+      console.error(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap is null!');
     } else {
-      hilog.info(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap success!');
+      console.info(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap success!');
     }
-    hilog.info(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap success!');
+    console.info(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap success!');
   } catch (err) {
-    hilog.info(0x00000, 'GetGainmapPixelmapFunc', 'GetGainmapPixelmapFunc failed: ' + err);
+    console.error(0x00000, 'GetGainmapPixelmapFunc', 'GetGainmapPixelmapFunc failed: ' + err);
   }
 }
 ```
@@ -223,7 +257,7 @@ setAuxiliaryPicture(type: AuxiliaryPictureType, auxiliaryPicture: AuxiliaryPictu
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -273,16 +307,15 @@ async function SetAuxiliaryPicture(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function SetAuxiliaryPictureFunc(picture: image.Picture, auxPixelMap: image.AuxiliaryPicture): void {
   let type: image.AuxiliaryPictureType = image.AuxiliaryPictureType.GAINMAP;
   try {
     picture.setAuxiliaryPicture(type, auxPixelMap);
-    hilog.info(0x00000, 'SetAuxiliaryPictureFunc', 'setAuxiliaryPicture success!');
+    console.info(0x00000, 'SetAuxiliaryPictureFunc', 'setAuxiliaryPicture success!');
   } catch (err) {
-    hilog.info(0x00000, 'SetAuxiliaryPictureFunc', 'SetAuxiliaryPictureFunc failed: ' + err);
+    console.error(0x00000, 'SetAuxiliaryPictureFunc', 'SetAuxiliaryPictureFunc failed: ' + err);
   }
 }
 ```
@@ -297,7 +330,7 @@ getAuxiliaryPicture(type: AuxiliaryPictureType): AuxiliaryPicture | null
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -335,7 +368,6 @@ async function GetAuxiliaryPicture() {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetAuxiliaryPictureFunc(picture: image.Picture): void {
@@ -343,12 +375,12 @@ function GetAuxiliaryPictureFunc(picture: image.Picture): void {
   try {
     let auxPixelMap: image.AuxiliaryPicture | null = picture.getAuxiliaryPicture(type);
     if (auxPixelMap == null) {
-      hilog.info(0x00000, 'GetAuxiliaryPictureFunc', 'getAuxiliaryPicture is null!');
+      console.error(0x00000, 'GetAuxiliaryPictureFunc', 'getAuxiliaryPicture is null!');
     } else {
-      hilog.info(0x00000, 'GetAuxiliaryPictureFunc', 'getAuxiliaryPicture success!');
+      console.info(0x00000, 'GetAuxiliaryPictureFunc', 'getAuxiliaryPicture success!');
     }
   } catch (err) {
-    hilog.info(0x00000, 'GetAuxiliaryPictureFunc', 'GetAuxiliaryPictureFunc failed: ' + err);
+    console.error(0x00000, 'GetAuxiliaryPictureFunc', 'GetAuxiliaryPictureFunc failed: ' + err);
   }
 }
 ```
@@ -363,7 +395,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -425,7 +457,6 @@ async function SetPictureObjMetadata(exifContext: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function SetMetadataFunc(picture: image.Picture): void {
@@ -433,26 +464,24 @@ function SetMetadataFunc(picture: image.Picture): void {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let metaData: image.Metadata = await picture.getMetadata(metadataType);
     await picture.setMetadata(metadataType, metaData);
-    hilog.info(0x00000, 'SetMetadataFunc', 'setMetadata success!');
+    console.error(0x00000, 'SetMetadataFunc', 'setMetadata success!');
   } catch (err) {
-    hilog.info(0x00000, 'SetMetadataFunc', 'SetMetadataFunc failed: ' + err);
+    console.error(0x00000, 'SetMetadataFunc', 'SetMetadataFunc failed: ' + err);
   }
 }
 ```
 
 ## getMetadata<sup>13+</sup>
 
-ArkTS-Dyn: getMetadata(metadataType: MetadataType): Promise\<Metadata>
-
-ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 获取主图的元数据。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -464,7 +493,7 @@ ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefine
 
 | 类型               | 说明                      |
 | ------------------ | ------------------------- |
-| ArkTS-Dyn: Promise\<[Metadata](arkts-apis-image-Metadata.md)><br/>ArkTS-Sta: Promise\<Metadata \| undefined> | Promise对象。返回元数据。 |
+| Promise\<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象。返回元数据。 |
 
 **错误码：**
 
@@ -477,7 +506,6 @@ ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefine
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -496,18 +524,49 @@ async function GetPictureObjMetadataProperties() {
 }
 ```
 
-ArkTS-Sta示例:
+getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+
+获取主图的元数据。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名       | 类型         | 必填 | 说明         |
+| ------------ | ------------ | ---- | ------------ |
+| metadataType | [MetadataType](arkts-apis-image-e.md#metadatatype13) | 是   | 元数据类型。 |
+
+**返回值：**
+
+| 类型               | 说明                      |
+| ------------------ | ------------------------- |
+| Promise\<Metadata \| undefined> | Promise对象。返回元数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
+
+**示例：**
+
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function GetMetadataFunc(picture: image.Picture): void {
   try {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let metaData = await picture.getMetadata(metadataType);
-    hilog.info(0x00000, 'SetMetadataFunc', 'getMetadata success!');
+    console.info(0x00000, 'SetMetadataFunc', 'getMetadata success!');
   } catch (err) {
-    hilog.info(0x00000, 'SetMetadataFunc', 'SetMetadataFunc failed: ' + err);
+    console.error(0x00000, 'SetMetadataFunc', 'SetMetadataFunc failed: ' + err);
   }
 }
 ```
@@ -522,7 +581,7 @@ marshalling(sequence: rpc.MessageSequence): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -591,7 +650,6 @@ async function Marshalling_UnMarshalling() {
 ArkTS-Sta示例:
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import rpc from '@ohos.rpc';
@@ -611,14 +669,14 @@ class MySequence implements rpc.Parcelable {
 
   marshalling(messageSequence: rpc.MessageSequence): boolean {
     this.picture_.marshalling(messageSequence);
-    hilog.info(0x00000, 'MySequence', 'marshalling success!');
+    console.info(0x00000, 'MySequence', 'marshalling success!');
     return true;
   }
 
   unmarshalling(messageSequence: rpc.MessageSequence): boolean {
     let picture: image.Picture = image.createPictureFromParcel(messageSequence)
     this.picture_ = picture;
-    hilog.info(0x00000, 'MySequence', 'unmarshalling success!');
+    console.info(0x00000, 'MySequence', 'unmarshalling success!');
     return true;
   }
 }
@@ -643,7 +701,7 @@ function MarshallingUnMarshallingFunc(context: common.UIAbilityContext): void {
       // unmarshalling
       data.readParcelable(ret);
     } else {
-      hilog.info(0x00000, 'MarshallingUnMarshallingFunc', 'picture is null!');
+      console.error(0x00000, 'MarshallingUnMarshallingFunc', 'picture is null!');
     }
   }
 }
@@ -659,7 +717,7 @@ release(): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -684,15 +742,14 @@ async function Release() {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function ReleaseFunc(picture: image.Picture): void {
   try {
     picture.release();
-    hilog.info(0x00000, 'ReleaseFunc', 'release success!');
+    console.info(0x00000, 'ReleaseFunc', 'release success!');
   } catch (err) {
-    hilog.info(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
   }
 }
 ```

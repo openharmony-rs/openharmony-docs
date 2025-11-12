@@ -548,7 +548,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -587,16 +587,15 @@ async function WriteBufferToPixels() {
 ArkTS-Sta示例:
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   try {
     await pixelMap.writeBufferToPixels(color);
-    hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
+    console.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
   } catch (err) {
-    hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
+    console.error(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
   }
 }
 ```
@@ -615,7 +614,7 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -651,7 +650,6 @@ async function WriteBufferToPixels() {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 
@@ -660,13 +658,13 @@ function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
   try {
     pixelMap.writeBufferToPixels(color, (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels failed: ' + err);
+        console.error(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels failed: ' + err);
       } else {
-        hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
+        console.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
+    console.error(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
   }
 }
 ```
@@ -2429,7 +2427,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2474,7 +2472,6 @@ async function ApplyColorSpace() {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@ohos.base';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
@@ -2485,13 +2482,13 @@ function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
   try {
     pixelMap.applyColorSpace(colorSpace, (err: BusinessError | null) => {
       if (err) {
-        hilog.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace failed: ' + err);
+        console.error(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace failed: ' + err);
       } else {
-        hilog.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
+        console.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
       }
     });
   } catch (err) {
-    hilog.info(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
+    console.error(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
   }
 }
 ```
@@ -2506,7 +2503,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2553,7 +2550,6 @@ async function ApplyColorSpace() {
 
 ArkTS-Sta示例:
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
@@ -2562,9 +2558,9 @@ function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
   let colorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
   try {
     await pixelMap.applyColorSpace(colorSpace);
-    hilog.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
+    console.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
   } catch (err) {
-    hilog.info(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
+    console.error(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
   }
 }
 ```
@@ -2579,7 +2575,7 @@ toSdr(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2607,7 +2603,7 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'hdr.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+// 此处'hdr.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
 let img = context.resourceManager.getMediaContentSync($r('app.media.hdr'));
 let imageSource = image.createImageSource(img.buffer.slice(0));
 let decodingOptions: image.DecodingOptions = {
@@ -2631,15 +2627,14 @@ ArkTS-Sta示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 function ToSdrFunc(pixelMap: image.PixelMap): void {
   try {
     await pixelMap.toSdr();
-    hilog.info(0x00000, 'ToSdrFunc', 'toSdr success!');
+    console.info(0x00000, 'ToSdrFunc', 'toSdr success!');
   } catch (err) {
-    hilog.info(0x00000, 'ToSdrFunc', 'ToSdrFunc failed: ' + err);
+    console.error(0x00000, 'ToSdrFunc', 'ToSdrFunc failed: ' + err);
   }
 }
 ```
