@@ -585,7 +585,6 @@ onSystemBarTintChange(callback: Callback&lt;SystemBarTintState&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.               |
 
 **示例：**
 
@@ -678,7 +677,6 @@ offSystemBarTintChange(callback?: Callback&lt;SystemBarTintState &gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed.              |
 
 **示例：**
 
@@ -754,7 +752,7 @@ onGestureNavigationEnabledChange(callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on(type: 'gestureNavigationEnabledChange')](#windowongesturenavigationenabledchange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('gestureNavigationEnabledChange')](#windowongesturenavigationenabledchange10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -773,7 +771,6 @@ onGestureNavigationEnabledChange(callback: Callback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.               |
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -850,7 +847,7 @@ offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off(type: 'gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange22)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -869,7 +866,6 @@ offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed.               |
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -946,7 +942,7 @@ onWaterMarkFlagChange(callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on(type: 'waterMarkFlagChange')](#windowonwatermarkflagchange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('waterMarkFlagChange')](#windowonwatermarkflagchange10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -965,7 +961,6 @@ onWaterMarkFlagChange(callback: Callback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.               |
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1042,7 +1037,7 @@ offWaterMarkFlagChange(callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off(type: 'waterMarkFlagChange')](#windowoffwatermarkflagchange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('waterMarkFlagChange')](#windowoffwatermarkflagchange10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1061,7 +1056,6 @@ offWaterMarkFlagChange(callback?: Callback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 
