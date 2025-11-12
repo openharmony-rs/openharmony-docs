@@ -1676,7 +1676,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
 onStreamChange(callback: Callback&lt;int&gt;): void
 
-注册WIFI流变更事件，在业务退出时，要调用offStreamChange(callback?: Callback&lt;int&gt;)接口去掉之前的注册回调。
+注册WIFI流变更事件，在业务退出时，要调用offStreamChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。
 
 **系统接口：** 此接口为系统接口。
 
