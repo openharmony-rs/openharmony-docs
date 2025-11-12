@@ -319,25 +319,25 @@ void ProcessRecord(OH_UdmfRecord* record)
 4. 从系统剪贴板中读取这条text数据。
 
   <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-
-``` TypeScript
-    let getPlainTextUnifiedData = (() => {
-      pasteboard.getSystemPasteboard().getUnifiedData().then((data) => {
-        let outputData = data;
-        let records = outputData.getRecords();
-        if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-          let record = records[0] as unifiedDataChannel.PlainText;
-          console.info('GetPlainText success, type:' + records[0].getType() );
-          //注意：用户复制的数据内容属于敏感信息，禁止应用程序使用日志明文打印从剪贴板获取到的数据内容。
-        } else {
-          console.info('Get Plain Text Data No Success, Type is: ' + records[0].getType());
-        }
-      }).catch((error: BusinessError) => {
-        console.error('Failed to get PlainTextUnifiedData. Cause: ' + error.message);
-        //处理异常场景
-      })
+  
+  ``` TypeScript
+  let getPlainTextUnifiedData = (() => {
+    pasteboard.getSystemPasteboard().getUnifiedData().then((data) => {
+      let outputData = data;
+      let records = outputData.getRecords();
+      if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+        let record = records[0] as unifiedDataChannel.PlainText;
+        hilog.info(0xFF00, '[Sample_pasteboard]', 'GetPlainText success, type:' + records[0].getType());
+        //注意：用户复制的数据内容属于敏感信息，禁止应用程序使用日志明文打印从剪贴板获取到的数据内容。
+      } else {
+        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get Plain Text Data No Success, Type is: ' + records[0].getType());
+      }
+    }).catch((error: BusinessError) => {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get PlainTextUnifiedData. Cause: ' + error.message);
+      //处理异常场景
     })
-```
+  })
+  ```
 
    
 5. 应用设置本应用剪贴板数据的可粘贴范围。
