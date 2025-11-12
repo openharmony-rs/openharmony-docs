@@ -2,6 +2,8 @@
 
 通知Web组件同层事件消费结果，支持的事件：[触摸事件的类型](../apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype)和[鼠标事件的类型](../apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)，鼠标仅支持[左中右按键](../apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)。
 
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 如果应用不消费该事件，则应设置消费结果为false，事件将会被Web组件消费；反之如果应用消费了该事件，则应将消费结果设置为true，Web组件将不消费该事件。若应用设置消费结果不符合以上使用规格，可能将产生和开发者预期不匹配的现象。
 
 触摸事件示例代码参考[onNativeEmbedGestureEvent事件](./arkts-basic-components-web-events.md#onnativeembedgestureevent11)。
@@ -91,3 +93,136 @@ setMouseEventResult(result: boolean, stopPropagation?: boolean): void
 **示例：**
 
 请参考[onNativeEmbedMouseEvent事件](./arkts-basic-components-web-events.md#onnativeembedmouseevent20)。
+
+## 使用@ohos.transfer进行EventResult类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的EventResult对象。
+
+- 在ArkTS-Sta模块中将ArkTS-Sta EventResult转换成ArkTS-Dyn EventResult，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  import { Entry, Column, Component, Web, EventResult, NativeEmbedTouchInfo, $rawfile } from '@ohos.arkui.component';
+  import { webview } from '@ohos.web.webview';
+  import { transfer } from '@ohos.transfer';
+  import { handleEventResultDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedGestureEvent((event: NativeEmbedTouchInfo): void => {
+            console.info('onNativeEmebedGestureEvent invoked');
+            try {
+                let eventResultDynamic = transfer.transferDynamic(event.result as EventResult, "ArkWeb.EventResult");
+                handleEventResultDynamic(eventResultDynamic);
+            } catch (e: Error) {
+                console.error('transferDynamic catch error：-----------' + e.message);
+            }
+          })
+      }
+    }
+  }
+  ```
+  加载的html文件。
+  ```html
+    <!-- index.html -->
+    <!Document>
+    <html>
+    <head>
+        <title>同层渲染测试html</title>
+        <meta name="viewport">
+    </head>
+    <body>
+    <div>
+        <div id="bodyId">
+        <embed id="nativeButton" type = "native/button" width="800" height="800" src="test?params1=1?" style = "background-color:red"/>
+        </div>
+    </div>
+    </body>
+    </html>
+  ```
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn EventResult的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  export function handleEventResultDynamic(result_: any) {
+    let result: EventResult = result_ as EventResult;
+    result.setGestureEventResult(false);
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的EventResult对象。
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn EventResult对象，传给ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { handleEventResultStatic } from 'library';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedGestureEvent((event: NativeEmbedTouchInfo): void => {
+            console.info('onNativeEmebedGestureEvent invoked');
+            handleEventResultStatic(event.result);
+          })
+      }
+    }
+  }
+  ```
+  加载的html文件。
+  ```html
+    <!-- index.html -->
+    <!Document>
+    <html>
+    <head>
+        <title>同层渲染测试html</title>
+        <meta name="viewport">
+    </head>
+    <body>
+    <div>
+        <div id="bodyId">
+        <embed id="nativeButton" type = "native/button" width="800" height="800" src="test?params1=1?" style = "background-color:red"/>
+        </div>
+    </div>
+    </body>
+    </html>
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn EventResult的方法。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  'use static'
+  import { EventResult } from '@kit.ArkUI';
+  import { transfer } from '@kit.ArkTS';
+
+  export function handleEventResultStatic(dynObject: Object) {
+    try {
+        let result: EventResult = transfer.transferStatic(dynObject, "ArkWeb.EventResult") as EventResult;
+        result.setGestureEventResult(false);
+    } catch (e: Error) {
+        console.error('transferStatic catch error：-----------' + e.message);
+    }
+  }
+  ```

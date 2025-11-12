@@ -168,3 +168,4 @@ export function har1func(dynamic_obj: Any) {
 | "ArkWeb.JsResult" | [JsResult](../apis-arkweb/arkts-basic-components-web-JsResult.md)|
 | "ArkWeb.WebContextMenuParam" | [WebContextMenuParam](../apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)|
 | "ArkWeb.WebContextMenuResult" | [WebContextMenuResult](../apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)|
+| "ArkWeb.EventResult" | [EventResult](../apis-arkweb/arkts-basic-components-web-EventResult.md)|

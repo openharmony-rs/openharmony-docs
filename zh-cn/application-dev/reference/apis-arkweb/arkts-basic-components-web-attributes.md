@@ -3051,6 +3051,76 @@ ArkTS-Sta示例：
   </html>
   ```
 
+
+## bypassVsyncCondition<sup>20+</sup>
+
+bypassVsyncCondition(condition: WebBypassVsyncCondition)
+
+当开发者调用scrollBy接口进行页面滚动时，可以通过bypassVsyncCondition接口设置渲染流程跳过vsync（垂直同步）调度，直接触发绘制。该属性没有显式调用时，默认不跳过vsync调度。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名  | 类型                                  | 必填   | 说明                  |
+| ---- | ------------------------------------- | ---- | --------------------- |
+| condition | [WebBypassVsyncCondition](./arkts-basic-components-web-e.md#webbypassvsynccondition20) | 是    | 触发渲染流程跳过vsync调度的条件。 <br> 传入undefined或null时为NONE。|
+
+**示例：**
+
+ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    condition: WebBypassVsyncCondition = WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET;
+
+    build() {
+      Column() {
+        Button('scrollBy')
+          .onClick(() => {
+            this.controller.scrollBy(0, 5);
+          })
+        Web({ src: 'www.example.com', controller: this.controller })
+          .bypassVsyncCondition(this.condition)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Button, Column, Component, Entry, WebBypassVsyncCondition } from '@ohos.arkui.component';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    condition: WebBypassVsyncCondition = WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET;
+
+    build() {
+      Column() {
+        Button('scrollBy')
+          .onClick(() => {
+            this.controller.scrollBy(0, 5);
+          })
+        Web({ src: 'www.example.com', controller: this.controller })
+          .bypassVsyncCondition(this.condition)
+      }
+    }
+  }
+  ```
+
 ## enableNativeEmbedMode<sup>11+</sup>
 
 enableNativeEmbedMode(mode: boolean)
