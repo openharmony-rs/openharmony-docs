@@ -268,14 +268,12 @@ void ProcessRecord(OH_UdmfRecord* record)
 1. 导入pasteboard,unifiedDataChannel和uniformTypeDescriptor模块。
    
    <!-- @[pasteboard_timelaps_PasteData1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-
-``` TypeScript
-// [Start pasteboard_usedata]
-// [Start pasteboard_useudc]
-import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
-// [StartExclude pasteboard_usedata]
-import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-```
+   
+   ``` TypeScript
+   import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+   import hilog from '@ohos.hilog';
+   import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+   ```
 
 
 2. 构造一条PlainText数据,并书写获取延时数据的函数。
