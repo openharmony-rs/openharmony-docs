@@ -19,7 +19,7 @@
 
 ## 使用约束
 
-AbilityComponent为独立层次渲染，不能再之上叠加其他显示内容。
+AbilityComponent为独立层次渲染，不能在之上叠加其他显示内容。
 
 AbilityComponent不支持处理输入事件，事件不经过当前Ability，直接分发给内部的Ability处理。
 
