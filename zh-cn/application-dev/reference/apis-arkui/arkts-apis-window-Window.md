@@ -4486,7 +4486,7 @@ offWindowVisibilityChange(callback?: Callback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
-const callback = (bool: boolean) => {
+const callback = (data: boolean) => {
   // ...
 }
 try {
