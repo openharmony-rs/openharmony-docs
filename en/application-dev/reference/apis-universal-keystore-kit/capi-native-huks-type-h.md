@@ -17,7 +17,7 @@ Defines the enums, structs, and macros used in the HUKS functions.
 
 **System capability**: SystemCapability.Security.Huks.Core
 
-The preceding system capability is available since API version 20. From API versions 9 to 19, the system capability is **SystemCapability.Security.Huks**.
+The preceding system capability is available since API version 20. From API versions 9 to 19, the system capability is **SystemCapability.Security.Huks.Core**.
 
 **Since**: 9
 
@@ -50,7 +50,7 @@ The preceding system capability is available since API version 20. From API vers
 | [OH_Huks_KeyPurpose](#oh_huks_keypurpose) | Enumerates the key purposes.|
 | [OH_Huks_KeyDigest](#oh_huks_keydigest) | Enumerates the digest algorithms.|
 | [OH_Huks_KeyPadding](#oh_huks_keypadding) | Enumerates the padding algorithm types.|
-| [OH_Huks_CipherMode](#oh_huks_ciphermode) | Enumerates the cipher modes.|
+| [OH_Huks_CipherMode](#oh_huks_ciphermode) | Cipher mode.|
 | [OH_Huks_KeySize](#oh_huks_keysize) | Enumerates the key sizes of different algorithms.|
 | [OH_Huks_KeyAlg](#oh_huks_keyalg) | Enumerates the algorithms for keys.|
 | [OH_Huks_AlgSuite](#oh_huks_algsuite) | Enumerates the algorithm suites that can be used for importing of a key in cipher text.|
@@ -159,8 +159,8 @@ Enumerates the padding algorithm types.
 | OH_HUKS_PADDING_OAEP = 1 | OAEP.|
 | OH_HUKS_PADDING_PSS = 2 | PSS.|
 | OH_HUKS_PADDING_PKCS1_V1_5 = 3 | PKCS1_V1_5.|
-| OH_HUKS_PADDING_PKCS5 = 4 | PKCS5.|
-| OH_HUKS_PADDING_PKCS7 = 5 | PKCS7.|
+| OH_HUKS_PADDING_PKCS5 = 4 | PKCS #5.|
+| OH_HUKS_PADDING_PKCS7 = 5 | PKCS #7.|
 | OH_HUKS_PADDING_ISO_IEC_9796_2 = 6 | ISO IEC 9796-2.<br>**Since**: 18|
 | OH_HUKS_PADDING_ISO_IEC_9797_1 = 7 | ISO IEC 9797-1.<br>**Since**: 18|
 

@@ -30,10 +30,13 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 3. Obtain the [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) for encryption.
 
    The parameters to be configured vary with the algorithm used.
-   - If the AES algorithm, CBC block mode, and PKCS7 padding mode are used for encryption, the **IV** parameter must be set. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
-   - If the AES algorithm and GCM block mode are used for encryption, the **NONCE** parameter is mandatory and **AAD** is optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
+   - If the AES algorithm is used for encryption, the block mode is CBC, and the padding mode is PKCS7, the **IV** parameter is mandatory. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
+   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and**AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
    - If the RSA algorithm is used for encryption, you need to select the corresponding block mode, padding mode, and digest algorithm. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
    - If the SM2 algorithm is used for encryption, the digest algorithm must be SM3. For details, see [SM2](#sm2).
+   <!--Del-->
+   - If the DES algorithm is used for encryption and the block mode is CBC, the **IV** parameter is mandatory. For details, see [DES/CBC/NoPadding](#descbcnopadding).
+   <!--DelEnd-->
    
    For details about the specifications, see [Encryption and Decryption Overview and Algorithm Specifications](huks-encryption-decryption-overview.md).
 
