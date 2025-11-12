@@ -468,7 +468,7 @@ setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 
 设置音频静音/取消音频静音。使用Promise异步回调。
 
-从API 20开始，支持设置关闭视频画面/取消关闭视频画面。
+从API version 20开始，支持设置关闭视频画面/取消关闭视频画面。
 
 只能在prepared/playing/paused/completed状态下调用。
 
@@ -481,7 +481,7 @@ setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
 | mediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 是   | 播放策略。 |
-| muted | boolean | 是   | **API 12-19**：仅支持设置音频播放策略，表示音频是否静音播放。true为静音播放，false为取消静音播放。<br>**API 20**：增加支持设置视频播放策略，表示视频画面是否关闭。true为关闭画面，false为恢复画面。|
+| muted | boolean | 是   | **API version 12-19**：仅支持设置音频播放策略，表示音频是否静音播放。true为静音播放，false为取消静音播放。<br>**API version 20**：增加支持设置视频播放策略，表示视频画面是否关闭。true为关闭画面，false为恢复画面。|
 
 **返回值：**
 
