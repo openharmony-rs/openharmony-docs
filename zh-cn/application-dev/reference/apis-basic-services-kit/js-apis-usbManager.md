@@ -783,9 +783,9 @@ console.log(`usbControlTransfer = ${ret}`);
 
 ## usbManager.bulkTransfer
 
-ArkTS-Dyn: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
+ArkTS-Dyn: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: int): Promise&lt;int&gt;
+ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 批量传输。
 
