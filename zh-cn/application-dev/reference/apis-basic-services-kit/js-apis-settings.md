@@ -3,7 +3,7 @@
 本模块提供访问设置数据项的能力。
 
 > **说明：**
->
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 
 > 
 >  - 如果访问的数据项没有获取到值，表示当前系统应用没有将该数据项的值添加到数据库。
@@ -54,8 +54,8 @@ import { settings } from '@kit.BasicServicesKit';
 | FONT_SCALE                    | string | 是   | 是   | 字体的比例因子，值为浮点数。（当前版本参数仅支持固定值查询。）                                                                                      |
 | SCREEN_BRIGHTNESS_STATUS      | string | 是   | 是   | 屏幕亮度。取值范围:0到255。                                                                                                     |
 | AUTO_SCREEN_BRIGHTNESS        | string | 是   | 是   | 是否启用屏幕亮度自动调整。<br/>- 值为AUTO_SCREEN_BRIGHTNESS_MODE，表示启用自动调整。<br/>- 值为MANUAL_SCREEN_BRIGHTNESS_MODE，表示不启用自动调整。         |
-| AUTO_SCREEN_BRIGHTNESS_MODE   | number | 是   | 是   | 使用屏幕亮度自动调整时AUTO_SCREEN_BRIGHTNESS的值。                                                                                 |
-| MANUAL_SCREEN_BRIGHTNESS_MODE | number | 是   | 是   | 使用屏幕亮度手动调整时的AUTO_SCREEN_BRIGHTNESS值。                                                                                 |
+| AUTO_SCREEN_BRIGHTNESS_MODE   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 是   | 使用屏幕亮度自动调整时AUTO_SCREEN_BRIGHTNESS的值。                                                                                 |
+| MANUAL_SCREEN_BRIGHTNESS_MODE | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 是   | 使用屏幕亮度手动调整时的AUTO_SCREEN_BRIGHTNESS值。                                                                                 |
 | SCREEN_OFF_TIMEOUT            | string | 是   | 是   | 设备在一段时间不活动后进入睡眠状态的等待时间（单位: ms）。                                                                                      |
 | DEFAULT_SCREEN_ROTATION       | string | 是   | 是   | 启用屏幕的自动旋转时，此属性无效。不启用自动旋转时，以下值可用: <br>- 值为0，表示屏幕旋转0度。<br>- 值为1，表示屏幕旋转90度。<br/>- 值为2，表示屏幕旋转180度。<br/>- 值为3，表示屏幕旋转270度。 |
 | ANIMATOR_DURATION_SCALE       | string | 是   | 是   | 动画持续时间的比例因子，影响所有此类动画的开始延迟和持续时间。<br/>值为0，表示动画将立即结束。默认值为1。                                                             |
@@ -210,6 +210,10 @@ setValue(context: Context, name: string, value: string, callback: AsyncCallback\
 
 **需要权限**： ohos.permission.MANAGE_SETTINGS，仅系统应用可用。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名   | 类型                    | 必填 | 说明                                                                                                                                         |
@@ -245,6 +249,10 @@ setValue(context: Context, name: string, value: string): Promise\<boolean>
 **系统能力**：SystemCapability.Applications.Settings.Core
 
 **需要权限**： ohos.permission.MANAGE_SETTINGS，该权限仅系统应用可用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -288,6 +296,10 @@ setValue(context: Context, name: string, value: string, domainName: string): Pro
 **需要权限**：  
 - 写入DEVICE_SHARED、USER_PROPERTY域需要权限ohos.permission.MANAGE_SETTINGS，该权限仅系统应用可用。 
 - 写入USER_SECURITY域需要权限ohos.permission.MANAGE_SECURE_SETTINGS，该权限仅系统应用可用。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -337,6 +349,10 @@ getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
@@ -372,6 +388,10 @@ getValue(context: Context, name: string): Promise\<string>
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -413,6 +433,10 @@ getValue(context: Context, name: string, domainName: string): Promise\<string>
 **需要权限**：   
 - 读取USER_SECURITY域需要权限ohos.permission.MANAGE_SECURE_SETTINGS，该权限仅系统应用可用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                                                                                |
@@ -452,6 +476,10 @@ getValueSync(context: Context, name: string, defValue: string): string
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名   | 类型    | 必填 | 说明                                                                                                                                        |
@@ -488,6 +516,10 @@ getValueSync(context: Context, name: string, defValue: string, domainName: strin
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：   
 - 读取USER_SECURITY域需要权限ohos.permission.MANAGE_SECURE_SETTINGS，该权限仅系统应用可用。
@@ -536,6 +568,10 @@ setValueSync(context: Context, name: string, value: string): boolean
 
 **需要权限**： ohos.permission.MANAGE_SETTINGS，该权限仅系统应用可用。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名  | 类型    | 必填 | 说明                                                                                                                                         |
@@ -579,6 +615,10 @@ setValueSync(context: Context, name: string, value: string, domainName: string):
 **需要权限**：  
 - 写入DEVICE_SHARED、USER_PROPERTY域需要权限ohos.permission.MANAGE_SETTINGS，该权限仅系统应用可用。  
 - 写入USER_SECURITY域需要权限ohos.permission.MANAGE_SECURE_SETTINGS，该权限仅系统应用可用。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -626,6 +666,10 @@ registerKeyObserver(context: Context, name: string, domainName: string, observer
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                                                                                |
@@ -666,6 +710,10 @@ unregisterKeyObserver(context: Context, name: string, domainName: string): boole
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                                                                               |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                                                                                       |
@@ -699,6 +747,10 @@ openNetworkManagerSettings(context: Context): Promise\<boolean>
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -882,6 +934,8 @@ getURI(name: string, callback: AsyncCallback\<object>): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                            |
@@ -908,6 +962,8 @@ getURI(name: string): Promise\<object>
 > 从 API version 7开始支持，从API version 9开始废弃，此接口不再提供代替接口。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -944,6 +1000,8 @@ getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCall
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -983,6 +1041,8 @@ getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise\<object>
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数**：
 
 | 参数名            | 类型                                                         | 必填 | 说明                                                            |
@@ -1021,6 +1081,8 @@ getValueSync(dataAbilityHelper: DataAbilityHelper, name: string, defValue: strin
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -1065,6 +1127,8 @@ setValueSync(dataAbilityHelper: DataAbilityHelper, name: string, value: string):
 **需要权限**：ohos.permission.MANAGE_SETTINGS，该权限仅系统应用可用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
