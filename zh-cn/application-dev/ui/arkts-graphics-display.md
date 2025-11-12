@@ -100,11 +100,8 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   ```
 
   - 媒体库file://data/storage
-
     支持file://路径前缀的字符串，用于访问通过[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)提供的图片路径。
-
     1. 调用接口获取图库的照片url。
-
     <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->    
 
       ``` TypeScript
@@ -160,9 +157,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
       }
     }
     ```
-
     2. 从媒体库获取的url格式通常如下。
-
     <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
        ``` TypeScript
