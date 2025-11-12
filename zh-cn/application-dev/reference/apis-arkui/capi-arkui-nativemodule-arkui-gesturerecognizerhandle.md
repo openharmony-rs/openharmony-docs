@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
+```
+
 ## 概述
 
 提供手势识别器句柄类型数组对象定义。

@@ -1,5 +1,9 @@
 # ArkUI_AttributeItem
 
+```
+typedef struct {...} ArkUI_AttributeItem
+```
+
 ## 概述
 
 定义[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)函数通用入参结构。

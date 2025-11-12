@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_XComponentSurfaceConfig ArkUI_XComponentSurfaceConfig
+```
+
 ## 概述
 
 定义XComponent组件持有的Surface选项，用于设置XComponent组件持有的Surface在渲染时是否被视为不透明。
