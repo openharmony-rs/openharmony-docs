@@ -7110,7 +7110,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
 try {
-  windowClass.setWindowFocusable(isFocusable, (err: BusinessError) => {
+  windowClass.setWindowFocusable(isFocusable, (err: BusinessError<void> | null) => {
     const errCode = err?.code;
     if (errCode) {
       console.error(`Failed to set the window to be focusable. Cause code: ${err?.code}, message: ${err?.message}`);
@@ -7190,8 +7190,8 @@ try {
   let promise = windowClass.setWindowFocusable(isFocusable);
   promise.then(() => {
     console.info('Succeeded in setting the window to be focusable.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
+  }).catch((err: Error) => {
+    console.error(`Failed to set the window to be focusable. Cause code: ${err?.code}, message: ${err?.message}`);
   });
 } catch (exception) {
   let err = exception as BusinessError;
@@ -9072,8 +9072,8 @@ export default class EntryAbility extends UIAbility {
         let promise = windowClass.setSubWindowModal(true);
         promise.then(() => {
           console.info('Succeeded in setting subwindow modal');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+        }).catch((err: Error) => {
+          console.error(`Failed to set subwindow modal. Cause code: ${err?.code}, message: ${err?.message}`);
         });
       });
     } catch (exception) {
@@ -9194,8 +9194,8 @@ export default class EntryAbility extends UIAbility {
         let promise = windowClass.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
         promise.then(() => {
           console.info('Succeeded in setting subwindow modal');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+        }).catch((err: Error) => {
+          console.error(`Failed to set subwindow modal. Cause code: ${err?.code}, message: ${err?.message}`);
         });
       });
     } catch (exception) {
@@ -9920,8 +9920,8 @@ struct Index {
             let promiseTopmost = windowClass.setWindowTopmost(isWindowTopmost);
             promiseTopmost.then(() => {
               console.info('Succeeded in setting the main window to be topmost.');
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to set the main window to be topmost. Cause code: ${err.code}, message: ${err.message}`);
+            }).catch((err: Error) => {
+              console.error(`Failed to set the main window to be topmost. Cause code: ${err?.code}, message: ${err?.message}`);
             });
           } catch (exception) {
             let err = exception as BusinessError;
@@ -10034,8 +10034,8 @@ export default class EntryAbility extends UIAbility {
       subWindow.showWindow().then(() => {
         subWindow.raiseToAppTop().then(() => {
           console.info('Succeeded in raising window to app top');
-        }).catch((err: BusinessError)=>{
-          console.error(`Failed to raise window to app top. Cause code: ${err.code}, message: ${err.message}`);
+        }).catch((err: Error)=>{
+          console.error(`Failed to raise window to app top. Cause code: ${err?.code}, message: ${err?.message}`);
         });
       });
     });
@@ -10144,8 +10144,8 @@ export default class EntryAbility extends UIAbility {
           let enabled = false;
           subWindow.setRaiseByClickEnabled(enabled).then(() => {
             console.info('Succeeded in disabling the raise-by-click function.');
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+          }).catch((err: Error) => {
+            console.error(`Failed to disable the raise-by-click function. Cause code: ${err?.code}, message: ${err?.message}`);
           });
         } catch (exception) {
           let err = exception as BusinessError;
@@ -11238,7 +11238,6 @@ try {
 }
 ```
 
-<<<<<<< HEAD
 ArkTS-Sta示例：
 ```ts
 try {
@@ -11249,9 +11248,6 @@ try {
 ```
 
 ## setExclusivelyHighlighted<sup>15+<sup>
-=======
-## setExclusivelyHighlighted<sup>15+</sup>
->>>>>>> 4b6d7042caa (overload doc focus)
 
 setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
@@ -11321,8 +11317,8 @@ try {
   let promise = windowClass.setExclusivelyHighlighted(exclusivelyHighlighted);
   promise.then(() => {
     console.info('Succeeded in setting the window to be exclusively highlight.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+  }).catch((err: Error) => {
+    console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err?.code}, message: ${err?.message}`);
   });
 } catch (exception) {
   let err = exception as BusinessError;
@@ -11853,7 +11849,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    let zLevel: number = 1;
+    let zLevel: int = 1;
     // 创建子窗
     try {
       windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
@@ -11863,8 +11859,8 @@ export default class EntryAbility extends UIAbility {
         }
         subWindow.setSubWindowZLevel(zLevel).then(() => {
           console.info('Succeeded in setting sub window zLevel.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to set sub window zLevel. Cause code: ${err.code}, message: ${err.message}`);
+        }).catch((err: Error) => {
+          console.error(`Failed to set sub window zLevel. Cause code: ${err?.code}, message: ${err?.message}`);
         });
       });
     } catch (exception) {

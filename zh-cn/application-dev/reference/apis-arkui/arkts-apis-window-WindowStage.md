@@ -1498,6 +1498,7 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 | --------- | ------- | ---- | --------------------------------------------- |
 | isModal | boolean | 是   | 设置主窗口模态属性是否启用，true为启用，false为不启用。 |
 
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1558,8 +1559,8 @@ export default class EntryAbility extends UIAbility {
       let promise = windowStage.setWindowModal(true);
       promise.then(() => {
         console.info('Succeeded in setting window modal');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to set window modal. Cause code: ${err.code}, message: ${err.message}`);
+      }).catch((err: Error) => {
+        console.error(`Failed to set window modal. Cause code: ${err?.code}, message: ${err?.message}`);
       });
     } catch (exception) {
       let err = exception as BusinessError;
