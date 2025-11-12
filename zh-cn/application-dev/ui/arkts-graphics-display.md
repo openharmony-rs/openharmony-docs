@@ -95,7 +95,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[rawfile_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  //  $rawfile('example1.png') 需要替换为开发者所需的资源文件
+  // $rawfile('example1.png')需要替换为开发者所需的资源文件
   Image($rawfile('example1.png'))
   ```
 
