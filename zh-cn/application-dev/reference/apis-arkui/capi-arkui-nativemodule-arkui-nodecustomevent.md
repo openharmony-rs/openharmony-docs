@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_NodeCustomEvent ArkUI_NodeCustomEvent
+```
+
 ## 概述
 
 定义自定义组件事件的通用结构类型。

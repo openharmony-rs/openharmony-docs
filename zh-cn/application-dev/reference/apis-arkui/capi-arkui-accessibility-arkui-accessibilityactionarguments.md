@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_AccessibilityActionArguments ArkUI_AccessibilityActionArguments
+```
+
 ## 概述
 
 用于设置无障碍操作的具体参数。

@@ -1,5 +1,9 @@
 # ArkUI_NodeContentEvent
 
+```
+typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent
+```
+
 ## 概述
 
 定义NodeContent事件的通用结构类型。

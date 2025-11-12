@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_AccessibilityElementInfoList ArkUI_AccessibilityElementInfoList
+```
+
 ## 概述
 
 提供封装的ArkUI_AccessibilityElementInfoList实例。

@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_AccessibleGridInfo
+```
+
 ## 概述
 
 用于配置特定组件（如List、Flex、Select、Swiper组件）的网格布局属性。

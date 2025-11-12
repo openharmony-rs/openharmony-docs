@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_TextChangeEvent
+```
+
 ## 概述
 
 定义组件事件的混合类型数据。

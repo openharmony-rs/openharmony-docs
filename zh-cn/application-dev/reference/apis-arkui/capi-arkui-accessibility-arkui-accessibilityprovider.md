@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_AccessibilityProvider ArkUI_AccessibilityProvider
+```
+
 ## 概述
 
 第三方操作provider，承载回调函数实现。

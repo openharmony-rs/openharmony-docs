@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct OHNativeWindow OHNativeWindow
+```
+
 ## 概述
 
 提供封装的NativeWindow实例。

@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent
+```
+
 ## 概述
 
 提供封装的OH_NativeXComponent_KeyEvent实例。
