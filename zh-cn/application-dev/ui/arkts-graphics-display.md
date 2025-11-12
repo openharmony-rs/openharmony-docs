@@ -592,33 +592,39 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   struct ImageRepetitionStyle {
     build() {
       Column({ space: 10 }) {
-        Row({ space: 5 }) {
-          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+        Column({ space: 25 }) {
+          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 在水平轴和竖直轴上同时重复绘制图片
             .objectRepeat(ImageRepeat.XY)
             .objectFit(ImageFit.ScaleDown)
-            // 在水平轴和竖直轴上同时重复绘制图片
+            // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.XY', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 只在竖直轴上重复绘制图片
             .objectRepeat(ImageRepeat.Y)
             .objectFit(ImageFit.ScaleDown)
-            // 只在竖直轴上重复绘制图片
+            // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.Y', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 只在水平轴上重复绘制图片
             .objectRepeat(ImageRepeat.X)
             .objectFit(ImageFit.ScaleDown)
-            // 只在水平轴上重复绘制图片
+            // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.X', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
         }
       }.height(150).width('100%').padding(8)
