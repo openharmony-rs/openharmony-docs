@@ -1829,7 +1829,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 onDeviceConfigChange(callback: Callback&lt;number&gt;): void
 
-注册WIFI设备配置更改事件。在业务退出时，要调用offDeviceConfigChange(callback?: Callback&lt;int&gt;)接口去掉之前的注册回调。
+注册WIFI设备配置更改事件。在业务退出时，要调用offDeviceConfigChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。
 
 **系统接口：** 此接口为系统接口。
 
