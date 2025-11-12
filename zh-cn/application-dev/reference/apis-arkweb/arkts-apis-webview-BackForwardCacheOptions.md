@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块接口从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
@@ -28,7 +30,6 @@ constructor()
 BackForwardCacheOptions的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
 
 **ArkTS-Dyn起始版本：** 12
 

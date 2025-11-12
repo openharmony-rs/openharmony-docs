@@ -937,6 +937,10 @@ onPageBegin(callback: Callback\<OnPageBeginEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明      |
@@ -945,6 +949,7 @@ onPageBegin(callback: Callback\<OnPageBeginEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -967,6 +972,30 @@ onPageBegin(callback: Callback\<OnPageBeginEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, OnPageBeginEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onPageBegin((event: OnPageBeginEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onPageEnd
 
 onPageEnd(callback: Callback\<OnPageEndEvent\>)
@@ -974,6 +1003,10 @@ onPageEnd(callback: Callback\<OnPageEndEvent\>)
 网页加载完成时触发该回调，且只在主frame触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -983,6 +1016,7 @@ onPageEnd(callback: Callback\<OnPageEndEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1005,6 +1039,30 @@ onPageEnd(callback: Callback\<OnPageEndEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, OnPageEndEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onPageEnd((event: OnPageEndEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onLoadStarted<sup>20+</sup>
 
 onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
@@ -1012,6 +1070,10 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1021,6 +1083,7 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1043,6 +1106,30 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, OnLoadStartedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onLoadStarted((event: OnLoadStartedEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onLoadFinished<sup>20+</sup>
 
 onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
@@ -1050,6 +1137,10 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1059,6 +1150,7 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -1074,6 +1166,30 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
           .onLoadFinished((event) => {
             if (event) {
               console.log('url:' + event.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, OnLoadFinishedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onLoadFinished((event: OnLoadFinishedEvent): void => {
+            if (event) {
+              console.info('url:' + event.url);
             }
           })
       }
@@ -3963,6 +4079,10 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3971,6 +4091,7 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3988,6 +4109,34 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
             console.log('isMainFrame:' + event.data.isMainFrame());
             console.log('isRedirect:' + event.data.isRedirect());
             console.log('isRequestGesture:' + event.data.isRequestGesture());
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, OnLoadInterceptEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onLoadIntercept((event: OnLoadInterceptEvent): boolean => {
+            if (event) {
+              console.info('url:' + event.data.getRequestUrl());
+              console.info('isMainFrame:' + event.data.isMainFrame());
+              console.info('isRedirect:' + event.data.isRedirect());
+              console.info('isRequestGesture:' + event.data.isRequestGesture());
+            }
             return true;
           })
       }
