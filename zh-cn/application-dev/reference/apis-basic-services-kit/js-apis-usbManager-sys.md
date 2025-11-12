@@ -827,11 +827,11 @@ USB设备端口。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称           | 类型                            | 必填 | 说明                                |
-| -------------- | ------------------------------- | ---- | ----------------------------------- |
-| id             | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是   | USB端口唯一标识。|
-| supportedModes | [PortModeType](#portmodetype)   | 是   | USB端口所支持的模式的数字组合掩码。 |
-| status         | [USBPortStatus](#usbportstatus) | 是   | USB端口角色。                       |
+| 名称           | 类型                            | 只读 | 可选 | 说明                                |
+| -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
+| id             | ArkTS-Dyn: number<br> ArkTS-Sta: int                        | 否   | 否   | USB端口唯一标识。                   |
+| supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。 |
+| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。                       |
 
 ## USBPortStatus
 
@@ -845,11 +845,11 @@ USB设备端口角色信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称             | 类型   | 必填 | 说明                   |
-| ---------------- | ------ | ---- | ---------------------- |
-| currentMode      | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 当前的USB模式。|
-| currentPowerRole | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 当前设备充电模式。|
-| currentDataRole  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 当前设备数据传输模式。 |
+| 名称             | 类型 |只读 | 可选 | 说明                   |
+| ---------------- | ------| ---- | ----| ---------------------- |
+| currentMode      | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否     | 当前的USB模式。|
+| currentPowerRole | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否      | 当前设备充电模式。|
+| currentDataRole  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否      | 当前设备数据传输模式。 |
 
 
 ## FunctionType
