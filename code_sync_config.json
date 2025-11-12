@@ -20526,9 +20526,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":35,
 						"name":"create_default_menu",
-						"start_line":28
+						"start_line":25
 					}
 				]
 			},
@@ -20536,7 +20536,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":107,
 						"name":"builder_custom_menu",
 						"start_line":16
 					},
@@ -20576,7 +20576,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":60,
 						"name":"button_popup",
 						"start_line":16
 					}
