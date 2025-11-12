@@ -60,55 +60,55 @@
 
    在进行权限申请之前，需要先检查当前应用程序是否已经被授予权限。可以通过调用[checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)方法来校验当前是否已经授权。如果已经授权，则可以直接访问目标操作，否则需要进行下一步操作，即向用户申请授权。
 
-   <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->
-
-``` TypeScript
-import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function checkPermissionGrant(permission: Permissions): Promise<abilityAccessCtrl.GrantStatus> {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
-
-  // 获取应用程序的accessTokenID。
-  let tokenId: number = 0;
-  try {
-    let bundleInfo: bundleManager.BundleInfo =
-      await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
-    let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
-    tokenId = appInfo.accessTokenId;
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    console.error(`Failed to get bundle info for self, code: ${err.code}, message: ${err.message}`);
-  }
-
-  // 校验应用是否被授予权限。
-  try {
-    grantStatus = await atManager.checkAccessToken(tokenId, permission);
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    console.error(`Failed to check access token, code: ${err.code}, message: ${err.message}`);
-  }
-
-  return grantStatus;
-}
-
-async function checkPermissions(): Promise<void> {
-  let grantStatus1: boolean = await checkPermissionGrant('ohos.permission.LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// 获取精确定位权限状态。
-  let grantStatus2: boolean = await checkPermissionGrant('ohos.permission.APPROXIMATELY_LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// 获取模糊定位权限状态。
-  // 精确定位权限只能跟模糊定位权限一起申请，或者已经有模糊定位权限才能申请精确定位权限。
-  if (grantStatus2 && !grantStatus1) {
-    // 申请精确定位权限。
-	// ···
-  } else if (!grantStatus1 && !grantStatus2) {
-    // 申请模糊定位权限与精确定位权限或单独申请模糊定位权限。
-	// ···
-  } else {
-    // 已经授权，可以继续访问目标操作。
-	// ···
-  }
-}
-```
+   <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->    
+   
+   ``` TypeScript
+   import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   async function checkPermissionGrant(permission: Permissions): Promise<abilityAccessCtrl.GrantStatus> {
+     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+     let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
+   
+     // 获取应用程序的accessTokenID。
+     let tokenId: number = 0;
+     try {
+       let bundleInfo: bundleManager.BundleInfo =
+         await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+       let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
+       tokenId = appInfo.accessTokenId;
+     } catch (error) {
+       const err: BusinessError = error as BusinessError;
+       console.error(`Failed to get bundle info for self, code: ${err.code}, message: ${err.message}`);
+     }
+   
+     // 校验应用是否被授予权限。
+     try {
+       grantStatus = await atManager.checkAccessToken(tokenId, permission);
+     } catch (error) {
+       const err: BusinessError = error as BusinessError;
+       console.error(`Failed to check access token, code: ${err.code}, message: ${err.message}`);
+     }
+   
+     return grantStatus;
+   }
+   
+   async function checkPermissions(): Promise<void> {
+     let grantStatus1: boolean = await checkPermissionGrant('ohos.permission.LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// 获取精确定位权限状态。
+     let grantStatus2: boolean = await checkPermissionGrant('ohos.permission.APPROXIMATELY_LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// 获取模糊定位权限状态。
+     // 精确定位权限只能跟模糊定位权限一起申请，或者已经有模糊定位权限才能申请精确定位权限。
+     if (grantStatus2 && !grantStatus1) {
+       // 申请精确定位权限。
+       // ···
+     } else if (!grantStatus1 && !grantStatus2) {
+       // 申请模糊定位权限与精确定位权限或单独申请模糊定位权限。
+       // ···
+     } else {
+       // 已经授权，可以继续访问目标操作。
+       // ···
+     }
+   }
+   ```
 
 
 3. 动态向用户申请授权。
@@ -123,92 +123,92 @@ async function checkPermissions(): Promise<void> {
 
    - 在UIAbility中向用户申请授权。
 
-   <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->
-
-``` TypeScript
-import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
-
-function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗。
-  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
-    let grantStatus: number[] = data.authResults;
-    let length: number = grantStatus.length;
-    for (let i = 0; i < length; i++) {
-      if (grantStatus[i] === 0) {
-        // 用户授权，可以继续访问目标操作。
-      } else {
-        // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限。
-        return;
-      }
-    }
-    // 授权成功。
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
-  })
-}
-
-export default class SecondAbility extends UIAbility {
-// ···
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-	// ···
-    windowStage.loadContent('secondpages/Index', (err) => {
-      reqPermissionsFromUser(permissions, this.context);
-	// ···
-    });
-  }
-// ···
-}
-```
+   <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->    
+   
+   ``` TypeScript
+   import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
+   import { window } from '@kit.ArkUI';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
+   
+   function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+     // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗。
+     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+       let grantStatus: number[] = data.authResults;
+       let length: number = grantStatus.length;
+       for (let i = 0; i < length; i++) {
+         if (grantStatus[i] === 0) {
+           // 用户授权，可以继续访问目标操作。
+         } else {
+           // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限。
+           return;
+         }
+       }
+       // 授权成功。
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
+     })
+   }
+   
+   export default class SecondAbility extends UIAbility {
+   // ···
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       // ···
+       windowStage.loadContent('secondpages/Index', (err) => {
+         reqPermissionsFromUser(permissions, this.context);
+       // ···
+       });
+     }
+   // ···
+   }
+   ```
 
 
    - 在UI中向用户申请授权。
 
-   <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->
-
-``` TypeScript
-import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
-
-function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
-  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
-    let grantStatus: number[] = data.authResults;
-    let length: number = grantStatus.length;
-    for (let i = 0; i < length; i++) {
-      if (grantStatus[i] === 0) {
-        // 用户授权，可以继续访问目标操作
-      } else {
-        // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
-        return;
-      }
-    }
-    // 授权成功
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
-  })
-}
-
-@Entry
-@Component
-struct Index {
-  aboutToAppear() {
-    const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    reqPermissionsFromUser(permissions, context);
-  }
-
-  build() {
-	// ···
-  }
-}
-```
+   <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
+   
+   function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+     // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
+     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+       let grantStatus: number[] = data.authResults;
+       let length: number = grantStatus.length;
+       for (let i = 0; i < length; i++) {
+         if (grantStatus[i] === 0) {
+           // 用户授权，可以继续访问目标操作
+         } else {
+           // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
+           return;
+         }
+       }
+       // 授权成功
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
+     })
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     aboutToAppear() {
+       const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+       reqPermissionsFromUser(permissions, context);
+     }
+   
+     build() {
+       // ···
+     }
+   }
+   ```
 
 
 4. 处理授权结果。
