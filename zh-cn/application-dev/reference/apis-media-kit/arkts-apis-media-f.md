@@ -327,8 +327,8 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, ca
 
 > **说明：**
 >
-> - API 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
-> - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
+> - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
+> - API version 18及API version 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -378,8 +378,8 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): P
 
 > **说明：**
 >
-> - API 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
-> - API 18及API 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
+> - API version 18以下版本，创建的SoundPool对象底层为单实例模式，一个应用进程只能够创建1个SoundPool实例。
+> - API version 18及API version 18以上版本，创建的SoundPool对象底层为多实例模式，一个应用进程最多能够创建128个SoundPool实例。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
