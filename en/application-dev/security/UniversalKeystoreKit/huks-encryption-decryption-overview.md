@@ -24,7 +24,8 @@ The key management service specifications include mandatory specifications and o
 | -------- | -------- | -------- | -------- |
 | <!--DelRow-->AES/ECB/NoPadding<br>AES/ECB/PKCS7 | In ECB mode, the data length should be a multiple of the block size used by the encryption algorithm. If the padding mode is **NoPadding** and the length of the input data is not a multiple of 16 bytes, the service side must pad the input data to the required length.| 8+ | No|
 | AES/CBC/NoPadding<br>AES/CBC/PKCS7<br>AES/CTR/NoPadding | **IV** is mandatory.<br>In CBC mode, the data length should be a multiple of the block size used by the encryption algorithm. If the padding mode is **NoPadding** and the length of the input data is not a multiple of 16 bytes, the service side must pad the input data to the required length.| 8+ | Yes|
-| AES/GCM/NoPadding | **Nonce** is mandatory for encryption.<br>**Nonce** and **TAG** are mandatory for decryption.| 8+ | Yes|
+| AES/GCM/NoPadding | Encryption: **NONCE** and **AAD** are optional. If the **NONCE** parameter is not specified, data is returned in the format of "Ciphertext + AEAD + NONCE". The length of **AEAD** is **16**, and the default length of **NONCE** is **12**.<br>Decryption: **AAD** is optional, but **NONCE** and **AEAD** are mandatory.| 8+ | Yes|
+| AES/CCM/NoPadding | Encryption: **NONCE** and **AAD** are optional. If the **NONCE** parameter is not specified, data is returned in the format of "Ciphertext + AEAD + NONCE". The default length of **AEAD** is **16**, and the default length of **NONCE** is **7**.<br>Decryption: **AAD** is optional, but **NONCE** and **AEAD** are mandatory.<br>You can set the length of **AEAD** to **4**, **6**, **8**, **10**, **12**, **14**, or **16**.| 22+ | Yes|
 | RSA/ECB/NoPadding<br>RSA/ECB/PKCS1_V1_5<br>RSA/ECB/OAEP | The OAEP padding mode supports the following MD algorithms: SHA-256, SHA-384, and SHA-512.| 8+ | Yes|
 | <!--DelRow-->SM4/ECB/NoPadding<br>SM4/ECB/PKCS7 | The ECB mode is not recommended.| 9+ | No|
 | SM4/ECB/PKCS7 | The ECB mode is not recommended.| 20+ | Yes|
@@ -42,7 +43,7 @@ Before implementing the specifications for mini-system devices, determine whethe
 
 | Algorithm/Cipher Mode/Padding Mode| Description| API Version|
 | -------- | -------- | -------- |
-| AES/GCM/NoPadding | **Nonce** is mandatory for encryption.<br>**Nonce** and **TAG** are mandatory for decryption.| 8+ |
+| AES/GCM/NoPadding | Encryption: **NONCE** and **AAD** are optional. If the **NONCE** parameter is not specified, data is returned in the format of "Ciphertext + AEAD + NONCE". The length of **AEAD** is **16**, and the default length of **NONCE** is **12**.<br>Decryption: **AAD** is optional, but **NONCE** and **AEAD** are mandatory.| 8+ |
 | AES/CBC/NoPadding<br>AES/CTR/NoPadding | **IV** is mandatory.| 11+ |
 | DES/ECB/NoPadding | - | 12+ |
 | DES/CBC/NoPadding | **IV** is mandatory.| 12+ |
