@@ -48,12 +48,12 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 14400005 | Database operation exception.|
-| 31400001 | Serial port management exception.|
-| 31400003 | Device does not exist.
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14400005 | Database operation exception. |
+| 31400001 | Serial port management exception. |
+| 31400003 | Device does not exist. |
 
 **示例：**
 ```ts
