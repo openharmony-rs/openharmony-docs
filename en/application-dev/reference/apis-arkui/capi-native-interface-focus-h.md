@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -19,6 +19,8 @@ Declares APIs for focus management, mainly used for actively transferring focus,
 **Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Sample**: <!--RP1-->[NdkFocus](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkFocus)<!--RP1End-->
 
 ## Summary
 

@@ -1,16 +1,16 @@
-# OH_NativeXComponent_KeyEvent
+# ArkUI_XComponentSurfaceConfig
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
+<!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Provides an encapsulated **OH_NativeXComponent_KeyEvent** instance.
+Defines the surface configuration for the **XComponent**, which specifies whether the **XComponent**'s surface should be treated as opaque during rendering.
 
-**Since**: 10
+**Since**: 22
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
 

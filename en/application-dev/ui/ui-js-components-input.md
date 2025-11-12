@@ -1,10 +1,10 @@
-# &lt;input&gt; Development
+# input Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;input&gt;** component provides an interactive way to receive user input of various types, including **date**, **checkbox**, and **button**. For details, see [input](../reference/apis-arkui/arkui-js/js-components-basic-input.md).
 

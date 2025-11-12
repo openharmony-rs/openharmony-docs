@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -20,7 +20,7 @@ Declares the APIs of **NativeGesture**.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Sample**: <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->, <!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End-->
+**Sample**: <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->, <!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End-->, <!--RP3-->[NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking)<!--RP3End-->
 
 ## Summary
 
@@ -85,8 +85,8 @@ Declares the APIs of **NativeGesture**.
 | [bool OH_ArkUI_GetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_getgesturerecognizerenabled) | - | Obtains the enabled state of a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureRecognizerState(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureRecognizerState* state)](#oh_arkui_getgesturerecognizerstate) | - | Obtains the state of a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureEventTargetInfo(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventTargetInfo** info)](#oh_arkui_getgestureeventtargetinfo) | - | Obtains the information about a gesture event target.|
-| [int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(ArkUI_GestureEventTargetInfo* info, bool* ret)](#oh_arkui_gestureeventtargetinfo_isscrollbegin) | - | Obtains whether this scroll container is scrolled to the top.|
-| [int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo* info, bool* ret)](#oh_arkui_gestureeventtargetinfo_isscrollend) | - | Obtains whether this scroll container is scrolled to the bottom.|
+| [int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(ArkUI_GestureEventTargetInfo* info, bool* ret)](#oh_arkui_gestureeventtargetinfo_isscrollbegin) | - | Obtains whether this scrollable container component is scrolled to the top.|
+| [int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo* info, bool* ret)](#oh_arkui_gestureeventtargetinfo_isscrollend) | - | Obtains whether this scrollable container component is scrolled to the bottom.|
 | [int32_t OH_ArkUI_GetPanGestureDirectionMask(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureDirectionMask* directionMask)](#oh_arkui_getpangesturedirectionmask) | - | Obtains the direction of a pan gesture.|
 | [bool OH_ArkUI_IsBuiltInGesture(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_isbuiltingesture) | - | Obtains whether a gesture is a built-in gesture.|
 | [int32_t OH_ArkUI_GetGestureTag(ArkUI_GestureRecognizer* recognizer, char* buffer, int32_t bufferSize, int32_t* result)](#oh_arkui_getgesturetag) | - | Obtains the tag of a gesture recognizer.|
@@ -99,17 +99,19 @@ Declares the APIs of **NativeGesture**.
 | [int32_t OH_ArkUI_GetGestureParam_DirectMask(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureDirectionMask* directMask)](#oh_arkui_getgestureparam_directmask) | - | Obtains the swipe direction of a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_FingerCount(ArkUI_GestureRecognizer* recognizer, int* finger)](#oh_arkui_getgestureparam_fingercount) | - | Obtains the number of fingers used by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_limitFingerCount(ArkUI_GestureRecognizer* recognizer, bool* isLimited)](#oh_arkui_getgestureparam_limitfingercount) | - | Checks whether a gesture recognizer has a finger count limit.|
-| [int32_t OH_ArkUI_GetGestureParam_repeat(ArkUI_GestureRecognizer* recognizer, bool* isRepeat)](#oh_arkui_getgestureparam_repeat) | - | Checks whether a gesture recognizer supports repeated event callbacks.|
+| [int32_t OH_ArkUI_GetGestureParam_repeat(ArkUI_GestureRecognizer* recognizer, bool* isRepeat)](#oh_arkui_getgestureparam_repeat) | - | Checks whether a gesture recognizer continuously triggers event callbacks.|
 | [int32_t OH_ArkUI_GetGestureParam_distance(ArkUI_GestureRecognizer* recognizer, double* distance)](#oh_arkui_getgestureparam_distance) | - | Obtains the allowed movement distance range for a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_speed(ArkUI_GestureRecognizer* recognizer, double* speed)](#oh_arkui_getgestureparam_speed) | - | Obtains the minimum swipe speed recognized by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, int* duration)](#oh_arkui_getgestureparam_duration) | - | Obtains the minimum duration required to trigger a long press by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, double* angle)](#oh_arkui_getgestureparam_angle) | - | Obtains the minimum angle change required for a rotation gesture to be recognized by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* recognizer, double* distanceThreshold)](#oh_arkui_getgestureparam_distancethreshold) | - | Obtains the movement threshold distance for gesture recognition.|
 | [ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* recognizer, int size, int* toolTypeArray, double* distanceArray)](#oh_arkui_pangesture_setdistancemap) | - | Sets the minimum sliding distance threshold mapping for gesture recognition. Settings are ignored for invalid device types.|
-| [ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognizer* recognizer, int toolType, double* distance)](#oh_arkui_pangesture_getdistancebytooltype) | - | Obtains the movement threshold distance for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default pan gesture activation threshold can be obtained using **UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN**. This API returns no value for unconfigured device types.|
+| [ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognizer* recognizer, int toolType, double* distance)](#oh_arkui_pangesture_getdistancebytooltype) | - | Obtains the movement distance threshold for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default pan gesture activation threshold can be obtained using **UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN**. This API returns no value for unconfigured device types.|
 | [ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (\*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData))](#oh_arkui_settouchtestdonecallback) | - | Registers a callback that is executed after all gesture recognizers are collected. When the user begins touching the screen, the system performs hit testing and collects gesture recognizers based on the touch location. Subsequently, before processing any move events, the component can use this API to determine the gesture recognizers that will participate in and compete for recognition.|
 | [void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterrupter_getuserdata) | - | Obtains the custom data from a gesture interruption event.|
 | [ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_preventgesturerecognizerbegin) | - | Prevents a gesture recognizer from participating in the current gesture recognition before all fingers are lifted. If the system has already determined the result of the gesture recognizer (regardless of success or failure), calling this API will be ineffective.|
+| [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t allowableMovement)](#oh_arkui_longpressgesture_setallowablemovement) | - | Sets the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
+| [int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t* allowableMovement)](#oh_arkui_longpressgesture_getallowablemovement) | - | Obtains the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
 
 ### Variables
 
@@ -344,7 +346,7 @@ ArkUI_GestureRecognizer* OH_ArkUI_GestureInterruptInfo_GetRecognizer(const ArkUI
 **Description**
 
 
-Returns the pointer to interrupted gesture recognizer.
+Obtains the pointer to the interrupted gesture recognizer.
 
 **Since**: 12
 
@@ -1082,7 +1084,7 @@ int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo
 **Description**
 
 
-Obtains whether this scroll container is scrolled to the bottom.
+Obtains whether this scrollable container component is scrolled to the bottom.
 
 **Since**: 12
 
@@ -1092,7 +1094,7 @@ Obtains whether this scroll container is scrolled to the bottom.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)* info | Information about a gesture event target.|
-| bool* ret | Obtains whether this scroll container is scrolled to the bottom. The value **true** means that the component is scrolled to the bottom, and **false** means the opposite.|
+| bool* ret | Whether the scrollable container component is scrolled to the bottom. The value **true** means that the component is scrolled to the bottom, and **false** means the opposite.|
 
 **Returns**
 
@@ -1579,7 +1581,7 @@ Obtains the movement threshold distance for gesture recognition.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
-| double* distanceThreshold | Gesture movement threshold of the gesture recognizer. The unit is px.|
+| double* distanceThreshold | Movement distance threshold of the gesture recognizer. The unit is px.|
 
 **Returns**
 
@@ -1625,7 +1627,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognize
 **Description**
 
 
-Obtains the movement threshold distance for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default pan gesture activation threshold can be obtained using **UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN**. This API returns no value for unconfigured device types.
+Obtains the movement distance threshold for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default pan gesture activation threshold can be obtained using **UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN**. This API returns no value for unconfigured device types.
 
 **Since**: 19
 
@@ -1636,9 +1638,9 @@ Obtains the movement threshold distance for gesture recognition for a specific i
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
 | int toolType | Tool type for which you want to obtain the threshold.|
-| double* distance | Gesture movement threshold of the gesture recognizer. The unit is px.|
+| double* distance | Movement distance threshold of the gesture recognizer. The unit is px.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
@@ -1724,3 +1726,56 @@ Prevents a gesture recognizer from participating in the current gesture recognit
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LongPressGesture_SetAllowableMovement()
+
+```
+ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t allowableMovement)
+```
+
+**Description**
+
+Sets the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
+| int32_t allowableMovement | Maximum movement distance allowed for gesture recognition by the long press gesture recognizer.<br>The unit is px.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value **15** is used.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>  Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>  Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>  Returns [ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the gesture recognizer type is not supported.|
+
+### OH_ArkUI_LongPressGesture_GetAllowableMovement()
+
+```
+int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t* allowableMovement)
+```
+
+**Description**
+
+
+Obtains the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
+| int32_t* allowableMovement | Pointer to the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>  Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>   Returns [ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the gesture recognizer type is not supported.|
