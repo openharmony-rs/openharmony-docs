@@ -876,7 +876,7 @@ const callback = (bool: boolean) => {
   // ...
 }
 try {
-  window.onGgestureNavigationEnabledChange', callback);
+  window.onGestureNavigationEnabledChange(callback);
   window.offGestureNavigationEnabledChange(callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   window.offGestureNavigationEnabledChange();

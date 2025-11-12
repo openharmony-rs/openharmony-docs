@@ -4392,8 +4392,8 @@ onWindowVisibilityChange(callback: Callback&lt;boolean&gt;): void
 
 ```ts
 try {
-  windowClass.onWindowVisibilityChange((boolean) => {
-    console.info('Window visibility changed, isVisible=' + boolean);
+  windowClass.onWindowVisibilityChange((data: boolean) => {
+    console.info('Window visibility changed, isVisible=' + data);
   });
 } catch (exception) {
   let error = exception as BusinessError;
@@ -4438,7 +4438,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
-const callback = (bool: boolean) => {
+const callback = (data: boolean) => {
   // ...
 }
 try {
