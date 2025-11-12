@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_FontCollection OH_Drawing_FontCollection
+```
+
 ## 概述
 
 用于加载字体。

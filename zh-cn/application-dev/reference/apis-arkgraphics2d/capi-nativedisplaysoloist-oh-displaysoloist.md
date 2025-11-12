@@ -1,5 +1,9 @@
 # OH_DisplaySoloist
 
+```
+typedef struct OH_DisplaySoloist OH_DisplaySoloist
+```
+
 ## 概述
 
 提供OH_DisplaySoloist结构体声明。

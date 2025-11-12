@@ -1,5 +1,9 @@
 # OH_NativeVSync_ExpectedRateRange
 
+```
+typedef struct {...} OH_NativeVSync_ExpectedRateRange
+```
+
 ## 概述
 
 期望帧率范围结构体。

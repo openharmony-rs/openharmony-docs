@@ -1,5 +1,9 @@
 # OH_NativeColorSpaceManager
 
+```
+typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
+```
+
 ## 概述
 
 提供OH_NativeColorSpaceManager结构体声明。
