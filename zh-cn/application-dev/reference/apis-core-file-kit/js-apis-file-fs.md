@@ -1189,7 +1189,7 @@ ArkTS-Sta: copyDir(src: string, dest: string, mode?: int): Promise\<void>
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | src    | string                            | 是   | 源目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | dest   | string                            | 是   | 目标目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
 
 **返回值：**
 
@@ -1243,6 +1243,8 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles22)。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **ArkTS-Dyn起始版本：** 10
@@ -1282,6 +1284,57 @@ fs.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
+## fs.copyDirWithConflictFiles<sup>22+</sup>
+
+copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
+
+复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[copyDir](#fscopydir10-1)。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| src | string | 是   | 源目录的应用沙箱路径。 |
+| dest | string | 是   | 目标目录的应用沙箱路径。 |
+| mode | int | 是 | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步复制目录之后的回调。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fs.copyDirWithConflictFiles(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>|null) => {
+  if (err && err.data && err.code == 13900015 && err.data?.length !== undefined) {
+    let errData = err?.data;
+    if (errData != null) {
+      for (let i = 0; i < errData.length; i++) {
+        console.error("copy directory failed with conflicting files: " + err?.data![i].srcFile + " " + err?.data![i].destFile);
+      }
+    }
+  } else if (err) {
+    console.error("copy directory failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("copy directory succeed");
+  }
+});
+```
+
 ## fs.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
@@ -1291,6 +1344,8 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles22-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1330,6 +1385,58 @@ fs.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
+## fs.copyDirWithConflictFiles<sup>22+</sup>
+
+copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
+
+复制源目录至目标路径下。使用callback异步回调。
+
+如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[copyDir](#fscopydir10-2)。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| src | string | 是 | 源目录的应用沙箱路径。 |
+| dest | string | 是 | 目标目录的应用沙箱路径。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步复制目录之后的回调。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fs.copyDirWithConflictFiles(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>|null) => {
+  if (err && err.data && err.code == 13900015 && err.data?.length !== undefined) {
+    let errData = err?.data;
+    if (errData != null) {
+      for (let i = 0; i < errData.length; i++) {
+        console.error("copy directory failed with conflicting files: " + err?.data![i].srcFile + " " + err?.data![i].destFile);
+      }
+    }
+  } else if (err) {
+    console.error("copy directory failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("copy directory succeed");
+  }
+});
+```
+
 ## fs.copyDirSync<sup>10+</sup>
 
 ArkTS-Dyn: copyDirSync(src: string, dest: string, mode?: number): void
@@ -1351,7 +1458,7 @@ ArkTS-Sta: copyDirSync(src: string, dest: string, mode?: int): void
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | src    | string                            | 是   | 源目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | dest   | string                            | 是   | 目标目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
 
 **错误码：**
 
@@ -1361,7 +1468,6 @@ ArkTS-Sta: copyDirSync(src: string, dest: string, mode?: int): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-// copy directory from srcPath to destPath
 let srcPath = pathDir + "/srcDir/";
 let destPath = pathDir + "/destDir/";
 try {
@@ -4740,7 +4846,7 @@ ArkTS-Sta: moveDir(src: string, dest: string, mode?: int): Promise\<void>
 | ------ | --------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | src    | string                            | 是   | 源目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | dest   | string                            | 是   | 目标目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下的所有原始文件将被删除。 |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下的所有原始文件将被删除。 |
 
 **返回值：**
 
@@ -4793,6 +4899,8 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles22)。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **ArkTS-Dyn起始版本：** 10
@@ -4831,6 +4939,61 @@ fs.moveDir(srcPath, destPath, 1, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
+## fs.moveDirWithConflictFiles<sup>22+</sup>
+
+moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
+
+移动源目录至目标路径下，支持设置移动模式。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持在分布式文件路径下操作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[moveDir](#fsmovedir10-1)。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| src | string | 是 | 源目录的应用沙箱路径。 |
+| dest | string | 是 | 目标目录的应用沙箱路径。 |
+| mode | int | 是 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步移动目录之后的回调。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+let srcPath = pathDir + "/srcDir";
+let destPath = pathDir + "/destDir";
+fs.moveDirWithConflictFiles(srcPath, destPath, 1, (err: BusinessError<Array<ConflictFiles>> | null) => {
+  if (err && err.code == 13900015 && err.data?.length !== undefined) {
+    let errData = err?.data;
+    if (errData != null) {
+      for (let i = 0; i < errData.length; i++) {
+        console.error("move directory failed with conflicting files: " + err?.data![i].srcFile + " " + err?.data![i].destFile);
+      }
+    }
+  } else if (err) {
+    console.error("move directory failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("move directory succeed");
+  }
+});
+```
+
 ## fs.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
@@ -4844,6 +5007,8 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 > 该接口不支持在分布式文件路径下操作。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles22-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4882,6 +5047,62 @@ fs.moveDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
+## fs.moveDirWithConflictFiles<sup>22+</sup>
+
+moveDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
+
+移动源目录至目标路径下。使用callback异步回调。
+
+移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
+
+> **说明：**
+>
+> 该接口不支持在分布式文件路径下操作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[moveDir](#fsmovedir10-2)。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| src | string | 是 | 源目录的应用沙箱路径。 |
+| dest | string | 是 | 目标目录的应用沙箱路径。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步移动目录之后的回调。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+let srcPath = pathDir + "/srcDir";
+let destPath = pathDir + "/destDir";
+fs.moveDirWithConflictFiles(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>> | null) => {
+  if (err && err.code == 13900015 && err.data?.length !== undefined) {
+    let errData = err?.data;
+    if (errData != null) {
+      for (let i = 0; i < errData.length; i++) {
+        console.error("move directory failed with conflicting files: " + err?.data![i].srcFile + " " + err?.data![i].destFile);
+      }
+    }
+  } else if (err) {
+    console.error("move directory failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("move directory succeed");
+  }
+});
+```
+
 ## fs.moveDirSync<sup>10+</sup>
 
 ArkTS-Dyn: moveDirSync(src: string, dest: string, mode?: number): void
@@ -4907,7 +5128,7 @@ ArkTS-Sta: moveDirSync(src: string, dest: string, mode?: int): void
 | ------ | --------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | src    | string                            | 是   | 源目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | dest   | string                            | 是   | 目标目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 
 **错误码：**
 
@@ -8961,6 +9182,10 @@ open接口flags参数常量。文件打开标签。
 冲突文件信息，支持copyDir及moveDir接口使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 
 | 名称     | 类型   | 说明               |
