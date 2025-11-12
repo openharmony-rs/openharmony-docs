@@ -301,21 +301,21 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
 3. 向系统剪贴板中存入一条PlainText数据。
 
    <!-- @[pasteboard_timelaps_PasteData3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-
-``` TypeScript
-    let setDelayPlainText = () => {
-      plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
-      // 跨应用使用时设置为CROSS_APP，本应用内使用时设置为IN_APP
-      plainTextData.properties.getDelayData = getDelayPlainText;
-      pasteboard.getSystemPasteboard().setUnifiedData(plainTextData).then(()=>{
-        console.info('Succeeded in set PlainText.');
-        // 存入成功，处理正常场景
-      }).catch((error: BusinessError) => {
-        console.error('Failed to set PlainText. Cause: ' + error.message);
-        // 处理异常场景
-      });
-    }
-```
+   
+   ``` TypeScript
+   let setDelayPlainText = () => {
+     plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+     // 跨应用使用时设置为CROSS_APP，本应用内使用时设置为IN_APP
+     plainTextData.properties.getDelayData = getDelayPlainText;
+     pasteboard.getSystemPasteboard().setUnifiedData(plainTextData).then(() => {
+       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in set PlainText.');
+       // 存入成功，处理正常场景
+     }).catch((error: BusinessError) => {
+       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set PlainText. Cause: ' + error.message);
+       // 处理异常场景
+     });
+   }
+   ```
 
 
 4. 从系统剪贴板中读取这条text数据。
