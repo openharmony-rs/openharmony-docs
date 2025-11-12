@@ -3217,7 +3217,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 该接口在2in1设备中调用不生效也不报错，在其他设备中可正常调用。
 
