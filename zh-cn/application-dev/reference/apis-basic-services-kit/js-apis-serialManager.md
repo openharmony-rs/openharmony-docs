@@ -53,7 +53,7 @@ let portId: int = portList[0].portId;
 
 ## serialManager.hasSerialRight
 
-ArkTS-Dyn: hasSerialRight(portId: number): boolean;
+ArkTS-Dyn: hasSerialRight(portId: number): boolean
 
 ArkTS-Sta: hasSerialRight(portId: int): boolean;
 
@@ -69,7 +69,7 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号。|
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号。 |
 
 **返回值：**
 
@@ -83,10 +83,10 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 14400005 | Database operation exception. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14400005 | Database operation exception.  |
+| 31400001 | Serial port management exception. |
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -134,8 +134,7 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId | int | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId |  ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号。 |
 
 **返回值：**
 
@@ -149,10 +148,10 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 14400005 | Database operation exception. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14400005 | Database operation exception.  |
+| 31400001 | Serial port management exception.  |
+| 31400003 | PortId does not exist.  |
 
 **示例：**
 
@@ -190,9 +189,9 @@ if (!serialManager.hasSerialRight(portId)) {
 
 ## serialManager.open
 
-ArkTS-Dyn: open(portId: number): void;
+ArkTS-Dyn: open(portId: number): void
 
-ArkTS-Sta: open(portId: int): void;
+ArkTS-Sta: open(portId: int): void
 
 打开串口设备。
 
@@ -206,8 +205,7 @@ ArkTS-Sta: open(portId: int): void;
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId | int | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号。 |
 
 **错误码：**
 
@@ -215,11 +213,11 @@ ArkTS-Sta: open(portId: int): void;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400004 | The serial port device is occupied.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception.  |
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first.  |
+| 31400003 | PortId does not exist.  |
+| 31400004 | The serial port device is occupied. |
 
 **示例：**
 
@@ -265,9 +263,9 @@ try {
 
 ## serialManager.getAttribute
 
-ArkTS-Dyn: getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt;;
+ArkTS-Dyn: getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
 
-ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattribute)&gt;;
+ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
 
 获取指定串口的配置参数。
 
@@ -281,8 +279,7 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId | int | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号。 |
 
 **返回值：**
 
@@ -296,10 +293,10 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400005 | The serial port device is not opened. Call the open API first. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception.  |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first.  |
 
 **示例：**
 
@@ -357,9 +354,9 @@ try {
 
 ## serialManager.setAttribute
 
-ArkTS-Dyn: setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): void;
+ArkTS-Dyn: setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): void
 
-ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void;
+ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void
 
 设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；据位：8；校验位：0；停止位：1）。
 
@@ -373,8 +370,7 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId    | int                              | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId    |   ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。 |
 | attribute | [SerialAttribute](#serialattribute) | 是  | 串口参数。     |
 
 **错误码：**
@@ -383,10 +379,10 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400005 | The serial port device is not opened. Call the open API first. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first.  |
 
 **示例：**
 
@@ -446,9 +442,9 @@ try {
 
 ## serialManager.read
 
-ArkTS-Dyn: read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;;
+ArkTS-Dyn: read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;;
+ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 从串口设备异步读取数据。
 
@@ -462,18 +458,15 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId  | int     | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId  |   ArkTS-Dyn: number<br> ArkTS-Sta: int       | 是  | 端口号。 |
+| portId  |   ArkTS-Dyn: number<br> ArkTS-Sta: int       | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 读取的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| timeout | int     | 否  | 读取的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 
 **返回值：**
 
 | 类型                    | 说明             |
 |-----------------------|----------------|
-| Promise&lt;number&gt; | Promise对象，返回读取数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| Promise&lt;int&gt; | Promise对象，返回读取数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn:  Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回读取数据长度。 |
 
 **错误码：**
 
@@ -481,12 +474,12 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400005 | The serial port device is not opened. Call the open API first.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400006 | Data transfer timed out.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400006 | Data transfer timed out. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -540,9 +533,9 @@ serialManager.read(portId, readBuffer, 2000).then((size: int) => {
 
 ## serialManager.readSync
 
-ArkTS-Dyn: readSync(portId: number, buffer: Uint8Array, timeout?: number): number;
+ArkTS-Dyn: readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int;
+ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 从串口设备同步读取数据。
 
@@ -556,18 +549,15 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int;
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId  | int     | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 读取的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| timeout | int     | 否  | 读取的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 读取的超时时间（以毫秒为单位）。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 |--------|-------------|
-| number | 返回读取数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int | 返回读取数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+|  ArkTS-Dyn: number<br> ArkTS-Sta: int  | 返回读取数据长度。 |
 
 **错误码：**
 
@@ -575,12 +565,12 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400005 | The serial port device is not opened. Call the open API first. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400006 | Data transfer timed out. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first.  |
+| 31400006 | Data transfer timed out.  |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -635,9 +625,9 @@ try {
 
 ## serialManager.write
 
-ArkTS-Dyn: write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;;
+ArkTS-Dyn: write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;;
+ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 向串口设备异步写入数据。
 
@@ -651,18 +641,15 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId  | int     | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区。 |
-| timeout | number     | 否  | 写入的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| timeout | int     | 否  | 写入的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 写入的超时时间（以毫秒为单位）。 |
 
 **返回值：**
 
 | 类型                    | 说明          |
 |-----------------------|-------------|
-| Promise&lt;number&gt; | Promise对象，返回写入数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| Promise&lt;int&gt; | Promise对象，返回写入数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: romise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
 
 **错误码：**
 
@@ -670,12 +657,12 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400005 | The serial port device is not opened. Call the open API first.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400006 | Data transfer timed out.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 31400001 | Serial port management exception. |
+| 31400003 | PortId does not exist.  |
+| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400006 | Data transfer timed out. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed.  |
 
 **示例：**
 
@@ -741,18 +728,15 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int;
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId  | int     | 是  | 端口号。  <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号。 |
 | buffer  | Uint8Array | 是  | 写入目标缓冲区。 |
-| timeout | number     | 否  | 写入的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| timeout | int     | 否  | 写入的超时时间（以毫秒为单位）。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 写入的超时时间（以毫秒为单位）。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 |--------|-------------|
-| number | 返回写入数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int | 返回写入数据长度。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 返回写入数据长度。 |
 
 **错误码：**
 
@@ -760,12 +744,12 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400005 | The serial port device is not opened. Call the open API first.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400006 | Data transfer timed out.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
+| 31400006 | Data transfer timed out. |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -820,9 +804,9 @@ try {
 
 ## serialManager.close
 
-ArkTS-Dyn: close(portId: number): void;
+ArkTS-Dyn: close(portId: number): void
 
-ArkTS-Sta: close(portId: int): void;
+ArkTS-Sta: close(portId: int): void
 
 关闭串口。
 
@@ -832,8 +816,7 @@ ArkTS-Sta: close(portId: int): void;
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId | int | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。 |
 
 **错误码：**
 
@@ -841,14 +824,10 @@ ArkTS-Sta: close(portId: int): void;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
-<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception.
-<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist.
-<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400005 | The serial port device is not opened. Call the open API first.
-<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 31400001 | Serial port management exception. |
+| 31400003 | PortId does not exist. |
+| 31400005 | The serial port device is not opened. Call the open API first. |
 
 **示例：**
 
@@ -902,9 +881,9 @@ try {
 
 ## serialManager.cancelSerialRight
 
-ArkTS-Dyn: cancelSerialRight(portId: number): void;
+ArkTS-Dyn: cancelSerialRight(portId: number): void
 
-ArkTS-Sta: cancelSerialRight(portId: int): void;
+ArkTS-Sta: cancelSerialRight(portId: int): void
 
 移除应用程序运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。
 
@@ -918,8 +897,7 @@ ArkTS-Sta: cancelSerialRight(portId: int): void;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId | int | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。 |
 
 **错误码：**
 
@@ -927,11 +905,11 @@ ArkTS-Sta: cancelSerialRight(portId: int): void;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 14400005 | Database operation exception. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400001 | Serial port management exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
-| 31400003 | PortId does not exist.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14400005 | Database operation exception.  |
+| 31400001 | Serial port management exception. |
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first.  |
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -1004,8 +982,7 @@ try {
 
 | 名称     | 类型  |  只读 | 可选 | 说明    |
 |--------|--------|------|-------|--------|
-| portId | number | 否  |  否 | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId | int | 否  |  否 | 端口号。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否  |  否 | 端口号。 |
 | deviceName | string | 否  |  否 | 串口设备名称。 |
 
 ## BaudRates
