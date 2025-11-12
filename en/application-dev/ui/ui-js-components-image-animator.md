@@ -1,4 +1,5 @@
-# &lt;image-animator&gt; Development
+# image-animator Development
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
