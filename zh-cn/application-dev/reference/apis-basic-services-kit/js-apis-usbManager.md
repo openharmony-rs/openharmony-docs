@@ -37,7 +37,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20 |
+| 801      | Capability not supported.  |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.<br>**ArkTs模式**：该错误码仅适用于ArkTs-Sta |
 
 **示例：**
@@ -134,9 +134,9 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20 ||
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20                                     |
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20 |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported.                                     |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
 | 14400012 | Transmission I/O error.<br>**ArkTs模式**：该错误码仅适用于ArkTs-Sta |
 
 **示例：**
@@ -187,8 +187,8 @@ hasRight(deviceName: string): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported.  |
 
 **示例：**
 
@@ -234,8 +234,8 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20 |
-| 801      |  Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20 | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      |  Capability not supported.  | 
 
 **示例：**
 
@@ -281,8 +281,8 @@ removeRight(deviceName: string): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20                                   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported.                                   |
 
 **示例：**
 
@@ -328,8 +328,7 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 注册通信接口成功返回0；注册通信接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。|
 
 **错误码：**
 
@@ -337,8 +336,8 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20     |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -382,8 +381,7 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080381：无效的接口操作。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080381：无效的接口操作。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080381：无效的接口操作。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。 |
 
 **错误码：**
 
@@ -391,8 +389,8 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20                                   |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types.  |
+| 801      | Capability not supported.                              |
 
 **示例：**
 
@@ -440,8 +438,7 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| nimber | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -17：I/O失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -17：I/O失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -17：I/O失败。 |
 
 **错误码：**
 
@@ -449,8 +446,8 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.  <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20  |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported.  |
 
 **示例：**
 
@@ -498,8 +495,7 @@ ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number| 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int| 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int| 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。 |
 
 **错误码：**
 
@@ -507,8 +503,8 @@ ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported.  |
 
 **示例：**
 
@@ -562,8 +558,8 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 
@@ -608,8 +604,7 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符；失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int | 返回设备对应的文件描述符；失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 返回设备对应的文件描述符；失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。 |
 
 **错误码：**
 
@@ -617,8 +612,8 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported.  |
 **示例：**
 
 ```ts
@@ -728,15 +723,13 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0不超时。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| timeout | int | 否 | 超时时间（单位：ms），可选参数，默认为0不超时。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：ms），可选参数，默认为0不超时。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。 |
 
 **错误码：**
 
@@ -744,8 +737,8 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types.  |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -812,15 +805,13 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用getDevices获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| timeout | int | 否 | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -3：参数无效。<br>- -202：设备未找到。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -3：参数无效。<br>- -202：设备未找到。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+|ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -3：参数无效。<br>- -202：设备未找到。 |
 
 **错误码：**
 
@@ -828,8 +819,8 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -895,12 +886,12 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801 | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400008 | No such device (it may have been disconnected). <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400012 | Transmission I/O error. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 801 | Capability not supported. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
+| 14400008 | No such device (it may have been disconnected). |
+| 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
+| 14400012 | Transmission I/O error. |
 
 **示例：**
 
@@ -988,11 +979,11 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801 | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400008 | No such device (it may have been disconnected). <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400011 | The transfer is not in progress, or is already complete or cancelled.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 801 | Capability not supported. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400008 | No such device (it may have been disconnected). |
+| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
+| 14400011 | The transfer is not in progress, or is already complete or cancelled.|
 
 **示例：**
 
@@ -1072,8 +1063,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number  | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080393：读取接口数据包过程发生错误。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int  | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080393：读取接口数据包过程发生错误。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| ArkTS-Dyn: number<br> ArkTS-Sta: int  | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080393：读取接口数据包过程发生错误。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。 |
 
 **错误码：**
 
@@ -1081,8 +1071,8 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801      | Capability not supported. |
 
 **示例：**
 
@@ -1130,11 +1120,11 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14400005 | Database operation exception. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14401001 | The target USBAccessory not matched.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
+| 14400005 | Database operation exception.  |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1181,11 +1171,11 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14400005 | Database operation exception.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14401001 | The target USBAccessory not matched.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801      | Capability not supported. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1226,11 +1216,11 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14400005 | Database operation exception.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14401001 | The target USBAccessory not matched. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801      | Capability not supported.  |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched.  |
 
 **示例：**
 
@@ -1270,8 +1260,8 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
 
 **示例：**
 
@@ -1317,13 +1307,13 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14401001 | The target USBAccessory not matched. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14401002 | Failed to open the native accessory node. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 14401003 | Cannot reopen the accessory. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported.  |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.  |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
+| 14401001 | The target USBAccessory not matched.  |
+| 14401002 | Failed to open the native accessory node.  |
+| 14401003 | Cannot reopen the accessory.  |
 
 **示例：**
 
@@ -1369,9 +1359,9 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
-| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 801      | Capability not supported. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
 
@@ -1424,12 +1414,12 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801 | Capability not supported. <br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
-| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
-| 14400008 | No such device (it may have been disconnected). <br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
-| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. <br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
-| 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable.<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：20|
+| 801 | Capability not supported.  |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
+| 14400008 | No such device (it may have been disconnected).  |
+| 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code.  |
+| 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |
 
 **示例：**
 
@@ -1548,10 +1538,8 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称         | 类型   | 必填    |说明    |
 | ---------- | ------ | ----- |----- |
-| busNum     | number  |是 | 总线地址。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| devAddress | number  |是 | 设备地址。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| busNum     | int  |是 | 总线地址。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| devAddress | int  |是 | 设备地址。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| busNum     | ArkTS-Dyn: number<br> ArkTS-Sta: int  |是 | 总线地址。|
+| devAddress | ArkTS-Dyn: number<br> ArkTS-Sta: int  |是 | 设备地址。|
 
 ## USBControlParams<sup>(deprecated)</sup>
 
@@ -1582,18 +1570,14 @@ USB设备消息传输通道，用于确定设备。
 
 **ArkTS-Sta起始版本**：20
 
+
 | 名称      | 类型                                            | 必填               |说明               |
 | ------- | ----------------------------------------------- | ---------------- |---------------- |
-| bmRequestType | number                                     | 是   |请求控制类型。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| bRequest  | number                                        | 是   |请求类型。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| wValue | number                                           | 是   |请求参数。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| wIndex   | number                                          | 是   |请求参数value对应的索引值。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| wLength   | number                                         | 是   |请求数据的长度。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| bmRequestType | int                                     | 是   |请求控制类型。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| bRequest  | int                                        | 是   |请求类型。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| wValue | int                                           | 是   |请求参数。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| wIndex   | int                                          | 是   |请求参数value对应的索引值。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| wLength   | int                                         | 是   |请求数据的长度。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| bmRequestType | ArkTS-Dyn: number<br> ArkTS-Sta: int                                     | 是   |请求控制类型。|
+| bRequest  | ArkTS-Dyn: number<br> ArkTS-Sta: int                                        | 是   |请求类型。|
+| wValue | ArkTS-Dyn: number<br> ArkTS-Sta: int                                           | 是   |请求参数。|
+| wIndex   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                          | 是   |请求参数value对应的索引值。|
+| wLength   | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 是   |请求数据的长度。|
 | data    | Uint8Array                                      | 是   |用于写入或读取的缓冲区。     |
 
 ## USBRequestTargetType
@@ -1674,8 +1658,7 @@ USB配件句柄。
 
 | 名称        | 类型   | 必填 | 说明                                      |
 | ----------- | ------ | ---- | ----------------------------------------- |
-| accessoryFd | number  | 是   | 配件文件描述符。合法的accessoryFd是正整数。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| accessoryFd | int  | 是   | 配件文件描述符。合法的accessoryFd是正整数。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| accessoryFd | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是   | 配件文件描述符。合法的accessoryFd是正整数。 |
 
 ## UsbDataTransferParams<sup>18+</sup>
 
@@ -1691,18 +1674,14 @@ USB配件句柄。
 | ---------- | ------ | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。 |
 | flags | [UsbTransferFlags](#usbtransferflags18) |是 | USB传输标志。 |
-| endpoint | number  | 是 | 端点地址，正整数。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| endpoint | int  | 是 | 端点地址，正整数。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| endpoint | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是 | 端点地址，正整数。|
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) |是 | 传输类型。 |
-| timeout | number  | 是 | 超时时间，单位为毫秒。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| timeout | int  | 是 | 超时时间，单位为毫秒。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| length | number  |是 | 数据缓冲区的长度，必须是非负数（期望长度），单位为字节。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| length | int  |是 | 数据缓冲区的长度，必须是非负数（期望长度），单位为字节。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是 | 超时时间，单位为毫秒。|
+| length | ArkTS-Dyn: number<br> ArkTS-Sta: int     |是 | 数据缓冲区的长度，必须是非负数（期望长度），单位为字节。 |
 | callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> |是 | 传输完成时的回调信息。|
 | userData | Uint8Array | 是 | 用户上下文数据。 |
 | buffer | Uint8Array | 是 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | number  | 是 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，单位为个数。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| isoPacketCount | int  | 是 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，单位为个数。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| isoPacketCount | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，单位为个数。|
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1749,8 +1728,7 @@ Usb异步传输回调。
 
 | 名称        | 类型 | 必填   | 说明    |
 | ---------- | ------ | ----- | ------ |
-| actualLength | number  |  是 |读写操作的实际长度值，单位为字节。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| actualLength | int  |  是 |读写操作的实际长度值，单位为字节。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| actualLength | ArkTS-Dyn: number<br> ArkTS-Sta: int     |  是 |读写操作的实际长度值，单位为字节。|
 | status | [UsbTransferStatus](#usbtransferstatus18) | 是 |读写操作完成的状态。 |
 | isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | 是 |实时传输的分包信息。 |
 
@@ -1786,8 +1764,6 @@ Usb异步传输回调。
 
 | 名称         | 类型 | 必填 | 说明    |
 | ---------- | ------ | ----- | ------ |
-| length | number  | 是 |读写操作的期望长度值，单位为字节。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| length | int  | 是 |读写操作的期望长度值，单位为字节。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
-| actualLength | number | 是 |读写操作的实际长度值，单位为字节。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| actualLength | int | 是 |读写操作的实际长度值，单位为字节。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| length | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是 |读写操作的期望长度值，单位为字节。|
+| actualLength | ArkTS-Dyn: number<br> ArkTS-Sta: int    | 是 |读写操作的实际长度值，单位为字节。|
 | status | [UsbTransferStatus](#usbtransferstatus18) | 是 |实时传输分包的状态码。 |
