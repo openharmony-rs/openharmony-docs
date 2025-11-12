@@ -763,10 +763,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 
-let messageView = '';
 udp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message) 
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
     let messages = uint8Array[i]
     let message = String.fromCharCode(messages);
     messageView += message;
@@ -2678,10 +2678,10 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-let messageView = '';
 tcp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message) 
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
     let messages = uint8Array[i]
     let message = String.fromCharCode(messages);
     messageView += message;
@@ -3999,8 +3999,8 @@ let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance(
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message) 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
       let messages = uint8Array[i]
       let message = String.fromCharCode(messages);
       messageView += message;
@@ -6525,7 +6525,6 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
-let messageView = '';
 let bindAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
   port: 8080
@@ -6537,8 +6536,9 @@ tls.bind(bindAddr, (err: BusinessError) => {
   }
   console.info('bind success');
   tls.on('message', (value: socket.SocketMessageInfo) => {
+    let messageView = '';
+    let uint8Array = new Uint8Array(value.message) 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
       let messages = uint8Array[i]
       let message = String.fromCharCode(messages);
       messageView += message;
@@ -9924,8 +9924,8 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message) 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
       let messages = uint8Array[i]
       let message = String.fromCharCode(messages);
       messageView += message;
