@@ -142,7 +142,7 @@ static void PasteboardFinalizeImpl2(void* context)
 
 6. 从剪贴板读取数据。
 
-    <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
     // 1. 创建一个剪贴板实例

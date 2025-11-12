@@ -116,7 +116,7 @@ void SyncCallback(int errorCode)
 
 4. 在剪贴板中准备延迟复制数据。此步骤完成后纯文本类型数据与HTML类型数据并未真正写入剪贴板服务，只有当数据使用者从`OH_UdmfRecord`中获取`OH_UdsPlainText`或`OH_UdsHtml`时，才会触发上文定义的`GetDataCallback`数据提供函数，从中得到数据。
    
-   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
     // 4. 创建OH_UdmfRecord对象。
@@ -220,7 +220,7 @@ void ProcessRecord(OH_UdmfRecord* record)
 
 6. 应用退出时，如果剪贴板内的数据没有变化，则通知剪贴板获取全量数据，等待回调完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
 
-   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
     // 15. 查询剪贴板内的数据是否变化。
@@ -260,7 +260,7 @@ void ProcessRecord(OH_UdmfRecord* record)
 
 1. 导入pasteboard,unifiedDataChannel和uniformTypeDescriptor模块。
    
-   <!-- @[pasteboard_timelaps_PasteData1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+   <!-- @[pasteboard_timelaps_PasteData1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
 
 ``` TypeScript
 // [Start pasteboard_usedata]
@@ -273,7 +273,7 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
 
 2. 构造一条PlainText数据,并书写获取延时数据的函数。
 
-   <!-- @[pasteboard_timelaps_PasteData2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+   <!-- @[pasteboard_timelaps_PasteData2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->   
 
 ``` TypeScript
     let plainTextData = new unifiedDataChannel.UnifiedData();
@@ -293,7 +293,7 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
 
 3. 向系统剪贴板中存入一条PlainText数据。
 
-   <!-- @[pasteboard_timelaps_PasteData3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+   <!-- @[pasteboard_timelaps_PasteData3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
 
 ``` TypeScript
     let setDelayPlainText = () => {
@@ -313,7 +313,7 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
 
 4. 从系统剪贴板中读取这条text数据。
 
-  <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+  <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
 
 ``` TypeScript
     let getPlainTextUnifiedData = (() => {
@@ -337,7 +337,7 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
    
 5. 应用设置本应用剪贴板数据的可粘贴范围。
 
-   <!-- @[pasteboard_timelaps_PasteData5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+   <!-- @[pasteboard_timelaps_PasteData5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
 
 ``` TypeScript
     try {
@@ -352,7 +352,7 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
    
 6. 应用删除本应用设置的剪贴板数据可粘贴范围配置。
 
-   <!-- @[pasteboard_timelaps_PasteData6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+   <!-- @[pasteboard_timelaps_PasteData6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
 
 ``` TypeScript
     try {
