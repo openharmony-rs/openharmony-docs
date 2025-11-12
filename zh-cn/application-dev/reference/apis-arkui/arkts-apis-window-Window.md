@@ -4261,7 +4261,7 @@ off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件类型，固定为'frameMetricsMeasured'，即窗口帧率指标变化事件。 |
-| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 是  | 窗口帧率指标变化时的回调函数。详情见[桢率变化指标](arkts-apis-window-i.md#framemetrics22)。|
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 否  | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口帧率指标变化的监听。|
 
 **错误码：**
 
