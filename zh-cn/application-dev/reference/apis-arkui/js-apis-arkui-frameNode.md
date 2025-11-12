@@ -1525,7 +1525,7 @@ get commonAttribute(): CommonAttribute
 >
 > FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
 >
-> FrameNode的属性支持范围，参考[CommonModifier](../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)中组件通用信息为CommonAttribute的内容。
+> FrameNode的属性支持范围，参考[属性或事件对attributeModifier的支持情况](../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)中组件通用信息为CommonAttribute的内容。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
