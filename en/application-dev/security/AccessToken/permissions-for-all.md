@@ -591,6 +591,6 @@ With this permission, the application can lock the mouse cursor within the windo
 
 **Authorization mode**: system_grant
 
-**支持设备**：General
+**Supported devices**: General
 
 **Valid since**: 22

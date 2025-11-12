@@ -593,6 +593,6 @@
 
 **授权方式**：系统授权（system_grant）
 
-**Supported devices**: General
+**支持设备**：General
 
 **起始版本**：22
