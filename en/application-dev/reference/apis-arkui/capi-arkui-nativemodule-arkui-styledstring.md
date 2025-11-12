@@ -1,10 +1,4 @@
 # ArkUI_StyledString
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
-<!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
 
 ## Overview
 
