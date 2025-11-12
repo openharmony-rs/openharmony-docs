@@ -3290,6 +3290,7 @@ ArkTS-Sta示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility, Want } from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@ohos.base';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -3326,7 +3327,8 @@ export default class EntryAbility extends UIAbility {
           console.info('Succeeded in hiding the non-system floating windows.');
         });
       } catch (exception) {
-        console.error(`Failed to hide the non-system floating windows. Cause code: ${exception}`);
+        let error = exception as BusinessError;
+        console.error(`Failed to hide the non-system floating windows. Cause code: ${error.code}, message: ${error.message}`);
       }
     });
   }
