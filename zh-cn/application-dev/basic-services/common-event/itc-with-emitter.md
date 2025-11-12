@@ -33,16 +33,16 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
 
 1. 导入模块。
 
-   <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
 
 2. 订阅事件。
 
    订阅事件使用on（持续订阅）或者once（单次订阅）接口进行订阅，设置要订阅的事件以及接收到事件后的回调函数。
    
-   <!-- @[emitter_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[emitter_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
 
 
-   <!-- @[emitter_once](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[emitter_once](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
 
 
 3. 发送事件。
@@ -52,7 +52,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     >
     > emit接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
-   <!-- @[emitter_emit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[emitter_emit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消事件订阅。
     > **说明：**
@@ -60,5 +60,5 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > - 当不需要订阅某个事件时，需要及时取消订阅避免造成内存泄漏。
     > - 使用[off](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteroff)接口取消某个事件订阅后，已通过[emit](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteremit)接口发布但尚未被执行的事件将被取消。
 
-   <!-- @[emitter_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[emitter_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
 
