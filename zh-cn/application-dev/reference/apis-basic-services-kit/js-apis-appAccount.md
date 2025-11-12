@@ -1,18 +1,31 @@
 # @ohos.account.appAccount (应用账号管理)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 本模块提供应用账号信息的添加、删除、修改和查询基础能力，并支持应用间鉴权和分布式数据同步功能。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
+ArkTS-Sta示例：
+```ts
+import appAccount from '@ohos.account.appAccount';
+```
 
 ## appAccount.createAppAccountManager
 
@@ -22,11 +35,15 @@ createAppAccountManager(): AppAccountManager
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明           |
 | ----------------- | ------------ |
-| AppAccountManager | 应用账号管理器对象。 |
+| [AppAccountManager](#appaccountmanager) | 应用账号管理器对象。 |
 
 **示例：**
   ```ts
@@ -35,7 +52,7 @@ createAppAccountManager(): AppAccountManager
 
 ## AppAccountManager
 
-应用账号管理器类。
+应用账号管理器，可用于管理应用自身的账号信息。
 
 ### createAccount<sup>9+</sup>
 
@@ -45,6 +62,10 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                    | 必填  | 说明               |
@@ -53,6 +74,8 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -64,19 +87,43 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.createAccount('WangWu', (err: BusinessError) => { 
       if (err) {
-        console.error('createAccount code: ' + JSON.stringify(err));
+        console.error(`createAccount code: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('createAccount successful.');
+        console.info('createAccount successful.');
       }
     });
-  } catch (err) {
-    console.error('createAccount err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`createAccount err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.createAccount('WangWu', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`createAccount code: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('createAccount successful.');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createAccount err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -88,6 +135,10 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
@@ -97,6 +148,8 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。             |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -108,9 +161,12 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options:appAccount.CreateAccountOptions  = {
     customData: {
       age: '10'
@@ -119,13 +175,36 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
   try {
     appAccountManager.createAccount('LiSi', options, (err: BusinessError) => {
       if (err) {
-        console.error('createAccount failed, error: ' + JSON.stringify(err));
+        console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('createAccount successfully');
+        console.info('createAccount successfully');
       }
     });
   } catch(err) {
-    console.error('createAccount exception: ' + JSON.stringify(err));
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let customData: Record<string, string> = { 'age': '10' }
+  let options: appAccount.CreateAccountOptions = { customData }
+
+  try {
+    appAccountManager.createAccount('LiSi', options, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('createAccount successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -136,6 +215,10 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 根据账号名和可选项创建应用账号。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -152,6 +235,8 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -162,9 +247,12 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.CreateAccountOptions = {
     customData: {
       age: '10'
@@ -172,12 +260,34 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
   }
   try {
     appAccountManager.createAccount('LiSi', options).then(() => {
-      console.log('createAccount successfully');
+      console.info('createAccount successfully');
     }).catch((err: BusinessError) => {
-      console.error('createAccount failed, error: ' + JSON.stringify(err));
+      console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch(err) {
-    console.error('createAccount exception: ' + JSON.stringify(err));
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let customData: Record<string, string> = { 'age': '10' }
+  let options: appAccount.CreateAccountOptions = { customData }
+
+  try {
+    appAccountManager.createAccount('LiSi', options).then(() => {
+      console.info('createAccount successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -189,6 +299,10 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                | 必填   | 说明                      |
@@ -197,6 +311,8 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调对象，返回创建结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -210,7 +326,9 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -220,8 +338,8 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -232,9 +350,9 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -244,8 +362,56 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('createAccountImplicitly exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+    build() {}
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+    onResultCallback(code: int, result?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e: Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      try {
+        appAccountManager.createAccountImplicitly('com.example.accountjsdemo', {
+          onResult: this.onResultCallback,
+          onRequestRedirected: this.onRequestRedirectedCallback
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
@@ -260,6 +426,10 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                    | 必填   | 说明                      |
@@ -269,6 +439,8 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调对象，返回创建结果。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -282,7 +454,9 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -292,8 +466,8 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -304,9 +478,9 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -320,8 +494,61 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('createAccountImplicitly exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+    build() {}
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+    onResultCallback(code: int, result?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e:Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      let options: appAccount.CreateAccountImplicitlyOptions = {
+        authType: 'getSocialData',
+        requiredLabels: [ 'student' ]
+      };
+      try {
+        appAccountManager.createAccountImplicitly('com.example.accountjsdemo', options, {
+          onResult: this.onResultCallback,
+          onRequestRedirected: this.onRequestRedirectedCallback
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
@@ -336,6 +563,10 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明               |
@@ -344,6 +575,8 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -354,21 +587,45 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.removeAccount('ZhaoLiu', (err: BusinessError) => {
       if (err) {
-        console.error('removeAccount failed, error: ' + JSON.stringify(err));
+        console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('removeAccount successfully');
+        console.info('removeAccount successfully');
       }
    });
   } catch(err) {
-    console.error('removeAccount exception: ' + JSON.stringify(err));
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.removeAccount('ZhaoLiu', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('removeAccount successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 
 ### removeAccount<sup>9+</sup>
 
@@ -377,6 +634,10 @@ removeAccount(name: string): Promise&lt;void&gt;
 删除应用账号。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -392,6 +653,8 @@ removeAccount(name: string): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -401,17 +664,40 @@ removeAccount(name: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.removeAccount('Lisi').then(() => {
-      console.log('removeAccount successfully');
+      console.info('removeAccount successfully');
     }).catch((err: BusinessError) => {
-      console.error('removeAccount failed, error: ' + JSON.stringify(err));
+      console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('removeAccount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.removeAccount('Lisi').then(() => {
+      console.info('removeAccount successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -422,6 +708,10 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 设置指定应用对特定账号的访问权限。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -434,6 +724,8 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -444,19 +736,43 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true, (err: BusinessError) => {
       if (err) {
-        console.error('setAppAccess failed: ' + JSON.stringify(err));
+        console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setAppAccess successfully');
+        console.info('setAppAccess successfully');
       }
     });
-  } catch (err) {
-    console.error('setAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setAppAccess successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -467,6 +783,10 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 设置指定应用对特定账号的数据访问权限。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -484,6 +804,8 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -494,17 +816,40 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true).then(() => {
-      console.log('setAppAccess successfully');
+      console.info('setAppAccess successfully');
     }).catch((err: BusinessError) => {
-      console.error('setAppAccess failed: ' + JSON.stringify(err));
+      console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true).then(() => {
+      console.info('setAppAccess successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -516,6 +861,10 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                        | 必填   | 说明                                |
@@ -526,6 +875,8 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -535,20 +886,45 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo',
       (err: BusinessError, isAccessible: boolean) => {
         if (err) {
-          console.error('checkAppAccess failed, error: ' + JSON.stringify(err));
+          console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('checkAppAccess successfully');
+          console.info('checkAppAccess successfully');
         }
       });
-  } catch (err) {
-    console.error('checkAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo',
+      (err: BusinessError | null, isAccessible: boolean | undefined) => {
+        if (err) {
+          console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkAppAccess successfully');
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -559,6 +935,10 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 检查指定应用对特定账号的数据是否可访问。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -575,6 +955,8 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -584,17 +966,40 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo').then((isAccessible: boolean) => {
-      console.log('checkAppAccess successfully, isAccessible: ' + isAccessible);
+      console.info('checkAppAccess successfully, isAccessible: ' + isAccessible);
     }).catch((err: BusinessError) => {
-      console.error('checkAppAccess failed, error: ' + JSON.stringify(err));
+      console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkAppAccess exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo').then((isAccessible: boolean) => {
+      console.info('checkAppAccess successfully, isAccessible: ' + isAccessible);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -608,6 +1013,10 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                        |
@@ -617,6 +1026,8 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -628,15 +1039,37 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
       appAccountManager.setDataSyncEnabled('ZhangSan', true, (err: BusinessError) => { 
-          console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+          console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
       });
-  } catch (err) {
-      console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setDataSyncEnabled('ZhangSan', true, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -649,6 +1082,10 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -665,6 +1102,8 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 201 | Permission denied.|
@@ -675,17 +1114,40 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
-      appAccountManager .setDataSyncEnabled('ZhangSan', true).then(() => { 
-          console.log('setDataSyncEnabled Success');
+      appAccountManager.setDataSyncEnabled('ZhangSan', true).then(() => { 
+          console.info('setDataSyncEnabled Success');
       }).catch((err: BusinessError) => {
-          console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+          console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
       });
-  } catch (err) {
-      console.error('setDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setDataSyncEnabled('ZhangSan', true).then(() => {
+      console.info('setDataSyncEnabled Success');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -699,6 +1161,10 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                           | 必填   | 说明                    |
@@ -707,6 +1173,8 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -718,19 +1186,44 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkDataSyncEnabled('ZhangSan', (err: BusinessError, isEnabled: boolean) => {
       if (err) {
-        console.error('checkDataSyncEnabled failed, err: ' + JSON.stringify(err));
+        console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
-  } catch (err) {
-    console.error('checkDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkDataSyncEnabled('ZhangSan',
+      (err: BusinessError | null, isEnabled: boolean | undefined) => {
+        if (err) {
+          console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -743,6 +1236,10 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -758,6 +1255,8 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 201 | Permission denied.|
@@ -768,17 +1267,40 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkDataSyncEnabled('ZhangSan').then((isEnabled: boolean) => {
-        console.log('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
-      console.error('checkDataSyncEnabled failed, err: ' + JSON.stringify(err));
+      console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkDataSyncEnabled err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkDataSyncEnabled('ZhangSan').then((isEnabled: boolean) => {
+      console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -789,6 +1311,10 @@ setCredential(name: string, credentialType: string, credential: string,callback:
 设置指定应用账号的凭据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -801,6 +1327,8 @@ setCredential(name: string, credentialType: string, credential: string,callback:
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -810,19 +1338,43 @@ setCredential(name: string, credentialType: string, credential: string,callback:
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx', (err: BusinessError) => {
       if (err) {
-        console.error('setCredential failed, error: ' + JSON.stringify(err));
+        console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setCredential successfully');
+        console.info('setCredential successfully');
       }
     });
-  } catch (err) {
-    console.error('setCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setCredential successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -833,6 +1385,10 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 设置指定应用账号的凭据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -850,6 +1406,8 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -859,17 +1417,40 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx').then(() => {
-      console.log('setCredential successfully');
+      console.info('setCredential successfully');
     }).catch((err: BusinessError) => {
-      console.error('setCredential failed, error: ' + JSON.stringify(err));
+      console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx').then(() => {
+      console.info('setCredential successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -881,6 +1462,10 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名            | 类型                          | 必填   | 说明             |
@@ -890,6 +1475,8 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
 | callback       | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -901,19 +1488,44 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
       appAccountManager.getCredential('ZhangSan', 'PIN_SIX', (err: BusinessError, result: string) => { 
         if (err) {
-          console.error('getCredential failed, error: ' + JSON.stringify(err));
+          console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('getCredential successfully, result: ' + result);
+          console.info('getCredential successfully, result: ' + result);
         }
       });
-  } catch (err) {
-      console.error('getCredential err: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getCredential err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCredential('ZhangSan', 'PIN_SIX',
+      (err: BusinessError | null, result: string | undefined) => {
+        if (err) {
+          console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getCredential successfully, result: ' + result);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getCredential err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -924,6 +1536,10 @@ getCredential(name: string, credentialType: string): Promise&lt;string&gt;
 获取指定应用账号的凭据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -940,6 +1556,8 @@ getCredential(name: string, credentialType: string): Promise&lt;string&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -950,17 +1568,40 @@ getCredential(name: string, credentialType: string): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getCredential('ZhangSan', 'PIN_SIX').then((credential: string) => {
-        console.log('getCredential successfully, credential: ' + credential);
+        console.info('getCredential successfully, credential: ' + credential);
     }).catch((err: BusinessError) => {
-        console.error('getCredential failed, error: ' + JSON.stringify(err));
+        console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCredential('ZhangSan', 'PIN_SIX').then((credential: string) => {
+      console.info('getCredential successfully, credential: ' + credential);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -971,6 +1612,10 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
 设置指定应用账号的自定义数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -983,6 +1628,8 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -993,19 +1640,43 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCustomData('ZhangSan', 'age', '12', (err: BusinessError) => {
       if (err) {
-        console.error('setCustomData failed, error: ' + JSON.stringify(err));
+        console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setCustomData successfully');
+        console.info('setCustomData successfully');
       }
     });
-  } catch (err) {
-    console.error('setCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCustomData('ZhangSan', 'age', '12', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setCustomData successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1016,6 +1687,10 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
 设置指定应用账号的自定义数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1033,6 +1708,8 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1043,17 +1720,40 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCustomData('ZhangSan', 'age', '12').then(() => {
-      console.log('setCustomData successfully');
+      console.info('setCustomData successfully');
     }).catch((err: BusinessError) => {
-      console.error('setCustomData failed, error: ' + JSON.stringify(err));
+      console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCustomData('ZhangSan', 'age', '12').then(() => {
+      console.info('setCustomData successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1065,6 +1765,10 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                        | 必填  | 说明                     |
@@ -1074,6 +1778,8 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为自定义数据的取值；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -1085,19 +1791,43 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getCustomData('ZhangSan', 'age', (err: BusinessError, data: string) => {
       if (err) {
         console.error('getCustomData failed, error: ' + err);
       } else {
-        console.log('getCustomData successfully, data: ' + data);
+        console.info('getCustomData successfully, data: ' + data);
       }
     });
-  } catch (err) {
-    console.error('getCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCustomData('ZhangSan', 'age', (err: BusinessError | null, data: string | undefined) => {
+      if (err) {
+        console.error('getCustomData failed, error: ' + err);
+      } else {
+        console.info('getCustomData successfully, data: ' + data);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1108,6 +1838,10 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 根据指定键名获取特定应用账号的自定义数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1124,6 +1858,8 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1134,27 +1870,54 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getCustomData('ZhangSan', 'age').then((data: string) => {
-      console.log('getCustomData successfully, data: ' + data);
+      console.info('getCustomData successfully, data: ' + data);
     }).catch((err: BusinessError) => {
-      console.error('getCustomData failed, error: ' + JSON.stringify(err));
+      console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getCustomData exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCustomData('ZhangSan', 'age').then((data: string) => {
+      console.info('getCustomData successfully, data: ' + data);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
 ### getCustomDataSync<sup>9+</sup>
 
-getCustomDataSync(name: string, key: string): string;
+getCustomDataSync(name: string, key: string): string
 
 根据指定键名获取特定应用账号的自定义数据。使用同步方式返回结果。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1171,6 +1934,8 @@ getCustomDataSync(name: string, key: string): string;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1184,9 +1949,10 @@ getCustomDataSync(name: string, key: string): string;
   ```ts
   try {
       let value = appAccountManager.getCustomDataSync('ZhangSan', 'age');
-      console.info('getCustomDataSync successfully, vaue: ' + value);
-  } catch (err) {
-    console.error('getCustomDataSync failed, error: ' + JSON.stringify(err));
+      console.info('getCustomDataSync successfully, value: ' + value);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCustomDataSync failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1198,6 +1964,10 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -1206,6 +1976,8 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1213,19 +1985,44 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAccounts((err: BusinessError, data: appAccount.AppAccountInfo[]) => {
       if (err) {
-        console.error('getAllAccounts failed, error: ' + JSON.stringify(err));
+        console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.debug('getAllAccounts successfully');
+        console.info('getAllAccounts successfully');
       }
     });
-  } catch (err) {
-      console.error('getAllAccounts exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAllAccounts((err: BusinessError | null,
+      data: appAccount.AppAccountInfo[] | undefined) => {
+      if (err) {
+        console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getAllAccounts successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1237,6 +2034,10 @@ getAllAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                       | 说明                    |
@@ -1245,23 +2046,48 @@ getAllAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 12300001 | System service exception. |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
-      console.debug('getAllAccounts successfully');
+      console.info('getAllAccounts successfully');
     }).catch((err: BusinessError) => {
-      console.error('getAllAccounts failed, error: ' + JSON.stringify(err));
+      console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAllAccounts exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
+      console.info('getAllAccounts successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1273,6 +2099,10 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -1282,6 +2112,8 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1290,20 +2122,45 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAccountsByOwner('com.example.accountjsdemo2',
       (err: BusinessError, data: appAccount.AppAccountInfo[]) => {
         if (err) {
-          console.error('getAccountsByOwner failed, error:' + JSON.stringify(err));
+          console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.debug('getAccountsByOwner successfully, data:' + JSON.stringify(data));
+          console.info('getAccountsByOwner successfully, data:' + JSON.stringify(data));
         }
       });
-  } catch (err) {
-    console.error('getAccountsByOwner exception:' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception:code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAccountsByOwner('com.example.accountjsdemo2',
+      (err: BusinessError | null, data: appAccount.AppAccountInfo[] | undefined) => {
+        if (err) {
+          console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAccountsByOwner successfully, data:' + JSON.stringify(data));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception:code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1314,6 +2171,10 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 根据应用账号所有者获取调用方可访问的应用账号列表。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1329,6 +2190,8 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1337,18 +2200,42 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAccountsByOwner('com.example.accountjsdemo2').then((
       data: appAccount.AppAccountInfo[]) => {
-      console.debug('getAccountsByOwner successfully, data: ' + JSON.stringify(data));
+      console.info('getAccountsByOwner successfully, data: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('getAccountsByOwner failed, error: ' + JSON.stringify(err));
+      console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAccountsByOwner exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAccountsByOwner('com.example.accountjsdemo2').then((
+      data: appAccount.AppAccountInfo[]) => {
+      console.info('getAccountsByOwner successfully, data: ' + JSON.stringify(data));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1358,7 +2245,13 @@ on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Arr
 
 订阅指定应用的账号信息变更事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS接口是[onAccountChange](#onaccountchange22)。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1370,6 +2263,8 @@ on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Arr
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1379,15 +2274,66 @@ on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Arr
 **示例：**
 
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.log('receive change data:' + JSON.stringify(data));
+    console.info('receive change data:' + JSON.stringify(data));
   }
   try{
-  	appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
+    appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
   } catch(err) {
-  	console.error('on accountChange failed, error:' + JSON.stringify(err));
+    console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+
+### onAccountChange<sup>22+</sup>
+
+onAccountChange(owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
+
+
+订阅指定应用的账号信息变更事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn对应的接口是[on('accountChange')](#onaccountchange9)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                             |
+| -------- | ---------------------------------------- | ---- | ------------------------------ |
+| owners   | Array&lt;string&gt;                      | 是    | 应用账号所有者的包名列表。                      |
+| callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 需要注册的回调函数，返回信息为发生变更的应用账号列表。           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------- |
+| 12300001 | System service exception. |
+| 12300002 | Invalid type or owners. |
+
+**示例：**
+
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.onAccountChange(['com.example.actsaccounttest'],
+      (data: appAccount.AppAccountInfo[]) => {
+        console.info('receive change data:' + JSON.stringify(data));
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 
 ### off('accountChange')<sup>9+</sup>
 
@@ -1395,7 +2341,13 @@ off(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt
 
 取消订阅账号信息变更事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAccountChange](#offaccountchange22)。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1406,6 +2358,8 @@ off(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1415,21 +2369,79 @@ off(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt
 **示例：**
 
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.log('receive change data:' + JSON.stringify(data));
+    console.info('receive change data:' + JSON.stringify(data));
   }
   try{
-  	appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
+    appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
   } catch(err) {
-  	console.error('on accountChange failed, error:' + JSON.stringify(err));
+    console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   try{
-  	appAccountManager.off('accountChange', changeOnCallback);
+    appAccountManager.off('accountChange', changeOnCallback);
   }
   catch(err){
-  	console.error('off accountChange failed, error:' + JSON.stringify(err));
+    console.error(`off accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### offAccountChange<sup>22+</sup>
+
+
+offAccountChange(callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
+
+取消订阅账号信息变更事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn对应的接口是[off('accountChange')](#offaccountchange9)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名      | 类型                               | 必填   | 说明           |
+| -------- | -------------------------------- | ---- | ------------ |
+| callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 否    | 需要注销的回调函数，默认为空，表示取消该类型事件所有的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
+| 错误码ID | 错误信息|
+| ------- | -------|
+| 12300001 | System service exception. |
+
+
+**示例：**
+
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.onAccountChange(['com.example.actsaccounttest'],
+      (data: appAccount.AppAccountInfo[]) => {
+        console.info('receive change data:' + JSON.stringify(data));
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`onAccountChange failed, code is ${err.code}, message is ${err.message}`);
+  }
+
+  try {
+    appAccountManager.offAccountChange((data: appAccount.AppAccountInfo[]) => {
+      console.info('receive change data:' + JSON.stringify(data));
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`offAccountChange failed, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 
 ### auth<sup>9+</sup>
 
@@ -1438,6 +2450,10 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1449,6 +2465,8 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 | callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -1462,7 +2480,9 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -1472,8 +2492,8 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, authResult?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('authResult: ' + JSON.stringify(authResult));
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -1484,9 +2504,9 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -1496,8 +2516,58 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('auth exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+    build() {}
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+    onResultCallback(code: int, authResult?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e:Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      try {
+        appAccountManager.auth('LiSi', 'com.example.accountjsdemo', 'getSocialData', {
+          onResult: this.onResultCallback,
+          onRequestRedirected: this.onRequestRedirectedCallback
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
@@ -1506,11 +2576,17 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 ### auth<sup>9+</sup>
 
-auth(name: string, owner: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
+ArkTS-Dyn: auth(name: string, owner: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
+
+ArkTS-Sta: auth(name: string, owner: string, authType: string, options: Record<string, RecordData>, callback: AuthCallback): void
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1519,10 +2595,12 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
 | name     | string                | 是    | 应用账号的名称。     |
 | owner    | string                | 是    | 应用账号所有者的包名。  |
 | authType | string                | 是    | 鉴权类型。           |
-| options  | Record<string, Object>  | 是    | 鉴权所需的可选项。       |
+| options  | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;  | 是    | 鉴权所需的可选项。       |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -1536,7 +2614,9 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -1546,8 +2626,8 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, authResult?: appAccount.AuthResult): void {
-      console.log('resultCode: ' + code);
-      console.log('authResult: ' + JSON.stringify(authResult));
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -1558,9 +2638,9 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -1573,12 +2653,68 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
           onResult: this.onResultCallback,
           onRequestRedirected: this.onRequestRedirectedCallback
         });
-      } catch (err) {
-        console.error('auth exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
       }
     }
     build() {}
   }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+  import { RecordData } from '@ohos.base';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+    onResultCallback(code: int, authResult?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e:Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      let options: Record<string, RecordData> = {
+        'password': 'xxxx',
+      };
+      const authCallback: appAccount.AuthCallback = {
+        onResult: this.onResultCallback,
+        onRequestRedirected: this.onRequestRedirectedCallback
+      };
+      try {
+        appAccountManager.auth('LiSi', 'com.example.accountjsdemo', 'getSocialData', options, authCallback);
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+    build() {}
+  }
+
   ```
 
 ### getAuthToken<sup>9+</sup>
@@ -1588,6 +2724,10 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 获取指定应用账号的特定鉴权类型的授权令牌。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1600,6 +2740,8 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1610,20 +2752,45 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
       (err: BusinessError, token: string) => {
         if (err) {
-          console.error('getAuthToken failed, error: ' + JSON.stringify(err));
+          console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('getAuthToken successfully, token: ' + token);
+          console.info('getAuthToken successfully, token: ' + token);
         }
       });
-  } catch (err) {
-      console.error('getAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
+      (err: BusinessError | null, token: string | undefined) => {
+        if (err) {
+          console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAuthToken successfully, token: ' + token);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1634,6 +2801,10 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 获取指定应用账号的特定鉴权类型的授权令牌。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1651,6 +2822,8 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1661,17 +2834,40 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((token: string) => {
-      console.log('getAuthToken successfully, token: ' + token);
+      console.info('getAuthToken successfully, token: ' + token);
     }).catch((err: BusinessError) => {
-      console.error('getAuthToken failed, error: ' + JSON.stringify(err));
+      console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-      console.error('getAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((token: string) => {
+      console.info('getAuthToken successfully, token: ' + token);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1682,6 +2878,10 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 为指定应用账号设置特定鉴权类型的授权令牌。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1694,6 +2894,8 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1704,19 +2906,43 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError) => {
       if (err) {
-        console.error('setAuthToken failed, error: ' + JSON.stringify(err));
+        console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setAuthToken successfully');
+        console.info('setAuthToken successfully');
       }
     });
-  } catch (err) {
-    console.error('setAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setAuthToken successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1727,6 +2953,10 @@ setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 为指定应用账号设置特定鉴权类型的授权令牌。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1744,6 +2974,8 @@ setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1754,17 +2986,40 @@ setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
-        console.log('setAuthToken successfully');
+        console.info('setAuthToken successfully');
     }).catch((err: BusinessError) => {
-        console.error('setAuthToken failed, error: ' + JSON.stringify(err));
+        console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
+      console.info('setAuthToken successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1775,6 +3030,10 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 删除指定应用账号的特定鉴权类型的授权令牌。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1788,6 +3047,8 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1798,20 +3059,45 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
       (err: BusinessError) => {
         if (err) {
-          console.error('deleteAuthToken failed, error: ' + JSON.stringify(err));
+          console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('deleteAuthToken successfully');
+          console.info('deleteAuthToken successfully');
         }
       });
-  } catch (err) {
-    console.error('deleteAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
+      (err: BusinessError | null) => {
+        if (err) {
+          console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('deleteAuthToken successfully');
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1822,6 +3108,10 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 删除指定应用账号的特定鉴权类型的授权令牌。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1840,6 +3130,8 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1850,17 +3142,40 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
-      console.log('deleteAuthToken successfully');
+      console.info('deleteAuthToken successfully');
     }).catch((err: BusinessError) => {
-      console.error('deleteAuthToken failed, error: ' + JSON.stringify(err));
+      console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('deleteAuthToken exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
+      console.info('deleteAuthToken successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1871,6 +3186,10 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 设置指定账号的特定鉴权类型的授权令牌对指定应用的可见性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1884,6 +3203,8 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1895,20 +3216,45 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
       (err: BusinessError) => {
         if (err) {
-          console.error('setAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+          console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('setAuthTokenVisibility successfully');
+          console.info('setAuthTokenVisibility successfully');
         }
       });
-  } catch (err) {
-      console.error('setAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
+      (err: BusinessError | null) => {
+        if (err) {
+          console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('setAuthTokenVisibility successfully');
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1919,6 +3265,10 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 设置指定账号的特定鉴权类型的授权令牌对指定应用的可见性。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1937,6 +3287,8 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1948,17 +3300,42 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
-      console.log('setAuthTokenVisibility successfully');
+      console.info('setAuthTokenVisibility successfully');
     }).catch((err: BusinessError) => {
-      console.error('setAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+      console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('setAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true)
+      .then(() => {
+        console.info('setAuthTokenVisibility successfully');
+      })
+      .catch((e: Error) => {
+        const err = e as BusinessError;
+        console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1969,6 +3346,10 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 检查指定应用账号的特定鉴权类型的授权令牌对指定应用的可见性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1981,6 +3362,8 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1991,20 +3374,45 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
       (err: BusinessError, isVisible: boolean) => {
         if (err) {
-          console.error('checkAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+          console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+          console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
         }
       });
-  } catch (err) {
-    console.error('checkAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
+      (err: BusinessError | null, isVisible: boolean | undefined) => {
+        if (err) {
+          console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2015,6 +3423,10 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 检查指定应用账号的特定鉴权类型的授权令牌对指定应用的可见性。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2032,6 +3444,8 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2042,18 +3456,42 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
       isVisible: boolean) => {
-      console.log('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+      console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
     }).catch((err: BusinessError) => {
-      console.error('checkAuthTokenVisibility failed, error: ' + JSON.stringify(err));
+      console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkAuthTokenVisibility exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
+      isVisible: boolean) => {
+      console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2065,6 +3503,10 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明          |
@@ -2075,6 +3517,8 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2084,20 +3528,44 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
 
 **示例：** 
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo',
       (err: BusinessError, tokenArr: appAccount.AuthTokenInfo[]) => {
         if (err) {
-          console.error('getAllAuthTokens failed, error: ' + JSON.stringify(err));
+          console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('getAllAuthTokens successfully, tokenArr: ' + tokenArr);
+          console.info('getAllAuthTokens successfully, tokenArr: ' + tokenArr);
         }
       });
-  } catch (err) {
-    console.error('getAllAuthTokens exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  try {
+    appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo',
+      (err: BusinessError | null, tokenArr: appAccount.AuthTokenInfo[] | undefined) => {
+        if (err) {
+          console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAllAuthTokens successfully, tokenArr: ' + tokenArr);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2108,6 +3576,10 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 获取指定账号对调用方可见的所有授权令牌。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2124,6 +3596,8 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2133,18 +3607,42 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo').then((
       tokenArr: appAccount.AuthTokenInfo[]) => {
-      console.log('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
+      console.info('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
     }).catch((err: BusinessError) => {
-      console.error('getAllAuthTokens failed, error: ' + JSON.stringify(err));
+      console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAllAuthTokens exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo').then((
+      tokenArr: appAccount.AuthTokenInfo[]) => {
+      console.info('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2156,6 +3654,10 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                      |
@@ -2165,6 +3667,8 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -2176,19 +3680,44 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthList('LiSi', 'getSocialData', (err: BusinessError, authList: string[]) => {
       if (err) {
-        console.error('getAuthList failed, error: ' + JSON.stringify(err));
+        console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAuthList successfully, authList: ' + authList);
+        console.info('getAuthList successfully, authList: ' + authList);
       }
     });
-  } catch (err) {
-    console.error('getAuthList exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthList('LiSi', 'getSocialData',
+      (err: BusinessError | null, authList: string[] | undefined) => {
+        if (err) {
+          console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAuthList successfully, authList: ' + authList);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2199,6 +3728,10 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility9)来设置）。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2215,6 +3748,8 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2225,17 +3760,40 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthList('LiSi', 'getSocialData').then((authList: string[]) => {
-        console.log('getAuthList successfully, authList: ' + authList);
+        console.info('getAuthList successfully, authList: ' + authList);
     }).catch((err: BusinessError) => {
-        console.error('getAuthList failed, error: ' + JSON.stringify(err));
+        console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getAuthList exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthList('LiSi', 'getSocialData').then((authList: string[]) => {
+      console.info('getAuthList successfully, authList: ' + authList);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2247,6 +3805,10 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -2255,6 +3817,8 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 | callback  | AsyncCallback&lt;[AuthCallback](#authcallback9)&gt; | 是    | 回调函数。当获取成功时，err为null，data为鉴权会话的认证器回调对象；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2265,17 +3829,20 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
       let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
       try {
         appAccountManager.getAuthCallback(sessionId, (err: BusinessError, callback: appAccount.AuthCallback) => {
           if (err != null) {
-              console.error('getAuthCallback err: ' + JSON.stringify(err));
+              console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
               return;
           }
           let result: appAccount.AuthResult = {
@@ -2290,12 +3857,51 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
           }; 
           callback.onResult(0, result);
         });
-      } catch (err) {
-          console.error('getAuthCallback exception: ' + JSON.stringify(err));
+      } catch (e) {
+          const err = e as BusinessError;
+          console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
       }
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+    
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
+      let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+      try {
+        appAccountManager.getAuthCallback(sessionId, (err: BusinessError | null, callback: appAccount.AuthCallback | undefined) => {
+          if (err != null) {
+            console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          let result: appAccount.AuthResult = {
+            account: {
+              name: 'Lisi',
+              owner: 'com.example.accountjsdemo',
+            },
+            tokenInfo: {
+              token: 'xxxxxx',
+              authType: 'getSocialData'
+            }
+          };
+          if (callback) {
+            callback.onResult(0, result);
+          }
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+  }
+```
+
 
 ### getAuthCallback<sup>9+</sup>
 
@@ -2304,6 +3910,10 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 获取鉴权会话的认证器回调对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2319,6 +3929,8 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2328,10 +3940,13 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
       let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
@@ -2349,14 +3964,51 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
         };
         callback.onResult(0, result);
         }).catch((err: BusinessError) => {
-          console.error('getAuthCallback err: ' + JSON.stringify(err));
+          console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
         });
-      } catch (err) {
-        console.error('getAuthCallback exception: ' + JSON.stringify(err));
+      } catch (e) {
+        const err = e as BusinessError;
+        console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
       }
     }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
+      let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+      try {
+        appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
+          let result: appAccount.AuthResult = {
+            account: {
+              name: 'Lisi',
+              owner: 'com.example.accountjsdemo',
+            },
+            tokenInfo: {
+              token: 'xxxxxx',
+              authType: 'getSocialData'
+            }
+          };
+          callback.onResult(0, result);
+        }).catch((e: Error) => {
+          const err = e as BusinessError;
+          console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+  }
+  ```
+
 
 ### queryAuthenticatorInfo<sup>9+</sup>
 
@@ -2365,6 +4017,10 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
 获取指定应用的认证器信息。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2375,6 +4031,8 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2384,20 +4042,45 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo',
       (err: BusinessError, info: appAccount.AuthenticatorInfo) => {
         if (err) {
-          console.error('queryAuthenticatorInfo failed, error: ' + JSON.stringify(err));
+          console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+          console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
         }
       });
-  } catch (err) {
-    console.error('queryAuthenticatorInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo',
+      (err: BusinessError | null, info: appAccount.AuthenticatorInfo | undefined) => {
+        if (err) {
+          console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2408,6 +4091,10 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 获取指定应用的认证器信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2423,6 +4110,8 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2432,18 +4121,42 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo').then((
       info: appAccount.AuthenticatorInfo) => { 
-      console.log('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+      console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
     }).catch((err: BusinessError) => {
-      console.error('queryAuthenticatorInfo failed, error: ' + JSON.stringify(err));
+      console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('queryAuthenticatorInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo').then((
+      info: appAccount.AuthenticatorInfo) => {
+      console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2455,6 +4168,10 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名         | 类型                       | 必填  | 说明             |
@@ -2465,6 +4182,8 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
 | callback       | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当检查成功时，err为null，data为true表示满足特定的标签集合，data为false表示不满足；否则为错误对象。  |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2478,21 +4197,47 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels,
       (err: BusinessError, hasAllLabels: boolean) => {
         if (err) {
-          console.error('checkAccountLabels failed, error: ' + JSON.stringify(err));
+          console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('checkAccountLabels successfully, hasAllLabels: ' + hasAllLabels);
+          console.info('checkAccountLabels successfully, hasAllLabels: ' + hasAllLabels);
         }
       });
-  } catch (err) {
-    console.error('checkAccountLabels exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels,
+      (err: BusinessError | null, hasAllLabels: boolean | undefined) => {
+        if (err) {
+          console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkAccountLabels successfully, hasAllLabels: ' + hasAllLabels);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2503,6 +4248,10 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 检查指定应用账号是否满足特定的标签集合。使用Promise异步回调。该方法依赖目标应用的认证器提供标签检查的能力。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2520,6 +4269,8 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2532,19 +4283,44 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels).then((
       hasAllLabels: boolean) => {
-      console.log('checkAccountLabels successfully: ' + hasAllLabels);
+      console.info('checkAccountLabels successfully: ' + hasAllLabels);
     }).catch((err: BusinessError) => {
-      console.error('checkAccountLabels failed, error: ' + JSON.stringify(err));
+      console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkAccountLabels exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels).then((
+      hasAllLabels: boolean) => {
+      console.info('checkAccountLabels successfully: ' + hasAllLabels);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2556,6 +4332,10 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名         | 类型                       | 必填  | 说明            |
@@ -2565,6 +4345,8 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
 | callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2576,19 +4358,43 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteCredential('zhangsan', 'PIN_SIX', (err: BusinessError) => {
       if (err) {
-        console.error('deleteCredential failed, error: ' + JSON.stringify(err));
+        console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('deleteCredential successfully');
+        console.info('deleteCredential successfully');
       }
     });
-  } catch (err) {
-    console.error('deleteCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteCredential('zhangsan', 'PIN_SIX', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('deleteCredential successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2599,6 +4405,10 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 删除指定应用账号的特定类型的凭据信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2615,6 +4425,8 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2625,17 +4437,40 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteCredential('zhangsan', 'PIN_SIX').then(() => {
-      console.log('deleteCredential successfully');
+      console.info('deleteCredential successfully');
     }).catch((err: BusinessError) => {
-      console.error('deleteCredential failed, error: ' + JSON.stringify(err));
+      console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('deleteCredential exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteCredential('zhangsan', 'PIN_SIX').then(() => {
+      console.info('deleteCredential successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2647,6 +4482,10 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名         | 类型                                 | 必填  | 说明             |
@@ -2655,6 +4494,8 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
 | callback       | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 回调函数。当根据选项选择请求方可访问的账号列表时，err为null，data为可访问的账号信息对象；否则为错误对象。  |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2666,9 +4507,12 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.SelectAccountsOptions = {
     allowedOwners: [ 'com.example.accountjsdemo' ],
     requiredLabels: [ 'student' ]
@@ -2677,13 +4521,39 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
     appAccountManager.selectAccountsByOptions(options,
       (err: BusinessError, accountArr: appAccount.AppAccountInfo[]) => {
         if (err) {
-          console.error('selectAccountsByOptions failed, error: ' + JSON.stringify(err));
+          console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+          console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
         }
       });
-  } catch (err) {
-    console.error('selectAccountsByOptions exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let options: appAccount.SelectAccountsOptions = {
+    allowedOwners: ['com.example.accountjsdemo'],
+    requiredLabels: ['student']
+  };
+  try {
+    appAccountManager.selectAccountsByOptions(options,
+      (err: BusinessError | null, accountArr: appAccount.AppAccountInfo[] | undefined) => {
+        if (err) {
+          console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2695,6 +4565,10 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名         | 类型                       | 必填  | 说明             |
@@ -2705,9 +4579,11 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
 
 | 类型                | 说明                              |
 | ------------------- | -------------------------------- |
-| Promise&lt;[AppAccountInfo](#appaccountinfo)&gt; | Promise对象，返回调用方可访问的账号列表。 |
+| Promise&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Promise对象，返回调用方可访问的账号列表。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2719,20 +4595,46 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.SelectAccountsOptions = {
     allowedOwners: ['com.example.accountjsdemo']
   };
   try {
     appAccountManager.selectAccountsByOptions(options).then((accountArr: appAccount.AppAccountInfo[]) => {
-      console.log('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+      console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
     }).catch((err: BusinessError) => {
-      console.error('selectAccountsByOptions failed, error: ' + JSON.stringify(err));
+      console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('selectAccountsByOptions exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let options: appAccount.SelectAccountsOptions = {
+    allowedOwners: ['com.example.accountjsdemo']
+  };
+  try {
+    appAccountManager.selectAccountsByOptions(options).then((accountArr: appAccount.AppAccountInfo[]) => {
+      console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2744,6 +4646,10 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                  | 必填  | 说明                     |
@@ -2753,6 +4659,8 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 | callback | [AuthCallback](#authcallback9) | 是    | 回调函数，返回验证结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -2766,21 +4674,48 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
       appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', {
           onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-              console.log('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
-              console.log('verifyCredential onResult, result: ' + JSON.stringify(result));
+              console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+              console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
           },
           onRequestRedirected: (request: Want) => {
-              console.log('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+              console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
           }
       });
-  } catch (err) {
-      console.error('verifyCredential err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+  try {
+    appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2792,6 +4727,10 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                    | 必填  | 说明                     |
@@ -2802,6 +4741,8 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 | callback | [AuthCallback](#authcallback9)   | 是    | 回调函数，返回验证结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -2815,9 +4756,12 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.VerifyCredentialOptions = {
     credentialType: 'pin',
     credential: '123456'
@@ -2825,15 +4769,44 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
   try {
     appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', options, {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-        console.log('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
-        console.log('verifyCredential onResult, result: ' + JSON.stringify(result));
+        console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+        console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
       },
       onRequestRedirected: (request: Want) => {
-        console.log('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+        console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
       }
     });
-  } catch (err) {
-    console.error('verifyCredential err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let options: appAccount.VerifyCredentialOptions = {
+    credentialType: 'pin',
+    credential: '123456'
+  };
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+
+  try {
+    appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', options, authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2845,6 +4818,10 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                  | 必填  | 说明                     |
@@ -2853,6 +4830,8 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 | callback | [AuthCallback](#authcallback9) | 是    | 回调函数，返回设置属性的结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2865,21 +4844,48 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-        console.log('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
-        console.log('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+        console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+        console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
       },
       onRequestRedirected: (request: Want) => {
-        console.log('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+        console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
       }
     });
-  } catch (err) {
-    console.error('setAuthenticatorProperties err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+  try {
+    appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2891,6 +4897,10 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                  | 必填  | 说明                     |
@@ -2900,6 +4910,8 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调，返回设置属性的结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2912,25 +4924,57 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.SetPropertiesOptions = {
     properties: {prop1: 'value1'}
   };
   try {
     appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', options, {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
-        console.log('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
-        console.log('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+        console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+        console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
       },
       onRequestRedirected: (request: Want) => {
-        console.log('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+        console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
       }
     });
-  } catch (err) {
-    console.error('setAuthenticatorProperties err: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
   } 
+
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+  import { RecordData } from '@ohos.base';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let properties: Record<string, RecordData> = { 'prop1': 'value1' }
+  let options: appAccount.SetPropertiesOptions = { properties };
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+
+  try {
+    appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', options, authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
+  }
 
   ```
 
@@ -2945,7 +4989,11 @@ addAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 >从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9)替代。
 
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2960,7 +5008,7 @@ addAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.addAccount('WangWu', (err: BusinessError) => { 
-      console.error('addAccount err: ' + JSON.stringify(err));
+      console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2970,10 +5018,15 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 
 根据账号名和额外信息添加应用账号。使用callback异步回调。
 
-> **说明：** 
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2989,7 +5042,7 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => { 
-    console.error('addAccount err: ' + JSON.stringify(err));
+    console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3002,7 +5055,11 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 > **说明：**  
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9-2)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3023,9 +5080,9 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.addAccount('LiSi', 'token101').then(()=> { 
-    console.log('addAccount Success');
+    console.info('addAccount Success');
   }).catch((err: BusinessError) => {
-    console.error('addAccount err: ' + JSON.stringify(err));
+    console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3035,11 +5092,15 @@ addAccountImplicitly(owner: string, authType: string, options: {[key: string]: a
 
 根据指定的账号所有者隐式地添加应用账号。使用callback异步回调。
 
-> **说明：**  
+> **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -3062,8 +5123,8 @@ addAccountImplicitly(owner: string, authType: string, options: {[key: string]: a
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result: Record<string, Object>): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -3074,9 +5135,9 @@ addAccountImplicitly(owner: string, authType: string, options: {[key: string]: a
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -3100,7 +5161,11 @@ deleteAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[removeAccount](#removeaccount9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3115,7 +5180,7 @@ deleteAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => { 
-      console.error('deleteAccount err: ' + JSON.stringify(err));
+      console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
    });
   ```
 
@@ -3129,7 +5194,11 @@ deleteAccount(name: string): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[removeAccount](#removeaccount9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3149,9 +5218,9 @@ deleteAccount(name: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   appAccountManager.deleteAccount('ZhaoLiu').then(() => { 
-        console.log('deleteAccount Success');
+        console.info('deleteAccount Success');
    }).catch((err: BusinessError) => {
-      console.error('deleteAccount err: ' + JSON.stringify(err));
+      console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 ### disableAppAccess<sup>(deprecated)</sup>
@@ -3164,7 +5233,11 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;vo
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3180,7 +5253,7 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;vo
   import { BusinessError } from '@kit.BasicServicesKit';
 
   appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => { 
-      console.error('disableAppAccess err: ' + JSON.stringify(err));
+      console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3194,7 +5267,11 @@ disableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3215,9 +5292,9 @@ disableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-      console.log('disableAppAccess Success');
+      console.info('disableAppAccess Success');
   }).catch((err: BusinessError) => {
-      console.error('disableAppAccess err: ' + JSON.stringify(err));
+      console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3231,7 +5308,11 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;voi
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3248,9 +5329,9 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;voi
   
   appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => {
       if (err) {
-        console.error('enableAppAccess err: ' + JSON.stringify(err));
+        console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('enableAppAccess successful.');
+        console.info('enableAppAccess successful.');
       }
    });
   ```
@@ -3265,7 +5346,11 @@ enableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3286,9 +5371,9 @@ enableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-       console.log('enableAppAccess Success');
+       console.info('enableAppAccess Success');
   }).catch((err: BusinessError) => {
-      console.error('enableAppAccess err: ' + JSON.stringify(err));
+      console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3302,9 +5387,13 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback&lt;boolean&gt;):
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[checkDataSyncEnabled](#checkdatasyncenabled9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3320,9 +5409,9 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback&lt;boolean&gt;):
   
   appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, result: boolean) => { 
     if (err) {
-      console.error('checkAppAccountSyncEnable code: ' + JSON.stringify(err));
+      console.error(`checkAppAccountSyncEnable code: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('checkAppAccountSyncEnable result: ' + result);
+      console.info('checkAppAccountSyncEnable result: ' + result);
     }
   });
   ```
@@ -3337,9 +5426,13 @@ checkAppAccountSyncEnable(name: string): Promise&lt;boolean&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[checkDataSyncEnabled](#checkdatasyncenabled9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3359,9 +5452,9 @@ checkAppAccountSyncEnable(name: string): Promise&lt;boolean&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => { 
-      console.log('checkAppAccountSyncEnable, result: ' + data);
+      console.info('checkAppAccountSyncEnable, result: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('checkAppAccountSyncEnable err: ' + JSON.stringify(err));
+      console.error(`checkAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3375,7 +5468,11 @@ setAccountCredential(name: string, credentialType: string, credential: string,ca
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCredential](#setcredential9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3393,9 +5490,9 @@ setAccountCredential(name: string, credentialType: string, credential: string,ca
   
   appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001', (err: BusinessError) => { 
     if (err) {
-      console.error('setAccountCredential err: ' + JSON.stringify(err));
+      console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAccountCredential successful.');
+      console.info('setAccountCredential successful.');
     }
   });
   ```
@@ -3410,7 +5507,11 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCredential](#setcredential9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3432,9 +5533,9 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001').then(() => { 
-      console.log('setAccountCredential Success');
+      console.info('setAccountCredential Success');
   }).catch((err: BusinessError) => {
-      console.error('setAccountCredential err: ' + JSON.stringify(err));
+      console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3448,8 +5549,11 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3466,9 +5570,9 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
   
   appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) => { 
     if (err) {
-      console.error('setAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAccountExtraInfo successful.');
+      console.info('setAccountExtraInfo successful.');
     }
   });
   ```
@@ -3483,8 +5587,11 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3505,9 +5612,9 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => { 
-      console.log('setAccountExtraInfo Success');
+      console.info('setAccountExtraInfo Success');
   }).catch((err: BusinessError) => {
-      console.error('setAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3521,9 +5628,13 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setDataSyncEnabled](#setdatasyncenabled9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3540,9 +5651,9 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
   
   appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError) => {
     if (err) {
-      console.error('setAppAccountSyncEnable err: ' + JSON.stringify(err));
+      console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAppAccountSyncEnable successful.');
+      console.info('setAppAccountSyncEnable successful.');
     }
   });
   ```
@@ -3557,9 +5668,13 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setDataSyncEnabled](#setdatasyncenabled9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3579,10 +5694,10 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
-  appAccountManager .setAppAccountSyncEnable('ZhangSan', true).then(() => { 
-      console.log('setAppAccountSyncEnable Success');
+  appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => { 
+      console.info('setAppAccountSyncEnable Success');
   }).catch((err: BusinessError) => {
-      console.error('setAppAccountSyncEnable err: ' + JSON.stringify(err));
+      console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3596,8 +5711,11 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3615,9 +5733,9 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
   
   appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessError) => {
     if (err) {
-      console.error('setAssociatedData err: ' + JSON.stringify(err));
+      console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setAssociatedData successful.');
+      console.info('setAssociatedData successful.');
     }
   });
   ```
@@ -3632,8 +5750,11 @@ setAssociatedData(name: string, key: string, value: string): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3655,9 +5776,9 @@ setAssociatedData(name: string, key: string, value: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => { 
-      console.log('setAssociatedData Success');
+      console.info('setAssociatedData Success');
   }).catch((err: BusinessError) => {
-      console.error('setAssociatedData err: ' + JSON.stringify(err));
+      console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3671,9 +5792,13 @@ getAllAccessibleAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](#getallaccounts9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3685,10 +5810,13 @@ getAllAccessibleAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount.AppAccountInfo[])=>{
-  	console.debug('getAllAccessibleAccounts err: ' + JSON.stringify(err));
-  	console.debug('getAllAccessibleAccounts data: ' + JSON.stringify(data));
+    if (err) {
+      console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('getAllAccessibleAccounts data: ' + JSON.stringify(data));
+    }
   });
   ```
 
@@ -3702,9 +5830,13 @@ getAllAccessibleAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](#getallaccounts9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -3716,11 +5848,11 @@ getAllAccessibleAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountInfo[]) => { 
-       console.log('getAllAccessibleAccounts: ' + data);
+    console.info('getAllAccessibleAccounts: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAllAccessibleAccounts err: ' + JSON.stringify(err));
+    console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3734,9 +5866,13 @@ getAllAccounts(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getAccountsByOwner](#getaccountsbyowner9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3749,11 +5885,14 @@ getAllAccounts(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const selfBundle = 'com.example.actsgetallaaccounts';
   appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccount.AppAccountInfo[])=>{
-  	console.debug('getAllAccounts err: ' + JSON.stringify(err));
-  	console.debug('getAllAccounts data:' + JSON.stringify(data));
+    if (err) {
+      console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('getAllAccounts data:' + JSON.stringify(data));
+    }
   });
   ```
 
@@ -3767,9 +5906,13 @@ getAllAccounts(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getAccountsByOwner](#getaccountsbyowner9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3790,9 +5933,9 @@ getAllAccounts(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
   
   const selfBundle = 'com.example.actsgetallaaccounts';
   appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountInfo[]) => { 
-       console.log('getAllAccounts: ' + data);
+       console.info('getAllAccounts: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAllAccounts err: ' + JSON.stringify(err));
+      console.error(`getAllAccounts err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3806,7 +5949,11 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getCredential](#getcredential9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3823,9 +5970,9 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
   
   appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: BusinessError, result: string) => { 
     if (err) {
-      console.error('getAccountCredential err: ' + JSON.stringify(err));
+      console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getAccountCredential result: ' + result);
+      console.info('getAccountCredential result: ' + result);
     }
   });
   ```
@@ -3840,7 +5987,11 @@ getAccountCredential(name: string, credentialType: string): Promise&lt;string&gt
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getCredential](#getcredential9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3861,9 +6012,9 @@ getAccountCredential(name: string, credentialType: string): Promise&lt;string&gt
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((data: string) => { 
-      console.log('getAccountCredential, result: ' + data);
+      console.info('getAccountCredential, result: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAccountCredential err: ' + JSON.stringify(err));
+      console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3877,7 +6028,11 @@ getAccountExtraInfo(name: string, callback: AsyncCallback&lt;string&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3893,9 +6048,9 @@ getAccountExtraInfo(name: string, callback: AsyncCallback&lt;string&gt;): void
   
   appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: string) => { 
     if (err) {
-      console.error('getAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getAccountExtraInfo result: ' + result);
+      console.info('getAccountExtraInfo result: ' + result);
     }
   });
   ```
@@ -3910,7 +6065,11 @@ getAccountExtraInfo(name: string): Promise&lt;string&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3930,9 +6089,9 @@ getAccountExtraInfo(name: string): Promise&lt;string&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => { 
-      console.log('getAccountExtraInfo, result: ' + data);
+      console.info('getAccountExtraInfo, result: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAccountExtraInfo err: ' + JSON.stringify(err));
+      console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3946,7 +6105,11 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3963,9 +6126,9 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
   
   appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, result: string) => { 
     if (err) {
-      console.error('getAssociatedData err: ' + JSON.stringify(err));
+      console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getAssociatedData result: ' + result);
+      console.info('getAssociatedData result: ' + result);
     }
   });
   ```
@@ -3980,7 +6143,11 @@ getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -4001,9 +6168,9 @@ getAssociatedData(name: string, key: string): Promise&lt;string&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => { 
-       console.log('getAssociatedData: ' + data);
+       console.info('getAssociatedData: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getAssociatedData err: ' + JSON.stringify(err));
+      console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4017,7 +6184,11 @@ on(type: 'change', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;A
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[on('accountChange')](#onaccountchange9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -4031,13 +6202,13 @@ on(type: 'change', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;A
 
   ```ts
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.debug('receive change data:' + JSON.stringify(data));
+    console.info('receive change data:' + JSON.stringify(data));
   }
   try{
-  	appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
+    appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
   }
   catch(err){
-  	console.error('on accountOnOffDemo err:' + JSON.stringify(err));
+    console.error(`on accountOnOffDemo code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4051,7 +6222,11 @@ off(type: 'change', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): voi
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[off('accountChange')](#offaccountchange9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -4063,17 +6238,23 @@ off(type: 'change', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): voi
 **示例：**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  	console.debug('receive change data: ' + JSON.stringify(data));
-  	appAccountManager.off('change', () => {
-  		console.debug('off finish');
-  	})
+    console.info('receive change data:' + JSON.stringify(data));
   }
-  try{
-  	appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
+
+  try {
+    appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
-  catch(err){
-  	console.error('on accountOnOffDemo err: ' + JSON.stringify(err));
+  try {
+    appAccountManager.off('accountChange', changeOnCallback);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`off accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -4087,7 +6268,11 @@ authenticate(name: string, owner: string, authType: string, options: {[key: stri
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[auth](#auth9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4111,8 +6296,8 @@ authenticate(name: string, owner: string, authType: string, options: {[key: stri
     context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
 
     onResultCallback(code: number, result: Record<string, Object>): void {
-      console.log('resultCode: ' + code);
-      console.log('result: ' + JSON.stringify(result));
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
     }
 
     onRequestRedirectedCallback(request: Want): void {
@@ -4123,9 +6308,9 @@ authenticate(name: string, owner: string, authType: string, options: {[key: stri
         entities: ['entity.system.default'],
       }
       this.context.startAbility(wantInfo).then(() => {
-        console.log('startAbility successfully');
+        console.info('startAbility successfully');
       }).catch((err: BusinessError) => {
-        console.error('startAbility err: ' + JSON.stringify(err));
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
       })
     }
 
@@ -4149,7 +6334,11 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthToken](#getauthtoken9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4168,9 +6357,9 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
   appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
     (err: BusinessError, data: string) => {
       if (err) {
-        console.error('getOAuthToken err: ' + JSON.stringify(err));
+        console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOAuthToken token: ' + data);
+        console.info('getOAuthToken token: ' + data);
       }
     });
   ```
@@ -4185,7 +6374,11 @@ getOAuthToken(name: string, owner: string, authType: string): Promise&lt;string&
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthToken](#getauthtoken9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4207,9 +6400,9 @@ getOAuthToken(name: string, owner: string, authType: string): Promise&lt;string&
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((data: string) => {
-       console.log('getOAuthToken token: ' + data);
+       console.info('getOAuthToken token: ' + data);
   }).catch((err: BusinessError) => {
-      console.error('getOAuthToken err: ' + JSON.stringify(err));
+      console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4223,7 +6416,11 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthToken](#setauthtoken9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4241,9 +6438,9 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
   
   appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError) => {
     if (err) {
-      console.error('setOAuthToken err: ' + JSON.stringify(err));
+      console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('setOAuthToken successful.');
+      console.info('setOAuthToken successful.');
     }
   });
   ```
@@ -4258,7 +6455,11 @@ setOAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthToken](#setauthtoken9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4280,9 +6481,9 @@ setOAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
-      console.log('setOAuthToken successfully');
+      console.info('setOAuthToken successfully');
   }).catch((err: BusinessError) => {
-      console.error('setOAuthToken err: ' + JSON.stringify(err));
+      console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4296,7 +6497,11 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[deleteAuthToken](#deleteauthtoken9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4316,9 +6521,9 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
   appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
     (err: BusinessError) => {
       if (err) {
-        console.error('deleteOAuthToken err: ' + JSON.stringify(err));
+        console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('deleteOAuthToken successful.');
+        console.info('deleteOAuthToken successful.');
       }
     });
   ```
@@ -4333,7 +6538,11 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[deleteAuthToken](#deleteauthtoken9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4356,9 +6565,9 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
-       console.log('deleteOAuthToken successfully');
+       console.info('deleteOAuthToken successfully');
   }).catch((err: BusinessError) => {
-      console.error('deleteOAuthToken err: ' + JSON.stringify(err));
+      console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4372,7 +6581,11 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthTokenVisibility](#setauthtokenvisibility9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4392,9 +6605,9 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
   appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
     (err: BusinessError) => {
       if (err) {
-        console.error('setOAuthTokenVisibility err: ' + JSON.stringify(err));
+        console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setOAuthTokenVisibility successful.');
+        console.info('setOAuthTokenVisibility successful.');
       }
     });
   ```
@@ -4409,7 +6622,11 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthTokenVisibility](#setauthtokenvisibility9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4432,9 +6649,9 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
-      console.log('setOAuthTokenVisibility successfully');
+      console.info('setOAuthTokenVisibility successfully');
   }).catch((err: BusinessError) => {
-      console.error('setOAuthTokenVisibility err: ' + JSON.stringify(err));
+      console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4448,7 +6665,11 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string, ca
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4467,9 +6688,9 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string, ca
   appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
     (err: BusinessError, data: boolean) => {
       if (err) {
-        console.error('checkOAuthTokenVisibility err: ' + JSON.stringify(err));
+        console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOAuthTokenVisibility isVisible: ' + data);
+        console.info('checkOAuthTokenVisibility isVisible: ' + data);
       }
     });
   ```
@@ -4484,7 +6705,11 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4507,9 +6732,9 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
   
   appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
     data: boolean) => {
-    console.log('checkOAuthTokenVisibility isVisible: ' + data);
+    console.info('checkOAuthTokenVisibility isVisible: ' + data);
   }).catch((err: BusinessError) => {
-    console.error('checkOAuthTokenVisibility err: ' + JSON.stringify(err));
+    console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4523,7 +6748,11 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAllAuthTokens](#getallauthtokens9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4541,9 +6770,9 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&
   appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
     (err: BusinessError, data: appAccount.OAuthTokenInfo[]) => {
       if (err) {
-        console.error('getAllOAuthTokens err: ' + JSON.stringify(err));
+        console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAllOAuthTokens data: ' + JSON.stringify(data));
+        console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
       }
     });
   ```
@@ -4558,7 +6787,11 @@ getAllOAuthTokens(name: string, owner: string): Promise&lt;Array&lt;OAuthTokenIn
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAllAuthTokens](#getallauthtokens9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4580,9 +6813,9 @@ getAllOAuthTokens(name: string, owner: string): Promise&lt;Array&lt;OAuthTokenIn
   
   appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
     data: appAccount.OAuthTokenInfo[]) => {
-    console.log('getAllOAuthTokens data: ' + JSON.stringify(data));
+    console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error('getAllOAuthTokens err: ' + JSON.stringify(err));
+    console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4590,13 +6823,17 @@ getAllOAuthTokens(name: string, owner: string): Promise&lt;Array&lt;OAuthTokenIn
 
 getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过setOAuthTokenVisibility(#setoauthtokenvisibilitydeprecated)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated)来设置）。使用callback异步回调。
 
 > **说明：** 
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthList](#getauthlist9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4613,9 +6850,9 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt
   
   appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, data: string[]) => {
     if (err) {
-      console.error('getOAuthList err: ' + JSON.stringify(err));
+      console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOAuthList data: ' + JSON.stringify(data));
+      console.info('getOAuthList data: ' + JSON.stringify(data));
     }
   });
   ```
@@ -4624,13 +6861,17 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt
 
 getOAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过setOAuthTokenVisibility(#setoauthtokenvisibilitydeprecated)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated-1)来设置）。使用Promise异步回调。
 
 > **说明：** 
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthList](#getauthlist9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4651,9 +6892,9 @@ getOAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   
   appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) => {
-       console.log('getOAuthList data: ' + JSON.stringify(data));
+       console.info('getOAuthList data: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-      console.error('getOAuthList err: ' + JSON.stringify(err));
+      console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4667,7 +6908,11 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthCallback](#getauthcallback9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4688,7 +6933,7 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
       appAccountManager.getAuthenticatorCallback(sessionId,
           (err: BusinessError, callback: appAccount.AuthenticatorCallback) => {
           if (err.code != appAccount.ResultCode.SUCCESS) {
-              console.error('getAuthenticatorCallback err: ' + JSON.stringify(err));
+              console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
               return;
           }
           callback.onResult(appAccount.ResultCode.SUCCESS, {
@@ -4712,7 +6957,11 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthCallback](#getauthcallback9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4744,7 +6993,7 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
           token: 'xxxxxx'}
         );
       }).catch((err: BusinessError) => {
-        console.error('getAuthenticatorCallback err: ' + JSON.stringify(err));
+        console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
       });
     }
   }
@@ -4760,7 +7009,11 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4777,9 +7030,9 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo
   appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
     (err: BusinessError, data: appAccount.AuthenticatorInfo) => {
       if (err) {
-        console.error('getAuthenticatorInfo err: ' + JSON.stringify(err));
+        console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getAuthenticatorInfo data: ' + JSON.stringify(data));
+        console.info('getAuthenticatorInfo data: ' + JSON.stringify(data));
       }
     });
   ```
@@ -4794,7 +7047,11 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4815,9 +7072,9 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
   
   appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
     data: appAccount.AuthenticatorInfo) => { 
-    console.log('getAuthenticatorInfo: ' + JSON.stringify(data));
+    console.info('getAuthenticatorInfo: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error('getAuthenticatorInfo err: ' + JSON.stringify(err));
+    console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -4825,24 +7082,32 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 表示应用账号信息。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称   | 类型     | 必填   | 说明          |
-| ----- | ------ | ---- | ----------- |
-| owner | string | 是    | 应用账号所有者的包名。 |
-| name  | string | 是    | 应用账号的名称。    |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称   | 类型     | 只读  | 可选   | 说明          |
+| ----- | ------ | ---- | ---- | ----------- |
+| owner | string | 否 | 否    | 应用账号所有者的包名。 |
+| name  | string | 否 | 否    | 应用账号的名称。    |
 
 ## AuthTokenInfo<sup>9+</sup>
 
 表示Auth令牌信息。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称               | 类型            | 必填  | 说明              |
-| -------------------- | -------------- | ----- | ---------------- |
-| authType<sup>9+</sup>             | string         | 是    | 令牌的鉴权类型。   |
-| token<sup>9+</sup>                | string         | 是    | 令牌的取值。       |
-| account<sup>9+</sup> | [AppAccountInfo](#appaccountinfo) | 否    | 令牌所属的账号信息，默认为空。|
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称               | 类型            | 只读  | 可选   | 说明              |
+| -------------------- | -------------- | -----| ----- | ---------------- |
+| authType            | string         | 否 | 否    | 令牌的鉴权类型。   |
+| token               | string         | 否 | 否    | 令牌的取值。       |
+| account | [AppAccountInfo](#appaccountinfo) | 否 | 是    | 令牌所属的账号信息，默认为空。|
 
 ## OAuthTokenInfo<sup>(deprecated)</sup>
 
@@ -4852,118 +7117,151 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthTokenInfo](#authtokeninfo9)替代。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-| 名称               | 类型            | 必填  | 说明              |
-| -------------------- | -------------- | ----- | ---------------- |
-| authType             | string         | 是    | 令牌的鉴权类型。   |
-| token                | string         | 是    | 令牌的取值。       |
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
+
+| 名称               | 类型            | 只读  | 可选   | 说明              |
+| -------------------- | -------------- | ----- | ----- | ---------------- |
+| authType             | string         | 否 | 否    | 令牌的鉴权类型。   |
+| token                | string         | 否 | 否    | 令牌的取值。       |
 
 ## AuthenticatorInfo<sup>8+</sup>
 
 表示OAuth认证器信息。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称     | 类型     | 必填   | 说明         |
-| ------- | ------ | ---- | ---------- |
-| owner   | string | 是    | 认证器的所有者的包名。 |
-| iconId  | number | 是    | 认证器的图标标识。  |
-| labelId | number | 是    | 认证器的标签标识。  |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称     | 类型     | 只读  | 可选   | 说明         |
+| ------- | ------ | ---- | ---- | ---------- |
+| owner   | string | 否 | 否    | 认证器的所有者的包名。 |
+| iconId  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否    | 认证器的图标标识。  |
+| labelId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否    | 认证器的标签标识。  |
 
 ## AuthResult<sup>9+</sup>
 
 表示认证结果信息。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称     | 类型     | 必填   | 说明         |
-| ------- | ------ | ---- | ---------- |
-| account   | [AppAccountInfo](#appaccountinfo) | 否    | 令牌所属的账号信息，默认为空。 |
-| tokenInfo  | [AuthTokenInfo](#authtokeninfo9) | 否    | 令牌信息，默认为空。  |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称     | 类型     | 只读  | 可选   | 说明         |
+| ------- | ------ | ---- | ---- | ---------- |
+| account   | [AppAccountInfo](#appaccountinfo) | 否 | 是    | 令牌所属的账号信息，默认为空。 |
+| tokenInfo  | [AuthTokenInfo](#authtokeninfo9) | 否 | 是    | 令牌信息，默认为空。  |
 
 ## CreateAccountOptions<sup>9+</sup>
 
 表示创建账号的选项。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称     | 类型     | 必填   | 说明         |
-| ------- | ------ | ---- | ---------- |
-| customData   | Record<string, string> | 否    | 自定义数据，默认为空。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称     | 类型     | 只读  | 可选   | 说明         |
+| ------- | ------ | ---- | ---- | ---------- |
+| customData   | Record<string, string> | 否 | 是    | 自定义数据，默认为空。 |
 
 ## CreateAccountImplicitlyOptions<sup>9+</sup>
 
 表示隐式创建账号的选项。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称     | 类型     | 必填   | 说明         |
-| ------- | ------ | ---- | ---------- |
-| requiredLabels   | Array&lt;string&gt; | 否    | 所需的标签，默认为空。 |
-| authType   | string | 否    | 鉴权类型，默认为空。 |
-| parameters   | Record<string, Object> | 否    | 自定义参数对象，默认为空。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称     | 类型     | 只读  | 可选   | 说明         |
+| ------- | ------ | ---- | ---- | ---------- |
+| requiredLabels   | Array&lt;string&gt; | 否 | 是    | 所需的标签，默认为空。 |
+| authType   | string | 否 | 是    | 鉴权类型，默认为空。 |
+| parameters   | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt; | 否 | 是    | 自定义参数对象，默认为空。 |
+
 ## SelectAccountsOptions<sup>9+</sup>
 
 表示用于选择账号的选项。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称          | 类型                         | 必填  | 说明                |
-| --------------- | --------------------------- | ----- | ------------------- |
-| allowedAccounts | Array&lt;[AppAccountInfo](#appaccountinfo)&gt; | 否    | 允许的账号数组，默认为空。     |
-| allowedOwners   | Array&lt;string&gt;         | 否    | 允许的账号所有者数组，默认为空。 |
-| requiredLabels  | Array&lt;string&gt;         | 否    | 认证器的标签标识，默认为空。  |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称          | 类型                         | 只读  | 可选   | 说明                |
+| --------------- | --------------------------- | ----- | ----- | ------------------- |
+| allowedAccounts | Array&lt;[AppAccountInfo](#appaccountinfo)&gt; | 否 | 是    | 允许的账号数组，默认为空。     |
+| allowedOwners   | Array&lt;string&gt;         | 否 | 是    | 允许的账号所有者数组，默认为空。 |
+| requiredLabels  | Array&lt;string&gt;         | 否 | 是    | 认证器的标签标识，默认为空。  |
 
 ## VerifyCredentialOptions<sup>9+</sup>
 
 表示用于验证凭据的选项。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称          | 类型                   | 必填  | 说明           |
-| -------------- | ---------------------- | ----- | -------------- |
-| credentialType | string                 | 否    | 凭据类型，默认为空。      |
-| credential     | string                 | 否    | 凭据取值，默认为空。      |
-| parameters     | Record<string, Object> | 否    | 自定义参数对象，默认为空。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称          | 类型                   | 只读  | 可选   | 说明           |
+| -------------- | ---------------------- | ----- | ----- | -------------- |
+| credentialType | string                 | 否 | 是    | 凭据类型，默认为空。      |
+| credential     | string                 | 否 | 是    | 凭据取值，默认为空。      |
+| parameters     | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;  | 否 | 是    | 自定义参数对象，默认为空。 |
 
 
 ## SetPropertiesOptions<sup>9+</sup>
 
 表示用于设置属性的选项。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
-| 名称     | 类型                    | 必填  | 说明           |
-| ---------- | ---------------------- | ----- | -------------- |
-| properties | Record<string, Object> | 否    | 属性对象，默认为空。      |
-| parameters | Record<string, Object> | 否    | 自定义参数对象，默认为空。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称     | 类型                    | 只读  | 可选   | 说明           |
+| ---------- | ---------------------- | ----- | ----- | -------------- |
+| properties | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt; | 否 | 是    | 属性对象，默认为空。      |
+| parameters | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt; | 否 | 是    | 自定义参数对象，默认为空。 |
 
 ## Constants<sup>8+</sup>
 
 表示常量的枚举。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**系统能力：** SystemCapability.Account.AppAccount
 
 | 名称                            | 值                    | 说明                   |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。  |
-| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。         |
-| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。  |
-| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。         |
-| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。  |
-| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。      |
-| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。  |
-| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。|
-| KEY_TOKEN                        | 'token'                | 表示键名，令牌。         |
-| KEY_ACTION                       | 'action'               | 表示键名，操作。         |
-| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。     |
-| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。     |
-| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。    |
-| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。    |
-| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。    |
-| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。    |
-| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。    |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 8|
+| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8         |
+| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22  |
+| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22         |
+| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22  |
+| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22     |
+| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22  |
+| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22|
+| KEY_TOKEN                        | 'token'                | 表示键名，令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22         |
+| KEY_ACTION                       | 'action'               | 表示键名，操作。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22        |
+| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
+| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
+| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22    |
+| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22    |
+| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22    |
+| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22    |
+| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22   |
 
 ## ResultCode<sup>(deprecated)</sup>
 
@@ -4972,7 +7270,11 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 > **说明：**<br/>
 > 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看[错误码文档](errorcode-account.md)替代。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.AppAccount。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称                                  | 值   | 说明           |
 | ----------------------------------- | ----- | ------------ |
@@ -5002,22 +7304,30 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 ### onResult<sup>9+</sup>
 
-onResult: (code: number, result?: AuthResult) =&gt; void
+ArkTS-Dyn: onResult: (code: number, result?: AuthResult) =&gt; void
+
+ArkTS-Sta: onResult: (code: int, result?: AuthResult) =&gt; void
 
 通知请求结果。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                   | 必填   | 说明     |
 | ------ | -------------------- | ---- | ------ |
-| code   | number               | 是    | 鉴权结果码。 |
+| code   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 鉴权结果码。 |
 | result | [AuthResult](#authresult9) | 否    | 鉴权结果，默认为空，表示不接收认证结果信息。  |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
@@ -5035,7 +7345,32 @@ onResult: (code: number, result?: AuthResult) =&gt; void
       };
       callback.onResult(appAccount.ResultCode.SUCCESS, result);
   }).catch((err: BusinessError) => {
-      console.error('getAuthCallback err: ' + JSON.stringify(err));
+      console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let sessionId = '1234';
+  appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
+    let result: appAccount.AuthResult = {
+      account: {
+        name: 'Lisi',
+        owner: 'com.example.accountjsdemo',
+      },
+      tokenInfo: {
+        token: 'xxxxxx',
+        authType: 'getSocialData'
+      }
+    };
+    callback.onResult(0, result);
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -5047,6 +7382,10 @@ onRequestRedirected: (request: Want) =&gt; void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型   | 必填   | 说明         |
@@ -5055,7 +7394,9 @@ onRequestRedirected: (request: Want) =&gt; void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
 
   class MyAuthenticator extends appAccount.Authenticator {
@@ -5085,6 +7426,38 @@ onRequestRedirected: (request: Want) =&gt; void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  class MyAuthenticator extends appAccount.Authenticator {
+      createAccountImplicitly(
+        options: appAccount.CreateAccountImplicitlyOptions, callback: appAccount.AuthCallback) {
+          let want: Want = {
+            bundleName: 'com.example.accountjsdemo',
+            abilityName: 'com.example.accountjsdemo.LoginAbility',
+          };
+          callback.onRequestRedirected(want);
+      }
+
+      auth(name: string, authType: string,
+        options: Record<string, Object>, callback: appAccount.AuthCallback) {
+          let result: appAccount.AuthResult = {
+            account: {
+              name: 'Lisi',
+              owner: 'com.example.accountjsdemo',
+            },
+            tokenInfo: {
+              token: 'xxxxxx',
+              authType: 'getSocialData'
+            }
+          };
+          callback.onResult(0, result);
+      }
+  }
+  ```
+
 ### onRequestContinued<sup>9+</sup>
 
 onRequestContinued?: () =&gt; void
@@ -5093,9 +7466,15 @@ onRequestContinued?: () =&gt; void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
@@ -5105,7 +7484,24 @@ onRequestContinued?: () =&gt; void
       callback.onRequestContinued();
     }
   }).catch((err: BusinessError) => {
-    console.error('getAuthCallback err: ' + JSON.stringify(err));
+    console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let sessionId = '1234';
+  appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
+    if (callback.onRequestContinued) {
+      callback.onRequestContinued!();
+    }
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -5117,13 +7513,21 @@ OAuth认证器回调接口。
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthCallback](#authcallback9)替代。
 
-### onResult<sup>8+</sup>
+### onResult<sup>(deprecated)</sup>
 
 onResult: (code: number, result: {[key: string]: any;}) =&gt; void
 
 通知请求结果。
 
+> **说明：** 
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[onResult](#onresult9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -5147,17 +7551,25 @@ onResult: (code: number, result: {[key: string]: any;}) =&gt; void
         token: 'xxxxxx'}
       );
   }).catch((err: BusinessError) => {
-      console.error('getAuthenticatorCallback err: ' + JSON.stringify(err));
+      console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
-### onRequestRedirected<sup>8+</sup>
+### onRequestRedirected<sup>(deprecated)</sup>
 
 onRequestRedirected: (request: Want) =&gt; void
 
 通知请求被跳转。
 
+> **说明：** 
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[onRequestRedirected](#onrequestredirected9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -5199,9 +7611,13 @@ onRequestRedirected: (request: Want) =&gt; void
 
 createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthCallback): void
 
-根据指定的账号所有者隐式地创建应用账号，并使用callback异步回调返回结果。
+根据指定的账号所有者隐式地创建应用账号。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5214,13 +7630,17 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 addAccountImplicitly(authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
 
-根据指定的鉴权类型和可选项，隐式地添加应用账号，并使用callback异步回调返回结果。
+根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
 
 > **说明：** 
 >
 > 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -5233,9 +7653,11 @@ addAccountImplicitly(authType: string, callerBundleName: string, options: {[key:
 
 ### auth<sup>9+</sup>
 
-auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
+ArkTS-Dyn: auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
 
-对应用账号进行鉴权以获取授权令牌，并使用callback异步回调返回结果。
+ArkTS-Sta: auth(name: string, authType: string, options: Record&lt;string, RecordData&gt;, callback: AuthCallback): void
+
+对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5245,20 +7667,24 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 | ---------------- | --------------------- | ---- | --------------- |
 | name             | string                | 是    | 应用账号的名称。        |
 | authType         | string                | 是    | 应用账号的鉴权类型。      |
-| options          | Record<string, Object>  | 是    | 鉴权所需要的可选项。      |
+| options          | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;| 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthCallback](#authcallback9) | 是    | 回调对象，用于返回鉴权结果。 |
 
 ### authenticate<sup>(deprecated)</sup>
 
 authenticate(name: string, authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
 
-对应用账号进行鉴权，获取OAuth令牌，并使用callback异步回调返回结果。
+对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
 
 > **说明：** 
 >
 > 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth9-2)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -5274,9 +7700,13 @@ authenticate(name: string, authType: string, callerBundleName: string, options: 
 
 verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthCallback): void
 
-验证应用账号的凭据，并使用callback异步回调返回结果。
+验证应用账号的凭据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5286,13 +7716,21 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 | options   | [VerifyCredentialOptions](#verifycredentialoptions9)  | 是    | 验证凭据的可选项。            |
 | callback  | [AuthCallback](#authcallback9)    | 是    | 认证器回调，用于返回验证结果。 |
 
+**示例：**
+
+接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
+
 ### setProperties<sup>9+</sup>
 
 setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
-设置认证器属性，并使用callback异步回调返回结果。
+设置认证器属性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5301,13 +7739,21 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 | options   | [SetPropertiesOptions](#setpropertiesoptions9)  | 是    | 设置属性的可选项。            |
 | callback  | [AuthCallback](#authcallback9) | 是    | 认证器回调，用于返回设置结果。 |
 
+**示例：**
+
+接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
+
 ### checkAccountLabels<sup>9+</sup>
 
 checkAccountLabels(name: string, labels: Array&lt;string&gt;, callback: AuthCallback): void
 
-检查账号标签，并使用callback异步回调返回结果。
+检查账号标签。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5317,13 +7763,21 @@ checkAccountLabels(name: string, labels: Array&lt;string&gt;, callback: AuthCall
 | labels    | Array&lt;string&gt;          | 是    | 标签数组。                   |
 | callback  | [AuthCallback](#authcallback9) | 是    | 认证器回调，用于返回检查结果。 |
 
+**示例：**
+
+接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
+
 ### checkAccountRemovable<sup>9+</sup>
 
 checkAccountRemovable(name: string, callback: AuthCallback): void
 
-判断账号是否可以删除，并使用callback异步回调返回结果。
+判断账号是否可以删除。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5332,21 +7786,33 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 | name      | string                | 是    | 应用账号的名称。              |
 | callback  | [AuthCallback](#authcallback9) | 是    | 认证器回调，用于返回判断结果。 |
 
+**示例：**
+
+接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
+
 ### getRemoteObject<sup>9+</sup>
 
-getRemoteObject(): rpc.RemoteObject;
+getRemoteObject(): rpc.RemoteObject
 
 获取认证器的远程对象，不可以重载实现。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型             | 说明                                                   |
 | ---------------- | ----------------------------------------------------- |
-| rpc.RemoteObject | 认证器Authenticator的远程对象。用于跨进程通信。          |
+| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | 认证器Authenticator的远程对象。用于跨进程通信。          |
 
 **示例：**
+
+接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
+
+ArkTS-Dyn示例：
 
   <!--code_no_check-->
   ```ts
@@ -5388,6 +7854,119 @@ getRemoteObject(): rpc.RemoteObject;
 
   export default {
     onConnect(want: Want): rpc.RemoteObject { // serviceAbility 生命周期函数, 需要放在serviceAbility中
+      let authenticator = new MyAuthenticator();
+      return authenticator.getRemoteObject();
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import { rpc } from '@kit.IPCKit';
+  import { Want } from '@kit.AbilityKit';
+  import { RecordData } from '@ohos.base';
+
+  import appAccount from '@ohos.account.appAccount';
+
+  @Entry
+  @Component
+  struct ListDemo5 {
+    build(){
+    }
+  }
+
+  class MyAuthenticator extends appAccount.Authenticator {
+    verifyCredential(name: string,
+      options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
+      let dataName: Record<String, RecordData> = {"name": name };
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.VerifyAbility',
+        parameters: dataName
+      };
+      callback.onResult(0);
+    }
+
+    setProperties(options: appAccount.SetPropertiesOptions, callback: appAccount.AuthCallback) {
+      let dataOptions: Record<String, RecordData> = {"options": options }
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.SetPropertiesAbility',
+        parameters: dataOptions
+      };
+      callback.onResult(0);
+    }
+
+    checkAccountLabels(name: string, labels: string[], callback: appAccount.AuthCallback) {
+
+      let accountLabels: Record<string, Array<string>> = {
+        'zhangsan': ['male', '30-40', 'level4'],
+        'lisi': ['female']
+      };
+      let authResult: appAccount.AuthResult = {
+        account: {
+          name: name,
+          owner: 'com.acts.accountauthenticator.static'
+        },
+        tokenInfo: undefined
+      }
+      if (name === 'notExistAccount') {
+        callback.onResult(12300003);
+        return;
+      }
+      if (labels.length == 0) {
+        callback.onResult(0, authResult)
+        return
+      }
+      let allLabels: Array<string> | undefined;
+      try {
+        allLabels = accountLabels[name];
+      } catch (err) {
+        console.info('[Authenticator] no labels');
+        allLabels == undefined
+      }
+      if (allLabels == undefined || allLabels.length == 0) {
+        callback.onResult(0, undefined);
+        return;
+      }
+      for (let i = 0; i < labels.length; ++i) {
+        if (allLabels.indexOf(labels[i]) == -1) {
+          callback.onResult(0, undefined);
+          return;
+        }
+      }
+      callback.onResult(0, authResult)
+    }
+
+    checkAccountRemovable(name: string, callback: appAccount.AuthCallback) {
+      let accountRemovability: Record<string, boolean> = {
+        'zhangsan': false,
+        'lisi': true
+      };
+      console.info('[Authenticator] name: ' + name);
+      let isRemovable: Boolean | undefined = false;
+      try {
+        isRemovable = accountRemovability[name];
+      } catch (err) {
+        console.info('[Authenticator] error: ' + JSON.stringify(err));
+      }
+      let authResult: appAccount.AuthResult = {
+        account: {
+          name: name,
+          owner: 'com.acts.accountauthenticator.static'
+        },
+        tokenInfo: undefined
+      }
+      if (isRemovable) {
+        callback.onResult(0, authResult);
+        return;
+      }
+      callback.onResult(0, undefined);
+    }
+  }
+
+  export default class ServiceExtAbilitty {
+    onConnect(want: Want) {
       let authenticator = new MyAuthenticator();
       return authenticator.getRemoteObject();
     }
