@@ -1,13 +1,11 @@
 # Reuse ID
-<<<<<<< HEAD
-=======
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
->>>>>>> 9f04030... update adviser
 
 **reuseId** is an ID that identifies the reuse group of a custom component. The reuse framework identifies and groups reusable custom components based on their reuse IDs.
 
