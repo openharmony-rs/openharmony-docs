@@ -550,7 +550,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 类型 | 说明 |
 | -------- | -------- |
 | Uint8Array | 返回获取的原始数据 |
-| undefined | 如果USB服务异常，可能返回`undefined`  **ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| undefined | 如果USB服务异常，可能返回`undefined` 。<br> **ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
 
 **错误码：**
 
