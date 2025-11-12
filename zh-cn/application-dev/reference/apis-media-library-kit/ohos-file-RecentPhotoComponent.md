@@ -18,7 +18,7 @@
 import {
   RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback,
   RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
-} from '@kit.MediaLibraryKit';
+} from '@ohos.file.RecentPhotoComponent';
 ```
 
 ## 属性
