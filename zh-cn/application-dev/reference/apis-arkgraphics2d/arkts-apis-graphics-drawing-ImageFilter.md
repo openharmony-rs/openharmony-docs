@@ -39,7 +39,7 @@ ArkTS-Sta: static createBlurImageFilter(sigmaX: double, sigmaY: double, tileMode
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -78,7 +78,11 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 
 基于给定的图像创建一个图像滤波器。此接口不建议用于录制类型的画布，会影响性能。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -130,13 +134,18 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
+
 ## createBlendImageFilter<sup>20+</sup>
 
 static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter
 
 按照指定的混合模式对两个滤波器进行叠加，生成一个新的滤波器。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -173,13 +182,18 @@ let y = 30.0;
 let offsetFilter2 = drawing.ImageFilter.createOffsetImageFilter(x, y, null);
 let blendImageFilter = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC_IN, offsetFilter1, offsetFilter2);
 ```
+
 ## createComposeImageFilter<sup>20+</sup>
 
 static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter
 
 将两个图像滤波器进行级联生成新的图像滤波器，级联时会将第一级滤波器的输出作为第二级滤波器的输入，经过第二级滤波器处理后，输出最终的滤波结果。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -212,6 +226,7 @@ let redRemovalFilter = drawing.ColorFilter.createMatrixColorFilter(colorMatrix);
 let colorFilter = drawing.ImageFilter.createFromColorFilter(redRemovalFilter, null);
 let composedImageFilter = drawing.ImageFilter.createComposeImageFilter(colorFilter, blurFilter);
 ```
+
 ## createFromColorFilter<sup>12+</sup>
 
 ArkTS-Dyn: static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter
@@ -224,7 +239,7 @@ ArkTS-Sta: static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -273,7 +288,11 @@ static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | nul
 
 创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -305,7 +324,11 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 
 基于着色器创建一个图像滤波器。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
