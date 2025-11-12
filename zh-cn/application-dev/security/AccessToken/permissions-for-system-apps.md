@@ -367,11 +367,13 @@
 
 ## ohos.permission.FORCE_FACTORY_RESET
 
-允许调用强制出厂接口。
+允许系统应用强制恢复设备至出厂设置，中途无法打断。
 
 **权限级别**：system_core
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：General
 
 **ACL使能**：true
 
