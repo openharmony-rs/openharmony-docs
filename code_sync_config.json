@@ -22574,6 +22574,22 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/AppStorageV2.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/Sample.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PageOne.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PageTwo.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets",
 				"functions":[
 					{
 						"end_line":101,
@@ -22583,7 +22599,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/Sample.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -22593,7 +22609,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PageOne.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets",
 				"functions":[
 					{
 						"end_line":66,
@@ -22603,7 +22619,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PageTwo.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets",
 				"functions":[
 					{
 						"end_line":62,
