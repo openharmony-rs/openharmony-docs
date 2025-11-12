@@ -9,7 +9,7 @@
 
 To implement isolation and access control for key data, HUKS provides APIs with the user ID specified for concurrent key operations initiated by multiple users.
 
->**NOTE**<br>
+>**NOTE**
 > The mini-system devices do not support the operation described in this topic.
 
 ## Constraints
@@ -19,7 +19,7 @@ To implement isolation and access control for key data, HUKS provides APIs with 
 
 ## Available APIs
 
-APIs with the **userId** parameter are provided as enhancement to existing APIs.
+APIs with the `userId` parameter are provided as enhancement to existing APIs.
 
 When using these APIs, observe the following:
 

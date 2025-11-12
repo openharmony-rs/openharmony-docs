@@ -1603,6 +1603,7 @@ huks.getKeyItemProperties(keyAlias, emptyOptions)
 isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
 Checks whether a key exists. This API uses an asynchronous callback to return the result.
+If the key does not exist, the error code 12000011 is returned.
 
 **System capability**: SystemCapability.Security.Huks.Core
 
@@ -1657,6 +1658,7 @@ huks.isKeyItemExist(keyAlias, emptyOptions, (error, data) => {
 isKeyItemExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
 Checks whether a key exists. This API uses a promise to return the result.
+If the key does not exist, the error code 12000011 is returned.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
@@ -1709,6 +1711,7 @@ huks.isKeyItemExist(keyAlias, emptyOptions).then((data) => {
 hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
 Checks whether a key exists. This API uses an asynchronous callback to return the result.
+If the key does not exist, **false** is returned through the callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1764,6 +1767,7 @@ huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
 hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
 Checks whether a key exists. This API uses a promise to return the result.
+If the key does not exist, **false** is returned through the promise.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1899,7 +1903,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Updates the key operation by segment. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Updates the key operation by segment. This API uses an asynchronous callback to return the result.
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1938,7 +1943,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Updates the key operation by segment. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Updates the key operation by segment. This API uses an asynchronous callback to return the result. The **updateSession** operation is used for user identity authentication and access control.
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1978,7 +1984,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promise\<HuksReturnResult>
 
-Updates the key operation by segment. This API uses a promise to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Updates the key operation by segment. This API uses a promise to return the result.
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2023,7 +2030,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 finishSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Finishes the key operation. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Finishes the key operation. This API uses an asynchronous callback to return the result.
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2063,7 +2071,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 finishSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Finishes the key operation. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Finishes the key operation. This API uses an asynchronous callback to return the result. The **finishSession** operation is used for user identity authentication and access control.
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2104,7 +2113,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 finishSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promise\<HuksReturnResult>
 
-Finishes the key operation. This API uses a promise to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Finishes the key operation. This API uses a promise to return the result.
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
