@@ -104,6 +104,8 @@ canvas.detachBrush();
 
 ### 接口说明
 
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+
 | 接口 | 描述 |
 | -------- | -------- |
 | translate(dx: number, dy: number): void | 用于平移画布一段距离。 |
