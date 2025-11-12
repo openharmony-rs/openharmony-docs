@@ -399,6 +399,8 @@ class DividerTmp {
 export struct CustomListStyle {
   @State egDivider: DividerTmp = new DividerTmp(1, 60, 10, '#ffe9f0f0');
 
+// ···
+
   build() {
     // ···
           List(
@@ -810,7 +812,8 @@ ListItem的[swipeAction属性](../reference/apis-arkui/arkui-ts/ts-container-lis
          // ···
          this.itemEnd(this.index);
        },
-     } // 设置侧滑属性.
+     }
+   }) // 设置侧滑属性.
    ```
 
 ## 给列表项添加标记
@@ -840,6 +843,7 @@ ListItem() {
   }) {
   // ···
   }
+}
 ```
 
 
@@ -1405,14 +1409,23 @@ List(
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
-   @State messages: Message[] = [
-     // app.string.welcome_live_room 资源文件中的value值为'欢迎来到直播间'
-     // app.string.system 资源文件中的value值为'系统'
-     { id: 1, content: $r('app.string.welcome_live_room'), sender: $r('app.string.system') },
-     // app.string.hello_everyone 资源文件中的value值为'大家好啊~'
-     // app.string.anchors 资源文件中的value值为'主播'
-     { id: 2, content: $r('app.string.hello_everyone'), sender: $r('app.string.anchors') }
-   ];
+   @State messages: Message[] = [];
+   
+   aboutToAppear(): void {
+     const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     // app.string.welcome_live_room资源文件中的value值为'欢迎来到直播间'
+     const welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
+     // app.string.system资源文件中的value值为'系统'
+     const system = context.resourceManager.getStringByNameSync('system');
+     // app.string.hello_everyone资源文件中的value值为'大家好啊~'
+     const helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
+     // app.string.anchors资源文件中的value值为'主播'
+     const anchors = context.resourceManager.getStringByNameSync('anchors');
+     this.messages = [
+       { id: 1, content: welcomeLiveRoom, sender: system },
+       { id: 2, content: helloEveryone, sender: anchors }
+     ];
+   }
    
    build() {
      // ···
