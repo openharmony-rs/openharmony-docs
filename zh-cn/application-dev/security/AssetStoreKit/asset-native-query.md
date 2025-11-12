@@ -77,6 +77,34 @@
 
 3. 参考如下示例代码，进行业务功能开发。
    <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value QueryAssetPlaintext(napi_env env, napi_callback_info info)
+   {
+       const char *aliasStr = "demo_alias";
+       
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // 此处表示需要返回关键资产的所有信息，即属性+明文。返回明文需要解密，查询时间较长。
+       };
+   
+       Asset_ResultSet resultSet = {0};
+       int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+       if (queryResult == ASSET_SUCCESS) {
+           // 解析resultSet。
+           for (uint32_t i = 0; i < resultSet.count; i++) {
+               // 解析secret属性：其中data数据对应是secret->blob.data，长度对应是secret->blob.size。
+               Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_SECRET);
+           }
+       }
+       OH_Asset_FreeResultSet(&resultSet);
+    
+       napi_value ret;
+       napi_create_int32(env, queryResult, &ret);
+       return ret;
+   }
+   ```
 
 ### 查询单条关键资产属性
 
