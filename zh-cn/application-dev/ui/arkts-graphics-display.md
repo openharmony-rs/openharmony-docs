@@ -110,12 +110,15 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   ``` TypeScript
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0001;
+  const TAG = 'Sample_imagecomponent';
   
-  // ···
   @Entry
   @Component
   struct MediaLibraryFile {
     @State imgDatas: string[] = [];
+    // 使用PhotoViewPicker唤起图片选择器，选择图片并且渲染到页面中
     // 获取照片url集
     getAllImg() {
       try {
@@ -142,7 +145,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
     async aboutToAppear() {
       this.getAllImg();
     };
-    // 使用imgDatas的url加载图片。
+    // 使用imgDatas的url加载图片
     build() {
       Column() {
         Grid() {
