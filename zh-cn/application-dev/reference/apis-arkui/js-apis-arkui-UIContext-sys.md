@@ -501,7 +501,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 | 错误码ID  | 错误信息                |
 | ------ | ------- |
 | 202     | The caller is not a system application. |
-| 100001 | Invalid ID. |
+| 100001 | Invalid ID detected. |
 
 **示例：** 
 

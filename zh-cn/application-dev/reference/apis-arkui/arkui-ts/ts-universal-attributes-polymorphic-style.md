@@ -267,7 +267,7 @@ struct Child {
   build() {
     Row()
       .zIndex(10)
-      .width(100)
+      .width(200)
       .height(200)
       .stateStyles({
         normal: {
@@ -281,8 +281,7 @@ struct Child {
 }
 
 @Builder
-function
-buildText() {
+function buildText() {
   Child()
 }
 
@@ -293,19 +292,23 @@ struct Index {
     new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
 
   build() {
-    Button().onClick((event: ClickEvent) => {
-      this.getUIContext()
-        .getPromptAction()
-        .openCustomDialog(this.contentNode)
-        .then(() => {
-          console.info('OpenCustomDialog complete.')
-        })
-        .catch((error: BusinessError) => {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
-        })
-    })
+    Column() {
+      Button().margin({ top: 200 }).onClick((event: ClickEvent) => {
+        this.getUIContext()
+          .getPromptAction()
+          .openCustomDialog(this.contentNode)
+          .then(() => {
+            console.info('OpenCustomDialog complete.')
+          })
+          .catch((error: BusinessError) => {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+          })
+      })
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
