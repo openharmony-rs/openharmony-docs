@@ -570,7 +570,7 @@ let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
 
 <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 enum InterceptorType {
   INITIAL_REQUEST = 'INITIAL_REQUEST',
   REDIRECTION = 'REDIRECTION',
