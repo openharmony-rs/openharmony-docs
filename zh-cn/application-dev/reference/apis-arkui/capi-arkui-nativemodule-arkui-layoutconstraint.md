@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_LayoutConstraint ArkUI_LayoutConstraint
+```
+
 ## 概述
 
 约束尺寸，组件布局时，进行尺寸范围限制。

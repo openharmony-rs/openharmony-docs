@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_Node* ArkUI_NodeHandle
+```
+
 ## 概述
 
 定义ArkUI native组件实例对象指针定义。

@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_ColorStop
+```
+
 ## 概述
 
 定义渐变色结构。

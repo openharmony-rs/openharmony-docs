@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_IntOffset
+```
+
 ## 概述
 
 位置，用于描述组件的位置。

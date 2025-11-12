@@ -1,5 +1,9 @@
 # ArkUI_NodeContent*
 
+```
+typedef struct ArkUI_NodeContent* ArkUI_NodeContentHandle
+```
+
 ## 概述
 
 定义ArkUI NodeContent实例在Native侧的实例对象指针定义。

@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_IntSize
+```
+
 ## 概述
 
 尺寸类型，用于描述组件的宽高。

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_CrossLanguageOption ArkUI_CrossLanguageOption
+```
+
 ## 概述
 
 定义跨语言配置项。

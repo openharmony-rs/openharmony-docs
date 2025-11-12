@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_RotationOptions
+```
+
 ## 概述
 
 定义组件转场时的旋转效果对象。
