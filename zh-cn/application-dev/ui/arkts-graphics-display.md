@@ -39,7 +39,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  //  'images/view.jpg' 需要替换为开发者所需的资源文件
+  // 'images/view.jpg'需要替换为开发者所需的资源文件
   Image('images/view.jpg')
     .width(200)
   ```
