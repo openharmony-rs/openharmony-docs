@@ -624,6 +624,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/Index.ets
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
    import { createNode } from './DynamicComponent';
