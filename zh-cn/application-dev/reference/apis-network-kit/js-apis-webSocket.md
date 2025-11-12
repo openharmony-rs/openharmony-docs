@@ -810,9 +810,10 @@ ws.off('open', callback1);
 
 offOpen(callback?: Callback\<OpenResult\>): void
 
-取消订阅WebSocket的打开事件，使用callback方式作为异步方法。
+取消订阅WebSocket的打开事件。
 
 > **说明：**
+>
 > 可以指定传入offOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -823,7 +824,7 @@ offOpen(callback?: Callback\<OpenResult\>): void
 
 | 参数名   | 类型                    | 必填 | 说明                          |
 | -------- | ----------------------- | ---- | ----------------------------- |
-| callback | Callback\<OpenResult\> | 否   | 回调函数，返回WebSocket连接结果。<br>status: 连接状态码，message: 状态码说明。 |
+| callback | Callback\<OpenResult\> | 否   | 回调函数，用于指定需要移除的回调。 |
 
 **示例：**
 
@@ -878,6 +879,7 @@ onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 订阅WebSocket的接收服务器消息事件，使用callback方式作为异步方法。
 
 > **说明：**
+>
 > AsyncCallback中的数据可以是字符串或ArrayBuffer。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -888,7 +890,7 @@ onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                         |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
-| callback | AsyncCallback\<string \| ArrayBuffer | 是   | 回调函数，返回接收数据。          |
+| callback | AsyncCallback\<string \| ArrayBuffer\> | 是   | 回调函数，返回接收数据。          |
 
 **示例：**
 
@@ -936,10 +938,12 @@ ws.off('message');
 
 offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
-取消订阅WebSocket的接收服务器消息事件，使用callback方式作为异步方法。
+取消订阅WebSocket的接收服务器消息事件。
 
 > **说明：**
+>
 > AsyncCallback中的数据可以是字符串或ArrayBuffer。
+>
 > 可以指定传入onMessage中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -950,7 +954,7 @@ offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                         |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------------- |
-| callback | AsyncCallback\<string \| ArrayBuffer\> | 否   | 回调函数，用于移除指定回调，无返回值。    |
+| callback | AsyncCallback\<string \| ArrayBuffer\> | 否   | 回调函数，用于指定需要移除的回调。    |
 
 **示例：**
 
@@ -1056,9 +1060,10 @@ ws.off('close');
 
 offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 
-取消订阅WebSocket的关闭事件，使用callback方式作为异步方法。
+取消订阅WebSocket的关闭事件。
 
 > **说明：**
+>
 > 可以指定传入onWebSocketClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -1069,7 +1074,7 @@ offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 
 | 参数名   | 类型                                            | 必填 | 说明                           |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<CloseResult\> | 否   | 回调函数。<br>code：close错误码，reason：错误码说明。 |
+| callback | AsyncCallback\<CloseResult\> | 否   | 回调函数，用于指定需要移除的回调。 |
 
 **示例：**
 
@@ -1077,7 +1082,7 @@ offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 import { webSocket } from '@kit.NetworkKit';
 
 let onCloseCallback = (err: BusinessError<void>|null, data: webSocket.CloseResult|undefined) => {
-  console.info(`onCloseCallback，closeResult：`+ JSON.stringify(data));
+  console.info(`onCloseCallback，closeResult：${data}`);
 }
 let ws = webSocket.createWebSocket();
 
@@ -1175,9 +1180,10 @@ ws.off('error');
 
 offWebSocketError(callback?: ErrorCallback): void
 
-取消订阅WebSocket的Error事件，使用callback方式作为异步方法。
+取消订阅WebSocket的Error事件。
 
 > **说明：**
+>
 > 可以指定传入onWebSocketError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -1188,7 +1194,7 @@ offWebSocketError(callback?: ErrorCallback): void
 
 | 参数名   | 类型          | 必填 | 说明                            |
 | -------- | ------------- | ---- | ------------------------------- |
-| callback | ErrorCallback | 否   | 回调函数，用于指定取消的订阅，无返回值。      |
+| callback | ErrorCallback | 否   | 回调函数，用于指定需要移除的回调。      |
 
 **示例：**
 
@@ -1281,9 +1287,10 @@ ws.off('dataEnd');
 
 offDataEnd(callback?: Callback\<void\>): void
 
-取消订阅WebSocket的数据接收结束事件，使用callback方式作为异步方法。
+取消订阅WebSocket的数据接收结束事件。
 
 > **说明：**
+>
 > 可以指定传入onDataEnd中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
@@ -1292,7 +1299,7 @@ offDataEnd(callback?: Callback\<void\>): void
 
 | 参数名   |        类型       | 必填 |                说明                    |
 | -------- | ---------------- | ---- | -------------------------------------- |
-| callback | Callback\<void\> | 否   | 回调函数。不返回任何值。                  |
+| callback | Callback\<void\> | 否   | 回调函数，用于指定需要移除的回调。                |
 
 **示例：**
 
@@ -1338,7 +1345,7 @@ ws.on('headerReceive', (data) => {
 
 onHeaderReceive(callback: Callback\<ResponseHeaders\>): void
 
-订阅HTTP Response Header事件，使用callback方式作为异步方法。
+订阅HTTP响应头事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1355,7 +1362,7 @@ import { webSocket } from '@kit.NetworkKit';
 
 let ws = webSocket.createWebSocket();
 ws.onHeaderReceive((data) => {
-  console.info("onHeaderReceive " + JSON.stringify(data));
+  console.info(`onHeaderReceive ${data}`);
 });
 ```
 
@@ -1390,9 +1397,10 @@ ws.off('headerReceive');
 
 offHeaderReceive(callback?: Callback\<ResponseHeaders\>): void
 
-取消订阅HTTP Response Header事件，使用callback方式作为异步方法。
+取消订阅HTTP响应头事件。
 
 > **说明：**
+>
 > 可以指定传入onHeaderReceive中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
@@ -1401,7 +1409,7 @@ offHeaderReceive(callback?: Callback\<ResponseHeaders\>): void
 
 | 参数名   |        类型       | 必填 |                说明                    |
 | -------- | ---------------- | ---- | -------------------------------------- |
-| callback | Callback\<ResponseHeaders\> | 否   | 回调函数，无返回值且不会触发被移除的回调。  |
+| callback | Callback\<ResponseHeaders\> | 否   | 回调函数，用于指定需要移除的回调。  |
 
 **示例：**
 
@@ -2065,7 +2073,7 @@ localServer.off('connect');
 
 offConnect(callback?: Callback\<WebSocketConnection\>): void
 
-取消订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback方式作为异步方法。
+取消订阅WebSocketServer的连接事件（客户端与服务端建链成功）。
 
 > **说明：**
 >
@@ -2077,7 +2085,7 @@ offConnect(callback?: Callback\<WebSocketConnection\>): void
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | -------- | ----------------------- | ---- | ------------------------------------------- |
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | 否  | 回调函数。连接的客户端信息。 |
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | 否  | 回调函数，用于指定需要移除的回调。|
 
 **示例：**
 
@@ -2179,7 +2187,7 @@ localServer.off('messageReceive');
 
 offMessageReceive(callback?: Callback\<WebSocketMessage\>): void
 
-取消订阅WebSocketServer的接收到客户端消息事件，使用callback方式作为异步方法。
+取消订阅WebSocketServer的接收到客户端消息事件。
 
 > **说明：**
 >
@@ -2191,7 +2199,7 @@ offMessageReceive(callback?: Callback\<WebSocketMessage\>): void
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------------- |
-| callback | Callback\<[WebSocketMessage](#websocketmessage19)\> |  否 | 从指定客户端接收到的消息，包括客户端的信息和数据。<br>- clientconnection：客户端信息。<br>- data：客户端发送的消息。|
+| callback | Callback\<[WebSocketMessage](#websocketmessage19)\> |  否 | 回调函数，用于指定需要移除的回调。 |
 
 **示例：**
 
@@ -2293,7 +2301,7 @@ localServer.off('close');
 
 offWebSocketServerClose(callback?: ClientConnectionCloseCallback): void
 
-取消订阅WebSocketServer的关闭事件，使用callback方式作为异步方法。
+取消订阅WebSocketServer的关闭事件。
 
 > **说明：**
 >
@@ -2305,7 +2313,7 @@ offWebSocketServerClose(callback?: ClientConnectionCloseCallback): void
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | ---------------------------------- |
-| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 否  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 否  | 回调函数，用于指定需要移除的回调。 |
 
 **示例：**
 
@@ -2407,7 +2415,7 @@ localServer.off('error');
 
 offWebSocketServerError(callback?: ErrorCallback): void
 
-取消订阅WebSocketServer的Error事件，使用callback方式作为异步方法。
+取消订阅WebSocketServer的Error事件。
 
 > **说明：**
 >
@@ -2419,7 +2427,7 @@ offWebSocketServerError(callback?: ErrorCallback): void
 
 | 参数名  | 类型                    | 必填 | 说明                           |
 | -------- | ------------- | ---- | --------------------------------- |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | 回调函数。默认值：200。                         |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | 回调函数，用于指定需要移除的回调。  |
 
 **示例：**
 
@@ -2453,7 +2461,7 @@ localServer.offWebSocketServerError();
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。 |
 | proxy<sup>12+</sup> | ProxyConfiguration |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。 |
 | protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为""。              |
-| skipServerCertVerification<sup>22+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
+| skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
 
 ## ClientCert<sup>11+</sup>
 
@@ -2526,7 +2534,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 打开WebSocket连接时，订阅onOpen事件得到的打开结果。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2540,7 +2548,7 @@ ArkTS-Dyn: type ResponseHeaders = {
   [k: string]: string | string[] | undefined;
 }
 
-ArkTS-Sta: type ResponseHeaders = Record<string, string | string[] | undefined>;
+ArkTS-Sta: type ResponseHeaders = Record\<string, string | string[] | undefined\>
 
 服务器发送的响应头。
 
@@ -2552,7 +2560,7 @@ ArkTS-Sta: type ResponseHeaders = Record<string, string | string[] | undefined>;
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| ArkTS-Dyn: {[k:string]:string \| string[] \| undefined}<br>ArkTS-Sta: Record<string, string \| string[] \| undefined> | ArkTS-Dyn: header数据类型为键值对、字符串或者undefined。<br>ArkTS-Sta: header数据类型为键值对，键为字符串，值为字符串、字符串数组或者undefined。 |
+| ArkTS-Dyn: {[k:string]:string \| string[] \| undefined}<br>ArkTS-Sta: Record\<string, string \| string[] \| undefined\> | ArkTS-Dyn: header数据类型为键值对、字符串或者undefined。<br>ArkTS-Sta: header数据类型为键值对，键为字符串，值为字符串、字符串数组或者undefined。 |
 
 ## close错误码说明
 

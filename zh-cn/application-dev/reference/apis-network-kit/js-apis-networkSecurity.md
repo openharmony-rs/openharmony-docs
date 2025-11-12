@@ -141,7 +141,7 @@ ArkTS-Dyn示例：
 import { networkSecurity } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define certificate blobs
+// 定义证书数据块
 const cert:networkSecurity.CertBlob = {
   type: networkSecurity.CertType.CERT_TYPE_PEM,
   data: '-----BEGIN CERTIFICATE-----\n... (certificate data) ...\n-----END CERTIFICATE-----',
@@ -152,7 +152,7 @@ const caCert:networkSecurity.CertBlob = {
   data: '-----BEGIN CERTIFICATE-----\n... (CA certificate data) ...\n-----END CERTIFICATE-----',
 };
 
-// Perform asynchronous certificate verification
+// 执行异步证书验证
 networkSecurity.certVerification(cert, caCert)
   .then((result) => {
     console.info('Certificate verification result:', result);
@@ -168,7 +168,7 @@ ArkTS-Sta示例：
 import { networkSecurity } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define certificate blobs
+// 定义证书数据块
 const cert:networkSecurity.CertBlob = {
   type: networkSecurity.CertType.CERT_TYPE_PEM,
   data: '-----BEGIN CERTIFICATE-----\n... (certificate data) ...\n-----END CERTIFICATE-----',
@@ -179,7 +179,7 @@ const caCert:networkSecurity.CertBlob = {
   data: '-----BEGIN CERTIFICATE-----\n... (CA certificate data) ...\n-----END CERTIFICATE-----',
 };
 
-// Perform asynchronous certificate verification
+// 执行异步证书验证
 networkSecurity.certVerification(cert, caCert)
   .then((result) => {
     console.info('Certificate verification result:', result);
@@ -258,7 +258,7 @@ ArkTS-Dyn示例：
 import { networkSecurity } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Create certificate blobs
+// 定义证书数据块
 const cert: networkSecurity.CertBlob = {
   type: networkSecurity.CertType.CERT_TYPE_PEM,
   data: '-----BEGIN CERTIFICATE-----\n...'
@@ -269,7 +269,7 @@ const caCert: networkSecurity.CertBlob = {
   data: '-----BEGIN CERTIFICATE-----\n...'
 };
 
-// Asynchronous verification
+// 执行异步证书验证
 networkSecurity.certVerification(cert, caCert)
   .then((result) => {
     console.info('Verification Result:', result);
@@ -278,7 +278,7 @@ networkSecurity.certVerification(cert, caCert)
     console.error('Verification Error:', error);
   });
 
-// Synchronous verification
+// 执行同步证书验证
 let resultSync: number = networkSecurity.certVerificationSync(cert, caCert);
 console.info('Synchronous Verification Result:', resultSync);
 ```
@@ -287,9 +287,8 @@ ArkTS-Sta示例：
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Create certificate blobs
+// 定义证书数据块
 const cert: networkSecurity.CertBlob = {
   type: networkSecurity.CertType.CERT_TYPE_PEM,
   data: '-----BEGIN CERTIFICATE-----\n...'
@@ -300,7 +299,7 @@ const caCert: networkSecurity.CertBlob = {
   data: '-----BEGIN CERTIFICATE-----\n...'
 };
 
-// Asynchronous verification
+// 执行异步证书验证
 networkSecurity.certVerification(cert, caCert)
   .then((result) => {
     console.info('Verification Result:', result);
@@ -309,7 +308,7 @@ networkSecurity.certVerification(cert, caCert)
     console.error('Verification Error:', error);
   });
 
-// Synchronous verification
+// 执行同步证书验证
 let resultSync: int = networkSecurity.certVerificationSync(cert, caCert);
 console.info('Synchronous Verification Result:', resultSync);
 ```
