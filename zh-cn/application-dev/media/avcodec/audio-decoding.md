@@ -115,7 +115,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
     - OH_AVCodecOnError：解码器运行错误。
-    - OH_AVCodecOnStreamChanged：码流信息变化回调，包括采样率变化、声道数变化、音频采样格式变化，支持检测此变化的解码格式有：<!--RP5--><!--RP5End-->AAC，FLAC，MP3，VORBIS。(API 15开始支持)
+    - OH_AVCodecOnStreamChanged：码流信息变化回调，包括采样率变化、声道数变化、音频采样格式变化，支持检测此变化的解码格式有：<!--RP5--><!--RP5End-->AAC，FLAC，MP3，VORBIS。(API version 15开始支持)
     - OH_AVCodecOnNeedInputBuffer：运行过程中需要新的输入数据，即解码器已准备好，可以输入数据。
     - OH_AVCodecOnNewOutputBuffer：运行过程中产生了新的输出数据，即解码完成。
 
