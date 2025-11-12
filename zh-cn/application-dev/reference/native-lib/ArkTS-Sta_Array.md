@@ -96,6 +96,7 @@ console.info(arr[0]); // 42
 constructor(arrayLen: int)
 
 创建一个新的Array\<T>实例，并指定数组的初始长度。
+> 此接口使用后如未及时初始化，可能在后续使用中抛异常。
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -142,11 +143,40 @@ console.info(arr.length); // 3
 console.info(arr[0]); // "apple"
 ```
 
+## constructor
+
+constructor(arrayLen: int, initializer: (index: int) => T)
+
+null safe接口，创建一个新的Array\<T>实例，并用指定的构造器进行初始化。
+
+> **说明：**
+>
+> null safe: 提供空安全机制，保证使用前初始化，避免出现空指针异常。
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| arrayLen | int | 是 | 数组的初始长度。|
+| initializer | (index: int) => T | 是 | 自定义构造器函数，数组索引为输入，自定义每个元素的初始值。|
+
+**示例：**
+
+```ts
+const arr = new Array<int>(3, (index) => { return index + 1 });
+console.info(arr[0]); // 1
+console.info(arr[1]); // 2
+console.info(arr[2]); // 3
+```
+
 ## create
 
 static create\<T>(arrayLength: number, initialValue: T): Array\<T>
 
 创建一个指定长度的Array\<T>实例，并用一个初始值填充所有元素。
+
+> **说明：**
+>
+> null safe: 提供空安全机制，保证使用前初始化，避免出现空指针异常，针对无法直接初始化的类型， 设置类型为T \| undefined， 并设置初始值undefined。
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -162,9 +192,20 @@ static create\<T>(arrayLength: number, initialValue: T): Array\<T>
 **示例：**
 
 ```ts
+class ElementTest {
+    ele: int;
+    constructor(e: int) {
+        this.ele = e;
+    }
+}
+
 const arr = Array.create<string>(3, "default");
 console.info(arr.length); // 3
 console.info(arr[1]); // "default"
+const arrU: Array<ElementTest | undefined> = Array.create<ElementTest | undefined>(3, undefined);
+console.info(arrU[0]); // undefined
+console.info(arrU[1]); // undefined
+console.info(arrU[2]); // undefined
 ```
 
 ## extendTo
