@@ -1190,7 +1190,7 @@ Calls a method of an object registered with the host thread. This API is called 
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | instanceName | string                                    | Yes  | Key used for registration. It is used to search for the object in the host thread.|
 | methodName | string | Yes| Name of the method to call. This method cannot be modified by async or generator, or return results asynchronously by using the asynchronous mechanism at the bottom layer. Otherwise, an exception is thrown.|
-| timeout | number | Yes| Maximum waiting time from the time when the Worker thread initiates the call to the time when the target method is executed in the main thread, in milliseconds. The value is an integer ranging from 1 to 5000. The value **0** means that the 5000 ms duration is used.|
+| timeout | number | Yes| Maximum waiting time from the time when the Worker thread initiates the call to the time when the target method is executed in the main thread, in milliseconds. The value is an integer ranging from 1 to 5000. The value **0** means that the 5000 ms duration is used.<br>In versions earlier than API version 21, the maximum waiting time is limited by this parameter in debug mode.<br> Since API version 21, the maximum waiting time is not limited by this parameter in debug mode.|
 | args | Object[] | No| Array of parameters in the method.|
 
 **Return value**
