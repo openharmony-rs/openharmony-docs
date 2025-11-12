@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_Curve* ArkUI_CurveHandle
+```
+
 ## 概述
 
 定义曲线的插值对象指针定义。

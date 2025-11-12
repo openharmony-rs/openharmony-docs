@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_DragEvent ArkUI_DragEvent
+```
+
 ## 概述
 
 拖拽事件。

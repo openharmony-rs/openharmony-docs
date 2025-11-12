@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_TransitionEffect ArkUI_TransitionEffect
+```
+
 ## 概述
 
 定义transition属性配置转场参数对象。

@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption
+```
+
 ## 概述
 
 定义animator动画参数对象。

@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_TouchRecognizer ArkUI_TouchRecognizer
+```
+
 ## 概述
 
 定义触摸识别器。

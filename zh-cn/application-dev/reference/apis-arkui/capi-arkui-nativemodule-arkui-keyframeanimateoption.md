@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_KeyframeAnimateOption ArkUI_KeyframeAnimateOption
+```
+
 ## 概述
 
 定义关键帧动画参数对象。

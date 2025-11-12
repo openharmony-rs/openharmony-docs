@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_ExpectedFrameRateRange
+```
+
 ## 概述
 
 设置动画的期望帧率。

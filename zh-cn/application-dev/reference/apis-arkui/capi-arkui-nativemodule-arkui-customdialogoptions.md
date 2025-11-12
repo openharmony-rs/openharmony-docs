@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_CustomDialogOptions ArkUI_CustomDialogOptions
+```
+
 ## 概述
 
 定义自定义弹窗的内容对象。

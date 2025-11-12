@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray
+```
+
 ## 概述
 
 定义触摸识别器句柄数组。
