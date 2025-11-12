@@ -3211,7 +3211,7 @@ const callback = (data: Param) => {
   // ...
 }
 try {
-  windowClass.onAvoidAreaChange', callback);
+  windowClass.onAvoidAreaChange(callback);
 
   windowClass.offAvoidAreaChange(callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
