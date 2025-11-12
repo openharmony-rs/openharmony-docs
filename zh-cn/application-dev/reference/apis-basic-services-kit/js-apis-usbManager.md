@@ -705,9 +705,10 @@ console.log(`controlTransfer = ${ret}`);
 
 ## usbManager.usbControlTransfer<sup>12+</sup>
 
-ArkTS-Dyn: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
+ArkTS-Dyn: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: number): Promise&lt;number&gt;
 
-ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: int): Promise&lt;int&gt;
+
+ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: int): Promise&lt;int&gt;
 
 控制传输。
 
