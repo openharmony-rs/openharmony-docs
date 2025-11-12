@@ -167,7 +167,7 @@ struct Index {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
+
 
 ## Setting the Distance Between the Dialog Box and the Soft Keyboard
 
@@ -217,7 +217,7 @@ struct Index {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
+
 
 
 ## Example
