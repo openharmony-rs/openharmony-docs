@@ -60,7 +60,7 @@
 
    在进行权限申请之前，需要先检查当前应用程序是否已经被授予权限。可以通过调用[checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)方法来校验当前是否已经授权。如果已经授权，则可以直接访问目标操作，否则需要进行下一步操作，即向用户申请授权。
 
-   <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->
+   <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->    
 
 ``` TypeScript
 import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
@@ -123,7 +123,7 @@ async function checkPermissions(): Promise<void> {
 
    - 在UIAbility中向用户申请授权。
 
-   <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->
+   <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->    
 
 ``` TypeScript
 import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
@@ -168,7 +168,7 @@ export default class SecondAbility extends UIAbility {
 
    - 在UI中向用户申请授权。
 
-   <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->
+   <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->    
 
 ``` TypeScript
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';

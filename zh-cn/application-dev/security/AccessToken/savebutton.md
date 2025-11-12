@@ -53,7 +53,7 @@
    
    有关将图片保存到媒体库的详细信息，请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-  <!-- @[use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->
+   <!-- @[use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->    
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
