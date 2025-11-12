@@ -69,8 +69,7 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
-| portId | int | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号。|
 
 **返回值：**
 
