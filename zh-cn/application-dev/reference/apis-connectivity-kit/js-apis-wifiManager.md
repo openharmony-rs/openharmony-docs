@@ -3091,7 +3091,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiConnectionChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接 |
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接。 |
 
 **连接状态改变事件的枚举：**
 
