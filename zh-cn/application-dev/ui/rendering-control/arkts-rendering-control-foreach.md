@@ -126,9 +126,9 @@ struct ChildItem4 {
 **图2**  ForEach数据项不存在相同键值案例首次渲染运行效果图  
 ![ForEach-CaseStudy-1stRender-NoDup](figures/ForEach-CaseStudy-1stRender-NoDup.png)
 
-在上述代码中，`keyGenerator`函数的返回值是`item`。在ForEach渲染循环时，为数组项依次生成键值`one`、`two`和`three`，并创建对应的`ChildItem`组件渲染到界面上。
+在上述代码中，`keyGenerator`函数的返回值是`item`。在ForEach渲染循环时，为数组项依次生成键值`one`、`two`和`three`，并创建对应的`ForEachChildItem`组件渲染到界面上。
 
-当不同数组项生成的键值相同时，框架的行为是未定义的。例如，在以下代码中，ForEach渲染相同的数据项`two`时，只创建了一个`ChildItem`组件，而没有创建多个具有相同键值的组件。
+当不同数组项生成的键值相同时，框架的行为是未定义的。例如，在以下代码中，ForEach渲染相同的数据项`two`时，只创建了一个`SameKeyChildItem`组件，而没有创建多个具有相同键值的组件。
 
 <!-- @[foreach_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach2.ets) -->
 
@@ -407,7 +407,7 @@ struct ArticleCardChangeSource {
 **图6**  数据源数组项变化案例运行效果图  
 ![ForEach-DataSourceArrayChange](figures/ForEach-DataSourceArrayChange.png)
 
-在本示例中，`ArticleCard`组件作为`ArticleListView`组件的子组件，通过[\@Prop](../state-management/arkts-prop.md)装饰器接收一个`Article`对象，用于渲染文章卡片。
+在本示例中，`ArticleCardChangeSource`组件作为`ArticleListViewChangeSource`组件的子组件，通过[\@Prop](../state-management/arkts-prop.md)装饰器接收一个`ArticleChangeSource`对象，用于渲染文章卡片。
 
 1. 当列表滚动到底部且手势滑动距离超过80vp时，触发`loadMoreArticles()`函数。此函数在`articleList`数据源尾部添加新数据项，增加数据源长度。
 2. 数据源被`@State`装饰器修饰，ArkUI框架能够感知数据源长度的变化并触发`ForEach`进行重新渲染。
@@ -522,10 +522,10 @@ struct ArticleCardChangeChild {
 **图7** 数据源数组项子属性变化案例运行效果图  
 ![ForEach-DataSourceArraySubpropertyChange](figures/ForEach-DataSourceArraySubpropertyChange.png)
 
-在本示例中，`Article`类被`@Observed`装饰器修饰。父组件`ArticleListView`传入`Article`对象实例给子组件`ArticleCard`，子组件使用`@ObjectLink`装饰器接收该实例。
+在本示例中，`ArticleChangeChild`类被`@Observed`装饰器修饰。父组件`ArticleListChangeView`传入`ArticleChangeChild`对象实例给子组件`ArticleCardChangeChild`，子组件使用`@ObjectLink`装饰器接收该实例。
 
-1. 当点击第1个文章卡片上的点赞图标时，会触发`ArticleCard`组件的`handleLiked`函数。该函数修改第1个卡片对应组件里`article`实例的`isLiked`和`likesCount`属性值。
-2. `article`实例是`@ObjectLink`装饰的状态变量，其属性值变化，会触发`ArticleCard`组件渲染，此时读取的`isLiked`和`likesCount`为修改后的新值。
+1. 当点击第1个文章卡片上的点赞图标时，会触发`ArticleCardChangeChild`组件的`handleLiked`函数。该函数修改第1个卡片对应组件里`ArticleChangeChild`实例的`isLiked`和`likesCount`属性值。
+2. `ArticleChangeChild`实例是`@ObjectLink`装饰的状态变量，其属性值变化，会触发`ArticleCardChangeChild`组件渲染，此时读取的`isLiked`和`likesCount`为修改后的新值。
 
 ### 拖拽排序
 在List组件下使用ForEach，并设置[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果组件位置发生变化，将触发onMove事件，上报组件移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
@@ -604,7 +604,7 @@ struct ForEachSort {
 
 ### 渲染结果非预期
 
-在本示例中，通过设置`ForEach`的第三个参数`KeyGenerator`函数，自定义键值生成规则为数据源的索引`index`的字符串类型值。当点击父组件`Parent`中“在第1项后插入新项”文本组件后，界面会出现非预期的结果。
+在本示例中，通过设置`ForEach`的第三个参数`KeyGenerator`函数，自定义键值生成规则为数据源的索引`index`的字符串类型值。当点击父组件`ForEachAbnormal`中“Insert Item After First Item”文本组件后，界面会出现非预期的结果。
 
 <!-- @[foreach_abnormal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/AbnormalExample.ets) -->
 
@@ -710,17 +710,17 @@ struct ReducedChildItem {
 }
 ```
 
-以上代码的初始渲染效果和点击"在第1项后插入新项"文本组件后的渲染效果如下图所示。
+以上代码的初始渲染效果和点击"Insert Item After First Item"文本组件后的渲染效果如下图所示。
 
 **图11**  渲染性能降低案例运行效果图  
 ![ForEach-RenderPerformanceDecrease](figures/ForEach-RenderPerformanceDecrease.gif)
 
-点击“在第1项后插入新项”文本组件后，DevEco Studio的日志打印结果如下所示。
+点击“Insert Item After First Item”文本组件后，DevEco Studio的日志打印结果如下所示。
 
 **图12**  渲染性能降低案例日志打印图  
 ![ForEach-RenderPerformanceDecreaseLogs](figures/ForEach-RenderPerformanceDecreaseLogs.png)
 
-插入新项后，`ForEach`为`new item`、 `two`、 `three`三个数组项创建了对应的`ChildItem`组件，并执行了组件的[`aboutToAppear()`](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数。这是因为：
+插入新项后，`ForEach`为`new item`、 `two`、 `three`三个数组项创建了对应的`ReducedChildItem`组件，并执行了组件的[`aboutToAppear()`](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数。这是因为：
 
 1. `ForEach`首次渲染时，生成的键值依次为`0__one`、`1__two`和`2__three`。
 2. 插入新项后，数据源`simpleList`变为`['one', 'new item', 'two', 'three']`，ArkUI框架监听到`@State`装饰的数据源长度变化触发`ForEach`重新渲染。
