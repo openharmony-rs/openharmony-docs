@@ -18,9 +18,9 @@ getType(): JsMessageType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -36,9 +36,9 @@ getString(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -64,9 +64,9 @@ ArkTS-Sta: getNumber(): double | long
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -90,9 +90,9 @@ getBoolean(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -116,9 +116,9 @@ getArrayBuffer(): ArrayBuffer
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -144,9 +144,9 @@ ArkTS-Sta: getArray(): Array\<string | double | long | boolean\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

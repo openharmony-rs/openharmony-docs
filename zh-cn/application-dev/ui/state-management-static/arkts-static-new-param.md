@@ -4,7 +4,7 @@
 
 ## 概述
 
-\@Param装饰器，用于\@ComponentV2装饰的自定义组件中，定义组件从外部传入的状态。\@Param装饰的变量为状态变量，具有观察变化的能力，当它变化时，会触发绑定的UI组件刷新。\@Param装饰的变量为只读变量，因此无法在组件内部直接修改。
+\@Param装饰器，用于[\@ComponentV2](./arkts-static-componentv2.md#componentv2)装饰的自定义组件中，定义组件从外部传入的状态。\@Param装饰的变量为状态变量，具有观察变化的能力，当它变化时，会触发绑定的UI组件刷新。\@Param装饰的变量为只读变量，因此无法在组件内部直接修改。
 
 \@Param装饰器具有以下能力：
 
@@ -12,8 +12,8 @@
 - \@Param装饰的变量能够从父组件传入初始化，如果传入的数据源是状态变量，数据源的修改会同步给\@Param。
 
 - \@Param装饰的变量变化时，会刷新使用该变量的组件。
-- \@Param支持观察Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内置类型。
-- \@Param支持null、undefined以及联合类型。
+- \@Param支持观察Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰date类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内置类型。
+- \@Param支持null、undefined以及[联合类型](#联合类型)。
 
 在静态语言上下文中使用时，需要导入装饰器：
 
@@ -209,12 +209,12 @@ import { Param } from '@ohos.arkui.stateManagement';
   | Set   | add, clear, delete                                           |
 
 
-- 当装饰interface字面量类型时，可以观察到字面量整体以及属性的变化。
+- 当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent } from '@ohos.arkui.component';
+  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
   import { Local, Param, Require } from '@ohos.arkui.stateManagement';
   interface Info {
     name: string;
@@ -228,8 +228,14 @@ import { Param } from '@ohos.arkui.stateManagement';
     build() {
       Column() {
         Text(`Local info.name: ${this.info.name}`)
+        Text(`Local info.age: ${this.info.age}`)
+        Button('Local change info')
           .onClick((e: ClickEvent) => {
-            this.info.name = 'Tom'; // 变化可观察
+            this.info = { name: 'Tom', age: 18 } as Info; // 变化可观察
+          })
+        Button('Local change info.name')
+          .onClick((e: ClickEvent) => {
+            this.info.name = 'Lucy'; // 变化无法观察
           })
         Child({info: this.info})
       }
@@ -241,8 +247,10 @@ import { Param } from '@ohos.arkui.stateManagement';
     build() {
       Column() {
         Text(`Param info.name: ${this.info.name}`)
+        Text(`Param info.age: ${this.info.age}`)
+        Button('Param change info.name')
           .onClick((e: ClickEvent) => {
-            this.info.name = 'Lucy'; // 变化可观察
+            this.info.name = 'Mary'; // 变化无法观察
           })
       }
     }

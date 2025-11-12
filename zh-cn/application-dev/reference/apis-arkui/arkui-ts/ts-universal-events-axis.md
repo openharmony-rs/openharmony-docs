@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
->  从API Version 17开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API Version 17开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## onAxisEvent
 
-onAxisEvent(event: (event: AxisEvent) => void): T
+ArkTS-Dyn: onAxisEvent(event: (event: AxisEvent) => void): T
+
+ArkTS-Sta: onAxisEvent(event: Callback<AxisEvent> | undefined): this
 
 鼠标滚轮滚动或触控板双指移动触发该回调。
 
@@ -18,17 +22,21 @@ onAxisEvent(event: (event: AxisEvent) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [AxisEvent](#axisevent) | 是   | 获得[AxisEvent](#axisevent)对象。 |
+| event  | ArkTS-Dyn: [AxisEvent](#axisevent) <br/>ArkTS-Sta: Callback\<[AxisEvent](#axisevent)> \|&nbsp;undefined | 是   | 获得[AxisEvent](#axisevent)对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## AxisEvent
 

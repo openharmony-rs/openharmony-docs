@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -57,7 +59,9 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 ### color
 
-color(value: ResourceColor)
+ArkTS-Dyn: color(value: ResourceColor)
+
+ArkTS-Sta: color(value: ResourceColor | undefined)
 
 设置未选中项文本颜色。
 
@@ -65,15 +69,21 @@ color(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 未选中项文本颜色。<br/>默认值：0x99182431。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|  undefined| 是   | 未选中项文本颜色。<br/>默认值：0x99182431。 |
 
 ### selectedColor
 
-selectedColor(value: ResourceColor)
+ArkTS-Dyn: selectedColor(value: ResourceColor)
+
+ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 设置选中项文本颜色。
 
@@ -81,15 +91,21 @@ selectedColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF。 |
 
 ### popupColor
 
-popupColor(value: ResourceColor)
+ArkTS-Dyn: popupColor(value: ResourceColor)
+
+ArkTS-Sta: popupColor(value: ResourceColor | undefined)
 
 设置提示弹窗一级索引项文本颜色。
 
@@ -97,15 +113,21 @@ popupColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF。 |
 
 ### selectedBackgroundColor
 
-selectedBackgroundColor(value: ResourceColor)
+ArkTS-Dyn: selectedBackgroundColor(value: ResourceColor)
+
+ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 设置选中项背景颜色。
 
@@ -113,15 +135,21 @@ selectedBackgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF。 |
 
 ### popupBackground
 
-popupBackground(value: ResourceColor)
+ArkTS-Dyn: popupBackground(value: ResourceColor)
+
+ArkTS-Sta: popupBackground(value: ResourceColor | undefined)
 
 设置提示弹窗背景颜色。
 
@@ -129,15 +157,21 @@ popupBackground(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF。<br />API version 12及以后：#66808080。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF。<br />API version 12及以后：#66808080。 |
 
 ### usingPopup
 
-usingPopup(value: boolean)
+ArkTS-Dyn: usingPopup(value: boolean)
+
+ArkTS-Sta: usingPopup(value: boolean | undefined)
 
 设置是否显示提示弹窗。
 
@@ -145,15 +179,21 @@ usingPopup(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------- | ---- | -------------------------------------- |
-| value  | boolean | 是   | 是否显示提示弹窗。<br/>默认值：false，不显示提示弹窗。 |
+| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined | 是   | 是否显示提示弹窗。<br/>默认值：false，不显示提示弹窗。 |
 
 ### selectedFont
 
-selectedFont(value: Font)
+ArkTS-Dyn: selectedFont(value: Font)
+
+ArkTS-Sta: selectedFont(value: Font | undefined)
 
 设置选中项文本样式。
 
@@ -161,15 +201,21 @@ selectedFont(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | 是   | 选中项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 选中项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### popupFont
 
-popupFont(value: Font)
+ArkTS-Dyn: popupFont(value: Font)
+
+ArkTS-Sta: popupFont(value: Font | undefined)
 
 设置提示弹窗一级索引文本样式。
 
@@ -177,15 +223,21 @@ popupFont(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | 是   | 提示弹窗一级索引文本样式。<br/>默认值：<br/>{<br/>size:'24.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗一级索引文本样式。<br/>默认值：<br/>{<br/>size:'24.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### font
 
-font(value: Font)
+ArkTS-Dyn: font(value: Font)
+
+ArkTS-Sta: font(value: Font | undefined)
 
 设置未选中项文本样式。
 
@@ -193,15 +245,21 @@ font(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | 是   | 未选中索引项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 未选中索引项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### itemSize
 
-itemSize(value: string&nbsp;|&nbsp;number)
+ArkTS-Dyn: itemSize(value: string&nbsp;|&nbsp;number)
+
+ArkTS-Sta: itemSize(value: string | double | undefined)
 
 设置索引项区域大小。
 
@@ -209,15 +267,21 @@ itemSize(value: string&nbsp;|&nbsp;number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;number | 是   | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br/>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右[padding](ts-universal-attributes-size.md#padding)，索引项高度最大为（组件高度-上下[padding](ts-universal-attributes-size.md#padding)）/索引项个数。传入值小于等于0时，按照默认值处理。<br/>默认值：16.0<br/>单位：vp |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;number  <br/>  ArkTS-Sta: string&nbsp;\|&nbsp;double \| undefined| 是   | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br/>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右[padding](ts-universal-attributes-size.md#padding)，索引项高度最大为（组件高度-上下[padding](ts-universal-attributes-size.md#padding)）/索引项个数。传入值小于等于0时，按照默认值处理。<br/>默认值：16.0<br/>单位：vp |
 
 ### alignStyle
 
-alignStyle(value: IndexerAlign, offset?: Length)
+ArkTS-Dyn: alignStyle(value: IndexerAlign, offset?: Length)
+
+ArkTS-Sta: alignStyle(value: IndexerAlign | undefined, offset?: Length | undefined)
 
 设置索引条提示弹窗的对齐样式。
 
@@ -225,16 +289,22 @@ alignStyle(value: IndexerAlign, offset?: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名               | 类型                                  | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                | [IndexerAlign](#indexeralign枚举说明) | 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值: IndexerAlign.END。 |
-| offset<sup>10+</sup> | [Length](ts-types.md#length)          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与popupPosition同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。 |
+| value                | ArkTS-Dyn: [IndexerAlign](#indexeralign枚举说明)  <br/>  ArkTS-Sta: [IndexerAlign](#indexeralign枚举说明) \| undefined| 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值: IndexerAlign.END。 |
+| offset<sup>10+</sup> | ArkTS-Dyn: [Length](ts-types.md#length) <br/>  ArkTS-Sta: [Length](ts-types.md#length) \| undefined          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与popupPosition同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。 |
 
 ### selected<sup>8+</sup>
 
-selected(index: number)
+ArkTS-Dyn: selected(index: number)
+
+ArkTS-Sta: selected(index: int | Bindable\<int> | undefined)
 
 设置选中项索引值。
 
@@ -244,15 +314,21 @@ selected(index: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | number | 是   | 选中项索引值。<br/>默认值：0 |
+| index  | ArkTS-Dyn: number  <br/>  ArkTS-Sta: int \| Bindable<int\> \| undefined| 是   | 选中项索引值。<br/>默认值：0 |
 
 ### popupPosition<sup>8+</sup>
 
-popupPosition(value: Position)
+ArkTS-Dyn: popupPosition(value: Position)
+
+ArkTS-Sta: popupPosition(value: Position | undefined)
 
 设置弹出窗口相对于索引条上边框中点的位置。
 
@@ -260,15 +336,21 @@ popupPosition(value: Position)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                              | 必填 | 说明                                                         |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) | 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0} |
+| value  | ArkTS-Dyn: [Position](ts-types.md#position) <br/>  ArkTS-Sta: [Position](ts-types.md#position) \| undefined| 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0} |
 
 ### popupSelectedColor<sup>10+</sup>
 
-popupSelectedColor(value: ResourceColor)
+ArkTS-Dyn: popupSelectedColor(value: ResourceColor)
+
+ArkTS-Sta: popupSelectedColor(value: ResourceColor | undefined)
 
 设置提示弹窗二级索引选中项文本颜色。
 
@@ -276,15 +358,21 @@ popupSelectedColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                  |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
 
 ### popupUnselectedColor<sup>10+</sup>
 
-popupUnselectedColor(value: ResourceColor)
+ArkTS-Dyn: popupUnselectedColor(value: ResourceColor)
+
+ArkTS-Sta: popupUnselectedColor(value: ResourceColor | undefined)
 
 设置提示弹窗二级索引未选中项文本颜色。
 
@@ -292,15 +380,21 @@ popupUnselectedColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                    |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
 
 ### popupItemFont<sup>10+</sup>
 
-popupItemFont(value: Font)
+ArkTS-Dyn: popupItemFont(value: Font)
+
+ArkTS-Sta: popupItemFont(value: Font | undefined)
 
 设置提示弹窗二级索引项文本样式。
 
@@ -308,15 +402,21 @@ popupItemFont(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | 是   | 提示弹窗二级索引项文本样式。 <br/>默认值：<br/>{<br/>size:24,<br/>weight:FontWeight.Medium<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗二级索引项文本样式。 <br/>默认值：<br/>{<br/>size:24,<br/>weight:FontWeight.Medium<br/>} |
 
 ### popupItemBackgroundColor<sup>10+</sup>
 
-popupItemBackgroundColor(value: ResourceColor)
+ArkTS-Dyn: popupItemBackgroundColor(value: ResourceColor)
+
+ArkTS-Sta: popupItemBackgroundColor(value: ResourceColor | undefined)
 
 设置提示弹窗二级索引项背景颜色。 
 
@@ -324,15 +424,21 @@ popupItemBackgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                                            |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF。<br />API version 12及以后：#00000000。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF。<br />API version 12及以后：#00000000。 |
 
 ### autoCollapse<sup>11+</sup>   
 
-autoCollapse(value: boolean)
+ArkTS-Dyn: autoCollapse(value: boolean)
+
+ArkTS-Sta: autoCollapse(value: boolean | undefined)
 
 设置是否使用自适应折叠模式。
 
@@ -344,15 +450,21 @@ autoCollapse(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false，不使用自适应折叠模式。<br />API version 12及之后：true，使用自适应折叠模式。 |
+| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined| 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false，不使用自适应折叠模式。<br />API version 12及之后：true，使用自适应折叠模式。 |
 
 ### popupItemBorderRadius<sup>12+</sup>   
 
-popupItemBorderRadius(value: number)
+ArkTS-Dyn: popupItemBorderRadius(value: number)
+
+ArkTS-Sta: popupItemBorderRadius(value: double | undefined)
 
 设置提示弹窗索引项背板圆角半径。
 
@@ -360,15 +472,21 @@ popupItemBorderRadius(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp。<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 |
+| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \|undefined| 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp。<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 |
 
 ### itemBorderRadius<sup>12+</sup>   
 
-itemBorderRadius(value: number)
+ArkTS-Dyn: itemBorderRadius(value: number)
+
+ArkTS-Sta: itemBorderRadius(value: double | undefined)
 
 设置索引项背板圆角半径。
 
@@ -376,15 +494,21 @@ itemBorderRadius(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 设置索引项背板圆角半径。<br/>默认值：8vp<br/>不支持百分比，小于0时按照0设置。<br/>索引条背板圆角自适应变化（索引项圆角半径+4vp）。 |
+| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \| undefined | 是   | 设置索引项背板圆角半径。<br/>默认值：8vp<br/>不支持百分比，小于0时按照0设置。<br/>索引条背板圆角自适应变化（索引项圆角半径+4vp）。 |
 
 ### popupBackgroundBlurStyle<sup>12+</sup>   
 
-popupBackgroundBlurStyle(value: BlurStyle)
+ArkTS-Dyn: popupBackgroundBlurStyle(value: BlurStyle)
+
+ArkTS-Sta: popupBackgroundBlurStyle(value: BlurStyle | undefined)
 
 设置提示弹窗的背景模糊材质。
 
@@ -392,15 +516,21 @@ popupBackgroundBlurStyle(value: BlurStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR。 |
+| value  | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)  <br/>  ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined| 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR。 |
 
 ### popupTitleBackground<sup>12+</sup>   
 
-popupTitleBackground(value: ResourceColor)
+ArkTS-Dyn: popupTitleBackground(value: ResourceColor)
+
+ArkTS-Sta: popupTitleBackground(value: ResourceColor | undefined)
 
 设置提示弹窗一级索引项背景颜色。
 
@@ -408,23 +538,33 @@ popupTitleBackground(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置提示弹窗一级索引项背景颜色。<br/>默认值：<br/>提示弹窗只有一个索引项：#00FFFFFF。<br/>提示弹窗有多个索引项：#0c182431。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 设置提示弹窗一级索引项背景颜色。<br/>默认值：<br/>提示弹窗只有一个索引项：#00FFFFFF。<br/>提示弹窗有多个索引项：#0c182431。 |
 
 ### enableHapticFeedback<sup>12+</sup>
 
-enableHapticFeedback(value: boolean)
+ArkTS-Dyn: enableHapticFeedback(value: boolean)
+
+ArkTS-Sta: enableHapticFeedback(value: boolean | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名         | 类型                                                  | 必填 | 说明                         |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | boolean | 是  | 是否支持触控反馈。<br/>默认值：true，支持触控反馈。 |
+| value | ArkTS-Dyn: boolean<br/>  ArkTS-Sta: boolean \| undefined | 是  | 是否支持触控反馈。<br/>默认值：true，支持触控反馈。 |
 
 ## IndexerAlign枚举说明
 
@@ -461,7 +601,9 @@ onSelected(callback:&nbsp;(index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
 ### onSelect<sup>8+</sup>
 
-onSelect(callback: OnAlphabetIndexerSelectCallback)
+ArkTS-Dyn: onSelect(callback: OnAlphabetIndexerSelectCallback)
+
+ArkTS-Sta: onSelect(callback: OnAlphabetIndexerSelectCallback | undefined)
 
 索引项选中事件，回调参数为当前选中项索引。
 
@@ -469,15 +611,21 @@ onSelect(callback: OnAlphabetIndexerSelectCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) | 是   | 索引项选中事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18)  <br/>  ArkTS-Sta: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) \| undefined| 是   | 索引项选中事件。 |
 
 ### onRequestPopupData<sup>8+</sup>
 
-onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
+ArkTS-Dyn: onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
+
+ArkTS-Sta: onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback | undefined)
 
 设置提示弹窗二级索引项内容事件，回调参数为当前选中项索引，回调返回值为提示弹窗需显示的二级索引项内容。
 
@@ -485,15 +633,21 @@ onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback  | [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) | 是   | 设置提示弹窗二级索引项内容事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) <br/>  ArkTS-Sta: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) \| undefined| 是   | 设置提示弹窗二级索引项内容事件。 |
 
 ### onPopupSelect<sup>8+</sup>
 
-onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
+ArkTS-Dyn: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
+
+ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefined)
 
 提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。
 
@@ -501,11 +655,15 @@ onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) | 是   | 提示弹窗二级索引选中事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 提示弹窗二级索引选中事件。 |
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
 type OnAlphabetIndexerSelectCallback = (index: number) => void

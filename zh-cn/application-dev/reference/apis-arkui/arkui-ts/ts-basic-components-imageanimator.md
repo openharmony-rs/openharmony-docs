@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 
@@ -65,7 +67,9 @@ state(value: AnimationStatus)
 
 ### duration
 
-duration(value: number)
+ArkTS-Dyn: duration(value: number)
+
+ArkTS-Sta: duration(value: int)
 
 设置播放时长。当Images中任意一帧图片设置了单独的duration后，该属性设置无效。
 
@@ -77,9 +81,13 @@ duration(value: number)
 
 **参数：** 
 
+**ArkTs-Dyn起始版本：** 7
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
+| value  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
 
 ### reverse
 
@@ -153,7 +161,9 @@ fillMode(value: FillMode)
 
 ### iterations
 
-iterations(value: number)
+ArkTS-Dyn: iterations(value: number)
+
+ArkTS-Sta: iterations(value: int)
 
 设置播放次数。
 
@@ -163,9 +173,13 @@ iterations(value: number)
 
 **参数：** 
 
+**ArkTs-Dyn起始版本：** 7
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | 是   | 默认播放一次，设置为-1时表示无限次播放，设置为小于-1的负数时取默认值。设置为浮点数时，数值向下取整。<br/>默认值：1 |
+| value  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 默认播放一次，设置为-1时表示无限次播放，设置为小于-1的负数时取默认值。设置为浮点数时，数值向下取整。<br/>默认值：1 |
 
 ### monitorInvisibleArea<sup>17+</sup>
 
@@ -191,14 +205,18 @@ monitorInvisibleArea(monitorInvisibleArea: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 7
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称   | 类型   | 必填 | 说明 |
 | -------- | -------------- | -------- | -------- |
 | src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | 是    | 图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API Version9开始支持[Resource](ts-types.md#resource)类型的路径，从API version 12开始支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
-| width    | number&nbsp;\|&nbsp;string | 否  | 图片宽度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp   <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用       |
-| height   | number&nbsp;\|&nbsp;string | 否  | 图片高度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp     <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用        |
-| top      | number&nbsp;\|&nbsp;string | 否  | 图片相对于组件左上角的纵向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp  <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用  |
-| left     | number&nbsp;\|&nbsp;string | 否  | 图片相对于组件左上角的横向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用   |
-| duration | number          | 否     | 每帧图片的播放时长，单位毫秒。<br/>默认值：0<br/>不支持负数。设置为负数将导致图片在当前帧长时间停留，影响正常播放。         |
+| width    | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否  | 图片宽度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp   <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用       |
+| height   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否  | 图片高度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp     <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用        |
+| top      | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否  | 图片相对于组件左上角的纵向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp  <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用  |
+| left     | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否  | 图片相对于组件左上角的横向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用   |
+| duration | int          | 否     | 每帧图片的播放时长，单位毫秒。<br/>默认值：0<br/>不支持负数。设置为负数将导致图片在当前帧长时间停留，影响正常播放。         |
 
 ## 事件
 

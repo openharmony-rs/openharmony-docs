@@ -21,7 +21,7 @@ WrappedBuilder对象互操作适用于主模块使用ArkTS-Sta、子模块使用
 
 - 遵循语言[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)的规范。
 
-- 遵循ArkTS-Dyn WrappedBuilder对象的使用[限制条件](../quick-start/arkts-wrapBuilder.md#限制条件)。
+- 遵循ArkTS-Dyn WrappedBuilder对象的使用[限制条件](./state-management/arkts-wrapBuilder.md#限制条件)。
 
 - compatibleWrappedBuilder函数建议在自定义组件的build函数或者\@Builder函数内使用。
 
@@ -72,7 +72,7 @@ export const globalBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn WrappedBuilder对象。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/MainPage.ets
 import { Entry, Component, Column, Button, ClickEvent, compatibleWrappedBuilder } from '@ohos.arkui.component';

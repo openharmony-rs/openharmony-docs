@@ -4,14 +4,16 @@
 
 >  **说明：**
 >
->  本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  本模块接口均为系统接口。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口均为系统接口。
 
 ## 导入模块
 
 ```ts
-import configPolicy from '@ohos.configPolicy';
+import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
 ## getOneCfgFile
@@ -19,9 +21,13 @@ import configPolicy from '@ohos.configPolicy';
 getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 
 使用callback形式返回指定文件名的最高优先级配置文件路径。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回/sys_pod/etc/config.xml。
+例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_prod/etc/config.xml，最终返回/sys_prod/etc/config.xml。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -40,24 +46,57 @@ getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    configPolicy.getOneCfgFile(relpath, (error: BusinessError, value: string) => {
-      if (error == null) {
-        console.log('value is ' + value);
-      } else {
-        console.error('error: ' + error.code + ', ' + error.message);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getOneCfgFile(relpath, (error: BusinessError, value: string) => {
+        if (error == null) {
+          console.info('value is ' + value);
+        } else {
+          console.error('error: ' + error.code + ', ' + error.message);
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getOneCfgFile(relpath, (error: BusinessError | null, value: string | undefined) => {
+        if (error == null) {
+          console.info('value is ' + value);
+        } else {
+          console.error('error: ' + error.code + ', ' + error.message);
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getOneCfgFile
 
@@ -66,6 +105,10 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
 使用Promise形式返回指定文件名的最高优先级配置文件路径。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -89,31 +132,66 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    configPolicy.getOneCfgFile(relpath).then((value: string) => {
-      console.log('value is ' + value);
-    }).catch((error: BusinessError) => {
-      console.error('getOneCfgFile promise error: ' + error.code + ', ' + error.message);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getOneCfgFile(relpath).then((value: string) => {
+        console.info('value is ' + value);
+      }).catch((error: BusinessError) => {
+        console.error('getOneCfgFile promise error: ' + error.code + ', ' + error.message);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getOneCfgFile(relpath).then((value: string) => {
+        console.info('value is ' + value);
+      }).catch((error: Error) => {
+        console.error('getOneCfgFile promise error: ' + error);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgFiles
 
 getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 按优先级从低到高，使用callback形式返回指定文件名所有的文件列表。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回/system/etc/config.xml, /sys_pod/etc/config.xml。
+例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_prod/etc/config.xml，最终返回/system/etc/config.xml, /sys_prod/etc/config.xml。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -132,23 +210,55 @@ getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.log('value is ' + value);
-      } else {
-        console.error('error: ' + error.code + ', ' + error.message);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError, value: Array<string>) => {
+        if (error == null) {
+          console.info('value is ' + value);
+        } else {
+          console.error('error: ' + error.code + ', ' + error.message);
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError | null, value: Array<string> | undefined) => {
+        if (error == null) {
+          console.info('value is ' + value);
+        } else {
+          console.error('error: ' + error.code + ', ' + error.message);
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgFiles
 
@@ -157,6 +267,10 @@ getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 按优先级从低到高，使用Promise形式返回指定文件名所有的文件列表。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -180,22 +294,53 @@ getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    configPolicy.getCfgFiles(relpath).then((value: Array<string>) => {
-      console.log('value is ' + value);
-    }).catch((error: BusinessError) => {
-      console.error('getCfgFiles promise error: ' + error.code + ', ' + error.message);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getCfgFiles(relpath).then((value: Array<string>) => {
+        console.info('value is ' + value);
+      }).catch((error: BusinessError) => {
+        console.error('getCfgFiles promise error: ' + error.code + ', ' + error.message);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getCfgFiles(relpath).then((value: Array<string>) => {
+        console.info('value is ' + value);
+      }).catch((error: Error) => {
+        console.error('getCfgFiles promise error: ' + error);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgDirList
 
@@ -204,6 +349,10 @@ getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 使用callback形式返回配置层级目录列表。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -221,23 +370,55 @@ getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    configPolicy.getCfgDirList((error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.log('value is ' + value);
-      } else {
-        console.error('error: ' + error.code + ', ' + error.message);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      configPolicy.getCfgDirList((error: BusinessError, value: Array<string>) => {
+        if (error == null) {
+          console.info('value is ' + value);
+        } else {
+          console.error('error: ' + error.code + ', ' + error.message);
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      configPolicy.getCfgDirList((error: BusinessError | null, value: Array<string> | undefined) => {
+        if (error == null) {
+          console.info('value is ' + value);
+        } else {
+          console.error('error: ' + error.code + ', ' + error.message);
+        }
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgDirList
 
@@ -247,6 +428,10 @@ getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                               | 说明             |
@@ -255,30 +440,64 @@ getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    configPolicy.getCfgDirList().then((value: Array<string>) => {
-      console.log('value is ' + value);
-    }).catch((error: BusinessError) => {
-      console.error('getCfgDirList promise error: ' + error.code + ', ' + error.message);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      configPolicy.getCfgDirList().then((value: Array<string>) => {
+        console.info('value is ' + value);
+      }).catch((error: BusinessError) => {
+        console.error('getCfgDirList promise error: ' + error.code + ', ' + error.message);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      configPolicy.getCfgDirList().then((value: Array<string>) => {
+        console.info('value is ' + value);
+      }).catch((error: Error) => {
+        console.error('getCfgDirList promise error: ' + error);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getOneCfgFile<sup>11+</sup>
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;string&gt;)
 
 根据提供的跟随模式获取指定文件名的最高优先级配置文件路径，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT，最终返回/sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_prod/etc/config.xml、/sys_prod/etc/carrier/46060/etc/config.xml，且设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT，最终返回/sys_prod/etc/carrier/46060/etc/config.xml。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -298,34 +517,72 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
-      (error: BusinessError, value: string) => {
-      if (error == null) {
-        console.log('value is ' + value);
-      } else {
-        console.error('error: ' + error.code + ', ' + error.message);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
+        (error: BusinessError, value: string) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
+        (error: BusinessError | null, value: string | undefined) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getOneCfgFile<sup>11+</sup>
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;string&gt;)
 
 根据提供的跟随模式获取指定文件名的最高优先级配置文件路径，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"，最终返回/sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_prod/etc/config.xml、/sys_prod/etc/carrier/46060/etc/config.xml，且设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"，最终返回/sys_prod/etc/carrier/46060/etc/config.xml。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -346,26 +603,61 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
-    configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
-      (error: BusinessError, value: string) => {
-      if (error == null) {
-        console.log('value is ' + value);
-      } else {
-        console.error('error: ' + error.code + ', ' + error.message);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
+        (error: BusinessError, value: string) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
+        (error: BusinessError | null, value: string | undefined) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getOneCfgFile<sup>11+</sup>
 
@@ -374,6 +666,10 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 根据提供的跟随模式获取指定文件名的最高优先级配置文件路径，并使用Promise形式返回。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -399,23 +695,55 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
-    configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra).then((value: string) => {
-      console.log('value is ' + value);
-    }).catch((error: BusinessError) => {
-      console.error('getOneCfgFile promise error: ' + error.code + ', ' + error.message);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra).then((value: string) => {
+        console.info('value is ' + value);
+      }).catch((error: BusinessError) => {
+        console.error('getOneCfgFile promise error: ' + error.code + ', ' + error.message);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra).then((value: string) => {
+        console.info('value is ' + value);
+      }).catch((error: Error) => {
+        console.error('getOneCfgFile promise error: ' + error);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getOneCfgFileSync<sup>11+</sup>
 
@@ -424,6 +752,10 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 根据提供的跟随模式返回指定文件名的最高优先级配置文件路径。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -450,29 +782,62 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
-    let result: string = configPolicy.getOneCfgFileSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
-    console.log('result is ' + result);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      let result: string = configPolicy.getOneCfgFileSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
+      console.info('result is ' + result);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      let result: string = configPolicy.getOneCfgFileSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
+      console.info('result is ' + result);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgFiles<sup>11+</sup>
 
 getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 按优先级从低到高，根据提供的跟随模式获取指定文件名所有的文件列表，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT，最终返回/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_prod/etc/config.xml、/sys_prod/etc/carrier/46060/etc/config.xml，且设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT，最终返回/system/etc/config.xml, /sys_prod/etc/config.xml, /sys_prod/etc/carrier/46060/etc/config.xml。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -492,34 +857,72 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
-      (error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.log('value is ' + value);
-      } else {
-        console.error('error: ' + error.code + ', ' + error.message);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
+        (error: BusinessError, value: Array<string>) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
+        (error: BusinessError | null, value: Array<string> | undefined) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgFiles<sup>11+</sup>
 
 getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 按优先级从低到高，根据提供的跟随模式获取指定文件名所有的文件列表，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"，最终返回/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_prod/etc/config.xml、/sys_prod/etc/carrier/46060/etc/config.xml，且设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"，最终返回/system/etc/config.xml, /sys_prod/etc/config.xml, /sys_prod/etc/carrier/46060/etc/config.xml。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -540,26 +943,61 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
-    configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra,
-      (error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.log('value is ' + value);
-      } else {
-        console.error('error: ' + error.code + ', ' + error.message);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
+        (error: BusinessError, value: Array<string>) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
+        (error: BusinessError | null, value: Array<string> | undefined) => {
+          if (error == null) {
+            console.info('value is ' + value);
+          } else {
+            console.error('error: ' + error.code + ', ' + error.message);
+          }
+        });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgFiles<sup>11+</sup>
 
@@ -568,6 +1006,10 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 根据提供的跟随模式按优先级从低到高，获取指定文件名所有的文件列表，并使用Promise形式返回。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -593,23 +1035,55 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
-    configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra).then((value: Array<string>) => {
-      console.log('value is ' + value);
-    }).catch((error: BusinessError) => {
-      console.error('getCfgFiles promise error: ' + error.code + ', ' + error.message);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra).then((value: Array<string>) => {
+        console.info('value is ' + value);
+      }).catch((error: BusinessError) => {
+        console.error('getCfgFiles promise error: ' + error.code + ', ' + error.message);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra).then((value: Array<string>) => {
+        console.info('value is ' + value);
+      }).catch((error: Error) => {
+        console.error('getCfgFiles promise error: ' + error);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgFilesSync<sup>11+</sup>
 
@@ -618,6 +1092,10 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 根据提供的跟随模式返回指定文件名所有的文件列表。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -644,20 +1122,49 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let relpath: string = 'etc/config.xml';
-    let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
-    let result: Array<string> = configPolicy.getCfgFilesSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
-    console.log('result is ' + result);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      let result: Array<string> = configPolicy.getCfgFilesSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
+      console.info('result is ' + result);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let relpath: string = 'etc/config.xml';
+      let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
+      let result: Array<string> = configPolicy.getCfgFilesSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
+      console.info('result is ' + result);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## getCfgDirListSync<sup>11+</sup>
 
@@ -666,6 +1173,10 @@ getCfgDirListSync(): Array&lt;string&gt;
 返回配置层级目录列表。
 
 **系统能力**：SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -676,22 +1187,53 @@ getCfgDirListSync(): Array&lt;string&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let result: Array<string> = configPolicy.getCfgDirListSync();
-    console.log('result is ' + result);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error('error:' + code + ', ' + message);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let result: Array<string> = configPolicy.getCfgDirListSync();
+      console.info('result is ' + result);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let result: Array<string> = configPolicy.getCfgDirListSync();
+      console.info('result is ' + result);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error('error: ' + code + ', ' + message);
+    }
+  }
+}
+```
 
 ## FollowXMode<sup>11+</sup>
 
 **系统能力:** SystemCapability.Customization.ConfigPolicy
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称             | 值  | 说明                                                                                                                       |
 | ---------------- | --- | -------------------------------------------------------------------------------------------------------------------------- |

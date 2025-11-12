@@ -26,9 +26,9 @@ getGuid(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -149,9 +149,9 @@ ArkTS-Sta: getCurrentSpeed(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -272,9 +272,9 @@ ArkTS-Sta: getPercentComplete(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -395,9 +395,9 @@ ArkTS-Sta: getTotalBytes(): long
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -516,9 +516,9 @@ getState(): WebDownloadState
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -637,9 +637,9 @@ getLastErrorCode(): WebDownloadErrorCode
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -760,9 +760,9 @@ getMethod(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -881,9 +881,9 @@ getMimeType(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1067,9 +1067,9 @@ getSuggestedFileName(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1190,9 +1190,9 @@ ArkTS-Sta: getReceivedBytes(): long
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1313,9 +1313,9 @@ getFullPath(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1506,7 +1506,7 @@ static deserialize(serializedData: Uint8Array): WebDownloadItem
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1665,9 +1665,9 @@ start(downloadPath: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1816,9 +1816,9 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -1973,9 +1973,9 @@ pause(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -2154,9 +2154,9 @@ resume(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 

@@ -22,6 +22,10 @@ querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Developtools.Syscap
 
+**ArkTs-Dyn起始版本**：9
+
+**ArkTs-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -52,6 +56,10 @@ querySystemCapabilities(): Promise&lt;string&gt;
 获取系统能力的集合。
 
 **系统能力：** SystemCapability.Developtools.Syscap
+
+**ArkTs-Dyn起始版本**：9
+
+**ArkTs-Sta起始版本**：20
 
 **返回值：**
 

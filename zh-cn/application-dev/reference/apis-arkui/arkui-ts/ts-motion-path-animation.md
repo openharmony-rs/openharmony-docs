@@ -4,10 +4,14 @@
 
 >  **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## motionPath
-motionPath(value: MotionPathOptions)
+ArkTS-Dyn: motionPath(value: MotionPathOptions)
+
+ArkTS-Sta: motionPath(value: MotionPathOptions | undefined)
 
 设置组件的路径动画。
 
@@ -15,11 +19,15 @@ motionPath(value: MotionPathOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) | 是    | 设置组件的运动路径。             |
+| value | ArkTS-Dyn: [MotionPathOptions](#motionpathoptions) <br/>ArkTS-Sta: [MotionPathOptions](#motionpathoptions) \| undefined | 是    | 设置组件的运动路径。             |
 
 ## MotionPathOptions
 

@@ -5,9 +5,11 @@
 
 > **说明：**
 >
-> 从API version 12开始支持。后续版本的新增形状，采用上角标单独标记形状的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+>- 从API version 12开始支持。后续版本的新增形状，采用上角标单独标记形状的起始版本。
+>
+>- 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
 ## 导入模块
 
@@ -201,7 +203,9 @@ radiusHeight(rHeight: number | string): RectShape
 
 ### radius
 
-radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
+ArkTS-Dyn: radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
+
+ArkTS-Sta: radius(radius: double | string | Array<double &nbsp;\|&nbsp; string>): RectShape
 
 设置矩形形状的圆角半径。
 
@@ -211,11 +215,15 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是length。 |
+| radius | ArkTS-Dyn: number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string>   <br> ArkTS-Sta: double &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<double &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number或者double时取值范围是[0, +∞)，string时是length。 |
 
 **返回值：**
 

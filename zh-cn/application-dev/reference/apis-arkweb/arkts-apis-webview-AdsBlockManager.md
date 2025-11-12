@@ -104,9 +104,9 @@ static addAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -242,9 +242,9 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -376,9 +376,9 @@ static clearAdsBlockDisallowedList(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -502,9 +502,9 @@ static addAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -646,9 +646,9 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -780,9 +780,9 @@ static clearAdsBlockAllowedList(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 

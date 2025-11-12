@@ -5,13 +5,15 @@
 
 >  **说明：**
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  为了不影响滚动帧率，建议在滚动类组件中Marquee的个数不超过4个，或者使用[Text](ts-basic-components-text.md)组件的[TextOverflow.MARQUEE](ts-appendix-enums.md#textoverflow)替代。
+>  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 对于Marquee组件动态帧率的场景，可以使用[MarqueeDynamicSyncScene](../js-apis-arkui-UIContext.md#marqueedynamicsyncscene14)接口实现。
+>  - 为了不影响滚动帧率，建议在滚动类组件中Marquee的个数不超过4个，或者使用[Text](ts-basic-components-text.md)组件的[TextOverflow.MARQUEE](ts-appendix-enums.md#textoverflow)替代。
 >
-> 在文本宽度小于跑马灯组件宽度时，使用[属性动画](ts-animatorproperty.md)实现滚动。
+>  - 对于Marquee组件动态帧率的场景，可以使用[MarqueeDynamicSyncScene](../js-apis-arkui-UIContext.md#marqueedynamicsyncscene14)接口实现。
+>
+>  - 在文本宽度小于跑马灯组件宽度时，使用[属性动画](ts-animatorproperty.md)实现滚动。
 
 ## 子组件
 
@@ -64,7 +66,9 @@ Marquee初始化参数。
 
 ### fontColor
 
-fontColor(value: ResourceColor)
+ArkTS-Dyn: fontColor(value: ResourceColor)
+
+ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 设置字体颜色。
 
@@ -74,15 +78,21 @@ fontColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br > ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。 |
 
 ### fontSize
 
-fontSize(value: Length)
+ArkTS-Dyn: fontSize(value: Length)
+
+ArkTS-Sta: fontSize(value: Length | undefined)
 
 设置字体大小。
 
@@ -92,15 +102,21 @@ fontSize(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br > ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
 
 ### fontWeight
 
-fontWeight(value: number | FontWeight | string)
+ArkTS-Dyn: fontWeight(value: number | FontWeight | string)
+
+ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
@@ -110,15 +126,21 @@ fontWeight(value: number | FontWeight | string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br > ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp; string \|&nbsp; undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal |
 
 ### fontFamily
 
-fontFamily(value: string | Resource)
+ArkTS-Dyn: fontFamily(value: string | Resource)
+
+ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 设置字体列表。
 
@@ -128,15 +150,21 @@ fontFamily(value: string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \|&nbsp; undefined | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ### allowScale
 
-allowScale(value: boolean)
+ArkTS-Dyn: allowScale(value: boolean)
+
+ArkTS-Sta: allowScale(value: boolean | undefined)
 
 设置是否允许文本缩放。
 
@@ -146,15 +174,21 @@ allowScale(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | boolean | 是   | 是否允许文本缩放。<br/>true表示允许文本缩放，false表示不允许文本缩放。<br/>默认值：false<br/>**说明：**<br/>仅当fontSize为fp单位时生效。 |
+| value  | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 是否允许文本缩放。<br/>true表示允许文本缩放，false表示不允许文本缩放。<br/>默认值：false<br/>**说明：**<br/>仅当fontSize为fp单位时生效。 |
 
 ### marqueeUpdateStrategy<sup>12+</sup>
 
-marqueeUpdateStrategy(value: MarqueeUpdateStrategy)
+ArkTS-Dyn: marqueeUpdateStrategy(value: MarqueeUpdateStrategy)
+
+ArkTS-Sta: marqueeUpdateStrategy(value: MarqueeUpdateStrategy | undefined)
 
 跑马灯组件属性更新后，跑马灯的滚动策略。(当跑马灯为播放状态，且文本内容宽度超过跑马灯组件宽度时，该属性生效。)
 
@@ -162,17 +196,23 @@ marqueeUpdateStrategy(value: MarqueeUpdateStrategy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value |[MarqueeUpdateStrategy](ts-appendix-enums.md#marqueeupdatestrategy12) | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>默认值: MarqueeUpdateStrategy.DEFAULT |
+| value | ArkTS-Dyn: [MarqueeUpdateStrategy](ts-appendix-enums.md#marqueeupdatestrategy12) <br/> ArkTS-Sta:  [MarqueeUpdateStrategy](ts-appendix-enums.md#marqueeupdatestrategy12) \| undefined | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>默认值: MarqueeUpdateStrategy.DEFAULT |
 
 ## 事件
 
 ### onStart
 
-onStart(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onStart(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onStart(event:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 当滚动的文本内容变化或者开始滚动时触发回调。
 
@@ -182,9 +222,15 @@ onStart(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 ### onBounce
 
-onBounce(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onBounce(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onBounce(event:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 完成一次滚动时触发，若循环次数不为1，则该事件会多次触发。
 
@@ -194,9 +240,15 @@ onBounce(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 ### onFinish
 
-onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onFinish(event:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 滚动全部循环次数完成时触发回调。
 
@@ -205,6 +257,10 @@ onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 ## 示例
 

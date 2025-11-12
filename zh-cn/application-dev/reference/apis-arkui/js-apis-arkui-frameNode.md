@@ -4,11 +4,13 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
-> 当前不支持在预览器中使用FrameNode节点。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> FrameNode节点暂不支持拖拽。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 当前不支持在预览器中使用FrameNode节点。
+>
+> - FrameNode节点暂不支持拖拽。
 
 ## 导入模块
 
@@ -277,7 +279,9 @@ clearChildren(): void
 
 ### getChild<sup>12+</sup> 
 
-getChild(index: number): FrameNode | null
+ArkTS-Dyn: getChild(index: number): FrameNode | null
+
+ArkTS-Sta: getChild(index: int): FrameNode | null
 
 获取当前节点指定位置的子节点。
 
@@ -285,11 +289,15 @@ getChild(index: number): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| index  | number | 是   | 需要查询的子节点的序列号。<br/>若当前节点有n个子节点，index取值范围为[0, n-1]。 |
+| index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 需要查询的子节点的序列号。<br/>若当前节点有n个子节点，index取值范围为[0, n-1]。 |
 
 **返回值：**
 
@@ -330,7 +338,9 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 ### getFirstChildIndexWithoutExpand<sup>15+</sup> 
 
-getFirstChildIndexWithoutExpand(): number
+ArkTS-Dyn: getFirstChildIndexWithoutExpand(): number
+
+ArkTS-Sta: getFirstChildIndexWithoutExpand(): int
 
 获取当前节点第一个在主节点树上的子节点的序列号。子节点序列号按所有子节点计算。
 
@@ -338,11 +348,15 @@ getFirstChildIndexWithoutExpand(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                                      |
 | ------ | ---------------------------------------- |
-| number | 当前节点第一个在主节点树上的子节点的序列号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前节点第一个在主节点树上的子节点的序列号。 |
 
 **示例：**
 
@@ -350,7 +364,9 @@ getFirstChildIndexWithoutExpand(): number
 
 ### getLastChildIndexWithoutExpand<sup>15+</sup> 
 
-getLastChildIndexWithoutExpand(): number
+ArkTS-Dyn: getLastChildIndexWithoutExpand(): number
+
+ArkTS-Sta: getLastChildIndexWithoutExpand(): int
 
 获取当前节点最后一个在主节点树上的子节点的序列号。子节点序列号按所有子节点计算。
 
@@ -358,11 +374,15 @@ getLastChildIndexWithoutExpand(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                                        |
 | ------ | ------------------------------------------ |
-| number | 当前节点最后一个在主节点树上的子节点的序列号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前节点最后一个在主节点树上的子节点的序列号。 |
 
 **示例：**
 
@@ -451,7 +471,9 @@ getParent(): FrameNode | null
 
 ### getChildrenCount<sup>12+</sup> 
 
-getChildrenCount(): number
+ArkTS-Dyn: getChildrenCount(): number
+
+ArkTS-Sta: getChildrenCount(): int
 
 获取当前FrameNode的子节点数量。
 
@@ -459,11 +481,15 @@ getChildrenCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| number | 获取当前FrameNode的子节点数量。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 获取当前FrameNode的子节点数量。 |
 
 **示例：**
 
@@ -471,7 +497,9 @@ getChildrenCount(): number
 
 ### moveTo<sup>18+</sup>
 
-moveTo(targetParent: FrameNode, index?: number): void
+ArkTS-Dyn: moveTo(targetParent: FrameNode, index?: number): void
+
+ArkTS-Sta: moveTo(targetParent: FrameNode, index?: int): void
 
 将当前FrameNode移动到目标FrameNode的指定位置。当前FrameNode如果不可修改，抛出异常信息。targetParent为[typeNode](#typenode12)时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看[typeNode](#typenode12)描述。
 
@@ -485,12 +513,16 @@ moveTo(targetParent: FrameNode, index?: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型                    | 必填 | 说明                  |
 | ------------ | ----------------------- | ---- | --------------------- |
 | targetParent | [FrameNode](#framenode) | 是   | 目标父节点。<br/>**说明：**<br/>targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
-| index        | number                  | 否   | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。<br/>若参数无效或不指定，则添加到目标FrameNode的最后。<br/>默认值：-1 |
+| index     | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。<br/>若参数无效或不指定，则添加到目标FrameNode的最后。<br/>默认值：-1 |
 
 **错误码：**
 
@@ -1035,7 +1067,9 @@ getLayoutPosition(): Position
 
 ### getUserConfigBorderWidth<sup>12+</sup>
 
-getUserConfigBorderWidth(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigBorderWidth(): Edges\<LengthMetrics\>
+
+ArkTS-Sta: getUserConfigBorderWidth(): NodeEdges\<LengthMetrics\>
 
 获取用户设置的边框宽度。
 
@@ -1043,11 +1077,15 @@ getUserConfigBorderWidth(): Edges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的边框宽度。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\>| 用户设置的边框宽度。 |
 
 **示例：**
 
@@ -1055,7 +1093,9 @@ getUserConfigBorderWidth(): Edges\<LengthMetrics\>
 
 ### getUserConfigPadding<sup>12+</sup>
 
-getUserConfigPadding(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigPadding(): Edges\<LengthMetrics\>
+
+ArkTS-Sta: getUserConfigPadding(): NodeEdges\<LengthMetrics\>
 
 获取用户设置的内边距。
 
@@ -1063,11 +1103,15 @@ getUserConfigPadding(): Edges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的内边距。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的内边距。 |
 
 **示例：**
 
@@ -1075,7 +1119,9 @@ getUserConfigPadding(): Edges\<LengthMetrics\>
 
 ### getUserConfigMargin<sup>12+</sup>
 
-getUserConfigMargin(): Edges\<LengthMetrics\>
+ArkTS-Dyn: getUserConfigMargin(): Edges\<LengthMetrics\>
+
+ArkTS-Sta: getUserConfigMargin(): NodeEdges\<LengthMetrics\>
 
 获取用户设置的外边距。
 
@@ -1083,11 +1129,15 @@ getUserConfigMargin(): Edges\<LengthMetrics\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的外边距。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 用户设置的外边距。 |
 
 **示例：**
 
@@ -1135,7 +1185,9 @@ getId(): string
 
 ### getUniqueId<sup>12+</sup>
 
-getUniqueId(): number
+ArkTS-Dyn: getUniqueId(): number
+
+ArkTS-Sta: getUniqueId(): long
 
 获取系统分配的唯一标识的节点UniqueID。
 
@@ -1143,11 +1195,16 @@ getUniqueId(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| number | 系统分配的唯一标识的节点UniqueID。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: long | 系统分配的唯一标识的节点UniqueID。 |
 
 **示例：**
 
@@ -1175,7 +1232,9 @@ getNodeType(): string
 
 ### getOpacity<sup>12+</sup>
 
-getOpacity(): number
+ArkTS-Dyn: getOpacity(): number
+
+ArkTS-Sta: getOpacity(): double
 
 获取节点的不透明度，最小值为0，最大值为1。
 
@@ -1183,11 +1242,15 @@ getOpacity(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| number | 节点的不透明度。范围是[0, 1]，值越大透明度越低。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 节点的不透明度。范围是[0, 1]，值越大透明度越低。 |
 
 **示例：**
 
@@ -2318,6 +2381,123 @@ export function frameNodeTrans(frameNode:Object) {
   console.log('frameNodeStatic isTransferred value is '+frameNodeStatic.isTransferred());
 }
 
+```
+ 
+### convertPosition<sup>22+</sup>
+
+convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
+
+将点的坐标从当前节点的坐标系转换为目标节点的坐标系。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| position | [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点坐标系中的相对坐标。 |
+| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 目标节点局部坐标系中的转换坐标。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100024   | The current FrameNode and the target FrameNode do not have a common ancestor node. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
+
+**示例：**
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  UIContext,
+  State,
+  $r
+} from '@kit.ArkUI';
+
+import { NodePosition } from '@ohos.arkui.node';
+
+@Entry
+@Component
+struct ConvertPositionTest {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+  @State nodeAOk: boolean = false;
+  @State nodeBOK: boolean = false;
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size'))
+        .onAppear(() => {
+          this.nodeAOk = true;
+        })
+      Column() {
+        Text('testNodeB')
+          .id('testNodeB')
+          .fontSize($r('app.float.page_text_font_size'))
+          .onAppear(() => {
+            this.nodeBOK = true;
+          })
+
+      }
+
+      Button('运行convertPosition测试')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    if (!this.nodeAOk || !this.nodeBOK) {
+      return;
+    }
+
+    if (!this.uiContext) {
+      return;
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+    const nodeB = this.uiContext.getAttachedFrameNodeById('testNodeB');
+
+    if (!nodeA || !nodeB) {
+      console.info('无法获取测试节点');
+      return;
+    }
+
+    const testPoint: NodePosition = { x: 10, y: 10 } as NodePosition;
+    const result: NodePosition | undefined = nodeA.convertPosition({ x: 30, y: 10 }, nodeB);
+    if (result === undefined) {
+      console.info("convertPosition 转换失败");
+      return;
+    }
+    console.info(`输出: (${result.x}, ${result.y})`);
+  }
+}
 ```
 
 ## TypedFrameNode<sup>12+</sup>
@@ -4388,7 +4568,7 @@ typeNode.createNode(uiContext, 'Toggle', toggleOptions);
 
 ## NodeAdapter<sup>12+</sup>
 
-NodeAdapter提供FrameNode的数据懒加载能力。
+NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)实现接口功能。
 
 > **说明：**
 >
@@ -4420,7 +4600,9 @@ dispose(): void
 
 ### totalNodeCount<sup>12+</sup>
 
-set totalNodeCount(count: number)
+ArkTS-Dyn: set totalNodeCount(count: number)
+
+ArkTS-Sta: set totalNodeCount(count: int)
 
 设置数据节点总数。
 
@@ -4428,13 +4610,19 @@ set totalNodeCount(count: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| count | number | 是   | 数据节点总数。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 数据节点总数。<br/>取值范围：[0, +∞) |
 
-get totalNodeCount(): number
+ArkTS-Dyn: get totalNodeCount(): number
+
+ArkTS-Sta:  get totalNodeCount(): int
 
 获取数据节点总数。
 
@@ -4446,13 +4634,13 @@ get totalNodeCount(): number
 
 | 类型                     | 说明                 |
 | ----------------- | ------------ |
-| number | 数据节点总数。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 数据节点总数。<br/>取值范围：[0, +∞) |
 
 ### reloadAllItems<sup>12+</sup>
 
 reloadAllItems(): void
 
-重新加载全部数据操作。
+重新加载全部数据操作。实际调用了LazyForEach中的[OnDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)接口通知组件重新加载所有数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4460,7 +4648,9 @@ reloadAllItems(): void
 
 ### reloadItem<sup>12+</sup>
 
-reloadItem(start: number, count: number): void
+ArkTS-Dyn: reloadItem(start: number, count: number): void
+
+ArkTS-Sta: reloadItem(start: int, count: int): void
 
 从索引值开始重新加载指定数量的节点数据。
 
@@ -4468,16 +4658,22 @@ reloadItem(start: number, count: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| start | number | 是   | 重新加载的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是   | 重新加载数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 重新加载的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 重新加载数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ### removeItem<sup>12+</sup>
 
-removeItem(start: number, count: number): void
+ArkTS-Dyn: removeItem(start: number, count: number): void
+
+ArkTS-Sta: removeItem(start: int, count: int): void
 
 从索引值开始删除指定数量的节点数据。
 
@@ -4485,16 +4681,22 @@ removeItem(start: number, count: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| start | number | 是   | 删除的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是   | 删除数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 删除的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 删除数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ### insertItem<sup>12+</sup>
 
-insertItem(start: number, count: number): void
+ArkTS-Dyn: insertItem(start: number, count: number): void
+
+ArkTS-Sta: insertItem(start: int, count: int): void
 
 从索引值开始新增指定数量的节点数据。
 
@@ -4502,16 +4704,22 @@ insertItem(start: number, count: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| start | number | 是   | 新增的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是   | 新增数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 新增的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 新增数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ### moveItem<sup>12+</sup>
 
-moveItem(from: number, to: number): void
+ArkTS-Dyn: moveItem(from: number, to: number): void
+
+ArkTS-Sta: moveItem(from: int, to: int): void
 
 将数据从原始索引移动到目的索引。
 
@@ -4519,18 +4727,22 @@ moveItem(from: number, to: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| from | number | 是   | 数据移动的原始索引值。<br/>取值范围：[0, +∞) |
-| to | number | 是   | 数据移动的目的索引值。<br/>取值范围：[0, +∞) |
+| from | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 数据移动的原始索引值。<br/>取值范围：[0, +∞) |
+| to | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 数据移动的目的索引值。<br/>取值范围：[0, +∞) |
 
 ### getAllAvailableItems<sup>12+</sup>
 
 getAllAvailableItems(): Array&lt;FrameNode&gt;
 
-获取所有有效数据。
+获取所有有效数据。有效节点数据包括显示在屏幕上的节点以及预加载的节点。其中预加载节点的数量可依照LazyForEach的[使用限制](../../ui/state-management/arkts-rendering-control-lazyforeach.md#使用限制)，调整父容器的cachedCount属性进行设置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4570,41 +4782,53 @@ onDetachFromNode?(): void
 
 ### onGetChildId<sup>12+</sup>
 
-onGetChildId?(index: number): number
+ArkTS-Dyn: onGetChildId?(index: number): number
 
-节点首次加载或新节点滑入时回调。用于生成自定义的Id，需要开发者自行保证Id的唯一性。
+ArkTS-Sta: onGetChildId?(index: int): int
+
+节点首次加载或新节点滑入时回调。传入的index参数用于自定义生成Id，需要开发者自行保证根据不同index生成Id的唯一性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| index | number | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型                     | 说明                 |
 | ----------------- | ------------ |
-| number | 返回开发者自定义生成的Id，需要开发者自行保证Id的唯一性。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回开发者自定义生成的Id，需要开发者自行保证Id的唯一性。 |
 
 ### onCreateChild<sup>12+</sup>
 
-onCreateChild?(index: number): FrameNode
+ArkTS-Dyn: onCreateChild?(index: number): FrameNode
 
-节点首次加载或新节点滑入时回调。建议开发者在添加子组件时，遵循声明式组件中子组件的约束。例如，WaterFlow支持添加FlowItem子节点。
+ArkTS-Sta: onCreateChild?(index: int): FrameNode
+
+节点首次加载或新节点滑入时回调。建议开发者在添加子组件时，遵循声明式组件中子组件的约束。例如，WaterFlow支持添加FlowItem子节点。父节点根据子节点的索引与key值判断是否触发了节点首次加载或新节点滑入。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| index | number | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -4614,36 +4838,48 @@ onCreateChild?(index: number): FrameNode
 
 ### onDisposeChild<sup>12+</sup>
 
-onDisposeChild?(id: number, node: FrameNode): void
+ArkTS-Dyn: onDisposeChild?(id: number, node: FrameNode): void
 
-子节点即将销毁时回调。
+ArkTS-Sta: onDisposeChild?(id: int, node: FrameNode): void
+
+子节点即将销毁时回调。既不显示在屏幕上，也不处于预加载范围内的节点都属于即将销毁的节点。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| id | number | 是   | 即将销毁的子节点id。 |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 即将销毁的子节点id。 |
 | node | FrameNode | 是   | 即将销毁的FrameNode节点。 |
 
 ### onUpdateChild<sup>12+</sup>
 
-onUpdateChild?(id: number, node: FrameNode): void
+ArkTS-Dyn: onUpdateChild?(id: number, node: FrameNode): void
 
-重新加载的数据节点被复用时回调。
+ArkTS-Sta: onUpdateChild?(id: int, node: FrameNode): void
+
+重新加载的数据节点被复用时回调。已缓存节点的key值与被复用节点一致时进行节点复用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| id | number | 是   | 复用节点的id。 |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 复用节点的id。 |
 | node | FrameNode | 是   | 被复用的FrameNode节点。 |
 
 ### attachNodeAdapter<sup>12+</sup>

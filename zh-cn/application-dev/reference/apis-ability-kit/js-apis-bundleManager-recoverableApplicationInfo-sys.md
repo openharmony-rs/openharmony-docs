@@ -4,9 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -24,12 +24,12 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-| 名称             | 类型                           | 只读 | 可选 | 说明                   |
-| ---------------- | ------------------------------ | ---- | ---- | ---------------------- |
-| bundleName       | string                         | 是   | 否   | 应用包的名称。       |
-| moduleName       | string                         | 是   | 否   | 模块名称。 |
-| labelId          | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 模块标签的资源ID值。     |
-| iconId           | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 模块图标的资源ID值。    |
-| systemApp<sup>12+</sup>       | boolean                        | 是   | 否   | 标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。  |
-| bundleType<sup>12+</sup>       |[BundleType](js-apis-bundleManager.md#bundletype)             | 是   | 否   | 标识包的类型，取值为APP（应用）或者ATOMIC_SERVICE（原子化服务）。                                |
-| codePaths<sup>12+</sup>        | Array\<string>                 | 是   | 否   | 应用程序的安装目录。          |
+| 名称       | 类型                           | 只读 | 可选 | 说明                   |
+| ---------- | ------------------------------ | ---- | ---- | ---------------------- |
+| bundleName | string                         | 是   | 否   | 应用包的名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| moduleName | string                         | 是   | 否   | 模块名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| labelId    | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块标签的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| iconId     | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块图标的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| systemApp<sup>12+</sup>       | boolean                        | 是   | 否   | 标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| bundleType<sup>12+</sup>       |[BundleType](js-apis-bundleManager.md#bundletype)             | 是   | 否   | 标识包的类型，取值为APP（应用）或者ATOMIC_SERVICE（原子化服务）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| codePaths<sup>12+</sup>        | Array\<string>                 | 是   | 否   | 应用程序的安装目录。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |

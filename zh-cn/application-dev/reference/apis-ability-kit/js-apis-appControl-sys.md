@@ -4,16 +4,16 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
 ## 导入模块
 
 ``` ts
-import appControl from '@ohos.bundle.appControl';
+import { appControl } from '@kit.AbilityKit';
 ```
 
 ## appControl.setDisposedStatus
@@ -27,6 +27,10 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -55,10 +59,11 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
-import appControl from '@ohos.bundle.appControl';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { appControl } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want:Want = {bundleName: 'com.example.myapplication'};
@@ -68,6 +73,28 @@ try {
         .then(() => {
             console.info('setDisposedStatus success');
         }).catch((error: BusinessError) => {
+            let message = (error as BusinessError).message;
+            console.error('setDisposedStatus failed ' + message);
+        });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('setDisposedStatus failed ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { appControl } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新appId和want。
+let appId = "com.example.myapplication_xxxxx";
+let want: Want = {bundleName: 'com.example.myapplication'};
+
+try {
+    appControl.setDisposedStatus(appId, want)
+        .then(() => {
+            console.info('setDisposedStatus success');
+        }).catch((error: Error) => {
             let message = (error as BusinessError).message;
             console.error('setDisposedStatus failed ' + message);
         });
@@ -88,6 +115,10 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -111,16 +142,40 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = {bundleName: 'com.example.myapplication'};
 
 try {
   appControl.setDisposedStatus(appId, want, (error: BusinessError, data) => {
+    if (error) {
+      let message = (error as BusinessError).message;
+      console.error('setDisposedStatus failed ' + message);
+      return;
+    }
+    console.info('setDisposedStatus success');
+  });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('setDisposedStatus failed ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新appId和want。
+let appId = "com.example.myapplication_xxxxx";
+let want: Want = {bundleName: 'com.example.myapplication'};
+
+try {
+  appControl.setDisposedStatus(appId, want, (error: BusinessError | null, data) => {
     if (error) {
       let message = (error as BusinessError).message;
       console.error('setDisposedStatus failed ' + message);
@@ -146,6 +201,10 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 
 **参数：**
 
@@ -169,9 +228,9 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want = {bundleName: 'com.example.myapplication'};
@@ -195,6 +254,10 @@ getDisposedStatus(appId: string): Promise\<Want>;
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -222,9 +285,10 @@ getDisposedStatus(appId: string): Promise\<Want>;
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -233,6 +297,27 @@ try {
     .then((data) => {
       console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
     }).catch((error: BusinessError) => {
+    let message = (error as BusinessError).message;
+    console.error('getDisposedStatus failed ' + message);
+  });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getDisposedStatus failed ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新appId。
+let appId = "com.example.myapplication_xxxxx";
+
+try {
+  appControl.getDisposedStatus(appId)
+    .then((data: Want) => {
+      console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
+    }).catch((error: Error) => {
     let message = (error as BusinessError).message;
     console.error('getDisposedStatus failed ' + message);
   });
@@ -253,6 +338,10 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -276,8 +365,8 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -308,6 +397,10 @@ getDisposedStatusSync(appId: string): Want;
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -335,9 +428,9 @@ getDisposedStatusSync(appId: string): Want;
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want;
@@ -361,6 +454,10 @@ deleteDisposedStatus(appId: string): Promise\<void>
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -388,9 +485,10 @@ deleteDisposedStatus(appId: string): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -399,6 +497,26 @@ try {
     .then(() => {
       console.info('deleteDisposedStatus success');
     }).catch((error: BusinessError) => {
+      let message = (error as BusinessError).message;
+      console.error('deleteDisposedStatus failed ' + message);
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('deleteDisposedStatus failed ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新appId。
+let appId = "com.example.myapplication_xxxxx";
+
+try {
+  appControl.deleteDisposedStatus(appId)
+    .then(() => {
+      console.info('deleteDisposedStatus success');
+    }).catch((error: Error) => {
       let message = (error as BusinessError).message;
       console.error('deleteDisposedStatus failed ' + message);
   });
@@ -419,6 +537,10 @@ deleteDisposedStatus(appId: string, callback: AsyncCallback\<void>) : void
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -441,13 +563,33 @@ deleteDisposedStatus(appId: string, callback: AsyncCallback\<void>) : void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 try {
   appControl.deleteDisposedStatus(appId, (error: BusinessError, data) => {
+    if (error) {
+      console.error('deleteDisposedStatus failed ' + error.message);
+      return;
+    }
+    console.info('deleteDisposedStatus success');
+  });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('deleteDisposedStatus failed ' + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新appId。
+let appId = "com.example.myapplication_xxxxx";
+try {
+  appControl.deleteDisposedStatus(appId, (error: BusinessError | null, data) => {
     if (error) {
       console.error('deleteDisposedStatus failed ' + error.message);
       return;
@@ -473,6 +615,10 @@ ArkTS-Sta: deleteDisposedStatusSync(appId: string, appIndex:? int): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -496,8 +642,8 @@ ArkTS-Sta: deleteDisposedStatusSync(appId: string, appIndex:? int): void
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 
@@ -516,9 +662,10 @@ appId是应用的唯一标识，由应用Bundle名称和签名信息决定，可
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import bundleManager from '@ohos.bundle.bundleManager';
-import { BusinessError } from '@ohos.base';
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.example.myapplication';
 let appId: string;
@@ -531,6 +678,30 @@ try {
       console.info("appId is " + appId);
       console.info("appIdentifier is " + appIdentifier);
     }).catch((error: BusinessError) => {
+      let message = (error as BusinessError).message;
+      console.error("getBundleInfo failed " + message);
+  });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error("getBundleInfo failed " + message);
+}
+```
+ArkTS-Sta:
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = 'com.example.myapplication';
+let appId: string | undefined;
+let appIdentifier: string | undefined;
+try {
+  bundleManager.getBundleInfo(bundleName, bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO)
+    .then((data: bundleManager.BundleInfo) => {
+      appId = data.signatureInfo?.appId;
+      appIdentifier = data.signatureInfo?.appIdentifier;
+      console.info("appId is " + appId);
+      console.info("appIdentifier is " + appIdentifier);
+    }).catch((error: Error) => {
       let message = (error as BusinessError).message;
       console.error("getBundleInfo failed " + message);
   });
@@ -552,6 +723,10 @@ ArkTS-Sta: getDisposedRule(appId: string, appIndex:? int): DisposedRule
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -582,9 +757,9 @@ ArkTS-Sta: getDisposedRule(appId: string, appIndex:? int): DisposedRule
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -610,6 +785,10 @@ ArkTS-Sta: setDisposedRule(appId: string, rule: DisposedRule, appIndex:? int): v
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -634,10 +813,10 @@ ArkTS-Sta: setDisposedRule(appId: string, rule: DisposedRule, appIndex:? int): v
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
-import bundleManager from '@ohos.bundle.bundleManager';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { bundleManager } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -680,6 +859,10 @@ setDisposedRules(disposedRuleConfigurations: Array\<DisposedRuleConfiguration\>)
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -769,6 +952,10 @@ ArkTS-Sta: setUninstallDisposedRule(appIdentifier: string, rule: UninstallDispos
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -794,9 +981,9 @@ ArkTS-Sta: setUninstallDisposedRule(appIdentifier: string, rule: UninstallDispos
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -831,6 +1018,10 @@ ArkTS-Sta: getUninstallDisposedRule(appIdentifier: string, appIndex:? int): Unin
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -860,8 +1051,8 @@ ArkTS-Sta: getUninstallDisposedRule(appIdentifier: string, appIndex:? int): Unin
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 
@@ -887,6 +1078,10 @@ ArkTS-Sta: deleteUninstallDisposedRule(appIdentifier: string, appIndex:? int): v
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -910,8 +1105,8 @@ ArkTS-Sta: deleteUninstallDisposedRule(appIdentifier: string, appIndex:? int): v
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 
@@ -927,7 +1122,11 @@ try {
 
 标识拦截规则。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
  **系统接口：** 此接口为系统接口。
 
@@ -944,7 +1143,11 @@ try {
 
 标识功能组件类型。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
  **系统接口：** 此接口为系统接口。
 
@@ -957,7 +1160,11 @@ try {
 
 标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
  **系统接口：** 此接口为系统接口。
 
@@ -971,7 +1178,11 @@ try {
 
 标识拦截指定应用程序的不同策略。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
  **系统接口：** 此接口为系统接口。
 
@@ -984,7 +1195,11 @@ try {
 
 标识卸载处置规则。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
 
  **系统接口：** 此接口为系统接口。
 
@@ -998,7 +1213,11 @@ try {
 
 标识卸载时功能组件类型。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
 
  **系统接口：** 此接口为系统接口。
 
@@ -1011,6 +1230,10 @@ try {
 标识批量设置拦截规则的配置。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
  **系统接口：** 此接口为系统接口。
 

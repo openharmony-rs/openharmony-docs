@@ -12,7 +12,7 @@
 
 @ObjectLink用于状态管理V1中，接收@Observed装饰的类的实例，并与父组件中的数据源建立双向数据绑定。
 
-在动态语言上下文中使用时，开发指南参考：[\@Observed装饰器和\@ObjectLink装饰器：嵌套类对象属性变化（ArkTS-DT）](../../../ui/state-management/arkts-observed-and-objectlink.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[\@Observed装饰器和\@ObjectLink装饰器：嵌套类对象属性变化（ArkTS-Dyn）](../../../ui/state-management/arkts-observed-and-objectlink.md)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

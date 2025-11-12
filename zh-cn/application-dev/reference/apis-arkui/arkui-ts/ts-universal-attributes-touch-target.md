@@ -5,11 +5,15 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## responseRegion
 
-responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
+ArkTS-Dyn: responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
+
+ArkTS-Sta: responseRegion(value: Array\<Rectangle> | Rectangle | undefined): this
 
 设置一个或多个触摸热区。
 
@@ -19,17 +23,39 @@ responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) | 是   | 设置一个或多个触摸热区，包括位置和大小。<br/>默认触摸热区为整个组件，默认值：<br/>{<br/>x：0,<br/>y：0,<br/>width：'100%',<br/>height：'100%'<br/>}<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| value  | ArkTS-Dyn: Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明)<br/> ArkTS-Sta: Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) \| undefined | 是   | 设置一个或多个触摸热区，包括位置和大小。<br/>默认触摸热区为整个组件，默认值：<br/>{<br/>x：0,<br/>y：0,<br/>width：'100%',<br/>height：'100%'<br/>}<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+
+## mouseResponseRegion<sup>22+</sup>
+
+mouseResponseRegion(value: Array\<Rectangle> | Rectangle | undefined)
+
+设置一个或多个触摸热区。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+ 
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) \| undefined | 是   | 鼠标触摸热区，包括位置和大小。<br/>默认触摸热区为整个组件，默认值：<br/>{<br/>x：0,<br/>y：0,<br/>width：'100%',<br/>height：'100%'<br/>} |
 
 ## Rectangle对象说明
 

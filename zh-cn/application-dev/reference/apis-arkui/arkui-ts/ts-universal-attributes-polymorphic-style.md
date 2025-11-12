@@ -4,17 +4,21 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  从API version 11开始支持另一种写法[attributeModifier](./ts-universal-attributes-attribute-modifier.md)，可根据开发者需要动态设置属性。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  多态样式仅支持[通用属性](ts-component-general-attributes.md)。如果多态样式不生效，则该属性可能为组件的私有属性，例如：[fontColor](./ts-universal-attributes-text-style.md)、[TextInput](./ts-basic-components-textinput.md)组件的[backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18)等。此时，可以通过attributeModifier动态设置组件属性来解决此问题。
+> - 从API version 11开始支持另一种写法[attributeModifier](./ts-universal-attributes-attribute-modifier.md)，可根据开发者需要动态设置属性。
 >
->  当前多态样式实现依赖于组件自定义节点的刷新机制。因Builder不具备独立的自定义父节点，无法直接触发刷新，致使多态样式无法直接在Builder中生效。解决方法是将多态样式封装至自定义组件内部，再将此组件置于@Builder中，以此来间接实现多态样式。示例代码可参考[示例3设置Builder多态样式](#示例3设置builder多态样式)。
+> - 多态样式仅支持[通用属性](ts-component-general-attributes.md)。如果多态样式不生效，则该属性可能为组件的私有属性，例如：[fontColor](./ts-universal-attributes-text-style.md)、[TextInput](./ts-basic-components-textinput.md)组件的[backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18)等。此时，可以通过attributeModifier动态设置组件属性来解决此问题。
+>
+> - 当前多态样式实现依赖于组件自定义节点的刷新机制。因Builder不具备独立的自定义父节点，无法直接触发刷新，致使多态样式无法直接在Builder中生效。解决方法是将多态样式封装至自定义组件内部，再将此组件置于@Builder中，以此来间接实现多态样式。示例代码可参考[示例3设置Builder多态样式](#示例3设置builder多态样式)。
 
 ## stateStyles
 
-stateStyles(value: StateStyles): T
+ArkTS-Dyn: stateStyles(value: StateStyles): T
+
+ArkTS-Sta: stateStyles(value: StateStyles | undefined): this
 
 设置组件不同状态的样式。
 
@@ -24,17 +28,21 @@ stateStyles(value: StateStyles): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                     |
 | ------ | ----------------------------------- | ---- | ------------------------ |
-| value  | [StateStyles](#statestyles) | 是   | 设置组件不同状态的样式。 |
+| value  | ArkTS-Dyn: [StateStyles](#statestyles)<br/> ArkTS-Sta: [StateStyles](#statestyles) \| undefined | 是   | 设置组件不同状态的样式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 
 ## CustomStyles

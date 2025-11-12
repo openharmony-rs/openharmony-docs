@@ -26,9 +26,9 @@ static getHttpAuthCredentials(host: string, realm: string): Array\<string>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -126,9 +126,9 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -217,9 +217,9 @@ static existHttpAuthCredentials(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -292,9 +292,9 @@ static deleteHttpAuthCredentials(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 

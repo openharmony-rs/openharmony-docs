@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## align
 
@@ -166,7 +168,7 @@ alignRules(value: AlignRuleOption): T
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| value  | [AlignRuleOption](#alignruleoption对象说明) | 是   | 指定设置在相对容器中子组件的对齐规则。 |
+| value  | [AlignRuleOption](#alignruleoption9对象说明) | 是   | 指定设置在相对容器中子组件的对齐规则。 |
 
 **返回值：**
 
@@ -222,19 +224,57 @@ layoutGravity(alignment: LocalizedAlignment): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
-## AlignRuleOption对象说明
+## AlignRuleOption<sup>9+</sup>对象说明
+
+设置相对容器中子组件的对齐规则。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-| 名称   | 类型                                                         | 描述                                                         |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| left   | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } | 设置左对齐参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| right  | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } | 设置右对齐参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| middle | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } | 设置横向居中对齐方式的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } | 设置顶部对齐的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| bottom | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } | 设置底部对齐的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| center | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } | 设置纵向居中对齐方式的参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
-| bias<sup>11+</sup>   | [Bias](#bias对象说明) | 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| left   | ArkTS-Dyn: { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }<br>ArkTS-Sta: [HorizontalAlignParam](#horizontalalignparam22对象说明) |否|是| 设置左对齐参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |	
+| right  | ArkTS-Dyn: { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }<br>ArkTS-Sta: [HorizontalAlignParam](#horizontalalignparam22对象说明) |否|是| 设置右对齐参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |	
+| middle | ArkTS-Dyn: { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }<br>ArkTS-Sta: [HorizontalAlignParam](#horizontalalignparam22对象说明) |否|是| 设置横向居中对齐方式的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |	
+| top    | ArkTS-Dyn: { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }<br>ArkTS-Sta: [VerticalAlignParam](#verticalalignparam22对象说明) |否|是| 设置顶部对齐的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |	
+| bottom | ArkTS-Dyn: { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }<br>ArkTS-Sta: [VerticalAlignParam](#verticalalignparam22对象说明) |否|是| 设置底部对齐的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |	
+| center | ArkTS-Dyn: { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }<br>ArkTS-Sta: [VerticalAlignParam](#verticalalignparam22对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |	
+| bias<sup>11+</sup>   | [Bias](#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+
+## HorizontalAlignParam<sup>22+</sup>对象说明
+
+定义在相对容器中子组件水平方向上的对齐规则。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| anchor  | string | 否 | 否 | 设置作为锚点的组件的id值。 |
+| align   | [HorizontalAlign](ts-appendix-enums.md#horizontalalign)  | 否 | 否 | 设置相对于锚点组件的横向对齐方式。 |
+
+## VerticalAlignParam<sup>22+</sup>对象说明
+
+定义在相对容器中子组件垂直方向上的对齐规则。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| anchor  | string | 否 | 否 | 设置作为锚点的组件的id值。 |
+| align   | [VerticalAlign](ts-appendix-enums.md#verticalalign) | 否 | 否 | 设置相对于锚点组件的纵向对齐方式。 |
 
 ## LocalizedAlignRuleOptions<sup>12+</sup>对象说明
 
@@ -279,10 +319,14 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 | 参数名   | 类型                                       | 必填   | 说明                                       |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| horizontal  | number | &nbsp;否 | 水平方向上的bias值。<br/>当子组件的width属性有正确值并且有2个水平方向的锚点时生效。<br/>默认值：&nbsp;0.5 |
-| vertical  | number | &nbsp;否 | 垂直方向上的bias值。<br/>当子组件的height属性有正确值并且有2个垂直方向的锚点时生效。<br/>默认值：&nbsp;0.5 |
+| horizontal  | ArkTS-Dyn: number<br>ArkTS-Sta: double | &nbsp;否 | 水平方向上的bias值。<br/>当子组件的width属性有正确值并且有2个水平方向的锚点时生效。<br/>默认值：&nbsp;0.5 |
+| vertical  | ArkTS-Dyn: number<br>ArkTS-Sta: double | &nbsp;否 | 垂直方向上的bias值。<br/>当子组件的height属性有正确值并且有2个垂直方向的锚点时生效。<br/>默认值：&nbsp;0.5 |
 
 ## chainMode<sup>12+</sup>
 
@@ -820,7 +864,7 @@ struct Example4 {
               .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) } as LocalizedEdges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -828,7 +872,7 @@ struct Example4 {
               .position({ left:'200px', top: '100px' } as Edges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
               Row() {
@@ -836,7 +880,7 @@ struct Example4 {
               .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) } as LocalizedEdges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -844,7 +888,7 @@ struct Example4 {
               .offset({ left: 100, top: 200  } as Edges)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
               Row() {
@@ -852,7 +896,7 @@ struct Example4 {
               .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) } as LocalizedPosition)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -860,7 +904,7 @@ struct Example4 {
               .markAnchor({ x: '100fp', y: '-350fp' } as Position)
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
             }

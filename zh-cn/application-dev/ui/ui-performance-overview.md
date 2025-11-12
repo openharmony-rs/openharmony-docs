@@ -31,6 +31,6 @@
 
 - [NDK支持多线程创建组件](ndk-build-on-multi-thread.md)：支持在C/C++层面通过多线程构建UI节点，有效提升性能和复杂场景下的渲染效率。
 - [UI并行化创建组件树](ui-parallel-components.md)：支持将可独立创建的UI子树标记为可并行构建，有效加快页面加载速度。
-- [BuilderNode并行化构建和更新节点树](ui-parallel-buildernode.md)：支持并行构建和更新节点，有效提升页面切换流畅度和交互响应速度。
+- [BuilderNode并行化构建和更新节点树(ArkTS-Sta)](ui-parallel-buildernode.md)：支持并行构建和更新节点，有效提升页面切换流畅度和交互响应速度。
 - [setUIStates](../reference/apis-arkui/js-apis-arkui-UIContext.md#setuistates20)：提供在非UI线程中安全更新状态变量的能力。
 

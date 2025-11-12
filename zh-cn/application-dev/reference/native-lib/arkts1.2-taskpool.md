@@ -1208,6 +1208,119 @@ async function seqRunner() {
 }
 ```
 
+## AsyncRunner
+
+表示具备并发执行能力的异步任务队列，用于在受控的并发度下异步执行多个任务。使用[constructor](#constructor-7)方法构造AsyncRunner。
+
+### constructor
+
+constructor(runningCapacity: int, waitingCapacity?: int)
+
+AsyncRunner的构造函数，用于创建一个匿名的异步队列实例。
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明                             |
+| ------ | ------------- | ---- | -------------------------------- |
+| runningCapacity   | int | 是   | 同时允许执行的最大任务数量（并发度）。 |
+| waitingCapacity   | int | 否   | 等待队列的最大容量。默认值为0。若不传入或者传入值为0，表示等待任务的处理模式为排队模式，等待任务的容量为无限。如果传入值大于0，表示等待队列的处理模式为丢弃队头模式，如果等待队列中的任务数目超出了等待队列的容量，则丢弃等待队列的队头，并将新任务添加至等待队列的队尾。|
+
+**示例：**
+
+```ts
+let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(2, 10);
+```
+
+### constructor
+
+constructor(name: string | undefined, runningCapacity: int, waitingCapacity?: int)
+
+用于构造一个具备全局标识的异步队列。如果提供相同的name，将返回同一个AsyncRunner实例。
+
+> **说明：**
+>
+> - 底层通过单例模式保证同名队列实例唯一。
+> - 一旦创建无法修改runningCapacity和waitingCapacity。
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明                             |
+| ------ | ------------- | ---- | -------------------------------- |
+| name   | string\|undefined | 否 | 队列名称，为undefined时等同于匿名构造函数。默认值为undefined。|
+| runningCapacity   | int | 是   | 同时允许执行的最大任务数量（并发度）。 |
+| waitingCapacity   | int | 否   | 等待队列的最大容量。默认值为0。若不传入或者传入值为0，表示等待任务的处理模式为排队模式，等待任务的容量为无限。如果传入值大于0，表示等待队列的处理模式为丢弃队头模式，如果等待队列中的任务数目超出了等待队列的容量，则丢弃等待队列的队头，并将新任务添加至等待队列的队尾。|
+
+**示例：**
+
+```ts
+let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner('testRunner', 2, 10);
+```
+
+### execute
+
+execute(task: Task, priority?: Priority): Promise\<Any>
+
+向AsyncRunner提交任务以按优先级加入调度队列。异步队列不支持执行任务组任务、其他异步队列任务、串行队列任务、有依赖关系的任务和已执行的任务。使用Promise异步回调。
+
+> **说明：**
+>
+> - 支持并发执行任务。
+> - 不支持执行已执行过的任务、任务组任务、依赖型任务等。
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明                             |
+| ------ | ------------- | ---- | -------------------------------- |
+| task   | [Task](#task) | 是   | 需要添加到串行任务队列中的具体任务。 |
+| priority | [Priority](#priority) | 否 | 任务的排队优先级，默认为taskpool.Priority.MEDIUM。|
+
+**返回值：**
+
+| 类型             | 说明                              |
+| ---------------- | --------------------------------- |
+| Promise\<Any> | Promise对象，返回任务执行的结果。 |
+
+**错误信息：**
+
+| 错误信息                                     | 说明                                        |
+| ------------------------------------------- | ------------------------------------------- |
+| asyncRunner cannot execute groupTask. | 异步队列不能执行任务组任务。<br>可能原因：异步队列执行了任务组任务。<br>处理步骤：调用时，确保异步队列不执行任务组任务。无法保证时，需捕获异常。 |
+| asyncRunner cannot execute executedTask. | 异步队列不能执行异步队列任务或已经执行过的任务。<br>可能原因：异步队列执行已经执行过的任务。<br>处理步骤：调用时，确保异步队列不执行已经执行过的任务。无法保证时，需捕获异常。 |
+| asyncRunner dependent task not allowed.  | 异步队列执行有依赖关系的任务。<br>可能原因：异步队列执行有依赖关系的任务。<br>处理步骤：排查找到异步队列里使用addDependency()添加依赖的任务，使用removeDependency()删除此任务的依赖。无法保证时，需捕获异常。  |
+| asyncRunner cannot execute the periodicTask. | 周期任务不能再次执行。<br>可能原因：异步队列不能执行周期任务。<br>处理步骤：执行任务前确保任务未被执行过。无法保证时，需捕获异常。  |
+| task has been executed.  | 任务已经被执行过。<br>可能原因：异步队列执行已经执行过的任务。<br>处理步骤：执行任务前确保任务未被执行过。无法保证时，需捕获异常。  |
+| asyncRunner cannot execute seqenceRunnerTask. | 异步队列不能执行串行队列任务。<br>可能原因：异步队列执行了串行队列任务。<br>处理步骤：调用时，确保异步队列不执行串行队列任务。无法保证时，需捕获异常。|
+
+**示例：**
+ 
+```ts
+import hilog from '@ohos.hilog';
+
+function asyncWork(id: string, delay: number): string {
+  let start = new Date().getTime();
+  while ((new Date().getTime() - start) < delay) {}
+  return id + " done";
+}
+
+async function asyncRunnerDemo() {
+  let task1:taskpool.Task = new taskpool.Task(asyncWork, "A", 3000.0);
+  let task2:taskpool.Task = new taskpool.Task(asyncWork, "B", 1000.0);
+  let task3:taskpool.Task = new taskpool.Task(asyncWork, "C", 2000.0);
+
+  let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("testRunner", 2, 5);
+
+  runner.execute(task1).then((res: Any) => {
+    hilog.info(0x0000, "testTag", "result: " + res);
+  });
+  runner.execute(task2, taskpool.Priority.HIGH).then((res: Any) => {
+    hilog.info(0x0000, "testTag", "result: " + res);
+  });
+  await runner.execute(task3);
+  hilog.info(0x0000, "testTag", "all done");
+}
+
+```
+
 ## State
 
 表示任务（Task）状态的枚举。当任务创建成功后，调用execute方法，任务进入taskpool等待队列，状态设置为WAITING。任务从等待队列移至taskpool工作线程时，状态更新为RUNNING。任务执行完成并返回结果后，状态重置为WAITING。主动取消任务时，状态更新为CANCELED。

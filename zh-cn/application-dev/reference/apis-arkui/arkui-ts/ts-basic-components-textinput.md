@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](ts-basic-components-richeditor.md)组件。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 该组件仅支持单文本样式，若需实现富文本样式，建议使用[RichEditor](ts-basic-components-richeditor.md)组件。
 
 
 ## 子组件
@@ -57,7 +59,9 @@ TextInput初始化参数。
 
 ### type
 
-type(value: InputType)
+ArkTS-Dyn: type(value: InputType)
+
+ArkTS-Sta: type(value: InputType | undefined)
 
 设置输入框类型。
 
@@ -67,18 +71,24 @@ InputType设置为Password后，设置placeholderColor不生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                            | 必填 | 说明                                      |
 | ------ | ------------------------------- | ---- | ----------------------------------------- |
-| value  | [InputType](#inputtype枚举说明) | 是   | 输入框类型。<br/>默认值：InputType.Normal |
+| value  | ArkTS-Dyn: [InputType](#inputtype枚举说明)<br/>ArkTS-Sta: [InputType](#inputtype枚举说明) \| undefined | 是   | 输入框类型。<br/>默认值：InputType.Normal |
 
 >  **说明：**    
 >  密码填充服务需要特定的输入框类型。<!--RP2--><!--RP2End-->
 
 ### placeholderColor
 
-placeholderColor(value: ResourceColor)
+ArkTS-Dyn: placeholderColor(value: ResourceColor)
+
+ArkTS-Sta: placeholderColor(value: ResourceColor | undefined)
 
 设置placeholder文本颜色。
 
@@ -88,15 +98,21 @@ InputType设置为Password后，设置placeholderColor不生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                         |
 | ------ | ------------------------------------------ | ---- | -------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | placeholder文本颜色。<br/>默认值：跟随主题。<br/>Wearable设备上默认值为：'#99ffffff' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | placeholder文本颜色。<br/>默认值：跟随主题。<br/>Wearable设备上默认值为：'#99ffffff' |
 
 ### placeholderFont
 
-placeholderFont(value?: Font)
+ArkTS-Dyn: placeholderFont(value?: Font)
+
+ArkTS-Sta: placeholderFont(value?: Font | undefined)
 
 设置placeholder文本样式，包括字体大小，字体粗细，字体族，字体风格。当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。
 
@@ -104,15 +120,21 @@ placeholderFont(value?: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                  |
 | ------ | ------------------------ | ---- | --------------------- |
-| value  | [Font](ts-types.md#font) | 否   | placeholder文本样式。<br/>Wearable设备上默认值为：18fp |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 否   | placeholder文本样式。<br/>Wearable设备上默认值为：18fp |
 
 ### enterKeyType
 
-enterKeyType(value: EnterKeyType)
+ArkTS-Dyn: enterKeyType(value: EnterKeyType)
+
+ArkTS-Sta: enterKeyType(value: EnterKeyType | undefined)
 
 设置输入法回车键类型。
 
@@ -120,15 +142,21 @@ enterKeyType(value: EnterKeyType)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                             | 必填 | 说明                                             |
 | ------ | ------------------------------------------------ | ---- | ------------------------------------------------ |
-| value  | [EnterKeyType](#enterkeytype枚举说明) | 是   | 输入法回车键类型。<br/>默认值：EnterKeyType.Done |
+| value  | ArkTS-Dyn: [EnterKeyType](#enterkeytype枚举说明)<br/> ArkTS-Sta: [EnterKeyType](#enterkeytype枚举说明) \| undefined | 是   | 输入法回车键类型。<br/>默认值：EnterKeyType.Done |
 
 ### caretColor
 
-caretColor(value: ResourceColor)
+ArkTS-Dyn: caretColor(value: ResourceColor)
+
+ArkTS-Sta: caretColor(value: ResourceColor | undefined)
 
 设置输入框光标颜色。
 
@@ -136,18 +164,24 @@ caretColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 输入框光标颜色。<br/>默认值：'#007DFF' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 输入框光标颜色。<br/>默认值：'#007DFF' |
 
 >  **说明：**     
 >   从API version 12开始，此接口支持设置文本手柄颜色，光标和文本手柄颜色保持一致。
 
 ### maxLength
 
-maxLength(value: number)
+ArkTS-Dyn: maxLength(value: number)
+
+ArkTS-Sta: maxLength(value: int | undefined)
 
 设置文本的最大输入字符数。
 
@@ -155,15 +189,21 @@ maxLength(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 文本的最大输入字符数。<br/>默认值：Infinity，可以无限输入。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值，设置小数时，取整数部分。 |
+| value  | ArkTS-Dyn: number <br> ArkTS-Sta: int \| undefined | 是   | 文本的最大输入字符数。<br/>默认值：Infinity，可以无限输入。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值，设置小数时，取整数部分，设置值超过2^31-1时，可能导致异常行为。 |
 
 ### fontColor
 
-fontColor(value: ResourceColor)
+ArkTS-Dyn: fontColor(value: ResourceColor)
+
+ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 设置字体颜色。
 
@@ -171,15 +211,21 @@ fontColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>Wearable设备上默认值为：'#dbffffff' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br/>Wearable设备上默认值为：'#dbffffff' |
 
 ### fontSize
 
-fontSize(value: Length)
+ArkTS-Dyn: fontSize(value: Length)
+
+ArkTS-Sta: fontSize(value: Length | undefined)
 
 设置字体大小。
 
@@ -187,15 +233,21 @@ fontSize(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。<br/>Wearable设备上默认值为：18fp |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。<br/>Wearable设备上默认值为：18fp |
 
 ### fontStyle
 
-fontStyle(value: FontStyle)
+ArkTS-Dyn: fontStyle(value: FontStyle)
+
+ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 设置字体样式。
 
@@ -203,15 +255,21 @@ fontStyle(value: FontStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
+| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle)<br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
 
 ### fontWeight
 
-fontWeight(value: number | FontWeight | ResourceStr)
+ArkTS-Dyn: fontWeight(value: number | FontWeight | ResourceStr)
+
+ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
@@ -219,15 +277,21 @@ fontWeight(value: number | FontWeight | ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string \| undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。|
 
 ### fontFamily
 
-fontFamily(value: ResourceStr)
+ArkTS-Dyn: fontFamily(value: ResourceStr)
+
+ArkTS-Sta: fontFamily(value: ResourceStr | undefined)
 
 设置字体列表。
 
@@ -235,15 +299,21 @@ fontFamily(value: ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和自定义字体。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ### inputFilter<sup>8+</sup>
 
-inputFilter(value: ResourceStr, error?: Callback\<string>)
+ArkTS-Dyn: inputFilter(value: ResourceStr, error?: Callback\<string>)
+
+ArkTS-Sta: inputFilter(value: ResourceStr | undefined , error?: Callback\<string> | undefined)
 
 通过正则表达式设置输入过滤器。匹配表达式的输入允许显示，不匹配的输入将被过滤。
 
@@ -253,16 +323,22 @@ inputFilter(value: ResourceStr, error?: Callback\<string>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                   | 必填 | 说明                               |
 | ------ | -------------------------------------- | ---- | ---------------------------------- |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 正则表达式。                       |
-| error  | Callback\<string>                | 否   | 正则匹配失败时，返回被过滤的内容。 |
+| value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/> ArkTS-Sta:[ResourceStr](ts-types.md#resourcestr)\| undefined | 是   | 正则表达式。                       |
+| error  | ArkTS-Dyn: Callback\<string> <br/> ArkTS-Sta: Callback\<string> \| undefined | 否   | 正则匹配失败时，返回被过滤的内容。 |
 
 ### copyOption<sup>9+</sup>
 
-copyOption(value: CopyOptions)
+ArkTS-Dyn: copyOption(value: CopyOptions)
+
+ArkTS-Sta: copyOption(value: CopyOptions | undefined)
 
 设置输入的文本是否可复制。设置CopyOptions.None时，当前TextInput中的文字无法被复制、剪切、翻译、分享、搜索和帮写，仅支持粘贴。
 
@@ -272,15 +348,21 @@ copyOption(value: CopyOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                             | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | 是   | 输入的文本是否可复制。<br/>默认值：CopyOptions.LocalDevice，支持设备内复制。 |
+| value  | ArkTS-Dyn: [CopyOptions](ts-appendix-enums.md#copyoptions9)<br/>ArkTS-Sta: [CopyOptions](ts-appendix-enums.md#copyoptions9) \| undefined | 是   | 输入的文本是否可复制。<br/>默认值：CopyOptions.LocalDevice，支持设备内复制。 |
 
 ### showPasswordIcon<sup>9+</sup>
 
-showPasswordIcon(value: boolean)
+ArkTS-Dyn: showPasswordIcon(value: boolean)
+
+ArkTS-Sta: showPasswordIcon(value: boolean | undefined)
 
 设置当密码输入模式时，输入框末尾的图标是否显示。
 
@@ -288,15 +370,21 @@ showPasswordIcon(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                        |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| value  | boolean | 是   | 密码输入模式时，输入框末尾的图标是否显示。<br/>true表示显示，false表示不显示。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 密码输入模式时，输入框末尾的图标是否显示。<br/>true表示显示，false表示不显示。<br/>默认值：true |
 
 ### style<sup>9+</sup>
 
-style(value: TextInputStyle &nbsp;|&nbsp;TextContentStyle)
+ArkTS-Dyn: style(value: TextInputStyle &nbsp;|&nbsp;TextContentStyle)
+
+ArkTS-Sta: style(value: TextInputStyle &nbsp;|&nbsp;TextContentStyle |&nbsp;undefined)
 
 设置输入框为默认风格或内联输入风格，内联输入风格只支持InputType.Normal类型。<br>输入框类型介绍请参考[type](#type)接口。
 
@@ -304,15 +392,21 @@ style(value: TextInputStyle &nbsp;|&nbsp;TextContentStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextInputStyle](#textinputstyle9枚举说明)&nbsp;\|&nbsp;[TextContentStyle](ts-appendix-enums.md#textcontentstyle10) | 是   | 输入框为默认风格或内联输入风格。<br/>默认值：TextInputStyle.Default |
+| value  | ArkTS-Dyn: [TextInputStyle](#textinputstyle9枚举说明)&nbsp;\|&nbsp;[TextContentStyle](ts-appendix-enums.md#textcontentstyle10) <br/> ArkTS-Sta: [TextInputStyle](#textinputstyle9枚举说明)&nbsp;\|&nbsp;[TextContentStyle](ts-appendix-enums.md#textcontentstyle10) \| undefined | 是   | 输入框为默认风格或内联输入风格。<br/>默认值：TextInputStyle.Default |
 
 ### textAlign<sup>9+</sup>
 
-textAlign(value: TextAlign)
+ArkTS-Dyn: textAlign(value: TextAlign)
+
+ArkTS-Sta: textAlign(value: TextAlign | undefined)
 
 设置文本在输入框中的水平对齐方式。
 
@@ -324,11 +418,15 @@ textAlign(value: TextAlign)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | [TextAlign](ts-appendix-enums.md#textalign) | 是   | 文本在输入框中的水平对齐方式。<br/>默认值：TextAlign.Start |
+| value  | ArkTS-Dyn: [TextAlign](ts-appendix-enums.md#textalign)<br/>ArkTS-Sta: [TextAlign](ts-appendix-enums.md#textalign) \| undefined | 是   | 文本在输入框中的水平对齐方式。<br/>默认值：TextAlign.Start |
 
 >  **说明：**  
 >
@@ -336,7 +434,9 @@ textAlign(value: TextAlign)
 
 ### selectedBackgroundColor<sup>10+</sup>
 
-selectedBackgroundColor(value: ResourceColor)
+ArkTS-Dyn: selectedBackgroundColor(value: ResourceColor)
+
+ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 设置文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。
 
@@ -344,15 +444,21 @@ selectedBackgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本选中底板颜色。 |
 
 ### caretStyle<sup>10+</sup>
 
-caretStyle(value: CaretStyle)
+ArkTS-Dyn: caretStyle(value: CaretStyle)
+
+ArkTS-Sta: caretStyle(value: CaretStyle | undefined)
 
 设置光标风格。
 
@@ -360,15 +466,21 @@ caretStyle(value: CaretStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明         |
 | ------ | ----------------------------------- | ---- | ------------ |
-| value  | [CaretStyle](ts-text-common.md#caretstyle10) | 是   | 光标的风格。 |
+| value  | ArkTS-Dyn: [CaretStyle](ts-text-common.md#caretstyle10)<br/>ArkTS-Sta: [CaretStyle](ts-text-common.md#caretstyle10) \| undefined | 是   | 光标的风格。 |
 
 ### caretPosition<sup>10+</sup>
 
-caretPosition(value: number)
+ArkTS-Dyn: caretPosition(value: number)
+
+ArkTS-Sta: caretPosition(value: int | undefined)
 
 设置光标位置。
 
@@ -376,15 +488,21 @@ caretPosition(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| value  | number | 是   | 光标的位置。<br/>第一个字符前的位置是0。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 光标的位置。<br/>第一个字符前的位置是0。 |
 
 ### showUnit<sup>10+</sup>
 
-showUnit(value: CustomBuilder)
+ArkTS-Dyn: showUnit(value: CustomBuilder)
+
+ArkTS-Sta: showUnit(value: CustomBuilder | undefined)
 
 设置控件作为文本框单位。需搭配[showUnderline](#showunderline10)使用，当showUnderline为true时生效。
 
@@ -392,15 +510,21 @@ showUnit(value: CustomBuilder)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                           |
 | ------ | ------------------------------------------- | ---- | ------------------------------ |
-| value  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 文本输入时，文本框的显示单位。 |
+| value  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 文本输入时，文本框的显示单位。 |
 
 ### showError<sup>10+</sup>
 
-showError(value?: ResourceStr | undefined)
+ArkTS-Dyn: showError(value?: ResourceStr | undefined)
+
+ArkTS-Sta: showError(value?: ResourceStr | undefined)
 
 设置错误状态下提示的错误文本或者不显示错误状态。
 
@@ -410,15 +534,21 @@ showError(value?: ResourceStr | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                          | 必填 | 说明                                                         |
 | ------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;undefined | 否   | 错误状态下提示的错误文本或者不显示错误状态。<br/>默认不显示错误状态。<br/>Wearable设备上字体大小为：13fp，对齐方式为：居中对齐<br/>**说明：** <br/>从API version 12开始，value支持Resource类型。 |
+| value  | [ResourceStr](ts-types.md#resourcestr) \| undefined | 否   | 错误状态下提示的错误文本或者不显示错误状态。<br/>默认不显示错误状态。<br/>Wearable设备上字体大小为：13fp，对齐方式为：居中对齐<br/>**说明：** <br/>从API version 12开始，value支持Resource类型。 |
 
 ### showUnderline<sup>10+</sup>
 
-showUnderline(value: boolean)
+ArkTS-Dyn: showUnderline(value: boolean)
+
+ArkTS-Sta: showUnderline(value: boolean | undefined)
 
 设置是否开启下划线。
 
@@ -426,15 +556,21 @@ showUnderline(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| value  | boolean | 是   | 是否开启下划线。<br/>true表示开启，false表示不开启。<br/>默认值：false<br/>下划线默认颜色为'#33182431'，默认粗细为1px，文本框尺寸48vp，下划线只支持InputType.Normal类型。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启下划线。<br/>true表示开启，false表示不开启。<br/>默认值：false<br/>下划线默认颜色为'#33182431'，默认粗细为1px，文本框尺寸48vp，下划线只支持InputType.Normal类型。 |
 
 ### passwordIcon<sup>10+</sup>
 
-passwordIcon(value: PasswordIcon)
+ArkTS-Dyn: passwordIcon(value: PasswordIcon)
+
+ArkTS-Sta: passwordIcon(value: PasswordIcon | undefined)
 
 设置当密码输入模式时，输入框末尾的图标。
 
@@ -444,15 +580,21 @@ passwordIcon(value: PasswordIcon)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PasswordIcon](#passwordicon10对象说明) | 是   | 密码输入模式时，输入框末尾的图标。<br/>默认为系统提供的密码图标。<br/>该图标的固定尺寸为24vp，Wearable设备上默认值为28vp，若引用的图标过大或过小，均显示为固定尺寸。 |
+| value  | ArkTS-Dyn: [PasswordIcon](#passwordicon10对象说明)<br/>ArkTS-Sta: [PasswordIcon](#passwordicon10对象说明) \| undefined | 是   | 密码输入模式时，输入框末尾的图标。<br/>默认为系统提供的密码图标。<br/>该图标的固定尺寸为24vp，Wearable设备上默认值为28vp，若引用的图标过大或过小，均显示为固定尺寸。 |
 
 ### enableKeyboardOnFocus<sup>10+</sup>
 
-enableKeyboardOnFocus(value: boolean)
+ArkTS-Dyn: enableKeyboardOnFocus(value: boolean)
+
+ArkTS-Sta: enableKeyboardOnFocus(value: boolean | undefined)
 
 设置TextInput通过点击以外的方式获焦时，是否主动拉起软键盘。
 
@@ -462,15 +604,21 @@ enableKeyboardOnFocus(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                        |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| value  | boolean | 是   | 通过点击以外的方式获焦时，是否主动拉起软键盘。<br/>true表示主动拉起软键盘，false表示不主动拉起。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 通过点击以外的方式获焦时，是否主动拉起软键盘。<br/>true表示主动拉起软键盘，false表示不主动拉起。<br/>默认值：true |
 
 ### selectionMenuHidden<sup>10+</sup>
 
-selectionMenuHidden(value: boolean)
+ArkTS-Dyn: selectionMenuHidden(value: boolean)
+
+ArkTS-Sta: selectionMenuHidden(value: boolean | undefined)
 
 设置是否隐藏系统文本选择菜单。
 
@@ -478,15 +626,21 @@ selectionMenuHidden(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏系统文本选择菜单。<br />设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，隐藏系统文本选择菜单。<br />设置为false时，显示系统文本选择菜单。<br />默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏系统文本选择菜单。<br />设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，隐藏系统文本选择菜单。<br />设置为false时，显示系统文本选择菜单。<br />默认值：false |
 
 ### barState<sup>10+</sup>
 
-barState(value: BarState)
+ArkTS-Dyn: barState(value: BarState)
+
+ArkTS-Sta: barState(value: BarState | undefined)
 
 设置内联输入风格编辑态时滚动条的显示模式。
 
@@ -494,15 +648,21 @@ barState(value: BarState)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [BarState](ts-appendix-enums.md#barstate) | 是   | 内联输入风格编辑态时滚动条的显示模式。<br/>默认值：BarState.Auto |
+| value  | ArkTS-Dyn: [BarState](ts-appendix-enums.md#barstate)<br/>ArkTS-Sta: [BarState](ts-appendix-enums.md#barstate)\| undefined | 是   | 输入框滚动条的显示模式。<br/>默认值：BarState.Auto |
 
 ### maxLines<sup>10+</sup>
 
-maxLines(value: number)
+ArkTS-Dyn: maxLines(value: number)
+
+ArkTS-Sta: maxLines(value: int | undefined)
 
 设置内联输入风格编辑态时文本可显示的最大行数。
 
@@ -510,15 +670,21 @@ maxLines(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 内联输入风格编辑态时文本可显示的最大行数。<br/>默认值：3 <br/>取值范围：(0, +∞) |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 内联输入风格编辑态时文本可显示的最大行数。<br/>默认值：3 <br/>取值范围：(0, UINT32_MAX] |
 
 ### customKeyboard<sup>10+</sup>
 
-customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
+ArkTS-Dyn: customKeyboard(value: CustomBuilder | ComponentContent, options?: KeyboardOptions)
+
+ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions)
 
 设置自定义键盘。
 
@@ -540,16 +706,22 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> <br/> ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) \| undefined | 是   | 自定义键盘。 |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。                             |
 
 ### enableAutoFill<sup>11+</sup>
 
-enableAutoFill(value: boolean)
+ArkTS-Dyn: enableAutoFill(value: boolean)
+
+ArkTS-Sta: enableAutoFill(value: boolean | undefined)
 
 设置是否启用自动填充。
 
@@ -557,15 +729,21 @@ enableAutoFill(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
 
 ### passwordRules<sup>11+</sup>
 
 passwordRules(value: string)
+
+passwordRules(value: string | undefined)
 
 定义生成密码的规则。在触发自动填充时，所设置的密码规则会透传给密码保险箱，用于新密码的生成。<!--RP1--><!--RP1End-->
 
@@ -573,15 +751,21 @@ passwordRules(value: string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| value  | string | 是   | 定义生成密码的规则。 |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 定义生成密码的规则。 |
 
 ### cancelButton<sup>11+</sup>
 
-cancelButton(options: CancelButtonOptions)
+ArkTS-Dyn: cancelButton(options: CancelButtonOptions)
+
+ArkTS-Sta: cancelButton(options: CancelButtonOptions | undefined)
 
 设置右侧清除按钮样式。不支持内联模式。
 
@@ -589,15 +773,21 @@ cancelButton(options: CancelButtonOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options  | [CancelButtonOptions](ts-basic-components-search.md#cancelbuttonoptions12对象说明) | 是   | 右侧清除按钮样式选项。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />}<br/>Wearable设备上默认值为：28vp |
+| options  | ArkTS-Dyn: [CancelButtonOptions](ts-basic-components-search.md#cancelbuttonoptions12对象说明)<br/>ArkTS-Sta: [CancelButtonOptions](ts-basic-components-search.md#cancelbuttonoptions12对象说明) \|  undefined | 是   | 右侧清除按钮样式选项。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />}<br/>Wearable设备上默认值为：28vp |
 
 ### selectAll<sup>11+</sup>
 
-selectAll(value: boolean)
+ArkTS-Dyn: selectAll(value: boolean)
+
+ArkTS-Sta: selectAll(value: boolean | undefined)
 
 设置当初始状态，是否全选文本。不支持内联模式。
 
@@ -605,15 +795,21 @@ selectAll(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| value  | boolean | 是   | 是否全选文本。<br/>true表示会全选文本，false表示不会全选文本。<br />默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否全选文本。<br/>true表示会全选文本，false表示不会全选文本。<br />默认值：false |
 
 ### showCounter<sup>11+</sup>
 
-showCounter(value: boolean, options?: InputCounterOptions)
+ArkTS-Dyn: showCounter(value: boolean, options?: InputCounterOptions)
+
+ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions | undefined)
 
 设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。
 
@@ -627,16 +823,22 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名                | 类型                                                  | 必填 | 说明             |
 | --------------------- | ----------------------------------------------------- | ---- | ---------------- |
-| value                 | boolean                                               | 是   | 是否显示计数器。<br/>true表示显示计时器，false表示不显示。 |
-| options<sup>11+</sup> | [InputCounterOptions](ts-types.md#inputcounteroptions11对象说明) | 否   | 计数器的配置项。 |
+| value | ArkTS-Dyn: boolean <br> ArkTS-Sta: boolean \| undefined | 是 | 是否显示计数器。<br/>true表示显示计时器，false表示不显示。 |
+| options | ArkTS-Dyn: [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明) <br/> ArkTS-Sta: [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明) \| undefined | 否   | 计数器的配置项。 |
 
 ### contentType<sup>12+</sup>
 
-contentType(value: ContentType)
+ArkTS-Dyn: contentType(value: ContentType)
+
+ArkTS-Sta: contentType(value: ContentType | undefined)
 
 设置自动填充类型。
 
@@ -644,15 +846,21 @@ contentType(value: ContentType)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                  | 必填 | 说明           |
 | ------ | ------------------------------------- | ---- | -------------- |
-| value  | [ContentType](#contenttype12枚举说明) | 是   | 自动填充类型。 |
+| value  | ArkTS-Dyn: [ContentType](#contenttype12枚举说明)<br/>ArkTS-Sta: [ContentType](#contenttype12枚举说明) \| undefined| 是   | 自动填充类型。 |
 
 ### underlineColor<sup>12+</sup>
 
-underlineColor(value: ResourceColor|UnderlineColor|undefined)
+ArkTS-Dyn: underlineColor(value: ResourceColor|UnderlineColor|undefined)
+
+ArkTS-Sta: underlineColor(value: ResourceColor|UnderlineColor|undefined)
 
 设置下划线颜色。
 
@@ -662,13 +870,21 @@ underlineColor(value: ResourceColor|UnderlineColor|undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| [UnderlineColor](#underlinecolor12对象说明) \| undefined | 是   | 设置下划线颜色。<br/>当设置下划线颜色模式时，修改下划线颜色。当只设定非特殊状态下的颜色，可以直接输入ResourceColor。设定值为undefined、null、无效值时，所有下划线恢复为默认值。<br/>默认值：主题配置的下划线颜色。主题配置的默认下划线颜色为'#33182431'。 |
 
 ### lineHeight<sup>12+</sup>
 
-lineHeight(value: number | string | Resource)
+ArkTS-Dyn: lineHeight(value: number | string | Resource)
+
+ArkTS-Sta: lineHeight(value: double | string | Resource | undefined)
 
 设置文本的行高。
 
@@ -678,18 +894,24 @@ lineHeight(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本的文本行高。 |
+| value  | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本的文本行高。 |
 
 >  **说明：**
 >  
 >  特殊字符字体高度远超出同行的其他字符高度时，文本框出现截断、遮挡、内容相对位置发生变化等不符合预期的显示异常，需要开发者调整组件高度、行高等属性，修改对应的页面布局。
 ### decoration<sup>12+</sup>
 
-decoration(value: TextDecorationOptions)
+ArkTS-Dyn: decoration(value: TextDecorationOptions)
+
+ArkTS-Sta: decoration(value: TextDecorationOptions | undefined)
 
 设置文本装饰线类型样式及其颜色。密码模式不生效。
 
@@ -697,15 +919,21 @@ decoration(value: TextDecorationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明) | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>} |
+| value  | ArkTS-Dyn: [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明)<br/>ArkTS-Sta: [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) \| undefined | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>} |
 
 ### letterSpacing<sup>12+</sup>
 
-letterSpacing(value: number | string | Resource)
+ArkTS-Dyn: letterSpacing(value: number | string | Resource)
+
+ArkTS-Sta: letterSpacing(value: double | string | Resource | undefined)
 
 设置文本字符间距。设置该值为百分比时，按默认值显示。设置该值为0时，按默认值显示。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
@@ -717,15 +945,21 @@ letterSpacing(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                       | 必填 | 说明           |
 | ------ | -------------------------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本字符间距。<br/>单位：[fp](ts-pixel-units.md) |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)\| undefined | 是 | 文本字符间距。<br/>单位：[fp](ts-pixel-units.md) |
 
 ### fontFeature<sup>12+</sup>
 
-fontFeature(value: string)
+ArkTS-Dyn: fontFeature(value: string)
+
+ArkTS-Sta: fontFeature(value: string | undefined)
 
 设置文字特性效果，比如数字等宽的特性。
 
@@ -741,11 +975,15 @@ fontFeature(value: string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | string | 是   | 文字特性效果。 |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 文字特性效果。 |
 
 Font Feature当前支持的属性见 [fontFeature属性列表](ts-basic-components-text.md#fontfeature12)。
 设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
@@ -756,7 +994,9 @@ Font Feature当前支持的属性见 [fontFeature属性列表](ts-basic-componen
 
 ### wordBreak<sup>12+</sup>
 
-wordBreak(value: WordBreak)
+ArkTS-Dyn: wordBreak(value: WordBreak)
+
+ArkTS-Sta: wordBreak(value: WordBreak | undefined)
 
 设置文本断行规则。该属性在组件设置内联模式时样式生效，但对placeholder文本无效。
 
@@ -764,11 +1004,15 @@ wordBreak(value: WordBreak)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| value  | [WordBreak](ts-appendix-enums.md#wordbreak11) | 是   | 内联输入风格编辑态时断行规则。 <br />默认值：WordBreak.BREAK_WORD |
+| value  | ArkTS-Dyn: [WordBreak](ts-appendix-enums.md#wordbreak11)<br/>ArkTS-Sta: [WordBreak](ts-appendix-enums.md#wordbreak11) \| undefined | 是   | 内联输入风格编辑态时断行规则。 <br />默认值：WordBreak.BREAK_WORD |
 
 >  **说明：**
 >
@@ -776,7 +1020,9 @@ wordBreak(value: WordBreak)
 
 ### textOverflow<sup>12+</sup>
 
-textOverflow(value: TextOverflow)
+ArkTS-Dyn: textOverflow(value: TextOverflow)
+
+ArkTS-Dyn: textOverflow(value: TextOverflow | undefined)
 
 设置文本超长时的显示方式。仅在内联模式的编辑态、非编辑态下支持。
 
@@ -788,11 +1034,15 @@ textOverflow(value: TextOverflow)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                          | 必填 | 说明                                                                                                |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------------------------------------------------------- |
-| value  | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 是   | 文本超长时的显示方式。<br/>内联模式非编辑态下默认值：TextOverflow.Ellipsis <br/>内联模式编辑态下默认值：TextOverflow.Clip<br/>内联模式介绍见[style](#style9)。                     |
+| value  | ArkTS-Dyn: [TextOverflow](ts-appendix-enums.md#textoverflow)<br/>ArkTS-Sta: [TextOverflow](ts-appendix-enums.md#textoverflow) \| undefined | 是   | 文本超长时的显示方式。<br/>内联模式非编辑态下默认值：TextOverflow.Ellipsis <br/>内联模式编辑态下默认值：TextOverflow.Clip<br/>内联模式介绍见[style](#style9)。                     |
 
 >  **说明：**  
 >   TextInput组件不支持设置TextOverflow.MARQUEE模式，当设置为TextOverflow.MARQUEE模式时，内联模式非编辑态下显示为TextOverflow.Ellipsis，内联模式编辑态下以及非内联模式下显示为TextOverflow.Clip。
@@ -801,7 +1051,9 @@ textOverflow(value: TextOverflow)
 
 ### textIndent<sup>12+</sup>
 
-textIndent(value: Dimension)
+ArkTS-Dyn: textIndent(value: Dimension)
+
+ArkTS-Dyn: textIndent(value: Dimension | undefined)
 
 设置首行文本缩进。
 
@@ -809,15 +1061,21 @@ textIndent(value: Dimension)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                  | 必填 | 说明                         |
 | ------ | ------------------------------------ | ---- | ---------------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | 是   | 首行文本缩进。<br/>默认值：0 |
+| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined | 是   | 首行文本缩进。<br/>默认值：0 |
 
 ### minFontSize<sup>12+</sup>
 
-minFontSize(value: number | string | Resource)
+ArkTS-Dyn: minFontSize(value: number | string | Resource)
+
+ArkTS-Sta: minFontSize(value: double | string | Resource | undefined)
 
 设置文本最小显示字号。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
@@ -829,15 +1087,21 @@ minFontSize(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本最小显示字号。<br/>单位：[fp](ts-pixel-units.md) |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 文本最小显示字号。<br/>单位：[fp](ts-pixel-units.md) |
 
 ### maxFontSize<sup>12+</sup>
 
-maxFontSize(value: number | string | Resource)
+ArkTS-Dyn: maxFontSize(value: number | string | Resource)
+
+ArkTS-Dyn: maxFontSize(value: double | string | Resource | undefined)
 
 设置文本最大显示字号。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
@@ -849,15 +1113,21 @@ maxFontSize(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本最大显示字号。<br/>单位：[fp](ts-pixel-units.md) |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 文本最大显示字号。<br/>单位：[fp](ts-pixel-units.md) |
 
 ### heightAdaptivePolicy<sup>12+</sup>
 
-heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
+ArkTS-Dyn: heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
+
+ArkTS-Sta: heightAdaptivePolicy(value: TextHeightAdaptivePolicy | undefined)
 
 组件设置为内联输入风格时，设置文本自适应高度的方式。
 
@@ -877,15 +1147,21 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 是   | 文本自适应高度的方式。<br/>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
+| value  | ArkTS-Dyn: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10)<br/>ArkTS-Sta: [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) \| undefined | 是   | 文本自适应高度的方式。<br/>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
 
 ### showPassword<sup>12+</sup>
 
-showPassword(visible: boolean)
+ArkTS-Dyn: showPassword(visible: boolean)
+
+ArkTS-Sta: showPassword(visible: boolean | undefined)
 
 设置密码的显隐状态。
 
@@ -897,15 +1173,21 @@ showPassword(visible: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| visible  | boolean | 是  | 是否显示密码。<br/>true表示会显示密码，false表示不会显示密码。<br/>默认值：false |
+| visible  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是  | 是否显示密码。<br/>true表示会显示密码，false表示不会显示密码。<br/>默认值：false |
 
 ### lineBreakStrategy<sup>12+</sup>
 
-lineBreakStrategy(strategy: LineBreakStrategy)
+ArkTS-Dyn: lineBreakStrategy(strategy: LineBreakStrategy)
+
+ArkTS-Sta: lineBreakStrategy(strategy: LineBreakStrategy | undefined)
 
 设置折行规则。该属性在wordBreak不等于breakAll的时候生效，不支持连词符。
 
@@ -913,15 +1195,21 @@ lineBreakStrategy(strategy: LineBreakStrategy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| strategy | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | 是   | 文本的折行规则。 <br />默认值：LineBreakStrategy.GREEDY <br/>**说明：**<br/>仅设置内联模式时该属性生效。 |
+| strategy | ArkTS-Dyn: [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12)<br/>ArkTS-Sta: [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) \| undefined | 是   | 文本的折行规则。 <br />默认值：LineBreakStrategy.GREEDY <br/>**说明：**<br/>仅设置内联模式时该属性生效。 |
 
 ### editMenuOptions<sup>12+</sup>
 
-editMenuOptions(editMenu: EditMenuOptions)
+ArkTS-Dyn: editMenuOptions(editMenu: EditMenuOptions)
+
+ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 设置自定义菜单扩展项，允许用户设置扩展项的文本内容、图标、回调方法。
 
@@ -929,29 +1217,39 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | 是   | 扩展菜单选项。 |
+| editMenu  | ArkTS-Dyn: [EditMenuOptions](ts-text-common.md#editmenuoptions)<br/>ArkTS-Sta: [EditMenuOptions](ts-text-common.md#editmenuoptions) \| undefined | 是   | 扩展菜单选项。 |
 
 ### enablePreviewText<sup>12+</sup>
 
-enablePreviewText(enable: boolean)
+ArkTS-Dyn: enablePreviewText(enable: boolean)
+
+ArkTS-Sta: enablePreviewText(enable: boolean | undefined)
 
 设置是否开启输入预上屏。
 
-预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此不触发onWillInsert、onDidInsert、onWillDelete、onDidDelete回调。
+预上屏内容定义为文字暂存态，目前不支持文字拦截功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enable | boolean | 是   | 是否开启输入预上屏。<br/>true表示开启输入预上屏，false表示不开启输入预上屏。<br/>默认值：true |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启输入预上屏。<br/>true表示开启输入预上屏，false表示不开启输入预上屏。<br/>默认值：true |
 
 >  **说明：**
 >  
@@ -959,7 +1257,9 @@ enablePreviewText(enable: boolean)
 
 ### enableHapticFeedback<sup>13+</sup>
 
-enableHapticFeedback(isEnabled: boolean)
+ArkTS-Dyn: enableHapticFeedback(isEnabled: boolean)
+
+ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 设置是否开启触控反馈。
 
@@ -967,11 +1267,15 @@ enableHapticFeedback(isEnabled: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| isEnabled | boolean | 是   | 是否开启触控反馈。<br/>true表示开启触控反馈，false表示不开启触控反馈。<br/>默认值：true |
+| isEnabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启触控反馈。<br/>true表示开启触控反馈，false表示不开启触控反馈。<br/>默认值：true |
 
 >  **说明：**
 >
@@ -986,7 +1290,9 @@ enableHapticFeedback(isEnabled: boolean)
 
 ### autoCapitalizationMode<sup>20+</sup>
 
-autoCapitalizationMode(mode: AutoCapitalizationMode)
+ArkTS-Dyn: autoCapitalizationMode(mode: AutoCapitalizationMode)
+
+ArkTS-Sta: autoCapitalizationMode(mode: AutoCapitalizationMode | undefined)
 
 设置自动大小写模式的文本模式，只提供接口能力，具体实现以输入法应用为主。
 
@@ -994,15 +1300,21 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| mode | [AutoCapitalizationMode](ts-text-common.md#autocapitalizationmode20枚举说明) | 是   | 自动大小写模式，默认状态无效。 |
+| mode | ArkTS-Dyn: [AutoCapitalizationMode](ts-text-common.md#autocapitalizationmode20枚举说明) <br/> ArkTS-Sta: [AutoCapitalizationMode](ts-text-common.md#autocapitalizationmode20枚举说明)\| undefined | 是   | 自动大小写模式，默认状态无效。 |
 
 ### keyboardAppearance<sup>15+</sup>
 
-keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
+ArkTS-Dyn: keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
+
+ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 设置输入框拉起的键盘样式。
 
@@ -1010,11 +1322,15 @@ keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)> | 是   | 键盘样式。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
+| appearance | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)><br/>ArkTS-Sta: [KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明) \| undefined | 是   | 键盘样式。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
 
 ### strokeWidth<sup>20+</sup>
 
@@ -1050,39 +1366,53 @@ strokeColor(color: Optional\<ResourceColor>)
 
 ### stopBackPress<sup>15+</sup>
 
-stopBackPress(isStopped: Optional\<boolean>)
+ArkTS-Dyn: stopBackPress(isStopped: Optional\<boolean>)
 
-设置是否阻止返回键向其它组件或应用侧传递。
+ArkTS-Sta: stopBackPress(isStopped: boolean | undefined)
+
+设置是否阻止返回键传递。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                                      |
 | ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
-| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止返回键向其它组件或应用侧传递，false表示不阻止。<br />默认值：true |
+| isStopped  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### halfLeading<sup>18+</sup>
 
-halfLeading(halfLeading: Optional\<boolean>)
+ArkTS-Dyn: halfLeading(halfLeading: Optional\<boolean>)
 
-设置文本是否将行间距平分至行的顶部与底部。
+ArkTS-Sta: halfLeading(halfLeading: boolean | undefined)
+
+设置文本在行内垂直居中，将行间距平分至行的顶部与底部。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是  | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
+| halfLeading | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是  | 设置文本是否垂直居中。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
 
 ### minFontScale<sup>18+</sup>
 
-minFontScale(scale: Optional\<number | Resource>)
+ArkTS-Dyn: minFontScale(scale: Optional\<number | Resource>)
+
+ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 设置文本最小的字体缩放倍数。
 
@@ -1090,15 +1420,21 @@ minFontScale(scale: Optional\<number | Resource>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
+| scale  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)><br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
 
 ### maxFontScale<sup>18+</sup>
 
-maxFontScale(scale: Optional\<number | Resource>)
+ArkTS-Dyn: maxFontScale(scale: Optional\<number | Resource>)
+
+ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 设置文本最大的字体缩放倍数。
 
@@ -1106,15 +1442,21 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理。异常值默认不生效。<br/>当设置maxFontScale属性后，showError最多放大到2倍。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
+| scale  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> <br/> ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理。异常值默认不生效。<br/>当设置maxFontScale属性后，showError最多放大到2倍。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
 
 ### cancelButton<sup>18+</sup>
 
-cancelButton(symbolOptions: CancelButtonSymbolOptions)
+ArkTS-Dyn: cancelButton(symbolOptions: CancelButtonSymbolOptions)
+
+ArkTS-Sta: cancelButton(symbolOptions: CancelButtonSymbolOptions | undefined)
 
 设置右侧清除按钮样式。不支持内联模式。
 
@@ -1122,15 +1464,21 @@ cancelButton(symbolOptions: CancelButtonSymbolOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| symbolOptions  | [CancelButtonSymbolOptions](ts-basic-components-search.md#cancelbuttonsymboloptions12对象说明) | 是   | 右侧清除按钮样式。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />} |
+| symbolOptions  | ArkTS-Dyn: [CancelButtonSymbolOptions](ts-basic-components-search.md#cancelbuttonsymboloptions12对象说明)<br/> ArkTS-Sta: [CancelButtonSymbolOptions](ts-basic-components-search.md#cancelbuttonsymboloptions12对象说明) \| undefined| 是   | 右侧清除按钮样式。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />} |
 
 ### ellipsisMode<sup>18+</sup>
 
-ellipsisMode(mode: Optional\<EllipsisMode>)
+ArkTS-Dyn: ellipsisMode(mode: Optional\<EllipsisMode>)
+
+ArkTS-Sta: ellipsisMode(mode: EllipsisMode | undefined)
 
 设置省略位置。ellipsisMode属性仅在内联模式下生效，需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
@@ -1140,15 +1488,21 @@ ellipsisMode(mode: Optional\<EllipsisMode>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                      |
 | ------ | --------------------------------------------------- | ---- | ----------------------------------------- |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[EllipsisMode](ts-appendix-enums.md#ellipsismode11)> | 是   | 省略位置。 <br />默认值：EllipsisMode.END |
+| mode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[EllipsisMode](ts-appendix-enums.md#ellipsismode11)><br/>ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[EllipsisMode](ts-appendix-enums.md#ellipsismode11)> \| undefined | 是   | 省略位置。 <br />默认值：EllipsisMode.END |
 
 ### enableAutoFillAnimation<sup>20+</sup>
 
-enableAutoFillAnimation(enabled: Optional\<boolean>)
+ArkTS-Dyn: enableAutoFillAnimation(enabled: Optional\<boolean>)
+
+ArkTS-Sta: enableAutoFillAnimation(enabled: boolean | undefined)
 
 设置是否启用自动填充动效。
 
@@ -1156,15 +1510,21 @@ enableAutoFillAnimation(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 是否启用自动填充动效。<br/>true表示启用，false表示不启用。<br/>默认值：true <br/>**说明：**<br/>启用之后，仅[输入模式](#inputtype枚举说明)设置为Password、NEW_PASSWORD或NUMBER_PASSWORD的输入框在进行自动填充时动效可生效。  |
+| enabled  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用自动填充动效。<br/>true表示启用，false表示不启用。<br/>默认值：true <br/>**说明：**<br/>启用之后，仅[输入模式](#inputtype枚举说明)设置为Password、NEW_PASSWORD或NUMBER_PASSWORD的输入框在进行自动填充时动效可生效。  |
 
 ### enableAutoSpacing<sup>20+</sup>
 
-enableAutoSpacing(enabled: Optional\<boolean>)
+ArkTS-Dyn: enableAutoSpacing(enabled: Optional\<boolean>)
+
+ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 
 设置是否开启中文与西文的自动间距。
 
@@ -1172,11 +1532,15 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/> ArkTS-Sta: boolean \| undefined| 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
 ## InputType枚举说明
 
@@ -1282,7 +1646,9 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 ### onChange
 
-onChange(callback:&nbsp;EditableTextOnChangeCallback)
+ArkTS-Dyn: onChange(callback:&nbsp;EditableTextOnChangeCallback)
+
+ArkTS-Sta: onChange(callback:&nbsp;EditableTextOnChangeCallback | undefined)
 
 输入内容发生变化时，触发该回调。
 
@@ -1292,15 +1658,21 @@ onChange(callback:&nbsp;EditableTextOnChangeCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| callback  | [EditableTextOnChangeCallback](ts-text-common.md#editabletextonchangecallback12) | 是   | 当前输入文本内容变化时的回调。 |
+| callback  |ArkTS-Dyn: [EditableTextOnChangeCallback](ts-text-common.md#editabletextonchangecallback12)<br/>ArkTS-Sta: [EditableTextOnChangeCallback](ts-text-common.md#editabletextonchangecallback12) \| undefined | 是   | 当前输入文本内容变化时的回调。 |
 
 ### onSubmit
 
-onSubmit(callback: OnSubmitCallback)
+ArkTS-Dyn: onSubmit(callback: OnSubmitCallback)
+
+ArkTS-Sta: onSubmit(callback: OnSubmitCallback | undefined)
 
 按下输入法回车键触发该回调。
 
@@ -1308,11 +1680,15 @@ onSubmit(callback: OnSubmitCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名              | 类型                                             | 必填 | 说明                                                         |
 | ------------------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback            | [OnSubmitCallback](#onsubmitcallback18) | 是   | 提交回调。 |
+| callback            | ArkTS-Dyn: [OnSubmitCallback](#onsubmitcallback18)<br/>ArkTS-Sta: [OnSubmitCallback](#onsubmitcallback18) \| undefined | 是   | 提交回调。 |
 
 ### onEditChanged<sup>(deprecated)</sup>
 
@@ -1332,7 +1708,9 @@ onEditChanged(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 ### onEditChange<sup>8+</sup>
 
-onEditChange(callback: Callback\<boolean>)
+ArkTS-Dyn: onEditChange(callback: Callback\<boolean>)
+
+ArkTS-Sta: onEditChange(callback: Callback\<boolean> | undefined)
 
 输入状态变化时，触发该回调。有光标时为编辑态，无光标时为非编辑态。
 
@@ -1340,15 +1718,21 @@ onEditChange(callback: Callback\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型    | 必填 | 说明                 |
 | --------- | ------- | ---- | -------------------- |
-| callback | Callback\<boolean> | 是   | 输入状态变化回调，返回值为true表示输入框处于编辑态，返回值为false表示输入框处于非编辑态。 |
+| callback | ArkTS-Dyn: Callback\<boolean><br/>ArkTS-Sta: Callback\<boolean> \| undefined | 是   | 输入状态变化回调，返回值为true表示输入框处于编辑态，返回值为false表示输入框处于非编辑态。 |
 
 ### onCopy<sup>8+</sup>
 
-onCopy(callback: Callback\<string>)
+ArkTS-Dyn: onCopy(callback: Callback\<string>)
+
+ArkTS-Sta: onCopy(callback: Callback\<string> | undefined)
 
 进行复制操作时，触发该回调。
 
@@ -1356,15 +1740,21 @@ onCopy(callback: Callback\<string>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型    | 必填 | 说明             |
 | --------- | ------- | ---- | ---------------- |
-| callback | Callback\<string> | 是   | 复制回调，其返回值为复制的文本内容。 |
+| callback | ArkTS-Dyn: Callback\<string><br/>ArkTS-Sta: Callback\<string> \| undefined | 是   | 复制回调，其返回值为复制的文本内容。 |
 
 ### onCut<sup>8+</sup>
 
-onCut(callback: Callback\<string>)
+ArkTS-Dyn: onCut(callback: Callback\<string>)
+
+ArkTS-Sta: onCut(callback: Callback\<string> | undefined)
 
 进行剪切操作时，触发该回调。
 
@@ -1372,15 +1762,21 @@ onCut(callback: Callback\<string>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型    | 必填 | 说明             |
 | --------- | ------- | ---- | ---------------- |
-| callback | Callback\<string> | 是   | 剪切回调，其返回值为剪切的文本内容。 |
+| callback | ArkTS-Dyn: Callback\<string><br/>ArkTS-Sta: Callback\<string> \| undefined | 是   | 剪切回调，其返回值为剪切的文本内容。 |
 
 ### onPaste<sup>8+</sup>
 
-onPaste(callback: OnPasteCallback)
+ArkTS-Dyn: onPaste(callback: OnPasteCallback)
+
+ArkTS-Sta: onPaste(callback: OnPasteCallback | undefined)
 
 进行粘贴操作时，触发该回调。
 
@@ -1388,14 +1784,20 @@ onPaste(callback: OnPasteCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 | 参数名              | 类型                                                         | 必填 | 说明                   |
 | ------------------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [OnPasteCallback](#onpastecallback18)       | 是   | 粘贴回调。 |
+| callback | ArkTS-Dyn: [OnPasteCallback](#onpastecallback18)<br/>ArkTS-Sta: [OnPasteCallback](#onpastecallback18) \| undefined      | 是   | 粘贴回调。 |
 
 ### onTextSelectionChange<sup>10+</sup>
 
-onTextSelectionChange(callback: OnTextSelectionChangeCallback)
+ArkTS-Dyn: onTextSelectionChange(callback: OnTextSelectionChangeCallback)
+
+ArkTS-Sta: onTextSelectionChange(callback: OnTextSelectionChangeCallback | undefined)
 
 文本选择的位置或编辑状态下光标位置发生变化时，触发该回调。
 
@@ -1403,15 +1805,21 @@ onTextSelectionChange(callback: OnTextSelectionChangeCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名         | 类型   | 必填 | 说明                                    |
 | -------------- | ------ | ---- | --------------------------------------- |
-| callback | [OnTextSelectionChangeCallback](#ontextselectionchangecallback18) | 是   | 文本选择变化回调或光标位置变化回调。 |
+| callback | ArkTS-Dyn: [OnTextSelectionChangeCallback](#ontextselectionchangecallback18)<br/>ArkTS-Sta: [OnTextSelectionChangeCallback](#ontextselectionchangecallback18) \| undefined | 是   | 文本选择变化回调或光标位置变化回调。 |
 
 ### onContentScroll<sup>10+</sup>
 
-onContentScroll(callback: OnContentScrollCallback)
+ArkTS-Dyn: onContentScroll(callback: OnContentScrollCallback)
+
+ArkTS-Sta: onContentScroll(callback: OnContentScrollCallback | undefined)
 
 文本内容滚动时，触发该回调。
 
@@ -1419,15 +1827,21 @@ onContentScroll(callback: OnContentScrollCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | [OnContentScrollCallback](#oncontentscrollcallback18) | 是   | 文本内容滚动回调。 |
+| callback | ArkTS-Dyn: [OnContentScrollCallback](#oncontentscrollcallback18)<br/>ArkTS-Sta: [OnContentScrollCallback](#oncontentscrollcallback18) \| undefined | 是   | 文本内容滚动回调。 |
 
 ### onSecurityStateChange<sup>12+</sup>
 
-onSecurityStateChange(callback: Callback\<boolean>)
+ArkTS-Dyn: onSecurityStateChange(callback: Callback\<boolean>)
+
+ArkTS-Sta: onSecurityStateChange(callback: Callback\<boolean> | undefined)
 
 密码显隐状态切换时，触发该回调。
 
@@ -1435,15 +1849,21 @@ onSecurityStateChange(callback: Callback\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | Callback\<boolean> | 是   | 回调函数。|
+| callback | ArkTS-Dyn: Callback\<boolean><br/>ArkTS-Sta: Callback\<boolean> \| undefined | 是   | 回调函数。|
 
 ### onWillInsert<sup>12+</sup>
 
-onWillInsert(callback: Callback\<InsertValue, boolean>)
+ArkTS-Dyn: onWillInsert(callback: Callback\<InsertValue, boolean>)
+
+ArkTS-Sta: onWillInsert(callback: Callback\<InsertValue, boolean> | undefined)
 
 在将要输入时，触发该回调。
 
@@ -1451,15 +1871,21 @@ onWillInsert(callback: Callback\<InsertValue, boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[InsertValue](ts-text-common.md#insertvalue12对象说明), boolean> | 是   | 在将要输入时调用的回调。<br/>在返回true时，表示正常插入，返回false时，表示不插入。<br/>在预上屏和候选词操作时，该回调不触发。<br/>仅支持系统输入法输入的场景。 |
+| callback  | ArkTS-Dyn: Callback\<[InsertValue](ts-text-common.md#insertvalue12对象说明), boolean><br/>ArkTS-Sta: Callback\<[InsertValue](ts-text-common.md#insertvalue12对象说明), boolean> \| undefined | 是   | 在将要输入时调用的回调。<br/>在返回true时，表示正常插入，返回false时，表示不插入。<br/>在预上屏和候选词操作时，该回调不触发。<br/>仅支持系统输入法输入的场景。 |
 
 ### onDidInsert<sup>12+</sup>
 
-onDidInsert(callback: Callback\<InsertValue>)
+ArkTS-Dyn: onDidInsert(callback: Callback\<InsertValue>)
+
+ArkTS-Sta: onDidInsert(callback: Callback<InsertValue> | undefined)
 
 在输入完成时，触发该回调。
 
@@ -1467,15 +1893,21 @@ onDidInsert(callback: Callback\<InsertValue>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[InsertValue](ts-text-common.md#insertvalue12对象说明)> | 是   | 在输入完成时调用的回调。<br/>仅支持系统输入法输入的场景。 |
+| callback  | ArkTS-Dyn: Callback\<[InsertValue](ts-text-common.md#insertvalue12对象说明)><br/>ArkTS-Sta: Callback\<[InsertValue](ts-text-common.md#insertvalue12对象说明)> \| undefined | 是   | 在输入完成时调用的回调。<br/>仅支持系统输入法输入的场景。 |
 
 ### onWillDelete<sup>12+</sup>
 
-onWillDelete(callback: Callback\<DeleteValue, boolean>)
+ArkTS-Dyn: onWillDelete(callback: Callback\<DeleteValue, boolean>)
+
+ArkTS-Sta: onWillDelete(callback: Callback\<DeleteValue, boolean> | undefined)
 
 在将要删除时，触发该回调。
 
@@ -1483,15 +1915,21 @@ onWillDelete(callback: Callback\<DeleteValue, boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[DeleteValue](ts-text-common.md#deletevalue12对象说明), boolean> | 是   | 在将要删除时调用的回调。<br/>在返回true时，表示正常删除，返回false时，表示不删除。<br/>在预上屏删除操作时，该回调不触发。<br/>仅支持系统输入法输入的场景。 |
+| callback  | ArkTS-Dyn: Callback\<[DeleteValue](ts-text-common.md#deletevalue12对象说明), boolean><br/>ArkTS-Sta: Callback\<[DeleteValue](ts-text-common.md#deletevalue12对象说明), boolean> \| undefined | 是   | 在将要删除时调用的回调。<br/>在返回true时，表示正常删除，返回false时，表示不删除。<br/>在预上屏删除操作时，该回调不触发。<br/>仅支持系统输入法输入的场景。 |
 
 ### onDidDelete<sup>12+</sup>
 
-onDidDelete(callback: Callback\<DeleteValue>)
+ArkTS-Dyn: onDidDelete(callback: Callback\<DeleteValue>)
+
+ArkTS-Sta: onDidDelete(callback: Callback\<DeleteValue> | undefined)
 
 在删除完成时，触发该回调。
 
@@ -1499,11 +1937,15 @@ onDidDelete(callback: Callback\<DeleteValue>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[DeleteValue](ts-text-common.md#deletevalue12对象说明)> | 是   | 在删除完成时调用的回调。<br/>仅支持系统输入法输入的场景。 |
+| callback  | ArkTS-Dyn: Callback\<[DeleteValue](ts-text-common.md#deletevalue12对象说明)><br/>ArkTS-Sta: Callback\<[DeleteValue](ts-text-common.md#deletevalue12对象说明)> \| undefined | 是   | 在删除完成时调用的回调。<br/>仅支持系统输入法输入的场景。 |
 
 >  **说明：**
 >
@@ -1511,7 +1953,9 @@ onDidDelete(callback: Callback\<DeleteValue>)
 
 ### onWillChange<sup>15+</sup>
 
-onWillChange(callback: Callback\<EditableTextChangeValue, boolean>)
+ArkTS-Dyn: onWillChange(callback: Callback\<EditableTextChangeValue, boolean>)
+
+ArkTS-Sta: onWillChange(callback: Callback\<EditableTextChangeValue, boolean> | undefined)
 
 在文本内容将要发生变化时，触发该回调。
 
@@ -1521,11 +1965,15 @@ onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean> | 是   | 在文本内容将要发生变化时的回调。<br/>返回true时，表示正常修改。返回false时，表示拦截此次触发。 |
+| callback  | ArkTS-Dyn: Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean><br/>ArkTS-Sta: Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean> \| undefined | 是   | 在文本内容将要发生变化时的回调。<br/>返回true时，表示正常修改。返回false时，表示拦截此次触发。 |
 
 ### onWillAttachIME<sup>20+</sup>
 

@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -68,7 +70,9 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 ### tabBar<sup>18+</sup>
 
-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions)
+ArkTS-Dyn: tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions)
+
+ArkTS-Sta: tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions | undefined)
 
 设置TabBar上显示内容。
 
@@ -80,11 +84,15 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) | 是   | TabBar上显示内容。<br/>ComponentContent： 组件内容的实体封装，可以设置自定义内容。<br/>SubTabBarStyle：&nbsp;子页签样式。<br/>BottomTabBarStyle：&nbsp;底部页签和侧边页签样式，底部样式没有下划线效果。<br/>string： 字符串类型。<br/>Resource： 资源引用类型，引入系统资源或者应用资源中的字符串。<br/>CustomBuilder： 构造器，内部可以传入组件。<br/>TabBarOptions： 设置页签内的图片和文字内容。 |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) <br > ArkTS-Sta: [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) \| undefined | 是   | TabBar上显示内容。<br/>ComponentContent： 组件内容的实体封装，可以设置自定义内容。<br/>SubTabBarStyle：&nbsp;子页签样式。<br/>BottomTabBarStyle：&nbsp;底部页签和侧边页签样式，底部样式没有下划线效果。<br/>string： 字符串类型。<br/>Resource： 资源引用类型，引入系统资源或者应用资源中的字符串。<br/>CustomBuilder： 构造器，内部可以传入组件。<br/>TabBarOptions： 设置页签内的图片和文字内容。 |
 
 >  **说明：**
 >
@@ -650,7 +658,9 @@ Label图标样式对象。
 
 ### onWillShow<sup>12+</sup>
 
-onWillShow(event: VoidCallback)
+ArkTS-Dyn: onWillShow(event: VoidCallback)
+
+ArkTS-Sta: onWillShow(event: VoidCallback | undefined)
 
 逻辑回调，TabContent将要显示的时候触发该回调。场景包括TabContent首次显示，TabContent切换，页面切换，窗口前后台切换。
 
@@ -658,15 +668,21 @@ onWillShow(event: VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | TabContent将要显示的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br > ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined    | 是   | TabContent将要显示的回调函数。        |
 
 ### onWillHide<sup>12+</sup>
 
-onWillHide(event: VoidCallback)
+ArkTS-Dyn: onWillHide(event: VoidCallback)
+
+ArkTS-Sta: onWillHide(event: VoidCallback | undefined)
 
 逻辑回调，TabContent将要隐藏的时候触发该回调。场景包括TabContent切换，页面切换，窗口前后台切换。
 
@@ -674,11 +690,15 @@ onWillHide(event: VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | TabContent将要隐藏的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br > ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined    | 是   | TabContent将要隐藏的回调函数。        |
 
 ## 示例
 

@@ -242,3 +242,39 @@ Transparent node is detected in the UIExtension ability.
 **处理步骤**
 
 查杀透明节点，避免阻塞事件。
+
+## 100023 获取UI context失败
+
+**错误信息**
+
+Unable to obtain current ui context.
+
+**错误描述**
+
+获取UI context失败。
+
+**可能原因**
+
+获取UI context失败，需根据AMS日志具体分析。
+
+**处理步骤**
+
+根据AMS日志进行分析。
+
+## 100024 Depth参数错误
+
+**错误信息**
+
+The parameter depth must be greater than 0.
+
+**错误描述**
+
+Depth参数错误。
+
+**可能原因**
+
+Depth参数需要大于0。
+
+**处理步骤**
+
+Depth参数需要大于0。

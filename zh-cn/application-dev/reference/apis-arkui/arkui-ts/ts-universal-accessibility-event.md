@@ -4,12 +4,16 @@
 
 >**说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 本模块首批接口从API version 18开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >  - 目前仅支持通过开启无障碍模式触发。
 
 ## onAccessibilityFocus
 
-onAccessibilityFocus(callback: AccessibilityFocusCallback): T
+ArkTS-Dyn: onAccessibilityFocus(callback: AccessibilityFocusCallback): T
+
+ArkTS-Sta: onAccessibilityFocus(callback: AccessibilityFocusCallback | undefined): this
 
 设置无障碍节点获焦、失焦状态的回调函数。当状态发生变化时，触发回调函数。
 
@@ -19,17 +23,21 @@ onAccessibilityFocus(callback: AccessibilityFocusCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) | 是   | 向注册回调函数方通知当前获焦、失焦状态。 |
+| callback | ArkTS-Dyn: [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) <br/>ArkTS-Sta: [AccessibilityFocusCallback](ts-universal-accessibility-event.md#accessibilityfocuscallback) \| undefined| 是   | 向注册回调函数方通知当前获焦、失焦状态。 |
 
 **返回值：**
 
 | 类型    | 说明              |
 | ------ | ---------------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## AccessibilityFocusCallback
 
@@ -49,7 +57,9 @@ type AccessibilityFocusCallback = (isFocus: boolean) => void
 
 ## onAccessibilityActionIntercept<sup>20+</sup>
 
-onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): T
+ArkTS-Dyn: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): T
+
+ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback | undefined)
 
 该接口在无障碍模式下，可在无障碍控制操作触发前通知注册的回调函数，由注册方决定是否拦截该次无障碍动作，对不支持Click的组件注册也无法触发回调。
 
@@ -59,11 +69,15 @@ onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) | 是   | 在无障碍控制操作触发前，向注册回调函数方通知，由注册方决定是否拦截该次无障碍控制操作。<br> 入参设置undefined时取消回调注册。 |
+| callback | ArkTS-Dyn: [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) <br/>ArkTS-Sta: [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) \| undefined| 是   | 在无障碍控制操作触发前，向注册回调函数方通知，由注册方决定是否拦截该次无障碍控制操作。<br> 入参设置undefined时取消回调注册。 |
 
 **返回值：**
 

@@ -25,16 +25,20 @@ constructor(webTag?: string)
 > **说明：**
 >
 > ArkTS-Dyn：不传参，new webview.WebviewController()表示构造函数为空，不使用C API时不需要传参。
-> 
+>
 > ArkTS-Sta：不支持不传参，不区分多实例时可传入""或undefined。
-> 
+>
 > 传参且参数是合法字符串：new webview.WebviewController("xxx")，用于开发者区分多实例，并调用对应实例下的方法。
-> 
+>
 > 传入参数为空：new webview.WebviewController("")或new webview.WebviewController(undefined)，该场景下参数无意义，无法区分多个实例，直接返回undefined，需要开发者判断返回值是否正常。
 >
 > Web组件销毁后会解绑WebViewController，之后调用WebviewController的非静态方法会抛出17100001异常，应注意调用时机和捕获异常，防止进程异常退出。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -123,7 +127,7 @@ class WebObj {
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("")
+  controller: webview.WebviewController = new webview.WebviewController(undefined)
   @State webTestObj: WebObj = new WebObj();
 
   build() {
@@ -216,6 +220,10 @@ static setHttpDns(secureDnsMode:SecureDnsMode, secureDnsConfig:string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名              | 类型    | 必填   |  说明 |
@@ -233,6 +241,7 @@ static setHttpDns(secureDnsMode:SecureDnsMode, secureDnsConfig:string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -254,21 +263,48 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AppStorage } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log("EntryAbility onCreate")
+    try {
+      webview.WebviewController.setHttpDns(webview.SecureDnsMode.AUTO, "https://example1.test")
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+
+    AppStorage.setOrCreate("abilityWant", want);
+    console.log("EntryAbility onCreate done")
+  }
+}
+```
+
 ## setWebDebuggingAccess
 
 static setWebDebuggingAccess(webDebuggingAccess: boolean): void
 
-设置是否启用网页调试功能。详情请参考[DevTools工具](../../web/web-debugging-with-devtools.md)。
+设置是否启用网页调试功能。若未显式调用该属性，默认不启用。详情请参考[DevTools工具](../../web/web-debugging-with-devtools.md)。
 
 安全提示：启用网页调试功能可以让用户检查修改Web页面内部状态，存在安全隐患，不建议在应用正式发布版本中启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| webDebuggingAccess | boolean | 是   | 设置是否启用网页调试功能。<br>true表示启用网页调试功能。false表示不启用网页调试功能。<br>默认值：false。 |
+| webDebuggingAccess | boolean | 是   | 设置是否启用网页调试功能。<br>true表示启用网页调试功能。false表示不启用网页调试功能。 |
 
 **错误码：**
 
@@ -280,6 +316,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -289,6 +326,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.setWebDebuggingAccess(true);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   aboutToAppear(): void {
     try {
@@ -885,7 +950,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -960,7 +1025,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -1032,6 +1097,10 @@ ArkTS-Sta: accessStep(step: int): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                   |
@@ -1055,6 +1124,7 @@ ArkTS-Sta: accessStep(step: int): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1083,6 +1153,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Button, Web, Column, Component, Entry, ClickEvent, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State steps: int = 2
+
+  build() {
+    Column() {
+      Button('accessStep')
+        .onClick((e: ClickEvent) => {
+          try {
+            let result = this.controller.accessStep(this.steps);
+            console.log('result:' + result);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## clearHistory
 
 clearHistory(): void
@@ -1091,9 +1190,9 @@ clearHistory(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -1176,6 +1275,10 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型       | 必填 | 说明                                        |
@@ -1197,6 +1300,7 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1300,6 +1404,114 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestObj {
+  constructor() {
+  }
+
+  test(testStr: string): string {
+    console.log('Web Component str' + testStr);
+    return testStr;
+  }
+
+  toString(): string {
+    console.log('Web Component toString');
+    return 'TestObj toString';
+  }
+
+  testNumber(testNum: number): number {
+    console.log('Web Component number' + testNum);
+    return testNum;
+  }
+
+  asyncTestBool(testBol: boolean): void {
+    console.log('Web Component boolean' + testBol);
+  }
+}
+
+class WebObj {
+  constructor() {
+  }
+
+  webTest(): string {
+    console.log('Web test');
+    return "Web test";
+  }
+
+  webString(): void {
+    console.log('Web test toString');
+  }
+}
+
+class AsyncObj {
+  constructor() {
+  }
+
+  asyncTest(): void {
+    console.log('Async test');
+  }
+
+  asyncString(testStr: string): void {
+    console.log('Web async string' + testStr);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State testObjtest: TestObj = new TestObj();
+  @State webTestObj: WebObj = new WebObj();
+  @State asyncTestObj: AsyncObj = new AsyncObj();
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.refresh();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Register JavaScript To Window')
+        .onClick((e: ClickEvent) => {
+          try {
+            // 同时注册同步和异步函数
+            this.controller.registerJavaScriptProxy(this.testObjtest, "objName", ["test", "toString", "testNumber"],
+              ["asyncTestBool"]);
+            // 仅注册同步函数
+            this.controller.registerJavaScriptProxy(this.webTestObj, "objTestName", ["webTest", "webString"]);
+            // 仅注册异步函数
+            this.controller.registerJavaScriptProxy(this.asyncTestObj, "objAsyncName", [],
+              ["asyncTest", "asyncString"]);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('deleteJavaScriptRegister')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.deleteJavaScriptRegister("objName");
+            this.controller.deleteJavaScriptRegister("objTestName");
+            this.controller.deleteJavaScriptRegister("objAsyncName");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+    }
+  }
+}
+```
+
 加载的html文件。
 ```html
 <!-- index.html -->
@@ -1349,6 +1561,10 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                         |
@@ -1367,6 +1583,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1375,6 +1592,50 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State webResult: string = '';
+
+  build() {
+    Column() {
+      Text(this.webResult).fontSize(20)
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .onPageEnd(e => {
+          try {
+            this.controller.runJavaScript(
+              'test()',
+              (error, result) => {
+                if (error) {
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                if (result) {
+                  this.webResult = result;
+                  console.info(`The test() return value is: ${result}`);
+                }
+              });
+            if (e) {
+              console.info('url: ', e.url);
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, State, $rawfile, Text } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State webResult: string = '';
 
   build() {
@@ -1441,6 +1702,10 @@ runJavaScript(script: string): Promise\<string>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明         |
@@ -1464,6 +1729,7 @@ runJavaScript(script: string): Promise\<string>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1485,6 +1751,43 @@ struct WebComponent {
                 console.log('result: ' + result);
               })
               .catch((error: BusinessError) => {
+                console.error("error: " + error);
+              })
+            if (e) {
+              console.info('url: ', e.url);
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, $rawfile } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .onPageEnd(e => {
+          try {
+            this.controller.runJavaScript('test()')
+              .then((result) => {
+                console.log('result: ' + result);
+              })
+              .catch((error: Error) => {
                 console.error("error: " + error);
               })
             if (e) {
@@ -1939,6 +2242,10 @@ deleteJavaScriptRegister(name: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明  |
@@ -1957,6 +2264,7 @@ deleteJavaScriptRegister(name: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2014,6 +2322,67 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestObj {
+  constructor() {
+  }
+
+  test(): string {
+    return "ArkUI Web Component";
+  }
+
+  toString(): string {
+    console.log('Web Component toString');
+    return 'TestObj toString';
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State testObjtest: TestObj = new TestObj();
+  @State name: string = 'objName';
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.refresh();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Register JavaScript To Window')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.registerJavaScriptProxy(this.testObjtest, this.name, ["test", "toString"]);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('deleteJavaScriptRegister')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.deleteJavaScriptRegister(this.name);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+    }
+  }
+}
+```
+
 加载的html文件。
 ```html
 <!-- index.html -->
@@ -2046,7 +2415,7 @@ ArkTS-Sta: zoom(factor: double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2067,6 +2436,7 @@ ArkTS-Sta: zoom(factor: double): void
 **示例：**
 
 ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2094,15 +2464,16 @@ struct WebComponent {
   }
 }
 ```
+
 ArkTS-Sta示例：
+
 ```ts
 // xxx.ets
 'use static'
 
-import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -2135,6 +2506,10 @@ searchAllAsync(searchString: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型 | 必填 | 说明       |
@@ -2152,6 +2527,7 @@ searchAllAsync(searchString: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2167,6 +2543,41 @@ struct WebComponent {
     Column() {
       Button('searchString')
         .onClick(() => {
+          try {
+            this.controller.searchAllAsync(this.searchString);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onSearchResultReceive(ret => {
+          if (ret) {
+            console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
+              "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State searchString: string = "Hello World";
+
+  build() {
+    Column() {
+      Button('searchString')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.searchAllAsync(this.searchString);
           } catch (error) {
@@ -2204,6 +2615,10 @@ clearMatches(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -2214,6 +2629,7 @@ clearMatches(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2240,6 +2656,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearMatches')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.clearMatches();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+
 加载的html文件，请参考[searchAllAsync](#searchallasync)接口下加载的html文件。
 
 ## searchNext
@@ -2249,6 +2693,10 @@ searchNext(forward: boolean): void
 滚动到下一个匹配的查找结果并高亮。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2267,6 +2715,7 @@ searchNext(forward: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2293,6 +2742,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $rawfile, Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('searchNext')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.searchNext(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+
 加载的html文件，请参考[searchAllAsync](#searchallasync)接口下加载的html文件。
 
 ## clearSslCache
@@ -2302,6 +2779,10 @@ clearSslCache(): void
 清除Web组件记录的SSL证书错误事件对应的用户操作行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -2313,6 +2794,7 @@ clearSslCache(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2339,6 +2821,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearSslCache')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.clearSslCache();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## clearClientAuthenticationCache
 
 clearClientAuthenticationCache(): void
@@ -2346,6 +2856,10 @@ clearClientAuthenticationCache(): void
 清除Web组件记录的客户端证书请求事件对应的用户操作行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -2357,6 +2871,7 @@ clearClientAuthenticationCache(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2371,6 +2886,34 @@ struct WebComponent {
     Column() {
       Button('clearClientAuthenticationCache')
         .onClick(() => {
+          try {
+            this.controller.clearClientAuthenticationCache();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearClientAuthenticationCache')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.clearClientAuthenticationCache();
           } catch (error) {
@@ -2631,6 +3174,10 @@ zoomIn(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -2641,6 +3188,8 @@ zoomIn(): void
 | 17100004 | Function not enabled.                                         |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2668,6 +3217,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('zoomIn')
+        .onClick(() => {
+          try {
+            this.controller.zoomIn();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## zoomOut
 
 zoomOut(): void
@@ -2675,6 +3253,10 @@ zoomOut(): void
 调用此接口将当前网页进行缩小，比例为20%。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -2686,6 +3268,8 @@ zoomOut(): void
 | 17100004 | Function not enabled.                                         |
 
 **示例：**
+
+ArkTS-Dyn示例
 
 ```ts
 // xxx.ets
@@ -2712,6 +3296,35 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('zoomOut')
+        .onClick(() => {
+          try {
+            this.controller.zoomOut();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+  ```
 
 ## getWebId
 
@@ -2777,7 +3390,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController("");
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -2806,9 +3419,9 @@ getUserAgent(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3061,6 +3674,10 @@ storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback\<st
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型              | 必填 | 说明                                                         |
@@ -3081,6 +3698,7 @@ storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback\<st
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3115,6 +3733,43 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('storeWebArchive')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.storeWebArchive("/data/storage/el2/base/", true,
+              (error: BusinessError<void> | null | undefined, filename: String | undefined) => {
+                if (error) {
+                  console.error(`save web archive error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                if (filename != null) {
+                  console.info(`save web archive success: ${filename}`);
+                }
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## storeWebArchive
 
 storeWebArchive(baseName: string, autoName: boolean): Promise\<string>
@@ -3122,6 +3777,10 @@ storeWebArchive(baseName: string, autoName: boolean): Promise\<string>
 以Promise方式异步保存当前页面。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3148,6 +3807,7 @@ storeWebArchive(baseName: string, autoName: boolean): Promise\<string>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3170,6 +3830,42 @@ struct WebComponent {
                 }
               })
               .catch((error: BusinessError) => {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('storeWebArchive')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.storeWebArchive("/data/storage/el2/base/", true)
+              .then(filename => {
+                if (filename != null) {
+                  console.info(`save web archive success: ${filename}`)
+                }
+              })
+              .catch((error: Error) => {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               })
           } catch (error) {
@@ -3289,6 +3985,10 @@ ArkTS-Sta: backOrForward(step: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
@@ -3306,6 +4006,7 @@ ArkTS-Sta: backOrForward(step: int): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3333,11 +4034,40 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State step: int = -2
+
+  build() {
+    Column() {
+      Button('backOrForward')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.backOrForward(this.step);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## scrollTo
 
-ArkTS-Dyn: scrollTo(x:number, y:number, duration?:number): void
+ArkTS-Dyn: scrollTo(x: number, y: number, duration?: number): void
 
-ArkTS-Sta: scrollTo(x:double, y:double, duration?:int): void
+ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 
 在指定时间内，将页面滚动到指定的绝对位置。
 
@@ -3345,7 +4075,7 @@ ArkTS-Sta: scrollTo(x:double, y:double, duration?:int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3353,7 +4083,7 @@ ArkTS-Sta: scrollTo(x:double, y:double, duration?:int): void
 | ------ | -------- | ---- | ---------------------- |
 | x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。 |
 | y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。|
-| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。 |
 
 **错误码：**
 
@@ -3391,7 +4121,7 @@ struct WebComponent {
         Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3402,11 +4132,10 @@ struct WebComponent {
 }
 ```
 ArkTS-Sta示例：
+
 ```ts
 // xxx.ets
-'use static'
-
-import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3425,10 +4154,10 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-        Button('stopScroll')
+      Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3464,9 +4193,9 @@ Scroll Test
 
 ## scrollBy
 
-ArkTS-Dyn: scrollBy(deltaX:number, deltaY:number, duration?:number): void
+ArkTS-Dyn: scrollBy(deltaX: number, deltaY: number, duration?: number): void
 
-ArkTS-Sta: scrollBy(deltaX:double, deltaY:double, duration?:int): void
+ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 在指定时间内将页面滚动指定的偏移量。
 
@@ -3474,7 +4203,7 @@ ArkTS-Sta: scrollBy(deltaX:double, deltaY:double, duration?:int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3482,7 +4211,7 @@ ArkTS-Sta: scrollBy(deltaX:double, deltaY:double, duration?:int): void
 | ------ | -------- | ---- | ---------------------- |
 | deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。 |
 | deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。 |
-| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。 |
 
 **错误码：**
 
@@ -3533,12 +4262,12 @@ struct WebComponent {
   }
 }
 ```
+
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
 'use static'
-
-import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3560,7 +4289,7 @@ struct WebComponent {
       Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3599,13 +4328,13 @@ ArkTS-Dyn: scrollByWithResult(deltaX: number, deltaY: number): boolean
 
 ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
-将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。
+将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。若未显式调用该属性，默认当前网页不可以滑动。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3618,7 +4347,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。<br>默认为false。 |
+| boolean | true表示当前网页可以滑动，false表示当前网页不可以滑动。|
 
 **错误码：**
 
@@ -3639,6 +4368,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 **示例：**
 
 ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3665,12 +4395,12 @@ struct WebComponent {
   }
 }
 ```
+
 ArkTS-Sta示例：
+
 ```ts
 // xxx.ets
-'use static'
-
-import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3685,7 +4415,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let result = this.controller.scrollByWithResult(50, 50);
-            console.info("original result: " + result);
+            console.log("original result: " + result);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3720,9 +4450,9 @@ Scroll Test
 ```
 ## slideScroll
 
-ArkTS-Dyn: slideScroll(vx:number, vy:number): void
+ArkTS-Dyn: slideScroll(vx: number, vy: number): void
 
-ArkTS-Sta: slideScroll(vx:double, vy:double): void
+ArkTS-Sta: slideScroll(vx: double, vy: double): void
 
 按照指定速度模拟对页面的轻扫滚动动作。
 
@@ -3730,7 +4460,7 @@ ArkTS-Sta: slideScroll(vx:double, vy:double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3776,12 +4506,12 @@ struct WebComponent {
   }
 }
 ```
+
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
 'use static'
-
-import { $rawfile, Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { $rawfile, Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3937,15 +4667,19 @@ struct WebComponent {
 
 setNetworkAvailable(enable: boolean): void
 
-设置JavaScript中的`window.navigator.onLine`属性。
+设置JavaScript中的`window.navigator.onLine`属性。若未显式调用该属性，默认为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable | boolean | 是   | 设置JavaScript中的`window.navigator.onLine`属性。<br>true表示设置JavaScript中的`window.navigator.onLine`属性为true，false表示设置JavaScript中的`window.navigator.onLine`属性为false。<br>默认值：true。 |
+| enable | boolean | 是   | 设置JavaScript中的`window.navigator.onLine`属性。<br>true表示设置JavaScript中的`window.navigator.onLine`属性为true，false表示设置JavaScript中的`window.navigator.onLine`属性为false。 |
 
 **错误码：**
 
@@ -3958,6 +4692,7 @@ setNetworkAvailable(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3972,6 +4707,34 @@ struct WebComponent {
     Column() {
       Button('setNetworkAvailable')
         .onClick(() => {
+          try {
+            this.controller.setNetworkAvailable(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setNetworkAvailable')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.setNetworkAvailable(true);
           } catch (error) {
@@ -4015,6 +4778,10 @@ hasImage(callback: AsyncCallback\<boolean>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                       |
@@ -4031,6 +4798,8 @@ hasImage(callback: AsyncCallback\<boolean>): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -4064,6 +4833,41 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('hasImageCb')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.hasImage((error: BusinessError | null, data:  Boolean | undefined): void => {
+              if (error) {
+                console.error(`hasImage error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                return;
+              }
+              console.info("hasImage: " + data);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## hasImage
 
 hasImage(): Promise\<boolean>
@@ -4071,6 +4875,10 @@ hasImage(): Promise\<boolean>
 通过Promise方式异步查找当前页面是否存在图像。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4088,6 +4896,8 @@ hasImage(): Promise\<boolean>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -4119,6 +4929,39 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('hasImagePm')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.hasImage().then((data: boolean) => {
+              console.info('hasImage: ' + data);
+            }).catch((error: Error): PromiseLike<void> | undefined => {
+              console.error("error: " + error);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## removeCache
 
 removeCache(clearRom: boolean): void
@@ -4130,6 +4973,10 @@ removeCache(clearRom: boolean): void
 > 可以通过在data/storage/el2/base/cache/web/Cache目录下查看Webview的缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4148,6 +4995,7 @@ removeCache(clearRom: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4174,6 +5022,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('removeCache')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.removeCache(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## removeAllCache<sup>18+</sup>
 
 static removeAllCache(clearRom: boolean): void
@@ -4185,6 +5061,10 @@ static removeAllCache(clearRom: boolean): void
 > 可以通过在data/app/el2/100/base/\<applicationPackageName\>/cache/web/目录下查看Webview的缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4202,6 +5082,7 @@ static removeAllCache(clearRom: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4228,6 +5109,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('removeAllCache')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebviewController.removeAllCache(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## pageUp
 
 pageUp(top: boolean): void
@@ -4235,6 +5144,10 @@ pageUp(top: boolean): void
 将Webview的内容向上滚动半个视框大小或者跳转到页面最顶部，通过top入参控制。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4253,6 +5166,7 @@ pageUp(top: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4279,6 +5193,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('pageUp')
+        .onClick(() => {
+          try {
+            this.controller.pageUp(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## pageDown
 
 pageDown(bottom: boolean): void
@@ -4286,6 +5228,10 @@ pageDown(bottom: boolean): void
 将Webview的内容向下滚动半个视框大小或者跳转到页面最底部，通过bottom入参控制。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4304,6 +5250,7 @@ pageDown(bottom: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4313,6 +5260,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('pageDown')
+        .onClick(() => {
+          try {
+            this.controller.pageDown(false);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -4342,9 +5317,9 @@ getBackForwardEntries(): BackForwardList
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4425,9 +5400,9 @@ serializeWebState(): Uint8Array
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 **返回值：**
@@ -5029,6 +6004,10 @@ setAudioMuted(mute: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -5045,6 +6024,8 @@ setAudioMuted(mute: boolean): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -5071,6 +6052,137 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, ClickEvent, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State muted: boolean = false;
+
+  build() {
+    Column() {
+      Button("Toggle Mute")
+        .onClick((e: ClickEvent) => {
+          if (e) {
+            this.muted = !this.muted;
+            this.controller.setAudioMuted(this.muted);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## prefetchPage<sup>21+</sup>
+
+prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions?: PrefetchOptions): void
+
+在预测到将要加载的页面之前调用，可提前下载页面所需的资源（包括：主资源和子资源），但不会执行网页JavaScript代码或呈现网页，以加快页面加载速度。
+
+> **说明：**
+>
+> - 下载的页面资源会缓存五分钟左右，超过这段时间Web组件会自动释放。
+>
+> - prefetchPage对302重定向页面同样正常预取。
+>
+> - 先执行prefetchPage再加载页面时，已预取的资源将直接从缓存中加载。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名             | 类型                             | 必填  | 说明                      |
+| ------------------| --------------------------------| ---- | ------------- |
+| url               | string                          | 是    | 预加载的url。|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | url的附加HTTP请求头。<br>默认值： []。 |
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 <br>默认值： 一个PrefetchOptions类型对象。minTimeBetweenPrefetchesMs值为500，ignoreCacheControlNoStore值为false。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID  | 错误信息                                                      |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                      |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Button('prefetchPopularPage')
+        .onClick(() => {
+          try {
+            // 预加载时，需要将'https://www.example.com'替换成一个真实的网站地址。
+            let options = new webview.PrefetchOptions();
+            options.ignoreCacheControlNoStore = true;
+            options.minTimeBetweenPrefetchesMs = 100;
+            this.controller.prefetchPage('https://www.example.com', [{ headerKey: "headerKey", headerValue: "headerValue" }], options);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // 需要将'www.example1.com'替换成一个真实的网站地址。
+      Web({ src: 'www.example1.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Button, Web } from '@ohos.arkui.component'
+import { BusinessError } from '@ohos.base'
+import { webview } from '@kit.ArkWeb';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
+    Column() {
+      Button('prefetchPopularPage')
+        .onClick(() => {
+          try {
+            let options = new webview.PrefetchOptions();
+            options.ignoreCacheControlNoStore = true;
+            options.minTimeBetweenPrefetchesMs = 100;
+            // 预加载时，需要将'https://www.example.com'替换成一个真实的网站地址。
+            this.controller.prefetchPage('https://www.example.com', [{ headerKey: "headerKey", headerValue: "headerValue" }], options);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // 需要将'www.example1.com'替换成一个真实的网站地址。
+      Web({ src: 'https://www.example1.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## prefetchPage<sup>10+</sup>
 
 prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
@@ -5091,6 +6203,10 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名             | 类型                             | 必填  | 说明                      |
@@ -5109,6 +6225,7 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5137,22 +6254,58 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('prefetchPopularPage')
+        .onClick((e: ClickEvent) => {
+          try {
+            // 预加载时，需要将'https://www.example.com'替换成一个真实的网站地址。
+            this.controller.prefetchPage('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // 需要将'www.example1.com'替换成一个真实的网站地址。
+      Web({ src: 'www.example1.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## prefetchResource<sup>12+</sup>
 
-static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: number): void
+ArkTS-Dyn: static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: number): void
+
+ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHeader>, cacheKey?: string, cacheValidTime?: int): void
 
 根据指定的请求信息和附加的http请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的post请求。最多可以预获取6个post请求。如果要预获取第7个，请通过[clearPrefetchedResource](#clearprefetchedresource12)清除不需要的post请求缓存，否则会自动清除最早预获取的post缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的post请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：**  12
+
+**ArkTS-Sta起始版本：**  22
 
 **参数：**
 
 | 参数名             | 类型                             |  必填  | 说明                                                              |
 | ------------------| ------------------------------- | ---- | ------------------------------------------------------------------ |
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | 是   | 预获取请求的信息。                                                      |
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。                                             |
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头，默认值为空。                                             |
 | cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 |
-| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。         |
+| cacheValidTime    | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。         |
 
 **错误码：**
 
@@ -5165,6 +6318,7 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5192,6 +6346,35 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { webview } from '@kit.ArkWeb';
+import { AppStorage } from '@ohos.arkui.stateManagement';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    webview.WebviewController.initializeWebEngine();
+    // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+    webview.WebviewController.prefetchResource(
+      {
+        url: "https://www.example1.com/post?e=f&g=h",
+        method: "POST",
+        formData: "a=x&b=y",
+      },
+      [{
+        headerKey: "c",
+        headerValue: "z",
+      },],
+      "KeyX", 500);
+    AppStorage.setOrCreate("abilityWant", want);
+    console.log("EntryAbility onCreate done");
+  }
+}
+```
 ## clearPrefetchedResource<sup>12+</sup>
 
 static clearPrefetchedResource(cacheKeyList: Array\<string>): void
@@ -5199,6 +6382,10 @@ static clearPrefetchedResource(cacheKeyList: Array\<string>): void
 根据指定的缓存key列表清除对应的预获取资源缓存。入参中的缓存key必须是[prefetchResource](#prefetchresource12)指定预获取到的资源缓存key。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5208,6 +6395,7 @@ static clearPrefetchedResource(cacheKeyList: Array\<string>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5216,6 +6404,43 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: "https://www.example.com/", controller: this.controller })
+        .onAppear(() => {
+          // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+          webview.WebviewController.prefetchResource(
+            {
+              url: "https://www.example1.com/post?e=f&g=h",
+              method: "POST",
+              formData: "a=x&b=y",
+            },
+            [{
+              headerKey: "c",
+              headerValue: "z",
+            },],
+            "KeyX", 500);
+        })
+        .onPageEnd(() => {
+          // 清除后续不再使用的预获取缓存。
+          webview.WebviewController.clearPrefetchedResource(["KeyX",]);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -5253,6 +6478,10 @@ ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSo
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明                                            |
@@ -5272,12 +6501,34 @@ ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log("EntryAbility onCreate");
+    webview.WebviewController.initializeWebEngine();
+    // 预连接时，需要將'https://www.example.com'替换成一个真实的网站地址。
+    webview.WebviewController.prepareForPageLoad("https://www.example.com", true, 2);
+    AppStorage.setOrCreate("abilityWant", want);
+    console.log("EntryAbility onCreate done");
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AppStorage } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
@@ -5307,6 +6558,10 @@ setCustomUserAgent(userAgent: string): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明                                            |
@@ -5324,6 +6579,7 @@ setCustomUserAgent(userAgent: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5352,6 +6608,36 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State customUserAgent: string = ' DemoApp';
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          console.log("onControllerAttached");
+          try {
+            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+            this.controller.setCustomUserAgent(userAgent);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## setDownloadDelegate<sup>11+</sup>
 
 setDownloadDelegate(delegate: WebDownloadDelegate): void
@@ -5359,6 +6645,10 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 为当前的Web组件设置一个WebDownloadDelegate，该delegate用来接收页面内触发的下载与下载的进展。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5376,6 +6666,7 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5403,6 +6694,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## startDownload<sup>11+</sup>
 
 startDownload(url: string): void
@@ -5410,6 +6730,10 @@ startDownload(url: string): void
 使用Web组件的下载能力来下载指定的url, 比如下载网页中指定的图片。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5428,6 +6752,7 @@ startDownload(url: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5463,6 +6788,43 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getCustomUserAgent<sup>10+</sup>
 
 getCustomUserAgent(): string
@@ -5473,9 +6835,9 @@ getCustomUserAgent(): string
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -5675,6 +7037,10 @@ ArkTS-Sta: static setConnectionTimeout(timeout: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明                                            |
@@ -5691,6 +7057,7 @@ ArkTS-Sta: static setConnectionTimeout(timeout: int): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5724,6 +7091,41 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent, OnErrorReceiveEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setConnectionTimeout')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebviewController.setConnectionTimeout(5);
+            console.log("setConnectionTimeout: 5s");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onErrorReceive((event: OnErrorReceiveEvent): void => {
+          if (event) {
+            console.log('getErrorInfo:' + event.error.getErrorInfo());
+            console.log('getErrorCode:' + event.error.getErrorCode());
+          }
+        })
+    }
+  }
+}
+```
+
 ## warmupServiceWorker<sup>12+</sup>
 
 static warmupServiceWorker(url: string): void
@@ -5731,6 +7133,10 @@ static warmupServiceWorker(url: string): void
 预热ServiceWorker，以提升首屏页面的加载速度（仅限于会使用ServiceWorker的页面）。在加载url之前调用此API。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5748,12 +7154,31 @@ static warmupServiceWorker(url: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        console.log("EntryAbility onCreate");
+        webview.WebviewController.initializeWebEngine();
+        webview.WebviewController.warmupServiceWorker("https://www.example.com");
+        AppStorage.setOrCreate("abilityWant", want);
+    }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AppStorage } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -5775,15 +7200,19 @@ enableSafeBrowsing(enable: boolean): void
 
 > **说明：**
 > 
-> 该接口不生效，调用不会产生任何实际效果。
+> 该接口不生效，调用不会产生任何实际效果。若未显式调用该属性，默认不启用检查网站安全风险的功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  enable | boolean | 是   | 是否启用检查网站安全风险的功能。<br>true表示启用检查网站安全风险的功能，false表示不启用检查网站安全风险的功能。<br>默认值：false。 |
+|  enable | boolean | 是   | 是否启用检查网站安全风险的功能。<br>true表示启用检查网站安全风险的功能，false表示不启用检查网站安全风险的功能。 |
 
 **错误码：**
 
@@ -5795,6 +7224,7 @@ enableSafeBrowsing(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5822,22 +7252,56 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('enableSafeBrowsing')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.enableSafeBrowsing(true);
+            console.log("enableSafeBrowsing: true");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isSafeBrowsingEnabled<sup>11+</sup>
 
 isSafeBrowsingEnabled(): boolean
 
-获取当前网页是否启用了检查网站安全风险。
+获取当前网页是否启用了检查网站安全风险。若未显式调用该属性，默认未启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 当前网页是否启用了检查网站安全风险的功能。<br>true表示启用了检查网站安全风险的功能，false表示未启用检查网站安全风险的功能。<br>默认值：false。 |
+| boolean | 当前网页是否启用了检查网站安全风险的功能。<br>true表示启用了检查网站安全风险的功能，false表示未启用检查网站安全风险的功能。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5860,19 +7324,47 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isSafeBrowsingEnabled')
+        .onClick((e: ClickEvent) => {
+          let result = this.controller.isSafeBrowsingEnabled();
+          console.log("result: " + result);
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## enableIntelligentTrackingPrevention<sup>12+</sup>
 
 enableIntelligentTrackingPrevention(enable: boolean): void
 
-启用智能防跟踪功能。
+启用智能防跟踪功能。若未显式调用该属性，默认不启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  enable | boolean | 是   | 是否启用智能防跟踪功能。<br>true表示启用智能防跟踪功能，false表示不启用智能防跟踪功能。<br>默认值：false。 |
+|  enable | boolean | 是   | 是否启用智能防跟踪功能。<br>true表示启用智能防跟踪功能，false表示不启用智能防跟踪功能。 |
 
 **错误码：**
 
@@ -5890,6 +7382,7 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5917,19 +7410,52 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('enableIntelligentTrackingPrevention')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.enableIntelligentTrackingPrevention(true);
+            console.log("enableIntelligentTrackingPrevention: true");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isIntelligentTrackingPreventionEnabled<sup>12+</sup>
 
 isIntelligentTrackingPreventionEnabled(): boolean
 
-获取当前Web是否启用了智能防跟踪功能。
+判断Web是否启用了智能防跟踪功能。若未显式调用该属性，默认未启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 当前Web是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。<br>默认值：false。 |
+| boolean | 当前Web是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。 |
 
 **错误码：**
 
@@ -5946,6 +7472,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5973,6 +7500,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isIntelligentTrackingPreventionEnabled')
+         .onClick((e: ClickEvent) => {
+          try {
+            let result = this.controller.isIntelligentTrackingPreventionEnabled();
+            console.log("result: " + result);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## addIntelligentTrackingPreventionBypassingList<sup>12+</sup>
 
 static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): void
@@ -5980,6 +7536,10 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 添加智能防跟踪功能绕过的域名列表。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6002,6 +7562,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6029,6 +7590,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('addIntelligentTrackingPreventionBypassingList')
+        .onClick((e: ClickEvent) => {
+          try {
+            let hostList = ["www.test1.com", "www.test2.com", "www.test3.com"];
+            webview.WebviewController.addIntelligentTrackingPreventionBypassingList(hostList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## removeIntelligentTrackingPreventionBypassingList<sup>12+</sup>
 
 static removeIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): void
@@ -6036,6 +7626,10 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array\<string>
 删除通过addIntelligentTrackingPreventionBypassingList接口添加的部分域名列表。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6058,6 +7652,7 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array\<string>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6085,6 +7680,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('removeIntelligentTrackingPreventionBypassingList')
+        .onClick((e: ClickEvent) => {
+          try {
+            let hostList = ["www.test1.com", "www.test2.com"];
+            webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(hostList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## clearIntelligentTrackingPreventionBypassingList<sup>12+</sup>
 
 static clearIntelligentTrackingPreventionBypassingList(): void
@@ -6092,6 +7716,10 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 删除通过addIntelligentTrackingPreventionBypassingList接口添加的所有域名。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -6107,6 +7735,7 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6128,6 +7757,29 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearIntelligentTrackingPreventionBypassingList')
+        .onClick((e: ClickEvent) => {
+          webview.WebviewController.clearIntelligentTrackingPreventionBypassingList();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getDefaultUserAgent<sup>14+</sup>
 
 static getDefaultUserAgent(): string
@@ -6140,6 +7792,10 @@ static getDefaultUserAgent(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明           |
@@ -6148,6 +7804,7 @@ static getDefaultUserAgent(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6163,19 +7820,41 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AppStorage } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log("EntryAbility onCreate");
+    webview.WebviewController.initializeWebEngine();
+    let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();
+    console.log("defaultUserAgent: " + defaultUserAgent);
+  }
+}
+```
+
 ## enableAdsBlock<sup>12+</sup>
 
 enableAdsBlock(enable: boolean): void
 
-启用广告过滤功能。
+启用广告过滤功能。若未显式调用该属性，默认取消此功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  enable | boolean | 是   | 是否启用广告过滤功能。<br>true表示启用广告过滤功能，false表示取消广告过滤功能。<br>默认值：false。 |
+|  enable | boolean | 是   | 是否启用广告过滤功能。<br>true表示启用广告过滤功能，false表示取消广告过滤功能。 |
 
 **错误码：**
 
@@ -6193,6 +7872,7 @@ enableAdsBlock(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6220,19 +7900,52 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('enableAdsBlock')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.enableAdsBlock(true);
+            console.log("enableAdsBlock: true")
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isAdsBlockEnabled<sup>12+</sup>
 
 isAdsBlockEnabled() : boolean
 
-查询广告过滤功能是否开启。
+查询广告过滤功能是否开启。若未显式调用该属性，默认该功能关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
 | 类型                                                         | 说明                   |
 | ------------------------------------------------------------ | ---------------------- |
-| boolean | 返回true代表广告过滤功能已开启，返回false代表广告过滤功能关闭。<br>默认值：false。 |
+| boolean | 返回true代表广告过滤功能已开启，返回false代表广告过滤功能关闭。 |
 
 **错误码：**
 
@@ -6248,6 +7961,7 @@ isAdsBlockEnabled() : boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6275,6 +7989,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isAdsBlockEnabled')
+        .onClick((e: ClickEvent) => {
+          try {
+            let isAdsBlockEnabled: boolean = this.controller.isAdsBlockEnabled();
+            console.log("isAdsBlockEnabled:", isAdsBlockEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isAdsBlockEnabledForCurPage<sup>12+</sup>
 
 isAdsBlockEnabledForCurPage() : boolean
@@ -6283,6 +8026,10 @@ isAdsBlockEnabledForCurPage() : boolean
 当Web组件使能广告过滤功能后，默认所有页面都是开启广告过滤的，支持通过[addAdsBlockDisallowedList](./arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)指定域名禁用广告过滤。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6304,6 +8051,7 @@ isAdsBlockEnabledForCurPage() : boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6331,6 +8079,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isAdsBlockEnabledForCurPage')
+        .onClick((e: ClickEvent) => {
+          try {
+            let isAdsBlockEnabledForCurPage: boolean = this.controller.isAdsBlockEnabledForCurPage();
+            console.log("isAdsBlockEnabledForCurPage:", isAdsBlockEnabledForCurPage);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## setRenderProcessMode<sup>12+</sup>
 
 static setRenderProcessMode(mode: RenderProcessMode): void
@@ -6341,7 +8118,7 @@ static setRenderProcessMode(mode: RenderProcessMode): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 **参数：**
@@ -6425,7 +8202,7 @@ static getRenderProcessMode(): RenderProcessMode
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6497,7 +8274,7 @@ terminateRenderProcess(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6643,6 +8420,10 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -6666,6 +8447,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6692,19 +8474,72 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+import print from '@ohos.print'
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
+import webview from "@ohos.web.webview";
+import { BusinessError, AsyncCallback } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+
+const myPrintAttributes: print.PrintAttributes = {
+  copyNumber: 1 as int,
+  pageRange: {
+    startPage: 1 as int,
+    endPage: 1 as int,
+    pages: [1] as Array<int>
+  },
+  pageSize: {
+    id: 'PAGE_ISO_A4',
+    name: 'A4',
+    width: 210 as int,
+    height: 297 as int
+  },
+  directionMode: print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT,
+  colorMode: print.PrintColorMode.COLOR_MODE_COLOR,
+  duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('createWebPrintDocumentAdapter')
+        .onClick(() => {
+          try {
+            let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
+            print.print('example_jobid', webPrintDocadapter, myPrintAttributes, this.getUIContext().getHostContext() as common.UIAbilityContext);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isIncognitoMode<sup>11+</sup>
 
 isIncognitoMode(): boolean
 
-查询当前是否是隐私模式的Webview。
+查询当前是否是隐私模式的Webview。若未显式调用该属性，默认Webview不是隐私模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean              | 返回是否是隐私模式的Webview。<br>true表示是隐私模式，false表示不是隐私模式。<br>默认为false。 |
+| boolean              | 返回是否是隐私模式的Webview。<br>true表示是隐私模式，false表示不是隐私模式。 |
 
 **错误码：**
 
@@ -6716,6 +8551,7 @@ isIncognitoMode(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6743,6 +8579,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isIncognitoMode')
+        .onClick((e: ClickEvent) => {
+          try {
+            let result = this.controller.isIncognitoMode();
+            console.log('isIncognitoMode' + result);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getSecurityLevel<sup>11+</sup>
 
 getSecurityLevel(): SecurityLevel
@@ -6750,6 +8615,10 @@ getSecurityLevel(): SecurityLevel
 获取当前网页的安全级别。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6767,6 +8636,7 @@ getSecurityLevel(): SecurityLevel
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 
@@ -6789,6 +8659,31 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, OnPageEndEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onPageEnd((event: OnPageEndEvent): void => {
+          if (event) {
+            let securityLevel = this.controller.getSecurityLevel();
+            console.info('securityLevel: ', securityLevel);
+          }
+        })
+    }
+  }
+}
+```
+
 ## setScrollable<sup>12+</sup>
 
 setScrollable(enable: boolean, type?: ScrollType): void
@@ -6796,6 +8691,10 @@ setScrollable(enable: boolean, type?: ScrollType): void
 设置网页是否允许滚动。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6815,6 +8714,8 @@ setScrollable(enable: boolean, type?: ScrollType): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6831,6 +8732,35 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.controller.setScrollable(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setScrollable')
+        .onClick(() => {
+          try {
+            this.controller.setScrollable(true, webview.ScrollType.EVENT);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -6900,6 +8830,10 @@ setPrintBackground(enable: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -6917,6 +8851,7 @@ setPrintBackground(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6942,6 +8877,33 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setPrintBackground')
+        .onClick(() => {
+          try {
+            this.controller.setPrintBackground(false);
+          } catch (error) {
+            console.error(`ErrorCode:${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getPrintBackground<sup>12+</sup>
 
 getPrintBackground(): boolean
@@ -6949,6 +8911,10 @@ getPrintBackground(): boolean
 查询webview是否打印网页背景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6966,6 +8932,7 @@ getPrintBackground(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6974,6 +8941,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setPrintBackground')
+        .onClick(() => {
+          try {
+            let enable = this.controller.getPrintBackground();
+            console.log("getPrintBackground: " + enable);
+          } catch (error) {
+            console.error(`ErrorCode:${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -7146,7 +9141,7 @@ pauseAllTimers(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7248,7 +9243,7 @@ resumeAllTimers(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7370,6 +9365,10 @@ stopAllMedia(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -7379,6 +9378,8 @@ stopAllMedia(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7406,6 +9407,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('stopAllMedia')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.stopAllMedia();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## pauseAllMedia<sup>12+</sup>
 
 pauseAllMedia(): void
@@ -7413,6 +9443,10 @@ pauseAllMedia(): void
 控制网页所有音视频暂停。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7423,6 +9457,8 @@ pauseAllMedia(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7450,6 +9486,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry , ClickEvent} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('pauseAllMedia')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.pauseAllMedia();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## resumeAllMedia<sup>12+</sup>
 
 resumeAllMedia(): void
@@ -7457,6 +9522,10 @@ resumeAllMedia(): void
 控制网页被pauseAllMedia接口暂停的音视频继续播放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7467,6 +9536,8 @@ resumeAllMedia(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7494,6 +9565,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry , ClickEvent} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('resumeAllMedia')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.resumeAllMedia();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## closeAllMediaPresentations<sup>12+</sup>
 
 closeAllMediaPresentations(): void
@@ -7501,6 +9601,10 @@ closeAllMediaPresentations(): void
 控制网页所有全屏视频关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7511,6 +9615,8 @@ closeAllMediaPresentations(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7538,6 +9644,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('closeAllMediaPresentations')
+        .onClick((e: ClickEvent) => {
+          try {
+            this.controller.closeAllMediaPresentations();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getMediaPlaybackState<sup>12+</sup>
 
 getMediaPlaybackState(): MediaPlaybackState
@@ -7545,6 +9680,10 @@ getMediaPlaybackState(): MediaPlaybackState
 查询当前所有音视频播控状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7561,6 +9700,8 @@ getMediaPlaybackState(): MediaPlaybackState
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -7588,6 +9729,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getMediaPlaybackState')
+        .onClick((e: ClickEvent) => {
+          try {
+            console.log("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## setWebSchemeHandler<sup>12+</sup>
 
 setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
@@ -7595,6 +9765,10 @@ setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 为当前Web组件设置[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md), [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)类用于拦截指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7614,6 +9788,7 @@ setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7629,6 +9804,35 @@ struct WebComponent {
     Column() {
       Button('setWebSchemeHandler')
         .onClick(() => {
+          try {
+            this.controller.setWebSchemeHandler('http', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Button('setWebSchemeHandler')
+        .onClick((e: ClickEvent) => {
           try {
             this.controller.setWebSchemeHandler('http', this.schemeHandler);
           } catch (error) {
@@ -7693,6 +9897,10 @@ setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): voi
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                      |
@@ -7710,6 +9918,7 @@ setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7737,6 +9946,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Button('setWebSchemeHandler')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebviewController.setServiceWorkerWebSchemeHandler('http', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## clearServiceWorkerWebSchemeHandler<sup>12+</sup>
 
 clearServiceWorkerWebSchemeHandler(): void
@@ -7745,8 +9983,13 @@ clearServiceWorkerWebSchemeHandler(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7768,6 +10011,29 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('clearServiceWorkerWebSchemeHandler')
+        .onClick((e: ClickEvent) => {
+          webview.WebviewController.clearServiceWorkerWebSchemeHandler();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## startCamera<sup>12+</sup>
 
 startCamera(): void
@@ -7775,6 +10041,10 @@ startCamera(): void
 开启当前网页摄像头捕获。使用摄像头功能前请在module.json5中添加权限: ohos.permission.CAMERA，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7785,6 +10055,8 @@ startCamera(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7859,6 +10131,91 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { UIContext } from "@kit.ArkUI";
+import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { PermissionRequestResult, common } from '@kit.AbilityKit';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  aboutToAppear(): void {
+    let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
+      (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (data) {
+          console.info('data:' + JSON.stringify(data));
+          console.info('data permissions:' + data.permissions);
+          console.info('data authResults:' + data.authResults);
+        }
+      })
+  }
+
+  build() {
+    Column() {
+      Button("startCamera").onClick((e: ClickEvent) => {
+        try {
+          this.controller.startCamera();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("stopCamera").onClick((e: ClickEvent) => {
+        try {
+          this.controller.stopCamera();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Button("closeCamera").onClick((e: ClickEvent) => {
+        try {
+          this.controller.closeCamera();
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+          if (event) {
+            const dialogOptions: AlertDialogParamWithButtons = {
+              title: 'title',
+              message: 'text',
+              primaryButton: {
+                value: 'deny',
+                action: () => {
+                  event.request.deny();
+                },
+              } as AlertDialogButtonBaseOptions,
+              secondaryButton: {
+                value: 'onConfirm',
+                action: () => {
+                  event.request.grant(event.request.getAccessibleResource());
+                },
+              } as AlertDialogButtonBaseOptions,
+              cancel: () => {
+                event.request.deny();
+              }
+            };
+            this.uiContext.showAlertDialog(dialogOptions);
+          }
+        })
+    }
+  }
+}
+```
+
 加载的html文件。
  ```html
 <!-- index.html -->
@@ -7900,6 +10257,10 @@ stopCamera(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -7920,6 +10281,10 @@ closeCamera(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
@@ -7934,12 +10299,18 @@ closeCamera(): void
 
 ## precompileJavaScript<sup>12+</sup>
 
-precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<number\>
+ArkTS-Dyn: precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<number\>
+
+ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<int\>
 
 预编译JavaScript生成字节码缓存或根据提供的参数更新已有的字节码缓存。
 接口通过提供的文件信息、E-Tag响应头和Last-Modified响应头判断是否需要更新已有的字节码缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：**  12
+
+**ArkTS-Sta起始版本：**  22
 
 **参数：**
 
@@ -7953,7 +10324,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 | 类型                                | 说明                        |
 | ----------------------------------- | --------------------------- |
-| Promise\<number\> | 生成字节码缓存的错误码，0表示无错误，-1表示内部错误。 |
+| ArkTS-Dyn: Promise\<number\> <br> ArkTS-Sta: Promise\<int\> | 生成字节码缓存的错误码，0表示无错误，-1表示内部错误。 |
 
 **错误码：**
 
@@ -7970,6 +10341,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 1. 首先，在EntryAbility中将UIContext存到localStorage中。
 
+ArkTS-Dyn示例：
    ```ts
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
@@ -7992,8 +10364,37 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // EntryAbility.ets
+  import UIAbility from '@ohos.app.ability.UIAbility';
+  import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+  import Want from '@ohos.app.ability.Want';
+  import window from '@ohos.window';
+  import { BusinessError } from '@ohos.base'
+  import hilog from '@ohos.hilog'
+  import { UIContext, LocalStorage } from '@kit.ArkUI';
+
+  const localStorage: LocalStorage = new LocalStorage('uiContext');
+
+  class EntryAbility extends UIAbility {
+    storage: LocalStorage = localStorage;
+
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', this.storage, (err: BusinessError<void> | null, data): void => {
+        if (err && err.code) {
+          return;
+        }
+        this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+      });
+    }
+  }
+  ```
+
 2. 编写动态组件所需基础代码。
 
+ArkTS-Dyn示例：
    ```ts
    // DynamicComponent.ets
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -8044,8 +10445,73 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // DynamicComponent.ets
+  import { UIContext, LocalStorage, WrappedBuilder, wrapBuilder, Builder } from '@kit.ArkUI';
+  import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@ohos.base';
+  import { WebBuilder } from "./PrecompileWebview";
+  let storage : LocalStorage | undefined = undefined;
+
+  export class BuilderData {
+    url: string;
+    controller: webview.WebviewController;
+    context: UIContext;
+
+    constructor(url: string, controller: webview.WebviewController, context: UIContext) {
+      this.url = url;
+      this.controller = controller;
+      this.context = context;
+    }
+  }
+
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+
+  export class NodeControllerImpl extends NodeController {
+    private rootNode: BuilderNode<BuilderData> | null = null;
+    // private wrappedBuilder: WrappedBuilder<@Builder ((p1: BuilderData) => void)> | null = null;
+
+    private wrappedBuilder: WrappedBuilder<MyBuilder> | null = null;
+    constructor(wrappedBuilder: WrappedBuilder<MyBuilder>, context: UIContext) {
+      super();
+      storage = context.getSharedLocalStorage();
+      this.wrappedBuilder = wrappedBuilder;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      if (this.rootNode != null) {
+        return this.rootNode!.getFrameNode();
+      }
+      return null;
+    }
+
+    initWeb(url: string, controller: webview.WebviewController) {
+      if(this.rootNode != null) {
+        return;
+      }
+
+      const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+      if (!uiContext) {
+        return;
+      }
+      this.rootNode = new BuilderNode<BuilderData>(uiContext);
+      this.rootNode!.build(wrapBuilder(WebBuilder), new BuilderData(url, controller, uiContext));
+    }
+  }
+
+  export const createNode = (wrappedBuilder: WrappedBuilder<MyBuilder>, data: BuilderData) => {
+    const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
+    baseNode.initWeb(data.url, data.controller);
+    return baseNode;
+  }
+  ```
+
 3. 编写用于生成字节码缓存的组件，本例中的本地Javascript资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // PrecompileWebview.ets
@@ -8089,10 +10555,58 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // PrecompileWebview.ets
+  import { UIContext, WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BuilderData } from "./DynamicComponent";
+  import { Config, configs } from "./PrecompileConfig";
+  import { BusinessError } from '@ohos.base';
+
+  @Builder
+  export function WebBuilder(data: BuilderData) {
+    Web({ src: data.url, controller: data.controller })
+      .onControllerAttached(() => {
+        precompile(data.controller, configs, data.context);
+      })
+      .fileAccess(true)
+  }
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const precompileWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+
+  export const precompile = async (controller: webview.WebviewController, configs: Array<Config>, context: UIContext) => {
+    for (const config of configs) {
+      let content = await readRawFile(config.localPath, context);
+
+      try {
+        controller.precompileJavaScript(config.url, content, config.options)
+          .then(errCode => {
+            console.error("precompile successfully! " + errCode);
+          }).catch((errCode: Error) => {
+          console.error("precompile failed. " + errCode);
+        });
+      } catch (err:BusinessError) {
+        console.error("precompile failed. " + err.code + " " + err.message);
+      }
+    }
+  }
+
+  async function readRawFile(path: string, context: UIContext): Promise<Uint8Array> {
+    try {
+      return await context.getHostContext()!.resourceManager.getRawFileContent(path);
+    } catch (err) {
+      return new Uint8Array(0);
+    }
+  }
+  ```
+
 JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // BusinessWebview.ets
@@ -8100,7 +10614,7 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
 
    @Builder
    function WebBuilder(data: BuilderData) {
-     // 此处组件可根据业务需要自行扩展
+     // 此处组件可根据业务需要自行扩展。
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.Default)
    }
@@ -8108,15 +10622,33 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
    export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // BusinessWebview.ets
+  import { BuilderData } from "./DynamicComponent";
+  import { WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+
+  @Builder
+  function WebBuilder(data: BuilderData) {
+    // 此处组件可根据业务需要自行扩展。
+    Web({ src: data.url, controller: data.controller })
+      // .cacheMode(CacheMode.Default)
+  }
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const businessWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+  ```
+
 5. 编写资源配置信息。
 
+ArkTS-Dyn示例：
    ```ts
    // PrecompileConfig.ets
    import { webview } from '@kit.ArkWeb'
 
    export interface Config {
      url:  string,
-     localPath: string, // 本地资源路径
+     localPath: string, // 本地资源路径。
      options: webview.CacheOptions
    }
 
@@ -8134,8 +10666,35 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
    ]
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // PrecompileConfig.ets
+  import { webview } from '@kit.ArkWeb'
+
+  export interface Config {
+    url:  string,
+    localPath: string, // 本地资源路径。
+    options: webview.CacheOptions
+  }
+
+  export let configs: Array<Config> = [
+    {
+      url: "https://www.example.com/example.js",
+      localPath: "example.js",
+      options: {
+        responseHeaders: [
+          { headerKey: "E-Tag", headerValue: "aWO42N9P9dG/5xqYQCxsx+vDOoU="},
+          { headerKey: "Last-Modified", headerValue: "Wed, 21 Mar 2024 10:38:41 GMT"}
+        ]
+      }
+    }
+  ]
+  ```
+
 6. 在页面中使用。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // Index.ets
@@ -8155,14 +10714,14 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
      businessController: webview.WebviewController = new webview.WebviewController();
 
      aboutToAppear(): void {
-       // 初始化用于注入本地资源的Web组件
+       // 初始化用于注入本地资源的Web组件。
        this.precompileNode = createNode(precompileWebview,
          { url: "https://www.example.com/empty.html", controller: this.precompileController, context: this.getUIContext()});
      }
 
      build() {
        Column() {
-         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
+         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
          Button("加载页面")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
@@ -8171,14 +10730,91 @@ JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js
                context: this.getUIContext()
              });
            })
-         // 用于业务的Web组件
+         // 用于业务的Web组件。
          NodeContainer(this.businessNode);
        }
      }
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // Index.ets
+  import { Button, Column, Entry, Component, State, NodeContainer, NodeController } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@ohos.base';
+  import { createNode, BuilderData } from "./DynamicComponent"
+  import { businessWebview } from "./BusinessWebview"
+  import { precompileWebview } from "./PrecompileWebview";
+  @Entry
+  @Component
+  struct Index {
+    @State precompileNode: NodeController | undefined = undefined;
+    precompileController: webview.WebviewController = new webview.WebviewController();
+
+    @State businessNode: NodeController | undefined = undefined;
+    businessController: webview.WebviewController = new webview.WebviewController();
+
+    aboutToAppear(): void {
+      // 初始化用于注入本地资源的Web组件。
+      this.precompileNode = createNode(precompileWebview,
+        new BuilderData( "https://www.example.com/empty.html", this.precompileController, this.getUIContext()));
+    }
+
+    build() {
+      Column() {
+        // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
+        Button("加载页面")
+          .onClick(() => {
+            this.businessNode = createNode(businessWebview, new BuilderData(
+              "https://www.example.com/business.html",
+              this.businessController,
+              this.getUIContext()
+            ));
+          })
+        // 用于业务的Web组件。
+        NodeContainer(this.businessNode!);
+      }
+    }
+  }
+  ```
 当需要更新本地已经生成的编译字节码时，修改cacheOptions参数中responseHeaders中的E-Tag或Last-Modified响应头对应的值，再次调用接口即可。
+
+ArkTS-Sta示例:
+
+   ```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const url: "https://www.example.com/example.js";
+const scripts = "console.log('test')";
+
+const options: { responseHeaders: [
+        { headerKey: "E-Tag", headerValue: "aWO42N9P9dG/5xqYQCxsx+vDOoU="},
+        { headerKey: "Last-Modified", headerValue: "Wed, 21 Mar 2024 10:38:41 GMT"}
+      ] } as webview.CacheOptions;
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('PrecompileJavaScript')
+        .onClick(() => {
+          try {
+            this.controller.precompileJavaScript(url, scripts, options);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+   ```
 
 ## onCreateNativeMediaPlayer<sup>12+</sup>
 
@@ -8413,7 +11049,7 @@ static enableWholeWebPageDrawing(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -8481,14 +11117,14 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback\<SnapshotResult>): v
 > **说明：**
 >
 > 仅支持对渲染进程上的资源进行截图：静态图片和文本。
-> 
+>
 > 如果页面有视频则截图时会显示该视频的占位图片，没有占位图片则显示空白。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8585,6 +11221,10 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -8606,6 +11246,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 接口推荐配合动态组件使用，使用离线的Web组件用于将资源注入到内核的内存缓存中，并在适当的时机加载业务用Web组件使用这些资源。下方是代码示例：
 1. 首先，在EntryAbility中将UIContext存到localStorage中。
 
+ArkTS-Dyn示例：
    ```ts
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
@@ -8628,8 +11269,37 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // EntryAbility.ets
+  import UIAbility from '@ohos.app.ability.UIAbility';
+  import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+  import Want from '@ohos.app.ability.Want';
+  import window from '@ohos.window';
+  import { BusinessError } from '@ohos.base'
+  import hilog from '@ohos.hilog'
+  import { UIContext, LocalStorage } from '@kit.ArkUI';
+
+  const localStorage: LocalStorage = new LocalStorage('uiContext');
+
+  class EntryAbility extends UIAbility {
+    storage: LocalStorage = localStorage;
+
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', this.storage, (err: BusinessError<void> | null, data): void => {
+        if (err && err.code) {
+          return;
+        }
+        this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+      });
+    }
+  }
+  ```
+
 2. 编写动态组件所需基础代码。
 
+ArkTS-Dyn示例：
    ```ts
    // DynamicComponent.ets
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -8680,8 +11350,73 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // DynamicComponent.ets
+  import { UIContext, LocalStorage, WrappedBuilder, wrapBuilder, Builder } from '@kit.ArkUI';
+  import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@ohos.base';
+  import { WebBuilder } from "./InjectWebview";
+
+  export class BuilderData {
+    url: string;
+    controller: webview.WebviewController;
+    context: UIContext;
+
+    constructor(url: string, controller: webview.WebviewController, context: UIContext) {
+      this.url = url;
+      this.controller = controller;
+      this.context = context;
+    }
+  }
+
+  let storage : LocalStorage | undefined = undefined;
+
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+
+  export class NodeControllerImpl extends NodeController {
+    private rootNode: BuilderNode<BuilderData> | null = null;
+    private wrappedBuilder: WrappedBuilder<MyBuilder> | null = null;
+
+    constructor(wrappedBuilder: WrappedBuilder<MyBuilder>, context: UIContext) {
+      super();
+      storage = context.getSharedLocalStorage();
+      this.wrappedBuilder = wrappedBuilder;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      if (this.rootNode != null) {
+        return this.rootNode!.getFrameNode();
+      }
+      return null;
+    }
+
+    initWeb(url: string, controller: webview.WebviewController) {
+      if(this.rootNode != null) {
+        return;
+      }
+
+      const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+      if (!uiContext) {
+        return;
+      }
+      this.rootNode = new BuilderNode<BuilderData>(uiContext);
+      this.rootNode!.build(wrapBuilder(WebBuilder), new BuilderData(url, controller, uiContext));
+    }
+  }
+
+  export const createNode = (wrappedBuilder: WrappedBuilder<MyBuilder>, data: BuilderData) => {
+    const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
+    baseNode.initWeb(data.url, data.controller);
+    return baseNode;
+  }
+  ```
+
 3. 编写用于注入资源的组件代码，本例中的本地资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // InjectWebview.ets
@@ -8707,7 +11442,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    export async function getData(context: UIContext) {
      const resourceMapArr: Array<webview.OfflineResourceMap> = [];
 
-     // 读取配置，从rawfile目录中读取文件内容
+     // 读取配置，从rawfile目录中读取文件内容。
      for (let config of resourceConfigs) {
        let buf: Uint8Array = new Uint8Array(0);
        if (config.localPath) {
@@ -8734,8 +11469,68 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    }
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // InjectWebview.ets
+  import { UIContext, WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { resourceConfigs } from "./Resource";
+  import { BuilderData } from "./DynamicComponent";
+  import { BusinessError } from '@ohos.base';
+
+  @Builder
+  export function WebBuilder(data: BuilderData) {
+    Web({ src: data.url, controller: data.controller })
+      .onControllerAttached(() => {
+        (async () => {
+          try {
+            const result = await getData(data.context);
+            data.controller.injectOfflineResources(result);
+          } catch (err: BusinessError) {
+            console.error("error: " + err.code + " " + err.message);
+          }
+        })();
+      })
+      .fileAccess(true)
+  }
+
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const injectWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+
+  export async function getData(context: UIContext): Promise<Array<webview.OfflineResourceMap>> {
+    const resourceMapArr: Array<webview.OfflineResourceMap> = [];
+
+    // 读取配置，从rawfile目录中读取文件内容。
+    for (let config of resourceConfigs) {
+      let buf: Uint8Array = new Uint8Array(0);
+      if (config.localPath) {
+        buf = await readRawFile(config.localPath, context);
+      }
+
+      resourceMapArr.push({
+        urlList: config.urlList,
+        resource: buf,
+        responseHeaders: config.responseHeaders,
+        type: config.type,
+      })
+    }
+
+    return resourceMapArr;
+  }
+
+  async function readRawFile(path: string, context: UIContext): Promise<Uint8Array> {
+    try {
+      return await context.getHostContext()!.resourceManager.getRawFileContent(path);
+    } catch (err) {
+      return new Uint8Array(0);
+    }
+  }
+  ```
+
 4. 编写业务用组件代码。
 
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // BusinessWebview.ets
@@ -8743,7 +11538,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
    @Builder
    function WebBuilder(data: BuilderData) {
-     // 此处组件可根据业务需要自行扩展
+     // 此处组件可根据业务需要自行扩展。
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.Default)
    }
@@ -8751,8 +11546,25 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
    ```
 
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  import { BuilderData } from "./DynamicComponent";
+  import { WrappedBuilder, wrapBuilder, Web, Builder } from '@kit.ArkUI';
+
+  @Builder
+  function WebBuilder(data: BuilderData) {
+    // 此处组件可根据业务需要自行扩展。
+    Web({ src: data.url, controller: data.controller })
+    // .cacheMode(CacheMode.Default)
+  }
+  type MyBuilder = @Builder (p1: BuilderData) => void;
+  export const businessWebview : WrappedBuilder<MyBuilder> = wrapBuilder(WebBuilder);
+  ```
+
 5. 编写资源配置信息。
 
+ArkTS-Dyn示例：
    ```ts
    // Resource.ets
    import { webview } from '@kit.ArkWeb';
@@ -8761,7 +11573,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      urlList: Array<string>,
      type: webview.OfflineResourceType,
      responseHeaders: Array<Header>,
-     localPath: string, // 本地资源存放在rawfile目录下的路径
+     localPath: string, // 本地资源存放在rawfile目录下的路径。
    }
 
    export const resourceConfigs: Array<ResourceConfig> = [
@@ -8780,19 +11592,62 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      },
      {
        localPath: "example.js",
-       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址
+       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址。
          "https://www.example.com/example.js",
        ],
        type: webview.OfflineResourceType.CLASSIC_JS,
        responseHeaders: [
-         // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头
+         // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头。
          { headerKey: "Cross-Origin", headerValue:"anonymous" }
        ]
      },
    ];
    ```
 
+ArkTS-Sta示例：
+  ```ts
+'use static'
+  // Resource.ets
+  import { webview } from '@kit.ArkWeb';
+
+  export interface ResourceConfig {
+    urlList: Array<string>,
+    type: webview.OfflineResourceType,
+    responseHeaders: Array<webview.WebHeader>,
+    localPath: string, // 本地资源存放在rawfile目录下的路径。
+  }
+
+  export const resourceConfigs: Array<ResourceConfig> = [
+    {
+      localPath: "example.png",
+      urlList: [
+        "https://www.example.com/",
+        "https://www.example.com/path1/example.png",
+        "https://www.example.com/path2/example.png",
+      ],
+      type: webview.OfflineResourceType.IMAGE,
+      responseHeaders: [
+        { headerKey: "Cache-Control", headerValue: "max-age=1000" },
+        { headerKey: "Content-Type", headerValue: "image/png" },
+      ]
+    },
+    {
+      localPath: "example.js",
+      urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址。
+        "https://www.example.com/example.js",
+      ],
+      type: webview.OfflineResourceType.CLASSIC_JS,
+      responseHeaders: [
+        // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头。
+        { headerKey: "Cross-Origin", headerValue:"anonymous" }
+      ]
+    },
+  ];
+  ```
+
 6. 在页面中使用。
+
+ArkTS-Dyn示例：
    <!--code_no_check-->
    ```ts
    // Index.ets
@@ -8812,14 +11667,14 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      businessController: webview.WebviewController = new webview.WebviewController();
 
      aboutToAppear(): void {
-       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可
+       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可。
        this.injectNode = createNode(injectWebview,
            { url: "https://www.example.com/empty.html", controller: this.injectController, context: this.getUIContext()});
      }
 
      build() {
        Column() {
-         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
+         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
          Button("加载页面")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
@@ -8828,12 +11683,56 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
                context: this.getUIContext()
              });
            })
-         // 用于业务的Web组件
+         // 用于业务的Web组件。
          NodeContainer(this.businessNode);
        }
      }
    }
    ```
+
+ArkTS-Sta示例：
+  ```ts
+  'use static'
+  // Index.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Button, Column, Entry, Component, State, NodeContainer, NodeController } from '@kit.ArkUI';
+  import { createNode, BuilderData } from "./DynamicComponent"
+  import { injectWebview } from "./InjectWebview"
+  import { businessWebview } from "./BusinessWebview"
+
+  @Entry
+  @Component
+  struct Index {
+    @State injectNode: NodeController | undefined = undefined;
+    injectController: webview.WebviewController = new webview.WebviewController();
+
+    @State businessNode: NodeController | undefined = undefined;
+    businessController: webview.WebviewController = new webview.WebviewController();
+
+    aboutToAppear(): void {
+      // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可。
+      this.injectNode = createNode(injectWebview,
+        new BuilderData( "https://www.example.com/empty.html", this.injectController, this.getUIContext()));
+    }
+
+    build() {
+      Column() {
+        // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
+        Button("加载页面")
+          .onClick(() => {
+            this.businessNode = createNode(businessWebview, new BuilderData(
+              "https://www.example.com/business.html",
+              this.businessController,
+              this.getUIContext()
+            ));
+          })
+        // 用于业务的Web组件。
+        NodeContainer(this.businessNode!);
+      }
+    }
+  }
+  ```
+
 
 7. 加载的HTML网页示例。
 
@@ -8858,6 +11757,10 @@ ArkTS-Sta: static setHostIP(hostName: string, address: string, aliveTime: int): 
 设置主机域名解析后的IP地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8887,6 +11790,10 @@ static clearHostIP(hostName: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明                  |
@@ -8903,6 +11810,7 @@ static clearHostIP(hostName: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8938,6 +11846,43 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      // url加载前设置生效。
+      Button('setHostIP')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebviewController.setHostIP('www.example.com', '127.0.0.1', 30);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('clearHostIP')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebviewController.clearHostIP('www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getSurfaceId<sup>12+</sup>
 
 getSurfaceId(): string
@@ -8948,7 +11893,7 @@ getSurfaceId(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9149,7 +12094,7 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9307,6 +12252,10 @@ ArkTS-Sta: static enableBackForwardCache(features?: BackForwardCacheSupportedFea
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明                                            |
@@ -9315,6 +12264,7 @@ ArkTS-Sta: static enableBackForwardCache(features?: BackForwardCacheSupportedFea
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -9336,6 +12286,28 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AppStorage } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let features = new webview.BackForwardCacheSupportedFeatures();
+    features.nativeEmbed = true;
+    features.mediaTakeOver = true;
+    // 如果一个页面同时使用了同层渲染和视频托管的能力，需要 nativeEmbed 和
+    // mediaTakeOver 同时设置为 true，该页面才可以进入前进后退缓存中。
+    webview.WebviewController.enableBackForwardCache(features);
+    webview.WebviewController.initializeWebEngine();
+    AppStorage.setOrCreate("abilityWant", want);
+  }
+}
+```
+
 ## setBackForwardCacheOptions<sup>12+</sup>
 
 ArkTS-Dyn: setBackForwardCacheOptions(options: BackForwardCacheOptions): void
@@ -9344,14 +12316,19 @@ ArkTS-Sta: setBackForwardCacheOptions(options?: BackForwardCacheOptions): void
 
 可以设置Web组件中前进后退缓存的相关选项。
 
+需要在[enableBackForwardCache()](#enablebackforwardcache12)调用之后使用，否则setBackForwardCacheOptions功能不会生效。
+
 **系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否   | 用来控制Web组件前进后退缓存相关选项。<br>ArkTS-Sta: 若入参为空，默认设置size为1，timeToLive为600。|
-
+| options     |  [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md) | ArkTS-Dyn: 是<br>ArkTS-Sta: 否 | 用来控制Web组件前进后退缓存相关选项。<br>ArkTS-Sta: 若入参为空，默认设置size为1，timeToLive为600。|
 
 **错误码：**
 
@@ -9362,6 +12339,8 @@ ArkTS-Sta: setBackForwardCacheOptions(options?: BackForwardCacheOptions): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ts
@@ -9396,6 +12375,76 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import { AppStorage } from 'arkui.stateManagement.storage.appStorage'
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) : void {
+    let features = new webview.BackForwardCacheSupportedFeatures();
+    features.nativeEmbed = true;
+    features.mediaTakeOver = true;
+    // 如果一个页面同时使用了同层渲染和视频托管的能力，需要 nativeEmbed 和
+    // mediaTakeOver 同时设置为 true，该页面才可以进入前进后退缓存中。
+    webview.WebviewController.enableBackForwardCache(features);
+    webview.WebviewController.initializeWebEngine();
+    AppStorage.setOrCreate("abilityWant", want);
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/webViewController', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        return;
+      }
+    });
+  }
+}
+
+// xxx.ts
+import { Entry, Component, Column, Row, Button, ClickEvent, Web } from '@ohos.arkui.component'
+import { BusinessError } from '@ohos.base'
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Row() {
+        Button("Add options").onClick((event: ClickEvent) => {
+          let options = new webview.BackForwardCacheOptions();
+          options.size = 3;
+          options.timeToLive = 60;
+          this.controller.setBackForwardCacheOptions(options);
+          // 使用时需要將"https://www.example1.com"替换成真实要访问的网站地址。
+          this.controller.loadUrl('https://example1.com');
+        })
+        Button("Backward").onClick((event: ClickEvent) => {
+          this.controller.backward();
+        })
+        Button("Forward").onClick((event: ClickEvent) => {
+          this.controller.forward();
+        })
+      }
+      // 使用时需要將"https://www.example.com"替换成真实要访问的网站地址。
+      Web({ src: "https://example.com", controller: this.controller })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## trimMemoryByPressureLevel<sup>14+</sup>
 
 trimMemoryByPressureLevel(level: PressureLevel): void
@@ -9406,7 +12455,7 @@ trimMemoryByPressureLevel(level: PressureLevel): void
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9494,6 +12543,10 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                                    | 必填 | 说明                    |
@@ -9512,6 +12565,7 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **示例**:
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -9564,6 +12618,61 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import fs from '@ohos.file.fs';
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
+import webview from "@ohos.web.webview";
+import { BusinessError, AsyncCallback } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  pdfConfig: webview.PdfConfiguration = {
+    width: 8.27,
+    height: 11.69,
+    marginTop: 0,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    shouldPrintBackground: true
+  } as webview.PdfConfiguration
+
+  build() {
+    Column() {
+      Button('SavePDF')
+        .onClick(() => {
+          this.controller.createPdf(
+            this.pdfConfig,
+            (error, result: webview.PdfData | undefined) => {
+              try {
+                // 获取组件上下文
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                // 获取沙箱路径，设置pdf文件名
+                let filePath = context.filesDir + "/test.pdf";
+                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+                let arrayBuffer: Uint8Array = result?.pdfArrayBuffer() as Uint8Array;
+                fs.write(file.fd, arrayBuffer.buffer).then((writeLen: long) => {
+                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                }).catch((err: Error) => {
+                  console.error("createPDF write data to file failed with error message: " + err.message +
+                    ", error code: " + err.code);
+                }).finally(() => {
+                  fs.closeSync(file);
+                });
+              } catch (resError) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            });
+        })
+      Web({ src: "www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
 ## createPdf<sup>14+</sup>
 
 createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
@@ -9571,6 +12680,10 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 以Promise方式异步获取指定网页的数据流。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9595,6 +12708,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 **示例**:
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -9646,6 +12760,59 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import fs from '@ohos.file.fs';
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
+import webview from "@ohos.web.webview";
+import { BusinessError, AsyncCallback } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  pdfConfig: webview.PdfConfiguration = {
+    width: 8.27,
+    height: 11.69,
+    marginTop: 0,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    shouldPrintBackground: true
+  } as webview.PdfConfiguration
+
+  build() {
+    Column() {
+      Button('SavePDF')
+        .onClick(() => {
+          this.controller.createPdf(this.pdfConfig)
+            .then((result: webview.PdfData) => {
+              try {
+                // 获取组件上下文
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                // 获取沙箱路径，设置pdf文件名
+                let filePath = context.filesDir + "/test.pdf";
+                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+                fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: long) => {
+                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                }).catch((err: Error) => {
+                  console.error("createPDF write data to file failed with error message: " + err.message +
+                    ", error code: " + err.code);
+                }).finally(() => {
+                  fs.closeSync(file);
+                });
+              } catch (resError) {
+                console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+              }
+            })
+        })
+      Web({ src: "www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
 ## getScrollOffset<sup>13+</sup>
 
 getScrollOffset(): ScrollOffset
@@ -9653,6 +12820,10 @@ getScrollOffset(): ScrollOffset
 获取网页当前的滚动偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值**
 
@@ -9664,6 +12835,7 @@ getScrollOffset(): ScrollOffset
 
 ArkTS-Dyn示例：
 ```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -9771,6 +12943,64 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, State, OverScrollMode, Web, Row, Column, Component, Entry, Button, Text } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { OverScrollMode, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  @State testTitle: string = 'webScroll'
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State controllerX: number = -100;
+  @State controllerY: number = -100;
+  @State mode: OverScrollMode = OverScrollMode.ALWAYS;
+
+  build() {
+    Column() {
+      Row() {
+        Text(this.testTitle)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .margin(5)
+      }
+      Column() {
+        Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`).fontSize(20)
+      }
+      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+        .key("web_01")
+        .overScrollMode(this.mode)
+        .onTouch(() => {
+          this.controllerX = this.controller.getScrollOffset().x;
+          this.controllerY = this.controller.getScrollOffset().y;
+          let componentInfo = this.getUIContext().getComponentUtils().getRectangleById("web_01");
+          let webHeight = this.getUIContext().px2vp(componentInfo.size.height);
+          let pageHeight = this.controller.getPageHeight();
+          if (this.controllerY < 0) {
+            // case1：网页向下过滚动时，可直接使用ScrollOffset.y
+            console.log(`get downwards overscroll offsetY = ${this.controllerY}`);
+          } else if ((this.controllerY != 0) && (this.controllerY > (pageHeight - webHeight))) {
+            // case2：网页向上过滚动时，需计算出网页下边界与Web组件下边界的偏移量
+            console.log(`get upwards overscroll offsetY = ${this.controllerY -
+              (pageHeight >= webHeight ? (pageHeight - webHeight) : 0)}`);
+          } else {
+            // case3：网页未发生过滚动时，可直接使用ScrollOffset.y
+            console.log(`get scroll offsetY = ${this.controllerY}`);
+          }
+        })
+        .height(600)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## getLastHitTest<sup>18+</sup>
 
 getLastHitTest(): HitTestValue
@@ -9778,6 +13008,10 @@ getLastHitTest(): HitTestValue
 获取上一次被点击区域的元素信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9794,6 +13028,8 @@ getLastHitTest(): HitTestValue
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -9823,6 +13059,37 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getLastHitTest')
+        .onClick(() => {
+          try {
+            let hitValue = this.controller.getLastHitTest();
+            console.log("hitType: " + hitValue.type);
+            console.log("extra: " + hitValue.extra);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getAttachState<sup>20+</sup>
 
 getAttachState(): ControllerAttachState
@@ -9830,6 +13097,10 @@ getAttachState(): ControllerAttachState
 查询当前WebViewController是否绑定一个Web组件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9840,6 +13111,7 @@ getAttachState(): ControllerAttachState
 **示例：**
 点击Button可以获取当前WebViewController的绑定状态并输出日志。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -9871,13 +13143,54 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getAttachState')
+        .onClick(() => {
+          try {
+            if (this.controller.getAttachState() == webview.ControllerAttachState.ATTACHED) {
+              console.log('Controller is attached.');
+              this.controller.refresh();
+            } else {
+              console.log('Controller is unattached.');
+              this.controller.refresh();
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## on('controllerAttachStateChange')<sup>20+</sup>
 
 on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachState&gt;): void
 
 注册WebViewController绑定状态事件，通过Callback方式获取WebViewController绑定状态的变化通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControllerAttachStateChange](#oncontrollerattachstatechange22)。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -9890,13 +13203,43 @@ on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachSt
 
 请参考[off](#offcontrollerattachstatechange20)。
 
+## onControllerAttachStateChange<sup>22+</sup>
+
+onControllerAttachStateChange(callback: Callback&lt;ControllerAttachState&gt;): void
+
+注册WebViewController绑定状态事件，通过Callback方式获取WebViewController绑定状态的变化通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#oncontrollerattachstatechange20)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
+
+**示例：**
+
+请参考[offControllerAttachStateChange](#offcontrollerattachstatechange22)。
+
 ## off('controllerAttachStateChange')<sup>20+</sup>
 
 off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttachState&gt;): void
 
 取消WebViewController绑定状态事件的注册，取消后将不再接收Callback通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControllerAttachStateChange](#offcontrollerattachstatechange22)。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -9909,6 +13252,8 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 
 on可以注册多个回调，当绑定状态改变后会获取当前的绑定状态并触发这些回调。off可以取消注册某个回调，也可以取消注册所有回调。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -9920,7 +13265,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   aboutToAppear() {
-    // 构建回调函数
+    // 构建回调函数。
     const handleControllerAttachStateChange = (state: webview.ControllerAttachState) => {
       if (state == webview.ControllerAttachState.UNATTACHED) {
         console.log('handleControllerAttachStateChange: Controller is unattached.');
@@ -9929,21 +13274,21 @@ struct WebComponent {
       }
     };
     try {
-      // 注册回调以接收controller绑定状态更改通知
+      // 注册回调以接收controller绑定状态更改通知。
       this.controller.on('controllerAttachStateChange', handleControllerAttachStateChange);
-      // 取消指定注册回调
+      // 取消指定注册回调。
       this.controller.off('controllerAttachStateChange', handleControllerAttachStateChange);
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     try {
-      // 注册回调以接收controller绑定状态更改通知
+      // 注册回调以接收controller绑定状态更改通知。
       this.controller.on('controllerAttachStateChange', (state: webview.ControllerAttachState)=>{
         if (state == webview.ControllerAttachState.UNATTACHED) {
           console.log('Controller is unattached.');
         } else {
           console.log('Controller is attached.');
-          // 取消所有注册回调
+          // 取消所有注册回调。
           this.controller.off('controllerAttachStateChange');
         }
       })
@@ -9959,19 +13304,104 @@ struct WebComponent {
   }
 }
 ```
+
+## offControllerAttachStateChange<sup>22+</sup>
+
+offControllerAttachStateChange(callback?: Callback&lt;ControllerAttachState&gt;): void
+
+取消WebViewController绑定状态事件的注册，取消后将不再接收Callback通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#offcontrollerattachstatechange20)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。 |
+
+**示例：**
+
+onControllerAttachStateChange可以注册多个回调，当绑定状态改变后会获取当前的绑定状态并触发这些回调。offControllerAttachStateChange可以取消注册某个回调，也可以取消注册所有回调。
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  aboutToAppear() {
+    // 构建回调函数。
+    const handleControllerAttachStateChange = (state: webview.ControllerAttachState) => {
+      if (state == webview.ControllerAttachState.UNATTACHED) {
+        console.log('handleControllerAttachStateChange: Controller is unattached.');
+      } else {
+        console.log('handleControllerAttachStateChange: Controller is attached.');
+      }
+    };
+    try {
+      // 注册回调以接收controller绑定状态更改通知。
+      this.controller.onControllerAttachStateChange(handleControllerAttachStateChange);
+      // 取消指定注册回调
+      this.controller.offControllerAttachStateChange(handleControllerAttachStateChange);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+    try {
+      // 注册回调以接收controller绑定状态更改通知。
+      this.controller.onControllerAttachStateChange((state: webview.ControllerAttachState)=>{
+        if (state == webview.ControllerAttachState.UNATTACHED) {
+          console.log('Controller is unattached.');
+        } else {
+          console.log('Controller is attached.');
+          // 取消所有注册回调。
+          this.controller.offControllerAttachStateChange();
+        }
+      })
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## waitForAttached<sup>20+</sup>
 
-waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
+ArkTS-Dyn: waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
+
+ArkTS-Sta: waitForAttached(timeout: int):Promise&lt;ControllerAttachState&gt;
 
 异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                                    | 必填 | 说明              |
 | ------------- | --------------------------------------- | ---- | ----------------- |
-| timeout | number | 是   | 异步等待时长（单位ms，取值范围0-300000）。 |
+| timeout | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 异步等待时长（单位ms，取值范围0-300000）。 |
 
 **返回值：**
 
@@ -9984,6 +13414,7 @@ waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
 在初始化阶段设置WebViewController等待绑定完成，超时时间为1000ms。若绑定完成或者超时则会触发回调。
 
+ArkTS-Dyn示例:
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -10020,13 +13451,42 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  aboutToAppear() {
+    this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState)=>{
+      if (state == webview.ControllerAttachState.ATTACHED) {
+        console.log('Controller is attached.');
+        this.controller.refresh();
+      }
+    })
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## setWebDebuggingAccess<sup>20+</sup>
 
 ArkTS-Dyn: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 
 ArkTS-Sta: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: int): void
 
-设置是否启用无线网页调试功能，默认不开启。
+设置是否启用无线网页调试功能，若未显式调用该属性，默认不开启。
 
 * 当没有指定端口port时，该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口，ArkWeb会启动一个本地domain socket监听。
 * 当指定了端口port时，ArkWeb会启动一个tcp socket监听。这时可以无线调试网页。详情请参考[无线调试](../../web/web-debugging-with-devtools.md#无线调试)。
@@ -10036,6 +13496,10 @@ ArkTS-Sta: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: int):
 安全提示：启用网页调试功能可以让用户检查修改Web页面内部状态，存在安全隐患，不建议在应用正式发布版本中启用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -10055,6 +13519,7 @@ ArkTS-Sta: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: int):
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -10064,6 +13529,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.setWebDebuggingAccess(true, 8888);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   aboutToAppear(): void {
     try {
@@ -10229,6 +13722,101 @@ struct WebComponent {
   }
 }
 ```
+
+## setActiveWebEngineVersion<sup>20+</sup>
+
+static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
+
+设置ArkWeb内核版本。若系统不支持指定版本，则设置无效。须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
+
+**遗留内核适配：**
+
+在OpenHarmony 6.0及以后，使用遗留内核时，部分ArkWeb接口不会生效，参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)。
+
+> **说明：**
+>
+> - setActiveWebEngineVersion不支持在异步线程中调用。
+> - setActiveWebEngineVersion全局生效，在整个APP生命周期中调用一次即可，不需要重复调用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| engineVersion | [ArkWebEngineVersion](./arkts-apis-webview-e.md#arkwebengineversion20) | 是 | ArkWeb内核版本。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+本示例以EntryAbility为例，实现了在Ability创建阶段设置ArkWeb内核版本的功能。
+
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log("EntryAbility onCreate")
+    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M114)
+    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M114) {
+      console.log("Active Web Engine Version set to M114")
+    }
+    console.log("EntryAbility onCreate done")
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+本示例以EntryAbility为例，实现了在Ability创建阶段设置ArkWeb内核版本的功能。
+
+```ts
+// xxx.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log("EntryAbility onCreate")
+    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M114)
+    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M114) {
+      console.log("Active Web Engine Version set to M114")
+    }
+    console.log("EntryAbility onCreate done")
+  }
+}
+```
+
+## getActiveWebEngineVersion<sup>20+</sup>
+
+static getActiveWebEngineVersion(): ArkWebEngineVersion
+
+获取当前ArkWeb内核版本。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型    | 说明                              |
+| ------- | --------------------------------- |
+| [ArkWebEngineVersion](./arkts-apis-webview-e.md#arkwebengineversion20) | 返回由[ArkWebEngineVersion](./arkts-apis-webview-e.md#arkwebengineversion20)所定义的当前使用的ArkWeb内核版本。 |
+
+**示例：**
+
+请参考[setActiveWebEngineVersion](#setactivewebengineversion20)。
 
 ## getBlanklessInfoWithKey<sup>20+</sup>
 
@@ -10437,23 +14025,29 @@ export default class EntryAbility extends UIAbility {
 
 ## setBlanklessLoadingCacheCapacity<sup>20+</sup>
 
-static setBlanklessLoadingCacheCapacity(capacity: number): number
+ArkTS-Dyn: static setBlanklessLoadingCacheCapacity(capacity: number): number
+
+ArkTS-Sta: static setBlanklessLoadingCacheCapacity(capacity: int): int
 
 设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  22
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| capacity | number | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。<br>默认值：30MB。<br>合法取值范围：0~100，当设置为0时，无缓存空间，则功能全局不开启。<br>非法值设置行为：小于0时生效值为0，大于100时生效值为100。 |
+| capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 设置持久化缓存设置，单位MB，最大设置不超过100MB。<br>合法取值范围：0~100，当设置为0时，无缓存空间，则功能全局不开启。<br>非法值设置行为：小于0时生效值为0，大于100时生效值为100。 |
 
 **返回值：**
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| number | 返回实际生效的容量值，范围0~100。<br>小于0时生效值为0，大于100时生效值为100。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回实际生效的容量值，范围0~100。<br>小于0时生效值为0，大于100时生效值为100。 |
 
 **错误码：**
 
@@ -10466,6 +14060,7 @@ static setBlanklessLoadingCacheCapacity(capacity: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { webview } from '@kit.ArkWeb';
@@ -10483,6 +14078,178 @@ export default class EntryAbility extends UIAbility {
     }
     AppStorage.setOrCreate("abilityWant", want);
     console.log("EntryAbility onCreate done");
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { webview } from '@kit.ArkWeb';
+import { AppStorage } from '@ohos.arkui.stateManagement';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    webview.WebviewController.initializeWebEngine();
+    // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+    webview.WebviewController.prefetchResource(
+      {
+        url: "https://www.example1.com/post?e=f&g=h",
+        method: "POST",
+        formData: "a=x&b=y",
+      },
+      [{
+        headerKey: "c",
+        headerValue: "z",
+      },],
+      "KeyX", 500);
+    AppStorage.setOrCreate("abilityWant", want);
+    console.log("EntryAbility onCreate done");
+  }
+}
+```
+
+## setAutoPreconnect<sup>21+</sup>
+
+static setAutoPreconnect(enabled: boolean): void
+
+设置Web内核的自动预连接状态。若未设置，默认启用自动预连接。
+
+需要在[initializeWebEngine()](#initializewebengine)初始化内核或者创建Web组件之前调用。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                                                     |
+| -------- | ------- | ---- | -------------------------------------------------------- |
+| enabled | boolean | 是   | 是否启用Web内核自动预连接的开关。true表示启用，false表示禁用。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        webview.WebviewController.setAutoPreconnect(false);
+        webview.WebviewController.initializeWebEngine();
+        AppStorage.setOrCreate("abilityWant", want);
+    }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import { AppStorage } from 'arkui.stateManagement.storage.appStorage'
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) : void {
+    webview.WebviewController.setAutoPreconnect(false);
+    webview.WebviewController.initializeWebEngine();
+    AppStorage.setOrCreate("abilityWant", want);
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 在使用时将'xxx'替换成一个真实的ets文件名。
+    windowStage.loadContent('pages/xxx', (err: BusinessError<void> | null): void => {
+      if (err?.code) {
+        return;
+      }
+    });
+  }
+}
+```
+
+## isAutoPreconnectEnabled<sup>21+</sup>
+
+static isAutoPreconnectEnabled(): boolean
+
+查询Web内核的自动预连接状态。
+
+如果没有使用[setAutoPreconnect](#setautopreconnect21)设置Web内核自动预连接的状态，则默认启用自动预连接，返回true。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| boolean | 返回Web内核是否启用了自动预连接。true表示已启用；false表示已禁用。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  build() {
+    Column() {
+      Button('isAutoPreconnectEnabled')
+        .onClick(() => {
+          try {
+            let isEnabled: boolean = webview.WebviewController.isAutoPreconnectEnabled();
+            console.info("isAutoPreconnectEnabled:", isEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Button } from '@ohos.arkui.component'
+import { BusinessError } from '@ohos.base'
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  build() {
+    Column() {
+      Button('isAutoPreconnectEnabled')
+        .onClick(() => {
+          try {
+            let isEnabled: boolean = webview.WebviewController.isAutoPreconnectEnabled();
+            console.log("isAutoPreconnectEnabled:", isEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
   }
 }
 ```

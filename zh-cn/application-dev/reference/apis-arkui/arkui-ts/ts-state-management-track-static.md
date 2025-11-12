@@ -12,13 +12,15 @@
 
 @Track用于状态管理V1中，观测class对象的属性级更新。
 
-在静态语言上下文中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-ST）](../../../ui/state-management-static/arkts-static-track.md)。
+在ArkTS-Sta中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-track.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, Track } from '@ohos.arkui.stateManagement';
 

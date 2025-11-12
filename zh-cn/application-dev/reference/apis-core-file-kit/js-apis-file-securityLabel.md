@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -16,6 +17,7 @@ import { securityLabel } from '@kit.CoreFileKit';
 
 使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
 
+ArkTS-Dyn示例：
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
@@ -29,6 +31,16 @@ import { securityLabel } from '@kit.CoreFileKit';
   }
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let pathDir = context.filesDir;
+```
+
 使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
 ## DataLevel
@@ -39,6 +51,10 @@ type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 ## securityLabel.setSecurityLabel
 
 setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
@@ -46,6 +62,10 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 以异步方法设置数据标签。数据标签安全等级仅可由低向高或平级设置，以Promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -77,6 +97,8 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
@@ -87,6 +109,19 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
   });
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + '/test.txt';
+securityLabel.setSecurityLabel(filePath, "s0").then(() => {
+  console.info('Succeeded in setSecurityLabel');
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## securityLabel.setSecurityLabel
 
 setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt;):void
@@ -94,6 +129,10 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 以异步方法设置数据标签。数据标签安全等级仅可由低向高或平级设置，以callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -120,6 +159,8 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
@@ -132,6 +173,20 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
   });
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + '/test.txt';
+securityLabel.setSecurityLabel(filePath, "s0", (err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in setSecurityLabel');
+  }
+});
+```
+
 ## securityLabel.setSecurityLabelSync
 
 setSecurityLabelSync(path:string, type:DataLevel):void
@@ -139,6 +194,10 @@ setSecurityLabelSync(path:string, type:DataLevel):void
 以同步方法设置数据标签。数据标签安全等级仅可由低向高或平级设置。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -177,6 +236,10 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
   | 参数名 | 类型   | 必填 | 说明     |
@@ -206,6 +269,8 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
@@ -216,6 +281,19 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
   });
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + '/test.txt';
+securityLabel.getSecurityLabel(filePath).then((type: string) => {
+  console.info(`Succeeded in getSecurityLabel, Label: ${type}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to getSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## securityLabel.getSecurityLabel
 
 getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
@@ -223,6 +301,10 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 异步方法获取数据标签。若未设置过数据标签安全等级则默认返回“s3”，以callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -248,6 +330,8 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
@@ -260,6 +344,20 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
   });
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + '/test.txt';
+securityLabel.getSecurityLabel(filePath, (err: BusinessError | null, type: string  | undefined) => {
+  if (err) {
+    console.error(`Failed to getSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getSecurityLabel, Label: ${type}`);
+  }
+});
+```
+
 ## securityLabel.getSecurityLabelSync
 
 getSecurityLabelSync(path:string):string
@@ -267,6 +365,10 @@ getSecurityLabelSync(path:string):string
 以同步方法获取数据标签。若未设置过数据标签安全等级则默认返回“s3”。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

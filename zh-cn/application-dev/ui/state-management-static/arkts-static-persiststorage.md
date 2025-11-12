@@ -89,13 +89,15 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { PersistentStorage, StorageLink, State } from '@ohos.arkui.stateManagement';
 
-PersistentStorage.persistProp<number>('aProp', 47);
-
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
   @StorageLink('aProp') aProp: number = 48;
+  // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+  static {
+    PersistentStorage.persistProp<number>('aProp', 47);
+  }
 
   build() {
     Row() {

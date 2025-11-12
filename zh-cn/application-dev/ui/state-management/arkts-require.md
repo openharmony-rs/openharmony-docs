@@ -1,6 +1,6 @@
 # \@Require装饰器：校验构造传参
 
-\@Require是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量(无状态装饰器修饰的变量)是否需要构造传参的一个装饰器。
+\@Require是校验[\@Prop](./arkts-prop.md)、[\@State](./arkts-state.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@BuilderParam](./arkts-builderparam.md)、[\@Param](./arkts-new-param.md)和普通变量(无状态装饰器修饰的变量)是否需要构造传参的一个装饰器。
 
 > **说明：**
 >
@@ -65,8 +65,8 @@ struct Child {
   }
 
   @Require regular_value: string = 'Hello';
-  @Require @State state_value: string = "Hello";
-  @Require @Provide provide_value: string = "Hello";
+  @Require @State state_value: string = 'Hello';
+  @Require @Provide provide_value: string = 'Hello';
   @Require @BuilderParam buildTest: () => void;
   @Require @BuilderParam initBuildTest: () => void = this.buildFunction;
   @Require @Prop initMessage: string = 'Hello';
@@ -100,7 +100,7 @@ class Info {
 @ComponentV2
 struct ChildPage {
   @Require @Param childInfo: Info = new Info();
-  @Require @Param state_value: string = "Hello";
+  @Require @Param state_value: string = 'Hello';
 
   build() {
     Column() {
@@ -120,10 +120,10 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = { name: "Tom", age: 25 };
-  label1: string = "Hello World";
-  @Local info2: Info = { name: "Tom", age: 25 };
-  @Local label2: string = "Hello World";
+  info1: Info = { name: 'Tom', age: 25 };
+  label1: string = 'Hello World';
+  @Local info2: Info = { name: 'Tom', age: 25 };
+  @Local label2: string = 'Hello World';
 
   build() {
     Column() {
@@ -146,12 +146,12 @@ struct ParentPage {
         .width('100%')
         .height(5)
         .backgroundColor('#000000').margin(10)
-      Button("change info1&info2")
+      Button('change info1&info2')
         .onClick(() => {
-          this.info1 = { name: "Cat", age: 18 }; // Text1不会刷新，原因是info1没有装饰器装饰，监听不到值的改变。
-          this.info2 = { name: "Cat", age: 18 }; // Text2会刷新，原因是info2有装饰器装饰，能够监听到值的改变。
-          this.label1 = "Luck"; // 不会刷新，原因是label1没有装饰器装饰，监听不到值的改变。
-          this.label2 = "Luck"; // 会刷新，原因是label2有装饰器装饰，可以监听到值的改变。
+          this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没有装饰器装饰，监听不到值的改变。
+          this.info2 = { name: 'Cat', age: 18 }; // Text2会刷新，原因是info2有装饰器装饰，能够监听到值的改变。
+          this.label1 = 'Luck'; // 不会刷新，原因是label1没有装饰器装饰，监听不到值的改变。
+          this.label2 = 'Luck'; // 会刷新，原因是label2有装饰器装饰，可以监听到值的改变。
         })
     }
   }
@@ -187,25 +187,27 @@ struct Child {
 
 ## 常见问题
 
-当Child组件内将\@Require装饰器与\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）结合使用时，若父组件Index在构造Child时未传递参数，则会导致编译失败。
+当Child组件内将\@Require装饰器与\@Prop、\@State、\@Provide、\@BuilderParam、普通变量（无状态装饰器修饰的变量）结合使用时，若父组件Index在构造Child时未传递相应参数，则会导致编译失败。当ChildV2组件内将\@Require装饰器与\@Param结合使用时，若父组件Index在构造ChildV2时未传递相应参数，则同样会导致编译失败。
+
+【反例】
 
 ```ts
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State message: string = 'Hello World!';
 
   @Builder
   buildTest() {
     Row() {
-      Text('Hello, world')
+      Text('Hello, world!!')
         .fontSize(30)
     }
   }
 
   build() {
     Row() {
-      //构造Child、ChildV2组件时没有传参，会导致编译不通过。
+      // 构造Child、ChildV2组件时没有传参，会导致编译不通过。
       Child()
       ChildV2()
     }
@@ -224,8 +226,80 @@ struct Child {
 
   // 使用@Require必须构造时传参。
   @Require regular_value: string = 'Hello';
-  @Require @State state_value: string = "Hello";
-  @Require @Provide provide_value: string = "Hello";
+  @Require @State state_value: string = 'Hello';
+  @Require @Provide provide_value: string = 'Hello';
+  @Require @BuilderParam initBuildTest: () => void = this.buildFunction;
+  @Require @Prop initMessage: string = 'Hello';
+
+  build() {
+    Column() {
+      Text(this.initMessage)
+        .fontSize(30)
+      this.initBuildTest();
+    }
+  }
+}
+
+@ComponentV2
+struct ChildV2 {
+  // 使用@Require必须构造时传参。
+  @Require @Param message: string;
+
+  build() {
+    Column() {
+      Text(this.message)
+    }
+  }
+}
+```
+
+当父组件Index在构造Child与ChildV2时传递了相应的参数，则编译通过。
+
+【正例】
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World!';
+
+  @Builder
+  buildTest() {
+    Row() {
+      Text('Hello, world!!')
+        .fontSize(30)
+    }
+  }
+
+  build() {
+    Row() {
+      // 构造Child、ChildV2组件时传递相应参数，编译通过。
+      Child({
+        regular_value: 'Hello',
+        state_value: 'Hello',
+        provide_value: 'Hello',
+        initBuildTest: this.buildTest,
+        initMessage: 'Hello'
+      })
+      ChildV2({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Builder
+  buildFunction() {
+    Column() {
+      Text('initBuilderParam')
+        .fontSize(30)
+    }
+  }
+
+  // 使用@Require必须构造时传参。
+  @Require regular_value: string = 'Hello';
+  @Require @State state_value: string = 'Hello';
+  @Require @Provide provide_value: string = 'Hello';
   @Require @BuilderParam initBuildTest: () => void = this.buildFunction;
   @Require @Prop initMessage: string = 'Hello';
 

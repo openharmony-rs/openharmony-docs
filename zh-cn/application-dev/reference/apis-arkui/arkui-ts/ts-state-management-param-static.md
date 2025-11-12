@@ -12,13 +12,15 @@
 
 @Param用于状态管理V2中，接收外部输入，实现父子组件之前的单向数据同步。
 
-在静态语言上下文中使用时，开发指南参考：[@Param：组件外部输入（ArkTS-ST）](../../../ui/state-management-static/arkts-static-new-param.md)。
+在ArkTS-Sta中使用时，开发指南参考：[@Param：组件外部输入（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-param.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param } from '@ohos.arkui.stateManagement';
 

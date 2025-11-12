@@ -1,9 +1,18 @@
 # @ohos.userIAM.userAuth (用户认证)
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 提供用户认证能力，应用于设备解锁、支付、应用登录等场景。
 
 > **说明：**
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -14,9 +23,52 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## 常量
 
-| 名称        | 值   | 说明       |
-| ----------- | ---- | ---------- |
-| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>    | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒。<br/> **系统能力：** SystemCapability.UserIAM.UserAuth.Core <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+| 名称        | 类型   | 值   | 说明       |
+| ----------- | ---- | ---- | ---------- |
+| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒。 <br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0x7FFFFFFF | 永久冻结时间，值为0x7FFFFFFF毫秒。<br/> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+
+## AuthLockState<sup>22+</sup>
+
+认证类型的身份认证冻结状态。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称         | 类型    | 只读 | 可选 | 说明                 |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| isLocked       | boolean | 否   |  否 | 表示认证是否已被冻结。true表示已冻结；false表示未冻结。|
+| remainingAuthAttempts        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |  否 | 认证未被冻结时的剩余尝试次数，最大为5次。|
+| lockoutDuration        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |  否 | 认证被冻结时的剩余冻结时间，单位为毫秒。<br>当永久冻结时，值为PERMANENT_LOCKOUT_DURATION，需要PIN认证解锁。|
+
+## UserAuthTipCode<sup>20+</sup>
+
+表示身份认证中间状态的枚举。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称                | 值   | 说明       |
+| -----------        | ---- | ---------- |
+| COMPARE_FAILURE    | 1    | 认证失败。 |
+| TIMEOUT            | 2    | 认证超时。 |
+| TEMPORARILY_LOCKED | 3    | 临时冻结。 |
+| PERMANENTLY_LOCKED | 4    | 永久冻结。 |
+| WIDGET_LOADED      | 5    | 身份认证界面加载完毕。 |
+| WIDGET_RELEASED    | 6    | 当前的身份认证界面退出，切换其他认证界面或身份认证控件关闭。 |
+| COMPARE_FAILURE_WITH_FROZEN    | 7    | 认证失败并触发了认证冻结。 |
 
 ## EnrolledState<sup>12+</sup>
 
@@ -24,53 +76,134 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称         | 类型    | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
-| credentialDigest       | ArkTS1.1: number <br/> ArkTS1.2: int | 否   |  否 | 注册的凭据摘要，在凭据增加时随机生成。|
-| credentialCount        | ArkTS1.1: number <br/> ArkTS1.2: int | 否   |  否 | 注册的凭据数量。       |
+| credentialDigest       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |  否 | 注册的凭据摘要，在凭据增加时随机生成。|
+| credentialCount        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |  否 | 注册的凭据数量。       |
 
 ## ReuseMode<sup>12+</sup>
 
 复用解锁认证结果的模式。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| AUTH_TYPE_RELEVANT    | 1   | 与认证类型相关，只有当设备解锁认证结果在有效时间内，并且设备解锁的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| AUTH_TYPE_IRRELEVANT  | 2   | 与认证类型无关，设备解锁认证结果在有效时间内，可以重复使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT<sup>14+</sup>    | 3   | 与认证类型相关，任意身份认证（包括设备解锁）结果在有效时间内，并且身份认证的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT<sup>14+</sup>  | 4   | 与认证类型无关，任意身份认证（包括设备解锁）结果在有效时间内，可以重复使用。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| AUTH_TYPE_RELEVANT    | 1   | 与认证类型相关，只有当设备解锁认证结果在有效时间内，并且设备解锁的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| AUTH_TYPE_IRRELEVANT  | 2   | 与认证类型无关，设备解锁认证结果在有效时间内，可以重复使用。<br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT<sup>14+</sup>    | 3   | 与认证类型相关，任意身份认证（包括设备解锁）结果在有效时间内，并且身份认证的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT<sup>14+</sup>  | 4   | 与认证类型无关，任意身份认证（包括设备解锁）结果在有效时间内，可以重复使用。<br/> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 ## ReuseUnlockResult<sup>12+</sup>
 
 复用解锁认证结果。
-> **说明**：
+> **说明：**
 >
 > 如果身份认证解锁（包括设备解锁）后，在有效时间内凭据发生了变化，身份认证的结果依然可以复用，认证结果中返回当前实际的EnrolledState。若复用认证结果时，之前认证时所使用的身份认证凭据已经被删除，如果删除的是人脸、指纹，则认证结果依然可以复用，只是返回的EnrolledState中credentialCount和credentialDigest均为0；如果删除的是锁屏口令，则此次复用会失败。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------- |
-| reuseMode        | [ReuseMode](#reusemode12) | 是   | 复用解锁认证结果的模式。       |
-| reuseDuration    | ArkTS1.1: number <br/> ArkTS1.2: int | 是   | 允许复用解锁认证结果的有效时长，有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| reuseMode        | [ReuseMode](#reusemode12) | 否 | 否   | 复用解锁认证结果的模式。       |
+| reuseDuration    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 允许复用解锁认证结果的有效时长，有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
+
+## userAuth.getAuthLockState<sup>22+</sup>
+
+getAuthLockState(authType: UserAuthType): Promise\<AuthLockState>
+
+查询指定认证类型的冻结状态，使用Promise异步回调。
+
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名         | 类型                               | 必填 | 说明                       |
+| -------------- | ---------------------------------- | ---- | -------------------------- |
+| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。|
+
+**返回值：**
+
+| 类型                  | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| Promise&lt;[AuthLockState](#authlockstate22)&gt; | Promise对象，当查询成功时，返回值为指定认证类型的身份认证冻结状态。失败时报错。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------- |
+| 201 | Permission denied. |
+| 12500002 | General operation error. |
+| 12500005 | The authentication type is not supported. |
+| 12500008 | The parameter is out of range. |
+| 12500010 | The type of credential has not been enrolled. |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let queryType = user.UserAuthType.PIN;
+  let authLockState: userAuth.AuthLockState = {
+    isLocked : false,
+    remainingAuthAttempts : 0,
+    lockoutDuration : 0
+  };
+  userAuth.getAuthLockState(queryType).then((val) => {
+    authLockState.isLocked = val.isLocked;
+    authLockState.remainingAuthAttempts = val.remainingAuthAttempts;
+    authLockState.lockoutDuration = val.lockoutDuration;
+    console.info(`get auth lock state success, authLockState = ${JSON.stringify(authLockState)}`);
+  })
+    .catch((e: BusinessError) => {
+      console.error(`getAuthLockState failed, Code is ${e?.code}, message is ${e?.message}`);
+    })
+  console.info('after get auth lock state.');
+} catch (err) {
+  console.error(`get auth lock state failed, Code is ${err?.code}, message is ${err?.message}`);
+};
+```
 
 ## userAuth.getEnrolledState<sup>12+</sup>
 
-getEnrolledState(authType : UserAuthType): EnrolledState
+getEnrolledState(authType: UserAuthType): EnrolledState
 
 查询凭据注册的状态，以检测用户注册凭据的变更。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -86,12 +219,12 @@ getEnrolledState(authType : UserAuthType): EnrolledState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission verification failed. |
-| 401 | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. |
+| 201 | Permission denied. |
+| 401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.|
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500010 | The type of credential has not been enrolled. |
@@ -100,12 +233,14 @@ getEnrolledState(authType : UserAuthType): EnrolledState
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
   console.info(`get current enrolled state success, enrolledState = ${JSON.stringify(enrolledState)}`);
 } catch (error) {
-  console.error(`get current enrolled state failed, error = ${JSON.stringify(error)}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -113,28 +248,27 @@ try {
 
 用户认证相关参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
-
-| 名称           | 类型                               | 必填 | 说明                                                         |
-| -------------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| challenge      | Uint8Array                         | 是   | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。 |
-| authType       | [UserAuthType](#userauthtype8)[]   | 是   | 认证类型列表，用来指定用户认证界面提供的认证方法。           |
-| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 期望达到的认证可信等级。典型操作需要的身份认证可写等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md)。|
-| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) | 否   |表示可以复用解锁认证的结果。|
+| 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
+| -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| challenge      | Uint8Array                         |  否  |  否  | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authType       | [UserAuthType](#userauthtype8)[]   |  否  |  否  | 认证类型列表，用来指定用户认证界面提供的认证方法。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) |  否  |  否  | 期望达到的认证可信等级。典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) |  否  |  是  |表示可以复用解锁认证的结果。默认为不复用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| skipLockedBiometricAuth<sup>20+</sup> | boolean |  否  |  是  | 是否跳过已禁用的认证方式自动切换至其它方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>true表示生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证；<br/>false表示不跳过；默认为false。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## WidgetParam<sup>10+</sup>
 
 用户认证界面配置相关参数。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-| 名称                 | 类型                                | 必填 | 说明                                                         |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| title                | string                              | 是   | 用户认证界面的标题，最大长度为500字符。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| navigationButtonText | string                              | 否   | 导航按键的说明文本，最大长度为60字符。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹场景。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uiContext<sup>18+</sup>            | Context               | 否   | 以模应用方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统方式显示。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| title                | string                              |  否  |  否  | 用户认证界面的标题，建议传入认证目的，例如用于支付、登录应用等，不支持传空字串，最大长度为500字符。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| navigationButtonText | string                              |  否  |  是  | 导航按键的说明文本，最大长度为60字符。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹场景。默认为不展示自定义导航按键。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统方式显示。 默认以模系统方式显示身份认证对话框。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 ## UserAuthResult<sup>10+</sup>
 
@@ -142,67 +276,32 @@ try {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-| 名称     | 类型                           | 必填 | 说明                                                         |
-| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| result   | ArkTS1.1: number <br/> ArkTS1.2: int  | 是   | 用户认证结果。若成功返回SUCCESS，若失败返回相应错误码，参见[UserAuthResultCode](#userauthresultcode9)。 |
-| token    | Uint8Array                     | 否   | 认证成功时，返回认证成功的令牌信息。                  |
-| authType | [UserAuthType](#userauthtype8) | 否   | 认证成功时，返回认证类型。                           |
-| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) | 否   |  认证成功时，返回注册凭据的状态。|
+| 名称     | 类型                           | 只读 | 可选 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| result   | ArkTS-Dyn: number<br>ArkTS-Sta: int |  否  |  否  | 用户认证结果。若成功返回SUCCESS，若失败返回相应错误码，参见[UserAuthResultCode](#userauthresultcode9)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 |
+| token    | Uint8Array                     |  否  |  是  | 认证成功时，返回认证成功的令牌信息。最大长度为1024字节。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
+| authType | [UserAuthType](#userauthtype8) |  否  |  是  | 认证成功时，返回认证类型。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
+| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) |  否  |  是  |  认证成功时，返回注册凭据的状态。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
 
-## AuthCallbackOnResultFunc<sup>22+</sup>	
+## AuthCallbackOnResultFunc<sup>22+</sup>
 
-type AuthCallbackOnResultFunc = (result: UserAuthResult) => void	
+type AuthCallbackOnResultFunc = (result: UserAuthResult) => void
 
-回调函数，返回身份认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。	
+回调函数，返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core	
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**参数：**	
+**ArkTS-Sta起始版本：** 22
 
-| 参数名 | 类型                                | 必填 | 说明       |	
-| ------ | ----------------------------------- | ---- | ---------- |	
-| result | [UserAuthResult](#userauthresult10)   | 是   | 身份认证结果。 |	
+**参数：**
 
-**示例：**	
-
-发起用户认证，获取认证结果。	
-
-```ts	
-import { BusinessError } from '@kit.BasicServicesKit';	
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';	
-import { userAuth } from '@kit.UserAuthenticationKit';	
-
-try {	
-  const rand = cryptoFramework.createRandom();	
-  const len: number = 16;	
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;	
-  const authParam: userAuth.AuthParam = {	
-    challenge: randData,	
-    authType: [userAuth.UserAuthType.PIN],	
-    authTrustLevel: userAuth.AuthTrustLevel.ATL3,	
-  };	
-  const widgetParam: userAuth.WidgetParam = {	
-    title: '请输入密码',	
-  };	
-
-  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);	
-  console.info('get userAuth instance success');	
-  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。	
-  userAuthInstance.on('result', {	
-    onResult: (result: userAuth.UserAuthResult) => {	
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);	
-    }	
-  });	
-  console.info('auth on success');	
-} catch (error) {	
-  const err: BusinessError = error as BusinessError;	
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);	
-}	
-```
+| 参数名 | 类型                                | 必填 | 说明       |
+| ------ | ----------------------------------- | ---- | ---------- |
+| result | [UserAuthResult](#userauthresult10) | 是   | 认证结果。 |
 
 ## IAuthCallback<sup>10+</sup>
 
@@ -210,23 +309,30 @@ try {
 
 ### 属性
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-| 名称     | 类型                           | 只读 | 可选 | 说明                                                         |
-| -------- | ----------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| onResult<sup>22+</sup> | [AuthCallbackOnResultFunc](#authcallbackonresultfunc22) | 否 | 否 | 返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。<br>**ArkTS模式**：该接口仅适用于ArkTS-Sta。 |
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-### onResult<sup>10+</sup>	
+**ArkTS-Sta起始版本：** 22
 
-onResult(result: UserAuthResult): void	
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| onResult  | [AuthCallbackOnResultFunc](#authcallbackonresultfunc22) | 否 | 否   | 返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。  |
 
-回调函数，返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。	
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。	
+### onResult<sup>10+</sup>
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+onResult(result: UserAuthResult): void
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+回调函数，返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -236,8 +342,9 @@ onResult(result: UserAuthResult): void
 
 **示例1：**
 
-发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果。<br>
-ArkTS-Dyn示例：
+发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果。
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -247,7 +354,18 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -274,16 +392,16 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
+ArkTS-Sta示例:
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();
-  const len: number = 16;
+  const len: int = 16;
   const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
   const authParam: userAuth.AuthParam = {
     challenge: randData,
@@ -297,7 +415,7 @@ try {
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
-  userAuthInstance.on('result', {
+  userAuthInstance.onResult({
     onResult: (result: userAuth.UserAuthResult) => {
       console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
     }
@@ -311,8 +429,9 @@ try {
 
 **示例2：**
 
-发起用户认证，采用认证可信等级≥ATL3的锁屏口令+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。<br>
-ArkTS-Dyn示例：
+发起用户认证，采用认证可信等级≥ATL3的锁屏口令+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -326,7 +445,18 @@ let reuseUnlockResult: userAuth.ReuseUnlockResult = {
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -356,7 +486,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { userAuth } from '@kit.UserAuthenticationKit';
 
@@ -366,7 +496,7 @@ let reuseUnlockResult: userAuth.ReuseUnlockResult = {
 }
 try {
   const rand = cryptoFramework.createRandom();
-  const len: number = 16;
+  const len: int = 16;
   const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
   const authParam: userAuth.AuthParam = {
     challenge: randData,
@@ -380,7 +510,7 @@ try {
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
-  userAuthInstance.on('result', {
+  userAuthInstance.onResult({
     onResult: (result: userAuth.UserAuthResult) => {
       console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
     }
@@ -396,8 +526,9 @@ try {
 
 **示例3：**
 
-发起用户认证，采用认证可信等级≥ATL3的锁屏口令+任意应用认证类型相关 + 复用任意应用最大有效时长认证，获取认证结果。<br>
-ArkTS-Dyn示例：
+发起用户认证，采用认证可信等级≥ATL3的锁屏口令+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -411,7 +542,18 @@ let reuseUnlockResult: userAuth.ReuseUnlockResult = {
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -441,7 +583,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { userAuth } from '@kit.UserAuthenticationKit';
 
@@ -451,7 +593,7 @@ let reuseUnlockResult: userAuth.ReuseUnlockResult = {
 }
 try {
   const rand = cryptoFramework.createRandom();
-  const len: number = 16;
+  const len: int = 16;
   const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
   const authParam: userAuth.AuthParam = {
     challenge: randData,
@@ -465,7 +607,7 @@ try {
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
-  userAuthInstance.on('result', {
+  userAuthInstance.onResult({
     onResult: (result: userAuth.UserAuthResult) => {
       console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
     }
@@ -479,6 +621,43 @@ try {
 }
 ```
 
+## AuthTipInfo<sup>20+</sup>
+
+用户认证中间状态。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称     | 类型                                  | 只读 | 可选 | 说明                              |
+| -------- | ------------------------------------ | ---- | ---- | ------------------------------------ |
+| tipType | [UserAuthType](#userauthtype8)        |  否  |  否  | 中间状态对应的认证类型。 |
+| tipCode | [UserAuthTipCode](#userauthtipcode20) |  否  |  否  | 中间状态值。|
+
+## AuthTipCallback<sup>20+</sup>
+
+type AuthTipCallback = (authTipInfo: AuthTipInfo) => void
+
+回调函数，返回认证中间状态。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型                                | 必填 | 说明       |
+| ------ | -----------------------------------| ---- | ---------- |
+| authTipInfo | [AuthTipInfo](#authtipinfo20)   | 是   | 认证中间状态。 |
+
 ## UserAuthInstance<sup>10+</sup>
 
 用于执行用户身份认证，并支持使用统一用户身份认证控件。
@@ -488,11 +667,17 @@ try {
 
 on(type: 'result', callback: IAuthCallback): void
 
-订阅用户身份认证的结果。
+订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#on20)接口订阅。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onResult](#onResult22)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -503,11 +688,11 @@ on(type: 'result', callback: IAuthCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例1：**
@@ -522,7 +707,18 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -564,7 +760,18 @@ struct Index {
     try {
       const rand = cryptoFramework.createRandom();
       const len: number = 16;
-      const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+      let randData: Uint8Array | null = null;
+      let retryCount = 0;
+      while(retryCount < 3){
+        randData = rand?.generateRandomSync(len)?.data;
+        if(randData){
+          break;
+        }
+        retryCount++;
+      }
+      if(!randData){
+        return;
+      }
       const authParam: userAuth.AuthParam = {
         challenge: randData,
         authType: [userAuth.UserAuthType.PIN],
@@ -604,19 +811,172 @@ struct Index {
 }
 ```
 
+### onResult<sup>22+</sup>
+
+onResult(callback: IAuthCallback): void
+
+订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。
+
+如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#on20)接口订阅。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on10)。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                              | 必填 | 说明                                       |
+| -------- | --------------------------------- | ---- | ------------------------------------------ |
+| callback | [IAuthCallback](#iauthcallback10) | 是   | 认证接口的回调函数，用于返回认证结果。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| 12500002 | General operation error. |
+
+**示例1：**
+
+以模系统方式进行用户身份认证。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: int = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance success');
+  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
+  userAuthInstance.onResult({
+    onResult: (result: userAuth.AuthResult) => {
+      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+    }
+  });
+  console.info('auth on success');
+  userAuthInstance.start();
+  console.info('auth start success');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
+**示例2：**
+
+以模应用方式进行用户身份认证。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+@Entry
+@Component
+struct Index {
+  modelApplicationAuth(): void {
+    try {
+      const rand = cryptoFramework.createRandom();
+      const len: int = 16;
+      let randData: Uint8Array | null = null;
+      let retryCount = 0;
+      while(retryCount < 3){
+        randData = rand?.generateRandomSync(len)?.data;
+        if(randData){
+          break;
+        }
+        retryCount++;
+      }
+      if(!randData){
+        return;
+      }
+      const authParam: userAuth.AuthParam = {
+        challenge: randData,
+        authType: [userAuth.UserAuthType.PIN],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      };
+      const uiContext: UIContext = this.getUIContext();
+      const context: Context | undefined = uiContext.getHostContext();
+      const widgetParam: userAuth.WidgetParam = {
+        title: '请输入密码',
+        uiContext: context,
+      };
+      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+      console.info('get userAuth instance success');
+      // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
+      userAuthInstance.onResult({
+        onResult: (result: userAuth.AuthResult) => {
+          console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+        }
+      });
+      console.info('auth on success');
+      userAuthInstance.start();
+      console.info('auth start success');
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Button('start auth')
+        .onClick(() => {
+          this.modelApplicationAuth();
+        })
+    }
+  }
+}
+```
+
 ### off<sup>10+</sup>
 
 off(type: 'result', callback?: IAuthCallback): void
 
 取消订阅用户身份认证的结果。
 
-> **说明**：
+> **说明：** 
 > 
 > 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance10)对象调用该接口进行取消订阅。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offResult](#offResult22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -627,11 +987,11 @@ off(type: 'result', callback?: IAuthCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -644,7 +1004,18 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -667,6 +1038,85 @@ try {
 }
 ```
 
+### offResult<sup>22+</sup>
+
+offResult(callback?: IAuthCallback): void
+
+取消订阅用户身份认证的结果。
+
+> **说明：** 
+> 
+> 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance10)对象调用该接口进行取消订阅。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off10)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                              | 必填 | 说明                                       |
+| -------- | --------------------------------- | ---- | ------------------------------------------ |
+| callback | [IAuthCallback](#iauthcallback10) | 否   | 认证接口的回调函数，用于返回认证结果。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: int = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance success');
+  userAuthInstance.offResult({
+    onResult: (result: userAuth.AuthResult) => {
+      console.info(`auth off result = ${JSON.stringify(result)}`);
+    }
+  });
+  console.info('auth off success');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
 ### start<sup>10+</sup>
 
 start(): void
@@ -674,34 +1124,36 @@ start(): void
 开始认证。
 
 > **说明：**
+>
 > 每个UserAuthInstance只能进行一次认证，需要再次认证时，必须重新获取UserAuthInstance。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC 或 ohos.permission.USER_AUTH_FROM_BACKGROUND（仅向系统应用开放）
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC 或 ohos.permission.USER_AUTH_FROM_BACKGROUND（仅向系统应用开放）
 
 从API 20开始，仅系统应用可以通过申请ohos.permission.USER_AUTH_FROM_BACKGROUND，在后台发起认证。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 201      | Permission verification failed. Possible causes:1.No permission to access biometric. 2.No permission to start authentication from background.|
-| 401      | Incorrect parameters. Possible causes: 1.Incorrect parameter types. |
-| 12500001 | Authentication failed.                           |
+| 201      | Permission denied. Possible causes: <br>1. No permission to access biometric. <br>2. No permission to start authentication from background. |
+| 401      | Parameter error. Possible causes: <br>1. Incorrect parameter types. |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
-| 12500004 | Authentication timeout.                          |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
-| 12500007 | Authentication service is busy.                  |
 | 12500009 | Authentication is locked out.                    |
 | 12500010 | The type of credential has not been enrolled.    |
-| 12500011 | Switched to the custom authentication process.   |
+| 12500011 | Switched to the customized authentication process.   |
 | 12500013 | Operation failed because of PIN expired. |
 
 **示例：**
@@ -714,7 +1166,18 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -739,22 +1202,26 @@ cancel(): void
 
 取消认证。
 
-> **说明**：
+> **说明：** 
 >
 > 此时UserAuthInstance必须是正在进行认证的对象。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 201      | Permission verification failed. |
-| 401      | Incorrect parameters. Possible causes: 1.Incorrect parameter types. |
+| 201      | Permission denied. |
+| 401      | Parameter error. Possible causes: <br>1. Incorrect parameter types. |
 | 12500002 | General operation error.        |
 
 **示例：**
@@ -767,7 +1234,18 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam : userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -789,18 +1267,327 @@ try {
 }
 ```
 
+### on<sup>20+</sup>
+
+on(type: 'authTip', callback: AuthTipCallback): void
+
+订阅身份认证过程中的提示信息。通过该接口可以获取到认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败尝试。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAuthTip](#onAuthTip22)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型           | 必填 | 说明                                       |
+| -------- | ------------- | ---- | ------------------------------------------ |
+| type     | string        | 是   | 订阅事件类型，支持的事件为'authTip'，当[start()](#start10)调用完成，发起身份认证，触发该事件。 |
+| callback | [AuthTipCallback](#authtipcallback20) | 是   | 认证接口的回调函数，用于返回认证中间状态。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: number = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance success');
+  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onAuthTip获取到认证中间状态。
+  userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
+    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+  });
+  console.info('auth on success');
+  userAuthInstance.start();
+  console.info('auth start success');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
+### onAuthTip<sup>22+</sup>
+
+onAuthTip(callback: AuthTipCallback): void
+
+订阅身份认证过程中的提示信息。通过该接口可以获取到认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败尝试。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on20)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型           | 必填 | 说明                                       |
+| -------- | ------------- | ---- | ------------------------------------------ |
+| callback | [AuthTipCallback](#authtipcallback20) | 是   | 认证接口的回调函数，用于返回认证中间状态。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: int = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance success');
+  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onAuthTip获取到认证中间状态。
+  userAuthInstance.onAuthTip((authTipInfo: userAuth.AuthTipInfo) => {
+    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+  });
+  console.info('auth on success');
+  userAuthInstance.start();
+  console.info('auth start success');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
+### off<sup>20+</sup>
+
+off(type: 'authTip', callback?: AuthTipCallback): void
+
+取消订阅用户身份认证中间状态。
+
+> **说明：** 
+> 
+> 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance10)对象调用该接口进行取消订阅。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAuthTip](#offAuthTip22)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型           | 必填 | 说明                                       |
+| -------- | ------------- | ---- | ------------------------------------------ |
+| type     | string        | 是   | 取消订阅的事件类型，支持的事件为'authTip'，当[start()](#start10)调用完成，发起身份认证并调用[on()](#on20)订阅该事件后，调用该方法可取消订阅，不会再触发该事件。 |
+| callback | [AuthTipCallback](#authtipcallback20) | 否   | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用[on()](#on20)接口时传递的参数值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: number = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance success');
+  userAuthInstance.off('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
+    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+  });
+  console.info('auth off success');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
+### offAuthTip<sup>22+</sup>
+
+offAuthTip(callback?: AuthTipCallback): void
+
+取消订阅用户身份认证中间状态。
+
+> **说明：** 
+> 
+> 需要使用已经成功订阅事件的[UserAuthInstance](#userauthinstance10)对象调用该接口进行取消订阅。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off10)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型           | 必填 | 说明                                       |
+| -------- | ------------- | ---- | ------------------------------------------ |
+| callback | [AuthTipCallback](#authtipcallback20) | 否   | 认证接口的回调函数，用于返回认证中间状态。 当不传该参数时默认值为调用[on()](#on20)接口时传递的参数值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: int = 16;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance success');
+  userAuthInstance.offAuthTip((authTipInfo: userAuth.AuthTipInfo) => {
+    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+  });
+  console.info('auth off success');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
 ## userAuth.getUserAuthInstance<sup>10+</sup>
 
 getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance
 
 获取[UserAuthInstance](#userauthinstance10)对象，执行用户身份认证，并支持使用统一用户身份认证控件。
 
-> **说明：**
+> **说明：** 
+>
 > 每个UserAuthInstance只能进行一次认证，需要再次认证时，必须重新获取UserAuthInstance。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -817,11 +1604,11 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | 12500002 | General operation error.                         |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
@@ -836,7 +1623,18 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -858,30 +1656,40 @@ try {
 表示认证结果信息，用于描述认证结果。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------- |
-| result        | number | 是   | 认证结果。       |
-| token        | Uint8Array | 否   | 用户身份认证通过的凭证。 |
-| remainAttempts  | number     | 否   | 剩余的认证尝试次数。 |
-| lockoutDuration | number     | 否   | 认证操作的锁定时长，时间单位为毫秒ms。 |
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ----------- | ------ | ---- | ---- | -------------------- |
+| result        | number | 否 | 否 | 认证结果。       |
+| token        | Uint8Array | 否 | 是 | 用户身份认证通过的凭证。 |
+| remainAttempts  | number     | 否 | 是 | 剩余的认证尝试次数。 |
+| lockoutDuration | number     | 否 | 是 | 认证操作的锁定时长，时间单位为毫秒ms。 |
 
 ## TipInfo<sup>(deprecated)</sup>
 
 表示认证过程中的提示信息，用于提供认证过程的反馈。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------- |
-| module        | number | 是   | 发送提示信息的模块标识。       |
-| tip        | number | 是   | 认证过程提示信息。       |
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ----- | ---- | ---- | -------------------- |
+| module        | number | 否 | 否 | 发送提示信息的模块标识。       |
+| tip        | number | 否 | 否 | 认证过程提示信息。       |
 
 ## EventInfo<sup>(deprecated)</sup>
 
@@ -892,9 +1700,14 @@ type EventInfo = AuthResultInfo | TipInfo
 该类型为下表类型取值中的联合类型。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[UserAuthResult](#userauthresult10)替代。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 | 类型    | 说明                       |
 | --------- | ----------------------- |
@@ -910,9 +1723,14 @@ type AuthEventKey = 'result' | 'tip'
 该类型为下表类型取值中的联合类型。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 | 类型       | 说明                    |
 | ---------- | ----------------------- |
@@ -924,6 +1742,7 @@ type AuthEventKey = 'result' | 'tip'
 认证接口的异步回调对象。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[IAuthCallback](#iauthcallback10)替代。
 
 ### callback<sup>(deprecated)</sup>
@@ -933,9 +1752,14 @@ callback(result : EventInfo) : void
 通过该回调获取认证结果信息或认证过程中的提示信息。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[onResult](#onresult10)替代。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -976,8 +1800,10 @@ try {
       switch (result.tip) {
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT:
           // do something;
+          break;
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_DARK:
           // do something;
+          break;
         default:
           // do others.
       }
@@ -996,6 +1822,7 @@ try {
 执行用户认证的对象。
 
 > **说明：**
+>
 > 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[UserAuthInstance](#userauthinstance10)替代。
 
 ### on<sup>(deprecated)</sup>
@@ -1005,10 +1832,15 @@ on : (name : AuthEventKey, callback : AuthEvent) => void
 订阅指定类型的用户认证事件。
 
 > **说明：**
+>
 > - 从 API version 9 开始支持，从 API version 10 开始废弃。
 > - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行订阅。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1019,11 +1851,11 @@ on : (name : AuthEventKey, callback : AuthEvent) => void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 401 | Incorrect parameters. |
+| 401 | Parameter error. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -1051,8 +1883,10 @@ try {
       switch (result.tip) {
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT:
           // do something;
+          break;
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_DARK:
           // do something;
+          break;
         default:
           // do others.
       }
@@ -1073,10 +1907,15 @@ off : (name : AuthEventKey) => void
 取消订阅特定类型的认证事件。
 
 > **说明：**
+>
 > - 从 API version 9 开始支持，从 API version 10 开始废弃。
 > - 需要使用已经成功订阅事件的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消订阅。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 | 名称    | 类型                        | 必填 | 说明                       |
 | --------- | -------------------------- | ---- | ------------------------- |
@@ -1084,11 +1923,11 @@ off : (name : AuthEventKey) => void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 401 | Incorrect parameters. |
+| 401 | Parameter error. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -1126,21 +1965,26 @@ start : () => void
 开始认证。
 
 > **说明：**
+>
 > - 从 API version 9 开始支持，从 API version 10 开始废弃。
 > - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行认证。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission verification failed. |
-| 401 | Incorrect parameters. |
+| 201 | Permission denied. |
+| 401 | Parameter error. |
 | 12500001 | Authentication failed. |
 | 12500002 | General operation error. |
 | 12500003 | The operation is canceled. |
@@ -1180,18 +2024,22 @@ cancel : () => void
 > - 从 API version 9 开始支持，从 API version 10 开始废弃。
 > - 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消认证，此[AuthInstance](#authinstancedeprecated)需要是正在进行认证的对象。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission verification failed. |
-| 401 | Incorrect parameters. |
+| 201 | Permission denied. |
+| 401 | Parameter error. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -1223,8 +2071,11 @@ getAuthInstance(challenge : Uint8Array, authType : UserAuthType, authTrustLevel 
 > - 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[getUserAuthInstance](#userauthgetuserauthinstance10)替代。
 > - 每个AuthInstance只能进行一次认证，若需要再次进行认证则需重新获取AuthInstance。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1242,11 +2093,11 @@ getAuthInstance(challenge : Uint8Array, authType : UserAuthType, authTrustLevel 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 401 | Incorrect parameters. |
+| 401 | Parameter error. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500006 | The authentication trust level is not supported. |
@@ -1274,11 +2125,15 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 查询指定类型和等级的认证能力是否支持。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1295,16 +2150,17 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 > - 如果已注册对应执行器，功能未禁用，但密码过期时，需返回12500013。
 
 > **注意：**
+>
 > - 若用户注册的锁屏口令是4位PIN时，其认证可信等级为ATL3，调用该接口查询是否支持ATL4级别的密码认证时，需返回12500010。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission verification failed. |
-| 401 | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. |
+| 201 | Permission denied. |
+| 401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500006 | The authentication trust level is not supported. |
@@ -1328,24 +2184,23 @@ try {
 
 表示返回码的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| SUCCESS                 | 12500000      | 执行成功。           |
-| FAIL                    | 12500001      | 认证失败。           |
-| GENERAL_ERROR           | 12500002      | 操作通用错误。       |
-| CANCELED                | 12500003      | 认证取消。           |
-| TIMEOUT                 | 12500004      | 认证超时。           |
-| TYPE_NOT_SUPPORT        | 12500005      | 认证类型不支持。      |
-| TRUST_LEVEL_NOT_SUPPORT | 12500006      | 认证等级不支持。      |
-| BUSY                    | 12500007      | 系统繁忙。           |
-| LOCKED                  | 12500009      | 认证器已锁定。       |
-| NOT_ENROLLED            | 12500010      | 用户未录入指定的系统身份认证凭据。 |
-| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | 用户取消了系统认证方式，选择应用自定义认证。需调用者拉起自定义认证界面。 |
-| PIN_EXPIRED<sup>12+</sup> | 12500013 | 当前的认证操作执行失败。返回这个错误码，表示系统锁屏口令过期。 |
+| SUCCESS                          | 12500000      | 执行成功。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| FAIL                             | 12500001      | 认证失败。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| GENERAL_ERROR                    | 12500002      | 操作通用错误。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CANCELED                         | 12500003      | 认证取消。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| TIMEOUT                          | 12500004      | 认证超时。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| TYPE_NOT_SUPPORT                 | 12500005      | 认证类型不支持。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| TRUST_LEVEL_NOT_SUPPORT          | 12500006      | 认证等级不支持。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| BUSY                             | 12500007      | 系统繁忙。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| INVALID_PARAMETERS<sup>20+</sup> | 12500008      | 参数校验失败。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| LOCKED                           | 12500009      | 认证器已锁定。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| NOT_ENROLLED                     | 12500010      | 用户未录入指定的系统身份认证凭据。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | 用户取消了系统认证方式，选择应用自定义认证。需调用者拉起自定义认证界面。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PIN_EXPIRED<sup>12+</sup> | 12500013 | 当前的认证操作执行失败。返回这个错误码，表示系统锁屏口令过期。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## UserAuth<sup>(deprecated)</sup>
 
@@ -1358,9 +2213,14 @@ constructor()
 创建认证器对象。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[getAuthInstance](#userauthgetauthinstancedeprecated)替代。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **示例：**
 
@@ -1377,11 +2237,16 @@ getVersion() : number
 获取认证器的版本信息。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -1406,11 +2271,16 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel) : n
 查询指定类型和等级的认证能力是否支持。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[getAvailableStatus](#userauthgetavailablestatus9)替代。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1446,11 +2316,16 @@ auth(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLev
 执行用户认证，使用回调函数返回结果。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[start](#startdeprecated)代替。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1498,11 +2373,16 @@ cancelAuth(contextID : Uint8Array) : number
 表示通过contextID取消本次认证。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[cancel](#canceldeprecated)代替。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1537,6 +2417,7 @@ if (cancelCode == userAuth.ResultCode.SUCCESS) {
 返回认证结果的回调对象。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[AuthEvent](#autheventdeprecated)代替。
 
 ### onResult<sup>(deprecated)</sup>
@@ -1546,9 +2427,14 @@ onResult: (result : number, extraInfo : AuthResult) => void
 回调函数，返回认证结果。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[callback](#callbackdeprecated)代替。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1588,9 +2474,14 @@ onAcquireInfo ?: (module : number, acquire : number, extraInfo : any) => void
 回调函数，返回认证过程中的提示信息，非必须实现。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[callback](#callbackdeprecated)代替。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1638,24 +2529,34 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示认证结果的对象。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[AuthResultInfo](#authresultinfodeprecated)代替。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-| 名称         | 类型   | 必填 | 说明                 |
-| ------------ | ---------- | ---- | -------------------|
-| token        | Uint8Array | 否   | 认证成功的令牌信息。 |
-| remainTimes  | number     | 否   | 剩余的认证操作次数。 |
-| freezingTime | number     | 否   | 认证操作的冻结时间。 |
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ---------- | ---- | ---- | -------------------|
+| token        | Uint8Array | 否 | 是 | 认证成功的令牌信息。 |
+| remainTimes  | number     | 否 | 是 | 剩余的认证操作次数。 |
+| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。 |
 
 ## ResultCode<sup>(deprecated)</sup>
 
 表示返回码的枚举。
 
 > **说明：**
+>
 > 从 API version 9 开始废弃，建议使用[UserAuthResultCode](#userauthresultcode9)代替。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称                    | 值 | 说明                 |
 | ----------------------- | ------ | -------------------- |
@@ -1676,9 +2577,14 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示人脸认证过程中提示码的枚举。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 11 开始废弃。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称                          |   值   |    说明                             |
 | ----------------------------- | ------ | ------------------------------------ |
@@ -1700,9 +2606,14 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示指纹认证过程中提示码的枚举。
 
 > **说明：**
+>
 > 从 API version 8 开始支持，从 API version 11 开始废弃。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称                              |   值   | 说明                                               |
 | --------------------------------- | ------ | -------------------------------------------------- |
@@ -1720,7 +2631,11 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
@@ -1732,11 +2647,15 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 表示认证结果的信任等级枚举。
 
-典型场景及举例可参考[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md)。
+典型场景及举例可参考[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值    | 说明                                                         |
 | ---- | ----- | ------------------------------------------------------------ |
@@ -1751,9 +2670,13 @@ type SecureLevel = string
 
 表示认证的安全级别。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从 API version 6 开始支持，从 API version 8 开始废弃。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
@@ -1765,9 +2688,13 @@ type AuthType = string
 
 表示认证类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从 API version 6 开始支持，从 API version 8 开始废弃。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
@@ -1780,9 +2707,14 @@ getAuthenticator(): Authenticator
 获取Authenticator对象，用于执行用户身份认证。
 
 > **说明：**
+>
 > 从 API version 8 开始废弃，建议使用[constructor](#constructordeprecated)替代。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -1802,6 +2734,7 @@ getAuthenticator(): Authenticator
 认证器对象。
 
 > **说明：**
+>
 > 从 API version 8 开始废弃，建议使用[UserAuth](#userauthdeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
@@ -1811,11 +2744,16 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 执行用户认证，使用callback方式作为异步方法。
 
 > **说明：**
+>
 > 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1848,11 +2786,16 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 执行用户认证，使用promise方式作为异步方法。
 
 > **说明：**
+>
 > 从 API version 8 开始废弃，建议使用[auth](#authdeprecated)替代。
 
-**需要权限**：ohos.permission.ACCESS_BIOMETRIC
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**需要权限：** ohos.permission.ACCESS_BIOMETRIC
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1887,9 +2830,14 @@ try {
 表示认证结果的枚举。
 
 > **说明：**
+>
 > 从 API version 8 开始废弃，建议使用[ResultCode](#resultcodedeprecated)替代。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称               |   值   | 说明                       |
 | ------------------ | ------ | -------------------------- |

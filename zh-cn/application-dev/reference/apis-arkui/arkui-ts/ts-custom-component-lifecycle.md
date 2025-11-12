@@ -232,7 +232,10 @@ struct PageOne {
 
 ## aboutToReuse<sup>10+</sup>
 
-aboutToReuse?(params: Record\<string, Object | undefined | null>): void
+
+ArkTS-Dyn: aboutToReuse?(params: Record\<string, Object | undefined | null>): void
+
+ArkTS-Sta: aboutToReuse(params: [ReuseObject](#reuseobject)): void
 
 当一个可复用的自定义组件从复用缓存中重新加入到节点树时，触发aboutToReuse生命周期回调，并将组件的构造参数传递给aboutToReuse。
 
@@ -245,12 +248,19 @@ aboutToReuse?(params: Record\<string, Object | undefined | null>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                                      | 说明                |
 |--------|-------------------------------------------|---------------------|
-| params | Record\<string, Object \| undefined \| null> | 自定义组件的构造参数。|
+| params | ArkTS-Dyn: Record\<string, Object \| undefined \| null><br>ArkTS-Sta: [ReuseObject](#reuseobject22+) | 自定义组件的构造参数。|
 
+**示例：**
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 export class Message {
@@ -291,6 +301,66 @@ struct Child {
   aboutToReuse(params: Record<string, ESObject>) {
     console.info("Recycle Child")
     this.message = params.message as Message
+  }
+
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(20)
+    }
+    .borderWidth(2)
+    .height(100)
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Button, Component, Reusable, ClickEvent, Text, ReuseObject } from "@ohos.arkui.component"
+import { State } from "@ohos.arkui.stateManagement"
+import hilog from '@ohos.hilog'
+
+export class Message {
+  value: string | undefined;
+
+  constructor(value: string) {
+    this.value = value
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State isSwitch: boolean = true
+
+  build() {
+    Column() {
+      Button('Hello World')
+        .fontSize(50)
+        .onClick(() => {
+          this.isSwitch = !this.isSwitch
+        })
+      if (this.isSwitch) {
+        Child({ message: new Message('Child1') })
+      } else {
+        Child({ message: new Message('Child2') })
+      }
+    }
+    .height("100%")
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State message: Message = new Message('AboutToReuse');
+
+  aboutToReuse(params: ReuseObject) {
+    if (params.has('message')) {
+      this.message = params['message'] as Message
+    }
   }
 
   build() {
@@ -578,3 +648,147 @@ struct IndexComponent {
 ```
 
 ![onWillApplyTheme_V2](figures/onWillApplyTheme_V2.png)
+
+## ReuseObject<sup>22+<sup>
+
+aboutToReuse生命周期回调的参数类型。
+
+### 属性
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本**：22
+
+| 名称       | 类型                                                     | 只读|可选|说明                                   |
+| ---------- | ------------------------------------------------------------ | ------|------|-------------------------------------- |
+| raw | [RecordData](../../apis-arkts/js-apis-util.md#recorddata20) | 是 |否| 获取对象中保存的原始值。|
+
+### $_get<sup>22+<sup>
+
+\$_get(key: string): RecordData
+
+通过key获取对象中保存的数据。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明         |
+| ------ | ------------- | ---- | ------------ |
+| key   | string | 是   | 用于获取数据的键 |
+
+**返回值：**
+
+| 类型          | 说明             |
+| ------------- | ---------------- |
+| [RecordData](js-apis-util.md#recorddata20) | [RecordData](js-apis-util.md#recorddata20) 类的实例。 |
+
+### has<sup>22+<sup>
+
+has(key: string): boolean
+
+查询对象中当前是否保存有传入的key键。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明         |
+| ------ | ------------- | ---- | ------------ |
+| key   | string | 是   | 用于获取数据的键 |
+
+**返回值：**
+
+| 类型          | 说明             |
+| ------------- | ---------------- |
+| boolean | 对象中是否保存有传入的key键。 |
+
+### keys<sup>22+<sup>
+
+keys(): string[]
+
+获取对象中保存的所有key键。 
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本**：22
+
+**返回值：**
+
+| 类型          | 说明             |
+| ------------- | ---------------- |
+| string[] | 对象中保存的所有key键组成的数组。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { Entry, Column, Button, Component, Reusable, ClickEvent, Text, ReuseObject } from "@ohos.arkui.component"
+import { State } from "@ohos.arkui.stateManagement"
+import hilog from '@ohos.hilog'
+
+export class Message {
+  value: string | undefined;
+
+  constructor(value: string) {
+    this.value = value
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State isSwitch: boolean = true
+
+  build() {
+    Column() {
+      Button('Hello World')
+        .fontSize(50)
+        .onClick(() => {
+          this.isSwitch = !this.isSwitch
+        })
+      if (this.isSwitch) {
+        Child({ message: new Message('Child1') })
+      } else {
+        Child({ message: new Message('Child2') })
+      }
+    }
+    .height("100%")
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State message: Message = new Message('AboutToReuse');
+
+  aboutToReuse(params: ReuseObject) {
+    console.info("reuse component with params: " + params.keys())
+    if (params.has('message')) {
+      this.message = params['message'] as Message
+    }
+  }
+
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(20)
+    }
+    .borderWidth(2)
+    .height(100)
+  }
+}
+```

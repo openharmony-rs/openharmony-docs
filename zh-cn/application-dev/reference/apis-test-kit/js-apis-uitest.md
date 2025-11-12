@@ -1,5 +1,12 @@
 # @ohos.UiTest
 
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @inter515-->
+<!--Designer: @inter515-->
+<!--Tester: @laonie666-->
+<!--Adviser: @Brilliantry_Rui-->
+
 UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要支持如点击、双击、长按、滑动等UI操作能力。
 
 该模块提供以下功能：
@@ -13,6 +20,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
 
 > **说明：**
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
@@ -20,12 +28,12 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 
 ## 导入模块
 
-ArkTS1.1: 
+ArkTS-Dyn：
 ```ts
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
 
-ArkTS1.2: 
+ArkTS-Sta：
 ```ts
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
@@ -36,14 +44,14 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
-| 名称                    | 值 | 说明                                                                  |
-|-----------------------|---|---------------------------------------------------------------------|
-| EQUALS                | 0 | 等于给定值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| CONTAINS              | 1 | 包含给定值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| STARTS_WITH           | 2 | 以给定值开始。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| ENDS_WITH             | 3 | 以给定值结束。 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| REG_EXP<sup>18+</sup> | 4 | 正则表达式匹配。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
-| REG_EXP_ICASE<sup>18+</sup>          | 5 | 正则表达式匹配，忽略大小写。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| 名称  | 值 | 说明      |
+|-----------------------|---|--------------------------------|
+| EQUALS                | 0 | 等于给定值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 20          |
+| CONTAINS              | 1 | 包含给定值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 20         |
+| STARTS_WITH           | 2 | 以给定值开始。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 20        |
+| ENDS_WITH             | 3 | 以给定值结束。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 20       |
+| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 20       |
+| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 20 |
 
 ## ResizeDirection<sup>9+</sup>
 
@@ -52,6 +60,10 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称       | 值   | 说明     |
 | ---------- | ---- | -------- |
@@ -72,9 +84,9 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| y    | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
-| displayId<sup>20+</sup>    | number | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| x    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| y    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。|
+| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 20 |
 
 ## Rect<sup>9+</sup>
 
@@ -84,11 +96,11 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| right  | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| bottom | ArkTS1.1: number  <br />ArkTS1.2: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| displayId<sup>20+</sup> | number |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| left   | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| top    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| right  | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| bottom | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22   |
 
 ## WindowMode<sup>9+</sup>
 
@@ -97,6 +109,10 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20 
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
@@ -113,6 +129,10 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 | 名称         | 值   | 说明                                     |
 | ------------ | ---- | ---------------------------------------- |
 | ROTATION_0   | 0    | 设备显示器不旋转，初始形态垂直显示。     |
@@ -128,12 +148,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
-| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
-| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>从API version 11开始废弃，建议使用active替代。                                                |
-| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| displayId<sup>20+</sup> | number | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20                       |
+| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br />                     |
+| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br /> |
+| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>  **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>   **ArkTS-Dyn起始版本：** 9   <br>从API version 11开始废弃，建议使用active替代。                            |
+| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 20<br />                  |
+| displayId<sup>20+</sup> | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 20 |
 
 ## UiDirection<sup>10+</sup>
 
@@ -142,6 +162,10 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20 
 
 | 名称  | 值   | 说明   |
 | ----- | ---- | ------ |
@@ -158,6 +182,10 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20 
+
 | 名称                | 值   | 说明         |
 | ------------------- | ---- | ------------ |
 | MOUSE_BUTTON_LEFT   | 0    | 鼠标左键。   |
@@ -171,6 +199,10 @@ UI事件的相关信息。
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
@@ -187,10 +219,14 @@ UI事件的相关信息。
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称       | 类型   | 只读 | 可选 | 说明                                                     |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | 否  | 是  | 触摸板多指滑动结束是否停留1s后再抬起，默认为false（不停留1s），true：停留，false：不停留。 |
-| speed       | ArkTS1.1: number  <br />ArkTS1.2: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。  |
+| speed       | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。  |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -200,6 +236,10 @@ UI事件的相关信息。
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                                       |
 | ---------- | ------ |----|----|----------------------------------------------------------|
@@ -231,6 +271,10 @@ text(txt: string, pattern?: MatchPattern): On
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
 
 **参数：**
 
@@ -270,6 +314,10 @@ id(id: string): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明             |
@@ -307,6 +355,10 @@ id(id: string, pattern: MatchPattern): On
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20 
 
 **参数：**
 
@@ -351,6 +403,10 @@ type(tp: string): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -392,6 +448,10 @@ type(tp: string, pattern: MatchPattern): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名                   | 类型   | 必填 | 说明                                    |
@@ -430,6 +490,10 @@ clickable(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
@@ -466,6 +530,10 @@ longClickable(b?: boolean): On
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
 
 **参数：**
 
@@ -504,6 +572,10 @@ scrollable(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                        |
@@ -540,6 +612,10 @@ enabled(b?: boolean): On
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
 
 **参数：**
 
@@ -578,6 +654,10 @@ focused(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                  |
@@ -614,6 +694,10 @@ selected(b?: boolean): On
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
 
 **参数：**
 
@@ -652,6 +736,10 @@ checked(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
@@ -689,6 +777,10 @@ checkable(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
@@ -725,6 +817,10 @@ isBefore(on: On): On
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
 
 **参数：**
 
@@ -765,6 +861,10 @@ isAfter(on: On): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型       | 必填 | 说明                 |
@@ -804,6 +904,10 @@ within(on: On): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型       | 必填 | 说明                 |
@@ -842,6 +946,10 @@ inWindow(bundleName: string): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明             |
@@ -878,6 +986,10 @@ description(val: string, pattern?: MatchPattern): On
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20 
 
 **参数：**
 
@@ -917,6 +1029,10 @@ hint(val: string, pattern?: MatchPattern): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20 
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
@@ -948,7 +1064,9 @@ hint(val: string, pattern?: MatchPattern): On
 
 ### belongingDisplay<sup>20+</sup>
 
-belongingDisplay(displayId: number): On
+ArkTS-Dyn: belongingDisplay(displayId: number): On
+
+ArkTS-Sta: belongingDisplay(displayId: int): On
 
 获取指定屏幕内的控件对象，返回On对象自身。
 
@@ -956,11 +1074,15 @@ belongingDisplay(displayId: number): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ |----|---------------------------------------|
-| displayId | number | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
+| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
 
 **返回值：**
 
@@ -998,6 +1120,10 @@ click(): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1037,6 +1163,10 @@ doubleClick(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -1075,6 +1205,10 @@ longClick(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -1112,6 +1246,10 @@ getId(): Promise\<string>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1155,6 +1293,10 @@ getText(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明                              |
@@ -1192,6 +1334,10 @@ getType(): Promise\<string>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1231,6 +1377,10 @@ getBounds(): Promise\<Rect>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                     | 说明                                  |
@@ -1269,6 +1419,10 @@ getBoundsCenter(): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                       | 说明                                            |
@@ -1306,6 +1460,10 @@ isClickable(): Promise\<boolean>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1347,6 +1505,10 @@ isLongClickable(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型              | 说明                                               |
@@ -1386,6 +1548,10 @@ isChecked(): Promise\<boolean>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1427,6 +1593,10 @@ isCheckable(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型              | 说明                                                         |
@@ -1466,6 +1636,10 @@ isScrollable(): Promise\<boolean>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1508,6 +1682,10 @@ isEnabled(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型              | 说明                                                       |
@@ -1547,6 +1725,10 @@ isFocused(): Promise\<boolean>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1588,6 +1770,10 @@ isSelected(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型              | 说明                                                |
@@ -1627,6 +1813,10 @@ inputText(text: string): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1672,6 +1862,10 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1719,6 +1913,10 @@ clearText(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -1748,15 +1946,19 @@ async function demo() {
 
 ### scrollSearch<sup>9+</sup>
 
-ArkTS1.1: scrollSearch(on: On): Promise\<Component>
+ArkTS-Dyn: scrollSearch(on: On): Promise\<Component>
 
-ArkTS1.2: scrollSearch(on: On): Promise\<Component | null>
+ArkTS-Sta: scrollSearch(on: On): Promise\<Component | null>
 
 在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1766,12 +1968,12 @@ ArkTS1.2: scrollSearch(on: On): Promise\<Component | null>
 
 **返回值：**
 
-ArkTS1.1: 
+ArkTS-Dyn：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
 
-ArkTS1.2: 
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
@@ -1805,9 +2007,9 @@ async function demo() {
 
 ### scrollSearch<sup>18+</sup>
 
-ArkTS1.1: scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
+ArkTS-Dyn: scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-ArkTS1.2: scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Component | null>
+ArkTS-Sta: scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Component | null>
 
 在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
 
@@ -1815,22 +2017,26 @@ ArkTS1.2: scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Compo
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                    | 类型       | 必填 | 说明                                |
 |------------------------| ---------- | ---- |-----------------------------------|
 | on                     | [On](#on9) | 是   | 目标控件的属性要求。                        |
 | vertical |    boolean | 否 | 默认为true，表示查找方向是纵向。false表示查找方向为横向。 |
-| offset   | ArkTS1.1: number  <br />ArkTS1.2: int| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。    |
+| offset   | ArkTS-Dyn: number  <br />ArkTS-Sta: int| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。    |
 
 **返回值：**
 
-ArkTS1.1: 
+ArkTS-Dyn：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
 
-ArkTS1.2: 
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
@@ -1863,9 +2069,9 @@ async function demo() {
 
 ### scrollToTop<sup>9+</sup>
 
-ArkTS1.1: scrollToTop(speed?: number): Promise\<void>
+ArkTS-Dyn: scrollToTop(speed?: number): Promise\<void>
 
-ArkTS1.2: scrollToTop(speed?: int): Promise\<void>
+ArkTS-Sta: scrollToTop(speed?: int): Promise\<void>
 
 在控件上滑动到顶部（适用支持滑动的控件），使用Promise异步回调。
 
@@ -1873,11 +2079,15 @@ ArkTS1.2: scrollToTop(speed?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -1910,9 +2120,9 @@ async function demo() {
 
 ### scrollToBottom<sup>9+</sup>
 
-ArkTS1.1: scrollToBottom(speed?: number): Promise\<void>
+ArkTS-Dyn: scrollToBottom(speed?: number): Promise\<void>
 
-ArkTS1.2: scrollToBottom(speed?: int): Promise\<void>
+ArkTS-Sta: scrollToBottom(speed?: int): Promise\<void>
 
 在控件上滑动到底部（适用支持滑动的控件），使用Promise异步回调。
 
@@ -1920,11 +2130,15 @@ ArkTS1.2: scrollToBottom(speed?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -1967,6 +2181,10 @@ dragTo(target: Component): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明       |
@@ -2005,9 +2223,9 @@ async function demo() {
 
 ### pinchOut<sup>9+</sup>
 
-ArkTS1.1: pinchOut(scale: number): Promise\<void>
+ArkTS-Dyn: pinchOut(scale: number): Promise\<void>
 
-ArkTS1.2: pinchOut(scale: double): Promise\<void>
+ArkTS-Sta: pinchOut(scale: double): Promise\<void>
 
 将控件按指定的比例进行捏合放大，使用Promise异步回调。
 
@@ -2015,11 +2233,15 @@ ArkTS1.2: pinchOut(scale: double): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | ArkTS1.1: number  <br />ArkTS1.2: double | 是   | 指定放大的比例。取值范围大于1。 |
+| scale  | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 是   | 指定放大的比例。取值范围大于1。 |
 
 **返回值：**
 
@@ -2052,9 +2274,9 @@ async function demo() {
 
 ### pinchIn<sup>9+</sup>
 
-ArkTS1.1: pinchIn(scale: number): Promise\<void>
+ArkTS-Dyn: pinchIn(scale: number): Promise\<void>
 
-ArkTS1.2: pinchIn(scale: double): Promise\<void>
+ArkTS-Sta: pinchIn(scale: double): Promise\<void>
 
 将控件按指定的比例进行捏合缩小，使用Promise异步回调。
 
@@ -2062,11 +2284,15 @@ ArkTS1.2: pinchIn(scale: double): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | ArkTS1.1: number  <br />ArkTS1.2: double | 是   | 指定缩小的比例。取值范围为0~1。 |
+| scale  | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 是   | 指定缩小的比例。取值范围为0~1。 |
 
 **返回值：**
 
@@ -2107,6 +2333,10 @@ getDescription(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明                              |
@@ -2144,6 +2374,10 @@ getHint(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明                   |
@@ -2173,7 +2407,9 @@ async function demo() {
 ```
 ### getDisplayId<sup>20+</sup>
 
-getDisplayId(): Promise\<number>
+ArkTS-Dyn: getDisplayId(): Promise\<number> 
+
+ArkTS-Sta: getDisplayId(): Promise\<int>
 
 获取控件对象所属的屏幕ID，使用Promise异步回调。
 
@@ -2181,11 +2417,15 @@ getDisplayId(): Promise\<number>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明                   |
 | ---------------- |----------------------|
-| Promise\<number> | Promise对象，返回控件所属的屏幕ID。 |
+| ArkTS-Dyn: Promise\<number>  <br />ArkTS-Sta: Promise\<int> | Promise对象，返回控件所属的屏幕ID。 |
 
 **错误码：**
 
@@ -2223,6 +2463,10 @@ static create(): Driver
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型 | 说明           |
@@ -2248,9 +2492,9 @@ async function demo() {
 
 ### delayMs<sup>9+</sup>
 
-ArkTS1.1: delayMs(duration: number): Promise\<void>
+ArkTS-Dyn: delayMs(duration: number): Promise\<void>
 
-ArkTS1.2: delayMs(duration: int): Promise\<void>
+ArkTS-Sta: delayMs(duration: int): Promise\<void>
 
 在给定的时间内延时，使用Promise异步回调。
 
@@ -2258,11 +2502,15 @@ ArkTS1.2: delayMs(duration: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| duration | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
+| duration | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -2291,15 +2539,19 @@ async function demo() {
 
 ### findComponent<sup>9+</sup>
 
-ArkTS1.1: findComponent(on: On): Promise\<Component>
+ArkTS-Dyn: findComponent(on: On): Promise\<Component>
 
-ArkTS1.2: findComponent(on: On): Promise\<Component \| null>
+ArkTS-Sta: findComponent(on: On): Promise\<Component \| null>
 
 根据给出的目标控件属性要求查找目标控件，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2309,12 +2561,12 @@ ArkTS1.2: findComponent(on: On): Promise\<Component \| null>
 
 **返回值：**
 
-ArkTS1.1: 
+ArkTS-Dyn：
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
 
-ArkTS1.2: 
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
@@ -2343,15 +2595,19 @@ async function demo() {
 
 ### findComponents<sup>9+</sup>
 
-ArkTS1.1: findComponents(on: On): Promise\<Array\<Component>>
+ArkTS-Dyn: findComponents(on: On): Promise\<Array\<Component>>
 
-ArkTS1.2: findComponents(on: On): Promise\<Array\<Component> \| null>
+ArkTS-Sta: findComponents(on: On): Promise\<Array\<Component> \| null>
 
 根据给出的目标控件属性要求查找出所有匹配控件，以列表保存，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2361,12 +2617,12 @@ ArkTS1.2: findComponents(on: On): Promise\<Array\<Component> \| null>
 
 **返回值：**
 
-ArkTS1.1: 
+ArkTS-Dyn：
 | 类型                                       | 说明                                    |
 | ------------------------------------------ | --------------------------------------- |
 | Promise\<Array\<[Component](#component9)>> | Promise对象，返回控件对象的列表。 |
 
-ArkTS1.2: 
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<Array\<[Component](#component9)>\|null\> |  Promise对象，返回找到的控件对象的列表。在未找到目标对象时以Promise形式返回null。 |
@@ -2395,15 +2651,19 @@ async function demo() {
 
 ### findWindow<sup>9+</sup>
 
-ArkTS1.1: findWindow(filter: WindowFilter): Promise\<UiWindow>
+ArkTS-Dyn: findWindow(filter: WindowFilter): Promise\<UiWindow>
 
-ArkTS1.2: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
+ArkTS-Sta: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
 
 通过指定窗口的属性来查找目标窗口，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2413,12 +2673,12 @@ ArkTS1.2: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
 
 **返回值：**
 
-ArkTS1.1: 
+ArkTS-Dyn：
 | 类型                             | 说明                                  |
 | -------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9)> | Promise对象，返回目标窗口对象。 |
 
-ArkTS1.2: 
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9) \| null> | Promise对象，返回找到的目标窗口对象，在未找到目标窗口对象时以Promise形式返回null。 |
@@ -2447,9 +2707,9 @@ async function demo() {
 
 ### waitForComponent<sup>9+</sup>
 
-ArkTS1.1: waitForComponent(on: On, time: number): Promise\<Component>
+ArkTS-Dyn: waitForComponent(on: On, time: number): Promise\<Component>
 
-ArkTS1.2: waitForComponent(on: On, time: int): Promise\<Component | null>
+ArkTS-Sta: waitForComponent(on: On, time: int): Promise\<Component | null>
 
 在用户给定的时间内，持续查找满足控件属性要求的目标控件，使用Promise异步回调。
 
@@ -2457,21 +2717,25 @@ ArkTS1.2: waitForComponent(on: On, time: int): Promise\<Component | null>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型       | 必填 | 说明                                      |
 | ------ | ---------- | ---- | ----------------------------------------- |
 | on    | [On](#on9) | 是   | 目标控件的属性要求。                      |
-| time   | ArkTS1.1: number  <br />ArkTS1.2: int     | 是   | 查找目标控件的持续时间。单位ms，取值范围：大于等于0的整数。 |
+| time   | ArkTS-Dyn: number  <br />ArkTS-Sta: int     | 是   | 查找目标控件的持续时间。单位ms，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
-ArkTS1.1: 
+ArkTS-Dyn：
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
 
-ArkTS1.2: 
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的控件对象，在未找到目标对象时以Promise形式返回null。 |
@@ -2507,6 +2771,10 @@ assertComponentExist(on: On): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2550,6 +2818,10 @@ pressBack(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -2576,7 +2848,9 @@ async function demo() {
 
 ### pressBack<sup>20+</sup>
 
-pressBack(displayId: number): Promise\<void>
+ArkTS-Dyn: pressBack(displayId: number): Promise\<void>
+
+ArkTS-Sta: pressBack(displayId: int): Promise\<void>
 
 对指定屏幕进行点击BACK键的操作，使用Promise异步回调。
 
@@ -2584,11 +2858,15 @@ pressBack(displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| displayId | number | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
@@ -2617,9 +2895,9 @@ async function demo() {
 
 ### triggerKey<sup>9+</sup>
 
-ArkTS1.1: triggerKey(keyCode: number): Promise\<void>
+ArkTS-Dyn: triggerKey(keyCode: number): Promise\<void>
 
-ArkTS1.2: triggerKey(keyCode: int): Promise\<void>
+ArkTS-Sta: triggerKey(keyCode: int): Promise\<void>
 
 传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
 
@@ -2627,11 +2905,15 @@ ArkTS1.2: triggerKey(keyCode: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
@@ -2660,7 +2942,9 @@ async function demo() {
 
 ### triggerKey<sup>20+</sup>
 
-triggerKey(keyCode: number, displayId: number): Promise\<void>
+ArkTS-Dyn: triggerKey(keyCode: number, displayId: number): Promise\<void>
+
+ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 
 在指定屏幕，传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
 
@@ -2668,12 +2952,16 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
-| displayId | number | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| keyCode | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
@@ -2703,23 +2991,25 @@ async function demo() {
 
 ### triggerCombineKeys<sup>9+</sup>
 
-ArkTS1.1: triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
-
-ArkTS1.2: triggerCombineKeys(key0: int, key1: int, key2?: int): Promise\<void> 
+triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
 通过给定的key值，找到对应组合键并点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如ctrl+c。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 指定的第三个key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key0   | number | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | number | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | number | 否   | 指定的第三个key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -2748,7 +3038,9 @@ async function demo() {
 
 ### triggerCombineKeys<sup>20+</sup>
 
-triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
+ArkTS-Dyn: triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
+
+ArkTS-Sta: triggerCombineKeys(key0: int, key1: int, key2?: int, displayId?: int): Promise\<void>
 
 通过给定的key值，找到对应组合键，并在指定屏幕下进行点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如ctrl+c。
 
@@ -2756,14 +3048,18 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | number | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | number | 否   | 指定的第三个key值，取值范围：大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| displayId | number | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。 |
+| key0   | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 指定的第三个key值，取值范围：大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。 |
 
 **返回值：**
 
@@ -2793,9 +3089,9 @@ async function demo() {
 
 ### click<sup>9+</sup>
 
-ArkTS1.1: click(x: number, y: number): Promise\<void>
+ArkTS-Dyn: click(x: number, y: number): Promise\<void>
 
-ArkTS1.2: click(x: int, y: int): Promise\<void>
+ArkTS-Sta: click(x: int, y: int): Promise\<void>
 
 在目标坐标点单击，使用Promise异步回调。
 
@@ -2803,12 +3099,16 @@ ArkTS1.2: click(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -2845,6 +3145,10 @@ clickAt(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                            |
@@ -2879,9 +3183,9 @@ async function demo() {
 
 ### doubleClick<sup>9+</sup>
 
-ArkTS1.1: doubleClick(x: number, y: number): Promise\<void>
+ArkTS-Dyn: doubleClick(x: number, y: number): Promise\<void>
 
-ArkTS1.2: doubleClick(x: int, y: int): Promise\<void>
+ArkTS-Sta: doubleClick(x: int, y: int): Promise\<void>
 
 在目标坐标点双击，使用Promise异步回调。
 
@@ -2889,12 +3193,16 @@ ArkTS1.2: doubleClick(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -2931,6 +3239,10 @@ doubleClickAt(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                            |
@@ -2966,9 +3278,9 @@ async function demo() {
 ### longClick<sup>9+</sup>
 
 
-ArkTS1.1: longClick(x: number, y: number): Promise\<void>
+ArkTS-Dyn: longClick(x: number, y: number): Promise\<void>
 
-ArkTS1.2: longClick(x: int, y: int): Promise\<void>
+ArkTS-Sta: longClick(x: int, y: int): Promise\<void>
 
 在目标坐标点长按，使用Promise异步回调。
 
@@ -2976,12 +3288,16 @@ ArkTS1.2: longClick(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -3010,9 +3326,9 @@ async function demo() {
 
 ### longClickAt<sup>20+</sup>
 
-ArkTS1.1: longClickAt(point: Point, duration?: number): Promise\<void>
+ArkTS-Dyn: longClickAt(point: Point, duration?: number): Promise\<void>
 
-ArkTS1.2: longClickAt(point: Point, duration?: int): Promise\<void>
+ArkTS-Sta: longClickAt(point: Point, duration?: int): Promise\<void>
 
 长按目标坐标点，支持指定长按时长，使用Promise异步回调。
 
@@ -3020,12 +3336,16 @@ ArkTS1.2: longClickAt(point: Point, duration?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
 | point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| duration | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -3055,9 +3375,9 @@ async function demo() {
 
 ### swipe<sup>9+</sup>
 
-ArkTS1.1: swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+ArkTS-Dyn: swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-ArkTS1.2: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
+ArkTS-Sta: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
 
 从起始坐标点滑向目的坐标点，使用Promise异步回调。
 
@@ -3065,15 +3385,19 @@ ArkTS1.2: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| startx | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。                       |
-| starty | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| endx   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
-| endy   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| startx | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。                       |
+| starty | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
+| endx   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
+| endy   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3110,13 +3434,17 @@ swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| speed  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
 
 **返回值：**
 
@@ -3146,9 +3474,9 @@ async function demo() {
 
 ### drag<sup>9+</sup>
 
-ArkTS1.1: drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
+ArkTS-Dyn: drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-ArkTS1.2: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
+ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Promise\<void>
 
 从起始坐标点拖拽至目的坐标点，使用Promise异步回调。
 
@@ -3160,15 +3488,19 @@ ArkTS1.2: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pro
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
-| starty | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
-| endx   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
-| endy   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
-| speed  | ArkTS1.1: number  <br />ArkTS1.2: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| startx | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
+| starty | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
+| endx   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
+| endy   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
 
 **返回值：**
 
@@ -3198,7 +3530,9 @@ async function demo() {
 
 ### dragBetween<sup>20+</sup>
 
-dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+ArkTS-Dyn: dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+
+ArkTS-Sta: dragBetween(from: Point, to: Point, speed?: int, duration?: int): Promise\<void>
 
 从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
 
@@ -3210,14 +3544,18 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
-| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| speed  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int| 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| duration  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int| 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -3255,6 +3593,10 @@ screenCap(savePath: string): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                       |
@@ -3288,7 +3630,9 @@ async function demo() {
 
 ### screenCap<sup>20+</sup>
 
-screenCap(savePath: string, displayId: number): Promise\<boolean>
+ArkTS-Dyn: screenCap(savePath: string, displayId: number): Promise\<boolean>
+
+ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 
 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
 
@@ -3296,12 +3640,16 @@ screenCap(savePath: string, displayId: number): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | 文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     |  ArkTS-Dyn: number  <br />ArkTS-Sta: int| 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -3342,6 +3690,10 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3384,6 +3736,10 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                           | 说明                                    |
@@ -3410,7 +3766,9 @@ async function demo() {
 
 ### getDisplayRotation<sup>20+</sup>
 
-getDisplayRotation(displayId: number): Promise\<DisplayRotation>
+ArkTS-Dyn: getDisplayRotation(displayId: number): Promise\<DisplayRotation>
+
+ArkTS-Sta: getDisplayRotation(displayId: int): Promise\<DisplayRotation>
 
 获取当前设备指定屏幕的显示方向，使用Promise异步回调。
 
@@ -3418,11 +3776,15 @@ getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     |  ArkTS-Dyn: number  <br />ArkTS-Sta: int| 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -3463,6 +3825,10 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3505,6 +3871,10 @@ getDisplaySize(): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                       | 说明                                    |
@@ -3532,7 +3902,9 @@ async function demo() {
 
 ### getDisplaySize<sup>20+</sup>
 
-getDisplaySize(displayId: number): Promise\<Point>
+ArkTS-Dyn: getDisplaySize(displayId: number): Promise\<Point>
+
+ArkTS-Sta: getDisplaySize(displayId: int): Promise\<Point>
 
 获取当前设备指定屏幕的大小，使用Promise异步回调。
 
@@ -3540,11 +3912,15 @@ getDisplaySize(displayId: number): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。               |
+| displayId     |  ArkTS-Dyn: number  <br />ArkTS-Sta: int| 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。               |
 
 **返回值：**
 
@@ -3582,6 +3958,10 @@ getDisplayDensity(): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                       | 说明                                      |
@@ -3608,7 +3988,9 @@ async function demo() {
 
 ### getDisplayDensity<sup>20+</sup>
 
-getDisplayDensity(displayId: number): Promise\<Point>
+ArkTS-Dyn: getDisplayDensity(displayId: number): Promise\<Point>
+
+ArkTS-Sta: getDisplayDensity(displayId: int): Promise\<Point>
 
 获取当前设备指定屏幕的分辨率，使用Promise异步回调。
 
@@ -3616,11 +3998,15 @@ getDisplayDensity(displayId: number): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int| 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -3657,6 +4043,10 @@ wakeUpDisplay(): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -3696,6 +4086,10 @@ pressHome(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -3722,7 +4116,9 @@ async function demo() {
 
 ### pressHome<sup>20+</sup>
 
-pressHome(displayId: number): Promise\<void>
+ArkTS-Dyn: pressHome(displayId: number): Promise\<void>
+
+ArkTS-Sta: pressHome(displayId: int): Promise\<void>
 
 设备指定屏幕上注入返回桌面操作，使用Promise异步回调。
 
@@ -3734,11 +4130,15 @@ pressHome(displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     |  ArkTS-Dyn: number  <br />ArkTS-Sta: int| 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -3768,9 +4168,9 @@ async function demo() {
 
 ### waitForIdle<sup>9+</sup>
 
-ArkTS1.1: waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
+ArkTS-Dyn: waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-ArkTS1.2: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
+ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 判断当前界面的所有控件是否已经空闲，使用Promise异步回调。
 
@@ -3778,12 +4178,16 @@ ArkTS1.2: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| idleTime | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
-| timeout  | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。                    |
+| idleTime | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
+| timeout  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。                    |
 
 **返回值：**
 
@@ -3812,9 +4216,9 @@ async function demo() {
 
 ### fling<sup>9+</sup>
 
-ArkTS1.1: fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
+ArkTS-Dyn: fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 
-ArkTS1.2: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<void>
+ArkTS-Sta: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<void>
 
 模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
@@ -3822,14 +4226,18 @@ ArkTS1.2: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<void
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型             | 必填 | 说明                                                   |
 | ------- | ---------------- | ---- |------------------------------------------------------|
 | from    | [Point](#point9) | 是   | 手指接触屏幕的起始点坐标。                                        |
 | to      | [Point](#point9) | 是   | 手指离开屏幕时的坐标点。                                         |
-| stepLen | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
-| speed   | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| stepLen | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
+| speed   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3859,9 +4267,9 @@ async function demo() {
 
 ### injectMultiPointerAction<sup>9+</sup>
 
-ArkTS1.1: injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
+ArkTS-Dyn: injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
 
-ArkTS1.2: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promise\<boolean>
+ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promise\<boolean>
 
 向设备注入多指操作，使用Promise异步回调。
 
@@ -3869,12 +4277,16 @@ ArkTS1.2: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promis
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                             | 必填 | 说明                                                     |
 | -------- | -------------------------------- | ---- |--------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。                                  |
-| speed    | ArkTS1.1: number  <br />ArkTS1.2: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed    | ArkTS-Dyn: number  <br />ArkTS-Sta: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3915,9 +4327,9 @@ async function demo() {
 
 ### fling<sup>10+</sup>
 
-ArkTS1.1: fling(direction: UiDirection, speed: number): Promise\<void>;
+ArkTS-Dyn: fling(direction: UiDirection, speed: number): Promise\<void>
 
-ArkTS1.2: fling(direction: UiDirection, speed: int): Promise\<void>;
+ArkTS-Sta: fling(direction: UiDirection, speed: int): Promise\<void>
 
 指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
@@ -3925,12 +4337,16 @@ ArkTS1.2: fling(direction: UiDirection, speed: int): Promise\<void>;
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | ArkTS1.1: number  <br />ArkTS1.2: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed     | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -3959,7 +4375,9 @@ async function demo() {
 
 ### fling<sup>20+</sup>
 
-fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
+ArkTS-Dyn: fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
+
+ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<void>
 
 指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
@@ -3967,13 +4385,17 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | number       | 是   | 滑动速率，取值范围为200-40000，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
-| displayId     | number | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| speed     |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是   | 滑动速率，取值范围为200-40000，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| displayId     |  ArkTS-Dyn: number  <br />ArkTS-Sta: int| 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4003,13 +4425,17 @@ async function demo() {
 
 ### screenCapture<sup>10+</sup>
 
-screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
+screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4045,9 +4471,9 @@ async function demo() {
 
 ### mouseClick<sup>10+</sup>
 
-ArkTS1.1: mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+ArkTS-Dyn: mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-ArkTS1.2: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>;
+ArkTS-Sta: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>
 
 在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标点击动作。
 
@@ -4055,14 +4481,18 @@ ArkTS1.2: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Prom
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明                           |
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标点击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -4091,15 +4521,17 @@ async function demo() {
 
 ### mouseScroll<sup>10+</sup>
 
-ArkTS1.1: mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
-
-ArkTS1.2: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标滚轮滑动动作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4107,9 +4539,9 @@ ArkTS1.2: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int): 
 | ------ | ---------------- | ---- | ----------------------------------------------------------- |
 | p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                            |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。 |
-| d      | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。         |
-| key1   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
-| key2   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| d      | number         | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。         |
+| key1   | number         | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| key2   | number         | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
 
 **返回值：**
 
@@ -4139,13 +4571,17 @@ async function demo() {
 
 ### mouseMoveTo<sup>10+</sup>
 
-mouseMoveTo(p: Point): Promise\<void>;
+mouseMoveTo(p: Point): Promise\<void>
 
 将鼠标光标移到目标点，使用Promise异步回调。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Test.UiTest
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4189,6 +4625,10 @@ createUIEventObserver(): UIEventObserver;
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                   | 说明                                  |
@@ -4216,9 +4656,9 @@ async function demo() {
 
 ### mouseScroll<sup>11+</sup>
 
-ArkTS1.1: mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
+ArkTS-Dyn: mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
 
-ArkTS1.2: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, speed?: int): Promise\<void>
+ArkTS-Sta: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, speed?: int): Promise\<void>
 
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度，使用Promise异步回调。
 
@@ -4226,16 +4666,20 @@ ArkTS1.2: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, s
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型             | 必填 | 说明                                                         |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
 | p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                             |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。  |
-| d      | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
-| key1   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| key2   | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| speed  | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
+| d      | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
+| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
 
 **返回值：**
 
@@ -4265,9 +4709,9 @@ async function demo() {
 
 ### mouseDoubleClick<sup>11+</sup>
 
-ArkTS1.1: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
+ArkTS-Dyn: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-ArkTS1.2: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>
+ArkTS-Sta: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>
 
 在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标双击动作。
 
@@ -4275,14 +4719,18 @@ ArkTS1.2: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int)
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明                           |
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标双击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
-| key2   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
 
 **返回值：**
 
@@ -4311,15 +4759,17 @@ async function demo() {
 
 ### mouseLongClick<sup>11+</sup>
 
-ArkTS1.1: mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
-
-ArkTS1.2: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Promise\<void>
+mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
 在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标长按动作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4327,8 +4777,8 @@ ArkTS1.2: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): 
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | ArkTS1.1: number  <br />ArkTS1.2: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | number                      | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | number                     | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -4357,7 +4807,9 @@ async function demo() {
 
 ### mouseLongClick<sup>20+</sup>
 
-mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
+ArkTS-Dyn: mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
+
+ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int, duration?: int): Promise\<void>
 
 在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标长按动作。
 
@@ -4365,15 +4817,19 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明                           |
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId    | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1     | number | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2     | number | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| key1     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| duration |  ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -4403,9 +4859,9 @@ async function demo() {
 
 ### mouseMoveWithTrack<sup>11+</sup>
 
-ArkTS1.1: mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
+ArkTS-Dyn: mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-ArkTS1.2: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<void>
+ArkTS-Sta: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<void>
 
 鼠标从起始坐标点滑向终点坐标点，使用Promise异步回调。
 
@@ -4413,13 +4869,17 @@ ArkTS1.2: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<void
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型             | 必填 | 说明                                                     |
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to     | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | ArkTS1.1: number  <br />ArkTS1.2: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -4449,9 +4909,7 @@ async function demo() {
 
 ### mouseDrag<sup>11+</sup>
 
-ArkTS1.1: mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
-
-ArkTS1.2: mouseDrag(from: Point, to: Point, speed?: int): Promise\<void>
+mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，使用Promise异步回调。
 
@@ -4459,9 +4917,13 @@ ArkTS1.2: mouseDrag(from: Point, to: Point, speed?: int): Promise\<void>
 >
 > 该接口仅在手机、平板、PC/2in1设备上生效。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4469,7 +4931,7 @@ ArkTS1.2: mouseDrag(from: Point, to: Point, speed?: int): Promise\<void>
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to     | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | ArkTS1.1: number  <br />ArkTS1.2: int    | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| speed  | number    | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
 
 **返回值：**
 
@@ -4499,7 +4961,9 @@ async function demo() {
 
 ### mouseDrag<sup>20+</sup>
 
-mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+ArkTS-Dyn: mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+
+ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
 
@@ -4511,14 +4975,18 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型             | 必填 | 说明                                                     |
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed     |  number     | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
-| duration  |  number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| speed     |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| duration  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -4555,6 +5023,10 @@ inputText(p: Point, text: string): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4601,6 +5073,10 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4649,9 +5125,9 @@ async function demo_Chinese() {
 
 ### touchPadMultiFingerSwipe<sup>18+</sup>
 
-ArkTS1.1: touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
+ArkTS-Dyn: touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
 
-ArkTS1.2: touchPadMultiFingerSwipe(fingers: int, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
+ArkTS-Sta: touchPadMultiFingerSwipe(fingers: int, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
 
 模拟触摸板多指滑动手势，使用Promise异步回调。
 
@@ -4663,11 +5139,15 @@ ArkTS1.2: touchPadMultiFingerSwipe(fingers: int, direction: UiDirection, options
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | ArkTS1.1: number  <br />ArkTS1.2: int | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
+| fingers      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
 | direction | [UiDirection](#uidirection10)  | 是  | 触摸板多指滑动的方向。           |
 | options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项。        |
 
@@ -4707,6 +5187,10 @@ penClick(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明      |
@@ -4740,9 +5224,9 @@ async function demo() {
 
 ### penLongClick<sup>18+</sup>
 
-ArkTS1.1: penLongClick(point: Point, pressure?: number): Promise\<void>
+ArkTS-Dyn: penLongClick(point: Point, pressure?: number): Promise\<void>
 
-ArkTS1.2: penLongClick(point: Point, pressure?: double): Promise\<void>
+ArkTS-Sta: penLongClick(point: Point, pressure?: double): Promise\<void>
 
 模拟手写笔长按操作，使用Promise异步回调。
 
@@ -4750,12 +5234,16 @@ ArkTS1.2: penLongClick(point: Point, pressure?: double): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明                            |
 | ------ |-----------------------------------------------|----|-------------------------------|
 | point      | [Point](#point9) | 是  | 长按的坐标点。                       |
-| pressure   | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure   | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
 
 **返回值：**
 
@@ -4792,6 +5280,10 @@ penDoubleClick(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明      |
@@ -4826,9 +5318,9 @@ async function demo() {
 
 ### penSwipe<sup>18+</sup>
 
-ArkTS1.1: penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
+ArkTS-Dyn: penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
 
-ArkTS1.2: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: double): Promise\<void>
+ArkTS-Sta: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: double): Promise\<void>
 
 模拟手写笔的滑动操作，使用Promise异步回调。
 
@@ -4836,14 +5328,18 @@ ArkTS1.2: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: d
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明                                                     |
 | ------ |-----------------------------------------------|----|--------------------------------------------------------|
 | startPoint      | [Point](#point9) | 是  | 起始位置的坐标点。                                              |
 | endPoint      | [Point](#point9) | 是  | 结束位置的坐标点。                                              |
-| speed      | ArkTS1.1: number  <br />ArkTS1.2: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
-| pressure      | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
+| speed      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+| pressure      | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
 
 **返回值：**
 
@@ -4872,9 +5368,9 @@ async function demo() {
 
 ### injectPenPointerAction<sup>18+</sup>
 
-ArkTS1.1: injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
+ArkTS-Dyn: injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-ArkTS1.2: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure?: double): Promise\<void>
+ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure?: double): Promise\<void>
 
 模拟手写笔多点连续注入操作，使用Promise异步回调。
 
@@ -4882,13 +5378,17 @@ ArkTS1.2: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure?
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 18 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
-| speed      | ArkTS1.1: number  <br />ArkTS1.2: int| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
-| pressure      | ArkTS1.1: number  <br />ArkTS1.2: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
+| speed      | ArkTS-Dyn: number  <br />ArkTS-Sta: int| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
+| pressure      | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
 
 **返回值：**
@@ -4922,7 +5422,9 @@ async function demo() {
 
 ### crownRotate<sup>20+</sup>
 
-crownRotate(d: number, speed?: number): Promise\<void>
+ArkTS-Dyn: crownRotate(d: number, speed?: number): Promise\<void>
+
+ArkTS-Sta: crownRotate(d: int, speed?: int): Promise\<void>
 
 注入手表表冠旋转事件，可指定旋转速度，使用Promise异步回调。
 
@@ -4932,12 +5434,16 @@ crownRotate(d: number, speed?: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| d      | number   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
-| speed  | number   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，默认值为20，单位：格/秒。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
+| d      | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
+| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，默认值为20，单位：格/秒。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
 
 **返回值：**
 
@@ -4973,11 +5479,15 @@ async function demo() {
 
 存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 ### create<sup>9+</sup>
 
-ArkTS1.1: static create(fingers: number, steps: number): PointerMatrix
+ArkTS-Dyn: static create(fingers: number, steps: number): PointerMatrix
 
-ArkTS1.2: static create(fingers: int, steps: int): PointerMatrix
+ArkTS-Sta: static create(fingers: int, steps: int): PointerMatrix
 
 静态方法，构造一个PointerMatrix对象，并返回该对象。
 
@@ -4985,12 +5495,16 @@ ArkTS1.2: static create(fingers: int, steps: int): PointerMatrix
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                       |
 | ------- | ------ | ---- | ------------------------------------------ |
-| fingers | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
-| steps   | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+| fingers | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
+| steps   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
 
 **返回值：**
 
@@ -5018,9 +5532,9 @@ async function demo() {
 
 ### setPoint<sup>9+</sup>
 
-ArkTS1.1: setPoint(finger: number, step: number, point: Point): void
+ArkTS-Dyn: setPoint(finger: number, step: number, point: Point): void
 
-ArkTS1.2: setPoint(finger: int, step: int, point: Point): void
+ArkTS-Sta: setPoint(finger: int, step: int, point: Point): void
 
 设置PointerMatrix对象中指定手指和步骤对应动作的坐标点。
 
@@ -5028,13 +5542,17 @@ ArkTS1.2: setPoint(finger: int, step: int, point: Point): void
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型             | 必填 | 说明                                                       |
 | ------ | ---------------- | ---- | ---------------------------------------------------------- |
-| finger | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
-| step   | ArkTS1.1: number  <br />ArkTS1.2: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
-| point  | [Point](#point9) | 是   | 该行为的坐标点。建议相邻的坐标点距离在10px至80px范围内。 |
+| finger | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
+| step   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
+| point  | [Point](#point) | 是   | 该行为的坐标点。建议相邻的坐标点距离在10px至80px范围内。 |
 
 **错误码：**
 
@@ -5069,6 +5587,10 @@ async function demo() {
 UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20 
+
 ### getBundleName<sup>9+</sup>
 
 getBundleName(): Promise\<string>
@@ -5078,6 +5600,10 @@ getBundleName(): Promise\<string>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -5118,6 +5644,10 @@ getBounds(): Promise\<Rect>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                     | 说明                              |
@@ -5155,6 +5685,10 @@ getTitle(): Promise\<string>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -5194,6 +5728,10 @@ getWindowMode(): Promise\<WindowMode>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                 | 说明                                  |
@@ -5231,6 +5769,10 @@ isFocused(): Promise\<boolean>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -5306,6 +5848,10 @@ focus(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -5336,9 +5882,9 @@ async function demo() {
 
 ### moveTo<sup>9+</sup>
 
-ArkTS1.1: moveTo(x: number, y: number): Promise\<void>
+ArkTS-Dyn: moveTo(x: number, y: number): Promise\<void>
 
-ArkTS1.2: moveTo(x: int, y: int): Promise\<void>
+ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 
 将窗口移动到目标点，使用Promise异步回调。适用于支持移动的窗口。
 
@@ -5346,12 +5892,16 @@ ArkTS1.2: moveTo(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS1.1: number  <br />ArkTS1.2: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -5385,9 +5935,9 @@ async function demo() {
 
 ### resize<sup>9+</sup>
 
-ArkTS1.1: resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
+ArkTS-Dyn: resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
-ArkTS1.2: resize(wide: int, height: int, direction: ResizeDirection): Promise\<void>
+ArkTS-Sta: resize(wide: int, height: int, direction: ResizeDirection): Promise\<void>
 
 根据传入的宽、高和调整方向来调整窗口的大小，使用Promise异步回调。适用于支持调整大小的窗口。
 
@@ -5395,12 +5945,16 @@ ArkTS1.2: resize(wide: int, height: int, direction: ResizeDirection): Promise\<v
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                 | 必填 | 说明                                                         |
 | --------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| wide      | ArkTS1.1: number  <br />ArkTS1.2: int                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
-| height    | ArkTS1.1: number  <br />ArkTS1.2: int                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
+| wide      | ArkTS-Dyn: number  <br />ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
+| height    | ArkTS-Dyn: number  <br />ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
 | direction | [ResizeDirection](#resizedirection9) | 是   | 以[ResizeDirection](#resizedirection9)的形式传入窗口调整的方向。 |
 
 **返回值：**
@@ -5447,6 +6001,10 @@ split(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -5489,6 +6047,10 @@ maximize(): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -5533,6 +6095,10 @@ minimize(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -5575,6 +6141,10 @@ resume(): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -5619,6 +6189,10 @@ close(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 9 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -5658,6 +6232,10 @@ isActive(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 11 
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型              | 说明                                                         |
@@ -5688,7 +6266,9 @@ async function demo() {
 
 ### getDisplayId<sup>20+</sup>
 
-getDisplayId(): Promise\<number>
+ArkTS-Dyn: getDisplayId(): Promise\<number>
+
+ArkTS-Sta: getDisplayId(): Promise\<int>
 
 获取窗口所属的屏幕ID，使用Promise异步回调。
 
@@ -5696,11 +6276,15 @@ getDisplayId(): Promise\<number>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**ArkTS-Dyn起始版本：** 20 
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型             | 说明                   |
 | ---------------- |----------------------|
-| Promise\<number> | Promise对象，返回窗口所属的屏幕ID。 |
+| ArkTS-Dyn: Promise\<number>  <br />ArkTS-Sta: Promise\<int>    | Promise对象，返回窗口所属的屏幕ID。 |
 
 **错误码：**
 
@@ -5727,15 +6311,23 @@ async function demo() {
 
 UI事件监听器。
 
-### once('toastShow')
+**ArkTS-Dyn起始版本：** 10 
+
+**ArkTS-Sta起始版本：** 20 
+
+### once('toastShow')<sup>10+</sup>
 
 once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
 
-开始监听toast控件出现的事件，使用callback的形式返回结果。
+开始监听toast控件出现的事件，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -5769,15 +6361,19 @@ async function demo() {
 }
 ```
 
-### once('dialogShow')
+### once('dialogShow')<sup>10+</sup>
 
 once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
 
-开始监听dialog控件出现的事件，使用callback的形式返回结果。
+开始监听dialog控件出现的事件，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -5808,6 +6404,91 @@ async function demo() {
     console.info(UIElementInfo.type);
   }
   observer.once('dialogShow', callback);
+}
+```
+### onceToastShow<sup>22+</sup>
+
+onceToastShow(callback: Callback\<UIElementInfo>): void;
+
+开始监听toast控件出现的事件，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                              |
+| -------- | -------------------------------------------- | ---- | --------------------------------- |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数。          |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer:  UIEventObserver = await driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo)=>{
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+  }
+  observer.onceToastShow(callback);
+}
+```
+
+### onceDialogShow<sup>22+</sup>
+
+onceDialogShow(callback: Callback\<UIElementInfo>): void;
+
+开始监听dialog控件出现的事件，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                               |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数。           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo)=>{
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+  }
+  observer.onceDialogShow(callback);
 }
 ```
 

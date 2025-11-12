@@ -131,7 +131,7 @@ struct CountModifier {
 
 ### 通过propertyName判断具体属性变化
 
-当\@Watch装饰interface类型，或被`@Observed/@Track`装饰的class类型时，interface或class中不同的成员属性的修改，会将其具体的属性名传入回调方法，而非状态变量名。详细见以下示例代码：
+当\@Watch装饰interface类型，或被`@Observed/@Track`装饰的class类型时，interface或class中不同的成员属性的修改，会将对应的状态变量名传入回调方法，而非属性名。详细见以下示例代码：
 
 ```ts
 'use static'
@@ -178,8 +178,8 @@ struct Index {
 2. 观察日志依次显示：
 
    ```
-   name has changed
-   age has changed
+   info has changed
+   info has changed
    ```
 
-3. 通过日志可以看出，被监听的状态变量的属性发生变化时，触发回调方法能够准确传入对应修改的属性名，而非状态变量名“info”。 
+3. 通过日志可以看出，被监听的状态变量的属性发生变化时，触发回调方法能够传入对应的状态变量名“info”。 

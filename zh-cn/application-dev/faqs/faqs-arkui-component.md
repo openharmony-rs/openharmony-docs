@@ -978,3 +978,111 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
       }
     }
     ```
+
+## 如何使用BuilderNode并行化更新节点树？(API 20)
+
+**解决措施**
+
+`BuilderNode.update()`方法并未新增`useParallel`参数。是否启用并行更新取决于构建阶段的`useParallel`参数决定。如果该[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)在创建时使用了并行方式构建，那么在调用`update()`时，只要该节点尚未挂载（即未显示在UI上），更新操作会将以并行方式执行。如下所示：
+  ```ts
+  // 自定义参数
+  class Params {
+    text1: string;
+    constructor(text: string) {
+      this.text1 = text;
+    }
+  }
+
+  // builder组件
+  @Builder
+  function BuildTextWithParams(params: Params) {
+    Column() {
+      Text(params.text1).fontSize(20)
+    }
+    .width('100%')
+    .height(100)
+    .backgroundColor(Color.Gray)
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode ?: FrameNode;
+    private builderNode ?: BuilderNode<Params>;
+    private content?: ComponentContent;
+    private uiContext?: UIContext;
+    private params: string = "update with Params";
+
+    // 创建节点
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.uiContext = uiContext;
+      try{
+        this.addBuilderNode();
+      } catch (e) {
+        console.log("MakeNode Fail: " + e)
+      }
+      return null; // 返回null，不挂载该节点
+    }
+
+    // 在makeNode中没有挂载该节点，this.builderNode?.update会并行更新节点内容
+    updateNode() {
+      this.params += "~"
+      this.builderNode?.update(new Params(this.params));
+    }
+
+    // 添加BuilderNode节点
+    addBuilderNode(){
+      if ( this.builderNode === undefined ) {
+        let renderOptions: RenderOptions =
+          { selfIdealSize: { width: 100, height: 100 } as Size, type: NodeRenderType.RENDER_TYPE_DISPLAY }
+        // 创建新的BuilderNode
+        let builderNode: BuilderNode<Params> = new BuilderNode<Params>(this.uiContext!, renderOptions);
+        // useParallel为ture开启并行构建
+        builderNode.build(wrapBuilder(BuildTextWithParams), new Params("Build with Params"), {useParallel: true});
+        this.builderNode = builderNode;
+      }
+    }
+  }
+  ```
+
+## 声明式UI并行化循环创建接口ParallelizeUI<V,T>如何按需加载(API 22)
+
+**解决方案**
+
+[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)主要用于并行化循环创建UI节点，提升创建批量节点的性能。仅在List和Grid中可以实现按需加载，与[LazyForEach](../ui/state-management/arkts-rendering-control-lazyforeach.md)类似，但是可以并行创建子组件。在非List和Grid中会创建数组中定义的所有UI节点。
+
+示例代码如下：
+```ts
+import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+class Info {
+  str1: string
+  constructor(str1: string) {
+    this.str1 = str1
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State stateVar: string = 'state var';
+  @State arr:Array= [1,2,3,4,5,6,7,8,9,10] // 数据源
+
+  build() {
+    Column(undefined) {
+      List({space:5}) {
+        // 仅按需并行创建当前可见的子组件
+        ParallelizeUI<Int, Info>(undefined, this.arr,
+          (item:Int, index: Int) => {
+            return new Info(${item}, this.stateVar)
+          },
+          (param: Info) =>{
+            ListItem() {
+              Column() {
+                Text(${param.str1}).fontSize(20)
+              }
+            }.height('200').width('100%').borderWidth(2)
+          })
+      }.height('70%').width('100%').padding(10)
+    }
+  }
+}
+```

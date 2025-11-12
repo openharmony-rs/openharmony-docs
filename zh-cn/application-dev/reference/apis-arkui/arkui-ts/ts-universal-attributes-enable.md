@@ -4,13 +4,17 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  禁用控制属性仅在按下时生效，交互过程中更改enabled属性无效。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 禁用控制属性仅在按下时生效，交互过程中更改enabled属性无效。
 
 ## enabled
 
-enabled(value: boolean): T
+ArkTS-Dyn: enabled(value: boolean): T
+
+ArkTS-Sta: enabled(value: boolean | undefined): this
 
 设置组件是否可交互。当未设置enabled时，组件默认可交互。
 
@@ -20,17 +24,21 @@ enabled(value: boolean): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 值为true表示组件可交互，响应点击等操作。<br/>值为false表示组件不可交互，不响应点击等操作。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 值为true表示组件可交互，响应点击等操作。<br/>值为false表示组件不可交互，不响应点击等操作。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## 示例
 

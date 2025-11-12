@@ -288,7 +288,7 @@ let mainWorker = EAWorker.main();
 ```
 
 ## current
-static current(): EAWorker
+static current(): EAWorker | undefined
 
 获取当前线程的EAWorker实例。
 
@@ -420,5 +420,5 @@ eaw.join();
 |-|-|-|
 |PRIORITY_IDLE|0|线程优先级为后台任务。|
 |PRIORITY_LOW|1|线程优先级低。|
-|PRIORITY_MEDIUM|2|线程优先级中。|
+|PRIORITY_DEFAULT|2|线程优先级中。|
 |PRIORITY_HIGH|3|线程优先级高。|

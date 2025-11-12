@@ -2,6 +2,8 @@
 
 >**说明：**
 >
+>本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## UICommonEvent
@@ -41,7 +43,9 @@ setOnTouch(callback: Callback\<TouchEvent> | undefined): void
 
 ### setOnAppear
 
-setOnAppear(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnAppear(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnAppear(callback: VoidCallback | undefined): void
 
 设置[onAppear](./ts-universal-events-show-hide.md#onappear)事件的回调。
 
@@ -49,16 +53,22 @@ setOnAppear(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | 是   | onAppear事件的回调函数。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> \| undefined <br />ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | onAppear事件的回调函数。 |
 
 
 ### setOnDisappear
 
-setOnDisappear(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnDisappear(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnDisappear(callback: VoidCallback | undefined): void
 
 设置[onDisappear](./ts-universal-events-show-hide.md#ondisappear)事件的回调。
 
@@ -66,11 +76,15 @@ setOnDisappear(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | 是   | onDisappear事件的回调。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> \| undefined <br />ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | onDisappear事件的回调。 |
 
 ### setOnKeyEvent
 
@@ -106,7 +120,9 @@ setOnFocus(callback:  Callback\<void> | undefined): void
 
 ### setOnBlur
 
-setOnBlur(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnBlur(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnBlur(callback: VoidCallback | undefined): void
 
 设置[onBlur](./ts-universal-focus-event.md#onblur)事件的回调。
 
@@ -114,11 +130,15 @@ setOnBlur(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | 是   | onBlur事件的回调。 |
+| callback  | ArkTS1.1: [Callback](./ts-types.md#callback12)\<void> \| undefined <br />ArkTS1.2: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | onBlur事件的回调。 |
 
 ### setOnHover
 

@@ -4,9 +4,11 @@ NodeController用于实现自定义节点的创建、显示、更新等操作的
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 当前不支持在预览器中使用NodeController。
+> - 当前不支持在预览器中使用NodeController。
 
 ## 导入模块
 
@@ -103,7 +105,9 @@ onDetach?(): void
 
 ### onWillBind<sup>18+</sup>
 
-onWillBind?(containerId: number): void
+ArkTS-Dyn: onWillBind?(containerId: number): void
+
+ArkTS-Sta: onWillBind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定前触发此回调。
 
@@ -111,15 +115,21 @@ onWillBind?(containerId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将绑定。|
 
 ### onWillUnbind<sup>18+</sup>
 
-onWillUnbind?(containerId: number): void
+ArkTS-Dyn: onWillUnbind?(containerId: number): void
+
+ArkTS-Sta: onWillUnbind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑前触发此回调。
 
@@ -127,15 +137,21 @@ onWillUnbind?(containerId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)即将解绑。|
 
 ### onBind<sup>18+</sup>
 
-onBind?(containerId: number): void
+ArkTS-Dyn: onBind?(containerId: number): void
+
+ArkTS-Sta: onBind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定后触发此回调。
 
@@ -143,15 +159,21 @@ onBind?(containerId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定完成。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)绑定完成。|
 
 ### onUnbind<sup>18+</sup>
 
-onUnbind?(containerId: number): void
+ArkTS-Dyn: onUnbind?(containerId: number): void
+
+ArkTS-Sta: onUnbind(containerId: long): void
 
 当NodeController与[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑后触发此回调。
 
@@ -159,11 +181,15 @@ onUnbind?(containerId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑完成。|
+| containerId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 回调该方法时，NodeController与NodeContainerId对应的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)解绑完成。|
 
 ### aboutToResize
 

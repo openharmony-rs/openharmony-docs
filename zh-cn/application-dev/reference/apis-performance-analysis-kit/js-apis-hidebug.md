@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -20,7 +22,11 @@ getNativeHeapSize(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：8
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                                         |
 | ------ |--------------------------------------------|
@@ -42,7 +48,11 @@ getNativeHeapAllocatedSize(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：8
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                              |
 | ------ | --------------------------------- |
@@ -64,7 +74,11 @@ getNativeHeapFreeSize(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：8
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                            |
 | ------ | ----------------------------- |
@@ -89,7 +103,11 @@ getPss(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：8
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
@@ -110,7 +128,11 @@ getVss(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：11
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                                     |
 | ------ | ---------------------------------------- |
@@ -136,7 +158,11 @@ getSharedDirty(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：8
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                       |
 | ------ | -------------------------- |
@@ -162,7 +188,11 @@ getPrivateDirty(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：9
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                       |
 | ------ | -------------------------- |
@@ -177,7 +207,9 @@ let privateDirty: bigint = hidebug.getPrivateDirty();
 
 ## hidebug.getCpuUsage<sup>9+</sup>
 
-getCpuUsage(): number
+AtkTS-Dyn: getCpuUsage(): number
+
+AtkTS-Sta: getCpuUsage(): double
 
 获取进程的CPU使用率。
 
@@ -185,23 +217,28 @@ getCpuUsage(): number
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：9
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型   | 说明                       |
 | ------ | -------------------------- |
-| number | 获取进程的CPU使用率。 |
+| AtkTS-Dyn: number<br/>AtkTS-Sta: double | 获取进程的CPU使用率。如占用率为50%，则返回0.5。 |
 
 
 **示例：**
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
-
-let cpuUsage: number = hidebug.getCpuUsage();
+console.info(`getCpuUsage: ${hidebug.getCpuUsage()}`)
 ```
 
 ## hidebug.getServiceDump<sup>9+</sup>
 
-getServiceDump(serviceid: number, fd: number, args: Array\<string>) : void
+AtkTS-Dyn: getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
+
+AtkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 获取系统服务信息。
 
@@ -209,13 +246,17 @@ getServiceDump(serviceid: number, fd: number, args: Array\<string>) : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：9
 
-| 参数名   | 类型   | 必填 | 说明                         |
-| -------- | ------ | ---- |----------------------------|
-| serviceid | number | 是   | 基于用户输入的service id获取系统服务信息。 |
-| fd | number | 是   | 文件描述符，接口会向该fd写入数据。         |
-| args | Array&lt;string&gt; | 是   | 系统服务的dump接口参数列表。           |
+**AtkTS-Sta起始版本**：20
+
+**参数**：
+
+| 参数名   | 类型                                    | 必填 | 说明                         |
+| -------- |---------------------------------------| ---- |----------------------------|
+| serviceid | AtkTS-Dyn: number<br/> AtkTS-Sta: int | 是   | 基于用户输入的service id获取系统服务信息。 |
+| fd | AtkTS-Dyn: number<br/> AtkTS-Sta: int                                | 是   | 文件描述符，接口会向该fd写入数据。         |
+| args | Array&lt;string&gt;                   | 是   | 系统服务的dump接口参数列表。string长度的最大值为254。 |
 
 **错误码：**
 
@@ -228,6 +269,7 @@ getServiceDump(serviceid: number, fd: number, args: Array\<string>) : void
 
 **示例：**
 
+AtkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -251,6 +293,30 @@ if (fileFd >= 0) {
   fileIo.closeSync(fileFd);
 }
 ```
+AtkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileFd: int = -1;
+try {
+  // 请在组件内获取context，确保this.getUiContext().getHostContext()返回结果为UIAbilityContext。
+  let path: string = this.getUIContext().getHostContext()!.filesDir + "/serviceInfo.txt";
+  console.info("output path: " + path);
+  fileFd = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
+  let serviceId: int = 10;
+  let args: Array<string> = new Array<string>("allInfo");
+  hidebug.getServiceDump(serviceId, fileFd, args);
+} catch (error) {
+  console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
+}
+
+if (fileFd >= 0) {
+  fileIo.closeSync(fileFd);
+}
+```
 
 ## hidebug.startJsCpuProfiling<sup>9+</sup>
 
@@ -260,7 +326,11 @@ startJsCpuProfiling(filename: string) : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：9
+
+**AtkTS-Sta起始版本**：20
+
+**参数**：
 
 | 参数名   | 类型   | 必填 | 说明                                               |
 | -------- | ------ | ---- |--------------------------------------------------|
@@ -297,7 +367,11 @@ stopJsCpuProfiling() : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**示例：**
+**AtkTS-Dyn起始版本**：9
+
+**AtkTS-Sta起始版本**：20
+
+**示例**：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -318,9 +392,13 @@ dumpJsHeapData(filename: string) : void
 
 虚拟机堆导出。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：9
+
+**参数**：
 
 | 参数名   | 类型   | 必填 | 说明                                            |
 | -------- | ------ | ---- | ----------------------------------------------- |
@@ -357,9 +435,13 @@ startProfiling(filename: string) : void
 
 启动虚拟机Profiling方法跟踪，`startProfiling(filename: string)`方法的调用需要与`stopProfiling()`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：8
+
+**参数**：
 
 | 参数名   | 类型   | 必填 | 说明                                             |
 | -------- | ------ | ---- | ------------------------------------------------ |
@@ -387,9 +469,13 @@ stopProfiling() : void
 
 停止虚拟机Profiling方法跟踪，`stopProfiling()`方法的调用需要与`startProfiling(filename: string)`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**示例：**
+**AtkTS-Dyn起始版本**：8
+
+**示例**：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -411,9 +497,13 @@ dumpHeapData(filename: string) : void
 
 虚拟机堆导出，生成`filename.heapsnapshot`文件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：8
+
+**参数**：
 
 | 参数名   | 类型   | 必填 | 说明                                                      |
 | -------- | ------ | ---- |---------------------------------------------------------|
@@ -435,7 +525,11 @@ getAppVMMemoryInfo(): VMMemoryInfo
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型         | 说明                                    |
 | -------------| --------------------------------------- |
@@ -459,13 +553,15 @@ getAppThreadCpuUsage(): ThreadCpuUsage[]
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型             | 说明                                                        |
 | -----------------| ------------------------------------------------------------|
 | [ThreadCpuUsage](#threadcpuusage12)[] | 返回当前应用进程下所有ThreadCpuUsage数组。 |
-
-
 
 **示例：**
 
@@ -480,7 +576,9 @@ for (let i = 0; i < appThreadCpuUsage.length; i++) {
 
 ## hidebug.startAppTraceCapture<sup>12+</sup>
 
-startAppTraceCapture(tags: number[], flag: TraceFlag, limitSize: number) : string
+AtkTS-Dyn: startAppTraceCapture(tags: number[], flag: TraceFlag, limitSize: number): string
+
+AtkTS-Sta: startAppTraceCapture(tags: long[], flag: TraceFlag, limitSize: int): string
 
 该接口补充了[hitrace](../../dfx/hitrace.md)功能，开发者可通过该接口完成指定范围的trace自动化采集。由于该接口中trace采集过程中消耗的性能与需要采集的范围成正相关，建议开发者在使用该接口前，通过hitrace命令抓取应用的trace日志，从中筛选出所需trace采集的关键范围，以提高该接口性能。
 
@@ -498,13 +596,17 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：12
 
-| 参数名   | 类型     | 必填 | 说明                                 |
-| -------- | ------   | ---- |------------------------------------|
-| tags     | number[] | 是   | trace范围，详情请见[tags](#hidebugtags12)。   |
-| flag     | TraceFlag| 是   | 详情请见[TraceFlag](#traceflag12)。        |
-| limitSize| number   | 是   | 开启trace文件大小限制，单位为Byte，单个文件大小上限为500MB。 |
+**AtkTS-Sta起始版本**：20
+
+**参数**：
+
+| 参数名   | 类型                                          | 必填 | 说明                                 |
+| -------- |---------------------------------------------| ---- |------------------------------------|
+| tags     | AtkTS-Dyn: number[] <br/> AtkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#hidebugtags12)。   |
+| flag     | TraceFlag                                   | 是   | 详情请见[TraceFlag](#traceflag12)。        |
+| limitSize| AtkTS-Dyn: number <br/> AtkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，单个文件大小上限为500MB。 |
 
 **返回值：**
 
@@ -525,6 +627,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 **示例：**
 
+AtkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -532,6 +635,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tags: number[] = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI];
 let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
 let limitSize: number = 1024 * 1024;
+
+try {
+  let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  // code block
+  // ...
+  // code block
+  hidebug.stopAppTraceCapture();
+} catch (error) {
+  console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
+}
+```
+AtkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tags: long[] = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI];
+let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
+let limitSize: int = 1024 * 1024;
 
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
@@ -554,7 +676,11 @@ stopAppTraceCapture() : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**错误码：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**错误码**：
 
 以下错误码的详细介绍请参见[HiDebug错误码](errorcode-hiviewdfx-hidebug.md)。
 
@@ -565,6 +691,7 @@ stopAppTraceCapture() : void
 
 **示例：**
 
+AtkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -572,6 +699,26 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tags: number[] = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI];
 let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
 let limitSize: number = 1024 * 1024;
+
+try {
+  let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  // code block
+  // ...
+  // code block
+  hidebug.stopAppTraceCapture();
+} catch (error) {
+  console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
+}
+```
+AtkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tags: long[] = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI];
+let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
+let limitSize: int = 1024 * 1024;
+
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
   // code block
@@ -591,7 +738,11 @@ getAppMemoryLimit() : MemoryLimit
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型  | 说明                      |
 | ------ | -------------------------- |
@@ -607,7 +758,9 @@ let appMemoryLimit:hidebug.MemoryLimit = hidebug.getAppMemoryLimit();
 
 ## hidebug.getSystemCpuUsage<sup>12+</sup>
 
-getSystemCpuUsage() : number
+AtkTS-Dyn: getSystemCpuUsage(): number
+
+AtkTS-Sta: getSystemCpuUsage(): double
 
 获取系统的CPU资源占用情况。
 
@@ -615,11 +768,15 @@ getSystemCpuUsage() : number
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：12
 
-| 类型     | 说明          |
-|--------|-------------|
-| number | 系统CPU资源占用情况。|
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
+
+| 类型                                       | 说明          |
+|------------------------------------------|-------------|
+| AtkTS-Dyn: number<br/> AtkTS-Sta: double | 系统CPU资源占用情况。如占用率为50%，则返回0.5。 |
 
 **错误码：**
 
@@ -655,9 +812,13 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean) : void
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：12
+
+**参数**：
 
 | 参数名   | 类型   | 必填 | 说明                                                                                                                                                                      |
 | -------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -698,7 +859,11 @@ getAppNativeMemInfo(): NativeMemInfo
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-> **注意：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+> **注意**：
 >
 > 由于/proc/{pid}/smaps_rollup的读取比较耗时，建议不要在主线程中使用该接口，可通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程以避免应用出现卡顿。
 
@@ -727,7 +892,11 @@ getSystemMemInfo(): SystemMemInfo
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型  | 说明                      |
 | ------ | -------------------------- |
@@ -752,7 +921,11 @@ getVMRuntimeStats(): GcStats
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型                    | 说明       |
 |-----------------------|----------|
@@ -773,13 +946,19 @@ console.info(`fullgc-longtime-count: ${vMRuntimeStats['ark.gc.fullgc-longtime-co
 
 ## hidebug.getVMRuntimeStat<sup>12+</sup>
 
-getVMRuntimeStat(item: string): number
+AtkTS-Dyn：getVMRuntimeStat(item: string): number
+
+AtkTS-Sta：getVMRuntimeStat(item: string): long
 
 根据参数获取指定的系统[GC](../../arkts-utils/gc-introduction.md)统计信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**参数：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**参数**：
 
 | 参数名   | 类型   | 必填 | 说明          |
 | -------- | ------ | ---- |-------------|
@@ -787,9 +966,9 @@ getVMRuntimeStat(item: string): number
 
 **返回值：**
 
-| 类型     | 说明                        |
-|--------|---------------------------|
-| number | 系统GC统计信息，根据传入的参数，返回相应的信息。 |
+| 类型                                     | 说明                        |
+|----------------------------------------|---------------------------|
+| AtkTS-Dyn: number<br/> AtkTS-Sta: long | 系统GC统计信息，根据传入的参数，返回相应的信息。 |
 
 | 输入参数                         | 返回值说明          |
 |------------------------------|----------------|
@@ -828,12 +1007,16 @@ try {
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-| 名称      | 类型   | 必填 | 说明         |
-| --------- | ------ | ---- | ------------ |
-| rssLimit    | bigint |  是  | 应用进程的驻留集的限制，以KB为单位。     |
-| vssLimit  | bigint |  是  | 进程的虚拟内存限制，以KB为单位。       |
-| vmHeapLimit | bigint |  是  | 当前线程的 JS VM 堆大小限制，以KB为单位。 |
-| vmTotalHeapSize | bigint |  是  | 当前进程的 JS 堆内存大小限制，以KB为单位。  |
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+| 名称      | 类型   | 只读 | 可选 | 说明         |
+| --------- | ------ | --|----| ------------ |
+| rssLimit    | bigint |  否  | 否  | 应用进程的驻留集的限制，以KB为单位。     |
+| vssLimit  | bigint |  否  | 否  | 进程的虚拟内存限制，以KB为单位。       |
+| vmHeapLimit | bigint |  否  | 否  | 当前线程的 JS VM 堆大小限制，以KB为单位。 |
+| vmTotalHeapSize | bigint |  否  | 否  | 当前进程的 JS 堆内存大小限制，以KB为单位。  |
 
 ## VMMemoryInfo<sup>12+</sup>
 
@@ -841,11 +1024,15 @@ VM内存信息。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-| 名称               | 类型    | 可读 | 可写 | 说明                                |
-| -------------------| ------- | ---- | ---- | ---------------------------------- |
-| totalHeap          | bigint  | 是   | 否   | 表示当前虚拟机的堆总大小，以KB为单位。     |
-| heapUsed           | bigint  | 是   | 否   | 表示当前虚拟机使用的堆大小，以KB为单位。    |
-| allArraySize       | bigint  | 是   | 否   | 表示当前虚拟机的所有数组对象大小，以KB为单位。 |
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+| 名称               | 类型    | 只读 | 可选 | 说明                                |
+| -------------------| ------- | ---|----| ---------------------------------- |
+| totalHeap          | bigint  | 否  | 否  | 表示当前虚拟机的堆总大小，以KB为单位。     |
+| heapUsed           | bigint  | 否  | 否  | 表示当前虚拟机使用的堆大小，以KB为单位。    |
+| allArraySize       | bigint  | 否  | 否  | 表示当前虚拟机的所有数组对象大小，以KB为单位。 |
 
 ## ThreadCpuUsage<sup>12+</sup>
 
@@ -853,10 +1040,14 @@ VM内存信息。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-| 名称               | 类型    | 可读 | 可写 | 说明                                |
-| -------------------| ------- | ---- | ---- | ----------------------------------- |
-| threadId           | number  | 是   | 否   | 线程号。      |
-| cpuUsage           | number  | 是   | 否   | 线程CPU使用率。 |
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+| 名称               | 类型                                       | 只读 | 可选 | 说明                                |
+| -------------------|------------------------------------------|----|----| ----------------------------------- |
+| threadId           | AtkTS-Dyn: number<br/> AtkTS-Sta: long   | 否  | 否  | 线程号。      |
+| cpuUsage           | AtkTS-Dyn: number<br/> AtkTS-Sta: double | 否  | 否  | 线程CPU使用率。 |
 
 ## hidebug.tags<sup>12+</sup>
 
@@ -868,40 +1059,44 @@ VM内存信息。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
 | 名称                     | 类型    | 只读  | 说明                                         |
 | -------------------------| ------- |-----|--------------------------------------------|
-| ABILITY_MANAGER          | number  | 是 | 能力管理标签，hitrace命令行工具对应tagName:ability。                  |
-| ARKUI                    | number  | 是 | ArkUI开发框架标签，hitrace命令行工具对应tagName:ace。                |
-| ARK                      | number  | 是 | JSVM虚拟机标签，hitrace命令行工具对应tagName:ark。                  |
-| BLUETOOTH                | number  | 是 | 蓝牙标签，hitrace命令行工具对应tagName:bluetooth。                 |
-| COMMON_LIBRARY           | number  | 是 | 公共库子系统标签，hitrace命令行工具对应tagName:commonlibrary。         |
-| DISTRIBUTED_HARDWARE_DEVICE_MANAGER | number  | 是 | 分布式硬件设备管理标签，hitrace命令行工具对应tagName:devicemanager。      |
-| DISTRIBUTED_AUDIO        | number  | 是 | 分布式音频标签，hitrace命令行工具对应tagName:daudio。                 |
-| DISTRIBUTED_CAMERA       | number  | 是 | 分布式相机标签，hitrace命令行工具对应tagName:dcamera。                |
-| DISTRIBUTED_DATA         | number  | 是 | 分布式数据管理模块标签，hitrace命令行工具对应tagName:distributeddatamgr。 |
-| DISTRIBUTED_HARDWARE_FRAMEWORK | number  | 是 | 分布式硬件框架标签，hitrace命令行工具对应tagName:dhfwk。                 |
-| DISTRIBUTED_INPUT        | number  | 是 | 分布式输入标签，hitrace命令行工具对应tagName:dinput。                 |
-| DISTRIBUTED_SCREEN       | number  | 是 | 分布式屏幕标签，hitrace命令行工具对应tagName:dscreen。                |
-| DISTRIBUTED_SCHEDULER    | number  | 是 | 分布式调度器标签，hitrace命令行工具对应tagName:dsched。                |
-| FFRT                     | number  | 是 | FFRT任务标签，hitrace命令行工具对应tagName:ffrt。                  |
-| FILE_MANAGEMENT          | number  | 是 | 文件管理系统标签，hitrace命令行工具对应tagName:filemanagement。        |
-| GLOBAL_RESOURCE_MANAGER  | number  | 是 | 全局资源管理标签，hitrace命令行工具对应tagName:gresource。             |
-| GRAPHICS                 | number  | 是 | 图形模块标签，hitrace命令行工具对应tagName:graphic。                 |
-| HDF                      | number  | 是 | HDF子系统标签，hitrace命令行工具对应tagName:hdf。                   |
-| MISC                     | number  | 是 | MISC模块标签，hitrace命令行工具对应tagName:misc。                  |
-| MULTIMODAL_INPUT         | number  | 是 | 多模态输入模块标签，hitrace命令行工具对应tagName:multimodalinput。      |
-| NET                      | number  | 是 | 网络标签，hitrace命令行工具对应tagName:net。                       |
-| NOTIFICATION             | number  | 是 | 通知模块标签，hitrace命令行工具对应tagName:notification。            |
-| NWEB                     | number  | 是 | Nweb标签，hitrace命令行工具对应tagName:nweb。                    |
-| OHOS                     | number  | 是 | OHOS通用标签，hitrace命令行工具对应tagName:ohos。                  |
-| POWER_MANAGER            | number  | 是 | 电源管理标签，hitrace命令行工具对应tagName:power。                   |
-| RPC                      | number  | 是 | RPC标签，hitrace命令行工具对应tagName:rpc。                      |
-| SAMGR                    | number  | 是 | 系统能力管理标签，hitrace命令行工具对应tagName:samgr。                 |
-| WINDOW_MANAGER           | number  | 是 | 窗口管理标签，hitrace命令行工具对应tagName:window。                  |
-| AUDIO                    | number  | 是 | 音频模块标签，hitrace命令行工具对应tagName:zaudio。                  |
-| CAMERA                   | number  | 是 | 相机模块标签，hitrace命令行工具对应tagName:zcamera。                 |
-| IMAGE                    | number  | 是 | 图片模块标签，hitrace命令行工具对应tagName:zimage。                  |
-| MEDIA                    | number  | 是 | 媒体模块标签，hitrace命令行工具对应tagName:zmedia。                  |
+| ABILITY_MANAGER          | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 能力管理标签，hitrace命令行工具对应tagName:ability。                  |
+| ARKUI                    | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | ArkUI开发框架标签，hitrace命令行工具对应tagName:ace。                |
+| ARK                      | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | JSVM虚拟机标签，hitrace命令行工具对应tagName:ark。                  |
+| BLUETOOTH                | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 蓝牙标签，hitrace命令行工具对应tagName:bluetooth。                 |
+| COMMON_LIBRARY           | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 公共库子系统标签，hitrace命令行工具对应tagName:commonlibrary。         |
+| DISTRIBUTED_HARDWARE_DEVICE_MANAGER | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式硬件设备管理标签，hitrace命令行工具对应tagName:devicemanager。      |
+| DISTRIBUTED_AUDIO        | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式音频标签，hitrace命令行工具对应tagName:daudio。                 |
+| DISTRIBUTED_CAMERA       | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式相机标签，hitrace命令行工具对应tagName:dcamera。                |
+| DISTRIBUTED_DATA         | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式数据管理模块标签，hitrace命令行工具对应tagName:distributeddatamgr。 |
+| DISTRIBUTED_HARDWARE_FRAMEWORK | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式硬件框架标签，hitrace命令行工具对应tagName:dhfwk。                 |
+| DISTRIBUTED_INPUT        | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式输入标签，hitrace命令行工具对应tagName:dinput。                 |
+| DISTRIBUTED_SCREEN       | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式屏幕标签，hitrace命令行工具对应tagName:dscreen。                |
+| DISTRIBUTED_SCHEDULER    | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 分布式调度器标签，hitrace命令行工具对应tagName:dsched。                |
+| FFRT                     | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | FFRT任务标签，hitrace命令行工具对应tagName:ffrt。                  |
+| FILE_MANAGEMENT          | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 文件管理系统标签，hitrace命令行工具对应tagName:filemanagement。        |
+| GLOBAL_RESOURCE_MANAGER  | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 全局资源管理标签，hitrace命令行工具对应tagName:gresource。             |
+| GRAPHICS                 | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 图形模块标签，hitrace命令行工具对应tagName:graphic。                 |
+| HDF                      | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | HDF子系统标签，hitrace命令行工具对应tagName:hdf。                   |
+| MISC                     | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | MISC模块标签，hitrace命令行工具对应tagName:misc。                  |
+| MULTIMODAL_INPUT         | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 多模态输入模块标签，hitrace命令行工具对应tagName:multimodalinput。      |
+| NET                      | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 网络标签，hitrace命令行工具对应tagName:net。                       |
+| NOTIFICATION             | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 通知模块标签，hitrace命令行工具对应tagName:notification。            |
+| NWEB                     | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | Nweb标签，hitrace命令行工具对应tagName:nweb。                    |
+| OHOS                     | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | OHOS通用标签，hitrace命令行工具对应tagName:ohos。                  |
+| POWER_MANAGER            | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 电源管理标签，hitrace命令行工具对应tagName:power。                   |
+| RPC                      | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | RPC标签，hitrace命令行工具对应tagName:rpc。                      |
+| SAMGR                    | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 系统能力管理标签，hitrace命令行工具对应tagName:samgr。                 |
+| WINDOW_MANAGER           | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 窗口管理标签，hitrace命令行工具对应tagName:window。                  |
+| AUDIO                    | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 音频模块标签，hitrace命令行工具对应tagName:zaudio。                  |
+| CAMERA                   | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 相机模块标签，hitrace命令行工具对应tagName:zcamera。                 |
+| IMAGE                    | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 图片模块标签，hitrace命令行工具对应tagName:zimage。                  |
+| MEDIA                    | AtkTS-Dyn: number<br/> AtkTS-Sta: long  | 是 | 媒体模块标签，hitrace命令行工具对应tagName:zmedia。                  |
 
 ## NativeMemInfo<sup>12+</sup>
 
@@ -909,15 +1104,19 @@ VM内存信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-| 名称      | 类型   | 必填 | 说明                                                                             |
-| --------- | ------ | ---- |--------------------------------------------------------------------------------|
-| pss  | bigint |  是  | 实际占用的物理内存大小(比例分配共享库占用的内存)，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Pss + SwapPss。 |
-| vss  | bigint |  是  | 占用的虚拟内存大小(包括共享库所占用的内存)，以KB为单位，计算方式：/proc/{pid}/statm: size * 4。                |
-| rss  | bigint |  是  | 实际占用的物理内存大小(包括共享库占用)，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Rss。                |
-| sharedDirty  | bigint |  是  | 共享脏内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Shared_Dirty。                    |
-| privateDirty  | bigint |  是  | 私有脏内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Private_Dirty。                   |
-| sharedClean  | bigint |  是  | 共享净内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Shared_Clean。                    |
-| privateClean  | bigint |  是  | 私有干净内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Private_Clean。                  |
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+| 名称      | 类型   | 只读  | 可选 | 说明                                                                             |
+| --------- | ------ | --|----|--------------------------------------------------------------------------------|
+| pss  | bigint |  否  | 否  | 实际占用的物理内存大小(比例分配共享库占用的内存)，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Pss + SwapPss。 |
+| vss  | bigint |  否  | 否  | 占用的虚拟内存大小(包括共享库所占用的内存)，以KB为单位，计算方式：/proc/{pid}/statm: size * 4。                |
+| rss  | bigint |  否  | 否  | 实际占用的物理内存大小(包括共享库占用)，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Rss。                |
+| sharedDirty  | bigint |  否  | 否  | 共享脏内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Shared_Dirty。                    |
+| privateDirty  | bigint |  否  | 否  | 私有脏内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Private_Dirty。                   |
+| sharedClean  | bigint |  否  | 否  | 共享净内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Shared_Clean。                    |
+| privateClean  | bigint |  否  | 否  | 私有干净内存大小，以KB为单位，计算方式：/proc/{pid}/smaps_rollup: Private_Clean。                  |
 
 ## SystemMemInfo<sup>12+</sup>
 
@@ -925,17 +1124,25 @@ VM内存信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-| 名称      | 类型   | 必填 | 说明                                              |
-| --------- | ------ | ---- |-------------------------------------------------|
-| totalMem  | bigint |  是  | 系统总的内存，以KB为单位，计算方式：/proc/meminfo: MemTotal      |
-| freeMem  | bigint |  是  | 系统空闲的内存，以KB为单位，计算方式：/proc/meminfo: MemFree      |
-| availableMem  | bigint |  是  | 系统可用的内存，以KB为单位，计算方式：/proc/meminfo: MemAvailable |
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+| 名称      | 类型   | 只读  | 可选 | 说明                                              |
+| --------- | ------ | ---- |---- |-------------------------------------------------|
+| totalMem  | bigint |  否  |   否  |系统总的内存，以KB为单位，计算方式：/proc/meminfo: MemTotal      |
+| freeMem  | bigint |  否  |   否  |系统空闲的内存，以KB为单位，计算方式：/proc/meminfo: MemFree      |
+| availableMem  | bigint |  否  |   否  |系统可用的内存，以KB为单位，计算方式：/proc/meminfo: MemAvailable |
 
 ## TraceFlag<sup>12+</sup>
 
 描述采集trace线程的类型，包括主线程和所有线程。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
 
 | 名称                         | 值 | 说明                    |
 | --------------------------- |---| ----------------------- |
@@ -944,25 +1151,40 @@ VM内存信息。
 
 ## GcStats<sup>12+</sup>
 
-type GcStats = Record&lt;string, number&gt;
+AtkTS-Dyn: type GcStats = Record&lt;string, number&gt;
+
+AtkTS-Sta: type GcStats = Record&lt;string, long&gt;
 
 描述用于存储GC统计信息的键值对。该类型不支持多线程操作，如果应用中存在多线程同时访问，需加锁保护。
 
 **系统能力**： SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-| 类型      | 说明                          |
-| -----------| ---------------------------- |
-| Record&lt;string, number&gt;     | 用于存储GC统计信息的键值对。     |
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+| 类型                                                                                 | 说明                          |
+|------------------------------------------------------------------------------------| ---------------------------- |
+| AtkTS-Dyn: Record&lt;string, number&gt;<br/> AtkTS-Sta: Record&lt;string, long&gt; | 用于存储GC统计信息的键值对。包含以下键值信息：<br/>"ark.gc.gc-count"：当前线程的GC次数。<br/>"ark.gc.gc-time"：当前线程触发的GC总耗时，以ms为单位。<br/>"ark.gc.gc-bytes-allocated"：当前线程Ark虚拟机已分配的内存大小，以B为单位。<br/>"ark.gc.gc-bytes-freed"：当前线程GC成功回收的内存，以B为单位。<br/> "ark.gc.fullgc-longtime-count "：当前线程超长fullGC次数。    |
+
+## JsRawHeapTrimLevel<sup>20+</sup>
+
+转储堆快照的裁剪级别的枚举。
+
+TRIM_LEVEL_2相比TRIM_LEVEL_1，裁剪时间更长。冻屏的阈值为6秒。使用TRIM_LEVEL_1时，不会达到该阈值；切换至TRIM_LEVEL_2时，裁剪时间可能会超过6秒，触发APP_FREEZE（冻屏事件），导致应用被系统终止，此时回退至TRIM_LEVEL_1级别进行裁剪。
 
 GcStats包含以下键值信息：
 
-| 参数名                     | 类型   | 说明                      |
-|-------------------------| ------ |------------------------- |
-| ark.gc.gc-count         | number |  当前线程的GC次数。|
-| ark.gc.gc-time          | number |  当前线程触发的GC总耗时，以ms为单位。 |
-| ark.gc.gc-bytes-allocated | number | 当前线程Ark虚拟机已分配的内存大小，以B为单位。 |
-| ark.gc.gc-bytes-freed   | number | 当前线程GC成功回收的内存，以B为单位。|
-| ark.gc.fullgc-longtime-count | number |  当前线程超长fullGC次数。 |
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**AtkTS-Dyn起始版本**：20
+
+| 名称         | 值   | 说明                                                         |
+| ------------ | ---- | ------------------------------------------------------------ |
+| TRIM_LEVEL_1 | 0    | LEVEL 1级别裁剪，主要裁剪字符串。                       |
+| TRIM_LEVEL_2 | 1    | LEVEL 2级别裁剪，在TRIM_LEVEL_1的基础上，精简了对象地址标识的大小，从8个字节减少到4个字节。 |
 
 ## hidebug.isDebugState<sup>12+</sup>
 
@@ -972,7 +1194,11 @@ isDebugState(): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：12
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型  | 说明                                                   |
 | ------ |------------------------------------------------------|
@@ -988,7 +1214,9 @@ console.info(`isDebugState = ${hidebug.isDebugState()}`)
 
 ## hidebug.getGraphicsMemory<sup>14+</sup>
 
-getGraphicsMemory(): Promise&lt;number&gt;
+AtkTS-Dyn: getGraphicsMemory(): Promise&lt;number&gt;
+
+AtkTS-Sta: getGraphicsMemory(): Promise&lt;int&gt;
 
 使用异步方式获取应用显存大小。
 
@@ -996,11 +1224,15 @@ getGraphicsMemory(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：14
 
-| 类型                    | 说明                           |
-|-----------------------|------------------------------|
-| Promise&lt;number&gt; | promise对象，调用结束后返回应用显存大小，单位为KB。 |
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
+
+| 类型                                                                 | 说明                         |
+|--------------------------------------------------------------------|----------------------------|
+| AtkTS-Dyn: Promise&lt;number&gt;<br/>AtkTS-Sta: Promise&lt;int&gt; | promise对象，返回应用显存总大小，单位为KB。 |
 
 **错误码：**
 
@@ -1010,6 +1242,7 @@ getGraphicsMemory(): Promise&lt;number&gt;
 
 **示例**
 
+AtkTS-Dyn示例:
 ```ts
 import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1020,10 +1253,22 @@ hidebug.getGraphicsMemory().then((ret: number) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
+AtkTS-Sta示例:
+```ts
+import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+
+hidebug.getGraphicsMemory().then((ret: int) => {
+  console.info(`graphicsMemory: ${ret}`)
+}).catch((error: Error) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
 
 ## hidebug.getGraphicsMemorySync<sup>14+</sup>
 
-getGraphicsMemorySync(): number
+AtkTS-Dyn: getGraphicsMemorySync(): number
+
+AtkTS-Sta: getGraphicsMemorySync(): int
 
 使用同步方式获取应用显存大小。
 
@@ -1035,11 +1280,15 @@ getGraphicsMemorySync(): number
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**返回值：**
+**AtkTS-Dyn起始版本**：14
+
+**AtkTS-Sta起始版本**：20
+
+**返回值**：
 
 | 类型  | 说明             |
 | ------ |----------------|
-| number | 应用显存大小，单位为KB。 |
+| AtkTS-Dyn: number<br/>AtkTS-Sta: int | 应用显存总大小，单位为KB。 |
 
 **错误码：**
 
@@ -1073,7 +1322,13 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**AtkTS-Dyn起始版本**：18
+
+**参数**：
 
 | 参数名                     | 类型      | 必填 | 说明                                          |
 |-------------------------|---------|----|---------------------------------------------|
@@ -1127,13 +1382,18 @@ enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
 > 1. 若设备运行期间已使能超过20个应用，调用该接口将会失败，并抛出错误码。
 > 2. 为避免应用异常退出，请务必使用try-catch捕获异常。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
+**AtkTS-Dyn起始版本**：20
+
 **参数**：
-| 参数名   | 类型   | 必填 | 说明   |
-|---------|---------|--------|-----|
-|options | [GwpAsanOptions](#gwpasanoptions20) | 否 | GWP-Asan配置项。如果未进行设置，则会使用默认参数。|
-|duration | number | 否 | GWP-Asan持续时间，默认7天，需要传入大于0的正整数。|
+
+| 参数名   | 类型                                  | 必填 | 说明   |
+|---------|-------------------------------------|--------|-----|
+| options | [GwpAsanOptions](#gwpasanoptions20) | 否 | GWP-ASan配置项。未设置时，使用默认参数。|
+| duration | number | 否 | GWP-ASan持续时间，单位为天，默认值为7。需传入大于0的正整数。 |
 
 **错误码**：
 
@@ -1154,11 +1414,10 @@ let options: hidebug.GwpAsanOptions = {
   sampleRate: 2500,
   maxSimutaneousAllocations: 5000,
 };
-let duration: number = 4;
 
 try {
-  hidebug.enableGwpAsanGrayscale(options, duration);
-  console.info('Succeeded in enabling GWP-Asan.');
+  hidebug.enableGwpAsanGrayscale(options, 4);
+  console.info(`Succeeded in enabling GWP-ASan.`);
 } catch (error) {
   const err: BusinessError = error as BusinessError;
   console.error(`Failed to enable GWP-Asan. Code: ${err.code}, message: ${err.message}`);
@@ -1167,20 +1426,30 @@ try {
 ## GwpAsanOptions<sup>20+</sup>
 GWP-Asan配置项。可用于配置是否使能、采样频率，以及最大分配的插槽数。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**AtkTS-Dyn起始版本**：20
+
+**参数**：
 
 | 名称         | 类型  | 只读  | 可选 | 说明 |
 |--------------|------|-------|-------|-----|
-|alwaysEnabled | boolean | 否  | 是 | true：100%使能GWP-Asan。<br/>false：1/128概率使能GWP-Asan。<br/> 默认值：false。|
-|sampleRate    |number| 否  |是|GWP-Asan采样频率，默认值为2500，需要传入大于0的正整数，若传入小数则向上取整。<br/> 1/sampleRate的概率对分配的内存进行采样。|
-|maxSimutaneousAllocations|number|否|是|最大分配的插槽数，默认值为1000，需要传入大于0的正整数，若传入小数则向上取整。<br/>当插槽用尽时，新分配的内存将不再受监控。<br/>释放已使用的内存后，其占用的插槽将自动复用，以便于后续内存的监控。|
+|alwaysEnabled | boolean | 否  | 是 | true：100%使能GWP-ASan。<br/>false：1/128概率使能GWP-ASan。<br/> 默认值：false。|
+|sampleRate    |number| 否  |是|GWP-ASan采样频率，默认值为2500，需要传入大于0的正整数，若传入小数则向上取整。<br/> 1/sampleRate的概率对分配的内存进行采样。<br/> 建议值：>=1000，过小会显著影响性能。|
+|maxSimutaneousAllocations|number|否|是|最大分配的插槽数，默认值为1000，需要传入大于0的正整数，若传入小数则向上取整。<br/>当插槽用尽时，新分配的内存将不再受监控。<br/>释放已使用的内存后，其占用的插槽将自动复用，以便于后续内存的监控。<br/> 建议值：<=20000，过大会可能导致VMA超限崩溃。|
 
 ## hidebug.disableGwpAsanGrayscale<sup>20+</sup>
 disableGwpAsanGrayscale(): void
 
 停止使能GWP-Asan。调用该接口将取消自定义配置，恢复默认参数[GwpAsanOptions](#gwpasanoptions20)。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**AtkTS-Dyn起始版本**：20
 
 **示例**：
 
@@ -1195,13 +1464,17 @@ getGwpAsanGrayscaleState(): number
 
 获取当前GWP-Asan剩余使能天数。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**AtkTS-Dyn起始版本**：20
 
 **返回值**：
 
 | 类型 | 说明 |
 |-----------|-------------|
-| number    |获取当前GWP-Asan剩余使能天数。若当前未使能，返回值0。|
+| number    |获取当前GWP-ASan剩余使能天数。若当前未使能，返回值0。|
 
 **示例**：
 
@@ -1210,4 +1483,36 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let remainDays: number = hidebug.getGwpAsanGrayscaleState();
 console.info(`remainDays: ${remainDays}`);
+```
+
+## hidebug.setJsRawHeapTrimLevel<sup>20+</sup>
+
+setJsRawHeapTrimLevel(level: JsRawHeapTrimLevel): void
+
+设置当前进程转储虚拟机原始堆快照的裁剪级别。使用该接口并传入参数TRIM_LEVEL_2，可以有效减少堆快照的文件大小。
+
+> **注意**：
+>
+> 默认裁剪级别是TRIM_LEVEL_1。如果设置了TRIM_LEVEL_2裁剪，需使用API version 20之后的[rawheap-translator](../../tools/rawheap-translator.md)工具才能将.rawheap文件转换为.heapsnapshot文件，否则可能导致转换失败。
+>
+> 该接口影响[dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)的结果。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**AtkTS-Dyn起始版本**：20
+
+**参数**：
+
+| 参数名 | 类型                                        | 必填 | 说明                   |
+| ------ | ------------------------------------------- | ---- | ---------------------- |
+| level  | [JsRawHeapTrimLevel](#jsrawheaptrimlevel20) | 是   | 转储堆快照的裁剪级别，默认为TRIM_LEVEL_1。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 ```

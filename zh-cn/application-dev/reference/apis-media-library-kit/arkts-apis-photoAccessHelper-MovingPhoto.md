@@ -2,12 +2,17 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
 动态照片对象。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 ## 导入模块
 
@@ -89,6 +94,10 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -176,6 +185,10 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 - 通过picker调用接口请求动态照片对象并读取内容，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-movingphoto.md)。
@@ -260,6 +273,10 @@ requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 

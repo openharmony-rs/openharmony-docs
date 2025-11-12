@@ -1317,7 +1317,7 @@ int main() {
 
 - 编译错误：`error: no member named 'methodName' in 'package::name::weak::InterfaceName::virtual_type'`
 
-  这可能说明你没有在IDL的接口`InterfaceName`中声明`methodName`方法，详见[5.5](#55-进阶taiheimpl_holder-和-taiheimpl_view)。另外，请注意，当要在子接口对象上调用父接口的方法时，必须先将子接口转换为父接口类型，详见[5.3](#53-接口方法的调用)。
+  这可能说明你没有在IDL的接口`InterfaceName`中声明`methodName`方法，详见[5.5](#55-进阶taiheimpl_holder和taiheimpl_view)。另外，请注意，当要在子接口对象上调用父接口的方法时，必须先将子接口转换为父接口类型，详见[5.3](#53-接口方法的调用)。
 
 - 编译错误：`error: implicit instantiation of undefined template 'taihe::as_abi<...>'`
 

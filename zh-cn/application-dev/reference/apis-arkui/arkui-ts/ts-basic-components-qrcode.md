@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
 > 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > 
 > 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
@@ -72,7 +74,9 @@ backgroundColor(value: ResourceColor)
 
 ### contentOpacity<sup>11+</sup>
 
-contentOpacity(value: number | Resource)
+ArkTS-Dyn: contentOpacity(value: number | Resource)
+
+ArkTS-Sta: contentOpacity(value: double | Resource)
 
 设置二维码内容颜色的不透明度。不透明度最小值为0，最大值为1。
 
@@ -82,9 +86,13 @@ contentOpacity(value: number | Resource)
 
 **参数：** 
 
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名 | 类型                                                 | 必填 | 说明                                     |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。 |
 
 
 ## 事件

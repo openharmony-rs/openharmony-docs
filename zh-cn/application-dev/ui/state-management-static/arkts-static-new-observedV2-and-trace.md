@@ -37,7 +37,7 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 | \@Trace成员变量装饰器 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | 装饰器参数            | 无                                                           |
-| 允许装饰的类型        | class中成员属性。属性的类型可以为number、string、boolean、class、Array、Date、Map、Set等类型。 |
+| 允许装饰的类型        | class中成员属性。属性的类型可以为number、string、boolean、class、[Array](#trace装饰基础类型的数组)、[Date](#trace装饰date类型)、[Map](#trace装饰map类型)、[Set](#trace装饰set类型)等类型。 |
 
 ## 观察变化
 
@@ -687,3 +687,99 @@ struct Index {
      }
    }
    ```
+
+### 序列化和反序列化
+
+使用无参构造函数的@ObservedV2装饰的类可以使用JSON.stringify序列化和JSON.parse反序列化。
+
+使用有参构造函数的@ObservedV2装饰的类可以使用JSON.stringify进行序列化，但在反序列化时，需要先使用JSON.parseJsonElement创建JsonElement实例，并且需要开发者实现从JsonElement实例到@ObservedV2装饰类的转换。
+
+**无参构造**
+
+```ts
+'use static'
+
+import { Entry, Text, Column, ComponentV2, Button } from '@ohos.arkui.component';
+import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+
+@ObservedV2
+class Source {
+  @Trace public source: int = 123;
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: string = 'Hello World';
+  @Local source: Source = new Source();
+
+  build() {
+    Column() {
+      Text(`Source ${this.source.source} and message ${this.message}`)
+      Button('+1')
+        .onClick((e) => {
+          this.source.source += 1;
+        })
+      Button('Serialize')
+        .onClick((e) => {
+          this.message = JSON.stringify(this.source);
+        })
+      Button('Deserialize')
+        .onClick((e) => {
+          // 反序列化生成@Observed类并赋值
+          this.source = JSON.parse<Source>('{"source": 123}', Type.from<Source>())!;
+        })
+    }
+  }
+}
+```
+
+**有参构造**
+
+```ts
+'use static'
+
+import { Entry, Text, Column, ComponentV2, Button } from '@ohos.arkui.component'
+import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement'
+
+@ObservedV2
+class Source {
+  @Trace public source: int;
+
+  constructor(s: int) {
+    // 有参构造
+    this.source = s;
+  }
+
+  // 用户自定义静态函数
+  static FromJSON(e: jsonx.JsonElement): Source {
+    return new Source(e.getInteger('source'));
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: string = 'Hello World';
+  @Local source: Source = new Source(1);
+
+  build() {
+    Column() {
+      Text(`Source ${this.source.source} and message ${this.message}`)
+      Button('+1')
+        .onClick((e) => {
+          this.source.source += 1;
+        })
+      Button('Serialize')
+        .onClick((e) => {
+          this.message = JSON.stringify(this.source);
+        })
+      Button('Deserialize')
+        .onClick((e) => {
+          // 使用JSON.parseJsonElement反序列生成JSONElement，再传入静态方法构建实例
+          this.source = Source.FromJSON(JSON.parseJsonElement('{"source": 123}'));
+        })
+    }
+  }
+}
+```

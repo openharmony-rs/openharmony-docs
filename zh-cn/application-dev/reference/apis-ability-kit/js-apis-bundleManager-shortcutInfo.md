@@ -4,9 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -20,6 +20,10 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称               | 类型                                    | 只读 | 可选 | 说明                 |
 | ------------------| --------------------------------------- | --- | --- | -------------------- |
 | targetBundle      | string                                  | 否   | 否  | 快捷方式的目标包名。 |
@@ -32,6 +36,10 @@ import { shortcutManager } from '@kit.AbilityKit';
 快捷方式的配置信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                | 类型                                       | 只读 | 可选 | 说明                         |
 | ------------------- | ----------------------------------------- | --- | --- | ---------------------------- |
@@ -53,6 +61,10 @@ import { shortcutManager } from '@kit.AbilityKit';
 快捷方式配置信息中的自定义数据。由开发者自行决定传入的键值对，可以通过key值获取对应的value值。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 类型    | 只读 | 可选 | 说明                            |
 | ------------- | ------ | ---- | ---- | ----------------------------- |

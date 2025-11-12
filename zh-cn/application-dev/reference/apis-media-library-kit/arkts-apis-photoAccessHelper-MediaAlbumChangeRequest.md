@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
 
@@ -10,6 +11,10 @@ MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 相册变更请求。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 ## 导入模块
 
@@ -24,6 +29,10 @@ constructor(album: Album)
 构造函数用于初始化新创建的对象。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -119,6 +128,10 @@ setAlbumName(name: string): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
@@ -162,6 +175,10 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): void
 向相册中添加资产。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -216,6 +233,10 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): void
 从相册中移除资产。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

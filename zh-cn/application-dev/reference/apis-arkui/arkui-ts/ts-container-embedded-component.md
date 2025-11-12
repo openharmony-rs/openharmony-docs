@@ -6,7 +6,9 @@ EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIE
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 使用约束
 
@@ -49,7 +51,9 @@ EmbeddedComponent(loader: Want, type: EmbeddedType)
 
 ### onTerminated
 
-onTerminated(callback: Callback&lt;TerminationInfo&gt;)
+ArkTS-Dyn: onTerminated(callback: Callback&lt;TerminationInfo&gt;)
+
+ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
 被拉起的EmbeddedUIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时，触发本回调函数。
 
@@ -57,11 +61,15 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------  | ------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)> | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)>\| undefined| 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。 |
 
 > **说明：**
 >
@@ -70,7 +78,9 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 ### onError
 
-onError(callback: ErrorCallback)
+ArkTS-Dyn: onError(callback: ErrorCallback)
+
+ArkTS-Sta: onError(callback: ErrorCallback | undefined)
 
 被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
@@ -78,11 +88,15 @@ onError(callback: ErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                                         | 必填                                                                       | 说明      |
 | ------ | ---------------------------------------------------------------------------- | --------- | --------- |
-| callback    | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
+| callback    | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) \| undefined| 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
 
 > **说明：**
 >

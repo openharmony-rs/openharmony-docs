@@ -12,7 +12,7 @@
 
 @StorageLink用于状态管理V1中，与AppStorage中对应的属性建立双向数据同步。
 
-在动态语言上下文中使用时，开发指南参考：[AppStorage：应用全局的UI状态存储（ArkTS-DT）](../../../ui/state-management/arkts-appstorage.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[AppStorage：应用全局的UI状态存储（ArkTS-Dyn）](../../../ui/state-management/arkts-appstorage.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

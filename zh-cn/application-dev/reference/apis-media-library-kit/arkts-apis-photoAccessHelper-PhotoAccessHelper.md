@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -17,6 +18,10 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 获取图片和视频资源，使用callback方式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -80,6 +85,10 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -147,6 +156,10 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -216,6 +229,10 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **参数：**
@@ -275,6 +292,10 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **参数：**
@@ -329,6 +350,10 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -390,6 +415,10 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options: FetchOptions, callbac
 获取相册前，确保相册已存在。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -457,6 +486,10 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback&lt;Fet
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **参数：**
@@ -513,6 +546,10 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 在获取相册之前，确保相册已存在。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -582,6 +619,10 @@ registerChange(uri: string, forChildUris: boolean, callback: Callback&lt;ChangeD
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                        | 必填 | 说明                                                         |
@@ -645,6 +686,10 @@ unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 取消指定uri的监听，一个uri可以注册多个监听，存在多个callback监听时，可以取消指定注册的callback的监听；不指定callback时取消该uri的所有监听。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -714,6 +759,10 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                      |
@@ -748,6 +797,10 @@ release(callback: AsyncCallback&lt;void&gt;): void
 当后续不需要使用PhotoAccessHelper实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -790,6 +843,10 @@ release(): Promise&lt;void&gt;
 当后续不需要使用PhotoAccessHelper 实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1026,6 +1083,10 @@ getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&g
 接口提供给应用调用，获取媒体库支持的图片或者视频后缀列表。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

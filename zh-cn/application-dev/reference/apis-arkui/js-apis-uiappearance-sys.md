@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)。
+>- 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>- 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)。
 
 
 ## 导入模块
@@ -115,7 +117,9 @@ try {
 
 ## uiAppearance.setFontScale<sup>12+<sup>
 
-setFontScale(fontScale: number): Promise\<void>
+ArkTS-Dyn: setFontScale(fontScale: number): Promise\<void>
+
+ArkTS-Sta: setFontScale(fontScale: double): Promise\<void>
 
 设置系统字体大小。
 
@@ -125,11 +129,15 @@ setFontScale(fontScale: number): Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontScale | number | 是 | 需要设置的字体大小。 |
+| fontScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体大小。 |
 
 **返回值：** 
 
@@ -171,7 +179,9 @@ try {
 
 ## uiAppearance.setFontWeightScale<sup>12+<sup>
 
-setFontWeightScale(fontWeightScale: number): Promise\<void>
+ArkTS-Dyn: setFontWeightScale(fontWeightScale: number): Promise\<void>
+
+ArkTS-Sta: setFontWeightScale(fontWeightScale: double): Promise\<void>
 
 设置系统字体粗细。
 
@@ -181,11 +191,15 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontWeightScale | number | 是 | 需要设置的字体粗细。 |
+| fontWeightScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体粗细。 |
 
 **返回值：** 
 

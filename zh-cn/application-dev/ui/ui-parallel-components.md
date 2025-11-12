@@ -8,7 +8,7 @@
 ![ui_parallel003](figures/page.png)
 
 ## 约束与限制
-  * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)创建[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)传递到[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)内部使用。尝试使用外部定义的状态变量可能会导致读写安全问题。
+  * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)。
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)组件。[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)内部只能使用上述组件，其他组件将触发运行时错误，导致应用崩溃。
   * 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持并行化创建，创建完成后的更新操作仍在主线程完成。
@@ -42,13 +42,19 @@ struct Index {
 ```
 ![ui_parallel002](figures/ui_parallel002.png)
 
-开发者可以使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)获取一个[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)来传递数据。该函数返回一个[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)，后续可直接通过`.value`获取其中的值。此值为[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)执行的返回结果。如果[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)中使用了状态变量，状态变量更新时，[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)将重新执行并更新[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)。
+开发者可以使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量来构造用于并行创建UI的参数。
 
-如下示例演示了如何使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)进行数据传递。
+如下示例演示了如何使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行参数构造。
 
 ```ts
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
-import { memorizeUpdatedState } from '@ohos.arkui.stateManagement';
+
+class Param {
+  str: string;
+  constructor(str: string) {
+    this.str = str;
+  }
+}
 
 @Entry
 @Component
@@ -56,11 +62,10 @@ struct Index {
   @State str: string = 'Hello';
   build() {
     Column() {
-      const str = memorizeUpdatedState<string>(() => {return this.str})
-      ParallelizeUI() {
-        Text(str.value) // 使用memorizeUpdatedState进行数据传递
-        .fontSize(50)
-      }
+      ParallelizeUI<Param>(undefined, () => { return new Param(this.str); }, (param: Param) => {
+        Text(param.str)
+          .fontSize(50)
+      })
       Text('World')
         .fontSize(50)
       Button('UpperCase')
@@ -75,7 +80,7 @@ struct Index {
 ![ui_parallel003](figures/ui_parallel003.png)
 
 
-## 并行化创建组件示例
+## 并行化创建组件
 
 并行创建的UI在创建完成后的下一帧才能合并显示，页面需要多帧才能显示全部内容。
 
@@ -84,7 +89,7 @@ struct Index {
 ```ts
 import { Entry, Text, Column, Component, Button, ClickEvent, FontWeight, Stack, Position,
   TextAlign, Alignment, Margin, Row, GridItem, Image ,ImageFit, $r, Grid } from '@ohos.arkui.component';
-import { State, memorizeUpdatedState } from '@ohos.arkui.stateManagement';
+import { State } from '@ohos.arkui.stateManagement';
 import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class WeatherInfo {
@@ -145,28 +150,30 @@ struct Page {
         })
         .width(200)
         .height(50)
-      let prop1 = memorizeUpdatedState<WeatherInfo>(() => {
+      let prop1 = ParallelizeUI<WeatherInfo>(() => {
         return new WeatherInfo(this.infos[0].city, this.infos[0].temperature, this.infos[0].weather);
       })
       Grid() {
-        // 并行创建多个组件
-        ParallelizeUI() {
-          GridItem() {
-            Row() {
-              Column() {
-                Text(prop1.value.city).fontSize('25') // 使用memorizeUpdatedState进行数据传递
-                Text(prop1.value.temperature.toString()).fontSize('25')
+        ParallelizeUI<WeatherInfo>(undefined,
+          () => { return new WeatherInfo(this.infos[0].city, this.infos[0].temperature, this.infos[0].weather); },
+          (prop1: WeatherInfo) => {
+            // 并行创建多个组件
+            GridItem() {
+              Row() {
+                Column() {
+                  Text(prop1.city).fontSize('25')
+                  Text(prop1.temperature.toString()).fontSize('25')
+                }
+                Image($r(prop1.getImg()))
+                  .objectFit(ImageFit.Contain)
               }
-              Image($r(prop1.value.getImg()))
-                .objectFit(ImageFit.Contain)
+              .width('100%')
+              .height('100%')
             }
             .width('100%')
-            .height('100%')
-          }
-          .width('100%')
-          .height(100)
-          .borderWidth(2).borderColor(0xAFEEEE)
-        }
+            .height(100)
+            .borderWidth(2).borderColor(0xAFEEEE)
+        })
         // 其余组件串行创建
         for (let i = 1; i < this.infos.length; i++) {
           GridItem() {
@@ -198,6 +205,208 @@ struct Page {
 
 ```
 ![ui_parallel003](figures/ui_parallel004.gif)
+
+
+## List&Grid支持并行化创建子组件
+
+从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。
+
+- 在非List和Grid中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)会并行创建arr数组中定义的所有UI节点。适用于批量创建大量静态内容（例如图标、按钮、卡片等）。
+
+  ```ts
+  'use static'
+
+  import { Entry, Column, Component, Image, Text, Stack, Row, $r, ImageFit, FontWeight, Margin } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+  class CardInfo {
+    title: string
+    desc: string
+    cover: string
+
+    constructor(title: string, desc: string, cover: string) {
+      this.title = title
+      this.desc = desc
+      this.cover = cover
+    }
+  }
+
+  @Entry
+  @Component
+  struct ParallelDemo {
+    @State arr: Array<Int> = [1]
+
+    aboutToAppear() {
+      // 模拟10个卡片数据
+      for (let i = 2; i <= 10; i++) {
+        this.arr.push(i)
+      }
+    }
+
+    build() {
+      Column() {
+        Text('ParallelizeUI 循环创建示例')
+          .fontSize(22)
+          .fontWeight(FontWeight.Bold)
+          .fontColor('#333')
+          .margin({ bottom: 12 } as Margin)
+
+        // 并行创建
+        ParallelizeUI<Int, CardInfo>({ enable: true }, this.arr,
+          (item: Int, index: Int) => {
+            const coverIndex = ((item - 1) % 5) + 1
+            return new CardInfo(
+              `卡片 ${item}`,
+              `描述信息 ${item}`,
+              `app.media.cover${coverIndex}`
+            )
+          },
+          (param: CardInfo) => {
+            // 每个卡片UI
+            Stack() {
+              Image($r(param.cover))
+                .width('100%')
+                .height(180)
+                .borderRadius(10)
+                .objectFit(ImageFit.Cover)
+
+              Column() {
+                Text(param.title) // 卡片标题
+                  .fontSize(18)
+                  .fontWeight(FontWeight.Medium)
+                  .fontColor('#FFF')
+
+                Text(param.desc) // 卡片描述
+                  .fontSize(14)
+                  .fontColor('#DDD')
+              }
+              .padding(10)
+            }
+            .width('100%')
+            .borderRadius(10)
+          }
+        )
+      }
+      .width('100%')
+      .padding(16)
+      .backgroundColor('#FAFAFA')
+    }
+  }
+  ```
+
+  ![ui_parallel003](figures/ui_parallelnolist.jpg)
+
+- 在List和Grid容器中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)仅按需并行创建当前可见区域内的节点，并在节点滑出可见区域后自动释放。
+  ```ts
+  'use static'
+
+  import { Entry, Text, Column, Component, Button, ClickEvent, List, ListItem, Image, Row, Stack, ToggleType, $r, ImageFit, Alignment,FontWeight, TextOverflow  } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+  class Info {
+    title: string
+    up: string
+    views: string
+    likes: string
+    coverRes: string
+    constructor(title: string, up: string, views: string, likes: string, coverRes: string) {
+      this.title = title
+      this.up = up
+      this.views = views
+      this.likes = likes
+      this.coverRes = coverRes
+    }
+  }
+
+  @Entry
+  @Component
+  struct Index {
+    @State arr: Array<Int> = [1]
+    @State stateVar: string = 'state var';
+
+    aboutToAppear() {
+      // 构造并行循环创建的数据源，创建50个ListItem子组件
+      for (let i = 2; i <= 50; i++) {
+        this.arr.push(i)
+      }
+    }
+
+    build() {
+      Column() {
+        List({ space: 10 }) {
+          ParallelizeUI<Int, Info>({ enable:true }, this.arr,
+            (item: Int, index: Int) => {
+              const coverIndex = ((item - 1) % 5) + 1   // 为每个Item生成Index
+              const coverResId = `app.media.cover${coverIndex}`
+
+              return new Info(
+                `【热门】搞笑视频 ${item}`,
+                `UP主：用户${item}`,
+                `${(Math.random() * 100).toFixed(1)}万播放`,
+                `${(Math.random() * 1).toFixed(1)}万点赞`,
+                coverResId
+              )
+            },
+            (param: Info) => {
+              ListItem() {
+                Column() {
+                  // 封面
+                  Stack() {
+                    Image($r(param.coverRes))
+                      .width('100%')
+                      .height(200)
+                      .borderRadius(8)
+                      .objectFit(ImageFit.Cover)
+                      .alt('video cover')
+
+                    // 播放量右下角浮层
+                    Row() {
+                      Text(param.views)
+                        .fontSize(12)
+                        .fontColor('#FFFFFF')
+                        .backgroundColor('rgba(0,0,0,0.5)')
+                        .borderRadius(10)
+                    }
+                    .align(Alignment.BottomEnd)
+                  }
+
+                  // 标题
+                  Text(param.title)
+                    .fontSize(18)
+                    .fontWeight(FontWeight.Medium)
+                    .maxLines(2)
+                    .textOverflow({ overflow: TextOverflow.Ellipsis })
+
+                  // 底部信息行（up主、点赞量）
+                  Row() {
+                    Text(param.up)
+                      .fontSize(14)
+                      .fontColor('#888')
+
+                    Text(` · ${param.likes}`)
+                      .fontSize(14)
+                      .fontColor('#888')
+                  }
+                }
+                .backgroundColor('#FFFFFF')
+                .borderRadius(12)
+                .padding(8)
+              }
+              .width('100%')
+            })
+        }
+        .width('100%')
+        .height('100%')
+        .padding(10)
+        .backgroundColor('#F8F8F8')
+      }
+    }
+  }
+  ```
+
+  ![ui_parallel003](figures/ui_parallellist.jpg)
 
 ## 相关实例
 

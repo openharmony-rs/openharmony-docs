@@ -8,6 +8,8 @@ overlay特征应用指应用中包含有[overlay特征](../../quick-start/resour
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > overlay特征仅适用于stage模型。
@@ -26,6 +28,10 @@ setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise\<void>
 设置当前应用中overlay特征module的禁用使能状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -52,6 +58,7 @@ setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -72,6 +79,28 @@ try {
   console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+ 
+// 开发者需根据实际工程更新moduleName。
+let moduleName = "feature";
+let isEnabled = false;
+
+try {
+  overlay.setOverlayEnabled(moduleName, isEnabled)
+    .then(() => {
+      console.info('setOverlayEnabled success');
+    }).catch((err: Error) => {
+      console.error('setOverlayEnabled failed due to err code: ' + (err as BusinessError).code + ' ' + 'message:' + (err as BusinessError).message);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
+}
+```
 
 ## overlay.setOverlayEnabled
 
@@ -80,6 +109,10 @@ setOverlayEnabled(moduleName: string, isEnabled: boolean, callback: AsyncCallbac
 设置当前应用中overlay module的禁用使能状态。使用callback异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -130,6 +163,10 @@ getOverlayModuleInfo(moduleName: string): Promise\<OverlayModuleInfo>
 获取当前应用中指定的module的overlayModuleInfo信息。使用promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -182,6 +219,10 @@ getOverlayModuleInfo(moduleName: string, callback: AsyncCallback\<OverlayModuleI
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -230,6 +271,10 @@ getTargetOverlayModuleInfos(targetModuleName: string): Promise\<Array\<OverlayMo
 获取指定的目标module的OverlayModuleInfo。使用promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -281,6 +326,10 @@ getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback\<A
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
@@ -323,12 +372,17 @@ try {
 
 ## OverlayModuleInfo
 
-type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo
+ArkTS-Dyn: type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo<br>
+ArkTS-Sta: type OverlayModuleInfo = _OverlayModuleInfo
 
 OverlayModuleInfo信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_OverlayModuleInfo.OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md#overlaymoduleinfo-1) |OverlayModuleInfo信息。 |
+| ArkTS-Dyn: [_OverlayModuleInfo.OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md#overlaymoduleinfo-1)<br>ArkTS-Sta: [_OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md#overlaymoduleinfo-1) |OverlayModuleInfo信息。 |

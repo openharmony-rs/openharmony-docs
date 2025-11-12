@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -19,6 +20,10 @@ getUserDownloadDir(): string
 获取当前用户预授权下载目录的沙箱路径。当前仅支持2in1设备使用。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -37,6 +42,8 @@ getUserDownloadDir(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 function getUserDownloadDirExample() {
@@ -49,6 +56,21 @@ function getUserDownloadDirExample() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+function getUserDownloadDirExample() {
+  try {
+    let path = Environment.getUserDownloadDir();
+    console.info(`Succeeded in getUserDownloadDir, Path: ${path}`);
+  } catch (error: Error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to getUserDownloadDir. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ## Environment.getUserDesktopDir
 
 getUserDesktopDir(): string
@@ -56,6 +78,10 @@ getUserDesktopDir(): string
 获取当前用户预授权桌面目录的沙箱路径。当前仅支持2in1设备使用。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -74,6 +100,8 @@ getUserDesktopDir(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 function getUserDesktopDirExample() {
@@ -86,6 +114,21 @@ function getUserDesktopDirExample() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+function getUserDesktopDirExample() {
+  try {
+    let path = Environment.getUserDesktopDir();
+    console.info(`Succeeded in getUserDesktopDir, Path: ${path}`);
+  } catch (error: Error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to getUserDesktopDir. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ## Environment.getUserDocumentDir
 
 getUserDocumentDir(): string
@@ -93,6 +136,10 @@ getUserDocumentDir(): string
 获取当前用户预授权文档目录的沙箱路径。当前仅支持2in1设备使用。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -111,6 +158,8 @@ getUserDocumentDir(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 function getUserDocumentDirExample() {
@@ -119,6 +168,21 @@ function getUserDocumentDirExample() {
     console.log(`success to getUserDocumentDir: ${JSON.stringify(path)}`);
   } catch (error) {
     console.error(`failed to getUserDocumentDir, Error code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+function getUserDocumentDirExample() {
+  try {
+    let path = Environment.getUserDocumentDir();
+    console.info(`Succeeded in getUserDocumentDir, Path: ${path}`);
+  } catch (error: Error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to getUserDocumentDir. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```

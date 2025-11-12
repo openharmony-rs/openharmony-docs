@@ -8,7 +8,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -35,6 +37,10 @@ XmlSerializer的构造函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                              | 必填 | 说明                                             |
@@ -44,11 +50,17 @@ XmlSerializer的构造函数。
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -71,6 +83,10 @@ setAttributes(name: string, value: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明            |
@@ -80,11 +96,17 @@ setAttributes(name: string, value: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -115,6 +137,10 @@ addEmptyElement(name: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -123,11 +149,17 @@ addEmptyElement(name: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -151,6 +183,10 @@ setDeclaration(): void
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **示例：**
 
@@ -182,6 +218,10 @@ startElement(name: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -190,11 +230,17 @@ startElement(name: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -226,6 +272,10 @@ endElement(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **示例：**
 
 ```ts
@@ -256,6 +306,10 @@ setNamespace(prefix: string, namespace: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                           |
@@ -265,11 +319,17 @@ setNamespace(prefix: string, namespace: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -297,6 +357,10 @@ setComment(text: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
@@ -305,11 +369,17 @@ setComment(text: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -338,6 +408,10 @@ setCDATA(text: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明              |
@@ -346,11 +420,17 @@ setCDATA(text: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -375,6 +455,10 @@ setText(text: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明             |
@@ -383,11 +467,17 @@ setText(text: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -415,6 +505,10 @@ setDocType(text: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
@@ -423,11 +517,17 @@ setDocType(text: string): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -460,6 +560,10 @@ XmlDynamicSerializer的构造函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                              | 必填 | 说明                                             |
@@ -489,6 +593,10 @@ getOutput(): ArrayBuffer
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -524,6 +632,10 @@ setAttributes(name: string, value: string): void
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -571,6 +683,10 @@ addEmptyElement(name: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -609,6 +725,10 @@ setDeclaration(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
@@ -646,6 +766,10 @@ startElement(name: string): void
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -691,6 +815,10 @@ endElement(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
@@ -728,6 +856,10 @@ setNamespace(prefix: string, namespace: string): void
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -769,6 +901,10 @@ setComment(text: string): void
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -812,6 +948,10 @@ setCdata(text: string): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明              |
@@ -849,6 +989,10 @@ setText(text: string): void
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -890,6 +1034,10 @@ setDocType(text: string): void
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -933,6 +1081,10 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                              | 必填 | 说明                                       |
@@ -942,11 +1094,17 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -969,6 +1127,10 @@ parseXml(option: ParseOptions): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明          |
@@ -977,11 +1139,17 @@ parseXml(option: ParseOptions): void
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+ArkTS-Sta错误码：
+
+此接口在ArkTS-Sta无错误码。
 
 **示例：**
 
@@ -1020,7 +1188,11 @@ parse(option: ParseOptions): void
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1068,28 +1240,6 @@ that.parse(options);
 // note
 ```
 
-## AttributeWithTagCb<sup>20+</sup>
-
-type AttributeWithTagCb = (tagName: string, key: string, value: string) => boolean
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名   |  类型  | 必填 |  说明   |
-| ------- | -------| ---- | ------ |
-| tagName | string | 是   | 标签名称。|
-| key     | string | 是   | 属性名称。|
-| value   | string | 是   | 属性的值。|
-
-**返回值：**
-
-| 类型    | 说明                                                                       |
-| ------- | ------------------------------------------------------------------------- |
-| boolean | 是否继续解析标签名称、属性名称及属性的值。true表示继续解析，false表示停止解析。 |
-
 ## ParseOptions
 
 XML解析选项。
@@ -1098,6 +1248,9 @@ XML解析选项。
 
 **系统能力：** SystemCapability.Utils.Lang。
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                           | 类型                                                         | 必填 | 说明                                    |
 | ------------------------------ | ------------------------------------------------------------ | ---- | --------------------------------------- |
@@ -1106,7 +1259,6 @@ XML解析选项。
 | tagValueCallbackFunction       | (name: string, value: string) =&gt; boolean | 否   | 解析开始标签、标签值和结束标签，默认值undefined，表示不解析。 |
 | attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否   | 解析属性和属性值，默认值undefined，表示不解析。 |
 | tokenValueCallbackFunction     | (eventType: [EventType](#eventtype), value: [ParseInfo](#parseinfo)) =&gt; boolean | 否   | 解析元素事件类型([EventType](#eventtype))和[ParseInfo](#parseinfo)属性，默认值undefined，表示不解析。 |
-| attributeWithTagCallbackFunction<sup>20+</sup> | [AttributeWithTagCb](#attributewithtagcb20) | 否 | 解析标签名称、属性名称及属性的值，默认值为undefined，表示不执行解析。 |
 
 ## ParseInfo
 
@@ -1115,7 +1267,9 @@ XML解析选项。
 
 ### getColumnNumber
 
-getColumnNumber(): number
+ArkTS-Dyn: getColumnNumber(): number
+
+ArkTS-Sta: getColumnNumber(): int
 
 获取当前列号，从1开始计数。
 
@@ -1123,11 +1277,15 @@ getColumnNumber(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回当前列号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回当前列号。 |
 
 **示例：**
 
@@ -1151,7 +1309,9 @@ console.info(str);
 
 ### getDepth
 
-getDepth(): number
+ArkTS-Dyn: getDepth(): number
+
+ArkTS-Sta: getDepth(): int
 
 获取元素的当前深度。
 
@@ -1163,11 +1323,15 @@ getDepth(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 返回元素的当前深度。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回元素的当前深度。 |
 
 **示例：**
 
@@ -1195,7 +1359,9 @@ console.info(str);
 
 ### getLineNumber
 
-getLineNumber(): number
+ArkTS-Dyn: getLineNumber(): number
+
+ArkTS-Sta: getLineNumber(): int
 
 获取当前行号，从1开始。
 
@@ -1203,11 +1369,15 @@ getLineNumber(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回当前行号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回当前行号。 |
 
 **示例：**
 
@@ -1238,6 +1408,10 @@ getName(): string
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1273,6 +1447,10 @@ getNamespace(): string
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1312,6 +1490,10 @@ getPrefix(): string
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1353,6 +1535,10 @@ getText(): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                     |
@@ -1387,6 +1573,10 @@ isEmptyElementTag(): boolean
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1427,6 +1617,10 @@ isWhitespace(): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                   |
@@ -1458,7 +1652,9 @@ console.info(str);
 ```
 ### getAttributeCount
 
-getAttributeCount(): number
+ArkTS-Dyn: getAttributeCount(): number
+
+ArkTS-Sta: getAttributeCount(): int
 
 获取当前开始标记的属性数。
 
@@ -1466,10 +1662,14 @@ getAttributeCount(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| number | 当前开始标记的属性数。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前开始标记的属性数。 |
 
 **示例：**
 
@@ -1498,6 +1698,10 @@ console.info(str);
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称             | 值   | 说明                  |
 | ---------------- | ---- | --------------------- |

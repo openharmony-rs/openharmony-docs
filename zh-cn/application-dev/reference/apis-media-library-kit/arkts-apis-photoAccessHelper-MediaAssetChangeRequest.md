@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
 
@@ -10,6 +11,10 @@ MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 资产变更请求。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 ## 导入模块
 
@@ -26,6 +31,10 @@ constructor(asset: PhotoAsset)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -237,6 +246,10 @@ static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -401,6 +414,10 @@ setTitle(title: string): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
@@ -451,7 +468,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## getWriteCacheHandler<sup>11+</sup>
 
-getWriteCacheHandler(): Promise&lt;number&gt;
+ArkTS-Dyn: getWriteCacheHandler(): Promise&lt;number&gt;
+
+ArkTS-Sta: getWriteCacheHandler(): Promise&lt;int&gt;
 
 获取临时文件写句柄。
 
@@ -461,11 +480,15 @@ getWriteCacheHandler(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，返回临时文件写句柄。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回临时文件写句柄。 |
 
 **错误码：**
 
@@ -513,6 +536,10 @@ addResource(type: ResourceType, fileUri: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -566,6 +593,10 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -612,6 +643,10 @@ saveCameraPhoto(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
@@ -646,6 +681,10 @@ saveCameraPhoto(imageFileType: ImageFileType): void
 保存相机拍摄的照片。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -692,6 +731,10 @@ discardCameraPhoto(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
@@ -721,17 +764,23 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 ## setOrientation<sup>15+</sup>
 
-setOrientation(orientation: number): void
+ArkTS-Dyn: setOrientation(orientation: number): void
+
+ArkTS-Sta: setOrientation(orientation: int): void
 
 修改图片的旋转角度。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| orientation | number | 是   | 待修改的图片旋转角度，且只能为0、90、180、270。 |
+| orientation | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 待修改的图片旋转角度，且只能为0、90、180、270。 |
 
 **错误码：**
 

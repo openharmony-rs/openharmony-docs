@@ -56,6 +56,19 @@ UI自定义组件互操作适用于主模块使用ArkTS-Sta、子模块使用Ark
     }
   }
   ```
+  ```
+  // dynamic_module/src/main/ets/components/HelloComponent.ets
+  @Component
+  export struct HelloComponent { // 从动态模块中导出
+    message: string = '';
+
+    build() {
+      Text(this.message)
+        .fontSize(50)
+        .fontColor(Color.Blue)
+    }
+  }
+  ```
 
 - 静态上下文中不支持通过@Reusable装饰器来使能动态类型自定义组件的回收复用。
 
@@ -68,10 +81,10 @@ ArkUI互操作能力支持静态上下文使用动态模块的自定义组件，
 
 以下示例展示了如何在静态上下文中使用动态模块的自定义组件来显示“Hello World!”。
 
-- 创建ArkTS-Dyn子模块`har1.1`，在`har1.1/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](har-package.md)）说明。
+- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
-// har1.1/src/main/ets/components/ChildComponent.ets
+// har1_1/src/main/ets/components/ChildComponent.ets
 
 @Component
 export struct ChildComponent {
@@ -87,27 +100,42 @@ export struct ChildComponent {
     .backgroundColor(Color.White)
   }
 }
+
+@ComponentV2
+export struct ChildComponentV2 {
+  message: string = 'Hello World!';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(50)
+        .fontColor(Color.Blue)
+    }
+    .padding(20)
+    .backgroundColor(Color.White)
+  }
+}
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](har-package.md)）说明。
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5
 
 "dependencies": {
-  "har1.1": "file:../har1.1"
+  "har1_1": "file:../har1_1"
 }
 ```
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn组件。
 
 ```TypeScript
-'use static';
+'use static'
 
 // entry/src/main/ets/pages/MainPage.ets
-import { Entry, Component, Column } from '@ohos.arkui.component';
+import { Entry, Component, Column, ComponentV2 } from '@ohos.arkui.component';
 
-import { ChildComponent } from 'har1.1';
+import { ChildComponent, ChildComponentV2 } from 'har1_1';
 
 @Entry
 @Component
@@ -116,10 +144,22 @@ struct MainPage {
     Column() {
       // 无需显式使用占位组件API，框架会自动处理
       ChildComponent()
+      ChildComponentV2()
+      MainPageV2()
     }
     .width('100%')
     .height('100%')
     .backgroundColor('#F1F3F5')
+  }
+}
+
+@ComponentV2
+struct MainPageV2 {
+  build() {
+    Column() {
+      ChildComponent()
+      ChildComponentV2()
+    }
   }
 }
 ```
@@ -183,7 +223,7 @@ Column() {
 // 在ArkTS-Dyn组件中添加样式透传属性
 @Component
 export struct ChildComponent {
-  backgroundColor: Color = Color.Red;
+  backgroundColor: string = '';
 
   build() {
     Column() {}
@@ -206,7 +246,7 @@ project/
 │               └── pages/
 │                   └── MainPage.ets
 │
-└── har1.1/         # ArkTS-Dyn子模块
+└── har1_1/         # ArkTS-Dyn子模块
     └── src/
         └── main/
             └── ets/

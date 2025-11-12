@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -37,10 +39,14 @@ Progress(options: ProgressOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 7
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称                        | 类型                                | 必填   | 说明                                     |
 | -------------------------- | ----------------------------------- | ---- | ---------------------------------------- |
-| value                      | number                              | 是    | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| total                      | number                              | 否    | 指定进度总长。设置小于等于0的数值时置为100。<br/>默认值：100<br/>取值范围：[0, 2147483647]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| value                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是    | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| total                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否    | 指定进度总长。设置小于等于0的数值时置为100。<br/>默认值：100<br/>取值范围：[0, 2147483647]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | type<sup>8+</sup>          | [ProgressType](#progresstype8枚举说明)   | 否    | 指定进度条类型。<br/>默认值：ProgressType.Linear<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle枚举说明) | 否    | 指定进度条样式。<br/>该参数从API version8开始废弃，建议使用type替代。<br/>默认值：ProgressStyle.Linear |
 
@@ -106,7 +112,9 @@ Progress(options: ProgressOptions)
 
 ### value
 
-value(value: number)
+ArkTS-Dyn: value(value: number)
+
+ArkTS-Sta: value(value: double)
 
 设置当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。非法数值不生效。
 
@@ -118,9 +126,13 @@ value(value: number)
 
 **参数：** 
 
+**ArkTs-Dyn起始版本：** 7
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| value  | number | 是   | 当前进度值。<br/> 默认值：0|
+| value  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 当前进度值。<br/> 默认值：0|
 
 ### color
 
@@ -196,10 +208,14 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型  | 必填 |说明         |
 | ------ | ------ | ------- |------------|
-| value  | number | 是 | 当前进度值。当设置的数值小于0时，将其置为0。当设置的数值大于total时，将其置为total。<br/>默认值：0<br/>取值范围：[0, total] |
-| total  | number | 是 | 进度总长。<br/>取值范围：[0, 2147483647]   |
+| value  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 当前进度值。当设置的数值小于0时，将其置为0。当设置的数值大于total时，将其置为total。<br/>默认值：0<br/>取值范围：[0, total] |
+| total  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 进度总长。<br/>取值范围：[0, 2147483647]   |
 
 ## CommonProgressStyleOptions<sup>10+</sup>
 
@@ -237,10 +253,14 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称          | 类型                      | 必填 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ |
 | strokeWidth  | [Length](ts-types.md#length) | 否   | 设置进度条宽度（不支持百分比设置）。<br/>默认值：4.0vp                                            |
-| scaleCount   | number                       | 否   | 设置环形进度条总刻度数。<br/>默认值：120 <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
+| scaleCount   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置环形进度条总刻度数。<br/>默认值：120 <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
 | scaleWidth   | [Length](ts-types.md#length) | 否   | 设置环形进度条刻度粗细（不支持百分比设置）。刻度粗细大于进度条宽度时，为系统默认粗细。<br/>默认值：2.0vp |
 
 ## CapsuleStyleOptions<sup>10+</sup>
@@ -304,10 +324,14 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 10
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称          | 类型                      | 必填 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ |
 | strokeWidth  | [Length](ts-types.md#length) | 否   | 设置进度条宽度（不支持百分比设置）。<br/>默认值：4.0vp                                            |
-| scaleCount   | number                       | 否   | 设置环形进度条总刻度数。<br/>默认值：120 <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
+| scaleCount   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置环形进度条总刻度数。<br/>默认值：120 <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
 | scaleWidth   | [Length](ts-types.md#length) | 否   | 设置环形进度条刻度粗细（不支持百分比设置）。刻度粗细大于进度条宽度时，为系统默认粗细。<br/>默认值：2.0vp |
 
 ## EclipseStyleOptions<sup>10+</sup>

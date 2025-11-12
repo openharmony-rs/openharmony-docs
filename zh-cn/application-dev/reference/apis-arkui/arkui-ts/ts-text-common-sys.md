@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>  - 本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  当前页面仅包含本模块的系统接口，其他公开接口参见[公共类型](ts-types.md)和[文本组件公共接口](ts-text-common.md)。
+>  - 当前页面仅包含本模块的系统接口，其他公开接口参见[公共类型](ts-types.md)和[文本组件公共接口](ts-text-common.md)。
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## TextContentControllerBase
 
@@ -18,7 +20,10 @@ TextInput、TextArea、Search的基础控制器。
 
 ### getText<sup>19+</sup>
 
-getText(range?: TextRange): string
+ArkTS-Dyn: getText(range?: TextRange): string
+
+ArkTS-Sta: getText(range?: TextRange): string | undefined
+
 
 获取指定范围的文本内容。
 
@@ -27,6 +32,10 @@ getText(range?: TextRange): string
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -38,7 +47,7 @@ getText(range?: TextRange): string
 
 | 类型    | 说明               |
 | ------ | ---------------- |
-| string | 指定范围的文本内容。 |
+| ArkTS-Dyn: string <br/> ArkTS-Sta: string \| undefined | 指定范围的文本内容。 |
 
 ## KeyboardGradientMode<sup>20+</sup>枚举说明
 

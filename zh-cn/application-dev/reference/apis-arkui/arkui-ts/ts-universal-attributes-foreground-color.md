@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## foregroundColor
 
-foregroundColor(value: ResourceColor | ColoringStrategy): T
+ArkTS-Dyn: foregroundColor(value: ResourceColor | ColoringStrategy): T
+
+ArkTS-Sta: foregroundColor(value: ResourceColor | ColoringStrategy | undefined): this
 
 设置组件的前景色。当组件未设置前景色，默认继承父组件。
 
@@ -16,17 +20,21 @@ foregroundColor(value: ResourceColor | ColoringStrategy): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10) | 是   | 设置组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10) \| undefined | 是   | 设置组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>  ArkTS-Sta: this | 返回当前组件。 |
 
 ## foregroundColor<sup>18+</sup>
 
@@ -49,6 +57,7 @@ foregroundColor(color: Optional\<ResourceColor | ColoringStrategy>): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
+
 
 ## 示例
 

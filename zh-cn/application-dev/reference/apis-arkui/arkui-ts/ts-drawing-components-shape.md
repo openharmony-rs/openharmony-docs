@@ -8,9 +8,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
 
 
 ## 子组件
@@ -79,7 +81,9 @@ viewPort(value: ViewportRect)
 
 ### fill
 
-fill(value: ResourceColor)
+ArkTS-Dyn: fill(value: ResourceColor)
+
+ArkTS-Sta: fill(value: ResourceColor | undefined)
 
 设置填充区域的颜色，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
 
@@ -89,15 +93,21 @@ fill(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 填充区域颜色。<br/>默认值：Color.Black |
 
 ### fillOpacity
 
-fillOpacity(value: number | string | Resource)
+ArkTS-Dyn: fillOpacity(value: number | string | Resource)
+
+ArkTS-Sta: fillOpacity(value: double | string | Resource | undefined)
 
 设置填充区域透明度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0，其余异常值按1.0处理。
 
@@ -107,15 +117,21 @@ fillOpacity(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                           |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 填充区域透明度。<br/>默认值：1 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 填充区域透明度。<br/>默认值：1 |
 
 ### stroke
 
-stroke(value: ResourceColor)
+ArkTS-Dyn: stroke(value: ResourceColor)
+
+ArkTS-Sta: stroke(value: ResourceColor | undefined)
 
 设置边框颜色，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，不设置时，默认没有边框。异常值不会绘制边框。
 
@@ -125,15 +141,21 @@ stroke(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 边框颜色。 |
 
 ### strokeDashArray
 
-strokeDashArray(value: Array&lt;any&gt;)
+ArkTS-Dyn: strokeDashArray(value: Array&lt;any&gt;)
+
+ArkTS-Sta: strokeDashArray(value: Array&lt;Length&gt; | undefined)
 
 设置边框间隙，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
 
@@ -143,15 +165,21 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 边框间隙。<br/>默认值：[]<br/>默认单位：vp |
+| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: Array&lt;[Length](./ts-types.md#length)&gt; \| undefined | 是   | 边框间隙。<br/>默认值：[]<br/>默认单位：vp |
 
 ### strokeDashOffset
 
-strokeDashOffset(value: [Length](ts-types.md#length))
+ArkTS-Dyn: strokeDashOffset(value: [Length](ts-types.md#length))
+
+ArkTS-Sta: strokeDashOffset(value: double | string | undefined)
 
 设置边框绘制起点的偏移量，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
 
@@ -161,15 +189,21 @@ strokeDashOffset(value: [Length](ts-types.md#length))
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                                 |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 边框绘制起点的偏移量。<br/>默认值：0<br/>默认单位：vp |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 边框绘制起点的偏移量。<br/>默认值：0<br/>默认单位：vp |
 
 ### strokeLineCap
 
-strokeLineCap(value: LineCapStyle)
+ArkTS-Dyn: strokeLineCap(value: LineCapStyle)
+
+ArkTS-Sta: strokeLineCap(value: LineCapStyle | undefined)
 
 设置边框端点绘制样式，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -179,15 +213,21 @@ strokeLineCap(value: LineCapStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                              | 必填 | 说明                                             |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | 是   | 边框端点绘制样式。<br/>默认值：LineCapStyle.Butt |
+| value  | ArkTS-Dyn: [LineCapStyle](ts-appendix-enums.md#linecapstyle)<br/>ArkTS-Sta: [LineCapStyle](ts-appendix-enums.md#linecapstyle) \| undefined | 是   | 边框端点绘制样式。<br/>默认值：LineCapStyle.Butt |
 
 ### strokeLineJoin
 
-strokeLineJoin(value: LineJoinStyle)
+ArkTS-Dyn: strokeLineJoin(value: LineJoinStyle)
+
+ArkTS-Sta: strokeLineJoin(value: LineJoinStyle | undefined)
 
 设置边框拐角绘制样式，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -197,15 +237,21 @@ strokeLineJoin(value: LineJoinStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                               |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | 是   | 边框拐角绘制样式。<br/>默认值：LineJoinStyle.Miter |
+| value  | ArkTS-Dyn: [LineJoinStyle](ts-appendix-enums.md#linejoinstyle)<br/>ArkTS-Sta: [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) \| undefined | 是   | 边框拐角绘制样式。<br/>默认值：LineJoinStyle.Miter |
 
 ### strokeMiterLimit
 
-strokeMiterLimit(value: [Length](ts-types.md#length))
+ArkTS-Dyn: strokeMiterLimit(value: [Length](ts-types.md#length))
+
+ArkTS-Sta: strokeMiterLimit(value: double | string | undefined)
 
 设置斜接长度与边框宽度比值的极限值，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。该属性取值需在strokeLineJoin属性取值LineJoinStyle.Miter时生效。 
 
@@ -217,15 +263,21 @@ strokeMiterLimit(value: [Length](ts-types.md#length))
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                                           |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 斜接长度与边框宽度比值的极限值。<br/>默认值：4 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 斜接长度与边框宽度比值的极限值。<br/>默认值：4<br/>默认单位：vp |
 
 ### strokeOpacity
 
-strokeOpacity(value: number | string | Resource)
+ArkTS-Dyn: strokeOpacity(value: number | string | Resource)
+
+ArkTS-Sta: strokeOpacity(value: double | string | Resource | undefined)
 
 设置边框透明度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0，其余异常值按1.0处理 。
 
@@ -235,15 +287,21 @@ strokeOpacity(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                       |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 边框透明度。<br/>默认值：1 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 边框透明度。<br/>默认值：1 |
 
 ### strokeWidth
 
-strokeWidth(value: [Length](ts-types.md#length))
+ArkTS-Dyn: strokeWidth(value: [Length](ts-types.md#length))
+
+ArkTS-Sta: strokeWidth(value: double | string | undefined)
 
 设置边框宽度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。该属性若为string类型，暂不支持百分比，百分比按照1px处理。
 
@@ -253,15 +311,21 @@ strokeWidth(value: [Length](ts-types.md#length))
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                     |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1<br/>默认单位：vp<br/>异常值按照默认值处理。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 边框宽度，取值范围≥0。<br/>默认值：1<br/>默认单位：vp<br/>异常值按照默认值处理。 |
 
 ### antiAlias
 
-antiAlias(value: boolean)
+ArkTS-Dyn: antiAlias(value: boolean)
+
+ArkTS-Sta: antiAlias(value: boolean | undefined)
 
 设置是否开启抗锯齿效果，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -271,11 +335,15 @@ antiAlias(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true |
 
 ### mesh<sup>8+</sup>
 

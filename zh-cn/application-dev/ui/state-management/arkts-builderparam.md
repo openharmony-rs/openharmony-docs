@@ -267,7 +267,7 @@ class Tmp {
 @Builder
 function overBuilder($$: Tmp) {
   Text($$.label)
-    .width(400)
+    .width('100%')
     .height(50)
     .backgroundColor(Color.Green)
 }
@@ -324,7 +324,7 @@ class Tmp {
 @Builder
 function overBuilder($$: Tmp) {
   Text($$.label)
-    .width(400)
+    .width('100%')
     .height(50)
     .backgroundColor(Color.Green)
 }
@@ -510,7 +510,7 @@ struct CustomContainerUser {
 ```ts
 @ComponentV2
 struct ChildPage {
-  @Require @Param message: string = "";
+  @Require @Param message: string = '';
 
   @Builder
   customBuilder() {
@@ -583,7 +583,7 @@ import { Local, Require, Param } from "@ohos.arkui.stateManagement";
 
 @ComponentV2
 struct ChildPage {
-  @Require @Param message: string = "";
+  @Require @Param message: string = '';
 
   @Builder
   customBuilder() {
@@ -1470,7 +1470,7 @@ function globalBuilder() {
 @Entry
 @Component
 struct customBuilderDemo {
-  @State message: string = "";
+  @State message: string = '';
 
   build() {
     Column() {

@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -27,6 +28,10 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -57,7 +62,10 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 
 根据添加的事件观察者类型，目前有如下三种使用方法：
 
+ArkTS-Dyn示例：
+
 方法一：如果观察者传入了回调的相关参数，则可以选择在自动触发的回调函数中对订阅事件进行处理。
+
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -97,7 +105,7 @@ hiAppEvent.addWatcher({
 ```
 
 方法二：如果观察者未传入回调的相关参数，则可以选择使用返回的holder对象手动去处理订阅事件。
-<br>针对异常退出时产生的崩溃事件（hiAppEvent.event.APP_CRASH）和卡死事件（hiAppEvent.event.APP_FREEZE），系统捕获维测日志有一定耗时，典型情况下30s内完成，极端情况下2min左右完成。
+<br>针对异常退出时产生的崩溃事件（hiAppEvent.event.APP_CRASH）和应用冻屏事件（hiAppEvent.event.APP_FREEZE），系统捕获维测日志有一定耗时，典型情况下30s内完成，极端情况下2min左右完成。
 <br>在手动处理订阅事件的方法中，由于事件可能未生成或日志信息未抓取完成，建议在进程启动后延时重试调用takeNext()获取此类事件。
 
 ```ts
@@ -154,6 +162,110 @@ hiAppEvent.addWatcher({
 });
 ```
 
+ArkTS-Sta示例：
+<br>方法一：如果观察者传入了回调的相关参数，则可以选择在自动触发的回调函数中对订阅事件进行处理。
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+hiAppEvent.addWatcher({
+  name: "watcher1",
+  // 订阅过滤条件，这里是订阅了系统事件领域的应用崩溃事件
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+      names: [hiAppEvent.event.APP_CRASH]
+    }
+  ],
+  // 设置触发onTrigger回调的条件，这里是当满足事件总数量达到10个或事件总大小达到1000byte或事件发生超过30s时会触发回调
+  triggerCondition: {
+    row: 10,
+    size: 1000,
+    timeOut: 1
+  },
+  // 实现onTrigger回调，结合triggerCondition使用，满足回调条件触发回调，接收到回调通知后，使用takeNext()查询订阅的事件
+  onTrigger: (curRow: int, curSize: int, holder: hiAppEvent.AppEventPackageHolder) => {
+    if (holder == null) {
+      hilog.error(0x0000, 'hiAppEvent', "holder is null");
+      return;
+    }
+    hilog.info(0x0000, 'hiAppEvent', `curRow=${curRow}, curSize=${curSize}`);
+    let eventPkg: hiAppEvent.AppEventPackage | null = null;
+    while ((eventPkg = holder.takeNext()) !== null) {
+      if (eventPkg !== null) {
+        hilog.info(0x0000, 'hiAppEvent', `eventPkg.packageId=${eventPkg.packageId}`);
+        hilog.info(0x0000, 'hiAppEvent', `eventPkg.row=${eventPkg.row}`);
+        hilog.info(0x0000, 'hiAppEvent', `eventPkg.size=${eventPkg.size}`);
+        for (const eventInfo of eventPkg.data) {
+          hilog.info(0x0000, 'hiAppEvent', `eventPkg.data=${eventInfo}`);
+        }
+      }
+    }
+  }
+});
+```
+
+方法二：如果观察者未传入回调的相关参数，则可以选择使用返回的holder对象手动去处理订阅事件。
+<br>针对异常退出时产生的崩溃事件（hiAppEvent.event.APP_CRASH）和应用冻屏事件（hiAppEvent.event.APP_FREEZE），系统捕获维测日志有一定耗时，典型情况下30s内完成，极端情况下2min左右完成。
+<br>在手动处理订阅事件的方法中，由于事件可能未生成或日志信息未抓取完成，建议在进程启动后延时重试调用takeNext()获取此类事件。
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let holder: hiAppEvent.AppEventPackageHolder = hiAppEvent.addWatcher({
+  name: "watcher2",
+  // 订阅过滤条件，这里是订阅了系统事件领域的应用崩溃事件
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+      names: [hiAppEvent.event.APP_CRASH]
+    }
+  ],
+});
+// 通过订阅数据持有者holder，主动获取崩溃事件
+if (holder != null) {
+  let eventPkg: hiAppEvent.AppEventPackage | null = null;
+  while ((eventPkg = holder.takeNext()) !== null) {
+    if (eventPkg !== null) {
+      hilog.info(0x0000, 'hiAppEvent', `eventPkg.packageId=${eventPkg.packageId}`);
+      hilog.info(0x0000, 'hiAppEvent', `eventPkg.row=${eventPkg.row}`);
+      hilog.info(0x0000, 'hiAppEvent', `eventPkg.size=${eventPkg.size}`);
+      for (const eventInfo of eventPkg.data) {
+        hilog.info(0x0000, 'hiAppEvent', `eventPkg.data=${eventInfo}`);
+    }
+    }
+  }
+}
+```
+
+方法三：观察者可以在实时回调函数onReceive中处理订阅事件。
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+hiAppEvent.addWatcher({
+  name: "watcher3",
+  // 订阅过滤条件，这里是订阅了系统事件领域的应用崩溃事件
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+      names: [hiAppEvent.event.APP_CRASH]
+    }
+  ],
+  // 实现onReceive回调，监听到事件后实时回调
+  onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+    hilog.info(0x0000, 'hiAppEvent', `domain=${domain}`);
+    for (const eventGroup of appEventGroups) {
+      hilog.info(0x0000, 'hiAppEvent', `eventName=${eventGroup.name}`);
+      for (const eventInfo of eventGroup.appEventInfos) {
+        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`);
+      }
+    }
+  }
+});
+```
+
 
 ## hiAppEvent.removeWatcher
 
@@ -164,6 +276,10 @@ removeWatcher(watcher: Watcher): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -200,12 +316,16 @@ hiAppEvent.removeWatcher(watcher);
 
 setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: string): Promise&lt;void&gt;
 
-事件自定义参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件领域和事件名称关联系统事件和应用事件，系统事件仅支持[崩溃事件](../../dfx/hiappevent-watcher-crash-events.md)和[卡死事件](../../dfx/hiappevent-watcher-freeze-events.md)。
+事件自定义参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件领域和事件名称关联系统事件和应用事件，系统事件仅支持[崩溃事件](../../dfx/hiappevent-watcher-crash-events.md)和[应用冻屏事件](../../dfx/hiappevent-watcher-freeze-events.md)。
 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -213,7 +333,7 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 | ------ | ------------------------------ | ---- | -------------- |
 | params | Record&lt;string, [ParamType](#paramtype12)&gt; | 是 | 事件自定义参数对象。参数名和参数值规格定义如下：<br>- 参数名为string类型，首字符必须为字母字符或$字符。中间字符必须为数字字符、字母字符或下划线字符。结尾字符必须为数字字符或字母字符。长度非空且不超过32个字符。<br>- 参数值为[ParamType](#paramtype12)类型，参数值长度需在1024个字符以内。<br>- 参数个数需在64个以内。 |
 | domain | string                        | 是 | 事件领域。事件领域可支持关联应用事件和系统事件（hiAppEvent.domain.OS）。 |
-| name   | string                        | 否 | 事件名称。默认为空字符串，空字符串表示关联事件领域下的所有事件名称。事件名称可支持关联应用事件和系统事件，其中系统事件仅支持关联崩溃事件（hiAppEvent.event.APP_CRASH）和卡死事件（hiAppEvent.event.APP_FREEZE）。 |
+| name   | string                        | 否 | 事件名称。默认为空字符串，空字符串表示关联事件领域下的所有事件名称。事件名称可支持关联应用事件和系统事件，其中系统事件仅支持关联崩溃事件（hiAppEvent.event.APP_CRASH）和应用冻屏事件（hiAppEvent.event.APP_FREEZE）。 |
 
 **返回值：**
 
@@ -232,6 +352,7 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -248,6 +369,23 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
   hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
 });
 ```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+let params: Record<string, hiAppEvent.ParamType> = {
+  "int_data": 100,
+  "str_data": "strValue"
+};
+// 给应用事件追加自定义参数
+  hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `success to set event param`);
+  }).catch((err: Error) => {
+    const bErr = err as BusinessError;
+    hilog.error(0x0000, 'hiAppEvent', `code: ${bErr.code}, message: ${bErr.message}`);
+  });
+```
 
 
 ## hiAppEvent.setEventConfig<sup>15+</sup>
@@ -259,6 +397,10 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -285,6 +427,7 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 
 以下示例用于模拟配置MAIN_THREAD_JANK事件的采集堆栈自定义参数：
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -302,6 +445,26 @@ hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => 
 hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+let params: Record<string, hiAppEvent.ParamType> = {
+  "log_type": "1",
+  "sample_interval": "100",
+  "ignore_startup_time": "11",
+  "sample_count": "21",
+  "report_times_per_app": "3"
+};
+hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
+}).catch((err: Error) => {
+  const bErr = err as BusinessError;
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${bErr.code}, message: ${bErr.message}`);
+});
+```
+
 
 ## Watcher
 
@@ -313,11 +476,11 @@ hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err
 
 | 名称             | 类型                                                |  只读  | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------|------ | ---- | ------------------------------------------------------------ |
-| name             | string                                              |  否   | 否   | 观察者名称，用于唯一标识观察者。首字符必须为字母字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName1、crash_Watcher等。                             |
-| triggerCondition | [TriggerCondition](#triggercondition)               |  否   | 是   | 订阅回调触发条件，需要与回调函数onTrigger一同传入才会生效。默认不触发。           |
-| appEventFilters  | [AppEventFilter](#appeventfilter)[]                 |  否   | 是   | 订阅过滤条件，在需要对订阅事件进行过滤时传入。默认不过滤事件。               |
-| onTrigger        | (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  否   | 是   | 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；  <br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。 |
-| onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  否   | 是 | 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称； <br>appEventGroups：回调事件集合。 |
+| name             | string                                              |  否   | 否   | 观察者名称，用于唯一标识观察者。首字符必须为字母字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName1、crash_Watcher等。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20                            |
+| triggerCondition | [TriggerCondition](#triggercondition)               |  否   | 是   | 订阅回调触发条件，需要与回调函数onTrigger一同传入才会生效。默认不触发。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20           |
+| appEventFilters  | [AppEventFilter](#appeventfilter)[]                 |  否   | 是   | 订阅过滤条件，在需要对订阅事件进行过滤时传入。默认不过滤事件。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20               |
+| onTrigger        | ArkTS-Dyn: (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void<br/>ArkTS-Sta: (curRow: int, curSize: int, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  否   | 是   | 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；  <br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  否   | 是 | 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称； <br>appEventGroups：回调事件集合。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
 
 
 ## TriggerCondition
@@ -328,11 +491,15 @@ hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 | 名称    | 类型   | 只读 | 可选 | 说明                                   |
 | ------- | ------ | ---- | ---- | -------------------------------------- |
-| row     | number | 否 | 是   | 满足触发回调的事件总数量，正整数。默认值0，不触发回调。传入负值时，会被置为默认值。             |
-| size    | number | 否 | 是   | 满足触发回调的事件总大小，正整数，单位为byte。默认值0，不触发回调。传入负值时，会被置为默认值。 |
-| timeOut | number | 否 | 是   | 满足触发回调的超时时长，正整数，单位为30s。默认值0，不触发回调。传入负值时，会被置为默认值。    |
+| row     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 满足触发回调的事件总数量，正整数。默认值0，不触发回调。传入负值时，会被置为默认值。             |
+| size    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 满足触发回调的事件总大小，正整数，单位为byte。默认值0，不触发回调。传入负值时，会被置为默认值。 |
+| timeOut | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 满足触发回调的超时时长，正整数，单位为30s。默认值0，不触发回调。传入负值时，会被置为默认值。    |
 
 
 ## AppEventFilter
@@ -345,13 +512,13 @@ hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err
 
 | 名称       | 类型                      | 只读 | 可选 | 说明                     |
 | ---------- | ------------------------- | ---- | ---- | ------------------------ |
-| domain     | string                    | 否 | 否   | 需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用[Write](#hiappeventwrite-1)接口时传入的自定义事件信息（[AppEventInfo](#appeventinfo)）中的事件领域。     |
-| eventTypes | [EventType](#eventtype)[] | 否 | 是   | 需要订阅的事件类型集合。默认不进行过滤。 |
-| names<sup>11+</sup>      | string[]                  | 否 | 是   | 需要订阅的事件名称集合。默认不进行过滤。 |
+| domain     | string                    | 否 | 否   | 需要订阅的事件领域。可以是系统事件领域（hiAppEvent.domain.OS）或开发者在使用[Write](#hiappeventwrite-1)接口时传入的自定义事件信息（[AppEventInfo](#appeventinfo)）中的事件领域。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20     |
+| eventTypes | [EventType](#eventtype)[] | 否 | 是   | 需要订阅的事件类型集合。默认不进行过滤。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| names<sup>11+</sup>      | string[]                  | 否 | 是   | 需要订阅的事件名称集合。默认不进行过滤。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
 
 > **说明：**
 >
-> 系统事件中：踩内存事件和任务执行超时事件不支持在元服务中订阅。启动耗时事件、滑动丢帧事件、CPU高负载事件和24h功耗器件分解统计事件均不支持在元服务和分身应用中订阅。
+> 系统事件中：地址越界事件和任务执行超时事件不支持在元服务中订阅。启动耗时事件、滑动丢帧事件、CPU高负载事件和24h功耗器件分解统计事件均不支持在元服务和分身应用中订阅。
 
 ## AppEventPackageHolder
 
@@ -366,6 +533,10 @@ constructor(watcherName: string)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -385,14 +556,15 @@ hiAppEvent.addWatcher({
     }
   ],
   });
-
 // 创建订阅数据持有者实例，holder1持有的数据为上述addWatcher中添加的观察者“Watcher1”监听到的事件
 let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
 ```
 
 ### setSize
 
-setSize(size: number): void
+ArkTS-Dyn: setSize(size: number): void
+
+ArkTS-Sta: setSize(size: int): void
 
 设置每次取出的事件包的数据大小阈值。
 
@@ -400,11 +572,15 @@ setSize(size: number): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                         |
 | ------ | ------ | ---- | -------------------------------------------- |
-| size   | number | 是   | 数据大小阈值，单位为byte。取值范围[0, 2^31-1]，超出范围会抛异常。 |
+| size   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 数据大小阈值，单位为byte。取值范围[0, 2^31-1]，超出范围会抛异常。 |
 
 **错误码：**
 
@@ -418,6 +594,15 @@ setSize(size: number): void
 **示例：**
 
 ```ts
+// 添加数据观察者“Watcher1”，订阅监听系统事件
+hiAppEvent.addWatcher({
+  name: "Watcher1",
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+    }
+  ],
+  });
 // 创建订阅数据持有者实例，holder2持有的数据为已通过addWatcher添加的观察者“Watcher1”监听到的事件
 let holder2: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
 // 设置每次取出事件包的数据大小阈值为1000byte
@@ -426,7 +611,9 @@ holder2.setSize(1000);
 
 ### setRow<sup>12+</sup>
 
-setRow(size: number): void
+ArkTS-Dyn: setRow(size: number): void
+
+ArkTS-Sta: setRow(size: int): void
 
 设置每次取出的事件包的数据条数，优先级高于setSize，和setSize同时调用时仅setRow生效。
 
@@ -434,11 +621,15 @@ setRow(size: number): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                         |
 | ------ | ------ | ---- | -------------------------------------------- |
-| size   | number | 是   | 事件条数，单位为条。取值范围(0, 2^31-1]，超出范围会抛异常。 |
+| size   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 事件条数，单位为条。取值范围(0, 2^31-1]，超出范围会抛异常。 |
 
 **错误码：**
 
@@ -452,6 +643,15 @@ setRow(size: number): void
 **示例：**
 
 ```ts
+// 添加数据观察者“Watcher1”，订阅监听系统事件
+hiAppEvent.addWatcher({
+  name: "Watcher1",
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+    }
+  ],
+  });
 // 创建订阅数据持有者实例，holder3持有的数据为已通过addWatcher添加的观察者“Watcher1”监听到的事件
 let holder3: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
 // 设置每次取出的事件包的数据条数为1000条
@@ -460,7 +660,9 @@ holder3.setRow(1000);
 
 ### takeNext
 
-takeNext(): AppEventPackage
+ArkTS-Dyn: takeNext(): AppEventPackage
+
+ArkTS-Sta: takeNext(): AppEventPackage | null
 
 获取订阅事件。
 
@@ -472,15 +674,28 @@ takeNext(): AppEventPackage
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型                                | 说明                                                   |
 | ----------------------------------- | ------------------------------------------------------ |
-| [AppEventPackage](#appeventpackage) | 取出的事件包对象，订阅事件数据被全部取出后会返回null。 |
+| ArkTS-Dyn: [AppEventPackage](#appeventpackage)<br/>ArkTS-Sta: [AppEventPackage](#appeventpackage) \| null | 取出的事件包对象，订阅事件数据被全部取出后会返回null。 |
 
 **示例：**
 
 ```ts
+// 添加数据观察者“Watcher1”，订阅监听系统事件
+hiAppEvent.addWatcher({
+  name: "Watcher1",
+  appEventFilters: [
+    {
+      domain: hiAppEvent.domain.OS,
+    }
+  ],
+  });
 // 创建订阅数据持有者实例，holder4持有的数据为已通过addWatcher添加的观察者“Watcher1”监听到的事件
 let holder4: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
 // 获取订阅事件
@@ -496,12 +711,16 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 | 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
 | --------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
 | domain    | string                  | 否 | 否   | 事件领域。事件领域名称支持数字、字母、下划线字符，需要以字母开头且不能以下划线结尾，长度非空且不超过32个字符。 |
 | name      | string                  | 否 | 否   | 事件名称。首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过48个字符。 |
-| eventType | [EventType](#eventtype) | 否 | 否   | 事件类型。                                                   |
-| params    | object                  | 否 | 否   | 事件参数对象，包含每个事件参数的参数名和参数值。**系统事件中params包含的字段已由各系统事件定义，具体字段含义在各类系统事件指南的介绍中，例如[崩溃事件介绍](../../dfx/hiappevent-watcher-crash-events.md)。** 针对应用事件，[Write](#hiappeventwrite-1)打点写入的参数由开发者定义，其规格如下：<br>- 参数名为string类型，首字符必须为字母字符或`$`字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName、\$123_name等。<br>- 参数值支持string、number、boolean、数组类型。string类型参数长度需在8*1024个字符以内，超出后会和对应的参数名一同被丢弃；number类型参数取值需在Number.MIN_SAFE_INTEGER~Number.MAX_SAFE_INTEGER范围内，超出可能会产生不确定值；数组类型参数中的元素类型只能全为string、number、boolean中的一种，且元素个数需在100以内，超出部分即从第101个元素开始会被丢弃。<br>- 参数个数需在32个以内，超出的参数会做丢弃处理。 |
+| eventType | [EventType](#eventtype) | 否 | 否   | 事件类型。         |
+| params    | ArkTS-Dyn: object<br/>ArkTS-Sta: RecordData     | 否 | 否   | 事件参数对象，包含每个事件参数的参数名和参数值。**系统事件中params包含的字段已由各系统事件定义，具体字段含义在各类系统事件指南的介绍中，例如[崩溃事件介绍](../../dfx/hiappevent-watcher-crash-events.md)。** 针对应用事件，[Write](#hiappeventwrite-1)打点写入的参数由开发者定义，其规格如下：<br>- 参数名为string类型，首字符必须为字母字符或`$`字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。如testName、\$123_name等。<br>- 参数值支持string、number、boolean、数组类型。string类型参数长度需在8*1024个字符以内，超出后会和对应的参数名一同被丢弃；number类型参数取值需在Number.MIN_SAFE_INTEGER~Number.MAX_SAFE_INTEGER范围内，超出可能会产生不确定值；数组类型参数中的元素类型只能全为string、number、boolean中的一种，且元素个数需在100以内，超出部分即从第101个元素开始会被丢弃。<br>- 参数个数需在32个以内，超出的参数会做丢弃处理。 |
 
 
 ## AppEventPackage
@@ -512,11 +731,11 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 | 名称      | 类型     | 只读 | 可选 | 说明                           |
 | --------- | -------- | ---- | ---- | ------------------------------ |
-| packageId | number   | 否 | 否   | 事件包ID，从0开始自动递增。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。    |
-| row       | number   | 否 | 否   | 事件包的事件数量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
-| size      | number   | 否 | 否   | 事件包的事件大小，单位为byte。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| data      | string[] | 否 | 否   | 事件包的事件信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
-| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | 否 | 否   | 事件对象集合。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| packageId | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 否   | 事件包ID，从0开始自动递增。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20    |
+| row       | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 否   | 事件包的事件数量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20      |
+| size      | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否 | 否   | 事件包的事件大小，单位为byte。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| data      | string[] | 否 | 否   | 事件包的事件信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20      |
+| appEventInfos<sup>12+</sup> | Array<[AppEventInfo](#appeventinfo)> | 否 | 否   | 事件对象集合。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
 
 
 ## AppEventGroup<sup>11+</sup>
@@ -526,6 +745,10 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 | 名称          | 类型                            | 只读 | 可选  | 说明          |
 | ------------- | ------------------------------- | ---- | ---- | ------------- |
@@ -542,6 +765,10 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -567,6 +794,7 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -590,6 +818,30 @@ hiAppEvent.write({
   hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 });
 ```
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let eventParams: Record<string, int | string> = {
+  "int_data": 100,
+  "str_data": "strValue",
+};
+
+// 应用事件打点，使用callback方式作为异步回调
+hiAppEvent.write({
+  domain: "test_domain",
+  name: "test_event",
+  eventType: hiAppEvent.EventType.FAULT,
+  params: eventParams,
+}, (err: BusinessError<void>|null) => {
+  if (err?.code != 0) {
+    hilog.error(0x0000, 'hiAppEvent', `code: ${err?.code}, message: ${err?.message}`);
+    return;
+  }
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
+});
+```
 
 
 ## hiAppEvent.write
@@ -601,6 +853,10 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -631,6 +887,7 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -652,11 +909,35 @@ hiAppEvent.write({
   hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
 });
 ```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+let eventParams: Record<String, int | string> = {
+  "int_data": 100,
+  "str_data": "strValue",
+};
+// 应用事件打点，使用Promise方式作为异步回调
+hiAppEvent.write({
+  domain: "test_domain",
+  name: "test_event",
+  eventType: hiAppEvent.EventType.FAULT,
+  params: eventParams,
+}).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
+}).catch((err: Error) => {
+  const bErr = err as BusinessError;
+  hilog.error(0x0000, 'hiAppEvent', `code: ${bErr.code}, message: ${bErr.message}`);
+});
+```
 
 
 ## hiAppEvent.addProcessor<sup>11+</sup>
 
-addProcessor(processor: Processor): number
+ArkTS-Dyn: addProcessor(processor: Processor): number
+
+ArkTS-Sta: addProcessor(processor: Processor): long
 
 添加数据处理者配置信息，用于配置处理者接收的事件名等信息。事件发生后处理者可以接收事件。
 
@@ -665,6 +946,10 @@ addProcessor(processor: Processor): number
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -676,7 +961,7 @@ addProcessor(processor: Processor): number
 
 | 类型    | 说明                   |
 | ------ | ---------------------- |
-| number | 所添加上报事件数据处理者的ID，标识唯一数据处理者，可用于移除数据处理者。 添加失败返回-1，添加成功返回大于0的值。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 所添加上报事件数据处理者的ID，标识唯一数据处理者，可用于移除数据处理者。 添加失败返回-1，添加成功返回大于0的值。 |
 
 **错误码：**
 
@@ -686,6 +971,7 @@ addProcessor(processor: Processor): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -699,11 +985,28 @@ try {
     hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+try {
+    let processor: hiAppEvent.Processor = {
+      name: 'analytics_demo'
+    };
+    let id: long = hiAppEvent.addProcessor(processor);
+    hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id = ${id}`);
+} catch (error: BusinessError) {
+    hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code = ${error.code}`);
+}
+```
 
 
 ## hiAppEvent.addProcessorFromConfig<sup>20+</sup>
 
-addProcessorFromConfig(processorName: string, configName?: string): Promise&lt;number&gt;
+ArkTS-Dyn: addProcessorFromConfig(processorName: string, configName?: string): Promise&lt;number&gt;
+
+ArkTS-Sta: addProcessorFromConfig(processorName: string, configName?: string): Promise&lt;long&gt;
 
 <!--RP1-->
 
@@ -713,6 +1016,10 @@ addProcessorFromConfig(processorName: string, configName?: string): Promise&lt;n
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -725,7 +1032,7 @@ addProcessorFromConfig(processorName: string, configName?: string): Promise&lt;n
 
 | 类型    | 说明                   |
 | ------ | ---------------------- |
-| Promise&lt;number&gt; | Promise对象。返回添加的事件数据处理者的唯一ID，可用于移除该数据处理者。 添加失败返回11105001错误码。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回添加的事件数据处理者的唯一ID，可用于移除该数据处理者。 添加失败返回11105001错误码。 |
 
 **错误码：**
 
@@ -735,6 +1042,7 @@ addProcessorFromConfig(processorName: string, configName?: string): Promise&lt;n
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -745,11 +1053,25 @@ hiAppEvent.addProcessorFromConfig("test_name").then((processorId) => {
   hilog.error(0x0000, 'hiAppEvent', `Failed to add processor from config, code: ${err.code}, message: ${err.message}`);
 });
 ```
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+hiAppEvent.addProcessorFromConfig("test_name").then((processorId: long) => {
+  hilog.info(0x0000, 'hiAppEvent', `Succeeded in adding processor from config, processorId=${processorId}`);
+}).catch((err: Error) => {
+  const bErr = err as BusinessError;
+  hilog.error(0x0000, 'hiAppEvent', `Failed to add processor from config, code: ${bErr.code}, message: ${bErr.message}`);
+});
+```
 
 
 ## hiAppEvent.removeProcessor<sup>11+</sup>
 
-removeProcessor(id: number): void
+ArkTS-Dyn: removeProcessor(id: number): void
+
+ArkTS-Sta: removeProcessor(id: long): void
 
 移除上报事件的数据处理者。
 
@@ -757,11 +1079,15 @@ removeProcessor(id: number): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------| ------- | ---- | --------------------------- |
-| id    | number  | 是   | 上报事件数据处理者ID。值大于0。由调用[addProcessor](#hiappeventaddprocessor11)接口返回值所得。|
+| id    | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是   | 上报事件数据处理者ID。值大于0。由调用[addProcessor](#hiappeventaddprocessor11)接口返回值所得。|
 
 **错误码：**
 
@@ -771,6 +1097,7 @@ removeProcessor(id: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -785,6 +1112,21 @@ try {
     hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+try {
+    let processor: hiAppEvent.Processor = {
+      name: 'analytics_demo'
+    };
+    let id: long = hiAppEvent.addProcessor(processor);
+    hiAppEvent.removeProcessor(id);
+} catch (error: BusinessError) {
+    hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
+}
+```
 
 
 ## hiAppEvent.setUserId<sup>11+</sup>
@@ -796,6 +1138,10 @@ setUserId(name: string, value: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -812,6 +1158,7 @@ setUserId(name: string, value: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -819,6 +1166,17 @@ try {
   hiAppEvent.setUserId('key', 'value');
 } catch (error) {
   hilog.error(0x0000, 'hiAppEvent', `failed to setUserId event, code=${error.code}`);
+}
+```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+try {
+  hiAppEvent.setUserId('key', 'value');
+} catch (err: BusinessError) {
+  hilog.error(0x0000, 'hiAppEvent', `failed to setUserId event, code=${err.code}`);
 }
 ```
 
@@ -832,6 +1190,10 @@ getUserId(name: string): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -853,6 +1215,7 @@ getUserId(name: string): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -862,6 +1225,19 @@ try {
   hilog.info(0x0000, 'hiAppEvent', `getUserId event was successful, userId=${value}`);
 } catch (error) {
   hilog.error(0x0000, 'hiAppEvent', `failed to getUserId event, code=${error.code}`);
+}
+```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+hiAppEvent.setUserId('key', 'value');
+try {
+  let value: string = hiAppEvent.getUserId('key');
+  hilog.info(0x0000, 'hiAppEvent', `getUserId event was successful, userId=${value}`);
+} catch (err: BusinessError) {
+  hilog.error(0x0000, 'hiAppEvent', `failed to getUserId event, code=${err.code}`);
 }
 ```
 
@@ -875,6 +1251,10 @@ setUserProperty(name: string, value: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -891,12 +1271,24 @@ setUserProperty(name: string, value: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   hiAppEvent.setUserProperty('key', 'value');
 } catch (error) {
+  hilog.error(0x0000, 'hiAppEvent', `failed to setUserProperty event, code=${error.code}`);
+}
+```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+try {
+  hiAppEvent.setUserProperty('key', 'value');
+} catch (error: BusinessError) {
   hilog.error(0x0000, 'hiAppEvent', `failed to setUserProperty event, code=${error.code}`);
 }
 ```
@@ -911,6 +1303,10 @@ getUserProperty(name: string): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -932,6 +1328,7 @@ getUserProperty(name: string): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -940,6 +1337,19 @@ try {
   let value: string = hiAppEvent.getUserProperty('key');
   hilog.info(0x0000, 'hiAppEvent', `getUserProperty event was successful, userProperty=${value}`);
 } catch (error) {
+  hilog.error(0x0000, 'hiAppEvent', `failed to getUserProperty event, code=${error.code}`);
+}
+```
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+hiAppEvent.setUserProperty('key', 'value');
+try {
+  let value: string = hiAppEvent.getUserProperty('key');
+  hilog.info(0x0000, 'hiAppEvent', `getUserProperty event was successful, userProperty=${value}`);
+} catch (error: BusinessError) {
   hilog.error(0x0000, 'hiAppEvent', `failed to getUserProperty event, code=${error.code}`);
 }
 ```
@@ -954,6 +1364,10 @@ clearData(): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **示例：**
 
@@ -971,6 +1385,10 @@ configure(config: ConfigOption): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -1012,6 +1430,10 @@ hiAppEvent.configure(config2);
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 | 名称       | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | 否 | 是   | 打点功能开关，默认值为false。true：关闭打点功能，false：开启打点功能。 |
@@ -1026,20 +1448,20 @@ hiAppEvent.configure(config2);
 
 | 名称                | 类型                     | 只读 | 可选 | 说明                                                                                                        |
 | ------------------- | ----------------------- | ---- | ---- | ---------------------------------------------------------------------------------------------------------- |
-| name                | string                  | 否 | 否   | 数据处理者的名称。名称只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                           |
-| debugMode           | boolean                 | 否 | 是   | 是否开启debug模式，默认值为false。配置值为true表示开启debug模式，false表示不开启debug模式。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                    |
-| routeInfo           | string                  | 否 | 是   | 服务器位置信息，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                   |
-| appId               | string                  | 否 | 是   | 应用id，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 |
-| onStartReport       | boolean                 | 否 | 是   | 数据处理者在启动时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                   |
-| onBackgroundReport  | boolean                 | 否 | 是   | 当应用程序进入后台时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                 |
-| periodReport        | number                  | 否 | 是   | 事件定时上报时间周期，单位为秒。传入数值必须大于或等于0，小于0时会被置为默认值0，不进行定时上报。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                |
-| batchReport         | number                  | 否 | 是   | 事件上报阈值，当事件条数达到阈值时上报事件。传入数值必须大于0且小于1000，不在数值范围内会被置为默认值0，不进行上报。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                         |
-| userIds             | string[]                | 否 | 是   | 数据处理者可以上报的用户ID的name数组。name对应[setUserId](#hiappeventsetuserid11)接口的name参数。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。    |
-| userProperties      | string[]                | 否 | 是   | 数据处理者可以上报的用户属性的name数组。name对应[setUserProperty](#hiappeventsetuserproperty11)接口的name参数。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。   |
-| eventConfigs        | [AppEventReportConfig](#appeventreportconfig11)[]  | 否 | 是   | 数据处理者可以上报的事件描述配置数组。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                                                                 |
-| configId<sup>12+</sup> | number | 否 | 是 | 数据处理者配置id。传入数值必须大于或等于0，小于0时会被置为默认值0。传入的值大于0时，与数据处理者的名称name共同唯一标识数据处理者。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| customConfigs<sup>12+</sup> | Record\<string, string> | 否 | 是 | 自定义扩展参数。传入参数名和参数值不符合规格会默认不配置扩展参数，其规格定义如下：<br>- 参数名为string类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>- 参数值为string类型，参数值长度需在1024个字符以内。<br>- 参数个数需在32个以内。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
-| configName<sup>20+</sup>    | string                  | 否 | 是   | <!--RP4-->数据处理者的配置名称，支持从配置文件中加载对应配置，默认为空。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。<!--RP4End-->|
+| name                | string                  | 否 | 否   | 数据处理者的名称。名称只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20           |
+| debugMode           | boolean                 | 否 | 是   | 是否开启debug模式，默认值为false。配置值为true表示开启debug模式，false表示不开启debug模式。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20    |
+| routeInfo           | string                  | 否 | 是   | 服务器位置信息，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20        |
+| appId               | string                  | 否 | 是   | 应用id，默认为空字符串。传入字符串长度不能超过8KB，超过时会被置为默认值。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20  |
+| onStartReport       | boolean                 | 否 | 是   | 数据处理者在启动时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20      |
+| onBackgroundReport  | boolean                 | 否 | 是   | 当应用程序进入后台时是否上报事件，默认值为false。配置值为true表示上报事件，false表示不上报事件。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20       |
+| periodReport        | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 否 | 是   | 事件定时上报时间周期，单位为秒。传入数值必须大于或等于0，小于0时会被置为默认值0，不进行定时上报。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20     |
+| batchReport         | ArkTS-Dyn: number<br/>ArkTS-Sta: int       | 否 | 是   | 事件上报阈值，当事件条数达到阈值时上报事件。传入数值必须大于0且小于1000，不在数值范围内会被置为默认值0，不进行上报。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20     |
+| userIds             | string[]                | 否 | 是   | 数据处理者可以上报的用户ID的name数组。name对应[setUserId](#hiappeventsetuserid11)接口的name参数。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20    |
+| userProperties      | string[]                | 否 | 是   | 数据处理者可以上报的用户属性的name数组。name对应[setUserProperty](#hiappeventsetuserproperty11)接口的name参数。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20   |
+| eventConfigs        | [AppEventReportConfig](#appeventreportconfig11)[]  | 否 | 是   | 数据处理者可以上报的事件描述配置数组。默认为空数组。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20        |
+| configId<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 数据处理者配置id。传入数值必须大于或等于0，小于0时会被置为默认值0。传入的值大于0时，与数据处理者的名称name共同唯一标识数据处理者。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
+| customConfigs<sup>12+</sup> | Record\<string, string> | 否 | 是 | 自定义扩展参数。传入参数名和参数值不符合规格会默认不配置扩展参数，其规格定义如下：<br>- 参数名为string类型，首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。<br>- 参数值为string类型，参数值长度需在1024个字符以内。<br>- 参数个数需在32个以内。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
+| configName<sup>20+</sup>    | string                  | 否 | 是   | <!--RP4-->数据处理者的配置名称，支持从配置文件中加载对应配置，默认为空。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：20<!--RP4End-->|
 
 
 ## AppEventReportConfig<sup>11+</sup>
@@ -1050,6 +1472,10 @@ hiAppEvent.configure(config2);
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | 名称         | 类型    | 只读 | 可选 | 说明                                                          |
 | ----------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | domain      | string  | 否 | 是   | 事件领域。默认为空字符串，事件领域名称支持数字、字母、下划线字符，需要以字母开头且不能以下划线结尾，长度非空且不超过32个字符。 |
@@ -1059,7 +1485,9 @@ hiAppEvent.configure(config2);
 
 ## ParamType<sup>12+</sup>
 
-type ParamType = number | string | boolean | Array&lt;string&gt;
+ArkTS-Dyn: type ParamType = number | string | boolean | Array&lt;string&gt;
+
+ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;string&gt;
 
 事件自定义参数值的类型。
 
@@ -1067,9 +1495,13 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 | 类型                       | 说明                |
 |--------------------------|-------------------|
-| number                   | 表示值类型为数字。         |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int \| long \| double     | 表示值类型为数字。         |
 | string                   | 表示值类型为字符串。        |
 | boolean                  | 表示值类型为布尔值。        |
 | Array&lt;string&gt;      | 表示值类型为字符串类型的数组。   |
@@ -1082,6 +1514,10 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 | 名称      | 值   | 说明           |
 | --------- | ---- | -------------- |
@@ -1099,6 +1535,10 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | 名称 | 类型   | 只读   | 说明       |
 | ---  | ------ | ------ | ---------- |
 | OS   | string | 是 | 系统领域。 |
@@ -1112,19 +1552,21 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 | 名称                      | 类型   | 只读   | 说明                 |
 | ------------------------- | ------ | ------ | -------------------- |
-| USER_LOGIN                | string | 是 | 用户登录事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| USER_LOGOUT               | string | 是 | 用户登出事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| DISTRIBUTED_SERVICE_START | string | 是 | 分布式服务启动事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| APP_CRASH<sup>11+</sup>   | string | 是 | 应用崩溃事件。系统事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| APP_FREEZE<sup>11+</sup>  | string | 是 | 应用卡死事件。系统事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| APP_LAUNCH<sup>12+</sup>  | string | 是 | 应用启动耗时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| SCROLL_JANK<sup>12+</sup> | string | 是 | 应用滑动丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| CPU_USAGE_HIGH<sup>12+</sup> | string | 是 | 应用CPU高负载事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BATTERY_USAGE<sup>12+</sup> | string | 是 | 应用24h功耗器件分解统计事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| RESOURCE_OVERLIMIT<sup>12+</sup> | string | 是 | 应用资源泄露事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用踩内存事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| APP_KILLED<sup>20+</sup> | string | 是 | 应用查杀事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| USER_LOGIN                | string | 是 | 用户登录事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20       |
+| USER_LOGOUT               | string | 是 | 用户登出事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20       |
+| DISTRIBUTED_SERVICE_START | string | 是 | 分布式服务启动事件。预留的应用事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| APP_CRASH<sup>11+</sup>   | string | 是 | 应用崩溃事件。系统事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20       |
+| APP_FREEZE<sup>11+</sup>  | string | 是 | 应用冻屏事件。系统事件名称常量。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20       |
+| APP_LAUNCH<sup>12+</sup>  | string | 是 | 应用启动耗时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20   |
+| SCROLL_JANK<sup>12+</sup> | string | 是 | 应用滑动丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20   |
+| CPU_USAGE_HIGH<sup>12+</sup> | string | 是 | 应用CPU高负载事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
+| BATTERY_USAGE<sup>12+</sup> | string | 是 | 应用24h功耗器件分解统计事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
+| RESOURCE_OVERLIMIT<sup>12+</sup> | string | 是 | 应用资源泄露事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
+| ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
+| MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20 |
+| APP_KILLED<sup>20+</sup> | string | 是 | 应用查杀事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：20 |
+| APP_HICOLLIE<sup>21+</sup> | string | 是 | 任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：22 |
+| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：22 |
 
 
 ## hiappevent.param
@@ -1134,6 +1576,10 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 | 名称                            | 类型   | 只读   | 说明               |
 | ------------------------------- | ------ | ------ | ------------------ |

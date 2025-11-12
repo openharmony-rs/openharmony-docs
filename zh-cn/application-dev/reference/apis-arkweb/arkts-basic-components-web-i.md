@@ -28,9 +28,9 @@ Web媒体策略的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
-| resumeInterval | number  | 否    | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。|
-| audioExclusive | boolean | 否    | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。                       |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否    | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。|
+| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22<br>|
+| audioExclusive | boolean | 否    | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。   <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22<br>                    |
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否    | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22<br>|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -191,6 +191,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | request | [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md) | 是 | 网页请求的封装信息。      |
@@ -213,13 +217,17 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | url                | string | 是 | 文件下载的URL。                           |
 | userAgent          | string | 是 | 用于下载的用户代理。                          |
 | contentDisposition | string | 是 | 服务器返回的 Content-Disposition响应头，服务器可能返回空。 |
 | mimetype           | string | 是 | 服务器返回内容媒体类型（MIME）信息。                |
-| contentLength      | number | 是 | 服务器返回文件的长度。                         |
+| contentLength      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 服务器返回文件的长度。                         |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
@@ -271,7 +279,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -351,7 +359,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -471,10 +479,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| navigationStartTick    | number | 是 | 启动页面加载开始的时间，单位以微秒表示。          |
-| firstContentfulPaintMs | number | 是 | 从启动页面加载开始到第一次绘制内容的时间，单位是以毫秒表示。 |
+| navigationStartTick    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 启动页面加载开始的时间，单位以微秒表示。          |
+| firstContentfulPaintMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 从启动页面加载开始到第一次绘制内容的时间，单位是以毫秒表示。 |
 
 ## OnLoadInterceptEvent<sup>12+</sup>
 
@@ -494,7 +506,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -544,7 +556,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 | 名称             | 类型      | 必填   | 说明                                       |
@@ -590,6 +602,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
 | jsStack      | string | 是  | 网页的javaScript调用栈信息。       |
@@ -628,13 +644,17 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                | 类型                                  | 必填   | 说明                        |
 |-------------------| ------------------------------------ | ---- |---------------------------|
 | id                | string             | 否    | 同层标签的id信息。             |
 | type              | string                              | 否    | 同层标签的type信息，统一为小写字符。   |
 | src               | string                              | 否    | 同层标签的src信息。            |
-| width             | number  | 否    | 同层标签的宽，单位为px。          |
-| height            | number                              | 否    | 同层标签的高，单位为px。          |
+| width             | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 同层标签的宽，单位为px。          |
+| height            | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 否    | 同层标签的高，单位为px。          |
 | url               | string                              | 否    | 同层标签的url信息。            |
 | tag<sup>12+</sup> | string              | 否    | 标签名，统一为大写字符。              |
 | params<sup>12+</sup>            | Map<string, string> | 否    | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即embed.info?.param?.["name"]。  |
@@ -668,6 +688,10 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 是    | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
@@ -681,10 +705,14 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
-| navigationStartTime      | number | 否  | 导航条加载时间，单位以微秒表示。       |
-| firstMeaningfulPaintTime | number | 否   | 绘制页面主要内容时间，单位以毫秒表示。 |
+| navigationStartTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 导航条加载时间，单位以微秒表示。       |
+| firstMeaningfulPaintTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 绘制页面主要内容时间，单位以毫秒表示。 |
 
 ## LargestContentfulPaint<sup>12+</sup>
 
@@ -692,14 +720,18 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                      | 类型   | 必填 | 说明                                     |
 | ------------------------- | ------ | ---- | ---------------------------------------- |
-| navigationStartTime       | number | 否   | 导航条加载时间，单位以微秒表示。         |
-| largestImagePaintTime     | number | 否   | 最大图片加载的时间，单位是以毫秒表示。   |
-| largestTextPaintTime      | number | 否   | 最大文本加载时间，单位是以毫秒表示。     |
-| largestImageLoadStartTime | number | 否   | 最大图片开始加载时间，单位是以毫秒表示。 |
-| largestImageLoadEndTime   | number | 否   | 最大图片结束记载时间，单位是以毫秒表示。 |
-| imageBPP                  | number | 否   | 最大图片像素位数。                           |
+| navigationStartTime       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 导航条加载时间，单位以微秒表示。         |
+| largestImagePaintTime     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大图片加载的时间，单位是以毫秒表示。   |
+| largestTextPaintTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大文本加载时间，单位是以毫秒表示。     |
+| largestImageLoadStartTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大图片开始加载时间，单位是以毫秒表示。 |
+| largestImageLoadEndTime   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 最大图片结束记载时间，单位是以毫秒表示。 |
+| imageBPP                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 最大图片像素位数。                           |
 
 ## NativeEmbedDataInfo<sup>11+</sup>
 
@@ -778,3 +810,28 @@ Web屏幕捕获的配置。
 | 名称          | 类型                                      | 必填   | 说明         |
 | ----------- | --------------------------------------- | ---- | ---------- |
 | captureMode | [WebCaptureMode](./arkts-basic-components-web-e.md#webcapturemode10) | 是    | Web屏幕捕获模式。 |
+
+## NativeEmbedParamDataInfo<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素变化时同层标签的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型                                  | 只读 | 可选   | 说明                    |
+| -----------     | ------------------------------------ | ---- | ---- | --------------------- |
+| embedId | string                              | 否 | 否    | 同层标签的唯一id。  |
+| objectAttributeId      | string             | 否    | 是 | 同层标签的id信息。             |
+| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | 否 | 是    | 发生变化的param元素的详细信息，包括每一个param元素的状态变化类型、id、参数名称和参数值。       |
+
+## NativeEmbedParamItem<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                | 类型                                  | 只读 | 可选 | 说明                        |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| status     | [NativeEmbedParamStatus](./arkts-basic-components-web-e.md#nativeembedparamstatus21)             | 否    | 否    | param元素的状态变化类型。 |
+| id                | string                              | 否    | 否 | param元素的id信息。             |
+| name              | string                              | 否    | 是 | param元素的参数名称。           |
+| value             | string                              | 否    | 是 | param元素的参数值。          |

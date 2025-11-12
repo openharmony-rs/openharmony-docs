@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## useEffect
@@ -31,7 +33,9 @@ useEffect(value: boolean): T
 
 ## useEffect<sup>14+</sup>
 
-useEffect(useEffect: boolean, effectType: EffectType): T
+ArkTS-Dyn: useEffect(useEffect: boolean, effectType: EffectType): T
+
+ArkTS-Sta: useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): this
 
 用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。
 
@@ -39,18 +43,22 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| useEffect  | boolean                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false |
-| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT |
+| useEffect  | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false |
+| effectType | ArkTS-Dyn: [EffectType](ts-universal-attributes-use-effect.md#effecttype14) <br/> ArkTS-Sta: [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
 
 ## useEffect<sup>18+</sup>
 

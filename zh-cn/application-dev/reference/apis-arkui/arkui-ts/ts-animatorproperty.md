@@ -4,11 +4,15 @@
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 接口
 
-animation(value:AnimateParam): T
+ArkTS-Dyn: animation(value:AnimateParam): T
+
+ArkTS-Sta: animation(value: AnimateParam | undefined): this
 
 设置组件的属性动画。
 
@@ -22,16 +26,20 @@ animation(value:AnimateParam): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
+| value | ArkTS-Dyn: [AnimateParam](ts-explicit-animation.md#animateparam对象说明) <br > ArkTS-Sta: [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| undefined | 是    | 设置动画效果相关参数。                           |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前组件。 |
 
 属性动画只对写在animation前面的属性生效，且对组件构造器的属性不生效。
  ```

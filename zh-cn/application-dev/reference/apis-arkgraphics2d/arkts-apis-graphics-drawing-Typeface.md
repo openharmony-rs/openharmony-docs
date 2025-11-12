@@ -1,5 +1,12 @@
 # Class (Typeface)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -86,6 +93,8 @@ static makeFromFile(filePath: string): Typeface
 
 从指定字体文件构造字体。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -133,6 +142,8 @@ static makeFromRawFile(rawfile: Resource): Typeface
 
 使用指定的字体文件构造字体，其中要求指定的字体文件需保存在应用资源文件夹的rawfile路径下。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -170,6 +181,8 @@ class TextRenderNode extends RenderNode {
 static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface
 
 根据字体文件路径和字体属性构造新的字体。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -211,6 +224,8 @@ class TextRenderNode extends RenderNode {
 static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface
 
 使用指定的字体文件和字体属性构造字体，其中要求指定的字体文件需保存在应用资源文件夹的rawfile路径下。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
