@@ -7158,29 +7158,29 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets",
 				"functions":[
 					{
-						"end_line":27,
+						"end_line":26,
 						"name":"local_resource",
-						"start_line":23
+						"start_line":22
 					},
 					{
-						"end_line":32,
+						"end_line":31,
 						"name":"net_resource",
-						"start_line":29
+						"start_line":28
 					},
 					{
-						"end_line":37,
+						"end_line":36,
 						"name":"resource_icon",
-						"start_line":34
+						"start_line":33
 					},
 					{
-						"end_line":42,
+						"end_line":41,
 						"name":"rawfile_resource",
-						"start_line":39
+						"start_line":38
 					},
 					{
-						"end_line":48,
+						"end_line":47,
 						"name":"fileLibrary_format",
-						"start_line":44
+						"start_line":43
 					}
 				]
 			},
@@ -7188,7 +7188,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":68,
 						"name":"media_libraryfile",
 						"start_line":16
 					}
@@ -7198,7 +7198,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":64,
 						"name":"multimedia_pixel",
 						"start_line":17
 					}
@@ -7208,7 +7208,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets",
 				"functions":[
 					{
-						"end_line":133,
+						"end_line":132,
 						"name":"drawable_descriptor",
 						"start_line":17
 					}
@@ -7223,9 +7223,9 @@
 						"start_line":23
 					},
 					{
-						"end_line":36,
+						"end_line":35,
 						"name":"local_svg",
-						"start_line":31
+						"start_line":30
 					},
 					{
 						"end_line":42,
@@ -7238,7 +7238,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":101,
 						"name":"image_objectfit",
 						"start_line":17
 					}
@@ -7248,7 +7248,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":69,
 						"name":"image_interpolation",
 						"start_line":16
 					}
@@ -7258,7 +7258,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":61,
 						"name":"image_repetitionstyle",
 						"start_line":17
 					}
@@ -7268,7 +7268,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"image_renderingmode",
 						"start_line":17
 					}
@@ -7278,7 +7278,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":55,
 						"name":"image_decodingsize",
 						"start_line":17
 					}
@@ -7298,9 +7298,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":61,
 						"name":"event_invocation",
-						"start_line":20
+						"start_line":17
 					}
 				]
 			}
