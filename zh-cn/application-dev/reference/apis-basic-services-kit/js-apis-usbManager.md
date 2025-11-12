@@ -413,7 +413,7 @@ console.log(`releaseInterface = ${ret}`);
 
 ## usbManager.setConfiguration
 
-ArkTS-Dyn: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
+ArkTS-Dyn: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
