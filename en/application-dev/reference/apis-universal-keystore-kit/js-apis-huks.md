@@ -1604,6 +1604,8 @@ isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<
 
 Checks whether a key exists. This API uses an asynchronous callback to return the result.
 
+If the key does not exist, the error code 12000011 is returned.
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Parameters**
@@ -1658,6 +1660,8 @@ isKeyItemExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
 Checks whether a key exists. This API uses a promise to return the result.
 
+If the key does not exist, the error code 12000011 is returned.
+
 **System capability**: SystemCapability.Security.Huks.Extension
 
 **Parameters**
@@ -1709,6 +1713,8 @@ huks.isKeyItemExist(keyAlias, emptyOptions).then((data) => {
 hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
 Checks whether a key exists. This API uses an asynchronous callback to return the result.
+
+If the key does not exist, **false** is returned through the callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1764,6 +1770,8 @@ huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
 hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
 Checks whether a key exists. This API uses a promise to return the result.
+
+If the key does not exist, **false** is returned through the promise.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1852,6 +1860,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
 
 ## huks.initSession<sup>9+</sup>
 
@@ -1894,12 +1903,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the input parameter is invalid. |
 
 ## huks.updateSession<sup>9+</sup>
 
 updateSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Updates the key operation by segment. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Updates the key operation by segment. This API uses an asynchronous callback to return the result.
+
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1938,7 +1950,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Updates the key operation by segment. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Updates the key operation by segment. This API uses an asynchronous callback to return the result. The **updateSession** operation is used for user identity authentication and access control.
+
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1978,7 +1992,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promise\<HuksReturnResult>
 
-Updates the key operation by segment. This API uses a promise to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Updates the key operation by segment. This API uses a promise to return the result.
+
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2023,7 +2039,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 finishSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Finishes the key operation. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Finishes the key operation. This API uses an asynchronous callback to return the result.
+
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2063,7 +2081,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 finishSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Finishes the key operation. This API uses an asynchronous callback to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Finishes the key operation. This API uses an asynchronous callback to return the result. The **finishSession** operation is used for user identity authentication and access control.
+
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2104,7 +2124,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 finishSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promise\<HuksReturnResult>
 
-Finishes the key operation. This API uses a promise to return the result. **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+Finishes the key operation. This API uses a promise to return the result.
+
+**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2911,6 +2933,7 @@ Enumerates the tags used to invoke parameters.
 | HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO                      | HuksTagType.HUKS_TAG_TYPE_BYTES \| 514   | Security level used in the attestation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_ATTESTATION_ID_VERSION_INFO                        | HuksTagType.HUKS_TAG_TYPE_BYTES \| 515   | Version information used in the attestation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_OVERRIDE<sup>20+</sup>                         | HuksTagType.HUKS_TAG_TYPE_BOOL \| 520   | Whether to overwrite the key with the same name.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | Length of the specified AEAD tag.<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | Whether to use the alias passed in during key generation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | Key storage mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_IS_ALLOWED_WRAP                                    | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1003   | Reserved.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|

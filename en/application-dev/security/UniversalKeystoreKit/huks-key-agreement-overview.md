@@ -24,8 +24,8 @@ The key management service specifications include mandatory specifications and o
 **You are advised to use mandatory specifications in your development for compatibility purposes.**
 <!--DelEnd-->
 
-| Algorithm| Description| API Level| <!--DelCol4-->Mandatory|
-| -------- | -------- | -------- | -------- |
-| ECDH | The key type must be ECC.| 8+ | Yes|
-| DH | - | 8+ | Yes|
-| X25519 | - | 8+ | Yes|
+| Algorithm| Description| Key Size| Available Algorithms| API Level| <!--DelCol4-->Mandatory|
+| -------- | -------- | -------- | -------- | -------- | -------- |
+| ECDH | The key type must be ECC.| 256 | AES/256<br>HMAC/256 | 8+ | Yes|
+| DH | The key type must be DH.| <!--RP2-->2048/3072/4096<!--RP2End--> | AES/128/192/256<br>HMAC/8-1024<br>SM4/128<br>DES/64<br>3DES/128/192 | 8+ | Yes|
+| X25519 | The key type must be X25519.| 256 | AES/256<br>HMAC/256 | 8+ | Yes|
