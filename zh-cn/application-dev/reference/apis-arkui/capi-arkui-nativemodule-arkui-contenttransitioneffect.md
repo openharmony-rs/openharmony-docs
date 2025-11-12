@@ -1,16 +1,16 @@
-# ArkUI_TextCascadePickerRangeContentArray
+# ArkUI_ContentTransitionEffect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @luoying_ace_admin-->
+<!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
-定义多列联动数据选择器的多列联动数据选择列表。
+内容过渡效果。
 
-**起始版本：** 19
+**起始版本：** 21
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
