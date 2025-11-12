@@ -129,7 +129,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 | -- | -- |
 | napi_env env | napi的环境指针。 |
 | napi_value value | ArkTS侧创建的NodeContent对象。 |
-| content | ArkUI_NodeContentHandle指针。 |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md)* content | ArkUI_NodeContentHandle指针。 |
 
 **返回：**
 

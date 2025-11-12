@@ -1122,7 +1122,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
 
 ### arc
-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void
+arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
 
 绘制弧线路径。
 
@@ -1137,7 +1137,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
 | radius        | number  | 是 | 弧线的圆半径。    |
 | startAngle    | number  | 是 | 弧线的起始弧度。   |
 | endAngle      | number  | 是 | 弧线的终止弧度。   |
-| anticlockwise | boolean | 否 | 是否逆时针绘制圆弧，true为逆时针，false为顺时针。<br/>默认值：false  |
+| counterclockwise | boolean | 否 | 是否逆时针绘制圆弧，true为逆时针，false为顺时针。<br/>默认值：false  |
 
 **示例：** 
   ```html
@@ -1205,7 +1205,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
 ### ellipse
 
-ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: number): void
+ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: number): void
 
 在规定的矩形区域绘制一个椭圆。
 
@@ -1222,7 +1222,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
 | rotation      | number | 是 | 椭圆的旋转角度，单位为弧度。                       |
 | startAngle    | number | 是 | 椭圆绘制的起始点角度，以弧度表示。                    |
 | endAngle      | number | 是 | 椭圆绘制的结束点角度，以弧度表示。                    |
-| anticlockwise | number | 否 | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。其它数值均按默认值处理。<br/>默认值：0 |
+| counterclockwise | number | 否 | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。其它数值均按默认值处理。<br/>默认值：0 |
 
 **示例：** 
   ```html
