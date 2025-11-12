@@ -796,6 +796,10 @@ enableAirplaneMode(enable: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名   | 类型                 | 必填 | 说明                                            |
@@ -823,6 +827,10 @@ enableAirplaneMode(enable: boolean): Promise\<void>
 启用或禁用飞行模式。使用Promise异步回调（暂不支持）。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -855,6 +863,10 @@ canShowFloating(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
@@ -880,6 +892,10 @@ canShowFloating(): Promise\<boolean>
 检查应用是否能够以悬浮窗形式显示。使用Promise异步回调（暂不支持）。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值**：
 
