@@ -212,7 +212,7 @@ setValue(context: Context, name: string, value: string, callback: AsyncCallback\
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -252,7 +252,7 @@ setValue(context: Context, name: string, value: string): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -299,7 +299,7 @@ setValue(context: Context, name: string, value: string, domainName: string): Pro
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -351,7 +351,7 @@ getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -391,7 +391,7 @@ getValue(context: Context, name: string): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -435,7 +435,7 @@ getValue(context: Context, name: string, domainName: string): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -478,7 +478,7 @@ getValueSync(context: Context, name: string, defValue: string): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -519,7 +519,7 @@ getValueSync(context: Context, name: string, defValue: string, domainName: strin
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **需要权限**：   
 - 读取USER_SECURITY域需要权限ohos.permission.MANAGE_SECURE_SETTINGS，该权限仅系统应用可用。
@@ -570,7 +570,7 @@ setValueSync(context: Context, name: string, value: string): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -618,7 +618,7 @@ setValueSync(context: Context, name: string, value: string, domainName: string):
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -668,7 +668,7 @@ registerKeyObserver(context: Context, name: string, domainName: string, observer
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -712,7 +712,7 @@ unregisterKeyObserver(context: Context, name: string, domainName: string): boole
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                                                                               |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -750,7 +750,7 @@ openNetworkManagerSettings(context: Context): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -798,7 +798,7 @@ enableAirplaneMode(enable: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -830,7 +830,7 @@ enableAirplaneMode(enable: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -865,7 +865,7 @@ canShowFloating(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -895,7 +895,7 @@ canShowFloating(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值**：
 
