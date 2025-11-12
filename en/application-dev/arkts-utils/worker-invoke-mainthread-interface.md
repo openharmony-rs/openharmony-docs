@@ -43,7 +43,7 @@ The example below demonstrates how Worker can synchronously call an API from the
                workerInstance.postMessage("start");
                workerInstance.onmessage = (e: MessageEvents): void => {
                  // Receive results from the Worker thread.
-                 console.info("mainthread: " + e.data);
+                 console.info("mainThread: " + e.data);
                  // Destroy the Worker.
                  workerInstance.terminate();
                }

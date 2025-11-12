@@ -563,7 +563,7 @@ Compare the differences in the **ReservedLocalNames** and **ReservedPropertyName
 
 **How to use -extra-options**
 
-Add the `-extra-options` prefix and options in the obfuscation configuration file, with no additional content in between. You can enable either one option or both options, like shown in the following examples:
+Add the `-extra-options` prefix and options in the obfuscation configuration file, with no additional content in between. You can enable either one option or two options, like shown in the following examples:
 
 One option enabled:
 
@@ -574,7 +574,7 @@ strip-language-default
 -extra-options strip-language-default
 ```
 
-Both options enabled:
+Two options enabled:
 
 ```
 -extra-options strip-language-default, strip-system-api-args
@@ -609,7 +609,7 @@ For details about the merging logic, see [Obfuscation Rule Merging Strategies](#
 
 ### -use-keep-in-source
 
-Marks trustlists in `.ts` or `.ets` source code using the following two comment annotations (declaration files are not supported):
+Since API version 19, the following two types of annotations can be added to the trustlist in the `.ts` and `.ets` source code, but cannot be used in the declaration file.
 
 `// @KeepSymbol`: This annotation is used to mark names that should be retained. It is usually placed on the line above the relevant code to ensure that the name is not obfuscated when the code is compiled.
 
@@ -1066,7 +1066,7 @@ async function func() {
 
 ```
 
-3. When [dynamic routing](../ui/arkts-navigation-navigation.md#cross-package-dynamic-routing) is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the `pageSourceFile` field in the `resources/base/profile/route_map.json` file of the module should be added to the trustlist.
+3. When [cross-package dynamic routing](../ui/arkts-navigation-navigation.md#cross-package-dynamic-routing) is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the `pageSourceFile` field in the `resources/base/profile/route_map.json` file of the module should be added to the trustlist.
 
 ```json
 {
@@ -1330,7 +1330,7 @@ If a HAR is built, the **obfuscation.txt** file in the generated remote HAR is t
 * **obfuscation.txt** files in the dependent remote HAR and remote HSP
 
 When an HSP is built, the **obfuscation.txt** file in the generated remote HSP contains only its own **consumerFiles** property.
-When an HAP is built, no **obfuscation.txt** file is generated.
+When a HAP is built, no **obfuscation.txt** file is generated.
 
 **Obfuscation Rule Merging Logic**
 
@@ -1364,26 +1364,31 @@ For API version 18 and later, only the preceding retention options are merged by
 
 2. If the `-keep-dts` option is added to the obfuscation configuration file specified by `consumerFiles`, it will be converted into `-keep-global-name` and `-keep-property-name`.
 
-## Mappings Between Obfuscation Options and Minimum SDK Versions
+## Mappings Between Obfuscation Options and Initial API Versions
 
-| Obfuscation Option| Description | Minimum SDK Version|
+| Obfuscation Option| Description | Initial API Version|
 | ------- | --------- | ------ |
-| -disable-obfuscation         | Disables obfuscation.| 4.0.9.2 |
-| -enable-property-obfuscation | Enables property name obfuscation.| 4.0.9.2 |
-| -enable-string-property-obfuscation | Enables obfuscation for string literal property names.| 4.0.9.2 |
-| -enable-toplevel-obfuscation | Enables top-level scope name obfuscation.| 4.0.9.2 |
-| -enable-filename-obfuscation | Enables file or folder name obfuscation for the HAR.<br> Enables file or folder name obfuscation for the HAP/HSP.| 4.1.5.3 <br> 5.0.0.19 |
-| -enable-export-obfuscation   | Enables obfuscation for imported/exported names.| 4.1.5.3 |
-| -compact                     | Removes unnecessary spaces and all line feeds.| 4.0.9.2 |
-| -remove-log                  | Removes the expressions involving direct calls to the console. statement in specific scenarios.| 4.0.9.2 |
-| -print-namecache             | Saves the name cache to the specified file path.| 4.0.9.2 |
-| -apply-namecache             | Reuses the specified name cache file.| 4.0.9.2 |
-| -remove-comments             | Removes all comments in the file.| 4.1.5.3 |
-| -keep-property-name          | Retains property names.| 4.0.9.2 |
-| -keep-global-name            | Retains top-level scope names.| 4.0.9.2 |
-| -keep-file-name              | Retains file or folder names in the HAR.<br> Retains file or folder names in the HAP/HSP.| 4.1.5.3 <br> 5.0.0.19 |
-| -keep-dts                    | Retains the names in the .d.ts file in the specified path.| 4.0.9.2 |
-| -keep-comments               | Retains the classes, functions, namespaces, enums, structs, interfaces, modules, types, and JsDoc comments above properties in the declaration file generated after compilation.| 4.1.5.3 |
-| -keep                        | Retains all names in the specified path.| 5.0.0.18 |
-| Wildcard                      | The retention options of the name classes and path classes support wildcards.| 5.0.0.24 |
-| -use-keep-in-source          | Marks trustlists in source code by comments.| 5.1.0.57 |
+| -disable-obfuscation         | Disables obfuscation.| 10  |
+| -enable-property-obfuscation | Enables property name obfuscation.| 10 |
+| -enable-string-property-obfuscation | Enables obfuscation for string literal property names.| 10 |
+| -enable-toplevel-obfuscation | Enables top-level scope name obfuscation.| 10 |
+| -enable-filename-obfuscation | Enables file or folder name obfuscation for the HAR.<br> Enables file or folder name obfuscation for the HAP/HSP.| 10 <br> 12 |
+| -enable-export-obfuscation   | Enables obfuscation for imported/exported names.| 10 |
+| -compact                     | Removes unnecessary spaces and all line feeds.| 10 |
+| -remove-log                  | Removes the expressions involving direct calls to the console. statement in specific scenarios.| 10 |
+| -print-namecache             | Saves the name cache to the specified file path.| 10 |
+| -apply-namecache             | Reuses the specified name cache file.| 10 |
+| -remove-comments             | Removes all comments in the file.| 10 |
+| -keep-property-name          | Retains property names.| 10 |
+| -keep-global-name            | Retains top-level scope names.| 10 |
+| -keep-file-name              | Retains file or folder names in the HAR.<br> Retains file or folder names in the HAP/HSP.| 10 <br> 12 |
+| -keep-dts                    | Retains the names in the .d.ts file in the specified path.| 12 |
+| -keep-comments               | Retains the classes, functions, namespaces, enums, structs, interfaces, modules, types, and JsDoc comments above properties in the declaration file generated after compilation.| 12 |
+| -keep                        | Retains all names in the specified path.| 12 |
+| Wildcard                      | Allows wildcards in all the keep options of the name classes and path classes.| 12 |
+| -print-kept-names | Prints unobfuscated names.| 18 |
+| -extra-options strip-language-default | Reduces the default language trustlist.| 18 |
+| -extra-options strip-system-api-args | Reduces the default system API trustlist.| 18 |
+| -keep-parameter-names | Retains declaration file parameters.| 18 |
+| -enable-lib-obfuscation-options | Merges dependent module options.| 18 |
+| -use-keep-in-source          | Marks trustlists in source code by comments.| 19 |
