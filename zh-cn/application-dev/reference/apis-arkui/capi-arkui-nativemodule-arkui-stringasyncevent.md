@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_StringAsyncEvent
+```
+
 ## 概述
 
 定义组件回调事件使用字符串参数的类型。

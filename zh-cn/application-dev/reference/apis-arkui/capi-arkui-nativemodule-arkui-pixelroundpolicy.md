@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_PixelRoundPolicy ArkUI_PixelRoundPolicy
+```
+
 ## 概述
 
 定义组件的像素取整策略结构体。
