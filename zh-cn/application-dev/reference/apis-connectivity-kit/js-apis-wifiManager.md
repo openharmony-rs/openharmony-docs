@@ -3201,9 +3201,7 @@ onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 
 offWifiConnectionChange(callback?: Callback&lt;int&gt;): void
 
-取消注册wifi连接改变事件。
-
-如果没有指定回调参数，所有回调函数都将被注销。
+取消注册WIFI连接改变事件。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 

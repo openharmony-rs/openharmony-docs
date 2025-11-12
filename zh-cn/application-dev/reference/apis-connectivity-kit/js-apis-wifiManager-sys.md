@@ -2065,7 +2065,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta加入事件。
+取消注册WIFI热点STA加入事件。
 
 **系统接口：** 此接口为系统接口。
 
