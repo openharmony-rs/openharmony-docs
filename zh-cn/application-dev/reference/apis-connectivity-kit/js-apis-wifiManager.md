@@ -3178,7 +3178,7 @@ onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接。 |
 
 **错误码：**
 
