@@ -720,7 +720,7 @@ export struct ScopeFocusExample {
     NavDestination() {
       Column() {
         Column({ space: 5 }) {
-          Text('容器获焦').textAlign(TextAlign.Center)
+          Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
         }
         .justifyContent(FlexAlign.Center)
         .width('80%')
