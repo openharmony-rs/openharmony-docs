@@ -4,13 +4,17 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  不支持路由跳转。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 不支持路由跳转。
 
 ## bindSheet
 
-bindSheet(isShow: Optional\<boolean\>, builder: CustomBuilder, options?: SheetOptions): T
+ArkTS-Dyn: bindSheet(isShow: Optional\<boolean\>, builder: CustomBuilder, options?: SheetOptions): T
+
+ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: SheetOptions): this
 
 给组件绑定半模态页面，点击后显示模态页面。
 
@@ -18,19 +22,23 @@ bindSheet(isShow: Optional\<boolean\>, builder: CustomBuilder, options?: SheetOp
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isShow  | Optional\<boolean\>                          | 是   | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置半模态页面内容。                                         |
+| isShow  | ArkTS-Dyn: Optional\<boolean\> <br/>  ArkTS-Sta: boolean  \|  Bindable<boolean\> \| undefined                          | 是   | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
+| builder | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>  ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置半模态页面内容。                                         |
 | options | [SheetOptions](#sheetoptions)               | 否   | 配置半模态页面的可选属性。                                   |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 > **说明：**
 >

@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## clip<sup>12+</sup>
 
-clip(value: boolean): T
+ArkTS-Dyn: clip(value: boolean): T
+
+ArkTS-Sta: clip(value: boolean | undefined): this
 
 是否对子组件超出当前组件范围外的区域进行裁剪。
 
@@ -18,17 +22,21 @@ clip(value: boolean): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 参数为boolean类型，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。 |
+| value  | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 参数为boolean类型，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
 
 ## clip<sup>18+</sup>
 
@@ -82,7 +90,9 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 ## clipShape<sup>12+</sup>
 
-clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
+ArkTS-Dyn: clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
+
+ArkTS-Sta: clipShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined): this
 
 按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。
 
@@ -100,17 +110,21 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | ArkTS-Dyn: [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) <br/> ArkTS-Sta: [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
 
 ## clipShape<sup>18+</sup>
 
@@ -146,7 +160,9 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 ## mask<sup>12+</sup>
 
-mask(value: ProgressMask): T
+ArkTS-Dyn: mask(value: ProgressMask): T
+
+ArkTS-Sta: mask(value: ProgressMask | undefined): this
 
 为组件上添加可调节进度的遮罩。
 
@@ -154,17 +170,21 @@ mask(value: ProgressMask): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                            | 必填 | 说明                                                 |
 | ------ | ------------------------------- | ---- | ---------------------------------------------------- |
-| value  | [ProgressMask](#progressmask10) | 是   | 在当前组件上加上可动态设置进度、最大值和颜色的遮罩。 |
+| value  | ArkTS-Dyn: [ProgressMask](#progressmask10) <br/> ArkTS-Sta: [ProgressMask](#progressmask10) \| undefined | 是   | 在当前组件上加上可动态设置进度、最大值和颜色的遮罩。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
 
 ## mask<sup>18+</sup>
 
@@ -216,7 +236,9 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 
 ## maskShape<sup>12+</sup>
 
-maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
+ArkTS-Dyn: maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
+
+ArkTS-Sta: maskShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined): this
 
 为组件上添加指定形状的遮罩。
 
@@ -226,17 +248,21 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) | 是   | 在当前组件上加上指定形状的遮罩。 |
+| value  | ArkTS-Dyn: [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) <br/> ArkTS-Sta: [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 在当前组件上加上指定形状的遮罩。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
 
 ## maskShape<sup>18+</sup>
 

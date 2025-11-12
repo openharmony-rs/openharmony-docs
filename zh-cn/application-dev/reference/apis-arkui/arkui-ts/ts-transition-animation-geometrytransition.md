@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始生效。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> [geometryTransition](ts-transition-animation-geometrytransition.md)必须配合[animateTo](../js-apis-arkui-UIContext.md#animateto)使用才有动画效果，动效时长、曲线跟随[animateTo](../js-apis-arkui-UIContext.md#animateto)中的配置，不支持[animation](ts-animatorproperty.md)动画。
+> - 从API version 7开始支持，从API version 10开始生效。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - [geometryTransition](ts-transition-animation-geometrytransition.md)必须配合[animateTo](../js-apis-arkui-UIContext.md#animateto)使用才有动画效果，动效时长、曲线跟随[animateTo](../js-apis-arkui-UIContext.md#animateto)中的配置，不支持[animation](ts-animatorproperty.md)动画。
 
 ## geometryTransition
 
@@ -26,7 +28,9 @@ geometryTransition(id: string)
 
 ## geometryTransition<sup>11+</sup>
 
-geometryTransition(id: string, options?: GeometryTransitionOptions)
+ArkTS-Dyn: geometryTransition(id: string, options?: GeometryTransitionOptions)
+
+ArkTS-Sta: geometryTransition(id: string | undefined, options?: GeometryTransitionOptions)
 
 组件内隐式共享元素转场。
 
@@ -34,11 +38,15 @@ geometryTransition(id: string, options?: GeometryTransitionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 参数类型                 | 必填 | 参数描述                                                     |
 | ------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。 |
+| id      | ArkTS-Dyn: string<br > ArkTS-Sta: string \| undefined                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。 |
 | options | [GeometryTransitionOptions](#geometrytransitionoptions11) | 否   | 组件内共享元素转场动画参数。                                   |
 
 ## GeometryTransitionOptions<sup>11+</sup>
