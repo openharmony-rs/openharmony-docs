@@ -55,7 +55,7 @@ let portId: int = portList[0].portId;
 
 ArkTS-Dyn: hasSerialRight(portId: number): boolean
 
-ArkTS-Sta: hasSerialRight(portId: int): boolean;
+ArkTS-Sta: hasSerialRight(portId: int): boolean
 
 检查应用程序是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。
 
@@ -716,9 +716,9 @@ serialManager.write(portId, writeBuffer, 2000).then((size: int) => {
 
 ## serialManager.writeSync
 
-ArkTS-Dyn: writeSync(portId: number, buffer: Uint8Array, timeout?: number): number;
+ArkTS-Dyn: writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int;
+ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 向串口设备同步写数据。
 
