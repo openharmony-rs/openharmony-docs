@@ -2308,7 +2308,7 @@ struct Index {
 
 ![sandBox](figures/svg2.PNG)
 
-### 示例27（使用ContentTransition属性实现图片淡入淡出切换效果）
+### 示例27（使用contentTransition属性实现图片淡入淡出切换效果）
 
 从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
 
