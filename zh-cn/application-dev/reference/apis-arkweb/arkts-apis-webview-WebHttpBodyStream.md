@@ -26,6 +26,10 @@ initialize(): Promise\<void\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -42,6 +46,7 @@ initialize(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -121,7 +126,91 @@ struct WebComponent {
     }
   }
 }
+```
 
+ArkTS-Sta示例：
+```ts
+import { OnPageEndEvent,OnErrorReceiveEvent,Web,Entry,Text,TextAttribute,Column,Component,Button,ButtonAttribute,ArrayBuffer } from '@kit.ArkUI' 
+import { State } from '@ohos.arkui.stateManagement' 
+import hilog from '@ohos.hilog'
+import { buffer } from '@kit.ArkTS';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { WebNetErrorList } from '@ohos.web.netErrorList'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+  htmlData: string = "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+
+  build() {
+    Column() {
+      Button('postUrl')
+        .onClick(() => {
+          try {
+            let postData = buffer.from(this.htmlData);
+            this.controller.postUrl('https://www.example.com', postData.buffer);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler): boolean => {
+              console.info("[schemeHandler] onRequestStart");
+              try {
+                let stream = request.getHttpBodyStream();
+                if (stream) {
+                  stream.initialize().then(():void => {
+                    if (!stream) {
+                      return;
+                    }
+                    console.info("[schemeHandler] onRequestStart postDataStream size:" + stream.getSize());
+                    console.info("[schemeHandler] onRequestStart postDataStream position:" + stream.getPosition());
+                    console.info("[schemeHandler] onRequestStart postDataStream isChunked:" + stream.isChunked());
+                    console.info("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
+                    console.info("[schemeHandler] onRequestStart postDataStream isInMemory:" + stream.isInMemory());
+                    let size = stream.getSize() as Int
+                    stream.read(size).then((buffer:ArrayBuffer):void => {
+                      if (!stream) {
+                        return;
+                      }
+                      console.info("[schemeHandler] onRequestStart postDataStream readlength:" + buffer.byteLength);
+                      console.info("[schemeHandler] onRequestStart postDataStream isEof:" + stream.isEof());
+                      console.info("[schemeHandler] onRequestStart postDataStream position:" + stream.getPosition());
+                    }).catch((error) => {
+                      console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    })
+                  }).catch((error) => {
+                    console.info(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                  })
+                } else {
+                  console.info("[schemeHandler] onRequestStart has no http body stream");
+                }
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+
+              return false;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info("[schemeHandler] onRequestStop");
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
 ```
 
 ## read<sup>12+</sup>

@@ -1615,7 +1615,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('accessStep')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             let result = this.controller.accessStep(this.steps);
             console.info('result:' + result);
@@ -1920,7 +1920,7 @@ struct Index {
   build() {
     Column() {
       Button('refresh')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.refresh();
           } catch (error) {
@@ -1928,7 +1928,7 @@ struct Index {
           }
         })
       Button('Register JavaScript To Window')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             // 同时注册同步和异步函数
             this.controller.registerJavaScriptProxy(this.testObjtest, "objName", ["test", "toString", "testNumber"],
@@ -1943,7 +1943,7 @@ struct Index {
           }
         })
       Button('deleteJavaScriptRegister')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.deleteJavaScriptRegister("objName");
             this.controller.deleteJavaScriptRegister("objTestName");
@@ -2275,6 +2275,10 @@ runJavaScriptExt(script: string | ArrayBuffer, callback : AsyncCallback\<JsMessa
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                         |
@@ -2293,6 +2297,7 @@ runJavaScriptExt(script: string | ArrayBuffer, callback : AsyncCallback\<JsMessa
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2371,6 +2376,88 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Web } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State msg1: string = '';
+  @State msg2: string = '';
+
+  build() {
+    Column() {
+      Text(this.msg1).fontSize(20)
+      Text(this.msg2).fontSize(20)
+      Web({src:"resource://rawfile/index.html", controller:this.controller})
+        .javaScriptAccess(true)
+        .onPageEnd(e => {
+          try {
+            this.controller.runJavaScriptExt(
+              'test()',
+              (error, result) => {
+                if (error) {
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  return;
+                }
+                if (result) {
+                  try {
+                    let type = result.getType();
+                    switch (type) {
+                      case webview.JsMessageType.STRING: {
+                        this.msg1 = "result type:" + typeof (result.getString());
+                        this.msg2 = "result getString:" + ((result.getString()));
+                        break;
+                      }
+                      case webview.JsMessageType.NUMBER: {
+                        this.msg1 = "result type:" + typeof (result.getNumber());
+                        this.msg2 = "result getNumber:" + ((result.getNumber()));
+                        break;
+                      }
+                      case webview.JsMessageType.BOOLEAN: {
+                        this.msg1 = "result type:" + typeof (result.getBoolean());
+                        this.msg2 = "result getBoolean:" + ((result.getBoolean()));
+                        break;
+                      }
+                      case webview.JsMessageType.ARRAY_BUFFER: {
+                        this.msg1 = "result type:" + typeof (result.getArrayBuffer());
+                        this.msg2 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
+                        break;
+                      }
+                      case webview.JsMessageType.ARRAY: {
+                        this.msg1 = "result type:" + typeof (result.getArray());
+                        this.msg2 = "result getArray:" + result.getArray();
+                        break;
+                      }
+                      default: {
+                        this.msg1 = "default break, type:" + type;
+                        break;
+                      }
+                    }
+                  }
+                  catch (error) {
+                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                }
+              });
+            if (e) {
+              console.info('url: ', e.url);
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Dyn示例：
 ```ts
 // 使用ArrayBuffer入参，从文件中获取JavaScript脚本数据。
 import { webview } from '@kit.ArkWeb';
@@ -2462,6 +2549,99 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// 使用ArrayBuffer入参，从文件中获取JavaScript脚本数据
+import { Entry, Text, Column, Component, Button, Web, UIContext, Context } from '@kit.ArkUI'
+import { State } from '@ohos.arkui.stateManagement'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State msg1: string = ''
+  @State msg2: string = ''
+  uiContext:UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Text(this.msg1).fontSize(20)
+      Text(this.msg2).fontSize(20)
+      Button('runJavaScriptExt')
+        .onClick(() => {
+          try {
+            let context:Context|undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+            let filePath = context!.filesDir + 'test.txt';
+            // 新建并打开文件
+            let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+            // 写入一段内容至文件
+            fileIo.writeSync(file.fd, "test()");
+            // 从文件中读取内容
+            let arrayBuffer: ArrayBuffer = new ArrayBuffer(6);
+            fileIo.readSync(file.fd, arrayBuffer, { offset: 0, length: arrayBuffer.byteLength });
+            // 关闭文件
+            fileIo.closeSync(file);
+            this.controller.runJavaScriptExt(
+              arrayBuffer,
+              (error, result) => {
+                if (error) {
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  return;
+                }
+                if (result) {
+                  try {
+                    let type = result.getType();
+                    switch (type) {
+                      case webview.JsMessageType.STRING: {
+                        this.msg1 = "result type:" + typeof (result.getString());
+                        this.msg2 = "result getString:" + ((result.getString()));
+                        break;
+                      }
+                      case webview.JsMessageType.NUMBER: {
+                        this.msg1 = "result type:" + typeof (result.getNumber());
+                        this.msg2 = "result getNumber:" + ((result.getNumber()));
+                        break;
+                      }
+                      case webview.JsMessageType.BOOLEAN: {
+                        this.msg1 = "result type:" + typeof (result.getBoolean());
+                        this.msg2 = "result getBoolean:" + ((result.getBoolean()));
+                        break;
+                      }
+                      case webview.JsMessageType.ARRAY_BUFFER: {
+                        this.msg1 = "result type:" + typeof (result.getArrayBuffer());
+                        this.msg2 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
+                        break;
+                      }
+                      case webview.JsMessageType.ARRAY: {
+                        this.msg1 = "result type:" + typeof (result.getArray());
+                        this.msg2 = "result getArray:" + result.getArray();
+                        break;
+                      }
+                      default: {
+                        this.msg1 = "default break, type:" + type;
+                        break;
+                      }
+                    }
+                  }
+                  catch (error) {
+                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  }
+                }
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({src:"resource://rawfile/index.html", controller:this.controller})
+        .javaScriptAccess(true)
+    }
+  }
+}
+```
+
 加载的html文件。
 ```html
 <!-- index.html -->
@@ -2486,6 +2666,10 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise\<JsMessageExt>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明         |
@@ -2509,6 +2693,7 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise\<JsMessageExt>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2578,6 +2763,78 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Web } from '@kit.ArkUI'
+import { State } from '@ohos.arkui.stateManagement'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State webResult: string = '';
+  @State msg1: string = '';
+  @State msg2: string = '';
+
+  build() {
+    Column() {
+      Text(this.webResult).fontSize(20)
+      Text(this.msg1).fontSize(20)
+      Text(this.msg2).fontSize(20)
+      Web({src:"resource://rawfile/index.html", controller:this.controller})
+        .javaScriptAccess(true)
+        .onPageEnd(() => {
+          this.controller.runJavaScriptExt('test()')
+            .then((result:webview.JsMessageExt) => {
+              try {
+                let type = result.getType();
+                switch (type) {
+                  case webview.JsMessageType.STRING: {
+                    this.msg1 = "result type:" + typeof (result.getString());
+                    this.msg2 = "result getString:" + ((result.getString()));
+                    break;
+                  }
+                  case webview.JsMessageType.NUMBER: {
+                    this.msg1 = "result type:" + typeof (result.getNumber());
+                    this.msg2 = "result getNumber:" + ((result.getNumber()));
+                    break;
+                  }
+                  case webview.JsMessageType.BOOLEAN: {
+                    this.msg1 = "result type:" + typeof (result.getBoolean());
+                    this.msg2 = "result getBoolean:" + ((result.getBoolean()));
+                    break;
+                  }
+                  case webview.JsMessageType.ARRAY_BUFFER: {
+                    this.msg1 = "result type:" + typeof (result.getArrayBuffer());
+                    this.msg2 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
+                    break;
+                  }
+                  case webview.JsMessageType.ARRAY: {
+                    this.msg1 = "result type:" + typeof (result.getArray());
+                    this.msg2 = "result getArray:" + result.getArray();
+                    break;
+                  }
+                  default: {
+                    this.msg1 = "default break, type:" + type;
+                    break;
+                  }
+                }
+              }
+              catch (resError) {
+                console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+              }
+            }).catch((error) => {
+            console.error("error: " + error);
+          })
+        })
+    }
+  }
+}
+```
+
+ArkTS-Dyn示例：
 ```ts
 // 使用ArrayBuffer入参，从文件中获取JavaScript脚本数据。
 import { webview } from '@kit.ArkWeb';
@@ -2659,6 +2916,95 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// 使用ArrayBuffer入参，从文件中获取JavaScript脚本数据
+import { Entry, Text, Column, Component, Button, Web, UIContext, Context } from '@kit.ArkUI'
+import { State } from '@ohos.arkui.stateManagement'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State msg1: string = '';
+  @State msg2: string = '';
+  uiContext:UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Text(this.msg1).fontSize(20)
+      Text(this.msg2).fontSize(20)
+      Button('runJavaScriptExt')
+        .onClick(() => {
+          try {
+            let context:Context|undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+            let filePath = context!.filesDir + 'test.txt';
+            // 新建并打开文件。
+            let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+            // 写入一段内容至文件。
+            fileIo.writeSync(file.fd, "test()");
+            // 从文件中读取内容。
+            let arrayBuffer: ArrayBuffer = new ArrayBuffer(6);
+            fileIo.readSync(file.fd, arrayBuffer, { offset: 0, length: arrayBuffer.byteLength });
+            // 关闭文件。
+            fileIo.closeSync(file);
+            this.controller.runJavaScriptExt(arrayBuffer)
+              .then((result:webview.JsMessageExt) => {
+                try {
+                  let type = result.getType();
+                  switch (type) {
+                    case webview.JsMessageType.STRING: {
+                      this.msg1 = "result type:" + typeof (result.getString());
+                      this.msg2 = "result getString:" + ((result.getString()));
+                      break;
+                    }
+                    case webview.JsMessageType.NUMBER: {
+                      this.msg1 = "result type:" + typeof (result.getNumber());
+                      this.msg2 = "result getNumber:" + ((result.getNumber()));
+                      break;
+                    }
+                    case webview.JsMessageType.BOOLEAN: {
+                      this.msg1 = "result type:" + typeof (result.getBoolean());
+                      this.msg2 = "result getBoolean:" + ((result.getBoolean()));
+                      break;
+                    }
+                    case webview.JsMessageType.ARRAY_BUFFER: {
+                      this.msg1 = "result type:" + typeof (result.getArrayBuffer());
+                      this.msg2 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
+                      break;
+                    }
+                    case webview.JsMessageType.ARRAY: {
+                      this.msg1 = "result type:" + typeof (result.getArray());
+                      this.msg2 = "result getArray:" + result.getArray();
+                      break;
+                    }
+                    default: {
+                      this.msg1 = "default break, type:" + type;
+                      break;
+                    }
+                  }
+                }
+                catch (resError) {
+                  console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+                }
+              })
+              .catch((error) => {
+                console.error("error: " + error);
+              })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({src:"resource://rawfile/index.html", controller:this.controller})
         .javaScriptAccess(true)
     }
   }
@@ -2800,7 +3146,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('refresh')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.refresh();
           } catch (error) {
@@ -2808,7 +3154,7 @@ struct WebComponent {
           }
         })
       Button('Register JavaScript To Window')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.registerJavaScriptProxy(this.testObjtest, this.name, ["test", "toString"]);
           } catch (error) {
@@ -2816,7 +3162,7 @@ struct WebComponent {
           }
         })
       Button('deleteJavaScriptRegister')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.deleteJavaScriptRegister(this.name);
           } catch (error) {
@@ -3024,7 +3370,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('searchString')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.searchAllAsync(this.searchString);
           } catch (error) {
@@ -3118,7 +3464,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearMatches')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.clearMatches();
           } catch (error) {
@@ -3204,7 +3550,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('searchNext')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.searchNext(true);
           } catch (error) {
@@ -3283,7 +3629,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearSslCache')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.clearSslCache();
           } catch (error) {
@@ -3360,7 +3706,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearClientAuthenticationCache')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.clearClientAuthenticationCache();
           } catch (error) {
@@ -3380,6 +3726,10 @@ createWebMessagePorts(isExtentionType?: boolean): Array\<WebMessagePort>
 创建Web消息端口。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3414,6 +3764,10 @@ postMessage(name: string, ports: Array\<WebMessagePort>, uri: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                   | 必填 | 说明                             |
@@ -3433,6 +3787,7 @@ postMessage(name: string, ports: Array\<WebMessagePort>, uri: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3448,9 +3803,83 @@ struct WebComponent {
 
   build() {
     Column() {
-      // 展示接收到的来自HTML的内容
+      // 展示接收到的来自HTML的内容。
       Text(this.receivedFromHtml)
-      // 输入框的内容发送到html
+      // 输入框的内容发送到html。
+      TextInput({ placeholder: 'Send this message from ets to HTML' })
+        .onChange((value: string) => {
+          this.sendFromEts = value;
+        })
+
+      Button('postMessage')
+        .onClick(() => {
+          try {
+            // 1、创建两个消息端口。
+            this.ports = this.controller.createWebMessagePorts();
+            // 2、在应用侧的消息端口(如端口1)上注册回调事件。
+            this.ports[1].onMessageEvent((result: webview.WebMessage) => {
+              let msg = 'Got msg from HTML:';
+              if (typeof (result) == "string") {
+                console.info("received string message from html5, string is:" + result);
+                msg = msg + result;
+              } else if (typeof (result) == "object") {
+                if (result instanceof ArrayBuffer) {
+                  console.info("received arraybuffer from html5, length is:" + result.byteLength);
+                  msg = msg + "length is " + result.byteLength;
+                } else {
+                  console.info("not support");
+                }
+              } else {
+                console.info("not support");
+              }
+              this.receivedFromHtml = msg;
+            })
+            // 3、将另一个消息端口(如端口0)发送到HTML侧，由HTML侧保存并使用。
+            this.controller.postMessage('__init_port__', [this.ports[0]], '*');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+      // 4、使用应用侧的端口给另一个已经发送到html的端口发送消息。
+      Button('SendDataToHTML')
+        .onClick(() => {
+          try {
+            if (this.ports && this.ports[1]) {
+              this.ports[1].postMessageEvent(this.sendFromEts);
+            } else {
+              console.error(`ports is null, Please initialize first`);
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Web, Column, Component, Entry, State, Text, Button, $rawfile, TextInput } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  ports: webview.WebMessagePort[] =[] as webview.WebMessagePort[];
+  @State sendFromEts: string = 'Send this message from ets to HTML';
+  @State receivedFromHtml: string = 'Display received message send from HTML';
+
+  build() {
+    Column() {
+      // 展示接收到的来自HTML的内容。
+      Text(this.receivedFromHtml)
+      // 输入框的内容发送到html。
       TextInput({ placeholder: 'Send this message from ets to HTML' })
         .onChange((value: string) => {
           this.sendFromEts = value;
@@ -4105,7 +4534,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Web, Column, Component, Entry, Button, ClickEvent } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
 
@@ -4118,7 +4547,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('getTitle')
-        .onClick((e: ClickEvent) => {
+        .onClick(() => {
           try {
             let title = this.controller.getTitle();
             console.info("title: " + title);
@@ -4301,7 +4730,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('storeWebArchive')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.storeWebArchive("/data/storage/el2/base/", true,
               (error: BusinessError<void> | null | undefined, filename: String | undefined) => {
@@ -4410,7 +4839,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('storeWebArchive')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.storeWebArchive("/data/storage/el2/base/", true)
               .then(filename => {
@@ -4490,7 +4919,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Web, Column, Component, Entry, Button, ClickEvent } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
 
@@ -4502,7 +4931,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('getUrl')
-        .onClick((e: ClickEvent) => {
+        .onClick(() => {
           try {
             let url = this.controller.getUrl();
             console.info("url: " + url);
@@ -4671,7 +5100,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('backOrForward')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.backOrForward(this.step);
           } catch (error) {
@@ -5267,6 +5696,10 @@ getFavicon(): image.PixelMap
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                   | 说明                            |
@@ -5283,6 +5716,7 @@ getFavicon(): image.PixelMap
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -5293,6 +5727,36 @@ import { image } from '@kit.ImageKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State pixelmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Button('getFavicon')
+        .onClick(() => {
+          try {
+            this.pixelmap = this.controller.getFavicon();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, State } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State pixelmap: image.PixelMap | undefined = undefined;
 
   build() {
@@ -5382,7 +5846,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setNetworkAvailable')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.setNetworkAvailable(true);
           } catch (error) {
@@ -5497,7 +5961,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('hasImageCb')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.hasImage((error: BusinessError | null, data:  Boolean | undefined): void => {
               if (error) {
@@ -5593,7 +6057,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('hasImagePm')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.hasImage().then((data: boolean) => {
               console.info('hasImage: ' + data);
@@ -5685,7 +6149,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('removeCache')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.removeCache(false);
           } catch (error) {
@@ -5772,7 +6236,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('removeAllCache')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebviewController.removeAllCache(false);
           } catch (error) {
@@ -6268,6 +6732,10 @@ static customizeSchemes(schemes: Array\<WebCustomScheme\>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -6285,6 +6753,7 @@ static customizeSchemes(schemes: Array\<WebCustomScheme\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6320,6 +6789,49 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { WebResourceResponse, OnInterceptRequestEvent } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme =
+    { schemeName: "name1", isSupportCORS: true, isSupportFetch: true } as webview.WebCustomScheme;
+  scheme2: webview.WebCustomScheme =
+    { schemeName: "name2", isSupportCORS: true, isSupportFetch: true } as webview.WebCustomScheme;
+  scheme3: webview.WebCustomScheme =
+    { schemeName: "name3", isSupportCORS: true, isSupportFetch: true } as webview.WebCustomScheme;
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onInterceptRequest((event: OnInterceptRequestEvent): WebResourceResponse => {
+          if (event) {
+            console.info('url:' + event.request.getRequestUrl());
+          }
+          return this.responseWeb;
+        })
+    }
+  }
+}
+```
+
 
 ## getCertificate<sup>10+</sup>
 
@@ -6717,7 +7229,7 @@ struct WebComponent {
   build() {
     Column() {
       Button("Toggle Mute")
-        .onClick((e) => {
+        .onClick(() => {
           if (e) {
             this.muted = !this.muted;
             this.controller.setAudioMuted(this.muted);
@@ -6917,7 +7429,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('prefetchPopularPage')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             // 预加载时，需要将'https://www.example.com'替换成一个真实的网站地址。
             this.controller.prefetchPage('https://www.example.com');
@@ -7358,7 +7870,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setDownloadDelegate')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -7452,7 +7964,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setDownloadDelegate')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -7460,7 +7972,7 @@ struct WebComponent {
           }
         })
       Button('startDownload')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
@@ -7754,7 +8266,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setConnectionTimeout')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebviewController.setConnectionTimeout(5);
             console.info("setConnectionTimeout: 5s");
@@ -7915,7 +8427,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('enableSafeBrowsing')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.enableSafeBrowsing(true);
             console.info("enableSafeBrowsing: true");
@@ -7986,7 +8498,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isSafeBrowsingEnabled')
-        .onClick((e) => {
+        .onClick(() => {
           let result = this.controller.isSafeBrowsingEnabled();
           console.info("result: " + result);
         })
@@ -8073,7 +8585,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('enableIntelligentTrackingPrevention')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.enableIntelligentTrackingPrevention(true);
             console.info("enableIntelligentTrackingPrevention: true");
@@ -8163,7 +8675,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isIntelligentTrackingPreventionEnabled')
-         .onClick((e) => {
+         .onClick(() => {
           try {
             let result = this.controller.isIntelligentTrackingPreventionEnabled();
             console.info("result: " + result);
@@ -8253,7 +8765,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('addIntelligentTrackingPreventionBypassingList')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             let hostList = ["www.test1.com", "www.test2.com", "www.test3.com"];
             webview.WebviewController.addIntelligentTrackingPreventionBypassingList(hostList);
@@ -8343,7 +8855,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('removeIntelligentTrackingPreventionBypassingList')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             let hostList = ["www.test1.com", "www.test2.com"];
             webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(hostList);
@@ -8419,7 +8931,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearIntelligentTrackingPreventionBypassingList')
-        .onClick((e) => {
+        .onClick(() => {
           webview.WebviewController.clearIntelligentTrackingPreventionBypassingList();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -8563,7 +9075,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('enableAdsBlock')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.enableAdsBlock(true);
             console.info("enableAdsBlock: true")
@@ -8652,7 +9164,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isAdsBlockEnabled')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             let isAdsBlockEnabled: boolean = this.controller.isAdsBlockEnabled();
             console.info("isAdsBlockEnabled:", isAdsBlockEnabled);
@@ -8742,7 +9254,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isAdsBlockEnabledForCurPage')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             let isAdsBlockEnabledForCurPage: boolean = this.controller.isAdsBlockEnabledForCurPage();
             console.info("isAdsBlockEnabledForCurPage:", isAdsBlockEnabledForCurPage);
@@ -9294,7 +9806,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isIncognitoMode')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             let result = this.controller.isIncognitoMode();
             console.info('isIncognitoMode' + result);
@@ -10258,7 +10770,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('stopAllMedia')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.stopAllMedia();
           } catch (error) {
@@ -10337,7 +10849,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('pauseAllMedia')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.pauseAllMedia();
           } catch (error) {
@@ -10416,7 +10928,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('resumeAllMedia')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.resumeAllMedia();
           } catch (error) {
@@ -10495,7 +11007,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('closeAllMediaPresentations')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.closeAllMediaPresentations();
           } catch (error) {
@@ -10580,7 +11092,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('getMediaPlaybackState')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             console.info("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
           } catch (error) {
@@ -10667,7 +11179,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setWebSchemeHandler')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             this.controller.setWebSchemeHandler('http', this.schemeHandler);
           } catch (error) {
@@ -10831,7 +11343,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setWebSchemeHandler')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebviewController.setServiceWorkerWebSchemeHandler('http', this.schemeHandler);
           } catch (error) {
@@ -10894,7 +11406,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearServiceWorkerWebSchemeHandler')
-        .onClick((e) => {
+        .onClick(() => {
           webview.WebviewController.clearServiceWorkerWebSchemeHandler();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -11035,21 +11547,21 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button("startCamera").onClick((e) => {
+      Button("startCamera").onClick(() => {
         try {
           this.controller.startCamera();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
-      Button("stopCamera").onClick((e) => {
+      Button("stopCamera").onClick(() => {
         try {
           this.controller.stopCamera();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
-      Button("closeCamera").onClick((e) => {
+      Button("closeCamera").onClick(() => {
         try {
           this.controller.closeCamera();
         } catch (error) {
@@ -11919,7 +12431,7 @@ ArkTS-Sta示例：
 // xxx.ets
 import { Observed, State, AppStorage, ObjectLink } from '@ohos.arkui.stateManagement';
 import { XComponent, XComponentType, XComponentController, Text, Alignment, Resource, ForEach, Area, XComponentOptions,
-  TouchEvent, Stack, Entry, Color, Component, Column, Row, Button, VideoController, Builder, ClickEvent, Web, wrapBuilder,
+  TouchEvent, Stack, Entry, Color, Component, Column, Row, Button, VideoController, Builder, Web, wrapBuilder,
   FrameNode, NodeContainer, FlexAlign } from "@ohos.arkui.component"
 import { NodeController, NodeRenderType, BuilderNode } from '@ohos.arkui.node';
 import webview from '@ohos.web.webview';
@@ -12945,7 +13457,7 @@ struct WebComponent {
     Column() {
       // url加载前设置生效。
       Button('setHostIP')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebviewController.setHostIP('www.example.com', '127.0.0.1', 30);
           } catch (error) {
@@ -12953,7 +13465,7 @@ struct WebComponent {
           }
         })
       Button('clearHostIP')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebviewController.clearHostIP('www.example.com');
           } catch (error) {
@@ -13069,6 +13581,10 @@ setUrlTrustList(urlTrustList: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -13093,6 +13609,8 @@ setUrlTrustList(urlTrustList: string): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -13109,7 +13627,7 @@ setUrlTrustList(urlTrustList: string): void
         Button('Setting the trustlist')
           .onClick(() => {
             try {
-              // 设置白名单，只允许访问trust网页
+              // 设置白名单，只允许访问trust网页。
               this.controller.setUrlTrustList(this.urltrustList);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -13118,7 +13636,7 @@ setUrlTrustList(urlTrustList: string): void
         Button('Cancel the trustlist.')
           .onClick(() => {
             try {
-              // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+              // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问。
               this.controller.setUrlTrustList("");
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -13127,7 +13645,7 @@ setUrlTrustList(urlTrustList: string): void
         Button('Access the trust web')
           .onClick(() => {
             try {
-              // 白名单生效，可以访问trust网页
+              // 白名单生效，可以访问trust网页。
               this.controller.loadUrl('http://trust.example.com/test');
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -13136,7 +13654,7 @@ setUrlTrustList(urlTrustList: string): void
         Button('Access the untrust web')
           .onClick(() => {
             try {
-              // 白名单生效，此时不可以访问untrust网页，并弹出错误页
+              // 白名单生效，此时不可以访问untrust网页，并弹出错误页。
               this.controller.loadUrl('http://untrust.example.com/test');
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -13144,7 +13662,71 @@ setUrlTrustList(urlTrustList: string): void
           })
         Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
           try {
-            // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+            // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页。
+            this.controller.setUrlTrustList(this.urltrustList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    urltrustList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"trust.example.com\", \"port\":80, \"path\":\"test\"}]}"
+
+    build() {
+      Column() {
+        Button('Setting the trustlist')
+          .onClick(() => {
+            try {
+              // 设置白名单，只允许访问trust网页。
+              this.controller.setUrlTrustList(this.urltrustList);
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Button('Cancel the trustlist.')
+          .onClick(() => {
+            try {
+              // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问。
+              this.controller.setUrlTrustList("");
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Button('Access the trust web')
+          .onClick(() => {
+            try {
+              // 白名单生效，可以访问trust网页。
+              this.controller.loadUrl('http://trust.example.com/test');
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Button('Access the untrust web')
+          .onClick(() => {
+            try {
+              // 白名单生效，此时不可以访问untrust网页，并弹出错误页。
+              this.controller.loadUrl('http://untrust.example.com/test');
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
+          try {
+            // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页。
             this.controller.setUrlTrustList(this.urltrustList);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
