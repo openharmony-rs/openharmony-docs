@@ -911,7 +911,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12); | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris保持一一对应。<br>其中[photoAccessHelper.PhotoCreationConfig.subtype](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)当前仅支持DEFAULT，后续API版本中会提供优化该参数的接口。 |
+| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12); | 是 | 保存图片/视频到媒体库的配置，包括保存的文件名等。<br>其中[photoAccessHelper.PhotoCreationConfig.subtype](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)当前仅支持DEFAULT，后续API版本中会提供优化该参数的接口。 |
 
 **返回值：**
 
