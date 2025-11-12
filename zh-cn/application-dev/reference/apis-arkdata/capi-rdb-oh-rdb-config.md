@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-struct OH_Rdb_Config {...}
+typedef struct  {...} OH_Rdb_Config
 ```
 
 ## 概述
