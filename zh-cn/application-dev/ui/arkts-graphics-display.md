@@ -63,8 +63,8 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[net_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  //  $r('app.string.LoadingResources') 需要替换为开发者所需的资源文件
-  Image($r('app.string.LoadingResources')) // 实际使用时请替换为真实地址
+  // $r('app.string.LoadingResources')需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+  Image($r('app.string.LoadingResources'))
   ```
 
 - Resource资源
