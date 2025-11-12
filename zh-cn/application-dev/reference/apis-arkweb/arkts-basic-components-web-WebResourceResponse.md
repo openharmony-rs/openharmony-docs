@@ -4,6 +4,8 @@ Web组件资源响应对象。示例代码参考[onHttpErrorReceive事件](./ark
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
@@ -17,6 +19,10 @@ constructor()
 WebResourceResponse的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 ## getReasonMessage
 
