@@ -281,21 +281,21 @@ import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@ki
 2. 构造一条PlainText数据,并书写获取延时数据的函数。
 
    <!-- @[pasteboard_timelaps_PasteData2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->   
-
-``` TypeScript
-    let plainTextData = new unifiedDataChannel.UnifiedData();
-    let getDelayPlainText = ((dataType:string) => {
-      let plainText = new unifiedDataChannel.PlainText();
-      plainText.details = {
-        Key: 'delayPlaintext',
-        Value: 'delayPlaintext',
-      };
-      plainText.textContent = 'delayTextContent';
-      plainText.abstract = 'delayTextContent';
-      plainTextData.addRecord(plainText);
-      return plainTextData;
-    });
-```
+   
+   ``` TypeScript
+   let plainTextData = new unifiedDataChannel.UnifiedData();
+   let getDelayPlainText = ((dataType: string) => {
+     let plainText = new unifiedDataChannel.PlainText();
+     plainText.details = {
+       Key: 'delayPlaintext',
+       Value: 'delayPlaintext',
+     };
+     plainText.textContent = 'delayTextContent';
+     plainText.abstract = 'delayTextContent';
+     plainTextData.addRecord(plainText);
+     return plainTextData;
+   });
+   ```
 
 
 3. 向系统剪贴板中存入一条PlainText数据。
