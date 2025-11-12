@@ -22,7 +22,7 @@ import {
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
   MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement,
   ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback
-} from '@kit.MediaLibraryKit';
+} from '@ohos.file.PhotoPickerComponent';
 ```
 
 ## 属性
