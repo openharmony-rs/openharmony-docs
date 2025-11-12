@@ -33,7 +33,11 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 
 按照指定的混合模式对两个着色器进行叠加，生成一个新的着色器。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -73,7 +77,11 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 
 基于图片创建一个着色器。此接口不建议用于录制类型的画布，会影响性能。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -141,23 +149,29 @@ class DrawingRenderNode extends RenderNode {
 
 ## createColorShader<sup>12+</sup>
 
-static createColorShader(color: number): ShaderEffect
+ArkTS-Dyn: static createColorShader(color: number): ShaderEffect
+
+ArkTS-Sta: static createColorShader(color: int): ShaderEffect | undefined
 
 创建具有单一颜色的着色器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| color   | number | 是   | 表示着色器的ARGB格式颜色，该参数为32位无符号整数。 |
+| color   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示着色器的ARGB格式颜色，该参数为32位无符号整数。 |
 
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回具有单一颜色的着色器对象。 |
+| ArkTS-Dyn: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md)<br/>ArkTS-Sta: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| undefined | 返回具有单一颜色的着色器对象。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -187,7 +201,7 @@ ArkTS-Sta: static createLinearGradient(startPt: common2D.Point, endPt: common2D.
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -240,7 +254,7 @@ ArkTS-Sta: static createRadialGradient(centerPt: common2D.Point, radius: double,
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -292,7 +306,7 @@ ArkTS-Sta: static createSweepGradient(centerPt: common2D.Point, colors: Array\<i
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -345,7 +359,7 @@ ArkTS-Sta: static createConicalGradient(startPt: common2D.Point, startRadius: do
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
