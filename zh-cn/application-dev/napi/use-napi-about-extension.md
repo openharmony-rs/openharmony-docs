@@ -550,7 +550,13 @@ static napi_value Init(napi_env env, napi_value exports)
         {"erase", nullptr, Object::Erase, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    
+    auto object = Object::GetInstance();
+    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinializerCallback, nullptr, nullptr);
+    if (status != napi_ok) {
+        OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
+    }
+    napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(object),
+                                         nullptr);
     return exports;
 }
 EXTERN_C_END
