@@ -22,6 +22,18 @@
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
 | liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | 否  | 是  | 普通实况窗类型通知内容。<br>**系统接口**：此接口为系统接口。|
 
+## NotificationBasicContent
+
+描述普通文本通知。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
+| -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
+| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）   |
+
 ## NotificationLiveViewContent<sup>11+</sup>
 
 描述普通实况通知。
