@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_GestureRecognizer ArkUI_GestureRecognizer
+```
+
 ## 概述
 
 提供手势组件实例对象定义。

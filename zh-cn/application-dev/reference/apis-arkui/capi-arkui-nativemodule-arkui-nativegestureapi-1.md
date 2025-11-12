@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_NativeGestureAPI_1
+```
+
 ## 概述
 
 手势模块接口集合。

@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_DrawableDescriptor ArkUI_DrawableDescriptor
+```
+
 ## 概述
 
 定义 DrawableDescriptor 对象。
