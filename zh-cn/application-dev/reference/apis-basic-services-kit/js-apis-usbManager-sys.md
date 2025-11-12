@@ -616,7 +616,7 @@ let ret: int = usbManager.getDeviceFunctions();
 
 getPortList(): Array\<USBPort\>
 
-获取所有物理USB端口描述信息。开
+获取所有物理USB端口描述信息。
 
 **系统接口：** 此接口为系统接口。
 
