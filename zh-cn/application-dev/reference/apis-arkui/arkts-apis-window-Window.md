@@ -3203,11 +3203,7 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaOptions&gt;): void
 **示例：**
 
 ```ts
-interface Param {
-  type: window.AvoidAreaType,
-  area: window.AvoidArea
-}
-const callback = (data: Param) => {
+const callback = (data: window.AvoidAreaOptions) => {
   // ...
 }
 try {
@@ -3884,7 +3880,7 @@ let callback = () => {
 };
 try {
   windowClass.onScreenshot(callback);
-  windowClass.offSreenshot(callback);
+  windowClass.offScreenshot(callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   windowClass.offScreenshot();
 } catch (exception) {
