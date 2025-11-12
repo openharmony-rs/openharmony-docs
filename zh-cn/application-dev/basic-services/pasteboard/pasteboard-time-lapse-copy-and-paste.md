@@ -221,12 +221,19 @@ void ProcessRecord(OH_UdmfRecord* record)
 6. 应用退出时，如果剪贴板内的数据没有变化，则通知剪贴板获取全量数据，等待回调完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
 
    <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-    // 15. 查询剪贴板内的数据是否变化。
-    uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-    // 16. 如果newChangeCount == changeCount通知剪贴板获取全量数据，需要等待SyncCallback回调完成再继续退出
-```
+   
+   ``` C++
+   // 15. 查询剪贴板内的数据是否变化。
+   uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+   if (newChangeCount == changeCount) {
+       // 16. 通知剪贴板获取全量数据。
+       OH_Pasteboard_SyncDelayedDataAsync(pasteboard, SyncCallback);
+       // 需要等待SyncCallback回调完成再继续退出
+   } else {
+       // 继续退出
+       OH_LOG_INFO(LOG_APP, "No newChangeCount in pasteboard.");
+   }
+   ```
 
 7. 使用完毕后需要及时释放相关对象的内存。
    
