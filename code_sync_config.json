@@ -16829,6 +16829,21 @@
 						"end_line":107,
 						"name":"add_a_scrollbar",
 						"start_line":83
+					},
+					{
+						"end_line":41,
+						"name":"external_scroll_ctrl",
+						"start_line":39
+					},
+					{
+						"end_line":137,
+						"name":"external_scroll_list",
+						"start_line":120
+					},
+					{
+						"end_line":144,
+						"name":"external_scroll_bar",
+						"start_line":141
 					}
 				]
 			},
@@ -16850,16 +16865,6 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets",
 				"functions":[
-					{
-						"end_line":167,
-						"name":"respond_to_list_scroller",
-						"start_line":141
-					},
-					{
-						"end_line":145,
-						"name":"scroller_scroll_bar",
-						"start_line":142
-					},
 					{
 						"end_line":197,
 						"name":"respond_to_scroll_position",
