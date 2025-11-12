@@ -1815,7 +1815,7 @@ struct Index {
 ## onVerifyPin<sup>22+</sup>
 onVerifyPin(callback: OnVerifyPinCallback)
 
-通知用户进行PIN码认证。
+通知用户进行PIN码认证。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
