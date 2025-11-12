@@ -788,6 +788,10 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0001;
+  const TAG = 'Sample_imagecomponent';
+  
   @Entry
   @Component
   struct EventCall {
@@ -799,11 +803,12 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row() {
-          //  $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
+          // $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_img_2'))
             .width(200)
             .height(150)
             .margin(15)
+            // 图片加载成功后，通过onComplete获取图片必要信息
             .onComplete(msg => {
               if(msg){
                 this.widthValue = msg.width;
@@ -811,11 +816,13 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
                 this.componentWidth = msg.componentWidth;
                 this.componentHeight = msg.componentHeight;
               };
+              hilog.info(DOMAIN, TAG, `${msg}`);
             })
-              // 图片获取失败，打印结果
+            // 如果加载失败，使用onError触发回调函数获取结果
             .onError(() => {
               hilog.info(DOMAIN, TAG, 'load image fail');
             })
+            // overlay接口暂不支持深色模式
             .overlay('\nwidth: ' + String(this.widthValue) + ', height: ' + String(this.heightValue) + '\ncomponentWidth: ' + String(this.componentWidth) + '\ncomponentHeight: ' + String(this.componentHeight), {
               align: Alignment.Bottom,
               offset: { x: 0, y: 60 }
