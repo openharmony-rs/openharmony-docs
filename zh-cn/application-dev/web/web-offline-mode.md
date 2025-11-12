@@ -32,15 +32,25 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err, data) => {
-    // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
-    if (err.code) {
-      return;
-    }
-  });
-}
+import { createNWeb } from "../pages/common";
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+// ···
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err && err.code) {
+        console.info('loadContent failed. errorCode: ' + err.code);
+        return;
+      }
+      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      if (!windowClass) {
+        console.info('windowClass is null');
+        return;
+      }
+      // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+      createNWeb('https://www.example.com', windowClass.getUIContext());
+    });
+  }
 ```
 <!--  -->
 
@@ -134,6 +144,7 @@ export const getNWeb = (url: ResourceStr) : myNodeController | undefined => {
 <!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
+// 使用NodeController的Page页
 import { getNWeb } from './common'
 @Entry
 @Component
@@ -143,7 +154,7 @@ struct Index {
       Column() {
         // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
         // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
-        NodeContainer(getNWeb('www.example.com'))
+        NodeContainer(getNWeb('https://www.example.com'))
           .height('90%')
           .width('100%')
       }
@@ -333,15 +344,25 @@ struct index2 {
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err, data) => {
-    // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
-    if (err.code) {
-      return;
-    }
-  });
-}
+import { createNWeb } from "../pages/common";
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+// ···
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err && err.code) {
+        console.info('loadContent failed. errorCode: ' + err.code);
+        return;
+      }
+      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      if (!windowClass) {
+        console.info('windowClass is null');
+        return;
+      }
+      // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+      createNWeb('https://www.example.com', windowClass.getUIContext());
+    });
+  }
 ```
 <!--  -->
 
@@ -445,6 +466,7 @@ export const getNWeb = (url : string) : myNodeController | undefined => {
 <!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
+// 使用NodeController的Page页
 import { getNWeb } from './common'
 @Entry
 @Component
@@ -454,7 +476,7 @@ struct Index {
       Column() {
         // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
         // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
-        NodeContainer(getNWeb('www.example.com'))
+        NodeContainer(getNWeb('https://www.example.com'))
           .height('90%')
           .width('100%')
       }
