@@ -4215,7 +4215,7 @@ on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
 
 开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-应用注册帧率变化监听后，只有当客户端UI树发生重绘（如页面切换、和可响应组件交互、设置背景色和透明度等）时，才会触发注册的回调。
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
