@@ -137,7 +137,7 @@
 | duration<sup>11+</sup>     | number                   | 否 | 是  | 当前媒体资源的时长。 |
 | videoWidth<sup>11+</sup>  | number                  | 否   | 是 | 媒体资源的视频宽度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | videoHeight<sup>11+</sup> |  number                 | 否  |是  | 媒体资源的视频高度，单位为像素（px）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| extras | Record\<string, Object\>       | 否  | 是 | 自定义媒体数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| extras |{ [key: string]: Object; }       | 否  | 是 | 自定义媒体数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## PlaybackPosition<sup>10+</sup>
 
