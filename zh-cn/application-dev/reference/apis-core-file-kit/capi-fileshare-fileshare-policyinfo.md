@@ -6,6 +6,10 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} FileShare_PolicyInfo
+```
+
 ## 概述
 
 需要授予或使能权限URI的策略信息。
