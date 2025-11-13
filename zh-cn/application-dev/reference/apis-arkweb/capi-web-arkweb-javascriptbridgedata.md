@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_JavaScriptBridgeData
+```
+
 ## 概述
 
 定义JavaScript Bridge数据的基础结构。

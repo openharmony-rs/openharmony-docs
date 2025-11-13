@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_SchemeHandler_ ArkWeb_SchemeHandler
+```
+
 ## 概述
 
 该类用于拦截指定scheme的请求。
