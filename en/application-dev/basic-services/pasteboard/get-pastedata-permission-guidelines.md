@@ -37,7 +37,7 @@ Applications can access the pasteboard content in either of the following ways:
 
 - Requesting the ohos.permission.READ_PASTEBOARD permission
 
-    ohos.permission.READ_PASTEBOARD is a restricted user_grant permission. Applications that use custom components can request this permission to access the pasteboard content with user authorization.
+    This is a restricted user_grant permission. After an application that uses custom components request this permission, the application can access the pasteboard content with user authorization.
 
     How to request permissions:
     <!--RP1-->

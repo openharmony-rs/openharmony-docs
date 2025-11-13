@@ -81,7 +81,7 @@ Provides data items for setting the general information about the device. (Not s
 | Name                            | Type  | Read-Only| Optional| Description                                                                                                                                 |
 | -------------------------------- | ------ |----|----|-------------------------------------------------------------------------------------------------------------------------------------|
 | SETUP_WIZARD_FINISHED            | string | Yes | No | Whether the startup wizard has been run.<br>- **0**: The startup wizard is not run.<br>- Other than **0**: The startup wizard has been run.                                                                              |
-| END_BUTTON_ACTION                | string | Yes | No | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters sleep mode and the screen is locked.<br>- **3**: The home screen is displayed. If the focus is already on the home screen, the device will enter sleep mode.|
+| END_BUTTON_ACTION                | string | Yes | No | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters the sleep state and the screen is locked.<br>- **3**: The home screen is displayed. If the focus is already on the home screen, the device will enter the sleep state.|
 | ACCELEROMETER_ROTATION_STATUS    | string | Yes | No | Whether the accelerometer is used to change screen orientation, that is, whether to enable auto-rotation.<br>- **1**: The accelerometer is used.<br>- **0**: The accelerometer is not used.                                                                     |
 | DEVICE_PROVISION_STATUS          | string | Yes | No | Whether the device is preconfigured.<br>On a multi-user device with a single system user, the screen may be locked when the value is **true**. In addition, other features cannot be started on the system user unless they are marked to display on the lock screen.                                                     |
 | HDC_STATUS                       | string | Yes | No | Whether the hard disk controller (HDC) on the USB device is enabled.<br>- **true**: HDC is enabled.<br>- **false**: HDC is disabled.                                                                     |
@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-Obtains the value of a data item. Unlike **getValue**, this API returns the result synchronously.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. Unlike **getValue**, this API returns the result synchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -532,7 +532,7 @@ let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_ST
 
 setValueSync(context: Context, name: string, value: string): boolean
 
-Sets the value for a data item. Unlike **setValue**, this API returns the result synchronously.
+Sets the value for a data item in the **DEVICE_SHARED** domain of the database. Unlike **setValue**, this API returns the result synchronously.
 
 - If the specified data item exists in the database, the **setValueSync** method updates the value of the data item.
 - If the data item does not exist in the database, the **setValueSync** method inserts the data item into the database.
