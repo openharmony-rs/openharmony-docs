@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>- 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 > **注意：**
 >
@@ -28,33 +30,51 @@ NfcATag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 ### NfcATag.getSak
 
-getSak(): number
+ArkTS-Dyn: getSak(): number
+
+ArkTS-Sta: getSak(): int
 
 获取NFC-A标签的SAK值。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number  | NfcA 标签的SAK值，十六进制表示，范围是0x00~0xFF。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | NfcA 标签的SAK值，十六进制表示，范围是0x00~0xFF。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcA
-let sak : number = nfcA.getSak();
+let sak: number = nfcA.getSak();
+console.info("nfcA sak: " + sak);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcA
+let sak: int = nfcA.getSak();
 console.info("nfcA sak: " + sak);
 ```
 
 ### NfcATag.getAtqa
 
-getAtqa(): number[]
+ArkTS-Dyn: getAtqa(): number[]
+
+ArkTS-Sta: getAtqa(): int[]
 
 获取NFC-A标签的Atqa值。
 
@@ -62,19 +82,33 @@ getAtqa(): number[]
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number[]  | NfcA 标签的Atqa值，每个number十六进制表示，范围是0x00~0xFF。 |
+| ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]  | NfcA 标签的Atqa值，每个int或number十六进制表示，范围是0x00~0xFF。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcA
-let atqa : number[] = nfcA.getAtqa();
+let atqa: number[] = nfcA.getAtqa();
+console.info("nfcA atqa: " + atqa);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcA
+let atqa: Array<int> = nfcA.getAtqa();
 console.info("nfcA atqa: " + atqa);
 ```
 
@@ -90,53 +124,85 @@ NfcBTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 ### NfcBTag.getRespAppData
 
-getRespAppData(): number[]
+ArkTS-Dyn: getRespAppData(): number[]
+
+ArkTS-Sta: getRespAppData(): int[]
 
 获取标签的应用程序数据。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number[]  | NfcB 标签的应用程序数据，每个number十六进制表示，范围是0x00~0xFF。 |
+| ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]  | NfcB 标签的应用程序数据，每个int或number十六进制表示，范围是0x00~0xFF。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcB
-let respAppData : number[] = nfcB.getRespAppData();
+let respAppData: number[] = nfcB.getRespAppData();
+console.info("nfcB respAppData: " + respAppData);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcB
+let respAppData: Array<int> = nfcB.getRespAppData();
 console.info("nfcB respAppData: " + respAppData);
 ```
 
 ### NfcBTag.getRespProtocol
 
-getRespProtocol(): number[]
+ArkTS-Dyn: getRespProtocol(): number[]
+
+ArkTS-Sta: getRespProtocol(): int[]
 
 获取标签的协议信息。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number[]  | NfcB 标签的协议信息，每个number十六进制表示，范围是0x00~0xFF。|
+| ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]  | NfcB 标签的协议信息，每个int或number十六进制表示，范围是0x00~0xFF。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcB
-let respProtocol : number[] = nfcB.getRespProtocol();
+let respProtocol: number[] = nfcB.getRespProtocol();
+console.info("nfcB respProtocol: " + respProtocol);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcB
+let respProtocol: Array<int> = nfcB.getRespProtocol();
 console.info("nfcB respProtocol: " + respProtocol);
 ```
 
@@ -152,53 +218,85 @@ NfcFTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 ### NfcFTag.getSystemCode
 
-getSystemCode(): number[]
+ArkTS-Dyn: getSystemCode(): number[]
+
+ArkTS-Sta: getSystemCode(): int[]
 
 从标签实例获取系统代码。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                            |
+| 类型 | 说明                            |
 | ------------------ | --------------------------|
-| number[]  | NfcF 标签的系统代码，每个number十六进制表示，范围是0x00~0xFF。|
+| ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]  | NfcF 标签的系统代码，每个int或number十六进制表示，范围是0x00~0xFF。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcF
-let systemCode : number[] = nfcF.getSystemCode();
+let systemCode: number[] = nfcF.getSystemCode();
+console.info("nfcF systemCode: " + systemCode);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcF
+let systemCode: Array<int> = nfcF.getSystemCode();
 console.info("nfcF systemCode: " + systemCode);
 ```
 
 ### NfcFTag.getPmm
 
-getPmm(): number[]
+ArkTS-Dyn: getPmm(): number[]
+
+ArkTS-Sta: getPmm(): int[]
 
 从标签实例获取PMm（由IC代码和制造商参数组成）。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number[]  | NfcF 标签的PMm信息，每个number十六进制表示，范围是0x00~0xFF。|
+| ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | NfcF 标签的PMm信息，每个int或number十六进制表示，范围是0x00~0xFF。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcF
-let pmm : number[] = nfcF.getPmm();
+let pmm: number[] = nfcF.getPmm();
+console.info("nfcF pmm: " + pmm);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcF
+let pmm: Array<int> = nfcF.getPmm();
 console.info("nfcF pmm: " + pmm);
 ```
 
@@ -214,53 +312,85 @@ NfcVTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 ### NfcvTag.getResponseFlags
 
-getResponseFlags(): number
+ArkTS-Dyn: getResponseFlags(): number
+
+ArkTS-Sta: getResponseFlags(): int
 
 从标签实例实例获取响应标志。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number | NfcV 标签的响应标志，十六进制表示，范围是0x00~0xFF。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | NfcV 标签的响应标志，十六进制表示，范围是0x00~0xFF。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcV
-let responseFlags : number = nfcV.getResponseFlags();
+let responseFlags: number = nfcV.getResponseFlags();
+console.info("nfcV responseFlags: " + responseFlags);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcV
+let responseFlags: int = nfcV.getResponseFlags();
 console.info("nfcV responseFlags: " + responseFlags);
 ```
 
 ### NfcvTag.getDsfId
 
-getDsfId(): number
+ArkTS-Dyn: getDsfId(): number
+
+ArkTS-Sta: getDsfId(): int
 
 从标签实例实例获取数据存储格式标识符（DSFID）。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number | NfcV 标签的数据存储格式标识符，十六进制表示，范围是0x00~0xFF。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | NfcV 标签的数据存储格式标识符，十六进制表示，范围是0x00~0xFF。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcV
-let dsfId : number = nfcV.getDsfId();
+let dsfId: number = nfcV.getDsfId();
+console.info("nfcV dsfId: " + dsfId);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 nfcV
+let dsfId: int = nfcV.getDsfId();
 console.info("nfcV dsfId: " + dsfId);
 ```
 
@@ -276,53 +406,85 @@ IsoDepTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-t
 
 ### IsoDepTag.getHistoricalBytes<sup>9+</sup>
 
-getHistoricalBytes(): number[]
+ArkTS-Dyn: getHistoricalBytes(): number[]
+
+ArkTS-Sta: getHistoricalBytes(): int[]
 
 获取标签的历史字节，针对基于NfcA通信技术的IsoDep卡片。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number[] | IsoDepTag 标签的历史字节，每个number十六进制表示，范围是0x00~0xFF。如果该IsoDep类型Tag是基于NfcB技术的，则该返回值为空。|
+| ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | IsoDepTag 标签的历史字节，每个int或number十六进制表示，范围是0x00~0xFF。如果该IsoDep类型Tag是基于NfcB技术的，则该返回值为空。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 isoDep
-let historicalBytes : number[] = isoDep.getHistoricalBytes();
+let historicalBytes: number[] = isoDep.getHistoricalBytes();
+console.info("isoDep historicalBytes: " + historicalBytes);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 isoDep
+let historicalBytes: Array<int> = isoDep.getHistoricalBytes();
 console.info("isoDep historicalBytes: " + historicalBytes);
 ```
 
 ### IsoDepTag.getHiLayerResponse<sup>9+</sup>
 
-getHiLayerResponse(): number[]
+ArkTS-Dyn: getHiLayerResponse(): number[]
+
+ArkTS-Sta: getHiLayerResponse(): int[]
 
 获取标签的更高层响应字节，针对基于NfcB通信技术的IsoDep卡片。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number[] | IsoDepTag 标签的更高层响应字节，每个number十六进制表示，范围是0x00~0xFF。如果该IsoDep类型Tag是基于NfcA技术的，则该返回值为空。|
+| ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | IsoDepTag 标签的更高层响应字节，每个int或number十六进制表示，范围是0x00~0xFF。如果该IsoDep类型Tag是基于NfcA技术的，则该返回值为空。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 isoDep
-let hiLayerResponse : number[] = isoDep.getHiLayerResponse();
+let hiLayerResponse: number[] = isoDep.getHiLayerResponse();
+console.info("isoDep hiLayerResponse: " + hiLayerResponse);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 isoDep
+let hiLayerResponse: Array<int> = isoDep.getHiLayerResponse();
 console.info("isoDep hiLayerResponse: " + hiLayerResponse);
 ```
 
@@ -340,7 +502,7 @@ isExtendedApduSupported(): Promise&lt;boolean&gt;
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | Promise&lt;boolean&gt; | 以Promise形式返回检查结果，true: 支持， false: 不支持。|
 
@@ -459,7 +621,7 @@ getNdefRecords(): [tag.NdefRecord](js-apis-nfcTag.md#ndefrecord9)[]
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | [tag.NdefRecord](js-apis-nfcTag.md#ndefrecord9)[] | NDEF标签的Record列表，详见NDEF技术规范《NFCForum-TS-NDEF_1.0》。 |
 
@@ -469,10 +631,10 @@ getNdefRecords(): [tag.NdefRecord](js-apis-nfcTag.md#ndefrecord9)[]
 import { tag } from '@kit.ConnectivityKit';
 
 // 从 tag.ndef.createNdefMessage 或 ndefTag.getNdefMessage 获取 ndefMessage。
-// let ndefMessage : tag.NdefMessage = tag.ndef.createNdefMessage(...);
-// let ndefMessage : tag.NdefMessage = ndefTag.getNdefMessage();
+// let ndefMessage: tag.NdefMessage = tag.ndef.createNdefMessage(...);
+// let ndefMessage: tag.NdefMessage = ndefTag.getNdefMessage();
 
-let ndefRecords : tag.NdefRecord[] = ndefMessage.getNdefRecords();
+let ndefRecords: tag.NdefRecord[] = ndefMessage.getNdefRecords();
 console.info("ndef ndefRecords number: " + ndefRecords.length);
 ```
 
@@ -498,7 +660,7 @@ getNdefTagType(): [tag.NfcForumType](js-apis-nfcTag.md#nfcforumtype9)
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | [tag.NfcForumType](js-apis-nfcTag.md#nfcforumtype9) | NDEF标签类型，包括NFC FORUM TYPE 1/2/3/4等。|
 
@@ -508,7 +670,7 @@ getNdefTagType(): [tag.NfcForumType](js-apis-nfcTag.md#nfcforumtype9)
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefTag
-let ndefTagType : tag.NfcForumType = ndefTag.getNdefTagType();
+let ndefTagType: tag.NfcForumType = ndefTag.getNdefTagType();
 console.info("ndef ndefTagType: " + ndefTagType);
 ```
 
@@ -524,7 +686,7 @@ getNdefMessage(): [NdefMessage](#ndefmessage9)
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | [NdefMessage](#ndefmessage9)  | NDEF标签的Message，详见NDEF技术规范《NFCForum-TS-NDEF_1.0》。|
 
@@ -533,7 +695,7 @@ getNdefMessage(): [NdefMessage](#ndefmessage9)
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefTag
-let ndefMessage : tag.NdefMessage = ndefTag.getNdefMessage();
+let ndefMessage: tag.NdefMessage = ndefTag.getNdefMessage();
 console.info("ndef ndefMessage: " + ndefMessage);
 ```
 
@@ -549,7 +711,7 @@ isNdefWritable(): boolean
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | boolean | 检查结果，true: 可写， false: 不可写。|
 
@@ -559,7 +721,7 @@ isNdefWritable(): boolean
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefTag
-let isWritable : boolean = ndefTag.isNdefWritable();
+let isWritable: boolean = ndefTag.isNdefWritable();
 console.info("ndef isNdefWritable: " + isWritable);
 ```
 
@@ -577,7 +739,7 @@ readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | Promise\<[NdefMessage](#ndefmessage9)> | 以Promise形式返回从NDEF标签中读取到的Message数据对象。|
 
@@ -609,9 +771,9 @@ function nfcTechDemo(){
     }
 
     try {
-        ndefTag.readNdef().then((ndefmessage : tag.NdefMessage) => {
+        ndefTag.readNdef().then((ndefmessage: tag.NdefMessage) => {
             console.info("ndef readNdef Promise ndefmessage: " + ndefmessage);
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("ndef readNdef Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -668,7 +830,7 @@ function nfcTechDemo() {
     }
 
     try {
-        ndefTag.readNdef((err : BusinessError, ndefmessage : tag.NdefMessage)=> {
+        ndefTag.readNdef((err: BusinessError, ndefmessage: tag.NdefMessage)=> {
             if (err) {
                 console.error("ndef readNdef AsyncCallback err Code: ${err.code}, message: ${err.message}");
             } else {
@@ -676,8 +838,8 @@ function nfcTechDemo() {
             }
         });
     } catch (businessError) {
-        console.error("ndef readNdef AsyncCallback catch Code: ${(businessError : BusinessError).code}," +
-        " message: ${(businessError : BusinessError).message}");
+        console.error("ndef readNdef AsyncCallback catch Code: ${(businessError: BusinessError).code}," +
+        " message: ${(businessError: BusinessError).message}");
     }
 }
 
@@ -726,9 +888,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefTag
 // 从原始数据创建的ndefMessage，例如：
-let ndefMessage : tag.NdefMessage =
+let ndefMessage: tag.NdefMessage =
     tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  // 必须是可以被解析的NDEF记录。
-// 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+// 或从tag.ndef.createNdefMessage(ndefRecords:NdefRecord[])创建ndefMessage
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -742,7 +904,7 @@ function nfcTechDemo() {
     try {
         ndefTag.writeNdef(ndefMessage).then(() => {
             console.info("ndef writeNdef Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("ndef writeNdef err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -790,9 +952,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefTag
 // 从原始数据创建的ndefMessage，例如：
-let ndefMessage : tag.NdefMessage = 
+let ndefMessage: tag.NdefMessage = 
     tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  // 必须是可以被解析的NDEF记录。
-// 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+// 或从tag.ndef.createNdefMessage(ndefRecords:NdefRecord[])创建ndefMessage
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -804,7 +966,7 @@ function nfcTechDemo() {
     }
 
     try {
-        ndefTag.writeNdef(ndefMessage, (err : BusinessError)=> {
+        ndefTag.writeNdef(ndefMessage, (err: BusinessError)=> {
             if (err) {
                 console.error("ndef writeNdef AsyncCallback Code: ${err.code}, message: ${err.message}");
             } else {
@@ -832,7 +994,7 @@ canSetReadOnly(): boolean
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | boolean| true: NDEF标签可设置为只读， false: NDEF标签不可设置为只读。 |
 
@@ -851,7 +1013,7 @@ canSetReadOnly(): boolean
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefTag
-let canSetReadOnly : boolean = ndefTag.canSetReadOnly();
+let canSetReadOnly: boolean = ndefTag.canSetReadOnly();
 console.info("ndef canSetReadOnly: " + canSetReadOnly);
 ```
 
@@ -904,7 +1066,7 @@ function nfcTechDemo() {
     try {
         ndefTag.setReadOnly().then(() => {
             console.info("ndef setReadOnly Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("ndef setReadOnly Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -961,7 +1123,7 @@ function nfcTechDemo() {
     }
 
     try {
-        ndefTag.setReadOnly((err : BusinessError)=> {
+        ndefTag.setReadOnly((err: BusinessError)=> {
             if (err) {
                 console.error("ndef setReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}");
             } else {
@@ -993,7 +1155,7 @@ getNdefTagTypeString(type: [tag.NfcForumType](js-apis-nfcTag.md#nfcforumtype9)):
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | string | NFC论坛类型的字符串描述。|
 
@@ -1014,7 +1176,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefTag
 
 try {
-    let ndefTypeString : string = ndefTag.getNdefTagTypeString(tag.NfcForumType.NFC_FORUM_TYPE_1);
+    let ndefTypeString: string = ndefTag.getNdefTagTypeString(tag.NfcForumType.NFC_FORUM_TYPE_1);
     console.info("ndef ndefTypeString: " + ndefTypeString);
 } catch (businessError) {
     console.error("ndef getNdefTagTypeString catch businessError Code: ${(businessError as Businsess).code}, " +
@@ -1034,7 +1196,9 @@ MifareClassicTag获取方式请参考[nfc-tag开发指南](../../connectivity/nf
 
 ### MifareClassicTag.authenticateSector<sup>9+</sup>
 
-authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise\<void>
+ArkTS-Dyn: authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise\<void>
+
+ArkTS-Sta: authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean): Promise\<void>
 
 使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用Promise方式作为异步方法。
 
@@ -1042,14 +1206,18 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| sectorIndex | number | 是   | 待验证的扇区索引，从0开始。 |
-| key | number[]| 是   | 用于扇区验证的密钥（6字节）。 |
+| sectorIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待验证的扇区索引，从0开始。 |
+| key | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]| 是   | 用于扇区验证的密钥（6字节）。 |
 | isKeyA | boolean | 是   | isKeyA标志。true 表示KeyA，false 表示KeyB。|
 
 **返回值：**
@@ -1071,11 +1239,12 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1087,11 +1256,11 @@ function nfcTechDemo() {
     }
 
     try {
-        let sectorIndex = 1; // 将其更改为正确的 index
+        let sectorIndex = 1; // 将其更改为正确的index
         let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  //必须是6个字节，将其更改为正确的key
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareClassic authenticateSector Promise errCode: ${err.code}, " + "message: ${err.message}");
         });
     } catch (businessError) {
@@ -1101,9 +1270,42 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let sectorIndex: int = 1; // 将其更改为正确的index
+        let key: Array<int> = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  //必须是6个字节，将其更改为正确的key
+        mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
+            console.info("mifareClassic authenticateSector Promise success.");
+        }).catch((err: BusinessError) => {
+            console.error("mifareClassic authenticateSector Promise errCode: ${err.code}, " + "message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic authenticateSector Promise catch businessError Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.authenticateSector<sup>9+</sup>
 
-authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean, callback: AsyncCallback\<void>): void
 
 使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用AsyncCallback方式作为异步方法。
 
@@ -1111,14 +1313,18 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| sectorIndex | number | 是   | 待验证的扇区索引，从0开始。 |
-| key | number[]| 是   | 用于扇区验证的密钥（6字节）。 |
+| sectorIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待验证的扇区索引，从0开始。 |
+| key | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[]| 是   | 用于扇区验证的密钥（6字节）。 |
 | isKeyA | boolean | 是   | isKeyA标志。true 表示KeyA，false 表示KeyB。|
 | callback | AsyncCallback\<void> | 是   | 回调函数。当身份验证成功时，err为undefined，否则为错误对象。|
 
@@ -1134,11 +1340,13 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback
 | 3100204 | The Tag I/O operation failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1150,9 +1358,42 @@ function nfcTechDemo() {
     }
 
     try {
-        let sectorIndex = 1; // 将其更改为正确的 index
+        let sectorIndex = 1; // 将其更改为正确的index
         let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // 必须是6个字节，将其更改为正确的key
-        mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
+        mifareClassic.authenticateSector(sectorIndex, key, true, (err: BusinessError)=> {
+            if (err) {
+                console.error("mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}");
+            } else {
+                console.info("mifareClassic authenticateSector AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error("mifareClassic authenticateSector AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let sectorIndex = 1; // 将其更改为正确的index
+        let key: Array<int> = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // 必须是6个字节，将其更改为正确的key
+        mifareClassic.authenticateSector(sectorIndex, key, true, (err: BusinessError)=> {
             if (err) {
                 console.error("mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}");
             } else {
@@ -1168,7 +1409,9 @@ function nfcTechDemo() {
 
 ### MifareClassicTag.readSingleBlock<sup>9+</sup>
 
-readSingleBlock(blockIndex: number): Promise\<number[]>
+ArkTS-Dyn: readSingleBlock(blockIndex: number): Promise\<number[]>
+
+ArkTS-Sta: readSingleBlock(blockIndex: int): Promise\<int[]>
 
 读取标签中一个块存储的内容，一个块大小为16字节。使用Promise方式作为异步方法。
 
@@ -1176,19 +1419,23 @@ readSingleBlock(blockIndex: number): Promise\<number[]>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要读取的块索引，从0开始。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要读取的块索引，从0开始。 |
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| Promise\<number[]> | 以Promise形式返回读取的块数据。 |
+| ArkTS-Dyn: Promise\<number[]><br>ArkTS-Sta: Promise\<int[]>  | 以Promise形式返回读取的块数据。 |
 
 **错误码：**
 
@@ -1203,11 +1450,12 @@ readSingleBlock(blockIndex: number): Promise\<number[]>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1219,10 +1467,10 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
-        mifareClassic.readSingleBlock(blockIndex).then((data : number[]) => {
+        let blockIndex = 1; // 将其更改为正确的index
+        mifareClassic.readSingleBlock(blockIndex).then((data: number[]) => {
             console.info("mifareClassic readSingleBlock Promise data: " + data);
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareClassic readSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -1232,9 +1480,41 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex = 1; // 将其更改为正确的index
+        mifareClassic.readSingleBlock(blockIndex).then((data: Array<int>) => {
+            console.info("mifareClassic readSingleBlock Promise data: " + data);
+        }).catch((err: BusinessError| null): void => {
+            console.error("mifareClassic readSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic readSingleBlock Promise catch businessError Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.readSingleBlock<sup>9+</sup>
 
-readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
+ArkTS-Dyn: readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
+
+ArkTS-Sta: readSingleBlock(blockIndex: int, callback: AsyncCallback\<int[]>): void
 
 读取标签中一个块存储的内容，一个块大小为16字节。使用AsyncCallback方式作为异步方法。
 
@@ -1242,14 +1522,18 @@ readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要读取的块索引，从0开始。 |
-| callback | AsyncCallback\<number[]> | 是   |以callback形式异步返回读取到的块数据。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要读取的块索引，从0开始。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number[]><br>ArkTS-Sta: AsyncCallback\<int[]> | 是   |以callback形式异步返回读取到的块数据。 |
 
 **错误码：**
 
@@ -1264,11 +1548,12 @@ readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1280,8 +1565,8 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1;  // 将其更改为正确的 index
-        mifareClassic.readSingleBlock(blockIndex, (err : BusinessError, data : number[])=> {
+        let blockIndex = 1;  // 将其更改为正确的index
+        mifareClassic.readSingleBlock(blockIndex, (err: BusinessError, data: number[])=> {
             if (err) {
                 console.error("mifareClassic readSingleBlock AsyncCallback err: " + err);
             } else {
@@ -1295,9 +1580,43 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1;  // 将其更改为正确的index
+        mifareClassic.readSingleBlock(blockIndex, (err: BusinessError, data: Array<int> | nudefined)=> {
+            if (err) {
+                console.error("mifareClassic readSingleBlock AsyncCallback err: " + err);
+            } else {
+                console.info("mifareClassic readSingleBlock AsyncCallback data: " + data);
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic readSingleBlock AsyncCallback catch businessError Code: " + 
+        " ${(businessError as Businsess).code}, message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.writeSingleBlock<sup>9+</sup>
 
-writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
+ArkTS-Dyn: writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
+
+ArkTS-Sta: writeSingleBlock(blockIndex: int, data: int[]): Promise\<void>
 
 向标签中一个块存储写入内容，一个块大小为16字节。使用Promise方式作为异步方法。
 
@@ -1305,14 +1624,18 @@ writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要写入的块索引，从0开始。 |
-| data | number[] | 是   | 要写入的数据，大小必须是16个字节。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要写入的块索引，从0开始。 |
+| data | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要写入的数据，大小必须是16个字节。 |
 
 **返回值：**
 
@@ -1333,11 +1656,12 @@ writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1349,12 +1673,12 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         let rawData = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
             0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; // 必须是16个字节，将其更改为正确的key
         mifareClassic.writeSingleBlock(blockIndex, rawData).then(() => {
             console.info("mifareClassic writeSingleBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -1364,9 +1688,43 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        let rawData: Array<int> = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
+            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; // 必须是16个字节，将其更改为正确的key
+        mifareClassic.writeSingleBlock(blockIndex, rawData).then(() => {
+            console.info("mifareClassic writeSingleBlock Promise success.");
+        }).catch((err: BusinessError | null): void => {
+            console.error("mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic writeSingleBlock Promise catch businessError Code: ${(businessError as Businsess).code}, "
+        + "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.writeSingleBlock<sup>9+</sup>
 
-writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<void>): void
+ArkTS-Dyn: writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: writeSingleBlock(blockIndex: int, data: int[], callback: AsyncCallback\<void>): void
 
 向标签中一个块存储写入内容，一个块大小为16字节。使用AsyncCallback方式作为异步方法。
 
@@ -1374,14 +1732,18 @@ writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<vo
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要写入的块索引，从0开始。 |
-| data | number[] | 是   | 要写入的数据，大小必须是16个字节。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要写入的块索引，从0开始。 |
+| data | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要写入的数据，大小必须是16个字节。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当向块存储写入内容成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1397,11 +1759,12 @@ writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<vo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1413,10 +1776,10 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         let rawData = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
             0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; //必须是16个字节，将其更改为正确的data
-        mifareClassic.writeSingleBlock(blockIndex, rawData, (err : BusinessError)=> {
+        mifareClassic.writeSingleBlock(blockIndex, rawData, (err: BusinessError)=> {
             if (err) {
                 console.error("mifareClassic writeSingleBlock AsyncCallback err Code:" +
                 "${err.code}, message: ${err.message}");
@@ -1431,9 +1794,46 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        let rawData: Array<int> = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
+            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; //必须是16个字节，将其更改为正确的data
+        mifareClassic.writeSingleBlock(blockIndex, rawData, (err: BusinessError | null): void => {
+            if (err) {
+                console.error("mifareClassic writeSingleBlock AsyncCallback err Code:" +
+                "${err.code}, message: ${err.message}");
+            } else {
+                console.info("mifareClassic writeSingleBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic writeSingleBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.incrementBlock<sup>9+</sup>
 
-incrementBlock(blockIndex: number, value: number): Promise\<void>
+ArkTS-Dyn: incrementBlock(blockIndex: number, value: number): Promise\<void>
+
+ArkTS-Sta: incrementBlock(blockIndex: int, value: int): Promise\<void>
 
 对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用Promise方式作为异步方法。
 
@@ -1441,14 +1841,18 @@ incrementBlock(blockIndex: number, value: number): Promise\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要指定增加的块索引，从0开始。 |
-| value | number | 是   | 要指定增加的数据，非负数。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要指定增加的块索引，从0开始。 |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要指定增加的数据，非负数。 |
 
 **返回值：**
 
@@ -1469,11 +1873,12 @@ incrementBlock(blockIndex: number, value: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1485,11 +1890,11 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         let value = 0x20; // 将其更改为正确的数据
         mifareClassic.incrementBlock(blockIndex, value).then(() => {
             console.info("mifareClassic incrementBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareClassic incrementBlock Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -1499,9 +1904,42 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        let value: int = 0x20; // 将其更改为正确的数据
+        mifareClassic.incrementBlock(blockIndex, value).then(() => {
+            console.info("mifareClassic incrementBlock Promise success.");
+        }).catch((err: BusinessError | null): void => {
+            console.error("mifareClassic incrementBlock Promise err Code: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic incrementBlock Promise catch Code: ${(businessError as Businsess).code}, " +
+           "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.incrementBlock<sup>9+</sup>
 
-incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: incrementBlock(blockIndex: int, value: int, callback: AsyncCallback\<void>): void
 
 对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用AsyncCallback方式作为异步方法。
 
@@ -1509,14 +1947,18 @@ incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要被运算的块索引，从0开始。 |
-| value | number | 是   | 要增加的数值，非负数。 |
+| blockIndex |ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要被运算的块索引，从0开始。 |
+| value |ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要增加的数值，非负数。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对块增加指定数值成功时，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -1532,11 +1974,12 @@ incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1548,9 +1991,9 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         let value = 0x20; // 将其更改为正确的数据
-        mifareClassic.incrementBlock(blockIndex, value, (err : BusinessError)=> {
+        mifareClassic.incrementBlock(blockIndex, value, (err: BusinessError)=> {
             if (err) {
                 console.error("mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}");
             } else {
@@ -1564,9 +2007,44 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        let value: int = 0x20; // 将其更改为正确的数据
+        mifareClassic.incrementBlock(blockIndex, value, (err: BusinessError | null): void => {
+            if (err) {
+                console.error("mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}");
+            } else {
+                console.info("mifareClassic incrementBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic incrementBlock AsyncCallback catch businessError Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.decrementBlock<sup>9+</sup>
 
-decrementBlock(blockIndex: number, value: number): Promise\<void>
+ArkTS-Dyn: decrementBlock(blockIndex: number, value: number): Promise\<void>
+
+ArkTS-Sta: decrementBlock(blockIndex: int, value: int): Promise\<void>
 
 对指定块的内容，减少指定的数值，并将结果存储在内部传输缓冲器中。使用Promise方式作为异步方法。
 
@@ -1574,14 +2052,18 @@ decrementBlock(blockIndex: number, value: number): Promise\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要被运算的块索引，从0开始。 |
-| value | number | 是   | 要减少的数值，非负数。 |
+| blockIndex |ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要被运算的块索引，从0开始。 |
+| value |ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要减少的数值，非负数。 |
 
 **返回值：**
 
@@ -1602,11 +2084,12 @@ decrementBlock(blockIndex: number, value: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1618,11 +2101,11 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         let value = 0x20; // 将其更改为正确的数据
         mifareClassic.decrementBlock(blockIndex, value).then(() => {
             console.info("mifareClassic decrementBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -1632,9 +2115,42 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        let value: int = 0x20; // 将其更改为正确的数据
+        mifareClassic.decrementBlock(blockIndex, value).then(() => {
+            console.info("mifareClassic decrementBlock Promise success.");
+        }).catch((err: BusinessError | null): void => {
+            console.error("mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic decrementBlock Promise catch businessError: Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.decrementBlock<sup>9+</sup>
 
-decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: decrementBlock(blockIndex: int, value: int, callback: AsyncCallback\<void>): void
 
 对指定块的内容，减少指定的数值。使用AsyncCallback方式作为异步方法。
 
@@ -1642,14 +2158,18 @@ decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 要被运算的块索引，从0开始。 |
-| value | number | 是   | 要减少的数值，非负数。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 要被运算的块索引，从0开始。 |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 要减少的数值，非负数。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当对块减少指定数值成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1665,11 +2185,12 @@ decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1681,9 +2202,9 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         let value = 0x20; // 将其更改为正确的数据
-        mifareClassic.decrementBlock(blockIndex, value, (err : BusinessError)=> {
+        mifareClassic.decrementBlock(blockIndex, value, (err: BusinessError)=> {
             if (err) {
                 console.error("mifareClassic decrementBlock AsyncCallback errCode:" + 
                   "${err.code}, message: ${err.message}");
@@ -1698,9 +2219,45 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        let value: int = 0x20; // 将其更改为正确的数据
+        mifareClassic.decrementBlock(blockIndex, value, (err: BusinessError | null): void => {
+            if (err) {
+                console.error("mifareClassic decrementBlock AsyncCallback errCode:" + 
+                  "${err.code}, message: ${err.message}");
+            } else {
+                console.info("mifareClassic decrementBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic decrementBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
+          "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.transferToBlock<sup>9+</sup>
 
-transferToBlock(blockIndex: number): Promise\<void>
+ArkTS-Dyn: transferToBlock(blockIndex: number): Promise\<void>
+
+ArkTS-Sta: transferToBlock(blockIndex: int): Promise\<void>
 
 将临时寄存器的值转移到指定的块。使用Promise方式作为异步方法。
 
@@ -1708,13 +2265,17 @@ transferToBlock(blockIndex: number): Promise\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是  | 被操作的块的索引，从0开始。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是  | 被操作的块的索引，从0开始。 |
 
 **返回值：**
 
@@ -1735,11 +2296,12 @@ transferToBlock(blockIndex: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1751,10 +2313,10 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         mifareClassic.transferToBlock(blockIndex).then(() => {
             console.info("mifareClassic transferToBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -1764,9 +2326,41 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        mifareClassic.transferToBlock(blockIndex).then(() => {
+            console.info("mifareClassic transferToBlock Promise success.");
+        }).catch((err: BusinessError | null): void => {
+            console.error("mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic transferToBlock Promise catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.transferToBlock<sup>9+</sup>
 
-transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: transferToBlock(blockIndex: int, callback: AsyncCallback\<void>): void
 
 将临时寄存器的值转移到指定的块。使用AsyncCallback方式作为异步方法。
 
@@ -1774,13 +2368,17 @@ transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 被操作的块的索引，从0开始。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 被操作的块的索引，从0开始。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当临时寄存器的值转移到指定块成功时，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -1796,11 +2394,12 @@ transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1812,8 +2411,8 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
-        mifareClassic.transferToBlock(blockIndex, (err : BusinessError)=> {
+        let blockIndex = 1; // 将其更改为正确的index
+        mifareClassic.transferToBlock(blockIndex, (err: BusinessError)=> {
             if (err) {
                 console.error("mifareClassic transferToBlock AsyncCallback errCode: ${err.code}," +
                     "message: ${err.message}");
@@ -1828,9 +2427,44 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        mifareClassic.transferToBlock(blockIndex, (err: BusinessError | null): void=> {
+            if (err) {
+                console.error("mifareClassic transferToBlock AsyncCallback errCode: ${err.code}," +
+                    "message: ${err.message}");
+            } else {
+                console.info("mifareClassic transferToBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic transferToBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.restoreFromBlock<sup>9+</sup>
 
-restoreFromBlock(blockIndex: number): Promise\<void>
+ArkTS-Dyn: restoreFromBlock(blockIndex: number): Promise\<void>
+
+ArkTS-Sta: restoreFromBlock(blockIndex: int): Promise\<void>
 
 将指定块的值复制到临时寄存器。使用Promise方式作为异步方法。
 
@@ -1838,13 +2472,17 @@ restoreFromBlock(blockIndex: number): Promise\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 被操作的块的索引，从0开始。|
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 被操作的块的索引，从0开始。|
 
 **返回值：**
 
@@ -1865,11 +2503,12 @@ restoreFromBlock(blockIndex: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1881,10 +2520,10 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
+        let blockIndex = 1; // 将其更改为正确的index
         mifareClassic.restoreFromBlock(blockIndex).then(() => {
             console.info("mifareClassic restoreFromBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -1894,9 +2533,41 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }   
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        mifareClassic.restoreFromBlock(blockIndex).then(() => {
+            console.info("mifareClassic restoreFromBlock Promise success.");
+        }).catch((err: BusinessError | null): void=> {
+            console.error("mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic restoreFromBlock Promise catch businessError Code: ${(businessError as Businsess).code}," +
+            " message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.restoreFromBlock<sup>9+</sup>
 
-restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: restoreFromBlock(blockIndex: int, callback: AsyncCallback\<void>): void
 
 将指定块的值复制到临时寄存器。使用AsyncCallback方式作为异步方法。
 
@@ -1904,13 +2575,17 @@ restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是   | 被操作的块的索引，从0开始。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 被操作的块的索引，从0开始。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当复制指定块内容到临时寄存器成功时，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -1926,11 +2601,12 @@ restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -1942,8 +2618,8 @@ function nfcTechDemo() {
     }
 
     try {
-        let blockIndex = 1; // 将其更改为正确的 index
-        mifareClassic.restoreFromBlock(blockIndex, (err : BusinessError)=> {
+        let blockIndex = 1; // 将其更改为正确的index
+        mifareClassic.restoreFromBlock(blockIndex, (err: BusinessError)=> {
             if (err) {
                 console.error("mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}," +
                     " message: ${err.message}");
@@ -1958,40 +2634,96 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex: int = 1; // 将其更改为正确的index
+        mifareClassic.restoreFromBlock(blockIndex, (err: BusinessError | null): void => {
+            if (err) {
+                console.error("mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}," +
+                    " message: ${err.message}");
+            } else {
+                console.info("mifareClassic restoreFromBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareClassic restoreFromBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareClassicTag.getSectorCount<sup>9+</sup>
 
-getSectorCount(): number
+ArkTS-Dyn: getSectorCount(): number
+
+ArkTS-Sta: getSectorCount(): int
 
 获取MIFARE Classic标签中的扇区数。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number | 标签中的扇区数量。|
+| int | 标签中的扇区数量。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
-let sectorCount : number = mifareClassic.getSectorCount();
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+let sectorCount: int = mifareClassic.getSectorCount();
+console.info("mifareClassic sectorCount: " + sectorCount);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+let sectorCount: int = mifareClassic.getSectorCount();
 console.info("mifareClassic sectorCount: " + sectorCount);
 ```
 
 ### MifareClassicTag.getBlockCountInSector<sup>9+</sup>
 
-getBlockCountInSector(sectorIndex: number): number
+ArkTS-Dyn: getBlockCountInSector(sectorIndex: number): number
+
+ArkTS-Sta: getBlockCountInSector(sectorIndex: int): int
 
 获取指定扇区中的块数。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1999,13 +2731,13 @@ getBlockCountInSector(sectorIndex: number): number
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| sectorIndex | number | 是   | 扇区序号，从0开始。|
+| sectorIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 扇区序号，从0开始。|
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number | 该扇区内的块数量。|
+| int | 该扇区内的块数量。|
 
 **错误码：**
 
@@ -2017,17 +2749,35 @@ getBlockCountInSector(sectorIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 try {
-    let sectorIndex = 1; // 将其更改为正确的 index
-    let blockCnt : number = mifareClassic.getBlockCountInSector(sectorIndex);
+    let sectorIndex = 1; // 将其更改为正确的index
+    let blockCnt: number = mifareClassic.getBlockCountInSector(sectorIndex);
     console.info("mifareClassic blockCnt: " + blockCnt);
 } catch (businessError) {
+    console.error("mifareClassic getBlockCountInSector catch businessError Code: ${(businessError as Businsess).code}, " +
+        "message: ${(businessError as Businsess).message}");
+}
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+try {
+    let sectorIndex: int = 1; // 将其更改为正确的index
+    let blockCnt: int = mifareClassic.getBlockCountInSector(sectorIndex);
+    console.info("mifareClassic blockCnt: " + blockCnt);
+} catch (businessError: BusinessError) {
     console.error("mifareClassic getBlockCountInSector catch businessError Code: ${(businessError as Businsess).code}, " +
         "message: ${(businessError as Businsess).message}");
 }
@@ -2045,7 +2795,7 @@ getType(): [tag.MifareClassicType](js-apis-nfcTag.md#mifareclassictype9)
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | [tag.MifareClassicType](js-apis-nfcTag.md#mifareclassictype9) | MifareClassic标签的类型。|
 
@@ -2054,35 +2804,53 @@ getType(): [tag.MifareClassicType](js-apis-nfcTag.md#mifareclassictype9)
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
-let getType : tag.MifareClassicType = mifareClassic.getType();
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+let getType: tag.MifareClassicType = mifareClassic.getType();
 console.info("mifareClassic getType: " + getType);
 ```
 
 ### MifareClassicTag.getTagSize<sup>9+</sup>
 
-getTagSize(): number
+ArkTS-Dyn: getTagSize(): number
+
+ArkTS-Sta: getTagSize(): int
 
 获取标签的存储空间大小，具体请参见[MifareClassicSize](js-apis-nfcTag.md#mifareclassicsize9)。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number | 标签的大小，单位为字节，请参见[MifareClassicSize](js-apis-nfcTag.md#mifareclassicsize9)。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 标签的大小，单位为字节，请参见[MifareClassicSize](js-apis-nfcTag.md#mifareclassicsize9)。|
 
 **示例：**
 
+
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
-let tagSize : number = mifareClassic.getTagSize();
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+let tagSize: number = mifareClassic.getTagSize();
+console.info("mifareClassic tagSize: " + tagSize);
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+let tagSize: int = mifareClassic.getTagSize();
 console.info("mifareClassic tagSize: " + tagSize);
 ```
 
@@ -2098,7 +2866,7 @@ isEmulatedTag(): boolean
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | boolean |检查结果，true: 是；false：否。 |
 
@@ -2108,18 +2876,24 @@ isEmulatedTag(): boolean
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
-let isEmulatedTag : boolean = mifareClassic.isEmulatedTag();
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+let isEmulatedTag: boolean = mifareClassic.isEmulatedTag();
 console.info("mifareClassic isEmulatedTag: " + isEmulatedTag);
 ```
 
 ### MifareClassicTag.getBlockIndex<sup>9+</sup>
 
-getBlockIndex(sectorIndex: number): number
+ArkTS-Dyn: getBlockIndex(sectorIndex: number): number
+
+ArkTS-Sta: getBlockIndex(sectorIndex: int): int
 
 获取特定扇区的第一个块的序号。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2127,13 +2901,13 @@ getBlockIndex(sectorIndex: number): number
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| sectorIndex | number | 是   | 扇区序号，从0开始。 |
+| sectorIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 扇区序号，从0开始。 |
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number | 该扇区内的第一个块的序号，从0开始。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 该扇区内的第一个块的序号，从0开始。 |
 
 **错误码：**
 
@@ -2145,15 +2919,16 @@ getBlockIndex(sectorIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 try {
-    let sectorIndex = 1; // 将其更改为正确的 index
-    let blockIndex : number = mifareClassic.getBlockIndex(sectorIndex);
+    let sectorIndex = 1; // 将其更改为正确的index
+    let blockIndex: number = mifareClassic.getBlockIndex(sectorIndex);
     console.info("mifareClassic blockIndex: " + blockIndex);
 } catch (businessError) {
     console.error("mifareClassic getBlockIndex catch businessError Code: ${(businessError as Businsess).code}, " +
@@ -2161,13 +2936,36 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+try {
+    let sectorIndex: int = 1; // 将其更改为正确的index
+    let blockIndex: int = mifareClassic.getBlockIndex(sectorIndex);
+    console.info("mifareClassic blockIndex: " + blockIndex);
+} catch (businessError: BusinessError) {
+    console.error("mifareClassic getBlockIndex catch businessError Code: ${(businessError as Businsess).code}, " +
+        "message: ${(businessError as Businsess).message}");
+}
+```
+
 ### MifareClassicTag.getSectorIndex<sup>9+</sup>
 
-getSectorIndex(blockIndex: number): number
+ArkTS-Dyn: getSectorIndex(blockIndex: number): number
+
+ArkTS-Sta: getSectorIndex(blockIndex: int): int
 
 获取包含指定块号的扇区序号。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2175,13 +2973,13 @@ getSectorIndex(blockIndex: number): number
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| blockIndex | number | 是 | 块序号，从0开始。 |
+| blockIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 块序号，从0开始。 |
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| number | 扇区序号，从0开始。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 扇区序号，从0开始。 |
 
 **错误码：**
 
@@ -2193,17 +2991,35 @@ getSectorIndex(blockIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareClassic
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
 
 try {
-    let blockIndex = 1; // 将其更改为正确的 index
-    let sectorIndex : number = mifareClassic.getSectorIndex(blockIndex);
+    let blockIndex = 1; // 将其更改为正确的index
+    let sectorIndex: number = mifareClassic.getSectorIndex(blockIndex);
     console.info("mifareClassic sectorIndex: " + sectorIndex);
 } catch (businessError) {
+    console.error("mifareClassic getSectorIndex catch businessError Code: ${(businessError as Businsess).code}, " +
+       "message: ${(businessError as Businsess).message}");
+}
+```
+
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareClassic
+
+try {
+    let blockIndex: int = 1; // 将其更改为正确的index
+    let sectorIndex: int = mifareClassic.getSectorIndex(blockIndex);
+    console.info("mifareClassic sectorIndex: " + sectorIndex);
+} catch (businessError: BusinessError) {
     console.error("mifareClassic getSectorIndex catch businessError Code: ${(businessError as Businsess).code}, " +
        "message: ${(businessError as Businsess).message}");
 }
@@ -2221,7 +3037,9 @@ MifareUltralightTag获取方式请参考[nfc-tag开发指南](../../connectivity
 
 ### MifareUltralightTag.readMultiplePages<sup>9+</sup>
 
-readMultiplePages(pageIndex: number): Promise\<number[]>
+ArkTS-Dyn: readMultiplePages(pageIndex: number): Promise\<number[]>
+
+ArkTS-Sta: readMultiplePages(pageIndex: int): Promise\<int[]>
 
 读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise方式作为异步方法。
 
@@ -2229,19 +3047,23 @@ readMultiplePages(pageIndex: number): Promise\<number[]>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| pageIndex | number | 是   | 要读取页面的索引，从0开始。 |
+| pageIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 要读取页面的索引，从0开始。 |
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
-| Promise\<number[]> | 以Promise形式返回读取的4页的数据，共16字节。 |
+| Promise\<int[]> ArkTS-Dyn: Promise\<number[]><br>ArkTS-Sta: Promise\<int[]> | 以Promise形式返回读取的4页的数据，共16字节。 |
 
 **错误码：**
 
@@ -2256,12 +3078,12 @@ readMultiplePages(pageIndex: number): Promise\<number[]>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
-
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2273,10 +3095,10 @@ function nfcTechDemo() {
     }
 
     try {
-        let pageIndex = 1; // 将其更改为正确的 index
-        mifareUltralight.readMultiplePages(pageIndex).then((data : number[]) => {
+        let pageIndex = 1; // 将其更改为正确的index
+        mifareUltralight.readMultiplePages(pageIndex).then((data: number[]) => {
             console.info("mifareUltralight readMultiplePages Promise data = " + data);
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -2286,9 +3108,41 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareUltralight.isTagConnected()) {
+        if (!mifareUltralight.connectTag()) {
+            console.error("mifareUltralight connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let pageIndex: int = 1; // 将其更改为正确的index
+        mifareUltralight.readMultiplePages(pageIndex).then((data: Array<int>) => {
+            console.info("mifareUltralight readMultiplePages Promise data = " + data);
+        }).catch((err: BusinessError | null)=> {
+            console.error("mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareUltralight readMultiplePages Promise catch businessError" +
+            " Code: ${(businessError as Businsess).code}, message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareUltralightTag.readMultiplePages<sup>9+</sup>
 
-readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
+ArkTS-Dyn: readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
+
+ArkTS-Sta: readMultiplePages(pageIndex: int, callback: AsyncCallback\<int[]>): void
 
 读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用AsyncCallback方式作为异步方法。
 
@@ -2296,14 +3150,18 @@ readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| pageIndex | number | 是   | 要读取页面的索引，从0开始。 |
-| callback | AsyncCallback\<number[]> | 是   | 以callback形式异步返回页操作结果。返回读取到的数据，共16字节。 |
+| pageIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要读取页面的索引，从0开始。 |
+| callback |  ArkTS-Dyn: AsyncCallback\<number[]><br>ArkTS-Sta: AsyncCallback\<int[]> | 是   | 以callback形式异步返回页操作结果。返回读取到的数据，共16字节。 |
 
 **错误码：**
 
@@ -2318,11 +3176,12 @@ readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2334,8 +3193,8 @@ function nfcTechDemo() {
     }
 
     try {
-        let pageIndex = 1; // 将其更改为正确的 index
-        mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
+        let pageIndex = 1; // 将其更改为正确的index
+        mifareUltralight.readMultiplePages(pageIndex, (err: BusinessError, data: number[])=> {
             if (err) {
                 console.log("mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}");
             } else {
@@ -2349,9 +3208,43 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareUltralight.isTagConnected()) {
+        if (!mifareUltralight.connectTag()) {
+            console.error("mifareUltralight connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let pageIndex: int = 1; // 将其更改为正确的index
+        mifareUltralight.readMultiplePages(pageIndex, (err: BusinessError | null, data: Array<int> | undefined): void => {
+            if (err) {
+                console.log("mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}");
+            } else {
+                console.info("mifareUltralight readMultiplePages AsyncCallback data: " + data);
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareUltralight readMultiplePages AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareUltralightTag.writeSinglePage<sup>9+</sup>
 
-writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
+ArkTS-Dyn: writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
+
+ArkTS-Sta: writeSinglePage(pageIndex: int, data: int[]): Promise\<void>
 
 写入一页数据，数据大小为4字节。使用Promise方式作为异步方法。
 
@@ -2359,14 +3252,18 @@ writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| pageIndex | number | 是   | 要写入页面的索引，从0开始。 |
-| data | number[] | 是   | 要写入页面的数据内容，必须是4个字节大小。 |
+| pageIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要写入页面的索引，从0开始。 |
+| data | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要写入页面的数据内容，必须是4个字节大小。 |
 
 **返回值：**
 
@@ -2387,11 +3284,12 @@ writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2403,11 +3301,11 @@ function nfcTechDemo() {
     }
 
     try {
-        let pageIndex = 1; // 将其更改为正确的 index
+        let pageIndex = 1; // 将其更改为正确的index
         let rawData = [0x01, 0x02, 0x03, 0x04]; //必须是4个字节，将其更改为正确的data
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -2417,9 +3315,42 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareUltralight.isTagConnected()) {
+        if (!mifareUltralight.connectTag()) {
+            console.error("mifareUltralight connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let pageIndex: int = 1; // 将其更改为正确的index
+        let rawData: Array<int> = [0x01, 0x02, 0x03, 0x04]; //必须是4个字节，将其更改为正确的data
+        mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
+            console.info("mifareUltralight writeSinglePage Promise success.");
+        }).catch((err: BusinessError | null): void => {
+            console.error("mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}");
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareUltralight writeSinglePage Promise catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareUltralightTag.writeSinglePage<sup>9+</sup>
 
-writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void>): void
+ArkTS-Dyn: writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: writeSinglePage(pageIndex: int, data: int[], callback: AsyncCallback\<void>): void
 
 写入一页数据，数据大小为4字节。使用AsyncCallback方式作为异步方法。
 
@@ -2427,14 +3358,18 @@ writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                     |
 | -------- | ----------------------- | ---- | ------------------------ |
-| pageIndex | number | 是   | 要写入页面的索引，从0开始。 |
-| data | number[] | 是   | 要写入页面的数据内容，必须是4个字节大小。 |
+| pageIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要写入页面的索引，从0开始。 |
+| data | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是   | 要写入页面的数据内容，必须是4个字节大小。 |
 | callback|AsyncCallback\<void> |是| 回调函数。当写入数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -2450,11 +3385,12 @@ writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2466,9 +3402,9 @@ function nfcTechDemo() {
     }
 
     try {
-        let pageIndex = 1; // 将其更改为正确的 index
+        let pageIndex = 1; // 将其更改为正确的index
         let rawData = [0x01, 0x02, 0x03, 0x04];  //必须是4个字节，将其更改为正确的data
-        mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
+        mifareUltralight.writeSinglePage(pageIndex, rawData, (err: BusinessError)=> {
         if (err) {
                 console.error("mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}," +
                     "message: ${err.message}");
@@ -2483,9 +3419,43 @@ function nfcTechDemo() {
 }
 ```
 
+ArkTS-Sta示例：
+```js
+import tag from '@ohos.nfc.tag';
+import { BusinessError } from '@ohos.base';
+
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareUltralight.isTagConnected()) {
+        if (!mifareUltralight.connectTag()) {
+            console.error("mifareUltralight connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let pageIndex: int = 1; // 将其更改为正确的index
+        let rawData: Array<int> = [0x01, 0x02, 0x03, 0x04];  //必须是4个字节，将其更改为正确的data
+        mifareUltralight.writeSinglePage(pageIndex, rawData, (err: BusinessError | null): void => {
+        if (err) {
+                console.error("mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}," +
+                    "message: ${err.message}");
+            } else {
+                console.info("mifareUltralight writeSinglePage AsyncCallback success.");
+            }
+        });
+    } catch (businessError: BusinessError) {
+        console.error("mifareUltralight writeSinglePage AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
+            "message: ${(businessError as Businsess).message}");
+    }
+}
+```
+
 ### MifareUltralightTag.getType<sup>9+</sup>
 
-getType(): [tag.MifareUltralightType](js-apis-nfcTag.md#mifareultralighttype9)
+getType(): tag.MifareUltralightType
 
 获取MIFARE Ultralight标签的类型。
 
@@ -2495,7 +3465,7 @@ getType(): [tag.MifareUltralightType](js-apis-nfcTag.md#mifareultralighttype9)
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | [tag.MifareUltralightType](js-apis-nfcTag.md#mifareultralighttype9) | MIFARE Ultralight标签的类型。|
 
@@ -2504,8 +3474,8 @@ getType(): [tag.MifareUltralightType](js-apis-nfcTag.md#mifareultralighttype9)
 ```js
 import { tag } from '@kit.ConnectivityKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
-let getType : tag.MifareUltralightType = mifareClassic.getType();
+// 参考@ohos.nfc.tag（标准NFC-Tag）中tag.TagInfo接口，获取正确的mifareUltralight
+let getType: tag.MifareUltralightType = mifareClassic.getType();
 console.info("mifareUltralight getType: " + getType);
 ```
 
@@ -2560,7 +3530,7 @@ format(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefFormatable
+// 参考@ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo接口，获取正确的ndefFormatable
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2575,11 +3545,11 @@ function nfcTechDemo() {
         //从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  
         // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        //或从tag.ndef.createNdefMessage(ndefRecords:NdefRecord[])创建ndefMessage
 
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -2609,7 +3579,7 @@ format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): v
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | callback: AsyncCallback\<void> | 回调函数。当NDEF消息写入标签成功时，err为undefined，否则为错误对象。 |
 
@@ -2630,7 +3600,7 @@ format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): v
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefFormatable
+// 参考@ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo接口，获取正确的ndefFormatable
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2644,9 +3614,9 @@ function nfcTechDemo() {
     try {
         //从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        //或从tag.ndef.createNdefMessage(ndefRecords:NdefRecord[])创建ndefMessage
 
-        ndefFormatable.format(ndefMessage, (err : BusinessError)=> {
+        ndefFormatable.format(ndefMessage, (err: BusinessError)=> {
             if (err) {
                 console.error("ndefFormatable format AsyncCallback Code: ${err.code}, message: ${err.message}");
             } else {
@@ -2662,7 +3632,7 @@ function nfcTechDemo() {
 
 ### NdefFormatableTag.formatReadOnly<sup>9+</sup>
 
-formatReadOnly(message: [NdefMessage](#ndefmessage9)): Promise\<void>
+formatReadOnly(message: NdefMessage): Promise\<void>
 
 将标签格式化为NDEF标签，将NDEF消息写入NDEF标签，之后将标签设置为只读。使用Promise方式作为异步方法。
 
@@ -2701,7 +3671,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefFormatable
+// 参考@ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo接口，获取正确的ndefFormatable
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2716,11 +3686,11 @@ function nfcTechDemo() {
         //从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);
         // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        //或从tag.ndef.createNdefMessage(ndefRecords:NdefRecord[])创建ndefMessage
 
         ndefFormatable.formatReadOnly(ndefMessage).then(() => {
             console.info("ndefFormatable formatReadOnly Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error("ndefFormatable formatReadOnly Promise Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
@@ -2732,7 +3702,7 @@ function nfcTechDemo() {
 
 ### NdefFormatableTag.formatReadOnly<sup>9+</sup>
 
-formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
+formatReadOnly(message: NdefMessage, callback: AsyncCallback\<void>): void
 
 将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签，之后将标签设置为只读。使用callback方式作为异步方法。
 
@@ -2750,7 +3720,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<v
 
 **返回值：**
 
-| **类型** | **说明**                             |
+| 类型 | 说明                             |
 | ------------------ | --------------------------|
 | callback: AsyncCallback\<void> | 回调函数。当NDEF消息写入NDEF标签成功时，err为undefined，否则为错误对象。 |
 
@@ -2771,7 +3741,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<v
 import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 ndefFormatable
+// 参考@ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo接口，获取正确的ndefFormatable
 
 function nfcTechDemo() {
     // 如果没有连接Tag，请先连接
@@ -2786,9 +3756,9 @@ function nfcTechDemo() {
         //从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);
         //必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        //或从tag.ndef.createNdefMessage(ndefRecords:NdefRecord[])创建ndefMessage
 
-        ndefFormatable.formatReadOnly(ndefMessage, (err : BusinessError)=> {
+        ndefFormatable.formatReadOnly(ndefMessage, (err: BusinessError)=> {
             if (err) {
                 console.error("ndefFormatable formatReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}");
             } else {
