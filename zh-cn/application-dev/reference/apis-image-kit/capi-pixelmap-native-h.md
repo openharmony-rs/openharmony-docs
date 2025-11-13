@@ -1,5 +1,4 @@
 # pixelmap_native.h
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
@@ -15,6 +14,8 @@
 
 **库：** libpixelmap.so
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
@@ -28,7 +29,7 @@
 | [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | OH_Pixelmap_HdrStaticMetadata | HDR_STATIC_METADATA关键字对应的静态元数据值。 |
 | [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | DR_DYNAMIC_METADATA关键字对应的动态元数据值。 |
 | [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | HDR_GAINMAP_METADATA关键字对应的gainmap相关元数据值，参考ISO 21496-1。 |
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Pixelmap使用的HDR元数据值，和OH_Pixelmap_HdrMetadataKey关键字相对应。用于[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)，有相应[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)关键字作为入参时，设置或获取到本结构体中相对应的元数据类型的值。 |
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Pixelmap使用的HDR元数据值，和OH_Pixelmap_HdrMetadataKey关键字相对应。用于[OH_PixelmapNative_SetMetadata](#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](#oh_pixelmapnative_getmetadata)，有相应[OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey)关键字作为入参时，设置或获取到本结构体中相对应的元数据类型的值。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | - | OH_PixelmapNative结构体是native层封装的图像解码后无压缩的位图格式结构体。<br> 函数创建OH_PixelmapNative使用{@link OH_PixelmapNative_CreatePixelmap}函数，默认采用BGRA_8888格式处理数据。<br> 释放OH_PixelmapNative对象使用{@link OH_PixelmapNative_Release}函数。 |
 | [OH_NativeBuffer](capi-image-nativemodule-oh-nativebuffer.md) | - | NativeBuffer结构体类型，用于执行NativeBuffer相关操作。 |
 | [OH_NativeColorSpaceManager](capi-image-nativemodule-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | NativeColorSpaceManager结构体类型，用于执行NativeColorSpaceManager相关操作。 |
@@ -42,7 +43,7 @@
 | [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type) | PIXELMAP_ALPHA_TYPE | Pixelmap透明度类型。 |
 | [PIXEL_FORMAT](#pixel_format) | PIXEL_FORMAT | 图片像素格式。 |
 | [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) | OH_PixelmapNative_AntiAliasingLevel | Pixelmap缩放时采用的缩放算法。 |
-| [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) | OH_Pixelmap_HdrMetadataKey | Pixelmap使用的HDR相关元数据信息的关键字，用于[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)。 |
+| [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) | OH_Pixelmap_HdrMetadataKey | Pixelmap使用的HDR相关元数据信息的关键字，用于[OH_PixelmapNative_SetMetadata](#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](#oh_pixelmapnative_getmetadata)。 |
 | [OH_Pixelmap_HdrMetadataType](#oh_pixelmap_hdrmetadatatype) | OH_Pixelmap_HdrMetadataType | HDR_METADATA_TYPE关键字对应的值。 |
 
 ### 函数
@@ -71,10 +72,10 @@
 | [Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, int32_t *AlphaMode)](#oh_pixelmapimageinfo_getalphamode) | 获取图片透明通道类型。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_GetRowStride(OH_Pixelmap_ImageInfo *info, uint32_t *rowStride)](#oh_pixelmapimageinfo_getrowstride) | 获取行跨距。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info, int32_t *pixelFormat)](#oh_pixelmapimageinfo_getpixelformat) | 获取像素格式。 |
-| [Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, int32_t *alphaType)](#oh_pixelmapimageinfo_getalphatype) | 获取预乘格式图片的透明度类型。其余图片格式，推荐使用[OH_PixelmapImageInfo_GetAlphaMode](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getalphamode)。 |
+| [Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, int32_t *alphaType)](#oh_pixelmapimageinfo_getalphatype) | 获取预乘格式图片的透明度类型。其余图片格式，推荐使用[OH_PixelmapImageInfo_GetAlphaMode](#oh_pixelmapimageinfo_getalphamode)。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info, bool *isHdr)](#oh_pixelmapimageinfo_getdynamicrange) | 获取Pixelmap是否为高动态范围的信息。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)](#oh_pixelmapimageinfo_release) | 释放OH_Pixelmap_ImageInfo指针。 |
-| [Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmap) | 通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，其他格式请参考[OH_PixelmapInitializationOptions_SetSrcPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setsrcpixelformat)。 |
+| [Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmap) | 通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，其他格式请参考[OH_PixelmapInitializationOptions_SetSrcPixelFormat](#oh_pixelmapinitializationoptions_setsrcpixelformat)。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapusingallocator) | 根据入参options创建pixelmap，pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑步长影响。 |
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_PixelmapNative *pixelmapNative, napi_value *pixelmapNapi)](#oh_pixelmapnative_convertpixelmapnativetonapi) | 将nativePixelMap对象转换为PixelMapnapi对象。 |
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)](#oh_pixelmapnative_convertpixelmapnativefromnapi) | 将PixelMapnapi对象转换为nativePixelMap对象。 |
@@ -97,7 +98,7 @@
 | [Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_rotate) | 根据输入的角度对图片进行旋转。 |
 | [Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFilpHorizontally, bool shouldFilpVertically)](#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。 |
 | [Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region *region)](#oh_pixelmapnative_crop) | 根据输入的尺寸对图片进行裁剪。 |
-| [Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_release) | 释放OH_PixelmapNative指针，推荐使用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)。 |
+| [Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_release) | 释放OH_PixelmapNative指针，推荐使用[OH_PixelmapNative_Destroy](#oh_pixelmapnative_destroy)。 |
 | [Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_destroy) | 释放OH_PixelmapNative指针。 |
 | [Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)](#oh_pixelmapnative_convertalphaformat) | 将pixelmap的像素数据做预乘和非预乘之间的转换。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmap) | 利用OH_Pixelmap_InitializationOptions创建空的pixelmap对象，内存数据为0。 |
@@ -113,7 +114,7 @@
 | [Image_ErrorCode OH_PixelmapNative_GetByteCount(OH_PixelmapNative *pixelmap, uint32_t *byteCount)](#oh_pixelmapnative_getbytecount) | 获取Pixelmap中所有像素所占用的总字节数，不包含内存填充。 |
 | [Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixelmap, uint32_t *allocationByteCount)](#oh_pixelmapnative_getallocationbytecount) | 获取Pixelmap用于储存像素数据的内存字节数。 |
 | [Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void **addr)](#oh_pixelmapnative_accesspixels) | 获取Pixelmap像素数据的内存地址，并锁定这块内存。<br> 当该内存被锁定时，任何修改或释放该Pixelmap的像素数据的操作均会失败或无效。 |
-| [Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_unaccesspixels) | 释放Pixelmap像素数据的内存锁。<br> 该函数需要与[OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels)匹配使用。 |
+| [Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_unaccesspixels) | 释放Pixelmap像素数据的内存锁。<br> 该函数需要与[OH_PixelmapNative_AccessPixels](#oh_pixelmapnative_accesspixels)匹配使用。 |
 | [Image_ErrorCode OH_PixelmapNative_GetUniqueId(OH_PixelmapNative *pixelmap, uint32_t *uniqueId)](#oh_pixelmapnative_getuniqueid) | 获取PixelMap的唯一ID。 |
 | [Image_ErrorCode OH_PixelmapNative_IsReleased(OH_PixelmapNative *pixelmap, bool *released)](#oh_pixelmapnative_isreleased) | 检测PixelMap是否已被释放。如果已被释放，则任何访问该对象内部数据的方法调用将会失效。 |
 
@@ -192,7 +193,7 @@ enum OH_Pixelmap_HdrMetadataKey
 
 **描述**
 
-Pixelmap使用的HDR相关元数据信息的关键字，用于[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)。
+Pixelmap使用的HDR相关元数据信息的关键字，用于[OH_PixelmapNative_SetMetadata](#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](#oh_pixelmapnative_getmetadata)。
 
 **起始版本：** 12
 
@@ -366,7 +367,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_Init
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| int32_t *pixelFormat | 像素格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t *pixelFormat | 像素格式[PIXEL_FORMAT](#pixel_format)。 |
 
 **返回：**
 
@@ -391,7 +392,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_Init
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| int32_t pixelFormat | 像素格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t pixelFormat | 像素格式[PIXEL_FORMAT](#pixel_format)。 |
 
 **返回：**
 
@@ -416,7 +417,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_I
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| int32_t *srcpixelFormat | 像素格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t *srcpixelFormat | 像素格式[PIXEL_FORMAT](#pixel_format)。 |
 
 **返回：**
 
@@ -441,7 +442,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_I
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| int32_t srcpixelFormat | 源像素格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t srcpixelFormat | 源像素格式[PIXEL_FORMAT](#pixel_format)。 |
 
 **返回：**
 
@@ -516,7 +517,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_Initia
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| int32_t *alphaType | 透明度类型[PIXELMAP_ALPHA_TYPE](capi-pixelmap-native-h.md#pixelmap_alpha_type)。 |
+| int32_t *alphaType | 透明度类型[PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type)。 |
 
 **返回：**
 
@@ -541,7 +542,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_Initia
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| int32_t alphaType | 透明度类型[PIXELMAP_ALPHA_TYPE](capi-pixelmap-native-h.md#pixelmap_alpha_type)。 |
+| int32_t alphaType | 透明度类型[PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type)。 |
 
 **返回：**
 
@@ -780,7 +781,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, i
 
 **描述**
 
-获取预乘格式图片的透明度类型。其余图片格式，推荐使用[OH_PixelmapImageInfo_GetAlphaMode](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getalphamode)。
+获取预乘格式图片的透明度类型。其余图片格式，推荐使用[OH_PixelmapImageInfo_GetAlphaMode](#oh_pixelmapimageinfo_getalphamode)。
 
 **起始版本：** 12
 
@@ -789,7 +790,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, i
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | 被操作的OH_Pixelmap_ImageInfo指针。 |
-| int32_t *alphaType | 透明度类型[PIXELMAP_ALPHA_TYPE](capi-pixelmap-native-h.md#pixelmap_alpha_type)。 |
+| int32_t *alphaType | 透明度类型[PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type)。 |
 
 **返回：**
 
@@ -854,7 +855,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLengt
 
 **描述**
 
-通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，其他格式请参考[OH_PixelmapInitializationOptions_SetSrcPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setsrcpixelformat)。
+通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，其他格式请参考[OH_PixelmapInitializationOptions_SetSrcPixelFormat](#oh_pixelmapinitializationoptions_setsrcpixelformat)。
 
 **起始版本：** 12
 
@@ -1200,7 +1201,7 @@ Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixel
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
 | float scaleX | 宽度的缩放比例。 |
 | float scaleY | 高度的缩放比例。 |
-| [OH_PixelmapNative_AntiAliasingLevel](capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel) level | 缩放算法。 |
+| [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) level | 缩放算法。 |
 
 **返回：**
 
@@ -1255,7 +1256,7 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_Pixelm
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | 被操作的OH_PixelmapNative指针，目标pixelmap对象指针。 |
 | float scaleX | 宽度的缩放比例。 |
 | float scaleY | 高度的缩放比例。 |
-| [OH_PixelmapNative_AntiAliasingLevel](capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel) level | 缩放算法。 |
+| [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) level | 缩放算法。 |
 
 **返回：**
 
@@ -1332,7 +1333,7 @@ Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNati
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | 源PixelMap。 |
 | [Image_Region](capi-image-nativemodule-image-region.md) *region | 裁剪区域。 |
 | [Image_Scale](capi-image-nativemodule-image-scale.md) *scale | 宽和高的缩放倍数。不能为0。 |
-| [OH_PixelmapNative_AntiAliasingLevel](capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel) level | 要使用的缩放插值算法。 |
+| [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) level | 要使用的缩放插值算法。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | 被创建的目标PixelMap。 |
 
 **返回：**
@@ -1451,7 +1452,7 @@ Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)
 
 **描述**
 
-释放OH_PixelmapNative指针，推荐使用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)。
+释放OH_PixelmapNative指针，推荐使用[OH_PixelmapNative_Destroy](#oh_pixelmapnative_destroy)。
 
 **起始版本：** 12
 
@@ -1661,7 +1662,7 @@ Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey) key | 元数据的关键字。 |
+| [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) key | 元数据的关键字。 |
 | [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) **value | 元数据的值。 |
 
 **返回：**
@@ -1687,7 +1688,7 @@ Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey) key | 元数据的关键字。 |
+| [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) key | 元数据的关键字。 |
 | [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) *value | 元数据的值。 |
 
 **返回：**
@@ -1855,7 +1856,7 @@ Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)
 
 **描述**
 
-释放Pixelmap像素数据的内存锁。<br> 该函数需要与[OH_PixelmapNative_AccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_accesspixels)匹配使用。
+释放Pixelmap像素数据的内存锁。<br> 该函数需要与[OH_PixelmapNative_AccessPixels](#oh_pixelmapnative_accesspixels)匹配使用。
 
 **起始版本：** 15
 
