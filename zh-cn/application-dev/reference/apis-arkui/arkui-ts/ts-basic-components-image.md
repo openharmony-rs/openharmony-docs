@@ -952,7 +952,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -964,7 +964,7 @@ type BusinessError\<T> = BusinessError\<T>
 
 | 类型  | 说明   |
 | ---- | ------ |
-| [BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
+| [BusinessError\<T = void>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
 
 以下是错误信息的详细介绍：ImageError的error属性为错误信息对象，其中code为错误码，message为错误信息。
 
