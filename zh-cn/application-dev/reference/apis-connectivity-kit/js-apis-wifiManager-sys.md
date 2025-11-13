@@ -592,15 +592,15 @@ try {
 	let netId = 0;
 	wifiManager.disableNetwork(netId);	
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+	console.error(`failed: ${JSON.stringify(error)}`);
 }
 ```
 
 ## wifiManager.disableNetwork<sup>23+</sup>
 
-disableNetwork(netId: number, blockDuration: number): void
+disableNetwork(netId: int, blockDuration: int): void
 
-在一段时间内去使能网络配置。
+禁用网络连接，将已连接的网络断开，且在设置的时间范围内无法自动回连。
 
 **系统接口：** 此接口为系统接口。
 
@@ -612,12 +612,12 @@ disableNetwork(netId: number, blockDuration: number): void
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | netId | number | 是 | 网络配置ID。 |
-  | blockDuration | number | 是 | 拉黑时长，单位：秒。 |
+  | netId | int | 是 | 网络配置ID。 |
+  | blockDuration | int | 是 | 禁用网络时长，单位：秒。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -636,7 +636,7 @@ try {
 	let blockDuration = 300;
 	wifiManager.disableNetwork(netId, blockDuration);	
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+	console.error(`failed: ${JSON.stringify(error)}`);
 }
 ```
 
