@@ -166,7 +166,7 @@ Sets the display mode of the foldable device.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API can be properly called on foldable phones. If it is called on other devices, it has no effect or error code 1400003 is returned.
 
 **Parameters**
 
@@ -200,11 +200,13 @@ try {
 ## display.setFoldDisplayMode<sup>19+</sup>
 setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
-Sets the display mode of the foldable device, with the reason for the change specified. This API is unavailable for 2-in-1 devices.
+Sets the display mode of the foldable device, with the reason for the change specified.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on foldable phones. If it is called on other devices, it has no effect or error code 1400003 is returned.
 
 **Parameters**
 
