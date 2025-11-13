@@ -2905,7 +2905,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | goIpAddress | string | 否 | 否 | 群组IP地址。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
 
 
-## wifiManager.on('wifiStateChange')<sup>12+</sup>
+## wifiManager.on('wifiStateChange')<sup>9+</sup>
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
@@ -3045,8 +3045,6 @@ offWifiStateChange(callback?: Callback&lt;int&gt;): void
 注册取消WLAN状态改变事件。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
