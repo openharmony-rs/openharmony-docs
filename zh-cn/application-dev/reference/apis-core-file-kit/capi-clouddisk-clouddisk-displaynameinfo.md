@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} CloudDisk_DisplayNameInfo
+```
+
 ## 概述
 
 定义同步根路径的显示名称信息。
