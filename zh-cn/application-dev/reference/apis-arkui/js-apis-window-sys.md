@@ -597,7 +597,13 @@ on(type: 'systemBarTintChange', callback: Callback&lt;SystemBarTintState&gt;): v
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onSystemBarTintChange](#windowonsystembartintchange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -627,6 +633,49 @@ try {
 }
 ```
 
+## window.onSystemBarTintChange<sup>22+</sup>
+
+onSystemBarTintChange(callback: Callback&lt;SystemBarTintState&gt;): void
+
+开启状态栏、导航栏属性变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('systemBarTintChange')](#windowonsystembartintchange8)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                       | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[SystemBarTintState](#systembartintstate8)&gt; | 是   | 回调函数。返回当前的状态栏、导航栏信息集合。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+try {
+  window.onSystemBarTintChange((data) => {
+    console.info(`Succeeded in enabling the listener for systemBarTint changes. Data: ${JSON.stringify(data)}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for systemBarTint changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.off('systemBarTintChange')<sup>8+</sup>
 
 off(type: 'systemBarTintChange', callback?: Callback&lt;SystemBarTintState &gt;): void
@@ -635,7 +684,13 @@ off(type: 'systemBarTintChange', callback?: Callback&lt;SystemBarTintState &gt;)
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offSystemBarTintChange](#windowoffsystembartintchange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -670,6 +725,54 @@ try {
 }
 ```
 
+## window.offSystemBarTintChange<sup>22+</sup>
+
+offSystemBarTintChange(callback?: Callback&lt;SystemBarTintState &gt;): void
+
+关闭状态栏、导航栏属性变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('systemBarTintChange')](#windowoffsystembartintchange8)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                       | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[SystemBarTintState](#systembartintstate8)&gt; | 否   | 回调函数。返回当前的状态栏、导航栏信息集合。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有状态栏、导航栏属性变化的监听。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+const callback = (systemBarTintState: window.SystemBarTintState) => {
+  // ...
+}
+try {
+  window.onSystemBarTintChange(callback);
+
+  window.offSystemBarTintChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  window.offSystemBarTintChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for systemBarTint changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.on('gestureNavigationEnabledChange')<sup>10+</sup>
 
 on(type: 'gestureNavigationEnabledChange', callback: Callback&lt;boolean&gt;): void
@@ -678,7 +781,13 @@ on(type: 'gestureNavigationEnabledChange', callback: Callback&lt;boolean&gt;): v
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onGestureNavigationEnabledChange](#windowongesturenavigationenabledchange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -710,6 +819,51 @@ try {
 }
 ```
 
+## window.onGestureNavigationEnabledChange<sup>22+</sup>
+
+onGestureNavigationEnabledChange(callback: Callback&lt;boolean&gt;): void
+
+添加手势导航启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('gestureNavigationEnabledChange')](#windowongesturenavigationenabledchange10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                                          |
+| -------- | ----------------------- | ---- | ----------------------------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前手势导航的启用状态。true表示手势导航状态变化为启用；false表示手势导航状态变化为禁用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  window.onGestureNavigationEnabledChange((data) => {
+    console.info(`Succeeded in enabling the listener for gesture navigation status changes. Data: ${data}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for gesture navigation status changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.off('gestureNavigationEnabledChange')<sup>10+</sup>
 
 off(type: 'gestureNavigationEnabledChange', callback?: Callback&lt;boolean&gt;): void
@@ -718,7 +872,13 @@ off(type: 'gestureNavigationEnabledChange', callback?: Callback&lt;boolean&gt;):
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offGestureNavigationEnabledChange](#windowoffgesturenavigationenabledchange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -754,6 +914,55 @@ try {
 }
 ```
 
+## window.offGestureNavigationEnabledChange<sup>22+</sup>
+
+offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
+
+移除手势导航启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange22)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                        |
+| -------- | ----------------------- | -- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有手势导航启用状态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (bool: boolean) => {
+  // ...
+}
+try {
+  window.onGestureNavigationEnabledChange(callback);
+  window.offGestureNavigationEnabledChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  window.offGestureNavigationEnabledChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for gesture navigation status changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.on('waterMarkFlagChange')<sup>10+</sup>
 
 on(type: 'waterMarkFlagChange', callback: Callback&lt;boolean&gt;): void
@@ -762,7 +971,13 @@ on(type: 'waterMarkFlagChange', callback: Callback&lt;boolean&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onWaterMarkFlagChange](#windowonwatermarkflagchange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -794,6 +1009,51 @@ try {
 }
 ```
 
+## window.onWaterMarkFlagChange<sup>22+</sup>
+
+onWaterMarkFlagChange(callback: Callback&lt;boolean&gt;): void
+
+添加水印启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('waterMarkFlagChange')](#windowonwatermarkflagchange10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                                          |
+| -------- | ----------------------- | ---- | ----------------------------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前水印的启用状态。true表示当前已启用水印；false表示当前未启用水印。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  window.onWaterMarkFlagChange((data) => {
+    console.info(`Succeeded in enabling the listener for watermark flag changes. Data: ${data}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for watermark flag changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.off('waterMarkFlagChange')<sup>10+</sup>
 
 off(type: 'waterMarkFlagChange', callback?: Callback&lt;boolean&gt;): void
@@ -802,7 +1062,13 @@ off(type: 'waterMarkFlagChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offWaterMarkFlagChange](#windowoffwatermarkflagchange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -835,6 +1101,55 @@ try {
   window.off('waterMarkFlagChange');
 } catch (exception) {
   console.error(`Failed to enable or disable the listener for watermark flag changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.offWaterMarkFlagChange<sup>22+</sup>
+
+offWaterMarkFlagChange(callback?: Callback&lt;boolean&gt;): void
+
+移除水印启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('waterMarkFlagChange')](#windowoffwatermarkflagchange10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                        |
+| -------- | ----------------------- | -- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有水印启用状态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (bool: boolean) => {
+  // ...
+}
+try {
+  window.onWaterMarkFlagChange(callback);
+  window.offWaterMarkFlagChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  window.offWaterMarkFlagChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for watermark flag changes. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
