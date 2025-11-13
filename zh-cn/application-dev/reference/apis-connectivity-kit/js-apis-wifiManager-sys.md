@@ -2098,7 +2098,7 @@ offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口取消之前的注册回调。
+注册WIFI热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口取消之前的注册回调。
 
 **系统接口：** 此接口为系统接口。
 
