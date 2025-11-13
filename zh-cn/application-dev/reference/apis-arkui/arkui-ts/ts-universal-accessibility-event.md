@@ -144,6 +144,8 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 该示例主要演示通过使用onAccessibilityActionIntercept事件实现Toggle组件在无障碍模式下于点击事件发生之前拦截点击事件并确认是否拦截该点击事件的操作。
 
+ArkTS-Dyn：
+
 ```ts
 // xxx.ets
 @Entry
@@ -189,6 +191,63 @@ struct SwitchBootcamp {
       .padding(24)
       .width('100%')
     }
+  }
+}
+
+```
+ArkTS-Sta：
+
+```ts
+// xxx.ets
+import { Entry, Text, Row, Blank, Column, Component, Toggle, ToggleType, AccessibilityActionInterceptResult, AccessibilityAction, AlertDialogParamWithButtons} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SwitchBootcamp {
+  @State private isOn: boolean = false;
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+  alterParam: AlertDialogParamWithButtons = {
+    title: '标题',
+    message: '内容信息',
+    primaryButton: {
+      value: '确认',
+      action: () => {
+        this.isOn = !this.isOn;
+      }
+    },
+    secondaryButton: {
+      value: '取消',
+      action: () => {
+      }
+    }
+  } as AlertDialogParamWithButtons;
+
+  changeValue() {
+    this.stateVar += '~'
+  }
+
+  build() {
+    Column() {
+      Text('onTouchIntercept')
+      Row() {
+        Text('Label message')
+        Blank()
+        Toggle({ type: ToggleType.Switch, isOn: this.isOn })
+        .onAccessibilityActionIntercept((action : AccessibilityAction) => {
+          if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
+            this.getUIContext().showAlertDialog(this.alterParam)
+            return AccessibilityActionInterceptResult.ACTION_INTERCEPT;
+          }
+          else {
+            return AccessibilityActionInterceptResult.ACTION_CONTINUE;
+          }
+        })
+      }.width('100%')
+    }
+    .padding(24)
+    .width('100%')
   }
 }
 ```
