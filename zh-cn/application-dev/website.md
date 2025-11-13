@@ -5307,6 +5307,8 @@
           - [ImageEffect_Size](reference/apis-image-kit/capi-imageeffect-imageeffect-size.md)
           - [ImageProcessing_ColorSpaceInfo](reference/apis-image-kit/capi-imageprocessing-imageprocessing-colorspaceinfo.md)
           - [OH_ImageProcessing](reference/apis-image-kit/capi-imageprocessing-oh-imageprocessing.md)
+          - [Image_PositionArea](reference/apis-image-kit/capi-image-nativemodule-image-positionarea.md)
+          - [Image_Scale](reference/apis-image-kit/capi-image-nativemodule-image-scale.md)
       - 错误码<!--image-arkts-errcode-->
         - [Image错误码](reference/apis-image-kit/errorcode-image.md)
         - [视频处理引擎错误码](reference/apis-image-kit/errorcode-videoprocessingengine.md)

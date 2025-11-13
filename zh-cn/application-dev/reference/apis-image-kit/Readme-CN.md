@@ -109,6 +109,8 @@
     - [ImageEffect_Size](capi-imageeffect-imageeffect-size.md)
     - [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
+    - [Image_PositionArea](capi-image-nativemodule-image-positionarea.md)
+    - [Image_Scale](capi-image-nativemodule-image-scale.md)
 - 错误码<!--image-arkts-errcode-->
   - [Image错误码](errorcode-image.md)
   - [视频处理引擎错误码](errorcode-videoprocessingengine.md)
