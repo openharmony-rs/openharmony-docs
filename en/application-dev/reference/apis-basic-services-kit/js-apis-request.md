@@ -68,8 +68,6 @@ import { request } from '@kit.BasicServicesKit';
 | SESSION_PENDING<sup>7+</sup> | number |   2   | (Download task status codes) Download pending.|
 | SESSION_PAUSED<sup>7+</sup> | number |   3   | (Download task status codes) Download paused.|
 | SESSION_FAILED<sup>7+</sup> | number |   4   | (Download task status codes) Download failure without retry.|
-| VISIBILITY_COMPLETION<sup>21+</sup> | number |   1   | ([Notification](#notification15) visibility type) Completion notification displayed.|
-| VISIBILITY_PROGRESS<sup>21+</sup>   | number |   2   | ([Notification](#notification15) visibility type) Notification progress displayed.|
 
 
 ## request.uploadFile<sup>9+</sup>
@@ -408,8 +406,9 @@ Subscribes to upload completion or failure events. This API uses an asynchronous
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Type of the event to subscribe to. The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure. |
+| type | string | Yes| Type of the event to subscribe to. The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure.|
 | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | Yes| Callback used to return the result.  |
+
 
 **Error codes**
 
@@ -2405,7 +2404,19 @@ Defines the download task information, which is the callback parameter of the [g
 | description | string | No| No| Description of the download task.|
 | downloadedBytes | number | No| No| Real-time download size, in bytes.|
 
-## Action<sup>10+</sup>  
+## request.agent
+
+### Constants<sup>21+</sup>
+
+**System capability**: SystemCapability.MiscServices.Download
+
+
+| Name| Type| Value| Description|
+| -------- | -------- | -------- | -------- |
+| VISIBILITY_COMPLETION<sup>21+</sup> | number |   1   | ([Notification](#requestagentnotification15) visibility type) Displays completion notifications.|
+| VISIBILITY_PROGRESS<sup>21+</sup>   | number |   2   | ([Notification](#requestagentnotification15) visibility type) Displays progress notifications.|
+
+## request.agent.Action<sup>10+</sup>  
 
 Defines action options.
 
@@ -2419,7 +2430,7 @@ Defines action options.
 | UPLOAD | 1 |Upload.|
 
 
-## Mode<sup>10+</sup>  
+## request.agent.Mode<sup>10+</sup>  
 Defines mode options.<br>
 After foreground tasks of an application are switched to the background for a period of time, background tasks are not affected but foreground tasks will fail or pause.
 
@@ -2432,7 +2443,7 @@ After foreground tasks of an application are switched to the background for a pe
 | BACKGROUND | 0 |Background task.|
 | FOREGROUND | 1 |Foreground task.|
 
-## Network<sup>10+</sup>  
+## request.agent.Network<sup>10+</sup>  
 
 Defines network options.<br>
 If the network does not meet the preset conditions, the tasks that have not been executed will await for execution, and the tasks that are being executed will fail or pause.
@@ -2447,7 +2458,7 @@ If the network does not meet the preset conditions, the tasks that have not been
 | WIFI | 1 |Wi-Fi network.|
 | CELLULAR | 2 |Cellular data network.|
 
-## BroadcastEvent<sup>11+</sup>
+## request.agent.BroadcastEvent<sup>11+</sup>
 
 Defines a custom system event. You can use a common event API to obtain the event.
 The upload and download SA has the ohos.permission.SEND_TASK_COMPLETE_EVENT permission. You can configure the level-2 configuration file to which the metadata of an event points to intercept other event senders.
@@ -2463,7 +2474,7 @@ For details about how to obtain the event configuration and configure the level-
 | -------- | ------- |-----------|
 | COMPLETE | ohos.request.event.COMPLETE | Task completion event. The returned event code can be **0x40** or **0x41**, depending on whether the task is successful or fails.|
 
-## FileSpec<sup>10+</sup> 
+## request.agent.FileSpec<sup>10+</sup> 
 Provides the file information of a table item.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
@@ -2477,7 +2488,7 @@ Provides the file information of a table item.
 | extras | object | No| Yes| Additional information. This parameter is not included in HTTP requests.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 
-## FormItem<sup>10+</sup> 
+## request.agent.FormItem<sup>10+</sup> 
 Describes the form item of a task.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -2487,27 +2498,27 @@ Describes the form item of a task.
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
 | name | string | No| No| Form parameter name.|
-| value | string \| [FileSpec](#filespec10) \| Array&lt;[FileSpec](#filespec10)&gt; | No| No| Form parameter value.|
+| value | string \| [FileSpec](#requestagentfilespec10) \| Array&lt;[FileSpec](#requestagentfilespec10)&gt; | No| No| Form parameter value.|
 
 
-## Config<sup>10+</sup> 
+## request.agent.Config<sup>10+</sup> 
 Provides the configuration information of an upload or download task.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| action | [Action](#action10) | No| No| Task action.<br>- **UPLOAD**: Upload tasks.<br>- **DOWNLOAD**: Download tasks.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| action | [Action](#requestagentaction10) | No| No| Task action.<br>- **UPLOAD**: Upload tasks.<br>- **DOWNLOAD**: Download tasks.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | url | string | No| No| Resource URL. From API version 6 to 14, the value contains a maximum of 2048 characters; since API version 15, the value contains a maximum of 8192 characters. [Intercepting HTTP](../../basic-services/request/app-file-upload-download.md#intercepting-http) is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | title | string | No| Yes| Task title. The value contains a maximum of 256 characters. The default value is **upload** or **download** in lowercase. Set the value to that of **action**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | description | string | No| Yes| Task description. The value contains a maximum of 1024 characters. The default value is a null string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| mode | [Mode](#mode10) | No| Yes| Task mode. The default mode is background. Since API version 20, the task mode for downloading files to the user file folder must be set to **request.agent.Mode.FOREGROUND**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| mode | [Mode](#requestagentmode10) | No| Yes| Task mode. The default mode is background. Since API version 20, the task mode for downloading files to the user file folder must be set to **request.agent.Mode.FOREGROUND**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | overwrite | boolean | No| Yes| Whether to overwrite an existing file during the download. The default value is **false**.<br>- **true**: Overwrite the existing file.<br>- **false**: Do not overwrite the existing file. In this case, the download fails.<br>Since API version 20, the overwrite mode for downloading files to the user file folder must be set to **true**.<br>In this case, do not create multiple tasks to download content to the same file at a time. Otherwise, the file content will be disordered.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | method | string | No| Yes| Standard HTTP method for the task. The value can be **GET**, **POST**, or **PUT**, which is case-insensitive.<br>- For the upload task, use **PUT** or **POST**. The default value is **PUT**.<br>- For the download task, use **GET** or **POST**. The default value is **GET**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | headers | object | No| Yes| HTTP headers to be included in the task.<br>- For the upload task, the default **Content-Type** is **multipart/form-data**.<br>- For the download task, the default **Content-Type** is **application/json**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| data | string \| Array&lt;[FormItem](#formitem10)&gt; | No| Yes| - For the download task, the value is a string, typically in JSON format (an object will be converted to a JSON string); the default value is null.<br>- For the upload task, the value is Array&lt;[FormItem](#formitem10)&gt;. Since API version 15, a maximum of 100 files can be uploaded in a single task. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | No| Yes| - For the download task, the value is a string, typically in JSON format (an object will be converted to a JSON string); the default value is null.<br>- For the upload task, the value is Array&lt;[FormItem](#requestagentformitem10)&gt;. Since API version 15, a maximum of 100 files can be uploaded in a single task. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | saveas | string | No| Yes| Path for storing downloaded files. The options are as follows:<br>- Relative path, which is in the cache directory of the caller, for example, **./xxx/yyy/zzz.html** or **xxx/yyy/zzz.html**.<br>- Internal protocol path, which can be **internal://** or its subdirectory. **internal** indicates the cache directory of the caller (that is, the input **context**), and **internal://cache** corresponds to **context.cacheDir**, for example, **internal://cache/path/to/file.txt**.<br>- Application sandbox path. Only the **base** directory and its subdirectories are supported, for example, **/data/storage/el1/base/path/to/file.txt**.<br>- File protocol path, which can be the path of an application file or a user file. For the application file, the application bundle name must be matched and only the **base** directory and its subdirectories are supported, for example, **file://com.example.test/data/storage/el2/base/file.txt**. For the user file, its path must be the user file URI created by the caller.<br>Since API version 20, the default file path can be the cache path of the caller (that is, the passed context), except for [downloading network resource files to the user file](../../basic-services/request/app-file-upload-download.md#downloading-network-resource-files-to-the-user-file). The default file name is the part truncated from the last slash (/) in the URL.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| network | [Network](#network10) | No| Yes| Network used for the task. The default value is **ANY** (Wi-Fi or cellular).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| network | [Network](#requestagentnetwork10) | No| Yes| Network used for the task. The default value is **ANY** (Wi-Fi or cellular).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | metered | boolean | No| Yes| Whether the task is allowed on a metered network.<br>- **true**: The task is allowed on a metered network.<br>- **false** (default): The task is not allowed on a metered network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | roaming | boolean | No| Yes| Whether the task is allowed on a roaming network.<br>- **true** (default): The task is allowed on a roaming network.<br>- **false**: The task is not allowed on a roaming network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks.<br>- **true** (default): The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -2522,11 +2533,11 @@ Provides the configuration information of an upload or download task.
 | priority<sup>11+</sup> | number | No| Yes| Priority of the task. The priority of a foreground task is higher than that of a background task. For tasks in the same mode, a smaller value indicates a higher priority.<br>Default value: **0**|
 | extras | object | No| Yes| Additional information of the task. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | multipart<sup>15+</sup> | boolean | No| Yes| Whether to use a single request to upload multiple files. If yes, **multipart/form-data** must be used.<br>- **false**: A single request is used to upload one file.<br>- **true**: A single request is used to upload multiple files.<br>The default value is **false**.|
-| notification<sup>15+</sup> | [Notification](#notification15) | No| Yes| Custom settings for the notification bar. The default value is **{}**.|
-| minSpeed<sup>20+</sup> | [MinSpeed](#minspeed20) | No| Yes| Minimum speed, which is disabled by default.|
-| timeout<sup>20+</sup> | [Timeout](#timeout20) | No| Yes| Custom timeout interval. The default connection timeout interval is 60 seconds, and the default total timeout interval is 604800 seconds (one week). If retry is set to **true**, the [timeout](#timeout20) event triggers immediate retry, which will obscure the timeout event itself. As a result, the internal [timeout](#timeout20) condition has been triggered but the [timeout](#timeout20) event is not observable. Set **retry** to **false** to explicitly observe the [timeout](#timeout20) event.|
+| notification<sup>15+</sup> | [Notification](#requestagentnotification15) | No| Yes| Custom settings for the notification bar. The default value is **{}**.|
+| minSpeed<sup>20+</sup> | [MinSpeed](#requestagentminspeed20) | No| Yes| Minimum speed, which is disabled by default.|
+| timeout<sup>20+</sup> | [Timeout](#requestagenttimeout20) | No| Yes| Custom timeout interval. The default connection timeout interval is 60 seconds, and the default total timeout interval is 604800 seconds (one week). If retry is set to **true**, the [timeout](#requestagenttimeout20) event triggers immediate retry, which will obscure the timeout event itself. As a result, the internal [timeout](#requestagenttimeout20) condition has been triggered but the [timeout](#requestagenttimeout20) event is not observable. Set **retry** to **false** to explicitly observe the [timeout](#requestagenttimeout20) event.|
 
-## State<sup>10+</sup>  
+## request.agent.State<sup>10+</sup>  
 
 Defines the current task status.
 
@@ -2536,7 +2547,7 @@ Defines the current task status.
 
 | Name| Value|Description|
 | -------- | -------- |-------- |
-| INITIALIZED | 0x00 |The task is initialized based on the configuration specified in [Config](#config10).|
+| INITIALIZED | 0x00 |The task is initialized based on the configuration specified in [Config](#requestagentconfig10).|
 | WAITING | 0x10 |The task lacks resources for running or the resources for retries, or does not match the network status.|
 | RUNNING | 0x20 |The task is being executed.|
 | RETRYING | 0x21 |The task has failed at least once and is being executed again.|
@@ -2547,7 +2558,7 @@ Defines the current task status.
 | REMOVED | 0x50 |The task is removed.|
 
 
-## Progress<sup>10+</sup> 
+## request.agent.Progress<sup>10+</sup> 
 Describes the data structure of the task progress.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -2556,14 +2567,14 @@ Describes the data structure of the task progress.
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| state | [State](#state10) | Yes| No| Current task status.                                                           |
+| state | [State](#requestagentstate10) | Yes| No| Current task status.                                                           |
 | index | number | Yes| No| Index of the file that is being processed in the task.                                                    |
 | processed | number | Yes| No| Size of processed data in the current file in the task, in bytes.                                              |
 | sizes | Array&lt;number&gt; | Yes| No| Size of a file in a task, in bytes. If the server uses the chunk mode for data transmission and the total file size cannot be obtained from the request header, the value of **sizes** is treated as **-1**.|
 | extras | object | Yes| Yes| Extra information of the task, for example, the header and body of the response from the server.                                    |
 
 
-## Faults<sup>10+</sup>  
+## request.agent.Faults<sup>10+</sup>  
 
 Defines the cause of a task failure.
 
@@ -2587,7 +2598,7 @@ Defines the cause of a task failure.
 | REDIRECT<sup>12+</sup> | 0x80 | Redirection error.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
 | LOW_SPEED<sup>20+</sup>  | 0x90 | Low speed.                   |
 
-## Filter<sup>10+</sup>
+## request.agent.Filter<sup>10+</sup>
 Defines the filter criteria.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
@@ -2596,11 +2607,11 @@ Defines the filter criteria.
 |------|--------|----|----|-------------------------------|
 | before | number | No| Yes| Unix timestamp of the end time, in milliseconds. The default value is the invoking time.|
 | after | number | No| Yes| Unix timestamp of the start time, in milliseconds. The default value is the invoking time minus 24 hours.|
-| state | [State](#state10) | No| Yes| Task state. If this parameter is not set, all tasks are queried.|
-| action | [Action](#action10) | No| Yes| Task action.<br>- **UPLOAD**: Upload tasks.<br>- **DOWNLOAD**: Download tasks.<br>- If this parameter is not set, all tasks are queried.|
-| mode | [Mode](#mode10) | No| Yes| Task mode.<br>- **FOREGROUND**: foreground task.<br>- **BACKGROUND**: background task.<br>- If this parameter is not set, all tasks are queried.|
+| state | [State](#requestagentstate10) | No| Yes| Task state. If this parameter is not set, all tasks are queried.|
+| action | [Action](#requestagentaction10) | No| Yes| Task action.<br>- **UPLOAD**: Upload tasks.<br>- **DOWNLOAD**: Download tasks.<br>- If this parameter is not set, all tasks are queried.|
+| mode | [Mode](#requestagentmode10) | No| Yes| Task mode.<br>- **FOREGROUND**: foreground task.<br>- **BACKGROUND**: background task.<br>- If this parameter is not set, all tasks are queried.|
 
-## TaskInfo<sup>10+</sup> 
+## request.agent.TaskInfo<sup>10+</sup> 
 Defines the data structure of the task information for query. The fields available vary depending on the query type.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
@@ -2609,25 +2620,25 @@ Defines the data structure of the task information for query. The fields availab
 |------|--------|----|----|-------------------------------|
 | saveas | string | Yes| Yes| Path for storing downloaded files.|
 | url | string | Yes| Yes| Task URL.<br>- Use [request.agent.show](#requestagentshow10-1) and [request.agent.touch](#requestagenttouch10-1) to query the value.|
-| data | string \| Array&lt;[FormItem](#formitem10)&gt; | Yes| Yes| Task value.<br>- Use [request.agent.show](#requestagentshow10-1) and [request.agent.touch](#requestagenttouch10-1) to query the value.|
+| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | Yes| Yes| Task value.<br>- Use [request.agent.show](#requestagentshow10-1) and [request.agent.touch](#requestagenttouch10-1) to query the value.|
 | tid | string | Yes| No| Task ID.|
 | title | string | Yes| No| Task title.|
 | description | string | Yes| No| Task description.|
-| action | [Action](#action10) | Yes| No| Task action.<br>- **UPLOAD**: Upload tasks.<br>- **DOWNLOAD**: Download tasks.|
-| mode | [Mode](#mode10) | Yes| No| Task mode.<br>- **FOREGROUND**: foreground task.<br>- **BACKGROUND**: background task.|
+| action | [Action](#requestagentaction10) | Yes| No| Task action.<br>- **UPLOAD**: Upload tasks.<br>- **DOWNLOAD**: Download tasks.|
+| mode | [Mode](#requestagentmode10) | Yes| No| Task mode.<br>- **FOREGROUND**: foreground task.<br>- **BACKGROUND**: background task.|
 | priority<sup>11+</sup> | number | Yes| No| Task priority. The priority of a foreground task is higher than that of a background task. For tasks in the same mode, a smaller value indicates a higher priority.|
 | mimeType | string | Yes| No| MIME type in the task configuration.|
-| progress | [Progress](#progress10) | Yes| No| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| No| Task progress.|
 | gauge | boolean | Yes| No| Whether to send progress notifications. This parameter applies only to background tasks.<br>- **false**: Progress notifications are not sent. This means that a notification is sent only to indicate the result of the total task.<br>- **true**: Progress notifications are sent to indicate the result of each file.|
-| ctime | number | Yes| No| Unix timestamp when the task is created, in milliseconds. The value is generated by the system of the current device.<br>**NOTE**<br>When [request.agent.search](#requestagentsearch10-1) is used for query, this value must be within the range of [after,before] for the task ID to be obtained. For details about **before** and **after**, see [Filter](#filter10).|
+| ctime | number | Yes| No| Unix timestamp when the task is created, in milliseconds. The value is generated by the system of the current device.<br>**NOTE**<br>When [request.agent.search](#requestagentsearch10-1) is used for query, this value must be within the range of [after,before] for the task ID to be obtained. For details about **before** and **after**, see [Filter](#requestagentfilter10).|
 | mtime | number | Yes| No| Unix timestamp when the task state changes, in milliseconds. The value is generated by the system of the current device.|
 | retry | boolean | Yes| No| Whether automatic retry is enabled for the task. This parameter applies only to background tasks.<br>- **true**: The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.|
 | tries | number | Yes| No| Number of retries of the task.|
-| faults | [Faults](#faults10) | Yes| No| Failure cause of the task.|
+| faults | [Faults](#requestagentfaults10) | Yes| No| Failure cause of the task.|
 | reason | string | Yes| No| Reason why the task is waiting, failed, stopped, or paused.|
 | extras | object | Yes| Yes| Extra information of the task.|
 
-## HttpResponse<sup>12+</sup> 
+## request.agent.HttpResponse<sup>12+</sup> 
 Describes the data structure of the task response header.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -2641,7 +2652,7 @@ Describes the data structure of the task response header.
 | reason | string | Yes| No| HTTP response cause.|
 | headers | Map&lt;string, Array&lt;string&gt;&gt; | Yes| No| HTTP response header.|
 
-## Notification<sup>15+</sup>
+## request.agent.Notification<sup>15+</sup>
 
 Describes the custom information of the notification bar.
 
@@ -2651,7 +2662,7 @@ Describes the custom information of the notification bar.
 |------|--------|----|----|-------------------------------|
 | title   | string | No| Yes| Custom title, with a maximum of 1024 bytes. The default title is used if this parameter is not set.  |
 | text    | string | No| Yes| Custom body text, with a maximum of 3072 bytes. The default text is used if this parameter is not set.   |
-| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- The progress notification and completion notification are displayed. The parameter is **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. The progress notification is displayed when the task is in progress. When the download task is complete or fails, the completion notification is displayed as well.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed. |
+| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants21). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- The progress notification and completion notification are displayed. The parameter is **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. The progress notification is displayed when the task is in progress. When the download task is complete or fails, the completion notification is displayed as well.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
 | wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | No| Yes| Notification parameter, which is used to implement redirection after a task notification is tapped.|
 
 
@@ -2708,7 +2719,7 @@ Describes the custom information of the notification bar.
   });
   ```
 
-## GroupConfig<sup>15+</sup>
+## request.agent.GroupConfig<sup>15+</sup>
 
 Describes group configuration options for download tasks.
 
@@ -2717,9 +2728,9 @@ Describes group configuration options for download tasks.
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
 | gauge        | boolean                                       | No| Yes | Whether to send progress notifications. This parameter applies only to background tasks.<br>- **true**: The progress, success, and failure notifications are displayed.<br>- **false**: Only success and failure notifications are displayed.<br>The default value is **false**.|
-| notification<sup>15+</sup> | [Notification](#notification15) | No| No | Custom settings for the notification bar. The default value is **{}**.                    |
+| notification<sup>15+</sup> | [Notification](#requestagentnotification15) | No| No | Custom settings for the notification bar. The default value is **{}**.                    |
 
-## WaitingReason<sup>20+</sup>
+## request.agent.WaitingReason<sup>20+</sup>
 
 Enumerates the reasons why a task is waiting.
 
@@ -2732,9 +2743,9 @@ Enumerates the reasons why a task is waiting.
 | APP_BACKGROUND | 0x02 | The application has been running in the background for a long time.  |
 | USER_INACTIVATED | 0x03 | The user is inactive.|
 
-## MinSpeed<sup>20+</sup>
+## request.agent.MinSpeed<sup>20+</sup>
 
-Defines the minimum speed of a task. If the task speed is lower than the preset value for a specified period of time, the task fails. The failure cause is [LOW_SPEED](#faults10).
+Defines the minimum speed of a task. If the task speed is lower than the preset value for a specified period of time, the task fails. The failure cause is [LOW_SPEED](#requestagentfaults10).
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -2743,9 +2754,9 @@ Defines the minimum speed of a task. If the task speed is lower than the preset 
 | speed   | number   | No | No | Minimum speed of a task, in byte/s. If the task speed is lower than this value for a specified period of time, the task fails. If the value is set to **0**, there is no minimum speed limit.|
 | duration    | number   | No | No | Duration during which the task speed can be lower than the minimum speed, in seconds. If the task speed is lower than the preset value for a specified period of time, the task fails. If the value is set to **0**, there is no minimum speed limit. |
 
-## Timeout<sup>20+</sup>
+## request.agent.Timeout<sup>20+</sup>
 
-Defines the timeout configuration of a task. The task waiting duration is not counted. For details about the waiting reasons, see [WaitingReason<sup>20+</sup>](#waitingreason20).
+Defines the timeout configuration of a task. The task waiting duration is not counted. For details about the waiting reasons, see [WaitingReason<sup>20+</sup>](#requestagentwaitingreason20).
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -2755,7 +2766,7 @@ Defines the timeout configuration of a task. The task waiting duration is not co
 | totalTimeout    | number | No | Yes |Total timeout interval of a task, in seconds. The total timeout interval includes the time required for establishing a connection, sending a request, and receiving a response. If this parameter is not set, the default value **604800** is used. The minimum value is 1, and the maximum value is **604800** (that is, one week). |
 
 
-## Task<sup>10+</sup> 
+## request.agent.Task<sup>10+</sup> 
 Implements an upload or download task. Before using this API, you must obtain a **Task** object, from a promise through [request.agent.create](#requestagentcreate10-1) or from a callback through [request.agent.create](#requestagentcreate10).
 
 ### Properties
@@ -2772,11 +2783,11 @@ Task properties include the task ID and task configuration.
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
 | tid | string | Yes| No| Task ID, which is unique and automatically generated by the system.|
-| config | [Config](#config10) | No| No| Task configuration.|
+| config | [Config](#requestagentconfig10) | No| No| Task configuration.|
 
 ### on('progress')<sup>10+</sup>
 
-on(event: 'progress', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Subscribes to task progress changes. This API uses an asynchronous callback to return the result.
 
@@ -2799,7 +2810,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -2860,7 +2871,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### on('completed')<sup>10+</sup>
 
-on(event: 'completed', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Subscribes to task completion events. This API uses an asynchronous callback to return the result.
 
@@ -2883,7 +2894,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -2944,7 +2955,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### on('failed')<sup>10+</sup>
 
-on(event: 'failed', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](#requestagentshow10-1) to view the error cause.
 
@@ -2967,7 +2978,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -3028,7 +3039,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### on('pause')<sup>11+</sup>
 
-on(event: 'pause', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'pause', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Subscribes to task pause events. This API uses an asynchronous callback to return the result.
 
@@ -3049,7 +3060,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -3115,7 +3126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### on('resume')<sup>11+</sup>
 
-on(event: 'resume', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Subscribes to task resume events. This API uses an asynchronous callback to return the result.
 
@@ -3136,7 +3147,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -3207,7 +3218,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### on('remove')<sup>11+</sup>
 
-on(event: 'remove', callback: (progress: [Progress](#progress10)) =&gt; void): void
+on(event: 'remove', callback: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Subscribes to task removal events. This API uses an asynchronous callback to return the result.
 
@@ -3228,7 +3239,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -3311,7 +3322,7 @@ Subscribes to task response headers. This API uses an asynchronous callback to r
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | event | string | Yes| Event type.<br>- **'response'**: task response.|
-| callback | Callback&lt;[HttpResponse](#httpresponse12)&gt; | Yes| Callback used to return the data structure of the task response header.|
+| callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | Yes| Callback used to return the data structure of the task response header.|
 
 **Error codes**
 
@@ -3387,7 +3398,7 @@ Subscribes to task failure events. This API uses a callback to return the result
 | Name| Type                                 | Mandatory| Description                        |
 | -------- |-------------------------------------| -------- |----------------------------|
 | event | string                              | Yes| Event type.<br>- **'faultOccur'**: task failure.|
-| callback | Callback&lt;[Faults](#faults10)&gt; | Yes| Callback used to return the failure cause of the task.|
+| callback | Callback&lt;[Faults](#requestagentfaults10)&gt; | Yes| Callback used to return the failure cause of the task.|
 
 **Error codes**
 
@@ -3463,7 +3474,7 @@ Subscribes to task wait events. This API uses a callback to return the result.
 | Name| Type                                               | Mandatory| Description                             |
 | -------- |---------------------------------------------------| -------- |---------------------------------|
 | event | string                                            | Yes| Event type.<br>- 'wait': The task is waiting.|
-| callback | Callback&lt;[WaitingReason](#waitingreason20)&gt; | Yes| Callback used to return the waiting reason of the task.     |
+| callback | Callback&lt;[WaitingReason](#requestagentwaitingreason20)&gt; | Yes| Callback used to return the waiting reason of the task.     |
 
 **Error codes**
 
@@ -3524,7 +3535,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('progress')<sup>10+</sup>
 
-off(event: 'progress', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Unsubscribes from task progress events.
 
@@ -3547,7 +3558,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 
 **Error codes**
@@ -3617,7 +3628,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('completed')<sup>10+</sup>
 
-off(event: 'completed', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Unsubscribes from task completion events.
 
@@ -3640,7 +3651,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 
 **Error codes**
@@ -3710,7 +3721,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('failed')<sup>10+</sup>
 
-off(event: 'failed', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Unsubscribes from task failure events.
 
@@ -3733,7 +3744,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -3802,7 +3813,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 ### off('pause')<sup>11+</sup>
 
-off(event: 'pause', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Unsubscribes from the foreground task pause event.
 
@@ -3823,7 +3834,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -3892,7 +3903,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### off('resume')<sup>11+</sup>
 
-off(event: 'resume', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Unsubscribes from foreground task resume events.
 
@@ -3913,7 +3924,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -3982,7 +3993,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### off('remove')<sup>11+</sup>
 
-off(event: 'remove', callback?: (progress: [Progress](#progress10)) =&gt; void): void
+off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) =&gt; void): void
 
 Unsubscribes from the task removal event.
 
@@ -4003,7 +4014,7 @@ Parameters of the callback function
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| progress | [Progress](#progress10) | Yes| Task progress.|
+| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
@@ -4089,7 +4100,7 @@ Unsubscribes from task response headers.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | event | string | Yes| Event type.<br>- **response**: task response.|
-| callback | Callback&lt;[HttpResponse](#httpresponse12)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+| callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
 **Error codes**
 
@@ -4174,7 +4185,7 @@ Unsubscribes from task failure events.
 | Name| Type                        | Mandatory| Description                                   |
 | -------- |----------------------------| -------- |---------------------------------------|
 | event | string                     | Yes| Event type.<br>- **'faultOccur'**: task failure.     |
-| callback | Callback&lt;[Faults](#faults10)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+| callback | Callback&lt;[Faults](#requestagentfaults10)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
 **Error codes**
 
@@ -4245,7 +4256,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 off(event: 'wait', callback?: Callback&lt;WaitingReason&gt;): void
 
-Unsubscribes from task wait events.
+Unsubscribes from task waiting events.
 
 
 **System capability**: SystemCapability.Request.FileTransferAgent
@@ -4259,7 +4270,7 @@ Unsubscribes from task wait events.
 | Name| Type                               | Mandatory| Description                                   |
 | -------- |-----------------------------------| -------- |---------------------------------------|
 | event | string                            | Yes| Event type.<br>- 'wait': The task is waiting.      |
-| callback | Callback&lt;[WaitingReason](#waitingreason20)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+| callback | Callback&lt;[WaitingReason](#requestagentwaitingreason20)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
 **Error codes**
 
@@ -4317,7 +4328,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     task.on('wait', waitOffCallback2);
     // Unsubscribe from waitOffCallback1.
     task.off('wait', waitOffCallback1);
-    // Unsubscribe from all callbacks of the task wait event.
+    // Unsubscribe from all callbacks of the task waiting event.
     task.off('wait');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4941,7 +4952,7 @@ Sets the maximum number of bytes that can be transmitted by a task per second. T
 
 | Name  | Type    | Mandatory| Description                                                                          |
 |-------|--------|----|------------------------------------------------------------------------------|
-| speed | number | Yes | Maximum number of bytes that can be transmitted by a task per second, with a minimum of 16384 bytes. The value cannot be less than the minimum speed value specified by [MinSpeed](#minspeed20).|
+| speed | number | Yes | Maximum number of bytes that can be transmitted by a task per second, with a minimum of 16384 bytes. The value cannot be less than the minimum speed value specified by [MinSpeed](#requestagentminspeed20).|
 
 **Return value**
 
@@ -5005,8 +5016,8 @@ Creates an upload or download task and adds it to the queue. This API uses an as
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [Config](#config10) | Yes| Task configuration.|
-| callback | AsyncCallback&lt;[Task](#task10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **Task** object obtained. Otherwise, **err** is an error object.|
+| config | [Config](#requestagentconfig10) | Yes| Task configuration.|
+| callback | AsyncCallback&lt;[Task](#requestagenttask10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **Task** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -5092,13 +5103,13 @@ Creates an upload or download task and adds it to the queue. This API uses a pro
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [Config](#config10) | Yes| Task configuration.|
+| config | [Config](#requestagentconfig10) | Yes| Task configuration.|
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;[Task](#task10)&gt; | Promise used to return the created task.|
+| Promise&lt;[Task](#requestagenttask10)&gt; | Promise used to return the created task.|
 
 **Error codes**
 
@@ -5180,7 +5191,7 @@ Obtains task information based on the task ID. This API uses a promise to return
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;[Task](#task10)&gt; | Promise used to return the task information.|
+| Promise&lt;[Task](#requestagenttask10)&gt; | Promise used to return the task information.|
 
 **Error codes**
 
@@ -5307,7 +5318,7 @@ Queries a task details based on the task ID. This API uses an asynchronous callb
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | id | string | Yes| Task ID.|
-| callback | AsyncCallback&lt;[TaskInfo](#taskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -5352,7 +5363,7 @@ Queries a task details based on the task ID. This API uses a promise to return t
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;[TaskInfo](#taskinfo10)&gt; | Promise used to return the **TaskInfo** object.|
+| Promise&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Promise used to return the **TaskInfo** object.|
 
 **Error codes**
 
@@ -5391,7 +5402,7 @@ Queries the task details based on the task ID and token. This API uses an asynch
 | -------- | -------- | -------- | -------- |
 | id | string | Yes| Task ID.|
 | token | string | Yes| Token for task query.|
-| callback | AsyncCallback&lt;[TaskInfo](#taskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -5437,7 +5448,7 @@ Queries the task details based on the task ID and token. This API uses a promise
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;[TaskInfo](#taskinfo10)&gt; | Promise used to return the **TaskInfo** object.|
+| Promise&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Promise used to return the **TaskInfo** object.|
 
 **Error codes**
 
@@ -5465,7 +5476,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 search(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Searches for task IDs based on [Filter](#filter10). The IDs of all tasks from the invoking time to 24 hours ago are searched. This API uses an asynchronous callback to return the result.
+Searches for task IDs based on [Filter](#requestagentfilter10). The IDs of all tasks from the invoking time to 24 hours ago are searched. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -5502,7 +5513,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 search(filter: Filter, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Searches for task IDs based on [Filter](#filter10). This API uses an asynchronous callback to return the result.
+Searches for task IDs based on [Filter](#requestagentfilter10). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -5510,7 +5521,7 @@ Searches for task IDs based on [Filter](#filter10). This API uses an asynchronou
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| filter | [Filter](#filter10) | Yes| Filter criteria.|
+| filter | [Filter](#requestagentfilter10) | Yes| Filter criteria.|
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the task ID. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -5545,7 +5556,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 search(filter?: Filter): Promise&lt;Array&lt;string&gt;&gt;
 
-Searches for task IDs based on [Filter](#filter10). This API uses a promise to return the result.
+Searches for task IDs based on [Filter](#requestagentfilter10). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -5553,7 +5564,7 @@ Searches for task IDs based on [Filter](#filter10). This API uses a promise to r
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| filter | [Filter](#filter10) | No| Filter criteria.|
+| filter | [Filter](#requestagentfilter10) | No| Filter criteria.|
 
 **Return value**
 
@@ -5590,7 +5601,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 createGroup(config: GroupConfig): Promise\<string\>
 
-Creates a group based on [GroupConfig](#groupconfig15). This API uses a promise to return the group ID. This API uses a promise to return the result.
+Creates a group based on [GroupConfig](#requestagentgroupconfig15). This API uses a promise to return the group ID. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -5598,7 +5609,7 @@ Creates a group based on [GroupConfig](#groupconfig15). This API uses a promise 
 
 | Name   | Type                                         | Mandatory| Description       |
 |--------|---------------------------------------------|----|-----------|
-| config | [GroupConfig<sup>15+</sup>](#groupconfig15) | Yes | Group options for a download task.|
+| config | [GroupConfig<sup>15+</sup>](#requestagentgroupconfig15) | Yes | Group options for a download task.|
 
 **Return value**
 
