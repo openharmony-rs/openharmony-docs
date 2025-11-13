@@ -3225,7 +3225,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
