@@ -4,12 +4,17 @@
 
 >  **说明：**
 >
->  从API version 19开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  目前支持通过外接鼠标、手写笔以及触控板触发。
+>  - 从API version 19开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 目前支持通过外接鼠标、手写笔以及触控板触发。
 
 ## bindTips
-bindTips(message: TipsMessageType, options?: TipsOptions): T
+
+ArkTS-Dyn: bindTips(message: TipsMessageType, options?: TipsOptions): T
+
+ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions): this
 
 为组件绑定Tips悬浮气泡。
 
@@ -21,18 +26,22 @@ bindTips(message: TipsMessageType, options?: TipsOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| message|  [TipsMessageType](#tipsmessagetype)                                                     | 是   | 弹窗信息内容。 |
+| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 弹窗信息内容。 |
 | options  | [TipsOptions](#tipsoptions类型说明) | 否   | 配置悬浮气泡的参数。<br/>默认值：<br/>{<br/>appearingTime: 700,<br/>disappearingTime: 300,<br/>appearingTimeWithContinuousOperation: 300,<br/>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br/>arrowPointPosition: ArrowPointPosition.CENTER,<br/>arrowWidth: 16,arrowHeight: 8vp,<br/>showAtAnchor: TipsAnchorType.TARGET<br/>} |
 
 **返回值：** 
 
 |类型|说明|
 |---|---|
-|T|返回当前组件。|
+|ArkTS-Dyn: T<br/>ArkTS-Sta: this|返回当前组件。|
 
 ## TipsOptions类型说明
 

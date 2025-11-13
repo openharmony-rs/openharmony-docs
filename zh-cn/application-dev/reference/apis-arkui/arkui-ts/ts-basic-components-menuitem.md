@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -45,7 +47,9 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 ### selected
 
-selected(value: boolean)
+ArkTS-Dyn: selected(value: boolean)
+
+ArkTS-Sta: selected(value: boolean | undefined | Bindable\<boolean>)
 
 设置菜单项是否选中。
 
@@ -56,15 +60,21 @@ selected(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 菜单项是否选中。<br />默认值：false<br/>值为true时，菜单项被选中。值为false时，菜单项不被选中。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined \| Bindable\<boolean> | 是   | 菜单项是否选中。<br />默认值：false<br/>值为true时，菜单项被选中。值为false时，菜单项不被选中。 |
 
 ### selectIcon
 
-selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
+ArkTS-Dyn: selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
+
+ArkTS-Sta: selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier | undefined)
 
 设置当菜单项被选中时，是否显示被选中的图标。
 
@@ -72,14 +82,21 @@ selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)<sup>12+</sup> | 是   | 菜单项被选中时，是否显示被选中的图标。<br/>默认值：false<br/>true：显示默认的对勾图标。<br/>false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。 |
+| value  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)<sup>12+</sup> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)> \| undefined | 是   | 菜单项被选中时，是否显示被选中的图标。<br/>默认值：false<br/>true：显示默认的对勾图标。<br/>false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。 |
+
 ### contentFont<sup>10+</sup>
 
-contentFont(value: Font)
+ArkTS-Dyn: contentFont(value: Font)
+
+ArkTS-Sta: contentFont(value: Font | undefined)
 
 设置菜单项中内容信息的字体样式。
 
@@ -87,15 +104,21 @@ contentFont(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                         |
 | ------ | ------------------------ | ---- | ---------------------------- |
-| value  | [Font](ts-types.md#font) | 是   | 菜单项中内容信息的字体样式。 |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined  | 是   | 菜单项中内容信息的字体样式。 |
 
 ### contentFontColor<sup>10+</sup>
 
-contentFontColor(value: ResourceColor)
+ArkTS-Dyn: contentFontColor(value: ResourceColor)
+
+ArkTS-Sta: contentFontColor(value: ResourceColor | undefined)
 
 设置菜单项中内容信息的字体颜色。
 
@@ -103,15 +126,21 @@ contentFontColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 菜单项中内容信息的字体颜色。<br />默认值：'#E5000000' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 菜单项中内容信息的字体颜色。<br />默认值：'#E5000000' |
 
 ### labelFont<sup>10+</sup>
 
-labelFont(value: Font)
+ArkTS-Dyn: labelFont(value: Font)
+
+ArkTS-Sta: labelFont(value: Font | undefined)
 
 设置菜单项中标签信息的字体样式。
 
@@ -119,15 +148,21 @@ labelFont(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明                         |
 | ------ | ------------------------ | ---- | ---------------------------- |
-| value  | [Font](ts-types.md#font) | 是   | 菜单项中标签信息的字体样式。 |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 菜单项中标签信息的字体样式。 |
 
 ### labelFontColor<sup>10+</sup>
 
-labelFontColor(value: ResourceColor)
+ArkTS-Dyn: labelFontColor(value: ResourceColor)
+
+ArkTS-Sta: labelFontColor(value: ResourceColor | undefined)
 
 设置菜单项中标签信息的字体颜色。
 
@@ -135,11 +170,15 @@ labelFontColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 菜单项中标签信息的字体颜色。<br />默认值：'#99000000' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 菜单项中标签信息的字体颜色。<br />默认值：'#99000000' |
 
 ## 事件
 
