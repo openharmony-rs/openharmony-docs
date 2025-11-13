@@ -11,8 +11,9 @@
 
 > **说明：**
 >
-> 该组件及其子组件从 API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件及其子组件从 API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 如果SwipeRefresher设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SwipeRefresher本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SwipeRefresher设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -25,10 +26,6 @@ import { SwipeRefresher } from '@kit.ArkUI';
 ## 子组件
 
 无
-
-## 属性
-不支持[通用属性](ts-component-general-attributes.md)。
-
 
 ## SwipeRefresher
 
