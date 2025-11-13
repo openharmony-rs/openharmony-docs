@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## When to Use
 
@@ -63,6 +63,6 @@ The **ohos.permission.INTERNET** permission is required for accessing online web
 
 The following samples are provided to help you better understand how to develop **Web** components:
 
-- [Using Web Components (ArkTS) (API9)](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/WebCookie)
+- [Using Web Components (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/WebCookie)
 
-- [Using Web Components in Developing Lottery Applets (ArkTS) (API9)](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/WebComponent)
+- [Using Web Components to Develop Lottery Applets (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/WebComponent)

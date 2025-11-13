@@ -4,7 +4,7 @@
 <!--Owner: @GrowUpEveryday-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb provides events for entering and exiting the full-screen mode. An application can listen for these events to enter and exit the immersive full-screen mode.
 
@@ -19,14 +19,20 @@ The **Web** component can use [onFullScreenEnter](../reference/apis-arkweb/arkts
 
 The [visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md) attribute is a common component attribute provided by ArkUI. You can control the visibility of a component by setting its **visibility** attribute.
 
+<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
+import hilog from '@ohos.hilog';
+
+const TAG = '[Sample_WebFullScreen]'
+const DOMAIN = 0xF811
+const BUNDLE = 'WebFullScreen_'
 
 @Entry
 @Component
 struct ShortWebPage {
-  controller: webview.WebviewController = new webview.WebviewController()
+  controller: webview.WebviewController = new webview.WebviewController();
   CONSTANT_HEIGHT = 100;
   @State marginTop: number = this.CONSTANT_HEIGHT;
   @State isVisible: boolean = true; // Customize the isVisible flag to determine whether to display the component.
@@ -38,23 +44,23 @@ struct ShortWebPage {
         .height(this.CONSTANT_HEIGHT)
         .backgroundColor('#e1dede') // When isVisible is set to true, the component is visible. Otherwise, the component is invisible, not involved in layout, and no placeholder is used for it.
         .visibility(this.isVisible ? Visibility.Visible :
-        Visibility.None)
+          Visibility.None)
       Web({
-        src: "http://www.example.com", // Example website
+        src: $rawfile('FullScreen.html'), // Example website.
         controller: this.controller
       })
         .onFullScreenEnter((event) => {
-          console.info("onFullScreenEnter...")
+          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenEnter...");
           // When the full screen is displayed, the isVisible flag is false, the component is invisible, not involved in layout, and no placeholder is used for it.
           this.isVisible = false;
         })
         .onFullScreenExit(() => {
-          console.info("onFullScreenExit...")
+          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenExit...");
           // When the full screen is exited, the isVisible flag is true, and the component is visible.
           this.isVisible = true;
         })
         .width('100%')
-        .height("100%")
+        .height('100%')
         .zIndex(10)
         .zoomAccess(true)
     }.width('100%').height('100%')

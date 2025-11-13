@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **ProxyRule** object used in [insertProxyRule](./arkts-apis-webview-ProxyConfig.md#insertproxyrule15).
 

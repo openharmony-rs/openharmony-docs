@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -29,7 +29,7 @@ Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontroller
 
 **Error Message**
 
-URL error. Possible causes: 1. No valid cookie found for the specified URL. 2. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.
+URL error. Possible causes: 1. No valid cookie found for the specified URL. 2. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.
 
 **Description**
 
@@ -37,11 +37,11 @@ The URL is incorrect. Possible causes are as follows:
 
 1. No valid cookie is found for the specified URL.
 
-2. The web page corresponding to the URL is invalid, or the URL length exceeds 2048 characters.
+2. The web page corresponding to the URL is invalid, or the URL length exceeds 2 × 1024 × 1024 characters.
 
 **Solution**
 
-Check whether the URL is correct and contains a maximum of 2048 characters.
+Check whether the URL is correct and contains a maximum of 2 × 1024 × 1024 characters.
 
 
 ## 17100003 Incorrect Resource Path
