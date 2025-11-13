@@ -1,4 +1,10 @@
 # ArkUI_ActiveChildrenInfo
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ```
 typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
