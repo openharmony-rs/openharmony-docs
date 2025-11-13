@@ -23882,7 +23882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets",
 				"functions":[
 					{
-						"end_line":169,
+						"end_line":171,
 						"name":"age_friendly_tab",
 						"start_line":16
 					}
