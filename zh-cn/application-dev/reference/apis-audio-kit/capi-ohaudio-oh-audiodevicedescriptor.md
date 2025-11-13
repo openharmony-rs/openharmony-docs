@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioDeviceDescriptor OH_AudioDeviceDescriptor
+```
+
 ## 概述
 
 声明音频设备描述符。该实例用于获取更多音频设备详细信息属性。

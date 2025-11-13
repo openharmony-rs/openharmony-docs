@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioVolumeManager OH_AudioVolumeManager
+```
+
 ## 概述
 
 声明音频音量管理器。音频音量管理器提供多种函数，供开发人员获取系统音量信息。

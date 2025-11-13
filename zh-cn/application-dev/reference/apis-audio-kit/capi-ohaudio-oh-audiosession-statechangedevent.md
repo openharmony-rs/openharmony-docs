@@ -5,6 +5,10 @@
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct {...} OH_AudioSession_StateChangedEvent
+```
 ## 概述
 
 音频会话状态变更事件。

@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioRendererStruct OH_AudioRenderer
+```
+
 ## 概述
 
 声明输出音频流。输出音频流的实例被用来播放音频数据。
