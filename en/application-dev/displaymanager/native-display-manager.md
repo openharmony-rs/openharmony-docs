@@ -46,7 +46,9 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 
 ## Including Header Files
 
-```c++
+<!-- @[import_display_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <window_manager/oh_display_info.h>
 #include <window_manager/oh_display_manager.h>
 #include <hilog/log.h>
@@ -56,109 +58,90 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 
 1. Call **OH_NativeDisplayManager_GetDefaultDisplayRotation** to obtain the rotation angle of the default display.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_info.h>
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info info)
-   {
-       NativeDisplayManager_Rotation displayRotation;
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDefaultDisplayRotation(&displayRotation);
-       if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-           napi_value rotation;
-           napi_create_int32(env, displayRotation, &rotation);
-           return rotation;
-       } else {
-           napi_value errorCode;
-           napi_create_int32(env, errCode, &errorCode);
-           return errorCode;  
-       }
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-          {"getDisplayRotation", nullptr, GetDefaultDisplayRotation, nullptr, nullptr, nullptr, napi_default, nullptr},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
+    <!-- @[get_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info info)
+    {
+        NativeDisplayManager_Rotation displayRotation;
+        NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDefaultDisplayRotation(&displayRotation);
+        if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
+            napi_value rotation;
+            napi_create_int32(env, displayRotation, &rotation);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "rotation=%{public}d", displayRotation);
+            return rotation;
+        } else {
+            napi_value errorCode;
+            napi_create_int32(env, errCode, &errorCode);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                "GetDefaultDisplayRotation errCode=%{public}d", errCode);
+            return errorCode;
+        }
+    }
+    ```
 
 2. Call **OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo** to obtain the cutout information of the default display. Call **OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo** to destroy the cutout information.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_info.h>
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_info info)
-   {
-       NativeDisplayManager_CutoutInfo *cutOutInfo = NULL;
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(&cutOutInfo);
-       OH_LOG_INFO(LOG_APP, "GetDefaultCutoutInfo errCode=%{public}d", errCode);
-       if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-           if (cutOutInfo != NULL && cutOutInfo->boundingRectsLength != 0) {
-               OH_LOG_INFO(LOG_APP, "GetDefaultCutoutInfo cutOutInfo length=%{public}d", cutOutInfo->boundingRectsLength);
-               for (int i = 0; i < cutOutInfo->boundingRectsLength; i++) {
-                   OH_LOG_INFO(LOG_APP, "cutOutInfo[%{public}d]=[%{public}d %{public}d %{public}d %{public}d]",
-                       i, cutOutInfo->boundingRects[i].left, cutOutInfo->boundingRects[i].top,
-                       cutOutInfo->boundingRects[i].width, cutOutInfo->boundingRects[i].height);
-               }
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall left rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.left.left, cutOutInfo->waterfallDisplayAreaRects.left.top,
-               cutOutInfo->waterfallDisplayAreaRects.left.width, cutOutInfo->waterfallDisplayAreaRects.left.height);
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall top rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.top.left, cutOutInfo->waterfallDisplayAreaRects.top.top,
-               cutOutInfo->waterfallDisplayAreaRects.top.width, cutOutInfo->waterfallDisplayAreaRects.top.height);
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall right rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.right.left, cutOutInfo->waterfallDisplayAreaRects.right.top,
-               cutOutInfo->waterfallDisplayAreaRects.right.width, cutOutInfo->waterfallDisplayAreaRects.right.height);
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall bottom rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.bottom.left, cutOutInfo->waterfallDisplayAreaRects.bottom.top,
-               cutOutInfo->waterfallDisplayAreaRects.bottom.width, cutOutInfo->waterfallDisplayAreaRects.bottom.height);            
-           }
-           napi_value boundingRectsLength;
-           napi_create_int32(env, cutOutInfo->boundingRectsLength, &boundingRectsLength);
-           OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(cutOutInfo);   
-           return boundingRectsLength;
-       } else {
-           napi_value errorCode;
-           napi_create_int32(env, errCode, &errorCode);
-           return errorCode;  
-       }
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-           {"getCutoutInfo", nullptr, CreateDefaultDisplayCutoutInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
-
-
+    <!-- @[get_cutout_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_info info)
+    {
+        NativeDisplayManager_CutoutInfo *cutOutInfo = NULL;
+        NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(&cutOutInfo);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "GetDefaultCutoutInfo errCode=%{public}d", errCode);
+        if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
+            if (cutOutInfo != NULL && cutOutInfo->boundingRectsLength != 0) {
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                    "GetDefaultCutoutInfo cutOutInfo length=%{public}d", cutOutInfo->boundingRectsLength);
+                for (int i = 0; i < cutOutInfo->boundingRectsLength; i++) {
+                    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                        "cutOutInfo[%{public}d]=[%{public}d %{public}d %{public}d %{public}d]",
+                        i, cutOutInfo->boundingRects[i].left, cutOutInfo->boundingRects[i].top,
+                        cutOutInfo->boundingRects[i].width, cutOutInfo->boundingRects[i].height);
+                }
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                    "cutOutInfo waterfall left rect=[%{public}d %{public}d %{public}d %{public}d]",
+                    cutOutInfo->waterfallDisplayAreaRects.left.left, cutOutInfo->waterfallDisplayAreaRects.left.top,
+                    cutOutInfo->waterfallDisplayAreaRects.left.width, cutOutInfo->waterfallDisplayAreaRects.left.height);
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                    "cutOutInfo waterfall top rect=[%{public}d %{public}d %{public}d %{public}d]",
+                    cutOutInfo->waterfallDisplayAreaRects.top.left, cutOutInfo->waterfallDisplayAreaRects.top.top,
+                    cutOutInfo->waterfallDisplayAreaRects.top.width, cutOutInfo->waterfallDisplayAreaRects.top.height);
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                    "cutOutInfo waterfall right rect=[%{public}d %{public}d %{public}d %{public}d]",
+                    cutOutInfo->waterfallDisplayAreaRects.right.left, cutOutInfo->waterfallDisplayAreaRects.right.top,
+                    cutOutInfo->waterfallDisplayAreaRects.right.width, cutOutInfo->waterfallDisplayAreaRects.right.height);
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                    "cutOutInfo waterfall bottom rect=[%{public}d %{public}d %{public}d %{public}d]",
+                    cutOutInfo->waterfallDisplayAreaRects.bottom.left,
+                    cutOutInfo->waterfallDisplayAreaRects.bottom.top,
+                    cutOutInfo->waterfallDisplayAreaRects.bottom.width,
+                    cutOutInfo->waterfallDisplayAreaRects.bottom.height);
+            }
+            napi_value boundingRectsLength;
+            napi_create_int32(env, cutOutInfo->boundingRectsLength, &boundingRectsLength);
+            OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(cutOutInfo);
+            return boundingRectsLength;
+        } else {
+            napi_value errorCode;
+            napi_create_int32(env, errCode, &errorCode);
+            return errorCode;
+        }
+    }
+    ```
 
 ## Listening for Display Status Changes
 
 Call **OH_NativeDisplayManager_RegisterDisplayChangeListener** to register a listener for display status changes, including the rotation, resolution, refresh rate, and DPI changes. Call **OH_NativeDisplayManager_UnregisterDisplayChangeListener** to cancel the listening for the display status changes.
 
-```c++
-#include "napi/native_api.h"
-#include <window_manager/oh_display_info.h>
-#include <window_manager/oh_display_manager.h>
-#include <hilog/log.h>
+<!-- @[register_display_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 void DisplayChangeCallback(uint64_t displayId)
 {
-    OH_LOG_INFO(LOG_APP, "DisplayChangeCallback displayId=%{public}lu.", displayId);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "DisplayChangeCallback displayId=%{public}lu.", displayId);
 }
 
 static napi_value RegisterDisplayChangeListener(napi_env env, napi_callback_info info)
@@ -166,8 +149,8 @@ static napi_value RegisterDisplayChangeListener(napi_env env, napi_callback_info
     uint32_t listenerIndex;
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayChangeListener(
         DisplayChangeCallback, &listenerIndex);
-    OH_LOG_INFO(LOG_APP, "RegisterDisplayChangeListener listenerIndex =%{public}d errCode=%{public}d.",
-        listenerIndex, errCode);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "RegisterDisplayChangeListener listenerIndex =%{public}d errCode=%{public}d.", listenerIndex, errCode);
     if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
         napi_value registerIndex;
         napi_create_int32(env, listenerIndex, &registerIndex);
@@ -175,7 +158,7 @@ static napi_value RegisterDisplayChangeListener(napi_env env, napi_callback_info
     } else {
         napi_value errorCode;
         napi_create_int32(env, errCode, &errorCode);
-        return errorCode;  
+        return errorCode;
     }
 }
 
@@ -185,114 +168,193 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
     napi_value args[1] = { nullptr };
 
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
-    OH_LOG_INFO(LOG_APP, "UnregisterDisplayChangeListener listenerIndex =%{public}d.", listenerIndex);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "UnregisterDisplayChangeListener listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayChangeListener(listenerIndex);
-    OH_LOG_INFO(LOG_APP, "UnregisterDisplayChangeListener errCode=%{public}d.", errCode);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "UnregisterDisplayChangeListener errCode=%{public}d.", errCode);
     napi_value errorCode;
     napi_create_int32(env, errCode, &errorCode);
     return errorCode;
 }
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
-    napi_property_descriptor desc[] = {
-        {"registerDisplayChange", nullptr, RegisterDisplayChangeListener, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"unregisterDisplayChange", nullptr, UnregisterDisplayChangeListener, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
 ```
 
 ## Listening for Folded/Unfolded State Changes
 
 1. Call **OH_NativeDisplayManager_IsFoldable** to check whether a device is foldable.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   static napi_value IsFoldable(napi_env env, napi_callback_info info)
-   {
-       bool isFoldDevice = OH_NativeDisplayManager_IsFoldable();
-       OH_LOG_INFO(LOG_APP, "IsFoldable isFoldDevice =%{public}d.", isFoldDevice);
-       napi_value isFold;
-       napi_get_boolean(env, isFoldDevice, &isFold);
-       return isFold;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-           {"checkIsFoldDevice", nullptr, IsFoldable, nullptr, nullptr, nullptr, napi_default, nullptr},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
+    <!-- @[get_foldable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value IsFoldable(napi_env env, napi_callback_info info)
+    {
+        bool isFoldDevice = OH_NativeDisplayManager_IsFoldable();
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "IsFoldable isFoldDevice =%{public}d.", isFoldDevice);
+        napi_value isFold;
+        napi_get_boolean(env, isFoldDevice, &isFold);
+        return isFold;
+    }
+    ```
+ 
+
 2. Call **OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener** to register a listener for folded/unfolded state changes of the display. Call **OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener** to cancel the listening for the folded/unfolded state changes.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_info.h>
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   void FoldDisplayModeChangeCallback(NativeDisplayManager_FoldDisplayMode displayMode)
-   {
-       OH_LOG_INFO(LOG_APP, "displayMode=%{public}d.", displayMode);
-   }
-   
-   static napi_value RegisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
-   {
-       uint32_t listenerIndex = 0;
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(
-           FoldDisplayModeChangeCallback, &listenerIndex);
-       OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d errCode=%{public}d.",
-           listenerIndex, errCode);
-       if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-           napi_value registerIndex;
-           napi_create_int32(env, listenerIndex, &registerIndex);
-           return registerIndex;
-       } else {
-           napi_value errorCode;
-           napi_create_int32(env, errCode, &errorCode);
-           return errorCode;  
-       }
-   }
-   
-   static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
-   {
-       size_t argc = 1;
-       napi_value args[1] = { nullptr };
-       uint32_t listenerIndex;
-       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-       napi_get_value_uint32(env, args[0], &listenerIndex);
-       OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(listenerIndex);
-       OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
-       napi_value errorCode;
-       napi_create_int32(env, errCode, &errorCode);
-       return errorCode;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-       { "registerFoldDisplayModeChange", nullptr, RegisterFoldDisplayModeChangeListener, nullptr, nullptr, nullptr,
-           napi_default, nullptr },
-       { "unregisterFoldDisplayModeChange", nullptr, UnregisterFoldDisplayModeChangeListener, nullptr, nullptr,
-           nullptr, napi_default, nullptr },
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
+    <!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    void FoldDisplayModeChangeCallback(NativeDisplayManager_FoldDisplayMode displayMode)
+    {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "displayMode=%{public}d.", displayMode);
+    }
+    
+    static napi_value RegisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
+    {
+        uint32_t listenerIndex = 0;
+        NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(
+            FoldDisplayModeChangeCallback, &listenerIndex);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d errCode=%{public}d.",
+            listenerIndex, errCode);
+        if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
+            napi_value registerIndex;
+            napi_create_int32(env, listenerIndex, &registerIndex);
+            return registerIndex;
+        } else {
+            napi_value errorCode;
+            napi_create_int32(env, errCode, &errorCode);
+            return errorCode;
+        }
+    }
+    
+    static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1] = { nullptr };
+        uint32_t listenerIndex;
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+        napi_get_value_uint32(env, args[0], &listenerIndex);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d.", listenerIndex);
+        NativeDisplayManager_ErrorCode errCode =
+            OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(listenerIndex);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "errorCode=%{public}d", errCode);
+        napi_value errorCode;
+        napi_create_int32(env, errCode, &errorCode);
+        return errorCode;
+    }
+    ```
+
+## Registering Functions
+
+<!-- @[register_napi_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        {"getDisplayRotation", nullptr, GetDefaultDisplayRotation, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getCutoutInfo", nullptr, CreateDefaultDisplayCutoutInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerDisplayChange", nullptr, RegisterDisplayChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unregisterDisplayChange", nullptr, UnregisterDisplayChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"checkIsFoldDevice", nullptr, IsFoldable, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerFoldDisplayModeChange", nullptr, RegisterFoldDisplayModeChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unregisterFoldDisplayModeChange", nullptr, UnregisterFoldDisplayModeChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+```
+
+## Registering Modules
+
+<!-- @[register_display_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_module displayModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "nativedisplay",
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
+    napi_module_register(&displayModule);
+}
+```
+
+``` C++
+static napi_module displayModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "nativedisplay",
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
+    napi_module_register(&displayModule);
+}
+```
+
+## Calling the Functions in the index.ets File
+
+<!-- @[call_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+private callGetDisplayRotation(): void {
+  this.promptAction.openToast({ message: 'Call getDisplayRotation' }).catch((error: Error) => {
+    console.error(`callGetDisplayRotation error ${JSON.stringify(error)}`);
+  }).then(() => {
+    console.info(`get rotation value is: ${displayNapi.getDisplayRotation()}`);
+  });
+}
+
+private callFoldableCallback(): void {
+  this.promptAction.openToast({ message: 'Call register displayMode' }).catch((error: Error) => {
+    console.error(`callFoldableCallback error ${JSON.stringify(error)}`);
+  }).then(() => {
+    let registerIndex = displayNapi.registerFoldDisplayModeChange();
+    console.info(`register foldable value is: ${registerIndex}`);
+    console.info(`unregister foldable value is: ${displayNapi.unregisterFoldDisplayModeChange(registerIndex)}`);
+  });
+}
+
+private callGetCutoutInfo(): void {
+  this.promptAction.openToast({ message: 'Call getCutoutInfo' }).catch((error: Error) => {
+    console.error(`callGetCutoutInfo error ${JSON.stringify(error)}`);
+  }).then(() => {
+    console.info(`cutoutInfo length is: ${displayNapi.getCutoutInfo()}`);
+  });
+}
+
+private callDealListenCallback(): void {
+  this.promptAction.openToast({ message: 'Call registerDisplayChange' }).catch((error: Error) => {
+    console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
+  }).then(() => {
+    let registerIndex = displayNapi.registerDisplayChange();
+    console.info(`register display change value is: ${registerIndex}`);
+    console.info(`unregister display change value is: ${displayNapi.unregisterDisplayChange(registerIndex)}`);
+  });
+}
+
+private callDealFoldableDevice(): void {
+  this.promptAction.openToast({ message: 'Call dealFoldableDevice' }).catch((error: Error) => {
+    console.error(`callDealFoldableDevice error ${JSON.stringify(error)}`);
+  }).then(() => {
+    console.info(`fold device is: ${displayNapi.checkIsFoldDevice()}`);
+  });
+}
+```

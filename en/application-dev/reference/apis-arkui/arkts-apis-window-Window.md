@@ -524,7 +524,9 @@ try {
 
 moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): Promise&lt;void&gt;
 
-Moves this window. This API uses a promise to return the result. A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
+Moves this window to the specified position. This API uses a promise to return the result. You can use the **moveConfiguration** parameter to specify the target display ID for the window movement.
+
+A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
 
 > **NOTE**
 >
@@ -652,7 +654,9 @@ try {
 
 moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration): Promise&lt;void&gt;
 
-Moves this window based on the coordinates. This API uses a promise to return the result. A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
+Moves this window to the specified position based on the coordinates. This API uses a promise to return the result. You can use the **moveConfiguration** parameter to specify the target display ID for the window movement.
+
+A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
 
 > **NOTE**
 >
@@ -717,7 +721,7 @@ try {
 
 moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
-Moves the window based on the global coordinate system. (In extended screen scenarios, the top-left corner of the primary screen is used as the origin.) This API uses a promise to return the result.
+Moves this window based on the global coordinate system. (In extended screen scenarios, the top-left corner of the primary screen is used as the origin.) This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1477,11 +1481,11 @@ try {
 
 setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolean): Promise&lt;void&gt;
 
-Sets whether to show the window title bar and dock bar when the cursor hovers over the hot zone while the main window is in full-screen mode. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Sets whether to show the window title bar and dock bar when the cursor hovers over the hot zone while the main window is in full-screen mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -1558,7 +1562,11 @@ Sets whether the main window layout or the child window layout is immersive. Thi
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Device behavior differences**: For versions earlier than API version 14, this API can be properly called on all devices. Starting from API version 14, if this API is called on 2-in-1 devices and tablets in [free windows](../../windowmanager/window-terminology.md#free-windows) mode, it has no effect and does not report errors. However, it can be properly called on other device types.
+**Device behavior differences**
+
+For versions earlier than API version 14, this API can be properly called on all devices.
+
+Starting from API version 14, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state, but takes effect when the device exits that state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -1627,7 +1635,11 @@ Sets whether to enable the immersive layout for the main window. This API does n
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Device behavior differences**: For versions earlier than API version 14, this API can be properly called on all devices. Starting from API version 14, if this API is called on 2-in-1 devices and tablets in [free windows](../../windowmanager/window-terminology.md#free-windows) mode, it has no effect and does not report errors. However, it can be properly called on other device types.
+**Device behavior differences**
+
+For versions earlier than API version 14, this API can be properly called on all devices.
+
+Starting from API version 14, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -1730,9 +1742,9 @@ try {
 
 setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
-Sets whether to enable delayed raising for the window. This API takes effect only for the main window and child windows. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Sets whether to enable delayed raising for the window. This API takes effect only for the main window and child windows.
 
-If this API is not called or **false** is passed, the main window and child windows are raised immediately upon a left mouse button press by default.<br>
+If this API is not called or **false** is passed, the main window and child windows are raised immediately upon a left mouse button press by default.
 
 When this API is called to enable delayed raising, in cross-window drag-and-drop situations, the window that contains the draggable component does not raise until the left mouse button is released, rather than raising immediately when the button is pressed.
 
@@ -1740,7 +1752,7 @@ When this API is called to enable delayed raising, in cross-window drag-and-drop
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -1852,7 +1864,11 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: For versions earlier than API version 12, this API can be properly called on all devices. Starting from API version 12, if this API is called on 2-in-1 devices and tablets in [free windows](../../windowmanager/window-terminology.md#free-windows) mode, it has no effect and does not report errors. However, it can be properly called on other device types.
+**Device behavior differences**
+
+For versions earlier than API version 12, this API can be properly called on all devices.
+
+Starting from API version 12, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -1924,7 +1940,11 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Device behavior differences**: For versions earlier than API version 12, this API can be properly called on all devices. Starting from API version 12, if this API is called on 2-in-1 devices and tablets in [free windows](../../windowmanager/window-terminology.md#free-windows) mode, it has no effect and does not report errors. However, it can be properly called on other device types.
+**Device behavior differences**
+
+For versions earlier than API version 12, this API can be properly called on all devices.
+
+Starting from API version 12, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -1997,7 +2017,7 @@ This API does not take effect when it is called by a child window. The setting d
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Device behavior differences**: If this API is called on 2-in-1 devices and tablets in [free windows](../../windowmanager/window-terminology.md#free-windows) mode, it has no effect and does not report errors. However, it can be properly called on other device types.
+**Device behavior differences**: This API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -2132,7 +2152,7 @@ Setting the status bar text color is not supported for child windows. Calling th
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
-**Device behavior differences**: If this API is called on 2-in-1 devices and tablets in [free windows](../../windowmanager/window-terminology.md#free-windows) mode, it has no effect and does not report errors. However, it can be properly called on other device types.
+**Device behavior differences**: This API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -4957,7 +4977,7 @@ try {
 
 on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
-Subscribes to the event indicating that the main window or child window will be closed. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. This event is triggered only when the user clicks the close button in the system-provided title bar to close the window. It is not triggered when the window is closed in other ways.
+Subscribes to the event indicating that the main window or child window will be closed. This event is triggered only when the user clicks the close button in the system-provided title bar to close the window. It is not triggered when the window is closed in other ways.
 
 The callback function in this API is executed synchronously. For synchronous close events of child windows, refer to [on('subWindowClose')](#onsubwindowclose12). For synchronous close events of the main window, refer to [on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14).
 
@@ -4965,7 +4985,7 @@ The callback function in this API is executed synchronously. For synchronous clo
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -5018,13 +5038,13 @@ export default class EntryAbility extends UIAbility {
 
 off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
-Unsubscribes from the event indicating that the main window or child window will be closed. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Unsubscribes from the event indicating that the main window or child window will be closed.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -5702,14 +5722,14 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the window brightness for the main window. This API uses an asynchronous callback to return the result.
+Sets the screen brightness for the main window on the current device. This API uses an asynchronous callback to return the result. It cannot set the brightness for virtual screens (such as the screen used for casting).
 
-To prevent timing conflicts, you are not advised to call this API when the window goes into the background.
+When the window moves to the background, the system restores the screen brightness to the level before the brightness is set. You are not advised to call this API simultaneously, as it may cause timing issues.
 
 > **NOTE**
 >
 > - For non-2-in-1 devices, when the window's brightness setting is active, Control Panel cannot change the overall screen brightness. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel to adjust the screen brightness again.
-> - For 2-in-1 devices, prior to API version 14, both Control Panel and shortcut keys are blocked from changing the screen brightness when the window's brightness setting is active. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel and shortcut keys to adjust the screen brightness again. From API version 14 onward, the window brightness synchronizes with the system screen brightness, and changes can be made through this API, Control Panel, or shortcut keys.
+> - For 2-in-1 devices, prior to API version 14, both Control Panel and shortcut keys are blocked from changing the screen brightness when the window's brightness setting is active. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel and shortcut keys to adjust the screen brightness again. Starting from API version, the window brightness synchronizes with the system screen brightness, and changes can be made through this API, Control Panel, or shortcut keys.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -5773,14 +5793,14 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
-Sets the window brightness for the main window. This API uses a promise to return the result.
+Sets the screen brightness for the main window on the current device. This API uses a promise to return the result. It cannot set the brightness for virtual screens (such as the screen used for casting).
 
-To prevent timing conflicts, you are not advised to call this API when the window goes into the background.
+When the window moves to the background, the system restores the screen brightness to the level before the brightness is set. You are not advised to call this API simultaneously, as it may cause timing issues.
 
 > **NOTE**
 >
 > - For non-2-in-1 devices, when the window's brightness setting is active, Control Panel cannot change the overall screen brightness. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel to adjust the screen brightness again.
-> - For 2-in-1 devices, prior to API version 14, both Control Panel and shortcut keys are blocked from changing the screen brightness when the window's brightness setting is active. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel and shortcut keys to adjust the screen brightness again. From API version 14 onward, the window brightness synchronizes with the system screen brightness, and changes can be made through this API, Control Panel, or shortcut keys.
+> - For 2-in-1 devices, prior to API version 14, both Control Panel and shortcut keys are blocked from changing the screen brightness when the window's brightness setting is active. If the input value is **-1** or the window goes into the background, the window's brightness resets to match the system's, allowing Control Panel and shortcut keys to adjust the screen brightness again. Starting from API version 14, the window brightness synchronizes with the system screen brightness, and changes can be made through this API, Control Panel, or shortcut keys.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -6829,13 +6849,13 @@ promise.then(() => {
 ## maximize<sup>12+</sup>
 maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
-Maximizes the main window. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. The main window can use this API to maximize. For child windows, you need to set **maximizeSupported** to **true** when creating the window and then call this API to maximize. This API uses a promise to return the result.
+Maximizes the window. The main window can use this API to maximize. For child windows, you need to set **maximizeSupported** to **true** when creating the window and then call this API to maximize. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API has no effect and does not report errors.
 
 **Parameters**
 
@@ -6989,13 +7009,13 @@ try {
 
 recover(): Promise&lt;void&gt;
 
-Restores the main window from the full-screen, maximized, or split-screen mode to a floating window (**window.WindowStatusType.FLOATING** mode), and restores the window size and position to those before the full-screen, maximized, or split-screen mode is entered. If the main window is already in the floating window mode, nothing will happen. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. This API uses a promise to return the result.
+Restores the main window from the full-screen, maximized, or split-screen mode to a floating window (**window.WindowStatusType.FLOATING** mode), and restores the window size and position to those before the full-screen, maximized, or split-screen mode is entered. If the main window is already in the floating window mode, nothing will happen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API has no effect and does not report errors.
 
 **Return value**
 
@@ -7198,7 +7218,7 @@ try {
 
 setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;WindowLimits&gt;
 
-Sets the size limits for this application window. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Sets the size limits for this application window. This API uses a promise to return the result.
 
 By default, system size limits are provided. They are determined by the product configuration and cannot be modified. If **setWindowLimits** has not been called, you can call [getWindowLimits](#getwindowlimits11) to obtain the system size limits.
 
@@ -7206,7 +7226,11 @@ By default, system size limits are provided. They are determined by the product 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: In versions earlier than API version 19, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned. Since API version 19, this API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+Prior to API version 19, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+Starting from API version 19, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -7406,13 +7430,13 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 getWindowDecorVisible(): boolean
 
-Checks whether the title bar of this window is visible. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
+Checks whether the title bar of this window is visible. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Return value**
 
@@ -7453,7 +7477,7 @@ Sets the window title. This API uses a promise to return the result. The setting
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window). If the device does not support freeform windows, error code 1300002 or 801 is returned.
 
 **Parameters**
 
@@ -7498,13 +7522,13 @@ try {
 
 setWindowTitleMoveEnabled(enabled: boolean): void
 
-Enables or disables the capability to move the window (either main window or child window) by dragging its title bar and to maximize the window with a double-click. When this capability is disabled, you can use [startMoving()](#startmoving14) to move the window by dragging in the application's hot zone and use [maximize()](#maximize12) to maximize the window. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
+Enables or disables the capability to move the window (either main window or child window) by dragging its title bar and to maximize the window with a double-click. When this capability is disabled, you can use [startMoving()](#startmoving14) to move the window by dragging in the application's hot zone and use [maximize()](#maximize12) to maximize the window. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -7714,7 +7738,7 @@ When the main window transitions into full-screen mode, hovering the mouse over 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window). If the device does not support freeform windows, this API has no effect and does not report errors.
 
 **Parameters**
 
@@ -7750,13 +7774,17 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 
 setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
-Sets the button style of the decoration bar. The setting takes effect only for the main window and child windows. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
+Sets the button style of the decoration bar. The setting takes effect only for the main window and child windows. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: In versions earlier than API version 18, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned. Since API version 18, this API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+Prior to API version 18, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+Starting from API version 18, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -7810,13 +7838,17 @@ export default class EntryAbility extends UIAbility {
 
 getDecorButtonStyle(): DecorButtonStyle
 
-Obtains the button style of the decoration bar. The setting takes effect only for the main window and child windows. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Obtains the button style of the decoration bar. The setting takes effect only for the main window and child windows.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: In versions earlier than API version 18, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned. Since API version 18, this API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+Prior to API version 18, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+Starting from API version 18, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Return value**
 
@@ -7850,13 +7882,13 @@ try {
 
 getWindowDecorHeight(): number
 
-Obtains the height of the title bar of this window. This API takes effect for the window that has a title bar and a three-button area and is in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
+Obtains the height of the title bar of this window. This API takes effect for the window that has a title bar and a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent9) or [setUIContent()](#setuicontent9) takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. It is unavailable on other device types.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window). If the device does not support freeform windows, this API has no effect and does not report errors.
 
 **Return value**
 
@@ -8019,7 +8051,7 @@ try {
 
 createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;Window&gt;
 
-Creates a child window under the main window, another child window, or floating window. This API uses a promise to return the result. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Creates a child window under the main window, another child window, or floating window. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -8027,7 +8059,7 @@ Creates a child window under the main window, another child window, or floating 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, **undefined** is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, undefined is returned.
 
 **Parameters**
 
@@ -8182,13 +8214,13 @@ try {
 
 setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVisible: boolean, isCloseButtonVisible?: boolean): void
 
-Shows or hides the maximize, minimize, and close buttons on the title bar of the main window. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Shows or hides the maximize, minimize, and close buttons on the title bar of the main window.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -8248,7 +8280,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 
-Places the main window above all the other windows of the application. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Places the main window above all the other windows of the application. This API uses a promise to return the result.
 
 Applications use custom shortcut keys to pin or unpin the main window.
 
@@ -8256,7 +8288,7 @@ Applications use custom shortcut keys to pin or unpin the main window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Required permissions**: ohos.permission.WINDOW_TOPMOST
 
@@ -8845,7 +8877,7 @@ struct Index {
 
 startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 
-Specifies the cursor position within the window and moves the window. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Specifies the cursor position within the window and moves the window. This API uses a promise to return the result.
 
 When windows within the same application are split or merged, and the mouse is pressed down to move the new window directly, the cursor may move outside the window if it moves too quickly. This API allows you to set the cursor position within the window during movement. It first adjusts the window to the cursor position before starting to move the window.
 
@@ -8855,7 +8887,7 @@ In click-and-drag scenarios, if you do not want the drag to start as soon as you
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -8955,11 +8987,11 @@ struct Index {
 
 stopMoving(): Promise&lt;void&gt;
 
-Stops window movement when a window is being dragged. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Stops window movement when a window is being dragged. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -9195,7 +9227,7 @@ Before calling this API, you can call [getWindowCornerRadius()](#getwindowcorner
 > **NOTE**
 >
 > - Prior to API version 20, <!--RP6-->this API can be used only on 2-in-1 devices.<!--RP6End-->
-> - From API version 20 onwards, this API can be used on phones, 2-in-1 devices, and tablets.
+> - Starting from API version 20, this API can be used on phones, 2-in-1 devices, and tablets.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -9287,7 +9319,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 Sets the exclusive highlight property for the window. When a window set to exclusive highlight gains focus, other windows in the current parent-child window chain that are in the highlighted state will lose their highlighted state. This API uses a promise to return the result.
 
-This API does not take effect for the main window, modal window, and dialog boxes.
+This API does not take effect for the main window or modal window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -9380,7 +9412,7 @@ try {
 
 setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 
-Sets whether a child window can span multiple screens and be simultaneously displayed while its parent window is being dragged or resized. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. This API uses a promise to return the result.
+Sets whether a child window can span multiple screens and be simultaneously displayed while its parent window is being dragged or resized. This API uses a promise to return the result.
 
 By default, when a child window follows its parent window's layout changes (by using [moveWindowTo()](#movewindowto9)), it does not support spanning multiple screens and being simultaneously displayed.
 
@@ -9388,7 +9420,7 @@ However, calling this API on the child window enables it to span multiple screen
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -10152,7 +10184,11 @@ Sets whether the main window layout or the child window layout is immersive. Thi
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Device behavior differences**: For versions earlier than API version 14, this API can be properly called on all devices. Starting from API version 14, if this API is called on 2-in-1 devices and tablets in [free windows](../../windowmanager/window-terminology.md#free-windows) mode, it has no effect and does not report errors. However, it can be properly called on other device types.
+**Device behavior differences**
+
+For versions earlier than API version 14, this API can be properly called on all devices.
+
+Starting from API version 14, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -12108,5 +12144,3 @@ promise.then(() => {
   console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<!--no_check-->
