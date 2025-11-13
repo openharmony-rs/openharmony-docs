@@ -348,7 +348,7 @@ const DOMAIN = 0x0000;
 struct Index {
   build() {
     RelativeContainer() {
-      Text('Caculate 20vp to px')
+      Text('Calculate 20vp to px')
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },

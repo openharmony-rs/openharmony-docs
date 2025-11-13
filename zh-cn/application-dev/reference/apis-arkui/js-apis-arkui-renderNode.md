@@ -2830,7 +2830,7 @@ get lengthMetricsUnit(): LengthMetricsUnit
 ```ts
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
-import { LengthMetricsUnit } from '@ohos.arkui.node';
+import { LengthMetricsUnit } from '@kit.ArkUI';
 
 // 继承RenderNode，设置RenderNode各个属性使用的单位
 class BaseRenderNode extends RenderNode {
