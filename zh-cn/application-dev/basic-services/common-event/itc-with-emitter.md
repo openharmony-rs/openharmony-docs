@@ -61,4 +61,9 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > - 使用[off](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteroff)接口取消某个事件订阅后，已通过[emit](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteremit)接口发布但尚未被执行的事件将被取消。
 
    <!-- @[emitter_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 取消eventId为1的事件。
+   emitter.off(1);
+   ```
 
