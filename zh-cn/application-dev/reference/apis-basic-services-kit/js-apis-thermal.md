@@ -27,11 +27,11 @@ registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                           |
 | -------- | ---------------------------- | ---- | ------------------------------ |
-| callback | Callback&lt;ThermalLevel&gt; | 是   | 回调函数，返回变化后的热档位；该参数是一个函数类型。 |
+| callback | Callback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数，返回变化后的热档位；该参数是一个函数类型。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                           |
 | -------- | -------------------- | ---- | ---------------------------------------------- |
@@ -97,13 +97,12 @@ getLevel(): ThermalLevel
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
-**参数说明：** 该方法无参数。
 
 **返回值：**
 
 | 类型         | 说明         |
 | ------------ | ------------ |
-| ThermalLevel | 热档位信息。 |
+| [ThermalLevel](#thermallevel) | 热档位信息。 |
 
 **示例：**
 
@@ -122,11 +121,11 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                              | 必填 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;ThermalLevel&gt; | 是   | 回调函数。AsyncCallback只返回一个参数，为热档位信息。|
+| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数。AsyncCallback只返回一个参数，为热档位信息。|
 
 **示例：**
 
@@ -146,7 +145,7 @@ unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                           |
 | -------- | ------------------------- | ---- | ---------------------------------------------- |
@@ -170,13 +169,11 @@ getThermalLevel(): ThermalLevel
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
-**参数说明：** 该方法无参数。
-
 **返回值：**
 
 | 类型           | 说明     |
 | ------------ | ------ |
-| ThermalLevel | 热档位信息。 |
+| [ThermalLevel](#thermallevel) | 热档位信息。 |
 
 **示例：**
 
