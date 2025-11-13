@@ -1256,3 +1256,112 @@ class MyAbilityStage extends AbilityStage {
   }
 }
 ```
+
+## ApplicationContext.onInteropAbilityLifecycle<sup>22+</sup>
+
+onInteropAbilityLifecycle(callback: InteropAbilityLifecycleCallback): void
+
+注册监听应用内不同ArkTS环境下的UIAbility生命周期。仅支持主线程调用。
+
+只能在ArkTS-Sta中监听ArkTS-Dyn的UIAbility。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名                   | 类型     | 必填 | 说明                           |
+| ------------------------ | -------- | ---- | ------------------------------ |
+| callback | [InteropAbilityLifecycleCallback](js-apis-app-ability-interopAbilityLifecycleCallback.md) | 是   | 不同ArkTS环境下UIAbility生命周期变化时触发的回调方法。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { InteropAbilityLifecycleCallback, UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@ohos.base';
+
+// 声明UIAbility生命周期回调，需配置所有回调后才可以在ApplicationContext注册
+let interopAbilityLifecycleCallback: InteropAbilityLifecycleCallback = {
+  onAbilityCreate: (ability: Any) => {
+    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityCreate.`);
+  },
+  onWindowStageCreate: (ability: Any, windowStage: window.WindowStage) => {
+    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    console.info(`InteropAbilityLifecycleCallback ${abilityName} onWindowStageCreate.`);
+  },
+  onWindowStageDestroy: (ability: Any, windowStage: window.WindowStage) => {
+    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    console.info(`InteropAbilityLifecycleCallback ${abilityName} onWindowStageDestroy.`);
+  },
+  onAbilityDestroy: (ability: Any) => {
+    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityDestroy.`);
+  },
+  onAbilityForeground: (ability: Any) => {
+    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityForeground.`);
+  },
+  onAbilityBackground: (ability: Any) => {
+    let abilityName: string = ESValue.wrap(ability).getProperty('context').getProperty('abilityInfo').getProperty('name');
+    console.info(`InteropAbilityLifecycleCallback ${abilityName} onAbilityBackground.`);
+  },
+};
+
+export default class MyFirstAbility extends UIAbility {
+  onCreate() {
+    console.info('MyFirstAbility onCreate');
+    try {
+      // 通过ApplicationContext注册监听应用内生命周期
+      this.context.getApplicationContext().onInteropAbilityLifecycle(interopAbilityLifecycleCallback);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
+## ApplicationContext.offInteropAbilityLifecycle<sup>22+</sup>
+
+offInteropAbilityLifecycle(callback?: InteropAbilityLifecycleCallback): void
+
+取消应用内不同ArkTS环境下UIAbility生命周期的监听。仅支持主线程调用。
+
+只能在ArkTS-Sta中取消对ArkTS-Dyn的UIAbility的监听。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名        | 类型     | 必填 | 说明                       |
+| ------------- | -------- | ---- | -------------------------- |
+| callback | [InteropAbilityLifecycleCallback](js-apis-app-ability-interopAbilityLifecycleCallback.md) | 否   | 不同ArkTS环境下UIAbility生命周期变化时触发的回调方法。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@ohos.base';
+
+export default class MyFirstAbility extends UIAbility {
+  onDestroy() {
+    try {
+      // 通过ApplicationContext注销监听应用内生命周期
+      this.context.getApplicationContext().offInteropAbilityLifecycle();
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
