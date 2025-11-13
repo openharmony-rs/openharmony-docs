@@ -1677,7 +1677,7 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       let isLayoutFullScreen = true;
       try {
-        let promise = windowClass.setWindowLayoutFullScreen(isLayoutFullScreen);
+        let promise = windowClass!.setWindowLayoutFullScreen(isLayoutFullScreen);
         promise.then(() => {
           console.info('Succeeded in setting the window layout to full-screen mode.');
         }).catch((err: Error) => {
@@ -2040,7 +2040,7 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       let names: Array<'status' | 'navigation'> = [];
       try {
-        let promise = windowClass.setWindowSystemBarEnable(names);
+        let promise = windowClass!.setWindowSystemBarEnable(names);
         promise.then(() => {
           console.info('Succeeded in setting the system bar to be invisible.');
         }).catch((err: Error) => {
@@ -5967,28 +5967,15 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { ColorMetrics } from '@kit.ArkUI';
-
-let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError<void> | null) => {
-  let errCode = err?.code;
-  if (errCode) {
-    console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
-    return;
-  }
-  console.info('Succeeded in loading the content.');
-  let color1: string = '#00FF33';
-  let color2: ColorMetrics = ColorMetrics.numeric(0xff112233);
-  try {
-    windowClass?.setWindowBackgroundColor(color1);
-    windowClass?.setWindowBackgroundColor(color2);
-  } catch (exception) {
-    let error = exception as BusinessError;
-    console.error(`Failed to set the background color. Cause code: ${error.code}, message: ${error.message}`);
-  };
-});
+let color1: string = '#00FF33';
+let color2: ColorMetrics = ColorMetrics.numeric(0xff112233);
+try {
+  windowClass.setWindowBackgroundColor(color1);
+  windowClass.setWindowBackgroundColor(color2);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the background color. Cause code: ${error.code}, message: ${error.message}`);
+};
 ```
 
 ## setWindowShadowEnabled<sup>20+</sup>
@@ -6081,11 +6068,11 @@ ArkTS-Sta: setWindowBrightness(brightness: double, callback: AsyncCallback&lt;vo
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 22
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -6165,7 +6152,7 @@ export default class EntryAbility extends UIAbility {
       let brightness: double = 1.0;
       try {
         windowClass!.setWindowBrightness(brightness, (err: BusinessError<void> | null) => {
-          const errCode = err.code;
+          const errCode = err?.code;
           if (errCode) {
             console.error(`Failed to set the brightness. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
@@ -6859,14 +6846,14 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-windowClass.snapshot((err: BusinessError<void> | null, pixelMap: image.PixelMap) => {
+windowClass.snapshot((err: BusinessError<void> | null, pixelMap: image.PixelMap | undefined) => {
   const errCode = err?.code;
   if (errCode) {
     console.error(`Failed to snapshot window. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
-  console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
-  pixelMap.release(); // PixelMap使用完后及时释放内存
+  console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap?.getPixelBytesNumber());
+  pixelMap?.release(); // PixelMap使用完后及时释放内存
 });
 ```
 

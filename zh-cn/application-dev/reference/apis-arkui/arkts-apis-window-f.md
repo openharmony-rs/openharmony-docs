@@ -685,17 +685,11 @@ try {
   let displayId = 0;
   window.getWindowsByCoordinate(displayId).then((data) => {
     console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
-    }
   }).catch((err: Error) => {
     console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
   });
   window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
     console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
-    }
   }).catch((err: Error) => {
     console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
   });
@@ -755,7 +749,7 @@ try {
   let displayId = 0;
   let promise = window.getAllWindowLayoutInfo(displayId);
   promise.then((data) => {
-    console.info('Succeeded in obtaining all window layout info. Data: ' + JSON.stringify(data));
+    console.info(`Succeeded in obtaining all window layout info. Data: ${data}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
   });
