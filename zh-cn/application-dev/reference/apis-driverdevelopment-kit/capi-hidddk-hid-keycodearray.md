@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} Hid_KeyCodeArray
+```
+
 ## 概述
 
 键值属性数组。

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} Hid_RawDevInfo
+```
+
 ## 概述
 
 原始设备信息定义。
