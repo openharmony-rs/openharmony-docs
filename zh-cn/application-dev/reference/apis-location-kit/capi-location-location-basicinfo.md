@@ -6,6 +6,10 @@
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
 
+```
+typedef struct {...} Location_BasicInfo
+```
+
 ## 概述
 
 定义位置基本信息的结构体。
