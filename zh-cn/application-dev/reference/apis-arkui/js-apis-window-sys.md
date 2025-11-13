@@ -3137,9 +3137,9 @@ ArkTS-Sta: raiseMainWindowAboveTarget(windowId: int): Promise&lt;void&gt;
 | 1300004 | Unauthorized operation. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid Parameter range. 2. Invalid parameter length. |
 
-ArkTS-Dyn示例：
-
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
