@@ -1,7 +1,7 @@
 # OH_PixelmapNative
 
 ```
-typedef struct OH_PixelmapNative
+struct OH_PixelmapNative
 ```
 
 ## 概述

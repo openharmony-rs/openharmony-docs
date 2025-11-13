@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ```
-typedef struct {...} Asset_Value
+typedef union {...} Asset_Value
 ```
 
 ## 概述
