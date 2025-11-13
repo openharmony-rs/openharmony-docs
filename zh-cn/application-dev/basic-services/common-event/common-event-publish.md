@@ -30,27 +30,11 @@
 
 1. 导入模块。
    
-   ```ts
-   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-
-   const TAG: string = 'ProcessModel';
-   const DOMAIN_NUMBER: number = 0xFF00;
-   ```
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
 
 2. 传入需要发布的事件名称和回调函数，发布事件。
    
-   ```ts
-   // 发布公共事件，其中的event字段需要替换为实际的事件名称。
-   commonEventManager.publish('event', (err: BusinessError) => {
-     if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
-     } else {
-       //...
-       hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
-     }
-   });
-   ```
+   <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
 
 
 ## 发布携带信息的公共事件
@@ -59,34 +43,12 @@
 
 1. 导入模块。
    
-   ```ts
-   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-
-   const TAG: string = 'ProcessModel';
-   const DOMAIN_NUMBER: number = 0xFF00;
-   ```
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
 
 2. 构建需要发布的公共事件信息。
    
-   ```ts
-   // 公共事件相关信息
-   let options: commonEventManager.CommonEventPublishData = {
-     code: 1, // 公共事件的初始代码
-     data: 'initial data', // 公共事件的初始数据
-   };
-   ```
+   <!-- @[PublicEventInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
 
 3. 传入需要发布的事件名称、需要发布的指定信息和回调函数，发布事件。
    
-   ```ts
-   // 发布公共事件，其中的event字段需要替换为实际的事件名称。
-   commonEventManager.publish('event', options, (err: BusinessError) => {
-     if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
-     } else {
-       //...
-       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing common event.`);
-     }
-   });
-   ```
+   <!-- @[PublicEventCarryingInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
