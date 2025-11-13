@@ -6,8 +6,8 @@
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
 - ArkTS APIs<!--location-arkts-->
-  - [@ohos.geoLocationManager (Geolocation Manager)](js-apis-geoLocationManager.md)
-  - [@ohos.geoLocationManager (Geolocation Manager) (System API)] (js-apis-geoLocationManager-sys.md)
+  - [@ohos.geoLocationManager (Geolocation Manager)](js-apis-geoLocationManager.md)<!--Del-->
+  - [@ohos.geoLocationManager (Geolocation Manager) (System API)] (js-apis-geoLocationManager-sys.md)<!--DelEnd-->
   - [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](js-apis-app-ability-FenceExtensionAbility.md)
   - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext)](js-apis-app-ability-FenceExtensionContext.md)
   - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext) (System API)] (js-apis-app-ability-FenceExtensionContext-sys.md)
