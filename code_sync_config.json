@@ -15086,7 +15086,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonBrightness.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":90,
 						"name":"brightness_page",
 						"start_line":16
 					}
