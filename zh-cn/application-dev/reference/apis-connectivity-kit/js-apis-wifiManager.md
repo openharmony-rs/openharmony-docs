@@ -2919,14 +2919,14 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiStateChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活 |
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活。 |
 
 **错误码：**
 
@@ -2938,15 +2938,6 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-
-**状态改变事件的枚举：**
-
-| 枚举值 | 说明 |
-| -------- | -------- |
-| 0 | 未激活。 |
-| 1 | 已激活。 |
-| 2 | 激活中。 |
-| 3 | 去激活中。 |
 
 ## wifiManager.off('wifiStateChange')<sup>9+</sup>
 
@@ -2962,7 +2953,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -3029,15 +3020,6 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-**WIFI状态改变事件的枚举：**
-
-| 枚举值 | 说明 |
-| -------- | -------- |
-| 0 | 未激活。 |
-| 1 | 已激活。 |
-| 2 | 激活中。 |
-| 3 | 去激活中。 |
-
 ## wifiManager.offWifiStateChange<sup>22+</sup>
 
 offWifiStateChange(callback?: Callback&lt;int&gt;): void
@@ -3082,14 +3064,14 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiConnectionChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接 |
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接。 |
 
 **连接状态改变事件的枚举：**
 
@@ -3176,7 +3158,7 @@ onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接。 |
 
 **错误码：**
 
@@ -3353,7 +3335,7 @@ onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
 offWifiScanStateChange(callback?: Callback&lt;int&gt;): void
 
-取消注册wifi扫描状态改变事件。
+取消注册WIFI扫描状态改变事件。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3443,7 +3425,7 @@ onWifiRssiChange(callback: Callback&lt;int&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiRssiChange')<sup>22+</sup>
+## wifiManager.off('wifiRssiChange')<sup>9+</sup>
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
@@ -3579,7 +3561,7 @@ onHotspotStateChange(Callback: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活 |
+| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活。 |
 
 **热点状态改变事件的枚举：**
 
@@ -3696,7 +3678,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"p2pStateChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回1：空闲，2：启动中，3：已启动，4：正在关闭，5：已关闭 |
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回1：空闲，2：启动中，3：已启动，4：正在关闭，5：已关闭。 |
 
 **P2P状态改变事件的枚举：**
 
@@ -3745,7 +3727,7 @@ onP2pStateChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回1：空闲，2：启动中，3：已启动，4：正在关闭，5：已关闭 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回1：空闲，2：启动中，3：已启动，4：正在关闭，5：已关闭。 |
 
 **错误码：**
 
@@ -3823,7 +3805,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pConnectionChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息 |
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息。 |
 
 **错误码：**
 
@@ -3854,7 +3836,7 @@ onP2pConnectionChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息  |
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息。 |
 
 **错误码：**
 
@@ -3979,15 +3961,13 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 注册P2P设备状态改变事件。在业务退出时，要调用off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;)接口取消之前的注册回调。
 
-**需要权限：**
+**需要权限：** API 10起：ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-API 10起：ohos.permission.GET_WIFI_INFO
-
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -4185,7 +4165,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
