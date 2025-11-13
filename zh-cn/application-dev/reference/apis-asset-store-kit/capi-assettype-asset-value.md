@@ -7,6 +7,10 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+```
+typedef struct {...} Asset_Value
+```
+
 ## 概述
 
 关键资产属性内容。
