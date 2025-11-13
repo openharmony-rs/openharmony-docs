@@ -1,5 +1,9 @@
 # DRM_PsshInfo
 
+``
+typedef struct {...} DRM_PsshInfo
+```
+
 ## 概述
 
 DRM内容保护系统专用头（Protection System Specific Header）信息。

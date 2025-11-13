@@ -1,5 +1,9 @@
 # DRM_MediaKeySystemInfo
 
+```
+typedef struct {...} DRM_MediaKeySystemInfo
+```
+
 ## 概述
 
 加密媒体内容的DRM信息。

@@ -1,5 +1,9 @@
 # DRM_OfflineMediakeyIdArray
 
+```
+typedef struct {...} DRM_OfflineMediakeyIdArray
+```
+
 ## 概述
 
 离线媒体密钥ID数组。

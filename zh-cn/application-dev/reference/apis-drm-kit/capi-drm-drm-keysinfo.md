@@ -1,5 +1,9 @@
 # DRM_KeysInfo
 
+```
+typedef struct {...} DRM_KeysInfo
+```
+
 ## 概述
 
 媒体密钥信息。

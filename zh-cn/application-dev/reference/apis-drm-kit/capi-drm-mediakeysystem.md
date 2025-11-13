@@ -1,5 +1,9 @@
 # MediaKeySystem
 
+```
+typedef struct MediaKeySystem MediaKeySystem
+```
+
 ## 概述
 
 MediaKeySystem结构。

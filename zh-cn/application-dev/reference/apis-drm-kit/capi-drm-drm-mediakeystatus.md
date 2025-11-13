@@ -1,5 +1,9 @@
 # DRM_MediaKeyStatus
 
+```
+typedef struct {...} DRM_MediaKeyStatus
+```
+
 ## 概述
 
 媒体密钥状态。
