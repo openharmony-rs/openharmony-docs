@@ -18,7 +18,7 @@ ArkWeb 内核通过该接口类的实例对象来控制应用创建的用来接�
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-## updateRect<sup>12+<sup>
+## updateRect<sup>12+</sup>
 
 updateRect(x: number, y: number, width: number, height: number): void
 
@@ -39,7 +39,7 @@ updateRect(x: number, y: number, width: number, height: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## play<sup>12+<sup>
+## play<sup>12+</sup>
 
 play(): void
 
@@ -51,7 +51,7 @@ play(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## pause<sup>12+<sup>
+## pause<sup>12+</sup>
 
 pause(): void
 
@@ -63,7 +63,7 @@ pause(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## seek<sup>12+<sup>
+## seek<sup>12+</sup>
 
 seek(targetTime: number): void
 
@@ -81,7 +81,7 @@ seek(targetTime: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## setVolume<sup>12+<sup>
+## setVolume<sup>12+</sup>
 
 setVolume(volume: number): void
 
@@ -99,7 +99,7 @@ setVolume(volume: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## setMuted<sup>12+<sup>
+## setMuted<sup>12+</sup>
 
 setMuted(muted: boolean): void
 
@@ -117,7 +117,7 @@ setMuted(muted: boolean): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## setPlaybackRate<sup>12+<sup>
+## setPlaybackRate<sup>12+</sup>
 
 setPlaybackRate(playbackRate: number): void
 
@@ -135,7 +135,7 @@ setPlaybackRate(playbackRate: number): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## release<sup>12+<sup>
+## release<sup>12+</sup>
 
 release(): void
 
@@ -147,7 +147,7 @@ release(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## enterFullscreen<sup>12+<sup>
+## enterFullscreen<sup>12+</sup>
 
 enterFullscreen(): void
 
@@ -159,7 +159,7 @@ enterFullscreen(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## exitFullscreen<sup>12+<sup>
+## exitFullscreen<sup>12+</sup>
 
 exitFullscreen(): void
 
@@ -171,7 +171,7 @@ exitFullscreen(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## resumePlayer<sup>12+<sup>
+## resumePlayer<sup>12+</sup>
 
 resumePlayer?(): void
 
@@ -183,7 +183,7 @@ resumePlayer?(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## suspendPlayer<sup>12+<sup>
+## suspendPlayer<sup>12+</sup>
 
 suspendPlayer?(type: SuspendType): void
 
