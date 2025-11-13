@@ -65,6 +65,14 @@
 1. 导入模块。
    
    <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'ProcessModel';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   ```
 
 2. 构建需要发布的公共事件信息。
    
