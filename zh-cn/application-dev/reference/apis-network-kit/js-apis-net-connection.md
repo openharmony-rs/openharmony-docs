@@ -101,7 +101,6 @@ getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -111,22 +110,21 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
     console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data " + JSON.stringify(data));
+  console.info(`Succeeded to get data ${JSON.stringify(data)}`);
 });
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet((error: BusinessError | null, data: connection.NetHandle) => {
-  if (error?.code) {
+connection.getDefaultNet((error: BusinessError|null, data: connection.NetHandle|undefined) => {
+  if (error) {
     console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data " + JSON.stringify(data));
+  console.info(`Succeeded to get data ${JSON.stringify(data)}`);
 });
 ```
 
@@ -168,7 +166,7 @@ getDefaultNet(): Promise\<NetHandle>
 import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((data: connection.NetHandle) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -219,7 +217,15 @@ setAppHttpProxy(httpProxy: HttpProxy): void
 
 设置应用级Http代理配置信息。
 
+> **说明：**
+>
+> 若需使用本接口所配置的代理信息，则需在[HttpRequestOptions](js-apis-http.md#httprequestoptions)字段中将usingProxy设置为true以启用代理转发。本接口仅负责配置代理规则，不校验代理服务的有效性。
+
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -281,7 +287,6 @@ getDefaultHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -291,22 +296,21 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.log("Succeeded to get data" + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultHttpProxy((error: BusinessError | null, data: connection.HttpProxy) => {
-  if (error?.code) {
+connection.getDefaultHttpProxy((error: BusinessError|null, data: connection.HttpProxy|undefined) => {
+  if (error) {
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.log("Succeeded to get data" + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -339,6 +343,7 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -350,6 +355,19 @@ connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
+  console.info(JSON.stringify(data));
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.info(JSON.stringify(businessError));
+});
+```
+
 ## connection.getAppNet<sup>9+</sup>
 
 getAppNet(callback: AsyncCallback\<NetHandle>): void
@@ -357,6 +375,10 @@ getAppNet(callback: AsyncCallback\<NetHandle>): void
 异步获取App绑定的网络信息，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -376,6 +398,7 @@ getAppNet(callback: AsyncCallback\<NetHandle>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -385,7 +408,21 @@ connection.getAppNet((error: BusinessError, data: connection.NetHandle) => {
     console.error(`Failed to get App net. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getAppNet((error: BusinessError|null, data: connection.NetHandle|undefined) => {
+  if (error) {
+    console.error(`Failed to get App net. Code:${error.code}, message:${error.message}`);
+    return;
+  }
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 })
 ```
 
@@ -396,6 +433,10 @@ getAppNet(): Promise\<NetHandle>
 异步获取App绑定的网络信息，使用Promise方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -414,6 +455,7 @@ getAppNet(): Promise\<NetHandle>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -425,6 +467,19 @@ connection.getAppNet().then((data: connection.NetHandle) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getAppNet().then((data: connection.NetHandle) => {
+  console.info(JSON.stringify(data));
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.info(JSON.stringify(businessError));
+});
+```
+
 ## connection.getAppNetSync<sup>10+</sup>
 
 getAppNetSync(): NetHandle
@@ -432,6 +487,10 @@ getAppNetSync(): NetHandle
 使用同步方法获取App绑定的网络信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -466,6 +525,10 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                    | 必填 | 说明                                                         |
@@ -487,6 +550,7 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -501,10 +565,32 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   });
 });
 ```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet((error: BusinessError|null, netHandle: connection.NetHandle|undefined) => {
+  if (netHandle?.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return;
+  }
+  if (netHandle) {
+    connection.setAppNet(netHandle, (error: BusinessError|null) => {
+      if (error) {
+        console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+        return;
+      }
+    });
+  }
+});
+```
+
 
 ## connection.setAppNet<sup>9+</sup>
 
@@ -515,6 +601,10 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -542,6 +632,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -553,9 +644,29 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.setAppNet(netHandle).then(() => {
-    console.log("success");
+    console.info("success");
   }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
+  })
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+
+  connection.setAppNet(netHandle).then(() => {
+    console.info("success");
+  }).catch((error: Error) => {
+    let businessError = error as BusinessError;
+    console.error(JSON.stringify(businessError));
   })
 });
 ```
@@ -594,7 +705,6 @@ getAllNets(callback: AsyncCallback&lt;Array&lt;NetHandle&gt;&gt;): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -604,23 +714,22 @@ connection.getAllNets((error: BusinessError, data: connection.NetHandle[]) => {
     console.error(`Failed to get all nets. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 }); 
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getAllNets((error: BusinessError | null, data: connection.NetHandle[]) => {
-  if (error?.code) {
+connection.getAllNets((error: BusinessError|null, data: Array<connection.NetHandle>|undefined) => {
+  if (error) {
     console.error(`Failed to get all nets. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
-}); 
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
 ```
 
 ## connection.getAllNets
@@ -655,11 +764,21 @@ getAllNets(): Promise&lt;Array&lt;NetHandle&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
 connection.getAllNets().then((data: connection.NetHandle[]) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+
+connection.getAllNets().then((data: Array<connection.NetHandle>|undefined) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -737,7 +856,6 @@ getConnectionProperties(netHandle: NetHandle, callback: AsyncCallback\<Connectio
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -752,13 +870,12 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get connection properties. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
 });
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -766,14 +883,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+    return 0;
   }
-  connection.getConnectionProperties(netHandle, (error: BusinessError | null, data: connection.ConnectionProperties) => {
-    if (error?.code) {
+  connection.getConnectionProperties(netHandle, (error: BusinessError|null, data: connection.ConnectionProperties|undefined) => {
+    if (error) {
       console.error(`Failed to get connection properties. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
 });
 ```
@@ -818,6 +935,7 @@ getConnectionProperties(netHandle: NetHandle): Promise\<ConnectionProperties>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
@@ -828,7 +946,23 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  })
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+
+  connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
 });
 ```
@@ -873,6 +1007,7 @@ getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -887,9 +1022,27 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   netHandle = connection.getDefaultNetSync();
   connectionproperties = connection.getConnectionPropertiesSync(netHandle);
-  console.info("Succeeded to get connectionproperties: " + JSON.stringify(connectionproperties));
+  console.info(`Succeeded to get connectionproperties: ${JSON.stringify(connectionproperties)}`);
 });
+```
 
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let netHandle: connection.NetHandle;
+let connectionproperties: connection.ConnectionProperties;
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+  netHandle = connection.getDefaultNetSync();
+  connectionproperties = connection.getConnectionPropertiesSync(netHandle);
+  console.info(`Succeeded to get connectionproperties: ${JSON.stringify(connectionproperties)}`);
+});
 ```
 
 ## connection.getNetCapabilities
@@ -930,7 +1083,6 @@ getNetCapabilities(netHandle: NetHandle, callback: AsyncCallback\<NetCapabilitie
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -945,7 +1097,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get net capabilities. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
@@ -953,7 +1105,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -961,17 +1112,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+    return 0;
   }
-  connection.getNetCapabilities(netHandle, (error: BusinessError | null, data: connection.NetCapabilities) => {
-    if (error?.code) {
+  connection.getNetCapabilities(netHandle, (error: BusinessError|null, data: connection.NetCapabilities|undefined) => {
+    if (error) {
       console.error(`Failed to get net capabilities. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
-}).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
 });
 ```
 
@@ -1017,8 +1169,10 @@ getNetCapabilities(netHandle: NetHandle): Promise\<NetCapabilities>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
@@ -1026,10 +1180,29 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
-      console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+  connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  })
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
 });
 ```
 
@@ -1075,6 +1248,7 @@ getNetCapabilitiesSync(netHandle: NetHandle): NetCapabilities
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1089,9 +1263,28 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
-  console.info("Succeeded to get net capabilities sync: " + JSON.stringify(getNetCapabilitiesSync));
+  console.info(`Succeeded to get net capabilities sync: ${JSON.stringify(getNetCapabilitiesSync)}`);
 });
 
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let netHandle: connection.NetHandle;
+let getNetCapabilitiesSync: connection.NetCapabilities;
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+
+  getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
+  console.info(`Succeeded to get net capabilities sync: ${JSON.stringify(getNetCapabilitiesSync)}`);
+});
 ```
 
 ## connection.isDefaultNetMetered<sup>9+</sup>
@@ -1103,6 +1296,10 @@ isDefaultNetMetered(callback: AsyncCallback\<boolean>): void
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1123,13 +1320,25 @@ isDefaultNetMetered(callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info(`data: ${data}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.isDefaultNetMetered((error: BusinessError|null, data: boolean|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(`data: ${data}`);
 });
 ```
 
@@ -1142,6 +1351,10 @@ isDefaultNetMetered(): Promise\<boolean>
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1165,7 +1378,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info(`data: ${data}`);
 });
 ```
 
@@ -1178,6 +1391,10 @@ isDefaultNetMeteredSync(): boolean
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1237,26 +1454,24 @@ hasDefaultNet(callback: AsyncCallback\<boolean>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info(`data: ${data}`);
 });
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.hasDefaultNet((error: BusinessError | null, data: boolean) => {
+connection.hasDefaultNet((error: BusinessError|null, data: boolean|undefined) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info(`data: ${data}`);
 });
 ```
 
@@ -1296,7 +1511,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info(`data: ${data}`);
 });
 ```
 
@@ -1318,7 +1533,7 @@ hasDefaultNetSync(): boolean
 
 | 类型              | 说明                                            |
 | ----------------- | ----------------------------------------------- |
-| boolean | 表示默认数据网络是否被激活。true表示默认数据网络被激活，fasle表示默认数据网络没有被激活。 |
+| boolean | 表示默认数据网络是否被激活。true表示默认数据网络被激活，false表示默认数据网络没有被激活。 |
 
 **错误码：**
 
@@ -1349,6 +1564,10 @@ reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1370,12 +1589,25 @@ reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): v
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  connection.reportNetConnected(netHandle, (error: BusinessError|null) => {
     console.error(JSON.stringify(error));
   });
 });
@@ -1390,6 +1622,10 @@ reportNetConnected(netHandle: NetHandle): Promise\<void\>
 **需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1421,7 +1657,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1435,6 +1671,10 @@ reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;)
 **需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1477,6 +1717,10 @@ reportNetDisconnected(netHandle: NetHandle): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1507,7 +1751,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1523,6 +1767,10 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1545,6 +1793,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1554,7 +1803,21 @@ connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.Ne
     console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getAddressesByName("xxxx", (error: BusinessError|null, data: Array<connection.NetAddress>|undefined) => {
+  if (error) {
+    console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
+    return;
+  }
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1569,6 +1832,10 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1596,11 +1863,21 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
 connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+
+connection.getAddressesByName("xxxx").then((data: Array<connection.NetAddress>) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1615,6 +1892,10 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1638,6 +1919,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1647,7 +1929,20 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"], (error: Busin
     console.error(`Failed to get add custom dns rule. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"], (error: BusinessError|null) => {
+  if (error) {
+    console.error(`Failed to get add custom dns rule. Code:${error.code}, message:${error.message}`);
+    return;
+  }
 })
 ```
 
@@ -1663,6 +1958,10 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型           | 必填 | 说明                       |
@@ -1674,7 +1973,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 | 类型                   | 说明                    |
 | ---------------------- | ----------------------- |
-| Promise\<Array\<void>> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1690,6 +1989,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1698,6 +1998,19 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
+  console.info("success");
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
 })
 ```
 
@@ -1712,6 +2025,10 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1734,6 +2051,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1743,7 +2061,20 @@ connection.removeCustomDnsRule("xxxx", (error: BusinessError, data: void) => {
     console.error(`Failed to remove custom dns rule. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.removeCustomDnsRule("xxxx", (error: BusinessError|null) => {
+  if (error) {
+    console.error(`Failed to remove custom dns rule. Code:${error.code}, message:${error.message}`);
+    return;
+  }
 })
 ```
 
@@ -1759,6 +2090,10 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                            |
@@ -1769,7 +2104,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 | 类型                   | 说明                    |
 | ---------------------- | ----------------------- |
-| Promise\<Array\<void>> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1785,14 +2120,28 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.removeCustomDnsRule("xxxx").then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.removeCustomDnsRule("xxxx").then(() => {
+  console.info("success");
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
 })
 ```
 
@@ -1805,6 +2154,10 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1826,6 +2179,7 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1835,7 +2189,20 @@ connection.clearCustomDnsRules((error: BusinessError, data: void) => {
     console.error(`Failed to clear custom dns rules. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.clearCustomDnsRules((error: BusinessError|null) => {
+  if (error) {
+    console.error(`Failed to clear custom dns rules. Code:${error.code}, message:${error.message}`);
+    return;
+  }
 })
 ```
 
@@ -1848,6 +2215,10 @@ clearCustomDnsRules(): Promise\<void\>
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1868,14 +2239,28 @@ clearCustomDnsRules(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.clearCustomDnsRules().then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.clearCustomDnsRules().then(() => {
+  console.info("success");
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
 })
 ```
 
@@ -1888,6 +2273,10 @@ setPacUrl(pacUrl: string): void
 **需要权限**：ohos.permission.SET_PAC_URL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1922,6 +2311,10 @@ getPacUrl(): string
 获取系统级代理自动配置（PAC）脚本地址。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1998,7 +2391,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.setNetExtAttribute(netHandle, netExtAttribute).then(() => {
     console.info("setNetExtAttribute success");
   }).catch((error: BusinessError) => {
-    console.error("setNetExtAttribute failed, err: " + error.code);
+    console.error(`setNetExtAttribute failed, err: ${error.code}`);
   })
 });
 ```
@@ -2092,9 +2485,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   connection.getNetExtAttribute(netHandle).then((netExtAttribute: string) => {
-    console.info("getNetExtAttribute: " + netExtAttribute);
+    console.info(`getNetExtAttribute: ${netExtAttribute}`);
   }).catch((error: BusinessError) => {
-    console.error("getNetExtAttribute failed, err: " + error.code);
+    console.error(`getNetExtAttribute failed, err: ${error.code}`);
   })
 });
 ```
@@ -2142,7 +2535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netHandle = connection.getDefaultNetSync();
 if (netHandle.netId != 0) {
   let netExtAttribute: string = connection.getNetExtAttributeSync(netHandle);
-  console.info("getNetExtAttribute: " + netExtAttribute);
+  console.info(`getNetExtAttribute: ${netExtAttribute}`);
 }
 ```
 
@@ -2195,7 +2588,6 @@ register(callback: AsyncCallback\<void>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2207,7 +2599,6 @@ netCon.register((error: BusinessError) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2252,7 +2643,6 @@ unregister(callback: AsyncCallback\<void>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2264,13 +2654,12 @@ netCon.unregister((error: BusinessError) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
-netCon.unregister((error: BusinessError | null) => {
+netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -2298,6 +2687,7 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2312,11 +2702,35 @@ netCon.register((error: BusinessError) => {
 
 // 订阅网络可用事件。调用register后，才能接收到此事件通知。
 netCon.on('netAvailable', (data: connection.NetHandle) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 
 // 使用unregister接口取消订阅网络可用事件。
 netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用register接口注册网络状态变化事件。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 订阅网络可用事件。调用register后，才能接收到此事件通知。
+netCon.on('netAvailable', (data: connection.NetHandle|undefined) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+
+// 使用unregister接口取消订阅网络可用事件。
+netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -2342,6 +2756,7 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2356,11 +2771,35 @@ netCon.register((error: BusinessError) => {
 
 // 订阅网络阻塞状态事件。调用register后，才能接收到此事件通知。
 netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 
 // 使用unregister接口取消订阅网络阻塞状态事件。
 netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用register接口注册网络状态变化事件。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 订阅网络阻塞状态事件。调用register后，才能接收到此事件通知。
+netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo|undefined) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+
+// 使用unregister接口取消订阅网络阻塞状态事件。
+netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -2388,6 +2827,7 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2402,11 +2842,35 @@ netCon.register((error: BusinessError) => {
 
 // 订阅网络能力变化事件。调用register后，才能接收到此事件通知。
 netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 
 // 使用unregister接口取消订阅网络能力变化事件。
 netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用register接口注册网络状态变化事件。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 订阅网络能力变化事件。调用register后，才能接收到此事件通知。
+netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo|undefined) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+
+// 使用unregister接口取消订阅网络能力变化事件。
+netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -2432,6 +2896,7 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2446,11 +2911,35 @@ netCon.register((error: BusinessError) => {
 
 // 订阅网络连接信息变化事件。调用register后，才能接收到此事件通知。
 netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 
 // 使用unregister接口取消订阅网络连接信息变化事件。
 netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用register接口注册网络状态变化事件。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 订阅网络连接信息变化事件。调用register后，才能接收到此事件通知。
+netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo|undefined) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+
+// 使用unregister接口取消订阅网络连接信息变化事件。
+netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -2478,6 +2967,7 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2492,11 +2982,35 @@ netCon.register((error: BusinessError) => {
 
 // 订阅网络丢失事件。调用register后，才能接收到此事件通知。
 netCon.on('netLost', (data: connection.NetHandle) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 
 // 使用unregister接口取消订阅网络丢失事件。
 netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用register接口注册网络状态变化事件。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 订阅网络丢失事件。调用register后，才能接收到此事件通知。
+netCon.on('netLost', (data: connection.NetHandle|undefined) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+});
+
+// 使用unregister接口取消订阅网络丢失事件。
+netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -2524,6 +3038,7 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2543,6 +3058,30 @@ netCon.on('netUnavailable', () => {
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用register接口注册网络状态变化事件。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 订阅网络不可用事件。调用register后，才能接收到此事件通知。
+netCon.on('netUnavailable', () => {
+  console.info("Succeeded to get unavailable net event");
+});
+
+// 使用unregister接口取消订阅网络不可用事件。
+netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -2628,7 +3167,7 @@ interface Data {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info(`on message, message: ${JSON.stringify(value.message)}, remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2638,7 +3177,7 @@ interface Data {
         return;
       }
       udp.on('message', (data: Data) => {
-        console.info("Succeeded to get data: " + JSON.stringify(data));
+        console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
       });
       netHandle.bindSocket(udp, (error: BusinessError, data: void) => {
         if (error) {
@@ -2657,7 +3196,7 @@ interface Data {
 
 bindSocket(socketParam: TCPSocket \| UDPSocket): Promise\<void\>
 
-将TCPSocket或UDPSockett绑定到当前NetHandle对应的网络，使用Promise方式作为异步方法。
+将TCPSocket或UDPSocket绑定到当前NetHandle对应的网络，使用Promise方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2719,7 +3258,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info(`on message, message: ${JSON.stringify(value.message)}, remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
     }
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2729,7 +3268,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
         return;
       }
       udp.on('message', (data: Data) => {
-        console.info("Succeeded to get data: " + JSON.stringify(data));
+        console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
       });
       netHandle.bindSocket(udp).then(() => {
         console.info("bind socket success");
@@ -2750,6 +3289,10 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2772,6 +3315,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2787,7 +3331,28 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  });
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+  let host = "xxxx";
+  netHandle.getAddressesByName(host, (error: BusinessError|null, data: Array<connection.NetAddress>|undefined) => {
+    if (error) {
+      console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   });
 });
 ```
@@ -2801,6 +3366,10 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2828,6 +3397,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
@@ -2838,7 +3408,23 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   let host = "xxxx";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  });
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+  let host = "xxxx";
+  netHandle.getAddressesByName(host).then((data: Array<connection.NetAddress>|undefined) => {
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   });
 });
 ```
@@ -2852,6 +3438,10 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2874,6 +3464,7 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2889,7 +3480,28 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  });
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+  let host = "xxxx";
+  netHandle.getAddressByName(host, (error: BusinessError|null, data: connection.NetAddress|undefined) => {
+    if (error) {
+      console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   });
 });
 ```
@@ -2903,6 +3515,10 @@ getAddressByName(host: string): Promise\<NetAddress>
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2930,6 +3546,7 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
@@ -2940,7 +3557,23 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   let host = "xxxx";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  });
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return 0;
+  }
+  let host = "xxxx";
+  netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   });
 });
 ```
@@ -2951,13 +3584,17 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                  | 值   | 说明                   |
 | ------------------------ | ---- | ---------------------- |
-| NET_CAPABILITY_MMS | 0 | 表示网络可以访问运营商的MMSC（Multimedia&nbsp;Message&nbsp;Service，多媒体短信服务）发送和接收彩信。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
-| NET_CAPABILITY_NOT_METERED | 11 | 表示网络流量未被计费。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
-| NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
-| NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
-| NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
+| NET_CAPABILITY_MMS | 0 | 表示网络可以访问运营商的MMSC（Multimedia&nbsp;Message&nbsp;Service，多媒体短信服务）发送和接收彩信。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| NET_CAPABILITY_NOT_METERED | 11 | 表示网络流量未被计费。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 | NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 
@@ -2967,12 +3604,16 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
-| BEARER_CELLULAR | 0    | 蜂窝网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
-| BEARER_WIFI     | 1    | Wi-Fi网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
+| BEARER_CELLULAR | 0    | 蜂窝网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| BEARER_WIFI     | 1    | Wi-Fi网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
-| BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
+| BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 
 ## HttpProxy<sup>10+</sup>
@@ -2981,11 +3622,15 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称    | 类型   | 必填 | 说明                      |
 | ------ | ------ | --- |------------------------- |
-| host  | string | 是  | 代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 22 |
-| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 22 |
-| exclusionList  | Array\<string\> | 是  | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 22 |
+| host  | string | 是  | 代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| exclusionList  | Array\<string\> | 是  | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | username<sup>12+</sup>  | string | 否 | 使用代理的用户名。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 | password<sup>12+</sup>  | string | 否 | 使用代理的用户密码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 
@@ -3003,11 +3648,12 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 | 名称                     | 类型                                | 必填  | 说明                                                         |
 | ----------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| netCapabilities         | [NetCapabilities](#netcapabilities) |  是  | 存储数据网络的传输能力和承载类型。                                |
+| netCapabilities         | [NetCapabilities](#netcapabilities) |  是  | 存储数据网络的传输能力和承载类型。                                |	
 | bearerPrivateIdentifier | string                              |  否  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { wifiManager } from '@kit.ConnectivityKit';
@@ -3032,6 +3678,31 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let config: wifiManager.WifiDeviceConfig = {
+  ssid: "TEST",
+  preSharedKey: "**********",
+  securityType: wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
+};
+// 通过wifiManager.addCandidateConfig获取注册WLAN的networkId。
+wifiManager.addCandidateConfig(config,(error,networkId) => {
+  let netConnectionWlan = connection.createNetConnection({
+    netCapabilities: {
+      bearerTypes: [connection.NetBearType.BEARER_WIFI]
+    },
+    bearerPrivateIdentifier: `${networkId}`
+  });
+  netConnectionWlan.register((error: BusinessError|null) => {
+    console.error(JSON.stringify(error));
+  });
+});
+```
+
 ## NetCapabilityInfo<sup>10+</sup>
 
 提供承载数据网络能力的实例。
@@ -3046,7 +3717,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                    | 类型                                 | 必填  | 说明                                                         |
 | ----------------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| netHandle               | [NetHandle](#nethandle)              |  是  | 数据网络句柄。                                                |
+| netHandle               | [NetHandle](#nethandle)              |  是  | 数据网络句柄。                                                |	
 | netCap                  |  [NetCapabilities](#netcapabilities) |  是  |  存储数据网络的传输能力和承载类型。                            |
 
 ## NetCapabilities
@@ -3063,8 +3734,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | --------------------- | ---------------------------------- | --- | ------------------------ |
 | linkUpBandwidthKbps   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
 | linkDownBandwidthKbps | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| networkCap            | Array\<[NetCap](#netcap)>           |  否 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |
-| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  是 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| networkCap            | Array\<[NetCap](#netcap)>           |  否 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |	
+| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  是 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      
 
 ## NetConnectionPropertyInfo<sup>11+</sup>
 
@@ -3080,7 +3751,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                 |                          类型                        | 必填 |         说明           |
 | -------------------- | --------------------------------------------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 是   |数据网络句柄(netHandle)。|
+| netHandle            | [NetHandle](#nethandle)                             | 是   |数据网络句柄(netHandle)。|	
 | connectionProperties | [ConnectionProperties](#connectionproperties)       | 是   |网络连接属性。           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
@@ -3097,7 +3768,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                 | 类型                                  | 必填 |            说明            |
 | -------------------- | ------------------------------------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 是   |数据网络句柄(netHandle)。   |
+| netHandle            | [NetHandle](#nethandle)               | 是   |数据网络句柄(netHandle)。   |	
 | blocked              | boolean                               | 是   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
 
 ## ConnectionProperties
@@ -3112,11 +3783,11 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称          |                类型                 | 必填 |               说明                     |
 | ------------- | ----------------------------------- | ----|--------------------------------------- |
-| interfaceName | string                              | 是 |网卡名称。                                |
-| domains       | string                              | 是 |域名。                                    |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 是 |链路信息。                                |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 是 |路由信息。                                |
-| dnses         | Array\<[NetAddress](#netaddress)>   | 是 |网络地址，参考[NetAddress](#netaddress)。 |
+| interfaceName | string                              | 是 |网卡名称。                                |	
+| domains       | string                              | 是 |域名。                                    |	
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 是 |链路信息。                                |	
+| routes        | Array\<[RouteInfo](#routeinfo)>     | 是 |路由信息。                                |	
+| dnses         | Array\<[NetAddress](#netaddress)>   | 是 |网络地址，参考[NetAddress](#netaddress)。 |	
 | mtu           | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 |最大传输单元。                            |
 
 ## RouteInfo
@@ -3125,12 +3796,16 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称           | 类型                        | 必填 |     说明      |
 | -------------- | --------------------------- | --- |-------------- |
-| interface      | string                      | 是 |网卡名称。       |
-| destination    | [LinkAddress](#linkaddress) | 是 |目的地址。       |
-| gateway        | [NetAddress](#netaddress)   | 是 |网关地址。       |
-| hasGateway     | boolean                     | 是 |true：有网关；false：无网关。     |
+| interface      | string                      | 是 |网卡名称。       |	
+| destination    | [LinkAddress](#linkaddress) | 是 |目的地址。       |	
+| gateway        | [NetAddress](#netaddress)   | 是 |网关地址。       |	
+| hasGateway     | boolean                     | 是 |true：有网关；false：无网关。     |	
 | isDefaultRoute | boolean                     | 是 |true：默认路由；false：非默认路由。 |
 
 ## LinkAddress
@@ -3139,9 +3814,13 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称         |           类型            | 必填 |        说明         |
 | ------------ | ------------------------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | 是  | 链路地址。           |
+| address      | [NetAddress](#netaddress) | 是  | 链路地址。           |	
 | prefixLength | number                    | 是  |链路地址前缀的长度。  |
 
 ## NetAddress
@@ -3158,8 +3837,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 |  名称   | 类型   |必填|            说明              |
 | ------- | ------ | -- |---------------------------- |
-| address | string | 是 |地址。                       |
-| family  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |IPv4 = 1，IPv6 = 2，默认IPv4。|
+| address | string | 是 |地址。                       |	
+| family  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |IPv4 = 1，IPv6 = 2，默认IPv4。|	
 | port    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |端口，取值范围\[0, 65535]，默认值为0。  |
 
 ## HttpRequest

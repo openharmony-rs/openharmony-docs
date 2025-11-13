@@ -17,20 +17,27 @@ import { data } from '@kit.TelephonyKit';
 
 ## data.getDefaultCellularDataSlotId
 
-getDefaultCellularDataSlotId(callback: AsyncCallback\<number\>): void 
+ArkTS-Dyn: getDefaultCellularDataSlotId(callback: AsyncCallback\<number\>): void 
+
+ArkTS-Sta: getDefaultCellularDataSlotId(callback: AsyncCallback\<int\>): void
 
 获取默认移动数据的SIM卡，使用callback方式作为异步方法。 
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                       |
 | -------- | ----------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<number\> | 是   | 以callback形式异步返回结果。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br>ArkTS-Sta: AsyncCallback\<int\> | 是   | 以callback形式异步返回结果。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -38,36 +45,70 @@ import { BusinessError } from '@kit.BasicServicesKit';
 data.getDefaultCellularDataSlotId((err: BusinessError, contextData: number) => {
     if(err){
         console.error(`getDefaultCellularDataSlotId fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`getDefaultCellularDataSlotId success`);
+    } else {
+        console.info(`getDefaultCellularDataSlotId success`);
     }
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getDefaultCellularDataSlotId((err: BusinessError|null, contextData: int|undefined) => {
+  if(err) {
+    console.error(`getDefaultCellularDataSlotId fail.callback: code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+  } else {
+    console.info(`getDefaultCellularDataSlotId success`);
+  }
 });
 ```
 
 ## data.getDefaultCellularDataSlotId
 
-getDefaultCellularDataSlotId(): Promise\<number\> 
+ArkTS-Dyn: getDefaultCellularDataSlotId(): Promise\<number\> 
+
+ArkTS-Sta: getDefaultCellularDataSlotId(): Promise\<int\>
 
 获取默认移动数据的SIM卡，使用Promise方式作为异步方法。 
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<number\> | 以Promise形式返回获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| ArkTS-Dyn: Promise\<number\><br>ArkTS-Sta: Promise\<int\> | 以Promise形式返回获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getDefaultCellularDataSlotId().then((contextData: number) => {
-    console.log(`getDefaultCellularDataSlotId success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getDefaultCellularDataSlotId success, promise: contextData->${JSON.stringify(contextData)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultCellularDataSlotId fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getDefaultCellularDataSlotId().then((contextData: int) => {
+  console.info(`getDefaultCellularDataSlotId success, promise: contextData->${JSON.stringify(contextData)}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`getDefaultCellularDataSlotId fail, promise: businessError->${JSON.stringify(businessError)}`);
 });
 ```
 
@@ -96,7 +137,8 @@ ArkTS-Sta: getDefaultCellularDataSlotIdSync(): int
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSlotIdSync())
+let slotId = data.getDefaultCellularDataSlotIdSync();
+console.info(`Result: ${slotId}`);
 ```
 
 
@@ -108,6 +150,10 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                           | 必填 | 说明       |
@@ -116,6 +162,7 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -124,8 +171,22 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
     if(err){
         console.error(`getCellularDataFlowType fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
     }else{
-        console.log(`getCellularDataFlowType success`);
+        console.info(`getCellularDataFlowType success`);
     }
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataFlowType((err: BusinessError|null, contextData: data.DataFlowType|undefined) => {
+  if(err) {
+      console.error(`getCellularDataFlowType fail,callback: err->${JSON.stringify(err)}, contextData->${contextData}`);
+  } else {
+      console.info(`getCellularDataFlowType success`);
+  }
 });
 ```
 
@@ -137,6 +198,10 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                     | 说明                                            |
@@ -145,14 +210,28 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
-    console.log(`getCellularDataFlowType success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getCellularDataFlowType success, promise: contextData->${JSON.stringify(contextData)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCellularDataFlowType fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
+  console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`getCellularDataFlowType fail, promise: businessError->${JSON.stringify(businessError)}`);
 });
 ```
 
@@ -177,7 +256,6 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -186,22 +264,21 @@ data.getCellularDataState((err: BusinessError, contextData: data.DataConnectStat
     if(err){
         console.error(`getCellularDataState fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
     }else{
-        console.log(`getCellularDataState success`);
+        console.info(`getCellularDataState success`);
     }
 });
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getCellularDataState((err: BusinessError | null, contextData: data.DataConnectState) => {
+data.getCellularDataState((err: BusinessError|null, contextData: data.DataConnectState|undefined) => {
     if(err?.code){
-        console.error(`getCellularDataState fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
+        console.error(`getCellularDataState fail,callback: err->${JSON.stringify(err)}, contextData->${contextData}`);
     }else{
-        console.log(`getCellularDataState success`);
+        console.info(`getCellularDataState success`);
     }
 });
 ```
@@ -226,14 +303,28 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataState().then((contextData: data.DataConnectState) => {
-    console.log(`getCellularDataState success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getCellularDataState success, promise: contextData->${JSON.stringify(contextData)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCellularDataState fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataState().then((contextData: data.DataConnectState) => {
+    console.info(`getCellularDataState success, promise: contextData->${contextData}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+    console.error(`getCellularDataState fail, promise: businessError->${JSON.stringify(businessError)}`);
 });
 ```
 
@@ -273,7 +364,6 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -282,23 +372,22 @@ data.isCellularDataEnabled((err: BusinessError, contextData: boolean) => {
     if(err){
         console.error(`isCellularDataEnabled fail,callback: callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
     }else{
-        console.log(`isCellularDataEnabled success`);
+        console.info(`isCellularDataEnabled success`);
     }
 });
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-data.isCellularDataEnabled((err: BusinessError | null, contextData: boolean) => {
+data.isCellularDataEnabled((err: BusinessError|null, contextData: boolean|undefined) => {
     if(err?.code){
         console.error(`isCellularDataEnabled fail,callback: callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`isCellularDataEnabled success`);
-    }
+  } else {
+    console.info(`isCellularDataEnabled success`);
+  }
 });
 ```
 
@@ -335,14 +424,28 @@ isCellularDataEnabled(): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataEnabled().then((contextData: boolean) => {
-    console.log(`isCellularDataEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`isCellularDataEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
 }).catch((err: BusinessError) => {
     console.error(`isCellularDataEnabled fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.isCellularDataEnabled().then((contextData: boolean) => {
+    console.info(`isCellularDataEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+}).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`isCellularDataEnabled fail, promise: businessError->${JSON.stringify(businessError)}`);
 });
 ```
 
@@ -355,6 +458,10 @@ isCellularDataEnabledSync(): boolean
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -382,7 +489,7 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataEnabledSync();
-    console.log(`isCellularDataEnabledSync success : ${isEnabled}`);
+    console.info(`isCellularDataEnabledSync success : ${isEnabled}`);
 } catch (error) {
     console.error(`isCellularDataEnabledSync fail : err->${JSON.stringify(error)}`);  
 }
@@ -390,7 +497,9 @@ try {
 
 ## data.isCellularDataRoamingEnabled
 
-isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>): void
+ArkTS-Dyn: isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>): void
+
+ArkTS-Sta: isCellularDataRoamingEnabled(slotId: int, callback: AsyncCallback\<boolean\>): void
 
 检查蜂窝数据业务是否启用漫游，使用callback方式作为异步方法。
 
@@ -398,11 +507,15 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number                   | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。                     |
+| slotId   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。                     |
 | callback | AsyncCallback\<boolean\> | 是   | 以callback形式异步返回结果。<br />true：蜂窝数据业务已启用漫游。<br />false：蜂窝数据业务已禁用漫游。 |
 
 **错误码：**
@@ -420,6 +533,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -427,15 +541,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
 data.isCellularDataRoamingEnabled(0, (err: BusinessError, contextData: boolean) => {
     if(err){
         console.error(`isCellularDataRoamingEnabled fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`isCellularDataRoamingEnabled success`);
+    } else {
+        console.info(`isCellularDataRoamingEnabled success`);
     }
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.isCellularDataRoamingEnabled(0, (err: BusinessError|null, contextData: boolean|undefined) => {
+  if(err) {
+    console.error(`isCellularDataRoamingEnabled fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
+  } else {
+    console.info(`isCellularDataRoamingEnabled success`);
+  }
 });
 ```
 
 ## data.isCellularDataRoamingEnabled
 
-isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
+ArkTS-Dyn: isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
+
+ArkTS-Sta: isCellularDataRoamingEnabled(slotId: int): Promise\<boolean\>
 
 检查蜂窝数据业务是否启用漫游，使用Promise方式作为异步方法。
 
@@ -443,11 +573,15 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。 |
 
 **返回值：**
 
@@ -470,20 +604,36 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataRoamingEnabled(0).then((contextData: boolean) => {
-    console.log(`isCellularDataRoamingEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`isCellularDataRoamingEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
 }).catch((err: BusinessError) => {
     console.error(`isCellularDataRoamingEnabled fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.isCellularDataRoamingEnabled(0).then((contextData: boolean) => {
+    console.info(`isCellularDataRoamingEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+}).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`isCellularDataRoamingEnabled fail, promise: businessError->${JSON.stringify(businessError)}`);
+});
+```
+
 ## data.isCellularDataRoamingEnabledSync<sup>12+</sup>
 
-isCellularDataRoamingEnabledSync(slotId: number): boolean
+ArkTS-Dyn: isCellularDataRoamingEnabledSync(slotId: number): boolean
+
+ArkTS-Sta: isCellularDataRoamingEnabledSync(slotId: int): boolean
 
 检查蜂窝数据业务是否启用漫游，调用此API返回结果。
 
@@ -491,11 +641,15 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。 |
 
 **返回值：**
 
@@ -525,7 +679,7 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataRoamingEnabledSync(0);
-    console.log(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
+    console.info(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
 } catch (error) {
     console.error(`isCellularDataRoamingEnabledSync fail : err->${JSON.stringify(error)}`);  
 }
@@ -533,24 +687,31 @@ try {
 
 ## data.getDefaultCellularDataSimId<sup>10+</sup>
 
-getDefaultCellularDataSimId(): number
+ArkTS-Dyn: getDefaultCellularDataSimId(): number
+
+ArkTS-Sta: getDefaultCellularDataSimId(): int
 
 获取默认移动数据的SIM卡ID。
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型              | 说明                                                         |
 | ------ | -------------------------------------------------- |
-| number | 获取默认移动数据的SIM卡ID。<br/>与SIM卡绑定，从1开始递增。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 获取默认移动数据的SIM卡ID。<br/>与SIM卡绑定，从1开始递增。 |
 
 **示例：**
 
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSimId());
+let simId = data.getDefaultCellularDataSimId();
+console.info(`Result: ${simId}`);
 ```
 
 ## data.queryAllApns<sup>16+</sup>
@@ -562,6 +723,10 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 **需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公室可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -579,8 +744,10 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 data.queryAllApns().then((data: Array<data.ApnInfo>) => {
     console.info(`queryAllApns success, promise: data->${JSON.stringify(data)}`);
@@ -589,15 +756,34 @@ data.queryAllApns().then((data: Array<data.ApnInfo>) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.queryAllApns().then((data: Array<data.ApnInfo>) => {
+  console.info(`queryAllApns success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`queryAllApns failed, promise: businessError->${JSON.stringify(businessError)}`);
+});
+```
+
 ## data.queryApnIds<sup>16+</sup>
 
-queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
+ArkTS-Dyn: queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
+
+ArkTS-Sta: queryApnIds(apnInfo: ApnInfo): Promise\<Array\<int\>\>
 
 异步获取传入的ApnInfo对应的ApnId信息。
 
 **需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公室可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -610,7 +796,7 @@ queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
 
 | 类型              | 说明                          |
 | ------ |-----------------------------|
-| Promise\<Array\<number\>\> | Promise对象，返回传入的ApnInfo对应的ApnId信息列表。 |
+| ArkTS-Dyn: Promise\<Array\<number\>\><br>ArkTS-Sta: Promise\<Array\<int\>\> | Promise对象，返回传入的ApnInfo对应的ApnId信息列表。 |
 
 **错误码：**
 
@@ -622,8 +808,10 @@ queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let apnInfo: data.ApnInfo;
 apnInfo = {
@@ -640,9 +828,32 @@ data.queryApnIds(apnInfo).then((data: Array<number>) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let apnInfo: data.ApnInfo;
+apnInfo = {
+  apnName: "CMNET",
+  apn: "cmnet",
+  mcc: "460",
+  mnc: "07",
+};
+
+data.queryApnIds(apnInfo).then((apnIds: Array<int>) => {
+  console.info(`queryApnIds success, apnIds: ${apnIds}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`queryApnIds failed. code: ${businessError.code}, message: ${businessError.message}`);
+});
+```
+
 ## data.setPreferredApn<sup>16+</sup>
 
-setPreferredApn(apnId: number): Promise\<boolean\>
+ArkTS-Dyn: setPreferredApn(apnId: number): Promise\<boolean\>
+
+ArkTS-Sta: setPreferredApn(apnId: int): Promise\<boolean\>
 
 异步设置apnId对应的APN为首选APN。
 
@@ -654,11 +865,15 @@ setPreferredApn(apnId: number): Promise\<boolean\>
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| apnId | number | 是   | 要设置的apnId，可以通过[queryApnIds](#dataqueryapnids16)查询。 |
+| apnId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要设置的apnId，可以通过[queryApnIds](#dataqueryapnids16)查询。 |
 
 **返回值：**
 
@@ -676,14 +891,30 @@ setPreferredApn(apnId: number): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let apnId: number = 0; // apnId为通过queryApnIds返回的有效值，setPreferredApn传入无效的apnId会切回运营商默认配置的优选APN。
 data.setPreferredApn(apnId).then((data: boolean) => {
     console.info(`setPreferredApn success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`setPreferredApn failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let apnId: int = 0; // apnId为通过queryApnIds返回的有效值，setPreferredApn传入无效的apnId会切回运营商默认配置的优选APN。
+data.setPreferredApn(apnId).then((result: boolean) => {
+  console.info(`setPreferredApn result: ${result}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`setPreferredApn failed. code: ${businessError.code}, message: ${businessError.message}`);
 });
 ```
 
@@ -696,6 +927,10 @@ getActiveApnName(): Promise\<string\>
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -713,13 +948,28 @@ getActiveApnName(): Promise\<string\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getActiveApnName().then((data: string) => {
     console.info(`getActiveApnName success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getActiveApnName failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getActiveApnName().then((apn: string) => {
+  console.info(`getActiveApnName success, apn: ${apn}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`getActiveApnName failed. code: ${businessError.code}, message: ${businessError.message}`);
 });
 ```
 
@@ -764,6 +1014,10 @@ data.getActiveApnName().then((data: string) => {
 APN信息。
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型      | 只读    |  可选      | 说明         |
 |------------|----------|---------|------------|-------------|
