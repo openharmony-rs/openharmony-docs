@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-typedef struct {...} OH_NativeXComponent_Callback
+typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
 ```
 
 ## 概述

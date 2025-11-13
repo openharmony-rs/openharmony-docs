@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-typedef struct {...} ArkUI_NumberValue
+typedef union {...} ArkUI_NumberValue
 ```
 
 ## 概述

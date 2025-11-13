@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-struct ArkUI_NativeGestureAPI_2 {...}
+typedef struct {...} ArkUI_NativeGestureAPI_2
 ```
 
 ## 概述

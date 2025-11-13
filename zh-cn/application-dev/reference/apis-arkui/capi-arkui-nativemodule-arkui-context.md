@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-struct ArkUI_Context
+typedef struct ArkUI_Context ArkUI_Context
 ```
 
 ## 概述
