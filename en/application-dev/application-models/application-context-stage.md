@@ -39,79 +39,91 @@ If you need to obtain application resources, application paths, or use the metho
 
 [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md) provides capabilities such as listening for lifecycle changes of application components within the application, system memory changes, system environment changes, setting application language, setting application color mode, clearing application data, and revoking permissions granted by the user. It can be obtained in [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md), [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md), and [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md).
 
-  ```ts
-  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+<!-- @[application_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryexampleability/EntryAbility.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      let applicationContext = this.context.getApplicationContext();
-      //...
-    }
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let applicationContext = this.context.getApplicationContext();
   }
-  ```
+}
+```
+
 
 ### Obtains AbilityStageContext (Module-Level Context)
 
 Compared with the base class Context, [AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md) additionally provides information such as [HapModuleInfo](../reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md) and [Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md).
 
-  ```ts
-  import { AbilityStage } from '@kit.AbilityKit';
+<!-- @[abilityStageContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/abilitystagecontextability/MyAbilityStage.ets) -->
 
-  export default class MyAbilityStage extends AbilityStage {
-    onCreate(): void {
-      let abilityStageContext = this.context;
-      //...
-    }
+``` TypeScript
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    let abilityStageContext = this.context;
+    //...
   }
-  ```
+}
+```
 
 ### Obtaining Context of Another Module in the Current Application (Module-Level Context)
 
 Call [createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) to obtain the context of another module in the current application. After obtaining the context, you can obtain the resource information of that module.
 
-  ```ts
-  import { common, application } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
 
-  let storageEventCall = new LocalStorage();
+``` TypeScript
+import { common, application } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  @Entry(storageEventCall)
-  @Component
-  struct Page_Context {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+const TAG = '[CreateModuleContext]';
+const DOMAIN = 0xF811;
 
-    build() {
-      Column() {
-        //...
-        List({ initialIndex: 0 }) {
-          ListItem() {
-            Row() {
-              //...
-            }
-            .onClick(() => {
-              let moduleName2: string = 'entry';
-              application.createModuleContext(this.context, moduleName2)
-                .then((data: common.Context) => {
-                  console.info(`CreateModuleContext success, data: ${JSON.stringify(data)}`);
-                  if (data !== null) {
-                    this.getUIContext().getPromptAction().showToast({
-                      message: ('Context obtained')
-                    });
-                  }
-                })
-                .catch((err: BusinessError) => {
-                  console.error(`CreateModuleContext failed, err code:${err.code}, err msg: ${err.message}`);
-                });
-            })
+let storageEventCall = new LocalStorage();
+
+@Entry(storageEventCall)
+@Component
+struct CreateModuleContext {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
           }
-          //...
+          .onClick(() => {
+            let moduleName2: string = 'entry';
+            application.createModuleContext(this.context, moduleName2)
+              .then((data: common.Context) => {
+                hilog.info(DOMAIN, TAG, `CreateModuleContext success, data: ${JSON.stringify(data)}`);
+                if (data !== null) {
+                  this.getUIContext().getPromptAction().showToast({
+                    // Replace $r('app.string.success_message') with the resource file you use.
+                    message: $r('app.string.success_message')
+                  });
+                }
+              })
+              .catch((err: BusinessError) => {
+                hilog.error(DOMAIN, TAG, `CreateModuleContext failed, err code:${err.code}, err msg: ${err.message}`);
+              });
+          })
         }
-        //...
+        // ···
       }
-      //...
+    // ···
     }
+    // ···
   }
-  ```
+}
+```
+
 
 ### Obtaining UIAbilityContext (Context for the UIAbility)
 
@@ -119,27 +131,30 @@ Compared with the base class [Context](../reference/apis-ability-kit/js-apis-inn
 
 
 - You can use **this.context** to obtain the context of a UIAbility instance.
-  
-  ```ts
+
+  <!-- @[ui_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/uiAbilitycontextability/UIAbilityContextAbility.ets) -->
+
+  ``` TypeScript
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       // Obtain the context of the UIAbility instance.
       let context = this.context;
-      // ...
     }
   }
   ```
-  
+
 - Obtain the context of the UIAbility instance on the page.
-  
-  ```ts
+
+  <!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit'; // Import the context module.
 
   @Entry
   @Component
-  struct Page_EventHub {
+  struct EventHub {
     // Define context variables.
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
@@ -152,20 +167,23 @@ Compared with the base class [Context](../reference/apis-ability-kit/js-apis-inn
 
     // UI page display.
     build() {
-      // ...
+      // ···
     }
   }
   ```
 
+
   You can also define variables after importing the context module but before using [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).
 
-  
-  ```ts
+
+  <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
 
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct UIAbilityComponentsBasicUsage {
     startAbilityTest(): void {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
@@ -176,24 +194,30 @@ Compared with the base class [Context](../reference/apis-ability-kit/js-apis-inn
 
     // UI page display.
     build() {
-      // ...
+      // ···
     }
   }
   ```
 
+
 - To stop the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance after the service is not needed, call [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself).
 
-  ```ts
+  <!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
+
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  const TAG = '[UIAbilityComponentsUsage]';
+  const DOMAIN = 0xF811;
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct UIAbilityComponentsUsage {
     // UI page display.
     build() {
       Column() {
-        //...
+      // ···
         Button('FuncAbilityB')
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -201,17 +225,17 @@ Compared with the base class [Context](../reference/apis-ability-kit/js-apis-inn
               context.terminateSelf((err: BusinessError) => {
                 if (err.code) {
                   // Process service logic errors.
-                  console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                  hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
                   return;
                 }
                 // Carry out normal service processing.
-                console.info(`terminateSelf succeed.`);
+                hilog.info(DOMAIN, TAG, `terminateSelf succeed.`);
               });
             } catch (err) {
               // Capture the synchronization parameter error.
               let code = (err as BusinessError).code;
               let message = (err as BusinessError).message;
-              console.error(`terminateSelf failed, code is ${code}, message is ${message}.`);
+              hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${code}, message is ${message}.`);
             }
           })
       }
@@ -219,18 +243,20 @@ Compared with the base class [Context](../reference/apis-ability-kit/js-apis-inn
   }
   ```
 
+
 ### Obtaining ExtensionAbilityContext (Context for the ExtensionAbility)
 
 Obtain a scenario-specific [ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md). For example, FormExtensionContext, which inherits from ExtensionContext, provides APIs related to widget services.
 
-```ts
+<!-- @[extension_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/extensionability/MyFormExtensionAbility.ets) -->
+
+``` TypeScript
 import { FormExtensionAbility, formBindingData } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
     let formExtensionContext = this.context;
-    // ...
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
@@ -240,7 +266,8 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 }
 ```
-  
+
+
 
 ## Typical Usage Scenarios of Context
 
@@ -261,19 +288,21 @@ You can obtain basic information about the current application, module, UIAbilit
 
 If you need to obtain resource objects across packages, see [Accessing Resources](../quick-start/resource-categories-and-access.md#accessing-resources).
 
-  ```ts
-  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+<!-- @[scene_entry_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrysceneability/EntryAbility.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      // Obtain a resource manager.
-      let resourceManager = this.context.getApplicationContext().resourceManager;
-      // Obtain application information.
-      let applicationInfo = this.context.getApplicationContext().applicationInfo;
-      //...
-    }
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // Obtain a resource manager.
+    let resourceManager = this.context.getApplicationContext().resourceManager;
+    // Obtain application information.
+    let applicationInfo = this.context.getApplicationContext().applicationInfo;
   }
-  ```
+}
+```
+
 
 ### Obtaining Application File Paths
 
@@ -308,55 +337,57 @@ This section uses ApplicationContext to obtain **cacheDir** and **filesDir** as 
 
 - **Obtaining the Application Cache Directory**
 
-  ```ts
+  <!-- @[app_context_cache_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextCache.ets) -->
+  
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
-
-  const TAG: string = '[Page_Context]';
-  const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   @Entry
   @Component
-  struct Index {
+  struct ApplicationContextCache {
     @State message: string = 'Hello World';
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+  
     build() {
       Row() {
         Column() {
           Text(this.message)
-          // ...
+          // ···
           Button() {
             Text('create file')
-              // ...
+          // ···
               .onClick(() => {
                 let applicationContext = this.context.getApplicationContext();
                 // Obtain the application cache directory.
                 let cacheDir = applicationContext.cacheDir;
               })
           }
-          // ...
+          // ···
         }
-        // ...
+      // ···
       }
-      // ...
+      // ···
     }
   }
   ```
 
+
 - **Obtaining the Application File Directory**
-  
-  ```ts
+
+  <!-- @[app_context_file_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextFile.ets) -->
+
+  ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { buffer } from '@kit.ArkTS';
   import { fileIo, ReadOptions } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  const TAG: string = '[Page_Context]';
+  const TAG: string = '[ApplicationContextFile]';
   const DOMAIN_NUMBER: number = 0xFF00;
 
   @Entry
   @Component
-  struct Index {
+  struct ApplicationContextFile {
     @State message: string = 'Hello World';
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
@@ -364,10 +395,10 @@ This section uses ApplicationContext to obtain **cacheDir** and **filesDir** as 
       Row() {
         Column() {
           Text(this.message)
-          // ...
+          // ···
           Button() {
             Text('create file')
-              // ...
+        		// ···
               .onClick(() => {
                 let applicationContext = this.context.getApplicationContext();
                 // Obtain the application file path.
@@ -376,7 +407,7 @@ This section uses ApplicationContext to obtain **cacheDir** and **filesDir** as 
                 // Create and open the file if it does not exist. Open the file if it already exists.
                 let file = fileIo.openSync(filesDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
                 // Write data to the file.
-                let writeLen = fileIo.writeSync(file.fd, "Try to write str.");
+                let writeLen = fileIo.writeSync(file.fd, 'Try to write str.');
                 hilog.info(DOMAIN_NUMBER, TAG, `The length of str is: ${writeLen}`);
                 // Create an ArrayBuffer object with a size of 1024 bytes to store the data read from the file.
                 let arrayBuffer = new ArrayBuffer(1024);
@@ -394,14 +425,15 @@ This section uses ApplicationContext to obtain **cacheDir** and **filesDir** as 
                 fileIo.closeSync(file);
               })
           }
-          // ...
+          // ···
         }
-        // ...
+      // ···
       }
-      // ...
+      // ···
     }
   }
   ```
+
 
 ### Obtaining and Modifying Encryption Levels
 
@@ -417,8 +449,9 @@ In practice, you need to select a proper encryption level based on scenario-spec
 
 You can obtain and set the encryption level by reading and writing the **area** attribute in [Context](../reference/apis-ability-kit/js-apis-inner-application-context.md).
 
-```ts
-// EntryAbility.ets
+<!-- @[ability_area_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryareaability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility, contextConstant, AbilityConstant, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
@@ -445,23 +478,26 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-```ts
-// Index.ets
+
+<!-- @[scene_area_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/AreaContext.ets) -->
+
+``` TypeScript
+// AreaContext.ets
 import { contextConstant, common } from '@kit.AbilityKit';
 
 @Entry
 @Component
-struct Page_Context {
+struct AreaContext {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     Column() {
-      //...
+    // ···
       List({ initialIndex: 0 }) {
-        //...
+        // ···
         ListItem() {
           Row() {
-            //...
+            // ···
           }
           .onClick(() => {
             // Before storing common information, switch the encryption level to EL1.
@@ -474,10 +510,10 @@ struct Page_Context {
             // Store common information.
           })
         }
-        //...
+        // ···
         ListItem() {
           Row() {
-            //...
+            // ···
           }
           .onClick(() => {
             // Before storing sensitive information, switch the encryption level to EL2.
@@ -490,33 +526,40 @@ struct Page_Context {
             // Store sensitive information.
           })
         }
-        //...
+        // ···
       }
-      //...
+    // ···
     }
-    //...
+    // ···
   }
 }
 ```
 
+
 ### Listening for Application Foreground/Background Changes
-  
+
 You can use the capabilities of [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md) to listen for changes in the application's foreground and background state. When the application switches between foreground and background, corresponding callback functions can be triggered to execute methods that depend on the foreground/background state or to collect data on the frequency of application state changes.
 
 The following uses [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) as an example.
 
-```ts
+<!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
+
+``` TypeScript
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+const TAG = '[LifecycleAbility]';
+const DOMAIN = 0xF811;
 
 export default class LifecycleAbility extends UIAbility {
   onCreate() {
     let applicationStateChangeCallback: ApplicationStateChangeCallback = {
       onApplicationForeground() {
-        console.info('applicationStateChangeCallback onApplicationForeground');
+        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationForeground');
       },
       onApplicationBackground() {
-        console.info('applicationStateChangeCallback onApplicationBackground');
+        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationBackground');
       }
     }
 
@@ -526,9 +569,9 @@ export default class LifecycleAbility extends UIAbility {
       // 2. Use applicationContext.on() to subscribe to the 'applicationStateChange' event.
       applicationContext.on('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      hilog.error(DOMAIN, TAG, `error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
-    console.info('Register applicationStateChangeCallback');
+    hilog.info(DOMAIN, TAG, 'Register applicationStateChangeCallback');
   }
 }
 ```
@@ -539,18 +582,20 @@ You can use [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-app
 
 Each time the callback is registered, a listener lifecycle ID is returned, with the value incremented by 1 each time. The following uses [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) as an example.
 
-```ts
+<!-- @[entry_lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrylifecycleability/EntryLifecycleAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, AbilityLifecycleCallback, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import  { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[LifecycleAbility]';
+const TAG: string = '[EntryLifecycleAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class LifecycleAbility extends UIAbility {
+export default class EntryLifecycleAbility extends UIAbility {
   // Define a lifecycle ID.
-  lifecycleId: number = -1;
+  private lifecycleId: number = -1;
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Define a lifecycle callback object.
@@ -609,7 +654,6 @@ export default class LifecycleAbility extends UIAbility {
 
     hilog.info(DOMAIN_NUMBER, TAG, `register callback number: ${this.lifecycleId}`);
   }
-  //...
   onDestroy(): void {
     // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();

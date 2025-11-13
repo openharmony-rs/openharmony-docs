@@ -15,18 +15,24 @@ When using the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiA
 If no startup page is specified, a white screen occurs after the application is started. You can use [loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) of [WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md) to set the startup page in the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) callback of the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance.
 
 
-```ts
+<!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+// ···
 
 export default class EntryAbility extends UIAbility {
+// ···
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created. Set a main page for this ability.
-    windowStage.loadContent('pages/Index', (err, data) => {
-      // ...
+    windowStage.loadContent('pages/Index', (err) => {
+      // ···
     });
   }
-  // ...
+
+// ···
 }
 ```
 
@@ -42,39 +48,45 @@ The [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 
 The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12) API enables you to obtain the context of the ability (either UIAbilityContext or [ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)) on the current page.
 
 - You can use **this.context** to obtain the context of a UIAbility instance.
-  
-  ```ts
-  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 
+  <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  // ···
+  
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       // Obtain the context of the UIAbility instance.
       let context = this.context;
-      // ...
     }
+  // ···
   }
   ```
   
 - Import the context module and define the **context** variable in the component.
-  
-  ```ts
+
+  <!-- @[Page_EventHub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/EventHubPage.ets) -->
+
+  ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
 
   @Entry
   @Component
-  struct Page_EventHub {
+  struct EventHubPage {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
     startAbilityTest(): void {
       let want: Want = {
         // Want parameter information.
+      // ···
       };
       this.context.startAbility(want);
     }
 
     // Page display.
     build() {
-      // ...
+      // ···
     }
   }
   ```
@@ -82,40 +94,51 @@ The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#g
   You can also define variables after importing the context module but before using [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).
 
   
-  ```ts
-  import { common, Want } from '@kit.AbilityKit';
+  <!-- @[basicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
 
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  // ···
+  
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct BasicUsage {
     startAbilityTest(): void {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
         // Want parameter information.
+      // ···
       };
       context.startAbility(want);
     }
 
     // Page display.
     build() {
-      // ...
+      // ···
     }
   }
   ```
 
 - To stop the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance after the service is not needed, call [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself).
 
-  ```ts
-  import { common } from '@kit.AbilityKit';
+  <!-- @[terminateSelf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
+  
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  const DOMAIN = 0x0000;
 
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct BasicUsage {
+    // ···
     // Page display.
     build() {
+      // ···
       Column() {
-        //...
+        // ···
         Button('FuncAbilityB')
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -123,20 +146,22 @@ The [getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#g
               context.terminateSelf((err: BusinessError) => {
                 if (err.code) {
                   // Process service logic errors.
-                  console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                  hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
                   return;
                 }
                 // Carry out normal service processing.
-                console.info(`terminateSelf succeed.`);
+                hilog.info(DOMAIN, 'terminateSelf', `terminateSelf succeed.`);
               });
             } catch (err) {
               // Capture the synchronization parameter error.
               let code = (err as BusinessError).code;
               let message = (err as BusinessError).message;
-              console.error(`terminateSelf failed, code is ${code}, message is ${message}.`);
+              hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
             }
           })
+        // ···
       }
+      // ···
     }
   }
   ```
@@ -149,7 +174,9 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
 
 1. Tap the **Start UIAbilityB** button in UIAbilityA to start UIAbilityB.
 
-    ```ts
+    <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/pages/Index.ets) -->  
+    
+    ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -169,7 +196,9 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
           }
 
           ListItem() {
-            Button('Start UIAbilityB').onClick((event: ClickEvent) => {
+            // The value of app.string.Start_UIAbilityB in the resource file is 'Start UIAbilityB'.
+            Button($r('app.string.Start_UIAbilityB'))
+              .onClick((event: ClickEvent) => {
               let want: Want = {
                 bundleName: this.context.abilityInfo.bundleName,
                 abilityName: 'UIAbilityB',
@@ -193,31 +222,36 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
 
 2. In the [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) lifecycle of UIAbilityB, obtain and print the PID, bundle name, and ability name of UIAbilityA.
 
-    ```ts
+    <!-- @[UIAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/UIAbilityB.ets) -->
+
+    ``` TypeScript
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+
+    const DOMAIN = 0x0000;
 
     export default class UIAbilityB extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // The caller does not need to manually pass parameters. The system automatically passes the caller's information to the Want object.
-        console.info(`onCreate, callerPid: ${want.parameters?.['ohos.aafwk.param.callerPid']}.`);
-        console.info(`onCreate, callerBundleName: ${want.parameters?.['ohos.aafwk.param.callerBundleName']}.`);
-        console.info(`onCreate, callerAbilityName: ${want.parameters?.['ohos.aafwk.param.callerAbilityName']}.`);
+        hilog.info(DOMAIN, 'UIAbilityB', `onCreate, callerPid: ${want.parameters?.['ohos.aafwk.param.callerPid']}.`);
+        hilog.info(DOMAIN, 'UIAbilityB', `onCreate, callerBundleName: ${want.parameters?.['ohos.aafwk.param.callerBundleName']}.`);
+        hilog.info(DOMAIN, 'UIAbilityB', `onCreate, callerAbilityName: ${want.parameters?.['ohos.aafwk.param.callerAbilityName']}.`);
       }
 
       onDestroy(): void {
-        console.info(`UIAbilityB onDestroy.`);
+        hilog.info(DOMAIN, 'UIAbilityB', `UIAbilityB onDestroy.`);
       }
 
       onWindowStageCreate(windowStage: window.WindowStage): void {
-        console.info(`Ability onWindowStageCreate.`);
+        hilog.info(DOMAIN, 'UIAbilityB', `Ability onWindowStageCreate.`);
 
-        windowStage.loadContent('pages/Index', (err) => {
+        windowStage.loadContent('context/BasicUsage', (err) => {
           if (err.code) {
-            console.error(`Failed to load the content, error code: ${err.code}, error msg: ${err.message}.`);
+            hilog.error(DOMAIN, 'UIAbilityB', `Failed to load the content, error code: ${err.code}, error msg: ${err.message}.`);
             return;
           }
-          console.info(`Succeeded in loading the content.`);
+          hilog.info(DOMAIN, 'UIAbilityB', `Succeeded in loading the content.`);
         });
       }
     }

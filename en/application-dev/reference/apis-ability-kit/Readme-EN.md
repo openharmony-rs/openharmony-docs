@@ -36,8 +36,6 @@
     - [@ohos.app.ability.InsightIntentDecorator (Intent Decorator)](js-apis-app-ability-InsightIntentDecorator.md)
     - [@ohos.app.ability.InsightIntentEntryExecutor (Base Class for @InsightIntentEntry Intent Execution)](js-apis-app-ability-InsightIntentEntryExecutor.md)
     - [@ohos.app.ability.InsightIntentExecutor (Base Class for Intent Execution)](js-apis-app-ability-insightIntentExecutor.md)
-    - [@ohos.application.NotificationSubscriberExtensionAbility (ExtensionAbility for Notification Subscription)](js-apis-application-NotificationSubscriberExtensionAbility.md)
-    - [@ohos.application.NotificationSubscriberExtensionContext (ExtensionAbility Context for Notification Subscription)](js-apis-application-NotificationSubscriberExtensionContext.md)
     - [@ohos.app.ability.PhotoEditorExtensionAbility (ExtensionAbility for Image Editing)](js-apis-app-ability-photoEditorExtensionAbility.md)
     - [@ohos.app.ability.OpenLinkOptions (Optional Parameters of openLink)](js-apis-app-ability-openLinkOptions.md)
     - [@ohos.app.ability.ShareExtensionAbility (ExtensionAbility for Share Detail Page Integration)](js-apis-app-ability-shareExtensionAbility.md)
@@ -96,7 +94,6 @@
     - [@ohos.app.ability.Want (Want)](js-apis-app-ability-want.md)
     - [@ohos.app.ability.wantAgent (WantAgent Module)](js-apis-app-ability-wantAgent.md)
     - [@ohos.app.ability.wantConstant (Want Constants)](js-apis-app-ability-wantConstant.md)
-    - [@ohos.continuation.continuationManager (Continuation/Collaboration Management)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.abilityAccessCtrl (Application Access Control) (System API)](js-apis-abilityAccessCtrl-sys.md)
     - [@ohos.ability.screenLockFileManager (Sensitive Data Access Management Under Lock Screen) (System API)](js-apis-screenLockFileManager-sys.md)
@@ -229,9 +226,6 @@
       - [remoteAbilityInfo (System API)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (System API)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->
-    - continuation<!--ability--continuation-->
-      - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
-      - [continuationResult](js-apis-continuation-continuationResult.md)
     - security<!--ability-security-->
       - [PermissionRequestResult](js-apis-permissionrequestresult.md)
     - wantAgent<!--wantagent-->
@@ -249,6 +243,7 @@
     - [@ohos.application.Configuration (Configuration)](js-apis-application-configuration.md)
     - [@ohos.application.ConfigurationConstant (ConfigurationConstant)](js-apis-application-configurationConstant.md)
     - [@ohos.application.Want (Want)](js-apis-application-want.md)
+    - [@ohos.continuation.continuationManager (Continuation/Collaboration Management)](js-apis-continuation-continuationManager.md)
     - [@ohos.wantAgent (WantAgent Module)](js-apis-wantAgent.md)
     <!--Del-->
     - [@ohos.ability.wantConstant (wantConstant) (System API)](js-apis-ability-wantConstant-sys.md)
@@ -266,6 +261,9 @@
     - [@system.package (Bundle Management)](js-apis-system-package.md)
     - ability<!--ability-deprecated-->
       - [want](js-apis-inner-ability-want.md)
+    - continuation<!--ability--continuation-->
+      - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
+      - [continuationResult](js-apis-continuation-continuationResult.md)
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)
