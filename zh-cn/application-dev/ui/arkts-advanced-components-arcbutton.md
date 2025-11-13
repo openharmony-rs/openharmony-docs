@@ -173,11 +173,14 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 ``` TypeScript
 import { LengthMetrics, LengthUnit, ArcButton, ArcButtonOptions, ArcButtonStyleMode } from '@kit.ArkUI';
 
+const BRIGHT_NESS_VALUE = 30;
+const BRIGHT_NESS_VALUE_DEFAULT = 50;
+
 @Entry
 @ComponentV2
 struct BrightnessPage {
-  @Local brightnessValue: number = 30;
-  private defaultBrightnessValue: number = 50;
+  @Local brightnessValue: number = BRIGHT_NESS_VALUE;
+  private defaultBrightnessValue: number = BRIGHT_NESS_VALUE_DEFAULT;
 
   build() {
     RelativeContainer() {
