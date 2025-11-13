@@ -5847,6 +5847,8 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 设置窗口是否具有获得焦点的能力，使用callback异步回调。
 
+从API version 22开始，调用[createVirtualScreen](js-apis-display.md#displaycreatevirtualscreen16)接口创建虚拟屏，并设置supportsFocus配置项为false时，位于该虚拟屏的窗口无法调用该接口修改窗口的可获焦能力，如果调用，会抛出1300002错误码。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -5893,6 +5895,8 @@ try {
 setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 设置窗口是否具有获得焦点的能力，使用Promise异步回调。
+
+从API version 22开始，调用[createVirtualScreen](js-apis-display.md#displaycreatevirtualscreen16)接口创建虚拟屏，并设置supportsFocus配置项为false时，位于该虚拟屏的窗口无法调用该接口修改窗口的可获焦能力，如果调用，会抛出1300002错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
