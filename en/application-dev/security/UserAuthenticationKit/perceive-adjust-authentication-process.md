@@ -11,7 +11,7 @@ From API version 20, you can adjust and perceive the authentication process usin
 
 Adjusting the authentication process: When initiating authentication, the application can control whether to skip the disabled biometric authentication by using the **skipLockedBiometricAuth** property of the [AuthParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10) parameter.
 
-Perceiving the authentication process: The application registers a callback through the [on](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on20) API to obtain the prompts for starting and exiting the components during authentication, and each authentication failure during authentication. The correct sequence is as follows: Register a callback through **on**, and then initiate authentication through [start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10). The callback can receive information only after the authentication is successfully initiated.
+Perceiving the authentication process: The application registers a callback through the [on](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on20) API to obtain the results for starting and exiting the components during authentication, and each authentication attempt during authentication. The correct sequence is as follows: Register a callback through **on**, and then initiate authentication through [start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10). The callback can receive information only after the authentication is successfully initiated.
 
 ## Available APIs
 
