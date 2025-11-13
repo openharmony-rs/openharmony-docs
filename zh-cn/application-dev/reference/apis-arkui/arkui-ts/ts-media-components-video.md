@@ -457,6 +457,7 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 | 名称       | 类型    | 只读 | 可选 | 说明                         |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
 | showFirstFrame   | boolean | 否 | 是 | 当前视频是否配置首帧送显，当开启首帧送显时，[VideoOptions对象](#videooptions对象说明)中的previewUri字段不生效。<br/>true：开启首帧送显；false：关闭首帧送显。<br/>默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
+| contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 否 | 是 | 当前视频的预览图内容变化时的转场动效。配置showFirstFrame为true（即配置开启首帧送显时），或未配置有效的[VideoOptions对象](#videooptions对象说明)的previewUri时，该字段不生效。<br/>默认值：ContentTransitionEffect.IDENTITY<br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。      |
 
 ## VideoController
 
@@ -608,7 +609,7 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 ### 示例1（视频播放基础用法）
 
-基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](#enableshortcutkey15)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置AVPlayer、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项）以及一些状态回调方法。
+基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](#enableshortcutkey15)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置AVPlayer、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
 
 ```ts
 // xxx.ets
@@ -632,7 +633,7 @@ struct VideoCreateComponent {
         previewUri: this.previewUri, // 设置预览图。
         currentProgressRate: this.curRate, // 设置播放速度。
         controller: this.controller,
-        posterOptions: { showFirstFrame: this.showFirstFrame } // 关闭首帧送显。
+        posterOptions: { showFirstFrame: this.showFirstFrame, contentTransitionEffect: ContentTransitionEffect.OPACITY } // 关闭首帧送显，设置预览图淡入淡出动效。
       })
         .width('100%')
         .height(600)
