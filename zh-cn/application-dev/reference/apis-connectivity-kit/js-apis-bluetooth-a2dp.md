@@ -35,7 +35,7 @@ createA2dpSrcProfile(): A2dpSourceProfile
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
