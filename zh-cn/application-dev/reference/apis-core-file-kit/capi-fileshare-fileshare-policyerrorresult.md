@@ -6,6 +6,10 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} FileShare_PolicyErrorResult
+```
+
 ## 概述
 
 授予或使能权限失败的URI策略结果。
