@@ -2456,7 +2456,7 @@ struct FreezeBuildNode {
     <!-- @[Web_createNWeb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    import { AbilityConstant, ConfigurationConstant, UIAbility,   Want } from '@kit.AbilityKit';
+    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { createNWeb } from '../Common/CommonIndex';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
@@ -2471,7 +2471,7 @@ struct FreezeBuildNode {
         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     
         windowStage.loadContent('pages/Index', (err) => {
-          createNWeb('', windowStage.getMainWindowSync().getUIContext());
+          createNWeb('https://www.example.com', windowStage.getMainWindowSync().getUIContext());
           if (err.code) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
             return;
@@ -2486,17 +2486,17 @@ struct FreezeBuildNode {
 2. 创建NodeContainer和对应的NodeController，渲染后台Web组件。
 
     <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) -->
-
+    
     ``` TypeScript
     import { UIContext } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
+    import { NodeController, BuilderNode, Size, FrameNode }  from '@kit.ArkUI';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     // @Builder中为动态组件的具体组件内容。
     // Data为入参封装类。
     class Data{
-      public url: string = '';
+      public url: string = 'https://www.example.com';
       public controller: WebviewController = new webview.WebviewController();
     }
     // 通过布尔变量shouldInactive控制网页在后台完成预渲染后停止渲染。
@@ -2525,7 +2525,7 @@ struct FreezeBuildNode {
     // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
-      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContaine中。
+      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
         hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));
@@ -2538,7 +2538,7 @@ struct FreezeBuildNode {
       }
       // 当布局大小发生变化时进行回调。
       aboutToResize(size: Size) {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToResize   width   : ' + size.width  +  ' height : ' + size.height );
+        hilog.info(0xF811,'testTag','%{public}s','aboutToResize width : ' + size.width  +  ' height : ' + size.height );
       }
       // 当controller对应的NodeContainer在Appear的时候进行回调。
       aboutToAppear() {
@@ -2575,22 +2575,22 @@ struct FreezeBuildNode {
       baseNode.initWeb(url, uiContext, controller);
       controllerMap.set(url, controller);
       nodeMap.set(url, baseNode);
-    }
+    };
     // 自定义获取NodeController接口。
     export const getNWeb = (url : string) : MyNodeController2 | undefined => {
       return nodeMap.get(url);
-    }
+    };
     ```
 
 3. 通过NodeContainer使用已经预渲染的页面。
 
     <!-- @[Main_ArkWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ArkWebPage.ets) -->
-
+    
     ``` TypeScript
     // 使用NodeController的Page页。
     // pages/ArkWebPage.ets
     import { createNWeb, getNWeb } from '../Common/CommonIndex';
-
+    
     @Entry
     @Component
     struct Index {
@@ -2599,7 +2599,7 @@ struct FreezeBuildNode {
           Column() {
             // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode。
             // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示。
-            NodeContainer(getNWeb(''))
+            NodeContainer(getNWeb('https://www.example.com'))
               .height('90%')
               .width('100%')
               .id('ArkWebPage')
