@@ -25,7 +25,7 @@ As shown in Figure 1, the height of the **Web** component is the same as the scr
 
 **Content-fitting web layout**
 
-As shown in Figure 3, the height of the **Web** component automatically adapts to the HTML5 page. As shown in the right figure, the height of the web component and the H5 page is 8000 px. In this case, no scroll bar is generated in the **Web** component. When a user scrolls the page, other ArkUI components is scrolled at the same time, and the **Web** component is displayed on the entire screen. Figure 4 shows the actual effect.
+As shown in Figure 3, the height of both the **Web** component and the HTML5 page is 8000 px. In this case, no scroll bar is generated in the **Web** component. When a user scrolls the page, other ArkUI components are scrolled at the same time, and the **Web** component is displayed on the entire screen, as shown in Figure 4.
 
 | Figure 3 Web layout fitting in the page content| Figure 4 Real effect of the web layout|
 | --- | --- |

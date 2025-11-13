@@ -14,41 +14,41 @@ In the following example, when a user clicks the **Upload** button on the fronte
 
 
 - Application code:
-  
+
   ```ts
   // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { picker } from '@kit.CoreFileKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
 
-    build() {
-      Column() {
-        Web({ src: $rawfile('local.html'), controller: this.controller })
-          .onShowFileSelector((event) => {
-            console.info('MyFileUploader onShowFileSelector invoked');
-            const documentSelectOptions = new picker.DocumentSelectOptions();
-            let uri: string | null = null;
-            const documentViewPicker = new picker.DocumentViewPicker();
-            documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
-              uri = documentSelectResult[0];
-              console.info('documentViewPicker.select to file succeed and uri is:' + uri);
-              if (event) {
-                event.result.handleFileList([uri]);
-              }
-            }).catch((err: BusinessError) => {
-              console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-            })
-            return true;
+  build() {
+    Column() {
+      Web({ src: $rawfile('local.html'), controller: this.controller })
+        .onShowFileSelector((event) => {
+          console.info('MyFileUploader onShowFileSelector invoked');
+          const documentSelectOptions = new picker.DocumentSelectOptions();
+          let uri: string | null = null;
+          const documentViewPicker = new picker.DocumentViewPicker();
+          documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
+            uri = documentSelectResult[0];
+            console.info('documentViewPicker.select to file succeed and uri is:' + uri);
+            if (event) {
+              event.result.handleFileList([uri]);
+            }
+          }).catch((err: BusinessError) => {
+            console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
           })
-      }
+          return true;
+        })
     }
   }
-  ```
+}
+```
 
 
 - Code of the **local.html** page:
@@ -232,7 +232,7 @@ HTML page code:
 
 ## Processing File Upload Requests Using the Default ArkWeb Mode
 
-The `accept` attribute is a string that defines the file type that the file input should accept. This string is a comma-separated list of unique file type specifiers. Because a given file type can be specified in many ways, it is important to provide a complete set of type specifiers when you need a file in a given format.
+The **accept** attribute is a string that defines the file types that the file **input** component should accept. This string is a comma-separated list of unique file type specifiers. Because a given file type can be specified in many ways, it is important to provide a complete set of type specifiers when you need a file in a given format.
 
 The **capture** attribute is a string used to specify the camera to obtain the data if the **accept** attribute specifies that the input is an image or video. **user** indicates that the front camera and/or microphone should be used. **environment** indicates that the rear camera and/or microphone should be used. If this attribute is absent, the user agent is free to decide what to do. If the preset mode of the request is not available, the user agent may use the default mode.
 

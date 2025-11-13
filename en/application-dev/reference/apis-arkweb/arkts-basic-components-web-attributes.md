@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Supported common attributes: [aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio), [backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur), [backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover), [bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), [bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), [bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet), [borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor), [borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius), [borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle), [borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth), [clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12), [constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize), [defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9), [focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable), [tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9), [groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9), [displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority), [enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled), [flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis), [flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink), [layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight), [id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id), [gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height), touchable, [margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin), [markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor), [offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset), [width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width), [zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex), [visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md), [scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale), [translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate), [responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion), [size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md), [opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md), [shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow), [sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md), [transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md), and [position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position).
+Only the [aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio), [backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur), [backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover), [bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), [bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), [bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet), [borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor), [borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius), [borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle), [borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth), [clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12), [constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize), [defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9), [focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable), [tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9), [groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9), [displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority), [enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled), [flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis), [flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink), [layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight), [id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id), [gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height), [touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated), [margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin), [markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor), [offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset), [width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width), [zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex), [visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility), [scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale), [translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate), [responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion), [size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size), [opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity), [shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow), [sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md), [transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md), [position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position), and [direction](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction) attributes are supported.
 
 > **NOTE**
 >
@@ -18,7 +18,7 @@ Supported common attributes: [aspectRatio](../apis-arkui/arkui-ts/ts-universal-a
 
 domStorageAccess(domStorageAccess: boolean)
 
-Sets whether to enable the Document Object Model Storage API (DOM Storage API) permission. If this attribute is not explicitly called, the DOM Storage API permission is disabled by default.
+Sets whether to enable the DOM Storage API permission. If this attribute is not explicitly called, the DOM Storage API permission is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -26,7 +26,7 @@ Sets whether to enable the Document Object Model Storage API (DOM Storage API) p
 
 | Name             | Type   | Mandatory  | Description                                |
 | ---------------- | ------- | ---- | ------------------------------------ |
-| domStorageAccess | boolean | Yes   | Whether to enable the DOM Storage API.<br>The value **true** means to the DOM Storage API, and **false** means the opposite.<br>If undefined or null is passed, the value is false.|
+| domStorageAccess | boolean | Yes   | Whether to enable the DOM Storage API.<br>The value **true** means to the DOM Storage API, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 > **NOTE**
 >
@@ -56,7 +56,7 @@ Sets whether to enable the Document Object Model Storage API (DOM Storage API) p
 
 fileAccess(fileAccess: boolean)
 
-Sets whether to enable access to the file system in the application. This setting does not affect the access to the files specified through [$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md). In API version 11 and earlier versions, the access to the file system in the app is enabled by default if this attribute is not explicitly called. For API version 12 and later, if fileAccess is not explicitly called, the access to the file system in the app is disabled by default.
+Sets whether to enable access to the file system in the application. This setting does not affect the access to the files specified through [$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md). For API version 11 and earlier versions, access to the file system in the application is enabled by default if this attribute is not explicitly called. Since API version 12, access to the file system in the application is disabled by default if this attribute is not explicitly called.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -64,7 +64,7 @@ Sets whether to enable access to the file system in the application. This settin
 
 | Name       | Type   | Mandatory  | Description                  |
 | ---------- | ------- | ---- | ---------------------- |
-| fileAccess | boolean | Yes   | Whether to enable access to the file system in the application.<br>true: enabled. false: disabled.<br>When fileAccess is set to false, resources in the read-only resource directory `/data/storage/el1/bundle/entry/resources/resfile` can still be accessed using the file protocol, which is not controlled by fileAccess.<br>For API version 11 and earlier, if undefined or null is passed, the value is true. For API version 12 and later, if undefined or null is passed, the value is false.|
+| fileAccess | boolean | Yes   | Whether to enable access to the file system in the application.<br>The value **true** means to enable access to the file system in the application, and **false** means the opposite.<br>When **fileAccess** is set to **false**, only the resources in the read-only resource directory **/data/storage/el1/bundle/entry/resources/resfile** can be accessed using the file protocol, regardless of the value of **fileAccess**.<br>For API version 11 and earlier versions, if **undefined** or **null** is passed in, the value is **true**. Since API version 12, if **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -90,7 +90,7 @@ Sets whether to enable access to the file system in the application. This settin
 
 imageAccess(imageAccess: boolean)
 
-Sets whether to enable automatic image loading. If this attribute is not explicitly called, automatic loading of image resources is allowed.
+Sets whether to enable automatic image loading. When this attribute is not explicitly called, automatic loading of image resources is allowed.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -98,7 +98,7 @@ Sets whether to enable automatic image loading. If this attribute is not explici
 
 | Name        | Type   | Mandatory  | Description           |
 | ----------- | ------- | ---- | --------------- |
-| imageAccess | boolean | Yes   | Whether to enable automatic image loading.<br>The value **true** means to enable automatic image loading, and **false** means the opposite.<br>If undefined or null is passed, the value is false.|
+| imageAccess | boolean | Yes   | Whether to enable automatic image loading.<br>The value **true** means to enable automatic image loading, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
   ```ts
@@ -123,7 +123,7 @@ Sets whether to enable automatic image loading. If this attribute is not explici
 
 javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
-Registers an ArkTS object in **javaScriptProxy** with the **Web** component. The object is registered with all frameworks of the web page, including all iframes, using the name specified in **JavaScriptProxy**. This enables JavaScript to invoke methods of the ArkTS object in **javaScriptProxy**. If this attribute is not explicitly called, the ArkTS object in javaScriptProxy is not registered with the web component by default.
+Registers an ArkTS object in **javaScriptProxy** with the **Web** component. The object is registered with all frameworks of the web page, including all iframes, using the name specified in **JavaScriptProxy**. This enables JavaScript to invoke methods of the ArkTS object in **javaScriptProxy**. When this attribute is not explicitly called, the ArkTS object in javaScriptProxy is not registered with the **Web** component by default.
 
 > **NOTE**
 >
@@ -138,7 +138,7 @@ Registers an ArkTS object in **javaScriptProxy** with the **Web** component. The
 
 | Name       | Type                                    | Mandatory  | Description                                    |
 | ---------- | ---------------------------------------- | ---- |---------------------------------------- |
-| javaScriptProxy     | [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)                                   | Yes   |  Object to be registered. Methods can be declared, but attributes cannot.<br>If undefined or null is passed, the ArkTS object in javaScriptProxy is not registered with the web component.                  |
+| javaScriptProxy     | [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)                                   | Yes   |  Object to be registered. Methods can be declared, but attributes cannot.<br>When **undefined** or **null** is passed in, the ArkTS object in javaScriptProxy is not registered with the **Web** component.                  |
 
 **Example**
 
@@ -200,7 +200,7 @@ Registers an ArkTS object in **javaScriptProxy** with the **Web** component. The
 
 javaScriptAccess(javaScriptAccess: boolean)
 
-Sets whether JavaScript scripts can be executed. If this attribute is not explicitly called, JavaScript scripts are allowed to be executed by default.
+Sets whether JavaScript scripts can be executed. When this attribute is not explicitly called, JavaScript scripts can be executed by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -208,7 +208,7 @@ Sets whether JavaScript scripts can be executed. If this attribute is not explic
 
 | Name             | Type   | Mandatory  | Description               |
 | ---------------- | ------- | ---- | ------------------- |
-| javaScriptAccess | boolean | Yes   | Whether JavaScript scripts can be executed.<br>The value **true** indicates that JavaScript scripts can be executed, and **false** indicates the opposite.<br>If undefined or null is passed, the value is false.|
+| javaScriptAccess | boolean | Yes   | Whether JavaScript scripts can be executed.<br>The value **true** indicates that JavaScript scripts can be executed, and **false** indicates the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -233,7 +233,7 @@ Sets whether JavaScript scripts can be executed. If this attribute is not explic
 
 overScrollMode(mode: OverScrollMode)
 
-Sets whether to enable overscroll mode. When overscroll mode is enabled and the boundary of the web page is reached, the **Web** component plays a bounce effect animation and return to the page. The internal page on the root page does not trigger bounce. If this attribute is not explicitly called, the overscroll mode is disabled by default.
+Sets whether to enable overscroll mode. When overscroll mode is enabled and the boundary of the web page is reached, the **Web** component plays a bounce effect animation and return to the page. The internal page on the root page does not trigger bounce. When this attribute is not explicitly called, the overscroll mode is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -241,7 +241,7 @@ Sets whether to enable overscroll mode. When overscroll mode is enabled and the 
 
 | Name | Type                                   | Mandatory  | Description              |
 | ---- | --------------------------------------- | ---- | ------------------ |
-| mode | [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) | Yes   | Whether to enable the overscroll mode.<br>If undefined or null is passed, the value is OverScrollMode.NEVER.|
+| mode | [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) | Yes   | Whether to enable the overscroll mode.<br>If **undefined** or **null** is passed in, the value is **OverScrollMode.NEVER**.|
 
 **Example**
 
@@ -267,7 +267,7 @@ Sets whether to enable overscroll mode. When overscroll mode is enabled and the 
 
 mixedMode(mixedMode: MixedMode)
 
-Sets the behavior when a secure source attempts to load resources from an insecure source. If this attribute is not explicitly called, the default value is MixedMode.None, which means that secure sources are not allowed to load content from insecure sources.
+Sets the behavior when a secure source attempts to load resources from an insecure source. When this attribute is not explicitly called, the default value is **MixedMode.None**, which means that secure sources are not allowed to load content from insecure sources.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -275,7 +275,7 @@ Sets the behavior when a secure source attempts to load resources from an insecu
 
 | Name      | Type                       | Mandatory  | Description     |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | Yes   | Mixed content mode to be set.<br>If undefined or null is passed, the value is MixedMode.None.|
+| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | Yes   | Mixed content mode to be set.<br>When **undefined** or **null** is passed in, the value is **MixedMode.None**.|
 
 **Example**
 
@@ -301,7 +301,7 @@ Sets the behavior when a secure source attempts to load resources from an insecu
 
 onlineImageAccess(onlineImageAccess: boolean)
 
-Sets whether to enable access to online images through HTTP and HTTPS. If this attribute is not explicitly called, images can be loaded from the network by default.
+Sets whether to enable access to online images through HTTP and HTTPS. When this attribute is not explicitly called, online image resources can be loaded by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -309,7 +309,7 @@ Sets whether to enable access to online images through HTTP and HTTPS. If this a
 
 | Name              | Type   | Mandatory  | Description            |
 | ----------------- | ------- | ---- | ---------------- |
-| onlineImageAccess | boolean | Yes   | Whether to enable access to online images through HTTP and HTTPS.<br>The value **true** means to enable access to online images through HTTP and HTTPS, and **false** means the opposite.<br>If undefined or null is passed, the default value false is used.|
+| onlineImageAccess | boolean | Yes   | Whether to enable access to online images through HTTP and HTTPS.<br>The value **true** means to enable access to online images through HTTP and HTTPS, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -335,7 +335,7 @@ Sets whether to enable access to online images through HTTP and HTTPS. If this a
 
 zoomAccess(zoomAccess: boolean)
 
-Sets whether to enable zoom gestures. If this attribute is not explicitly called, zooming in and out by gestures is supported by default.
+Sets whether to enable zoom gestures. When this attribute is not explicitly called, zoom gestures are supported by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -343,7 +343,7 @@ Sets whether to enable zoom gestures. If this attribute is not explicitly called
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | boolean | Yes   | Whether to enable zoom gestures.<br>The value **true** means to enable zoom gestures, and **false** means the opposite.<br>If undefined or null is passed, the default value false is used.|
+| zoomAccess | boolean | Yes   | Whether to enable zoom gestures.<br>The value **true** means to enable zoom gestures, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -369,7 +369,7 @@ Sets whether to enable zoom gestures. If this attribute is not explicitly called
 
 overviewModeAccess(overviewModeAccess: boolean)
 
-Sets whether to load web pages by using the overview mode. That is, zoom out the content to fit the screen width. If this attribute is not explicitly called, web pages can be loaded in overview mode by default.
+Sets whether to load web pages by using the overview mode. That is, zoom out the content to fit the screen width. When this attribute is not explicitly called, web pages can be loaded in overview mode by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -379,7 +379,7 @@ Sets whether to load web pages by using the overview mode. That is, zoom out the
 
 | Name               | Type   | Mandatory  | Description           |
 | ------------------ | ------- | ---- | --------------- |
-| overviewModeAccess | boolean | Yes   | Whether to load web pages by using the overview mode.<br>The value **true** means to load web pages by using the overview mode, and **false** means the opposite.<br>If undefined or null is passed, the default value false is used.|
+| overviewModeAccess | boolean | Yes   | Whether to load web pages by using the overview mode.<br>The value **true** means to load web pages by using the overview mode, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -405,7 +405,7 @@ Sets whether to load web pages by using the overview mode. That is, zoom out the
 
 databaseAccess(databaseAccess: boolean)
 
-Sets whether to enable the database storage API permission. If this attribute is not explicitly called, the database storage API permission is disabled by default.
+Sets whether to enable database access. When this attribute is not explicitly called, database access is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -413,7 +413,7 @@ Sets whether to enable the database storage API permission. If this attribute is
 
 | Name           | Type   | Mandatory  | Description             |
 | -------------- | ------- | ---- | ----------------- |
-| databaseAccess | boolean | Yes   | Whether to enable database access.<br>The value **true** means to enable database access, and the value **false** means the opposite.<br>If undefined or null is passed, the default value false is used.|
+| databaseAccess | boolean | Yes   | Whether to enable database access.<br>The value **true** means to enable database access, and the value **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -439,7 +439,7 @@ Sets whether to enable the database storage API permission. If this attribute is
 
 geolocationAccess(geolocationAccess: boolean)
 
-Sets whether to enable geolocation access. If this attribute is not explicitly called, the location permission is enabled by default. For details, see [Managing Location Permissions](../../web/web-geolocation-permission.md).
+Sets whether to enable geolocation access. When this attribute is not explicitly called, geolocation access is enabled by default. For details, see [Managing Location Permissions](../../web/web-geolocation-permission.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -447,7 +447,7 @@ Sets whether to enable geolocation access. If this attribute is not explicitly c
 
 | Name              | Type   | Mandatory  | Description           |
 | ----------------- | ------- | ---- | --------------- |
-| geolocationAccess | boolean | Yes   | Whether to enable geolocation access.<br>The value **true** means to enable geolocation access, and **false** means the opposite.<br>If undefined or null is passed, false is used.|
+| geolocationAccess | boolean | Yes   | Whether to enable geolocation access.<br>The value **true** means to enable geolocation access, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -473,7 +473,7 @@ Sets whether to enable geolocation access. If this attribute is not explicitly c
 
 mediaPlayGestureAccess(access: boolean)
 
-Sets whether video playback must be started by user gestures. This API is not applicable to muted videos. If this attribute is not explicitly set, users need to manually click the video to play it by default.
+Sets whether video playback must be started by user gestures. This API is not applicable to muted videos. When this attribute is not explicitly set, users need to click the video to play it by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -481,7 +481,7 @@ Sets whether video playback must be started by user gestures. This API is not ap
 
 | Name   | Type   | Mandatory  | Description               |
 | ------ | ------- | ---- | ------------------- |
-| access | boolean | Yes   | Whether video playback must be started by user gestures.<br>The value **true** indicates that video playback must be started by user gestures, and **false** indicates the opposite.<br>If undefined or null is passed, the default value false is used.|
+| access | boolean | Yes   | Whether video playback must be started by user gestures.<br>The value **true** indicates that video playback must be started by user gestures, and **false** indicates the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -542,7 +542,7 @@ Enabling the multi-window permission requires implementation of the **onWindowNe
 
 horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
-Sets whether to display the horizontal scrollbar, including the default system scrollbar and custom scrollbar. If this attribute is not explicitly called, the horizontal scroll bar is displayed by default.
+Sets whether to display the horizontal scrollbar, including the default system scrollbar and custom scrollbar. When this attribute is not explicitly called, the horizontal scrollbar is displayed by default.
 
 > **NOTE**
 >
@@ -555,7 +555,7 @@ Sets whether to display the horizontal scrollbar, including the default system s
 
 | Name                | Type   | Mandatory  | Description        |
 | ------------------- | ------- | ---- | ------------ |
-| horizontalScrollBar | boolean | Yes   | Whether to display the horizontal scrollbar.<br>The value **true** means to display the horizontal scrollbar, and **false** means the opposite.<br>If undefined or null is passed, the value is false.|
+| horizontalScrollBar | boolean | Yes   | Whether to display the horizontal scrollbar.<br>The value **true** means to display the horizontal scrollbar, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -624,7 +624,7 @@ Sets whether to display the horizontal scrollbar, including the default system s
 
 verticalScrollBarAccess(verticalScrollBar: boolean)
 
-Sets whether to display the vertical scrollbar, including the default system scrollbar and custom scrollbar. If this attribute is not explicitly called, the vertical scroll bar is displayed by default.
+Sets whether to display the vertical scrollbar, including the default system scrollbar and custom scrollbar. When this attribute is not explicitly called, the vertical scrollbar is displayed by default.
 
 > **NOTE**
 >
@@ -637,7 +637,7 @@ Sets whether to display the vertical scrollbar, including the default system scr
 
 | Name              | Type   | Mandatory  | Description        |
 | ----------------- | ------- | ---- | ------------ |
-| verticalScrollBar | boolean | Yes   | Whether to display the vertical scrollbar.<br>The value **true** means to display the vertical scrollbar, and **false** means the opposite.<br>If undefined or null is passed, the value is false.|
+| verticalScrollBar | boolean | Yes   | Whether to display the vertical scrollbar.<br>The value **true** means to display the vertical scrollbar, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -706,7 +706,7 @@ Sets whether to display the vertical scrollbar, including the default system scr
 
 cacheMode(cacheMode: CacheMode)
 
-Sets the cache mode. If this attribute is not explicitly called, the default value `CacheMode.Default` is used.
+Sets the cache mode. When this attribute is not explicitly called, the default value **CacheMode.Default** is used.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -714,7 +714,7 @@ Sets the cache mode. If this attribute is not explicitly called, the default val
 
 | Name      | Type                       | Mandatory  | Description     |
 | --------- | --------------------------- | ---- | --------- |
-| cacheMode | [CacheMode](./arkts-basic-components-web-e.md#cachemode) | Yes   | Cache mode to set.<br>If undefined or null is passed, the value is CacheMode.Default.|
+| cacheMode | [CacheMode](./arkts-basic-components-web-e.md#cachemode) | Yes   | Cache mode to set.<br>When **undefined** or **null** is passed in, the value is **CacheMode.Default**.|
 
 **Example**
 
@@ -741,7 +741,7 @@ Sets the cache mode. If this attribute is not explicitly called, the default val
 
 copyOptions(value: CopyOptions)
 
-Sets the pasteboard copy options. If this attribute is not explicitly called, the copied content can be pasted in all apps on the current device by default.
+Sets the pasteboard copy options. When this attribute is not explicitly called, the copied content can be pasted in all applications on the current device by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -749,7 +749,7 @@ Sets the pasteboard copy options. If this attribute is not explicitly called, th
 
 | Name      | Type                       | Mandatory  | Description     |
 | --------- | --------------------------- | ---- | --------- |
-| value | [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9) | Yes   | Pasteboard copy options.<br>If undefined or null is passed, CopyOptions.None is used.|
+| value | [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9) | Yes   | Pasteboard copy options.<br>If **undefined** or **null** is passed in, **CopyOptions.None** is used.|
 
 **Example**
 
@@ -775,7 +775,7 @@ struct WebComponent {
 
 textZoomRatio(textZoomRatio: number)
 
-Sets the text zoom ratio of the page. If this attribute is not explicitly called, the default zoom percentage is 100%.
+Sets the text zoom ratio of the page. When this attribute is not explicitly called, the default zoom ratio is 100%.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -810,7 +810,7 @@ Sets the text zoom ratio of the page. If this attribute is not explicitly called
 
 initialScale(percent: number)
 
-Sets the scale factor of the entire page. If this attribute is not explicitly called, the default zoom percentage is 100.
+Sets the scale factor of the entire page. When this attribute is not explicitly called, the default scale factor is 100%.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -818,7 +818,7 @@ Sets the scale factor of the entire page. If this attribute is not explicitly ca
 
 | Name    | Type  | Mandatory  | Description                         |
 | ------- | ------ | ---- | ----------------------------- |
-| percent | number | Yes   | Scale factor of the entire page.<br>Value range: (0, 1000]<br>If undefined or null is passed, the attribute setting does not take effect.|
+| percent | number | Yes   | Scale factor of the entire page.<br>Value range: (0, 1000]<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
 
 **Example**
 
@@ -845,7 +845,7 @@ Sets the scale factor of the entire page. If this attribute is not explicitly ca
 
 blockNetwork(block: boolean)
 
-Sets whether to block online downloads. If this attribute is not explicitly called, resource loading from the network is allowed by default.
+Sets whether to block online downloads. When this attribute is not explicitly called, online resources can be loaded by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -853,7 +853,7 @@ Sets whether to block online downloads. If this attribute is not explicitly call
 
 | Name  | Type   | Mandatory  | Description               |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | Yes   | Whether to allow online downloads.<br>The value **true** means to block online downloads, and **false** means the opposite.<br>If undefined or null is passed, the default value true is used.|
+| block | boolean | Yes   | Whether to allow online downloads.<br>The value **true** means to block online downloads, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
 
 **Example**
 
@@ -881,9 +881,9 @@ Sets whether to block online downloads. If this attribute is not explicitly call
 defaultFixedFontSize(size: number)
 
 
-Sets the default fixed font size for the web page. For elements that use the monospace font and do not specify the font-size style on the HTML front end, the font size is rendered based on this value.
+Sets the default fixed font size for the web page. For HTML elements that use the **monospace** font and do not specify **font-size**, the font size is rendered based on this value.
 
-If this attribute is not explicitly called, the default monospace font size is 13.
+When this attribute is not explicitly called, the default fixed font size is **13**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -892,7 +892,7 @@ If this attribute is not explicitly called, the default monospace font size is 1
 
 | Name | Type  | Mandatory  | Description                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | Yes   | Default fixed font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>If null or undefined is passed, the default value 13 is used.|
+| size | number | Yes   | Default fixed font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>When **null** or **undefined** is passed in, the value is **13**.|
 
 **Example**
 
@@ -920,9 +920,9 @@ If this attribute is not explicitly called, the default monospace font size is 1
 defaultFontSize(size: number)
 
 
-Sets the default font size for the web page. For elements that use non-monospace fonts and do not specify the font-size style on the HTML front end, the font size is rendered based on this value.
+Sets the default font size for the web page. For HTML elements that use non-monospace fonts and do not specify **font-size**, the font size is rendered based on this value.
 
-If this attribute is not explicitly called, the default font size of the web page is 16.
+When this attribute is not explicitly called, the default font size of the web page is **16**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -931,7 +931,7 @@ If this attribute is not explicitly called, the default font size of the web pag
 
 | Name | Type  | Mandatory  | Description                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | Yes   | Default font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>If this parameter is set to null or undefined, the default font size is 16.|
+| size | number | Yes   | Default font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>When **null** or **undefined** is passed in, the value is **16**.|
 
 **Example**
 
@@ -959,9 +959,9 @@ If this attribute is not explicitly called, the default font size of the web pag
 minFontSize(size: number)
 
 
-Sets the minimum font size for the web page. For HTML front-end elements, if the font size of an element is smaller than the value set by this API, the font size set by this API is used for rendering.
+Sets the minimum font size for the web page. If the font size of HTML elements is smaller than the value set by this API, the font size is rendered based on the value set by this API.
 
-If this attribute is not explicitly called, the default minimum font size of the web page is 8.
+When no attribute is explicitly called, the default minimum font size of the web page is **8**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -970,7 +970,7 @@ If this attribute is not explicitly called, the default minimum font size of the
 
 | Name | Type  | Mandatory  | Description                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | Yes   | Minimum font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>If null or undefined is passed, the value is 8.|
+| size | number | Yes   | Minimum font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>When **null** or **undefined** is passed in, the value is **8**.|
 
 **Example**
 
@@ -1000,12 +1000,12 @@ minLogicalFontSize(size: number)
 
 Sets the minimum logical font size for the web page.
 
-For HTML front-end elements that do not specify the font-size style:
-1. If the font size of an element is smaller than the value set by this API, the font size set by this API is used for rendering.
-2. If both minLogicalFontSize and minFontSize are set, the larger value of the two is used for elements that do not specify the font-size style.
+For HTML elements whose font size is not specified:
+1. If the font size of the element is smaller than the value set by this API, the font size is rendered based on the API value.
+2. If **minLogicalFontSize** and **minFontSize** are both set, the larger value of the two will be used for elements whose font size is not specified.
 
 
-If this attribute is not explicitly called, the default minimum logical font size of the web page is 8.
+When this attribute is not explicitly called, the default minimum logical font size of the web page is **8**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -1014,7 +1014,7 @@ If this attribute is not explicitly called, the default minimum logical font siz
 
 | Name | Type  | Mandatory  | Description                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | number | Yes   | Minimum logical font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>If null or undefined is passed, the value is 18.|
+| size | number | Yes   | Minimum logical font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px.<br>When **null** or **undefined** is passed in, the value is **18**.|
 
 **Example**
 
@@ -1042,9 +1042,9 @@ If this attribute is not explicitly called, the default minimum logical font siz
 webFixedFont(family: string)
 
 
-Sets the fixed font library of a web page to render elements that use the monospace font on the HTML front end.
+Sets the fixed font family of the web page to render HTML elements that use the **monospace** font.
 
-If this attribute is not explicitly called, the fixed font library of the web page is monospace by default.
+When this attribute is not explicitly called, the default fixed font family of the web page is **monospace**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -1053,7 +1053,7 @@ If this attribute is not explicitly called, the fixed font library of the web pa
 
 | Name   | Type  | Mandatory  | Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | Yes   | Fixed font family to set.<br>If null or undefined is passed, the value is monospace.|
+| family | string | Yes   | Fixed font family to set.<br>When **null** or **undefined** is passed in, the value is **monospace**.|
 
 **Example**
 
@@ -1081,9 +1081,9 @@ If this attribute is not explicitly called, the fixed font library of the web pa
 webSansSerifFont(family: string)
 
 
-Sets the sans-serif font library of a web page to render elements that use the sans-serif font on the HTML front end.
+Sets the sans-serif font family of the web page to render HTML elements that use the **sans-serif** font.
 
-If this attribute is not explicitly called, the sans-serif font library of the web page is sans-serif by default.
+When this attribute is not explicitly called, the sans-serif font family of the web page is **sans-serif** by default.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -1092,7 +1092,7 @@ If this attribute is not explicitly called, the sans-serif font library of the w
 
 | Name   | Type  | Mandatory  | Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | Yes   | Sans serif font family to set.<br>If null or undefined is passed, the sans-serif font library is sans-serif.|
+| family | string | Yes   | Sans-serif font family to set.<br>When **null** or **undefined** is passed in, the sans-serif font family is **sans-serif**.|
 
 **Example**
 
@@ -1120,9 +1120,9 @@ If this attribute is not explicitly called, the sans-serif font library of the w
 webSerifFont(family: string)
 
 
-Sets the serif font library of a web page to render elements that use the serif font on the HTML front end.
+Sets the serif font family of the web page to render HTML elements that use the **serif** font.
 
-If this attribute is not explicitly called, the serif font library of the web page is serif by default.
+When this attribute is not explicitly called, the default serif font family of the web page is **serif**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -1131,7 +1131,7 @@ If this attribute is not explicitly called, the serif font library of the web pa
 
 | Name   | Type  | Mandatory  | Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | Yes   | Serif font family to set.<br>If null or undefined is passed, the serif font library is serif.|
+| family | string | Yes   | Serif font family to set.<br>When **null** or **undefined** is passed in, the sans-serif font family is **serif**.|
 
 **Example**
 
@@ -1159,9 +1159,9 @@ If this attribute is not explicitly called, the serif font library of the web pa
 webStandardFont(family: string)
 
 
-Sets the standard font library of a web page to render elements for which no font style is specified in the HTML frontend.
+Sets the standard font family of the web page to render HTML elements whose font style is not specified.
 
-If this attribute is not explicitly called, the default standard font library of the web page is sans-serif.
+When this attribute is not explicitly called, the default standard font family of the web page is **sans-serif**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -1170,7 +1170,7 @@ If this attribute is not explicitly called, the default standard font library of
 
 | Name   | Type  | Mandatory  | Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| family | string | Yes   | Standard font family to set.<br>If null or undefined is passed, the standard font library is sans-serif.|
+| family | string | Yes   | Standard font family to set.<br>When **null** or **undefined** is passed in, the sans-serif font family is **sans-serif**.|
 
 **Example**
 
@@ -1198,9 +1198,9 @@ If this attribute is not explicitly called, the default standard font library of
 webFantasyFont(family: string)
 
 
-Sets the fantasy font library of a web page to render elements that use the fantasy font in the HTML frontend.
+Sets the fantasy font family of the web page to render HTML elements that use the **fantasy** font.
 
-If this attribute is not explicitly called, the default fantasy font library of the web page is fantasy.
+When this attribute is not explicitly called, the default fantasy font family of the web page is **fantasy**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -1209,7 +1209,7 @@ If this attribute is not explicitly called, the default fantasy font library of 
 
 | Name   | Type  | Mandatory  | Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | Yes   | Fantasy font family to set.<br>If null or undefined is passed, the fantasy font library is used.|
+| family | string | Yes   | Fantasy font family to set.<br>When **null** or **undefined** is passed in, the value is **fantasy**.|
 
 **Example**
 
@@ -1236,9 +1236,9 @@ If this attribute is not explicitly called, the default fantasy font library of 
 webCursiveFont(family: string)
 
 
-Sets the cursive font library of a web page, which is used to render elements that use the cursive font on the HTML front end.
+Sets the cursive font family of the web page to render HTML elements that use the **cursive** font.
 
-If this attribute is not explicitly called, the cursive font library of the web page is cursive by default.
+When this attribute is not explicitly called, the default cursive font family of the web page is **cursive**.
 
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -1247,7 +1247,7 @@ If this attribute is not explicitly called, the cursive font library of the web 
 
 | Name   | Type  | Mandatory  | Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| family | string | Yes   | Cursive font family to set.<br>If null or undefined is passed, the cursive font library is used.|
+| family | string | Yes   | Cursive font family to set.<br>When **null** or **undefined** is passed in, the value is **cursive**.|
 
 **Example**
 
@@ -1274,7 +1274,7 @@ If this attribute is not explicitly called, the cursive font library of the web 
 
 darkMode(mode: WebDarkMode)
 
-Sets dark mode for the web page. If this attribute is not explicitly called, the dark mode is disabled by default.
+Sets dark mode for the web page. When this attribute is not explicitly called, dark mode is disabled by default.
 
 When dark mode is enabled, the **Web** component enables the dark style defined in the media query **prefers-color-scheme** of the web page. If it is not defined, the web page remains unchanged. To enable forcible dark mode, use this API with [forceDarkAccess](#forcedarkaccess9). For details about how to use dark mode, see [Setting Dark Mode](../../web/web-set-dark-mode.md).
 
@@ -1311,7 +1311,7 @@ When dark mode is enabled, the **Web** component enables the dark style defined 
 
 forceDarkAccess(access: boolean)
 
-Sets whether to enable forcible dark mode for the web page. This API is applicable only when [darkMode](#darkmode9) is enabled. If this attribute is not explicitly called, the forced dark mode is disabled by default.
+Sets whether to enable forcible dark mode for the web page. This API is applicable only when [darkMode](#darkmode9) is enabled. When this attribute is not explicitly called, forcible dark mode is disabled for the web page by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1319,7 +1319,7 @@ Sets whether to enable forcible dark mode for the web page. This API is applicab
 
 | Name   | Type   | Mandatory  | Description           |
 | ------ | ------- | ---- | --------------- |
-| access | boolean | Yes   | Whether to enable forcible dark mode for the web page.<br>The value **true** means to enable forcible dark mode for the web page, and **false** means the opposite.<br>If this parameter is set to null or undefined, the dark mode is disabled.|
+| access | boolean | Yes   | Whether to enable forcible dark mode for the web page.<br>The value **true** means to enable forcible dark mode for the web page, and **false** means the opposite.<br>When **null** or **undefined** is passed in, the value is **false**.|
 
 **Example**
 
@@ -1348,7 +1348,7 @@ Sets whether to enable forcible dark mode for the web page. This API is applicab
 
 pinchSmooth(isEnabled: boolean)
 
-Sets whether to enable pinch smooth mode for the web page. If this attribute is not explicitly called, pinch smooth mode is disabled by default.
+Sets whether to enable pinch smooth mode for the web page. When this attribute is not explicitly called, pinch smooth mode is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1356,7 +1356,7 @@ Sets whether to enable pinch smooth mode for the web page. If this attribute is 
 
 | Name      | Type   | Mandatory  | Description         |
 | --------- | ------- | ---- | ------------- |
-| isEnabled | boolean | Yes   | Whether to enable pinch smooth mode for the web page.<br>The value **true** means to enable pinch smooth mode, and **false** means the opposite.<br>If this parameter is set to undefined or null, pinch smooth mode is disabled.|
+| isEnabled | boolean | Yes   | Whether to enable pinch smooth mode for the web page.<br>The value **true** means to enable pinch smooth mode, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -1490,7 +1490,7 @@ struct WebComponent {
 
 mediaOptions(options: WebMediaOptions)
 
-Sets the web-based media playback policy, including the validity period for automatically resuming a paused web audio, and whether the audio of multiple **Web** instances in an application is exclusive. If this attribute is not explicitly set, the audio in the web page cannot be automatically resumed after the web page is refocused by default, and the audio of multiple web instances in the app is exclusive by default.
+Sets the web-based media playback policy, including the validity period for automatically resuming a paused web audio, and whether the audio of multiple **Web** instances in an application is exclusive. When this attribute is not explicitly set, the web audio cannot be automatically resumed after regaining the focus by default, and the audio of multiple **Web** instances in an application is exclusive.
 
 > **NOTE**
 >
@@ -1505,7 +1505,7 @@ Sets the web-based media playback policy, including the validity period for auto
 
 | Name    | Type                                 | Mandatory  | Description                                    |
 | ------- | ------------------------------------- | ---- | ---------------------------------------- |
-| options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | Yes   | Web-based media playback policy.<br>After the parameter settings are updated, the playback must be started again for the settings to take effect.<br>If undefined or null is passed, `{resumeInterval: 0, audioExclusive: true}` is used.|
+| options | [WebMediaOptions](./arkts-basic-components-web-i.md#webmediaoptions10) | Yes   | Web-based media playback policy.<br>After the parameter settings are updated, the playback must be started again for the settings to take effect.<br>When **undefined** or **null** is passed in, **{resumeInterval: 0, audioExclusive: true}** is used.|
 
 **Example**
 
@@ -1532,7 +1532,7 @@ Sets the web-based media playback policy, including the validity period for auto
 
 javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
-Injects a JavaScript script into the **Web** component. When the specified page or document starts to be loaded, the script is executed on any page whose source matches **scriptRules**. If this attribute is not explicitly called, JavaScript scripts are not injected into web components by default.
+Injects a JavaScript script into the **Web** component. When the specified page or document starts to be loaded, the script is executed on any page whose source matches **scriptRules**. When this attribute is not explicitly called, JavaScript scripts are not injected into the **Web** component by default.
 
 > **NOTE**
 >
@@ -1550,7 +1550,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name    | Type                               | Mandatory  | Description              |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>If undefined or null is passed, JavaScript scripts are not injected into web components.|
+| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components.|
 
 **Example of the .ets file**
 
@@ -1612,7 +1612,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
-Injects a JavaScript script into the **Web** component. When the specified page or document has been loaded, the script is executed on any page whose source matches **scriptRules**. If this attribute is not explicitly called, JavaScript scripts are not injected into the web component by default.
+Injects a JavaScript script into the **Web** component. When the specified page or document has been loaded, the script is executed on any page whose source matches **scriptRules**. When this attribute is not explicitly called, JavaScript scripts are not injected into the **Web** component by default.
 
 > **NOTE**
 >
@@ -1630,7 +1630,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name    | Type                               | Mandatory  | Description              |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>If undefined or null is passed, JavaScript scripts are not injected into the web component.|
+| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components.|
 
 **Example**
 
@@ -1680,7 +1680,7 @@ Hello world!
 
 runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
-Injects a JavaScript script into the **Web** component. When the specified page or document starts to be loaded, the script is executed on any page whose source matches **scriptRules**. If this attribute is not explicitly called, JavaScript scripts are not injected into web components by default.
+Injects a JavaScript script into the **Web** component. When the specified page or document starts to be loaded, the script is executed on any page whose source matches **scriptRules**. When this attribute is not explicitly called, JavaScript scripts are not injected into the **Web** component by default.
 
 > **NOTE**
 >
@@ -1698,7 +1698,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name    | Type                               | Mandatory  | Description              |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>If undefined or null is passed, the JavaScript script will not be injected into the web component.|
+| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components.|
 
 **Example of the .ets file**
 
@@ -1760,7 +1760,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
-Injects a JavaScript script into the **Web** component. When the specified page or document has been loaded, the script is executed on any page whose source matches **scriptRules**. When a property is not explicitly called, the JavaScript script is not injected into the web component by default.
+Injects a JavaScript script into the **Web** component. When the specified page or document has been loaded, the script is executed on any page whose source matches **scriptRules**. When this attribute is not explicitly called, JavaScript scripts are not injected into the **Web** component by default.
 
 > **NOTE**
 >
@@ -1778,7 +1778,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name    | Type                               | Mandatory  | Description              |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>If undefined or null is passed, the JavaScript script is not injected into the web component.|
+| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components.|
 
 **Example**
 
@@ -1828,7 +1828,7 @@ Hello world!
 
 runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
-Injects a JavaScript script into the **Web** component. When the **head** tag of the DOM tree is parsed, the script is executed on any page whose source matches **scriptRules**. If this attribute is not explicitly called, JavaScript scripts are not injected into web components by default.
+Injects a JavaScript script into the **Web** component. When the **head** tag of the DOM tree is parsed, the script is executed on any page whose source matches **scriptRules**. When this attribute is not explicitly called, JavaScript scripts are not injected into the **Web** component by default.
 
 > **NOTE**
 >
@@ -1842,7 +1842,7 @@ Injects a JavaScript script into the **Web** component. When the **head** tag of
 
 | Name    | Type                               | Mandatory  | Description              |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>If undefined or null is passed, JavaScript scripts are not injected into web components.|
+| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | Yes   | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components.|
 
 **Example**
 
@@ -1913,7 +1913,7 @@ Sets the web layout mode. For details, see [Fitting In the Page Content Layout](
 
 | Name | Type                                 | Mandatory  | Description                 |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | Yes   | Web layout mode.<br>If this parameter is set to null or undefined, the value is `WebLayoutMode.NONE`.|
+| mode | [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) | Yes   | Web layout mode.<br>When **null** or **undefined** is passed in, the value is **WebLayoutMode.NONE**.|
 
 **Example**
 
@@ -2067,7 +2067,7 @@ Sets nested scrolling options.
 
 bypassVsyncCondition(condition: WebBypassVsyncCondition)
 
-Sets the rendering process to bypass vsync (vertical synchronization) scheduling and directly trigger drawing when the **scrollBy** API is called to scroll the page. If this attribute is not explicitly called, vsync scheduling is not skipped by default.
+Sets the rendering process to bypass vsync (vertical synchronization) scheduling and directly trigger drawing when the **scrollBy** API is called to scroll the page. When this attribute is not explicitly called, vsync scheduling is not skipped by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2075,7 +2075,7 @@ Sets the rendering process to bypass vsync (vertical synchronization) scheduling
 
 | Name | Type                                 | Mandatory  | Description                 |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| condition | [WebBypassVsyncCondition](./arkts-basic-components-web-e.md#webbypassvsynccondition20) | Yes   | Condition for triggering the rendering process to bypass vsync scheduling.<br> If undefined or null is passed, NONE is used.|
+| condition | [WebBypassVsyncCondition](./arkts-basic-components-web-e.md#webbypassvsynccondition20) | Yes   | Condition for triggering the rendering process to bypass vsync scheduling.<br> When **undefined** or **null** is passed in, the value is **NONE**.|
 
 **Example**
 
@@ -2106,7 +2106,7 @@ Sets the rendering process to bypass vsync (vertical synchronization) scheduling
 
 enableNativeEmbedMode(mode: boolean)
 
-Sets whether to enable the same-layer rendering feature. If this attribute is not explicitly called, the same-layer rendering function is disabled by default.
+Sets whether to enable the same-layer rendering feature. When this attribute is not explicitly called, the same-layer rendering feature is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2114,7 +2114,7 @@ Sets whether to enable the same-layer rendering feature. If this attribute is no
 
 | Name  | Type                     | Mandatory  | Description            |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  boolean | Yes   | Whether to enable the same-layer rendering feature.<br>The value **true** means to enable the same-layer rendering feature, and **false** means the opposite.<br>If this parameter is set to null or undefined, the value is false.|
+| mode |  boolean | Yes   | Whether to enable the same-layer rendering feature.<br>The value **true** means to enable the same-layer rendering feature, and **false** means the opposite.<br>When **null** or **undefined** is passed in, the value is **false**.|
 
 **Example**
 
@@ -2139,7 +2139,7 @@ Sets whether to enable the same-layer rendering feature. If this attribute is no
 forceDisplayScrollBar(enabled: boolean)
 
 
-Sets whether the scroll bar is always visible. Under the always-visible settings, when the page size exceeds one page, the scroll bar appears and remains visible. If this attribute is not explicitly called, the scroll bar is not always visible by default.
+Sets whether the scroll bar is always visible. Under the always-visible settings, when the page size exceeds one page, the scroll bar appears and remains visible. When this attribute is not explicitly called, the scroll bar is not always visible by default.
 
 When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** parameter is set to **false**.
 
@@ -2149,7 +2149,7 @@ When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** par
 
 | Name | Type| Mandatory| Description          |
 | ------- | -------- | ---- | ------------------ |
-| enabled | boolean  | Yes  | Whether the scroll bar is always visible.<br>The value **true** indicates that the scroll bar is always visible, and **false** indicates the opposite.<br>If this parameter is set to undefined or null, the attribute setting does not take effect.|
+| enabled | boolean  | Yes  | Whether the scroll bar is always visible.<br>The value **true** indicates that the scroll bar is always visible, and **false** indicates the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
 
 
 **Example**
@@ -2205,7 +2205,7 @@ If the specified type is the same as the W3C standard <object\> or <embed\> type
 
 This API is also controlled by **enableNativeEmbedMode** and does not take effect when same-layer rendering is disabled. When this API is not used, the ArkWeb kernel recognizes the <embed\> tags with the "native/" prefix as same-layer tags.
 
-For details, see [Same-Layer Rendering](../../web/web-same-layer.md).
+For details, see [Using Same-Layer Rendering](../../web/web-same-layer.md#rendering-text-boxes-at-the-same-layer-on-web-pages).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2299,9 +2299,9 @@ For details, see [Same-Layer Rendering](../../web/web-same-layer.md).
           Web({ src: $rawfile('index.html'), controller: this.controller })
              // Enable same-layer rendering.
             .enableNativeEmbedMode(true)
-             //Register the <object> tag with the native prefix.
+             // Register the same-layer tag of <object> and type of "native."
             .registerNativeEmbedRule("object", "native")
-             //Obtain the lifecycle change data of the <object> tag.
+             // Obtain the lifecycle change data of the <object> tag.
             .onNativeEmbedLifecycleChange((object) => {
               if (object.status == NativeEmbedStatus.CREATE) {
                 this.nodeController.setRenderOption({
@@ -2343,7 +2343,7 @@ For details, see [Same-Layer Rendering](../../web/web-same-layer.md).
 
 defaultTextEncodingFormat(textEncodingFormat: string)
 
-Sets the default text encoding format for the web page. If this attribute is not explicitly called, the default character encoding of a web page is UTF-8.
+Sets the default text encoding format for the web page. When this attribute is not explicitly called, the default text encoding format of the web page is UTF-8.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2351,7 +2351,7 @@ Sets the default text encoding format for the web page. If this attribute is not
 
 | Name | Type  | Mandatory  | Description                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textEncodingFormat | string | Yes   | Default text encoding format.<br>If null or undefined is passed, the default value UTF-8 is used.|
+| textEncodingFormat | string | Yes   | Default text encoding format.<br>When **null** or **undefined** is passed in, the value is **UTF-8**.|
 
   **Example**
 
@@ -2393,7 +2393,7 @@ Sets the default text encoding format for the web page. If this attribute is not
 
 metaViewport(enabled: boolean)
 
-Sets whether the **viewport** attribute of the **meta** tag is enabled. When the attribute is not explicitly called, the viewport attribute of the meta tag is supported by default.
+Sets whether the **viewport** attribute of the **meta** tag is enabled. When this attribute is not explicitly called, the **viewport** attribute of the **meta** tag is supported by default.
 
 > **NOTE**
 >
@@ -2407,7 +2407,7 @@ Sets whether the **viewport** attribute of the **meta** tag is enabled. When the
 
 | Name| Type| Mandatory| Description                        |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | boolean  | Yes  | Whether the **viewport** attribute of the **meta** tag is enabled.<br>The value **true** indicates that the **viewport** attribute of the **meta** tag is enabled and parsed, and the layout is performed based on the **viewport** attribute.<br>The value **false** indicates the **viewport** attribute of the **meta** tag is disabled and not parsed, and the default layout is used.<br>If null or undefined is passed, the value is true.|
+| enabled | boolean  | Yes  | Whether the **viewport** attribute of the **meta** tag is enabled.<br>The value **true** indicates that the **viewport** attribute of the **meta** tag is enabled and parsed, and the layout is performed based on the **viewport** attribute.<br>The value **false** indicates the **viewport** attribute of the **meta** tag is disabled and not parsed, and the default layout is used.<br>When **null** or **undefined** is passed in, the value is **true**.|
 
 **Example**
 
@@ -2446,17 +2446,17 @@ HTML file to be loaded:
 
 textAutosizing(textAutosizing: boolean)
 
-Sets whether to enable automatic font sizing for the **Web** component. If this attribute is not explicitly called, the font size of the text in a web component is automatically adjusted by default.
+Sets whether to enable automatic font sizing for the **Web** component. When no attribute is explicitly called, automatic font sizing is enabled for the **Web** component by default.
 
 After automatic font sizing takes effect, any text smaller than 16 px is enlarged to fall between 16 px and 32 px. This eliminates readability issues on narrow screens (viewport < 980 px) where mobile-specific layouts are absent.
 
 > **NOTE**
 >
 > - The preconditions for automatic font sizing to take effect are as follows:
-> - 1. The device type should be phone, tablet, wearable, or TV.
-> - 2. The viewport width of the **Web** component is less than 980 px.
-> - 3. The page is text-heavy: font size (px) × character count ≥ 3920.
-> - 4. **metaViewport** is not set on the frontend, or the **metaViewport** does not contain the **width** and **initial-scale** attributes.
+>   - The device type should be phone, tablet, wearable, or TV.
+>   - The viewport width of the **Web** component is less than 980 px.
+>   - The page is text-heavy: font size (px) × character count ≥ 3920.
+>   - **metaViewport** is not set on the frontend, or the **metaViewport** does not contain the **width** and **initial-scale** attributes.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2466,7 +2466,7 @@ After automatic font sizing takes effect, any text smaller than 16 px is enlarge
 
 | Name | Type  | Mandatory  | Description                                    |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textAutosizing | boolean | Yes   | Whether to enable automatic text resizing.<br>The value **true** means to enable automatic text resizing, and **false** means the opposite.<br>If undefined or null is passed, the value is true.|
+| textAutosizing | boolean | Yes   | Whether to enable automatic text resizing.<br>The value **true** means to enable automatic text resizing, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
 
   **Example**
 
@@ -2491,7 +2491,7 @@ After automatic font sizing takes effect, any text smaller than 16 px is enlarge
 
 enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
-Sets whether to enable the [application takeover of web media playback feature](../../web/app-takeovers-web-media.md). If this attribute is not explicitly called, the web page media playback function is disabled by default.
+Sets whether to enable the [application to take over web page media playback](../../web/app-takeovers-web-media.md). When this attribute is not explicitly called, the web page media playback takeover feature is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2499,7 +2499,7 @@ Sets whether to enable the [application takeover of web media playback feature](
 
 | Name | Type  | Mandatory  | Description|
 | ---- | ------ | ---- | ---------------------|
-| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | Yes   | **enable**: whether to enable the feature.<br> **shouldOverlay**: whether the image of the video player taken over by the application will overlay the web page content, if this feature is enabled.<br>If undefined or null is passed, `{enable: false, shouldOverlay: false}` is passed.|
+| config | [NativeMediaPlayerConfig](./arkts-basic-components-web-i.md#nativemediaplayerconfig12) | Yes   | **enable**: whether to enable the feature.<br> **shouldOverlay**: whether the image of the video player taken over by the application will overlay the web page content, if this feature is enabled.<br>When **undefined** or **null** is passed in, the value is **{enable: false, shouldOverlay: false}**.|
 
   **Example**
 
@@ -2626,7 +2626,7 @@ You can use [onCreateMenu](../apis-arkui/arkui-ts/ts-text-common.md#oncreatemenu
 
 You can use [onMenuItemClick](../apis-arkui/arkui-ts/ts-text-common.md#onmenuitemclick12) to customize the callback for menu options. This function is triggered after a menu option is clicked and determines whether to execute the default callback based on the return value. If **true** is returned, the system callback is not executed. If **false** is returned, the system callback is executed.
 
-In [onPrepareMenu<sup>20+</sup>](../apis-arkui/arkui-ts/ts-text-common.md), this callback is triggered after the text selection area changes and before the menu is displayed. You can modify, add, or delete menu options in the callback to dynamically update the menu.
+In [onPrepareMenu<sup>20+</sup>](../apis-arkui/arkui-ts/ts-text-common.md#properties-1), this callback is triggered after the text selection area changes and before the menu is displayed. You can modify, add, or delete menu options in the callback to dynamically update the menu.
 
 If this method is used together with [selectionMenuOptions<sup>(deprecated)</sup>](#selectionmenuoptionsdeprecated), the **selectionMenuOptions<sup> (deprecated) </sup>** method does not take effect.
 
@@ -2767,7 +2767,7 @@ struct WebComponent {
 
 enableHapticFeedback(enabled: boolean)
 
-Sets whether to enable haptic feedback for long-pressed text in the **Web** component. The **ohos.permission.VIBRATE** permission must be declared. If this attribute is not explicitly called, vibration is enabled by default.
+Sets whether to enable haptic feedback for long-pressed text in the **Web** component. The **ohos.permission.VIBRATE** permission must be declared. When this attribute is not explicitly called, haptic feedback is enabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2775,7 +2775,7 @@ Sets whether to enable haptic feedback for long-pressed text in the **Web** comp
 
 | Name    | Type       | Mandatory  | Description|
 | --------- | ---------   | ------ | ------------- |
-| enabled   | boolean | Yes | Whether to enable haptic feedback for long-pressed text in the **Web** component.<br>The value **true** means to enable haptic feedback for long-pressed text in the **Web** component, and **false** means the opposite.<br>If undefined or null is passed, the attribute setting does not take effect.|
+| enabled   | boolean | Yes | Whether to enable haptic feedback for long-pressed text in the **Web** component.<br>The value **true** means to enable haptic feedback for long-pressed text in the **Web** component, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
 
 **Example**
 
@@ -2988,7 +2988,7 @@ Sets whether to enable blur mode for the web element when soft keyboard is hidde
 
 enableFollowSystemFontWeight(follow: boolean)
 
-Sets whether the **Web** component can change the font weight according to the system settings. If this attribute is not explicitly called, the web component enables the font weight to change with the system settings by default.
+Sets whether the **Web** component can change the font weight according to the system settings. When this attribute is not explicitly called, the **Web** component can change the font weight according to the system settings by default.
 
 > **NOTE**
 >
@@ -3000,7 +3000,7 @@ Sets whether the **Web** component can change the font weight according to the s
 
 | Name      | Type                            | Mandatory| Description                               |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | Yes   | Whether the **Web** component can change the font weight according to the system settings.<br>true: The font weight changes with the font weight in the system settings. When the system settings change, the font weight changes accordingly. false: The font weight does not change with the font weight in the system settings. When the system settings change, the font weight remains unchanged.|
+| follow | boolean | Yes   | Whether the **Web** component can change the font weight according to the system settings.<br>The value **true** means that the **Web** component can change the font weight according to the system settings, and **false** means the opposite.|
 
 **Example**
 
@@ -3025,7 +3025,7 @@ Sets whether the **Web** component can change the font weight according to the s
 
 optimizeParserBudget(optimizeParserBudget: boolean)
 
-Sets whether to enable segment-based HTML parsing optimization. If this attribute is not explicitly called, the parsing time is used as the segmentation point for HTML parsing by segment by default.
+Sets whether to enable segment-based HTML parsing optimization. If no attribute is explicitly called, the parsing time is used as the segment point by default.
 
 To avoid occupying too many main thread resources and enable progressive loading of web pages, the ArkWeb kernel uses the segment-based parsing policy when parsing the HTML files. By default, the ArkWeb kernel uses the parsing time as the segment point. When the parsing time exceeds the threshold, the parsing is interrupted and then the layout and rendering operations are performed.
 
@@ -3039,7 +3039,7 @@ When the FCP of a page is triggered, the default segment parsing logic is restor
 
 | Name       | Type   | Mandatory  | Description                  |
 | ---------- | ------- | ---- | ---------------------- |
-| optimizeParserBudget | boolean | Yes   | Whether to enable segment-based HTML parsing optimization.<br>The value **true** means to use the number of parsed records instead of the parsing time as the segment point for HTML segment parsing, and reduce the upper limit of the number of parsed records in each segment. The value **false** means to use the parsing time as the segment point for HTML segment parsing.<br>If undefined or null is passed, the value is false.|
+| optimizeParserBudget | boolean | Yes   | Whether to enable segment-based HTML parsing optimization.<br>The value **true** means to use the number of parsed records instead of the parsing time as the segment point for HTML segment parsing, and reduce the upper limit of the number of parsed records in each segment. The value **false** means to use the parsing time as the segment point for HTML segment parsing.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 
 **Example**
@@ -3065,7 +3065,7 @@ When the FCP of a page is triggered, the default segment parsing logic is restor
 
 enableWebAVSession(enabled: boolean)
 
-Sets whether to support an application to connect to media controller. If this attribute is not explicitly set, the app can connect to the playback control center by default.
+Sets whether to support an application to connect to media controller. If this attribute is not explicitly set, the application can connect to media controller by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3073,7 +3073,7 @@ Sets whether to support an application to connect to media controller. If this a
 
 | Name | Type| Mandatory| Description          |
 | ------- | -------- | ---- | ------------------ |
-| enabled | boolean  | Yes  | Whether to support an application to connect to media controller.<br>The value **true** means to support an application to connect to media controller, and **false** means the opposite.<br>If undefined or null is passed, the value is true.|
+| enabled | boolean  | Yes  | Whether to support an application to connect to media controller.<br>The value **true** means to support an application to connect to media controller, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
 
 **Example**
 
@@ -3116,7 +3116,7 @@ Sets whether to support an application to connect to media controller. If this a
 
 nativeEmbedOptions(options?: EmbedOptions)
 
-Sets the same-layer rendering configuration. This attribute takes effect only when [enableNativeEmbedMode](#enablenativeembedmode11) is enabled and cannot be dynamically modified. If this attribute is not explicitly called, the default value `{supportDefaultIntrinsicSize: false}` is used.
+Sets the same-layer rendering configuration. This attribute takes effect only when [enableNativeEmbedMode](#enablenativeembedmode11) is enabled and cannot be dynamically modified. If this attribute is not explicitly called, the default value **{supportDefaultIntrinsicSize: false}** is used.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3124,7 +3124,7 @@ Sets the same-layer rendering configuration. This attribute takes effect only wh
 
 | Name      | Type                            | Mandatory| Description                               |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| options | [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) | No   | Rendering configuration of the same layer.<br>If this parameter is set to undefined or null, the value is `{supportDefaultIntrinsicSize: false}`. |
+| options | [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) | No   | Configuration options of the same-layer rendering.<br>If **undefined** or **null** is passed in, the value **{supportDefaultIntrinsicSize: false}** is used. |
 
 **Example**
 
@@ -3166,7 +3166,7 @@ HTML file to be loaded:
 
 enableDataDetector(enable: boolean)
 
-Sets whether to recognize special entities of web texts, such as emails, phone numbers, and URLs. This API depends on the text recognition capability at the bottom layer of the device. Otherwise, the setting is invalid. If this attribute is not explicitly called, it is disabled by default.
+Sets whether to recognize special entities of web texts, such as emails, phone numbers, and URLs. This API depends on the text recognition capability at the bottom layer of the device. Otherwise, the setting is invalid. When this attribute is not explicitly called, the detector is disabled by default.
 
 If **enableDataDetector** is set to **true** and [dataDetectorConfig](#datadetectorconfig20) is not set, all types of entities will be recognized, and the **color** and **decoration** attributes of the recognized entities will be changed to the following styles:
 <!--code_no_check-->
@@ -3191,7 +3191,7 @@ For details about the application scenario, see [Using Smart Text Data Detector]
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean | Yes  | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite.<br>If undefined or null is passed, the attribute setting does not take effect.|
+| enable  | boolean | Yes  | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
 
 > **NOTE**
 > 
@@ -3313,7 +3313,7 @@ HTML file to be loaded:
 
 gestureFocusMode(mode: GestureFocusMode)
 
-Sets the gesture focus mode of the **Web** component. If this attribute is not explicitly called, any gesture will focus the web component when the gesture is pressed by default.
+Sets the gesture focus mode of the **Web** component. If this attribute is not explicitly called, the **Web** component will be focused by any gesture.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3321,7 +3321,7 @@ Sets the gesture focus mode of the **Web** component. If this attribute is not e
 
 | Name             | Type                             | Mandatory  | Description         |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| mode | [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) | Yes    | Gesture focus mode of the **Web** component. If the input is undefined or null, the value is GestureFocusMode.DEFAULT.|
+| mode | [GestureFocusMode](./arkts-basic-components-web-e.md#gesturefocusmode20) | Yes    | Gesture focus mode of the **Web** component. If **undefined** or **null** is passed in, the value **GestureFocusMode.DEFAULT** is used.|
 
 **Example**
 
@@ -3365,7 +3365,7 @@ Sets whether to save the password. This API is an empty API.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and is deprecated since API version 10. No new API is provided as a replacement.
+> This API is supported since API version 8 and deprecated since API version 10. No substitute API is provided.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3383,7 +3383,7 @@ Sets the text zoom ratio of the page.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and is deprecated since API version 9. You are advised to use [textZoomRatio<sup>9+</sup>](#textzoomratio9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [textZoomRatio<sup>9+</sup>](#textzoomratio9) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3454,11 +3454,11 @@ Sets the user agent.
 
 tableData(tableData: boolean)
 
-Sets whether to save form data. If no property is explicitly called, the web view saves form data by default. This API is an empty API.
+Sets whether to save form data. When this attribute is not explicitly called, the **Web** component is allowed to save form data by default. This API is an empty API.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 10. No new API is provided as a replacement.
+> This API is supported since API version 8 and deprecated since API version 10. No substitute API is provided.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3476,7 +3476,7 @@ Sets whether to support the **viewport** attribute of the HTML **\<meta>** tag. 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 10. No new API is provided as a replacement.
+> This API is supported since API version 8 and deprecated since API version 10. No substitute API is provided.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3484,7 +3484,7 @@ Sets whether to support the **viewport** attribute of the HTML **\<meta>** tag. 
 
 | Name             | Type                                                        | Mandatory  | Description         |
 | ------------------- | ----------------------------------------------------------    | ---- | ------------- |
-| wideViewModeAccess | boolean | Yes   | Sets whether to support the **viewport** attribute of the HTML **\<meta>** tag.<br>true: The web view supports the viewport attribute of the meta tag in HTML. false: The web view does not support the viewport attribute of the meta tag in HTML.|
+| wideViewModeAccess | boolean | Yes   | Whether to support the **viewport** attribute of the HTML **\<meta>** tag.<br>The value **true** means to support the **viewport** attribute of the HTML **\<meta>** tag, and **false** means the opposite.|
 
 ## selectionMenuOptions<sup>(deprecated)</sup>
 

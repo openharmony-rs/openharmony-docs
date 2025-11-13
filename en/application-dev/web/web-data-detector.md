@@ -88,14 +88,14 @@ To use the long-press preview functionality, you need to configure [dataDetector
 <!--code_no_check-->
 ```ts
 Web({
-  src: $rawfile('index.html'),
-  controller: this.webController
+src: $rawfile('index.html'),
+controller: this.webController
 })
-  .enableDataDetector(true)
-  .dataDetectorConfig({
-    enablePreviewMenu: true,  // Enable the long-press preview functionality.
-    types: []
-  })
+.enableDataDetector(true)
+.dataDetectorConfig({
+  enablePreviewMenu: true,  // Enable the long-press preview functionality.
+  types: []
+})
 ```
 If [copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11) is not set to **CopyOptions.None**, a preview menu is displayed when you long-press the highlighted entity text, as shown in the following figure.
 

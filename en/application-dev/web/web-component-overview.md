@@ -65,4 +65,4 @@ The following samples are provided to help you better understand how to develop 
 
 - [Using Web Components (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/WebCookie)
 
-- [Using Web Components in Developing Lottery Applets (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/WebComponent)
+- [Using Web Components to Develop Lottery Applets (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/WebComponent)

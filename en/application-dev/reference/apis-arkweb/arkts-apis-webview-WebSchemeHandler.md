@@ -26,7 +26,7 @@ import { webview } from '@kit.ArkWeb';
 
 onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void
 
-Called when a request starts. In this callback, you can determine whether to intercept the request. If false is returned, the request is not intercepted and the handler becomes invalid. If true is returned, the request is intercepted.
+Called when a request starts. In this callback, you can determine whether to intercept the request. If **false** is returned, the request is not intercepted and the handler is invalid. If **true** is returned, the request is intercepted.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -48,10 +48,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // xxx.ets
-import { webview } from '@kit.ArkWeb';
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
-import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component
