@@ -6871,7 +6871,9 @@ snapshot(): Promise&lt;image.PixelMap&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
 
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
