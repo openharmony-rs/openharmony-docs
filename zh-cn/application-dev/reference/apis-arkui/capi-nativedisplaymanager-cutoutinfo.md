@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_CutoutInfo
+```
+
 ## 概述
 
 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。

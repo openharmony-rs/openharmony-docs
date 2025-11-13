@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_DisplayInfo
+```
+
 ## 概述
 
 显示设备的对象属性。

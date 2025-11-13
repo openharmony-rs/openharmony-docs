@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_ColorAnimatableProperty* ArkUI_ColorAnimatablePropertyHandle
+```
+
 ## 概述
 
 定义可动画的颜色属性指针。

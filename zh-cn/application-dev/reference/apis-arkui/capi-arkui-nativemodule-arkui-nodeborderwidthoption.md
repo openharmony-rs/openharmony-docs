@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption
+```
+
 ## 概述
 
 定义边框宽度配置项。

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_NodeBorderRadius ArkUI_NodeBorderRadiusOption
+```
+
 ## 概述
 
 定义边框圆角配置项。

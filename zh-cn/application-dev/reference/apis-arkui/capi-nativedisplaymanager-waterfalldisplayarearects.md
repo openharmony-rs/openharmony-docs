@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_WaterfallDisplayAreaRects
+```
+
 ## 概述
 
 瀑布屏曲面部分显示区域。

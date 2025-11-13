@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_RoundRectShape ArkUI_RoundRectShapeOption
+```
+
 ## 概述
 
 定义圆角矩形形状配置项。

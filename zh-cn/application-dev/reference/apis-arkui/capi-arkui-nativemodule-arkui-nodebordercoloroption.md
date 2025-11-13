@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_NodeBorderColor ArkUI_NodeBorderColorOption
+```
+
 ## 概述
 
 定义边框颜色配置项。

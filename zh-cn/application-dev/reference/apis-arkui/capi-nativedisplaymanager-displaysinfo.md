@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_DisplaysInfo
+```
+
 ## 概述
 
 多显示设备的Display对象。

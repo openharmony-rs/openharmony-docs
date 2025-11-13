@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_DisplayHdrFormat
+```
+
 ## 概述
 
 显示设备支持的所有HDR格式。
