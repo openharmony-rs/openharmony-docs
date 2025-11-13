@@ -77,6 +77,14 @@
 2. 构建需要发布的公共事件信息。
    
    <!-- @[PublicEventInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // 公共事件相关信息
+   let options: commonEventManager.CommonEventPublishData = {
+     code: 1, // 公共事件的初始代码
+     data: 'initial data', // 公共事件的初始数据
+   };
+   ```
 
 3. 传入需要发布的事件名称、需要发布的指定信息和回调函数，发布事件。
    
