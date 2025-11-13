@@ -38,3 +38,18 @@
 3. 调用CommonEvent中的[unsubscribe()](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerunsubscribe)方法取消订阅某事件。
    
    <!-- @[UnsubscribePublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // subscriber为订阅事件时创建的订阅者对象
+   if (subscriber !== null) {
+     commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to unsubscribe. code is ${err.code}, message is ${err.message}`);
+       } else {
+         hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in unsubscribing.`);
+         subscriber = null;
+       }
+     })
+   }
+   ```
