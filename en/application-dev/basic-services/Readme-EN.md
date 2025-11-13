@@ -1,4 +1,4 @@
-# Basic Services Kit
+# Basic Services Kit<!--basic-services-kit-->
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @fang-jinxu-->
@@ -7,13 +7,13 @@
 <!--Adviser: @fang-jinxu-->
 
 - [Introduction to Basic Services Kit](basic-services-kit-overview.md)
-- [Common Event Service](common-event/Readme-EN.md)
-- [Account Management](account/Readme-EN.md)
-- [USB Service](usb/Readme-EN.md)
-- [Update Service](update/Readme-EN.md)
-- [Pasteboard Service](pasteboard/Readme-EN.md)
-- [Upload and Download](request/Readme-EN.md)
-- [Compression and Decompression](compress/Readme-EN.md)
+- [Process and Thread Communication](common-event/Readme-EN.md)<!--app-events-->
+- [Account Management](account/Readme-EN.md)<!--account-management-->
+- [USB Service](usb/Readme-EN.md)<!--usb-->
+- [Update Service](update/Readme-EN.md)<!--update-->
+- [Pasteboard Service](pasteboard/Readme-EN.md)<!--pasteboard-->
+- [Upload and Download](request/Readme-EN.md)<!--upload-download-->
+- [Compression and Decompression](compress/Readme-EN.md)<!--compress-->
 <!--Del-->
-- [Word Selection Service](selectionInput/Readme-EN.md)
+- [Word Selection Service](selectionInput/Readme-EN.md)<!--selectioninput-->
 <!--DelEnd-->

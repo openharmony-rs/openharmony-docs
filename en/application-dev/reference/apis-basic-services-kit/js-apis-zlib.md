@@ -433,7 +433,7 @@ try {
 
 getOriginalSize(compressedFile: string): Promise\<number>
 
-Obtains the original size of a compressed file and uses a promise to asynchronously return the result. The original size of the compressed file is returned upon a success. Otherwise, an error code is returned.
+Obtains the original size of a compressed file. This API uses a promise to return the result. The original size of the compressed file is returned upon a success. Otherwise, an error code is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -486,7 +486,7 @@ try {
 
 compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): Promise&lt;void&gt;
 
-Compresses multiple specified files and uses a promise to asynchronously return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.
+Compresses multiple specified files. This API uses a promise to return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -548,7 +548,7 @@ try {
 
 createChecksum(): Promise&lt;Checksum&gt;
 
-Creates a checksum object and uses a promise to asynchronously return the result. A checksum object instance is returned upon a success.
+Creates a checksum object. This API uses a promise to return the result. A checksum object instance is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -716,7 +716,7 @@ async function demo() {
 
 crc32(crc: number, buf: ArrayBuffer): Promise&lt;number&gt;
 
-Updates the CRC-32 checksum. This API uses a promise to return the result. The updated CRC-32 checksum is returned upon a success. Otherwise, an error code is returned.
+Updates a CRC-32 checksum. This API uses a promise to return the result. The updated CRC-32 checksum is returned upon a success. Otherwise, an error code is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -769,7 +769,7 @@ checksum.crc32(0, arrayBufferIn).then((data) => {
 
 crc32Combine(crc1: number, crc2: number, len2: number): Promise&lt;number&gt;
 
-Combines two CRC-32 checksums and uses a promise to asynchronously return the result. The combined CRC-32 checksum is returned upon a success. Otherwise, an error code is returned.
+Combines two CRC-32 checksums. This API uses a promise to return the result. The combined CRC-32 checksum is returned upon a success. Otherwise, an error code is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -832,7 +832,7 @@ async function demo() {
 
 crc64(crc: number, buf: ArrayBuffer): Promise&lt;number&gt;
 
-Updates the CRC-64 checksum. This API uses a promise to return the result. The updated CRC-64 checksum is returned upon a success. Otherwise, an error code is returned.
+Updates a CRC-64 checksum. This API uses a promise to return the result. The updated CRC-64 checksum is returned upon a success. Otherwise, an error code is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -885,7 +885,7 @@ checksum.crc64(0, arrayBufferIn).then((data) => {
 
 getCrcTable(): Promise&lt;Array&lt;number&gt;&gt;
 
-Outputs the CRC-32 checksum table and uses a promise to asynchronously return the result. The CRC-32 check table is returned upon a success.
+Outputs the CRC-32 checksum table. This API uses a promise to return the result. The CRC-32 check table is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -915,7 +915,7 @@ checksum.getCrcTable().then((data) => {
 
 getCrc64Table(): Promise&lt;Array&lt;number&gt;&gt;
 
-Outputs the CRC-64 checksum table and uses a promise to asynchronously return the result. The CRC-64 check table is returned upon a success.
+Outputs the CRC-64 checksum table. This API uses a promise to return the result. The CRC-64 check table is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -945,7 +945,7 @@ checksum.getCrc64Table().then((data) => {
 
 createZip(): Promise&lt;Zip&gt;
 
-Creates an instance of a compressed or decompressed object and uses a promise to asynchronously return the result. The instance of the compressed or decompressed object is returned upon a success.
+Creates this instance of a compressed or decompressed object. This API uses a promise to return the result. The instance of the compressed or decompressed object is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1001,7 +1001,7 @@ Provides APIs to zip or unzip data in Zlib, Deflate, or Gzip format.
 
 getZStream(): Promise&lt;ZStream&gt;
 
-Outputs a stream. This API uses a promise to return the result.
+Obtains this ZStream. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1029,7 +1029,7 @@ zip.getZStream().then(data => {
 
 zlibVersion(): Promise&lt;string&gt;
 
-Obtains the version information of the currently linked **zlib** library. This API uses a promise to return the result. The version information of the current **zlib** library is returned upon success.
+Obtains the version information of this linked **zlib** library. This API uses a promise to return the result. The version information of the current **zlib** library is returned upon success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1373,7 +1373,7 @@ zip.compressBound(str.length).then((data) => {
 
 inflateValidate(strm: ZStream, check: number): Promise&lt;ReturnStatus&gt;
 
-Verifies the checksum inside the compressed stream. This API uses a promise to return the result. The result state is returned upon a success.
+Validates the checksum inside the compression stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1433,7 +1433,7 @@ async function demo() {
 
 inflateSyncPoint(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Finds the synchronization point of the current decompressed stream. This API uses a promise to return the result. The result state is returned upon a success.
+Finds the synchronization point of a decompression stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1492,7 +1492,7 @@ async function demo() {
 
 inflateSync(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Skips invalid compressed data until a complete re-render point is found. This API uses a promise to return the result. The result state is returned upon a success.
+Skips invalid compressed data until a complete update point is found. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1584,7 +1584,7 @@ async function demo() {
 
 inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Resets the state of the decompressed stream to preserve the allocated Huffman Tree and preset dictionary. This API uses a promise to return the result. The result state is returned upon a success.
+Resets the state of the decompression stream to preserve the allocated Huffman Tree and preset dictionary. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1643,7 +1643,7 @@ async function demo() {
 
 inflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnStatus&gt;
 
-Initializes the decompression dictionary from a given uncompressed byte sequence. This API uses a promise to return the result. The result state is returned upon a success.
+Initializes the dictionary content of a decompression stream based on the given dictionary data. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1741,7 +1741,7 @@ async function demo() {
 
 inflateReset2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
-Initializes the decompression dictionary from a given uncompressed byte sequence. This API uses a promise to return the result. The result state is returned upon a success.
+Resets the status of the specified decompression stream and updates the window size to start a new decompression operation. The internal buffer is not released or reallocated. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1801,7 +1801,7 @@ async function demo() {
 
 inflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Equivalent to call the **inflateEnd** API and then **inflateInit** API. However, this API does not release or reallocate the internal decompression state. This API uses a promise to return the result. The result state is returned upon a success.
+Resets the status of the specified decompression stream to the initial state to start a new decompression operation. The internal buffer is not released or reallocated. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1860,7 +1860,7 @@ async function demo() {
 
 inflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatus&gt;
 
-Initializes the decompression dictionary from a given uncompressed byte sequence. This API uses a promise to return the result. The result state is returned upon a success.
+Sets the initial number of bits and bit value in the specified decompression stream to pre-fill the bit buffer at the beginning of the decompression stream to correctly process the data. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1871,8 +1871,8 @@ Initializes the decompression dictionary from a given uncompressed byte sequence
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
 | strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
-| bits   | number  | Yes  | Given bits.                     |
-| value  | number  | Yes  | Given value.                     |
+| bits   | number  | Yes  | Number of bits to be written to the bit buffer.                     |
+| value  | number  | Yes  | Bit value used to fill the bit buffer.                     |
 
 **Return value**
 
@@ -1979,7 +1979,7 @@ async function demo() {
 
 inflateInit2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
-Initializes the internal stream state for decompression. This API uses a promise to return the result. The result state is returned upon a success.
+Initializes a decompression stream with the set **windowBits**. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2035,7 +2035,7 @@ zip.inflateInit2({ nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOu
 
 inflateInit(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Initializes the internal stream state for decompression. This API uses a promise to return the result. The result state is returned upon a success.
+Initializes a decompression stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2089,7 +2089,7 @@ zip.inflateInit({ nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOut
 
 inflateGetHeader(strm: ZStream, header: GzHeader): Promise&lt;ReturnStatus&gt;
 
-Sets the header information of a gzip file before decompressing data. This API uses a promise to return the result. The result state is returned upon a success.
+Obtains the header information of a gzip file before decompressing data. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2149,7 +2149,7 @@ async function demo() {
 
 inflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;DictionaryOutputInfo&gt;
 
-Obtains the content and length of the decompression dictionary used in the current decompression stream. This API uses a promise to return the result. The result state and length of the dictionary are returned upon a success.
+Obtains the content and length of the decompression dictionary used in a decompression stream. This API uses a promise to return the result. The result state and length of the dictionary are returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2209,7 +2209,7 @@ async function demo() {
 
 inflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Frees up all dynamically allocated data structures of the decompression stream. This API uses a promise to return the result. The result state is returned upon a success.
+Releases all dynamically allocated data structs of a decompression stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2273,7 +2273,7 @@ async function demo() {
 
 inflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
-Copies the decompression stream. This API uses a promise to return the result. The result state is returned upon a success.
+Copies a decompression stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2333,7 +2333,7 @@ async function demo() {
 
 inflateCodesUsed(strm: ZStream): Promise&lt;number&gt;
 
-Describes the number of Huffman Trees used in the current decompression stream. This API uses a promise to return the result. The number of used Huffman Trees is returned upon a success.
+Describes the number of Huffman Trees used in a decompression stream. This API uses a promise to return the result. The number of used Huffman Trees is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2681,7 +2681,7 @@ Outputs data.
 
 inflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
-Decompresses the data. This API uses a promise to return the result. The result state is returned upon a success.
+Decompresses data. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2768,7 +2768,7 @@ async function demo() {
 
 deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
-Initializes the internal stream state for compression. This API uses a promise to return the result. The result state is returned upon a success.
+Initializes a compression stream and sets a specified compression level. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2828,7 +2828,7 @@ async function demo() {
 
 deflateInit2(strm: ZStream, level: CompressLevel, method: CompressMethod, windowBits: number, memLevel: MemLevel, strategy: CompressStrategy): Promise&lt;ReturnStatus&gt;
 
-Initializes the internal stream state for compression. This API uses a promise to return the result. The result state is returned upon a success.
+Initializes a compression stream and sets the compression level, compression method, window size, memory level, and compression strategy. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2959,7 +2959,7 @@ async function demo() {
 
 deflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Frees up all dynamically allocated data structures of the compression stream. This API uses a promise to return the result. The result state is returned upon a success.
+Releases all dynamically allocated data structs of a compression stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3092,7 +3092,7 @@ async function demo() {
 
 deflateSetHeader(strm: ZStream, head: GzHeader): Promise&lt;ReturnStatus&gt;
 
-Provides the header information of the gzip file when **deflateInit2()** requests a gzip stream. This API uses a promise to return the result. The result state is returned upon a success.
+Provides the header information of a gzip file when **deflateInit2()** requests a gzip stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3158,7 +3158,7 @@ async function demo() {
 
 deflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
-Copies the compression stream. This API uses a promise to return the result. The result state is returned upon a success.
+Copies a compression stream. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3287,7 +3287,7 @@ async function demo() {
 
 deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;DictionaryOutputInfo&gt;
 
-Obtains the content and length of the decompression dictionary used in the current decompression stream. This API uses a promise to return the result. The result state and length of the dictionary are returned upon a success.
+Obtains the content and length of the decompression dictionary used in a compression stream. This API uses a promise to return the result. The result state and length of the dictionary are returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3298,7 +3298,7 @@ Obtains the content and length of the decompression dictionary used in the curre
 | Name    | Type       | Mandatory| Description                           |
 | ---------- | ----------- | ---- | ------------------------------- |
 | strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
-| dictionary | ArrayBuffer | Yes  | Receives the actual contents of the decompression dictionary.     |
+| dictionary | ArrayBuffer | Yes  | Buffer that receives the actual contents of the decompression dictionary.     |
 
 **Return value**
 
@@ -3489,7 +3489,7 @@ async function demo() {
 
 deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Resets the initialized deflate compression stream, but retains the compression parameters and dictionaries set by it. This API uses a promise to return the result. The result state is returned upon a success.
+Resets the initialized compression stream, but retains the compression parameters and dictionaries set by it. This API uses a promise to return the result. The result state is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3961,7 +3961,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 createGZip(): Promise&lt;GZip&gt;
 
-Creates a gzip object. This API uses a promise to return the result. The gzip object instance is returned upon a success.
+Creates this GZip object. This API uses a promise to return the result. The gzip object instance is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5258,7 +5258,7 @@ struct Index {
 
 gzseek(offset: number, whence: OffsetReferencePoint): Promise&lt;number&gt;
 
-Sets the start position to the offset position relative to the next **gzread** or **gzwrite** in the file. This API uses a promise to return the result. The result offset position measured in bytes from the beginning of an uncompressed stream is returned.
+Sets the start position to the offset position relative to the next **gzread** or **gzwrite** in the file. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

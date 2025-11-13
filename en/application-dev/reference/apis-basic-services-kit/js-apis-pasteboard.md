@@ -3089,12 +3089,19 @@ try {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
 ```
+### UpdateCallback <sup>22+</sup>
+
+type UpdateCallback = () => void
+
+Callback to be invoked when the pasteboard content changes.
+
+**System capability**: SystemCapability.MiscServices.Pasteboard
 
 ### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
 
 onRemoteUpdate(callback: UpdateCallback): void
 
-Subscribes to the content change events of the pasteboard on a remote device. A callback is triggered when the pasteboard content on the remote device changes.
+Subscribes to the content change events of the pasteboard on a remote device. This callback is triggered when the pasteboard content on the remote device changes.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -3102,7 +3109,7 @@ Subscribes to the content change events of the pasteboard on a remote device. A 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | function | Yes| Callback invoked when the pasteboard content changes.|
+| callback | [UpdateCallback](#updatecallback-22) | Yes| Callback invoked when the pasteboard content changes.|
 
 **Error codes**
 
@@ -3133,8 +3140,8 @@ Unsubscribes from the content change events of the pasteboard on a remote device
 **Parameters**
 
 | Name| Type| Mandatory| Description                                                     |
-| -------- | -------- | -------- |---------------------------------------------------------|                              |
-| callback | function | No| Callback to be invoked when the pasteboard content on the remote device changes. If this parameter is not specified, remote listening will be disabled for all callbacks registered by the current application.|
+| -------- | -------- | -------- |---------------------------------------------------------|
+| callback | [UpdateCallback](#updatecallback-22) | No| Callback to be invoked when the pasteboard content on the remote device changes. If this parameter is not specified, remote listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
 
