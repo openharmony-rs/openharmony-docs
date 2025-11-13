@@ -1963,7 +1963,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
+| callback | Callback&lt;[StationInfo](#stationinfo9)&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
 
 **错误码：**
 
