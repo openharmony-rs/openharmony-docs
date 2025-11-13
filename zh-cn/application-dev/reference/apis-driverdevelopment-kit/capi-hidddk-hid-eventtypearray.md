@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} Hid_EventTypeArray
+```
+
 ## 概述
 
 事件类型编码数组。

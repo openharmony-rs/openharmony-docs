@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} ScsiPeripheral_InquiryRequest
+```
+
 ## 概述
 
 SCSI命令（inquiry）的请求结构体。

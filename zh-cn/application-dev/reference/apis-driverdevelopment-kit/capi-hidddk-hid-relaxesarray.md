@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} Hid_RelAxesArray
+```
+
 ## 概述
 
 相对坐标属性数组。

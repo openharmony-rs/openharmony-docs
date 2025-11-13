@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} ScsiPeripheral_InquiryInfo
+```
+
 ## 概述
 
 SCSI inquiry 数据。

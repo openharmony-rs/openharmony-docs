@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} UsbDdkEndpointDescriptor
+```
+
 ## 概述
 
 端点描述符。

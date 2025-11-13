@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} ScsiPeripheral_CapacityInfo
+```
+
 ## 概述
 
 SCSI read capacity 数据。
