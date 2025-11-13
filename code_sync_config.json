@@ -18246,12 +18246,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h",
 				"functions":[
 					{
-						"end_line":185,
+						"end_line":187,
 						"name":"create_imageNode",
-						"start_line":178
+						"start_line":179
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"drag_start",
 						"start_line":32
 					}
@@ -18261,9 +18261,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h",
 				"functions":[
 					{
-						"end_line":183,
+						"end_line":186,
 						"name":"set_common",
-						"start_line":94
+						"start_line":91
 					},
 					{
 						"end_line":230,
@@ -18271,9 +18271,9 @@
 						"start_line":221
 					},
 					{
-						"end_line":331,
+						"end_line":334,
 						"name":"prepare_dragAction",
-						"start_line":279
+						"start_line":282
 					}
 				]
 			},
@@ -18281,19 +18281,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h",
 				"functions":[
 					{
-						"end_line":403,
+						"end_line":356,
 						"name":"create_pixelMap",
-						"start_line":372
+						"start_line":325
 					},
 					{
-						"end_line":247,
+						"end_line":200,
 						"name":"event_Type",
-						"start_line":204
+						"start_line":153
 					},
 					{
-						"end_line":272,
+						"end_line":225,
 						"name":"on_drop",
-						"start_line":139
+						"start_line":88
 					}
 				]
 			},
