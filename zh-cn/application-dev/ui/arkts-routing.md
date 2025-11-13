@@ -98,7 +98,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           return;
         }
         hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
-      })
+      });
     }
   
     build() {
@@ -165,7 +165,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           return;
         }
         hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
-      })
+      });
     }
   
     build() {
@@ -573,7 +573,7 @@ onBackClick() {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
     hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
-  })
+  });
 }
 ```
 
@@ -662,7 +662,7 @@ struct Index {
                   data3: [123, 456, 789]
                 }
               }
-            })
+            });
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;

@@ -108,13 +108,14 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    @Entry
    @Component
    struct FocusOnclickExample {
-     @State text: string = ''
-     @State number:number = 0
+     @State text: string = '';
+     @State number:number = 0;
    
      build() {
        Column() {
          Text(this.text)
            .margin({bottom:20})
+         // app.string.button资源文件中的value值为'按钮'
          Button($r('app.string.button'))
            .responseRegion([
              {
@@ -132,7 +133,7 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
            ])
            .onClick(() => {
              this.number++;
-             this.text = 'button' + this.number + 'clicked'
+             this.text = 'button' + this.number + 'clicked';
            })
            .width(200)
        }.width('100%').justifyContent(FlexAlign.Center)

@@ -97,7 +97,7 @@ BuilderNode的根节点直接作为[NodeController](../reference/apis-arkui/js-a
   
     makeNode(context: UIContext): FrameNode | null {
       this.textNode = new BuilderNode(context);
-      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message))
+      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
       return this.textNode.getFrameNode();
     }
   }
@@ -224,10 +224,10 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
     }
   }
   
-  // 自定义组件。
+  // 自定义组件
   @Component
   struct TextBuilder {
-    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop。
+    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
     @Prop message: string = 'TextBuilder';
   
     build() {
@@ -250,7 +250,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: 36 })
-      TextBuilder({ message: params.text }) // 自定义组件。
+      TextBuilder({ message: params.text }) // 自定义组件
     }
   }
   
@@ -259,13 +259,13 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
     private message: string = '';
   
     constructor(message: string) {
-      super()
-      this.message = message
+      super();
+      this.message = message;
     }
   
     makeNode(context: UIContext): FrameNode | null {
       this.textNode = new BuilderNode(context);
-      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message))
+      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
       return this.textNode.getFrameNode();
     }
   
@@ -360,7 +360,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
   
     makeNode(uiContext: UIContext): FrameNode | null {
       this.rootNode = new BuilderNode(uiContext);
-      this.rootNode.build(this.wrapBuilder, { text: 'this is a string' })
+      this.rootNode.build(this.wrapBuilder, { text: 'this is a string' });
       return this.rootNode.getFrameNode();
     }
   
@@ -974,10 +974,10 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 自定义组件。
+  // 自定义组件
   @Component
   struct TextBuilder {
-    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop。
+    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
     @Prop message: string = 'TextBuilder';
   
     build() {
@@ -1002,7 +1002,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: 36 })
         .fontColor($r(`app.color.text_color`))
-      TextBuilder({ message: params.text }) // 自定义组件。
+      TextBuilder({ message: params.text }) // 自定义组件
     }.backgroundColor($r(`app.color.start_window_background`))
   }
   
@@ -1038,14 +1038,14 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 记录创建的自定义节点对象。
+  // 记录创建的自定义节点对象
   const builderNodeMap: BuilderNode<[Params]>[] = [];
   
   function updateColorMode() {
     builderNodeMap.forEach((value, index) => {
-      // 通知BuilderNode环境变量改变。
+      // 通知BuilderNode环境变量改变
       value.updateConfiguration();
-    })
+    });
   }
   
   @Entry
@@ -1064,15 +1064,15 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
           hilog.info(0xF811,'testTag','%{public}s','onConfigurationUpdated ' + JSON.stringify(config));
           updateColorMode();
         }
-      }
-      // 注册监听回调。
+      };
+      // 注册监听回调
       this.getUIContext().getHostContext()?.getApplicationContext().on('environment', environmentCallback);
-      //创建自定义节点并添加至map。
+      //创建自定义节点并添加至map
       this.textNodeController.createNode(this.getUIContext());
     }
   
     aboutToDisappear(): void {
-      //移除map中的引用，并将自定义节点释放。
+      //移除map中的引用，并将自定义节点释放
       this.textNodeController.deleteNode();
     }
   
@@ -2486,13 +2486,13 @@ struct FreezeBuildNode {
 2. 创建NodeContainer和对应的NodeController，渲染后台Web组件。
 
     <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) -->
-
+    
     ``` TypeScript
     import { UIContext } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
+    import { NodeController, BuilderNode, Size, FrameNode }  from '@kit.ArkUI';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     // @Builder中为动态组件的具体组件内容。
     // Data为入参封装类。
     class Data{
@@ -2525,7 +2525,7 @@ struct FreezeBuildNode {
     // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
-      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContaine中。
+      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
         hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));
@@ -2538,7 +2538,7 @@ struct FreezeBuildNode {
       }
       // 当布局大小发生变化时进行回调。
       aboutToResize(size: Size) {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToResize   width   : ' + size.width  +  ' height : ' + size.height );
+        hilog.info(0xF811,'testTag','%{public}s','aboutToResize width : ' + size.width  +  ' height : ' + size.height );
       }
       // 当controller对应的NodeContainer在Appear的时候进行回调。
       aboutToAppear() {
@@ -2575,11 +2575,11 @@ struct FreezeBuildNode {
       baseNode.initWeb(url, uiContext, controller);
       controllerMap.set(url, controller);
       nodeMap.set(url, baseNode);
-    }
+    };
     // 自定义获取NodeController接口。
     export const getNWeb = (url : string) : MyNodeController2 | undefined => {
       return nodeMap.get(url);
-    }
+    };
     ```
 
 3. 通过NodeContainer使用已经预渲染的页面。

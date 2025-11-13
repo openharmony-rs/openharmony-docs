@@ -230,13 +230,13 @@ struct Index {
           .id('button1')
           .onKeyEvent((event) => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
-            return true
+            return true;
           })
         Button('button2')
           .id('button2')
           .onKeyEvent((event) => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
-            return true
+            return true;
           })
       }
       .width('100%')

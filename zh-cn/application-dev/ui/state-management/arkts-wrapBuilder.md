@@ -97,7 +97,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
    build() {
      Row() {
        Column() {
-         globalBuilder.builder(this.message, 50)
+         globalBuilder.builder(this.message, 50);
        }
        .width('100%')
      }
@@ -136,7 +136,7 @@ struct IndexItem {
   @Builder
   IndexItem() {
     ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
-      item.builder('Hello World', 30)
+      item.builder('Hello World', 30);
     }
 
     )
@@ -145,7 +145,7 @@ struct IndexItem {
   build() {
     Row() {
       Column() {
-        this.IndexItem()
+        this.IndexItem();
       }
       .width('100%')
     }
@@ -224,7 +224,7 @@ struct Parent {
 
   build() {
     Column() {
-      wBuilder.builder({ paramA2: this.label.paramA2 })
+      wBuilder.builder({ paramA2: this.label.paramA2 });
       Button('Click me').onClick(() => {
         this.label.paramA2 = 'ArkUI';
       })
@@ -274,7 +274,7 @@ struct TestBuilderIndex {
   build() {
     Row() {
       Column() {
-        this.builderObj.globalBuilder.builder(this.message, 20)
+        this.builderObj.globalBuilder.builder(this.message, 20);
       }
       .width('100%')
     }

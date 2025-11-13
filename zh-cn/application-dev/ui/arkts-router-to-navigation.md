@@ -59,7 +59,7 @@ struct Index {
                 return;
               }
               hilog.info( DOMAIN, TAG, 'Invoke pushUrl succeeded.');
-            })
+            });
           })
         // ···
       }
@@ -548,10 +548,10 @@ Router可以通过命名路由的方式实现跨包跳转。
                      data3: [123, 456, 789]
                    }
                  }
-               })
+               });
              } catch (err) {
-               let message = (err as BusinessError).message
-               let code = (err as BusinessError).code
+               let message = (err as BusinessError).message;
+               let code = (err as BusinessError).code;
                hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
              }
            })
@@ -584,7 +584,7 @@ Navigation作为路由组件，默认支持跨包跳转。
    <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
    
    ``` TypeScript
-   export { PageInHSP } from './src/main/ets/pages/PageInHSP'
+   export { PageInHSP } from './src/main/ets/pages/PageInHSP';
    ```
 
 3. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
@@ -593,7 +593,7 @@ Navigation作为路由组件，默认支持跨包跳转。
    
    ``` TypeScript
    // 1.导入跨包的路由页面
-   import { PageInHSP } from 'library/src/main/ets/pages/PageInHSP'
+   import { PageInHSP } from 'library/src/main/ets/pages/PageInHSP';
    
    @Entry
    @Component
@@ -714,10 +714,10 @@ export default class EntryAbility extends UIAbility {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
         if (info.state == 0) {
           // NavDestination组件显示时操作
-          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString());
         }
-      })
-    })
+      });
+    });
   }
 }
 ```
@@ -785,11 +785,11 @@ export struct NavDestinationExample {
 
 @Component
 struct MyComponent {
-  navDesInfo: uiObserver.NavDestinationInfo | undefined
+  navDesInfo: uiObserver.NavDestinationInfo | undefined;
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
   }
 
   build() {
