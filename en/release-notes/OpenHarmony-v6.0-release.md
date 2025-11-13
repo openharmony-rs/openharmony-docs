@@ -1,6 +1,13 @@
 # OpenHarmony 6.0 Release
 
+## Copyright and License Statement
 
+Contributions to this project are authorized to the Open Atom Open Source Foundation under the **Developer Certificate of Origin (DCO)**. This project is a compilation work composed of many open-source software components, and the copyright of this compilation work belongs to the Open Atom Open Source Foundation. The Open Atom Open Source Foundation grants you a license to this compilation work under the Apache 2.0 open-source license (hereinafter referred to as **Apache 2.0**).
+
+You may use this project provided that you comply with Apache 2.0 and the corresponding open-source license agreements applicable to the open-source software components included in this project. You can obtain a copy of Apache 2.0 at the following URL:
+**[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0#/session/_blank)**
+
+Unless required by applicable law or agreed to in writing, software distributed under the applicable open-source license is provided on an “as is” basis, without any warranties or conditions of any kind, either express or implied. See the specific open-source license agreements for the permissions and limitations under those licenses.
 ## Version Overview
 
 OpenHarmony 6.0 Release further enhances the capabilities of ArkUI components, providing more secure and flexible component layouts. It strengthens window capabilities by adding support for text display in windows. It improves distributed data management by supporting asset and asset group management, and enables applications to display standardized data. It also enhances location services and input method framework capabilities, among others.
