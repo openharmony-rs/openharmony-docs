@@ -80,6 +80,22 @@
 4. 创建订阅回调函数，订阅回调函数会在接收到事件时触发。订阅回调函数返回的data内包含了公共事件的名称、发布者携带的数据等信息，公共事件数据的详细参数和数据类型请见[CommonEventData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md)文档介绍。
    
    <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // 订阅公共事件回调
+   if (subscriber !== null) {
+     commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+     })
+   } else {
+     hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);
+   }
+   ```
 
 <!--RP1-->
 <!--RP1End-->
