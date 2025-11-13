@@ -60,6 +60,10 @@ Named route error. The named route does not exist.
 
 输入的命名路由name错误或者不存在。
 
+**处理步骤**
+
+请检查输入的命名路由name是否正确或者是否存在。
+
 ## 100005 Navigation跳转时未注册builder函数
 
 **错误信息**
