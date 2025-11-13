@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## Overview
 
@@ -97,7 +97,7 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 | ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120 | The connection between the target host and the SOCKS proxy server failed.|
 | ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121 | The SOCKS proxy server cannot connect to the target host because the target host is unreachable.|
 | ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122 | The request of ALPN failed.|
-| ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123 | The peer sent an **SSL no_regregation** alert message.|
+| ARKWEB_ERR_SSL_NO_RENEGOTIATION = -123 | The peer sent an **SSL no_renegotiation** alert message.|
 | ARKWEB_ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124 | Winsock sometimes reports unexpected written bytes. This may be caused by LSP damage.|
 | ARKWEB_ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125 | The SSL peer sent us a fatal **decompression_failure** alert. This usually occurs when the peer falsely considers that it supports **DEFLATE** and selects it.|
 | ARKWEB_ERR_SSL_BAD_RECORD_MAC_ALERT = -126 | The SSL peer sent us a fatal **BAD_RECORD_MAC** alert. This usually occurs on the server cannot support **DEFLATE** normally.|

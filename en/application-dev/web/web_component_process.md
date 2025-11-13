@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb is a multi-process model, which consists of the application process, Web rendering process, Web GPU process, Web incubation process, and Foundation process.
 
@@ -65,7 +65,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
          Button('getRenderProcessMode')
            .onClick(() => {
              let mode = webview.WebviewController.getRenderProcessMode();
-             console.log("getRenderProcessMode: " + mode);
+             console.info("getRenderProcessMode: " + mode);
            })
          Button('setRenderProcessMode')
            .onClick(() => {
@@ -97,7 +97,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
          Button('terminateRenderProcess')
          .onClick(() => {
            let result = this.controller.terminateRenderProcess();
-           console.log("terminateRenderProcess result: " + result);
+           console.info("terminateRenderProcess result: " + result);
          })
          Web({ src: 'www.example.com', controller: this.controller })
        }
@@ -121,7 +121,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
          Web({ src: 'chrome://crash/', controller: this.controller })
            .onRenderExited((event) => {
              if (event) {
-               console.log('reason:' + event.renderExitReason);
+               console.info('reason:' + event.renderExitReason);
              }
            })
        }
@@ -146,7 +146,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
        Column() {
          Web({ src: 'www.example.com', controller: this.controller })
            .onRenderProcessNotResponding((data) => {
-             console.log("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
+             console.info("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
                ", [process]=" + data.pid + ", [reason]=" + data.reason);
            })
        }
@@ -167,7 +167,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
        Column() {
          Web({ src: 'www.example.com', controller: this.controller })
            .onRenderProcessResponding(() => {
-             console.log("onRenderProcessResponding again");
+             console.info("onRenderProcessResponding again");
            })
        }
      }

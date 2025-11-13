@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ Defines web options through the [APIs](./arkts-basic-components-web.md).
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | No   | No   | Address of a web page resource. To access local resource files, use the $rawfile or resource protocol. To load a local resource file (in HTML or TXT format) in the sandbox outside of the application package, use **file://** to specify the path of the sandbox.<br>**src** cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl).|
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | No   | No  | Controller that controls various behaviors of **Web** components, including page navigation, declaration period status, and JavaScript interaction. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| No   | Yes  | Rendering mode.<br>**RenderMode.ASYNC_RENDER** (default, cannot be dynamically adjusted): The **Web** component is rendered asynchronously.<br>**RenderMode.SYNC_RENDER**: The **Web** component is rendered synchronously.|
-| incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.|
+| incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.<br>If **undefined** or **null** is passed, the value is **false**.|
 | sharedRenderProcessToken<sup>12+</sup> | string | No   | Yes| Token of the shared rendering process specified by the **Web** component. In multi-rendering process mode, the **Web** component with the same token preferentially attempts to reuse the rendering process bound to the token. The token is bound to the rendering process when the rendering process is initialized. When the rendering process is not associated with a **Web** component, its binding to the token is removed.<br> Default value: **""**. |
 
 ## WebMediaOptions<sup>10+</sup>
@@ -151,7 +151,7 @@ Represents the callback invoked when this page is about to exit after the user r
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-| Name                  | Type    | Read Only| Optional | Description                             |
+| Name                  | Type    | Read-Only| Optional | Description                             |
 | --------------------- | -------- | -- | ----|--------------------------------- |
 | url                   | string   | No| No | URL of the web page where the dialog box is displayed.                |
 | message               | string   | No| No | Message displayed in the dialog box.                             |
@@ -510,7 +510,7 @@ Represents the JavaScript object to be injected.
 | methodList | Array\<string\>                          | No| No   | Synchronous methods of the JavaScript object to be registered at the application side.                |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | No| No   |  Controller. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | No| Yes   | Asynchronous methods of the JavaScript object to be registered at the application side. Asynchronous methods cannot obtain return values.  |
-| permission<sup>12+</sup>  | string  | No| Yes   | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).|
+| permission<sup>12+</sup>  | string  | No| Yes   | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>The **permission** parameter of JavaScriptProxy supports the resource, HTTP, and HTTPS protocols, but does not support the file protocol.<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).|
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -631,6 +631,19 @@ Provides detailed information about the same-layer tag.
 | params<sup>12+</sup>            | Map<string, string> | No   | Yes| List of key-value pairs contained in the **object** tag that form a map of the Object type. Use the methods provided by the Object type, such as **embed.info?.param?.["name"]** to operate the map object. |
 | position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the **Web** component in the screen coordinate system, which is different from the standard **Position**. The unit is px.|
 
+## NativeEmbedParamItem<sup>21+</sup>
+
+Provides details about the **param** element embedded in the same-layer rendering tag **object**.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name               | Type                                 | Read-Only| Optional| Description                       |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| status     | [NativeEmbedParamStatus](./arkts-basic-components-web-e.md#nativeembedparamstatus21)             | No   | No   | Status change type of the **param** element.|
+| id                | string                              | No   | No| ID of the **param** element.            |
+| name              | string                              | No   | Yes| Name of the **param** element.          |
+| value             | string                              | No   | Yes| Value of the **param** element.         |
+
 ## IntelligentTrackingPreventionDetails<sup>12+</sup>
 
 Provides detailed information about intelligent tracking prevention.
@@ -679,7 +692,7 @@ Provides detailed information about the first meaningful paint.
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-Provides detailed information about the largest content paint.
+Provides detailed information about the largest contentful paint.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -728,6 +741,18 @@ Provides detailed information about clicking or touching and holding a same-laye
 | embedId     | string   | No   | Yes   | Unique ID of the same-layer tag.|
 | mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) | No   | Yes   | Information about clicking or touching and holding using the mouse or touchpad.|
 | result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | No   | Yes  | Mouse event consumption result.|
+
+## NativeEmbedParamDataInfo<sup>21+</sup>
+
+Provides details about the same-layer tag when the **param** element embedded in the **object** tag changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type                                 | Read-Only| Optional  | Description                   |
+| -----------     | ------------------------------------ | ---- | ---- | --------------------- |
+| embedId | string                              | No| No   | Unique ID of the same-layer tag. |
+| objectAttributeId      | string             | No   | Yes| ID of the same-layer tag.            |
+| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | No| Yes   | Details of the changed **param** element, including the status change type, ID, name, and value of each **param** element.      |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 
