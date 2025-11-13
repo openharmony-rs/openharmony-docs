@@ -51,7 +51,7 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 Subscribes to operating hand change events.
 
-If the device does not support the age group detection function, error code 801 is returned.
+If the device does not support this function, error code 801 is returned.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION or ohos.permission.DETECT_GESTURE
 
