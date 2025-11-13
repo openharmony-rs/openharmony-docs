@@ -6,6 +6,10 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder
+```
+
 ## 概述
 
 会话元数据构造器。构造器用于构造会话元数据。
