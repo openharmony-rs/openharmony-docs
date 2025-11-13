@@ -14651,7 +14651,7 @@
 						"start_line":484
 					},
 					{
-						"end_line":133,
+						"end_line":134,
 						"name":"create_content",
 						"start_line":101
 					},
@@ -14681,19 +14681,19 @@
 						"start_line":63
 					},
 					{
-						"end_line":171,
+						"end_line":172,
 						"name":"controller_click",
-						"start_line":146
+						"start_line":147
 					},
 					{
-						"end_line":310,
+						"end_line":312,
 						"name":"option_click",
-						"start_line":287
+						"start_line":289
 					},
 					{
-						"end_line":596,
+						"end_line":599,
 						"name":"dialog_lifecycle",
-						"start_line":527
+						"start_line":529
 					}
 				]
 			}
@@ -16656,7 +16656,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets",
 				"functions":[
 					{
-						"end_line":149,
+						"end_line":135,
 						"name":"OverlayManager_Demo",
 						"start_line":16
 					}
@@ -16676,7 +16676,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":116,
 						"name":"OverlayManager_Demo3",
 						"start_line":16
 					}
@@ -16691,7 +16691,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":68,
 						"name":"toast_showDefaultAndTop",
 						"start_line":16
 					}
