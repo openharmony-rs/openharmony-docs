@@ -114,6 +114,12 @@ struct Index {
           controller: this.controller,
           onReceive: (data) => {
             console.info("onReceive, data: " + data['ohos.atomicService.window']);
+          },
+          onError: (err: Error) => {
+            console.info("onError, err: " + JSON.stringify(err));
+          },
+          onTerminated: (info: TerminationInfo) => {
+            console.info("onTerminated, info: " + JSON.stringify(info));
           }
         })
     }
