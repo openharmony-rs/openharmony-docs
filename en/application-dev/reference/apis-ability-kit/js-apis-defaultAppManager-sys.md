@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The module provides APIs to query whether the current application is the default application of a specific type.
+The module provides APIs to query, set, and reset the default application of a specific type and check whether the current application is the default application.
 
 > **NOTE**
 >

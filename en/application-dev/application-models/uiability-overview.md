@@ -40,23 +40,25 @@ You can develop a single UIAbility or multiple UIAbility components for your app
 
 To enable an application to properly use a UIAbility component, declare the UIAbility name, entry, and label under [abilities](../quick-start/module-configuration-file.md#abilities) in the [module.json5 file](../quick-start/module-configuration-file.md).
 
+<!-- @[module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/module.json5) -->  
 
-```json
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
       {
         "name": "EntryAbility", // Name of the UIAbility component.
         "srcEntry": "./ets/entryability/EntryAbility.ets", // Code path of the UIAbility component.
         "description": "$string:EntryAbility_desc", // Description of the UIAbility component.
-        "icon": "$media:icon", // Icon of the UIAbility component.
+        "icon": "$media:layered_image", // Icon of the UIAbility component.
         "label": "$string:EntryAbility_label", // Label of the UIAbility component.
-        "startWindowIcon": "$media:icon", // Index of the icon resource file.
+        "startWindowIcon": "$media:startIcon", // Index of the icon resource file.
         "startWindowBackground": "$color:start_window_background", // Index of the background color resource file.
-        // ...
+        // ···
       }
     ]
+    // ···
   }
 }
 ```
