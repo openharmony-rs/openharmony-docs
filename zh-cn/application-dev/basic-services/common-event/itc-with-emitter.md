@@ -34,6 +34,10 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
 1. 导入模块。
 
    <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   import { emitter, Callback } from '@kit.BasicServicesKit';
+   ```
 
 2. 订阅事件。
 
