@@ -72,39 +72,37 @@
    ```
 
 2. 引用头文件。
-   <!-- [include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "napi/native_api.h"
-#include <string.h>
-#include "asset/asset_api.h"
-```
-
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <string.h>
+   #include "asset/asset_api.h"
+   ```
 
 3. 参考如下示例代码，进行业务功能开发。
-   <!-- [update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value UpdateAsset(napi_env env, napi_callback_info info)
-{
-    const char *aliasStr = "demo_alias";
-    const char *secretStr = "demo_pwd_new";
-    const char *labelStr = "demo_label_new";
-
-    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
-    Asset_Blob new_secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
-    Asset_Blob new_label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
-    Asset_Attr query[] = {{.tag = ASSET_TAG_ALIAS, .value.blob = alias }};
-    Asset_Attr attributesToUpdate[] = {
-        {.tag = ASSET_TAG_SECRET, .value.blob = new_secret},
-        {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = new_label},
-    };
-
-    int32_t updateResult = OH_Asset_Update(query, sizeof(query) / sizeof(query[0]), attributesToUpdate,
-                                           sizeof(attributesToUpdate) / sizeof(attributesToUpdate[0]));
-    napi_value ret;
-    napi_create_int32(env, updateResult, &ret);
-    return ret;
-}
-```
-
+   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value UpdateAsset(napi_env env, napi_callback_info info)
+   {
+       const char *aliasStr = "demo_alias";
+       const char *secretStr = "demo_pwd_new";
+       const char *labelStr = "demo_label_new";
+   
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+       Asset_Blob new_secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+       Asset_Blob new_label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
+       Asset_Attr query[] = {{.tag = ASSET_TAG_ALIAS, .value.blob = alias }};
+       Asset_Attr attributesToUpdate[] = {
+           {.tag = ASSET_TAG_SECRET, .value.blob = new_secret},
+           {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = new_label},
+       };
+   
+       int32_t updateResult = OH_Asset_Update(query, sizeof(query) / sizeof(query[0]), attributesToUpdate,
+                                              sizeof(attributesToUpdate) / sizeof(attributesToUpdate[0]));
+       napi_value ret;
+       napi_create_int32(env, updateResult, &ret);
+       return ret;
+   }
+   ```

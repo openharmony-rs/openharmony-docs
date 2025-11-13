@@ -958,7 +958,7 @@ try {
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的页面。 |
+| want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的组件。 |
 | UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
 | priority | number | 否 | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，排序越靠前。 |
 
@@ -972,7 +972,8 @@ try {
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
-| EXTENSION | 1    | 服务扩展能力类型。 |
+| EXTENSION | 1    | 服务扩展能力类型。仅支持service类型的[ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities标签)。 |
+| UI_EXTENSION<sup>22+</sup> | 2    | UI扩展能力类型。 |
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 

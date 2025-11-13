@@ -1,4 +1,4 @@
-# &lt;qrcode&gt; Development
+# qrcode Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->

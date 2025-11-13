@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OHExtDataHandle
+```
+
 ## 概述
 
 扩展数据句柄结构体定义。

@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsContentForm OH_UdsContentForm
+```
+
 ## 概述
 
 描述内容卡片类型的统一数据结构。

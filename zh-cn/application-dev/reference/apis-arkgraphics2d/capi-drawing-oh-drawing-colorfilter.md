@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_ColorFilter OH_Drawing_ColorFilter
+```
+
 ## 概述
 
 定义颜色滤波器，传入一个颜色并返回一个新的颜色。

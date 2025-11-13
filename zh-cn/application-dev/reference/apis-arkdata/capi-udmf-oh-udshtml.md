@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsHtml OH_UdsHtml
+```
+
 ## 概述
 
 描述超文本标记语言类型的统一数据结构。

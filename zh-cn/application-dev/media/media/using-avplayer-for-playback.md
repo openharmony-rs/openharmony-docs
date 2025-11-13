@@ -27,6 +27,7 @@
 - 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点事件](../audio/audio-playback-concurrency.md)），可能会被其他应用打断，建议应用主动监听音频打断事件，根据内容提示做出相应处理，避免出现应用状态与预期效果不一致的问题。
 - 面对设备同时连接多个音频输出设备的情况，应用可以通过[on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11)监听音频输出设备的变化，做出相应处理。
 - 若要访问在线媒体资源，需要申请 ohos.permission.INTERNET 权限。
+- 若要切换听筒/扬声器，应用可以参考[音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
 
 ## 开发步骤及注意事项
 

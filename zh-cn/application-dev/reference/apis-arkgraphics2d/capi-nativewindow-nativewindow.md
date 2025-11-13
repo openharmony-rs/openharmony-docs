@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## 概述
 
 提供对OHNativeWindow的访问功能。

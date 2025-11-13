@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -46,7 +46,7 @@ Defines a set of animation APIs of ArkUI on the native side.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption* OH_ArkUI_AnimateOption_Create()](#oh_arkui_animateoption_create) | Creates an animation configuration.|
-| [void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_dispose) | Disposes of an animation configuration.|
+| [void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_dispose) | Disposes an animation configuration.|
 | [uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getduration) | Obtains the animation duration, in milliseconds.|
 | [float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_gettempo) | Obtains the playback speed of an animation.|
 | [ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getcurve) | Obtains an animation curve.|
@@ -54,52 +54,52 @@ Defines a set of animation APIs of ArkUI on the native side.
 | [int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getiterations) | Obtains the number of times that an animation is played.|
 | [ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getplaymode) | Obtains the playback mode of an animation.|
 | [ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getexpectedframeraterange) | Obtains the expected frame rate range of an animation.|
-| [void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setduration) | Sets the animation duration.|
+| [void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setduration) | Sets the animation duration, in milliseconds.|
 | [void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)](#oh_arkui_animateoption_settempo) | Sets the playback speed of an animation.|
 | [void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_AnimationCurve value)](#oh_arkui_animateoption_setcurve) | Animation curve.|
-| [void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setdelay) | Sets the animation delay.|
+| [void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setdelay) | Sets the animation delay, in milliseconds.|
 | [void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setiterations) | Sets the number of times that an animation is played.|
 | [void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_AnimationPlayMode value)](#oh_arkui_animateoption_setplaymode) | Sets the playback mode for an animation.|
 | [void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* option, ArkUI_ExpectedFrameRateRange* value)](#oh_arkui_animateoption_setexpectedframeraterange) | Defines a struct for the expected frame rate range of the animation.|
 | [void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHandle value)](#oh_arkui_animateoption_seticurve) | Sets the animation curve for an animation.|
 | [ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_geticurve) | Obtains the animation curve of an animation.|
 | [ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)](#oh_arkui_keyframeanimateoption_create) | Obtains the keyframe animation parameters.|
-| [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | Disposes of a keyframe animation parameter object.|
-| [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation is played without delay.|
+| [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | Disposes a keyframe animation parameter object.|
+| [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation starts without any delay.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | Sets the number of times that the keyframe animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. The value **0** indicates that there is no animation.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | Sets the callback invoked when the keyframe animation playback is complete. This API is called after the keyframe animation has played for the specified number of times.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | Sets the expected frame rate for a keyframe animation.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | Sets the duration of a keyframe animation, in milliseconds.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | Sets the animation curve for a specific keyframe in a keyframe animation.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*event)(void* userData), int32_t index)](#oh_arkui_keyframeanimateoption_registeroneventcallback) | Sets the closure function of the state at the time of the keyframe, that is, the state to be reached at the time of the keyframe.|
-| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getdelay) | Obtains the overall delay of a keyframe animation|
+| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getdelay) | Obtains the overall delay of a keyframe animation, in milliseconds.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_GetIterations(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getiterations) | Obtains the number of times that a keyframe animation is played.|
 | [ArkUI_ExpectedFrameRateRange* OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getexpectedframerate) | Obtains the expected frame rate from keyframe animation parameters.|
-| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* option, int32_t index)](#oh_arkui_keyframeanimateoption_getduration) | Obtains the duration of a specific state in a keyframe animation.|
+| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* option, int32_t index)](#oh_arkui_keyframeanimateoption_getduration) | Obtains the duration of a specific state in a keyframe animation, in milliseconds.|
 | [ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateOption* option, int32_t index)](#oh_arkui_keyframeanimateoption_getcurve) | Obtains the animation curve of a specific state in a keyframe animation.|
 | [ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)](#oh_arkui_animatoroption_create) | Creates an **AnimatorOption** object.|
-| [void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_dispose) | Disposes of an **AnimatorOption** object.|
-| [int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setduration) | Sets the duration of an animation, in milliseconds.|
-| [int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setdelay) | Sets the delay of animation playback, in milliseconds.|
+| [void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_dispose) | Disposes the animator parameters object.|
+| [int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setduration) | Sets the duration of the animator playback, in milliseconds.|
+| [int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setdelay) | Sets the delay of the animator playback, in milliseconds.|
 | [int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setiterations) | Sets the number of times that an animation is played. The value **0** means not to play the animation, and **-1** means to play the animation for an unlimited number of times.|
 | [int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_AnimationFillMode value)](#oh_arkui_animatoroption_setfill) | Sets whether the animator animation is restored to the initial state after being executed.|
 | [int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI_AnimationDirection value)](#oh_arkui_animatoroption_setdirection) | Set the playback direction.|
 | [int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_CurveHandle value)](#oh_arkui_animatoroption_setcurve) | Sets the interpolation curve for the animation of an animator.|
 | [int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float value)](#oh_arkui_animatoroption_setbegin) | Sets the interpolation start point of an animation.|
 | [int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value)](#oh_arkui_animatoroption_setend) | Sets the interpolation end point for the animation of an animator.|
-| [int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* option, ArkUI_ExpectedFrameRateRange* value)](#oh_arkui_animatoroption_setexpectedframeraterange) | Sets the expected frame rate range of an animation.|
-| [int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float time, float value, int32_t index)](#oh_arkui_animatoroption_setkeyframe) | Sets the keyframe parameters of an animation.|
+| [int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* option, ArkUI_ExpectedFrameRateRange* value)](#oh_arkui_animatoroption_setexpectedframeraterange) | Sets the expected frame rate range of an animator animation.|
+| [int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float time, float value, int32_t index)](#oh_arkui_animatoroption_setkeyframe) | Sets the keyframe parameters of an animator animation.|
 | [int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_animatoroption_setkeyframecurve) | Sets the keyframe curve type for the animation of an animator.|
-| [int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getduration) | Obtains the duration for playing an animation.|
-| [int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getdelay) | Obtains the delay for playing an animation.|
-| [int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getiterations) | Obtains the number of times that an animation is played.|
+| [int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getduration) | Obtains the duration for playing an animator animation.|
+| [int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getdelay) | Obtains the delay for playing an animator animation.|
+| [int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getiterations) | Obtains the number of times that an animator animation is played.|
 | [ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getfill) | Obtains whether the animator animation is restored to the initial state after being executed.|
-| [ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getdirection) | Obtains the playback direction of an animation.|
-| [ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getcurve) | Obtains the interpolation curve of the animation of an animator.|
-| [float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getbegin) | Obtains the interpolation start point of an animation.|
-| [float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getend) | Obtains the interpolation end point of an animation.|
-| [ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getexpectedframeraterange) | Obtains the expected frame rate range of an animation.|
-| [float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframetime) | Obtains the keyframe time of an animation.|
+| [ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getdirection) | Obtains the playback direction of an animator animation.|
+| [ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getcurve) | Obtains the interpolation curve of an animator animation.|
+| [float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getbegin) | Obtains the interpolation start point of an animator animation.|
+| [float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getend) | Obtains the interpolation end point of an animator animation.|
+| [ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getexpectedframeraterange) | Obtains the expected frame rate range of an animator animation.|
+| [float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframetime) | Obtains the keyframe time of the animator playback, in milliseconds.|
 | [float OH_ArkUI_AnimatorOption_GetKeyframeValue(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframevalue) | Obtains the keyframe value of an animation.|
 | [ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframecurve) | Obtains the interpolation curve for a keyframe in the animation of an animator.|
 | [void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)](#oh_arkui_animatorevent_getuserdata) | Obtains the custom object in an animation event object.|
@@ -354,7 +354,7 @@ Obtains the expected frame rate range of an animation.
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | Expected frame rate range of the animation.|
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | Expected frame rate range of the animation, in fps.|
 
 ### OH_ArkUI_AnimateOption_SetDuration()
 
@@ -365,7 +365,7 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 **Description**
 
 
-Sets the animation duration.
+Sets the animation duration, in milliseconds.
 
 **Since**: 12
 
@@ -428,7 +428,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 **Description**
 
 
-Sets the animation delay.
+Sets the animation delay, in milliseconds.
 
 **Since**: 12
 
@@ -438,7 +438,7 @@ Sets the animation delay.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.|
-| int32_t value | Delay of animation playback.|
+| int32_t value | Animation delay, in milliseconds.|
 
 ### OH_ArkUI_AnimateOption_SetIterations()
 
@@ -501,7 +501,7 @@ Defines a struct for the expected frame rate range of the animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.|
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Expected frame rate range of the animation.|
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Expected frame rate range of the animation, in fps.|
 
 ### OH_ArkUI_AnimateOption_SetICurve()
 
@@ -609,7 +609,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 **Description**
 
 
-Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation is played without delay.
+Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation starts without any delay.
 
 **Since**: 12
 
@@ -718,7 +718,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 **Description**
 
 
-Sets the duration of a specific keyframe animation segment, in milliseconds.
+Sets the duration of a keyframe animation, in milliseconds.
 
 **Since**: 12
 
@@ -807,7 +807,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* opt
 **Description**
 
 
-Obtains the overall delay of a keyframe animation
+Obtains the overall delay of a keyframe animation, in milliseconds.
 
 **Since**: 12
 
@@ -822,7 +822,7 @@ Obtains the overall delay of a keyframe animation
 
 | Type| Description|
 | -- | -- |
-| int32_t | Overall delay.|
+| int32_t | Overall delay, in milliseconds.|
 
 ### OH_ArkUI_KeyframeAnimateOption_GetIterations()
 
@@ -885,7 +885,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* 
 **Description**
 
 
-Obtains the duration of a specific state in a keyframe animation.
+Obtains the duration of a specific state in a keyframe animation, in milliseconds.
 
 **Since**: 12
 
@@ -895,7 +895,7 @@ Obtains the duration of a specific state in a keyframe animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.|
-| int32_t index | State index value.|
+| int32_t index | Index of the keyframe state segment.|
 
 **Return value**
 
@@ -973,6 +973,12 @@ Disposes of an **AnimatorOption** object.
 
 **Since**: 12
 
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
+
 ### OH_ArkUI_AnimatorOption_SetDuration()
 
 ```
@@ -991,7 +997,7 @@ Sets the duration of an animation, in milliseconds.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | int32_t value | Playback duration, in milliseconds.|
 
 **Return value**
@@ -1009,7 +1015,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 **Description**
 
 
-Sets the delay of animation playback, in milliseconds.
+Sets the delay of the animator playback, in milliseconds.
 
 **Since**: 12
 
@@ -1018,8 +1024,8 @@ Sets the delay of animation playback, in milliseconds.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
-| int32_t value | Animation delay, in milliseconds.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
+| int32_t value | Playback delay, in milliseconds.|
 
 **Return value**
 
@@ -1049,7 +1055,7 @@ Sets the number of times that an animation is played. The value **0** means not 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | int32_t value | Number of times that the animation is played.|
 
 **Return value**
@@ -1076,7 +1082,7 @@ Sets whether the animator animation is restored to the initial state after being
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | Whether to restore the animation to the initial state after the animation is executed.|
 
 **Return value**
@@ -1103,7 +1109,7 @@ Set the playback direction.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | Animation playback direction.|
 
 **Return value**
@@ -1134,7 +1140,7 @@ Sets the interpolation curve for the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: **ARKUI_CURVE_LINEAR**.|
 
 **Return value**
@@ -1165,7 +1171,7 @@ Sets the interpolation start point of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | float value | Interpolation start point of the animation.|
 
 **Return value**
@@ -1196,7 +1202,7 @@ Sets the interpolation end point for the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | float value | Interpolation end point of the animation.|
 
 **Return value**
@@ -1223,7 +1229,7 @@ Sets the expected frame rate range of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | Expected frame rate range.|
 
 **Return value**
@@ -1250,7 +1256,7 @@ Sets the keyframe parameters of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | float time | Keyframe time. Value range: [0, 1]. The value must be in ascending order.|
 | float value | Keyframe value.|
 | int32_t index | Keyframe index.|
@@ -1283,7 +1289,7 @@ Sets the keyframe curve type for the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve.|
 | int32_t index | Keyframe index.|
 
@@ -1354,7 +1360,7 @@ int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)
 **Description**
 
 
-Obtains the number of times that an animation is played.
+Obtains the number of times that an animator animation is played.
 
 **Since**: 12
 
@@ -1363,7 +1369,7 @@ Obtains the number of times that an animation is played.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 
 **Return value**
 
@@ -1510,7 +1516,7 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(
 **Description**
 
 
-Obtains the expected frame rate range of an animation.
+Obtains the expected frame rate range of an animator animation.
 
 **Since**: 12
 
@@ -1536,7 +1542,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 **Description**
 
 
-Obtains the keyframe time of an animation.
+Obtains the keyframe time of the animator playback, in milliseconds.
 
 **Since**: 12
 
@@ -1545,14 +1551,14 @@ Obtains the keyframe time of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | int32_t index | Keyframe index.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| float | Keyframe time.|
+| float | Keyframe time, in milliseconds.|
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeValue()
 
@@ -1572,7 +1578,7 @@ Obtains the keyframe value of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | int32_t index | Keyframe index.|
 
 **Return value**
@@ -1599,7 +1605,7 @@ Obtains the interpolation curve for a keyframe in the animation of an animator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Pointer to an **AnimatorOption** object.|
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.|
 | int32_t index | Keyframe index.|
 
 **Return value**
@@ -2154,7 +2160,7 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 | -- | -- |
 | float velocity | Initial velocity. It is applied by external factors to the spring animation, designed to help ensure the smooth transition from the previous motion state. The velocity is the normalized velocity, and its value is equal to the actual velocity at the beginning of the animation divided by the animation attribute change value.|
 | float mass | Mass. It describes the inertia of the object in the elastic system, affecting the amplitude of oscillation and the speed of return to equilibrium. The greater the mass, the greater the amplitude of the oscillation, and the slower the speed of restoring to the equilibrium position.|
-| float stiffness | Stiffness. It is the degree to which an object deforms by resisting the force applied. In an elastic system, the greater the stiffness, the stronger the ability to resist deformation, and the faster the speed of restoring to the equilibrium position.|
+| float stiffness | Stiffness. It is the degree to which an object deforms by resisting the force applied. The greater the stiffness, the stronger the ability to resist deformation, and the faster the speed of restoring to the equilibrium position.|
 | float damping | Damping. It is used to describe the oscillation and attenuation of the system after being disturbed. The larger the damping, the smaller the number of oscillations of elastic motion, and the smaller the oscillation amplitude.|
 
 **Return value**
@@ -2199,7 +2205,7 @@ void OH_ArkUI_Curve_DisposeCurve(ArkUI_CurveHandle curveHandle)
 **Description**
 
 
-Disposes of a custom curve.
+Disposes a custom curve.
 
 **Since**: 12
 
@@ -2380,7 +2386,7 @@ void OH_ArkUI_TransitionEffect_Dispose(ArkUI_TransitionEffect* effect)
 **Description**
 
 
-Disposes of a transition effect.
+Disposes a transition effect.
 
 **Since**: 12
 
@@ -2389,7 +2395,7 @@ Disposes of a transition effect.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* effect | Disposes a transition effect.|
+| [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)* effect | Pointer to the transition effect to be disposed.|
 
 ### OH_ArkUI_TransitionEffect_Combine()
 

@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_NativeBuffer_Smpte2086
+```
 ## 概述
 
 表示smpte2086静态元数据。

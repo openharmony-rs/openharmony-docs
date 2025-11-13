@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef union {...} Rdb_SubscribeCallback
+```
+
 ## 概述
 
 表示回调函数。

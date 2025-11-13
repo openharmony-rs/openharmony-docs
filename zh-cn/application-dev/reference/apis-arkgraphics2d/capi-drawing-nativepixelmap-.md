@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct NativePixelMap_ NativePixelMap_
+```
+
 ## 概述
 
 声明由图像框架定义的像素图对象。

@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_FontParser OH_Drawing_FontParser
+```
+
 ## 概述
 
 用来解析系统字体文件。

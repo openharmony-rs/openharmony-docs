@@ -399,6 +399,8 @@ class DividerTmp {
 export struct CustomListStyle {
   @State egDivider: DividerTmp = new DividerTmp(1, 60, 10, '#ffe9f0f0');
 
+// ···
+
   build() {
     // ···
           List(
@@ -452,7 +454,7 @@ List(
 
 1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)类型的对象listScroller。
 
-   <!-- @[create_private_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+   <!-- @[external_scroll_ctrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
    
    ``` TypeScript
    private listScroller: Scroller = new Scroller();
@@ -460,7 +462,7 @@ List(
 
 2. 然后，列表通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18对象说明)参数绑定滚动控制器。
 
-   <!-- @[respond_to_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets) -->
+   <!-- @[external_scroll_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
    
    ``` TypeScript
    // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
@@ -471,11 +473,11 @@ List(
 
 3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions对象说明)参数绑定滚动控制器。
 
-   <!-- @[scroller_scroll_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets) -->
+   <!-- @[external_scroll_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
    
    ``` TypeScript
-   // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
-   List({ scroller: this.listScroller }) {
+   // listScroller初始化ScrollBar组件的scroller参数，绑定listScroller与列表。
+   ScrollBar({ scroller: this.listScroller})
    ```
 
   **图15** 列表的外置滚动条 
@@ -810,12 +812,13 @@ ListItem的[swipeAction属性](../reference/apis-arkui/arkui-ts/ts-container-lis
          // ···
          this.itemEnd(this.index);
        },
-     } // 设置侧滑属性.
+     }
+   }) // 设置侧滑属性.
    ```
 
 ## 给列表项添加标记
 
-添加标记是一种无干扰性且直观的方法，用于显示通知或将注意力集中到应用内的某个区域。例如，当消息列表接收到新消息时，通常对应的联系人头像的右上方会出现标记，提示有若干条未读消息，如下图所示。
+添加标记是一种无干扰性且直观的方法，用于显示通知或将注意力集中到应用内的某个区域。例如，当消息列表接收到新消息时，通常对应消息列表的右上方会出现标记，提示有若干条未读消息，如下图所示。
 
   **图21** 给列表项添加标记  
 
@@ -823,7 +826,7 @@ ListItem的[swipeAction属性](../reference/apis-arkui/arkui-ts/ts-container-lis
 
 在ListItem中使用[Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md)组件可实现给列表项添加标记功能。Badge是可以附加在单个组件上用于信息标记的容器组件。
 
-在消息列表中，若希望在联系人头像右上角添加标记，可在实现消息列表项ListItem的联系人头像时，将头像Image组件作为Badge的子组件。
+在消息列表中，若希望在消息的右上角添加标记，可在实现消息列表项ListItem中，将对应的组件作为Badge的子组件。
 
 在Badge组件中，count和position参数用于设置需要展示的消息数量和提示点显示位置，还可以通过style参数灵活设置标记的样式。
 
@@ -840,6 +843,7 @@ ListItem() {
   }) {
   // ···
   }
+}
 ```
 
 
@@ -1405,14 +1409,23 @@ List(
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
-   @State messages: Message[] = [
-     // app.string.welcome_live_room 资源文件中的value值为'欢迎来到直播间'
-     // app.string.system 资源文件中的value值为'系统'
-     { id: 1, content: $r('app.string.welcome_live_room'), sender: $r('app.string.system') },
-     // app.string.hello_everyone 资源文件中的value值为'大家好啊~'
-     // app.string.anchors 资源文件中的value值为'主播'
-     { id: 2, content: $r('app.string.hello_everyone'), sender: $r('app.string.anchors') }
-   ];
+   @State messages: Message[] = [];
+   
+   aboutToAppear(): void {
+     const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     // app.string.welcome_live_room资源文件中的value值为'欢迎来到直播间'
+     const welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
+     // app.string.system资源文件中的value值为'系统'
+     const system = context.resourceManager.getStringByNameSync('system');
+     // app.string.hello_everyone资源文件中的value值为'大家好啊~'
+     const helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
+     // app.string.anchors资源文件中的value值为'主播'
+     const anchors = context.resourceManager.getStringByNameSync('anchors');
+     this.messages = [
+       { id: 1, content: welcomeLiveRoom, sender: system },
+       { id: 2, content: helloEveryone, sender: anchors }
+     ];
+   }
    
    build() {
      // ···

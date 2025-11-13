@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct {...} NativeChildProcess_FdList
+```
+
 ## 概述
 
 传递给子进程的文件描述符信息列表，文件描述符记录个数不能超过16个。

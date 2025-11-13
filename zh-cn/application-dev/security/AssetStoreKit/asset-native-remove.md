@@ -56,32 +56,30 @@
    ```
 
 2. 引用头文件。
-   <!-- [include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "napi/native_api.h"
-#include <string.h>
-#include "asset/asset_api.h"
-```
-
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <string.h>
+   #include "asset/asset_api.h"
+   ```
 
 3. 参考如下示例代码，进行业务功能开发。
-   <!-- [remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value RemoveAsset(napi_env env, napi_callback_info info)
-{
-    const char *aliasStr = "demo_alias";
-    
-    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
-    Asset_Attr attr[] = {
-        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 此处指定别名删除单条关键资产，也可不指定别名删除多条关键资产。
-    };
-
-    int32_t removeResult = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
-    napi_value ret;
-    napi_create_int32(env, removeResult, &ret);
-    return ret;
-}
-```
-
+   <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value RemoveAsset(napi_env env, napi_callback_info info)
+   {
+       const char *aliasStr = "demo_alias";
+       
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 此处指定别名删除单条关键资产，也可不指定别名删除多条关键资产。
+       };
+   
+       int32_t removeResult = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
+       napi_value ret;
+       napi_create_int32(env, removeResult, &ret);
+       return ret;
+   }
+   ```

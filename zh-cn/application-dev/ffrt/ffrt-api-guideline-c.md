@@ -186,12 +186,12 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 参数
 
 - `attr`：`ffrt_task_attr_t`对象指针。
-- `delay_us`：调度时延，单位为微秒。
+- `delay_us`：调度延迟，单位为微秒。
 
 描述
 
-- 设置任务的调度时延，任务会在时延间隔之后才调度执行。不设置的情况下，默认时延为零。
-- 目前通过此接口设置任务的调度时延后，该任务不支持设置输入输出依赖关系。
+- 设置任务的调度延迟，任务会在延迟间隔之后才调度执行。不设置的情况下，默认延迟为零。
+- 设置任务的调度延迟后，任务的输入输出依赖关系不再生效。
 
 **ffrt_task_attr_get_delay**
 
@@ -205,11 +205,11 @@ FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr);
 
 返回值
 
-- 调度时延。
+- 调度延迟。
 
 描述
 
-- 获取设置的调度时延。
+- 获取设置的调度延迟。
 
 **ffrt_task_attr_set_queue_priority**
 

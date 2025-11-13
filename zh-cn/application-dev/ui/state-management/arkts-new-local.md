@@ -699,12 +699,10 @@ struct Index {
         .margin(20)
         .onClick(() => {
           // 在执行动画前，存在额外的修改
-          this.w = 100;
-          this.h = 100;
-          this.message = 'Hello World';
-          animateToImmediately({
-            duration: 0
-          }, () => {
+          UIUtils.applySync(() => {
+            this.w = 100;
+            this.h = 100;
+            this.message = 'Hello World';
           })
           this.getUIContext().animateTo({
             duration: 1000

@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Rdb_Store
+```
+
 ## 概述
 
 表示数据库类型。

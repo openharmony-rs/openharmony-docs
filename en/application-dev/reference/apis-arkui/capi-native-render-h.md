@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -104,8 +104,8 @@ Declares the APIs of **NativeRender**.
 | [int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption** borderColor)](#oh_arkui_rendernodeutils_getbordercolor) | - | Obtains the border color of the render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption* borderRadius)](#oh_arkui_rendernodeutils_setborderradius) | - | Sets the border corner radius for the render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption** borderRadius)](#oh_arkui_rendernodeutils_getborderradius) | - | Obtains the border corner radius of the render node.|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* option)](#oh_arkui_rendernodeutils_setmask) | - | Applies a mask to the render node using the mask configuration.|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* option)](#oh_arkui_rendernodeutils_setclip) | - | Applies clipping to the render node using the clipping configuration.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)](#oh_arkui_rendernodeutils_setmask) | - | Applies a mask to the render node using the mask configuration.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)](#oh_arkui_rendernodeutils_setclip) | - | Applies clipping to the render node using the clipping configuration.|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)](#oh_arkui_rendernodeutils_setmarknodegroup) | - | Marks whether to prioritize drawing the node and its child nodes.|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t x, int32_t y, int32_t width, int32_t height)](#oh_arkui_rendernodeutils_setbounds) | - | Sets the bounds for the render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y, int32_t* width, int32_t* height)](#oh_arkui_rendernodeutils_getbounds) | - | Obtains the bounds of the render node.|
@@ -143,10 +143,10 @@ Declares the APIs of **NativeRender**.
 | [int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)](#oh_arkui_rendernodeutils_setcoloranimatablepropertyvalue) | - | Sets the value of the animatable color property.|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)](#oh_arkui_rendernodeutils_getcoloranimatablepropertyvalue) | - | Obtains the value of the animatable color property.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)](#oh_arkui_rendernodeutils_disposecoloranimatableproperty) | - | Disposes the animatable color property.|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (callback)(ArkUI_DrawContext context, void* userData))](#oh_arkui_rendernodeutils_setcontentmodifierondraw) | - | Sets the **onDraw** callback function for the content modifier.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext context, void* userData))](#oh_arkui_rendernodeutils_setcontentmodifierondraw) | - | Sets the **onDraw** callback function for the content modifier.|
 | [ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()](#oh_arkui_rendernodeutils_createrectshapeoption) | - | Creates a rectangle shape option.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)](#oh_arkui_rendernodeutils_disposerectshapeoption) | - | Disposes the rectangle shape option.|
-| [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float top, float right, float bottom, float left)](#oh_arkui_rendernodeutils_setrectshapeoptionedgevalue) | - | Sets the edge values of the rectangle shape option.|
+| [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setrectshapeoptionedgevalue) | - | Sets the edge value for the rectangle shape option.|
 | [ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()](#oh_arkui_rendernodeutils_createnodeborderstyleoption) | - | Creates a node border style option.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)](#oh_arkui_rendernodeutils_disposenodeborderstyleoption) | - | Disposes the node border style option.|
 | [void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setnodeborderstyleoptionedgestyle) | - | Sets the edge style for the node border style option.|
@@ -166,7 +166,7 @@ Declares the APIs of **NativeRender**.
 | [void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption* option, float radius)](#oh_arkui_rendernodeutils_setcircleshapeoptionradius) | - | Sets the radius value for the circle shape option.|
 | [ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()](#oh_arkui_rendernodeutils_createroundrectshapeoption) | - | Creates a rounded rectangle shape option.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOption* option)](#oh_arkui_rendernodeutils_disposeroundrectshapeoption) | - | Disposes the rounded rectangle shape option.|
-| [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float top, float right, float bottom, float left)](#oh_arkui_rendernodeutils_setroundrectshapeoptionedgevalue) | - | Sets the edge values for the rounded rectangle shape option.|
+| [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)](#oh_arkui_rendernodeutils_setroundrectshapeoptionedgevalue) | - | Sets the edge values for the rounded rectangle shape option.|
 | [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)](#oh_arkui_rendernodeutils_setroundrectshapeoptioncornerxy) | - | Sets the coordinates for the target corner.|
 | [ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()](#oh_arkui_rendernodeutils_createcommandpathoption) | - | Creates a custom drawing path option.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* option)](#oh_arkui_rendernodeutils_disposecommandpathoption) | - | Disposes the custom drawing path option.|
@@ -319,7 +319,7 @@ Destroys the render node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) | Target render node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node| Target render node.|
 
 **Return value**
 
@@ -1075,7 +1075,7 @@ Sets the shadow color for the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| uint32_t color | ARGB color value (32-bit unsigned integer).<br>Default value: **0xFF000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
+| uint32_t color | ARGB color value (32-bit unsigned integer).<br>Default value: **0x00000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
 
 **Return value**
 | Type| Description|
@@ -1142,8 +1142,8 @@ Obtains the shadow offset of the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| int32_t* x | Pointer used to store the horizontal offset.<br>Default value: **0**.|
-| int32_t* y | Pointer used to store the vertical offset.<br>Default value: **0**.|
+| int32_t* x | Pointer used to store the horizontal offset.<br>Default value: **0**, in px.|
+| int32_t* y | Pointer used to store the vertical offset.<br>Default value: **0**, in px.|
 
 **Return value**
 | Type| Description|
@@ -1165,7 +1165,7 @@ Sets the shadow alpha (transparency) for the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| float alpha | Shadow alpha value (0.0–1.0).<br>Default value: **1**.|
+| float alpha | Shadow alpha value (0.0–1.0).<br>Default value: **0**.|
 
 **Return value**
 | Type| Description|
@@ -1461,7 +1461,7 @@ Obtains the border corner radius of the render node.
 ### OH_ArkUI_RenderNodeUtils_SetMask()
 
 ```
-int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* option)
+int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)
 ```
 
 **Description**
@@ -1474,7 +1474,7 @@ Use the original node image as the source color and the mask graphic as the targ
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* option | Pointer to the mask configuration.|
+| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* mask | Pointer to the mask configuration.|
 
 **Return value**
 | Type| Description|
@@ -1484,7 +1484,7 @@ Use the original node image as the source color and the mask graphic as the targ
 ### OH_ArkUI_RenderNodeUtils_SetClip()
 
 ```
-int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* option)
+int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)
 ```
 
 **Description**
@@ -1496,7 +1496,7 @@ Applies clipping to the render node using the clipping configuration.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* option | Pointer to the clipping configuration.|
+| [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* clip | Pointer to the clipping configuration.|
 
 **Return value**
 | Type| Description|
@@ -1669,7 +1669,7 @@ Attaches a float property to the target content modifier.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | Target content modifier.|
-| ArkUI_FloatPropertyHandle property | Float property.|
+| [ArkUI_FloatPropertyHandle](./capi-arkui-nativemodule-arkui-floatpropertyhandle.md) property | Float property.|
 
 **Return value**
 | Type| Description|
@@ -2281,7 +2281,7 @@ Disposes the animatable color property.
 ### OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw()
 
 ```
-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (callback)(ArkUI_DrawContext context, void* userData))
+int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext context, void* userData))
 ```
 
 **Description**
@@ -2336,11 +2336,11 @@ Disposes the rectangle shape option.
 ### OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue()
 
 ```
-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float top, float right, float bottom, float left)
+void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)
 ```
 
 **Description**
-Sets the edge values for the rectangle shape option. When the left and top boundaries are set to negative values, part of the content that exceeds the node may fail to draw due to the layer overlay effect involved in display.
+Sets the edge value for the rectangle shape option. When the left and top boundaries are set to negative values, part of the content that exceeds the node may fail to draw due to the layer overlay effect involved in display.
 
 **Since**: 20
 
@@ -2348,10 +2348,8 @@ Sets the edge values for the rectangle shape option. When the left and top bound
 | Name| Description|
 | -- | -- |
 | [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md)* option | Pointer to the rectangle shape option.|
-| float top | Top edge value of the rectangle shape option.|
-| float right | Right edge value of the rectangle shape option.|
-| float bottom | Bottom edge value of the rectangle shape option.|
-| float left | Left edge value of the rectangle shape option.|
+| float edgeValue | Edge value to set.|
+| [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | Edge direction to apply the value.|
 
 ### OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()
 
@@ -2634,7 +2632,7 @@ Sets the radius value for the circle shape option.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md)* option | Pointer to the circle shape option.|
-| float radius | Radius value.|
+| float radius | Radius, in pixels.|
 
 ### OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()
 
@@ -2671,7 +2669,7 @@ Disposes the rounded rectangle shape option.
 ### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue()
 
 ```
-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float top, float right, float bottom, float left)
+void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)
 ```
 
 **Description**
@@ -2683,10 +2681,8 @@ Sets the edge values for the rounded rectangle shape option.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* option | Pointer to the rounded rectangle shape option.|
-| float top | Top edge value of the rounded rectangle shape option.|
-| float right | Right edge value of the rounded rectangle shape option.|
-| float bottom | Bottom edge value of the rounded rectangle shape option.|
-| float left | Left edge value of the rounded rectangle shape option.|
+| float edgeValue | Edge value to set.|
+| [ArkUI_EdgeDirection](capi-native-type-h.md#arkui_edgedirection) direction | Edge direction to apply the value.|
 
 ### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY()
 
@@ -3063,4 +3059,3 @@ Disposes the render node clip option.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)* option | Pointer to the render node clip.|
-<!--no_check-->
