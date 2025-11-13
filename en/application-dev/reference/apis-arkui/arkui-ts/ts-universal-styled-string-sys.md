@@ -1,4 +1,10 @@
 # Styled String (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 Styled strings are string objects that facilitate the flexible use of text styles. They can be bound to the **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API in **TextController**, and to the **RichEditor** component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in **RichEditorStyledStringController**.
 
@@ -18,8 +24,6 @@ Marshals a styled string.
 
 **System API**: This is a system API.
 
-**Atomic service API**: This API can be used in atomic services since API version 13.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -34,15 +38,13 @@ Marshals a styled string.
 | ------- | --------------------------------- | 
 | ArrayBuffer | Buffer information after marshalling.<br>**NOTE**<br>Currently, text and images are supported.|
 
-### marshalling<sup>18+</sup>
+### marshalling<sup>19+</sup>
 
 static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer
 
-Marshals a styled string by defining a callback to marshal [StyledStringMarshallingValue](#styledstringmarshallingvalue18).
+Marshals a styled string by defining a callback to marshal [StyledStringMarshallingValue](#styledstringmarshallingvalue19).
 
 **System API**: This is a system API.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,7 +53,7 @@ Marshals a styled string by defining a callback to marshal [StyledStringMarshall
 | Name| Type| Mandatory| Description|
 | ----- | ----- | ---- | ---- |
 | styledString | [StyledString](ts-universal-styled-string.md) | Yes | Styled string to marshal.|
-| callback | [StyledStringMarshallCallback](#styledstringmarshallcallback18) | Yes| Callback defining how to marshal [StyledStringMarshallingValue](#styledstringmarshallingvalue18).|
+| callback | [StyledStringMarshallCallback](#styledstringmarshallcallback19) | Yes| Callback defining how to marshal [StyledStringMarshallingValue](#styledstringmarshallingvalue19).|
 
 **Return value**
 
@@ -63,11 +65,9 @@ Marshals a styled string by defining a callback to marshal [StyledStringMarshall
 
 static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
 
-Unarshals a buffer to obtain a styled string.
+Unmarshals a buffer to obtain a styled string.
 
 **System API**: This is a system API.
-
-**Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,32 +76,6 @@ Unarshals a buffer to obtain a styled string.
 | Name| Type| Mandatory| Description|
 | ----- | ----- | ---- | ---- |
 | buffer | ArrayBuffer | Yes | Data marshaled from a styled string.|
-
-**Return value**
-
-| Type                            | Description                 |
-| -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise used to return the result.|
-
-
-### unmarshalling<sup>18+</sup>
-
-static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise\<StyledString>
-
-Unmarshals a styled string by defining a callback to [StyledStringMarshallingValue](#styledstringmarshallingvalue18).
-
-**System API**: This is a system API.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ---- | ---- |
-| buffer | ArrayBuffer | Yes | Data marshaled from a styled string.|
-| callback | [StyledStringUnmarshallCallback](#styledstringunmarshallcallback18) | Yes| Callback defining how to marshal **ArrayBuffer**.|
 
 **Return value**
 
@@ -111,13 +85,46 @@ Unmarshals a styled string by defining a callback to [StyledStringMarshallingVal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../../errorcode-universal.md) and [Styled String Error Codes](../errorcode-styled-string.md).
 
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 170002 | Styled string decode error. |
 
-## StyledStringMarshallingValue<sup>18+</sup>
+### unmarshalling<sup>19+</sup>
+
+static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise\<StyledString>
+
+Unmarshals a styled string by defining a callback to [StyledStringMarshallingValue](#styledstringmarshallingvalue19).
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ----- | ----- | ---- | ---- |
+| buffer | ArrayBuffer | Yes | Data marshaled from a styled string.|
+| callback | [StyledStringUnmarshallCallback](#styledstringunmarshallcallback19) | Yes| Callback defining how to marshal **ArrayBuffer**.|
+
+**Return value**
+
+| Type                            | Description                 |
+| -------------------------------- | --------------------- |
+| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../../errorcode-universal.md) and [Styled String Error Codes](../errorcode-styled-string.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 170002 | Styled string decode error. |
+
+## StyledStringMarshallingValue<sup>19+</sup>
 
 type StyledStringMarshallingValue = UserDataSpan
 
@@ -125,23 +132,19 @@ Defines a custom marshalling object for styled strings, which you need to define
 
 **System API**: This is a system API.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description  |
 | ------ | ---------- |
 | [UserDataSpan](ts-universal-styled-string.md#userdataspan) | User data span style.|
 
-## StyledStringMarshallCallback<sup>18+</sup>
+## StyledStringMarshallCallback<sup>19+</sup>
 
 type StyledStringMarshallCallback = (marshallableVal: StyledStringMarshallingValue) => ArrayBuffer
 
-Defines a callback for marshalling [StyledStringMarshallingValue](#styledstringmarshallingvalue18).
+Defines a callback for marshalling [StyledStringMarshallingValue](#styledstringmarshallingvalue19).
 
 **System API**: This is a system API.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,23 +152,21 @@ Defines a callback for marshalling [StyledStringMarshallingValue](#styledstringm
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| marshallableVal | [StyledStringMarshallingValue](#styledstringmarshallingvalue18)| Yes| Object to be marshaled.|
+| marshallableVal | [StyledStringMarshallingValue](#styledstringmarshallingvalue19)| Yes| Object to be marshaled.|
 
 **Return value**
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| ArrayBuffer | Marshaled data of [StyledStringMarshallingValue](#styledstringmarshallingvalue18).|
+| ArrayBuffer | Marshaled data of [StyledStringMarshallingValue](#styledstringmarshallingvalue19).|
 
-## StyledStringUnmarshallCallback<sup>18+</sup>
+## StyledStringUnmarshallCallback<sup>19+</sup>
 
 type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshallingValue
 
-Defines a callback for unmarshalling an ArrayBuffer to obtain [StyledStringMarshallingValue](#styledstringmarshallingvalue18).
+Defines a callback for unmarshalling an ArrayBuffer to obtain [StyledStringMarshallingValue](#styledstringmarshallingvalue19).
 
 **System API**: This is a system API.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,13 +174,13 @@ Defines a callback for unmarshalling an ArrayBuffer to obtain [StyledStringMarsh
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| buf | ArrayBuffer | Yes| Marshaled data of [StyledStringMarshallingValue](#styledstringmarshallingvalue18).|
+| buf | ArrayBuffer | Yes| Marshaled data of [StyledStringMarshallingValue](#styledstringmarshallingvalue19).|
 
 **Return value**
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| [StyledStringMarshallingValue](#styledstringmarshallingvalue18) | [StyledStringMarshallingValue](#styledstringmarshallingvalue18) obtained after unmarshalling.|
+| [StyledStringMarshallingValue](#styledstringmarshallingvalue19) | [StyledStringMarshallingValue](#styledstringmarshallingvalue19) obtained after unmarshalling.|
 
 ## Example
 
@@ -189,32 +190,36 @@ This example demonstrates the marshalling and unmarshalling of styled strings us
 
 ```ts
 // xxx.ets
-import { LengthMetrics } from '@kit.ArkUI'
+import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
-  @State textTitle: string = "Marshalling and unmarshalling APIs"
-  @State textResult: string = "Hello world"
-  @State serializeStr: string = "Marshalling"
-  @State flag: boolean = false
-  private textAreaController: TextAreaController = new TextAreaController()
-  private buff: Uint8Array = new Uint8Array()
-
+  @State textTitle: string = "Marshalling and unmarshalling APIs";
+  @State textResult: string = "Hello world";
+  @State serializeStr: string = "Marshalling";
+  @State flag: boolean = false;
+  private textAreaController: TextAreaController = new TextAreaController();
+  private buff: Uint8Array = new Uint8Array();
   fontStyle: TextStyle = new TextStyle({
     fontWeight: FontWeight.Lighter,
     fontFamily: 'HarmonyOS Sans',
     fontColor: Color.Green,
     fontSize: LengthMetrics.vp(30),
     fontStyle: FontStyle.Normal
-  })
+  });
   // Create a styled string object.
   styledString: StyledString = new StyledString("Hello world",
-    [{ start: 0, length: 11, styledKey: StyledStringKey.FONT, styledValue: this.fontStyle }]);
+    [{
+      start: 0,
+      length: 11,
+      styledKey: StyledStringKey.FONT,
+      styledValue: this.fontStyle
+    }]);
 
   @Builder
   controllableBuild() {
-    Column(){
+    Column() {
       TextArea({
         text: this.textResult,
         controller: this.textAreaController
@@ -222,41 +227,41 @@ struct Index {
 
       Button(this.serializeStr)
         .margin(5)
-        .onClick(async ()=>{
-          this.flag = !this.flag
+        .onClick(async () => {
+          this.flag = !this.flag;
           if (!this.flag) {
-            console.info("Debug: Unmarshalling")
-            let styles: StyledString = await StyledString.unmarshalling(this.buff.buffer)
-            this.textTitle = "After calling decodeTlv, the result of unmarshalling is: "
+            console.info("Debug: Unmarshalling");
+            let styles: StyledString = await StyledString.unmarshalling(this.buff.buffer);
+            this.textTitle = "After decodeTlv is called, the result of unmarshalling is: ";
             if (styles == undefined) {
-              console.error("Debug: Failed to obtain the styled string.")
-              return
+              console.error("Debug: Failed to obtain the styled string.");
+              return;
             }
-            this.textResult =  styles.getString()
-            console.info("Debug: this.textResult = " + this.textResult)
-            let stylesArr = styles.getStyles(0, this.textResult.length, StyledStringKey.FONT)
-            console.info("Debug: stylesArr.length = " + stylesArr.length)
+            this.textResult = styles.getString();
+            console.info("Debug: this.textResult = " + this.textResult);
+            let stylesArr = styles.getStyles(0, this.textResult.length, StyledStringKey.FONT);
+            console.info("Debug: stylesArr.length = " + stylesArr.length);
             for (let i = 0; i < stylesArr.length; ++i) {
-              console.info("Debug: style.start = " + stylesArr[i].start)
-              console.info("Debug: style.length = " + stylesArr[i].length)
-              console.info("Debug: style.styledKey = " + stylesArr[i].styledKey)
-              let font = stylesArr[i].styledValue as TextStyle
-              console.info("Debug: style.fontColor = " + font.fontColor)
-              console.info("Debug: style.fontSize = " + font.fontSize)
-              console.info("Debug: style.fontFamily = " + font.fontFamily)
-              console.info("Debug: style.fontStyle = " + font.fontStyle)
+              console.info("Debug: style.start = " + stylesArr[i].start);
+              console.info("Debug: style.length = " + stylesArr[i].length);
+              console.info("Debug: style.styledKey = " + stylesArr[i].styledKey);
+              let font = stylesArr[i].styledValue as TextStyle;
+              console.info("Debug: style.fontColor = " + font.fontColor);
+              console.info("Debug: style.fontSize = " + font.fontSize);
+              console.info("Debug: style.fontFamily = " + font.fontFamily);
+              console.info("Debug: style.fontStyle = " + font.fontStyle);
             }
-            let subStr = styles.subStyledString(0, 2)
-            console.info("Debug: subStr = " + subStr.getString())
-            this.serializeStr = "Marshalling"
+            let subStr = styles.subStyledString(0, 2);
+            console.info("Debug: subStr = " + subStr.getString());
+            this.serializeStr = "Marshalling";
           } else {
-            console.info("Debug: Marshalling")
-            let resultBuffer = StyledString.marshalling(this.styledString)
-            this.buff = new Uint8Array(resultBuffer)
-            this.textTitle = "After calling encodeTlv, the result of marshalling is: "
-            this.textResult = this.buff.toString()
-            console.info("Debug: buff = " + this.buff.toString())
-            this.serializeStr = "Unmarshalling"
+            console.info("Debug: Marshalling");
+            let resultBuffer = StyledString.marshalling(this.styledString);
+            this.buff = new Uint8Array(resultBuffer);
+            this.textTitle = "After encodeTlv is called, the result of marshalling is: ";
+            this.textResult = this.buff.toString();
+            console.info("Debug: buff = " + this.buff.toString());
+            this.serializeStr = "Unmarshalling";
           }
         })
     }.margin(10)
@@ -272,6 +277,8 @@ struct Index {
 }
 ```
 
+![styledstring_1_sys](figures/styledstring_1_sys.gif)
+
 ### Example 2: Marshalling and Unmarshalling Styled Strings with UserDataSpan
 
 This example demonstrates the marshalling and unmarshalling of styled strings that include custom user data spans using the **marshalling** and **unmarshalling** APIs.
@@ -283,11 +290,12 @@ enum MyUserDataType {
 }
 
 class MyUserData extends UserDataSpan {
-  constructor(){
-    super()
+  constructor() {
+    super();
   }
+
   marshalling() {
-    console.log("MyUserData marshalling...")
+    console.info("MyUserData marshalling...");
     const text = "MyUserData1";
     const buffer = new ArrayBuffer(text.length + 1);
     const uint8View = new Uint8Array(buffer);
@@ -298,16 +306,16 @@ class MyUserData extends UserDataSpan {
     }
     return uint8View.buffer;
   }
-  unmarshalling()
-  {
-    console.log("MyUserData unmarshalling...")
-    return new MyUserData()
+
+  unmarshalling() {
+    console.info("MyUserData unmarshalling...");
+    return new MyUserData();
   }
 }
 
 class MyUserData2 extends UserDataSpan {
   marshalling() {
-    console.log("MyUserData2 marshalling...")
+    console.info("MyUserData2 marshalling...");
     const text = "MyUserData2";
     const buffer = new ArrayBuffer(text.length + 1);
     const uint8View = new Uint8Array(buffer);
@@ -317,22 +325,21 @@ class MyUserData2 extends UserDataSpan {
     }
     return uint8View.buffer;
   }
-  unmarshalling()
-  {
-    console.log("MyUserData2 unmarshalling...")
-    return new MyUserData2()
+
+  unmarshalling() {
+    console.info("MyUserData2 unmarshalling...");
+    return new MyUserData2();
   }
 }
 
 @Entry
 @Component
 struct MarshallExample1 {
-
-  controller : TextController = new TextController()
+  controller: TextController = new TextController();
 
   build() {
     Column() {
-      Text(undefined, {controller: this.controller})
+      Text(undefined, { controller: this.controller })
       Button("Marshall&UnMarshall")
         .onClick(async () => {
           let myData = new MyUserData();
@@ -347,42 +354,41 @@ struct MarshallExample1 {
             length: 1,
             styledKey: StyledStringKey.USER_DATA,
             styledValue: myData2
-          }])
+          }]);
 
-          let buffer = StyledString.marshalling(myStyledString, (marshallingValue: StyledStringMarshallingValue)=> {
+          let buffer = StyledString.marshalling(myStyledString, (marshallingValue: StyledStringMarshallingValue) => {
             // Perform marshalling based on the type.
             if (marshallingValue instanceof MyUserData) {
-              console.log("StyledString.marshalling MyUserData")
+              console.info("StyledString.marshalling MyUserData");
               let value = marshallingValue as MyUserData;
-              return value.marshalling()
+              return value.marshalling();
             } else if (marshallingValue instanceof MyUserData2) {
-              console.log("StyledString.marshalling MyUserData2")
+              console.info("StyledString.marshalling MyUserData2");
               let value = marshallingValue as MyUserData2;
-              return value.marshalling()
+              return value.marshalling();
             }
-            console.log("StyledString.marshalling default")
-            return new ArrayBuffer(10)
-          })
+            console.info("StyledString.marshalling default");
+            return new ArrayBuffer(10);
+          });
 
           let newStyledString = await StyledString.unmarshalling(buffer, (value: ArrayBuffer) => {
             // 1. Read the type from the buffer.
             // 2. Based on the type, choose the appropriate API to parse the buffer.
-            const uint8View  = new Uint8Array(value);
+            const uint8View = new Uint8Array(value);
             let type = uint8View[0];
-            console.log("unmarshalling length:" + uint8View.length)
+            console.info("unmarshalling length:" + uint8View.length);
             if (type == MyUserDataType.TYPE1) {
-              console.log("unmarshalling type1:" + type)
-              let myUserData = new MyUserData()
-              return myUserData.unmarshalling()
+              console.info("unmarshalling type1:" + type);
+              let myUserData = new MyUserData();
+              return myUserData.unmarshalling();
             } else if (type == MyUserDataType.TYPE2) {
-              console.log("unmarshalling type2:" + type)
-              let myUserData = new MyUserData2()
-              return myUserData.unmarshalling()
+              console.info("unmarshalling type2:" + type);
+              let myUserData = new MyUserData2();
+              return myUserData.unmarshalling();
             }
-            return new ArrayBuffer(0)
-          })
-
-          this.controller.setStyledString(newStyledString)
+            return new ArrayBuffer(0);
+          });
+          this.controller.setStyledString(newStyledString);
         })
         .fontSize(20)
         .margin(10)
@@ -393,3 +399,5 @@ struct MarshallExample1 {
   }
 }
 ```
+
+![styledstring_2_sys](figures/styledstring_2_sys.gif)

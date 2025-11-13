@@ -174,14 +174,15 @@ export struct PageTwoPositive {
 示例代码如下：
 
 ```typescript
-import webview from '@ohos.web.webview';
-
+import { webview } from '@kit.ArkWeb';
+// ...
 preload() {
   // Web组件引擎初始化
   webview.WebviewController.initializeWebEngine();
   // 启动预连接，连接地址为即将打开的网址
   webview.WebviewController.prepareForPageLoad('https://www.example.com', true, 2);
 }
+// ...
 ```
 
 **使用cachedCount属性实现预加载**
@@ -641,6 +642,7 @@ struct StackExample {
 正例代码如下：
 
 ```typescript
+@Component
 struct StackExample2 {
   @State isVisible: boolean = true;
   private data: number[] = [];
@@ -671,6 +673,7 @@ struct StackExample2 {
       }, (item: number) => item.toString())
     }
   }
+} 
 ```
 **减少不必要的参数层次传递**
 
@@ -1238,7 +1241,7 @@ struct NecessaryState {
 反例代码：
 
 ```typescript
-import hiTraceMeter from '@ohos.hiTraceMeter';
+import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -1265,7 +1268,7 @@ struct Page {
 正例代码：
 
 ```typescript
-import hiTraceMeter from '@ohos.hiTraceMeter';
+import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component

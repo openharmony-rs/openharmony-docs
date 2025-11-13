@@ -21,6 +21,6 @@ Describes the playback parameters of the sound pool.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
-| Name           | Type                                    | Mandatory| Description                                                        |
-| --------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| parallelPlayFlag | boolean | No  | Whether the sound can be played in parallel with other active audio streams, without preempting the audio focus. **true** if yes, **false** otherwise. The default value is **false**.<br>This is a system API.|
+| Name           | Type                     |        Read-Only   | Optional| Description                                                        |
+| --------------- | ----------------------|------------------ | ---- | ------------------------------------------------------------ |
+| parallelPlayFlag | boolean | No|Yes  | Whether the sound can be played in parallel with other active audio streams, without preempting the audio focus. **true** if yes, **false** otherwise. The default value is **false**.<br>This is a system API.|

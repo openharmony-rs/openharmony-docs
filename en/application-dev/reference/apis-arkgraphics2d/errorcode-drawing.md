@@ -12,7 +12,7 @@ The parameter value is out of range.
 
 **Description**
 
-This error code is reported when the parameter value exceeds the parameter range.
+This error code is reported when the parameter value exceeds the value range.
 
 **Possible Causes**
 

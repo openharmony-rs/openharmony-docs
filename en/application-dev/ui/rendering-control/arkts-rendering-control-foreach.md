@@ -1,6 +1,12 @@
 # ForEach: Rendering Repeated Content
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @maorh-->
+<!--Designer: @keerecles-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-**ForEach** enables array-based rendering of repeated content. It must be used in a container component, and the component it returns must be one allowed inside the container component. For example, for rendering of list items, **ForEach** must be used in the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
+**ForEach** enables array-based rendering of repeated content. It must be used in a container component, and the component it returns must be one allowed inside the container component. For example, for rendering of **ListItem** components, **ForEach** must be used in the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
 
 For details about API parameters, see [ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md).
 
@@ -21,7 +27,9 @@ The ArkUI framework follows specific rules for key generation in **ForEach**, wh
 
 > **NOTE**
 >
-> The ArkUI framework issues warnings for duplicate keys. If duplicate keys exist during UI re-rendering, the framework may not work properly. For details, see [Unexpected Rendering Results](#unexpected-rendering-results).
+> 1. The ArkUI framework issues run-time warnings for duplicate keys. If duplicate keys exist during UI re-rendering, the framework may not work properly. For details, see [Unexpected Rendering Results](#unexpected-rendering-results).
+> 2. Do not use the data item **index** as the key, as this can cause [unexpected rendering results](#unexpected-rendering-results) and [reduced rendering performance](#reduced-rendering-performance).
+> 3. If the **index** parameter is declared in the **itemGenerator** function but omitted from the **keyGenerator** function, the framework automatically appends the index to the **keyGenerator** function's return value to form the final key. This behavior can lead to the duplicate key issues described previously. To avoid this issue, ensure the **index** parameter is explicitly declared in the **keyGenerator** function.
 
 ## Component Creation Rules
 
@@ -161,7 +169,7 @@ The figure below shows the effect.
 **Figure 4** Re-rendering with ForEach 
 ![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
 
-This example demonstrates that @State can observe changes to the items of a primitive data type array, such as **simpleList**.
+This example demonstrates that [\@State](../state-management/arkts-state.md) can observe changes to the items of a primitive data type array, such as **simpleList**.
 
 1. When any item in **simpleList** changes, **ForEach** is triggered for re-rendering.
 2. **ForEach** iterates through the new data source **['one', 'two', 'new three']** and generates the corresponding keys **one**, **two**, and **new three**.
@@ -267,7 +275,7 @@ struct ArticleListView {
   ];
 
   loadMoreArticles() {
-    this.articleList.push(new Article('007', 'New article', 'Abstract'));
+    this.articleList.push(new Article('007', 'New Article', 'Abstract'));
   }
 
   build() {
@@ -341,14 +349,14 @@ The following figure shows the initial screen (on the left) and the screen after
 **Figure 6** Effect when the data source is changed 
 ![ForEach-DataSourceArrayChange](figures/ForEach-DataSourceArrayChange.png)
 
-In this example, the **ArticleCard** component serves as a child component of the **ArticleListView** component and receives an **Article** object through the @Prop decorator to render article cards.
+In this example, the **ArticleCard** component serves as a child component of the **ArticleListView** component and receives an **Article** object through the [\@Prop](../state-management/arkts-prop.md) decorator to render article cards.
 
 1. When the list scrolls to the bottom with a swipe distance exceeding 80 vp, the **loadMoreArticles()** function is invoked. This function appends new elements to the **articleList** data source, increasing its length.
 2. Because the data source is decorated by @State, the ArkUI framework can detect changes in the data source length and trigger **ForEach** for re-rendering.
 
 ### Property Changes in Data Source Array Items
 
-When the items in the data source decorated with @State are of a complex data type (for example, objects), the ArkUI framework cannot detect changes to the properties of the items in the data source. As a result, modifying certain properties of the items will not trigger re-rendering of **ForEach**. To achieve re-rendering of **ForEach** in such cases, use the @Observed and @ObjectLink decorators. The following example illustrates a typical use case, where clicking the like icon on an article card updates the like count of the article.
+When the items in the data source decorated with @State are of a complex data type (for example, objects), the ArkUI framework cannot detect changes to the properties of the items in the data source. As a result, modifying certain properties of the items will not trigger re-rendering of **ForEach**. To implement **ForEach** re-rendering, you need to use the [\@Observed and \@ObjectLink](../state-management/arkts-observed-and-objectlink.md) decorators. The following example illustrates a typical use case, where clicking the like icon on an article card updates the like count of the article.
 
 ```ts
 @Observed
@@ -460,7 +468,7 @@ In this example, the **Article** class is decorated by the @Observed decorator. 
 2. The article instance is an @ObjectLink decorated state variable. Changes to its property values trigger the re-rendering of the **ArticleCard** component, which then reads the new values of **isLiked** and **likesCount**.
 
 ### Drag-and-Drop Sorting
-By using **ForEach** within a List component and setting up the **onMove** event, you can implement drag-and-drop sorting. When the drag-and-drop gesture is released, if any item's position changes, the **onMove** event is triggered, which reports the original index and target index of the relocated item. In the **onMove** event, the data source must be updated based on the reported start index and target index. Before and after the data source is modified, the key value of each item must remain unchanged to ensure that the drop animation can be executed properly.
+By using **ForEach** within a **List** component and setting up the [onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove) event, you can implement drag-and-drop sorting. When the drag-and-drop gesture is released, if any item's position changes, the **onMove** event is triggered, which reports the original index and target index of the relocated item. In the **onMove** event, the data source must be updated based on the reported start index and target index. Before and after the data source is modified, the key value of each item must remain unchanged to ensure that the drop animation can be executed properly.
 
 ```ts
 @Entry
@@ -484,10 +492,10 @@ struct ForEachSort {
             Text(item.toString())
               .fontSize(16)
               .textAlign(TextAlign.Center)
-              .size({ height: 100, width: "100%" })
+              .size({ height: 100, width: '100%' })
           }.margin(10)
           .borderRadius(10)
-          .backgroundColor("#FFFFFFFF")
+          .backgroundColor('#FFFFFFFF')
         }, (item: string) => item)
           .onMove((from: number, to: number) => {
             // The following two lines ensure that the order of components on the screen matches the order of items in the array arr.
@@ -498,7 +506,7 @@ struct ForEachSort {
       }
       .width('100%')
       .height('100%')
-      .backgroundColor("#FFDCDCDC")
+      .backgroundColor('#FFDCDCDC')
     }
   }
 
@@ -521,12 +529,13 @@ If the two lines in the **onMove** event handler are commented out, the effect o
 ## Recommendations
 
 - To ensure key uniqueness for object data, use a unique **id** property from the object data as the key.
-- Do not use the data item **index** as the key, as this can cause [unexpected rendering results](#unexpected-rendering-results) and [reduced rendering performance](#reduced-rendering-performance). If **index** must be used (for example, for conditional rendering based on **index**), be aware that data source changes will force **ForEach** to re-create components, incurring a performance cost.
+- Do not use the data item **index** as the key, as this can cause [unexpected rendering results](#unexpected-rendering-results) and [reduced rendering performance](#reduced-rendering-performance). If **index** must be used (for example, for conditional rendering based on **index**), be aware that data source changes will cause **ForEach** to re-create components, incurring a performance cost.
 - For arrays of primitive data types, which do not have a unique ID property: If using the data item itself as the key, ensure that no duplicate values exist. For mutable data sources, convert the array to objects with unique ID properties, then use the ID as the key.
 - The **index** parameter serves as a fallback to ensure key uniqueness. When modifying a data item, since the **item** parameter in **itemGenerator** is immutable, use **index** to update the data source and trigger UI re-rendering.
-- Within [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), and [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) containers, do not use **ForEach** together with [LazyForEach](./arkts-rendering-control-lazyforeach.md).  
+- Within [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), and [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) scrollable containers, avoid using **ForEach** together with [LazyForEach](./arkts-rendering-control-lazyforeach.md).
 - When dealing with a large number of child components, **ForEach** can lead to performance issues such as lag or jank. In such cases, consider using [LazyForEach](./arkts-rendering-control-lazyforeach.md) instead. For details about the best practice, see [Performance Optimization Using LazyForEach](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-lazyforeach-optimization).
 - When array items are objects, do not replace old items with new objects of the same content. If an item changes but the key remains the same, the framework may not detect the change, leading to [unrendered data updates](#data-changes-failing-to-trigger-rendering).
+
 ## Common Pitfalls
 
 Incorrect usage of **ForEach** keys can lead to functional and performance issues, causing unexpected rendering behavior. For detailed examples, see [Unexpected Rendering Results](#unexpected-rendering-results) and [Reduced Rendering Performance](#reduced-rendering-performance).
@@ -643,7 +652,7 @@ After **Insert Item After First Item** is clicked, DevEco Studio displays logs a
 
 After a new item is inserted, **ForEach** creates the corresponding **ChildItem** components for the **new item**, **two**, and **three** array items, and executes the [aboutToAppear()](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) callback. Here are the reasons:
 
-1. During initial rendering, **ForEach** generates keys **0__one**, **1__two**, and **2__three** for the initial data source ['one', 'two', 'three'].
+1. During initial rendering, **ForEach** generates keys **0__one**, **1__two**, and **2__three**.
 2. After a new item is inserted, the data source **simpleList** changes to ['one','new item', 'two', 'three']. The ArkUI framework detects changes in the length of the @State decorated data source and triggers **ForEach** for re-rendering.
 3. **ForEach** traverses items in the new data source. When it reaches array item **one**, it generates key **0__one** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **new item**, it generates key **1__new item** for the item, and because no same key exists, a new component **new item** is created. When **ForEach** reaches array item **two**, it generates key **2__two** for the item, and because no same key exists, a new component **two** is created. When **ForEach** reaches array item **three**, it generates key **3__three** for the item, and because no same key exists, a new component **three** is created.
 
@@ -752,7 +761,7 @@ struct ArticleCard {
           .margin({ bottom: 8 })
 
         Row() {
-          // 'app.media.iconLiked' and 'app.media.iconUnLiked' are only examples. Replace them with the actual ones in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
+          // 'app.media.iconLiked' and 'app.media.iconUnLiked' are only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
           Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnLiked'))
             .width(24)
             .height(24)
@@ -827,10 +836,68 @@ struct Parent {
 }
 ```
 
-A comparison of memory usage between the default and custom **keyGenerator** implementations shows a reduction of approximately 70 MB when a custom function is used. 
+A comparison of memory usage (which can be obtained using Realtime Monitor in the Profiler of DevEco Studio) between the default and custom **keyGenerator** implementations shows a reduction of approximately 70 MB when a custom function is used. 
 
 **Figure 14** Memory usage with default key generation 
 ![ForEach-StateVarNoRender](figures/ForEach-default-keyGenerator.PNG)
-
+  
 **Figure 15** Memory usage with custom key generation 
 ![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator.PNG)
+
+### Key Generation Failure
+If no **keyGenerator** function is defined, the ArkUI framework uses the default key generation format **(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }**. However, **JSON.stringify** cannot serialize certain data types, leading to application crashes with jscrash errors. For example, **bigint** values are not serializable by **JSON.stringify**.
+
+```ts
+class Data {
+  content: bigint;
+
+  constructor(content: bigint) {
+    this.content = content;
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State simpleList: Array<Data> = [new Data(1234567890123456789n), new Data(2345678910987654321n)];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.simpleList, (item: Data) => {
+          ChildItem({ item: item.content.toString() })
+        }
+          // If the keyGenerator function is not defined, the ArkUI framework uses the default key value generation function.
+          // Data's bigint content fails JSON serialization.
+          , (item: Data) => item.content.toString()
+        )
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+  }
+}
+
+@Component
+struct ChildItem {
+  @Prop item: string;
+
+  build() {
+    Text(this.item)
+      .fontSize(50)
+  }
+}
+```
+
+The figure below shows the expected behavior with a custom key generator. 
+![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator2.PNG)  
+
+Crash scenario with default key generation:
+```
+Error message:@Component 'Parent'[4]: ForEach id 7: use of default id generator function not possible on provided data structure. Need to specify id generator function (ForEach 3rd parameter). Application Error!
+Stacktrace:
+    ...
+    at anonymous (entry/src/main/ets/pages/Index.ets:18:52)
+```

@@ -1,13 +1,20 @@
 # API Switching Overview
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-Due to the differences in the thread model and process model, certain APIs can be used only in the FA model. They are marked with **FAModelOnly** in the SDK. When switching an application from the FA model to the stage model, replace the APIs marked with **FAModelOnly** in the application with the APIs supported in the stage model. This topic uses the switching of **startAbility()** as an example.
+
+Due to the differences in the thread model and process model, certain APIs can be used only in the [FA model](ability-terminology.md#fa-model). They are marked with **FAModelOnly** in the SDK. When switching an application from the FA model to the stage model, replace the APIs marked with **FAModelOnly** in the application with the APIs supported in the stage model. This topic uses the switching of **startAbility()** as an example.
 
 ![api-switch-overview](figures/api-switch-overview.png)
 
  
 
-- Sample code of **startAbility()** in the FA model:
+- Sample code in the FA model:
 
   ```ts
   import featureAbility from '@ohos.ability.featureAbility';
@@ -56,7 +63,7 @@ Due to the differences in the thread model and process model, certain APIs can b
 
   ```
 
-- Sample code of **startAbility()** in the stage model:
+- Sample code in the stage model:
 
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';

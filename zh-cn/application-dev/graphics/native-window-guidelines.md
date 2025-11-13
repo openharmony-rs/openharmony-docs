@@ -1,7 +1,7 @@
 # NativeWindow开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -118,7 +118,7 @@ libnative_window.so
         OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback);
         ```
 
-2. 设置OHNativeWindowBuffer的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性。
+2. 设置OHNativeWindowBuffer的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性（默认携带NATIVEBUFFER_USAGE_CPU_READ usage参数，如果不使用CPU读写数据，建议去除NATIVEBUFFER_USAGE_CPU_READ usage参数，具体可见[关闭CPU访问窗口缓冲区数据](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-14)）。
 
     ```c++
     // 设置 OHNativeWindowBuffer 的宽高

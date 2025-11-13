@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -290,7 +290,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **Description**
 
-Defines the callback when an error occurs in the AVPlayer. This type is available in API version 9 or later.
+Called when an error occurs in the AVPlayer. This type is available in API version 9 or later.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -298,7 +298,7 @@ Defines the callback when an error occurs in the AVPlayer. This type is availabl
 
 **Deprecated from**: 12
 
-**Substitute**: [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)
+**Substitute**: [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)
 
 
 **Parameters**

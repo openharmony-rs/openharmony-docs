@@ -191,6 +191,8 @@ callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 > **说明：**
 >
 > 该接口要求参数original必须是异步函数类型。如果传入的参数不是异步函数，不会进行拦截，但是会输出错误信息："callbackWrapper: The type of Parameter must be AsyncFunction"。
+>
+> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -219,11 +221,11 @@ callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 **示例：**
 
 ```ts
-async function fn() {
-  return 'hello world';
+async function fn(input: string) {
+  return input;
 }
 let cb = util.callbackWrapper(fn);
-cb(1, (err : Object, ret : string) => {
+cb('hello world', (err : Object, ret : string) => {
   if (err) throw new Error;
   console.info(ret);
 });
@@ -566,10 +568,10 @@ console.info(stack);
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称      | 类型 | 必填 | 说明               |
-| --------- | -------- | ---- | ------------------ |
-| fatal     | boolean  | 否   | 是否显示致命错误，true表示显示致命错误，false表示不显示致命错误，默认值是false。 |
-| ignoreBOM | boolean  | 否   | 是否忽略BOM标记，true表示忽略待解码数据的BOM标记，false表示会对BOM标记解码，默认值是false。  |
+| 名称      | 类型 | 只读 | 可选 | 说明               |
+| --------- | -------- | ---- | ---- | ------------------ |
+| fatal     | boolean  | 否   | 是 | 是否显示致命错误，true表示显示致命错误，false表示不显示致命错误，默认值是false。 |
+| ignoreBOM | boolean  | 否   | 是 | 是否忽略BOM标记，true表示忽略待解码数据的BOM标记，false表示会对BOM标记解码，默认值是false。  |
 
 ## DecodeToStringOptions<sup>12+</sup>
 
@@ -579,9 +581,9 @@ console.info(stack);
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| stream | boolean | 否 | 输入末尾出现的不完整字节序列是否需要追加在下次调用decodeToString的参数中处理。设置为true，则不完整的字节序列会存储在内部缓存区直到下次调用该函数，false则会在当前调用时直接解码。默认为false。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | -------- | ---- | ---- | ------------------ |
+| stream | boolean | 否 | 是 | 输入末尾出现的不完整字节序列是否需要追加在下次调用decodeToString的参数中处理。设置为true，则不完整的字节序列会存储在内部缓存区直到下次调用该函数，false则会在当前调用时直接解码。默认为false。 |
 
 ## DecodeWithStreamOptions<sup>11+</sup>
 
@@ -591,9 +593,9 @@ console.info(stack);
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| stream | boolean | 否 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | -------- |
+| stream | boolean | 否 | 是 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
 
 ## Aspect<sup>11+</sup>
 

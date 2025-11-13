@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhangyafei-echo-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -81,7 +81,7 @@ export default class UIExtension extends UIExtensionAbility {
       abilityName: 'EntryAbility',
       moduleName: 'entry'
     }).then((data) => {
-      console.log(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
+      console.info(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
       console.error(`StartAbilityForResultAsCaller failed, err code: ${error.code}, err msg: ${error.message}.`);
     });
@@ -317,13 +317,11 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 startUIAbilities(wantList: Array\<Want>): Promise\<void>
 
-Starts multiple UIAbilities simultaneously. This API uses a promise to return the result.
+Starts multiple UIAbility components simultaneously. This API uses a promise to return the result.
 
 You can pass the Want information of multiple UIAbility instances, which can point to one or more applications. If all the UIAbility instances can be started successfully, the system displays these UIAbility instances in multiple windows simultaneously. Depending on the window handling, different devices may have varying display effects (including window shape, quantity, and layout).
 
 > **NOTE**
->
-> This API takes effect only on phones and tablets.
 > 
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
 
@@ -331,11 +329,13 @@ You can pass the Want information of multiple UIAbility instances, which can poi
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on phones and tablets. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------ |
-| wantList | Array\<[Want](js-apis-app-ability-want.md)> | Yes| List of launch parameters for multiple UIAbilities to be started simultaneously. A maximum of four Want objects can be passed. The **Want** parameter does not support implicit launch, cross-user launch, distributed launch, instant installation, or on-demand loading. By default, the main application is launched unless specified otherwise.|
+| wantList | Array\<[Want](js-apis-app-ability-want.md)> | Yes| List of launch parameters for multiple UIAbility components to be started simultaneously. A maximum of four Want objects can be passed. The **Want** parameter does not support implicit launch, cross-user launch, distributed launch, instant installation, or on-demand loading. By default, the main application is launched unless specified otherwise.|
 
 **Return value**
 
@@ -353,7 +353,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application. |
 | 801 | Capability not supported. |
 | 16000001 | The specified ability does not exist. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |

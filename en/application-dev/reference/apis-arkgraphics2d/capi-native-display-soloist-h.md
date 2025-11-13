@@ -8,9 +8,9 @@
 
 ## Overview
 
-The **native_display_soloist.h** file declares the functions for obtaining and using native display soloist.
+This file declares the functions for obtaining and using native display soloist.
 
-**File to import**: <native_display_soloist/native_display_soloist.h>
+**File to include**: <native_display_soloist/native_display_soloist.h>
 
 **Library**: libnative_display_soloist.so
 
@@ -20,7 +20,7 @@ The **native_display_soloist.h** file declares the functions for obtaining and u
 
 **Related module**: [NativeDisplaySoloist](capi-nativedisplaysoloist.md)
 
-## Total
+## Summary
 
 ### Structs
 
@@ -80,13 +80,13 @@ Creates an **OH_DisplaySoloist** instance. A new **OH_DisplaySoloist** instance 
 
 | Name| Description|
 | -- | -- |
-| bool useExclusiveThread | Indicates whether the OH_DisplaySoloist instance exclusively occupies a thread. true: exclusively occupies a thread; false: shares a thread.|
+| bool useExclusiveThread | Whether the **OH_DisplaySoloist** instance is an exclusive thread. **true** means yes; **false** otherwise.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| OH_DisplaySoloist* | Pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance. If the return value is empty, the execution fails, possibly because the memory is insufficient.|
+| OH_DisplaySoloist* | Returns the pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance created if the operation is successful; returns a null pointer otherwise. The failure cause may be out of memory.|
 
 ### OH_DisplaySoloist_Destroy()
 
@@ -107,11 +107,11 @@ Destroys an **OH_DisplaySoloist** object and reclaims the memory occupied.
 | -- | -- |
 | [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)* displaySoloist | Pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | 0: execution success; –1: execution failure|
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise.|
 
 ### OH_DisplaySoloist_Start()
 
@@ -130,15 +130,15 @@ Sets a callback function for each frame. The callback function is triggered each
 
 | Name| Description|
 | -- | -- |
-| [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)* displaySoloist | Pointer to a [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance.|
+| [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)* displaySoloist | Pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance.|
 | [OH_DisplaySoloist_FrameCallback](#oh_displaysoloist_framecallback) callback | Callback function to be triggered when the next VSync signal arrives.|
 | void* data | Pointer to the user-defined data struct. The type is void.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | 0 on success; –1 on failure.|
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise.|
 
 ### OH_DisplaySoloist_Stop()
 
@@ -157,13 +157,13 @@ Stops requesting the next VSync signal and triggering the callback function.
 
 | Name| Description|
 | -- | -- |
-| [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)* displaySoloist | Pointer to a [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance.|
+| [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)* displaySoloist | Pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | 0 on success; –1 on failure.|
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise.|
 
 ### OH_DisplaySoloist_SetExpectedFrameRateRange()
 
@@ -182,11 +182,11 @@ Sets the expected frame rate range.
 
 | Name| Description|
 | -- | -- |
-| [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)* displaySoloist | Pointer to an [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance.|
-| [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)* range | Pointer to the expected frame rate range [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md) instance.|
+| [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)* displaySoloist | Pointer to the [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md) instance.|
+| [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)* range | Pointer to the [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md) instance.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | 0 on success; –1 on failure.|
+| int32_t | Returns **0** if the operation is successful; returns **-1** otherwise.|

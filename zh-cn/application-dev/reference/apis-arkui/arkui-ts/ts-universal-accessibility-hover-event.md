@@ -4,7 +4,7 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在开启无障碍模式后，Touch事件会转换为无障碍悬浮事件。
 
@@ -18,6 +18,10 @@
 onAccessibilityHover(callback: AccessibilityCallback): T
 
 开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

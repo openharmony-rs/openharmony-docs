@@ -58,6 +58,6 @@
        console.error(`Failed to setImmersiveMode, code: ${error.code}, message: ${error.message}`);
      }
    }).catch((err: BusinessError) => {
-     console.log(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
    });
    ```

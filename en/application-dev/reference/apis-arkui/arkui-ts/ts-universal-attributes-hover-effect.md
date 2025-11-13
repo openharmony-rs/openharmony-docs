@@ -1,16 +1,22 @@
 # Hover Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 The hover effect is applied to a component in hover state.
 
 >  **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## hoverEffect
 
-hoverEffect(value: HoverEffect)
+hoverEffect(value: HoverEffect): T
 
-Sets the hover effect of the component in hover state.
+Sets the hover effect for the component. When no hover effect is specified, the component uses the default **HoverEffect.Auto** effect. For components with hover effects applied, the hover effect is hidden when the mouse hovers and presses down on the component, and restored when the mouse button is released.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -20,8 +26,13 @@ Sets the hover effect of the component in hover state.
 
 | Name| Type                                            | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [HoverEffect](ts-appendix-enums.md#hovereffect8) | Yes  | Hover effect of the component in hover state.<br>Default value: **HoverEffect.Auto**|
+| value  | [HoverEffect](ts-appendix-enums.md#hovereffect8) | Yes  | Hover effect of the component.|
 
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## Example
 

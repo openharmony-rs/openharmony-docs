@@ -1,5 +1,12 @@
 # Adding an Asset (C/C++)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 You can use [OH_Asset_Add](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_add) to add an asset.
@@ -8,7 +15,7 @@ The following table describes the attributes for adding an asset.
 
 >**NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ASSET_TAG_ALIAS** and those starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory| Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -38,15 +45,15 @@ The following table describes the attributes for adding an asset.
 
 ## Constraints
 
-* Alias-based access
+- Alias-based access
 
   Assets are stored in the ASSET database in ciphertext. The service identity and alias are used as the unique index. The alias of each asset must be unique.
 
-* Custom service data storage
+- Custom service data storage
 
-  ASSET provides 12 custom asset attributes starting with **ASSET_TAG_DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
+  - ASSET provides 12 custom asset attributes starting with **ASSET_TAG_DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
 
-  ASSET protects the integrity of the attributes starting with **ASSET_TAG_DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
+  - ASSET protects the integrity of the attributes starting with **ASSET_TAG_DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
 ## Example
 
@@ -65,26 +72,25 @@ For details about how to add an asset to a group, see [Adding an Asset to a Grou
 
    #include "asset/asset_api.h"
 
-   void AddAsset() {
-      static const char *SECRET = "demo_pwd";
-      static const char *ALIAS = "demo_alias";
-      static const char *LABEL = "demo_label";
+   static napi_value AddAsset(napi_env env, napi_callback_info info)
+   {
+       static const char *SECRET = "demo_pwd";
+       static const char *ALIAS = "demo_alias";
+       static const char *LABEL = "demo_label";
 
-      Asset_Blob secret = { (uint32_t)(strlen(SECRET)), (uint8_t *)SECRET };
-      Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
-      Asset_Blob label = { (uint32_t)(strlen(LABEL)), (uint8_t *)LABEL };
-      Asset_Attr attr[] = {
-         { .tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED },
-         { .tag = ASSET_TAG_SECRET, .value.blob = secret },
-         { .tag = ASSET_TAG_ALIAS, .value.blob = alias },
-         { .tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label },
-      };
+       Asset_Blob secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
+       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
+       Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED},
+           {.tag = ASSET_TAG_SECRET, .value.blob = secret},
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
+           {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
+       };
 
-      int32_t ret = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
-      if (ret == ASSET_SUCCESS) {
-         // Asset added successfully.
-      } else {
-         // Failed to add Asset.
-      }
+       int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
+       napi_value ret;
+       napi_create_int32(env, addResult, &ret);
+       return ret;
    }
    ```

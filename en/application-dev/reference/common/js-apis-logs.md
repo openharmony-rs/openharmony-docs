@@ -1,4 +1,10 @@
 # Console
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @yao_dashuai-->
+<!--Designer: @yao_dashuai-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 The **console** module provides a simple debugging console, which is similar to the JavaScript console provided by the browser.
 
@@ -139,7 +145,6 @@ This API can be used in ArkTS widgets since API version 9.
 | message | string | Yes   | Error information to be printed.|
 | arguments | any[] | No   | Arguments in the message or other information to be printed.|
 
-
 **Example**
 
 ```js
@@ -166,8 +171,16 @@ Prints assertion information.
 
 | Name    | Type    | Mandatory  | Description         |
 | ------- | ------ | ---- | ----------- |
-| value | Object | No   | Result value. If **value** is **false** or left blank, the output starting with "Assertion failed" is printed. If **value** is **true**, no information is printed.|
-| arguments | Object | No   | Other information to be printed when **value** is **false**. If this parameter is left blank, other information is not printed.|
+| value | Object | No   | Result value. If the value is false or omitted, the output starts with "Assertion failed". If the value is true, no message is printed.|
+| arguments | Object | No   | Error message that follows when the value is false. If this parameter is left blank, other information is not printed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
@@ -198,6 +211,13 @@ Maintains an internal counter. When this counter is invoked, its label name and 
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Counter label name. The default value is **default**.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
@@ -231,6 +251,14 @@ Resets a counter based on the specified label name.
 | Name    | Type    | Mandatory  | Description         |
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Counter label name. The default value is **default**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
@@ -329,14 +357,14 @@ If the information to be printed is provided, the information is printed without
 **Example**
 
 ```js
-console.log("outter");
+console.info("outter");
 // outter
 console.group();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.group("in level1");
 //   in level1
-console.log("level 2");
+console.info("level 2");
 //     level 2
 ```
 
@@ -364,11 +392,11 @@ Creates a new inline group in collapsed mode. The usage and function of this API
 console.groupCollapsed("outter");
 // outter
 console.groupCollapsed();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.groupCollapsed("in level1");
 //   in level1
-console.log("level 2");
+console.info("level 2");
 //     level 2
 ```
 
@@ -386,13 +414,13 @@ Reduces the indentation of subsequent lines by two spaces.
 **Example**
 
 ```js
-console.log("outter");
+console.info("outter");
 // outter
 console.group();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.groupEnd();
-console.log("outter");
+console.info("outter");
 // outter
 ```
 
@@ -452,6 +480,14 @@ Starts a timer to track the duration of an operation. You can use **console.time
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Timer label. The default value is **default**.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
 **Example**
 
 ```js
@@ -473,6 +509,14 @@ Stops the timer started by calling **console.time()** and prints the elapsed tim
 | Name    | Type    | Mandatory  | Description         |
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Timer label. The default value is **default**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
@@ -498,6 +542,14 @@ Prints the elapsed time and other data parameters for the timer started by **con
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Timer label. The default value is **default**.|
 | arguments | Object | No   | Logs to be printed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 

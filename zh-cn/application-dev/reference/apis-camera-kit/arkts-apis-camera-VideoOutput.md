@@ -357,7 +357,7 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表 |
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -493,7 +493,7 @@ isMirrorSupported(): boolean
 
 | 类型            | 说明                              |
 | -------------- |---------------------------------|
-| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。 |
+| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
 
 **示例：**
 

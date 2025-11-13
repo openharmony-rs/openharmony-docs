@@ -1,5 +1,12 @@
 # application_context.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 The file declares the APIs related to the application-level context.
@@ -54,7 +61,7 @@ Obtains the application-level cache directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the application-level cache directory of the application.|
 | int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -104,7 +111,7 @@ Obtains the bundle name of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -130,7 +137,7 @@ Obtains the application-level temporary file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | const int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -156,7 +163,7 @@ Obtains the application-level common file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | const int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -182,7 +189,7 @@ Obtains the application-level database file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | const int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -208,7 +215,7 @@ Obtains the application-level preferences file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | const int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -234,7 +241,7 @@ Obtains the application-level installation file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | const int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -260,7 +267,7 @@ Obtains the application-level distributed file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | const int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -286,7 +293,7 @@ Obtains the application-level cloud file directory of the application.
 | -- | -- |
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | const int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -313,7 +320,7 @@ Obtains the application-level resource directory of the application.
 | char* moduleName | Pointer to the module name.|
 | char* buffer | Pointer to the buffer, which is used to receive the bundle name.|
 | int32_t bufferSize | Buffer size, in bytes.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
 
 **Returns**
 
@@ -331,13 +338,12 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *
 
 Starts the UIAbility of the current application.
 
-> **NOTE**
->
-> This function is valid only for 2-in-1 devices.
 
 **Required permissions**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **Since**: 15
+
+**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code **ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED** is returned.
 
 **Parameters**
 
@@ -349,7 +355,7 @@ Starts the UIAbility of the current application.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The API call is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED**: Permission verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: Parameter verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED**: The device type is not supported.<br>**ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY**: The specified ability name does not exist.<br>**ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE**: The ability type is incorrect.<br>**ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED**: The crowdtesting application expires.<br>**ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE**: The ability is started or stopped in Wukong mode.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTROLLED**: The application is under control.<br>**ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED**: The application is under control by EDM.<br>**ABILITY_RUNTIME_ERROR_CODE_CROSS_APP**: Redirecting to third-party applications is not allowed in API versions later than 11.<br>**ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY**: The application is not a top one.<br>**ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED** (available since API version 17): The number of instances has reached the upper limit.<br>**ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED** (available since API version 17): Setting **APP_INSTANCE_KEY** is not supported.<br>For details, see **AbilityRuntime_ErrorCode**.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED**: Permission verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: Parameter verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED**: The device type is not supported.<br>**ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY**: The specified ability name does not exist.<br>**ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE**: The ability type is incorrect.<br>**ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED**: The crowdtesting application expires.<br>**ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE**: The ability is started or stopped in Wukong mode.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTROLLED**: The application is under control.<br>**ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED**: The application is under control by EDM.<br>**ABILITY_RUNTIME_ERROR_CODE_CROSS_APP**: Redirecting to third-party applications is not allowed in API versions later than 11.<br>**ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY**: The application is not a top one.<br>**ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED** (available since API version 17): The number of instances has reached the upper limit.<br>**ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED** (available since API version 17): Setting **APP_INSTANCE_KEY** is not supported.<br>For details, see **AbilityRuntime_ErrorCode**.|
 
 **Example**
 
@@ -385,13 +391,11 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(Ab
 
 Starts the UIAbility of the current application using **StartOptions**.
 
-> **NOTE**
->
-> This function is valid only for 2-in-1 devices.
-
 **Required permissions**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **Since**: 17
+
+**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code **ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED** is returned.
 
 **Parameters**
 
@@ -404,7 +408,7 @@ Starts the UIAbility of the current application using **StartOptions**.
 
 | Type| Description|
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The API call is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED**: Permission verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: Parameter verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED**: The device type is not supported.<br>**ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY**: The specified ability name does not exist.<br>**ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE**: The ability type is incorrect.<br>**ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED**: The crowdtesting application expires.<br>**ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE**: The ability is started or stopped in Wukong mode.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTROLLED**: The application is under control.<br>**ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED**: The application is under control by EDM.<br>**ABILITY_RUNTIME_ERROR_CODE_CROSS_APP**: Redirecting to third-party applications is not allowed in API versions later than 11.<br>**ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY**: The application is not a top one.<br>**ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED**: Setting the window visibility during startup is not allowed.<br>**ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED**: The application does not support clone or multi-instance mode.<br>**ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY**: The multi-instance key is invalid.<br> **ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED**: The number of instances has reached the upper limit.<br>**ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED**: The application does not support multi-instance mode.<br>**ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED**: Setting **APP_INSTANCE_KEY** is not supported.<br>For details, see **AbilityRuntime_ErrorCode**.|
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | **ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED**: Permission verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: Parameter verification for the caller fails.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED**: The device type is not supported.<br>**ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY**: The specified ability name does not exist.<br>**ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE**: The ability type is incorrect.<br>**ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED**: The crowdtesting application expires.<br>**ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE**: The ability is started or stopped in Wukong mode.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTROLLED**: The application is under control.<br>**ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED**: The application is under control by EDM.<br>**ABILITY_RUNTIME_ERROR_CODE_CROSS_APP**: Redirecting to third-party applications is not allowed in API versions later than 11.<br>**ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs.<br>**ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY**: The application is not a top one.<br>**ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED**: Setting the window visibility during startup is not allowed.<br>**ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED**: The application does not support clone or multi-instance mode.<br>**ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY**: The multi-instance key is invalid.<br> **ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED**: The number of instances has reached the upper limit.<br>**ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED**: The application does not support multi-instance mode.<br>**ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED**: Setting **APP_INSTANCE_KEY** is not supported.<br>For details, see **AbilityRuntime_ErrorCode**.|
 
 **Example**
 

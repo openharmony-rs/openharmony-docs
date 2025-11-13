@@ -1,5 +1,12 @@
 # 复用选项
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 
 本文档仅为API参考说明。实际功能使用与限制见[@ReusableV2装饰器：组件复用](../../../ui/state-management/arkts-new-reusableV2.md)。
@@ -13,6 +20,10 @@ reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 reuse(options: ReuseOptions): T
 
 复用选项，用于设置V2自定义组件的复用选项。
+
+>  **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -34,15 +45,15 @@ reuse(options: ReuseOptions): T
 
 复用选项信息。
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 属性
-
-| 名称    | 类型                                | 必填 | 说明                                                         |
-| ------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| reuseId | [ReuseIdCallback](#reuseidcallback) | 否   | 复用标识id，相同复用标识id的V2自定义组件会被互相复用。默认的复用标识id为自定义组件名。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| reuseId | [ReuseIdCallback](#reuseidcallback) | 否 | 是 | 复用标识id，相同复用标识id的V2自定义组件会被互相复用。默认的复用标识id为自定义组件名。 |
 
 ## ReuseIdCallback
 

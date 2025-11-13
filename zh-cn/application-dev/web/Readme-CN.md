@@ -1,13 +1,10 @@
 # ArkWeb（方舟Web）
-<<<<<<< HEAD
-=======
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc-->
 <!--Designer: @ctqctq99-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
->>>>>>> c6ead2e... 修改web文档adviser
 
 - [ArkWeb简介](web-component-overview.md)
 - [ArkWeb进程](web_component_process.md)
@@ -74,4 +71,4 @@
 - Web调试维测<!--web-debugging-->
   - [使用DevTools工具调试前端页面](web-debugging-with-devtools.md)
   - [使用crashpad收集Web组件崩溃信息](web-crashpad.md)
-  - [定位与解决Web白屏问题](web-white-screen.md)
+  - [定位与解决Web白屏问题](web-white-screen.md)<!--RP1--><!--RP1End-->

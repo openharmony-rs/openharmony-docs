@@ -1,14 +1,16 @@
 # Native Image Development (C/C++)
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 ## When to Use
 
 The native image module is used for associating a surface with an OpenGL external texture. It functions as the consumer of a graphics queue. You can use the APIs of this module to obtain and use a buffer, and output the buffer content to an OpenGL external texture.
-
 The following scenario is common for native image development:
 
-Use the native image APIs to create an **OH_NativeImage** instance as the consumer and obtain the corresponding **OHNativeWindow** instance (functioning as the producer). Use the native window APIs to fill in and flush the buffer, and then use the native image APIs to update the buffer content to an OpenGL ES texture.
-
-The native image module must be used together with the native window, native buffer, EGL, and GLES3 modules.
+* Use the native image APIs to create an **OH_NativeImage** instance as the consumer and obtain the corresponding **OHNativeWindow** instance (functioning as the producer). Use the native window APIs to fill in and flush the buffer, and then use the native image APIs to update the buffer content to an OpenGL ES texture.<br> The native image module must be used together with the native window, native buffer, EGL, and GLES3 modules.
 
 ## Available APIs
 
@@ -23,7 +25,7 @@ The native image module must be used together with the native window, native buf
 | OH_NativeImage_GetTransformMatrix (OH_NativeImage \*image, float matrix[16]) | Obtains the transformation matrix of the texture image that recently called the **OH_NativeImage_UpdateSurfaceImage** function.|
 | OH_NativeImage_Destroy (OH_NativeImage \*\*image)            | Destroys an **OH_NativeImage** instance created by calling **OH_NativeImage_Create**. After the instance is destroyed, the pointer to it is assigned **NULL**.|
 
-For details about the APIs, see **native_image**.
+For details about the APIs, see [native_image](../reference/apis-arkgraphics2d/capi-oh-nativeimage.md).
 
 ## How to Develop
 
@@ -296,3 +298,9 @@ libnative_buffer.so
    OH_NativeImage_Destroy(&image);
    ```
 
+## Samples
+
+The following samples are provided to help you better understand how to use the native image module for development:
+
+- [Native Window (API11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)
+- [Smooth Gradient Animation Effect Based on NdkNativeImage (API 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)

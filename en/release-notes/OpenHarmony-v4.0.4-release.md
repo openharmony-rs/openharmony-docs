@@ -132,7 +132,7 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 | [IAMISK](https://gitee.com/openharmony/napi_generator/issues/IAMISK?from=project-issue) | Static warnings of the napi_generator repository in OpenHarmony 4.0 Release.|
 | [IAP63C](https://gitee.com/openharmony/arkui_ace_engine/issues/IAP63C?from=project-issue) | There are errors in loading files from absolute paths for plugins.|
 | [IANK71](https://gitee.com/openharmony/applications_hap/issues/IANK71?from=project-issue) | Abnormal deletions in the Gallery HAP archiving process.|
-| [IALIBN](https://gitee.com/openharmony/xts_hats/issues/IALIBN?from=project-issue) | Defective logic for the test cases of the xts_hats/hdf/INPUT module.|
+| [IALIBN](https://gitcode.com/openharmony/xts_hats/issues/IALIBN?from=project-issue) | Defective logic for the test cases of the xts_hats/hdf/INPUT module.|
 | [IALKY4](https://gitee.com/openharmony/drivers_peripheral/issues/IALKY4?from=project-issue) | Security compilation option SP for audio_manager_service in OpenHarmony 4.0 Release.|
 
 ## Fixed Security Vulnerabilities

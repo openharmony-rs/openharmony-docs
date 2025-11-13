@@ -21,7 +21,7 @@
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
-- Event Subscription<!--event-subscription-->
+- Event Subscription<!--hiappevent-->
   - [Introduction to HiAppEvent](hiappevent-intro.md)
   - Using HiAppEvent to Subscribe to Events<!--event-subscription-->
     - [Event Subscription Overview](event-subscription-overview.md)
@@ -90,5 +90,5 @@
   - [hiprofiler](hiprofiler.md)
   - [uinput](uinput.md)
   <!--Del-->
-  - [hisysevent](hisysevent.md)
+  - [hisysevent (for System Applications Only)](hisysevent-sys.md)
   <!--DelEnd-->

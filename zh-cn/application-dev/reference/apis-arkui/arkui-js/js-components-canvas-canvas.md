@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -101,7 +101,7 @@ export default {
   handleClick() {
     const el = this.$refs.canvas1;
     var dataURL = el.toDataURL();
-    console.log(dataURL);
+    console.info(dataURL);
     // "data:image/png;base64,xxxxxxxx..."
   }
 }

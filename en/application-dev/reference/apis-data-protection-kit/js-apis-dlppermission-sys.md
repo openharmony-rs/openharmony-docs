@@ -2,8 +2,9 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--SE: @lucky-jinduo-->
-<!--TSE: @nacyli-->
+<!--Designer: @lucky-jinduo-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. The **dlpPermission** module provides APIs for cross-device file access management, encrypted storage, and access authorization.
 
@@ -53,11 +54,13 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let res: dlpPermission.GatheringPolicyType = await dlpPermission.getDLPGatheringPolicy(); // Obtain the sandbox gathering policy.
-  console.info('res', JSON.stringify(res));
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+async function ExampleFunction() {
+  try {
+    let res: dlpPermission.GatheringPolicyType = await dlpPermission.getDLPGatheringPolicy(); // Obtain the sandbox gathering policy.
+    console.info('res', JSON.stringify(res));
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  }
 }
 ```
 
@@ -155,12 +158,16 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-  let res: dlpPermission.DLPSandboxInfo = await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri); // Install a DLP sandbox application.
-  console.info('res', JSON.stringify(res));
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+async function ExampleFunction() {
+  try {
+    let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+    let res: dlpPermission.DLPSandboxInfo =
+      await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
+        uri); // Install a DLP sandbox application.
+    console.info('res', JSON.stringify(res));
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  }
 }
 ```
 
@@ -262,13 +269,15 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-try {
-  let res = await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri);
-  console.info('res', JSON.stringify(res));
-  await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex); // UnInstall a DLP sandbox application.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  try {
+    let res = await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri);
+    console.info('res', JSON.stringify(res));
+    await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex); // UnInstall a DLP sandbox application.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  }
 }
 ```
 
@@ -311,19 +320,22 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-try {
-  let res = await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri) // Install a DLP sandbox application.
-  console.info('res', JSON.stringify(res));
-  dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex, (err, res) => {
-    if (err !== undefined) {
-      console.error('uninstallDLPSandbox error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-  });
-} catch (err) {
-  console.error('uninstallDLPSandbox error,', (err as BusinessError).code, (err as BusinessError).message);
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  try {
+    let res = await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
+      uri) // Install a DLP sandbox application.
+    console.info('res', JSON.stringify(res));
+    dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex, (err, res) => {
+      if (err !== undefined) {
+        console.error('uninstallDLPSandbox error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+      }
+    });
+  } catch (err) {
+    console.error('uninstallDLPSandbox error,', (err as BusinessError).code, (err as BusinessError).message);
+  }
 }
 ```
 
@@ -427,9 +439,9 @@ Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP fil
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Read Only| Mandatory| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| dlpProperty | [DLPProperty](#dlpproperty) | No| Yes| Authorized user information.|
+| dlpProperty | [DLPProperty](#dlpproperty) | No| No| Authorized user information.|
 
 ### addDLPLinkFile
 
@@ -476,33 +488,35 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
-
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+    return;
   }
-}
+
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
+  }
 }
 ```
 
@@ -546,40 +560,41 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
-
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
-    if (err !== undefined) {
-      console.error('addDLPLinkFile error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-    await dlpFile?.closeDLPFile(); // Close the DLP object.
-    fileIo.closeSync(file);
-  });
-} catch (err) {
-  console.error('addDLPLinkFile error,', (err as BusinessError).code, (err as BusinessError).message);
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
   }
-}
+
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
+      if (err !== undefined) {
+        console.error('addDLPLinkFile error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+      }
+      await dlpFile?.closeDLPFile(); // Close the DLP object.
+      fileIo.closeSync(file);
+    });
+  } catch (err) {
+    console.error('addDLPLinkFile error,', (err as BusinessError).code, (err as BusinessError).message);
+    await dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
+  }
 }
 ```
 
@@ -621,34 +636,35 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
-
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId) // Open a DLP file.
-  dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  dlpFile.stopFuseLink(); // Stop read/write on the link file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
   }
-}
+
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId) // Open a DLP file.
+    dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    dlpFile.stopFuseLink(); // Stop read/write on the link file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
+  }
 }
 ```
 
@@ -691,41 +707,42 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
-
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  dlpFile.stopFuseLink(async (err, res) => {
-    if (err !== undefined) {
-      console.error('stopFuseLink error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-    await dlpFile?.closeDLPFile(); // Close the DLP object.
-    fileIo.closeSync(file);
-  });
-} catch (err) {
-  console.error('stopFuseLink error,', (err as BusinessError).code, (err as BusinessError).message);
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
   }
-}
+
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    dlpFile.stopFuseLink(async (err, res) => {
+      if (err !== undefined) {
+        console.error('stopFuseLink error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+      }
+      await dlpFile?.closeDLPFile(); // Close the DLP object.
+      fileIo.closeSync(file);
+    });
+  } catch (err) {
+    console.error('stopFuseLink error,', (err as BusinessError).code, (err as BusinessError).message);
+    await dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
+  }
 }
 ```
 
@@ -767,33 +784,35 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
-  await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
+    await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -837,40 +856,42 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
-  dlpFile.resumeFuseLink(async (err, res) => {
-    if (err !== undefined) {
-      console.error('resumeFuseLink error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
+    dlpFile.resumeFuseLink(async (err, res) => {
+      if (err !== undefined) {
+        console.error('resumeFuseLink error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+      }
+      await dlpFile?.closeDLPFile(); // Close the DLP object.
+      fileIo.closeSync(file);
+    });
+  } catch (err) {
+    console.error('resumeFuseLink error,', (err as BusinessError).code, (err as BusinessError).message);
     await dlpFile?.closeDLPFile(); // Close the DLP object.
-    fileIo.closeSync(file);
-  });
-} catch (err) {
-  console.error('resumeFuseLink error,', (err as BusinessError).code, (err as BusinessError).message);
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -920,34 +941,36 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
-  await dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link'); // Replace a link file.
-  await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
+    await dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link'); // Replace a link file.
+    await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    await dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -992,41 +1015,43 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
-  dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // Replace a link file.
-    if (err !== undefined) {
-      console.error('replaceDLPLinkFile error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
-      await dlpFile?.resumeFuseLink(); // Resume the read and write on the FUSE.
-    }
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
+    dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // Replace a link file.
+      if (err !== undefined) {
+        console.error('replaceDLPLinkFile error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+        await dlpFile?.resumeFuseLink(); // Resume the read and write on the FUSE.
+      }
+      await dlpFile?.closeDLPFile(); // Close the DLP object.
+      fileIo.closeSync(file);
+    });
+  } catch (err) {
+    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
     await dlpFile?.closeDLPFile(); // Close the DLP object.
-    fileIo.closeSync(file);
-  });
-} catch (err) {
-  console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -1076,32 +1101,34 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.deleteDLPLinkFile('test.txt.dlp.link'); // Delete a link file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    await dlpFile.deleteDLPLinkFile('test.txt.dlp.link'); // Delete a link file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    await dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -1146,39 +1173,41 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // Delete a link file.
-    if (err !== undefined) {
-      console.error('deleteDLPLinkFile error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
+    dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // Delete a link file.
+      if (err !== undefined) {
+        console.error('deleteDLPLinkFile error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+      }
+      await dlpFile?.closeDLPFile(); // Close the DLP object.
+      fileIo.closeSync(file);
+    });
+  } catch (err) {
+    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
     await dlpFile?.closeDLPFile(); // Close the DLP object.
-    fileIo.closeSync(file);
-  });
-} catch (err) {
-  console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -1234,36 +1263,38 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let destFile: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let destFile: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
-
-try {
-  file = fileIo.openSync(uri).fd;
-  destFile = fileIo.openSync('destUri').fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  await dlpFile.recoverDLPFile(destFile); // Recover the plaintext of a DLP file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
   }
-  if (destFile) {
-    fileIo.closeSync(destFile);
+
+  try {
+    file = fileIo.openSync(uri).fd;
+    destFile = fileIo.openSync('destUri').fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    await dlpFile.recoverDLPFile(destFile); // Recover the plaintext of a DLP file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
+    if (destFile) {
+      fileIo.closeSync(destFile);
+    }
   }
 }
 ```
@@ -1314,44 +1345,46 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let destFile: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let destFile: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
-
-try {
-  file = fileIo.openSync(uri).fd;
-  destFile = fileIo.openSync('destUri').fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  dlpFile.recoverDLPFile(destFile, async (err, res) => { // Recover the plaintext of a DLP file.
-    if (err !== undefined) {
-      console.error('recoverDLPFile error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-    await dlpFile?.closeDLPFile(); // Close the DLP object.
-    fileIo.closeSync(file);
-    fileIo.closeSync(destFile);
-  });
-} catch (err) {
-  console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
   }
-  if (destFile) {
-    fileIo.closeSync(destFile);
+
+  try {
+    file = fileIo.openSync(uri).fd;
+    destFile = fileIo.openSync('destUri').fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    dlpFile.recoverDLPFile(destFile, async (err, res) => { // Recover the plaintext of a DLP file.
+      if (err !== undefined) {
+        console.error('recoverDLPFile error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+      }
+      await dlpFile?.closeDLPFile(); // Close the DLP object.
+      fileIo.closeSync(file);
+      fileIo.closeSync(destFile);
+    });
+  } catch (err) {
+    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    await dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
+    if (destFile) {
+      fileIo.closeSync(destFile);
+    }
   }
 }
 ```
@@ -1398,30 +1431,32 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -1469,36 +1504,38 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-  dlpFile.closeDLPFile((err, res) => {// Close the DLP file.
-    if (err !== undefined) {
-      console.error('closeDLPFile error,', err.code, err.message);
-    } else {
-      console.info('res', JSON.stringify(res));
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+    dlpFile.closeDLPFile((err, res) => {// Close the DLP file.
+      if (err !== undefined) {
+        console.error('closeDLPFile error,', err.code, err.message);
+      } else {
+        console.info('res', JSON.stringify(res));
+      }
+      fileIo.closeSync(file);
+    });
+  } catch (err) {
+    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    if (file) {
+      fileIo.closeSync(file);
     }
-    fileIo.closeSync(file);
-  });
-} catch (err) {
-  console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
-  if (file) {
-    fileIo.closeSync(file);
   }
 }
 ```
@@ -1531,7 +1568,7 @@ Generates a DLP file, which is an encrypted file that can be accessed only by au
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1539,7 +1576,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
@@ -1553,34 +1590,36 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let dlpUri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt';
-let file: number | undefined = undefined;
-let dlp: number | undefined = undefined;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let dlpUri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt';
+  let file: number | undefined = undefined;
+  let dlp: number | undefined = undefined;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlp = fileIo.openSync(dlpUri).fd;
-  let dlpProperty: dlpPermission.DLPProperty = {
-    ownerAccount: 'zhangsan',
-    ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
-    authUserList: [],
-    contactAccount: 'zhangsan',
-    offlineAccess: true,
-    ownerAccountID: 'xxxxxxx',
-    everyoneAccessList: []
-  };
-  dlpFile = await dlpPermission.generateDLPFile(file, dlp, dlpProperty); // Generate a DLP file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-} finally {
-  dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
-  }
-  if (dlp) {
-    fileIo.closeSync(dlp);
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlp = fileIo.openSync(dlpUri).fd;
+    let dlpProperty: dlpPermission.DLPProperty = {
+      ownerAccount: 'zhangsan',
+      ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
+      authUserList: [],
+      contactAccount: 'zhangsan',
+      offlineAccess: true,
+      ownerAccountID: 'xxxxxxx',
+      everyoneAccessList: []
+    };
+    dlpFile = await dlpPermission.generateDLPFile(file, dlp, dlpProperty); // Generate a DLP file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  } finally {
+    dlpFile?.closeDLPFile(); // Close the DLP object.
+    if (file) {
+      fileIo.closeSync(file);
+    }
+    if (dlp) {
+      fileIo.closeSync(dlp);
+    }
   }
 }
 ```
@@ -1608,7 +1647,7 @@ Generates a DLP file, which is an encrypted file that can be accessed only by au
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1616,7 +1655,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
@@ -1665,7 +1704,6 @@ try {
     fileIo.closeSync(dlp);
   }
 }
-}
 ```
 
 ## dlpPermission.openDLPFile<sup>11+</sup>
@@ -1695,7 +1733,7 @@ Opens a DLP file. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1703,14 +1741,14 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
 | 19100008 | The file is not a DLP file. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
-| 19100018 | Not authorized application. |
+| 19100018 | The application is not authorized. |
 | 19100019 | The DLP file has expired. |
 | 19100020 | No network connection. |
 
@@ -1722,30 +1760,32 @@ import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
 
-try{
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-} catch (err) {
-  console.error('error', err.code, err.message);
-}
+  try {
+    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+    appId = data.signatureInfo.appId;
+  } catch (err) {
+    console.error('error', err.code, err.message);
+  }
 
-try {
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
-  dlpFile?.closeDLPFile(); // Close the DLP object.
-} finally {
-  if (file) {
-    fileIo.closeSync(file);
+  try {
+    file = fileIo.openSync(uri).fd;
+    dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+    dlpFile?.closeDLPFile(); // Close the DLP object.
+  } finally {
+    if (file) {
+      fileIo.closeSync(file);
+    }
   }
 }
 ```
@@ -1772,7 +1812,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1780,14 +1820,14 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
 | 19100008 | The file is not a DLP file. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
-| 19100018 | Not authorized application. |
+| 19100018 | The application is not authorized. |
 | 19100019 | The DLP file has expired. |
 | 19100020 | No network connection. |
 
@@ -1905,7 +1945,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
       enterprise: 'customProperty'
     };
     await dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty);
-    console.info('Successfully generate DLP file for enterprise.');    
+    console.info('Successfully generate DLP file for enterprise.');
   } catch(err) {
     console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
@@ -1960,8 +2000,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
+| 19100008 | The file is not a DLP file. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
+| 19100013 | The user does not have the permission. |
 
 **Example**
 
@@ -2024,7 +2066,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 19100001 | Invalid parameter value. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
+| 19100003 | Credential task time out. |
+| 19100004 | Credential service error. |
+| 19100005 | Credential authentication server error. |
+| 19100008 | The file is not a DLP file. |
+| 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
+| 19100013 | The user does not have the permission. |
 
 **Example**
 
@@ -2057,10 +2106,10 @@ Represents the DLP sandbox information.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| appIndex | number | Yes| No| Index of the DLP sandbox application.|
-| tokenID | number | Yes| No| Token ID of the DLP sandbox application.|
+| appIndex | number | No| No| Index of the DLP sandbox application.|
+| tokenID | number | No| No| Token ID of the DLP sandbox application.|
 
 ## DLPSandboxState
 
@@ -2070,10 +2119,10 @@ DLP sandbox identity.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| No| Bundle name of the application. The value contains 7 to 128 bytes.|
-| appIndex | number | Yes| No| Index of the DLP sandbox application.|
+| bundleName | string | No| No| Bundle name of the application. The value contains 7 to 128 bytes.|
+| appIndex | number | No| No| Index of the DLP sandbox application.|
 
 ## AccountType
 
@@ -2109,12 +2158,12 @@ Represents the user authorization information.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Read Only| Mandatory| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| authAccount | string | No| Yes| Account of the user who can access the DLP file. The value contains up to 255 bytes.|
-| authAccountType | [AccountType](#accounttype) | No| Yes| Type of the account.|
-| dlpFileAccess | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | No| Yes| Permission granted to the user.|
-| permExpiryTime | number | No| Yes| Time when the authorization expires.|
+| authAccount | string | No| No| Account of the user who can access the DLP file. The value contains up to 255 bytes.|
+| authAccountType | [AccountType](#accounttype) | No| No| Type of the account.|
+| dlpFileAccess | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | No| No| Permission granted to the user.|
+| permExpiryTime | number | No| No| Time when the authorization expires.|
 
 ## CustomProperty<sup>20+</sup>
 
@@ -2136,17 +2185,17 @@ Represents the authorization information.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Read Only| Mandatory| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ownerAccount | string | No| Yes| Account of the owner who can set the permission. The value contains up to 255 bytes.|
-| ownerAccountID | string | No| Yes| Account ID of the owner. The value contains up to 255 bytes.|
-| ownerAccountType | [AccountType](#accounttype) | No| Yes| Account type of the owner.|
-| authUserList | Array&lt;[AuthUser](#authuser)&gt; | No| No| List of users who are authorized to access the DLP file. By default, this parameter is left blank.|
-| contactAccount | string | No| Yes| Indicates the account of a contact. The value contains up to 255 bytes.|
-| offlineAccess | boolean | No| Yes| Whether the file can be accessed offline. **true**: yes; **false**: no.|
-| everyoneAccessList | Array&lt;[DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess)&gt; | No| No| Permission granted to everyone. This parameter is left blank by default.|
-| expireTime<sup>11+</sup> | number | No| No| Timestamp when the file permission has expired. This parameter is left blank by default.|
-| actionUponExpiry<sup>20+</sup> | [ActionType](#actiontype20) | No| No| Whether the file can be opened after the permission expires (with the editing permission). This parameter is valid only when **expireTime** is not empty.|
+| ownerAccount | string | No| No| Account of the owner who can set the permission. The value contains up to 255 bytes.|
+| ownerAccountID | string | No| No| Account ID of the owner. The value contains up to 255 bytes.|
+| ownerAccountType | [AccountType](#accounttype) | No| No| Account type of the owner.|
+| authUserList | Array&lt;[AuthUser](#authuser)&gt; | No| Yes| List of users who are authorized to access the DLP file. By default, this parameter is left blank.|
+| contactAccount | string | No| No| Indicates the account of a contact. The value contains up to 255 bytes.|
+| offlineAccess | boolean | No| No| Whether the file can be accessed offline. **true**: yes; **false**: no.|
+| everyoneAccessList | Array&lt;[DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess)&gt; | No| Yes| Permission granted to everyone. This parameter is left blank by default.|
+| expireTime<sup>11+</sup> | number | No| Yes| Timestamp when the file permission has expired. This parameter is left blank by default.|
+| actionUponExpiry<sup>20+</sup> | [ActionType](#actiontype20) | No| Yes| Whether the file can be opened after the permission expires (with the editing permission). This parameter is valid only when **expireTime** is not empty.|
 
 ## GatheringPolicyType
 

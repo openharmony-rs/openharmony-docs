@@ -305,14 +305,14 @@ napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生�
 ## 模块注册与模块命名
 
 **【规则】**
-nm_register_func对应的函数需要加上修饰符static，防止与其他so里的符号冲突。
+nm_register_func对应的函数需要加上修饰符static，防止与其他二进制so文件里的符号冲突。
 
 模块注册的入口，即使用__attribute__((constructor))修饰函数的函数名需要确保与其他模块不同。
 
-模块实现中.nm_modname字段需要与模块名完全匹配，区分大小写。
+模块实现中.nm_modname字段需要与二进制so文件的名字完全匹配，区分大小写。
 
 **错误示例**
-以下代码为模块名为nativerender时的错误示例
+以下代码为二进制so文件的名为nativerender时的错误示例
 
 ```cpp
 EXTERN_C_START
@@ -341,6 +341,13 @@ extern "C" __attribute__((constructor)) void RegisterModule()
     napi_module_register(&nativeModule);
 }
 ```
+图一
+
+![demoModule](./figures/image.png)
+
+图二
+
+![CMakeLists](./figures/image-1.png)
 
 **正确示例**：
 以下代码为模块名为nativerender时的正确示例
@@ -406,7 +413,7 @@ extern "C" void napi_onLoad()
 
 ## 正确的使用napi_create_external系列接口创建的JS Object
 
-**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。
+**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。具体API说明详见[API参考](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-object#napi_create_external)。
 
 **错误示例**
 

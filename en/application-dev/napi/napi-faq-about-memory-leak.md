@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
 
-## Is there any mechanism to check whether napi_ref leaks?
+## Is there any mechanism to check whether napi_ref leaks
 
 - Question: When **napi_create_reference** is used to create a reference to a JS object, **napi_delete_reference** needs to be used to release the JS object. If **napi_delete_reference** is not used, the JS object memory may leak. Is there any mechanism to check or test whether **napi_ref** leaks? 
 - Answer: 
@@ -14,7 +14,7 @@ Use Allocation provided by DevEco Studio.
 For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations). 
 The internal implementation of the **napi_create_reference** API creates a C++ object. Therefore, if you forget to use the **napi_delete_reference** API, the new C++ object will leak. In this case, you can use Allocation to print the allocation stack of the unreleased objects, where you can check whether **napi_ref** leaks. 
 
-## How do I locate and resolve memory leaks during Node-API development?
+## How do I locate and resolve memory leaks during Node-API development
 
 The memory usage increases when the button is clicked, and the memory cannot be reclaimed even if GC is triggered. How do I locate and resolve memory leaks during Node-API development?
 
@@ -29,7 +29,7 @@ For details, see [Memory Analysis: Allocation](https://developer.huawei.com/cons
 
 3. The leaked object is held by another active ArkTS object. In this case, check the owner of the leaked object using snapshot. 
 
-## What should I do if memory leaks when napi_threadsafe_function is used?
+## What should I do if memory leaks when napi_threadsafe_function is used
 
 When **napi_threadsafe_function** (**tsfn** for short) is used, **napi_acquire_threadsafe_function** is often called to change the reference count of **tsfn** to ensure that **tsfn** is not released unexpectedly. When all the **tsfn** calls are complete, **napi_release_threadsafe_function** should be called in **napi_tsfn_release** mode in a timely manner to ensure that the reference count returns to the value before **napi_acquire_threadsafe_function** is called. **tsfn** can be correctly released only when the reference count is **0**.
 

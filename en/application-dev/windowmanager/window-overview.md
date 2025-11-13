@@ -1,5 +1,4 @@
 # Window Overview
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @Pakoo007-->
@@ -55,6 +54,8 @@ The application window mode refers to the display mode of the main window when i
 
 
 ![windowMode](figures/windowMode.png)
+
+For details about the adaptation development guidance for the window mode, see [Window Mode](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-mode).
 
 
 ## Working Principles

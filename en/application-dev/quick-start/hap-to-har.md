@@ -7,11 +7,18 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 HAR allows you to export APIs or ArkUI components from a module and share the module as a second-party or third-party library with other modules or applications, while HAP does not. This topic will walk you through how to convert a HAP project to a HAR project by modifying configuration items.
+
+>
+> **NOTE**
+>
+> There are differences when some components and modules are integrated and used in the HAP, HSP, and HAR. For example, separate constraints are provided on loading the Worker thread file in the HAR compared with that in the HSP. For details, see [Precautions for File URLs](../arkts-utils/worker-introduction.md#precautions-for-file-urls). Therefore, after HAP is converted to HAR by performing the following steps, pay attention to the corresponding components and modules and perform adaptation.
+>
+
 ## How to Convert
 
 1. Modify the [module.json5](./module-configuration-file.md) file in the HAP module as follows:
     - Change the value of **type** to **har**, and delete the **mainElement**, **deliveryWithInstall**, **installationFree**, and **pages** tags.
-    - ExtensionAbility is not supported by the HAR module. Therefore, you need to delete the **extensionAbilities** tag and delete the associated ExtensionAbility component or migrate it to the HAP module.
+    - Prior to API version 17, HARs do not support the creation of any ExtensionAbility. Starting from API version 18, HARs support only [two specific types of ExtensionAbility](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18891639459). Therefore, for HARs used in either API version 17 or earlier, or API version 18 or later without the two supported ExtensionAbilities configured, you should delete the **extensionAbilities** tag and either delete the associated ExtensionAbility components or migrate them to another HAP module. 
     - UIAbility is not supported by the HAR module in API version 13 or earlier. Therefore, you need to delete the **abilities** tag and delete the associated UIAbility component or migrate it to the HAP module.
     ```json
     {
@@ -26,6 +33,7 @@ HAR allows you to export APIs or ArkUI components from a module and share the mo
         }
     }
     ```
+
 
 2. Delete the **main_pages.json** file from the **src\main\resource\base\profile** folder of the HAP module.
 

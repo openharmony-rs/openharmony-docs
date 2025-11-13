@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 多条件筛选，帮助用户在大量信息中找到所需内容，应结合具体场景选择合适筛选方式。多条件筛选控件由筛选器与悬浮条构成，悬浮条可下拉展示悬浮筛选器。筛选器样式可分为多行可折叠类型与多行列表类型，并可以在筛选器最后一行附加快捷筛选器。
@@ -132,9 +132,9 @@ struct Index {
         additionFilters: this.additionParam,
         filterType: FilterType.MULTI_LINE_FILTER,
         onFilterChanged: (select: Array<FilterResult>) => {
-          console.log('rec filter change');
+          console.info('rec filter change');
           for (let filter of select) {
-            console.log('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value);
+            console.info('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value);
           }
         }
       }) {

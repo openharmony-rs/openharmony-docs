@@ -1,5 +1,12 @@
 # AutoFillExtensionContext (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The AutoFillExtensionContext module provides the context environment for the AutoFillExtensionAbility. It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
 
 > **NOTE**
@@ -28,7 +35,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 reloadInModal(customData: CustomData): Promise\<void>
 
-Starts a modal page.
+Starts a modal page. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 

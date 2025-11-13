@@ -28,10 +28,10 @@ import { settings } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-| 名称                          | 类型   | 可读 | 可写 | 说明                   |
+| 名称                          | 类型   | 只读 | 可选 | 说明                   |
 |-----------------------------| ------ | ---- | ---- |----------------------|
-| DEVICE_SHARED<sup>11+</sup> | string | 是   | 是   | 设备属性共享域，所有设置项不区分多用户。 |
-| USER_PROPERTY<sup>11+</sup> | string | 是   | 是   | 为用户属性域，该域下所有配置区分多用户。 |
+| DEVICE_SHARED<sup>11+</sup> | string | 是   | 否   | 设备属性共享域，所有设置项不区分多用户。 |
+| USER_PROPERTY<sup>11+</sup> | string | 是   | 否   | 为用户属性域，该域下所有配置区分多用户。 |
 
 ## date
 
@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-获取数据项的值。此方法相较getValue为同步方法。
+获取数据库中DEVICE_SHARED域指定数据项的值。此方法相较getValue为同步方法。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -532,7 +532,7 @@ let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_ST
 
 setValueSync(context: Context, name: string, value: string): boolean
 
-设置数据项的值。此方法相较setValue为同步方法。
+将数据项名称及数据项的值保存到DEVICE_SHARED域数据库中。此方法相较setValue为同步方法。
 
 - 如果数据库中已经存在该数据项，setValueSync方法将更新该数据项的值。
 - 如果数据库中不存在该数据项，setValueSync方法将向数据库中插入该数据项。
@@ -703,7 +703,7 @@ let ret = settings.unregisterKeyObserver(context, settings.display.SCREEN_BRIGHT
 
 openNetworkManagerSettings(context: Context): Promise\<boolean>
 
-打开网络管理器设置页面。使用Promise异步回调。
+打开WLAN设置弹窗。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

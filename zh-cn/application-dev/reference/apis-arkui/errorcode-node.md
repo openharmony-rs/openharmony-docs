@@ -4,7 +4,7 @@
 <!--Owner: @wangchensu1-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -87,6 +87,8 @@ The corresponding operation does not support nodes created by ArkTS.
 ## 106203 传入的节点未挂载到组件树上
 
 **错误信息**
+
+The node not mounted to component tree.
 
 **错误描述**
 

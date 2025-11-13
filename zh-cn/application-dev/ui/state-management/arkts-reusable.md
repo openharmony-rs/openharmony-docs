@@ -27,6 +27,8 @@
 
 - \@Reusable装饰器仅用于自定义组件。
 
+- \@Reusable不支持跟[\@ComponentV2](./arkts-new-componentV2.md)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
+
 ```ts
 import { ComponentContent } from "@kit.ArkUI";
 
@@ -363,7 +365,6 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle====Child==");
     this.message = params.message as Message;
   }
 

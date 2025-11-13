@@ -9,12 +9,12 @@
 
 ## Overview
 
-The **drawing_brush.h** file declares the functions related to the brush in the drawing module.
+This file declares the functions related to the brush in the drawing module.
 
 <!--RP1-->
 **Sample**: [NDKAPIDrawing (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
 
-**File to be included**: <native_drawing/drawing_brush.h>
+**File to include**: <native_drawing/drawing_brush.h>
 
 **Library**: libnative_drawing.so
 
@@ -22,7 +22,7 @@ The **drawing_brush.h** file declares the functions related to the brush in the 
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Structs
 
@@ -35,22 +35,22 @@ The **drawing_brush.h** file declares the functions related to the brush in the 
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_Brush* OH_Drawing_BrushCreate(void)](#oh_drawing_brushcreate) | Creates an **OH_Drawing_Brush** object.|
-| [OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)](#oh_drawing_brushcopy) | Creates a brush object copy [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) to copy an existing brush object.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
+| [OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)](#oh_drawing_brushcopy) | Copies an existing [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object to create a new one.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_BrushDestroy(OH_Drawing_Brush* brush)](#oh_drawing_brushdestroy) | Destroys an **OH_Drawing_Brush** object and reclaims the memory occupied by the object.|
-| [bool OH_Drawing_BrushIsAntiAlias(const OH_Drawing_Brush* brush)](#oh_drawing_brushisantialias) | Checks whether anti-aliasing is enabled for a brush. Anti-aliasing makes the pixels around the shape edges semi-transparent.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush* brush, bool antiAlias)](#oh_drawing_brushsetantialias) | Enables or disables anti-aliasing for a brush. Anti-aliasing makes the pixels around the shape edges semi-transparent.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [uint32_t OH_Drawing_BrushGetColor(const OH_Drawing_Brush* brush)](#oh_drawing_brushgetcolor) | Obtains the color of a brush. The color is used by the brush to fill in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushSetColor(OH_Drawing_Brush* brush, uint32_t color)](#oh_drawing_brushsetcolor) | Sets the color for a brush. The color is used by the brush to fill in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [uint8_t OH_Drawing_BrushGetAlpha(const OH_Drawing_Brush* brush)](#oh_drawing_brushgetalpha) | Obtains the alpha value of a brush. This value is used by the alpha channel when the brush fills in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushSetAlpha(OH_Drawing_Brush* brush, uint8_t alpha)](#oh_drawing_brushsetalpha) | Sets the alpha value for a brush. This value is used by the alpha channel when the brush fills in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushSetShaderEffect(OH_Drawing_Brush* brush, OH_Drawing_ShaderEffect* shaderEffect)](#oh_drawing_brushsetshadereffect) | Sets the shader effect for a brush.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushSetShadowLayer(OH_Drawing_Brush* brush, OH_Drawing_ShadowLayer* shadowLayer)](#oh_drawing_brushsetshadowlayer) | Sets the shadow layer for a brush. The shadow layer effect takes effect only when text is drawn.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushSetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)](#oh_drawing_brushsetfilter) | Sets the filter [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) for a brush. The filter is a container that holds a mask filter and color filter.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushGetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)](#oh_drawing_brushgetfilter) | Obtains the filter [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) from the brush. The filter is a container that holds a mask filter and color filter.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either brush or filter is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [void OH_Drawing_BrushSetBlendMode(OH_Drawing_Brush* brush, OH_Drawing_BlendMode blendMode)](#oh_drawing_brushsetblendmode) | Sets a blender for a brush. The blender implements the specified blend mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.<br>If **blendMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
-| [void OH_Drawing_BrushReset(OH_Drawing_Brush* brush)](#oh_drawing_brushreset) | Resets a brush to the initial state. All configured attributes are cleared.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [OH_Drawing_ErrorCode OH_Drawing_BrushSetColor4f(OH_Drawing_Brush* brush, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)](#oh_drawing_brushsetcolor4f) | Sets a color for this brush. The color is used by the brush to fill the shape.<br> The color is in ARGB format represented by floating-point numbers. The color space is specified by [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md).<br> If **colorSpaceManager** is a null pointer, the SRGB (standard red, green, and blue color space based on IEC 61966-2.1:1999) color space is used as the default value.|
-| [OH_Drawing_ErrorCode OH_Drawing_BrushGetAlphaFloat(const OH_Drawing_Brush* brush, float* a)](#oh_drawing_brushgetalphafloat) | Obtains the transparency value of the brush color.|
+| [bool OH_Drawing_BrushIsAntiAlias(const OH_Drawing_Brush* brush)](#oh_drawing_brushisantialias) | Checks whether anti-aliasing is enabled for a brush. Anti-aliasing makes the pixels around the shape edges semi-transparent.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush* brush, bool antiAlias)](#oh_drawing_brushsetantialias) | Enables or disables anti-aliasing for a brush. Anti-aliasing makes the pixels around the shape edges semi-transparent.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [uint32_t OH_Drawing_BrushGetColor(const OH_Drawing_Brush* brush)](#oh_drawing_brushgetcolor) | Obtains the color of a brush. The color is used by the brush to fill in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushSetColor(OH_Drawing_Brush* brush, uint32_t color)](#oh_drawing_brushsetcolor) | Sets the color for a brush. The color is used by the brush to fill in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [uint8_t OH_Drawing_BrushGetAlpha(const OH_Drawing_Brush* brush)](#oh_drawing_brushgetalpha) | Obtains the alpha value of a brush. This value is used by the alpha channel when the brush fills in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushSetAlpha(OH_Drawing_Brush* brush, uint8_t alpha)](#oh_drawing_brushsetalpha) | Sets the alpha value for a brush. This value is used by the alpha channel when the brush fills in a shape.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushSetShaderEffect(OH_Drawing_Brush* brush, OH_Drawing_ShaderEffect* shaderEffect)](#oh_drawing_brushsetshadereffect) | Sets the shader effect for a brush.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushSetShadowLayer(OH_Drawing_Brush* brush, OH_Drawing_ShadowLayer* shadowLayer)](#oh_drawing_brushsetshadowlayer) | Sets the shadow layer for a brush. The shadow layer effect takes effect only when text is drawn.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushSetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)](#oh_drawing_brushsetfilter) | Sets the filter [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) for a brush. The filter is a container that holds a mask filter and color filter.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushGetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)](#oh_drawing_brushgetfilter) | Obtains the [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) object from the brush. The filter is a container that holds a mask filter and color filter.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **brush** or **filter** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_BrushSetBlendMode(OH_Drawing_Brush* brush, OH_Drawing_BlendMode blendMode)](#oh_drawing_brushsetblendmode) | Sets a blender for a brush. The blender implements the specified blend mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **blendMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
+| [void OH_Drawing_BrushReset(OH_Drawing_Brush* brush)](#oh_drawing_brushreset) | Resets a brush to the initial state. All configured attributes are cleared.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [OH_Drawing_ErrorCode OH_Drawing_BrushSetColor4f(OH_Drawing_Brush* brush, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)](#oh_drawing_brushsetcolor4f) | Sets a color for this brush. The color will be used by the brush to fill in a shape.<br> The color is in ARGB format represented by floating-point numbers. The color space is specified by [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md).<br> If **colorSpaceManager** is a null pointer, the SRGB (standard red, green, and blue color space based on IEC 61966-2.1:1999) color space is used as the default value.|
+| [OH_Drawing_ErrorCode OH_Drawing_BrushGetAlphaFloat(const OH_Drawing_Brush* brush, float* a)](#oh_drawing_brushgetalphafloat) | Obtains the alpha value of the brush color.|
 | [OH_Drawing_ErrorCode OH_Drawing_BrushGetRedFloat(const OH_Drawing_Brush* brush, float* r)](#oh_drawing_brushgetredfloat) | Obtains the red component of the brush color.|
 | [OH_Drawing_ErrorCode OH_Drawing_BrushGetGreenFloat(const OH_Drawing_Brush* brush, float* g)](#oh_drawing_brushgetgreenfloat) | Obtains the green component of the brush color.|
 | [OH_Drawing_ErrorCode OH_Drawing_BrushGetBlueFloat(const OH_Drawing_Brush* brush, float* b)](#oh_drawing_brushgetbluefloat) | Obtains the blue component of the brush color.|
@@ -71,11 +71,11 @@ Creates an **OH_Drawing_Brush** object.
 
 **Since**: 8
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* | Pointer to the created brush object.|
+| [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* | Returns the pointer to the **OH_Drawing_Brush** object created.|
 
 ### OH_Drawing_BrushCopy()
 
@@ -85,7 +85,7 @@ OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)
 
 **Description**
 
-Creates a brush object copy [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) to copy an existing brush object.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Copies an existing [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object to create a new one.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -98,11 +98,11 @@ Creates a brush object copy [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)
 | -- | -- |
 | [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an **OH_Drawing_Brush** object.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* | The function returns a pointer pointing to the created brush object copy [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md). If NULL is returned, the creation fails. The possible cause is that the available memory is empty or brush is NULL.|
+| [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* | Returns a pointer to the [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object created. If NULL is returned, the creation fails. The possible failure cause is that no memory is available or **brush** is NULL.|
 
 ### OH_Drawing_BrushDestroy()
 
@@ -146,11 +146,11 @@ Checks whether anti-aliasing is enabled for a brush. Anti-aliasing makes the pix
 | -- | -- |
 | const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an **OH_Drawing_Brush** object.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Whether anti-aliasing is set for the brush object. If true is returned, anti-aliasing is set. If false is returned, anti-aliasing is not set.|
+| bool | Returns **true** if anti-aliasing is enabled; returns **false** otherwise.|
 
 ### OH_Drawing_BrushSetAntiAlias()
 
@@ -195,7 +195,7 @@ Obtains the color of a brush. The color is used by the brush to fill in a shape.
 | -- | -- |
 | const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an **OH_Drawing_Brush** object.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
@@ -244,11 +244,11 @@ Obtains the alpha value of a brush. This value is used by the alpha channel when
 | -- | -- |
 | const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an **OH_Drawing_Brush** object.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| uint8_t | An 8-bit variable used to indicate the transparency value.|
+| uint8_t | Returns an 8-bit variable that describes the alpha value.|
 
 ### OH_Drawing_BrushSetAlpha()
 
@@ -346,7 +346,7 @@ void OH_Drawing_BrushGetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filte
 
 **Description**
 
-Obtains the filter [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) from the brush. The filter is a container that holds a mask filter and color filter.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either brush or filter is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.
+Obtains the [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) object from the brush. The filter is a container that holds a mask filter and color filter.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **brush** or **filter** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -358,7 +358,7 @@ Obtains the filter [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) from t
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to the [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
-| [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md)* filter | Pointer to the filter object [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md).|
+| [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md)* filter | Pointer to an [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) object.|
 
 ### OH_Drawing_BrushSetBlendMode()
 
@@ -368,7 +368,7 @@ void OH_Drawing_BrushSetBlendMode(OH_Drawing_Brush* brush, OH_Drawing_BlendMode 
 
 **Description**
 
-Sets a blender for a brush. The blender implements the specified blend mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If brush is null, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.<br>If **blendMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+Sets a blender for a brush. The blender implements the specified blend mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **brush** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **blendMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -412,7 +412,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushSetColor4f(OH_Drawing_Brush* brush, float a
 
 **Description**
 
-Sets a color for this brush. The color is used by the brush to fill the shape.<br> The color is in ARGB format represented by floating-point numbers. The color space is specified by [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md).<br> If **colorSpaceManager** is a null pointer, the SRGB (standard red, green, and blue color space based on IEC 61966-2.1:1999) color space is used as the default value.
+Sets a color for this brush. The color will be used by the brush to fill in a shape.<br> The color is in ARGB format represented by floating-point numbers. The color space is specified by [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md).<br> If **colorSpaceManager** is a null pointer, the SRGB (standard red, green, and blue color space based on IEC 61966-2.1:1999) color space is used as the default value.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -422,18 +422,18 @@ Sets a color for this brush. The color is used by the brush to fill the shape.<b
 
 | Name| Description|
 | -- | -- |
-| OH_Drawing_Brush* brush | Pointer to the [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
+| OH_Drawing_Brush* brush | Pointer to an [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
 | float a | Alpha value of the color, which is a floating-point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, while values below 0.0 default to 0.0.|
 | float r | Red component of the color, which is a floating-point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, while values below 0.0 default to 0.0.|
 | float g | Green component of the color, which is a floating-point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, while values below 0.0 default to 0.0.|
 | float b | Blue component of the color, which is a floating-point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, while values below 0.0 default to 0.0.|
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* colorSpaceManager | Pointer to an [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) object.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> OH_DRAWING_ERROR_INVALID_PARAMETER: The brush parameter is NULL.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **brush** is NULL.|
 
 ### OH_Drawing_BrushGetAlphaFloat()
 
@@ -443,7 +443,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetAlphaFloat(const OH_Drawing_Brush* brush
 
 **Description**
 
-Obtains the alpha value of a brush color.
+Obtains the alpha value of the brush color.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -453,14 +453,14 @@ Obtains the alpha value of a brush color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to the [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
-| float* a | Indicates the transparency of a color. The value is a floating point number ranging from 0.0 to 1.0.|
+| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
+| float* a | Alpha value of the color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> OH_DRAWING_ERROR_INVALID_PARAMETER: The brush or a parameter is null.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **brush** or **a** is NULL.|
 
 ### OH_Drawing_BrushGetRedFloat()
 
@@ -480,14 +480,14 @@ Obtains the red component of the brush color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to the [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
+| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
 | float* r | Red component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> OH_DRAWING_ERROR_INVALID_PARAMETER: The brush or r parameter is null.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **brush** or **r** is NULL.|
 
 ### OH_Drawing_BrushGetGreenFloat()
 
@@ -507,14 +507,14 @@ Obtains the green component of the brush color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to the [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
+| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
 | float* g | Green component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> OH_DRAWING_ERROR_INVALID_PARAMETER: The brush or g parameter is null.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **brush** or **g** is NULL.|
 
 ### OH_Drawing_BrushGetBlueFloat()
 
@@ -534,11 +534,11 @@ Obtains the blue component of the brush color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to the [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
+| const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | Pointer to an [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object.|
 | float* b | Blue component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> If OH_DRAWING_ERROR_INVALID_PARAMETER is returned, the brush or b parameter is null.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **brush** or **b** is NULL.|

@@ -294,4 +294,6 @@ ArkTS示例：
 
 ## 完整示例
 
-[拦截Web组件发起的网络请求](https://gitee.com/harmonyos_samples/guide-snippets/tree/master/ArkWebKit/ArkWebSchemeHandler)
+<!--RP1-->
+[拦截Web组件发起的网络请求](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)
+<!--RP1End-->

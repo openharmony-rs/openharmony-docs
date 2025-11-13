@@ -113,7 +113,7 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 | [I4YB87](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YB87) | No image is generated when the system camera is used to take a photo. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
 | [I4YAGS](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | A blue screen is displayed when the system camera is accessed. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).|
 | [I59FZ7](https://gitee.com/openharmony/telephony_core_service/issues/I59FZ7) | Test cases of the telephony subsystem fail to run on standard-system devices.|
-| [I4Z2MI](https://gitee.com/openharmony/xts_acts/issues/I4Z2MI) | All test cases of the actsWifiJSApiTest, ActsHotSpotJSApiTest, and ActsP2PJSApiTest modules fail to run on standard-system devices.|
+| [I4Z2MI](https://gitcode.com/openharmony/xts_acts/issues/I4Z2MI) | All test cases of the actsWifiJSApiTest, ActsHotSpotJSApiTest, and ActsP2PJSApiTest modules fail to run on standard-system devices.|
 
 
 ## Fixed Security Vulnerabilities

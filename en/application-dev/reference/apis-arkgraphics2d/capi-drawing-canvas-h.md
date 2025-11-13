@@ -190,8 +190,8 @@ Enumerates the modes of interpreting the geometry of a given vertex.
 | Value| Description|
 | -- | -- |
 | VERTEX_MODE_TRIANGLES | Draws a triangle list. Specifically, a list of isolated triangles are drawn using every three vertices. If the number of vertices is not a multiple of 3, the extra vertices will be ignored. |
-| VERTEX_MODE_TRIANGLESSTRIP | Draws a triangle strip. Specifically, the first triangle is drawn between the first 3 vertices, and all subsequent triangles use the previous 2 vertices plus the next additional vertex.|
-| VERTEX_MODE_TRIANGLEFAN | Draws a triangle fan. A triangle fan is similar to a triangle strip, except that all the triangles share one vertex (the first vertex).|
+| VERTEX_MODE_TRIANGLES_STRIP | Draws a triangle strip. Specifically, the first triangle is drawn between the first 3 vertices, and all subsequent triangles use the previous 2 vertices plus the next additional vertex.|
+| VERTEX_MODE_TRIANGLE_FAN | Draws a triangle fan. A triangle fan is similar to a triangle strip, except that all the triangles share one vertex (the first vertex).|
 
 
 ## Function Description

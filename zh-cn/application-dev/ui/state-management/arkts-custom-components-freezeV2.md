@@ -46,7 +46,7 @@ export class Book {
 @Entry
 @ComponentV2({ freezeWhenInactive: true })
 export struct Page1 {
-  @Local bookTest: Book = new Book('A Midsummer Night’s Dream');
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
@@ -64,7 +64,7 @@ export struct Page1 {
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
           setTimeout(() => {
-            this.bookTest = new Book('Jane Austen's Pride and Prejudice');
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 1000)
         })
     }
@@ -172,6 +172,8 @@ struct FreezeChild {
 ### Navigation
 
 当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
+
+需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组件中的[onActive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)和[onInactive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17)不同。
 
 ```ts
 @Entry
@@ -489,7 +491,7 @@ struct Page1 {
 
 @ComponentV2({ freezeWhenInactive: true })
 export struct Child {
-  @Local bookTest: Book = new Book('A Midsummer Night's Dream');
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
@@ -508,7 +510,7 @@ export struct Child {
       Button('change BookName')
         .onClick(() => {
           setTimeout(() => {
-            this.bookTest = new Book('Jane Austen's Pride and Prejudice');
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
           }, 3000);
         })
     }
@@ -876,6 +878,5 @@ struct FreezeBuildNode {
 }
 ```
 
-点击`change`，改变message的值，当前正在显示的TabContent组件中的[@Watch](./arkts-watch.md)中注册的方法onMessageUpdated被触发。未显示的TabContent中的BuilderNode节点下组件的@Watch方法onMessageUpdated也被触发，并没有被冻结。
-
+点击`change`，改变message的值，当前正在显示的TabContent组件中@Monitor注册的方法onMessageChange被触发。未显示的TabContent中的BuilderNode节点下组件的@Monitor方法onMessageChange也被触发，并没有被冻结。
 ![builderNode.gif](figures/builderNode.gif)

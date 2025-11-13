@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--PR1-->[native_node_napi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NativeNodeNapi/native_node_napi)<!--PR1End-->
+**相关示例：** <!--RP1-->[native_node_napi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeNodeNapi/native_node_napi)<!--RP1End-->
 
 ## 汇总
 
@@ -129,7 +129,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 | -- | -- |
 | napi_env env | napi的环境指针。 |
 | napi_value value | ArkTS侧创建的NodeContent对象。 |
-| content | ArkUI_NodeContentHandle指针。 |
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md)* content | ArkUI_NodeContentHandle指针。 |
 
 **返回：**
 

@@ -88,9 +88,9 @@ The following table lists the issues known in OpenHarmony 1.1.1 that have been r
 | Startup                  | [startup_syspara_lite/pulls/31](https://gitee.com/openharmony/startup_syspara_lite/pulls/31) | The date of the security patch is incorrect.                 |
 | Driver                   | [drivers_adapter_khdf_linux/pulls/28](https://gitee.com/openharmony/drivers_adapter_khdf_linux/pulls/28) | The CVE-2021-22441 vulnerability is detected.                |
 | Driver                   | [drivers_adapter/pulls/50](https://gitee.com/openharmony/drivers_adapter/pulls/50) | The CVE-2021-22480 vulnerability is detected.                |
-| Testing                  | [xts_acts/pulls/294](https://gitee.com/openharmony/xts_acts/pulls/294) | Certain test cases of the fs_posix module are unstable.      |
-| Testing                  | [xts_acts/pulls/287](https://gitee.com/openharmony/xts_acts/pulls/287) | The acts test fails.                                         |
-| Testing                  | [xts_acts/pulls/283](https://gitee.com/openharmony/xts_acts/pulls/283) | Certain CMSIS test cases fail occasionally.                  |
-| Testing                  | [xts_acts/pulls/270](https://gitee.com/openharmony/xts_acts/pulls/270) | The ShmTest.testShmatSHM_REMAP function in the ShmTest.cpp test case of the shared_memory module does not run as expected. |
-| Testing                  | [xts_acts/pulls/314](https://gitee.com/openharmony/xts_acts/pulls/314) | The test of the net_posix module fails.                      |
+| Testing                  | [xts_acts/pulls/294](https://gitcode.com/openharmony/xts_acts/pulls/294) | Certain test cases of the fs_posix module are unstable.      |
+| Testing                  | [xts_acts/pulls/287](https://gitcode.com/openharmony/xts_acts/pulls/287) | The acts test fails.                                         |
+| Testing                  | [xts_acts/pulls/283](https://gitcode.com/openharmony/xts_acts/pulls/283) | Certain CMSIS test cases fail occasionally.                  |
+| Testing                  | [xts_acts/pulls/270](https://gitcode.com/openharmony/xts_acts/pulls/270) | The ShmTest.testShmatSHM_REMAP function in the ShmTest.cpp test case of the shared_memory module does not run as expected. |
+| Testing                  | [xts_acts/pulls/314](https://gitcode.com/openharmony/xts_acts/pulls/314) | The test of the net_posix module fails.                      |
 

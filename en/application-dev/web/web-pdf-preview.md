@@ -4,9 +4,9 @@
 <!--Owner: @Yuan_ss-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
-The **Web** component allows users to preview PDF files on web pages. An application can use the [src](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) parameter and [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API of the **Web** component to load PDF files, including network PDF files, PDF files in the application sandbox, and local PDF files.
+[Web component](../reference/apis-arkweb/arkts-basic-components-web.md) supports PDF preview on web pages. An app loads PDF documents through the src parameter of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) and the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API. PDF documents can be network PDF documents, PDF documents in the application sandbox, and local PDF documents.
 
 To obtain network documents, you need to configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
@@ -53,7 +53,7 @@ The PDF preview page uses **window.localStorage** to record the expansion status
   Web().domStorageAccess(true)
   ```
 
-When creating a **Web** component, specify the PDF file to be loaded by default. When the default PDF file is loaded, if you want to change the PDF file displayed on the **Web** component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified PDF file. The value of the first parameter **src** of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl).
+When the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) is created, the PDF file to be loaded by default is specified. When the default PDF file is loaded, if you want to change the PDF file displayed on the **Web** component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified PDF file. The first parameter variable src of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) cannot dynamically change the address through a state variable (for example, @State). If you need to change the address, reload the address through [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl).
 
 There are three scenarios for loading and previewing PDF files:
 - Preview and load an online PDF file.
@@ -97,7 +97,7 @@ Currently, the following parameters are supported:
 | zoom=scale    zoom=scale,left,top	| Sets the scaling and scrolling coefficients using a floating or integer value. For example, the scaling value **100** indicates 100%. The left and up scrolling values are located in the coordinate system. **0,0** indicates the upper left corner of the visible page, regardless of how the document is rotated.|
 | toolbar=1 \| 0 	| Opens or closes the top toolbar.| 
 | navpanes=1 \| 0 	| Opens or closes the side navigation pane.| 
-| pdfbackgroundcolor=color 	| Specifies the background color of a PDF file. The value of **color** is a six-digit hexadecimal number in RGB format. The value ranges from 000000 to ffffff. For example, **ffffff** indicates white.|
+| pdfbackgroundcolor=color 	| In OpenHarmony 6.0 and later versions, the background color of a PDF document can be specified. color is a standard six-digit hexadecimal RGB value (the value range is 000000~ffffff). For example, the value of white is ffffff.|
 
 
 URL Examples:

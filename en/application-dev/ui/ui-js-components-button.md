@@ -1,11 +1,11 @@
-# Button Development
+# button Development
 
-The **Button** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
+The **\<button>** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
 
 
-## Creating a Button Component
+## Creating a \<button> Component
 
-Create a **Button** component in the .hml file under **pages/index**.
+Create a **\<button>** component in the .hml file under **pages/index**.
 
 ```html
 <!-- xxx.hml -->
@@ -212,7 +212,6 @@ Switch between the button types for different types of text.
   justify-content: center;
   margin-left: 30px;
   margin-right: 30px;
-  justify-content: space-around;
 }
 .input-text {
   height: 80px;
@@ -239,7 +238,7 @@ Switch between the button types for different types of text.
   color: #ffffff;
 }
 .color-3 {
-  background-color: #0598db;;
+  background-color: #0598db;
 }
 ```
 

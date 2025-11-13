@@ -1,6 +1,12 @@
 # NodeContent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
-The **NodeContent** module implements a manager for **ContentSlot** components in ArkUI.
+The **NodeContent** module implements a manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md) components in ArkUI.
 
 > **NOTE**
 >
@@ -9,10 +15,16 @@ The **NodeContent** module implements a manager for **ContentSlot** components i
 ## Modules to Import
 
 ```ts
-import {NodeContent } from '@kit.ArkUI'
+import { NodeContent } from '@kit.ArkUI';
 ```
 
 ## NodeContent
+
+**NodeContent** is the entity encapsulation of node content.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor
 
@@ -29,8 +41,8 @@ A constructor used to create a **NodeContent** object.
 <!--code_no_check-->
 
 ```ts
-import { nativeNode } from'libNativeNode.so' // so. file implemented by you.
-import { NodeContent } from '@kit.ArkUI'
+import { nativeNode } from 'libNativeNode.so'; // Developer-implemented .so file.
+import { NodeContent } from '@kit.ArkUI';
 
 @Component
 struct Parent {
@@ -64,7 +76,7 @@ Adds a FrameNode to this **NodeContent** object.
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| node | [FrameNode](./js-apis-arkui-frameNode.md#framenode) | Yes  | FrameNode to add.|
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | FrameNode to add.|
 
 ### removeFrameNode<sup>12+</sup>
 
@@ -80,7 +92,7 @@ Removes a FrameNode from this **NodeContent** object.
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| node | [FrameNode](./js-apis-arkui-frameNode.md#framenode) | Yes  | FrameNode to remove.|
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | FrameNode to remove.|
 
 **Example**
 
@@ -91,36 +103,36 @@ This example shows how to add or remove a FrameNode in the **NodeContent** objec
 import { NodeContent, typeNode } from '@kit.ArkUI';
 
 class NodeContentCtrl {
-  content: NodeContent
+  content: NodeContent;
   textNode: Array<typeNode.Text> = new Array();
-  uiContext: UIContext
-  width: number
+  uiContext: UIContext;
+  width: number;
 
   constructor(uiContext: UIContext) {
-    this.content = new NodeContent()
-    this.uiContext = uiContext
-    this.width = Infinity
+    this.content = new NodeContent();
+    this.uiContext = uiContext;
+    this.width = Infinity;
   }
 
   AddNode() {
-    let node = typeNode.createNode(this.uiContext, "Text")
-    node.initialize("ContentText:" + this.textNode.length).fontSize(20)
-    this.textNode.push(node)
-    this.content.addFrameNode(node)
+    let node = typeNode.createNode(this.uiContext, "Text");
+    node.initialize("ContentText:" + this.textNode.length).fontSize(20);
+    this.textNode.push(node);
+    this.content.addFrameNode(node);
   }
 
   RemoveNode() {
-    let node = this.textNode.pop()
-    this.content.removeFrameNode(node)
+    let node = this.textNode.pop();
+    this.content.removeFrameNode(node);
   }
 
   RemoveFront() {
-    let node = this.textNode.shift()
-    this.content.removeFrameNode(node)
+    let node = this.textNode.shift();
+    this.content.removeFrameNode(node);
   }
 
   GetContent(): NodeContent {
-    return this.content
+    return this.content;
   }
 }
 
@@ -136,15 +148,15 @@ struct Index {
         ContentSlot(this.controller.GetContent())
         Button("AddToSlot")
           .onClick(() => {
-            this.controller.AddNode()
+            this.controller.AddNode();
           })
         Button("RemoveBack")
           .onClick(() => {
-            this.controller.RemoveNode()
+            this.controller.RemoveNode();
           })
         Button("RemoveFront")
           .onClick(() => {
-            this.controller.RemoveFront()
+            this.controller.RemoveFront();
           })
       }
       .width('100%')

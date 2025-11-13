@@ -91,5 +91,5 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description| 
 | -------- | -------- |
-| [I4VKNM](https://gitee.com/openharmony/xts_acts/issues/I4VKNM) | There is a possibility that the testSigtimedwaitBlock test case fails to run on the Hi3518 development board in the small system.| 
+| [I4VKNM](https://gitcode.com/openharmony/xts_acts/issues/I4VKNM) | There is a possibility that the testSigtimedwaitBlock test case fails to run on the Hi3518 development board in the small system.| 
 | [I4S098](https://gitee.com/openharmony/applications_sample_camera/issues/I4S098) | The system may stop responding when you repeat the following operations on the Hi3516 development board in the small system: Choose **Settings > Wi-Fi**, enter the Wi-Fi list page, and exit.| 

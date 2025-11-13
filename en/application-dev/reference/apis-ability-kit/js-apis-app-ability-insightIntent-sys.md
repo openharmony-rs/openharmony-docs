@@ -1,6 +1,13 @@
-# @ohos.app.ability.insightIntent (insightIntent) (System API)
+# @ohos.app.ability.insightIntent (Basic Definitions of InsightIntent Framework) (System API)
 
-The module provides APIs for intent calls.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo; @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+This module provides basic definitions of the [InsightIntent framework](../../application-models/insight-intent-overview.md).
 
 > **NOTE**
 >
@@ -8,7 +15,7 @@ The module provides APIs for intent calls.
 >
 > The APIs of this module can be used only in the stage model.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.insightIntent (insightIntent)](js-apis-app-ability-insightIntent.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.insightIntent (Basic Definitions of InsightIntent Framework)](js-apis-app-ability-insightIntent.md).
 
 ## Modules to Import
 
@@ -18,7 +25,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 ## ExecuteMode
 
-Enumerates the intent call execution modes.
+Enumerates the intent execution modes. It specifies the mode of execution passed when the intent is triggered by a system entry point. The supported execution modes for each intent are defined during intent development.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

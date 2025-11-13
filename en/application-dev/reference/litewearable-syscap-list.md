@@ -1,4 +1,5 @@
-# SystemCapability List
+# Lite Wearable
+
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 

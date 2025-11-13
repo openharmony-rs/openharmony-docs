@@ -35,15 +35,12 @@
 
 ## 开发步骤
 
-### 时区相关功能
+### 时区接口基本功能
 
-1. 导入模块。
+1. 开发实例，包括获取特定时区、计算固定和实际时区偏移量、遍历时区列表。
    ```ts
    import { i18n } from '@kit.LocalizationKit';
-   ```
 
-2. 开发实例，包括获取特定时区、计算固定和实际时区偏移量、遍历时区列表。
-   ```ts
    // 获取巴西时区
    let timezone: i18n.TimeZone = i18n.getTimeZone('America/Sao_Paulo'); // 传入特定时区，创建时区对象
    let timezoneId: string = timezone.getID(); // timezoneId = 'America/Sao_Paulo'
@@ -119,13 +116,10 @@
 
 ### 双时钟应用
 
-1. 导入模块。
+1. 选择时区列表中的时区，添加到应用偏好时区列表。
    ```ts
    import { i18n } from '@kit.LocalizationKit';
-   ```
 
-2. 选择时区列表中的时区，添加到应用偏好时区列表。
-   ```ts
    let pauloTimezone: i18n.TimeZone = i18n.getTimeZone('America/Sao_Paulo');
    let defaultTimezone: i18n.TimeZone = i18n.getTimeZone();
    let appPreferredTimeZoneList: Array<i18n.TimeZone> = []; // 应用偏好时区列表
@@ -133,8 +127,10 @@
    appPreferredTimeZoneList.push(defaultTimezone);
    ```
 
-3. 遍历应用偏好时区列表，获取各时区的时间。
+2. 遍历应用偏好时区列表，获取各时区的时间。
    ```ts
+   import { i18n } from '@kit.LocalizationKit';
+
    let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
    for (let i = 0; i < appPreferredTimeZoneList.length; i++) {
      let timezone: string = appPreferredTimeZoneList[i].getID();

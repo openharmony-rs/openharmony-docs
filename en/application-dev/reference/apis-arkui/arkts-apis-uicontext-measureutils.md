@@ -10,23 +10,27 @@ Provides APIs for measuring text metrics, such as text height and width.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
 > - In the following API examples, you must first use [getMeasureUtils()](arkts-apis-uicontext-uicontext.md#getmeasureutils12) in **UIContext** to obtain a **MeasureUtils** instance, and then call the APIs using the obtained instance.
 >
-> To perform more complex text measurements, use the [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) API.
+> - To perform more complex text measurements, use the [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) API.
 >
-> Avoid using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) during text measurement API calls. To ensure timing correctness and the accuracy of measurement results, manually listen for font scale changes.
+> - Avoid using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) during text measurement API calls. To ensure timing correctness and the accuracy of measurement results, manually listen for font scale changes.
 >
-> For measuring text after truncation, direct use of the string length for truncation may lead to inaccuracies. This is because certain Unicode characters (for example, emojis) have code points with a length greater than 1, and truncating by string length can split these multi-code-point characters, resulting in incorrect text display or measurement errors. As such, you are advised to perform iterative processing based on Unicode code points during truncation.
+> - For measuring text after truncation, direct use of the string length for truncation may lead to inaccuracies. This is because certain Unicode characters (for example, emojis) have code points with a length greater than 1, and truncating by string length can split these multi-code-point characters, resulting in incorrect text display or measurement errors. As such, you are advised to perform iterative processing based on Unicode code points during truncation.
 
 ## measureText<sup>12+</sup>
 
 measureText(options: MeasureOptions): number
 
-Measures the width of the given single-line text.
+Measures the single-line display width of the specified text. For multi-line text (separated by newline characters **\n**), this API returns the width of the longest line.
+
+> **NOTE**
+>
+> **measureText** always measures single-line text width. Layout constraints in **options** (**constraintWidth**, **maxLines**, and more) do not affect results. For layout-constrained width measurement, use [measureTextSize](#measuretextsize12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -352,4 +356,4 @@ struct Index {
   }
 }
 ```
-
+![](figures/styledString_15.png)

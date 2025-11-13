@@ -33,6 +33,8 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
    > 应用沙箱内的这个文件必须是一个存在的、可写的文件。这个文件的uri传入picker接口之后，相当于应用给系统相机授权该文件的读写权限。系统相机在拍摄结束之后，会对此文件进行覆盖写入。
 
    ```ts
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
    function createPickerProfile(context: Context): picker.PickerProfile {
      let pathDir = context.filesDir;
      let fileName = `${new Date().getTime()}`;

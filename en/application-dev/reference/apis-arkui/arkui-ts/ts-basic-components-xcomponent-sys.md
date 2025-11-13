@@ -1,4 +1,10 @@
 # XComponent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 **XComponent** provides a surface for graphics rendering and media data input into your view. You can customize the position and size of the surface as needed.
 
@@ -18,9 +24,9 @@ Defines the options of the **XComponent**.
 
 **Parameters**
 
-| Name  | Type   | Mandatory| Description                  |
-| -------- | ------- | ---- | ---------------------- |
-| screenId<sup>17+</sup> | number | No| Associated screen ID of the component. The component can display the image of the associated screen. **System API**: This is a system API.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| screenId<sup>17+</sup> | number | No| Yes| Associated screen ID of the component. The component can display the image of the associated screen. **System API**: This is a system API.|
 
   > **NOTE**
   >

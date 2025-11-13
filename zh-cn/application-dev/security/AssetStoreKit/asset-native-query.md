@@ -9,14 +9,14 @@
 
 ## 接口介绍
 
-可通过API文档查看查询关键资产的接口[OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query)
-的详细介绍。
+可通过API文档查看查询关键资产的接口[OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query)的详细介绍。
 
 在查询关键资产时，关键资产属性的内容参数如下表所示：
 
->**注意：**
+> **注意：**
 >
->下表中“ASSET_TAG_ALIAS”和名称包含“ASSET_TAG_DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
+> 下表中“ASSET_TAG_ALIAS”和名称包含“ASSET_TAG_DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
+> 查询关键资产明文ASSET_TAG_SECRET需要解密，查询时间较长，需要将Asset_ReturnType设置为ASSET_RETURN_ALL；只查询其他关键资产属性不需解密，查询时间较短，需要将Asset_ReturnType设置为ASSET_RETURN_ATTRIBUTES。
 
 | 属性名称（Asset_Tag）            | 属性内容（Asset_Value）                                       | 是否必选 | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -51,6 +51,10 @@
 
 ## 代码示例
 
+> **说明：**
+>
+> 在查询前，需确保已有关键资产，可参考[指南文档](asset-native-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+
 ### 查询单条关键资产明文
 
 查询别名是demo_alias的关键资产明文。
@@ -64,8 +68,8 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    ```c
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
 
    static napi_value QueryAsset(napi_env env, napi_callback_info info) 
@@ -74,7 +78,7 @@
        Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
        Asset_Attr attr[] = {
            {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
-           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // 此处表示需要返回关键资产的所有信息，即属性+明文。
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // 此处表示需要返回关键资产的所有信息，即属性+明文。返回明文需要解密，查询时间较长。
        };
 
        Asset_ResultSet resultSet = {0};
@@ -107,8 +111,8 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    ```c
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
 
    static napi_value QueryAttributes(napi_env env, napi_callback_info info) 
@@ -117,7 +121,7 @@
        Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
        Asset_Attr attr[] = {
            {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
-           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // 此处表示仅返回关键资产属性，不包含关键资产明文。
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // 此处表示仅返回关键资产属性，不包含关键资产明文。返回属性不需解密，查询时间较短。
        };
 
        Asset_ResultSet resultSet = {0};
@@ -148,8 +152,8 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    ```c
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
 
    static napi_value BatchQuery(napi_env env, napi_callback_info info) 

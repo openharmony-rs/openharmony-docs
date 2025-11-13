@@ -373,7 +373,7 @@ try {
 import { ble } from '@kit.ConnectivityKit';
 import { BusinessError } from '@ohos.base';
 
-const TAG: string = 'BleAdvertisingManager';
+const TAG: string = 'BleScanManager';
 
 // 参考蓝牙标准协议规范Core Assigned Numbers
 const BLE_ADV_TYPE_FLAG = 0x01;

@@ -83,7 +83,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-Unregisters all listeners for the device-cloud sync progress.
+Removes the specified callback from the device-cloud sync progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -127,7 +127,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress'): void
 
-Unregisters all listeners for the device-cloud sync progress.
+Removes all callbacks from the device-cloud sync progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -414,7 +414,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
-Unregisters all listeners for the download progress event of a cloud file.
+Removes the specified callback from the device-cloud download progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -458,7 +458,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(evt: 'progress'): void
 
-Unregisters all listeners for the download progress event of a cloud file.
+Removes all callbacks from the device-cloud download progress.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -964,7 +964,7 @@ Enumerates the device-cloud file sync states.
 
 optimizeStorage(): Promise&lt;void&gt;
 
-Optimizes the resources from the local Gallery that have been synced to the cloud and executes the automatic aging policy according to the remaining local space. This API uses a promise to return the result.
+Optimizes the resources that have been synced to the cloud from the local Gallery and executes the automatic aging policy according to the remaining local space. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -1124,10 +1124,10 @@ Represents the space optimization states and optimization progress.
 
 **System API**: This is a system API.
 
-| Name    | Type  | Mandatory| Description|
-| ---------- | ------ | ---- | ---- |
-| state | [OptimizeState](#optimizestate17) | Yes  | Enumerates the space optimization states.|
-| progress | number | Yes  | Optimization progress percentage. The value ranges from 1 to 100.|
+| Name    | Type  | Read-Only| Optional| Description|
+| ---------- | ------ | ---- | ---- | ---- |
+| state | [OptimizeState](#optimizestate17) | No  | No  | Enumerates the space optimization states.|
+| progress | number | No  | No  | Optimization progress percentage. Value range: [0, 100].|
 
 ## OptimizeSpaceParam<sup>17+</sup>
 
@@ -1137,7 +1137,7 @@ Sets the total optimization space and aging days.
 
 **System API**: This is a system API.
 
-| Name    | Type  | Mandatory| Description|
-| ---------- | ------ | ---- | ---- |
-| totalSize | number | Yes  | Total size of the optimization space. You can obtain the total size of all files to be aged through the media library API. The size is transferred by the application and is in bytes.|
-| agingDays | number | Yes  | Aging days. The system will optimize the local images/videos that have not been accessed and have been synced to the cloud before the aging days.|
+| Name    | Type  | Read-Only| Optional| Description|
+| ---------- | ------ | ---- | ---- | ---- |
+| totalSize | number | No  | No  | Total size of the optimization space. You can obtain the total size of all files to be aged through the media library API. The size is transferred by the application and is in bytes.|
+| agingDays | number | No  | No  | Aging days. The system will optimize the local images/videos that have not been accessed and have been synced to the cloud before the aging days.|

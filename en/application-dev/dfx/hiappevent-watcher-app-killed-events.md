@@ -18,13 +18,13 @@ HiAppEvent APIs for subscribing to application killed events:
 - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
 - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
 
-The **params** attribute in the application killed event is described as follows:
+The **params** attribute in the application killed event is described as follows.
 
 ## Field Description
 
 ### params
 
- 
+The **params** attribute in the application killed event is described as follows.
 
 | Name   | Type  | Description                      |
 | ------- | ------ | ------------------------- |

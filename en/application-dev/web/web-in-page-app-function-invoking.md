@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Register your application code with frontend pages. Then you can invoke application methods with the registered object names on frontend pages.
 
@@ -652,7 +652,7 @@ The following example registers the **test()** function with the frontend page. 
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log ('Execution completed');
+          console.log('Execution completed');
           reject('fail');
         }, 10000);
       });

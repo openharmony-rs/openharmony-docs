@@ -2,9 +2,9 @@
 
 ## Overview
 
-The **effect_types.h** file declares the data types of the image effect filter.
+This file declares the data types of the image effect filter.
 
-**Header file**: <native_effect/effect_types.h>
+**File to include**: <native_effect/effect_types.h>
 
 **Library**: libnative_effect.so
 
@@ -14,7 +14,7 @@ The **effect_types.h** file declares the data types of the image effect filter.
 
 **Related module**: [effectKit](capi-effectkit.md)
 
-## Total
+## Summary
 
 ### Structs
 

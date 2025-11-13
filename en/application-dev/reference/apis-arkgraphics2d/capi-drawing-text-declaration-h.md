@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-Provides data structure declarations related to 2D text drawing.
+Declares the structs related to text in 2D drawing.
 
-**Header file**: <native_drawing/drawing_text_declaration.h>
+**File to include**: <native_drawing/drawing_text_declaration.h>
 
 **Library**: libnative_drawing.so
 
@@ -17,7 +17,7 @@ Provides data structure declarations related to 2D text drawing.
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Structs
 
@@ -28,7 +28,7 @@ Provides data structure declarations related to 2D text drawing.
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) | OH_Drawing_TextStyle | Defines a struct used to manage text colors and decorations.|
 | [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) | OH_Drawing_TypographyStyle | Defines a struct used to manage the typography style, such as the text direction.|
 | [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md) | OH_Drawing_LineTypography | Defines a struct used to extract a single line of data from a piece of text for typography.|
-| [OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md) | OH_Drawing_TypographyCreate | Creates a [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md).|
+| [OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md) | OH_Drawing_TypographyCreate | Creates an [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md) object.|
 | [OH_Drawing_TextBox](capi-drawing-oh-drawing-textbox.md) | OH_Drawing_TextBox | Defines a struct for a text box, which is used to receive the rectangle size, direction, and quantity.|
 | [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) | OH_Drawing_PositionAndAffinity | Defines a struct used to receive the position and affinity of a glyph.|
 | [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) | OH_Drawing_Range | Defines a struct used to receive the start position and end position of a glyph.|

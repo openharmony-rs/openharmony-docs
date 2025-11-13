@@ -17,13 +17,13 @@ import settings from '@ohos.settings';
 
 Provides the domain name.
 
-### Attributes
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name               | Type  | Readable| Writable| Description                                                        |
-| ------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| USER_SECURITY<sup>11+</sup>      | string | Yes  | Yes  | User security attribute domain.                                         |
+| Name               | Type  | Read-Only     | Description                                                        |
+| ------------------- | ------ |--------| ------------------------------------------------------------ |
+| USER_SECURITY<sup>11+</sup>      | string | Yes | User security attribute domain.                                         |
 
 ## settings.setValue<sup>(deprecated)</sup>
 

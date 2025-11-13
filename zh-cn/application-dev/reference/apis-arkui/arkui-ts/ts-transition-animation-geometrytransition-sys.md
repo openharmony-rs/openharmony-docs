@@ -24,9 +24,9 @@
 
 **参数：**
 
-| 参数名 | 参数类型 | 必填 | 参数描述                                                                  |
-| ------ | -------- | ---- | ------------------------------------------------------------------------- |
-| hierarchyStrategy<sup>12+<sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | 否   | <br>决定共享元素动画过程中in/out组件在组件树上层级位置的移动策略，默认值：TransitionHierarchyStrategy.ADAPTIVE。<br>实际影响绑定的in/out组件相对其他组件的前后重叠关系，常规情况下慎重修改。<br>建议在发现共享元素动画过程中出现组件前后重叠关系错误时需要调整再设置此参数。<br>**系统接口：** 此接口为系统接口。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | -------- | ---- | ---- | --------------------------------------------------------------------- |
+| hierarchyStrategy<sup>12+<sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | 否   | 是 | <br>决定共享元素动画过程中in/out组件在组件树上层级位置的移动策略，默认值：TransitionHierarchyStrategy.ADAPTIVE。<br>实际影响绑定的in/out组件相对其他组件的前后重叠关系，常规情况下慎重修改。<br>建议在发现共享元素动画过程中出现组件前后重叠关系错误时需要调整再设置此参数。<br>**系统接口：** 此接口为系统接口。|
 
 ## TransitionHierarchyStrategy<sup>12+<sup>
 共享元素动画过程中in/out组件层级位置移动策略枚举。

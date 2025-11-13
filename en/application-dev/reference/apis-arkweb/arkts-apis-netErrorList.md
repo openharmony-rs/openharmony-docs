@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Provides a list of ArkWeb network protocol stack errors.
 
@@ -81,7 +81,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_SOCKS_CONNECTION_FAILED | -120 |  The connection between the SOCKS proxy server and the target host fails to be established.   |
 |ERR_SOCKS_CONNECTION_HOST_UNREACHABLE | -121 | The domain name of the SOCKS proxy server is unreachable.|
 |ERR_ALPN_NEGOTIATION_FAILED | -122 | The request for negotiating the standby protocol fails.|
-|ERR_SSL_NO_RENEGOTIATION | -123 | The server sends an **SSL no_regregation** alert message.|
+|ERR_SSL_NO_RENEGOTIATION | -123 | The peer end sends the SSL no_renegotiation alert message.|
 |ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES | -124 | Winsock sometimes reports that more data is written than is passed. This may be caused by LSP damage.|
 |ERR_SSL_DECOMPRESSION_FAILURE_ALERT | -125 | The SSL peer sent a decompression failure alert to the local end. This usually occurs when the peer mistakenly believes that it supports DEFLATE compression.|
 |ERR_SSL_BAD_RECORD_MAC_ALERT | -126 | The SSL peer sent a **bad_record_mac** alert to the local end. This may occur on a server that is not support DELEGATE.|

@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 The **SaveButton** component comes with the privilege for saving data, which allows an application to temporarily save data without any authorization.
 
@@ -22,6 +23,8 @@ The following figure shows the effect of the **SaveButton** component.
 
 - The interval for calling **onClick()** to trigger a **mediaLibrary** API cannot exceed 1 minute after **SaveButton** is tapped.
 
+- The SaveButton component can be used only in the [main window and subwindows of the application](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7) and cannot be used in [UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md).
+
 - Each time the component is tapped, the application obtains only one-time perform for API calling.
 
 - The **SaveButton** component must be visible and legible to users. You need to properly configure the component attributes such as the size and color to prevent authorization failures. If the authorization fails due to invalid component style, check the device error logs.
@@ -33,7 +36,7 @@ The following figure shows the effect of the **SaveButton** component.
 
 ## How to Develop
 
-For example, to save the image in the dialog box shown above, the application only needs to use the image saving feature for a short period of time in the foreground. In this case, you can the **SaveButton** component to obtain temporary permission to save the image without requesting the related permission for the application.
+For example, to save the image in the dialog box shown above, the application only needs to use the image saving feature for a short period of time in the foreground. In this case, you can use the **SaveButton** component to obtain temporary permission to save the image without requesting the related permission for the application.
 
 1. Import the dependencies.
    
@@ -106,7 +109,7 @@ For example, to save the image in the dialog box shown above, the application on
          .width('100%')
        }
        .height('100%')
-       .backgroundColor(0xF1F3F5)
+       .backgroundColor(0xf1f3f5)
      }
    }
    ```

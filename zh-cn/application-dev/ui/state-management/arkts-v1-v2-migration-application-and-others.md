@@ -1707,7 +1707,7 @@ V1：
 具体实例如下：
 
 ```ts
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { CommonModifier } from '@kit.ArkUI';
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1772,8 +1772,7 @@ V2：
 具体示例如下：
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { UIUtils, CommonModifier } from '@kit.ArkUI';
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1843,7 +1842,7 @@ V1：
 具体示例如下：
 
 ```ts
-import { TextModifier } from '@ohos.arkui.modifier';
+import { TextModifier } from '@kit.ArkUI';
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {
@@ -1916,8 +1915,7 @@ V2：
 具体示例如下：
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
-import { TextModifier } from '@ohos.arkui.modifier';
+import { UIUtils, TextModifier } from '@kit.ArkUI';
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {

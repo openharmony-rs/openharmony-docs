@@ -243,7 +243,7 @@ Enables or disables static subscription for the current application. This API us
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | Yes  | Whether static subscription is enabled.<br>**true**: enabled.<br>**false**: disabled. |
+| enable  | boolean | Yes  | Whether static subscription is enabled.<br>**true**: enabled.<br>**false**: disabled.|
 | callback  | AsyncCallback\<void> | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -287,7 +287,7 @@ Enables or disables static subscription for the current application. This API us
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | Yes  | Whether static subscription is enabled.<br>**true**: enabled.<br>**false**: disabled. |
+| enable  | boolean | Yes  | Whether static subscription is enabled.<br>**true**: enabled.<br>**false**: disabled.|
 
 **Return value**
 

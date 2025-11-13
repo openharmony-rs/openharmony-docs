@@ -52,5 +52,5 @@
     - [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)
     - [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md)
 - 错误码<!--media-library-errcode-->
-  - [媒体库错误码](errcode-medialibrary.md)
+  - [媒体库错误码](errorcode-medialibrary.md)
 

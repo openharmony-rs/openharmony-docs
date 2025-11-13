@@ -2,9 +2,9 @@
 
 ## Overview
 
-The **native_color_space_manager.h** file declares the functions for creating and using a color space.
+This file declares the functions for creating and using a color space.
 
-**File to import**: <native_color_space_manager/native_color_space_manager.h>
+**File to include**: <native_color_space_manager/native_color_space_manager.h>
 
 **Library**: libnative_color_space_manager.so
 
@@ -14,7 +14,7 @@ The **native_color_space_manager.h** file declares the functions for creating an
 
 **Related module**: [NativeColorSpaceManager](capi-nativecolorspacemanager.md)
 
-## Total
+## Summary
 
 ### Structs
 
@@ -58,10 +58,10 @@ Defines an enum for the color space names.
 | Value| Description|
 | -- | -- |
 | NONE = 0 | Unknown color space.|
-| ADOBE_RGB = 1 | Adobe RGB color space.|
+| ADOBE_RGB = 1 | Color space based on Adobe RGB.|
 | DCI_P3 = 2 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999.|
 | DISPLAY_P3 = 3 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999.|
-| SRGB = 4 | Standard RGB (SRGB) color space based on IEC 61966-2.1:1999.|
+| SRGB = 4 | Standard Red Green Blue (SRGB) color space based on IEC 61966-2.1:1999.|
 | BT709 = 6 | Color space based on ITU-R BT.709.|
 | BT601_EBU = 7 | Color space based on ITU-R BT.601.|
 | BT601_SMPTE_C = 8 | Color space based on ITU-R BT.601.|
@@ -111,13 +111,13 @@ Creates an **OH_NativeColorSpaceManager** instance based on a color space name.<
 
 | Name| Description|
 | -- | -- |
-| [ColorSpaceName](#colorspacename) colorSpaceName | Name of the color space of the [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) to be created.|
+| [ColorSpaceName](#colorspacename) colorSpaceName | Color space name of the created [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* | Pointer to the [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance. If the memory is insufficient, the OH_NativeColorSpaceManager instance fails to be created.|
+| [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* | Returns a pointer to the [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance. If the memory is insufficient, the **OH_NativeColorSpaceManager** instance fails to be created.|
 
 ### OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma()
 
@@ -138,14 +138,14 @@ Creates an **OH_NativeColorSpaceManager** instance based on the color primaries 
 
 | Name| Description|
 | -- | -- |
-| [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) primaries | Primary color of the [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) to be created.|
-| float gamma | Gamma value of the [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md), which is a floating point number used to correct the luminance range.<br>Generally, the gamma value is positive. A negative value results in increased brightness in low-light areas and decreased brightness in high-light areas. The value **0** indicates a linear color space.|
+| [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) primaries | Primary color of the created [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance.|
+| float gamma | Gamma value of the created [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance. The gamma value is a floating point number used to correct the brightness range.<br>Generally, the gamma value is positive. A negative value results in increased brightness in low-light areas and decreased brightness in high-light areas. The value **0** indicates a linear color space.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* | Pointer to the [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance.<br> If the memory is insufficient, the OH_NativeColorSpaceManager instance fails to be created.|
+| [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* | Returns a pointer to the [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) instance.<br> If the memory is insufficient, the **OH_NativeColorSpaceManager** instance fails to be created.|
 
 ### OH_NativeColorSpaceManager_Destroy()
 
@@ -189,11 +189,11 @@ Obtains the color space name.
 | -- | -- |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* nativeColorSpaceManager | Pointer to an **OH_NativeColorSpaceManager** instance.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Value of the color space enumeration [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename). If the return value is 0, the API operation fails.|
+| int | Returns the color space name, which is defined in [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename). The return value **0** means that the function call fails.|
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
@@ -216,11 +216,11 @@ Obtains the white points.
 | -- | -- |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* nativeColorSpaceManager | Pointer to an **OH_NativeColorSpaceManager** instance.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | An array of floats. If the return value is <0.0, 0.0>, the API operation fails. If the return value is not <0.0, 0.0>, the API operation is successful.|
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | Returns a float array of white points. The value **<0.0, 0.0>** means that the function call fails.|
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
@@ -243,8 +243,8 @@ Obtains the gamma value.
 | -- | -- |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* nativeColorSpaceManager | Pointer to an **OH_NativeColorSpaceManager** instance.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| float | The return value is of the float type. If the return value is 0.0, the API operation fails. If the return value is not 0.0, the API operation is successful.|
+| float | Returns a float value. The value **0.0** means that the function call fails.|

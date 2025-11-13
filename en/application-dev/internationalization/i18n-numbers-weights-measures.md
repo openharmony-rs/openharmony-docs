@@ -27,23 +27,13 @@ Currency and unit formatting is based on number formatting. When creating a **Nu
 
 ### Units of Measurement Conversion
 
-Units of measurement include length, area, volume, and capacity. You can achieve the conversion and formatting of units of measurement via the [unitConvert](../reference/apis-localization-kit/js-apis-i18n.md#unitconvert9) API of the [I18NUtil](../reference/apis-localization-kit/js-apis-i18n.md#i18nutil9) class. The development procedure is as follows:
-
-1. Import the **intl** module.
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
-   ```
-
-2. Change the unit of measurement.
-
-   Convert the unit of measurement from **fromUnit** to **toUnit** for the specified value, and format the unit based on the specified locale and formatting style. The display effect varies according to the style. For details, see Table 1.
-   ```ts
-   let convertedUnit: string = i18n.I18NUtil.unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string, style?: string);
-   ```
+Units of measurement include length, area, volume, and capacity. You can achieve the conversion and formatting of units of measurement via the [unitConvert](../reference/apis-localization-kit/js-apis-i18n.md#unitconvert9) API of the [I18NUtil](../reference/apis-localization-kit/js-apis-i18n.md#i18nutil9) class.
 
 **Formatting Style**
 
-Assume that **fromUnit** is **cup** (US unit), **toUnit** is **liter** (SI unit), and the value is **1000**.
+You can use **unitConvert** to convert one measurement unit into another and formats the unit based on the specified locale and style.  
+
+The following example assumes that the source unit is cup (US), the target unit is liter (metric), and the number is 1000.
 
 **Table 1** Formatting style (style)
 
@@ -59,7 +49,7 @@ Assume that **fromUnit** is **cup** (US unit), **toUnit** is **liter** (SI unit)
 // Import the i18n module.
 import { i18n } from '@kit.LocalizationKit';
 
-// Set the fromUnit and toUnit.
+// Set fromUnit and toUnit as needed.
 let fromUnit: i18n.UnitInfo = {unit: 'cup', measureSystem: 'US'};
 let toUnit: i18n.UnitInfo = {unit: 'liter', measureSystem: 'SI'};
 

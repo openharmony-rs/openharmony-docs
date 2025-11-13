@@ -4,10 +4,10 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **backgroundTaskManager** module provides APIs to request background tasks. You can use the APIs to request transient tasks, continuous tasks, or efficiency resources to prevent the application process from being terminated or suspended when your application is switched to the background.
+The **backgroundTaskManager** module provides APIs to request background tasks. You can use the APIs to request transient tasks, continuous tasks, or efficiency resources to prevent the application process from being terminated or suspended when your application is switched to the background. For details, see [Continuous Task](../../task-management/continuous-task.md) and [Transient Task](../../task-management/transient-task.md).
 
 >  **NOTE**
 >
@@ -63,6 +63,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let myReason = 'test requestSuspendDelay';
 try {
@@ -93,7 +94,7 @@ Obtains the remaining time of a transient task. This API uses an asynchronous ca
 
 | Name      | Type                         | Mandatory  | Description                                      |
 | --------- | --------------------------- | ---- | ---------------------------------------- |
-| requestId | number                      | Yes   | Request ID of the transient task.                              |
+| requestId | number                      | Yes   | Request ID of the transient task. It is obtained by calling the [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay) API when applying for a transient task. |
 | callback  | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the remaining time of the transient task, in milliseconds.|
 
 **Error codes**
@@ -115,13 +116,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: number) => {
     if(error) {
         console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
     } else {
-        console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+        console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
     }
 })
 ```
@@ -139,7 +141,7 @@ Obtains the remaining time of a transient task. This API uses a promise to retur
 
 | Name      | Type    | Mandatory  | Description        |
 | --------- | ------ | ---- | ---------- |
-| requestId | number | Yes   | Request ID of the transient task.|
+| requestId | number | Yes   | Request ID of the transient task. It is obtained by calling the [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay) API.|
 
 **Return value**
 
@@ -165,10 +167,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
-    console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error: BusinessError) => {
     console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
 })
@@ -187,7 +190,7 @@ Cancels a transient task.
 
 | Name      | Type    | Mandatory  | Description        |
 | --------- | ------ | ---- | ---------- |
-| requestId | number | Yes   | Request ID of the transient task.|
+| requestId | number | Yes   | Request ID of the transient task. It is obtained by calling the [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay) API.|
 
 **Error codes**
 
@@ -207,6 +210,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
   let id = 1;
   try {
@@ -581,7 +585,7 @@ Requests continuous tasks of multiple types. This API uses a promise to return t
 
 | Type            | Description              |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise that returns an object of the [ContinuousTaskNotification](#continuoustasknotification12) type.|
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise that returns an object of the [ContinuousTaskNotification](#continuoustasknotification12) type.|
 
 **Error codes**
 
@@ -604,7 +608,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
@@ -655,7 +658,7 @@ export default class EntryAbility extends UIAbility {
 
   // The application updates its progress.
   updateProcess(process: number) {
-    // The application defines the download notification template.
+    // Define the notification type. The notification type of the progress update must be live view.
     let downLoadTemplate: notificationManager.NotificationTemplate = {
       name: 'downloadTemplate', // Currently, only downloadTemplate is supported. Retain the value.
       data: {
@@ -715,7 +718,7 @@ Updates continuous tasks of multiple types. This API uses a promise to return th
 
 | Type            | Description              |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise that returns an object of the [ContinuousTaskNotification](#continuoustasknotification12) type.|
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise that returns an object of the [ContinuousTaskNotification](#continuoustasknotification12) type.|
 
 **Error codes**
 
@@ -802,6 +805,63 @@ export default class EntryAbility extends UIAbility {
         try {
             // If no continuous task is requested, an empty array is obtained.
             backgroundTaskManager.getAllContinuousTasks(this.context).then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
+                console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
+            }).catch((error: BusinessError) => {
+                console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+            });
+        } catch (error) {
+            console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+    }
+};
+```
+
+## backgroundTaskManager.getAllContinuousTasks<sup>20+</sup>
+
+getAllContinuousTasks(context: Context, includeSuspended: boolean): Promise&lt;ContinuousTaskInfo[]&gt;
+
+Obtains all continuous task information, including the task ID and type. It supports specifying whether to include suspended tasks and uses a promise to return the result.
+
+**Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**Parameters**
+
+| Name      | Type                                | Mandatory  | Description                                      |
+| --------- | ---------------------------------- | ---- | ---------------------------------------- |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.|
+| includeSuspended   | boolean                            | Yes   | Whether to obtain the information about the suspended continuous task. The value **true** means to obtain the information, and the value **false** means the opposite.|
+
+**Return value**
+
+| Type                                           | Description         |
+|-----------------------------------------------|-------------|
+|  Promise&lt;[ContinuousTaskInfo](#continuoustaskinfo20)[]&gt; | Promise that returns all continuous task information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID  | Error Message|
+| --------- | ------- |
+| 201 | Permission denied. |
+| 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        try {
+            // If no continuous task is requested, an empty array is obtained.
+            backgroundTaskManager.getAllContinuousTasks(this.context, false).then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
                 console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
             }).catch((error: BusinessError) => {
                 console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
@@ -913,7 +973,7 @@ export default class EntryAbility extends UIAbility {
 
 on(type: 'continuousTaskSuspend', callback: Callback&lt;ContinuousTaskSuspendInfo&gt;): void
 
-Registers a listener for continuous task suspension. This API uses an asynchronous callback to return the result.
+Registers a listener for continuous task suspension. This API uses an asynchronous callback to return the result. After the callback is registered, if the system detects for the first time that the application does not execute the corresponding service, the system does not directly cancel the continuous task. Instead, it will mark the task as suspended. If the detection failures persist, the system will cancel the continuous task.<br>When a continuous task is suspended, the application will be suspended when switched to the background and automatically activated when brought back to the foreground.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1127,14 +1187,14 @@ Describes all transient task information.
 
 ## BackgroundMode
 
-Type of the continuous task.
+Defines the type of a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
-| DATA_TRANSFER           | 1    | Data transfer.                 |
-| AUDIO_PLAYBACK          | 2    | Audio and video playback.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| DATA_TRANSFER           | 1    | Data transfer.<br>**Note**: During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).      |
+| AUDIO_PLAYBACK          | 2    | Audio and video playback.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Note**: Since API version 20, if a continuous task of the **AUDIO_PLAYBACK** type is requested without connecting to AVSession, a notification will appear in the notification panel once the task is successfully requested.<br>Once AVSession is connected, notifications will be sent by AVSession instead of the background task module.<br>For API version 19 and earlier versions, the background task module does not display notifications in the notification panel.                |
 | AUDIO_RECORDING         | 3    | Audio recording.                   |
 | LOCATION                | 4    | Positioning and navigation.                 |
 | BLUETOOTH_INTERACTION   | 5    | Bluetooth-related services.                 |
@@ -1153,7 +1213,7 @@ Describes the information about a continuous-task notification.
 | slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No   | No   | Slot type of a continuous-task notification.<br>**Note**: After a continuous task is successfully requested or updated, no prompt tone is played.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | No   | No   | Content type of a continuous-task notification.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | notificationId | number | No   | No   | ID of the continuous-task notification.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| continuousTaskId<sup>15+</sup> | number | No   | Yes   | ID of a continuous task|
+| continuousTaskId<sup>15+</sup> | number | No   | Yes   | ID of a continuous task.|
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>
 
@@ -1188,7 +1248,7 @@ Describes the reason for canceling a continuous task.
 
 ## BackgroundSubMode<sup>16+</sup>
 
-Subtype of a continuous task.
+Defines the subtype of a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1198,7 +1258,7 @@ Subtype of a continuous task.
 
 ## BackgroundModeType<sup>16+</sup>
 
-Type of a continuous task.
+Defines the type of a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1257,11 +1317,12 @@ Describes the continuous task information.
 | abilityName | string   | No   | No   | UIAbility name.         |
 | uid         | number   | No   | No   | Application UID.              |
 | pid         | number   | No   | No   | Application PID.              |
-| isFromWebView | boolean  | No   | No   | Whether to request a continuous task in WebView mode, that is, whether to request a continuous task through the system proxy application.     |
+| isFromWebView | boolean  | No   | No   | Whether to request a continuous task in WebView mode, that is, whether to request a continuous task through the system proxy application. The value **true** indicates that the Webview mode is used, and the value **false** indicates that the Webview mode is not used.|
 | [backgroundModes](#backgroundmode) | string[] | No   | No   | Type of the continuous task.              |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | No   | No   | Subtype of a continuous task.             |
 | notificationId | number   | No   | No   | Notification ID.               |
 | continuousTaskId | number   | No   | No   | ID of a continuous task.             |
 | abilityId | number   | No   | No   | UIAbility ID.        |
-| wantAgentBundleName | string   | No   | No   | Bundle name configured for **WantAgent**, a notification parameter used to specify the target page when a continuous task notification is tapped.       |
-| wantAgentAbilityName | string   | No   | No   | Ability name configured for **WantAgent**, a notification parameter used to specify the target page when a continuous task notification is tapped.|
+| wantAgentBundleName | string   | No   | No   |  Bundle name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.       |
+| wantAgentAbilityName | string   | No   | No   |  Ability name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.|
+| suspendState | boolean   | No   | No   | Whether the requested continuous task is suspended. The value **true** indicates that the task is suspended, and the value **false** indicates that the task is activated.|

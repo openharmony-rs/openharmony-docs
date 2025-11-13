@@ -4,13 +4,13 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 The [createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports) API allows you to create message ports to implement communication between the application and frontend page.
 
 
-In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port.
+In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) is used to close the port after the port is used or before the WebView object is destroyed.
 
 
 - Application code:
@@ -86,6 +86,21 @@ In the following example, **createWebMessagePorts** is used to create two messag
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
+
+        // 5. Close the port. 
+        Button('closePort')
+        .onClick(() => {
+          try {
+            if (this.ports && this.ports.length == 2) {
+              this.ports[0].close();
+              this.ports = [];
+            } else {
+              console.error("ports is null, not need close");
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
         Web({ src: $rawfile('index.html'), controller: this.controller })
       }
     }
@@ -168,3 +183,6 @@ To pass the object type, use the **JSON.stringify** method to convert it to the 
       }
   }
 ```
+
+### What is the execution sequence of onControllerAttached and javaScriptOnDocumentStart?
+[javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11) is executed after [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10).

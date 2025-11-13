@@ -1,4 +1,10 @@
 # Neural Network Runtime Kit
+<!--Kit: Neural Network Runtime Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @GbuzhidaoR-->
+<!--Designer: @GbuzhidaoR-->
+<!--Tester: @GbuzhidaoR-->
+<!--Adviser: @ge-yafang-->
 
 - C APIs<!--neural-network-runtime-c-->
   - Modules<!--neural-network-runtime-module-->

@@ -1,4 +1,11 @@
-# @ohos.app.ability.InsightIntentEntryExecutor (Base Class for Intent Execution of @InsightIntentEntry)
+# @ohos.app.ability.InsightIntentEntryExecutor (Base Class for @InsightIntentEntry Intent Execution)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The module provides the base class for implementing the execution of intents decorated with [@InsightIntentEntry](js-apis-app-ability-InsightIntentDecorator.md#insightintententry). It must be used together with the @InsightIntentEntry decorator.
 

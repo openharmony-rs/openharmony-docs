@@ -89,7 +89,7 @@ repo forall -c 'git lfs pull'
 | I4WRWM | aafwk_aafwk_lite仓新增TDD测试用例。 | 
 | [I4VPVY](https://gitee.com/openharmony/applications_sample_camera/issues/I4VPVY) | 轻量系统Hi3516DV300从设置菜单搜索WLAN，然后点击2次返回键返回到桌面后，无法从桌面启动应用。 | 
 | [I4UTY0](https://gitee.com/openharmony/applications_photos/issues/I4UTY0) | demos&nbsp;路径下的&nbsp;1.jpg&nbsp;图片文件元数据中存在HP的版权声明。 | 
-| [I4TP6D](https://gitee.com/openharmony/xts_acts/issues/I4TP6D) | 标准系统Hi3516新增acts测试套ActsWorkerJSTest无法正常执行。 | 
+| [I4TP6D](https://gitcode.com/openharmony/xts_acts/issues/I4TP6D) | 标准系统Hi3516新增acts测试套ActsWorkerJSTest无法正常执行。 | 
 
   **表4** 解决的安全漏洞ISSUE列表
 

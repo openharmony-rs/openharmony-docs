@@ -2,9 +2,9 @@
 
 ## Overview
 
-The **drawing_region.h** file declares the functions related to the region in the drawing module, including creating a region, setting the boundary, and destroying a region.
+This file declares the functions related to the region in the drawing module, including creating a region, setting the boundary, and destroying a region.
 
-**Header file**: <native_drawing/drawing_region.h>
+**File to include**: <native_drawing/drawing_region.h>
 
 **Library**: libnative_drawing.so
 
@@ -12,7 +12,7 @@ The **drawing_region.h** file declares the functions related to the region in th
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Enumerated value
 
@@ -26,10 +26,10 @@ The **drawing_region.h** file declares the functions related to the region in th
 | -- | -- |
 | [OH_Drawing_Region* OH_Drawing_RegionCreate(void)](#oh_drawing_regioncreate) | Creates an **OH_Drawing_Region** object for more accurate graphical control.|
 | [OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)](#oh_drawing_regioncopy) | Creates a copy of a region object.|
-| [bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)](#oh_drawing_regioncontains) | Checks whether a region contains the specified point.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If region is null, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)](#oh_drawing_regionop) | Combines two regions based on the specified operation mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either region or dst is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.<br>If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
-| [bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* rect)](#oh_drawing_regionsetrect) | Sets the boundary for an **OH_Drawing_Region** object.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either region or rect is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
-| [bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* path, const OH_Drawing_Region* clip)](#oh_drawing_regionsetpath) | Sets a region to the area described by the path.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If any of region, path, and clip is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.|
+| [bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)](#oh_drawing_regioncontains) | Checks whether a region contains the specified point.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **region** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)](#oh_drawing_regionop) | Combines two regions based on the specified operation mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **region** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.|
+| [bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* rect)](#oh_drawing_regionsetrect) | Sets the boundary for an **OH_Drawing_Region** object.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **region** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* path, const OH_Drawing_Region* clip)](#oh_drawing_regionsetpath) | Sets a region to the area described by the path.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **region**, **path**, or **clip** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)](#oh_drawing_regiondestroy) | Destroys an **OH_Drawing_Region** object and reclaims the memory occupied by the object.|
 
 ## Enum Description
@@ -72,11 +72,11 @@ Creates an **OH_Drawing_Region** object for more accurate graphical control.
 
 **Since**: 12
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* | A pointer to the created region object [OH_Drawing_Region](capi-drawing-oh-drawing-region.md).|
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* | Returns the pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object created.|
 
 ### OH_Drawing_RegionCopy()
 
@@ -97,13 +97,13 @@ Creates a copy of a region object.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the region object [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) to be copied.|
+| const [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object to be copied.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* | The function returns a pointer pointing to the created region object.|
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* | Returns the pointer to the **OH_Drawing_Region** object created.|
 
 ### OH_Drawing_RegionContains()
 
@@ -128,11 +128,11 @@ Checks whether a region contains the specified point.<br>This API may return an 
 | int32_t x | X coordinate of the point.|
 | int32_t y | Y coordinate of the point.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Returns true if the region contains the coordinate point; false otherwise.|
+| bool | Returns **true** if the region contains the specified point; returns **false** otherwise.|
 
 ### OH_Drawing_RegionOp()
 
@@ -142,7 +142,7 @@ bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* oth
 
 **Description**
 
-Combines two regions based on the specified operation mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either region or rect is NULL, OH_DRAWING_ERROR_INVALID_PARAMETER is returned.<br>If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+Combines two regions based on the specified operation mode.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **region** or **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.<br>If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -153,15 +153,15 @@ Combines two regions based on the specified operation mode.<br>This API may retu
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the region object [OH_Drawing_Region](capi-drawing-oh-drawing-region.md). The region result after the operation is stored in this region object.|
+| [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to an [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object, in which the resulting region is saved.|
 | const [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* other | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object.|
-| [OH_Drawing_RegionOpMode](#oh_drawing_regionopmode) op | Enumerated type of the region operation. For details about the supported modes, see [OH_Drawing_RegionOpMode](capi-drawing-region-h.md#oh_drawing_regionopmode).|
+| [OH_Drawing_RegionOpMode](#oh_drawing_regionopmode) op | Operation mode of the region. For details about the available options, see [OH_Drawing_RegionOpMode](capi-drawing-region-h.md#oh_drawing_regionopmode).|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Returns true if the region is not empty; false otherwise.|
+| bool | Returns **true** if the resulting region is not empty; returns false otherwise.|
 
 ### OH_Drawing_RegionSetRect()
 
@@ -185,11 +185,11 @@ Sets the boundary for an **OH_Drawing_Region** object.<br>This API may return an
 | [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object.|
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Returns true if the rectangle boundary is successfully set; false otherwise.|
+| bool | Returns **true** if the setting is successful; returns **false** otherwise.|
 
 ### OH_Drawing_RegionSetPath()
 
@@ -214,11 +214,11 @@ Sets a region to the area described by the path.<br>This API may return an error
 | const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object.|
 | const [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* clip | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Returns true if the region is not empty; false otherwise.|
+| bool | Returns **true** if the resulting region is not empty; returns false otherwise.|
 
 ### OH_Drawing_RegionDestroy()
 

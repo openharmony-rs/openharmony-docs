@@ -1,7 +1,13 @@
 # Switching of module
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-When switching an application from the FA model to the stage model, migrate the configurations under **module** in the **config.json** file to **module** in the **module.json5** file.
+When switching an application from the [FA model](ability-terminology.md#fa-model) to the [stage model](ability-terminology.md#stage-model), migrate the configurations under **module** in the **config.json** file to **module** in the **module.json5** file.
 
 **Table 1** module comparison
 
@@ -48,7 +54,7 @@ When switching an application from the FA model to the stage model, migrate the 
 
 | Example in the FA Model| Example in the Stage Model|
 | -------- | -------- |
-| "meteData": {<br>    "customizeDate": [{<br>        "name": "label",<br>        "value": "string",<br>        "extra": "$string:label",<br>    }]<br>} | "meteData": [{<br>    "name": "label",<br>    "value": "string",<br>    "resource": "$string:label",<br>}] |
+| "metaData": {<br>    "customizeDate": [{<br>        "name": "label",<br>        "value": "string",<br>        "extra": "$string:label",<br>    }]<br>} | "metaData": [{<br>    "name": "label",<br>    "value": "string",<br>    "resource": "$string:label",<br>}] |
 
 
 **Table 5** abilities comparison

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 When the web page loads slowly, you can use the capabilities of pre-connection, preloading, and prefetching POST requests to accelerate the access to the web page.
 For details about how to optimize the web page loading performance, see [Performance Optimization for Web Page Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section128761465256).
@@ -400,7 +400,7 @@ JavaScript resources can also be obtained through [Data Request](../reference/ap
      build() {
        Column() {
          // Load the service Web component at a proper time. In this example, the Web component is used in a button onclick event.
-         Button ("Loading page")
+         Button("Loading page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url:  "https://www.example.com/business.html",
@@ -637,7 +637,7 @@ You are advised to use this function together with dynamic components, use offli
      build() {
        Column() {
          // Load the service Web component at a proper time. In this example, the Web component is used in a button onclick event.
-         Button ("Loading page")
+         Button("Loading page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url: "https://www.example.com/business.html",

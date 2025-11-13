@@ -93,7 +93,7 @@ Ark regular expressions may produce unexpected results in the following scenario
    ```ts
    let reg = new RegExp("(a)(?<b>b)");
    let res = reg.exec("ab") as Array<string>;
-   console.info(JSON.stringify(res[2]));
+   console.info("JSON.stringify(res?.groups) = {\"b\":" + JSON.stringify(res[2]) + "}");
    ```
 
 ### Unexpected Output with '|' Preceded by Empty Match
@@ -184,10 +184,10 @@ let proxy2 = new Proxy(arr2, emptyHandler);
 let arr3 = [proxy1, proxy2];
 let res = arr3.flatMap(x => x);
 
-console.log("res length:", res.length.toString());
+console.info("res length:", res.length.toString());
 // Expected output: res length: 4
 // Actual output: res length: 2
-console.log("res[0] is: ", res[0].toString());
+console.info("res[0] is: ", res[0].toString());
 // Expected output: res[0] is: 0
 // Actual output: res[0] is: 0,1
 ```

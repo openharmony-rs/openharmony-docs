@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 当某些组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由地组件绘制。
 
@@ -17,6 +17,10 @@
 drawModifier(modifier: DrawModifier | undefined): T
 
 设置组件的自定义绘制修改器。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -75,6 +79,7 @@ drawFront?(drawContext: DrawContext): void
 drawContent?(drawContext: DrawContext): void
 
 自定义绘制内容的接口，若重载该方法则可进行内容的自定义绘制，会替换组件原本的内容绘制函数。
+该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -285,7 +290,7 @@ struct DrawModifierExample {
       end: 2
     });
     this.drawAnimator.onFrame = (value: number) => {
-      console.log('frame value =', value);
+      console.info('frame value =', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
@@ -334,10 +339,10 @@ struct DrawModifierExample {
           .onClick(() => {
             this.count += 1;
             if (this.count % 2 === 1) {
-              console.log('change to full modifier');
+              console.info('change to full modifier');
               this.modifier = this.fullModifier;
             } else {
-              console.log('change to front modifier');
+              console.info('change to front modifier');
               this.modifier = this.frontModifier;
             }
           })

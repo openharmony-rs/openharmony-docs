@@ -10,7 +10,7 @@ Provides APIs for registering custom fonts.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 10.
 >
@@ -136,7 +136,7 @@ Obtains information about a system font based on the font name.
 
 | Type                                     | Description          |
 | ----------------------------------------- | -------------- |
-| [font.FontInfo](js-apis-font.md#fontinfo10) | Detailed information of the font.|
+| [font.FontInfo](js-apis-font.md#fontinfo10) | Detailed information of the font.<br>If no font is found, **undefined** is returned.|
 
 **Example**
 

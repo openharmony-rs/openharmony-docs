@@ -1,5 +1,12 @@
 # @ohos.hilog (HiLog)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @foryourself-->
+
 The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
 
 > **NOTE**
@@ -44,7 +51,7 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 ## LogLevel
 
-Log level.
+Enumerates the log levels.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -231,7 +238,9 @@ setMinLogLevel(level: LogLevel): void
 
 Sets the minimum log level.
 
-If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+> **NOTE**
+>
+> If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -307,7 +316,7 @@ hilog.info(0x0001, "jsHilogTest", "print bigNum: %{public}d %{public}i", bigNum,
 hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 ```
 
-**Log printing result**:
+**Log result**:
 ```
 08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}

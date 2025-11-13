@@ -475,7 +475,7 @@ Obtains the time elapsed since the Unix epoch. This API returns the result synch
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getTime(true)
+  let time: number = systemDateTime.getTime(true)
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
@@ -517,7 +517,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
+  let time: number = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
@@ -696,7 +696,7 @@ Obtains the system time zone in synchronous mode.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let timezone = systemDateTime.getTimezoneSync();
+  let timezone: string = systemDateTime.getTimezoneSync();
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);

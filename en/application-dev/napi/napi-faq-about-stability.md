@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
 
-## How do I troubleshoot the issue that an application often crashes during running?
+## How do I troubleshoot the issue that an application often crashes during running
 
 - Question: During Node-API development, an application often crashes, and the cppcrash stack is displayed. The stack top is the system library **libark_jsruntime.so**, and the first few frames of the crash stack contain **libace_napi.z.so**. How do I troubleshoot this issue? 
 The issue occurs frequently. The crash stack varies slightly each time, but the crash stack top is **libark_jsruntime.so** or **libace_napi.z.so** of the system library.   
@@ -44,7 +44,7 @@ The following shows an example stack structure.
 a. Check whether the **napi_value** is not initialized (the value is not assigned successfully, but is passed to the API as an invalid input parameter). 
 b. Check whether the error-prone API can be found by referring to the following topic.  
 
-## How to handle thread safety issues when the ArkTS method is concurrently called in the thread pool?
+## How to handle thread safety issues when the ArkTS method is concurrently called in the thread pool
 
 - In an ArkTS class method, **napi_ref** is created. To concurrently call the ArkTS method in the C++ thread pool, I have the following questions: 
 1. Can the ArkTS class method cached by **napi_ref** be called in the thread pool created by C++? 
@@ -58,7 +58,7 @@ Answer to question 2:
 As mentioned above, C++ threads throw tasks to ArkTS threads to execute ArkTS methods. For details about thread safety, see [Thread Safety Development Using Node-API](use-napi-thread-safety.md). 
   
 
-## What should I do if the content of napi_value changes?
+## What should I do if the content of napi_value changes
 
 - Question: When a program is initialized, **env** and a method (**napi_value**) are saved. The method is checked when it is created. The result of **napi_typeof** is **napi_function**, which meets the expectation. After the program runs for a period of time, the saved **env** and method fail to be checked, and the method is not a **napi_function**. The **env** and method are saved and used in the same main thread. How to solve this problem? 
 
@@ -68,7 +68,7 @@ References:
   
 2. You are advised to use **napi_ref** instead of **napi_value**. 
 
-## Is there a method to obtain the latest napi_env?
+## Is there a method to obtain the latest napi_env
 
 - Question: The native layer needs to call an ArkTS method at a deeper layer and cannot pass **napi_env** layer by layer. If **napi_env** is directly cached, the system crashes. What should I do? 
 ```sh
@@ -97,7 +97,7 @@ To use similar logic, use **napi_ref** for storage can prolong the lifecycle.
 
     
 
-## What should I do if napi_add_env_cleanup_hook is called incorrectly?
+## What should I do if napi_add_env_cleanup_hook is called incorrectly
 
 - Question: What should I do if an error is reported when **napi_add_env_cleanup_hook** or **napi_remove_env_cleanup_hook** is called? 
 When an error is reported when **napi_add_env_cleanup_hook** or **napi_remove_env_cleanup_hook** is called, the possible causes and logs are as follows: 

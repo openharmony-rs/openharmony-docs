@@ -1179,7 +1179,7 @@ _hdf_drivers_end = .;
 
 #### 产品兼容性规范
 
-产品兼容性规范文档请参考[产品兼容性SIG介绍](https://gitee.com/openharmony-sig/compatibility/tree/master)。
+产品兼容性规范文档请参考[产品兼容性SIG介绍](https://gitcode.com/openharmony-sig/compatibility/tree/master)。
 
 #### 添加XTS子系统
 

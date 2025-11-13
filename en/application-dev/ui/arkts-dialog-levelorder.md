@@ -1,4 +1,10 @@
 # Dialog Box Layer Management
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 In ArkUI, dialog boxes are directly mounted to the root node in ascending order of their levels. Under the root node, a dialog box on the right is displayed on top of a dialog box on the left. The newly created dialog box is inserted into the corresponding position based on its level. Dialog boxes with the same level are mounted in the order they were created.
 
 Since API version 18, you can set the [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to manage the display sequence of dialog boxes. This lets you control which dialog box appears on top of others.
@@ -22,7 +28,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
 ```ts
 @Builder normalCustomDialog(index: number) {
   Column() {
-    Text("I am normal dialog box " + index).fontSize(26)
+    Text("I am a normal dialog box" + index).fontSize(30)
   }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
 }
 ```
@@ -32,7 +38,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
 ```ts
 @Builder topCustomDialog() {
   Column() {
-    Text("I am a top-level dialog box").fontSize(26)
+    Text("I am a top-level dialog box").fontSize(30)
     Row({ space: 50 }) {
       Button('Open Normal Dialog Box')
         .onClick(() => {
@@ -52,7 +58,7 @@ Using **levelOrder** to manage the display sequence of dialog boxes is only supp
 }
 ```
 
-3. Create a top-level dialog box: In the click event, call the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) to obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object. Then, use this object to call the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API and set the [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to **100000** to create a top-level dialog box.
+3. Create a top-level dialog box: In the click event, call the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) to obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object. Then, use this object to call the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API and set the [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to **100000** to create a top-level dialog box.
 
 ```ts
 this.getUIContext().getPromptAction().openCustomDialog({
@@ -77,13 +83,13 @@ struct Index {
 
   @Builder normalCustomDialog(index: number) {
     Column() {
-      Text("I am normal dialog box " + index).fontSize(26)
+      Text("I am a normal dialog box" + index).fontSize(30)
     }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
   }
 
   @Builder topCustomDialog() {
     Column() {
-      Text("I am a top-level dialog box").fontSize(26)
+      Text("I am a top-level dialog box").fontSize(30)
       Row({ space: 50 }) {
         Button('Open Normal Dialog Box')
           .onClick(() => {

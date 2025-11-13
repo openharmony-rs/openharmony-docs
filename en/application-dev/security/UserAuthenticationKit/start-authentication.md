@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 A user authentication is required before an application accesses a critical functionality or sensitive data. This topic walks you through the process.
 
@@ -33,10 +34,10 @@ The following figure shows the style of the user authentication widget, which ca
 ![](figures/user-authentication-widget.png)
 <!--RP1End-->
 
-- ①: Title (**WidgetParam.title**) of the user authentication page, which cannot exceed 500 characters. You can set the title based on actual requirements.
+- ①: Title (**WidgetParam.title**) of the user authentication page, which cannot be empty or exceed 500 characters. You are advised to set the title to the authentication purpose, for example, payment and application login.
 <!--RP2-->
 - ②: Text on the navigation button (**WidgetParam.navigationButtonText**), which cannot exceed 60 characters. It can be configured only in single fingerprint or facial authentication scenarios in API versions 10 to 17. Since API version 18, it can also be configured in the combined fingerprint and facial authentication.
-   
+
   If biometric authentication fails, a button is displayed. The user can tap the button to switch to custom authentication.<!--RP2End-->
 
 <!--Del-->

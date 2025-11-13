@@ -56,26 +56,30 @@ getResourceManager(callback: AsyncCallback&lt;ResourceManager&gt;): void
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | 是    | 回调函数，返回资源管理ResourceManager对象。 |
 
 **示例：**
-
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import resourceManager from '@ohos.resourceManager';
+//FA模型请使用上述方式导入模块
 
-  resourceManager.getResourceManager((error, mgr) => {
-    if (error != null) {
-      console.error("error is " + error);
-      return;
+export default {
+    onCreate() {
+        resourceManager.getResourceManager((error, mgr) => {
+            if (error != null) {
+                console.error("error is " + error);
+                return;
+            }
+            // 'test'仅作示例，请替换为实际使用的资源名称
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("error is " + JSON.stringify(error));
+                } else {
+                    console.info("success is " + value);
+                }
+
+            });
+        });
     }
-    // 'app.string.test'仅作示例，请替换为实际使用的资源
-    mgr.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let str = value;
-      }
-    });
-  });
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -96,18 +100,32 @@ getResourceManager(bundleName: string, callback: AsyncCallback&lt;ResourceManage
 | callback   | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | 是    | 回调函数，返回应用包名对应的资源管理ResourceManager对象。 |
 
 **示例：**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import resourceManager from '@ohos.resourceManager';
+//FA模型请使用上述方式导入模块
 
-  // "com.example.myapplication"仅作示例，请替换为实际使用的包名
-  resourceManager.getResourceManager("com.example.myapplication", (error, mgr) => {
-    if (error != null) {
-      console.error("error is " + error);
-      return;
+// 'com.example.testapp'仅作示例，请替换为实际应用包名
+const BUNDLE_NAME = 'com.example.testapp';
+
+export default {
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
+            if (error != null) {
+                console.error("getResourceManager error is " + error);
+                return;
+            }
+            // 'test'仅作示例，请替换为实际使用的资源名称
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("getResourceManager error is " + JSON.stringify(error));
+                } else {
+                    console.info("getResourceManager success is " + value);
+                }
+            });
+        });
     }
-  });
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -127,23 +145,26 @@ getResourceManager(): Promise&lt;ResourceManager&gt;
 | Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise对象，返回资源管理ResourceManager对象。 |
 
 **示例：**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import resourceManager from '@ohos.resourceManager';
+//FA模型请使用上述方式导入模块
 
-  resourceManager.getResourceManager().then((mgr: resourceManager.ResourceManager) => {
-    // 'app.string.test'仅作示例，请替换为实际使用的资源
-    mgr.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let str = value;
-      }
-    });
-  }).catch((error: BusinessError) => {
-    console.error("error is " + error);
-  });
+export default {
+    onCreate() {
+        resourceManager.getResourceManager().then(resMgr => {
+            try {
+                // 'test'仅作示例，请替换为实际使用的资源名称
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -169,16 +190,29 @@ getResourceManager(bundleName: string): Promise&lt;ResourceManager&gt;
 | Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise对象，返回应用包名对应的资源管理ResourceManager对象。 |
 
 **示例：**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import resourceManager from '@ohos.resourceManager';
+//FA模型请使用上述方式导入模块
 
-  // "com.example.myapplication"仅作示例，请替换为实际使用的包名
-  resourceManager.getResourceManager("com.example.myapplication").then((mgr: resourceManager.ResourceManager) => {
-  }).catch((error: BusinessError) => {
-    console.error("error is " + error);
-  });
+// 'com.example.testapp'仅作示例，请替换为实际应用包名
+const BUNDLE_NAME = 'com.example.testapp';
+
+export default {
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME).then(resMgr => {
+            try {
+                // 'test'仅作示例，请替换为实际使用的资源名称
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
+};
   ```
 
 ## resourceManager.getSysResourceManager<sup>20+</sup>
@@ -413,7 +447,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // 'app.string.test'仅作示例，请替换为实际使用的资源
             let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id);
-            console.log(`getStringSync, result: ${testStr}`);
+            console.info(`getStringSync, result: ${testStr}`);
             // 打印输出结果: getStringSync, result: I'm a test string resource.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -480,7 +514,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // 'app.string.test'仅作示例，请替换为实际使用的资源
             let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id, "format string", 10, 98.78);
-            console.log(`getStringSync, result: ${testStr}`);
+            console.info(`getStringSync, result: ${testStr}`);
             // 打印输出结果: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -545,7 +579,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // "test"仅作示例，请替换为实际使用的资源
             let testStr = this.context.resourceManager.getStringByNameSync("test");
-            console.log(`getStringByNameSync, result: ${testStr}`);
+            console.info(`getStringByNameSync, result: ${testStr}`);
             // 打印输出结果: getStringByNameSync, result: I'm a test string resource.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -612,7 +646,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // "test"仅作示例，请替换为实际使用的资源
             let testStr = this.context.resourceManager.getStringByNameSync("test", "format string", 10, 98.78);
-            console.log(`getStringByNameSync, result: ${testStr}`);
+            console.info(`getStringByNameSync, result: ${testStr}`);
             // 打印输出结果: getStringByNameSync, result: I'm a format string, format int: 10, format float: 98.78.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -674,7 +708,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getStringValue, result: ${value}`);
+                console.info(`getStringValue, result: ${value}`);
                 // 打印输出结果: getStringValue, result: I'm a test string resource.
             }
         });
@@ -735,7 +769,7 @@ export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 'app.string.test'仅作示例，请替换为实际使用的资源
         this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
-            console.log(`getStringValue, result: ${value}`);
+            console.info(`getStringValue, result: ${value}`);
             // 打印输出结果: getStringValue, result: I'm a test string resource.
         }).catch((error: BusinessError) => {
             console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
@@ -795,7 +829,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getStringByName, result: ${value}`);
+                console.info(`getStringByName, result: ${value}`);
                 // 打印输出结果: getStringByName, result: I'm a test string resource.
             }
         });
@@ -856,7 +890,7 @@ export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // "test"仅作示例，请替换为实际使用的资源
         this.context.resourceManager.getStringByName("test").then((value: string) => {
-            console.log(`getStringByName, result: ${value}`);
+            console.info(`getStringByName, result: ${value}`);
             // 打印输出结果: getStringByName, result: I'm a test string resource.
         }).catch((error: BusinessError) => {
             console.error(`promise getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
@@ -923,7 +957,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // 'app.strarray.test'仅作示例，请替换为实际使用的资源
             let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync($r('app.strarray.test').id);
-            console.log(`getStringArrayValueSync, result: ${strArray[0]}`);
+            console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
             // 打印输出结果: getStringArrayValueSync, result: I'm one of the array's values.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -992,7 +1026,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // "test"仅作示例，请替换为实际使用的资源
             let strArray: Array<string> = this.context.resourceManager.getStringArrayByNameSync("test");
-            console.log(`getStringArrayByNameSync, result: ${strArray[0]}`);
+            console.info(`getStringArrayByNameSync, result: ${strArray[0]}`);
             // 打印输出结果: getStringArrayByNameSync, result: I'm one of the array's values.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1059,7 +1093,7 @@ export default class EntryAbility extends UIAbility {
                 if (error != null) {
                     console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
                 } else {
-                    console.log(`getStringArrayValue, result: ${value[0]}`);
+                    console.info(`getStringArrayValue, result: ${value[0]}`);
                     // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
                 }
             });
@@ -1125,7 +1159,7 @@ export default class EntryAbility extends UIAbility {
         // 'app.strarray.test'仅作示例，请替换为实际使用的资源
         this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id)
             .then((value: Array<string>) => {
-                console.log(`getStringArrayValue, result: ${value[0]}`);
+                console.info(`getStringArrayValue, result: ${value[0]}`);
                 // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
             })
             .catch((error: BusinessError) => {
@@ -1191,7 +1225,7 @@ export default class EntryAbility extends UIAbility {
                 console.error(`callback getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
                 let strArray = value;
-                console.log(`getStringArrayByName, result: ${value[0]}`);
+                console.info(`getStringArrayByName, result: ${value[0]}`);
                 // 打印输出结果: getStringArrayByName, result: I'm one of the array's values.
             }
         });
@@ -1257,7 +1291,7 @@ export default class EntryAbility extends UIAbility {
         // "test"仅作示例，请替换为实际使用的资源
         this.context.resourceManager.getStringArrayByName("test")
             .then((value: Array<string>) => {
-                console.log(`getStringArrayByName, result: ${value[0]}`);
+                console.info(`getStringArrayByName, result: ${value[0]}`);
                 // 打印输出结果: getStringArrayByName, result: I'm one of the array's values.
             })
             .catch((error: BusinessError) => {
@@ -1340,7 +1374,7 @@ export default class EntryAbility extends UIAbility {
             // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
             // 'app.plural.format_test'仅作示例，请替换为实际使用的资源
             let pluralStr = this.context.resourceManager.getIntPluralStringValueSync($r('app.plural.format_test').id, 1, 1, "basket", 0.3);
-            console.log(`getIntPluralStringValueSync, result: ${pluralStr}`);
+            console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
             // 打印输出结果: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1424,7 +1458,7 @@ export default class EntryAbility extends UIAbility {
             // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
             // "format_test"仅作示例，请替换为实际使用的资源
             let pluralStr = this.context.resourceManager.getIntPluralStringByNameSync("format_test", 1, 1, "basket", 0.3);
-            console.log(`getIntPluralStringByNameSync, result: ${pluralStr}`);
+            console.info(`getIntPluralStringByNameSync, result: ${pluralStr}`);
             // 打印输出结果: getIntPluralStringByNameSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1508,7 +1542,7 @@ export default class EntryAbility extends UIAbility {
             // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为other的字符串
             // 'app.plural.format_test'仅作示例，请替换为实际使用的资源
             let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync($r('app.plural.format_test').id, 2.1, 2, "basket", 0.6);
-            console.log(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+            console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
             // 打印输出结果: getDoublePluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1592,8 +1626,8 @@ export default class EntryAbility extends UIAbility {
             // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为other的字符串
             // "format_test"仅作示例，请替换为实际使用的资源
             let pluralStr = this.context.resourceManager.getDoublePluralStringByNameSync("format_test", 2.1, 2, "basket", 0.6);
-            console.log(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
-            // 打印输出结果: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+            console.info(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
+            // 打印输出结果: getDoublePluralStringByNameSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
@@ -2910,7 +2944,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // 'app.boolean.boolean_test'仅作示例，请替换为实际使用的资源
             let boolTest = this.context.resourceManager.getBoolean($r('app.boolean.boolean_test').id);
-            console.log(`getBoolean, result: ${boolTest}`);
+            console.info(`getBoolean, result: ${boolTest}`);
             // 打印输出结果: getBoolean, result: true
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -2975,7 +3009,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // "boolean_test"仅作示例，请替换为实际使用的资源
             let boolTest = this.context.resourceManager.getBooleanByName("boolean_test");
-            console.log(`getBooleanByName, result: ${boolTest}`);
+            console.info(`getBooleanByName, result: ${boolTest}`);
             // 打印输出结果: getBooleanByName, result: true
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3047,13 +3081,14 @@ getNumber(resId: number): number
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
             // integer对应返回的是原数值
             // 'app.integer.integer_test'仅作示例，请替换为实际使用的资源
             let intValue = this.context.resourceManager.getNumber($r('app.integer.integer_test').id);
-            console.log(`getNumber, int value: ${intValue}`);
+            console.info(`getNumber, int value: ${intValue}`);
             // 打印输出结果: getNumber, int value: 100
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3065,7 +3100,7 @@ export default class EntryAbility extends UIAbility {
             // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
             // 'app.float.float_test'仅作示例，请替换为实际使用的资源
             let floatValue = this.context.resourceManager.getNumber($r('app.float.float_test').id);
-            console.log(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+            console.info(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
             // 打印输出结果: getNumber, densityPixels: 3.25, float value: 99.45000457763672
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3138,13 +3173,14 @@ getNumberByName(resName: string): number
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
             // integer对应返回的是原数值
             // "integer_test"仅作示例，请替换为实际使用的资源
             let intValue = this.context.resourceManager.getNumberByName("integer_test");
-            console.log(`getNumberByName, int value: ${intValue}`);
+            console.info(`getNumberByName, int value: ${intValue}`);
             // 打印输出结果: getNumberByName, int value: 100
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3156,7 +3192,7 @@ export default class EntryAbility extends UIAbility {
             // float对应返回的是真实像素点值，带"vp","fp"单位的像素值 = 原数值 * densityPixels
             // "float_test"仅作示例，请替换为实际使用的资源
             let floatValue = this.context.resourceManager.getNumberByName("float_test");
-            console.log(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+            console.info(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
             // 打印输出结果: getNumberByName, densityPixels: 3.25, float value: 99.45000457763672
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3215,12 +3251,13 @@ getColorSync(resId: number) : number
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
             // 'app.color.test'仅作示例，请替换为实际使用的资源
             let colorValue = this.context.resourceManager.getColorSync($r('app.color.test').id);
-            console.log(`getColorSync, result: ${colorValue}`);
+            console.info(`getColorSync, result: ${colorValue}`);
             // 打印输出结果: getColorSync, result: 4294967295
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3280,12 +3317,13 @@ getColorByNameSync(resName: string) : number
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
             // "test"仅作示例，请替换为实际使用的资源
             let colorValue = this.context.resourceManager.getColorByNameSync("test");
-            console.log(`getColorByNameSync, result: ${colorValue}`);
+            console.info(`getColorByNameSync, result: ${colorValue}`);
             // 打印输出结果: getColorByNameSync, result: 4294967295
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3339,6 +3377,7 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 'app.color.test'仅作示例，请替换为实际使用的资源
@@ -3346,7 +3385,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getColor, result: ${value}`);
+                console.info(`getColor, result: ${value}`);
                 // 打印输出结果: getColor, result: 4294967295
             }
         });
@@ -3402,12 +3441,13 @@ getColor(resId: number): Promise&lt;number&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 'app.color.test'仅作示例，请替换为实际使用的资源
         this.context.resourceManager.getColor($r('app.color.test').id)
             .then((value: number) => {
-                console.log(`getColor, result: ${value}`);
+                console.info(`getColor, result: ${value}`);
                 // 打印输出结果: getColor, result: 4294967295
             })
             .catch((error: BusinessError) => {
@@ -3461,6 +3501,7 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // "test"仅作示例，请替换为实际使用的资源
@@ -3468,7 +3509,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getColorByName, result: ${value}`);
+                console.info(`getColorByName, result: ${value}`);
                 // 打印输出结果: getColorByName, result: 4294967295
             }
         });
@@ -3524,12 +3565,13 @@ getColorByName(resName: string): Promise&lt;number&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // "test"仅作示例，请替换为实际使用的资源
         this.context.resourceManager.getColorByName("test")
             .then((value: number) => {
-                console.log(`getColorByName, result: ${value}`);
+                console.info(`getColorByName, result: ${value}`);
                 // 打印输出结果: getColorByName, result: 4294967295
             })
             .catch((error: BusinessError) => {
@@ -3574,6 +3616,7 @@ getRawFileContentSync(path: string): Uint8Array
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3618,6 +3661,7 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3673,6 +3717,7 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3730,13 +3775,14 @@ getRawFileListSync(path: string): Array\<string>
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
             // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
             // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
             let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
-            console.log(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
+            console.info(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
             // 打印输出结果: getRawFileListSync, result: ["test.txt"] 
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3781,6 +3827,7 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
@@ -3789,8 +3836,8 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-                // 打印输出结果: getRawFileListSync, result: ["test.txt"]
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // 打印输出结果: getRawFileList, result: ["test.txt"]
             }
         });
     }
@@ -3836,14 +3883,15 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
         // 传入""仅作示例，请替换为rawfile目录下实际的文件路径
         this.context.resourceManager.getRawFileList("")
             .then((value: Array<string>) => {
-                console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-                // 打印输出结果: getRawFileListSync, result: ["test.txt"]
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // 打印输出结果: getRawFileList, result: ["test.txt"]
             })
             .catch((error: BusinessError) => {
                 console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
@@ -3856,7 +3904,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFdSync(path: string): RawFileDescriptor
 
-获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。
+获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。
 
 > **说明**
 >
@@ -3891,6 +3939,7 @@ getRawFdSync(path: string): RawFileDescriptor
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3909,7 +3958,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd）。
+获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd），使用callback异步回调。
 
 > **说明**
 >
@@ -3940,6 +3989,7 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3966,7 +4016,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
-获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。
+获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用Promise异步回调。
 
 > **说明**
 >
@@ -4002,6 +4052,7 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4026,7 +4077,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFdSync(path: string): void
 
-关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。
+关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4051,17 +4102,22 @@ closeRawFdSync(path: string): void
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // "test.txt"仅作示例，请替换为实际使用的资源
-            this.context.resourceManager.closeRawFdSync("test.txt");
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`closeRawFd failed, error code: ${code}, message: ${message}.`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+
+      this.context.resourceManager.closeRawFdSync("test.txt");
+      console.info(`closeRawFdSync test success.`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`closeRawFdSync test failed, error code: ${code}, message: ${message}.`);
     }
+  }
 }
   ```
 
@@ -4095,21 +4151,26 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // "test.txt"仅作示例，请替换为实际使用的资源
-            this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
-                if (error != null) {
-                    console.error("error is " + error);
-                }
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
+        if (error != null) {
+          console.error("error is " + error);
+          return;
         }
+        console.info('closeRawFd success.');
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
     }
+  }
 }
   ```
 
@@ -4148,17 +4209,21 @@ closeRawFd(path: string): Promise&lt;void&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // "test.txt"仅作示例，请替换为实际使用的资源
-            this.context.resourceManager.closeRawFd("test.txt");
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // "test.txt"仅作示例，请替换为实际使用的资源
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // 根据实际业务场景，使用rawfile资源
+      this.context.resourceManager.closeRawFd("test.txt");
+      console.info(`closeRawFd test success.`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
     }
+  }
 }
   ```
 
@@ -4181,6 +4246,7 @@ getConfigurationSync(): Configuration
 **示例：**
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4589,7 +4655,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // 'sys.symbol.message'仅作示例，请替换为实际使用的资源
             let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
-            console.log(`getSymbol, result: ${symbolValue}`);
+            console.info(`getSymbol, result: ${symbolValue}`);
             // 打印输出结果: getSymbol, result: 983183
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -4644,7 +4710,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // "message"仅作示例，请替换为实际使用的资源
             let symbolValue = this.context.resourceManager.getSymbolByName("message");
-            console.log(`getSymbolByName, result: ${symbolValue}`);
+            console.info(`getSymbolByName, result: ${symbolValue}`);
             // 打印输出结果: getSymbolByName, result: 983183
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -4698,13 +4764,13 @@ export default class EntryAbility extends UIAbility {
             // "sub"仅作示例，请替换为实际使用的目录名称
             let isRawDir = this.context.resourceManager.isRawDir("sub");
             // 打印输出结果: sub isRawDir, result: true
-            console.log(`sub isRawDir, result: ${isRawDir}`);
+            console.info(`sub isRawDir, result: ${isRawDir}`);
 
             // 假设rawfile根目录下存在test.txt文件，则isRawDir返回结果为false
             // "test.txt"仅作示例，请替换为实际使用的资源
             isRawDir = this.context.resourceManager.isRawDir("test.txt");
             // 打印输出结果: test.txt isRawDir, result: false
-            console.log(`test.txt isRawDir, result: ${isRawDir}`);
+            console.info(`test.txt isRawDir, result: ${isRawDir}`);
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
@@ -5009,7 +5075,7 @@ getStringSync(resource: Resource): string
   };
   try {
     let testStr = this.context.resourceManager.getStringSync(resource);
-    console.log(`getStringSync, result: ${testStr}`);
+    console.info(`getStringSync, result: ${testStr}`);
     // 打印输出结果: getStringSync, result: I'm a test string resource.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -5082,7 +5148,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
   };
   try {
     let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
-    console.log(`getStringSync, result: ${testStr}`);
+    console.info(`getStringSync, result: ${testStr}`);
     // 打印输出结果: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -5149,7 +5215,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
     if (error != null) {
       console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringValue, result: ${value}`);
+      console.info(`getStringValue, result: ${value}`);
       // 打印输出结果: getStringValue, result: I'm a test string resource.
     }
   });
@@ -5208,7 +5274,7 @@ getStringValue(resource: Resource): Promise&lt;string&gt;
     if (error != null) {
       console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringValue, result: ${value}`);
+      console.info(`getStringValue, result: ${value}`);
       // 打印输出结果: getStringValue, result: I'm a test string resource.
     }
   });
@@ -5350,7 +5416,7 @@ getStringArrayValueSync(resource: Resource): Array&lt;string&gt;
   };
   try {
     let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
-    console.log(`getStringArrayValueSync, result: ${strArray[0]}`);
+    console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
     // 打印输出结果: getStringArrayValueSync, result: I'm one of the array's values.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -5421,7 +5487,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;str
     if (error != null) {
       console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringArrayValue, result: ${value[0]}`);
+      console.info(`getStringArrayValue, result: ${value[0]}`);
       // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
     }
   });
@@ -5493,7 +5559,7 @@ getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
   };
   this.context.resourceManager.getStringArrayValue(resource)
     .then((value: Array<string>) => {
-      console.log(`getStringArrayValue, result: ${value[0]}`);
+      console.info(`getStringArrayValue, result: ${value[0]}`);
       // 打印输出结果: getStringArrayValue, result: I'm one of the array's values.
     })
     .catch((error: BusinessError) => {
@@ -6402,7 +6468,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
     // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
     // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
     let pluralStr = this.context.resourceManager.getIntPluralStringValueSync(resource, 1, 1, "basket", 0.3);
-    console.log(`getIntPluralStringValueSync, result: ${pluralStr}`);
+    console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
     // 打印输出结果: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6489,7 +6555,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
     // 根据语言单复数规则，参数num取值为2.1，英文环境下对应单复数类别为other
     // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为other的字符串
     let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
-    console.log(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+    console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
     // 打印输出结果: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6566,7 +6632,7 @@ getPluralStringValueSync(resId: number, num: number): string
     // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
     // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
     let pluralValue = this.context.resourceManager.getPluralStringValueSync($r('app.plural.test').id, 1);
-    console.log(`getPluralStringValueSync, result: ${pluralValue}`);
+    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
     // 打印输出结果: getPluralStringValueSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6651,7 +6717,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
     // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
     // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
     let pluralValue = this.context.resourceManager.getPluralStringValueSync(resource, 1);
-    console.log(`getPluralStringValueSync, result: ${pluralValue}`);
+    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
     // 打印输出结果: getPluralStringValueSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6728,7 +6794,7 @@ getPluralStringByNameSync(resName: string, num: number): string
     // 根据语言单复数规则，参数num取值为1，英文环境下对应单复数类别为one
     // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
     let pluralValue = this.context.resourceManager.getPluralStringByNameSync("test", 1);
-    console.log(`getPluralStringByNameSync, result: ${pluralValue}`);
+    console.info(`getPluralStringByNameSync, result: ${pluralValue}`);
     // 打印输出结果: getPluralStringByNameSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6803,7 +6869,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;str
       if (error != null) {
         console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
       } else {
-        console.log(`getPluralStringValue, result: ${value}`);
+        console.info(`getPluralStringValue, result: ${value}`);
         // 打印输出结果: getPluralStringValue, result: 1 apple
       }
     });
@@ -6877,7 +6943,7 @@ getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
   // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
   this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
     .then((value: string) => {
-      console.log(`getPluralStringValue, result: ${value}`);
+      console.info(`getPluralStringValue, result: ${value}`);
       // 打印输出结果: getPluralStringValue, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -6959,7 +7025,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
       if (error != null) {
         console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
       } else {
-        console.log(`getPluralStringValue, result: ${value}`);
+        console.info(`getPluralStringValue, result: ${value}`);
         // 打印输出结果: getPluralStringValue, result: 1 apple
       }
     });
@@ -7041,7 +7107,7 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
   // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
   this.context.resourceManager.getPluralStringValue(resource, 1)
     .then((value: string) => {
-      console.log(`getPluralStringValue, result: ${value}`);
+      console.info(`getPluralStringValue, result: ${value}`);
       // 打印输出结果: getPluralStringValue, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -7114,7 +7180,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;
     if (error != null) {
       console.error(`callback getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getPluralStringByName, result: ${value}`);
+      console.info(`getPluralStringByName, result: ${value}`);
       // 打印输出结果: getPluralStringByName, result: 1 apple
     }
   });
@@ -7188,7 +7254,7 @@ getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
   // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为one的字符串
   this.context.resourceManager.getPluralStringByName("test", 1)
     .then((value: string) => {
-      console.log(`getPluralStringByName, result: ${value}`);
+      console.info(`getPluralStringByName, result: ${value}`);
       // 打印输出结果: getPluralStringByName, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -7337,7 +7403,7 @@ getBoolean(resource: Resource): boolean
   };
   try {
     let boolTest = this.context.resourceManager.getBoolean(resource);
-    console.log(`getBoolean, result: ${boolTest}`);
+    console.info(`getBoolean, result: ${boolTest}`);
     // 打印输出结果: getBoolean, result: true
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7409,7 +7475,7 @@ getNumber(resource: Resource): number
 
   try {
     let intValue = this.context.resourceManager.getNumber(resource);
-    console.log(`getNumber, int value: ${intValue}`);
+    console.info(`getNumber, int value: ${intValue}`);
     // 打印输出结果: getNumber, int value: 100
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7479,7 +7545,7 @@ getColorSync(resource: Resource): number
   };
   try {
     let colorValue = this.context.resourceManager.getColorSync(resource);
-    console.log(`getColorSync, result: ${colorValue}`);
+    console.info(`getColorSync, result: ${colorValue}`);
     // 打印输出结果: getColorSync, result: 4294967295
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7546,7 +7612,7 @@ getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
     if (error != null) {
       console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getColor, result: ${value}`);
+      console.info(`getColor, result: ${value}`);
       // 打印输出结果: getColor, result: 4294967295
     }
   });
@@ -7614,7 +7680,7 @@ getColor(resource: Resource): Promise&lt;number&gt;
   };
   this.context.resourceManager.getColor(resource)
     .then((value: number) => {
-      console.log(`getColor, result: ${value}`);
+      console.info(`getColor, result: ${value}`);
       // 打印输出结果: getColor, result: 4294967295
     })
     .catch((error: BusinessError) => {
@@ -7671,7 +7737,7 @@ getSymbol(resource: Resource): number
   };
   try {
     let symbolValue = this.context.resourceManager.getSymbol(resource);
-    console.log(`getSymbol, result: ${symbolValue}`);
+    console.info(`getSymbol, result: ${symbolValue}`);
     // 打印输出结果: getSymbol, result: 983183
   } catch (error) {
     let code = (error as BusinessError).code;

@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @yangfan229-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 当页面信息较多时，为了让用户能够聚焦于当前显示的内容，需要对页面内容进行分类，提高页面空间利用率。[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)组件可以在一个页面内快速实现视图内容的切换，一方面提升查找信息的效率，另一方面精简用户单次获取到的信息量。
@@ -273,7 +273,7 @@ TabContent() {
 
 ![内容页和页签不联动](figures/tabcontent_tabbar_not_sync.gif)
 
-此时需要使用Tabs提供的onSelected事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
+从API version 18开始，支持使用Tabs提供的[onSelected](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18)事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
 
 ```ts
 @Entry
@@ -430,7 +430,7 @@ struct Demo {
         } else {
           this.fontSize = 15;
         }
-        console.log('updateConfiguration success.');
+        console.info('updateConfiguration success.');
         this.getUIContext().getPromptAction().showToast({ message: `scale:${scale}, updateConfiguration success.` });
       }
     });

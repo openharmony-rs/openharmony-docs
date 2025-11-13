@@ -200,7 +200,7 @@ Sets the power mode of this device. This API uses an asynchronous callback to re
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | mode     | DevicePowerMode | Yes  | Power mode. The value must be an enum.                                                  |
-| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br> If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br>If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 

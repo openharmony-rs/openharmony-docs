@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The OH_NativeImage module provides the capabilities of **NativeImage**. Functioning as a data consumer, it is used to associate data with the OpenGL texture. It is used in the OpenGL environment. Alternatively, you can directly obtain the buffer for custom rendering.
+This module provides the capabilities of **NativeImage**. Functioning as a data consumer, it is used to associate data with the OpenGL texture. It is used in the OpenGL environment. Alternatively, you can directly obtain the buffer for custom rendering.
 
 **Since**: 9
 
@@ -15,4 +15,4 @@ The OH_NativeImage module provides the capabilities of **NativeImage**. Function
 
 | Name                                    | Description                                                        |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| [native_image.h](capi-native-image-h.md) | This file declares the functions for obtaining and using **NativeImage**.<br>Reference file: <native_image/native_image.h>|
+| [native_image.h](capi-native-image-h.md) | This file declares the functions for obtaining and using **NativeImage**.<br>File to include: <native_image/native_image.h>|

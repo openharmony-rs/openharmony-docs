@@ -129,9 +129,9 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
          }
 
          // If the RDB store version is not 0 and does not match the current version, upgrade or downgrade the RDB store.
-         // For example, upgrade the RDB store from version 1 to version 2.
+         // Upgrade the RDB store from version 1 to version 2.
          if (storeVersion === 1) {
-           // Upgrade the RDB store from version 1 to version 2, and change the table structure from EMPLOYEE (NAME, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
+           // Change the table structure from EMPLOYEE (NAME, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
            try {
              await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
              console.info("Upgrade store version from 1 to 2 success.")
@@ -142,9 +142,9 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
            }
          }
 
-         // For example, upgrade the RDB store from version 2 to version 3.
+         // Upgrade the RDB store from version 2 to version 3.
          if (storeVersion === 2) {
-           // Upgrade the RDB store from version 2 to version 3, and change the table structure from EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES).
+           // Change the table structure from EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES).
            try {
              await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
              storeVersion = 3;
@@ -201,10 +201,10 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      }
 
      // If the RDB store version is not 0 and does not match the current version, upgrade or downgrade the RDB store.
-     // For example, upgrade the RDB store from version 1 to version 2.
+     // Upgrade the RDB store from version 1 to version 2.
      if (storeVersion === 1) {
        try {
-         // Upgrade the RDB store from version 1 to version 2, and change the table structure from EMPLOYEE (NAME, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
+         // Change the table structure from EMPLOYEE (NAME, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
          await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
          storeVersion = 2;
          console.info("Upgrade store version from 1 to 2 success.")
@@ -214,10 +214,10 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        }
      }
 
-     // For example, upgrade the RDB store from version 2 to version 3.
+     // Upgrade the RDB store from version 2 to version 3.
      if (storeVersion === 2) {
        try {
-         // Upgrade the RDB store from version 2 to version 3, and change the table structure from EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES).
+         // Change the table structure from EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) to EMPLOYEE (NAME, AGE, SALARY, CODES).
          await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
          storeVersion = 3;
          console.info("Upgrade store version from 2 to 3 success.")
@@ -226,6 +226,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
          console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
        }
      }
+     store.version = storeVersion;
      // Before adding, deleting, modifying, and querying data in an RDB store, obtain an RdbStore instance and create a table.
    });
    ```
@@ -421,7 +422,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 
          // Delete data using the transaction object.
          await transaction.execute('DELETE FROM EMPLOYEE WHERE age = ? OR age = ?', [21, 20]);
-         console.log(`execute delete success`);
+         console.info(`execute delete success`);
 
          // Commit a transaction.
          await transaction.commit();

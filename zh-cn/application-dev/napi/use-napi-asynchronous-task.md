@@ -30,7 +30,9 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 1. 使用napi_create_async_work创建异步任务，使用napi_queue_async_work将任务加入队列，等待执行。
 
-   ```cpp
+   <!-- @[napi_create_async_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    #include "napi/native_api.h"
    // 调用方提供的data context，该数据会传递给execute和complete函数
    struct CallbackData {
@@ -40,47 +42,55 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        double args = 0;
        double result = 0;
    };
-
+   
+   // ···
+   
    static napi_value AsyncWork(napi_env env, napi_callback_info info)
    {
-      size_t argc = 1;
-      napi_value args[1];
-      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-      napi_value promise = nullptr;
-      napi_deferred deferred = nullptr;
-      napi_create_promise(env, &deferred, &promise);
-
-      auto callbackData = new CallbackData();
-      callbackData->deferred = deferred;
-      napi_get_value_double(env, args[0], &callbackData->args);
-
-      napi_value resourceName = nullptr;
-      napi_create_string_utf8(env, "AsyncCallback", NAPI_AUTO_LENGTH, &resourceName);
-      // 创建异步任务
-      napi_create_async_work(env, nullptr, resourceName, ExecuteCB, CompleteCB, callbackData, &callbackData->asyncWork);
-      // 将异步任务加入队列
-      napi_queue_async_work(env, callbackData->asyncWork);
-
-      return promise;
+       size_t argc = 1;
+       napi_value args[1];
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       napi_value promise = nullptr;
+       napi_deferred deferred = nullptr;
+       napi_create_promise(env, &deferred, &promise);
+   
+       auto callbackData = new CallbackData();
+       callbackData->deferred = deferred;
+       napi_get_value_double(env, args[0], &callbackData->args);
+   
+       napi_value resourceName = nullptr;
+       napi_create_string_utf8(env, "AsyncCallback", NAPI_AUTO_LENGTH, &resourceName);
+       // 创建异步任务
+       napi_create_async_work(env, nullptr, resourceName, ExecuteCB, CompleteCB, callbackData, &callbackData->asyncWork);
+       // 将异步任务加入队列
+       napi_queue_async_work(env, callbackData->asyncWork);
+   
+       return promise;
    }
    ```
-   <!-- @[napi_create_async_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   
+   
 
 2. 定义异步任务的第一个回调函数，该函数在工作线程中执行，处理具体的业务逻辑。
 
-   ```cpp
+   <!-- @[napi_first_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    static void ExecuteCB(napi_env env, void *data)
    {
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
        callbackData->result = callbackData->args;
    }
    ```
-   <!-- @[napi_first_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   
+
 
 3. 定义异步任务的第二个回调函数，该函数在主线程执行，将结果传递给ArkTS侧。
 
-   ```cpp
+   <!-- @[napi_second_call_back_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    static void CompleteCB(napi_env env, napi_status status, void *data)
    {
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
@@ -91,17 +101,20 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        } else {
            napi_reject_deferred(env, callbackData->deferred, result);
        }
-
+   
        napi_delete_async_work(env, callbackData->asyncWork);
        delete callbackData;
        callbackData = nullptr;
    }
    ```
-   <!-- @[napi_second_call_back_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   
+
 
 4. 模块初始化和ArkTS侧调用接口。
 
-   ```cpp
+   <!-- @[napi_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
+   ``` C++
    // 模块初始化
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -111,17 +124,20 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
    }
-    ```
-   <!-- @[napi_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   ```
+   
+
+   接口对应的.d.ts描述
 
     ```ts
-   // 接口对应的.d.ts描述
    export const asyncWork: (data: number) => Promise<number>;
+    ```
+    ArkTS侧调用接口
 
-   // ArkTS侧调用接口
+    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
-   nativeModule.asyncWork(1024).then((result) => {
+   testNapi.asyncWork(1024).then((result) => {
        hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
    });
    ```
@@ -133,9 +149,11 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 1. 使用napi_create_async_work创建异步任务，并使用napi_queue_async_work将异步任务加入队列，等待执行。
 
-   ```cpp
-   static constexpr int INT_ARG_2 = 2; // 入参索引
-
+   <!-- @[napi_create_queue_async_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
+   ``` C++
+   static constexpr int INT_ARGS_2 = 2; // 入参索引
+   
    // 调用方提供的data context，该数据会传递给execute和complete函数
    struct CallbackData {
        napi_async_work asyncWork = nullptr;
@@ -143,7 +161,9 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        double args[2] = {0};
        double result = 0;
    };
-
+   
+   // ···
+   
    napi_value AsyncWork(napi_env env, napi_callback_info info)
    {
        size_t argc = 3;
@@ -154,7 +174,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        napi_get_value_double(env, args[0], &asyncContext->args[0]);
        napi_get_value_double(env, args[1], &asyncContext->args[1]);
        // 将传入的callback转换为napi_ref延长其生命周期，防止被GC掉
-       napi_create_reference(env, args[INT_ARG_2], 1, &asyncContext->callbackRef);
+       napi_create_reference(env, args[INT_ARGS_2], 1, &asyncContext->callbackRef);
        napi_value resourceName = nullptr;
        napi_create_string_utf8(env, "asyncWorkCallback", NAPI_AUTO_LENGTH, &resourceName);
        // 创建异步任务
@@ -165,22 +185,28 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        return nullptr;
    }
    ```
-   <!-- @[napi_create_queue_async_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
+
 
 2. 定义异步任务的第一个回调函数，该函数在工作线程中执行，处理具体的业务逻辑。
 
-   ```cpp
+   <!-- @[napi_async_first_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
+   ``` C++
    static void ExecuteCB(napi_env env, void *data)
    {
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
        callbackData->result = callbackData->args[0] + callbackData->args[1];
    }
    ```
-   <!-- @[napi_async_first_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+
+   
 
 3. 定义异步任务的第二个回调函数，该函数在主线程执行，将结果传递给ArkTS侧。
 
-   ```cpp
+   <!-- @[napi_async_second_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
+   ``` C++
    static void CompleteCB(napi_env env, napi_status status, void *data)
    {
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
@@ -200,11 +226,14 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        callbackData = nullptr;
    }
    ```
-   <!-- @[napi_async_second_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+  
+
 
 4. 模块初始化以及ArkTS侧调用接口。
 
-   ```cpp
+   <!-- @[napi_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
+   ``` C++
    // 模块初始化
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -215,16 +244,20 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        return exports;
    }
    ```
-   <!-- @[napi_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
 
+    接口对应的.d.ts描述
    ```ts
-   // 接口对应的.d.ts描述
    export const asyncWork: (arg1: number, arg2: number, callback: (result: number) => void) => void;
+    ```
 
-   // ArkTS侧调用接口
+   ArkTS侧调用接口
+   ```ts
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import testNapi from 'libentry.so';
    let num1: number = 123;
    let num2: number = 456;
-   nativeModule.asyncWork(num1, num2, (result) => {
+   testNapi.asyncWork(num1, num2, (result) => {
        hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
    });
    ```

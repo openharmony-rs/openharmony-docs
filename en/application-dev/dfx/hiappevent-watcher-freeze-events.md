@@ -84,7 +84,7 @@ JS frame
 | packageName | string | Package name of the module.|
 | symbol | string | Function name.|
 | line | number | Code line number.|
-| column | number | Code line number.|
+| column | number | Code column number.|
 
 ### memory
 

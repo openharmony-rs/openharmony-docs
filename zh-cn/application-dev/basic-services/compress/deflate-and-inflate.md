@@ -30,7 +30,6 @@
 
    ```ts
    import { fileIo as fs} from '@kit.CoreFileKit';
-   import { BusinessError, zlib } from '@kit.BasicServicesKit';
 
    @Entry
    @Component
@@ -69,7 +68,6 @@
 采用接口[zlib.compressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibcompressfile9-1)将文件data.txt压缩并归档到data.zip中，采用接口[zlib.decompressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibdecompressfile9-1)将data.zip解压到应用沙箱目录下，示例代码如下。
 
    ```ts
-   import { fileIo as fs} from '@kit.CoreFileKit';
    import { BusinessError, zlib } from '@kit.BasicServicesKit';
 
    @Entry
@@ -201,7 +199,7 @@
 
    ```ts
    import { fileIo as fs} from '@kit.CoreFileKit';
-   import { BusinessError, zlib } from '@kit.BasicServicesKit';
+   import { zlib } from '@kit.BasicServicesKit';
 
    @Entry
    @Component
@@ -226,7 +224,7 @@
            let inFile = fs.openSync(path + '/data.bin', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
            let outFile = fs.openSync(path + '/data.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
            inflateFile(inFile, outFile).then(() => {
-             console.info('deflateFile success');
+             console.info('inflateFile success');
              fs.closeSync(inFile.fd);
              fs.closeSync(outFile.fd);
            })
@@ -351,7 +349,7 @@
 
    ```ts
    import { fileIo as fs} from '@kit.CoreFileKit';
-   import { BusinessError, zlib } from '@kit.BasicServicesKit';
+   import { zlib } from '@kit.BasicServicesKit';
 
    @Entry
    @Component

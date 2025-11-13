@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The OH_Drawing_FontAliasInfo struct describes the information about a font alias.
+This struct describes the information about a font alias.
 
 **Since**: 12
 
@@ -15,7 +15,7 @@ The OH_Drawing_FontAliasInfo struct describes the information about a font alias
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 
-## Total
+## Summary
 
 ### Member Variables
 

@@ -41,6 +41,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 **描述**
 
 启动计时器。
+不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 12
 

@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component supports file uploading on a frontend page. You can use [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) to process file upload requests sent from a frontend page. If this API is not used, the **Web** component provides default processing for the requests sent from the frontend page.
 
@@ -232,7 +232,7 @@ HTML page code:
 
 ## Processing File Upload Requests Using the Default ArkWeb Mode
 
-The **accept** attribute is a string that defines the file types that the file **input** component should accept. This string is a comma-separated list of unique file type specifiers. Because a given file type can be specified in many ways, it is important to provide a complete set of type specifiers when you need a file in a given format.
+The `accept` attribute is a string that defines the file type that the file input should accept. This string is a comma-separated list of unique file type specifiers. Because a given file type can be specified in many ways, it is important to provide a complete set of type specifiers when you need a file in a given format.
 
 The **capture** attribute is a string used to specify the camera to obtain the data if the **accept** attribute specifies that the input is an image or video. **user** indicates that the front camera and/or microphone should be used. **environment** indicates that the rear camera and/or microphone should be used. If this attribute is absent, the user agent is free to decide what to do. If the preset mode of the request is not available, the user agent may use the default mode.
 

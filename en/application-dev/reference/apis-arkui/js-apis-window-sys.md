@@ -1576,6 +1576,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     return false;
   }
 }
+
 export default class ServiceExtAbility extends ServiceExtensionAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let token: TestRemoteObject = new TestRemoteObject('testObject');
@@ -2065,7 +2066,7 @@ export default class EntryAbility extends UIAbility {
 
 opacity(opacity: number): void
 
-Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2102,7 +2103,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2145,7 +2146,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2189,7 +2190,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2864,7 +2865,7 @@ export default class EntryAbility extends UIAbility {
 
 raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
-Moves the main window above another main window within the same application, with child windows following their parents' layer change. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode. This API uses a promise to return the result.
+Moves the main window above another main window within the same application, with child windows following their parents' layer change. This API uses a promise to return the result.
 
 This API can be called only by the main window of a system application.
 
@@ -2878,7 +2879,7 @@ You need to pass the ID of the target main window. Both the calling window and t
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -3622,7 +3623,7 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-Shows or hides the maximize, minimize, and split-screen buttons on the title bar of the main window. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Shows or hides the maximize, minimize, and split-screen buttons on the title bar of the main window.
 
 This API takes effect only for the title bar buttons (maximize, minimize, and split-screen) that are available in the current scenario.
 
@@ -3630,7 +3631,7 @@ This API takes effect only for the title bar buttons (maximize, minimize, and sp
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -3926,7 +3927,7 @@ export default class EntryAbility extends UIAbility {
 
 setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 
-Sets the image displayed in the multitasking window. This API uses a promise to return the result.
+Sets the image displayed in the multitasking view. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

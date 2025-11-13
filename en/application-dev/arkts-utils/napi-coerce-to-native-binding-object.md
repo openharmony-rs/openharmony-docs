@@ -206,7 +206,7 @@ Native Transferable objects support two distinct modes: shared mode and transfer
        std::mutex numberSetMutex_{};
    };
    
-   void FinializeCallback(napi_env env, void *data, void *hint)
+   void FinalizeCallback(napi_env env, void *data, void *hint)
    {
        return;
    }
@@ -239,7 +239,7 @@ Native Transferable objects support two distinct modes: shared mode and transfer
            {"clear", nullptr, CustomNativeObject::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
        napi_define_properties(env, object, sizeof(desc) / sizeof(desc[0]), desc);
        // Bind the ArkTS object's lifecycle of the native object.
-       napi_wrap(env, object, value, FinializeCallback, nullptr, nullptr);
+       napi_wrap(env, object, value, FinalizeCallback, nullptr, nullptr);
        // Enable the ArkTS object to carry native information.
        napi_coerce_to_native_binding_object(env, object, DetachCallback, AttachCallback, value, nullptr);
        return object;
@@ -257,7 +257,7 @@ Native Transferable objects support two distinct modes: shared mode and transfer
            {"setTransferDetached", nullptr, CustomNativeObject::SetTransferDetached, nullptr, nullptr, nullptr, napi_default, nullptr}};
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        auto &object = CustomNativeObject::GetInstance();
-       napi_wrap(env, exports, reinterpret_cast<void*>(&object), FinializeCallback, nullptr, nullptr);
+       napi_wrap(env, exports, reinterpret_cast<void*>(&object), FinalizeCallback, nullptr, nullptr);
        napi_ref exportsRef;
        napi_create_reference(env, exports, 1, &exportsRef);
        napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(&object), exportsRef);

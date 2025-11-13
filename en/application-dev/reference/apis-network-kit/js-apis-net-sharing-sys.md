@@ -1,6 +1,5 @@
 # @ohos.net.sharing (Network Sharing Management) (System API)
 
-
 The Network Sharing module allows you to share your device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing. It also allows you to query the network sharing state and shared mobile data volume.
 
 > **NOTE**
@@ -1155,11 +1154,11 @@ Wakes up the listener for network sharing state changes of an NIC.
 
 **System capability**: SystemCapability.Communication.NetManager.NetSharing
 
-| Name    | Type                                             | Mandatory| Description                |
-| -------- | ------------------------------------------------- | ---- | ------------------- |
-| type     | [SharingIfaceType](#sharingifacetype)             | Yes  | Enumerates the network sharing types of an NIC.      |
-| iface    | string                                            | Yes  | NIC name.|
-| state    | [SharingIfaceState](#sharingifacestate)           | Yes  | Network sharing state of the NIC.      |
+| Name    | Type                                             | Read-Only|Optional| Description                |
+| -------- | ------------------------------------------------- | ---- | ----|--------------- |
+| type     | [SharingIfaceType](#sharingifacetype)             | No |No|Enumerates the network sharing types of an NIC.      |
+| iface    | string                                            | No  |No|NIC name.|
+| state    | [SharingIfaceState](#sharingifacestate)           | No |No|Network sharing state of the NIC.      |
 
 ## SharingIfaceState
 

@@ -4,7 +4,7 @@
 <!--Owner: @KeeGitee-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The system provides the light and dark theme modes for users. Dark mode reduces the screen brightness and visual stimulus in low-light environments, improving reading experience. The **Web** component is rendered based on the web page style. If the web page is not adapted to dark mode, it will be separated from the system theme. To ensure a consistent user experience, you need to consider users' theme preferences and adapt the web page to dark mode.
 
@@ -85,7 +85,7 @@ You can adapt the web page to the dark mode using the **color-scheme** and **pre
 
   You can use **color-scheme** to declare a web page color scheme and change the default style of web page elements. However, the application scope of **color-scheme** is limited. You can use **prefers-color-scheme** to define the dark style of web pages more flexibly. Moreover, **prefers-color-scheme** can be used together with **color-scheme**.
 
-  For example, when the following style definition is added to **color-scheme.html** and the web dark mode is enabled, the web page uses the dark color scheme and the style defined in **@media (prefers-color-scheme: dark)**. Figure 2 shows the rendering effect.
+  For example, add the following style definition to color-scheme.html: When the web dark mode is enabled, the dark color scheme is applied to the web page, and the style defined in @media (prefers-color-scheme: dark) is applied. Figure 2 shows the rendering effect.
 
   ```html
   <style>

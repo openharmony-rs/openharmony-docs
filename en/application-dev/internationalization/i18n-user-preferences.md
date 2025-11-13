@@ -9,20 +9,17 @@
 
 ## Use Cases
 
-In addition to system locales and preferred languages, the system also supports user preference settings. Currently, it offers two such preferences: whether to use local digits and whether to adopt the 12/24-hour time format. User preference settings are saved to system locales and application preferred languages as part of the internationalization feature.
+In addition to system locales and preferred application languages, the system also allows for user preference settings. The user preferences currently supported include local digit usage and 12/24-hour time format. User preference settings are saved to system locales and application preferred languages as part of the internationalization feature.
 
 ## How to Develop
 
-For details about how to use related APIs, see [System](../reference/apis-localization-kit/js-apis-i18n.md#system9).
+The development procedure is as follows. For details about how to use related APIs, see [System](../reference/apis-localization-kit/js-apis-i18n.md#system9).
 
-1. Import the **intl** module.
+1. Obtain user preferences.
    ```ts
    import { i18n } from '@kit.LocalizationKit';
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-   ```
 
-2. Obtain user preferences.
-   ```ts
    // Check whether use of local digits is enabled.
    let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
 
@@ -56,8 +53,11 @@ For details about how to use related APIs, see [System](../reference/apis-locali
    ```
 
 <!--Del-->
-3. Enable use of local digits.
+2. Enable use of local digits.
    ```ts
+   import { i18n } from '@kit.LocalizationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
      i18n.System.setUsingLocalDigit(true); // Enable use of local digits.
    } catch (error) {
@@ -66,8 +66,11 @@ For details about how to use related APIs, see [System](../reference/apis-locali
    }
    ```
 
-4. Enable use of the 24-hour time format.
+3. Enable use of the 24-hour time format.
    ```ts
+   import { i18n } from '@kit.LocalizationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
      i18n.System.set24HourClock (true); // Set the system time to the 24-hour clock.
    } catch (error) {

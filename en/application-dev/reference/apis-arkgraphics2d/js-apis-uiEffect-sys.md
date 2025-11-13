@@ -7,7 +7,7 @@
 <!--Tester: @gcw_fsLqk7gL-->
 <!--Adviser: @ge-yafang-->
 
-The uiEffect module provides basic capabilities to apply an effect, for example, blur, pixel stretch, and brightness, to a component. Effects are classified into filters and visual effects. Effects of the same category can be cascaded in an effect instance of the corresponding category. In actual development, the blur effect can be used for background blurring, and the brightness effect can be used for screen-on display.
+This module provides basic capabilities to apply an effect, for example, blur, pixel stretch, and brightness, to a component. Effects are classified into filters and visual effects. Effects of the same category can be cascaded in an effect instance of the corresponding category. In actual development, the blur effect can be used for background blurring, and the brightness effect can be used for screen-on display.
 
 - [Filter](#filter): applies a filter to a component.
 - [VisualEffect](#visualeffect): applies a visual effect to a component.
@@ -68,7 +68,7 @@ Creates an [HdrBrightnessBlender](#hdrbrightnessblender20) instance to add the H
 
 | Type                                    | Description                    |
 | ---------------------------------------- | ----------------------- |
-| [HdrBrightnessBlender](#hdrbrightnessblender20) | Returns a BrightnessBlender with the brightness effect set (HDR supported).|
+| [HdrBrightnessBlender](#hdrbrightnessblender20) | Returns a blender with the brightness effect (HDR supported).|
 
 **Example**
 
@@ -240,7 +240,7 @@ filter.distort(-0.5)
 ### radiusGradientBlur<sup>19+</sup>
 radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 
-Adds a radius linear gradient blur effect to the component content.
+Applies a radial linear gradient blur effect to the component.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -249,14 +249,14 @@ Adds a radius linear gradient blur effect to the component content.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | number         | Yes  | Blur radius. A larger value indicates a blurrier effect. The value ranges from 0 to 128. If the blur radius is set to 0, the blur effect is not applied. If the blur radius is set to a value less than 0, the value 0 is used. If the blur radius is set to a value greater than 128, the value 128 is used.|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)        | Yes  | Linear gradient parameters, which include fractionStops and direction.|
+| value  | number         | Yes  | Blur radius. A larger value indicates a higher blur degree. The value range is [0, 128]. A zero blur radius disables the blur effect. Negative values default to **0**, while values above **128** cap at **128**.|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)        | Yes  | Linear gradient parameters, which include **fractionStops** and **direction**.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter with the radius linear gradient blur effect.|
+| [Filter](#filter) | Returns the filter with the radial linear gradient blur effect.|
 
 **Error codes**
 
@@ -291,7 +291,7 @@ struct RadiusGradientBlurExample {
 ### bezierWarp<sup>20+</sup>
 bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
-Adds the Bezier curve deformation effect to a component. This effect is implemented by creating a closed Bezier curve on the layer boundary to accurately distort and adjust the shape of an image. A Bezier curve consists of four segments that are connected in sequence. Each segment contains one vertex and two tangents.
+Applies the Bézier curve deformation effect onto a component. This effect applies a closed Bézier curve to the layer boundary to precisely distort and adjust the shape of an image. A Bézier curve consists of four segments that are connected in sequence. Each segment contains one vertex and two tangents.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -300,13 +300,13 @@ Adds the Bezier curve deformation effect to a component. This effect is implemen
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| controlPoints  | Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>| Yes  | 12 Bezier deformation control points. The shape of the curve formed on the edge can be changed by changing the position of the control points to distort the image. The control point coordinates are in the 0-1 coordinate system, and the coordinate values can be greater than 1 or less than 0.|
+| controlPoints  | Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>| Yes  | 12 Bézier deformation control points. Changing the positions of these control points modifies the shape of the curve forming the edges, thus distorting the image. The control point coordinates are in the 0-1 coordinate system, and the coordinate values can be greater than 1 or less than 0.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter with the Bezier curve deformation effect.|
+| [Filter](#filter) | Returns the filter with the Bézier curve deformation effect.|
 
 **Error codes**
 
@@ -342,7 +342,7 @@ struct BezierWarpExample {
 ### colorGradient<sup>20+</sup>
 colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<number>, alphaMask?: Mask): Filter
 
-Adds a color gradient effect to the component content.
+Applies a color gradient effect to a component.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -351,16 +351,16 @@ Adds a color gradient effect to the component content.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| colors  | Array\<[Color](#color20)>         | Yes  | Color array, which is used to specify the gradient of multiple colors. The array length ranges from 0 to 12. Each color value must be greater than or equal to 0. If the array length is 0 or greater than 12, the effect is not displayed. If the array lengths of colors, positions, and strengths are different, the effect is not displayed.|
-| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | Yes  | Position array, which indicates the distribution position corresponding to the color. The array length ranges from 0 to 12. If the array length is 0 or greater than 12, the effect is not displayed. If the array lengths of colors, positions, and strengths are different, the effect is not displayed.|
-| strengths  | Array\<number>         | Yes  | Strength array, which indicates the diffusion strength corresponding to the color. The array length ranges from 0 to 12. The strength value ranges from 0 to a positive number. If the array length is 0 or greater than 12, the effect is not displayed. If the array lengths of colors, positions, and strengths are different, the effect is not displayed.|
-| alphaMask  | [Mask](#mask20)         | No  | Mask alpha, which indicates the alpha display mask corresponding to the color. If this parameter is not set, all component content has the color gradient effect by default.|
+| colors  | Array\<[Color](#color20)>         | Yes  | Color array, which is a gradient of multiple colors. The array length ranges from 0 to 12. The value of each color must be greater than or equal to 0. If the array length is 0 or greater than 12, or if the array lengths of **colors**, **positions**, and **strengths** are different, no effect is produced.|
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | Yes  | Position array, which is the positions of colors. The array length ranges from 0 to 12. If the array length is 0 or greater than 12, or if the array lengths of **colors**, **positions**, and **strengths** are different, no effect is produced.|
+| strengths  | Array\<number>         | Yes  | Strength array, which is the diffusion strengths of colors. The array length ranges from 0 to 12. The value of each strength must be greater than or equal to 0. If the array length is 0 or greater than 12, or if the array lengths of **colors**, **positions**, and **strengths** are different, no effect is produced.|
+| alphaMask  | [Mask](#mask20)         | No  | Mask alpha, which is the alpha display mask of colors. If this parameter is not set, the color gradient effect is applied to all component content by default.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter with the color gradient effect.|
+| [Filter](#filter) | **Filter** instance with color gradient effect.|
 
 **Error codes**
 
@@ -403,7 +403,7 @@ struct ColorGradientExample {
 ### contentLight<sup>20+</sup>
 contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: number, displacementMap?: Mask): Filter
 
-Adds a 3D lighting effect to the component content.
+Applies a 3D lighting effect to a component.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -412,16 +412,16 @@ Adds a 3D lighting effect to the component content.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | Yes| Position of the light source in the component space. [-1, -1, 0] indicates the upper left corner of the component, and [1, 1, 0] indicates the lower right corner of the component. The larger the z-axis component, the farther the light source is from the component plane and the larger the illumination area.<br> The value range of the x component is [–10, 10], the value range of the y component is [–10, 10], and the value range of the z component is [0, 10]. If the value is out of the range, the value will be automatically truncated.|
-| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes| Light source color. The value range of each element is [0, 1]. If the value is out of the range, the value will be automatically truncated.|
-| lightIntensity | number | Yes| Light source strength. The value range is [0, 1]. A larger value indicates a brighter light source. If the value is out of the range, the value will be automatically truncated.|
-| displacementMap | [Mask](#mask20) | No| This parameter does not take effect currently.|
+| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | Yes| Position of the light in the component space. [-1, -1, 0] indicates the upper left corner of the component, and [1, 1, 0] indicates the lower right corner of the component. The larger the z-axis component, the farther the light source is from the component plane and the larger the illumination area.<br> The value range of the x component is [–10, 10], the value range of the y component is [–10, 10], and the value range of the z component is [0, 10]. If the value is out of the range, it will be automatically truncated.|
+| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes| Light color. The value range of each element is [0, 1]. If the value is out of the range, it will be automatically truncated.|
+| lightIntensity | number | Yes| Light strength. The value range is [0, 1]. A larger value indicates a brighter light source. If the value is out of the range, it will be automatically truncated.|
+| displacementMap | [Mask](#mask20) | No| This parameter is reserved for future use.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [filter](#filter) | Filter with the content lighting effect.|
+| [filter](#filter) | Returns the filter with the light effect on the content.|
 
 **Error codes**
 
@@ -478,16 +478,16 @@ Detects the edge of the component content and adds an edge highlight effect.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| alpha  | number         | Yes  | Specifies the stroke highlight transparency. A larger value indicates a more obvious stroke. The value ranges from 0 to 1. If this parameter is set to 0, no stroke is displayed. If this parameter is set to a value less than 0, the value 0 is used. If this parameter is set to a value greater than 1, the value 1 is used.|
-| color  | [Color](#color20) | No  | Highlighting color of the stroke. If this parameter is not set, the original color of the component content is used by default. If this parameter is set, the specified color is used. If this parameter is set to a value other than null, the alpha value in Color does not take effect, and only the RGB value takes effect.|
-| mask  | [Mask](#mask20) | No  | Stroke highlighting strength. If this parameter is not set, all component content has the stroke highlighting effect by default.|
-| bloom  | boolean | No  | Whether the stroke glows. If this parameter is set to true, the stroke and glow effects are displayed. If this parameter is set to false, only the stroke effect is displayed. If this parameter is not set, the default value true is used. For images smaller than 16 x 16, only the stroke effect is displayed by default, and the glow effect is not displayed. In this case, this parameter does not take effect.|
+| alpha  | number         | Yes  | Specifies the highlight alpha value of the edge. A larger value indicates more obvious edges. The value ranges from 0 to 1. The value **0** disables the edge highlight effect. Negative values default to **0**, while values above **1** cap at **1**.|
+| color  | [Color](#color20) | No  | Highlight color of the edge. If this parameter is not set, the original color of the component content is used by default. If there is a value, the specified color is used. If this parameter is set to a value other than NULL, the alpha value in **Color** does not take effect, and only the RGB value takes effect.|
+| mask  | [Mask](#mask20) | No  | Specifies the highlight strength of the edge. If this parameter is not set, the edge highlight effect is applied to all component content by default.|
+| bloom  | boolean | No  | Specifies whether the edge glows. **true** (default): both the edge highlight and glow effects are applied; **false**: only the edge highlight effect is applied. If the image size is less than 16 x 16, the edge highlight effect is applied by default, and the glow effect is not applied. In this case, this parameter does not take effect.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter with the stroke highlighting effect.|
+| [Filter](#filter) | Returns the filter with the edge highlight and glow effects.|
 
 **Error codes**
 
@@ -524,7 +524,7 @@ struct EdgeLightExample {
 ### displacementDistort<sup>20+</sup>
 displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 
-Adds a distortion effect to the component content.
+Applies a distortion effect to a component.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -533,14 +533,14 @@ Adds a distortion effect to the component content.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| mask  | [Mask](#mask20) | Yes  | Distortion degree. The distortion degree is determined by the product of this parameter and factor.|
-| factor  | [number, number] | No  | Horizontal and vertical distortion degree coefficients. A larger absolute value indicates a more obvious distortion degree. The recommended value range is [–10.0, 10.0]. If this parameter is not set, the default value 1.0 is used. If this parameter is set to 0, no distortion effect is applied. The distortion degree is determined by the product of this parameter and mask.|
+| mask  | [Mask](#mask20) | Yes  | Distortion degree. It is determined by the product of this parameter and **factor**.|
+| factor  | [number, number] | No  | Horizontal and vertical distortion degree factors. A larger absolute value indicates a more obvious distortion degree. The recommended value range is [–10.0, 10.0]. If this parameter is not set, the default value **1.0** is used. If this parameter is set to **0**, no distortion effect is applied. It is determined by the product of this parameter and **mask**.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter with the distortion effect applied.|
+| [Filter](#filter) | Returns the **Filter** instance with the distortion effect.|
 
 **Error codes**
 
@@ -575,7 +575,7 @@ struct DisplacementDistortExample {
 ### maskDispersion<sup>20+</sup>
 maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
-Adds a dispersion effect that is controlled by a displacement map to the component content.
+Applies a dispersion effect to a component, which is controlled by the displacement map.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -584,17 +584,17 @@ Adds a dispersion effect that is controlled by a displacement map to the compone
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| dispersionMask  | [Mask](#mask20)         | Yes  | Displacement map, which is used to control the dispersion strength, direction, and transparency. You are advised to use the displacement map of the PixelMapMask type.|
-| alpha  | number         | Yes  | Overall transparency of dispersion. The smaller the transparency, the more transparent the effect. The value range is [0, 1.0]. When the transparency is set to 0, the dispersion effect does not take effect. When the transparency is set to a value less than 0, the value 0 is used. When the transparency is set to a value greater than 1.0, the value 1.0 is used.|
-| rFactor  | [number, number]         | No  | Basic dispersion offset of the R channel in the X/Y direction. The larger the offset, the more obvious the red dispersion effect. The value range in each direction is [-1.0, 1.0]. When the offset is set to a value less than -1.0, the value -1.0 is used. When the offset is set to a value greater than 1.0, the value 1.0 is used.|
-| gFactor  | [number, number]         | No  | Basic dispersion offset of the G channel in the X/Y direction. The larger the offset, the more obvious the green dispersion effect. The value range is the same as that of rFactor.|
-| bFactor  | [number, number]         | No  | Basic dispersion offset of the B channel in the X/Y direction. The larger the offset, the more obvious the blue dispersion effect. The value range is the same as that of rFactor.|
+| dispersionMask  | [Mask](#mask20)         | Yes  | Displacement map, which is used to control the dispersion strength, direction, and alpha value. You are advised to use the displacement map of the **PixelMapMask** type.|
+| alpha  | number         | Yes  | Alpha value of dispersion. A smaller value makes the object more transparent. The value range is [0, 1.0]. The value **0** means the dispersion effect does not take effect. Negative values default to **0**, while values above **1.0** cap at **1.0**.|
+| rFactor  | [number, number]         | No  | Basic dispersion offset of the R channel in the X/Y direction. A larger value indicates a more obvious red dispersion effect. The value range in each direction is [-1.0, 1.0]. An offset less than **-1.0** evaluates to the value **-1.0**. A value greater than **1.0** evaluates to the value **1.0**.|
+| gFactor  | [number, number]         | No  | Basic dispersion offset of the G channel in the X/Y direction. A larger value indicates a more obvious green dispersion effect. The value range is the same as that of **rFactor**.|
+| bFactor  | [number, number]         | No  | Basic dispersion offset of the B channel in the X/Y direction. A larger value indicates a more obvious blue dispersion effect. The value range is the same as that of **rFactor**.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter for which the dispersion effect controlled by the displacement map is mounted.|
+| [Filter](#filter) | Returns the filter that mounts the dispersion effect controlled by the displacement map.|
 
 **Error codes**
 
@@ -650,11 +650,11 @@ struct MaskDispersion {
 ### hdrBrightnessRatio<sup>20+</sup>
 hdrBrightnessRatio(ratio: number): Filter
 
-Adds the high dynamic range (HDR) effect to the component content. Nested use is not recommended. If it is forcibly used, overexposure may occur.
+Applies an HDR brightness effect to a component. Nesting is not recommended. Forcible nesting may cause overexposure.
 
-The HDR effect takes effect only when the HDR rendering pipeline is enabled. In some scenarios, HDR cannot be enabled even if the HDR rendering pipeline is triggered. For example, the device hardware specifications do not support HDR.
+The brightness effect takes effect only when the HDR rendering pipeline is enabled. In some scenarios, HDR cannot be enabled even if the HDR rendering pipeline is triggered. For example, the device hardware do not support HDR.
 
-The maximum brightening multiple supported by the device is the value obtained by dividing the maximum brightness of the device by the SDR reference white brightness of the device.
+The maximum brightness ratio allowed is the value obtained by dividing the maximum brightness of the device by the SDR reference brightness of the device.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -663,13 +663,13 @@ The maximum brightening multiple supported by the device is the value obtained b
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| ratio  | number         | Yes  | Brightening multiple. The value ranges from 1.0 to the maximum brightening multiple supported by the device. If the value is less than 1.0, the value 1.0 is used. If the value is equal to 1.0, no processing is performed. If the value is greater than 1.0, the HDR rendering pipeline is triggered. If the value is greater than the maximum brightening multiple supported by the device, the maximum brightening multiple supported by the device is used.|
+| ratio  | number         | Yes  | Brightness ratio. The value range is [1.0, maximum brightness allowed]. Values less than **1.0** default to **1.0**. Values equal to **1.0** trigger no processing. Values greater than **1.0** trigger the HDR rendering pipeline. Values above the maximum brightness allowed cap at the maximum.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter with the HDR effect.|
+| [Filter](#filter) | Returns the filter with HDR brightness effect.|
 
 **Error codes**
 
@@ -700,14 +700,14 @@ You are not advised to use this effect when the screen size changes, for example
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
 | alphaMask     | [Mask](#mask20)       | Yes  | Transition effect area specified by the mask.|
-| factor        | number                | No  | Transition coefficient. The value ranges from 0.0 to 1.0. The default value is 1.0. A larger value of factor indicates that the image is closer to the transition page. If the value is out of the range, the value is automatically truncated to [0.0, 1.0].|
-| inverse       | boolean               | No  | Whether to enable reverse transition. The value true indicates that reverse transition is enabled, and the value false indicates that reverse transition is disabled. The default value is false.|
+| factor        | number                | No  | Transition coefficient. The value range is [0.0, 1.0] and defaults to **1.0**. A larger value of **factor** indicates that the image is closer to the page after transition. If the value is out of the range, the value is automatically truncated to [0.0, 1.0].|
+| inverse       | boolean               | No  | Whether to enable reverse transition. **true** means yes and **false** (default) means no.|
  
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter that mounts the transition effect.|
+| [Filter](#filter) | Returns the filter with transition effect.|
 
 **Error codes**
 
@@ -765,7 +765,7 @@ struct Index {
 ### directionLight<sup>20+</sup>
 directionLight(direction: common2D.Point3d, color: Color, intensity: number, mask?: Mask, factor?: number): Filter
 
-Provides lighting effects for components based on [Mask](#mask20) and parallel light.
+Provides a lighting effect based on [Mask](#mask20) and parallel light for the component content.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -777,14 +777,14 @@ Provides lighting effects for components based on [Mask](#mask20) and parallel l
 | direction  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12)         | Yes  | Direction of the directional light.|
 | color  | [Color](#color20)         | Yes  | Light color.|
 | intensity  | number         | Yes  | Light intensity. The value must be a non-negative number.|
-| mask  | [Mask](#mask20)         | No  | Displacement map, which is used to describe the three-dimensional details of a two-dimensional image surface. The normal map or height map is used to enhance the local details and lighting reflection effect. If the input is a height map, this parameter must be used together with factor. By default, this parameter is left empty, and the lighting effect of a plane without details is displayed globally.|
-| factor  | number         | No  | Sampling scaling coefficient. The default value is null, indicating that the mask is used as the normal map for sampling. If the value is not null, the mask is used as the height map for sampling. The actual height value is the product of the sampling value of the mask and factor.|
+| mask  | [Mask](#mask20)         | No  | Displacement map, which is used to describe the three-dimensional details of the two-dimensional image surface. The normal map or height map is used to enhance the local details and lighting reflection effect. If the input is a height map, the **factor** parameter must be used together. By default, this parameter is left empty, and the lighting effect of a plane without details is displayed globally.|
+| factor  | number         | No  | Sampling scaling coefficient. The default value is **null**, indicating that **mask** is set to the normal map for sampling. If the value is not **null**, **mask** is set to the height map for sampling. The actual height value is the product of the sampling value of **mask** and **factor**.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter that mounts the lighting effect controlled by the displacement map.|
+| [Filter](#filter) | Returns the filter that mounts the lightning effect controlled by the displacement map.|
 
 **Error codes**
 
@@ -834,7 +834,7 @@ struct Index {
 ### variableRadiusBlur<sup>20+</sup>
 variableRadiusBlur(radius: number, radiusMap: Mask): Filter
 
-Provides a gradient blur effect for component content based on the [Mask](#mask20) object.
+Provides a gradient blur effect based on [Mask](#mask20) for the component content.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -843,14 +843,14 @@ Provides a gradient blur effect for component content based on the [Mask](#mask2
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| radius  | number         | Yes  | Maximum blur radius. A larger value indicates a higher blur degree. The value ranges from 0 to 128. If the blur radius is set to 0, the blur effect is not applied. If the blur radius is set to a value less than 0, the blur radius is considered as 0. If the blur radius is set to a value greater than 128, the blur radius is considered as 128.|
+| radius  | number         | Yes  | Maximum blur radius. A larger value indicates a higher blur degree. The value range is [0, 128]. A zero blur radius disables the blur effect. Negative values default to **0**, while values above **128** cap at **128**.|
 | radiusMap  |  [Mask](#mask20)    | Yes  | Mask object that indicates the blur degree.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Filter object of the current effect.|
+| [Filter](#filter) | Returns the filter object of the current effect.|
 
 **Error codes**
 
@@ -908,7 +908,7 @@ Enumerates the scene modes of the ripple effect.
 | SMALL2MEDIUM_RECV  | 0 | A phone taps against a 2-in-1 device (receiver).|
 | SMALL2MEDIUM_SEND  | 1 | A phone taps against a 2-in-1 device (sender).|
 | SMALL2SMALL | 2 | A phone taps against another phone.|
-| MINI_RECV<sup>17+</sup> | 3 | 2in1 device sharing with other devices (keyboard and mouse sharing).|
+| MINI_RECV<sup>17+</sup> | 3 | A 2-in-1 device shares data (keyboard and mouse) with other devices.|
 
 ## FlyMode
 Enumerates the scene modes of fly-in and fly-out animations.
@@ -966,16 +966,16 @@ Adds a 3D lighting effect to the border of a rounded rectangle component.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | Yes| 3D position of the light source in the component space. [-1, -1, 0] indicates the upper left corner of the component, and [1, 1, 0] indicates the lower right corner of the component. A larger z-axis component indicates that the light source is farther away from the component plane and the illuminated area is larger.<br> The value range of the x-axis component is [–10, 10], the value range of the y-axis component is [–10, 10], and the value range of the z-axis component is [0, 10]. If the value is out of the range, the value will be automatically truncated.|
-| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes| Light source color. The value range of each element is [0, 1]. If the value is out of the range, the value will be automatically truncated.|
-| lightIntensity | number | Yes| Light source strength. The value range is [0, 1]. A larger value indicates a brighter light source. If the value is out of the range, the value will be automatically truncated.|
-| borderWidth | number | Yes| Lighting width of the component border. The value range is [0.0, 30.0]. If the value is out of the range, the value will be automatically truncated. If this parameter is set to 0.0, the component border is not illuminated. A larger value indicates a wider illuminated area.|
+| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | Yes| 3D position of the light in the component space. [-1, -1, 0] indicates the upper left corner of the component, and [1, 1, 0] indicates the lower right corner of the component. The larger the z-axis component, the farther the light source is from the component plane and the larger the illumination area.<br> The value range of the x component is [–10, 10], the value range of the y component is [–10, 10], and the value range of the z component is [0, 10]. If the value is out of the range, it will be automatically truncated.|
+| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes| Light color. The value range of each element is [0, 1]. If the value is out of the range, it will be automatically truncated.|
+| lightIntensity | number | Yes| Light strength. The value range is [0, 1]. A larger value indicates a brighter light source. If the value is out of the range, it will be automatically truncated.|
+| borderWidth | number | Yes| Lighting width of the component border. The value range is [0.0, 30.0]. If the value is out of the range, it will be automatically truncated. The value **0.0** means that the component border is not lightened. A larger value indicates a wider lightened area.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [VisualEffect](#visualeffect) | VisualEffect object that has the border lighting effect.|
+| [VisualEffect](#visualeffect) | Returns a **VisualEffect** object with the lighting effect on the border.|
 
 **Error codes**
 
@@ -1029,7 +1029,7 @@ struct Index {
 ### colorGradient<sup>20+</sup>
 colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<number>, alphaMask?: Mask): VisualEffect
 
-Adds a color gradient effect to a component.
+Applies a color gradient effect to a component.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1038,16 +1038,16 @@ Adds a color gradient effect to a component.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| colors  | Array\<[Color](#color20)>         | Yes  | Color array, which is used to implement multi-color gradient. The array length ranges from 0 to 12. Each color value is greater than or equal to 0. If the array length is 0 or greater than 12, or the lengths of the colors, positions, and strengths arrays are inconsistent, no color gradient effect is displayed.|
-| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | Yes  | Position array, which indicates the position corresponding to the color. The array length ranges from 0 to 12. If the array length is 0 or greater than 12, or the lengths of the colors, positions, and strengths arrays are inconsistent, no color gradient effect is displayed.|
-| strengths  | Array\<number>         | Yes  | Strength array, which indicates the strength corresponding to the color. The array length ranges from 0 to 12. Each strength value is greater than or equal to 0. If the array length is 0 or greater than 12, or the lengths of the colors, positions, and strengths arrays are inconsistent, no color gradient effect is displayed.|
-| alphaMask  | [Mask](#mask20)         | No  | Alpha mask of the color. If this parameter is not set, the transparency of the color gradient effect is determined only by the colors parameter.|
+| colors  | Array\<[Color](#color20)>         | Yes  | Color array, which is used to implement multi-color gradient. The array length ranges from 0 to 12. Each color value is greater than or equal to 0. If the array length is 0 or greater than 12, or the lengths of the **colors**, **positions**, and **strengths** arrays are inconsistent, no color gradient effect is displayed.|
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | Yes  | Position array, which is the positions of colors. The array length ranges from 0 to 12. If the array length is 0 or greater than 12, or the lengths of the **colors**, **positions**, and **strengths** arrays are inconsistent, no color gradient effect is displayed.|
+| strengths  | Array\<number>         | Yes  | Strength array, which is the strengths of colors. The array length ranges from 0 to 12. Each strength value is greater than or equal to 0. If the array length is 0 or greater than 12, or the lengths of the **colors**, **positions**, and **strengths** arrays are inconsistent, no color gradient effect is displayed.|
+| alphaMask  | [Mask](#mask20)         | No  | Alpha of the mask corresponding to each color. If this parameter is not set, the alpha of the color gradient effect is determined only by the **colors** parameter.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [VisualEffect](#visualeffect) | Visual effect with the color gradient effect.|
+| [VisualEffect](#visualeffect) | Returns a **VisualEffect** object with the color gradient effect.|
 
 **Error codes**
 
@@ -1107,7 +1107,7 @@ Defines the blender type, which is used to describe blending effects.
 | Type                         | Description                                              |
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | Blender with a brightening effect.|
-| [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | A brightness blender (HDR supported).|
+| [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | Blender with the brightness effect (HDR supported).|
 
 ## BrightnessBlender
 A blender that can apply the brightness effect to a component. Before calling any API in **BrightnessBlender**, you must use [createBrightnessBlender](#uieffectcreatebrightnessblender) to create a **BrightnessBlender** instance.
@@ -1128,9 +1128,9 @@ A blender that can apply the brightness effect to a component. Before calling an
 | fraction            | number                     | No  | No  | Blending ratio of the brightness effect.<br>The value range is [0, 1]. A value beyond the boundary will be automatically truncated during implementation. |
 
 ## HdrBrightnessBlender<sup>20+</sup>
-HDR brightness blender (inherited from [BrightnessBlender](#brightnessblender)), which is used to add the brightness effect to a specified component. Before calling HdrBrightnessBlender, you need to create an HdrBrightnessBlender instance by calling [createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20).
+HDR brightness blender (inherited from [BrightnessBlender](#brightnessblender)), which is used to add the brightness effect to a specified component. Before calling any API in **HdrBrightnessBlender**, you must use [createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20) to create a **HdrBrightnessBlender** instance.
 
-For details about the parameters of this blender, please refer to [BrightnessBlender](#brightnessblender).
+For details about the parameters of this blender, see [BrightnessBlender](#brightnessblender).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1138,16 +1138,16 @@ For details about the parameters of this blender, please refer to [BrightnessBle
 
 ## Color<sup>20+</sup>
 
-RGBA color description.
+Describes a color in RGBA format.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
 | Name | Type  | Read Only| Optional| Description                                    |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| red   | number | Yes  | Yes  | R component (red) of the color. The value must be greater than or equal to 0. If the value is less than 0, the value is invalid.|
-| green | number | Yes  | Yes  | G component (green) of the color. The value must be greater than or equal to 0. If the value is less than 0, the value is invalid.|
-| blue  | number | Yes  | Yes  | B component (blue) of the color. The value must be greater than or equal to 0. If the value is less than 0, the value is invalid.|
-| alpha | number | Yes  | Yes  | A component (transparency) of the color. The value must be greater than or equal to 0. If the value is less than 0, the value is invalid.|
+| red   | number | Yes  | Yes  | R component (red) of the color. The value must be greater than or equal to 0. Negative values are invalid.|
+| green | number | Yes  | Yes  | G component (green) of the color. The value must be greater than or equal to 0. Negative values are invalid.|
+| blue  | number | Yes  | Yes  | B component (blue) of the color. The value must be greater than or equal to 0. Negative values are invalid.|
+| alpha | number | Yes  | Yes  | A component (alpha) of the color. The value must be greater than or equal to 0. Negative values are invalid.|
 
 ## Mask<sup>20+</sup>
 Mask effect class, which is used as the input of [Filter](#filter) and [VisualEffect](#visualeffect).
@@ -1155,7 +1155,7 @@ Mask effect class, which is used as the input of [Filter](#filter) and [VisualEf
 ### createRippleMask<sup>20+</sup>
 static createRippleMask(center: common2D.Point, radius: number, width: number, offset?: number): Mask
 
-Create a mask instance by setting the position, radius, and width of the center of the wave ring. The effect depends on the input parameters.
+Creates a mask instance of the ripple effect by specifying the center position, radius, and width of the ripple. The effect is determined by the input parameters.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1164,16 +1164,16 @@ Create a mask instance by setting the position, radius, and width of the center 
 **Parameters**
 | Name | Type                                     | Mandatory| Description                      |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12) | Yes| Sets the position of the wave ring center on the component. [0, 0] indicates the upper left corner of the component, and [1, 1] indicates the lower right corner of the component.<br>The value range is [–10, 10]. If the value is out of the range, the value will be automatically truncated during implementation.|
-| radius | number | Yes| Sets the radius of the wave ring. If the radius is 1, the radius is equal to the height of the component.<br>The value range is [0, 10]. If the value is out of the range, the value will be automatically truncated during implementation.|
-| width | number | Yes| Sets the width of the wave ring.<br>The value range is [0, 10]. If the value is out of the range, the value will be automatically truncated during implementation.|
-| offset | number | No| Sets the offset of the wave peak position.<br>The default value is 0, indicating that the wave peak is at the center of the wave ring.<br>The value –1.0 indicates that the wave peak is at the innermost of the wave ring.<br>The value 1.0 indicates that the wave peak is at the outermost of the wave ring.<br>The value range is [–1, 1]. If the value is out of the range, the value will be automatically truncated during implementation.|
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12) | Yes| Sets the position of the ripple center on the component. [0, 0] indicates the upper left corner of the component, and [1, 1] indicates the lower right corner of the component.<br>The value range is [-10, 10]. A value beyond the boundary will be automatically truncated during implementation.|
+| radius | number | Yes| Sets the ripple radius. The radius of **1** is equal to the component height.<br>The value range is [0, 10]. A value beyond the boundary will be automatically truncated during implementation.|
+| width | number | Yes| Sets the ripple width.<br>The value range is [0, 10]. A value beyond the boundary will be automatically truncated during implementation.|
+| offset | number | No| Sets the offset of the ripple peak position.<br>The default value is **0**, indicating that the ripple peak is in the center of the ripple ring.<br>The value **-1.0** indicates that the ripple peak is at the innermost of the ripple ring.<br>The value **1.0** indicates that the ripple peak is at the outermost of the ripple ring.<br>The value range is [-1, 1]. A value beyond the boundary will be automatically truncated during implementation.|
 
 **Return value**
 
 | Type                         | Description                                              |
 | ----------------------------- | ------------------------------------------------- |
-| [Mask](#mask20) | Returns a mask with the wave ring mask effect.|
+| [Mask](#mask20) | Returns a mask with the ripple mask effect.|
 
 **Error codes**
 
@@ -1192,7 +1192,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ### createPixelMapMask<sup>20+</sup>
 static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect, fillColor?: Color): Mask
 
-Creates a mask instance with the scaling effect by using the drawing area of the input [pixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)pixelMap, drawing area of the mount node, and color of the area outside the drawing area. The effect is determined by the input parameters.
+Creates a mask instance with the scaling effect based on the drawing area of the [pixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)pixelMap, drawing area of the mount node, and color of the area outside the drawing area. The effect is determined by the input parameters.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1202,15 +1202,15 @@ Creates a mask instance with the scaling effect by using the drawing area of the
 | Name | Type                                     | Mandatory| Description                      |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
 | pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).  |
-| srcRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Area to be drawn on the pixelMap. The leftmost and topmost positions of the image correspond to position 0, and the rightmost and bottommost positions correspond to position 1. right must be greater than left, and bottom must be greater than top.|
-| dstRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Drawing area of the pixelMap on the node to which the mask is mounted. The leftmost and topmost positions of the node correspond to position 0, and the rightmost and bottommost positions correspond to position 1. right must be greater than left, and bottom must be greater than top.|
-| fillColor | [Color](#color20) | No  |  Color of the area outside the drawing area of the pixelMap on the node. The value range of each element is [0, 1]. The default value is transparent. If the value is less than 0, the value is changed to 0. If the value is greater than 1, the value is changed to 1.|
+| srcRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Area to be drawn on the PixelMap. The leftmost and topmost positions of the image correspond to position 0, and the rightmost and bottommost positions correspond to position 1. The value of a right position must be greater than that of a left position, and the value of a bottom position must be greater than that of a top position.|
+| dstRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Area to be drawn on the node where the mask is mounted on the PixelMap. The leftmost and topmost positions of the node correspond to position 0, and the rightmost and bottommost positions correspond to position 1. The value of a right position must be greater than that of a left position, and the value of a bottom position must be greater than that of a top position.|
+| fillColor | [Color](#color20) | No  |  Color of the area outside the PixelMap drawing area on the node. The value range of each element is [0, 1]. The default value is transparent. Negative values default to **0** and values above 1 cap at **1**.|
 
 **Return value**
 
 | Type                         | Description                                              |
 | ----------------------------- | ------------------------------------------------- |
-| [Mask](#mask20) | Mask with the pixelMap scaling effect.|
+| [Mask](#mask20) | Returns a mask with the PixelMap scaling effect.|
 
 **Error codes**
 
@@ -1263,7 +1263,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 ### createRadialGradientMask<sup>20+</sup>
 static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
 
-Creates an ellipse mask effect [Mask](#mask20) instance by specifying the center point, major and minor axes, and shape parameters of the ellipse. The effect is determined by the input parameters.
+Creates a [Mask](#mask20) instance of the ellipse effect by specifying the center position, major axis, minor axis, and shape parameters. The effect is determined by the input parameters.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1272,16 +1272,16 @@ Creates an ellipse mask effect [Mask](#mask20) instance by specifying the center
 **Parameters**
 | Name | Type                                     | Mandatory| Description                      |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes| Center point of the ellipse. [0, 0] indicates the upper left corner of the component, and [1, 1] indicates the lower right corner of the component.<br>The value range is [–10, 10]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
-| radiusX | number  | Yes| Sets the major axis of an ellipse. The radius of 1 is equal to the height of the component.<br>The value range is [0, 10]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
-| radiusY | number  | Yes| Sets the minor axis of an ellipse. The radius of 1 is equal to the height of the component.<br>The value range is [0, 10]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
-| values | Array<[number, number]>     | Yes| A binary array stored in the array indicates the gradient: [RGBA color, position]. The four channels of the RGBA color use the same value, which can be considered as a grayscale value. The position indicates the distribution position of the RGBA color when the position is outward along the radial direction. The value range of the RGBA color and position is [0, 1]. The value can be a floating point number. If the value is less than 0, the value is changed to 0. If the value is greater than 1, the value is changed to 1.<br>The position parameter values must be strictly increasing. The number of binary arrays in the array must be greater than or equal to 2. The elements in the binary array cannot be empty. Otherwise, the ellipse distribution effect does not take effect.|
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes| Center of the ellipse. [0, 0] indicates the upper left corner of the component, and [1, 1] indicates the lower right corner of the component.<br>The value range is [-10, 10]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
+| radiusX | number  | Yes| Major axis of the ellipse. The radius of **1** equals the height of the component.<br>The value range is [0, 10]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
+| radiusY | number  | Yes| Minor axis of the ellipse. The radius of **1** equals the height of the component.<br>The value range is [0, 10]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
+| values | Array<[number, number]>     | Yes| A binary array stored in the array, representing a gradient: [RGBA color, position]. The four channels of the RGBA color use the same value, which can be considered as a grayscale value. The position indicates the distribution position of the RGBA color when the position is outward along the radial direction. The value range of the RGBA color and position is [0, 1]. The value can be a floating point number. Negative values default to **0** and values above 1 cap at **1**.<br>The position parameter values must be strictly increasing. The number of binary arrays in the array must be greater than or equal to 2. The elements in the binary array cannot be empty. Otherwise, the ellipse distribution effect does not take effect.|
 
 **Return value**
 
 | Type                         | Description                                              |
 | ----------------------------- | ------------------------------------------------- |
-| [Mask](#mask20) | Returns the grayscale mask of the radial distribution effect of the ellipse.|
+| [Mask](#mask20) | Returns the grayscale mask of the radial distribution effect of the ellipse shape.|
 
 **Error codes**
 
@@ -1306,7 +1306,7 @@ struct RadialGradientMaskExample {
       Column()
         .width('100%')
         .height('100%')
-        // The mask is used as the input parameter of the filter to implement the corresponding effect. The mask is a quarter circle ring in the upper left corner of the screen.
+        // Use the mask as the input parameter of the filter to implement the corresponding effect. The mask is a quarter circle ring in the upper left corner of the screen.
         .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, null, mask))
     }
   }
@@ -1315,7 +1315,7 @@ struct RadialGradientMaskExample {
 ### createWaveGradientMask<sup>20+</sup>
 static createWaveGradientMask(center: common2D.Point, width: number, propagationRadius: number, blurRadius: number, turbulenceStrength?: number): Mask
 
-Creates a single wave mask effect instance [Mask](#mask20) by specifying the center position of the wave source and single wave parameters.
+Creates a [Mask](#mask20) instance of the single-wavelength effect by specifying the center position and single-wavelength parameters.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1324,17 +1324,17 @@ Creates a single wave mask effect instance [Mask](#mask20) by specifying the cen
 **Parameters**
 | Name | Type                                     | Mandatory| Description                      |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes| Center point of the single wave source. [0, 0] indicates the upper left corner of the component, and [1, 1] indicates the lower right corner of the component.<br>The value range is [–10, 10]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
-| width | number  | Yes| Width of the single wave ring.<br>The value range is [0, 5]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
-| propagationRadius | number  | Yes| Outer diameter of the single wave ring.<br>The value range is [0, 10]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
-| blurRadius | number  | Yes| Blur outer diameter of the single wave ring. If the blur radius is 0, the ring is a solid ring. Otherwise, the ring is a hollow ring.<br>The value range is [0, 5]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
-| turbulenceStrength | number  | No| Turbulence intensity of the single wave ring. The default value is 0. If the intensity is 0, the ring is a regular ring. Otherwise, the ring edge is distorted due to turbulence.<br>The value range is [–1, 1]. The value can be a floating point number. If the value is out of the range, it will be automatically truncated during implementation.|
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | Yes| Center of the single-wavelength source. [0, 0] indicates the upper left corner of the component, and [1, 1] indicates the lower right corner of the component.<br>The value range is [-10, 10]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
+| width | number  | Yes| Width of a single-wavelength ring.<br>The value range is [0, 5]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
+| propagationRadius | number  | Yes| Outer diameter of the diffusion of a single-wavelength ring.<br>The value range is [0, 10]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
+| blurRadius | number  | Yes| Outer diameter of the blur of a single-wavelength ring. If the blur radius is **0**, the ring is solid. Otherwise, the ring is dotted.<br>The value range is [0, 5]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
+| turbulenceStrength | number  | No| Turbulence strength of a single-wavelength ring. The default value is **0**. If the strength is **0**, the ring is regular. Otherwise, the ring edge is distorted due to turbulence.<br>The value range is [-1, 1]. The value can be a floating point number. A value beyond the boundary will be automatically truncated during implementation.|
 
 **Return value**
 
 | Type                         | Description                                              |
 | ----------------------------- | ------------------------------------------------- |
-| [Mask](#mask20) | Grayscale mask of a single wave shape.|
+| [Mask](#mask20) | Returns the grayscale mask of the single ripple shape.|
 
 **Error codes**
 
@@ -1359,7 +1359,7 @@ struct WaveGradientMaskExample {
       Column()
         .width('100%')
         .height('100%')
-        // Use the mask as the filter parameter to implement the ripple effect that spreads from the center of the screen to the periphery.
+        // Use the mask as the filter parameter to implement the ripple effect that spreads from the center of the screen.
         .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, null, mask))
     }
   }

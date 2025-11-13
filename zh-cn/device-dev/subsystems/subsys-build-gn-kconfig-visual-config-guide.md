@@ -103,7 +103,7 @@
 
 解决办法：
 
-更新[Kconfig文件](https://gitee.com/openharmony/build/blob/master/tools/component_tools/kconfig)。
+更新[Kconfig文件](https://gitcode.com/openharmony/build/blob/master/tools/component_tools/kconfig)。
 
 ```shell
 cd build/tools/component_tools

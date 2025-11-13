@@ -23,7 +23,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise&lt;void&gt;
 
-异步方法修改应用的端云文件同步开关，以Promise形式返回结果。
+异步方法修改应用的端云文件同步开关。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -70,7 +70,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法修改应用的端云文件同步开关，以callback形式返回结果。
+异步方法修改应用的端云文件同步开关。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -114,7 +114,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -160,7 +160,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务指定账号下的特定应用云数据已发生变更。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -216,7 +216,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
-异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -265,7 +265,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
+通知端云服务应用指定用户的云数据变更信息。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -311,7 +311,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-异步方法使能端云协同能力，以Promise形式返回结果。
+异步方法使能端云协同能力。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -362,7 +362,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法使能端云协同能力，以callback形式返回结果。
+异步方法使能端云协同能力。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -410,7 +410,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 disableCloud(accountId: string): Promise&lt;void&gt;
 
-异步方法去使能端云协同能力，以Promise形式返回结果。
+异步方法去使能端云协同能力。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -456,7 +456,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法去使能端云协同能力，以callback形式返回结果。
+异步方法去使能端云协同能力。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -512,7 +512,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt;
 
-异步方法清理本地云相关数据，以Promise形式返回结果。
+异步方法清理本地云相关数据。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -563,7 +563,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法清理本地云相关数据，以callback形式返回结果。
+异步方法清理本地云相关数据。使用callback异步回调。
 
 **系统接口**：该接口为系统接口。
 

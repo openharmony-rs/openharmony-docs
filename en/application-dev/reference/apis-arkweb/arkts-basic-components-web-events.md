@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The following universal events are supported: [onAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear), [onDisAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear), [onBlur](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur), [onFocus](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus), [onDragEnd](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10), [onDragEnter](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter), [onDragStart](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart), [onDragMove](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove), [onDragLeave](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave), [onDrop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop), [onHover](../apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover), [onMouse](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse), [onKeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent), [onTouch](../apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch), [onVisibleAreaChange](../apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)
 
@@ -790,7 +790,7 @@ Called when the **\<title>** element of the page document changes. If no title i
 
 | Name  | Type  | Mandatory  | Description         |
 | ----- | ------ | ---- | ------------- |
-| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | Yes   | Callback triggered when the document title on the page is changed.|
+| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | Yes   | Called when the page document title changes.|
 
 **Example**
 
@@ -1292,7 +1292,7 @@ Triggered when an HTTP authentication request is received.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | Yes| Callback invoked when the browser requires user credentials.<br>Return value: boolean<br> The value **true** means that the HTTP authentication is successful, and **false** means the opposite.  |
+| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | Yes| Callback invoked when the browser requires user credentials.<br>Return value: boolean<br> If true is returned, the HTTP authentication is successful. If false is returned, the HTTP authentication fails.  |
 
 **Example**
 
@@ -1358,6 +1358,8 @@ To support errors for loading subframe resources, use the [OnSslErrorEvent](./ar
 >
 > - Main resource: Entry file for the browser to load web pages, which is usually an HTML document. 
 > - Subresource: Dependency file referenced by the main resource, which is loaded when a specific tag is encountered during main resource parsing.
+> - The application needs to call [handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9) or [handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9) to process the callback. If the callback is not processed, resource loading is canceled by default. The behavior of handleConfirm() or handleCancel() may be recorded to respond to future SSL errors.
+> - The application can be used to display a custom error page or silently record the problem.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1376,7 +1378,7 @@ To support errors for loading subframe resources, use the [OnSslErrorEvent](./ar
   
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1479,7 +1481,7 @@ Triggered to notify users when an SSL error occurs during the loading of main-fr
 
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1566,6 +1568,11 @@ Triggered to notify users when an SSL error occurs during the loading of main-fr
 onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 
 Triggered when an SSL client certificate request is received.
+
+> **NOTE**
+>
+> - The web component can respond in one of the following ways: [ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10), [ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9), or [ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9).
+> - If ClientAuthenticationHandler.confirm or ClientAuthenticationHandler.cancel is called, ArkWeb stores the authentication result in the memory (within the application lifecycle) and does not call onClientAuthenticationRequest() again for the same host and port. If onClientAuthenticationRequest.ignore is called, ArkWeb does not store the authentication result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1657,7 +1664,7 @@ struct Index {
 ```
 
 Interconnect with certificate management to implement two-way authentication.
-
+  
 1. Construct the singleton object **GlobalContext**.
     ```ts
     // GlobalContext.ets
@@ -3053,7 +3060,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | Yes| Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it.<br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite.<br>If **undefined** or **null** is returned, the navigation is allowed.|
+| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | Yes| Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it.<br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite.<br>If undefined or null is returned, the value is false.|
 
 **Example**
 
@@ -3780,7 +3787,7 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> The value **true** means to stop loading the URL, and the value **false** means the opposite.|
+| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> true: The URL loading is stopped. false: The URL continues to be loaded in the web page.|
 
 **Example**
 

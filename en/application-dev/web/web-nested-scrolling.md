@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 There may be times when you want to implement nested scrolling for the **Web** component. A typical use case is a page that contains multiple scrollable areas including the **Web** component, whose scrolling is intrinsically linked with the scroll positions in other areas. To implement nested scrolling between **Web** components and ArkUI scrollable containers ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md) and [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)), you should set the ArkUI [NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) attribute for the **Web** components after receiving the scrolling gesture events.
 
@@ -99,14 +99,14 @@ HTML file to be loaded:
 
 **How to Implement**
 
-1. Scrolling up:
+1. Swipe up with your finger.
 
     (1) If the web page does not scroll to the bottom, the **Scroll** component sends the scrolling offset to the **Web** component, and the **Scroll** component does not scroll.
 
     (2) If the web page scrolls to the bottom but the **Scroll** component does not scroll to the bottom, only the **Scroll** component scrolls and it does not send the scrolling offset to the **Web** and **List** components.
 
     (3) If the **Scroll** component scrolls to the bottom, the scrolling offset is sent to the **List** component, and the **Scroll** component does not scroll.
-2. Scrolling down:
+2. Swipe down with your finger.
 
     (1) If the **List** component does not scroll to the top, the **Scroll** component sends the scrolling offset to the **List** component, and the **Scroll** component does not scroll.
 
@@ -151,7 +151,7 @@ HTML file to be loaded:
 	
 	(4) Height of the **Web** component: **webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight)**;
 	
-	(5) Height of the **Web** component window: **webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window. innerHeight')**;
+	(5) Obtain the height of the Web component window: webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window..innerHeight');
 	
 	(6) Scrolling offset of the **Web** component: **webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20)**;
 5. Disable the scrolling feature of the **Scroll** component.

@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 There are many reasons for white screen issues on web pages. This topic describes how to troubleshoot common white screen issues.
 

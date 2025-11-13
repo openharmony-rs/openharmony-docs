@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件导航（Navigation）主要用于实现Navigation页面（NavDestination）间的跳转，支持在不同Navigation页面间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。本文将从组件导航（Navigation）的显示模式、路由操作、子页面管理、跨包跳转以及跳转动效等几个方面进行详细介绍。
 
@@ -159,7 +159,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title("NavDestinationTitle1")
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -178,7 +178,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title("NavDestinationTitle2")
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -197,7 +197,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title("NavDestinationTitle3")
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -342,7 +342,7 @@ struct Index {
 
 ### 页面跳转
 
-NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分为以下三类：
+NavPathStack通过Push相关的接口（如[pushPath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpath10)、[pushPathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10)、[pushDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestination11)、[pushDestinationByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestinationbyname11)）去实现页面跳转的功能，主要分为以下三类：
 
 1. 普通跳转，通过页面的name去跳转，并可以携带param。
 
@@ -355,7 +355,7 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 
     ```ts
     this.pageStack.pushPathByName('PageOne', "PageOne Param", (popInfo) => {
-      console.log('Pop page name is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result));
+      console.info('Pop page name is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result));
     });
     ```
 
@@ -378,7 +378,7 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 
 ### 页面返回
 
-NavPathStack通过Pop相关接口去实现页面返回功能。
+NavPathStack通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口去实现页面返回功能。
 
 ```ts
 // 返回到上一页
@@ -393,7 +393,7 @@ this.pageStack.clear();
 
 ### 页面替换
 
-NavPathStack通过Replace相关接口去实现页面替换功能。
+NavPathStack通过Replace相关接口（如[replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11)、[replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)、[replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)）去实现页面替换功能。
 
 ```ts
 // 将栈顶页面替换为PageOne
@@ -410,7 +410,7 @@ this.pageStack.replaceDestination({name: "PageOne", param: "PageOne Param"})
 
 ### 页面删除
 
-NavPathStack通过Remove相关接口去实现删除路由栈中特定页面的功能。
+NavPathStack通过Remove相关接口（如[removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11)、[removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11)、[removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)）去实现删除路由栈中特定页面的功能。
 
 ```ts
 // 删除栈中name为PageOne的所有页面
@@ -423,7 +423,7 @@ this.pageStack.removeByNavDestinationId("1");
 
 ### 移动页面
 
-NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈顶的功能。
+NavPathStack通过Move相关接口（如[moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10)、[moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)）去实现移动路由栈中特定页面到栈顶的功能。
 
 ```ts
 // 移动栈中name为PageOne的页面到栈顶
@@ -470,16 +470,16 @@ struct DemoNavDestination {
     }
     .onResult((param: Object) => {
       if (param instanceof NavParam) {
-        console.log('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
+        console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
         return;
       }
-      console.log('TestTag', 'param not instance of NavParam');
+      console.info('TestTag', 'param not instance of NavParam');
     })
   }
 }
 ```
 
-其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
+其他业务场景，可以通过主动调用NavPathStack的Get相关接口（如[getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10)、[getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10)、[getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10)、[getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)）去获取指定页面的参数。
 
 ```ts
 // 获取栈中所有页面name集合
@@ -513,7 +513,7 @@ this.pageStack.setInterception({
   willShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
     operation: NavigationOperation, animated: boolean) => {
     if (typeof to === "string") {
-      console.log("target page is navigation home page.");
+      console.info("target page is navigation home page.");
       return;
     }
     // 将跳转到PageTwo的路由重定向到PageOne
@@ -789,19 +789,9 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
     .title('FromPage')
     ```
 
-## 跨包动态路由
+## 跨包路由
 
-通过静态import页面再进行路由跳转的方式会造成不同模块之间的依赖耦合，以及首页加载时间长等问题。
-
-动态路由设计的初衷旨在解决多个模块（HAR/HSP）能够复用相同的业务逻辑，实现各业务模块间的解耦，同时支持路由功能的扩展与整合。
-
-**动态路由的优势：**
-
-- 路由定义除了跳转的URL以外，可以丰富的配置扩展信息，如横竖屏默认模式，是否需要鉴权等等，做路由跳转时统一处理。
-- 给每个路由页面设置一个名字，按照名称进行跳转而不是文件路径。
-- 页面的加载可以使用动态import（按需加载），防止首个页面加载大量代码导致卡顿。
-
-动态路由提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式。
+系统提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式。
 
 - 系统路由表相对自定义路由表，使用更简单，只需要添加对应页面跳转配置项，即可实现页面跳转。
 
@@ -815,8 +805,8 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 | 路由方式     | 跨包跳转能力             | 可扩展性     | 易用性                               |
 | ------------ | ------------------------ | ------------ | ------------------------------------ |
-| 系统路由表   | 跳转前无需import页面文件。 | 可扩展性一般。 | 易用性更强，系统自动维护路由表。       |
-| 自定义路由表 | 跳转前需要import页面文件。 | 可扩展性更强。 | 易用性一般，需要开发者自行维护路由表。 |
+| [系统路由表](#系统路由表)   | 跳转前无需import页面文件，页面按需动态加载。 | 可扩展性一般。 | 易用性更强，系统自动维护路由表。       |
+| [自定义路由表](#自定义路由表) | 跳转前需要import页面文件。 | 可扩展性更强。 | 易用性一般，需要开发者自行维护路由表。 |
 
 ### 系统路由表
 
@@ -900,15 +890,127 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 ### 自定义路由表
 
-自定义路由表是动态路由的一种实现方式。开发者可以通过自定义路由表的方式来实现跨包动态路由，具体实现方法请参考<!--RP1-->[Navigation自定义动态路由](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End--> 示例。
+自定义路由表通过给Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性设置Builder函数实现，其特点是需要import页面。有两种import页面的方式，静态import和动态import，二者的区别在于： 
 
-**实现方案：**
+| import方式 | 模块间耦合度   | 实现复杂度 | 性能                                     |
+| ---------- | -------------- | ---------- | ---------------------------------------- |
+| 动态import | 模块间解耦。 | 复杂度高。 | 性能好，按需加载，跳转前再加载对应页面。 |
+| 静态import | 模块间耦合。 | 复杂度低。 | 性能一般，初始化时一次性加载所有依赖的页面。 |
+
+**动态import（推荐）**
+
+动态import旨在解决多个模块（HAR/HSP）能够复用相同的业务逻辑，实现各业务模块间的解耦，同时支持路由功能的扩展与整合，可以按需import，具体实现方法请参考<!--RP1-->[Navigation动态路由](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End-->示例。
+
+动态import的优势：
+
+- 路由定义除了跳转的URL以外，可以配置丰富的扩展信息，如横竖屏默认模式、是否需要鉴权等等，做路由跳转时统一处理。
+- 给每个路由页面设置一个名字，按照名称进行跳转而不是文件路径。
+- 页面的加载可以使用动态import（按需加载），防止首个页面加载大量代码导致卡顿。
+
+实现方案：
 
 1. 定义页面跳转配置项。
    - 使用资源文件进行定义，通过资源管理[@ohos.resourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md)在运行时对资源文件解析。
    - 在ets文件中配置路由加载配置项，一般包括路由页面名称（即pushPath等接口中页面的别名），文件所在模块名称（hsp/har的模块名），加载页面在模块内的路径（相对src目录的路径）。
 2. 加载目标跳转页面，通过[动态import](../arkts-utils/arkts-dynamic-import.md)将跳转目标页面所在的模块在运行时加载，在模块加载完成后，调用模块中的方法，通过import在模块的方法中加载模块中显示的目标页面，并返回页面加载完成后定义的Builder函数。
 3. 触发页面跳转，在Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性执行步骤2中加载的Builder函数，即可跳转到目标页面。
+
+**静态import**
+
+静态import实现方式简单，但通过静态import页面进行路由跳转会导致不同模块之间的依赖耦合，并增加首页加载时间长等问题。建议使用[自定义路由表](#自定义路由表)的动态import或[系统路由表](#系统路由表)。
+
+实现方案：
+
+```ts
+import { pageOneTmp } from './pageOne';
+
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  private arr: number[] = [1, 2];
+
+  @Builder
+  pageMap(name: string) {
+    if (name === "NavDestinationTitle1") {
+      pageOneTmp();
+    } else if (name === "NavDestinationTitle2") {
+      pageTwoTmp();
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        TextInput({ placeholder: 'search...' })
+          .width("90%")
+          .height(40)
+
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text("Page" + item)
+                .width("100%")
+                .height(72)
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: "NavDestinationTitle" + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width("90%")
+        .margin({ top: 12 })
+      }
+      .title("主标题")
+      .navDestination(this.pageMap)
+      .mode(NavigationMode.Split)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+export struct pageTwoTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("NavDestinationContent2")
+      }.width('100%').height('100%')
+    }.title("NavDestinationTitle2")
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+// pageOne.ets
+@Component
+export struct pageOneTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("NavDestinationContent1")
+      }.width('100%').height('100%')
+    }.title("NavDestinationTitle1")
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
 
 ## 导航示例
 

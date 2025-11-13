@@ -42,10 +42,10 @@ During the encrypted import process, the following HUKS capabilities are called 
 
 The [public key plaintext material returned by the key export API is encapsulated in X.509 format](huks-concepts.md#public-key-material-format). The key material in the key import API must be encapsulated in the **Length<sub>Data</sub>-Data** format, for example, [(Length<sub>part1</sub>Data<sub>part1</sub>)... (Length<sub>partn</sub>Data<sub>partn</sub>)].
 
-> **NOTE**<br>
+> **NOTE**
 > 1. The encrypted import supports key agreement algorithms ECDH and X25519. The generated **Shared_Key** uses the AES-GCM algorithm to encrypt **Caller_Kek**. For details about the cipher suites, see [HuksUnwrapSuite](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9).
 > 2. The X.509 format is not supported for encrypted import.
-> 3. <!--RP2-->The mini-system devices<!--RP2End--> support plaintext import but not encrypted import.
+> 3. The mini-system <!--RP3-->devices<!--RP3End--> support plaintext import but not encrypted import.
 
 ### Key Material Format for Encrypted Import
 
@@ -81,7 +81,7 @@ The key management service specifications include mandatory specifications and o
 **You are advised to use mandatory specifications in your development for compatibility purposes.**
 <!--DelEnd-->
 
-> **NOTE**<br>
+> **NOTE**
 > When an RSA key is imported, the public key must be greater than or equal to 65537.
 
 **Specifications****<!--RP1--> for standard devices<!--RP1End-->**

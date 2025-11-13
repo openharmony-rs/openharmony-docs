@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 鉴于组件导航(Navigation)支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
 
@@ -637,7 +637,9 @@ Navigation同样可以通过在observer中实现注册监听。
 ```ts
 // EntryAbility.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIObserver } from '@kit.ArkUI';
+import { UIObserver, window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -723,7 +725,7 @@ struct MyComponent {
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    console.log('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
   }
 
   build() {

@@ -44,7 +44,7 @@ In ArkTS, the JsError crash detection detects global exceptions, collects the er
 
 Since API version 20, crash log specifications can be customized.
 
-The system provides the common **NativeCrash** log generation functionality. However, some applications have specific requirements on the **NativeCrash** log content. Therefore, you need to set crash log parameters.
+The system provides the common NativeCrash log generation feature and allows you to set crash log parameters to meet your requirements.
 
 ### **Available APIs**
 
@@ -58,7 +58,7 @@ You can set the crash log printing specifications in **Record <string, ParamType
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| extend_pc_lr_printing | boolean | No| The value **true** means to print the memory values of 248 bytes before and 256 bytes after the PC and LR on 64-bit system, or 124 bytes before and 128 bytes after on 32-bit systems.<br>The value **false** means to print the memory values of 16 bytes before and 232 bytes after the PC and LR on 64-bit system, or 8 bytes before and 116 bytes after on 32-bit systems.<br>Default value: **false**.|
+| extend_pc_lr_printing | boolean | No| The value **true** means to print the memory values of the 248 bytes before and 256 bytes after the PC and LR in the 64-bit system, or print the memory values of the 124 bytes before and 128 bytes after the PC and LR in the 32-bit system.<br>The value **false** means to print the memory values of the 16 bytes before and 232 bytes after the PC and LR in the 64-bit system, or print the memory values of the 8 bytes before and 116 bytes after the PC and LR in the 32-bit system.<br>Default value: **false**.|
 | log_file_cutoff_sz_bytes | number | No| The value ranges from 0 to 5242880, in bytes.<br>The crash log is truncated to the specified size when this parameter is set.<br>Otherwise, the default value **0** is used, which means no truncation.|
 | simplify_vma_printing | boolean | No| The value **true** means to print only the Virtual Memory Area (VMA) mapping information of the addresses in the crash log, that is, **Maps** in the crash log, to reduce the log size.<br>The value **false** means to print all VMA mapping information.<br>Default value: **false**.|
 
@@ -91,7 +91,11 @@ For details about the crash log, see [Application Crash Log Configured by HiAppE
 
 ### params
 
-The **params** parameter in the event information is described as follows.
+**params** is the event parameter object in [AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventinfo), which consists of a parameter name and a parameter value.
+
+The fields contained in **params** of a system event are defined by the event.
+
+The following table lists the common information predefined in the crash event.
 
 | Name| Type| Description|
 | -------- | -------- | -------- |

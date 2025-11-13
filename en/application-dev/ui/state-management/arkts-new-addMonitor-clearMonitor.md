@@ -6,19 +6,19 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The [addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md) and [clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md) APIs in **UIUtils** enable you to dynamically add or remove listeners for state variables in state management V2.
+The [addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#clearmonitor20) APIs enable you to dynamically add or remove listeners for state variables in state management V2.
 
 Before using these APIs, it is recommended that you familiarize yourself with the following concepts: [\@ObservedV2/\@Trace](./arkts-new-observedV2-and-trace.md) and [\@Monitor](./arkts-new-monitor.md).
 
 >**NOTE**
 >
->These APIs are available since API version 20.
+>The **addMonitor** and **clearMonitor** APIs from **UIUtils** are supported in state management V2 since API version 20.
 
 
 ## Overview
 The [\@Monitor](./arkts-new-monitor.md) decorator, when declared within an [\@ObservedV2](./arkts-new-observedV2-and-trace.md) or [\@ComponentV2](./arkts-new-componentV2.md) decorated class, automatically applies the same listener callback to all instances of that class. These \@Monitor decorated callbacks are static and cannot be removed.
 
-For scenarios requiring dynamic management of listeners, use the [addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md) and [clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md) APIs to add or remove listeners on individual \@ObservedV2 and \@ComponentV2 instances.
+For scenarios requiring dynamic management of listeners, use the [addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#clearmonitor20) APIs to add or remove listeners on individual \@ObservedV2 and \@ComponentV2 instances.
 
 - To use **addMonitor** and **clearMonitor**, you must import the **UIUtils** utility.
 
@@ -136,7 +136,7 @@ struct Page {
   }
 }
 ```
-- The [isSynchronous](../../reference/apis-arkui/js-apis-StateManagement.md) configuration option for a listener is established during its initial registration and becomes immutable thereafter. Any subsequent attempt to modify it for the same listener will fail and produce an error log.
+- The [isSynchronous](../../reference/apis-arkui/js-apis-StateManagement.md#monitoroptions20) configuration option for a listener is established during its initial registration and becomes immutable thereafter. Any subsequent attempt to modify it for the same listener will fail and produce an error log.
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 
@@ -403,13 +403,13 @@ The rules for listening for changes with **addMonitor** and the [\@Monitor](./ar
 | [Listening for variable accessibility changes](#listening-for-variable-accessibility-changes) | Supported| Not supported|
 | [Configuring synchronous listeners](#configuring-synchronous-listeners) | Supported| Not supported|
 | [Listening for synchronous state variable changes in constructors](#listening-for-synchronous-state-variable-changes-in-constructors)  | Supported| Not supported|
-| [Dynamically Canceling Listening of \@ObservedV2/\@ComponentV2 Instances](#dynamically-canceling-listening-of-observedv2componentv2-instances)  | Supported| Not supported|
+| [Dynamically canceling listening of \@ObservedV2/\@ComponentV2 instances](#dynamically-canceling-listening-of-observedv2componentv2-instances)  | Supported| Not supported|
 
-## Application scenarios
+## Use Scenarios
 ### Listening for @Trace Decorated Properties in \@ObservedV2 Classes and State Variables in \@ComponentV2 Components
 
 In the following example:
-- A **onChange** listener is added for **age** and **name** in the constructor of **User**.
+- An **onChange** listener is added for **age** and **name** in the constructor of **User**.
 - In the **aboutToAppear** lifecycle callback of the custom component **Page**, an **onChangeInView** listener is added for **user**.
 - Clicking **Text(`User name ${this.user.name}`)** changes the value of **name** and triggers **onChange**.
 - Clicking **Text(`User age ${this.user.age}`)** changes the value of **age** and triggers **onChange**.
@@ -580,8 +580,8 @@ struct Index {
 ```
 
 ### Listening for Variable Accessibility Changes
-[\@Monitor](./arkts-new-monitor.md#Unable to listen to variables that are accessible and inaccessible
-preventing listening for accessibility transitions.
+[\@Monitor](./arkts-new-monitor.md#variables-cannot-be-observed-during-accessibility-changes) cannot observe accessibility transitions.
+
 **addMonitor** records inaccessible states, enabling listening for accessibility changes. Example:
 
 ```ts
@@ -703,7 +703,7 @@ struct Page {
 ```
 
 ### Listening for Synchronous State Variable Changes in Constructors
-Unlike [\@Monitor, which constructs asynchronously](./arkts-new-monitor.md#effective-and-expiration-time-of-variable-listening-by-the-monitor-in-the-class), **addMonitor** operates synchronously. The listener **this.onMessageChange** is added to **message** immediately after **UIUtils.addMonitor(this, 'message', this.onMessageChange);** execution. In the following example:
+Unlike [\@Monitor, which constructs asynchronously](./arkts-new-monitor.md#effective-and-expiration-time-of-variable-observation-by-monitor-in-classes), **addMonitor** operates synchronously. The listener **this.onMessageChange** is added to **message** immediately after **UIUtils.addMonitor(this, 'message', this.onMessageChange);** execution. In the following example:
 - Page initialization constructs an **Info** instance, triggering **onMessageChange**.
 - Clicking **Button('change message')** also triggers **onMessageChange**.
 The output logs are as follows:

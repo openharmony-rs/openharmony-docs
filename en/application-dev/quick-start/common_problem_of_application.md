@@ -30,6 +30,7 @@ try {
 }
 ```
 
+
 * Use [Bundle Manager](../tools/bm-tool.md) (bm).
 
 ```shell
@@ -117,6 +118,6 @@ try {
 ```shell
 hdc shell
 # Replace **com.example.myapplication** with the actual bundle name.
-dump -n ohos.app.hap.myapplication |grep '"appId":'
+bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
 ![alt text](figures/get_appId.png)

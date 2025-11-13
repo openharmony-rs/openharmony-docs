@@ -36,10 +36,10 @@ import { dragInteraction } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-| 名称       | 类型     | 必填 | 说明               |
-| ---------- | -------- | ---- | ------------------ |
-| dataType   | string   | 是   | 拖拽对象类型。     |
-| dataSize   | number   | 是   | 拖拽对象数据长度。 |
+| 名称           | 类型            | 只读 | 	可选 | 说明                      |
+| ---------      | -------------- | ---- | ---- | ------------------------|
+| dataType     | string          | 否   | 否   | 拖拽对象类型。 |
+| dataSize     | number          | 否   | 否   | 拖拽对象数据长度。 |
 
 ## dragInteraction.on('drag')
 
@@ -64,7 +64,7 @@ on(type: 'drag', callback: Callback\<DragState>): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**
@@ -102,7 +102,7 @@ off(type: 'drag', callback?: Callback\<DragState>): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**
@@ -157,7 +157,7 @@ getDataSummary(): Array\<Summary>
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -188,7 +188,7 @@ setDragSwitchState(enabled: boolean): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -219,7 +219,7 @@ setAppDragSwitchState(enabled: boolean, bundleName: string): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**

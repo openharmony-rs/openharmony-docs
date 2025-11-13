@@ -44,6 +44,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -65,7 +66,7 @@ struct Index {
                 console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set pointer speed success`);
+              console.info(`Set pointer speed success`);
             });
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -80,7 +81,7 @@ struct Index {
 
 setPointerSpeed(speed: number): Promise&lt;void&gt;
 
-设置鼠标移动速度，使用Promise异步方式返回结果。
+设置鼠标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -96,14 +97,15 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](../apis-distributedservice-kit/errorcode-devicestatus.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -121,7 +123,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSpeed(5).then(() => {
-              console.log(`Set pointer speed success`);
+              console.info(`Set pointer speed success`);
             });
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -171,7 +173,7 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.setPointerSpeedSync(5);
-            console.log(`Set pointer speed success`);
+            console.info(`Set pointer speed success`);
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -203,6 +205,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -224,7 +227,7 @@ struct Index {
                 console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -239,7 +242,7 @@ struct Index {
 
 getPointerSpeed(): Promise&lt;number&gt;
 
-获取当前鼠标移动速度，使用Promise异步方式返回结果。
+获取当前鼠标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -249,7 +252,15 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise实例，异步返回鼠标移动速度。 |
+| Promise&lt;number&gt; | Promise对象，异步返回鼠标移动速度。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
 
 **示例**：
 
@@ -265,7 +276,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSpeed().then(speed => {
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -315,7 +326,7 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.getPointerSpeedSync();
-            console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+            console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -369,7 +380,7 @@ struct Index {
                 console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set the mouse hover scroll success`);
+              console.info(`Set the mouse hover scroll success`);
             });
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -384,7 +395,7 @@ struct Index {
 
 setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
-设置鼠标悬停滚动开关状态，使用Promise异步方式返回结果。
+设置鼠标悬停滚动开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -400,7 +411,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -425,7 +436,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setHoverScrollState(true).then(() => {
-              console.log(`Set the mouse hover scroll success`);
+              console.info(`Set the mouse hover scroll success`);
             });
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -475,7 +486,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState((error: Error, state: boolean) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -490,7 +501,7 @@ struct Index {
 
 getHoverScrollState(): Promise&lt;boolean&gt;
 
-获取当前鼠标悬停滚动开关状态，使用Promise异步方式返回结果。
+获取当前鼠标悬停滚动开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -500,7 +511,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise实例，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
+| Promise&lt;boolean&gt; | Promise对象，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
 
 **错误码**：
 
@@ -525,7 +536,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState().then((state: boolean) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -580,7 +591,7 @@ struct Index {
                 console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set mouse primary button success`);
+              console.info(`Set mouse primary button success`);
             });
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -595,7 +606,7 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
-设置鼠标主键，使用Promise异步方式返回结果。
+设置鼠标主键，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -611,7 +622,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -636,7 +647,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
-              console.log(`Set mouse primary button success`);
+              console.info(`Set mouse primary button success`);
             });
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -686,7 +697,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton((error: Error, primary: pointer.PrimaryButton) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -701,7 +712,7 @@ struct Index {
 
 getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
-获取当前鼠标主键，使用Promise异步方式返回结果。
+获取当前鼠标主键，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -711,7 +722,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise实例，异步返回鼠标主键。 |
+| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise对象，异步返回鼠标主键。 |
 
 **错误码**：
 
@@ -736,7 +747,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -791,7 +802,7 @@ struct Index {
                 console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setMouseScrollRows success`);
+              console.info(`setMouseScrollRows success`);
             });
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -806,7 +817,7 @@ struct Index {
 
 setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
-设置鼠标滚动行数，使用Promise异步方式返回结果。
+设置鼠标滚动行数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -822,7 +833,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -847,7 +858,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMouseScrollRows(20).then(() => {
-              console.log(`setMouseScrollRows success`);
+              console.info(`setMouseScrollRows success`);
             });
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -897,7 +908,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows((error: Error, rows: number) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -912,7 +923,7 @@ struct Index {
 
 getMouseScrollRows(): Promise&lt;number&gt;
 
-获取当前鼠标滚动行数，使用Promise异步方式返回结果。
+获取当前鼠标滚动行数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -922,7 +933,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise实例，异步返回鼠标滚动行数。 |
+| Promise&lt;number&gt; | Promise对象，异步返回鼠标滚动行数。 |
 
 **错误码**：
 
@@ -947,7 +958,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows().then((rows: number) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1002,7 +1013,7 @@ struct Index {
                 console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollSwitch success`);
+              console.info(`setTouchpadScrollSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1017,7 +1028,7 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
-设置触控板滚轴开关，使用Promise异步方式返回结果。
+设置触控板滚轴开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1033,7 +1044,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1058,7 +1069,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollSwitch(false).then(() => {
-              console.log(`setTouchpadScrollSwitch success`);
+              console.info(`setTouchpadScrollSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1108,7 +1119,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1123,7 +1134,7 @@ struct Index {
 
 getTouchpadScrollSwitch(): Promise\<boolean>
 
-获取触控板滚轴能力开启状态，使用Promise异步方式返回结果。
+获取触控板滚轴能力开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1133,7 +1144,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
 
 **错误码**：
 
@@ -1158,7 +1169,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch().then((state) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1213,7 +1224,7 @@ struct Index {
                 console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollDirection success`);
+              console.info(`setTouchpadScrollDirection success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1228,7 +1239,7 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean): Promise\<void>
 
-设置触控板滚轴的方向，使用Promise异步方式返回结果。
+设置触控板滚轴的方向，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1244,7 +1255,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1269,7 +1280,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollDirection (false).then(() => {
-              console.log(`setTouchpadScrollDirection success`);
+              console.info(`setTouchpadScrollDirection success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1319,7 +1330,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection ((error: Error, state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1334,7 +1345,7 @@ struct Index {
 
 getTouchpadScrollDirection(): Promise\<boolean>
 
-获取触控板滚轴方向，使用Promise异步方式返回结果。
+获取触控板滚轴方向，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1344,7 +1355,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
+| Promise\<boolean> | Promise对象，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
 
 **错误码**：
 
@@ -1369,7 +1380,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1424,7 +1435,7 @@ struct Index {
                 console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadTapSwitch success`);
+              console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1439,7 +1450,7 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean): Promise\<void>
 
-设置触控板轻触功能开关，使用Promise异步方式返回结果。
+设置触控板轻触功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1455,7 +1466,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1480,7 +1491,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadTapSwitch(false).then(() => {
-              console.log(`setTouchpadTapSwitch success`);
+              console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1530,7 +1541,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1545,7 +1556,7 @@ struct Index {
 
 getTouchpadTapSwitch(): Promise\<boolean>
 
-获取触控板轻触功能开启状态，使用Promise异步方式返回结果。
+获取触控板轻触功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1555,7 +1566,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板轻触功能开启状态，true代表开启，false代表关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板轻触功能开启状态，true代表开启，false代表关闭，默认开启。 |
 
 **错误码**：
 
@@ -1580,7 +1591,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch().then((state: boolean) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1635,7 +1646,7 @@ struct Index {
                 console.error(`setTouchpadPointerSpeedfailed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPointerSpeed success`);
+              console.info(`setTouchpadPointerSpeed success`);
             });
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1650,7 +1661,7 @@ struct Index {
 
 setTouchpadPointerSpeed(speed: number): Promise\<void>
 
-设置触控板光标移动速度，使用Promise异步方式返回结果。
+设置触控板光标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1666,7 +1677,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1691,7 +1702,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPointerSpeed(10).then(() => {
-              console.log(`setTouchpadPointerSpeed success`);
+              console.info(`setTouchpadPointerSpeed success`);
             });
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1741,7 +1752,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed((error: Error, speed: number) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1756,7 +1767,7 @@ struct Index {
 
 getTouchpadPointerSpeed(): Promise\<number>
 
-获取触控板光标移动速度，使用Promise异步方式返回结果。
+获取触控板光标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1766,7 +1777,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise实例，异步返回触控板光标移动速度。 |
+| Promise\<number> | Promise对象，异步返回触控板光标移动速度。 |
 
 **错误码**：
 
@@ -1791,7 +1802,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed().then((speed: number) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1846,7 +1857,7 @@ struct Index {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPinchSwitch success`);
+              console.info(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1861,7 +1872,7 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
-设置触控板双指捏合功能开关，使用Promise异步方式返回结果。
+设置触控板双指捏合功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1877,7 +1888,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1902,7 +1913,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPinchSwitch(false).then(() => {
-              console.log(`setTouchpadPinchSwitch success`);
+              console.info(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1952,7 +1963,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1967,7 +1978,7 @@ struct Index {
 
 getTouchpadPinchSwitch(): Promise\<boolean>
 
-获取触控板双指捏合功能开启状态，使用Promise异步方式返回结果。
+获取触控板双指捏合功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1977,7 +1988,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
 
 **错误码**：
 
@@ -2002,7 +2013,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch().then((state: boolean) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2057,7 +2068,7 @@ struct Index {
                 console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadSwipeSwitch success`);
+              console.info(`setTouchpadSwipeSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2072,7 +2083,7 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
-设置触控板多指滑动功能开关，使用Promise异步方式返回结果。
+设置触控板多指滑动功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2088,7 +2099,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2113,7 +2124,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadSwipeSwitch(false).then(() => {
-              console.log(`setTouchpadSwipeSwitch success`);
+              console.info(`setTouchpadSwipeSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2163,7 +2174,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadSwipeSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2178,7 +2189,7 @@ struct Index {
 
 getTouchpadSwipeSwitch(): Promise\<boolean>
 
-获取触控板多指滑动功能开启状态，使用Promise异步方式返回结果。
+获取触控板多指滑动功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2188,7 +2199,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
 
 **错误码**：
 
@@ -2213,7 +2224,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2268,7 +2279,7 @@ struct Index {
                 console.error(`setTouchpadRightClickType, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadRightClickType success`);
+              console.info(`setTouchpadRightClickType success`);
             });
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2283,7 +2294,7 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
-设置触控板右键菜单类型，使用Promise异步方式返回结果。
+设置触控板右键菜单类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2299,7 +2310,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2324,7 +2335,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
-              console.log(`setTouchpadRightClickType success`);
+              console.info(`setTouchpadRightClickType success`);
             });
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2374,7 +2385,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType((error: Error, type: pointer.RightClickType) => {
-              console.log(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2389,7 +2400,7 @@ struct Index {
 
 getTouchpadRightClickType(): Promise\<RightClickType>
 
-获取触控板右键菜单类型，使用Promise异步方式返回结果。
+获取触控板右键菜单类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2399,7 +2410,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise实例，异步返回触控板右键菜单类型。 |
+| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise对象，异步返回触控板右键菜单类型。 |
 
 **错误码**：
 
@@ -2424,7 +2435,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
-              console.log(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2479,7 +2490,7 @@ struct Index {
                 console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2494,7 +2505,7 @@ struct Index {
 
 setPointerSize(size: number): Promise&lt;void&gt;
 
-设置鼠标光标大小，使用Promise异步方式返回结果。
+设置鼠标光标大小，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2510,7 +2521,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2535,7 +2546,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSize(3).then(() => {
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2585,7 +2596,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSizeSync(5);
-            console.log(`setPointerSizeSync success`);
+            console.info(`setPointerSizeSync success`);
           } catch (error) {
             console.error(`setPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2634,7 +2645,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize((error: Error, size: number) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2649,7 +2660,7 @@ struct Index {
 
 getPointerSize(): Promise&lt;number&gt;
 
-获取当前鼠标光标大小，使用Promise异步方式返回结果。
+获取当前鼠标光标大小，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2684,7 +2695,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize().then((size: number) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2734,7 +2745,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerSize = pointer.getPointerSizeSync();
-            console.log(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
+            console.info(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
           } catch (error) {
             console.error(`getPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2792,7 +2803,7 @@ struct Index {
                 console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerColor success`);
+              console.info(`setPointerColor success`);
             });
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2807,7 +2818,7 @@ struct Index {
 
 setPointerColor(color: number): Promise&lt;void&gt;
 
-设置鼠标光标颜色，使用Promise异步方式返回结果。
+设置鼠标光标颜色，使用Promise异步回调。
 
 **说明**
 >
@@ -2827,7 +2838,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2852,7 +2863,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColor(0xF6C800).then(() => {
-              console.log(`setPointerColor success`);
+              console.info(`setPointerColor success`);
             });
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2906,7 +2917,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColorSync(0xF6C800);
-            console.log(`setPointerColorSync success`);
+            console.info(`setPointerColorSync success`);
           } catch (error) {
             console.error(`setPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2955,7 +2966,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor((error: Error, color: number) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2970,7 +2981,7 @@ struct Index {
 
 getPointerColor(): Promise&lt;number&gt;
 
-获取当前鼠标光标颜色，使用Promise异步方式返回结果。
+获取当前鼠标光标颜色，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3005,7 +3016,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor().then((color: number) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3055,7 +3066,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerColor = pointer.getPointerColorSync();
-            console.log(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
+            console.info(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
           } catch (error) {
             console.error(`getPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3109,7 +3120,7 @@ struct Index {
                 console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`setTouchpadDoubleTapAndDragState success`);
             });
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3124,7 +3135,7 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
-设置触控板双击拖拽开关状态，使用Promise异步方式返回结果。
+设置触控板双击拖拽开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3140,7 +3151,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -3165,7 +3176,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
-              console.log(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`setTouchpadDoubleTapAndDragState success`);
             });
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3215,7 +3226,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState((error: Error, state: boolean) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3230,7 +3241,7 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
-获取触控板双击拖拽开关的开启状态，使用Promise异步方式返回结果。
+获取触控板双击拖拽开关的开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3240,7 +3251,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板双击拖拽开启状态。true代表开启，false代表关闭。|
+| Promise\<boolean> | Promise对象，异步返回触控板双击拖拽开启状态。true代表开启，false代表关闭。|
 
 **错误码**：
 
@@ -3264,7 +3275,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState().then((state) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);

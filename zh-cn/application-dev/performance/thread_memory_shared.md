@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 
 ## 概述
-在应用开发中，为了避免主线程阻塞，提高应用性能，需要将一些耗时操作放在子线程中执行。此时，子线程就需要访问主线程中的数据。ArkTS采用了基于消息通信的Actor并发模型，具有内存隔离的特性，所以跨线程传输数据时需要将数据序列化，但是AkrTS支持通过可共享对象SharedArrayBuffer实现直接的共享内存。
+在应用开发中，为了避免主线程阻塞，提高应用性能，需要将一些耗时操作放在子线程中执行。此时，子线程就需要访问主线程中的数据。ArkTS采用了基于消息通信的Actor并发模型，具有内存隔离的特性，所以跨线程传输数据时需要将数据序列化，但是ArkTS支持通过可共享对象SharedArrayBuffer实现直接的共享内存。
 
 在开发应用时，如果遇到数据量较大，并且需要多个线程同时操作的情况，推荐使用SharedArrayBuffer共享内存，可以减少数据在线程间传递时需要复制和序列化的额外开销。比如，音视频解码播放、多个线程同时读取写入文件等场景。由于内存是共享的，所以在多个线程同时操作同一块内存时，可能会引起数据的紊乱，这时就需要使用锁来确保数据操作的有序性。本文将基于此具体展开说明。关于多线程的使用和原理，可参考[OpenHarmony多线程能力场景化示例实践](./multi_thread_capability.md)，本文将不再详细讲述。
 ## 工作原理
@@ -15,7 +15,7 @@
 ### 非原子操作
 
 ```javascript
-......
+// ...
 // 非原子操作，进行10000次++
 @Concurrent
 function normalProcess(int32Array: Int32Array) {
@@ -30,11 +30,11 @@ function atomicsProcess(int32Array: Int32Array) {
     Atomics.add(int32Array, 0, 1);
   }
 }
-......
+// ...
 @State result: string = "计算结果：";
 private taskNum: number = 2;
 private scroller: Scroller = new Scroller();
-......
+// ...
 Button("非原子操作")
   .width("80%")
   .fontSize(30)
@@ -53,7 +53,7 @@ Scroll(this.scroller) {
   }
 }.height("60%")
 .margin({ top: 30 })
-......
+// ...
 // 根据传入的值isAtomics判断是否使用原子操作
 sharedArrayBufferUsage(isAtomics: boolean) {
   // 创建长度为4的SharedArrayBuffer对象
@@ -94,7 +94,7 @@ sharedArrayBufferUsage(isAtomics: boolean) {
 下面修改一下代码，将自增操作改为使用Atomics.add()方法的原子操作。
 
 ```javascript
-......
+// ...
 Button("原子操作")
   .width("80%")
   .fontSize(30)
@@ -103,7 +103,7 @@ Button("原子操作")
   .onClick(async () => {
     this.sharedArrayBufferUsage(true);
   })
-......
+// ...
 
 ```
 点击按钮查看计算结果，就会发现不论计算多少次，结果一直都是20000。这是因为，原子操作是不可中断的一个或者一系列操作，可以保证在A线程执行完取值、计算、写入内存这三个步骤之前，不会被B线程中断，也就不会发生非原子操作示例中B线程取到旧值的情况，而是每次都能拿到A线程写入内存的新值。所以，在使用SharedArrayBuffer共享内存时，一定要注意使用原子操作保证同步性，否则就可能会造成数据的紊乱。
@@ -123,9 +123,15 @@ export class NonReentrantLock {
     this.flag= new Int32Array(sab); // 其视图为只有一位的int数组（1 = 4bytes * 8 / 32bit）
   }
    
-  lock(): void {...}
-  tryLock(): boolean {...}
-  unlock(): void {...}
+  lock(): void {
+    // ...
+  }
+  tryLock(): boolean {
+    // ...
+  }
+  unlock(): void {
+    // ...
+  }
 }
 
 ```

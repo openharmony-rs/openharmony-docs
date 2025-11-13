@@ -1,4 +1,4 @@
-# Network Kit Terms
+# Network Kit Terminology
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->

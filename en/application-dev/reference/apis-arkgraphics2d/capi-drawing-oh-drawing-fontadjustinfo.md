@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The OH_Drawing_FontAdjustInfo struct describes the information about a font weight mapping.
+This struct describes the information about a font weight mapping.
 
 **Since**: 12
 
@@ -15,7 +15,7 @@ The OH_Drawing_FontAdjustInfo struct describes the information about a font weig
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 
-## Total
+## Summary
 
 ### Member Variables
 

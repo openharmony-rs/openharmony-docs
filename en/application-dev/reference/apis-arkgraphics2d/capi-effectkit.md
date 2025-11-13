@@ -2,7 +2,7 @@
 
 ## Overview
 
-The EffectKit module provides the basic image processing capabilities, including brightness adjustment, blurring, and grayscale adjustment.
+This module provides the basic image processing capabilities, including brightness adjustment, blurring, and grayscale adjustment.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

@@ -84,7 +84,7 @@
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -235,7 +235,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -317,7 +317,7 @@
     }
 
     toString(param: ESObject): void {
-      console.log('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param["name"]);
     }
   }
 
@@ -391,7 +391,7 @@
     }
 
     toString(param: String): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -465,7 +465,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -579,7 +579,7 @@
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -652,7 +652,7 @@
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log('执行完成');
+          console.info('执行完成');
           reject('fail');
         }, 10000);
       });
@@ -660,7 +660,7 @@
     }
 
     toString(param: string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 
@@ -732,7 +732,7 @@
     }
 
     toString(param:string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 

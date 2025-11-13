@@ -7,7 +7,7 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @zengyawen-->
 
-从API 20开始，支持视频解码同步模式。
+从API version 20开始，支持视频解码同步模式。
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频解码。
 
@@ -430,11 +430,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     std::unique_lock<std::shared_mutex> lock(codecMutex);
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoDec != nullptr) {
-        ret = OH_VideoDecoder_Destroy(videoDec);
+        OH_VideoDecoder_Destroy(videoDec);
         videoDec = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // 异常处理。
     }
     ```
 

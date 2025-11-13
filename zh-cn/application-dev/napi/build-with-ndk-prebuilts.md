@@ -1,6 +1,6 @@
 # 在NDK工程中使用预构建库
 
-在NDK工程中，可以通过CMake语法规则引入并使用预构建库。在引用预构建库时，模块libs目录中的预构建库，以及在`CMakeList.txt`编译脚本中声明的预构建库都会被打包。
+在NDK工程中，可以通过CMake语法规则引入并使用预构建库。在引用预构建库时，模块libs目录中的预构建库，以及在`CMakeLists.txt`编译脚本中声明的预构建库都会被打包。
 
 ## 预构建库使用约束
 
@@ -31,7 +31,7 @@ target_link_libraries(library PUBLIC libace_napi.z.so avcodec_ffmpeg)
 
 ```cmake
 include_directories(
-    ...
+    # ...
     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/FFmpeg/include
 )
 ```

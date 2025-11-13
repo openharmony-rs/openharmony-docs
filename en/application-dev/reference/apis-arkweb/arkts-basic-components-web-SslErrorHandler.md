@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements an **SslErrorHandler** object to handle SSL error notification events returned by the **Web** component. For details about the sample code, see the [onSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12) event.
 

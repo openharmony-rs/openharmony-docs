@@ -257,7 +257,7 @@ OH_AudioStreamBuilder_Destroy(builder);
      callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
      callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
 
-     // （必选）无触发回调场景，使用空指针初始化。从API 11开始，开发者如果需要监听设备变化，可直接使用OH_AudioRenderer_OutputDeviceChangeCallback替代。
+     // （必选）无触发回调场景，使用空指针初始化。从API version 11开始，开发者如果需要监听设备变化，可直接使用OH_AudioRenderer_OutputDeviceChangeCallback替代。
      callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
      // （必选）如果不需要监听，使用空指针初始化。
      callbacks.OH_AudioRenderer_OnError = nullptr;
@@ -318,6 +318,8 @@ OH_AudioStreamBuilder_Destroy(builder);
 6. 释放构造器。
 
     构造器不再使用时，需要释放相关资源。
+
+    应用需根据实际业务需求合理使用构造器，按需创建并及时释放，避免占用过多音频资源导致异常。
 
     ```cpp
     OH_AudioStreamBuilder_Destroy(builder);

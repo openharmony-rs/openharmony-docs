@@ -1,10 +1,10 @@
-# Using the Delayed Copy and Paste Function of the Pasteboard
+# Using the Delayed Copy and Paste Feature of the Pasteboard
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong2-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -18,11 +18,11 @@ When a user copies data in an application that uses the delayed copy and paste f
 
 - The pasteboard content, including system service metadata and application settings, has a maximum size of 128 MB by default. For PCs/2-in-1 devices, the maximum size can be changed through system settings, with a valid range from 128 MB to 2 GB.
 
-- NDK APIs support only record-level delayed copy and paste.
+- NDK APIs support only record-based delayed copy and paste.
 
 - ArkTS APIs support only PasteData-level delayed copy and paste.
 
-## Using Record-Level Delayed Copy and Paste (Recommended)
+## Using Record-based Delayed Copy and Paste (Recommended)
 
 This solution allows you to query the data type before pasting. Applications can determine whether to request data from the pasteboard based on the query result.
 
@@ -59,7 +59,7 @@ For better code readability, the operation result verification of each step is o
    ```c
    // 1. Define a callback to be invoked to return the pasteboard data obtained.
    void* GetDataCallback(void* context, const char* type) {
-       // Text
+       // Plain text type.
        if (strcmp(type, UDMF_META_PLAIN_TEXT) == 0) {
            // Create a Uds object of the plain text type.
            OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
@@ -67,7 +67,7 @@ For better code readability, the operation result verification of each step is o
            OH_UdsPlainText_SetContent(udsText, "hello world");
            return udsText;
        }
-       // HTML
+       // HTML type.
        else if (strcmp(type, UDMF_META_HTML) == 0) {
            // Create a Uds object of the HTML type.
            OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
@@ -116,6 +116,8 @@ For better code readability, the operation result verification of each step is o
    // 9. Obtain all OH_UdmfRecord records from OH_UdmfData.
    unsigned int recordCount = 0;
    OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
+   OH_UdsPlainText* udsText = nullptr;
+   OH_UdsHtml* udsHtml = nullptr;
 
    // 10. Traverse OH_UdmfRecord records.
    for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
@@ -129,23 +131,27 @@ For better code readability, the operation result verification of each step is o
        for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
            char* recordType = recordTypes[typeIndex];
 
-           // Text
+           // Plain text type.
            if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
                // Create a Uds object of the plain text type.
-               OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
-               // Obtain the Uds object of the plain text type from record.
-               OH_UdmfRecord_GetPlainText(record, udsText);
-               // Obtain the content from the Uds object.
-               const char* content = OH_UdsPlainText_GetContent(udsText);
+               udsText = OH_UdsPlainText_Create();
+               if (udsText != nullptr) {
+                // Obtain the Uds object of the plain text type from record.
+                OH_UdmfRecord_GetPlainText(record, udsText);
+                // Obtain the content from the Uds object.
+                const char* content = OH_UdsPlainText_GetContent(udsText);
+               }
            }
-           // HTML
+           // HTML type.
            else if (strcmp(recordType, UDMF_META_HTML) == 0) {
                // Create a Uds object of the HTML type.
-               OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-               // Obtain the Uds object of the HTML type from record.
-               OH_UdmfRecord_GetHtml(record, udsHtml);
-               // Obtain the content from the Uds object.
-               const char* content = OH_UdsHtml_GetContent(udsHtml);
+               udsHtml = OH_UdsHtml_Create();
+               if (udsHtml != nullptr) {
+                // Obtain the Uds object of the HTML type from record.
+                OH_UdmfRecord_GetHtml(record, udsHtml);
+                // Obtain the content from the Uds object.
+                const char* content = OH_UdsHtml_GetContent(udsHtml);
+               }
            }
        }
    }
@@ -177,7 +183,7 @@ You are not allowed to query data type before pasting.
 | getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData> | Reads data of the unified data type from the system pasteboard.|
 | getUnifiedDataSync(): unifiedDataChannel.UnifiedData | Reads data of the unified data type from the pasteboard. This API returns the result synchronously and cannot be called in the same thread as **setUnifiedData** and **setUnifiedDataSync** when the delayed copy and paste function is used.|
 | setAppShareOptions(shareOptions: ShareOption): void | Sets pasteable range of pasteboard data for an application.|
-| removeAppShareOptions(): void | Removes the pasteable range configuration set by the application.|
+| removeAppShareOptions(): void | Removes the pasteable range configuration set for the application.|
 
 ### How to Develop
 
@@ -208,7 +214,7 @@ You are not allowed to query data type before pasting.
 3. Save a piece of PlainText data to the system pasteboard.
 
    ```ts
-   let SetDelayPlainText = (() => {
+   let SetDelayPlainText = () => {
      plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
      // For cross-application use, set this parameter to CROSS_APP. For intra-application use, set this parameter to IN_APP.
      plainTextData.properties.getDelayData = GetDelayPlainText;
@@ -217,7 +223,7 @@ You are not allowed to query data type before pasting.
      }).catch((error: BusinessError) => {
        // Error case
      });
-   })
+   }
    ```
 
 4. Read the text data from the system pasteboard.
@@ -229,8 +235,8 @@ You are not allowed to query data type before pasting.
        let records = outputData.getRecords();
        if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
          let record = records[0] as unifiedDataChannel.PlainText;
-         console.info('GetPlainText success, type:' + records[0].getType() + ', details:' +
-         JSON.stringify(record.details) + ', textContent:' + record.textContent + ', abstract:' + record.abstract);
+         console.info('GetPlainText success, type:' + records[0].getType() );
+         // Note: The data copied by users is sensitive information. Do not print the data obtained from the pasteboard in plaintext in logs.
        } else {
          console.info('Get Plain Text Data No Success, Type is: ' + records[0].getType());
        }
@@ -243,25 +249,23 @@ You are not allowed to query data type before pasting.
 5. Set pasteable range of pasteboard data for an application.
 
    ```ts
-   let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    try {
        systemPasteboard.setAppShareOptions(pasteboard.ShareOption.INAPP);
        console.info('Set app share options success.');
    } catch (err) {
-       let error: BusinessError = err as BusinessError;
        // Error case
    }
    ```
    
-6. Remove the pasteable range configuration set by the application.
+6. Remove the pasteable range configuration set for the application.
 
    ```ts
-   let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    try {
 	   systemPasteboard.removeAppShareOptions();
 	   console.info('Remove app share options success.');
    } catch (err) {
-	   let error: BusinessError = err as BusinessError;
        // Error case
    }
    ```

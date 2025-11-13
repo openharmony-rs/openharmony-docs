@@ -55,7 +55,7 @@ Enumerates the color space types.
 | LINEAR_BT709<sup>11+</sup>         | 24     | Same as that of LINEAR_SRGB.<br>BT709.<br>The conversion function is of the Linear type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | LINEAR_BT2020<sup>11+</sup>        | 25     | BT2020.<br>The conversion function is of the Linear type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | H_LOG<sup>18+</sup>                | 26     | BT2020.<br>The conversion function is of the LOG type.|
-| DISPLAY_BT2020_SRGB<sup>20+</sup>  | 27     | The RGB color gamut is DISPLAY BT2020.<br>The conversion function is of the SRGB type.<br>The encoding range is of the Full type.|
+| DISPLAY_BT2020_SRGB<sup>20+</sup>  | 27     | DISPLAY BT2020.<br>The conversion function is of the SRGB type.<br>The encoding range is of the Full type.|
 | DISPLAY_SRGB<sup>11+</sup>         | 4      | Same as that of SRGB.<br>SRGB.<br>The conversion function is of the SRGB type.<br>The encoding range is of the Full type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | DISPLAY_P3_SRGB<sup>11+</sup>      | 3      | Same as that of DISPLAY_P3.<br>Display P3.<br>The conversion function is of the SRGB type.<br>The encoding range is of the Full type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | DISPLAY_P3_HLG<sup>11+</sup>       | 11     | Same as that of P3_HLG.<br>Display P3.<br>The conversion function is of the HLG type.<br>The encoding range is of the Full type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|

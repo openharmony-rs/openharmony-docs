@@ -74,7 +74,7 @@
       - [StartAbilityParameter](js-apis-inner-ability-startAbilityParameter.md)
     - app<!--app-->
       - [AppVersionInfo](js-apis-inner-app-appVersionInfo.md)
-      - [Context](js-apis-inner-app-context.md)
+      - [Context (FA模型的上下文基类)](js-apis-inner-app-context.md)
       - [ProcessInfo](js-apis-inner-app-processInfo.md)
   - 通用能力的接口(推荐)<!--both-models-->
     - [@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)
@@ -225,7 +225,7 @@
       - [remoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (系统接口)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->
-    - continuation<!--continuation-->
+    - continuation<!--ability--continuation-->
       - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
       - [continuationResult](js-apis-continuation-continuationResult.md)
     - security<!--ability-security-->
@@ -261,7 +261,7 @@
     <!--DelEnd-->
     - [@system.package (应用管理)](js-apis-system-package.md)
     - ability<!--ability-deprecated-->
-      - [want](js-apis-inner-ability-want.md)
+      - [Want](js-apis-inner-ability-want.md)
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)
@@ -315,4 +315,6 @@
   - [包管理子系统通用错误码](errorcode-bundle.md)
   - [访问控制错误码](errorcode-access-token.md)
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
-  - [应用域名校验错误码](errorcode-appDomainVerify.md)
+  <!--Del-->
+  - [应用域名校验错误码](errorcode-appDomainVerify-sys.md)
+  <!--DelEnd-->

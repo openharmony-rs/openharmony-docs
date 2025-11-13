@@ -1,5 +1,4 @@
 # @ohos.notificationSubscribe (NotificationSubscribe) (System API)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @peixu-->
@@ -47,8 +46,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -106,8 +105,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -158,9 +157,9 @@ Subscribes to a notification with the subscription information specified. This A
 
 **Return value**
 
-| Type    | Description              | 
+| Type    | Description              |
 | ------- |------------------|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -168,8 +167,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -213,17 +212,17 @@ Subscribes to notifications of the application and specifies subscription inform
 
 **Return value**
 
-| Type    | Description              | 
+| Type    | Description              |
 | ------- |------------------|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- | 
-| 202      | Not system application to call the interface.                                      |  
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -236,7 +235,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info("Consume callback: " + JSON.stringify(data));
+  console.info(`Consume callback:  ${JSON.stringify(data)}`);
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
@@ -258,8 +257,6 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
-
 **System API**: This is a system API.
 
 **Parameters**
@@ -275,8 +272,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -311,8 +307,6 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
-
 **System API**: This is a system API.
 
 **Parameters**
@@ -323,9 +317,9 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 **Return value**
 
-| Type    | Description        | 
+| Type    | Description        |
 | ------- |------------|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -333,8 +327,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -385,8 +378,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -442,9 +435,9 @@ Removes a notification based on the bundle information and notification key. Thi
 
 **Return value**
 
-| Type    | Description        | 
+| Type    | Description        |
 | ------- |------------|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -452,8 +445,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -498,7 +491,7 @@ Removes a notification based on the specified unique notification ID. This API u
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| hashCode | string                | Yes  | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
+| hashCode | string                | Yes  | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
 | reason   | [RemoveReason](#removereason) | Yes  | Reason for removing the notification.        |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
@@ -508,8 +501,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -549,14 +542,14 @@ Removes a notification based on the specified unique notification ID. This API u
 
 | Name    | Type      | Mandatory| Description      |
 | -------- | ---------- | ---- | ---------- |
-| hashCode | string | Yes  | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
+| hashCode | string | Yes  | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
 | reason   | [RemoveReason](#removereason) | Yes  | Reason for removing the notification.        |
 
 **Return value**
 
-| Type    | Description| 
+| Type    | Description|
 | ------- |--|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -564,8 +557,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -602,7 +595,7 @@ Removes specified notifications. This API uses an asynchronous callback to retur
 
 | Name      | Type                           | Mandatory| Description                                                                                                                                                                                                                                                                                 |
 |-----------|-------------------------------| ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| hashCodes | Array\<String\>               | Yes  | Array of unique notification IDs. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
+| hashCodes | Array\<String\>               | Yes  | Array of unique notification IDs. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
 | reason    | [RemoveReason](#removereason) | Yes  | Reason for removing the notification.                                                                                                                                                                                                                                                                            |
 | callback  | AsyncCallback\<void\>         | Yes  | Callback used to return the result.                                                                                                                                                                                                                                                                        |
 
@@ -612,8 +605,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -657,9 +650,9 @@ Removes specified notifications. This API uses a promise to return the result.
 
 **Return value**
 
-| Type    | Description              | 
+| Type    | Description              |
 | ------- |------------------|
-| Promise\<void\> | Promise that returns no value.|  
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -667,8 +660,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -713,8 +706,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -763,8 +756,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -805,9 +798,9 @@ Removes all notifications for a specified application. This API uses a promise t
 
 **Return value**
 
-| Type    | Description        | 
+| Type    | Description        |
 | ------- |------------|
-| Promise\<void\> | Promise that returns no value.|  
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -815,8 +808,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -861,8 +854,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -916,8 +909,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
@@ -968,8 +961,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600010  | Distributed operation failed.                     |
 | 1600021  | Distributed operation timed out.                    |
@@ -997,10 +990,10 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **System API**: This is a system API.
 
-| Name | Type  | Mandatory| Description    |
-| ----- | ------ | --- | -------- |
-| id    | number | Yes | Notification ID.  |
-| label | string | No | Notification label. This parameter is left empty by default.|
+| Name | Type  | Read-Only| Optional| Description               |
+| ----- | ------ | --- | ---- | ------------------ |
+| id    | number | No |  No | Notification ID.           |
+| label | string | No |  Yes | Notification label. This parameter is left empty by default.|
 
 ## RemoveReason
 
@@ -1019,7 +1012,7 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **System API**: This is a system API.
 
-| Name | Type  | Mandatory| Description    |
-| ----- | ------ | --- | -------- |
-| actionName    | string | No | Operation button displayed in the notification. The value must be the same as that of **title** in [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton).  |
-| userInput | string | No | User input, used to apply quick reply across devices. The value must be the same as that of **inputKey** in [NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput).|
+| Name | Type  | Read-Only| Optional| Description    |
+| ----- | ------ | --- | ---- | -------- |
+| actionName    | string | No| Yes| Operation button displayed in the notification. The value must be the same as that of **title** in [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1).  |
+| userInput | string | No| Yes| User input, used to apply quick reply across devices. The value must be the same as that of **inputKey** in [NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1).|

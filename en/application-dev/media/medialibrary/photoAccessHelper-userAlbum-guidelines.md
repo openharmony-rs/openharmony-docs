@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The photoAccessHelper module provides APIs for user album management, including creating or deleting a user album, adding images and videos to a user album, and deleting images and videos from a user album.
 

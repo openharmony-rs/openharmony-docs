@@ -2,9 +2,9 @@
 
 ## Overview
 
-The **drawing_point.h** file declares the functions related to the coordinate point in the drawing module.
+This file declares the functions related to the coordinate point in the drawing module.
 
-**Header file**: <native_drawing/drawing_point.h>
+**File to include**: <native_drawing/drawing_point.h>
 
 **Library**: libnative_drawing.so
 
@@ -12,7 +12,7 @@ The **drawing_point.h** file declares the functions related to the coordinate po
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Functions
 
@@ -48,11 +48,11 @@ Creates an **OH_Drawing_Point** object.
 | float x | X coordinate of the point.|
 | float y | Y coordinate of the point.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* | The function returns a pointer pointing to the created coordinate point object.|
+| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* | Returns the pointer to the **OH_Drawing_Point** object created.|
 
 ### OH_Drawing_PointGetX()
 
@@ -73,14 +73,14 @@ Obtains the X coordinate of a point.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to the coordinate point object [OH_Drawing_Point](capi-drawing-oh-drawing-point.md).|
+| const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object.|
 | float* x | Pointer to the X coordinate.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> OH_DRAWING_ERROR_INVALID_PARAMETER: The parameter point or x is empty.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **point** or **x** is NULL.|
 
 ### OH_Drawing_PointGetY()
 
@@ -101,14 +101,14 @@ Obtains the Y coordinate of a point.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to the coordinate point object [OH_Drawing_Point](capi-drawing-oh-drawing-point.md).|
+| const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object.|
 | float* y | Pointer to the Y coordinate.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> OH_DRAWING_ERROR_INVALID_PARAMETER: The point or y parameter is empty.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if either **point** or **y** is NULL.|
 
 ### OH_Drawing_PointSet()
 
@@ -129,15 +129,15 @@ Sets the X and Y coordinates of a point.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to the [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object.|
+| [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* point | Pointer to an [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) object.|
 | float x | Pointer to the X coordinate.|
 | float y | Pointer to the Y coordinate.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> OH_DRAWING_ERROR_INVALID_PARAMETER: The point parameter is empty.|
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **point** is NULL.|
 
 ### OH_Drawing_PointDestroy()
 

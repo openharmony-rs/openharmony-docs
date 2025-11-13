@@ -131,8 +131,10 @@ function append(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // Call append to add a node.
-      result.root?.children.get(0)?.children.append(node);
+      if (node) {
+        // Append a node. If the node is already in the children list, the total count does not change, but the operation is successful.
+        result.root?.children.get(0)?.children.append(node);
+      }
     }
   }).catch((error: Error) => {
     console.error('Scene load failed:', error);
@@ -164,7 +166,7 @@ function insertAfter(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       if (node) {
-        // Call insertAfter to add a node.
+        // Insert a node after another. If the node is already in the children list, the total count does not change, but the operation is successful.
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
@@ -320,7 +322,7 @@ The 3D scene consists of nodes in a tree hierarchy, where each node implements a
 | layerMask | [LayerMask](#layermask) | Yes| No| Layer mask of the node.|
 | path | string | Yes| No| Path of the node.|
 | parent | [Node](#node) \| null | Yes| No| Parent node of the node. If the parent node does not exist, the value is null.|
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | Yes| No| Children of the node. If the node does not have a child, the value is null.|
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | Yes| No| Child node of the node. If the node does not have a child, the value is null. This is a read-only property, indicating that you cannot directly replace the entire children container. However, you can modify the children using container methods like [append()](#append), [insertAfter()](#insertafter), [remove()](#remove), or [clear()](#clear). If the node being appended or inserted already exists in the container, it is removed first and then reinserted. As a result, the total number of child nodes remains unchanged, making the operation seem ineffective. The count increases only when a new node is added.|
 
 ### getNodeByPath
 getNodeByPath(path: string): Node | null
@@ -389,7 +391,7 @@ Light node, which inherits from [Node](#node).
 | enabled | boolean | No| No| Whether the light is used. **true** if used, **false** otherwise.|
 
 ## SpotLight
-Spot light, which inherits from [Light](#light).
+Spotlight, which inherits from [Light](#light).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 

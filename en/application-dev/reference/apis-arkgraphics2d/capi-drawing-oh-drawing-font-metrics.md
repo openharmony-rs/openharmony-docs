@@ -2,15 +2,15 @@
 
 ## Overview
 
-The **OH_Drawing_Font_Metrics** struct describes the measurement information about a font.
+This struct describes the measurement information about a font.
 
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
 
-**Header File**: [drawing_font.h](capi-drawing-font-h.md)
+**Header file**: [drawing_font.h](capi-drawing-font-h.md)
 
-## Total
+## Summary
 
 ### Member Variables
 

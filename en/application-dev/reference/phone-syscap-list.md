@@ -1,4 +1,5 @@
-# SystemCapability List
+# Phone
+
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 

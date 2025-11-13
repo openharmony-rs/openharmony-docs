@@ -56,7 +56,7 @@ type WindowAnimationCurveParam = Array&lt;number&gt;
 
   用于描述物体抵抗施加的力而形变的程度。刚度越大，抵抗变形的能力越强，恢复到平衡位置的速度越快。
 
-- damping：表示刚度，类型为number。必填，取值范围为(0, +∞)，当取值小于等于0时，按1处理。
+- damping：表示阻尼，类型为number。必填，取值范围为(0, +∞)，当取值小于等于0时，按1处理。
 
   用于描述系统在受到扰动后震荡及衰减的情形。阻尼越大，弹性运动的震荡次数越少、震荡幅度越小。
 
@@ -69,3 +69,27 @@ type WindowAnimationCurveParam = Array&lt;number&gt;
 - x2: 确定贝塞尔曲线第二点的横坐标，类型为number，必填，取值范围为[0, 1]，值小于0时按0处理，大于1时按1处理。
 
 - y2: 确定贝塞尔曲线第二点的纵坐标，类型为number，必填，取值范围为(-∞, +∞)。
+
+## RotationChangeCallback<sup>19+</sup>
+
+type RotationChangeCallback<T, U> = (info: T) => U
+
+旋转事件通知通用回调函数。
+
+开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void。
+
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | -------------------------- |
+| info | T    | 是   | 回调函数调用时系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------------------------------- | ------------------------------------ |
+| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void类型的返回值。 |

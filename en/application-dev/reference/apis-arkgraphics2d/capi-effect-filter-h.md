@@ -8,7 +8,7 @@
 
 ## Overview
 
-The **effect_filter.h** file declares the APIs of an image effect filter.
+This file declares the APIs of an image effect filter.
 
 **File to import**: <native_effect/effect_filter.h>
 
@@ -20,7 +20,7 @@ The **effect_filter.h** file declares the APIs of an image effect filter.
 
 **Related module**: [effectKit](capi-effectkit.md)
 
-## Total
+## Summary
 
 ### Functions
 
@@ -29,12 +29,12 @@ The **effect_filter.h** file declares the APIs of an image effect filter.
 | [EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** filter)](#oh_filter_createeffect) | Creates an **OH_Filter** object.|
 | [EffectErrorCode OH_Filter_Release(OH_Filter* filter)](#oh_filter_release) | Releases an **OH_Filter** object.|
 | [EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)](#oh_filter_blur) | Creates the frosted glass effect and adds it to a filter.|
-| [EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, EffectTileMode tileMode)](#oh_filter_blurwithtilemode) | Creates a frosted glass filter effect and adds it to the filter. The tiling mode of the shader effect can be selected.|
+| [EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, EffectTileMode tileMode)](#oh_filter_blurwithtilemode) | Creates the frosted glass effect and adds it to a filter. It supports the tiling mode of the shader effect.|
 | [EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)](#oh_filter_brighten) | Creates the brightening effect and adds it to a filter.|
 | [EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)](#oh_filter_grayscale) | Creates the grayscale effect and adds it to a filter.|
 | [EffectErrorCode OH_Filter_Invert(OH_Filter* filter)](#oh_filter_invert) | Creates the inverted color effect and adds it to a filter.|
 | [EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatrix* matrix)](#oh_filter_setcolormatrix) | Creates a custom effect through a matrix and adds it to a filter.|
-| [EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative** pixelmap)](#oh_filter_geteffectpixelmap) | Obtains the pixel map used to create a filter.|
+| [EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative** pixelmap)](#oh_filter_geteffectpixelmap) | Obtains the PixelMap used to create a filter.|
 
 ## Function Description
 
@@ -58,11 +58,11 @@ Creates an **OH_Filter** object.
 | [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md)* pixelmap | Pointer to the PixelMap.|
 | [OH_Filter](capi-effectkit-oh-filter.md)** filter | Double pointer to the filter created.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details about the return value, see status code [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
 
 ### OH_Filter_Release()
 
@@ -83,11 +83,11 @@ Releases an **OH_Filter** object.
 | -- | -- |
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details about the return value, see status code [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
 
 ### OH_Filter_Blur()
 
@@ -109,11 +109,11 @@ Creates the frosted glass effect and adds it to a filter.
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
 | float radius | Blur radius of the frosted glass effect, in px.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details about the return value, see status code [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
 
 ### OH_Filter_BlurWithTileMode()
 
@@ -123,7 +123,7 @@ EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, Effe
 
 **Description**
 
-Creates a frosted glass filter effect and adds it to the filter. The tiling mode of the shader effect can be selected.
+Creates the frosted glass effect and adds it to a filter. It supports the tiling mode of the shader effect.
 
 **Since**: 14
 
@@ -134,13 +134,13 @@ Creates a frosted glass filter effect and adds it to the filter. The tiling mode
 | -- | -- |
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
 | float radius | Blur radius of the frosted glass effect, in px.|
-| [EffectTileMode](capi-effect-types-h.md#effecttilemode) tileMode | Tile mode of the shader effect. For details about the supported modes, see [EffectTileMode](capi-effect-types-h.md#effecttilemode).|
+| [EffectTileMode](capi-effect-types-h.md#effecttilemode) tileMode | Tile mode of the shader effect. For details about the available options, see [EffectTileMode](capi-effect-types-h.md#effecttilemode).|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).<br> If the operation is successful, **EFFECT_SUCCESS** is returned.<br> If the parameter is invalid, EFFECT_BAD_PARAMETER is returned.|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).<br> If the operation is successful, **EFFECT_SUCCESS** is returned.<br> If a parameter is invalid, **EFFECT_BAD_PARAMETER** is returned.|
 
 ### OH_Filter_Brighten()
 
@@ -160,13 +160,13 @@ Creates the brightening effect and adds it to a filter.
 | Name| Description|
 | -- | -- |
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
-| float brightness | Brightness value of the brightening effect. The value ranges from 0 to 1. When the value is 0, the image remains unchanged. When the value is 1, the image is all white.|
+| float brightness | Brightness value of the brightening effect, ranging from 0 to 1. When the value is 0, the image brightness remains unchanged. When the value is 1, the image becomes fully brightened.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
 
 ### OH_Filter_GrayScale()
 
@@ -187,11 +187,11 @@ Creates the grayscale effect and adds it to a filter.
 | -- | -- |
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
 
 ### OH_Filter_Invert()
 
@@ -212,11 +212,11 @@ Creates the inverted color effect and adds it to a filter.
 | -- | -- |
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
 
 ### OH_Filter_SetColorMatrix()
 
@@ -236,13 +236,13 @@ Creates a custom effect through a matrix and adds it to a filter.
 | Name| Description|
 | -- | -- |
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
-| [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)* matrix | Custom matrix [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md) used to create the filter.|
+| [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)* matrix | Custom [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md) used to create the filter.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details about the returned result, see status code [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
 
 ### OH_Filter_GetEffectPixelMap()
 
@@ -264,8 +264,8 @@ Obtains the PixelMap used to create a filter.
 | [OH_Filter](capi-effectkit-oh-filter.md)* filter | Pointer to the filter.|
 | [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md)** pixelmap | Double pointer to the PixelMap obtained.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | For details about the returned result, see status code [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | Returns a status code. For details, see [EffectErrorCode](capi-effect-types-h.md#effecterrorcode).|

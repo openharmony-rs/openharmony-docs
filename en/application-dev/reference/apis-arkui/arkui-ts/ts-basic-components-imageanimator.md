@@ -1,4 +1,10 @@
 # ImageAnimator
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **ImageAnimator** component enables images to be played a frame-by-frame basis. The list of images to be played as well as the duration of each image can be configured.
 
@@ -43,7 +49,7 @@ Sets the image frame information. Dynamic update is not supported.
 
 | Name| Type                                                  | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[ImageFrameInfo](#imageframeinfo)&gt; | Yes  | Image frame information. The information of each frame includes the image path, image size, image position, and image playback duration. For details, see [ImageFrameInfo](#imageframeinfo).<br>Default value: **[]**<br> **NOTE**<br>If the input array is too large, memory usage may increase. Therefore, as the controller of memory usage, be sure to assess potential memory consumption before passing in the data to avoid issues such as insufficient memory.|
+| value  | Array&lt;[ImageFrameInfo](#imageframeinfo)&gt; | Yes  | Image frame information. The information of each frame includes the image path, image size, image position, and image playback duration. For details, see [ImageFrameInfo](#imageframeinfo).<br>Default value: **[]**<br> Note: If the input array is too large, memory usage may increase. Therefore, as the controller of memory usage, be sure to assess potential memory consumption before passing in the data to avoid issues such as insufficient memory.|
 
 ### state
 
@@ -79,7 +85,7 @@ Sets the playback duration. This attribute does not take effect when a separate 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Playback duration.<br>If the value is **0**, no image is played.<br>If it is set to a negative value, the default value is used.<br>The value change takes effect only at the start of the next cycle.<br>Unit: ms<br>Default value: **1000**|
+| value  | number | Yes  | Playback duration.<br>If the value is **0**, no image is played.<br>If the display duration allocated per image is shorter than a single frame interval, playback anomalies may occur.<br>If it is set to a negative value, the default value is used.<br>The value change takes effect only at the start of the next cycle.<br>Unit: ms<br>Default value: **1000**|
 
 ### reverse
 
@@ -115,7 +121,7 @@ Sets whether the image size is fixed at the component size.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the image size is fixed at the component size.<br> **true**: The image size is fixed at the component size. In this case, the width, height, top, and left attributes of the image are invalid.<br> **false**: The width, height, top, and left attributes of each image must be set separately. If the image size does not match the component size, the image will not be stretched.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether the image size is fixed at the component size. **true**: The image size is fixed at the component size. In this case, the width, height, top, and left attributes of the image are invalid.<br> **false**: The width, height, top, and left attributes of each image must be set separately. If the image size does not match the component size, the image will not be stretched.<br>Default value: **true**|
 
 ### preDecode<sup>(deprecated)</sup>
 
@@ -191,14 +197,14 @@ Provides image frame information.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory| Description|
-| -------- | -------------- | -------- | -------- |
-| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | Yes   | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type is supported since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
-| width    | number \| string | No | Image width. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
-| height   | number \| string | No | Image height. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
-| top      | number \| string | No | Vertical coordinate of the image relative to the upper left corner of the widget For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
-| left     | number \| string | No | Horizontal coordinate of the image relative to the upper left corner of the widget For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
-| duration | number          | No    | Playback duration of each image frame, in milliseconds.<br>Default value: **0**.<br>Negative numbers are not supported. Setting negative values will cause the image to stay in the current frame for a long time, affecting normal playback.        |
+| Name  | Type  | Read-Only| Optional| Description|
+| -------- | -------------- | -------- | -------- | -------- |
+| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | No | No  | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](ts-image-common.md#pixelmap) type is supported since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| width    | number \| string | No| Yes| Image width. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
+| height   | number \| string | No| Yes| Image height. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
+| top      | number \| string | No| Yes| Vertical coordinate of the image relative to the upper left corner of the widget For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
+| left     | number \| string | No| Yes| Horizontal coordinate of the image relative to the upper left corner of the widget For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
+| duration | number          | No   | Yes   | Playback duration of each image frame, in milliseconds.<br>Default value: **0**.<br>Negative numbers are not supported. Setting negative values will cause the image to stay in the current frame for a long time, affecting normal playback.        |
 
 ## Events
 
@@ -216,6 +222,12 @@ Triggered when the animation starts to play.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Triggered when the animation starts to play.|
+
 ### onPause
 
 onPause(event: () =&gt; void)
@@ -228,6 +240,12 @@ Triggered when the animation playback is paused.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Triggered when the animation playback is paused.|
+
 ### onRepeat
 
 onRepeat(event: () =&gt; void)
@@ -237,6 +255,12 @@ Triggered when the animation playback is repeated.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Triggered when the animation playback is repeated.|
 
 ### onCancel
 
@@ -250,6 +274,13 @@ Triggered when the animation playback returns to the initial state.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Triggered when the animation playback returns to the initial state.|
+
 ### onFinish
 
 onFinish(event: () =&gt; void)
@@ -262,6 +293,11 @@ Triggered when the animation playback is complete or stopped.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Triggered when the animation playback is complete or stopped.|
 
 ## Example
 
@@ -283,15 +319,19 @@ struct ImageAnimatorExample {
       ImageAnimator()
         .images([
           {
+            // Replace $r('app.media.img1') with the image resource file you use.
             src: $r('app.media.img1')
           },
           {
+            // Replace $r('app.media.img2') with the image resource file you use.
             src: $r('app.media.img2')
           },
           {
+            // Replace $r('app.media.img3') with the image resource file you use.
             src: $r('app.media.img3')
           },
           {
+            // Replace $r('app.media.img4') with the image resource file you use.
             src: $r('app.media.img4')
           }
         ])
@@ -367,8 +407,18 @@ struct ImageAnimatorExample {
   @State images: Array<ImageFrameInfo> = [];
 
   async aboutToAppear() {
-    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.icon')));
+    // Replace $r('app.media.1') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.1')));
+    // Replace $r('app.media.2') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.2')));
+    // Replace $r('app.media.3') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.3')));
+    // Replace $r('app.media.4') with the image resource file you use.
+    this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.4')));
     this.images.push({ src: this.imagePixelMap[0] });
+    this.images.push({ src: this.imagePixelMap[1] });
+    this.images.push({ src: this.imagePixelMap[2] });
+    this.images.push({ src: this.imagePixelMap[3] });
   }
 
   build() {
@@ -426,11 +476,7 @@ struct ImageAnimatorExample {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -465,15 +511,19 @@ struct ImageAnimatorAutoPauseTest {
           ImageAnimator()
             .images([
               {
+                // Replace $r('app.media.Clouds') with the image resource file you use.
                 src: $r('app.media.Clouds')
               },
               {
+                // Replace $r('app.media.landscape') with the image resource file you use.
                 src: $r('app.media.landscape')
               },
               {
+                // Replace $r('app.media.sky') with the image resource file you use.
                 src: $r('app.media.sky')
               },
               {
+                // Replace $r('app.media.mountain') with the image resource file you use.
                 src: $r('app.media.mountain')
               }
             ])

@@ -4,7 +4,7 @@
 <!--Owner: @zhangyao75477-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides the capability for applications to take over media playback on web pages, which improves media playback qualities on the web page.
 
@@ -510,7 +510,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
   }
   ```
 
-- Example of taking over the web media playback through [AVPlayer](../media/media/media-kit-intro.md#avplayer):
+- Example of web media playback takeover: Hosts the playback of web media using [AVPlayer](../media/media/media-kit-intro.md#avplayer).
 
   ```ts
   // Index.ets
@@ -1223,7 +1223,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
   }
   ```
 
-- The following is a frontend page example of taking over the web media playback through [AVPlayer](../media/media/media-kit-intro.md#avplayer). For details about the supported media resources, see [Supported Formats and Protocols](../media/media/media-kit-intro.md#supported-formats-and-protocols).
+- Example of a frontend page: [AVPlayer](../media/media/media-kit-intro.md#avplayer) is used to host web media playback. For details about the supported media resources, see [Supported Formats and Protocols](../media/media/media-kit-intro.md#supported-formats-and-protocols).
 
   ```html
   <!-- main.html -->

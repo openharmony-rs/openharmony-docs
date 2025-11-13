@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## Overview
 
@@ -176,9 +176,9 @@ Pay attention to some important performance indicators during web page loading. 
 
 - [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10): triggered to notify the time when the web page content such as a text, image, non-blank Canvas, or SVG is drawn for the first time.
 
-- [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12): triggered when the first meaningful paint is drawn.
+- [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) event: callback function for painting the main content of a web page. Time when the main content is drawn for the first time.
 
-- [onLargestContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onlargestcontentfulpaint12): triggered when the largest content, such as the image, text block, or video, is drawn in the visible area.
+- [onLargestContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onlargestcontentfulpaint12) event: callback function for drawing the maximum content on a web page. Time when the maximum image, text block, or video in the visible area is drawn.
 
 ## How can I prevent page suspension when the Web component's rendering child process exits unexpectedly
 

@@ -64,7 +64,7 @@
    }
    ```
 
-<!--RP2-->
+
 2. KeyboardController.ts文件。
 
    ```ts
@@ -170,7 +170,7 @@
    
    export default keyboardController;
    ```
-   <!--RP2End-->
+
 3. KeyboardKeyData.ts文件。
 
    定义软键盘的按键显示内容。
@@ -218,7 +218,7 @@
 
    主要描绘了具体按键功能。如按下数字键，就会将数字内容在输入框中打印出来，按下删除键，就会将内容删除。
 
-   <!--Del-->同时在resources/base/profile/main_pages.json文件的src字段中添加此文件路径。<!--DelEnd-->
+   同时在resources/base/profile/main_pages.json文件的src字段中添加此文件路径。
 
    ```ets
    import { numberSourceListData, sourceListType } from './KeyboardKeyData';
@@ -326,7 +326,7 @@
    }
    ```
 
-<!--Del-->
+
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
    ```json
@@ -346,12 +346,9 @@
      }
    }
    ```
-<!--DelEnd-->
 
 
-<!--RP3-->
 
-<!--RP3End-->
 
 ## 约束与限制
 

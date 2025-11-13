@@ -6,12 +6,6 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-<!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
-<!--Owner: @SKY2001-->
-<!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-
 The module describes the startup configuration of a child process. When starting a child process through [childProcessManager](js-apis-app-ability-childProcessManager.md), you can configure the startup configuration of the child process through **ChildProcessOptions**.
 
 > **NOTE**

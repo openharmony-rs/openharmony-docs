@@ -2,7 +2,7 @@
 
 ## Overview
 
-The NativeDisplaySoloist module provides the native service that control the frame rate in threads other than the UI thread.
+This module provides the native service that control the frame rate in threads other than the UI thread.
 
 **Since**: 12
 ## Files

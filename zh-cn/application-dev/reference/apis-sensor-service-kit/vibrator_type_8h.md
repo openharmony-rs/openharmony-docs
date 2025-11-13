@@ -44,5 +44,5 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| [Vibrator_ErrorCode](_vibrator.md#vibrator_errorcode) : int32_t {<br/>PERMISSION_DENIED = 201<br/>PARAMETER_ERROR = 401, <br/>[UNSUPPORTED] = 801, <br/>[DEVICE_OPERATION_FAILED = 14600101<br/>} | 为用户定义错误码。  |
+| [Vibrator_ErrorCode](_vibrator.md#vibrator_errorcode) : int32_t {<br/>PERMISSION_DENIED = 201<br/>PARAMETER_ERROR = 401, <br/>UNSUPPORTED = 801, <br/>DEVICE_OPERATION_FAILED = 14600101<br/>} | 为用户定义错误码。  |
 | [Vibrator_Usage](_vibrator.md#vibrator_usage) {<br/>USAGE_UNKNOWN = 0, <br/>USAGE_ALARM = 1, <br/>USAGE_RING = 2,<br/>USAGE_NOTIFICATION = 3,<br/>USAGE_COMMUNICATION = 4,<br/>USAGE_TOUCH = 5, <br/>USAGE_MEDIA = 6, <br/>USAGE_PHYSICAL_FEEDBACK = 7,<br/>USAGE_SIMULATE_REALITY = 8, <br/>USAGE_MAX = 9<br/>} | 振动优先级。  |

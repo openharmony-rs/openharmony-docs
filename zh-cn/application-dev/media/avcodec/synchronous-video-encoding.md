@@ -7,7 +7,7 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @zengyawen-->
 
-从API 20开始，支持视频编码同步模式。
+从API version 20开始，支持视频编码同步模式。
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
 
@@ -356,11 +356,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     std::unique_lock<std::shared_mutex> lock(codecMutex);
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoEnc != nullptr) {
-        ret = OH_VideoEncoder_Destroy(videoEnc);
+        OH_VideoEncoder_Destroy(videoEnc);
         videoEnc = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // 异常处理。
     }
     ```
 

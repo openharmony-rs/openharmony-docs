@@ -1,7 +1,7 @@
 # Class (DragController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -10,7 +10,7 @@ Provides APIs for initiating drag actions. When receiving a gesture event, such 
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 11.
 >
@@ -49,6 +49,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel } from '@kit.ArkData';
 
+class DragInfo {
+  event: DragEvent | undefined = undefined;
+  extraParams: string = '';
+}
+
 @Entry
 @Component
 struct DragControllerPage {
@@ -75,11 +80,7 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               };
-              class tmp {
-                event: DragEvent | undefined = undefined;
-                extraParams: string = '';
-              }
-              let eve: tmp = new tmp();
+              let eve: DragInfo = new DragInfo();
               this.getUIContext().getDragController().executeDrag(() => { this.DraggingBuilder() }, dragInfo, (err, eve) => {
                 if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
@@ -136,6 +137,11 @@ import { dragController } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel } from '@kit.ArkData';
 
+class DragInfo {
+  event: DragEvent | undefined = undefined;
+  extraParams: string = '';
+}
+
 @Entry
 @Component
 struct DragControllerPage {
@@ -181,12 +187,7 @@ struct DragControllerPage {
                   builder: () => { this.DraggingBuilder() },
                   extraInfo: "DragItemInfoTest"
                 };
-
-                class tmp {
-                  event: DragResult | undefined = undefined;
-                  extraParams: string = '';
-                }
-                let eve: tmp = new tmp();
+                let eve: DragInfo = new DragInfo();
                 this.getUIContext().getDragController().executeDrag(dragItemInfo, dragInfo)
                   .then((eve) => {
                     if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
@@ -277,7 +278,7 @@ export default class EntryAbility extends UIAbility {
       windowStage.getMainWindow((err, data) =>
       {
         if (err.code) {
-          console.error('Failed to abtain the main window. Cause:' + err.message);
+          console.error('Failed to obtain the main window. Cause:' + err.message);
           return;
         }
         let windowClass: window.Window = data;
@@ -451,7 +452,7 @@ import { window, UIContext } from '@kit.ArkUI';
 
 cancelDataLoading(key: string): void
 
-Cancels the data loading initiated by the [startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#dragevent7) API.
+Cancels the data loading initiated by the [startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#dragevent7) API. This API can be called only after the drag is released.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -491,11 +492,11 @@ Controls whether the application can initiate a drag operation.
 **Example**
 
 ```ts
+// xxx.ets
 import { unifiedDataChannel } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 import { dragController } from '@kit.ArkUI';
 
-// xxx.ets
 @Entry
 @Component
 struct NormalEts {
@@ -560,7 +561,7 @@ struct NormalEts {
 
 enableDropDisallowedBadge(enabled: boolean): void
 
-Specifies whether to enable the display of a disallowed badge when dragged content is incompatible with a component's configured [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) types. With the display enabled, the system automatically shows a disallowed badge during drag operations when the dragged data types have no intersection with the target component's allowed drop types. This API currently does not support [UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md).
+Specifies whether to enable the display of a disallowed badge when dragged content is incompatible with a component's configured [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) types. Generally, when a component can receive or process dragged data, or when the component returns DragBehavior.COPY to declare data processing in copy mode to the system, the dragged object displays the plus sign and data number badge. If DragBehavior.MOVE is returned to indicate that the data is to be cut, the dragged object displays only the badge with the data number. With the display enabled, the system automatically shows a disallowed badge during drag operations when the dragged data types have no intersection with the target component's allowed drop types. This API currently does not support [UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

@@ -1,21 +1,26 @@
-# mediatool工具
+# 媒体库资源访问工具
 
-mediatool是一个轻量级的命令行工具集合，开发者可通过此工具操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片视频会在图库界面呈现。
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
-mediatool工具为系统自带工具，不需要安装，内置在/bin文件夹中，可以通过hdc shell直接调用。
+开发者可通过[mediatool工具](#mediatool工具)操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片视频会在图库界面呈现。
 
-## 前置条件
+## mediatool工具
 
-- 正常连接设备
-- 系统设置中开启开发者模式
-- 使用hdc shell进入命令行执行模式
+mediatool是一个轻量级的命令行工具集合，为系统自带工具，不需要安装，内置在/bin文件夹中，可以通过hdc shell直接调用。
 
-## 命令行说明
+### 前置条件
 
-<!--Del-->
+- 正常连接设备。
+- 系统设置中开启开发者模式。
+- 使用hdc shell进入命令行执行模式。
 
-### mediatool send
-  
+### 导入命令（mediatool send）
+
 ```shell
 mediatool send <path-to-local-media-file> [-ts] [-tas] [-rf] [-urf]
 ```
@@ -24,7 +29,7 @@ mediatool send <path-to-local-media-file> [-ts] [-tas] [-rf] [-urf]
 
 默认情况下，将媒体文件保存进媒体库是以同步方式创建缩略图，并且置入后```<path-to-local-media-file>```下的文件会被删除。
 
-  | 选项               | 说明             |
+| 选项               | 说明             |
 | ---- |--------------- |
 | -ts | 保存图片视频时以同步方式创建缩略图。能够保证缩略图正常生成之后图片视频才会显示，但是会导致保存耗时较长。（默认） |
 | -tas | 保存图片视频时以异步方式创建缩略图。不能与-ts选项同时使用。图片视频保存后会立即显示，不会等待缩略图先生成。保存耗时较短。 |
@@ -38,7 +43,7 @@ mediatool send <path-to-local-media-file> [-ts] [-tas] [-rf] [-urf]
 file://media/Photo/3/IMG_1721381297_001/MyImage.jpg # 推图成功，打印推入资源的uri
 ```
 
-### mediatool list
+### 打印命令（mediatool list）
 
 ```shell
 mediatool list <resource-uri>
@@ -71,7 +76,7 @@ uri, display_name, data
 
 <!--DelEnd-->
 
-### mediatool recv
+### 导出命令（mediatool recv）
 
 ```shell
 mediatool recv <media-target> <dest-path>
@@ -80,10 +85,12 @@ mediatool recv <media-target> <dest-path>
 该命令能够将`<media-target>`指定的媒体库资源的源文件内容导出到`<dest-path>`指定的设备路径下。
 
 `<media-target>`可以为以下两种形式：
-* 系统媒体目录下的文件路径。（可通过[mediatool ls -l](#mediatool-ls--l)获取。不支持指定文件夹路径。）
+
+* 系统媒体目录下的文件路径。可通过[列举命令（mediatool ls -l）](#列举命令mediatool-ls--l)获取，不支持指定文件夹路径。
 * 媒体库uri。（参考[媒体库uri介绍/获取方式](#媒体库uri介绍获取方式)）
 
-如果`<media-target>`指定文件路径，只支持以下几种路径，以下几种路径存在映射关系，访问的目录相同，均访问当前用户的系统媒体目录：
+如果`<media-target>`指定文件路径，只支持以下几种路径，以下几种路径存在映射关系，访问的目录相同，均访问当前用户的系统媒体目录。
+
 * /storage/media/local/files/Photo 及以下的文件路径。
 * /storage/media/\<uid\>/local/files/Photo 及以下的文件路径。\<uid\>必须为当前用户的id，否则报错路径不合法。
 
@@ -120,16 +127,15 @@ Table Name: Photos
 ...
 
 Table Name: Audios
-
 ```
 
-### mediatool delete
+### 删除命令（mediatool delete）
 
 ```shell
 mediatool delete <resource-uri>
 ```
 
-该命令能够彻底删除`<resource-uri>`指定uri的媒体库资源。被删除的资源无法恢复，请谨慎执行。
+该命令能够删除`<resource-uri>`指定uri的媒体库资源。被删除的资源无法恢复，请谨慎执行。
 
 媒体库资源uri的获取可参考[媒体库uri介绍/获取方式](#媒体库uri介绍获取方式)。
 
@@ -144,7 +150,7 @@ mediatool delete <resource-uri>
 > mediatool delete all # delete all 执行成功不会有任何打印
 ```
 
-### mediatool query
+### 查询命令（mediatool query）
 
 ```shell
 mediatool query <display-name> [-p] [-u]
@@ -154,7 +160,7 @@ mediatool query <display-name> [-p] [-u]
 
 该命令无法查询出隐藏相册内的媒体资产。
 
-  | 选项               | 说明             |
+| 选项               | 说明             |
 | ---- |--------------- |
 | -p | 返回媒体资源源文件在设备中的真实路径。（默认） |
 | -u | 返回媒体资源uri。不能与-p选项同时使用。 |
@@ -190,7 +196,7 @@ uri
 "file://media/Photo/2/IMG_1721381297_001/MyImage.jpg"
 ```
 
-### mediatool ls -l
+### 列举命令（mediatool ls -l）
 
 ```shell
 mediatool ls -l <media-path>
@@ -222,10 +228,6 @@ drwxrwx--x 2 user_data_rw user_data_rw 0 2025-05-29 05:57 7
 drwxrwx--x 2 user_data_rw user_data_rw 0 2025-05-29 05:59 8
 drwxrwx--x 2 user_data_rw user_data_rw 0 2025-05-29 06:00 9
 ```
-
-## 使用指导
-
-以下使用指导说明了一些常见的mediatool使用场景。
 
 ### 导出特定媒体库资产
 
@@ -305,21 +307,27 @@ uri
 ```
 
 ### 彻底重置媒体库数据库
+
 ```shell
 > hdc shell mediatool delete all
 ```
 
-## 媒体库uri介绍/获取方式
+### 媒体库uri介绍/获取方式
 
-uri是媒体库资产的唯一标识符，每个uri都对应一个媒体资产。mediatool使用uri来判断需要操作的媒体资产对象。
+uri是媒体库资产的唯一标识符。mediatool使用uri来判断需要操作的媒体资产对象。
 
 可使用以下方式获取uri：
+
 * mediatool query 加上 -u 的选项可以返回对应媒体资产的uri。需要输入对应资产的显示名（在图库中展示的名字带后缀名）。
+
 <!--Del-->
+
 * mediatool list all可以获取到所有媒体库资产的uri列表，以及对应的资产的显示名。
+
 <!--DelEnd-->
 
 媒体库uri可以用于mediatool recv命令导出特定媒体库资产，也可以用于mediatool delete删除特定媒体库资产。
 
 uri样例：`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`。
+
 在mediatool操作中，需要使用以上uri时，无论使用`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`还是`file://media/Photo/1`都能够正确的定位到目标资产。

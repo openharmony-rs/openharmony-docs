@@ -136,7 +136,7 @@ obj-$(CONFIG_HIEVENT)           += hievent/
 
 在内核config项中打开对应的CONFIG控制宏：CONFIG_HILOG和CONFIG_HIEVENT。
 
-具体日志使用说明请参见：[Hilog_lite组件介绍](https://gitee.com/openharmony/hiviewdfx_hilog_lite/blob/master/README_zh.md)。
+具体日志使用说明请参见：[Hilog_lite组件介绍](https://gitcode.com/openharmony/hiviewdfx_hilog_lite/blob/master/README_zh.md)。
 
 
 ### 移植内核态必选特性HDF

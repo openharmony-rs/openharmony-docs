@@ -124,7 +124,7 @@ The following example walks you through on how to implement many-to-many sharing
    
    // Specify the URI of the UnifiedData object to update.
    let optionsUpdate: unifiedDataChannel.Options = {
-     //The key here is an example and cannot be directly used. Use the value in the callback of insertData().
+     // The key here is an example and cannot be directly used. Use the value in the callback of insertData().
      key: 'udmf://DataHub/com.ohos.test/0123456789'
    };
    
