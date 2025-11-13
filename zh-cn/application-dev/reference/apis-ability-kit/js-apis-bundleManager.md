@@ -101,7 +101,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|:---:|
