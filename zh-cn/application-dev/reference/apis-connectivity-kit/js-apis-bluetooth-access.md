@@ -27,7 +27,7 @@ enableBluetooth(): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -121,7 +121,7 @@ disableBluetooth(): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -213,7 +213,7 @@ getState(): BluetoothState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -259,7 +259,7 @@ on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -350,7 +350,7 @@ off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -658,11 +658,11 @@ try {
 
 | 名称                    | 值  | 说明                 |
 | --------------------- | ---- | ------------------ |
-| STATE_OFF             | 0    | 表示蓝牙已关闭。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22  |
-| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_ON              | 2    | 表示蓝牙已打开。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22  |
-| STATE_BLE_TURNING_OFF | 6    | 表示蓝牙正在关闭LE-only模式。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| STATE_OFF             | 0    | 表示蓝牙已关闭。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22  |
+| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| STATE_ON              | 2    | 表示蓝牙已打开。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22  |
+| STATE_BLE_TURNING_OFF | 6    | 表示蓝牙正在关闭LE-only模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 
