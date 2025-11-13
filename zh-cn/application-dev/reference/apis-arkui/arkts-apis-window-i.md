@@ -100,17 +100,13 @@
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。 |
-| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 |
-| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 |
-| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 |
+| visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 **ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 22|
+| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。<br> **ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 **ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 **ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 **ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
 
 > **说明：**
 >
@@ -186,7 +182,7 @@
 | focusable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可聚焦，默认为true。true表示可聚焦；false表示不可聚焦。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
 | touchable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可触摸，默认为true。true表示可触摸；false表示不可触摸。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
 | brightness                            | ArkTS-Dyn: number <br> ArkTS-Sta: double                    | 否   | 否   | 屏幕亮度。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]，其取1.0时表示最大亮度值。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
-| dimBehindValue<sup>(deprecated)</sup> | number                    | 否   | 否   | 靠后窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。<br>- **说明：** 从API version 9开始废弃。<br>- 从API version 7开始支持。当前无可替代接口。<br/> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7|
+| dimBehindValue<sup>(deprecated)</sup> | number                    | 否   | 否   | 靠后窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。<br>- **说明：** 从API version 9开始废弃。<br>- 从API version 7开始支持。当前无可替代接口。<br/> **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7|
 | isKeepScreenOn                        | boolean                   | 否   | 否   | 屏幕是否常亮，默认为false。true表示常亮；false表示不常亮。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
 | isPrivacyMode<sup>7+</sup>            | boolean                   | 否   | 否   | 隐私模式，默认为false。true表示模式开启；false表示模式关闭。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
 | isRoundCorner<sup>(deprecated)</sup>  | boolean                   | 否   | 否   | 窗口是否为圆角。默认为false。true表示圆角；false表示非圆角。<br>- **说明：** 从API version 9开始废弃。<br/>- 从API version 7开始支持。当前无可替代接口。<br/> **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7|
