@@ -35,7 +35,7 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -54,7 +54,7 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| USER_DISCONNECT            | 0    | 用户主动断开连接。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| USER_DISCONNECT            | 0    | 用户主动断开连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | CONNECT_FROM_KEYBOARD      | 1    | 应该从键盘侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | CONNECT_FROM_MOUSE         | 2    | 应该从鼠标侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | CONNECT_FROM_CAR           | 3    | 应该从车机侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
@@ -72,7 +72,7 @@ getConnectedDevices(): Array&lt;string&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -119,7 +119,7 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
