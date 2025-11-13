@@ -1119,6 +1119,10 @@ ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 | 参数名   | 类型   | 必填  | 说明         |
 | -------- | ------ | ----- | ------------ |
