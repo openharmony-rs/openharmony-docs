@@ -7,6 +7,10 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} TransientTask_TransientTaskInfo
+```
+
 ## 概述
 
 定义所有短时任务信息结构体。
