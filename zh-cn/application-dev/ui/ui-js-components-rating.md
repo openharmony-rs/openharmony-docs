@@ -83,7 +83,7 @@ rating组件通过star-background、star-foreground和star-secondary属性设置
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;;">
+  <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;">
     <rating numstars="5" rating="1" class="myrating" style="width: {{ratewidth}}; height:{{rateheight}};
     star-background: {{backstar}}; star-secondary: {{secstar}};star-foreground: {{forestar}};rtl-flip: true;">
     </rating>
@@ -181,7 +181,7 @@ export default {
 ```html
 <!-- xxx.hml -->
 <div style="width: 100%;height:100%;flex-direction: column;align-items: center;background-color: #F1F3F5;">
-    <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;;">
+    <div style="width: 500px;height: 500px;align-items: center;justify-content: center;flex-direction: column;">
         <rating numstars="{{stars}}" rating="{{rate}}" stepsize="{{step}}" onchange="showrating" class="myrating"
                 style="width: {{ratewidth}};height:{{rateheight}};star-background: {{backstar}};star-secondary: {{secstar}};
                         star-foreground: {{forestar}};rtl-flip: true;"></rating>
