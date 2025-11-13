@@ -49,4 +49,4 @@
 
    md: 600&lt;=水平分辨率&lt;840时：8 Columns栅格；
 
-   lg: 840&lt;=水平分辨率时：12 Columns栅格；
+   lg: 840&lt;=水平分辨率时：12 Columns栅格。
