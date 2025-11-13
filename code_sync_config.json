@@ -11155,11 +11155,6 @@
 						"end_line":70,
 						"name":"add_data",
 						"start_line":17
-					},
-					{
-						"end_line":92,
-						"name":"basic_data_source_string",
-						"start_line":17
 					}
 				]
 			},
@@ -11335,6 +11330,16 @@
 						"end_line":128,
 						"name":"set_default_height",
 						"start_line":122
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets",
+				"functions":[
+					{
+						"end_line":91,
+						"name":"basic_data_source_string",
+						"start_line":16
 					}
 				]
 			}
