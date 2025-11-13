@@ -26,32 +26,38 @@
 ## 声明样例
 
 > **说明：**
-> 以下"ohos.permission.PERMISSION1"、"ohos.permission.PERMISSION2"仅为样例示意，不存在该权限。请开发者根据实际需要，参照上表要求填写对应属性。
+>
+> 下述"name"中填入的权限仅为样例示意。请开发者根据实际需要，参照上表要求填写对应属性。
 
-```json
+``` JSON5
 {
-  "module" : {
-    // ...
-    "requestPermissions":[
+  "module": {
+    // ···
+    // 1.ohos.permission.APPROXIMATELY_LOCATION与ohos.permission.LOCATION为user_grant权限，reason和usedScene为必填字段。
+    // 2.ohos.permission.USE_BLUETOOTH为system_grant权限，reason和usedScene为选填字段。
+    "requestPermissions": [
       {
-        "name" : "ohos.permission.PERMISSION1",
-        "reason": "$string:reason",
+        "name": "ohos.permission.APPROXIMATELY_LOCATION",
+        "reason": "$string:approximately_location_permission_reason",
         "usedScene": {
           "abilities": [
             "FormAbility"
           ],
-          "when":"inuse"
+          "when": "inuse"
         }
       },
       {
-        "name" : "ohos.permission.PERMISSION2",
-        "reason": "$string:reason",
+        "name": "ohos.permission.LOCATION",
+        "reason": "$string:location_permission_reason",
         "usedScene": {
           "abilities": [
             "FormAbility"
           ],
-          "when":"always"
+          "when": "inuse"
         }
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
       }
     ]
   }
