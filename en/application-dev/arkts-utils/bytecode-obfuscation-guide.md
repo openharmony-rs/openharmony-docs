@@ -1,7 +1,7 @@
 # Using ArkGuard for Bytecode Obfuscation
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
+<!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @foryourself-->
@@ -11,6 +11,10 @@
 > To prevent subsequent code modifications from affecting production issue analysis and troubleshooting, you are advised to back up all files in the **build/default/cache/default/default@XXXCompileArkTS/esmodule/release/obfuscation** directory locally. If possible, you can directly back up the entire **release** directory.
 
 ## Enabling Bytecode Obfuscation
+
+### Constraints
+
+Bytecode obfuscation and source code obfuscation cannot be enabled at the same time. After bytecode obfuscation is enabled, source code obfuscation is automatically disabled.
 
 ### How to Use
 
@@ -37,7 +41,9 @@ Since API version 20, the bytecode obfuscation capability has been integrated in
     -enable-bytecode-obfuscation-debugging  # Controls debug output. If this option is enabled, obfuscation logs are generated. By default, this option is disabled.
     ```
 
-    > **NOTE**<br>Bytecode HAR files will not be re-obfuscated during integration.
+    > **NOTE**
+    >
+    > Bytecode HAR files will not be re-obfuscated during integration.
 
 * Configuring obfuscation rules
     Enabling the bytecode obfuscation switch activates the default settings, which include obfuscation of functions and classes that are not in the top-level scope. To enable additional obfuscation features, customize the **obfuscation-rules.txt** file specified in the **files** field. Note that the default values in this file may vary across different versions of DevEco Studio.

@@ -40,7 +40,7 @@ The interface **ISendable** is introduced to the ArkTS common library [@arkts.la
 
 A Sendable class must meet the following requirements:
 
-1. It must be decorated by [@Sendable](#sendable-decorator).
+1. For projects of versions earlier than API version 22, it must be decorated by [@Sendable](#sendable-decorator). Since API version 22, in addition to the @Sendable decorator, you can add other custom decorators as required. For details, see [Custom Decorators Can Be Added to Sendable Classes](sendable-constraints.md#custom-decorators-can-be-added-to-sendable-classes).
 
 2. It must meet the Sendable constraints. For details, see [Usage Rules and Constraints for Sendable](sendable-constraints.md).
 

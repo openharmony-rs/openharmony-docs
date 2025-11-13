@@ -17,7 +17,7 @@ Defines the enums, structs, and macros used in the HUKS functions.
 
 **System capability**: SystemCapability.Security.Huks.Core
 
-The preceding system capability is available since API version 20. From API versions 9 to 19, the system capability is **SystemCapability.Security.Huks**.
+The preceding system capability is available since API version 20. From API versions 9 to 19, the system capability is **SystemCapability.Security.Huks.Core**.
 
 **Since**: 9
 
@@ -50,7 +50,7 @@ The preceding system capability is available since API version 20. From API vers
 | [OH_Huks_KeyPurpose](#oh_huks_keypurpose) | Enumerates the key purposes.|
 | [OH_Huks_KeyDigest](#oh_huks_keydigest) | Enumerates the digest algorithms.|
 | [OH_Huks_KeyPadding](#oh_huks_keypadding) | Enumerates the padding algorithm types.|
-| [OH_Huks_CipherMode](#oh_huks_ciphermode) | Enumerates the cipher modes.|
+| [OH_Huks_CipherMode](#oh_huks_ciphermode) | Cipher mode.|
 | [OH_Huks_KeySize](#oh_huks_keysize) | Enumerates the key sizes of different algorithms.|
 | [OH_Huks_KeyAlg](#oh_huks_keyalg) | Enumerates the algorithms for keys.|
 | [OH_Huks_AlgSuite](#oh_huks_algsuite) | Enumerates the algorithm suites that can be used for importing of a key in cipher text.|
@@ -159,8 +159,8 @@ Enumerates the padding algorithm types.
 | OH_HUKS_PADDING_OAEP = 1 | OAEP.|
 | OH_HUKS_PADDING_PSS = 2 | PSS.|
 | OH_HUKS_PADDING_PKCS1_V1_5 = 3 | PKCS1_V1_5.|
-| OH_HUKS_PADDING_PKCS5 = 4 | PKCS5.|
-| OH_HUKS_PADDING_PKCS7 = 5 | PKCS7.|
+| OH_HUKS_PADDING_PKCS5 = 4 | PKCS #5.|
+| OH_HUKS_PADDING_PKCS7 = 5 | PKCS #7.|
 | OH_HUKS_PADDING_ISO_IEC_9796_2 = 6 | ISO IEC 9796-2.<br>**Since**: 18|
 | OH_HUKS_PADDING_ISO_IEC_9797_1 = 7 | ISO IEC 9797-1.<br>**Since**: 18|
 
@@ -441,6 +441,11 @@ Enumerates the types of the parameters in a parameter set.
 | OH_HUKS_TAG_TYPE_BOOL = 4 << 28 | Boolean.|
 | OH_HUKS_TAG_TYPE_BYTES = 5 << 28 | [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md).|
 
+**Reference:**
+
+[OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md)
+
+
 ### OH_Huks_UserAuthType
 
 ```
@@ -513,6 +518,11 @@ Enumerates the types of the challenge generated when a key is used.
 | OH_HUKS_CHALLENGE_TYPE_NORMAL = 0 | Normal challenge, which is of 32 bytes by default.|
 | OH_HUKS_CHALLENGE_TYPE_CUSTOM = 1 | Custom challenge, which supports one-time authentication for multiple keys. The valid value of a custom challenge is of 8 bytes.|
 | OH_HUKS_CHALLENGE_TYPE_NONE = 2 | Challenge is not required.|
+
+**Reference:**
+
+[OH_Huks_ChallengePosition](#oh_huks_challengeposition)
+
 
 ### OH_Huks_UserAuthMode
 
@@ -639,6 +649,7 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO = OH_HUKS_TAG_TYPE_BYTES \| 514 | Security level used in key attestation.|
 | OH_HUKS_TAG_ATTESTATION_ID_VERSION_INFO = OH_HUKS_TAG_TYPE_BYTES \| 515 | Version information used in key attestation.|
 | OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | Whether to overwrite the key with the same name.<br>**Since**: 20|
+| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | **AEAD** length in CCM mode.<br>**Since**: 22|
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | Whether it is a key alias.|
 | OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | Key storage mode. For details, see [OH_Huks_KeyStorageType](#oh_huks_keystoragetype).|
 | OH_HUKS_TAG_IS_ALLOWED_WRAP = OH_HUKS_TAG_TYPE_BOOL \| 1003 | Whether to allow the key to be wrapped.|

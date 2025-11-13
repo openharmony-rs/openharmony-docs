@@ -87,20 +87,20 @@ struct ChildItem {
 
 在ForEach首次渲染时，会根据前述键值生成规则为数据源的每个数组项生成唯一键值，并创建相应的组件。
 
-<!-- [foreach_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach1.ets) -->
+<!-- @[foreach_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach1.ets) -->
 
 ``` TypeScript
 @Entry
 @Component
-struct Parent4 {
+struct ForEachFirstRender {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
     Row() {
       Column() {
         ForEach(this.simpleList, (item: string) => {
-          ChildItem4({ item: item })
-        }, (item: string) => item)
+          ForEachChildItem({ item: item })
+        }, (item: string) => item) // 需要保证key唯一
       }
       .width('100%')
       .height('100%')
@@ -111,7 +111,7 @@ struct Parent4 {
 }
 
 @Component
-struct ChildItem4 {
+struct ForEachChildItem {
   @Prop item: string;
 
   build() {

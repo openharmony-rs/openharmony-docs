@@ -1,10 +1,10 @@
 # ui_input_event.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -20,6 +20,8 @@ Provides ArkUI event definitions on the native side.
 
 **Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
+**Sample**: <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->, <!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
+
 ## Summary
 
 ### Structs
@@ -27,6 +29,7 @@ Provides ArkUI event definitions on the native side.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent | Defines the UI input event.|
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md) | ArkUI_CoastingAxisEvent | Defines the coasting axis event. |
 
 ### Enums
 
@@ -43,6 +46,8 @@ Provides ArkUI event definitions on the native side.
 | [anonymous6](#anonymous6)                       | - | Enumerates the axis types for focus axis events.|
 | [ArkUI_InteractionHand](#arkui_interactionhand)     | ArkUI_InteractionHand | Defines whether the touch event is from the left or right hand.|
 | [anonymous7](#anonymous7)                       | - | Enumerates the action types for axis events.|
+| [anonymous8](#anonymous8)                       | - | Enumerates the axis types for axis events.|
+| [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | Enumerates the phases of coasting axis events.|
 
 ### Functions
 
@@ -74,7 +79,7 @@ Provides ArkUI event definitions on the native side.
 | [float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getglobaldisplayybyindex) | Obtains the y-coordinate relative to the global display from a pointer event (such as a touch, mouse, or axis event). Position information can only be obtained from UI input events. For mouse and axis events, if the provided **pointerIndex** is greater than 0, this API always returns the default value **0.0f**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressure) | Obtains the pressure applied to the touchscreen from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | [float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettiltx) | Obtains the tilt angle relative to the YZ plane from a pointer event. The value range is [-90, 90], where positive values indicate a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| [float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettilty) | Obtains the tilt angle relative to the XZ plane from a pointer event. The value range is [-90, 90], where positive values indicate a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettilty) | Obtains the tilt angle relative to the XZ plane from a pointer event. The value range is [-90, 90], where positive values indicate a downward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, double* rollAngle)](#oh_arkui_pointerevent_getrollangle) | Obtains the rotation angle of the stylus around the z-axis from a UI input event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareawidth) | Obtains the width of the contact area for a pointer event. This API is applicable only to finger-based touch events, and the return value typically represents the radius of a circular touch area.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | [float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareaheight) | Obtains the height of the contact area for a pointer event. This API is applicable only to finger-based touch events, and the return value typically represents the radius of a circular touch area.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -93,7 +98,7 @@ Provides ArkUI event definitions on the native side.
 | [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayx) | Obtains the x-coordinate relative to the global display for a specific touch point from historical events, based on the given pointer index and history index of an input event (such as a touch, mouse, or axis event). Position information can only be obtained from UI input events. For mouse and axis events, if the provided **pointerIndex** is greater than 0, this API always returns the default value **0.0f**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayy) | Obtains the y-coordinate relative to the global display for a specific touch point from historical events, based on the given pointer index and history index of an input event (such as a touch, mouse, or axis event). Position information can only be obtained from UI input events. For mouse and axis events, if the provided **pointerIndex** is greater than 0, this API always returns the default value **0.0f**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypressure) | Obtains the pressure applied to the touchscreen in a specific historical event from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| [float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytiltx) | Obtains the angle relative to the YZ plane in a specific historical event from a pointer event (for example, a touch event). The value range is [-90, 90]. A positive value indicates a rightward tilt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytiltx) | Obtains the angle relative to the YZ plane in a specific historical event from a pointer event (for example, a touch event). The value range is [–90, 90]. A positive value indicates a rightward tilt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytilty) | Obtains the angle relative to the XZ plane in a specific historical event from a pointer event (for example, a touch event). The value range is [-90, 90]. A positive value indicates a downward tilt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareawidth) | Obtains the width of the touch area in a specific historical event from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareaheight) | Obtains the height of the touch area in a specific historical event from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -101,6 +106,7 @@ Provides ArkUI event definitions on the native side.
 | [double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_gethorizontalaxisvalue) | Obtains the value of the horizontal scroll axis for this axis event. This value is generated by two-finger horizontal swiping on a touchpad.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getpinchaxisscalevalue) | Obtains the scale value of the pinch axis for this axis event. This value is generated by a two-finger pinch gesture on a touchpad. The reported scale value is relative to the initial state when the system first detects the pinch gesture, with an initial scale value of 1.0. During the pinch operation, the scale value decreases from 1.0 towards 0.0 when the user pinches inward and increases from 1.0 when the user spreads fingers outward.                                                                                                                                                                                                                                                                                                                                                                  |
 | [int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getaxisaction) | Obtains the action type of this axis event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis)](#oh_arkui_axisevent_hasaxis) | Checks whether this axis event contains the specified axis type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* event, HitTestMode mode)](#oh_arkui_pointerevent_setintercepthittestmode) | Sets how the component behaves during hit testing. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).                                                                                                                                                                                                                                                                                                                                                                        |
 | [int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmousebutton) | Obtains the button type of a mouse event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmouseaction) | Obtains the action type of a mouse event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -133,6 +139,12 @@ Provides ArkUI event definitions on the native side.
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)](#oh_arkui_pointerevent_setclonedeventfingeridbyindex) | Sets the touch point ID of a specific contact point of a cloned event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | [int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_postclonedevent) | Posts a cloned event to a specific node.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()](#oh_arkui_uiinputevent_getlateststatus) | Obtains the result code of the most recent API call related to an **ArkUI_UIInputEvent** object. This API is typically unnecessary for normal operations, but can be used to verify ambiguous return values (for example, when **0.0** might be either a valid float result or an error). float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_Arkui_UIInputEvent_GetlatestStatus()) {// errorreturn;} The system automatically clears the previous status before each API call related to an **ArkUI_UIInputEvent** object, ensuring that this API always returns the latest execution status.                                                                                                                                                                                                                             |
+| [ArkUI_CoastingAxisEvent OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getcoastingaxisevent) | Obtains the pointer to a coasting axis event. |
+| [int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_geteventtime) | Obtains the time when a coasting axis event occurs. |
+| [ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getphase) | Obtains the scroll phase of the specified coasting axis event. |
+| [float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltay) | Obtains the vertical delta value of the specified coasting axis event. Unit: px, representing the single scroll increment (not the total scroll amount). Positive values indicate a downward direction (fingers swiping from top to bottom), and negative values indicate an upward direction (fingers swiping from bottom to top). |
+| [float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltax) | Obtains the horizontal delta value of the specified coasting axis event. Unit: px, representing the single scroll increment (not the total scroll amount). Positive values indicate a rightward direction (fingers swiping from right to left), and negative values indicate a leftward direction (fingers swiping from left to right). |
+| [int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent event, bool propagation)](#oh_arkui_coastingaxisevent_setpropagation) | Sets whether to enable event propagation for the specified coasting axis event. By default, event propagation is disabled.|
 
 ## Enum Description
 
@@ -217,6 +229,8 @@ Enumerates the source types of the input event.
 | UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | Unknown source type.|
 | UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | Mouse.|
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | Touchscreen.|
+| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | Key.<br>**Since**: 22|
+| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | Joystick.<br>**Since**: 22|
 
 ### HitTestMode
 
@@ -367,6 +381,44 @@ Enumerates the action types for axis events.
 | UI_AXIS_EVENT_ACTION_END = 3 | The axis event ends.|
 | UI_AXIS_EVENT_ACTION_CANCEL = 4 | The axis event is canceled.|
 
+### anonymous8
+
+```
+enum anonymous8
+```
+
+**Description**
+
+
+Enumerates the axis types for axis events.
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| UI_AXIS_TYPE_VERTICAL_AXIS = 0 | Vertical axis.|
+| UI_AXIS_TYPE_HORIZONTAL_AXIS = 1 | Horizontal axis.|
+| UI_AXIS_TYPE_PINCH_AXIS = 2 | Pinch axis.|
+
+### ArkUI_CoastingAxisEventPhase
+
+```
+enum ArkUI_CoastingAxisEventPhase
+```
+
+**Description**
+
+
+Enumerates the phases of coasting axis events.
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_NONE = 0 | Invalid coasting axis event phase, serving as an abnormal default value. You can verify that the coasting axis phase is not this value to confirm event validity. |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_BEGIN = 1 | The coasting axis event begins. This is the initial event in the coasting phase. |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_UPDATE = 2 | The coasting axis event updates. In this phase, you can obtain the coasting axis delta value to handle scroll offset calculations. |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_END = 3 | The coasting axis event ends. This phase is triggered when coasting stops due to braking (for example, the user re-engages the touchpad during coasting, or interacts via a mouse or touchscreen) or natural decay to rest. Upon reaching this phase, immediately terminate the coasting scroll effect. |
 
 ## Function Description
 
@@ -589,7 +641,7 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the x-coordinate relative to the upper left corner of the current component from a directional input event (such as a touch event, mouse event, or axis event).
+Obtains the x-coordinate relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event).
 
 **Since**: 12
 
@@ -642,7 +694,7 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the y-coordinate relative to the upper left corner of the current component from a directional input event (such as a touch event, mouse event, or axis event).
+Obtains the y-coordinate relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event).
 
 **Since**: 12
 
@@ -695,7 +747,7 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the x-coordinate relative to the upper left corner of the current application window from a directional input event (such as a touch event, mouse event, or axis event).
+Obtains the x-coordinate relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event).
 
 **Since**: 12
 
@@ -748,7 +800,7 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the y-coordinate of a specific contact point relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event).
+Obtains the y-coordinate relative to the upper left corner of the current application window from a pointer event (such as a touch, mouse, or axis event).
 
 **Since**: 12
 
@@ -1590,7 +1642,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uin
 **Description**
 
 
-Obtains the angle of a specific historical event relative to the YZ plane from a pointer event (such as a touch event). The value range is [–90, 90], in deg. A positive value indicates a rightward tilt.
+Obtains the angle relative to the YZ plane in a specific historical event from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a rightward tilt.
 
 **Since**: 12
 
@@ -1796,6 +1848,33 @@ Obtains the action type of this axis event.
 | Type| Description|
 | -- | -- |
 | int32_t | Action type of the current axis event.|
+
+### OH_ArkUI_AxisEvent_HasAxis()
+
+```
+int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis)
+```
+
+**Description**
+
+
+Checks whether this axis event contains the specified axis type.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event.|
+| int32_t axis | Axis type of the axis event, specified using [UI_AXIS_TYPE_XXX](#anonymous8).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Whether the current axis event contains the specified axis type. Returns **true** if the axis event contains the specified axis type, and **false** otherwise.|
 
 ### OH_ArkUI_PointerEvent_SetInterceptHitTestMode()
 
@@ -2345,7 +2424,7 @@ Obtains the pressed buttons from a mouse event.
 | Name| Description|
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object.|
-| int32_t* pressedButtons | Array of the pressed buttons. An int array must be created beforehand to store the pressed buttons.|
+| int32_t* pressedButtons | Array of the pressed buttons. Create an integer array to store the button values. For button code definitions, see [anonymous5](#anonymous5).|
 | int32_t* length | Total length of the array.|
 
 **Return value**
@@ -2643,3 +2722,149 @@ Obtains the result code of the most recent API call related to an **ArkUI_UIInpu
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code of the most recent API call related to the **ArkUI_UIInputEvent** object.|
+
+### OH_ArkUI_UIInputEvent_GetCoastingAxisEvent()
+
+```
+ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)
+```
+**Description**
+
+Obtains the coasting axis event from the specified component event. A valid event is available only when the user slides two fingers a certain distance on the touchpad and quickly releases them, and a component registered with the [NODE_ON_COASTING_AXIS_EVENT](capi-native-node-h.md#arkui_nodeeventtype) event exists at the pointer position. This API must be called after the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object is obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.
+
+The coasting axis event is triggered only when the user performs a two-finger swipe and releases on the touchpad, so it is exclusive to touchpad devices. This event generates axis values that gradually attenuate based on the initial swipe velocity after finger release. Due to factors such as refresh rate and performance constraints, the axis value of the current event may be higher or lower than the previous one. The following behavior will interrupt the coasting axis event and immediately trigger **ARKUI_COASTING_AXIS_EVENT_PHASE_END**:
+1. Touching the touchpad
+2. Scrolling the mouse wheel
+3. Clicking a node registered for coasting axis events (clicking unregistered nodes has no effect). For example, if node A registers the event and node B is being scrolled during coasting, clicking node B will not interrupt the event. Click event interruption is affected by the [HitTest mode](#oh_arkui_pointerevent_setintercepthittestmode). If the tapped area contains any nodes that can respond to coasting axis events, the coasting axis event will be forcibly terminated.
+
+4. Application hibernation (such as minimization and screen lock)
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md) | Pointer to the coasting axis event. Returns a null pointer if no coasting axis event occurs or if parameters are invalid.|
+
+### OH_ArkUI_CoastingAxisEvent_GetEventTime()
+
+```
+int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent* event)
+```
+**Description**
+
+Obtains the time when a coasting axis event occurs.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | Pointer to the coasting axis event.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int64_t | Time when the UI input event occurs. Returns **0** if any parameter error occurs.|
+
+### OH_ArkUI_CoastingAxisEvent_GetPhase()
+
+```
+ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent* event)
+```
+**Description**
+
+Obtains the scroll phase of the specified coasting axis event.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | Pointer to the coasting axis event.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | Event phase. For details, see [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase).<br>    Returns **ARKUI_COASTING_AXIS_EVENT_PHASE_NONE** if any parameter error occurs.|
+
+### OH_ArkUI_CoastingAxisEvent_GetDeltaY
+
+```
+float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent* event)
+```
+**Description**
+
+Obtains the vertical delta value of the specified coasting axis event. Unit: px, representing the single scroll increment (not the total scroll amount). Positive values indicate a downward direction (fingers swiping from top to bottom), and negative values indicate an upward direction (fingers swiping from bottom to top).
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | Pointer to the coasting axis event.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| float | Y-axis delta value, in px. Returns **0.0f** if any parameter error occurs.|
+
+### OH_ArkUI_CoastingAxisEvent_GetDeltaX
+
+```
+float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent* event)
+```
+**Description**
+
+Obtains the horizontal delta value of the specified coasting axis event. Unit: px, representing the single scroll increment (not the total scroll amount). Positive values indicate a rightward direction (fingers swiping from right to left), and negative values indicate a leftward direction (fingers swiping from left to right).
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | Pointer to the coasting axis event.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| float | X-axis delta value, in px. Returns **0.0f** if any parameter error occurs.|
+
+### OH_ArkUI_CoastingAxisEvent_SetPropagation()
+
+```
+int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event, bool propagation)
+```
+**Description**
+
+Sets whether to enable event propagation for the specified coasting axis event. By default, event propagation is disabled.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | Pointer to the coasting axis event.|
+| bool propagation | Whether to enable event propagation. **true**: enable; **false**: disable.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        |

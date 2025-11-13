@@ -156,7 +156,7 @@ enum AVPlayerOnInfoType
 
 **描述**
 
-OnInfo类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废弃)，用于表示收到的播放器信息类型。<br>从API 12开始，推荐用户使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型，可获取到不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>使用API 11版本的开发者，需要使用旧接口。针对已废弃接口OH_AVPlayerOnInfo中使用的对应关系，可直接参考[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)的API说明。
+OnInfo类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废弃)，用于表示收到的播放器信息类型。<br>从API version 12开始，推荐用户使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型，可获取到不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>使用API version 11版本的开发者，需要使用旧接口。针对已废弃接口OH_AVPlayerOnInfo中使用的对应关系，可直接参考[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)的API说明。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -329,7 +329,7 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-|  int32_t errorCode | 错误码。<br>AV_ERR_NO_MEMORY：无内存，取值为1。<br>AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。<br>AV_ERR_INVALID_VAL：无效值，取值为3。<br>AV_ERR_IO：IO错误。API 12-13取值为4；API 14及以后，对应错误细化为错误码5411001~5411011。<br>AV_ERR_TIMEOUT：超时错误，取值为5。<br>AV_ERR_UNKNOWN：未知错误，取值为6。<br>AV_ERR_SERVICE_DIED：服务死亡，取值为7。<br>AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。<br>AV_ERR_UNSUPPORT：未支持的接口，取值为9。<br>AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
+|  int32_t errorCode | 错误码。<br>AV_ERR_NO_MEMORY：无内存，取值为1。<br>AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。<br>AV_ERR_INVALID_VAL：无效值，取值为3。<br>AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。<br>AV_ERR_TIMEOUT：超时错误，取值为5。<br>AV_ERR_UNKNOWN：未知错误，取值为6。<br>AV_ERR_SERVICE_DIED：服务死亡，取值为7。<br>AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。<br>AV_ERR_UNSUPPORT：未支持的接口，取值为9。<br>AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
 |  const char *errorMsg | 错误消息。 |
 | void *userData | 原样返回用户设置回调时传入的userData数据。 |
 

@@ -298,7 +298,7 @@
     - [Developing Animations](ui-js-building-ui-animation.md)
     - [Defining Gesture Events](ui-js-building-ui-event.md)
     - [Defining Page Routes](ui-js-building-ui-routes.md)
-  - Common Component Development Guidelines<!--ui-js-components-->
+  - Common Component Development<!--ui-js-components-->
     - Container Component Development<!--ui-js-container-components-->
       - [list Development](ui-js-components-list.md)
       - [dialog Development](ui-js-components-dialog.md)
@@ -327,7 +327,7 @@
       - [CanvasRenderingContext2D](ui-js-components-canvasrenderingcontext2d.md)
       - [Path2D](ui-js-components-path2d.md)
       - [OffscreenCanvasRenderingContext2D](ui-js-components-offscreencanvas.md)
-    - [Grid Container Development](ui-js-components-grid.md)
+    - [Grid Layout](ui-js-components-grid.md)
     - SVG Development<!--ui-js-svg-->
       - [Basics](ui-js-components-svg-overview.md)
       - [Graph Drawing](ui-js-components-svg-graphics.md)
