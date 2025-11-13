@@ -217,6 +217,8 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   
+  const COUNT_INITIAL_VALUE = 0;
+  
   class Params {
     public text: string = '';
     constructor(text: string) {
@@ -224,10 +226,10 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
     }
   }
   
-  // 自定义组件。
+  // 自定义组件
   @Component
   struct TextBuilder {
-    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop。
+    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
     @Prop message: string = 'TextBuilder';
   
     build() {
@@ -250,7 +252,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: 36 })
-      TextBuilder({ message: params.text }) // 自定义组件。
+      TextBuilder({ message: params.text }) // 自定义组件
     }
   }
   
@@ -259,13 +261,13 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
     private message: string = '';
   
     constructor(message: string) {
-      super()
-      this.message = message
+      super();
+      this.message = message;
     }
   
     makeNode(context: UIContext): FrameNode | null {
       this.textNode = new BuilderNode(context);
-      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message))
+      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
       return this.textNode.getFrameNode();
     }
   
@@ -282,7 +284,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   struct WrappedBuilderPage {
     @State message: string = 'hello';
     private textNodeController: TextNodeController = new TextNodeController(this.message);
-    private count = 0;
+    private count = COUNT_INITIAL_VALUE;
   
     build() {
       Row() {
@@ -1331,11 +1333,13 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
   let localStorage2: LocalStorage = new LocalStorage();
   localStorage2.setOrCreate('propB', 'propB');
   
+  const COUNT_INITIAL_VALUE = 0;
+  
   @Entry(localStorage1)
   @Component
   struct Index {
     @LocalStorageLink('propA') propA: string = 'Hello World';
-    @State count: number = 0;
+    @State count: number = COUNT_INITIAL_VALUE;
     private controller: NodeController = new MyNodeController(this.count, localStorage2);
   
     build() {
@@ -1344,7 +1348,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
           Text(this.propA)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-          // 使用LocalStorage 实例localStorage2。
+          // 使用LocalStorage 实例localStorage2
           Child({ count: this.count }, localStorage2)
           NodeContainer(this.controller)
         }
@@ -1362,7 +1366,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
   
   @Builder
   function createChild(params: Params) {
-    //构造过程中传递localStorage。
+    //构造过程中传递localStorage
     Child({ count: params.count }, params.localStorage)
   }
   
@@ -1378,7 +1382,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
   
     makeNode(uiContext: UIContext): FrameNode | null {
       let builderNode = new BuilderNode<[Params]>(uiContext);
-      //构造过程中传递localStorage。
+      //构造过程中传递localStorage
       builderNode.build(wrapBuilder(createChild), { count: this.count, localStorage: this.localStorage });
       return builderNode.getFrameNode();
     }
@@ -1513,8 +1517,12 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
+  const INITIAL_VALUE_ZERO = 0;
+  const PAGE_ONE_INDEX = 1;
+  const PAGE_TWO_INDEX = 2;
+  
   class Params {
-    public count: number = 0;
+    public count: number = INITIAL_VALUE_ZERO;
   
     constructor(count: number) {
       this.count = count;
@@ -1532,15 +1540,15 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   class TextNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
     private textNode: BuilderNode<[Params]> | null = null;
-    private count: number = 0;
+    private count: number = INITIAL_VALUE_ZERO;
   
     makeNode(context: UIContext): FrameNode | null {
       this.rootNode = new FrameNode(context);
       this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
       this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.count));
-      this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为true。
+      this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为true
       if (this.rootNode !== null) {
-        this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树。
+        this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树
       }
       return this.rootNode;
     }
@@ -1548,7 +1556,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     update(): void {
       if (this.textNode !== null) {
         this.count += 1;
-        this.textNode.update(new Params(this.count)); // 更新BuilderNode中的数据，可以触发Log。
+        this.textNode.update(new Params(this.count)); // 更新BuilderNode中的数据，可以触发Log
       }
   
     }
@@ -1560,8 +1568,8 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   @Component
   struct MyNavigationTestStack {
     @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-    @State message: number = 0;
-    @State logNumber: number = 0;
+    @State message: number = INITIAL_VALUE_ZERO;
+    @State logNumber: number = INITIAL_VALUE_ZERO;
   
     @Builder
     PageMap(name: string) {
@@ -1574,7 +1582,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   
     build() {
       Column() {
-        Button('update builderNode') // 点击更新BuildrNode。
+        Button('update builderNode') // 点击更新BuildrNode
           .onClick(() => {
             textNodeController.update();
           })
@@ -1585,7 +1593,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
               .height(40)
               .margin(20)
               .onClick(() => {
-                this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈。
+                this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
               })
           }
         }.title('NavIndex')
@@ -1598,7 +1606,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   @Component
   struct pageOneStack {
     @Consume('pageInfo') pageInfo: NavPathStack;
-    @State index: number = 1;
+    @State index: number = PAGE_ONE_INDEX;
     @Link message: number;
     @Link logNumber: number;
   
@@ -1632,7 +1640,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   @Component
   struct pageTwoStack {
     @Consume('pageInfo') pageInfo: NavPathStack;
-    @State index: number = 2;
+    @State index: number = PAGE_TWO_INDEX;
     @Link message: number;
     @Link logNumber: number;
   
@@ -1660,7 +1668,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   }
   
   @Component({ freezeWhenInactive: true })
-    // 设置冻结策略为不活跃冻结。
+    // 设置冻结策略为不活跃冻结
   struct NavigationContentMsgStack {
     @Link message: number;
     @Link index: number;
@@ -1676,13 +1684,13 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   }
   
   @Component({ freezeWhenInactive: true })
-    // 设置冻结策略为不活跃冻结。
+    // 设置冻结策略为不活跃冻结
   struct TextBuilder {
-    @Prop @Watch('info') message: number = 0;
+    @Prop @Watch('info') message: number = INITIAL_VALUE_ZERO;
   
     info(): void {
       hilog.info(0xF811, 'testTag', '%{public}s',
-        `freeze-test TextBuilder message callback ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结。
+        `freeze-test TextBuilder message callback ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结
     }
   
     build() {

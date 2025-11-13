@@ -59,11 +59,12 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const STORAGE_LINK_INITIAL_VALUE = 47;
 
 @Entry
 @Component({ freezeWhenInactive: true })
 struct PageOne {
-  @StorageLink('PropA') @Watch('first') storageLink: number = 47;
+  @StorageLink('PropA') @Watch('first') storageLink: number = STORAGE_LINK_INITIAL_VALUE;
 
   first() {
     hilog.info(DOMAIN, TAG, 'first page ' + `${this.storageLink}`);
@@ -92,11 +93,12 @@ struct PageOne {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const STORAGE_LINK_INITIAL_VALUE = 1;
 
 @Entry
 @Component({ freezeWhenInactive: true })
 struct PageTwo {
-  @StorageLink('PropA') @Watch('second') storageLink: number = 1;
+  @StorageLink('PropA') @Watch('second') storageLink: number = STORAGE_LINK_INITIAL_VALUE;
 
   second() {
     hilog.info(DOMAIN, TAG, 'second page: ' + `${this.storageLink}`);
@@ -143,11 +145,13 @@ struct PageTwo {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const MESSAGE_INITIAL_VALUE = 0;
+const TAB_INITIAL_INDEX = 0;
 
 @Entry
 @Component
 struct TabContentTest {
-  @State @Watch('onMessageUpdated') message: number = 0;
+  @State @Watch('onMessageUpdated') message: number = MESSAGE_INITIAL_VALUE;
   private data: number[] = [0, 1];
 
   onMessageUpdated() {
@@ -177,7 +181,7 @@ struct TabContentTest {
 @Component({ freezeWhenInactive: true })
 struct FreezeChild {
   @Link @Watch('onMessageUpdated') message: number;
-  index: number = 0;
+  index: number = TAB_INITIAL_INDEX;
 
   onMessageUpdated() {
     hilog.info(DOMAIN, TAG, `FreezeChild message callback func ${this.message}, index: ${this.index}`);
@@ -371,13 +375,18 @@ struct FreezeChild {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const MESSAGE_INITIAL_VALUE = 0;
+const LOG_NUMBER_INITIAL_VALUE = 0;
+const PAGE_ONE_INDEX = 1;
+const PAGE_TWO_INDEX = 2;
+const PAGE_THREE_INDEX = 3;
 
 @Entry
 @Component
 struct MyNavigationTestStack {
   @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @State @Watch('info') message: number = 0;
-  @State logNumber: number = 0;
+  @State @Watch('info') message: number = MESSAGE_INITIAL_VALUE;
+  @State logNumber: number = LOG_NUMBER_INITIAL_VALUE;
 
   info() {
     hilog.info(DOMAIN, TAG, `freeze-test MyNavigation message callback ${this.message}`);
@@ -420,7 +429,7 @@ struct MyNavigationTestStack {
 @Component
 struct PageOneStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @State index: number = 1;
+  @State index: number = PAGE_ONE_INDEX;
   @Link message: number;
   @Link logNumber: number;
 
@@ -457,7 +466,7 @@ struct PageOneStack {
 @Component
 struct PageTwoStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @State index: number = 2;
+  @State index: number = PAGE_TWO_INDEX;
   @Link message: number;
   @Link logNumber: number;
 
@@ -494,7 +503,7 @@ struct PageTwoStack {
 @Component
 struct PageThreeStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @State index: number = 3;
+  @State index: number = PAGE_THREE_INDEX;
   @Link message: number;
   @Link logNumber: number;
 
@@ -591,12 +600,13 @@ struct NavigationContentMsgStack {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const COUNT_INITIAL_VALUE = 0;
 
 @Reusable
 @Component({ freezeWhenInactive: true })
 struct ChildComponent {
   @Link @Watch('descChange') desc: string;
-  @State count: number = 0;
+  @State count: number = COUNT_INITIAL_VALUE;
 
   descChange() {
     hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
@@ -625,7 +635,7 @@ struct ChildComponent {
 struct Page {
   @State desc: string = 'Hello World';
   @State flag: boolean = true;
-  @State count: number = 0;
+  @State count: number = COUNT_INITIAL_VALUE;
 
   build() {
     Column() {
@@ -667,6 +677,7 @@ struct Page {
 import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const INDEX_INITIAL_VALUE = 0;
 
 // 用于处理数据监听的IDataSource的基本实现
 class BasicDataSource implements IDataSource {
@@ -702,35 +713,35 @@ class BasicDataSource implements IDataSource {
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处添加子组件
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处删除该子组件
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-    })
+    });
   }
 }
 
@@ -761,7 +772,7 @@ class MyDataSource extends BasicDataSource {
 struct ChildComponent {
   @Link @Watch('descChange') desc: string;
   @State item: string = '';
-  @State index: number = 0;
+  @State index: number = INDEX_INITIAL_VALUE;
 
   descChange() {
     hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
@@ -845,6 +856,7 @@ struct Page {
 import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const INDEX_INITIAL_VALUE = 0;
 
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -879,35 +891,35 @@ class BasicDataSource implements IDataSource {
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处添加子组件
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处删除该子组件
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-    })
+    });
   }
 }
 
@@ -938,7 +950,7 @@ class MyDataSource extends BasicDataSource {
 struct ChildComponent {
   @Link @Watch('descChange') desc: string;
   @State item: string = '';
-  @State index: number = 0;
+  @State index: number = INDEX_INITIAL_VALUE;
 
   descChange() {
     hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
@@ -1038,6 +1050,7 @@ struct Page {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const TAB_STATE_INITIAL_VALUE = 47;
 
 @Component
 struct ChildOfParamComponent {
@@ -1088,7 +1101,7 @@ struct DelayComponent {
 @Component({ freezeWhenInactive: true })
 struct TabsComponent {
   private controller: TabsController = new TabsController();
-  @State @Watch('onChange') tabState: number = 47;
+  @State @Watch('onChange') tabState: number = TAB_STATE_INITIAL_VALUE;
 
   onChange() {
     hilog.info(DOMAIN, TAG, `Appmonitor TabsComponent: tabState changed:${this.tabState}`);
@@ -1240,6 +1253,7 @@ Navigation和TabContent混用时，之所以会解锁TabContent标签的子节�
 import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const SUM_INITIAL_VALUE = 0;
 
 // 用于处理数据监听的IDataSource的基本实现
 class BasicDataSource implements IDataSource {
@@ -1275,35 +1289,35 @@ class BasicDataSource implements IDataSource {
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处添加子组件
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件需要在index对应索引处删除该子组件
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-    })
+    });
   }
 
   // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-    })
+    });
   }
 }
 
@@ -1366,7 +1380,7 @@ struct ChildComponent {
 @Component({ freezeWhenInactive: true })
 struct Page {
   private data: MyDataSource = new MyDataSource();
-  @State sum: number = 0;
+  @State sum: number = SUM_INITIAL_VALUE;
   @State desc: string = '';
 
   aboutToAppear() {
@@ -1433,10 +1447,11 @@ import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const INDEX_INITIAL_VALUE = 0;
 
 // 定义一个Params类，用于传递参数
 class Params {
-  public index: number = 0;
+  public index: number = INDEX_INITIAL_VALUE;
 
   constructor(index: number) {
     this.index = index;
@@ -1447,7 +1462,7 @@ class Params {
 @Component
 struct BuildNodeChild {
   @StorageProp('buildNodeTest') @Watch('onMessageUpdated') message: string = 'hello world';
-  @State index: number = 0;
+  @State index: number = INDEX_INITIAL_VALUE;
 
   // 当message更新时，调用此方法
   onMessageUpdated() {
@@ -1470,7 +1485,7 @@ function buildText(params: Params) {
 // 定义一个TextNodeController类，继承自NodeController
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<[Params]> | null = null;
-  private index: number = 0;
+  private index: number = INDEX_INITIAL_VALUE;
 
   // 构造函数接收一个index参数
   constructor(index: number) {
@@ -1518,7 +1533,7 @@ struct Index {
 @Component({ freezeWhenInactive: true })
 struct FreezeBuildNode {
   @StorageProp('buildNodeTest') @Watch('onMessageUpdated') message: string = '1111';
-  @State index: number = 0;
+  @State index: number = INDEX_INITIAL_VALUE;
 
   // 当message更新时，调用此方法
   onMessageUpdated() {
