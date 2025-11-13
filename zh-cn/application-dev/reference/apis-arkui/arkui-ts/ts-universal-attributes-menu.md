@@ -238,10 +238,10 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 **表3：enableArrow为true且placement未设置或者值为非法值的菜单默认位置** 
 | 接口 | 菜单默认位置 |
 |------|-------------|
-| [bindMenu](#bindMenu) | Placement.BottomLeft |
-| [bindMenu<sup>11+</sup>](#bindMenu11) | Placement.BottomLeft |
-| [bindContextMenu<sup>8+</sup>](#bindContextMenu8) | Placement.Top |
-| [bindContextMenu<sup>12+</sup>](#bindContextMenu12) | Placement.BottomLeft |
+| [bindMenu](#bindmenu) | Placement.BottomLeft |
+| [bindMenu<sup>11+</sup>](#bindmenu11) | Placement.BottomLeft |
+| [bindContextMenu<sup>8+</sup>](#bindcontextmenu8) | Placement.Top |
+| [bindContextMenu<sup>12+</sup>](#bindcontextmenu12) | Placement.BottomLeft |
 
 ## MenuPreviewMode<sup>11+</sup>
 
