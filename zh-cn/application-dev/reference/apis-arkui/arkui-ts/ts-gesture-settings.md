@@ -124,7 +124,7 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 ## 示例
 
-### 示例1(父组件优先识别手势和父子组件同时触发手势)
+### 示例1（父组件优先识别手势和父子组件同时触发手势）
 
 该示例通过配置priorityGesture和parallelGesture分别实现了父组件优先识别手势和父子组件同时触发手势。
 
