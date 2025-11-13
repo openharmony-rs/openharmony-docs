@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} ffrt_mutex_t
+```
+
 ## 概述
 
 FFRT互斥锁结构。

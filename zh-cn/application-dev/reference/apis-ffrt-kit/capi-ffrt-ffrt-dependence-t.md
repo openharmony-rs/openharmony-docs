@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} ffrt_dependence_t
+```
+
 ## 概述
 
 依赖数据结构。

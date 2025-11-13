@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} ffrt_deps_t
+```
+
 ## 概述
 
 依赖结构定义。
