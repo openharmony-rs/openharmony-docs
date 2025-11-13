@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} Input_DeviceListener
+```
+
 ## 概述
 
 定义一个结构体用于监听设备热插拔。

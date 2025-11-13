@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct Input_CursorConfig Input_CursorConfig
+```
+
 ## 概述
 
 自定义鼠标光标配置。

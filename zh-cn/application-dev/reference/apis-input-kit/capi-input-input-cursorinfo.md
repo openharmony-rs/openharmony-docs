@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct Input_CursorInfo Input_CursorInfo
+```
+
 ## 概述
 
 定义鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。

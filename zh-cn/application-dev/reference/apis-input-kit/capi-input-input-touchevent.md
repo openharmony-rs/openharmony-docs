@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct Input_TouchEvent Input_TouchEvent
+```
+
 ## 概述
 
 触屏输入事件对象。

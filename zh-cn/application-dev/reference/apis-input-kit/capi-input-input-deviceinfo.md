@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct Input_DeviceInfo Input_DeviceInfo
+```
+
 ## 概述
 
 输入设备信息。
