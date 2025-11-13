@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_AVCodecBufferAttr
+typedef struct OH_AVCodecBufferAttr {...} OH_AVCodecBufferAttr
 ```
 
 ## 概述

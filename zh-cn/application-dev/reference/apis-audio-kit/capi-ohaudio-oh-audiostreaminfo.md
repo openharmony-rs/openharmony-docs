@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_AudioStreamInfo
+typedef struct OH_AudioStreamInfo {...} OH_AudioStreamInfo
 ```
 
 ## 概述

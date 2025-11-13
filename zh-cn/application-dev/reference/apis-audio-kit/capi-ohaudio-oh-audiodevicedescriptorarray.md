@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_AudioDeviceDescriptorArray
+typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
 ```
 
 ## 概述

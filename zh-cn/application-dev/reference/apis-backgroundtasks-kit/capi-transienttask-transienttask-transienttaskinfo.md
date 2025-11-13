@@ -8,7 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-typedef struct {...} TransientTask_TransientTaskInfo
+typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
 ```
 
 ## 概述

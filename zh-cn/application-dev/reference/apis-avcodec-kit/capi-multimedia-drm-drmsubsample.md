@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} DrmSubsample
+typedef struct DrmSubsample {...} DrmSubsample
 ```
 
 ## 概述
