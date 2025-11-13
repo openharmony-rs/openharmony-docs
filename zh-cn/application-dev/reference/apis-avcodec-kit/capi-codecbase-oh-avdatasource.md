@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_AVDataSource
+typedef struct OH_AVDataSource {...} OH_AVDataSource
 ```
 
 ## 概述

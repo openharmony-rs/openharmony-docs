@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} AVSession_PlaybackPosition
+typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
 ```
 
 ## 概述

@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_AVDataSourceExt
+typedef struct OH_AVDataSourceExt {...} OH_AVDataSourceExt
 ```
 
 ## 概述

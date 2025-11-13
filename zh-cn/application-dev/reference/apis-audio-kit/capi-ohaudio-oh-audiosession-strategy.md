@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_AudioSession_Strategy
+typedef struct OH_AudioSession_Strategy {...} OH_AudioSession_Strategy
 ```
 
 ## 概述

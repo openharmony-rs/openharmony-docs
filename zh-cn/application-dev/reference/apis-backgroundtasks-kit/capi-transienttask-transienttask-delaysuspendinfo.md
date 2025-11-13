@@ -8,7 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-typedef struct {...} TransientTask_DelaySuspendInfo
+typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
 ```
 
 ## 概述

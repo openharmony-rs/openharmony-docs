@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_AVCodecAsyncCallback
+typedef struct OH_AVCodecAsyncCallback {...} OH_AVCodecAsyncCallback
 ```
 
 ## 概述
