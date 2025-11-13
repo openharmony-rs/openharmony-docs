@@ -3092,6 +3092,63 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+禁止/使能主窗口点击抬升功能。使用Promise异步回调。
+
+通常来说，点击一个主窗口，会将该主窗口和它的子窗口显示到最上方，如果设置为false，那么点击主窗口的时候，不会将该主窗口以及它的子窗显示到最上方，而是保持不变，但是点击该主窗口的子窗口时，会连带主窗口一起显示到最上方。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | 是   | 设置子窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  windowStage.getMainWindow().then((window) => {
+    let raiseEnabled: boolean = false;
+    let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+    promise.then(() => {
+      console.info('Succeeded in disabling the raise-by-click function.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  });
+}
+```
+
 ### hideNonSystemFloatingWindows<sup>11+</sup>
 
 hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;void&gt;): void
