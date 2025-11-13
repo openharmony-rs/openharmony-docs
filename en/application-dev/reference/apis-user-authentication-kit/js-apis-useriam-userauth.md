@@ -9,7 +9,8 @@
 
 The **userAuth** module provides APIs for user authentication, which applies to scenarios such as device unlocking, payment, and application login.
 
-> **NOTE**<br>
+> **NOTE**
+>
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
@@ -21,13 +22,14 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## Constant
 
-| Name       | Value  | Description      |
-| ----------- | ---- | ---------- |
-| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>    | 300000   | Maximum reuse duration of the unlock authentication result, in milliseconds. The value is **300000**.<br> **System capability**: SystemCapability.UserIAM.UserAuth.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+| Name       | Type  | Value  | Description      |
+| ----------- | ---- | ---- | ---------- |
+| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>     | number | 300000   | Maximum reuse duration of the unlock authentication result, in milliseconds. The value is **300000**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## UserAuthTipCode<sup>20+</sup>
 
-Enumerates the intermediate authentication status.
+Enumerates the intermediate states of identity authentication.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -80,14 +82,14 @@ Represents information about the authentication result reuse.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name        | Type  | Mandatory| Description                |
-| ------------ | ---------- | ---- | -------------------- |
-| reuseMode        | [ReuseMode](#reusemode12) | Yes  | Authentication result reuse mode.      |
-| reuseDuration    | number | Yes  | Period for which the authentication result can be reused. The value must be greater than 0 and less than [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
+| Name        | Type  | Read-Only| Optional| Description                |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| reuseMode        | [ReuseMode](#reusemode12) | No| No  | Authentication result reuse mode.      |
+| reuseDuration    | number | No| No| Period for which the authentication result can be reused. The value must be greater than 0 and less than [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
 
 ## userAuth.getEnrolledState<sup>12+</sup>
 
-getEnrolledState(authType : UserAuthType): EnrolledState
+getEnrolledState(authType: UserAuthType): EnrolledState
 
 Obtains the credential state.
 
@@ -111,12 +113,12 @@ Obtains the credential state.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500010 | The type of credential has not been enrolled. |
@@ -454,11 +456,11 @@ Subscribes to the user authentication result. This API is used to obtain the fin
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **Example 1**
@@ -600,11 +602,11 @@ Unsubscribes from the user authentication result.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **Example**
@@ -670,12 +672,12 @@ Starting from API version 20, only system applications can apply for the ohos.pe
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
-| 201      | Permission denied. Possible causes:1.No permission to access biometric. 2.No permission to start authentication from background.|
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 201      | Permission denied. Possible causes: <br>1. No permission to access biometric. <br>2. No permission to start authentication from background.|
+| 401      | Parameter error. Possible causes: <br>1. Incorrect parameter types. |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
 | 12500005 | The authentication type is not supported.        |
@@ -746,7 +748,7 @@ Cancels this authentication.
 | ID| Error Message                       |
 | -------- | ------------------------------- |
 | 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: <br>1. Incorrect parameter types. |
 | 12500002 | General operation error.        |
 
 **Example**
@@ -796,7 +798,7 @@ try {
 
 on(type: 'authTip', callback: AuthTipCallback): void
 
-Subscribes to authentication tip information. This API is used to obtain the component startup and exit messages and each authentication failure.
+Subscribes to authentication tip information. This API is used to obtain the component startup and exit messages and each authentication failure. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -961,11 +963,11 @@ Obtains a [UserAuthInstance](#userauthinstance10) instance for user authenticati
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.   |
 | 12500002 | General operation error.                         |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
@@ -1176,7 +1178,7 @@ Subscribes to the user authentication events of the specified type.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
@@ -1243,7 +1245,7 @@ Unsubscribes from the user authentication events of the specific type.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
@@ -1294,7 +1296,7 @@ Starts authentication.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
@@ -1345,7 +1347,7 @@ Cancels this authentication.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
@@ -1401,7 +1403,7 @@ Obtains an **AuthInstance** instance for user authentication.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
@@ -1458,12 +1460,12 @@ Checks whether the specified authentication capability is supported.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message|
 | -------- | ------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500006 | The authentication trust level is not supported. |
