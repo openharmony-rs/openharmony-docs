@@ -26,9 +26,9 @@ Represents the user authentication parameters.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name          | Type                              | Mandatory| Description                                                        |
-| -------------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | number | No  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.<br>**System API**: This is a system API.|
+| Name          | Type                              | Read-Only| Optional| Description                                                        |
+| -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| userId<sup>18+</sup> | number | No  | Yes  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.<br>**System API**: This is a system API.|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -49,9 +49,9 @@ Represents the information presented on the user authentication page.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name                | Type                               | Mandatory| Description                                                        |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| windowMode           | [WindowModeType](#windowmodetype10) | No  | Display format of the user authentication page. The default value is **WindowModeType.DIALOG_BOX**.<br>**System API**: This is a system API.|
+| Name                | Type                               | Read-Only| Optional| Description                                                        |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| windowMode           | [WindowModeType](#windowmodetype10) | No  | Yes  | Display format of the user authentication page. The default value is **WindowModeType.DIALOG_BOX**.<br>**System API**: This is a system API.|
 
 ## NoticeType<sup>10+</sup>
 
@@ -86,13 +86,13 @@ Sends a notification from the user authentication widget.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 
 **Example**
@@ -152,11 +152,11 @@ Subscribes to commands from the user authentication framework for the user authe
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **Example**
@@ -200,11 +200,11 @@ Unsubscribes from commands sent from the user authentication framework.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **Example**
@@ -258,13 +258,13 @@ Obtains a **UserAuthWidgetMgr** instance for user authentication.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.                                     |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
 | 12500002 | General operation error.                |
 
 **Example**
@@ -439,7 +439,7 @@ try {
 }
 ```
 
-## UserAuthResultCode<sup>18+</sup>
+## UserAuthResultCode<sup>9+</sup>
 
 Enumerates the authentication result codes.
 
@@ -449,6 +449,6 @@ Enumerates the authentication result codes.
 
 | Name                   |   Value  | Description                |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED | 12500015      | The AuthToken is invalid.|
-| AUTH_TOKEN_EXPIRED      | 12500016      | The interval between the AuthToken issuance time and the AuthToken verification time exceeds the maximum validity period.|
+| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | The AuthToken is invalid.|
+| AUTH_TOKEN_EXPIRED<sup>18+</sup>      | 12500016      | The interval between the AuthToken issuance time and the AuthToken verification time exceeds the maximum validity period.|
 | REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | Failed to reuse the authentication result.|
