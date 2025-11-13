@@ -43,6 +43,19 @@
 2. 传入需要发布的事件名称和回调函数，发布事件。
    
    <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Subscription/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // 发布公共事件，其中的event字段需要替换为实际的事件名称。
+   commonEventManager.publish('event', (err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
+     } else {
+       //...
+       hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
+     }
+   });
+   ```
 
 
 ## 发布携带信息的公共事件
