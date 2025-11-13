@@ -27034,5 +27034,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/pixelmap-drawing-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"arkts_graphics_draw_image",
+						"start_line":24
+					},
+					{
+						"end_line":93,
+						"name":"arkts_graphics_draw_edit_pixel",
+						"start_line":60
+					},
+					{
+						"end_line":56,
+						"name":"arkts_graphics_draw_image_pixel_map",
+						"start_line":53
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/pixelmap-drawing-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp",
+				"functions":[
+					{
+						"end_line":18,
+						"name":"ndk_graphics_draw_include_pixelmap_native",
+						"start_line":16
+					},
+					{
+						"end_line":1112,
+						"name":"ndk_graphics_draw_image_pixel_map",
+						"start_line":1080
+					},
+					{
+						"end_line":1115,
+						"name":"ndk_graphics_draw_create_pixel_map",
+						"start_line":1113
+					},
+					{
+						"end_line":1126,
+						"name":"ndk_graphics_draw_image_to_canvas",
+						"start_line":1116
+					},
+					{
+						"end_line":1130,
+						"name":"ndk_graphics_draw_release_pixelmap",
+						"start_line":1127
+					}
+				]
+			}
+		]
 	}
 ]
