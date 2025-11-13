@@ -104,14 +104,14 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   支持file://路径前缀的字符串，用于访问通过[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)提供的图片路径。
   1. 调用接口获取图库的照片url。
       <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->    
-  
+      
       ``` TypeScript
       import { photoAccessHelper } from '@kit.MediaLibraryKit';
       import { BusinessError } from '@kit.BasicServicesKit';
       import { hilog } from '@kit.PerformanceAnalysisKit';
       const DOMAIN = 0x0001;
       const TAG = 'Sample_imagecomponent';
-    
+      
       @Entry
       @Component
       struct MediaLibraryFile {
@@ -138,7 +138,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
             hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
           };
         };
-    
+      
         // aboutToAppear中调用上述函数，获取图库的所有图片url，存在imgDatas中
         async aboutToAppear() {
           this.getAllImg();
@@ -160,7 +160,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
       ```
     2. 从媒体库获取的url格式通常如下。
        <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
-  
+       
        ``` TypeScript
        // 'file://media/Photos/5'需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
        Image('file://media/Photos/5')
