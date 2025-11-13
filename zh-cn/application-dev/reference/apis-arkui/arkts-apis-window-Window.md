@@ -6078,7 +6078,7 @@ try {
 }
 ```
 
-## onWindowHighlightChange<sup>15+</sup>
+## onWindowHighlightChange<sup>22+</sup>
 
 onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
 
@@ -6087,8 +6087,6 @@ onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowHighlightChange')](#onwindowhighlightchange15)。
-
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Sta起始版本：** 22
 
@@ -6174,7 +6172,7 @@ try {
 }
 ```
 
-## offWindowHighlightChange<sup>15+</sup>
+## offWindowHighlightChange<sup>22+</sup>
 
 offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
 
@@ -6183,8 +6181,6 @@ offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowHighlightChange22)。
-
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Sta起始版本：** 22
 
