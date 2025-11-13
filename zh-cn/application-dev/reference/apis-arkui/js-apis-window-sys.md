@@ -3974,6 +3974,10 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **设备行为差异：** 该接口在2in1设备中调用不生效也不报错，在其他设备中可正常调用。
 
 **参数：**
@@ -3998,6 +4002,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -4035,6 +4040,54 @@ export default class EntryAbility extends UIAbility {
         });
       } catch (exception) {
         console.error(`Failed to hide the non-system floating windows. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility, Want } from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@ohos.base';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 加载主窗口对应的页面
+    windowStage.loadContent('pages/Index', (err) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+
+    // 获取应用主窗口。
+    let mainWindow: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      mainWindow = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+
+      let shouldHide = true;
+      try {
+        // 调用带callback参数的hideNonSystemFloatingWindows接口
+        mainWindow!.hideNonSystemFloatingWindows(shouldHide, (err) => {
+          const errCode = err?.code;
+          if (errCode) {
+            console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
+            return;
+          }
+          console.info('Succeeded in hiding the non-system floating windows.');
+        });
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to hide the non-system floating windows. Cause code: ${error.code}, message: ${error.message}`);
       }
     });
   }
