@@ -20,7 +20,7 @@
 >
 > - 自定义组件中一般会持有一个[create](#create18)接口返回的[AnimatorResult](#animatorresult)对象，以保证动画对象不在动画过程中析构，而这个对象也通过回调捕获了自定义组件对象。则需要在自定义组件销毁时的[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中释放动画对象，来避免因为循环依赖导致内存泄漏，详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 >
-> - Animator对象析构或主动调用[cancel](#cancel)、[finish](#finish)都会有一次额外的[onFrame](#onframe12)，返回值是动画终点的值。所以如果在动画过程中调用[cancel](#cancel)、[finish](#finish)会一帧跳变到终点，如果希望在中途停止，可以先将[onFrame](#onframe12)设置为空函数，再调用[finish](#finish)。
+> - Animator对象析构或主动调用[cancel](#cancel)、[finish](#finish)都会有一次额外的[onFrame](#属性)，返回值是动画终点的值。所以如果在动画过程中调用[cancel](#cancel)、[finish](#finish)会一帧跳变到终点，如果希望在中途停止，可以先将onFrame设置为空函数，再调用[finish](#finish)。
 
 ## 导入模块
 
@@ -189,6 +189,21 @@ this.animator = animator.createAnimator(options);
 
 定义Animator结果接口。
 
+### 属性
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+| 名称       | 类型                                                        | 只读 | 可选 | 说明                                                         |
+| ---------- | ------------------------------ | ---- | ------- | ----------------------------------------------------- |
+| onFrame<sup>12+</sup>   | (progress: number) => void                    | 否 | 否   | 接收到帧时回调。<br/>progress表示动画的当前值。取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
+| onFinish<sup>12+</sup>   | () => void                    | 否 | 否   | 动画完成时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
+| onCancel<sup>12+</sup>   | () => void                    | 否 | 否   | 动画被取消时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
+| onRepeat<sup>12+</sup>   | () => void                    | 否 | 否   | 动画重复时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
+| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | 否 | 否   | 接收到帧时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFrame。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onfinish<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画完成时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFinish。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| oncancel<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画被取消时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onCancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onrepeat<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画重复时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onRepeat。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+
 ### reset<sup>9+</sup>
 
 reset(options: AnimatorOptions): void
@@ -327,7 +342,7 @@ animator.play();
 
 finish(): void
 
-结束动画，会触发[onFinish](#onfinish12)回调。
+结束动画，会触发[onFinish](#属性)回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -363,7 +378,7 @@ animator.pause();
 
 cancel(): void
 
-取消动画，会触发[onCancel](#oncancel12)回调。此接口和[finish](#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
+取消动画，会触发[onCancel](#属性)回调。此接口和[finish](#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -393,296 +408,6 @@ reverse(): void
 
 ```ts
 animator.reverse();
-```
-
-### onFrame<sup>12+</sup>
-
-onFrame: (progress: number) => void
-
-接收到帧时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名      | 类型     | 必填   | 说明       |
-| -------- | ------ | ---- | -------- |
-| progress | number | 是    | 动画的当前值。<br/>取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。 |
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onFrame = (value: number) => {
-      console.info("onFrame callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onFinish<sup>12+</sup>
-
-onFinish: () => void
-
-动画完成时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onFinish = ()=> {
-      console.info("onFinish callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onCancel<sup>12+</sup>
-
-onCancel: () => void
-
-动画被取消时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onCancel = () => {
-      console.info("onCancel callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onRepeat<sup>12+</sup>
-
-onRepeat: () => void
-
-动画重复时回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
-    })
-    this.backAnimator.onRepeat = () => {
-      console.info("onRepeat callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onframe<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onFrame](#onframe12)。
-
-onframe: (progress: number) => void
-
-接收到帧时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名      | 类型     | 必填   | 说明       |
-| -------- | ------ | ---- | -------- |
-| progress | number | 是    | 动画的当前进度。 |
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onframe = (value) => {
-  console.info("onframe callback")
-}
-```
-
-### onfinish<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onFinish](#onfinish12)。
-
-onfinish: () => void
-
-动画完成时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onfinish = () => {
-  console.info("onfinish callback")
-}
-```
-
-### oncancel<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onCancel](#oncancel12)。
-
-
-oncancel: () => void
-
-动画被取消时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-<!--deprecated_code_no_check-->
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.oncancel = () => {
-  console.info("oncancel callback")
-}
-```
-
-### onrepeat<sup>(deprecated)</sup>
-
-> **说明：**
->
-> 从API version 12开始废弃，推荐使用[onRepeat](#onrepeat12)。
-
-onrepeat: () => void
-
-动画重复时回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onrepeat = () => {
-  console.info("onrepeat callback")
-}
 ```
 
 ### setExpectedFrameRateRange<sup>12+</sup>
@@ -783,8 +508,8 @@ animator.update(options);
 | fill       | 'none' \| 'forwards' \| 'backwards' \| 'both'               | 否 | 否   | 动画执行后是否恢复到初始状态，动画执行后，动画结束时的状态（在最后一个关键帧中定义）将保留。<br/>'none'：在动画执行之前和之后都不会应用任何样式到目标上。<br/>'forwards'：在动画结束后，目标将保留动画结束时的状态（在最后一个关键帧中定义）。<br/>'backwards'：动画将在[AnimatorOptions](#animatoroptions)中的delay期间应用第一个关键帧中定义的值。当[AnimatorOptions](#animatoroptions)中的direction为'normal'或'alternate'时应用from关键帧中的值，当[AnimatorOptions](#animatoroptions)中的direction为'reverse'或'alternate-reverse'时应用to关键帧中的值。<br/>'both'：动画将遵循forwards和backwards的规则，从而在两个方向上扩展动画属性。 |
 | direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | 否 | 否   | 动画播放模式。<br/>'normal'： 动画正向循环播放。<br/>'reverse'： 动画反向循环播放。<br/>'alternate'：动画交替循环播放，奇数次正向播放，偶数次反向播放。<br/>'alternate-reverse'：动画反向交替循环播放，奇数次反向播放，偶数次正向播放。<br/>默认值：'normal' |
 | iterations | number                                                      | 否 | 否   | 动画播放次数。设置为0时不播放，设置为-1时无限次播放，设置大于0时为播放次数。<br/>**说明:** 设置为除-1外其他负数视为无效取值，无效取值动画默认播放1次。 |
-| begin      | number                                                      | 否 | 否   | 动画插值起点。<br/>**说明:** 会影响[onFrame](#onframe12)回调的入参值。<br/>默认值：0                                              |
-| end        | number                                                      | 否 | 否   | 动画插值终点。<br/>**说明:** 会影响[onFrame](#onframe12)回调的入参值。   <br/>默认值：1                                            |
+| begin      | number                                                      | 否 | 否   | 动画插值起点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。<br/>默认值：0                                              |
+| end        | number                                                      | 否 | 否   | 动画插值终点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。   <br/>默认值：1                                            |
 
 ## SimpleAnimatorOptions<sup>18+</sup>
 
