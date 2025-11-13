@@ -4,7 +4,7 @@
 <!--Owner: @zhou-ke13-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides two rendering modes, which can be adapted to different container sizes as required.
 
@@ -36,8 +36,9 @@ The **Web** component is expected to be a part of the application page as the ca
 
 ## Sample Code
 
-```typescript
-// renderMode.ets
+<!-- @[web_component_rendering_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/RenderMode.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -46,13 +47,13 @@ struct WebHeightPage {
   private webviewController: WebviewController = new webview.WebviewController()
 
   build() {
-     Column() {
-         Web({
-             src: "https://www.example.com/",
-             controller: this.webviewController,
-             renderMode: RenderMode.ASYNC_RENDER // Set the rendering mode.
-         })
-     }
+    Column() {
+      Web({
+        src: 'www.example.com',
+        controller: this.webviewController,
+        renderMode: RenderMode.ASYNC_RENDER // Set the rendering mode.
+      })
+    }
   }
 }
 ```

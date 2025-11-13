@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## Background
 
@@ -180,8 +180,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
         // Use the file protocol to access the local JS file through XMLHttpRequest.
   			var xmlHttpReq = new XMLHttpRequest();
   			xmlHttpReq.onreadystatechange = function(){
-  			    console.log("readyState:" + xmlHttpReq.readyState);
-  			    console.log("status:" + xmlHttpReq.status);
+  			    console.info("readyState:" + xmlHttpReq.readyState);
+  			    console.info("status:" + xmlHttpReq.status);
   				if(xmlHttpReq.readyState == 4){
   				    if (xmlHttpReq.status == 200) {
                   // If the path list is set on eTS, resources can be obtained.

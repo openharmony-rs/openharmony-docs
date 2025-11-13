@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -361,11 +361,6 @@ Enumerates the error codes of the blankless loading.
 
 For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).
 
-| **Kernel Type**| **Name**| **Description**|
-| ----------- | -------- | -------- |
-| Evergreen kernel    | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
-| Legacy kernel    | LEGACY WebCore    | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only.|
-
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name         | Value| Description                                     |
@@ -373,6 +368,14 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 | SYSTEM_DEFAULT   | 0     | Default system kernel. For OpenHarmony 6.0, the default kernel is M132.|
 | M114             | 1     | Legacy kernel of OpenHarmony 6.0. You can select this legacy kernel. If it does not exist, the setting is invalid.|
 | M132             | 2     | Evergreen kernel of OpenHarmony 6.0, which is M132 by default. If it does not exist, the setting is invalid.|
+
+>**Table 1** Description of evergreen kernel and legacy kernel
+>| **Kernel Type** | **Name** | **Description** |
+>| ----------- | -------- | -------- |
+>| Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications. |
+>| Legacy kernel     | LEGACY WebCore | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only. |
+
+
 ## SiteIsolationMode<sup>21+</sup>
 
 Enumerates the site isolation modes. The site isolation mechanism isolates websites from different sources in different render processes to reduce the cross-domain attack surface. For example, on a PC, each tab corresponds to a render process. After site isolation is enabled, Iframes from different sources run in independent render processes.
@@ -383,3 +386,15 @@ Enumerates the site isolation modes. The site isolation mechanism isolates websi
 | ------------------------------- | - | ---------- |
 | PARTIAL | 0 | Partial site isolation. New sites are loaded in the same render process.|
 | STRICT  | 1 | Strict site isolation. Iframes from different sites are switched to new render processes.|
+
+
+## WebSoftKeyboardBehaviorMode<sup>22+</sup>
+
+Enumerates the behavior modes of the web soft keyboard.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name| Value| Description|
+| ------------------------------- | - | ---------- |
+| DEFAULT | 0 | When the **Web** component is focused or unfocused, or its status changes to inactive or active, the system attempts to hide or display the soft keyboard. This value is used by default.|
+| DISABLE_AUTO_KEYBOARD_ON_ACTIVE | 1 | When the **Web** component's status changes between inactive and active, the system does not hide or start the soft keyboard.|

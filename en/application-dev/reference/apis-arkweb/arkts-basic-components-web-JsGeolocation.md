@@ -4,7 +4,7 @@
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **PermissionRequest** object. For details about the sample code, see [onGeolocationShow](./arkts-basic-components-web-events.md#ongeolocationshow).
 
