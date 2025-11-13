@@ -27,28 +27,29 @@
 
 此处以使用画刷设置叠加混合模式为例（为了防止混合模式的效果被背景色干扰，示例中的canvas并未设置背景色，使用的是默认的黑色背景），关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_mixed_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置目标像素颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // 将目标像素的画刷效果设置到Canvas中
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建矩形对象
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 600, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value600_, value600_);
 // 绘制矩形（目标像素）
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 设置源像素颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MIN, 0xFF));
 // 设置混合模式为叠加模式
 OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_PLUS);
 // 将源像素的画刷效果设置到Canvas中
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建圆心的点对象
-OH_Drawing_Point *point = OH_Drawing_PointCreate(600, 600);
+OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
 // 绘制圆（源像素）
-OH_Drawing_CanvasDrawCircle(canvas, point, 300);
+OH_Drawing_CanvasDrawCircle(canvas, point, value300_);
 // 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁各类对象
@@ -56,7 +57,6 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PointDestroy(point);
 ```
-<!-- [ndk_graphics_draw_mixed_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![zh-cn_image_0000002158744138](figures/zh-cn_image_0000002158744138.png)
 
@@ -75,8 +75,9 @@ OH_Drawing_PointDestroy(point);
 
 此处以绘制矩形虚线路径效果为例，关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画笔
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
@@ -91,7 +92,7 @@ OH_Drawing_PenSetPathEffect(pen, pathEffect);
 // 在画布上设置画笔，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画笔
@@ -101,7 +102,6 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_PathEffectDestroy(pathEffect);
 ```
-<!-- [ndk_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置虚线路径效果的示意图 | 设置虚线效果的示意图 |
 | -------- | -------- |
@@ -133,12 +133,13 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 此处以绘制矩形并使用画刷设置线性渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 开始点
 OH_Drawing_Point *startPt = OH_Drawing_PointCreate(20, 20);
 // 结束点
-OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
 // 颜色数组
 uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 // 相对位置数组
@@ -152,8 +153,8 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
-  // 绘制矩形
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -164,7 +165,6 @@ OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(startPt);
 OH_Drawing_PointDestroy(endPt);
 ```
-<!-- [ndk_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 此例绘制的具有线性渐变着色器效果的矩形如下所示：
 
@@ -179,16 +179,17 @@ OH_Drawing_PointDestroy(endPt);
 
 此处以绘制矩形并使用画刷设置径向渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 圆心坐标
-OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
+OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(value500_, value500_);
 // 半径
-float radius = 600;
+float radius = value600_;
 // 颜色数组
 uint32_t gColors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
 // 相对位置数组
-float gPos[] = {0.0f, 0.25f, 0.75f};
+float_t gPos[] = {0.0f, 0.25f, 0.75f};
 // 创建径向渐变着色器效果
 OH_Drawing_ShaderEffect *colorShaderEffect =
     OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, OH_Drawing_TileMode::REPEAT);
@@ -198,8 +199,8 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
-  // 绘制矩形
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -209,7 +210,6 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(centerPt);
 ```
-<!-- [ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 此例绘制的具有径向渐变着色器效果的矩形如下所示：
 
@@ -224,10 +224,11 @@ OH_Drawing_PointDestroy(centerPt);
 
 此处以绘制矩形并使用画刷设置扇形渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 中心点
-OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
+OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(value500_, value500_);
 // 颜色数组
 uint32_t colors[3] = {0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00};
 // 相对位置数组
@@ -241,8 +242,8 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
-  // 绘制矩形
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -252,7 +253,6 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(centerPt);
 ```
-<!-- [ndk_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 此例绘制的具有扇形渐变着色器效果的矩形如下所示：
 
@@ -308,8 +308,9 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 此处以绘制矩形并使用画刷设置具有5x4颜色矩阵的颜色滤波器效果为例，关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画刷
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷抗锯齿
@@ -323,7 +324,7 @@ const float matrix[20] = {
     0, 0, 0.5f, 0.5f, 0,
     0, 0, 0.5f, 0.5f, 0
 };
-
+    
 // 创建滤波器颜色
 OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
 // 创建一个滤波器对象
@@ -335,7 +336,7 @@ OH_Drawing_BrushSetFilter(brush, filter);
 // 在画布上设置画刷，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画刷
@@ -346,7 +347,6 @@ OH_Drawing_ColorFilterDestroy(colorFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
-<!-- [ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置颜色滤波器效果的示意图 | 设置5x4颜色矩阵的颜色滤波器效果的示意图 |
 | -------- | -------- |
@@ -369,8 +369,9 @@ OH_Drawing_FilterDestroy(filter);
 
 此处以绘制矩形并使用画笔添加模糊效果的图像滤波器效果为例，关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画笔
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置画笔抗锯齿
@@ -391,7 +392,7 @@ OH_Drawing_PenSetFilter(pen, filter);
 // 在画布上设置画笔，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画笔
@@ -402,7 +403,6 @@ OH_Drawing_ImageFilterDestroy(imageFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
-<!-- [ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置图像滤波器效果的示意图 | 设置图像滤波器效果的示意图 |
 | -------- | -------- |
@@ -425,8 +425,9 @@ OH_Drawing_FilterDestroy(filter);
 
 此处以绘制矩形并使用画笔设置蒙版滤波器效果为例，关键示例和效果示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画笔
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // 设置画笔抗锯齿
@@ -446,7 +447,7 @@ OH_Drawing_PenSetFilter(pen, filter);
 // 在画布上设置画笔，请确保已获取得到画布对象
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // 绘制矩形
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除掉画布中的画笔
@@ -457,7 +458,6 @@ OH_Drawing_MaskFilterDestroy(maskFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
-<!-- [ndk_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 不设置蒙版滤波器效果的示意图 | 设置蒙版滤波器效果的示意图 |
 | -------- | -------- |
@@ -468,5 +468,5 @@ OH_Drawing_FilterDestroy(filter);
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->
