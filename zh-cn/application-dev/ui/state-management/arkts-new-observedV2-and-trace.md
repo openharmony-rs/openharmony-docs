@@ -403,8 +403,8 @@ class Message extends Info {
 @Entry
 @ComponentV2
 struct Index {
-  // @State message: Message = new Message();  无法混用，编译时报错
-  @Local message: Message = new Message();
+  // @State message: Message = new Message();  无法混用，运行时报错
+  message: Message = new Message();
 
   build() {
     Column() {
