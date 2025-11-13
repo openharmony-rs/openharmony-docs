@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Print_PrintDocCallback
+```
+
 ## 概述
 
 打印文档任务回调结构体。

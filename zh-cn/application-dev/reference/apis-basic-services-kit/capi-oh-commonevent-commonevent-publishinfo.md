@@ -7,6 +7,10 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct CommonEvent_PublishInfo CommonEvent_PublishInfo
+```
+
 ## 概述
 
 发布公共事件时使用的公共事件属性对象。

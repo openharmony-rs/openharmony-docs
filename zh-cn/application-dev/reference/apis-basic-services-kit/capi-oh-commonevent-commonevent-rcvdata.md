@@ -7,6 +7,10 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct CommonEvent_RcvData CommonEvent_RcvData
+```
+
 ## 概述
 
 提供CommonEvent_RcvData公共事件回调数据结构体声明。

@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct Pasteboard_ProgressInfo Pasteboard_ProgressInfo
+```
+
 ## 概述
 
 定义进度上报的数据结构。
