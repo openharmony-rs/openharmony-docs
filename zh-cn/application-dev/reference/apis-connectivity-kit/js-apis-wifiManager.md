@@ -3944,7 +3944,7 @@ offP2pStateChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -4106,7 +4106,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
