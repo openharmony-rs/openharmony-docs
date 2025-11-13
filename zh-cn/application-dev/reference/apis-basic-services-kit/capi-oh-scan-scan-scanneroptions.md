@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Scan_ScannerOptions
+```
+
 ## 概述
 
 表示一个扫描仪的所有参数选项
