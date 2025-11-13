@@ -15976,7 +15976,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/NativeEntry.cpp",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":92,
 						"name":"Interface_entrance_mounting_file",
 						"start_line":15
 					}
@@ -15986,7 +15986,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":54,
 						"name":"Provide_wrapper_class_list_items",
 						"start_line":15
 					}
