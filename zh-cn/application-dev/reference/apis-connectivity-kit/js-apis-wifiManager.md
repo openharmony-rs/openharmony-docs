@@ -4028,7 +4028,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
