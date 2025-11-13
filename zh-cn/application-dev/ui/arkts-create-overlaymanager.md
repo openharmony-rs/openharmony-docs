@@ -29,7 +29,6 @@
 
 ``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = '[Sample_dialogproject]';
@@ -60,8 +59,6 @@ export struct OverlayManagerComponent {
   @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private manager = this.context.resourceManager;
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
@@ -70,18 +67,15 @@ export struct OverlayManagerComponent {
   build() {
     // ···
       Column({ space: 10 }) {
-        // 'OverlayManager_button_increase'资源文件中的value值为'递增componentContentIndex: '
-        Button(this.manager.getStringByNameSync('OverlayManager_button_increase') + this.componentContentIndex)
+        Button('Increment componentContentIndex:' + this.componentContentIndex)
           .onClick(() => {
             ++this.componentContentIndex;
           })
-        // 'OverlayManager_button_decrease'资源文件中的value值为'递减componentContentIndex: '
-        Button(this.manager.getStringByNameSync('OverlayManager_button_decrease') + this.componentContentIndex)
+        Button('Decrement componentContentIndex:' + this.componentContentIndex)
           .onClick(() => {
             --this.componentContentIndex;
           })
-        // 'OverlayManager_button_add'资源文件中的value值为'增加ComponentContent'
-        Button(this.manager.getStringByNameSync('OverlayManager_button_add') + this.contentArray.length)
+        Button('Add ComponentContent:' + this.contentArray.length)
           .onClick(() => {
             let componentContent = new ComponentContent(
               this.uiContext, wrapBuilder<[Params]>(builderText),
@@ -90,18 +84,15 @@ export struct OverlayManagerComponent {
             this.contentArray.push(componentContent);
             this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
           })
-        // 'OverlayManager_button_increaseIndex'资源文件中的value值为'递增arrayIndex: '
-        Button(this.manager.getStringByNameSync('OverlayManager_button_increaseIndex') + this.arrayIndex)
+        Button('Increment arrayIndex:' + this.arrayIndex)
           .onClick(() => {
             ++this.arrayIndex;
           })
-        // 'OverlayManager_button_decreaseIndex'资源文件中的value值为'递减arrayIndex: '
-        Button(this.manager.getStringByNameSync('OverlayManager_button_decreaseIndex') + this.arrayIndex)
+        Button('Decrement arrayIndex:' + this.arrayIndex)
           .onClick(() => {
             --this.arrayIndex;
           })
-        // 'OverlayManager_button_delete'资源文件中的value值为'删除ComponentContent'
-        Button(this.manager.getStringByNameSync('OverlayManager_button_delete') + this.arrayIndex)
+        Button('Delete ComponentContent:' + this.arrayIndex)
           .onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
@@ -110,8 +101,7 @@ export struct OverlayManagerComponent {
               hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
-        // 'OverlayManager_button_show'资源文件中的value值为'显示ComponentContent'
-        Button(this.manager.getStringByNameSync('OverlayManager_button_show') + this.arrayIndex)
+        Button('Show ComponentContent:' + this.arrayIndex)
           .onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray[this.arrayIndex];
@@ -120,8 +110,7 @@ export struct OverlayManagerComponent {
               hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
-        // 'OverlayManager_button_hide'资源文件中的value值为'隐藏ComponentContent'
-        Button(this.manager.getStringByNameSync('OverlayManager_button_hide') + this.arrayIndex)
+        Button('Hide ComponentContent:' + this.arrayIndex)
           .onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray[this.arrayIndex];
@@ -130,19 +119,16 @@ export struct OverlayManagerComponent {
               hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
-        // 'app.string.OverlayManager_button_showAll'资源文件中的value值为'显示所有ComponentContent'
-        Button($r('app.string.OverlayManager_button_showAll'))
+        Button('Show All ComponentContent')
           .onClick(() => {
             this.overlayNode.showAllComponentContents();
           })
-        // 'app.string.OverlayManager_button_hideAll'资源文件中的value值为'隐藏所有ComponentContent'
-        Button($r('app.string.OverlayManager_button_hideAll'))
+        Button('Hide All ComponentContent')
           .onClick(() => {
             this.overlayNode.hideAllComponentContents();
           })
 
-        // 'app.string.OverlayManager_button_jump'资源文件中的value值为'跳转页面'
-        Button($r('app.string.OverlayManager_button_jump'))
+        Button('Go')
           .onClick(() => {
             this.getUIContext().getRouter().pushUrl({
               url: 'pages/Second'
@@ -239,7 +225,10 @@ export struct OverlayManagerAlertDialog {
 
 ``` TypeScript
 import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_dialogproject]';
+const DOMAIN: number = 0xFF00;
 
 class Params {
   public text: string = '';
@@ -288,8 +277,6 @@ function builderNormalText(params: Params) {
 export struct OverlayManagerWithOrder {
   private ctx: UIContext = this.getUIContext();
   private overlayManager: OverlayManager = this.ctx.getOverlayManager();
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private manager = this.context.resourceManager;
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
@@ -299,33 +286,30 @@ export struct OverlayManagerWithOrder {
     // ···
       Row() {
         Column({ space: 5 }) {
-          // 'app.string.Demo_topDialogButton'资源文件中的value值为'点击打开置顶弹窗'
-          Button($r('app.string.Demo_topDialogButton'))
+          Button('Open Top-Level Dialog Box')
             .onClick(() => {
               let componentContent = new ComponentContent(
                 this.ctx, wrapBuilder<[Params]>(builderTopText),
-                // 'Demo_topDialog'资源文件中的value值为'我是置顶弹窗'
-                new Params(this.manager.getStringByNameSync('Demo_topDialog'), this.componentOffset)
+                new Params('I am a top-level dialog box', this.componentOffset)
               );
               this.contentArray.push(componentContent);
               this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100000));
             })
-          // 'app.string.Demo_normalDialogButton'资源文件中的value值为'点击打开普通弹窗'
-          Button($r('app.string.Demo_normalDialogButton'))
+          Button('Open Normal Dialog Box')
             .onClick(() => {
               let componentContent = new ComponentContent(
                 this.ctx, wrapBuilder<[Params]>(builderNormalText),
-                // 'Demo_normalDialog'资源文件中的value值为'我是普通弹窗'
-                new Params(this.manager.getStringByNameSync('Demo_normalDialog'), this.componentOffset)
+                new Params('I am a normal dialog box', this.componentOffset)
               );
               this.contentArray.push(componentContent);
               this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(0));
             })
-          // 'app.string.Demo_removeDialogButton'资源文件中的value值为'点击移除弹窗'
-          Button($r('app.string.Demo_removeDialogButton')).onClick(() => {
+          Button('Remove Dialog Box').onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
               this.overlayManager.removeComponentContent(componentContent.pop());
+            } else {
+              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         }.width('100%')
