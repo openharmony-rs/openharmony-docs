@@ -3005,7 +3005,7 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3530,7 +3530,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStateChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活 |
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活。 |
 
 **热点状态改变事件的枚举：**
 
@@ -3723,14 +3723,6 @@ onP2pStateChange(callback: Callback&lt;int&gt;): void
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **ArkTS-Sta起始版本：** 22
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| idle | 1 | 空闲。 |
-| starting | 2 | 正在开始。 |
-| started | 3 | 已开始。 |
-| closing | 4 | 正在关闭。 |
-| closed | 5 | 已关闭。 |
 
 **参数：**
 
@@ -3952,7 +3944,7 @@ offP2pStateChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+  | callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -4089,7 +4081,7 @@ offP2pDeviceChange(callback?: Callback&lt;WifiP2pDevice&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;WifiP2pDevice&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
