@@ -1,5 +1,9 @@
 # DRM_MediaKeyRequest
 
+```
+typedef struct {...} DRM_MediaKeyRequest
+```
+
 ## 概述
 
 媒体密钥请求。

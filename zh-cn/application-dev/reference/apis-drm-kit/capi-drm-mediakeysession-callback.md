@@ -1,5 +1,9 @@
 # MediaKeySession_Callback
 
+```
+typedef struct {...} MediaKeySession_Callback
+```
+
 ## 概述
 
 MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，不返回媒体密钥会话实例，适用于单媒体密钥会话解密场景。

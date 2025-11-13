@@ -1,5 +1,9 @@
 # DRM_MediaKeyRequestInfo
 
+```
+typedef struct {...} DRM_MediaKeyRequestInfo
+```
+
 ## 概述
 
 媒体密钥请求信息。

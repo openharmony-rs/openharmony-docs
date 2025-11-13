@@ -1,5 +1,9 @@
 # DRM_Statistics
 
+```
+typedef struct {...} DRM_Statistics
+```
+
 ## 概述
 
 MediaKeySystem的度量信息。

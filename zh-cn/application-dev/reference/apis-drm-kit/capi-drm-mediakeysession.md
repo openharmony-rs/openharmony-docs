@@ -1,5 +1,9 @@
 # MediaKeySession
 
+```
+typedef struct MediaKeySession MediaKeySession
+```
+
 ## 概述
 
 MediaKeySession结构。
