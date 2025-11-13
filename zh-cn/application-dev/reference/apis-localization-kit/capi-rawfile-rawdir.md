@@ -7,6 +7,10 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct RawDir RawDir
+```
+
 ## 概述
 
 提供对rawfile目录的访问。
