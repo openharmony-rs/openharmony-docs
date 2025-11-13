@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} ffrt_rwlock_t
+```
+
 ## 概述
 
 FFRT读写锁结构。
