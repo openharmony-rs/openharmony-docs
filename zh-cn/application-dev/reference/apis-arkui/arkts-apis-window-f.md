@@ -719,7 +719,7 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLa
 
 | 参数名 | 类型   | 必填 | 说明                                                                        |
 | ------ | ---------- |----|---------------------------------------------------------------------------|
-| displayId   | ArkTS-Dyn-number<br>ArkTS-Sta-long| 是  | 需要获取窗口布局信息的displayId，该参数应为整数，且为当前实际存在屏幕的displayId，可以通过窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)获取。 |
+| displayId   | ArkTS-Dyn: number<br>ArkTS-Sta: long| 是  | 需要获取窗口布局信息的displayId，该参数应为整数，且为当前实际存在屏幕的displayId，可以通过窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)获取。 |
 
 **返回值：**
 
