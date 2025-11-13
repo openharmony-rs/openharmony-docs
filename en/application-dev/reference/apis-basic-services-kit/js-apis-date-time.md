@@ -6,7 +6,7 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
-The **systemTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
+The **systemTime** module provides system time and time zone features. You can obtain the system time and time zone by using the following APIs.
 
 > **NOTE**
 >

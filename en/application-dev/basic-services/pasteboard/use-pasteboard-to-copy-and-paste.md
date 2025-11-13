@@ -82,7 +82,7 @@ export default class EntryAbility extends UIAbility {
 
 To facilitate data interactions between the pasteboard and other applications and reduce the workload of data type adaptation, the pasteboard supports a unified data object for copying and pasting. For details about the unified data object, see [Unified Data Channel](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md).
 
-Currently, the following basic data types are supported for copy and paste: text and HTML. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage.
+Currently, the following basic data types are supported for copy and paste: text and HTML. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to properly use the data types that correspond to the specific APIs.
 
 ### Available APIs
 
@@ -110,17 +110,17 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 let data = new unifiedDataChannel.UnifiedData();
 data.addRecord(record);
 
-// Save a piece of PlainText data to the system pasteboard.
+// Write a piece of PlainText data to the system pasteboard.
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.setUnifiedData(data).then((data: void) => {
     console.info('Succeeded in setting UnifiedData.');
-    // The data is successfully saved, which is a normal case.
+    // The data is successfully written, which is a normal case.
 }).catch((err: BusinessError) => {
     console.error('Failed to set UnifiedData. Cause: ' + err.message);
     // Error case
 });
 
-// Read the text data from the system pasteboard.
+// Read the PlainText data from the system pasteboard.
 systemPasteboard.getUnifiedData().then((data) => {
     let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
     for (let j = 0; j < records.length; j++) {
