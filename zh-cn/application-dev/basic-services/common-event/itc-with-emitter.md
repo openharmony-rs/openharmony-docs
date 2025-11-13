@@ -53,6 +53,25 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > emit接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
    <!-- @[emitter_emit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ITCWithEmitter/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 定义一个eventId为1的事件，事件优先级为Low。
+   let event: emitter.InnerEvent = {
+     eventId: 1,
+     priority: emitter.EventPriority.LOW
+   };
+   
+   let eventData: emitter.EventData = {
+     data: {
+       content: 'emitter',
+       id: 1,
+       isEmpty: false
+     }
+   };
+   
+   // 发送eventId为1的事件，事件内容为eventData。
+   emitter.emit(event, eventData);
+   ```
 
 4. 取消事件订阅。
     > **说明：**
