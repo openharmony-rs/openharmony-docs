@@ -400,33 +400,6 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 }
 ```
 
-整体或者按域名的明文HTTP是否允许的配置示例如下：
-
-```
-{
-  "network-security-config": {
-    "base-config": {
-      "cleartextTrafficPermitted": true
-    },
-    "domain-config": [
-      {
-        "domains": [
-          {
-            "include-subdomains": true,
-            "name": "example.com"
-          }
-        ],
-        "cleartextTrafficPermitted": false
-      }
-    ],
-    "component-config": {
-    	"Network Kit": true,
-    	"ArkWeb": true
-    }
-  }
-}
-```
-
 证书锁定的配置例子如下:
 
 ```
@@ -473,7 +446,6 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |pin                        | array           |证书公钥哈希。可以包含任意个item。item必须包含1个digest-algorithm，item必须包含1个digest。|
 |digest-algorithm           | string          |指示用于生成哈希的摘要算法。目前只支持`sha256`。                                    |
 |digest                     | string          |指示公钥哈希。 |
-|cleartextTrafficPermitted  | boolean          |明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
 
 ### 配置不信任用户安装的CA证书
 
@@ -488,6 +460,52 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
   "trust-current-user-ca" : false // 配置是否信任当前用户安装的CA证书，默认为true
 }
 ```
+### 明文HTTP访问权限配置说明
+
+该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+> **说明：**
+>
+> 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
+
+
+```
+// src/main/resources/base/profile/network_config.json
+{
+  "network-security-config": {
+    "base-config": {
+      "cleartextTrafficPermitted": true // 可选，自API 20开始支持该属性。
+    },
+    "domain-config": [
+      {
+        "domains": [
+          {
+            "include-subdomains": true,
+            "name": "example.com"
+          }
+        ],
+        "cleartextTrafficPermitted": false // 可选，自API 20开始支持该属性。
+      }
+    ],
+    "component-config": {
+    	"Network Kit": true, // 可选，自API 20开始支持该属性。
+    	"ArkWeb": false // 可选，自API 20开始支持该属性。
+    }
+  }
+}
+```
+
+**各个字段含义:**
+
+| 字段                      | 类型            | 必填 | 说明                                   |
+| --------------------------| --------------- |--------- |-------------------------------------- |
+|base-config                     | array          | 否| 指示应用程序范围的明文配置。优先级最低。 |
+|cleartextTrafficPermitted  | boolean          |否 | 明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
+|domain-config                     | array          | 否|  指示每个域的明文配置。可以包含任意个item。每个item必须包含1个domains。若相同域存在规则冲突时，以匹配到的第一条为准。优先级次于component-config。 |
+|include-subdomains         | boolean         | 否| 指示规则是否适用于子域。true表示规则适用于子域，false表示规则不适用于子域，默认为false。 |
+|name         | string         | 否| 配置主域名。 |
+|component-config                    | array          |  否| 指示每个组件的明文配置。优先级最高。|
+|Network Kit                 | boolean          |否| 用于配置Network Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为true。 |
+|ArkWeb                    | boolean          |否| 用于配置ArkWeb组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
 
 ## 相关实例
 
