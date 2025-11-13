@@ -3296,7 +3296,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
-注册wifi扫描状态改变事件。
+注册WIFI扫描状态改变事件。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
