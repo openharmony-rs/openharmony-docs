@@ -2915,7 +2915,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTs-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
