@@ -59,7 +59,7 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int (ffrt_fiber_t* fiber, void(*func) | 初始化成功返回ffrt_success，否则返回ffrt_error。 |
+| FFRT_C_API int | 初始化成功返回ffrt_success，否则返回ffrt_error。 |
 
 ### ffrt_fiber_switch()
 
