@@ -11527,7 +11527,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":60,
 						"name":"Common_Utils",
 						"start_line":15
 					}
