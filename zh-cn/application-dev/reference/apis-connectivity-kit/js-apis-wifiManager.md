@@ -2939,6 +2939,15 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
+**状态改变事件的枚举：**
+
+| 枚举值 | 说明 |
+| -------- | -------- |
+| 0 | 未激活。 |
+| 1 | 已激活。 |
+| 2 | 激活中。 |
+| 3 | 去激活中。 |
+
 ## wifiManager.off('wifiStateChange')<sup>9+</sup>
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
