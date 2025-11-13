@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_Statistic
+```
+
 ## 概述
 
 描述数据库表的端云同步过程的统计信息。

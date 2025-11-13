@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_TextStyle OH_Drawing_TextStyle
+```
+
 ## 概述
 
 用于管理字体颜色、装饰等。

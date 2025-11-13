@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_PreferencesOption OH_PreferencesOption
+```
+
 ## 概述
 
 定义Preferences配置选项的数据结构。

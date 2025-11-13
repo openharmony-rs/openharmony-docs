@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```
+typedef struct {...} AbilityBase_Element
+```
+
 ## 概述
 
 声明[Want](capi-want-h.md)中Element结构体。

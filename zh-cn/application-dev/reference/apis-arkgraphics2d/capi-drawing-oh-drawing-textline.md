@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_TextLine OH_Drawing_TextLine
+```
+
 ## 概述
 
 用于管理文本行。
