@@ -49,6 +49,8 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 | content | Callback\<void> | 是 | \@BuilderParam | 组件显示内容。 |
 | controller | [LaunchController](#launchcontroller) | 是 | - | 拉起原子化服务控制器。 |
 | onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。 |
+| onTerminated<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。 |
+| onReceive<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。 |
 
 ## LaunchController
 
