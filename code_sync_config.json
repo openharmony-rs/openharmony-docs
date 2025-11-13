@@ -24647,9 +24647,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":53,
 						"name":"Local_Question_Expected_Effect",
-						"start_line":31
+						"start_line":15
 					}
 				]
 			}
