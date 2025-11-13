@@ -3321,7 +3321,7 @@ onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。返回：0：扫描失败；1：扫描成功  |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。返回：0：扫描失败；1：扫描成功。 |
 
 **错误码：**
 
