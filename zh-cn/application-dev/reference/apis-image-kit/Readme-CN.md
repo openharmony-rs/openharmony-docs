@@ -1,4 +1,10 @@
 # Image Kit（图片处理服务）
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--image-arkts-->
   - @ohos.multimedia.image (图片处理)<!--js-apis-image-->
