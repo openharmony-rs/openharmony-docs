@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebCookieManager** instance to manage behavior of cookies in **Web** components. All **Web** components in an application share a **WebCookieManager** instance.
 
@@ -36,7 +36,7 @@ Obtains the cookie value of the specified URL.
 > 
 > To obtain the cookie value that can be used, pass a complete link to **fetchCookieSync()**.
 > 
-> **fetchCookieSync()** is used to obtain all cookie values. Cookie values are separated by semicolons (;). However, a specific cookie value cannot be obtained separately.
+> **fetchCookieSync()** is used to obtain all cookie values. Cookie values are separated by semicolons. However, a specific cookie value cannot be obtained separately.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -55,7 +55,7 @@ Obtains the cookie value of the specified URL.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -108,7 +108,7 @@ Obtains the cookie value of a specified URL. This API uses an asynchronous callb
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -173,7 +173,7 @@ Obtains the cookie value of a specified URL. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -237,7 +237,7 @@ Obtains the cookie value of a specified URL. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -290,9 +290,15 @@ Sets a cookie for the specified URL.
 >
 > It is recommended that cookie syncing be completed before the **Web** component is loaded.
 >
-> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons (;).
+> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons.
 >
 > Cookies are periodically saved to the disk every 30s. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
+> 
+> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie has expired, it will not be stored. To set multiple cookies, call this method multiple times.
+>
+> The **value** parameter must comply with the format of the Set-Cookie HTTP response header. The value is in the format of "key=value", followed by a list of cookie attributes separated by semicolons, for example, **"key=value;Max-Age=100"**.
+>
+> If the specified value contains the **Secure** attribute, the URL must use the **https://** protocol.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -306,7 +312,7 @@ Sets a cookie for the specified URL.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -349,6 +355,22 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 
 Sets a cookie value for a specified URL.
 
+> **NOTE**
+>
+> You can set **url** in **configCookieSync** to a domain name so that the cookie is attached to the requests on the page.
+>
+> It is recommended that cookie syncing be completed before the **Web** component is loaded.
+>
+> If **configCookieSync()** is used to set cookies for two or more times, the cookies set each time are separated by semicolons.
+>
+> Cookies are periodically saved to the disk every 30s. You can also use the [saveCookieAsync](#savecookieasync) API to forcibly save cookies to the disk.
+> 
+> If a cookie with the same host, path, and name exists, it will be replaced by the new cookie. If the cookie has expired, it will not be stored. To set multiple cookies, call this method multiple times.
+>
+> The **value** parameter must comply with the format of the Set-Cookie HTTP response header. The value is in the format of "key=value", followed by a list of cookie attributes separated by semicolons, for example, **"key=value;Max-Age=100"**.
+>
+> If the specified value contains the **Secure** attribute, the URL must use the **https://** protocol.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -362,7 +384,7 @@ Sets a cookie value for a specified URL.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -411,13 +433,13 @@ Sets the value of a single cookie for a specified URL. This API uses an asynchro
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to set. A complete URL is recommended.|
+| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
 | value  | string | Yes  | Cookie value to set.     |
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -469,7 +491,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to set. A complete URL is recommended.|
+| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
 | value  | string | Yes  | Cookie value to set.     |
 
 **Return value**
@@ -480,7 +502,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -534,7 +556,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | Yes  | URL of the cookie to set. A complete URL is recommended.|
+| url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
 | value  | string | Yes  | Cookie value to set.     |
 | incognito    | boolean | Yes  | Whether to set the cookies in incognito mode. The value **true** means to set the cookies in incognito mode, and **false** means the opposite.|
 | includeHttpOnly    | boolean | Yes  | Whether to overwrite cookies containing **HttpOnly**. The value **true** means to overwrite cookies containing **HttpOnly**, and **false** means the opposite.|
@@ -547,7 +569,7 @@ Sets the value of a single cookie for a specified URL. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -593,13 +615,15 @@ struct WebComponent {
 
 static saveCookieSync(): void
 
-Saves the cookies in the memory to the drive. This API uses a synchronous callback to return the result.
+Synchronously saves all cookies (that can be obtained through **fetchCookie** and need to be persisted) to the disk.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 > **NOTE**
 >
 > **saveCookieSync** is used to forcibly write cookies that need to be persisted to disks. Session cookies are not persisted on PCs, 2-in-1 devices, or tablets, even if **saveCookieSync** is invoked.
+>
+> **saveCookieSync** blocks the caller until the operation is complete. During this period, I/O operations may be performed.
 
 **Example**
 
@@ -633,7 +657,7 @@ struct WebComponent {
 
 static saveCookieAsync(callback: AsyncCallback\<void>): void
 
-Saves the cookies in the memory to the drive. This API uses an asynchronous callback to return the result.
+Asynchronously saves all cookies (that can be obtained through **fetchCookie** and need to be persisted) to the disk.
 
 > **NOTE**
 >
@@ -649,7 +673,7 @@ Saves the cookies in the memory to the drive. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -691,7 +715,7 @@ struct WebComponent {
 
 static saveCookieAsync(): Promise\<void>
 
-Saves the cookies in the memory to the drive. This API uses a promise to return the result.
+Saves all cookies (that can be obtained through **fetchCookie** and need to be persisted) to the disk using a promise.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -703,7 +727,7 @@ Saves the cookies in the memory to the drive. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -759,7 +783,7 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -847,7 +871,7 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -931,7 +955,7 @@ Checks whether cookies exist.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito<sup>11+</sup>    | boolean | No  | Whether to check for cookies in incognito mode. The value **true** means to check for cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to check for cookies in incognito mode. The value **true** means to check for cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If **undefined** or **null** is passed, **undefined** is returned.|
 
 **Return value**
 
@@ -975,7 +999,7 @@ Deletes all cookies.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | :----------------------------------------- |
-| incognito    | boolean | No  | Whether to clear all cookies in incognito mode. The value **true** means to clear all cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.|
+| incognito    | boolean | No  | Whether to clear all cookies in incognito mode. The value **true** means to clear all cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If **undefined** or **null** is passed, cookies are not cleared.|
 
 **Example**
 
@@ -1016,7 +1040,7 @@ Clears all cookies. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -1070,7 +1094,7 @@ Clears all cookies. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -1094,7 +1118,7 @@ struct WebComponent {
         .onClick(() => {
           webview.WebCookieManager.clearAllCookies()
             .then(() => {
-              console.log("clearAllCookies success!");
+              console.info("clearAllCookies success!");
             })
             .catch((error: BusinessError) => {
               console.error("error: " + error);
@@ -1153,7 +1177,7 @@ Clears all session cookies. This API uses an asynchronous callback to return the
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -1207,7 +1231,7 @@ Clears all session cookies. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------ |
@@ -1273,7 +1297,7 @@ Obtains the cookie value of the specified URL.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
@@ -1330,7 +1354,7 @@ Sets a cookie for the specified URL.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |

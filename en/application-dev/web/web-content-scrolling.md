@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 A web page can be scrolled only when its content height or width exceeds the visible area. You can scroll a web page by using external devices, or by calling APIs on the ArkTS or JS side.
 

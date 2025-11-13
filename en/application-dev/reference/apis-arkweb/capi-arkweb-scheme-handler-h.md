@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## Overview
 
@@ -27,7 +27,7 @@ Declares the APIs used to intercept requests from ArkWeb.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkWeb_SchemeHandler_](capi-web-arkweb-schemehandler.md) | ArkWeb_SchemeHandler | Defines a handler used to intercept requests of a specified scheme.|
-| [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler.md) | ArkWeb_ResourceHandler | Defines a handler used to intercept URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies.|
+| [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler.md) | ArkWeb_ResourceHandler | Defines a handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies.|
 | [ArkWeb_Response_](capi-web-arkweb-response.md) | ArkWeb_Response | Defines an **ArkWeb_Response** for the intercepted request.|
 | [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest.md) | ArkWeb_ResourceRequest | Defines a kernel request. You can use **OH_ArkWeb_ResourceRequest** to obtain the URL, method, post data, and other information of the request.|
 | [ArkWeb_RequestHeaderList_](capi-web-arkweb-requestheaderlist.md) | ArkWeb_RequestHeaderList | Defines a request header list.|
@@ -64,7 +64,7 @@ Declares the APIs used to intercept requests from ArkWeb.
 | [void* OH_ArkWebHttpBodyStream_GetUserData(const ArkWeb_HttpBodyStream* httpBodyStream)](#oh_arkwebhttpbodystream_getuserdata) | - | Obtains user data from **ArkWeb_HttpBodyStream**.|
 | [int32_t OH_ArkWebHttpBodyStream_SetReadCallback(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamReadCallback readCallback)](#oh_arkwebhttpbodystream_setreadcallback) | - | Sets a callback for **OH_ArkWebHttpBodyStream_Read**. The result of **OH_ArkWebHttpBodyStream_Read** is notified to the caller through **readCallback**,<br>which will run in the same thread as **OH_ArkWebHttpBodyStream_Read**.|
 | [int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamReadCallback readCallback)](#oh_arkwebhttpbodystream_setasyncreadcallback) | - | Sets a callback for **OH_ArkWebHttpBodyStream_AsyncRead**. The result of **OH_ArkWebHttpBodyStream_AsyncRead** is notified to the caller through **readCallback**,<br>which will run in the same thread as **OH_ArkWebHttpBodyStream_AsyncRead**.|
-| [int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamInitCallback initCallback)](#oh_arkwebhttpbodystream_init) | - | Initializes **ArkWeb_HttpBodyStream**. This API must be called on the I/O thread before any other API is called.|
+| [int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamInitCallback initCallback)](#oh_arkwebhttpbodystream_init) | - | Initializes **ArkWeb_HttpBodyStream**. This function must be called before any other function is called. This API needs to be called in the I/O thread.|
 | [void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)](#oh_arkwebhttpbodystream_read) | - | Exports the uploaded data of a request to the buffer. The buffer size must be greater than the value of **bufLen**. The data from the worker thread is exported to the buffer. Therefore, before the callback returns the data, the buffer should not be used in other threads to avoid concurrency problems.|
 | [void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)](#oh_arkwebhttpbodystream_asyncread) | - | Exports the uploaded data of a request to the buffer. The buffer size must be greater than the value of **bufLen**. The data from the worker thread is exported to the buffer. Therefore, before the callback returns the data, the buffer should not be used in other threads to avoid concurrency problems.|
 | [uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodyStream)](#oh_arkwebhttpbodystream_getsize) | - | Obtains the size of **httpBodyStream**. When data is chunked or **httpBodyStream** is invalid, **0** is always returned.|
@@ -166,7 +166,7 @@ Enumerates the resource types of the request. The resource types match the corre
 | FONT_RESOURCE = 5 | Font.|
 | SUB_RESOURCE = 6 | Other sub-resource. If the type is unknown, the default type is used.|
 | OBJECT = 7 | The **Object** (or **embed**) tag of the plug-in, or the resource requested by the plug-in.|
-| MEDIA = 8 | Media resource|
+| MEDIA = 8 | Media resource.|
 | WORKER = 9 | Main resource of the dedicated worker thread.|
 | SHARED_WORKER = 10 | Main resource of a shared worker thread.|
 | PREFETCH = 11 | Explicit prefetch request.|
@@ -680,7 +680,7 @@ int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream,ArkWe
 
 **Description**
 
-Initializes **ArkWeb_HttpBodyStream**. This API must be called on the I/O thread before any other API is called.
+Initializes **ArkWeb_HttpBodyStream**. This function must be called before any other function is called. This API needs to be called in the I/O thread.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1188,7 +1188,7 @@ Creates an **ArkWeb_SchemeHandler** object.
 
 | Name| Description|
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | A created **ArkWeb_SchemeHandler**. You can use **OH_ArkWeb_DestoryschemeHandler** to destroy it when it is not needed.|
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | A created **ArkWeb_SchemeHandler**. Use **OH_ArkWeb_DestroyschemeHandler** to destroy it when it is not required.|
 
 ### OH_ArkWeb_DestroySchemeHandler()
 
@@ -1341,7 +1341,7 @@ Creates an **ArkWeb_Response** object for the intercepted request.
 
 | Name| Description|
 | -- | -- |
-| [ArkWeb_Response](capi-web-arkweb-response.md)** response | A created **ArkWeb_Response**. Use **OH_ArkWeb_DestoryResponse** to destroy it when it is not required.|
+| [ArkWeb_Response](capi-web-arkweb-response.md)** response | A created **ArkWeb_Response**. Use **OH_ArkWeb_DestroyResponse** to destroy it when it is not required.|
 
 ### OH_ArkWeb_DestroyResponse()
 
@@ -1856,7 +1856,7 @@ Notifies the ArkWeb kernel that the intercepted request fails.
 
 | Name| Description|
 | -- | -- |
-| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | Handler used to intercept URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies.|
+| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies.|
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | Error code of the request. For details, see [arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md).|
 
 **Returns**
@@ -1884,7 +1884,7 @@ Notifies the ArkWeb kernel that the intercepted request fails. Compared with the
 
 | Name| Description|
 | -- | -- |
-| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | Defines a handler used to intercept URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies.|
+| const [ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler.md)* resourceHandler | Handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies.|
 | [ArkWeb_NetError](capi-arkweb-net-error-list-h.md#arkweb_neterror) errorCode | Error code of the request. For details, see [arkweb_net_error_list.h](capi-arkweb-net-error-list-h.md).|
 | bool completeIfNoResponse | Whether the network request is complete when [OH_ArkWebResourceHandler_DidFailWithErrorV2](#oh_arkwebresourcehandler_didfailwitherrorv2) is called if [OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse) is not called before. If the value is **true** and [OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse) is not called before, a response is automatically generated to complete the network request, and the network error code is **-104**. If the value is **false**, the system waits for the application to call [OH_ArkWebResourceHandler_DidReceiveResponse](#oh_arkwebresourcehandler_didreceiveresponse) and pass the response.|
 

@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 By docking the **Web** component to the soft keyboard, you can manage the display and interaction of the soft keyboard in your application, and can also customize its features to suit your specific needs. The main scenarios are as follows:
 
