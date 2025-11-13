@@ -1,4 +1,10 @@
 # Cross-Device Migration
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
@@ -1072,7 +1078,7 @@ A mission center demo is provided for you to verify the migration capability of 
 
 1. [Switch to the full SDK](../faqs/full-sdk-switch-guide.md) to compile and install the mission center.
 
-2. Download the sample code of the [mission center demo](https://gitee.com/openharmony/ability_dmsfwk/tree/master/services/dtbschedmgr/test/missionCenterDemo/dmsDemo/entry/src/main).
+2. Download the sample code of the [mission center demo](https://gitcode.com/openharmony/ability_dmsfwk/tree/master/services/dtbschedmgr/test/missionCenterDemo/dmsDemo/entry/src/main).
 
 3. Build the project file.
 
