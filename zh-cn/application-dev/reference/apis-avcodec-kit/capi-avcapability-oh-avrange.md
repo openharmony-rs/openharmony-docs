@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_AVRange
+```
+
 ## 概述
 
 范围包含最小值和最大值。

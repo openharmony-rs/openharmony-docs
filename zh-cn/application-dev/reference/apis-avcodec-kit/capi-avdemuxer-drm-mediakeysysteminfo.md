@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
+```
+
 ## 概述
 
 为DRM_MediaKeySystemInfo接口定义native层对象。

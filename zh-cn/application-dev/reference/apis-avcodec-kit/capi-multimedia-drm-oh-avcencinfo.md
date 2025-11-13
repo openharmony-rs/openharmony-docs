@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVCencInfo OH_AVCencInfo
+```
+
 ## 概述
 
 AVCencInfo结构。
