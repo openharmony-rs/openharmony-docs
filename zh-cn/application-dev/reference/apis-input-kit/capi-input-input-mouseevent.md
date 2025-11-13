@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct Input_MouseEvent Input_MouseEvent
+```
+
 ## 概述
 
 鼠标事件对象。

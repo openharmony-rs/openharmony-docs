@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct Input_CustomCursor Input_CustomCursor
+```
+
 ## 概述
 
 自定义鼠标光标像素图资源。

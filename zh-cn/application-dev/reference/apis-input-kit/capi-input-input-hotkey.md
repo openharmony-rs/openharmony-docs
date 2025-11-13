@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct Input_Hotkey Input_Hotkey
+```
+
 ## 概述
 
 定义快捷键结构体。
