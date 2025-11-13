@@ -227,9 +227,9 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 | 接口 | 菜单默认位置 |
 |------|-------------|
 | [bindMenu](#bindMenu) | Placement.BottomLeft |
-| [bindMenu<sup>11+<sup>](#bindMenu11) | Placement.BottomLeft |
-| [bindContextMenu<sup>8+<sup>](#bindContextMenu8) | Placement.Top |
-| [bindContextMenu<sup>12+<sup>](#bindContextMenu12) | Placement.BottomLeft |
+| [bindMenu<sup>11+</sup>](#bindMenu11) | Placement.BottomLeft |
+| [bindContextMenu<sup>8+</sup>](#bindContextMenu8) | Placement.Top |
+| [bindContextMenu<sup>12+</sup>](#bindContextMenu12) | Placement.BottomLeft |
 
 ## MenuPreviewMode<sup>11+</sup>
 
