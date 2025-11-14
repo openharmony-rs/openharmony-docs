@@ -493,15 +493,13 @@ ArkTS-Sta示例：
 // xxxAbility.ets
 
 import UIAbility from '@ohos.app.ability.UIAbility';
-import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
 import window from '@ohos.window';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
-import { MyCallback } from '../models/MyCallback';
-import { AppStorage } from 'arkui.stateManagement.storage.appStorage'
-import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base'
 import { UIContext } from '@ohos.arkui.UIContext';
+import hilog from '@ohos.hilog'
+import { AppStorage } from '@ohos.arkui.stateManagement';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
