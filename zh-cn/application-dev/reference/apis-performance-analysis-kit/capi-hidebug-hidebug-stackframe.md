@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} HiDebug_StackFrame
+```
+
 ## 概述
 
 栈帧内容的定义。

@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} HiDebug_NativeStackFrame
+```
+
 ## 概述
 
 native栈帧内容的定义。
