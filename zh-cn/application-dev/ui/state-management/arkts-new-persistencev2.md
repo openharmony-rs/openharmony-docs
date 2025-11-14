@@ -543,10 +543,10 @@ export class Sample {
 @ComponentV2
 struct Page1 {
   @Local a: number = 0;
-  // 使用key:global1连接，传入加密等级为EL1
+  // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
     PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample() })!;
-  // 使用key:global2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
+  // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
 
   build() {
