@@ -237,7 +237,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (status) => {
-  console.log('Callback return whether value is set.');
+  console.info('Callback return whether value is set.');
 });
 ```
 
@@ -278,7 +278,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100').then((status) => {
-  console.log('Callback return whether value is set.');
+  console.info('Callback return whether value is set.');
 });
 ```
 
@@ -330,7 +330,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', settings.domainName.DEVICE_SHARED).then((status) => {
-  console.log(`callback:return whether value is set.`)
+  console.info(`callback:return whether value is set.`)
 });
 ```
 
@@ -366,7 +366,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
     console.error(`Failed to get the setting. ${err.message} `);
     return;
   }
-  console.log(`callback:value -> ${value}`)
+  console.info(`callback:value -> ${value}`)
 });
 ```
 
@@ -403,7 +403,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value) => {
-  console.log(`promise:value -> ${value}`)
+  console.info(`promise:value -> ${value}`)
 });
 ```
 
@@ -445,7 +445,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
-  console.log(`Promise:value -> ${value}`);
+  console.info(`Promise:value -> ${value}`);
 });
 ```
 
@@ -659,7 +659,7 @@ import { common } from '@kit.AbilityKit';
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.registerKeyObserver(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED, () => {
   let value:string = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '10');
-  console.log(`Promise:value -> ${value}`);
+  console.info(`Promise:value -> ${value}`);
 });
 ```
 
@@ -743,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.log(`callback:return whether setings is open.`)
+  console.info(`callback:return whether setings is open.`)
 });
 ```
 
@@ -771,7 +771,7 @@ settings.enableAirplaneMode(isEnabled, (err:Error) => {
         console.error('Failed to enable AirplaneMode.');
         return;
     }
-    console.log('Return true if enable.');
+    console.info('Return true if enable.');
 })
 ```
 
@@ -800,7 +800,7 @@ enableAirplaneMode(enable: boolean): Promise\<void>
 ```js
 let isEnabled :boolean = true;
 settings.enableAirplaneMode(isEnabled).then(() => {
-  console.log('Succeeded in enabling AirplaneMode.');
+  console.info('Succeeded in enabling AirplaneMode.');
 }).catch((err:Error) => {
   console.error(`Failed to enable AirplaneMode. Cause: ${err}`);
 })
@@ -828,7 +828,7 @@ settings.canShowFloating((err:Error, status: boolean) => {
     console.error(`Failed to Checks whether a specified application can show as float window ${err.message} `);
     return;
   }
-  console.log('Checks whether a specified application can show as float window.');
+  console.info('Checks whether a specified application can show as float window.');
 });
 ```
 
@@ -850,7 +850,7 @@ canShowFloating(): Promise\<boolean>
 
 ```js
 settings.canShowFloating().then((status:boolean) => {
-    console.log('Checks whether a specified application can show as float window.');
+    console.info('Checks whether a specified application can show as float window.');
 });
 ```
 
@@ -904,7 +904,7 @@ getURI(name: string, callback: AsyncCallback\<object>): void
 
 ```js
 settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS, (uri:string) => {
-    console.log(`callback:uri -> ${JSON.stringify(uri)}`)
+    console.info(`callback:uri -> ${JSON.stringify(uri)}`)
 })
 ```
 
@@ -936,7 +936,7 @@ getURI(name: string): Promise\<object>
 
 ```js
 settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => {
-    console.log(`promise:uri -> ${JSON.stringify(uri)}`)
+    console.info(`promise:uri -> ${JSON.stringify(uri)}`)
 })
 ```
 
@@ -976,7 +976,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
         console.error(`Failed to get the setting. ${err.message} `);
         return;
     }
-    console.log(`callback:value -> ${JSON.stringify(value)}`)
+    console.info(`callback:value -> ${JSON.stringify(value)}`)
 });
 ```
 
@@ -1015,7 +1015,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
 let helper = featureAbility.acquireDataAbilityHelper(uri);
 settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value:string) => {
-    console.log(`promise:value -> ${JSON.stringify(value)}`)
+    console.info(`promise:value -> ${JSON.stringify(value)}`)
 });
 ```
 
