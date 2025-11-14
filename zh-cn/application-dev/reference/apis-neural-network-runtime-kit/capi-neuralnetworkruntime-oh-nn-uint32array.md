@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_NN_UInt32Array
+```
+
 ## 概述
 
 该结构体用于存储32位无符号整型数组。

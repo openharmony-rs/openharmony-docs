@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct NN_Tensor NN_Tensor
+```
+
 ## 概述
 
 Tensor句柄。
