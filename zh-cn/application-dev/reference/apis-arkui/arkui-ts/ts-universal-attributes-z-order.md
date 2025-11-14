@@ -6,13 +6,13 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## zIndex
 
 ArkTS-Dyn: zIndex(value: number): T
 
-ArkTS-Sta: zIndex(value: number | undefined): this
+ArkTS-Sta: zIndex(value: int | undefined): this
 
 设置组件的堆叠顺序。
 
@@ -30,7 +30,7 @@ ArkTS-Sta: zIndex(value: number | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: number  \| undefined | 是   | 同一容器中兄弟组件显示层级关系。zIndex值越大，显示层级越高，即zIndex值大的组件会覆盖在zIndex值小的组件上方。当不涉及新增或减少兄弟节点，动态改变zIndex时会在zIndex改变前层级顺序的基础上进行稳定排序。 |
+| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int  \| undefined | 是   | 同一容器中兄弟组件显示层级关系。zIndex值越大，显示层级越高，即zIndex值大的组件会覆盖在zIndex值小的组件上方。当不涉及新增或减少兄弟节点，动态改变zIndex时会在zIndex改变前层级顺序的基础上进行稳定排序。 |
 
 **返回值：**
 

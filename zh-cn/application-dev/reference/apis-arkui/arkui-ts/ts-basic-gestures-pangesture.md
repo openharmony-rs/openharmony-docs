@@ -14,7 +14,9 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 接口
@@ -55,34 +57,135 @@ PanGesture(value?: { fingers?: number, direction?: PanDirection, distance?: numb
 
 ## PanGestureOptions
 
-通过PanGestureOptions对象接口可以动态修改平移手势识别器的属性，从而避免通过状态变量修改属性（状态变量修改会导致UI刷新）。
+### constructor
 
-PanGestureOptions(value?: { fingers?: number, direction?: PanDirection, distance?: number })
+ArkTS-Dyn: constructor(value?: { fingers?: number; direction?: PanDirection; distance?: number })
+
+ArkTS-Sta: constructor(value?: PanGestureHandlerOptions)
+
+创建滑动手势配置参数对象。通过PanGestureOptions对象接口可以动态修改滑动手势的属性，从而避免通过状态变量修改属性（状态变量修改会导致UI刷新）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名称  | 参数类型                              | 必填 | 参数描述                                                     |
+| 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| fingers   | number                                | 否   | 用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
-| direction | [PanDirection](#pandirection枚举说明) | 否   | 用于指定设置滑动方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All |
-| distance  | number                                | 否   | 用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。 |
+| value   | ArkTS-Dyn: { fingers?: number; direction?: [PanDirection](#pandirection枚举说明); distance?: number }<br/>ArkTS-Sta: [PanGestureHandlerOptions](./ts-uigestureevent.md#pangesturehandleroptions) | 否   | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。|
 
-**接口**
+### setDirection
+
+ArkTS-Dyn: setDirection(value: PanDirection)
+
+ArkTS-Sta: setDirection(value: PanDirection): void
+
+设置滑动方向。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 功能描述 |
-| -------- | -------- |
-| setDirection(value:&nbsp;[PanDirection](#pandirection枚举说明)) | 设置滑动方向。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| setDistance(value:&nbsp;number) | 设置触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**说明：**<br />距离值不宜设置过大，避免因滑动脱手，响应时延过大等问题导致性能劣化，最佳实践请参考：[优化应用时延问题-减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices-V5/bpta-application-latency-optimization-cases-V5#section1116134115286)。 |
-| setFingers(value:&nbsp;number) | 设置触发滑动的最少手指数。<br/>取值范围：[1, 10]，整数。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| getDirection()<sup>12+</sup>: [PanDirection](#pandirection枚举说明) | 获取滑动方向。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| getDistance()<sup>18+</sup>: (value:&nbsp;number) | 获取触发滑动手势事件的最小滑动距离。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+**ArkTS-Dyn起始版本：** 7
 
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明                      |
+| ------ | ------------------------------------------ | ---- | ---------------------------- |
+| value  |  [PanDirection](#pandirection枚举说明) | 是   | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All |
+
+### setDistance
+
+ArkTS-Dyn: setDistance(value: number)
+
+ArkTS-Sta: setDistance(value: double)
+
+设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手，响应时延过大等问题导致性能劣化。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明                        |
+| ------ | ------------------------------------------ | ---- | ---------------------------- |
+| value  |  ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。 |
+
+### setFingers
+
+ArkTS-Dyn: setFingers(value: number)
+
+ArkTS-Sta: setFingers(value: int)
+
+设置触发滑动的最少手指数。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型                                       | 必填 | 说明                         |
+| ------ | ------------------------------------------ | ---- | ---------------------------- |
+| value  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
+
+### getDirection<sup>12+</sup>
+
+getDirection(): PanDirection
+
+获取滑动方向。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| [PanDirection](#pandirection枚举说明) | 滑动方向。 |
+
+### getDistance<sup>18+</sup>
+
+ArkTS-Dyn: getDistance(): number
+
+ArkTS-Sta: getDistance(): double
+
+获取触发滑动手势事件的最小滑动距离。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 滑动手势事件的最小滑动距离。 |
 
 ## 事件
 

@@ -9,13 +9,15 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议从[surface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
+> - 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
+> - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议从[surface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
 >
-> 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
+> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
+>
+> - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
 
 ## 导入模块
@@ -480,11 +482,11 @@ struct SnapshotExample {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称           | 类型             | 必填           | 说明                         |
-| ---------------|------------     | -----------------------------| -----------------------------|
-| scale           | number | 否 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |
-| waitUntilRenderFinished    | boolean | 否 | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当时时刻需要重绘区域的大小。<br>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否 | 指定截图的矩形区域范围，默认为整个组件。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| 名称           | 类型             | 只读   |   可选           | 说明                         |
+| ---------------|------------     | -------|---------------------| -----------------------------|
+| scale           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22   |
+| waitUntilRenderFinished    | boolean | 否  |  是  | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当时时刻需要重绘区域的大小。<br>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22        |
+| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否  |  是 | 指定截图的矩形区域范围，默认为整个组件。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## SnapshotRegionType<sup>15+</sup>
 
@@ -509,12 +511,16 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型   | 必填 | 说明                                    |
-| ------ | ------ | ---- | --------------------------------------- |
-| left   | number | 是   | 截图区域矩形左上角的x轴坐标，单位为px。 |
-| top    | number | 是   | 截图区域矩形左上角的y轴坐标，单位为px。 |
-| right  | number | 是   | 截图区域矩形右下角的x轴坐标，单位为px。 |
-| bottom | number | 是   | 截图区域矩形右下角的y轴坐标，单位为px。 |
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称   | 类型   | 只读  |  可选 | 说明                                    |
+| ------ | ------ | ---- | ----- | ---------------------------------- |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 截图区域矩形左上角的x轴坐标，单位为px。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 截图区域矩形左上角的y轴坐标，单位为px。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 截图区域矩形右下角的x轴坐标，单位为px。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 截图区域矩形右下角的y轴坐标，单位为px。 |
 
 ## LocalizedSnapshotRegion<sup>15+</sup>
 
@@ -524,9 +530,13 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| start  | number | 是   | 布局方向为LTR时表示截图区域矩形左上角的x轴坐标，布局方向为RTL时表示截图区域矩形右下角的x轴坐标，单位为px。 |
-| top    | number | 是   | 布局方向为LTR时表示截图区域矩形左上角的y轴坐标，布局方向为RTL时表示截图区域矩形右下角的y轴坐标，单位为px。 |
-| end    | number | 是   | 布局方向为LTR时表示截图区域矩形右上角的x轴坐标，布局方向为RTL时表示截图区域矩形左下角的x轴坐标，单位为px。 |
-| bottom | number | 是   | 布局方向为LTR时表示截图区域矩形右上角的y轴坐标，布局方向为RTL时表示截图区域矩形左下角的y轴坐标，单位为px。 |
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称   | 类型   | 只读 |  可选  |  说明                                           |
+| ------ | ------ | ---- | ---- | -------------------------------------------------------- |
+| start  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 布局方向为LTR时表示截图区域矩形左上角的x轴坐标，布局方向为RTL时表示截图区域矩形右下角的x轴坐标，单位为px。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 布局方向为LTR时表示截图区域矩形左上角的y轴坐标，布局方向为RTL时表示截图区域矩形右下角的y轴坐标，单位为px。 |
+| end    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 布局方向为LTR时表示截图区域矩形右上角的x轴坐标，布局方向为RTL时表示截图区域矩形左下角的x轴坐标，单位为px。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  否   | 布局方向为LTR时表示截图区域矩形右上角的y轴坐标，布局方向为RTL时表示截图区域矩形左下角的y轴坐标，单位为px。 |

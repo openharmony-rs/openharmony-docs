@@ -4,7 +4,9 @@
 
 > **说明：**
 > 
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onMove
 
@@ -41,7 +43,9 @@ onMove(handler: Optional\<OnMoveHandler\>, eventHandler: ItemDragEventHandler)
 
 ## OnMoveHandler
 
-type OnMoveHandler = (from: number, to: number) => void
+ArkTS-Dyn: type OnMoveHandler = (from: number, to: number) => void
+
+ArkTS-Sta: type OnMoveHandler = (from: int, to: int) => void
 
 定义数据源拖拽回调。
 
@@ -49,12 +53,16 @@ type OnMoveHandler = (from: number, to: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| from  | number | 是   | 数据源拖拽起始索引号。取值范围是[0, 数据源长度-1]。 |
-| to  | number | 是   | 数据源拖拽目标索引号。取值范围是[0, 数据源长度-1]。 |
+| from  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 数据源拖拽起始索引号。取值范围是[0, 数据源长度-1]。 |
+| to  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 数据源拖拽目标索引号。取值范围是[0, 数据源长度-1]。 |
 
 ## ItemDragEventHandler<sup>20+</sup>
 
@@ -64,14 +72,18 @@ type OnMoveHandler = (from: number, to: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| onLongPress  |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否  | 长按时触发的回调。<br>- 参数index为长按时当前目标的索引号。 |
-| onDragStart  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 在页面跟手滑动开始时触发的回调。<br>- 参数index为拖拽开始时当前目标的索引号。 |
+| onLongPress  |  ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否  | 长按时触发的回调。<br>- 参数index为长按时当前目标的索引号。 |
+| onDragStart  | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否   | 在页面跟手滑动开始时触发的回调。<br>- 参数index为拖拽开始时当前目标的索引号。 |
 | onMoveThrough  | [OnMoveHandler](#onmovehandler) | 否   | 在页面跟手滑动过程中经过其他组件时触发的回调。 |
-| onDrop  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 否   | 在页面跟手滑动结束时触发的回调。<br>- 参数index为拖拽结束时当前目标的索引号。 |
+| onDrop  | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> | 否   | 在页面跟手滑动结束时触发的回调。<br>- 参数index为拖拽结束时当前目标的索引号。 |
 
 ## 示例
 

@@ -44,9 +44,13 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                                    | 属性类型                                       | 描述                 |
 | ------------------------------------- | ---------------------------------------- | --------------------------- |
-| axisMap                               | Map<[AxisModel](ts-appendix-enums.md#axismodel15), number>     | 焦点轴事件的轴值表。          |
+| axisMap                               | ArkTS-Dyn: Map<[AxisModel](ts-appendix-enums.md#axismodel15), number><br/>ArkTS-Sta: Map<[AxisModel](ts-appendix-enums.md#axismodel15), double>     | 焦点轴事件的轴值表。          |
 | stopPropagation                       | Callback\<void>                           | 阻塞事件冒泡传递。            |
 
 ## 示例

@@ -4,7 +4,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## Resource
 
@@ -393,12 +393,16 @@ ArkTS-Sta: type Length = string | double | Resource
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数      | 类型     | 描述 |
 | ------- | ------ | ----------------------- |
-| x     | number | 水平方向横坐标。|
-| y     | number | 竖直方向纵坐标。|
-| width | number | 内容宽度大小。|
-| height | number | 内容高度大小。|
+| x     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 水平方向横坐标。|
+| y     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 竖直方向纵坐标。|
+| width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 内容宽度大小。|
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 内容高度大小。|
 
 ## ResourceColor
 
@@ -468,8 +472,8 @@ ArkTS-Sta: type ResourceColor = [Color](ts-appendix-enums.md#color) | int | stri
 
 | 名称             | 类型                     | 说明                             |
 | -------------- | ---------------------- | ------------------------------ |
-| width          | [Length](#length)      | 目标元素的宽度，作为返回值时，类型为number，单位vp。 |
-| height         | [Length](#length)      | 目标元素的高度，作为返回值时，类型为number，单位vp。 |
+| width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
+| height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
 | position       | [Position](#position) | 目标元素左上角相对父元素左上角的位置。            |
 | globalPosition | [Position](#position) | 目标元素左上角相对页面左上角的位置。             |
 
@@ -1087,24 +1091,35 @@ type HoverCallback = (isHover: boolean, event: HoverEvent) => void;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
-| expectedUpdateInterval | number | 否 | 定义了开发者期望的计算间隔，单位为ms。默认值：1000|
+| ratios | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;double&gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
+| expectedUpdateInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 定义了开发者期望的计算间隔，单位为ms。默认值：1000|
 
 ## VisibleAreaChangeCallback<sup>12+</sup>
 
-组件可见区域变化事件的回调类型。
+ArkTS-Dyn: type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void
 
-type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void;
+ArkTS-Sta: type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: double) => void
+
+组件可见区域变化事件的回调类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称            | 类型                   | 描述                                       |
-| ------------- | ---------------------- | ---------------------------------------- |
-| VisibleAreaChangeCallback | (isExpanding: boolean, currentRatio: number) => void | 组件可见区域变化事件的回调。<br/>-isExpanding：表示组件的可见面积与自身面积的比值与上一次变化相比的情况，比值变大为true，比值变小为false。<br/>-currentRatio：触发回调时，组件可见面积与自身面积的比值。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 参数名 | 类型 | 必填 |    说明                                                 |
+| ------ | --- | ---- | ------------------------------------------------------ |
+| isExpanding | boolean | 是 | 表示组件的可见面积与自身面积的比值与上一次变化相比的情况，比值变大为true，比值变小为false。 |
+| currentRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 触发回调时，组件可见面积与自身面积的比值。|
 
 ## DividerStyleOptions<sup>12+</sup>
 
@@ -1428,3 +1443,28 @@ setTextSelection选中文字时的配置。
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
 | offset | number | 是   | 是   | 插入文本的位置。 |
+
+## Bias<sup>11+</sup>
+
+设置组件在锚点约束下的偏移参数。
+
+以水平方向Bias为例，其值为组件到左锚点的距离 D<sub>start</sub>与组件到水平方向锚点间总距离 D<sub>start</sub> +  D<sub>end</sub>的比值。镜像语言下，D<sub>start</sub>为组件到右锚点的距离。下图中D<sub>width</sub>表示组件宽度。
+
+![bias_horizontal_example.png](figures/bias_horizontal_example.png)
+
+竖直方向同理，其值为组件到上锚点的距离D<sub>top</sub>与组件到竖直方向锚点间总距离D<sub>top</sub> + D<sub>bottom</sub>的比值。下图中D<sub>height</sub>表示组件高度。
+
+![bias_vertical_example.png](figures/bias_vertical_example.png)
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| horizontal  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 |是 | 水平方向上的bias值。<br/>当子组件的width属性有正确值并且有2个水平方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：0.5 |
+| vertical  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 |是 | 垂直方向上的bias值。<br/>当子组件的height属性有正确值并且有2个垂直方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：0.5 |

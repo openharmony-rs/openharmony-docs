@@ -6,7 +6,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## shouldBuiltInRecognizerParallelWith
 
@@ -49,7 +49,7 @@ type ShouldBuiltInRecognizerParallelWithCallback = (current: GestureRecognizer, 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| current | [GestureRecognizer](#gesturerecognizer) | 是   | 当前组件的系统内置手势识别器，当前版本只提供内置的[PAN_GESTURE](ts-gesture-customize-judge.md#gesturejudgeresult11)类型的手势识别器。 |
+| current | [GestureRecognizer](#gesturerecognizer) | 是   | 当前组件的系统内置手势识别器，当前版本只提供内置的[PAN_GESTURE](ts-gesture-customize-judge.md#gesturejudgeresult)类型的手势识别器。 |
 | others | Array\<[GestureRecognizer](#gesturerecognizer)\> | 是   | 响应链上更高优先级的其他组件相同类别的手势识别器。 |
 
 **返回值：**
@@ -126,7 +126,7 @@ getType(): GestureControl.GestureType
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureControl.GestureType](ts-gesture-customize-judge.md#gesturetype12) | 当前手势识别器的类型。 |
+| [GestureControl.GestureType](ts-gesture-customize-judge.md#gesturetype) | 当前手势识别器的类型。 |
 
 ### isBuiltIn
 
@@ -226,7 +226,9 @@ isValid(): boolean;
 
 ### getFingerCount<sup>18+</sup>
 
-getFingerCount(): number
+ArkTS-Dyn: getFingerCount(): number
+
+ArkTS-Sta: getFingerCount(): int
 
 返回预设手指识别数阈值。
 
@@ -234,11 +236,15 @@ getFingerCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设手指识别数阈值。<br/>取值范围：[1, 10], 整数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 预设手指识别数阈值。<br/>取值范围：[1, 10]，整数。 |
 
 ### isFingerCountLimit<sup>18+</sup>
 
@@ -377,7 +383,9 @@ getDirection(): PanDirection
 
 ### getDistance<sup>19+</sup>
 
-getDistance(): number
+ArkTS-Dyn: getDistance(): number
+
+ArkTS-Sta: getDistance(): double
 
 返回当前拖动手势识别器触发的最小滑动距离。
 
@@ -385,11 +393,15 @@ getDistance(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 当前拖动手势识别器触发的最小滑动距离。单位：vp |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖动手势识别器触发的最小滑动距离。单位：vp |
 
 ### getDistanceMap<sup>19+</sup>
 
@@ -417,7 +429,9 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 ### getTapCount<sup>18+</sup>
 
-getTapCount(): number
+ArkTS-Dyn: getTapCount(): number
+
+ArkTS-Sta: getTapCount(): int
 
 返回预设点击手势识别器连续点击次数阈值。
 
@@ -425,11 +439,15 @@ getTapCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设点击手势识别器连续点击次数阈值。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 预设点击手势识别器连续点击次数阈值。<br/>取值范围：[0, +∞) |
 
 ## LongPressRecognizer<sup>18+</sup>
 
@@ -453,7 +471,9 @@ isRepeat(): boolean
 
 ### getDuration<sup>18+</sup>
 
-getDuration(): number
+ArkTS-Dyn: getDuration(): number
+
+ArkTS-Sta: getDuration(): int
 
 返回预设长按手势识别器触发长按最短时间阈值。
 
@@ -461,11 +481,15 @@ getDuration(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
 
 ## SwipeRecognizer<sup>18+</sup>
 
@@ -473,7 +497,9 @@ getDuration(): number
 
 ### getVelocityThreshold<sup>18+</sup>
 
-getVelocityThreshold(): number
+ArkTS-Dyn: getVelocityThreshold(): number
+
+ArkTS-Sta: getVelocityThreshold(): double
 
 返回预设滑动手势识别器识别滑动最小速度阈值。
 
@@ -481,11 +507,15 @@ getVelocityThreshold(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设滑动手势识别器识别滑动最小速度阈值，单位为vp/s。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设滑动手势识别器识别滑动最小速度阈值，单位为vp/s。<br/>取值范围：[0, +∞) |
 
 ### getDirection<sup>18+</sup>
 
@@ -509,7 +539,9 @@ getDirection(): SwipeDirection
 
 ### getDistance<sup>18+</sup>
 
-getDistance(): number
+ArkTS-Dyn: getDistance(): number
+
+ArkTS-Sta: getDistance(): double
 
 返回预设捏合手势识别器最小识别距离阈值。
 
@@ -517,11 +549,15 @@ getDistance(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设捏合手势识别器最小识别距离阈值，单位为vp。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设捏合手势识别器最小识别距离阈值，单位为vp。<br/>取值范围：[0, +∞) |
 
 ## RotationRecognizer<sup>18+</sup>
 
@@ -529,7 +565,9 @@ getDistance(): number
 
 ### getAngle<sup>18+</sup>
 
-getAngle(): number
+ArkTS-Dyn: getAngle(): number
+
+ArkTS-Sta: getAngle(): double
 
 返回预设旋转手势识别器触发旋转手势最小改变度数阈值。
 
@@ -537,11 +575,15 @@ getAngle(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设旋转手势识别器触发旋转手势最小改变度数阈值，单位为deg。<br/>取值范围：[0, +∞)<br/>**说明：** <br/>当输入的改变度数的值小于等于0或大于360时，会被转化为默认值，默认值为1。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 预设旋转手势识别器触发旋转手势最小改变度数阈值，单位为deg。<br/>取值范围：[0, +∞)<br/>**说明：** <br/>当输入的改变度数的值小于等于0或大于360时，会被转化为默认值，默认值为1。 |
 
 ## onGestureRecognizerJudgeBegin<sup>13+</sup>
 
@@ -615,7 +657,7 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureJudgeResult](ts-gesture-customize-judge.md#gesturejudgeresult11) | 手势是否裁决成功的判定结果。 |
+| [GestureJudgeResult](ts-gesture-customize-judge.md#gesturejudgeresult) | 手势是否裁决成功的判定结果。 |
 
 ## onTouchTestDone<sup>20+</sup>
 

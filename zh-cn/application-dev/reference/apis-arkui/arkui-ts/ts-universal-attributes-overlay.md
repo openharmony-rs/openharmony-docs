@@ -6,7 +6,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## overlay
 
@@ -62,10 +62,24 @@ ArkTS-Sta: overlay\<T extends Object>(value: string | CustomBuilder | ComponentC
 
 ## OverlayOffset<sup>12+</sup>
 
+>  **说明：**
+>
+>  为规范匿名对象的定义，API 12版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
 | ------- | ---------------------------------------------------------| ---- | ------| --------------------------------------------------- |
-| x       | number                                                   | 否   | 是    | 横向偏移量。<br />单位：vp                               |
-| y       | number                                                   | 否   | 是    | 纵向偏移量。<br />单位：vp                               |
+| x<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 横向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：**7<br/>**ArkTS-Sta起始版本：** 22       |
+| y<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 纵向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：**7<br/>**ArkTS-Sta起始版本：** 22       |
 
 ## 示例
 

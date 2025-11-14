@@ -5,7 +5,7 @@
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  - 从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  - 手动旋转表冠存在默认的交互逻辑，例如旋转手表的表冠后，滚动条会根据旋转表冠的旋转方向进行滚动。
 >
@@ -50,11 +50,15 @@ ArkTS-Sta: onDigitalCrown(handler: Callback\<CrownEvent> | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                   | 类型           | 描述                                    |
 | --------------------- | -------------- | -------------------------------------- |
-| timestamp	        | number	 | 时间戳。                                  |
-| angularVelocity	| number	 | 旋转角速度，每秒转的角度(°/s)。                   |
-| degree	        | number 	 | 相对旋转角度。<br>单位：度。<br>取值范围:[-360 360]。     |
+| timestamp	        | ArkTS-Dyn: number<br/>ArkTS-Sta: long	 | 时间戳。                                  |
+| angularVelocity	| ArkTS-Dyn: number<br/>ArkTS-Sta: double	 | 旋转角速度，每秒转的角度(°/s)。                   |
+| degree	        | ArkTS-Dyn: number<br/>ArkTS-Sta: double 	 | 相对旋转角度。<br>单位：度。<br>取值范围:[-360 360]。     |
 | action	        | [CrownAction](ts-appendix-enums.md#crownaction18)   | 表冠动作。  |
 | stopPropagation	| () => void     | 阻止事件冒泡。                         |
 

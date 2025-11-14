@@ -6,7 +6,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
 
@@ -422,7 +422,9 @@ getPreviewRect(): Rectangle
 
 ### getVelocityX<sup>10+</sup>
 
-getVelocityX(): number
+ArkTS-Dyn: getVelocityX(): number
+
+ArkTS-Sta: getVelocityX(): double
 
 获取当前拖拽的x轴方向拖动速度。
 
@@ -430,15 +432,21 @@ getVelocityX(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 当前拖拽的x轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从左往右为正，反之为负。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽的x轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从左往右为正，反之为负。 |
 
 ### getVelocityY<sup>10+</sup>
 
-getVelocityY(): number
+ArkTS-Dyn: getVelocityY(): number
+
+ArkTS-Sta: getVelocityY(): double
 
 获取当前拖拽的y轴方向拖动速度。
 
@@ -446,15 +454,21 @@ getVelocityY(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 当前拖拽的y轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从上往下为正，反之为负。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽的y轴方向拖动速度。坐标轴原点为屏幕左上角，单位为vp，分正负方向速度，从上往下为正，反之为负。 |
 
 ### getVelocity<sup>10+</sup>
 
-getVelocity(): number
+ArkTS-Dyn: getVelocity(): number
+
+ArkTS-Sta: getVelocity(): double
 
 获取当前拖拽的主方向拖动速度。
 
@@ -462,15 +476,21 @@ getVelocity(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 当前拖拽的主方向拖动速度。为xy轴方向速度的平方和的算术平方根。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽的主方向拖动速度。为xy轴方向速度的平方和的算术平方根。 |
 
 ### getWindowX<sup>10+</sup>
 
-getWindowX(): number
+ArkTS-Dyn: getWindowX(): number
+
+ArkTS-Sta: getWindowX(): double
 
 获取拖拽点相对于窗口左上角的x轴坐标。
 
@@ -478,15 +498,21 @@ getWindowX(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。 |
 
 ### getWindowY<sup>10+</sup>
 
-getWindowY(): number
+ArkTS-Dyn: getWindowY(): number
+
+ArkTS-Sta: getWindowY(): double
 
 获取拖拽点相对于窗口左上角的y轴坐标。
 
@@ -494,15 +520,21 @@ getWindowY(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。 |
 
 ### getDisplayX<sup>10+</sup>
 
-getDisplayX(): number
+ArkTS-Dyn: getDisplayX(): number
+
+ArkTS-Sta: getDisplayX(): double
 
 获取当前拖拽点相对于屏幕左上角的x轴坐标。
 
@@ -510,15 +542,21 @@ getDisplayX(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于屏幕左上角的x轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于屏幕左上角的x轴坐标，单位为vp。 |
 
 ### getDisplayY<sup>10+</sup>
 
-getDisplayY(): number
+ArkTS-Dyn: getDisplayY(): number
+
+ArkTS-Sta: getDisplayY(): double
 
 获取当前拖拽点相对于屏幕左上角的y轴坐标。
 
@@ -526,11 +564,15 @@ getDisplayY(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| number | 当前拖拽点相对于屏幕左上角的y轴坐标，单位为vp。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽点相对于屏幕左上角的y轴坐标，单位为vp。 |
 
 ### getModifierKeyState<sup>12+</sup>
 
