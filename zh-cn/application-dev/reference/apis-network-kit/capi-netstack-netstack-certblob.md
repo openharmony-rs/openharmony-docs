@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```
+struct NetStack_CertBlob {...}
+```
+
 ## 概述
 
 证书数据结构体。

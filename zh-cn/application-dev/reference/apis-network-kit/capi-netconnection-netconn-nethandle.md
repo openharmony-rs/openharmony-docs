@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```
+typedef struct {...} NetConn_NetHandle
+```
+
 ## 概述
 
 存放网络ID。

@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```
+typedef struct {...} NetConn_ConnectionProperties
+```
+
 ## 概述
 
 网络连接信息。

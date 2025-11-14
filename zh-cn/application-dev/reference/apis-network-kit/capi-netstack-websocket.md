@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```
+struct WebSocket {...}
+```
+
 ## 概述
 
 webSocket客户端结构体。

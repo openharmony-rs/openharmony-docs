@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```
+typedef struct {...} Http_HeaderEntry
+```
+
 ## 概述
 
 请求或者响应的标头的所有键值对。

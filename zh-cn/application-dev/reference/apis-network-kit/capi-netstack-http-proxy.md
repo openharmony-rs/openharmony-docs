@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```
+typedef struct {...} Http_Proxy
+```
+
 ## 概述
 
 代理配置结构体。
