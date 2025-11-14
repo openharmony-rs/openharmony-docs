@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```
+struct OH_Huks_KeyMaterialEcc {...}
+```
+
 ## 概述
 
 定义Ecc密钥的结构体类型。

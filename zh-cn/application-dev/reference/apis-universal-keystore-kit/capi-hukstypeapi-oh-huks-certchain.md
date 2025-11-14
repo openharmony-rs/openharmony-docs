@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```
+struct OH_Huks_CertChain {...}
+```
+
 ## 概述
 
 定义证书链的结构体类型。
