@@ -1,5 +1,9 @@
 # OhosPixelMapInfo
 
+```
+struct OhosPixelMapInfo {...}
+```
+
 ## 概述
 
 用于定义PixelMap的相关信息。
