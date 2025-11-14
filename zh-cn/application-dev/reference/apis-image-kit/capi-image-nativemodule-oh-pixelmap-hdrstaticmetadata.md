@@ -1,5 +1,9 @@
 # OH_Pixelmap_HdrStaticMetadata
 
+```
+typedef struct {...} OH_Pixelmap_HdrStaticMetadata
+```
+
 ## 概述
 
 HDR_STATIC_METADATA关键字对应的静态元数据值。
