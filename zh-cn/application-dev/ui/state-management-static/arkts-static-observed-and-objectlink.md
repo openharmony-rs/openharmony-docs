@@ -48,7 +48,7 @@ this.objLink= ...
 
 ### 观察变化
 
-当使用\@Observed装饰一个类时，如果该类的属性为非内置类型(非Array/Map/Set/Date)的Object类型，则该熟悉的类也必须被\@Observed装饰，否则改属性内部的变化将无法被观察到。
+当使用\@Observed装饰一个类时，如果该类的属性为非内置类型（非Array/Map/Set/Date）的Object类型，则该属性必须被\@Observed装饰，否则改属性内部的变化将无法被观察到。
 
 
 ```ts

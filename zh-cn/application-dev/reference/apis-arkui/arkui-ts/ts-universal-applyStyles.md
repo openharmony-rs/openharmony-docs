@@ -1,14 +1,12 @@
-# applyStyles：定义组件重用样式（ArkTS-Sta）
+# applyStyles：定义组件重用样式
 
-方法applyStyles将多条样式设置提炼成一个Styles方法，直接在组件声明的位置调用。通过applyStyles可以快速定义并复用自定义样式。开发指南见[applyStyles：定义组件重用样式（ArkTS-Sta）](../../../ui/state-management/arkts-apply-styles.md)。
+方法applyStyles将多条样式设置提炼成一个Styles方法，直接在组件声明的位置调用。通过applyStyles可以快速定义并复用自定义样式。开发指南见[applyStyles：定义组件重用样式](../../../ui/state-management/arkts-apply-styles.md)。
 
 > **说明：**
 >
-> - 本模块仅适用于ArkTS-Sta。
+> - 本装饰器仅适用于ArkTS-Sta。
 >
-> - 本模块首批接口从API version 20开始支持。
->
-> - 后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本装饰器首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## applyStyles
 
@@ -33,7 +31,7 @@ applyStyles\<T extends CommonMethod\>(this: T, customStyles: CustomStyles): T
 
 ```ts
 'use static'
-import { Color, Column, CommonMethod, Component, Entry, Text, applyStyles } from '@ohos.arkui.component';
+import { Color, Column, CommonMethod, Component, Entry, Text, applyStyles } from '@kit.ArkUI';
 
 // 定义在全局的Styles方法
 function globalFancy(instance: CommonMethod) {
