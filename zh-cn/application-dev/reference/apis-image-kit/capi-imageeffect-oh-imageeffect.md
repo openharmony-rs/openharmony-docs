@@ -1,5 +1,9 @@
 # OH_ImageEffect
 
+```
+typedef struct OH_ImageEffect OH_ImageEffect
+```
+
 ## 概述
 
 定义效果器结构类型。
