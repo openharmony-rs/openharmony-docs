@@ -59,6 +59,7 @@ TEE Kit<br>
 Neural Network Runtime Kit<br>
 Standard Libraries<br>
 Kernel Enhance Kit<br>
+Game Controller Kit<br>
 
 ## Subsystem
 Location<br>
@@ -120,3 +121,4 @@ Tee<br>
 AGC<br>
 Kernel<br>
 DistributedAbilityManager<br>
+Game<br>
