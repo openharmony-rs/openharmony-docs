@@ -26505,6 +26505,16 @@
 						"end_line":296,
 						"name":"pasteboard_timelapse_Record7",
 						"start_line":291
+					},
+					{
+						"end_line":205,
+						"name":"pasteboard_timelapse_Record4",
+						"start_line":179
+					},
+					{
+						"end_line":289,
+						"name":"pasteboard_timelapse_Record6",
+						"start_line":278
 					}
 				]
 			},
@@ -27355,6 +27365,21 @@
 						"end_line":870,
 						"name":"ndk_graphics_draw_mask_filter",
 						"start_line":840
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/pasteboard/native-use-pasteboard.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":142,
+						"name":"pasteboard_native6",
+						"start_line":102
 					}
 				]
 			}
