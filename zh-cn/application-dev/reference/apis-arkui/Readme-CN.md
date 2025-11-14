@@ -457,8 +457,11 @@
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [组件双向绑定（ArkTS1.2）](js-apis-twoWayBinding1.2.md)
     - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
+    - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)
     - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
+    - [LazyForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-lazyforeach-sta.md)
     - [Repeat](arkui-ts/ts-rendering-control-repeat.md)
+    - [Repeat (ArkTS-Sta)](arkui-ts/ts-rendering-control-repeat-sta.md)
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
