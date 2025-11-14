@@ -1,5 +1,9 @@
 # ImageProcessing_ColorSpaceInfo
 
+```
+typedef struct {...} ImageProcessing_ColorSpaceInfo
+```
+
 ## 概述
 
 色彩空间信息，用于色彩空间转换能力查询。
