@@ -2660,10 +2660,6 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      if (subWindow == null) {
-        console.error('Failed to create the subWindow. Cause: The data is empty');
-        return;
-      }
       subWindow.showWindow().then(() => {
         subWindow.raiseToAppTop((err: BusinessError<void> | null) => {
           const errCode = err?.code;
@@ -2932,10 +2928,6 @@ export default class EntryAbility extends UIAbility {
     // 创建子窗
     try {
       windowStage.createSubWindow("testSubWindow").then((data: window.Window) => {
-        if (data == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
-          return;
-        }
         windowClass = data;
         windowClass.showWindow().then(() => {
           // windowClass的获取需放在targetWindow之上
@@ -2943,8 +2935,8 @@ export default class EntryAbility extends UIAbility {
           let properties = targetWindow.getWindowProperties();
           let targetId = properties.id;
           windowClass.raiseAboveTarget(targetId, (err: BusinessError<void> | null) => {
-            if (err.code) {
-              console.error(`Failed to raise the subWindow to target subWindow top. Cause code: ${err.code}, message: ${err.message}`);
+            if (err?.code) {
+              console.error(`Failed to raise the subWindow to target subWindow top. Cause code: ${err?.code}, message: ${err?.message}`);
               return;
             }
             console.info('Succeeded in raising the subWindow to target subWindow top.');
@@ -3061,10 +3053,6 @@ export default class EntryAbility extends UIAbility {
     // 创建子窗
     try {
       windowStage.createSubWindow("testSubWindow").then((data: window.Window) => {
-        if (data == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
-          return;
-        }
         windowClass = data;
         windowClass.showWindow().then(() => {
           // windowClass的获取需放在targetWindow之上
@@ -3471,16 +3459,12 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window) => {
-      if (subWindow == null) {
-        console.error('Failed to create the subWindow. Cause: The data is empty');
-        return;
-      }
       subWindow.showWindow().then(() => {
         try {
           let enabled = false;
           subWindow.setRaiseByClickEnabled(enabled, (err: BusinessError<void> | null) => {
-          if (err.code) {
-            console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+          if (err?.code) {
+            console.error(`Failed to disable the raise-by-click function. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
           }
           console.info('Succeeded in disabling the raise-by-click function.');

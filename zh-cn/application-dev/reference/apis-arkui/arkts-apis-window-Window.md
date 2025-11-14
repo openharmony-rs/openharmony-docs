@@ -9060,13 +9060,9 @@ export default class EntryAbility extends UIAbility {
     try {
       let subWindow = windowStage.createSubWindow("testSubWindow");
       subWindow.then((data: window.Window) => {
-        if (data == null) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
-          return;
-        }
         windowClass = data;
-        let promise = windowClass.setSubWindowModal(true);
-        promise.then(() => {
+        let promise = windowClass?.setSubWindowModal(true);
+        promise?.then(() => {
           console.info('Succeeded in setting subwindow modal');
         }).catch((err: Error) => {
           console.error(`Failed to set subwindow modal. Cause code: ${err?.code}, message: ${err?.message}`);
@@ -9182,13 +9178,9 @@ export default class EntryAbility extends UIAbility {
     try {
       let subWindow = windowStage.createSubWindow("testSubWindow");
       subWindow.then((data: window.Window) => {
-        if (!data) {
-          console.error("Failed to create the subWindow. Cause: The data is empty");
-          return;
-        }
         windowClass = data;
-        let promise = windowClass.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
-        promise.then(() => {
+        let promise = windowClass?.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
+        promise?.then(() => {
           console.info('Succeeded in setting subwindow modal');
         }).catch((err: Error) => {
           console.error(`Failed to set subwindow modal. Cause code: ${err?.code}, message: ${err?.message}`);
@@ -10023,10 +10015,6 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      if (subWindow == null) {
-        console.error('Failed to create the subWindow. Cause: The data is empty');
-        return;
-      }
       subWindow.showWindow().then(() => {
         subWindow.raiseToAppTop().then(() => {
           console.info('Succeeded in raising window to app top');
@@ -10131,10 +10119,6 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window) => {
-      if (subWindow == null) {
-        console.error('Failed to create the subWindow. Cause: The data is empty');
-        return;
-      }
       subWindow.showWindow().then(() => {
         try {
           let enabled = false;
@@ -11849,10 +11833,6 @@ export default class EntryAbility extends UIAbility {
     // 创建子窗
     try {
       windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-        if (subWindow == null) {
-          console.error('Failed to create the sub window. Cause: The sub window is null');
-          return;
-        }
         subWindow.setSubWindowZLevel(zLevel).then(() => {
           console.info('Succeeded in setting sub window zLevel.');
         }).catch((err: Error) => {
@@ -11944,10 +11924,7 @@ export default class EntryAbility extends UIAbility {
     let subWindowZLevel: int = -1;
     // 创建子窗
     windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
-      if (subWindow == null) {
-        console.error('Failed to create the sub window. Cause: The sub window is null');
-        return;
-      }
+
       try {
         subWindowZLevel = subWindow.getSubWindowZLevel();
         console.info(`Succeeded in obtaining sub window zLevel: ${subWindowZLevel}`);
