@@ -480,15 +480,21 @@ getSharedLocalStorage(): LocalStorage | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
-| 类型                             | 描述                |
+| 类型                             | 说明                |
 | ------------------------------ | ----------------- |
 | [LocalStorage](arkui-ts/ts-state-management.md#localstorage9)&nbsp;\|&nbsp;undefined | 返回LocalStorage实例。共享的LocalStorage实例不存在时返回undefined。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -510,6 +516,7 @@ export default class EntryAbility extends UIAbility {
 @Entry
 @Component
 struct SharedLocalStorage {
+  // 通过UIContext的getSharedLocalStorage()方法获得LocalStorage实例
   localStorage = this.getUIContext().getSharedLocalStorage();
 
   build() {
@@ -522,6 +529,57 @@ struct SharedLocalStorage {
         Button("Get Local Storage")
           .onClick(() => {
             console.info(`localStorage: ${this.localStorage?.get("propA")}`);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+'use static'
+
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+export default class EntryAbility extends UIAbility {
+  storage: LocalStorage = new LocalStorage();
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', this.storage);
+  }
+}
+```
+
+```ts
+// Index.ets
+'use static'
+
+import { Entry, Component, Column, Button, Row } from '@ohos.arkui.component';
+import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct SharedLocalStorage {
+  // 通过UIContext的getSharedLocalStorage()方法获得LocalStorage实例
+  localStorage : LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+
+  build() {
+    Row() {
+      Column() {
+        Button('Change Local Storage to 47')
+          .onClick(() => {
+            this.localStorage?.setOrCreate<int>('propA', 47);
+          })
+        Button('Get Local Storage')
+          .onClick(() => {
+            console.info(`localStorage: ${this.localStorage?.get<int>('propA')}`);
           })
       }
       .width('100%')

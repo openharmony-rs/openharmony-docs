@@ -9,6 +9,8 @@
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
 > 从API version 12开始对\@State/\@Provide/\@Param/普通变量(无状态装饰器修饰的变量)进行校验。
+>
+> 从API version 20开始，开发者可以在ArkTS-Sta中使用\@Require的装饰器。
 
 ## 概述
 
@@ -24,6 +26,7 @@
 
 当Child组件内使用\@Require装饰器和\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量(无状态装饰器修饰的变量)结合使用时，父组件Index在构造Child时必须传参，否则编译不通过。
 
+**ArkTS-Dyn示例:**
 ```ts
 @Entry
 @Component
@@ -78,17 +81,84 @@ struct Child {
         .fontSize(30)
       Text(this.message)
         .fontSize(30)
-      this.initBuildTest();
-      this.buildTest();
+      this.initBuildTest()
+      this.buildTest()
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+**ArkTS-Sta示例:**
+```ts
+'use static'
 
+import { Entry, Component, Builder, Text, Column, Row, BuilderParam, State, Require, Provide, PropRef } from '@kit.ArkUI';
 
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  @Builder
+  buildTest() {
+    Row() {
+      Text('Hello, world')
+        .fontSize(30)
+    }
+  }
+
+  build() {
+    Row() {
+      // 构造Child时需传入所有@Require对应参数，否则编译失败。
+      Child({
+        regular_value: this.message,
+        state_value: this.message,
+        provide_value: this.message,
+        initMessage: this.message,
+        message: this.message,
+        buildTest: this.buildTest,
+        initBuildTest: this.buildTest
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Builder
+  buildFunction() {
+    Column() {
+      Text('initBuilderParam')
+        .fontSize(30)
+    }
+  }
+
+  @Require regular_value: string = 'Hello';
+  @Require @State state_value: string = 'Hello';
+  @Require @Provide provide_value: string = 'Hello';
+  @Require @BuilderParam buildTest: () => void;
+  @Require @BuilderParam initBuildTest: () => void = this.buildFunction;
+  @Require @PropRef initMessage: string = 'Hello';
+  @Require @PropRef message: string;
+
+  build() {
+    Column() {
+      Text(this.initMessage)
+        .fontSize(30)
+      Text(this.message)
+        .fontSize(30)
+      this.initBuildTest()
+      this.buildTest()
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 使用\@ComponentV2修饰的自定义组件ChildPage通过父组件ParentPage进行初始化，因为有\@Require装饰\@Param，所以父组件必须进行构造赋值。
+
+**ArkTS-Dyn示例:**
 
 ```ts
 @ObservedV2
@@ -120,36 +190,119 @@ struct ChildPage {
 @Entry
 @ComponentV2
 struct ParentPage {
-  info1: Info = { name: 'Tom', age: 25 };
+  person1: Info = { name: 'Tom', age: 25 };
   label1: string = 'Hello World';
-  @Local info2: Info = { name: 'Tom', age: 25 };
+  @Local person2: Info = { name: 'Tom', age: 25 };
   @Local label2: string = 'Hello World';
 
   build() {
     Column() {
-      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
+      Text(`person1: ${this.person1.name}  ${this.person1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       // 父组件ParentPage构造子组件ChildPage时进行了构造赋值。
       // 为ChildPage中被@Require @Param装饰的childInfo和state_value属性传入了值。
-      ChildPage({ childInfo: this.info1, state_value: this.label1 }) // 创建自定义组件。
+      ChildPage({ childInfo: this.person1, state_value: this.label1 }) // 创建自定义组件。
       Line()
         .width('100%')
         .height(5)
-        .backgroundColor('#000000').margin(10)
-      Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2。
+        .backgroundColor('#000000')
+        .margin(10)
+      Text(`person2: ${this.person2.name}  ${this.person2.age}`) // Text2。
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       // 同上，在父组件创建子组件的过程中进行构造赋值。
-      ChildPage({ childInfo: this.info2, state_value: this.label2 }) // 创建自定义组件。
+      ChildPage({ childInfo: this.person2, state_value: this.label2 }) // 创建自定义组件。
       Line()
         .width('100%')
         .height(5)
-        .backgroundColor('#000000').margin(10)
-      Button('change info1&info2')
+        .backgroundColor('#000000')
+        .margin(10)
+      Button('change person1&person2')
         .onClick(() => {
-          this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没有装饰器装饰，监听不到值的改变。
-          this.info2 = { name: 'Cat', age: 18 }; // Text2会刷新，原因是info2有装饰器装饰，能够监听到值的改变。
+          this.person1 = { name: 'John', age: 18 }; // Text1不会刷新，原因是person1没有装饰器装饰，监听不到值的改变。
+          this.person2 = { name: 'John', age: 18 }; // Text2会刷新，原因是person2有装饰器装饰，能够监听到值的改变。
+          this.label1 = 'Luck'; // 不会刷新，原因是label1没有装饰器装饰，监听不到值的改变。
+          this.label2 = 'Luck'; // 会刷新，原因是label2有装饰器装饰，可以监听到值的改变。
+        })
+    }
+  }
+}
+```
+
+**ArkTS-Sta示例:**
+
+```ts
+'use static'
+
+import { Entry, ComponentV2, Text, Column, FontWeight, Line, Button, Require, Local, ObservedV2, Trace, Param } from '@kit.ArkUI';
+
+@ObservedV2
+class Info {
+  @Trace name: string = '';
+  @Trace age: number = 0;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@ComponentV2
+struct ChildPage {
+  @Require @Param childInfo: Info = new Info('', 0);
+  @Require @Param state_value: string = 'Hello';
+
+  build() {
+    Column() {
+      Text(`ChildPage childInfo name :${this.childInfo.name}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      Text(`ChildPage childInfo age :${this.childInfo.age}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      Text(`ChildPage state_value age :${this.state_value}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentPage {
+  person1: Info = new Info('Tom', 25);
+  label1: string = 'Hello World';
+  @Local person2: Info = new Info('Tom', 25);
+  @Local label2: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(`person1: ${this.person1.name}  ${this.person1.age}`) // Text1
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      // 父组件ParentPage构造子组件ChildPage时进行了构造赋值。
+      // 为ChildPage中被@Require @Param装饰的childInfo和state_value属性传入了值。
+      ChildPage({ childInfo: this.person1, state_value: this.label1 }) // 创建自定义组件。
+      Line()
+        .width('100%')
+        .height(5)
+        .backgroundColor('#000000')
+        .margin(10)
+      Text(`person2: ${this.person2.name}  ${this.person2.age}`) // Text2。
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      // 同上，在父组件创建子组件的过程中进行构造赋值。
+      ChildPage({ childInfo: this.person2, state_value: this.label2 }) // 创建自定义组件。
+      Line()
+        .width('100%')
+        .height(5)
+        .backgroundColor('#000000')
+        .margin(10)
+      Button('change person1&person2')
+        .onClick(() => {
+          this.person1 = new Info('John', 18); // Text1不会刷新，原因是person1没有装饰器装饰，监听不到值的改变。
+          this.person2 = new Info('John', 18); // Text2会刷新，原因是person2有装饰器装饰，能够监听到值的改变。
           this.label1 = 'Luck'; // 不会刷新，原因是label1没有装饰器装饰，监听不到值的改变。
           this.label2 = 'Luck'; // 会刷新，原因是label2有装饰器装饰，可以监听到值的改变。
         })
@@ -160,7 +313,40 @@ struct ParentPage {
 
 从API version 18开始，使用\@Require装饰\@State、\@Prop、\@Provide装饰的状态变量，可以在无本地初始值的情况下直接在组件内使用，不会编译报错。
 
+**ArkTS-Dyn示例:**
+
 ```ts
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Child({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Require @State message: string;
+
+  build() {
+    Column() {
+      Text(this.message) // 从API version 18开始，可以编译通过。
+    }
+  }
+}
+```
+
+**ArkTS-Sta示例:**
+
+```ts
+'use static'
+
+import { Entry, Component, Text, Column, Require, State } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
@@ -190,6 +376,8 @@ struct Child {
 当Child组件内将\@Require装饰器与\@Prop、\@State、\@Provide、\@BuilderParam、普通变量（无状态装饰器修饰的变量）结合使用时，若父组件Index在构造Child时未传递相应参数，则会导致编译失败。当ChildV2组件内将\@Require装饰器与\@Param结合使用时，若父组件Index在构造ChildV2时未传递相应参数，则同样会导致编译失败。
 
 【反例】
+
+**ArkTS-Dyn示例:**
 
 ```ts
 @Entry
@@ -235,7 +423,75 @@ struct Child {
     Column() {
       Text(this.initMessage)
         .fontSize(30)
-      this.initBuildTest();
+      this.initBuildTest()
+    }
+  }
+}
+
+@ComponentV2
+struct ChildV2 {
+  // 使用@Require必须构造时传参。
+  @Require @Param message: string;
+
+  build() {
+    Column() {
+      Text(this.message)
+    }
+  }
+}
+```
+
+**ArkTS-Sta示例:**
+
+```ts
+'use static'
+
+import { Entry, ComponentV2, Component, Text, Column, Builder, BuilderParam, Row, Require, State, Provide, PropRef, Param } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World!';
+
+  @Builder
+  buildTest() {
+    Row() {
+      Text('Hello, world!!')
+        .fontSize(30)
+    }
+  }
+
+  build() {
+    Row() {
+      // 构造Child、ChildV2组件时没有传参，会导致编译不通过。
+      Child()
+      ChildV2()
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Builder
+  buildFunction() {
+    Column() {
+      Text('initBuilderParam')
+        .fontSize(30)
+    }
+  }
+
+  // 使用@Require必须构造时传参。
+  @Require regular_value: string = 'Hello';
+  @Require @State state_value: string = 'Hello';
+  @Require @Provide provide_value: string = 'Hello';
+  @Require @BuilderParam initBuildTest: () => void = this.buildFunction;
+  @Require @PropRef initMessage: string = 'Hello';
+
+  build() {
+    Column() {
+      Text(this.initMessage)
+        .fontSize(30)
+      this.initBuildTest()
     }
   }
 }
@@ -256,6 +512,8 @@ struct ChildV2 {
 当父组件Index在构造Child与ChildV2时传递了相应的参数，则编译通过。
 
 【正例】
+
+**ArkTS-Dyn示例:**
 
 ```ts
 @Entry
@@ -307,7 +565,81 @@ struct Child {
     Column() {
       Text(this.initMessage)
         .fontSize(30)
-      this.initBuildTest();
+      this.initBuildTest()
+    }
+  }
+}
+
+@ComponentV2
+struct ChildV2 {
+  // 使用@Require必须构造时传参。
+  @Require @Param message: string;
+
+  build() {
+    Column() {
+      Text(this.message)
+    }
+  }
+}
+```
+
+**ArkTS-Sta示例:**
+
+```ts
+'use static'
+
+import { Entry, ComponentV2, Component, Text, Column, Builder, BuilderParam, Row, Require, State, Provide, PropRef, Param } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World!';
+
+  @Builder
+  buildTest() {
+    Row() {
+      Text('Hello, world!!')
+        .fontSize(30)
+    }
+  }
+
+  build() {
+    Row() {
+      // 构造Child、ChildV2组件时传递相应参数，编译通过。
+      Child({
+        regular_value: 'Hello',
+        state_value: 'Hello',
+        provide_value: 'Hello',
+        initBuildTest: this.buildTest,
+        initMessage: 'Hello'
+      })
+      ChildV2({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Builder
+  buildFunction() {
+    Column() {
+      Text('initBuilderParam')
+        .fontSize(30)
+    }
+  }
+
+  // 使用@Require必须构造时传参。
+  @Require regular_value: string = 'Hello';
+  @Require @State state_value: string = 'Hello';
+  @Require @Provide provide_value: string = 'Hello';
+  @Require @BuilderParam initBuildTest: () => void = this.buildFunction;
+  @Require @PropRef initMessage: string = 'Hello';
+
+  build() {
+    Column() {
+      Text(this.initMessage)
+        .fontSize(30)
+      this.initBuildTest()
     }
   }
 }
