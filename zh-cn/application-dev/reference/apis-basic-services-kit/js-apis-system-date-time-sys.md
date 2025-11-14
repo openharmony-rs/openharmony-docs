@@ -237,7 +237,7 @@ try {
 
 ## systemDateTime.setTimezone
 
-ArkTS-Dyn: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void;
 
 ArkTS-Sta: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void;
 
@@ -251,7 +251,7 @@ ArkTS-Sta: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -308,7 +308,9 @@ try {
 
 ## systemDateTime.setTimezone
 
-setTimezone(timezone: string): Promise&lt;void&gt;
+ArkTs-Dyn: setTimezone(timezone: string): Promise&lt;void&gt;;
+
+ArkTS-Sta: setTimezone(timezone: string): Promise&lt;void&gt;;
 
 设置系统时区，使用Promise异步回调。
 
@@ -320,7 +322,7 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -382,7 +384,9 @@ try {
 
 ## systemDateTime.updateNtpTime<sup>14+</sup>
 
-updateNtpTime(): Promise&lt;void&gt;
+ArkTs-Dyn: updateNtpTime(): Promise&lt;void&gt;;
+
+ArkTS-Sta: updateNtpTime(): Promise&lt;void&gt;;
 
 使用异步方式从NTP服务器更新NTP时间。该方法一小时内只会从NTP服务器更新一次NTP时间。
 
@@ -392,7 +396,7 @@ updateNtpTime(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 14
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **返回值：**
 
@@ -443,7 +447,9 @@ try {
 
 ## systemDateTime.getNtpTime<sup>14+</sup>
 
-getNtpTime(): number
+ArkTs-Dyn: getNtpTime(): number;
+
+ArkTS-Sta: getNtpTime(): long;
 
 使用同步方式获取基于上次更新的NTP时间所计算出的真实时间。
 
@@ -453,7 +459,7 @@ getNtpTime(): number
 
 **ArkTS-Dyn起始版本:** 14
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **返回值**：
 
