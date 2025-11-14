@@ -5,6 +5,11 @@
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
 <!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct {...} ImageEffect_Any
+```
+
 ## 概述
 
 参数结构体。
