@@ -1,5 +1,9 @@
 # MediaLibrary_RequestOptions
 
+```
+typedef struct {...} MediaLibrary_RequestOptions
+```
+
 ## 概述
 
 请求策略模式配置项。

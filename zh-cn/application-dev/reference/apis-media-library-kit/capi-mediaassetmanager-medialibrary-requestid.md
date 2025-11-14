@@ -1,5 +1,9 @@
 # MediaLibrary_RequestId
 
+```
+typedef struct {...} MediaLibrary_RequestId
+```
+
 ## 概述
 
 定义请求Id。

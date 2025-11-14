@@ -1,5 +1,9 @@
 # OH_MovingPhoto
 
+```
+typedef struct OH_MovingPhoto OH_MovingPhoto
+```
+
 ## 概述
 
 定义动态照片。

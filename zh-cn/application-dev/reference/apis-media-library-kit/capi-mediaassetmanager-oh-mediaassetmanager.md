@@ -1,5 +1,9 @@
 # OH_MediaAssetManager
 
+```
+typedef struct OH_MediaAssetManager OH_MediaAssetManager
+```
+
 ## 概述
 
 定义媒体资产管理器。
