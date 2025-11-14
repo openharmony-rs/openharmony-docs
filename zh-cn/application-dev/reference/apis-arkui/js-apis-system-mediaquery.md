@@ -128,7 +128,7 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 | 参数名      | 类型                                | 必填   | 说明             |
 | -------- | --------------------------------- | ---- | -------------- |
-| callback | (event: MediaQueryEvent) => void) | 是    | 匹配条件发生变化的响应函数。 |
+| callback | (event: MediaQueryEvent) => void | 是    | 匹配条件发生变化的响应函数。 |
 
 **示例：**
 
