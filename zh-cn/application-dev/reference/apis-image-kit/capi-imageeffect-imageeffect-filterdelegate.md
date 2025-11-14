@@ -1,5 +1,9 @@
 # ImageEffect_FilterDelegate
 
+```
+typedef struct {...} ImageEffect_FilterDelegate
+```
+
 ## 概述
 
 自定义滤镜回调函数结构体。
