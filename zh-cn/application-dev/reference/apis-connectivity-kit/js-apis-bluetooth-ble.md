@@ -4345,7 +4345,7 @@ try {
 
 stopScan(): Promise&lt;void&gt;
 
-停止正在进行的BLE扫描。<br>
+停止正在进行的BLE扫描。使用Promise异步回调。<br>
 - 停止的扫描是由[startScan](#startscan15)触发的。<br>
 - 当应用不再需要扫描BLE设备时，需主动调用该方法停止扫描。
 
