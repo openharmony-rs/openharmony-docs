@@ -299,6 +299,10 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明         |
@@ -316,6 +320,8 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 | 201     | Permission denied.      |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { webSocket } from '@kit.NetworkKit';
@@ -346,6 +352,34 @@ ws.on('open', (err: BusinessError, value: Object) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let url = "ws://";
+const ws : webSocket.WebSocket = webSocket.createWebSocket();
+
+ws.onOpen((data: webSocket.OpenResult | undefined) => {
+  console.info(`onopen value is ${data?.status}`);
+  ws.send('Hello, server!', (err: BusinessError<void>|null, value: boolean|undefined) => {
+    if (err?.code) {
+      console.error(`send fail: ${err?.code} ${err?.message}`);
+    } else {
+      console.info(`send success and value is ${value}`);
+    }
+  })
+});
+ws.connect(url, (err: BusinessError<void>|null, value: boolean|undefined) => {
+  if (err?.code) {
+    console.error(`test connect fail ${err?.code} ${err?.message}`);
+  } else {
+    console.info(`test connect success and value is ${value}`);
+  }
+});
+```
+
 > **说明：**
 >
 > send接口必须在监听到open事件后才可以调用。
@@ -361,6 +395,10 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -385,32 +423,63 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let ws = webSocket.createWebSocket();
-let url = "ws://"
+let url = "ws://";
 class OutValue {
   status: number = 0
   message: string = ""
 }
 ws.connect(url, (err: BusinessError, value: boolean) => {
     if (!err) {
-      console.info("connect success")
+      console.info("connect success");
     } else {
-      console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+      console.error(`connect fail. Code: ${err.code}, message: ${err.message}`);
     }
 });
 
 ws.on('open', (err: BusinessError, value: Object) => {
-  console.info("on open, status:" + (value as OutValue).status + ", message:" + (value as OutValue).message)
+  console.info("on open, status:" + (value as OutValue).status + ", message:" + (value as OutValue).message);
   let promise = ws.send("Hello, server!");
   promise.then((value: boolean) => {
-    console.info("send success")
+    console.info("send success");
   }).catch((err:string) => {
-    console.error("send fail, error:" + JSON.stringify(err))
+    console.error("send fail, error:" + JSON.stringify(err));
   });
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+let domain: int = 0x0000;
+let tag: string = ' WebsocketTestTag';
+let url = "ws://";
+
+const ws : webSocket.WebSocket = webSocket.createWebSocket();
+ws.onOpen((data: webSocket.OpenResult | undefined) => {
+  hilog.info(domain, tag, `onopen value is ${data?.status}`);
+  ws.send('Hello, server!').then((value: boolean) => {
+    hilog.info(domain, tag, `send success and value is ${value}`);
+  }).catch((err: Error) => {
+    hilog.info(domain, tag, `send fail ${err}`);
+  })
+});
+ws.connect(url, (err: BusinessError<void>|null, value: boolean|undefined) => {
+  if (err?.code) {
+    hilog.info(domain, tag, `test connect fail ${err}`);
+  } else {
+    hilog.info(domain, tag, `test connect success and value is ${value}`);
+  }
 });
 ```
 
@@ -430,6 +499,10 @@ close(callback: AsyncCallback\<boolean\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明       |
@@ -447,6 +520,8 @@ close(callback: AsyncCallback\<boolean\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -454,9 +529,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let ws = webSocket.createWebSocket();
 ws.close((err: BusinessError) => {
   if (!err) {
-    console.info("close success")
+    console.info("close success");
   } else {
-    console.error(`close fail. Code: ${err.code}, message: ${err.message}`)
+    console.error(`close fail. Code: ${err.code}, message: ${err.message}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.close((err: BusinessError<void>|null, value: Boolean|undefined) => {
+  if (!err) {
+    console.info("close success");
+  } else {
+    console.error(`close fail. Code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -472,6 +563,10 @@ close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -491,6 +586,8 @@ close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -499,14 +596,36 @@ let ws = webSocket.createWebSocket();
 
 let options: webSocket.WebSocketCloseOptions | undefined;
 if (options != undefined) {
-    options.code = 1000
-    options.reason = "your reason"
+    options.code = 1000;
+    options.reason = "your reason";
 }
 ws.close(options, (err: BusinessError) => {
     if (!err) {
-        console.info("close success")
+        console.info("close success");
     } else {
-        console.error(`close fail. Code: ${err.code}, message: ${err.message}`)
+        console.error(`close fail. Code: ${err.code}, message: ${err.message}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+
+let options: webSocket.WebSocketCloseOptions;
+if (options != undefined) {
+    options.code = 1000;
+    options.reason = "your reason";
+}
+ws.close(options, (err: BusinessError<void>|null, value: Boolean|undefined) => {
+    if (!err) {
+        console.info("close success");
+    } else {
+        console.error(`close fail. Code: ${err.code}, message: ${err.message}`);
     }
 });
 ```
@@ -522,6 +641,10 @@ close(options?: WebSocketCloseOptions): Promise\<boolean\>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -546,20 +669,41 @@ close(options?: WebSocketCloseOptions): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 
 let ws = webSocket.createWebSocket();
 let options: webSocket.WebSocketCloseOptions | undefined;
 if (options != undefined) {
-    options.code = 1000
-    options.reason = "your reason"
+    options.code = 1000;
+    options.reason = "your reason";
 }
 let promise = ws.close();
 promise.then((value: boolean) => {
-    console.info("close success")
+    console.info("close success");
 }).catch((err:string) => {
-    console.error("close fail, error:" + JSON.stringify(err))
+    console.error("close fail, error:" + JSON.stringify(err));
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketCloseOptions;
+if (options != undefined) {
+    options.code = 1000;
+    options.reason = "your reason";
+}
+let promise = ws.close();
+promise.then((value: boolean) => {
+    console.info("close success");
+}).catch((err: Error) => {
+    console.error(`close fail, error: ${err}`);
 });
 ```
 
@@ -592,7 +736,34 @@ class OutValue {
   message: string = ""
 }
 ws.on('open', (err: BusinessError, value: Object) => {
-  console.info("on open, status:" + (value as OutValue).status + ", message:" + (value as OutValue).message)
+  console.info("on open, status:" + (value as OutValue).status + ", message:" + (value as OutValue).message);
+});
+```
+
+### onOpen()<sup>22+</sup>
+
+onOpen(callback: Callback\<OpenResult\>): void
+
+订阅WebSocket的打开事件，使用callback方式作为异步方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                          |
+| -------- | ----------------------- | ---- | ----------------------------- |
+| callback | Callback\<OpenResult\> | 是   | 回调函数，返回WebSocket连接结果。<br>status: 连接状态码，message: 状态码说明。     |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let ws= webSocket.createWebSocket();
+ws.onOpen((value: webSocket.OpenResult|undefined) => {
+  console.info("onOpen, status:" + value?.status + ", message:" + value?.message);
 });
 ```
 
@@ -628,11 +799,45 @@ class OutValue {
   message: string = ""
 }
 let callback1 = (err: BusinessError, value: Object) => {
- console.info("on open, status:" + ((value as OutValue).status + ", message:" + (value as OutValue).message))
+ console.info("on open, status:" + ((value as OutValue).status + ", message:" + (value as OutValue).message));
 }
 ws.on('open', callback1);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 ws.off('open', callback1);
+```
+
+### offOpen()<sup>22+</sup>
+
+offOpen(callback?: Callback\<OpenResult\>): void
+
+取消订阅WebSocket的打开事件。
+
+> **说明：**
+>
+> 可以指定传入offOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                          |
+| -------- | ----------------------- | ---- | ----------------------------- |
+| callback | Callback\<OpenResult\> | 否   | 回调函数，用于指定需要移除的回调。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+let callback1 = (value: webSocket.OpenResult) => {
+ console.info("onOpen, status:" + (value?.status + ", message:" + value?.message));
+}
+ws.onOpen(callback1);
+// 可以指定传入onOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+ws.offOpen(callback1);
 ```
 
 ### on('message')<sup>6+</sup>
@@ -667,6 +872,38 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 });
 ```
 
+### onMessage()<sup>22+</sup>
+
+onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
+
+订阅WebSocket的接收服务器消息事件，使用callback方式作为异步方法。
+
+> **说明：**
+>
+> AsyncCallback中的数据可以是字符串或ArrayBuffer。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                         |
+| -------- | ----------------------- | ---- | -------------------------------------------- |
+| callback | AsyncCallback\<string \| ArrayBuffer\> | 是   | 回调函数，返回接收数据。          |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.onMessage((err: BusinessError<void> | null, value: string | ArrayBuffer | undefined) => {
+  console.info("onMessage, message:" + value);
+});
+```
+
 ### off('message')<sup>6+</sup>
 
 off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
@@ -697,6 +934,42 @@ let ws = webSocket.createWebSocket();
 ws.off('message');
 ```
 
+### offMessage()<sup>22+</sup>
+
+offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
+
+取消订阅WebSocket的接收服务器消息事件。
+
+> **说明：**
+>
+> AsyncCallback中的数据可以是字符串或ArrayBuffer。
+>
+> 可以指定传入onMessage中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                         |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------------- |
+| callback | AsyncCallback\<string \| ArrayBuffer\> | 否   | 回调函数，用于指定需要移除的回调。    |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let onMessageCallback = (err: BusinessError<void>|null, value: undefined|String|ArrayBuffer) => {
+  console.info(`onMessageCallback，err：${JSON.stringify(err)}，value：${value}`);
+}
+let ws = webSocket.createWebSocket();
+
+ws.onMessage(onMessageCallback);
+ws.offMessage(onMessageCallback);
+```
+
 ### on('close')<sup>6+</sup>
 
 on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
@@ -723,6 +996,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let ws = webSocket.createWebSocket();
 ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
   console.info("on close, code is " + value.code + ", reason is " + value.reason)
+});
+```
+
+### onWebSocketClose()<sup>22+</sup>
+
+onWebSocketClose(callback: AsyncCallback\<CloseResult\>): void
+
+订阅WebSocket的关闭事件，使用callback方式作为异步方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型                                            | 必填 | 说明                           |
+| -------- | ----------------------------------------------- | ---- | ------------------------------ |
+| callback | AsyncCallback\<CloseResult\> | 是   | 回调函数。<br>close：close错误码，reason：错误码说明。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.onWebSocketClose((err: BusinessError<void>|null, value: webSocket.CloseResult|undefined) => {
+  console.info("on close, code is " + value?.code + ", reason is " + value?.reason);
 });
 ```
 
@@ -755,6 +1056,40 @@ let ws = webSocket.createWebSocket();
 ws.off('close');
 ```
 
+### offWebSocketClose()<sup>22+</sup>
+
+offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
+
+取消订阅WebSocket的关闭事件。
+
+> **说明：**
+>
+> 可以指定传入onWebSocketClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型                                            | 必填 | 说明                           |
+| -------- | ----------------------------------------------- | ---- | ------------------------------ |
+| callback | AsyncCallback\<CloseResult\> | 否   | 回调函数，用于指定需要移除的回调。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let onCloseCallback = (err: BusinessError<void>|null, data: webSocket.CloseResult|undefined) => {
+  console.info(`onCloseCallback，closeResult：${data}`);
+}
+let ws = webSocket.createWebSocket();
+
+ws.onWebSocketClose(onCloseCallback);
+ws.offWebSocketClose(onCloseCallback);
+```
+
 ### on('error')<sup>6+</sup>
 
 on(type: 'error', callback: ErrorCallback): void
@@ -781,6 +1116,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let ws = webSocket.createWebSocket();
 ws.on('error', (err: BusinessError) => {
   console.error(`on error. Code: ${err.code}, message: ${err.message}`)
+});
+```
+
+### onWebSocketError()<sup>22+</sup>
+
+onWebSocketError(callback: ErrorCallback): void
+
+订阅WebSocket的Error事件，使用callback方式作为异步方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型          | 必填 | 说明                            |
+| -------- | ------------- | ---- | ------------------------------- |
+| callback | ErrorCallback | 是   | 回调函数，返回Error事件结果。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.onWebSocketError((err: BusinessError) => {
+  console.error(`onWebSocketError. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -813,6 +1176,35 @@ let ws = webSocket.createWebSocket();
 ws.off('error');
 ```
 
+### offWebSocketError()<sup>22+</sup>
+
+offWebSocketError(callback?: ErrorCallback): void
+
+取消订阅WebSocket的Error事件。
+
+> **说明：**
+>
+> 可以指定传入onWebSocketError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   | 类型          | 必填 | 说明                            |
+| -------- | ------------- | ---- | ------------------------------- |
+| callback | ErrorCallback | 否   | 回调函数，用于指定需要移除的回调。      |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.offWebSocketError();
+```
+
 ### on('dataEnd')<sup>11+</sup>
 
 on(type: 'dataEnd', callback: Callback\<void\>): void
@@ -835,7 +1227,32 @@ import { webSocket } from '@kit.NetworkKit';
 
 let ws = webSocket.createWebSocket();
 ws.on('dataEnd', () => {
-  console.info("on dataEnd")
+  console.info("on dataEnd");
+});
+```
+
+### onDataEnd()<sup>22+</sup>
+
+onDataEnd(callback: Callback\<void\>): void
+
+订阅WebSocket的数据接收结束事件，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   |       类型        | 必填 |                  说明                   |
+| -------- | ---------------- | ---- | --------------------------------------- |
+| callback | Callback\<void\> | 是   | 回调函数，在数据接收结束时被调用，不返回任何值。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.onDataEnd(() => {
+  console.info("onDataEnd");
 });
 ```
 
@@ -866,6 +1283,38 @@ let ws = webSocket.createWebSocket();
 ws.off('dataEnd');
 ```
 
+### offDataEnd()<sup>22+</sup>
+
+offDataEnd(callback?: Callback\<void\>): void
+
+取消订阅WebSocket的数据接收结束事件。
+
+> **说明：**
+>
+> 可以指定传入onDataEnd中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   |        类型       | 必填 |                说明                    |
+| -------- | ---------------- | ---- | -------------------------------------- |
+| callback | Callback\<void\> | 否   | 回调函数，用于指定需要移除的回调。                |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let onDataEndCallback = () => {
+  console.info(`dataEnd callback`);
+}
+let ws = webSocket.createWebSocket();
+
+ws.onDataEnd(onDataEndCallback);
+ws.offDataEnd(onDataEndCallback);
+```
+
 ### on('headerReceive')<sup>12+</sup>
 
 on(type: 'headerReceive', callback: Callback\<ResponseHeaders\>): void
@@ -889,6 +1338,31 @@ import { webSocket } from '@kit.NetworkKit';
 let ws = webSocket.createWebSocket();
 ws.on('headerReceive', (data) => {
   console.info("on headerReceive " + JSON.stringify(data))
+});
+```
+
+### onHeaderReceive()<sup>22+</sup>
+
+onHeaderReceive(callback: Callback\<ResponseHeaders\>): void
+
+订阅HTTP响应头事件，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   |        类型       | 必填 |                说明                    |
+| -------- | ---------------- | ---- | -------------------------------------- |
+| callback | Callback\<ResponseHeaders\> | 是   | 回调函数，返回订阅事件。                             |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.onHeaderReceive((data) => {
+  console.info(`onHeaderReceive ${data}`);
 });
 ```
 
@@ -919,6 +1393,33 @@ let ws = webSocket.createWebSocket();
 ws.off('headerReceive');
 ```
 
+### offHeaderReceive()<sup>22+</sup>
+
+offHeaderReceive(callback?: Callback\<ResponseHeaders\>): void
+
+取消订阅HTTP响应头事件。
+
+> **说明：**
+>
+> 可以指定传入onHeaderReceive中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名   |        类型       | 必填 |                说明                    |
+| -------- | ---------------- | ---- | -------------------------------------- |
+| callback | Callback\<ResponseHeaders\> | 否   | 回调函数，用于指定需要移除的回调。  |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+
+let ws = webSocket.createWebSocket();
+ws.offHeaderReceive();
+```
+
 ## webSocket.createWebSocketServer<sup>19+</sup>
 
 createWebSocketServer(): WebSocketServer
@@ -930,6 +1431,10 @@ createWebSocketServer(): WebSocketServer
 > 目前服务端仅支持智慧屏使用，非智慧屏形态的产品调用该接口创建对象时，会返回空指针。
 
 **系统能力**: SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -961,6 +1466,10 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 **系统能力**: SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
@@ -987,6 +1496,8 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1010,6 +1521,32 @@ localServer.start(config).then((success: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer: webSocket.WebSocketServer;
+let config: webSocket.WebSocketServerConfig = {
+  serverPort: 8080, // 监听端口
+  maxConcurrentClientsNumber: 10,
+  maxConnectionsForOneClient: 10,
+}
+
+localServer = webSocket.createWebSocketServer();
+localServer.start(config).then((success: boolean) => {
+  if (success) {
+    console.info('webSocket server start success');
+  } else {
+    console.error('websocket server start failed');
+  }
+}).catch((err: Error) => {
+  let error = err as BusinessError;
+  console.error(`Failed to start. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
 ### send<sup>19+</sup>
 
 send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boolean\>
@@ -1023,6 +1560,10 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 **需要权限**: ohos.permission.INTERNET
 
 **系统能力**: SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1047,6 +1588,8 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 | 2302006 | websocket connection does not exist.        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { webSocket } from '@kit.NetworkKit';
@@ -1085,6 +1628,47 @@ localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer: webSocket.WebSocketServer;
+let config: webSocket.WebSocketServerConfig = {
+  serverPort: 8080, // 监听端口
+  maxConcurrentClientsNumber: 10,
+  maxConnectionsForOneClient: 10,
+}
+
+localServer = webSocket.createWebSocketServer();
+localServer.start(config).then((success: boolean) => {
+  if (success) {
+    console.info('webSocket server start success');
+  } else {
+    console.error('websocket server start failed');
+  }
+}).catch((err: Error) => {
+  let error = err as BusinessError;
+  console.error(`Failed to start. Code: ${error?.code}, message: ${error?.message}`);
+});
+
+localServer.onConnect((connection: webSocket.WebSocketConnection) => {
+  console.info(`New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+  // 当收到onConnect事件时，可以通过send()方法与客户端进行通信
+  localServer.send("Hello, I'm server!", connection).then((success: boolean) => {
+    if (success) {
+      console.info('message send successfully');
+    } else {
+      console.error('message send failed');
+    }
+  }).catch((err: Error) => {
+    let error = err as BusinessError;
+    console.error(`message send failed, Code: ${error?.code}, message: ${error?.message}`);
+  });
+});
+```
+
 ### listAllConnections<sup>19+</sup>
 
 listAllConnections(): WebSocketConnection[]
@@ -1093,7 +1677,11 @@ listAllConnections(): WebSocketConnection[]
 
 **需要权限**: ohos.permission.INTERNET
 
-**系统能力**：SystemCapability.Communication.NetStack 
+**系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 | 类型                                        | 说明                         |
@@ -1109,6 +1697,9 @@ listAllConnections(): WebSocketConnection[]
 | 201     | Permission denied.      |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1147,6 +1738,47 @@ localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let connections: webSocket.WebSocketConnection[] = [];
+let localServer: webSocket.WebSocketServer;
+let config: webSocket.WebSocketServerConfig = {
+  serverPort: 8080, // 监听端口
+  maxConcurrentClientsNumber: 10,
+  maxConnectionsForOneClient: 10,
+}
+
+localServer = webSocket.createWebSocketServer();
+localServer.start(config).then((success: boolean) => {
+  if (success) {
+    console.info('webSocket server start success');
+  } else {
+    console.error('websocket server start failed');
+  }
+}).catch((err: Error) => {
+  let error = err as BusinessError;
+  console.error(`Failed to start. Code: ${error.code}, message: ${error.message}`);
+});
+
+localServer.onConnect((connection: webSocket.WebSocketConnection) => {
+  console.info(`New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+  try {
+    connections = localServer.listAllConnections();
+    if (connections.length === 0) {
+      console.info('client list is empty');
+    } else {
+      console.info(`client list cnt: ${connections.length}, client connections list is: ${connections}`);
+    }
+  } catch (error) {
+    console.error(`Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
+  }
+});
+```
+
 ### close<sup>19+</sup>
 
 close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions): Promise\<boolean\>
@@ -1156,6 +1788,10 @@ close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1180,6 +1816,8 @@ close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions
 | 2302006 | websocket connection does not exist.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { webSocket } from '@kit.NetworkKit';
@@ -1215,6 +1853,43 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer: webSocket.WebSocketServer;
+let config: webSocket.WebSocketServerConfig = {
+  serverPort: 8080, // 监听端口
+  maxConcurrentClientsNumber: 10,
+  maxConnectionsForOneClient: 10,
+}
+
+localServer = webSocket.createWebSocketServer();
+localServer.start(config).then((success: boolean) => {
+  if (success) {
+    console.info('webSocket server start success');
+  } else {
+    console.error('websocket server start failed');
+  }
+}).catch((err: Error) => {
+  let error = err as BusinessError;
+  console.error(`Failed to start. Code: ${error.code}, message: ${error.message}`);
+});
+
+localServer.onConnect((connection: webSocket.WebSocketConnection) => {
+  console.info(`New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+  localServer.close(connection).then((success: boolean) => {
+    if (success) {
+      console.info('close client successfully');
+    } else {
+      console.error('close client failed');
+    }
+  });
+});
+```
+
 ### stop<sup>19+</sup>
 
 stop(): Promise\<boolean\>
@@ -1224,6 +1899,10 @@ stop(): Promise\<boolean\>
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1240,6 +1919,8 @@ stop(): Promise\<boolean\>
 | 201     | Permission denied.      |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { webSocket } from '@kit.NetworkKit';
@@ -1260,6 +1941,40 @@ localServer.start(config).then((success: boolean) => {
     console.error('websocket server start failed');
   }
 }).catch((error: BusinessError) => {
+  console.error(`Failed to start. Code: ${error.code}, message: ${error.message}`);
+});
+
+localServer.stop().then((success: boolean) => {
+  if (success) {
+    console.info('server stop service successfully');
+  } else {
+    console.error('server stop service failed');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer: webSocket.WebSocketServer;
+let config: webSocket.WebSocketServerConfig = {
+  serverPort: 8080, // 监听端口
+  maxConcurrentClientsNumber: 10,
+  maxConnectionsForOneClient: 10,
+}
+
+localServer = webSocket.createWebSocketServer();
+localServer.start(config).then((success: boolean) => {
+  if (success) {
+    console.info('webSocket server start success');
+  } else {
+    console.error('websocket server start failed');
+  }
+}).catch((err: Error) => {
+  let error = err as BusinessError;
   console.error(`Failed to start. Code: ${error.code}, message: ${error.message}`);
 });
 
@@ -1299,6 +2014,32 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 });
 ```
 
+### onConnect()<sup>22+</sup>
+
+onConnect(callback: Callback\<WebSocketConnection\>): void
+
+订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                                                     |
+| -------- | ----------------------- | ---- | ------------------------------------------------------- |
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | 是 | 回调函数。连接的客户端信息。|
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.onConnect((connection: webSocket.WebSocketConnection) => {
+  console.info(`New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+});
+```
+
 ### off('connect')<sup>19+</sup>
 
 off(type: 'connect', callback?: Callback\<WebSocketConnection\>): void
@@ -1328,6 +2069,38 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('connect');
 ```
 
+### offConnect()<sup>22+</sup>
+
+offConnect(callback?: Callback\<WebSocketConnection\>): void
+
+取消订阅WebSocketServer的连接事件（客户端与服务端建链成功）。
+
+> **说明：**
+>
+> 可以指定传入onConnect中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                                                     |
+| -------- | ----------------------- | ---- | ------------------------------------------- |
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | 否  | 回调函数，用于指定需要移除的回调。|
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+let callback = (connection: webSocket.WebSocketConnection) => {
+  console.info(`connections: ${JSON.stringify(connection)}`);
+}
+localServer.onConnect(callback);
+localServer.offConnect(callback);
+```
+
 ### on('messageReceive')<sup>19+</sup>
 
 on(type: 'messageReceive', callback: Callback\<WebSocketMessage\>): void
@@ -1351,6 +2124,32 @@ import { BusinessError, Callback } from '@kit.BasicServicesKit';
 
 let localServer = webSocket.createWebSocketServer();
 localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
+  console.info(`on message received, client: ${message.clientConnection}, data: ${message.data}`);
+});
+```
+
+### onMessageReceive()<sup>22+</sup>
+
+onMessageReceive(callback: Callback\<WebSocketMessage\>): void
+
+订阅WebSocketServer的接收客户端消息的事件，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                                                     |
+| -------- | ----------------------- | ---- | -------------------------------- |
+| callback | Callback\<[WebSocketMessage](#websocketmessage19)\> | 是  | 回调函数。<br>clientconnection:客户端信息，data:客户端发送的数据消息。|
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.onMessageReceive((message: webSocket.WebSocketMessage) => {
   console.info(`on message received, client: ${message.clientConnection}, data: ${message.data}`);
 });
 ```
@@ -1384,6 +2183,38 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('messageReceive');
 ```
 
+### offMessageReceive()<sup>22+</sup>
+
+offMessageReceive(callback?: Callback\<WebSocketMessage\>): void
+
+取消订阅WebSocketServer的接收到客户端消息事件。
+
+> **说明：**
+>
+> 可以指定传入onMessageReceive中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                                                     |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------------- |
+| callback | Callback\<[WebSocketMessage](#websocketmessage19)\> |  否 | 回调函数，用于指定需要移除的回调。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+let callback = (message: webSocket.WebSocketMessage) => {
+  console.info(`message: ${JSON.stringify(message)}}`);
+}
+localServer.onMessageReceive(callback);
+localServer.offMessageReceive(callback);
+```
+
 ### on('close')<sup>19+</sup>
 
 on(type: 'close', callback: ClientConnectionCloseCallback): void
@@ -1407,6 +2238,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let localServer = webSocket.createWebSocketServer();
 localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+  console.info(`client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
+});
+```
+
+### onWebSocketServerClose()<sup>22+</sup>
+
+onWebSocketServerClose(callback: ClientConnectionCloseCallback): void
+
+订阅WebSocketServer的关闭事件，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                                                     |
+| -------- | ----------------------------------------------- | ---- | ----------------------------------- |
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 是  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.onWebSocketServerClose((clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
   console.info(`client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
 });
 ```
@@ -1440,6 +2297,38 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('close');
 ```
 
+### offWebSocketServerClose()<sup>22+</sup>
+
+offWebSocketServerClose(callback?: ClientConnectionCloseCallback): void
+
+取消订阅WebSocketServer的关闭事件。
+
+> **说明：**
+>
+> 可以指定传入onWebSocketServerClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                                                     |
+| -------- | ----------------------------------------------- | ---- | ---------------------------------- |
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 否  | 回调函数，用于指定需要移除的回调。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+let closeCallback = (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+  console.info(`connection: ${JSON.stringify(clientConnection)}, closeReason: ${JSON.stringify(closeReason)}`);
+}
+localServer.onWebSocketServerClose(closeCallback);
+localServer.offWebSocketServerClose(closeCallback);
+```
+
 ### on('error')<sup>19+</sup>
 
 on(type: 'error', callback: ErrorCallback): void
@@ -1464,6 +2353,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let localServer = webSocket.createWebSocketServer();
 localServer.on('error', (err: BusinessError) => {
   console.error(`error. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+### onWebSocketServerError()<sup>22+</sup>
+
+onWebSocketServerError(callback: ErrorCallback): void
+
+订阅WebSocketServer的Error事件，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                                                     |
+| -------- | ------------- | ---- | ------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是  | 回调函数，返回Error事件结果。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+localServer.onWebSocketServerError((err: BusinessError) => {
+  console.error(`error. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1496,15 +2411,52 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('error');
 ```
 
+### offWebSocketServerError()<sup>22+</sup>
+
+offWebSocketServerError(callback?: ErrorCallback): void
+
+取消订阅WebSocketServer的Error事件。
+
+> **说明：**
+>
+> 可以指定传入onWebSocketServerError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名  | 类型                    | 必填 | 说明                           |
+| -------- | ------------- | ---- | --------------------------------- |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | 回调函数，用于指定需要移除的回调。  |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let localServer = webSocket.createWebSocketServer();
+let callback = (err: Error) => {
+  console.info(`error. Code: ${err.code}, message: ${err.message}`);
+}
+localServer.onWebSocketServerError(callback);
+localServer.offWebSocketServerError(callback);
+localServer.offWebSocketServerError();
+```
+
 ## WebSocketRequestOptions
 
 建立WebSocket连接时，可选参数的类型和说明。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型 |  只读  | 可选 | 说明                                                         |
 | ------ | ------ |------ | ---- | ------------------------------------------------------------ |
-| header | Object |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| header | ArkTS-Dyn: Object<br>ArkTS-Sta: Record\<string, string> |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | caPath<sup>11+</sup> | string |  否  |  是  | 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持格式为pem的文本证书。 |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。 |
 | proxy<sup>12+</sup> | ProxyConfiguration |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。 |
@@ -1516,6 +2468,10 @@ localServer.off('error');
 客户端证书类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- |-------------------|
@@ -1529,6 +2485,10 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 网络代理配置信息
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 |  类型   | 说明                      |
 | ------  |------------------------- |
@@ -1570,18 +2530,37 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 | code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 错误码，订阅close事件得到的关闭连接的错误码。 |
 | reason | string | 是   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
 
+## OpenResult<sup>22+</sup>
+
+打开WebSocket连接时，订阅onOpen事件得到的打开结果。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+| 名称 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| status   | int | 是   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
+| message | string | 是   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
+
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
+ArkTS-Dyn: type ResponseHeaders = {
   [k: string]: string | string[] | undefined;
 }
+
+ArkTS-Sta: type ResponseHeaders = Record\<string, string | string[] | undefined\>
 
 服务器发送的响应头。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| {[k:string]:string \| string[] \| undefined} | header数据类型为键值对、字符串或者undefined。 |
+| ArkTS-Dyn: {[k:string]:string \| string[] \| undefined}<br>ArkTS-Sta: Record\<string, string \| string[] \| undefined\> | ArkTS-Dyn: header数据类型为键值对、字符串或者undefined。<br>ArkTS-Sta: header数据类型为键值对，键为字符串，值为字符串、字符串数组或者undefined。 |
 
 ## close错误码说明
 
@@ -1605,6 +2584,10 @@ type HttpProxy = connection.HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | connection.HttpProxy | 使用指定的网络代理。    |
@@ -1615,20 +2598,28 @@ type HttpProxy = connection.HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------- | ------ | ---- | ---- | ----------------------------------------------------- |
 | serverIP   | string | 否   | 是   |  服务端监听特定ip地址，默认是"0.0.0.0"。 |
-| serverPort | number | 否   | 否   | 服务端监听的端口号。                   |
+| serverPort | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 服务端监听的端口号。                   |
 | serverCert | [ServerCert](#servercert19) | 否  | 是   | 指定服务端证书的信息，包括服务端证书文件路径和服务端证书的私钥文件路径。 |
 | protocol   | string | 否   | 是   | 自定义协议。 |
-| maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当到达最大数时，服务端拒绝新连接。默认最大数量为10。 |
-| maxConnectionsForOneClient | number | 否 | 否   | 单个客户端的最大连接数。默认最大数量为10。 |
+| maxConcurrentClientsNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否   | 最大并发客户端数量，当到达最大数时，服务端拒绝新连接。默认最大数量为10。 |
+| maxConnectionsForOneClient | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否   | 单个客户端的最大连接数。默认最大数量为10。 |
 
 ## ServerCert<sup>19+</sup>
 
 指定服务端证书的信息，包括服务端证书文件路径和服务端证书的私钥文件路径。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ------ | ------ | ---- | --- | ----------------------- |
@@ -1641,6 +2632,10 @@ type HttpProxy = connection.HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型   | 只读 | 可选 | 说明                                      |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------- |
 | data   | string \|ArrayBuffer  | 否  | 否   | 接收到的客户端发的消息数据。 |
@@ -1652,10 +2647,14 @@ type HttpProxy = connection.HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ------ | ------ | ---- | --- |------------------ |
 | clientIP   | string | 否   | 否   | 客户端的ip地址。     |
-| clientPort | number | 否   | 否   | 客户端的端口号port。 |
+| clientPort | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 客户端的端口号port。 |
 
 ## ClientConnectionCloseCallback<sup>19+</sup>
 
