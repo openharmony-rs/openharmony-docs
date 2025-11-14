@@ -1,5 +1,9 @@
 # ImageEffect_Region
 
+```
+typedef struct {...} ImageEffect_Region
+```
+
 ## 概述
 
 图像区域结构体。
