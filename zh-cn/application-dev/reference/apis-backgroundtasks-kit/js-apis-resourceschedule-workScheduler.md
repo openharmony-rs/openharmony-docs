@@ -172,6 +172,41 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
   });
 ```
 
+## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
+
+obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+
+获取当前应用所有的延迟任务，使用Callback异步回调。
+
+> **说明：**
+>
+> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
+
+**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+
+**参数**：
+
+| 参数名      | 类型                   | 必填   | 说明                              |
+| -------- | -------------------- | ---- | ------------------------------- |
+| callback |  AsyncCallback\<void> | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
+
+**返回值**：
+
+| 类型                              | 说明                                       |
+| ------------------------------- | ---------------------------------------- |
+| Array\<[WorkInfo](#workinfo)> | 延迟任务列表，如果已添加延迟任务到执行队列，则返回当前应用所有的延迟任务列表；否则返回空列表。|
+  
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 9700001 | Memory operation failed. |
+| 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| 9700003 | System service operation failed. |
+
 ## workScheduler.getWorkStatus
 
 getWorkStatus(workId: number): Promise\<WorkInfo>
