@@ -1,5 +1,9 @@
 # ImageEffect_DataValue
 
+```
+typedef struct {...} ImageEffect_DataValue
+```
+
 ## 概述
 
 数据值联合体。
