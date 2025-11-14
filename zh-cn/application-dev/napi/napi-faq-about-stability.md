@@ -41,8 +41,11 @@ DevEco Studio开关：
 ```
 - 如果是入参问题，一般so在崩溃栈上的位置比较浅（不会跑到#10这种离栈顶很远的位置），不过也可以按照这个思路进行排查。  
 - 排查思路参考：  
-a. 排查有没有napi_value未初始化，还没赋值成功，直接作为非法入参传递给接口了  
-b. 排查有没有在这个易错API列表里面找到相应的篇章。[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+a. 排查有没有napi_value未初始化，还没赋值成功，直接作为非法入参传递给接口了。
+b. 排查有没有在这个易错API列表里面找到相应的篇章。
+
+  可参考文档：  
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
 
 ## 线程池中并发调用ArkTS方法如何处理线程安全问题
 
@@ -64,9 +67,9 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。[方舟�
 
 - 排查建议：  
 1. 确认是否napi_value出了scope还在使用，导致use-after-scope问题。  
-可参考文档：   
-[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)  
-2. 保存时建议使用napi_ref，而不是直接保存napi_value  
+可参考文档：  
+[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
 ## 是否存在获取最新napi_env的方法
 
@@ -93,9 +96,8 @@ Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调�
 如果有类似逻辑，需使用napi_ref进行存储，napi_ref可以延长生命周期。  
 
 - 可参考文档：  
-[napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)
-
-[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)    
+  [napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)  
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615) 
 
 ## napi_add_env_cleanup_hook调用报错该如何处理
 
