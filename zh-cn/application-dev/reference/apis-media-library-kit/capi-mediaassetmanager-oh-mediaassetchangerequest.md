@@ -1,5 +1,9 @@
 # OH_MediaAssetChangeRequest
 
+```
+typedef struct OH_MediaAssetChangeRequest OH_MediaAssetChangeRequest
+```
+
 ## 概述
 
 定义媒体资产更改请求。

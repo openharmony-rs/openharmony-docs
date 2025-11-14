@@ -1,5 +1,9 @@
 # OH_MediaAsset
 
+```
+typedef struct OH_MediaAsset OH_MediaAsset
+```
+
 ## 概述
 
 定义媒体资产。
