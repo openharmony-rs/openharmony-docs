@@ -39,6 +39,8 @@
       - [卡片编辑开发指导](arkts-ui-widget-event-formeditextensionability.md)
     - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
       - [应用内拉起卡片管理加桌](arkts-ui-widget-open-formmanager.md)
+    - ArkTS透明卡片<!--arkts-ui-widget-transparency-enabled-->
+      - [透明卡片开发指导](arkts-ui-widget-transparency-enabled.md)
   <!--Del--> 
   - [ArkTS卡片使用方开发指导（仅对系统应用开放）](widget-host-development-guide-sys.md)
   <!--DelEnd-->
