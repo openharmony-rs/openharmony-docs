@@ -4,7 +4,7 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 
 > **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -105,7 +105,9 @@ Image新增[imageAIOptions](ts-image-common.md#imageaioptions)参数，为组件
 
 ### alt
 
-alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
+ArkTS-Dyn: alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
+
+ArkTS-Sta: alt(value: string | Resource | PixelMap | undefined)
 
 设置图片加载时显示的占位图。
 
@@ -119,15 +121,21 @@ alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | 是   | 加载时显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup><br/>ArkTS-Sta: string \| [Resource](ts-types.md#resource) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>22+</sup> \| undefined | 是   | 图片加载时显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作 |
 
 ### objectFit
 
-objectFit(value: ImageFit)
+ArkTS-Dyn: objectFit(value: ImageFit)
+
+ArkTS-Sta: objectFit(value: ImageFit | undefined)
 
 设置图片的填充效果。
 
@@ -137,15 +145,21 @@ objectFit(value: ImageFit)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                      | 必填 | 说明                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------- |
-| value  | [ImageFit](ts-appendix-enums.md#imagefit) | 是   | 图片的填充效果。<br/>默认值：ImageFit.Cover |
+| value  | ArkTS-Dyn: [ImageFit](ts-appendix-enums.md#imagefit) <br/>ArkTS-Sta: [ImageFit](ts-appendix-enums.md#imagefit) \|&nbsp;undefined | 是   | 图片的填充效果。<br/>默认值：ImageFit.Cover |
 
 ### imageMatrix<sup>15+</sup>
 
-imageMatrix(matrix: ImageMatrix)
+ArkTS-Dyn: imageMatrix(matrix: ImageMatrix)
+
+ArkTS-Sta: imageMatrix(matrix: ImageMatrix | undefined)
 
 设置图片的变换矩阵。通过[ImageMatrix](#imagematrix15对象说明)对象使用平移、旋转、缩放等函数，实现宫格缩略图的最佳呈现。svg类型图源不支持该属性。
 
@@ -157,15 +171,21 @@ imageMatrix(matrix: ImageMatrix)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明           |
 | ------ | --------------------------------------------------- | ---- | -------------- |
-| matrix  | [ImageMatrix](#imagematrix15对象说明) | 是   | 图片的变换矩阵。|
+| matrix  | ArkTS-Dyn: [ImageMatrix](#imagematrix15对象说明)<br/>ArkTS-Sta: [ImageMatrix](#imagematrix15对象说明) \| undefined | 是   | 图片的变换矩阵。|
 
 ### objectRepeat
 
-objectRepeat(value: ImageRepeat)
+ArkTS-Dyn: objectRepeat(value: ImageRepeat)
+
+ArkTS-Sta: objectRepeat(value: ImageRepeat | undefined)
 
 设置图片的重复样式，从中心点向两边重复，剩余空间不足放下一张图片时会截断。svg类型图源不支持该属性。
 
@@ -177,11 +197,15 @@ objectRepeat(value: ImageRepeat)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明                                              |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------- |
-| value  | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | 是   | 图片的重复样式。<br/>默认值：ImageRepeat.NoRepeat |
+| value  | ArkTS-Dyn: [ImageRepeat](ts-appendix-enums.md#imagerepeat) <br/>ArkTS-Sta: [ImageRepeat](ts-appendix-enums.md#imagerepeat) \|&nbsp;undefined | 是   | 图片的重复样式。<br/>默认值：ImageRepeat.NoRepeat |
 
 ### interpolation
 
@@ -205,7 +229,9 @@ interpolation(value: ImageInterpolation)
 
 ### renderMode
 
-renderMode(value: ImageRenderMode)
+ArkTS-Dyn: renderMode(value: ImageRenderMode)
+
+ArkTS-Sta: renderMode(value: ImageRenderMode | undefined)
 
 设置图片的渲染模式。svg类型图源不支持该属性。
 
@@ -219,15 +245,21 @@ renderMode(value: ImageRenderMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                                                         |
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ImageRenderMode](#imagerendermode) | 是   | 图片的渲染模式为原色或黑白。<br/>默认值：ImageRenderMode.Original |
+| value  | ArkTS-Dyn: [ImageRenderMode](#imagerendermode) <br/>ArkTS-Sta: [ImageRenderMode](#imagerendermode) \|&nbsp;undefined | 是   | 图片的渲染模式为原色或黑白。<br/>默认值：ImageRenderMode.Original |
 
 ### sourceSize
 
-sourceSize(value: ImageSourceSize)
+ArkTS-Dyn: sourceSize(value: ImageSourceSize)
+
+ArkTS-Sta: sourceSize(value: ImageSourceSize | undefined)
 
 设置图片解码尺寸。仅在目标尺寸小于图源尺寸时生效。svg类型图源和PixelMap资源不支持该属性。
 
@@ -239,15 +271,21 @@ sourceSize(value: ImageSourceSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ImageSourceSize](#imagesourcesize18对象说明) | 是   | 图片解码尺寸参数，降低图片的分辨率，常用于需要让图片显示尺寸比组件尺寸更小的场景。和ImageFit.None配合使用时可在组件内显示小图。 |
+| value  | ArkTS-Dyn: [ImageSourceSize](#imagesourcesize18对象说明)<br/>ArkTS-Sta: [ImageSourceSize](#imagesourcesize18对象说明) \| undefined | 是   | 图片解码尺寸参数，降低图片的分辨率，常用于需要让图片显示尺寸比组件尺寸更小的场景。和ImageFit.None配合使用时可在组件内显示小图。|
 
 ### matchTextDirection
 
-matchTextDirection(value: boolean)
+ArkTS-Dyn: matchTextDirection(value: boolean)
+
+ArkTS-Sta: matchTextDirection(value: boolean | undefined)
 
 设置图片是否跟随系统语言方向，在RTL语言环境下显示镜像翻转显示效果。
 
@@ -259,15 +297,21 @@ matchTextDirection(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                         |
 | ------ | ------- | ---- | -------------------------------------------- |
-| value  | boolean | 是   | 图片是否跟随系统语言方向。<br/>默认值：false，false表示图片不跟随系统语言方向，true表示图片跟随系统语言方向，在RTL语言环境下显示镜像翻转显示效果。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 图片是否跟随系统语言方向。<br/>默认值：false，false表示图片不跟随系统语言方向，true表示图片跟随系统语言方向，在RTL语言环境下显示镜像翻转显示效果。|
 
 ### fitOriginalSize
 
-fitOriginalSize(value: boolean)
+ArkTS-Dyn: fitOriginalSize(value: boolean)
+
+ArkTS-Sta: fitOriginalSize(value: boolean | undefined)
 
 设置图片的显示尺寸是否跟随图源尺寸。
 
@@ -281,11 +325,15 @@ fitOriginalSize(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                             |
 | ------ | ------- | ---- | ------------------------------------------------ |
-| value  | boolean | 是   | 图片的显示尺寸是否跟随图源尺寸。<br/>默认值：false <br/>**说明：**<br/>当不设置fitOriginalSize或者设置fitOriginalSize为false时，组件显示大小不跟随图源大小。<br/> 当设置fitOriginalSize为true时，组件显示大小跟随图源大小。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 图片的显示尺寸是否跟随图源尺寸。<br/>默认值：false <br/>**说明：**<br/>当不设置fitOriginalSize或者设置fitOriginalSize为false时，组件显示大小不跟随图源大小。<br/> 当设置fitOriginalSize为true时，组件显示大小跟随图源大小。|
 
 ### fillColor
 
@@ -345,7 +393,9 @@ fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
 ### autoResize
 
-autoResize(value: boolean)
+ArkTS-Dyn: autoResize(value: boolean)
+
+ArkTS-Sta: autoResize(value: boolean | undefined)
 
 设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。
 
@@ -363,15 +413,21 @@ autoResize(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br/>默认值：false，false表示关闭图源自动缩放，true表示开启图源自动缩放。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br/>默认值：false，false表示关闭图源自动缩放，true表示开启图源自动缩放。 |
 
 ### syncLoad<sup>8+</sup>
 
-syncLoad(value: boolean)
+ArkTS-Dyn: syncLoad(value: boolean)
+
+ArkTS-Sta: syncLoad(value: boolean | undefined)
 
 设置是否同步加载图片。建议加载尺寸较小的本地图片时将syncLoad设为true，因为耗时较短，在主线程上执行即可。
 
@@ -385,15 +441,21 @@ syncLoad(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false，false表示异步加载图片，true表示同步加载图片。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false，false表示异步加载图片，true表示同步加载图片。 |
 
 ### copyOption<sup>9+</sup>
 
-copyOption(value: CopyOptions)
+ArkTS-Dyn: copyOption(value: CopyOptions)
+
+ArkTS-Sta: copyOption(value: CopyOptions | undefined)
 
 设置图片是否可复制。当copyOption设置为非CopyOptions.None时，支持使用长按、鼠标右击、快捷组合键'CTRL+C'等方式进行复制。svg图片不支持复制。
 
@@ -405,15 +467,21 @@ copyOption(value: CopyOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                             | 必填 | 说明                                          |
 | ------ | ------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | 是   | 图片是否可复制。<br/>默认值：CopyOptions.None |
+| value  | ArkTS-Dyn: [CopyOptions](ts-appendix-enums.md#copyoptions9) <br/>ArkTS-Sta: [CopyOptions](ts-appendix-enums.md#copyoptions9) \|&nbsp;undefined | 是   | 图片是否可复制。<br/>默认值：CopyOptions.None |
 
 ### colorFilter<sup>9+</sup>
 
-colorFilter(value: ColorFilter | DrawingColorFilter)
+ArkTS-Dyn: colorFilter(value: ColorFilter | DrawingColorFilter)
+
+ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | undefined)
 
 为图像设置颜色滤镜效果。
 
@@ -425,14 +493,21 @@ colorFilter(value: ColorFilter | DrawingColorFilter)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，svg类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，svg类型的图源只有设置了stroke属性（无论是否有值）才会生效。|
+| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，svg类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，svg类型的图源只有设置了stroke属性（无论是否有值）才会生效。 |
+
 ### draggable<sup>9+</sup>
 
-draggable(value: boolean)
+ArkTS-Dyn: draggable(value: boolean)
+
+ArkTS-Sta: draggable(value: boolean | undefined)
 
 设置组件默认拖拽效果。
 
@@ -440,15 +515,21 @@ draggable(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 组件默认拖拽效果，设置为true时，组件可拖拽，绑定的长按手势不生效。<br />API version 9及之前，默认值为false。API version 10及之后，默认值为true。<br /> 若用户需要设置自定义手势，则需要将draggable设置为false。设置为false之后，拖拽类事件不再触发。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 组件默认拖拽效果，设置为true时，组件可拖拽，绑定的长按手势不生效。<br />API version 9及之前，默认值为false。API version 10及之后，默认值为true。<br /> 若用户需要设置自定义手势，则需要将draggable设置为false。设置为false之后，拖拽类事件不再触发。 |
 
 ### enableAnalyzer<sup>11+</sup>
 
-enableAnalyzer(enable:&nbsp;boolean)
+ArkTS-Dyn: enableAnalyzer(enable:&nbsp;boolean)
+
+ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。<!--RP3--><!--RP3End-->
 
@@ -470,15 +551,21 @@ alt占位图不支持分析，objectRepeat属性仅在ImageRepeat.NoRepeat下支
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | 是   | 组件支持AI分析，设置为true时，组件可进行AI分析。<br/>默认值：false，表示不开启AI分析。 |
+| enable  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 组件支持AI分析，设置为true时，组件可进行AI分析。<br/>默认值：false，表示不开启AI分析。 |
 
 ### resizable<sup>11+</sup>
 
-resizable(value: ResizableOptions)
+ArkTS-Dyn: resizable(value: ResizableOptions)
+
+ArkTS-Sta: resizable(value: ResizableOptions | undefined)
 
 设置图像拉伸时可调整大小的图像选项。拉伸对拖拽缩略图以及占位图有效。
 
@@ -492,15 +579,21 @@ resizable(value: ResizableOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| value  | [ResizableOptions](#resizableoptions11) | 是   | 图像拉伸时可调整大小的图像选项。 |
+| value  | ArkTS-Dyn: [ResizableOptions](#resizableoptions11) <br/>ArkTS-Sta: [ResizableOptions](#resizableoptions11) \|&nbsp;undefined | 是   | 图像拉伸时可调整大小的图像选项。 |
 
 ### privacySensitive<sup>12+</sup>
 
-privacySensitive(supported: boolean)
+ArkTS-Dyn: privacySensitive(supported: boolean)
+
+ArkTS-Sta: privacySensitive(supported: boolean | undefined)
 
 设置是否支持卡片敏感隐私信息。
 
@@ -510,15 +603,21 @@ privacySensitive(supported: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                     |
 | --------- | ------- | ---- | ------------------------ |
-| supported | boolean | 是   | 是否支持卡片敏感隐私信息。<br/>默认值为false，表示不支持卡片敏感隐私信息，当设置为true时，隐私模式下图片将显示为半透明底板样式。<br/>**说明：** <br/>设置null则不敏感。<br/>进入隐私模式需要[卡片框架支持](./ts-universal-attributes-obscured.md)。 |
+| supported | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 是否支持卡片敏感隐私信息。<br/>默认值为false，表示不支持卡片敏感隐私信息，当设置为true时，隐私模式下图片将显示为半透明底板样式。<br/>**说明：** <br/>设置null则不敏感。<br/>进入隐私模式需要[卡片框架支持](./ts-universal-attributes-obscured.md)。 |
 
 ### dynamicRangeMode<sup>12+</sup>
 
-dynamicRangeMode(value: DynamicRangeMode)
+ArkTS-Dyn: dynamicRangeMode(value: DynamicRangeMode)
+
+ArkTS-Sta: dynamicRangeMode(value: DynamicRangeMode | undefined)
 
 设置期望展示的图像动态范围。svg类型图源不支持该属性。
 
@@ -528,11 +627,15 @@ dynamicRangeMode(value: DynamicRangeMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| value  | [DynamicRangeMode](#dynamicrangemode12枚举说明) | 是   | 图像显示的动态范围。<br/>默认值：DynamicRangeMode.STANDARD |
+| value  | ArkTS-Dyn: [DynamicRangeMode](#dynamicrangemode12枚举说明) <br/>ArkTS-Sta: [DynamicRangeMode](#dynamicrangemode12枚举说明) \|&nbsp;undefined | 是   | 图像显示的动态范围。<br/>默认值：DynamicRangeMode.STANDARD |
 
 ### orientation<sup>14+</sup>
 
@@ -777,13 +880,13 @@ type ImageMatrix = Matrix4Transit
 
 ### onComplete
 
-ArkTS-Dyn: onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number,contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
-
-ArkTS-Sta: onComplete(callback: (event?: { width: int, height: int, componentWidth: int, componentHeight: int, loadingStatus: int,contentWidth: int, contentHeight: int, contentOffsetX: int, contentOffsetY: int }) =&gt; void)
+onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number,contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
 
 图片数据加载成功和解码成功时均触发该回调，返回成功加载的图片尺寸。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -791,11 +894,9 @@ ArkTS-Sta: onComplete(callback: (event?: { width: int, height: int, componentWid
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
-
-**ArkTs-Dyn起始版本：** 7
-
-**ArkTs-Sta起始版本：** 22
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
@@ -809,9 +910,31 @@ ArkTS-Sta: onComplete(callback: (event?: { width: int, height: int, componentWid
 | contentOffsetX<sup>10+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 | contentOffsetY<sup>10+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 
+### onComplete<sup>22+</sup>
+
+onComplete(callback: ImageOnCompleteCallback | undefined)
+
+图片数据加载成功和解码成功时均触发该回调，返回成功加载的图片尺寸。
+
+当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                       |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| callback | [ImageOnCompleteCallback](#imageoncompletecallback22) \| undefined | 是   | 图片数据加载成功和解码成功时均触发该回调，返回成功加载的图片尺寸。 |
+
 ### onError<sup>9+</sup>
 
-onError(callback: ImageErrorCallback)
+ArkTS-Dyn: onError(callback: ImageErrorCallback)
+
+ArkTS-Sta: onError(callback: ImageErrorCallback | undefined)
 
 图片加载异常时触发该回调。
 
@@ -823,11 +946,15 @@ onError(callback: ImageErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | [ImageErrorCallback](#imageerrorcallback9) | 是   | 图片加载异常时触发的回调。<br>**说明：**<br/>建议开发者使用此回调，可快速确认图片加载失败时的具体原因，参见[ImageError的错误信息详细介绍](#imageerror9)。 |
+| callback | ArkTS-Dyn: [ImageErrorCallback](#imageerrorcallback9) <br/>ArkTS-Sta: [ImageErrorCallback](#imageerrorcallback9) \|&nbsp;undefined | 是   | 图片加载异常时触发的回调。<br>**说明：**<br/>建议开发者使用此回调，可快速确认图片加载失败时的具体原因，参见[ImageError的错误信息详细介绍](#imageerror9)。 |
 
 ### onFinish
 
@@ -925,6 +1052,48 @@ type BusinessError\<T> = BusinessError\<T>
 | 103200    | image data size is invalid.    | 数据加载 | 位图文件 |
 | 111000    | image source create failed.    | 数据解码 | 位图文件 |
 | 111001    | pixelmap create failed.        | 数据解码 | 位图文件 |
+
+## ImageOnCompleteCallback<sup>22+</sup>
+
+type ImageOnCompleteCallback = (loadEvent?: ImageCompleteEvent) => void;
+
+图片数据加载成功和解码成功时触发该回调。
+
+当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 参数名 | 类型                       | 必填 | 说明                               |
+| ------ | -------------------------- | ---- | ---------------------------------- |
+| loadEvent  | [ImageCompleteEvent](#imagecompleteevent22) | 否   | 图片数据加载成功和解码成功时触发回调的返回对象。 |
+
+## ImageCompleteEvent<sup>22+</sup>
+
+图片数据加载成功和解码成功时触发回调的返回对象。
+
+当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称          | 类型   | 必填 | 说明                      |
+| --------------- | ------ | ---- | ------------------------- |
+| width                        | int | 是   | 图片的宽。<br/>单位：像素                                    |
+| height                       | int | 是   | 图片的高。<br/>单位：像素                                    |
+| componentWidth               | int | 是   | 组件的宽。<br/>单位：像素                                    |
+| componentHeight              | int | 是   | 组件的高。<br/>单位：像素                                    |
+| loadingStatus                | int | 是   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
+| contentWidth<sup>22+</sup>   | int | 是   | 图片实际绘制的宽度。<br/>单位：像素<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentHeight<sup>22+</sup>  | int | 是   | 图片实际绘制的高度。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetX<sup>22+</sup> | int | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetY<sup>22+</sup> | int | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 
 ## 示例
 

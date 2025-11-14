@@ -5,7 +5,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -32,6 +32,10 @@ Gauge(options: GaugeOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -77,21 +81,21 @@ ArkTS-Sta: value(value: double | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 量规图的数据值，可用于动态修改量规图的数据值。<br/>默认值：0 |
+| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 量规图的数据值，可用于动态修改量规图的数据值。<br/>默认值：0 |
 
 ### startAngle
 
 ArkTS-Dyn: startAngle(angle: number)
 
-ArkTS-Sta: startAngle(angle: double)
+ArkTS-Sta: startAngle(angle: double | undefined)
 
 设置起始角度位置。
 
@@ -101,6 +105,10 @@ ArkTS-Sta: startAngle(angle: double)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 **ArkTs-Dyn起始版本：** 8
@@ -109,13 +117,13 @@ ArkTS-Sta: startAngle(angle: double)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 起始角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：0 |
+| angle  | ArkTS-Dyn: number <br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 起始角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：0 |
 
 ### endAngle
 
 ArkTS-Dyn: endAngle(angle: number)
 
-ArkTS-Sta: endAngle(angle: double)
+ArkTS-Sta: endAngle(angle: double | undefined)
 
 设置终止角度位置。起始角度位置和终止角度位置差过小时，会绘制出异常图像，请取合理的起始角度位置和终止角度位置。建议使用单色环改变Gauge的value参数实现数据值的调节，可通过定时器setTimeout进行数值的延迟加载。
 
@@ -125,17 +133,21 @@ ArkTS-Sta: endAngle(angle: double)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 终止角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：360 |
+| angle  | ArkTS-Dyn: number <br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 终止角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：360  |
 
 ### colors
 
 ArkTS-Dyn: colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>)
 
-ArkTS-Sta: colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, double]>)
+ArkTS-Sta: colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, double]> | undefined)
 
 设置量规图的颜色。
 
@@ -155,15 +167,21 @@ ArkTS-Sta: colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| colors | ArkTS-Dyn: [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; <br> ArkTS-Sta: [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;double]&gt; | 是   | 量规图的颜色，支持分段颜色设置。<br/>API version 9 默认值：Color.Black<br/>API version 11默认值：<br/>若不传颜色，或者数组为空，无法确定圆环类型及颜色，则圆环颜色为"0xFF64BB5C"、"0xFFF7CE00"、"0xFFE84026"的渐变环。<br/>若传入颜色，但颜色值有误，则该颜色为"0xFFE84026"。<br/>若对应颜色的比重为0，则该颜色在圆环中不显示。若所有颜色比重均为0，圆环不显示。 |
+| colors | ArkTS-Dyn: [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;double]&gt; \|&nbsp;undefined | 是   | 量规图的颜色，支持分段颜色设置。<br/>API version 9 默认值：Color.Black<br/>API version 11默认值：<br/>若不传颜色，或者数组为空，无法确定圆环类型及颜色，则圆环颜色为"0xFF64BB5C"、"0xFFF7CE00"、"0xFFE84026"的渐变环。<br/>若传入颜色，但颜色值有误，则该颜色为"0xFFE84026"。<br/>若对应颜色的比重为0，则该颜色在圆环中不显示。若所有颜色比重均为0，圆环不显示。 |
 
 ### strokeWidth
 
-strokeWidth(length: Length)
+ArkTS-Dyn: strokeWidth(length: Length)
+
+ArkTS-Sta: strokeWidth(length: Length | undefined)
 
 设置环形量规图的环形厚度。
 
@@ -173,15 +191,21 @@ strokeWidth(length: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| length | [Length](ts-types.md#length) | 是   | 环形量规图的环形厚度。<br/>默认值：4<br/>单位：vp<br/>**说明：** <br/>设置小于0的值时，按默认值显示。<br/>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br/>不支持百分比。 |
+| length | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: [Length](ts-types.md#length) \|&nbsp;undefined | 是   | 环形量规图的环形厚度。<br/>默认值：4<br/>单位：vp<br/>**说明：** <br/>设置小于0的值时，按默认值显示。<br/>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br/>不支持百分比。 |
 
 ### description<sup>11+</sup>
 
-description(value: CustomBuilder)
+ArkTS-Dyn: description(value: CustomBuilder)
+
+ArkTS-Sta: description(value: CustomBuilder | undefined)
 
 设置说明内容。
 
@@ -189,15 +213,21 @@ description(value: CustomBuilder)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 说明内容。<br/>**说明：** <br/>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br/>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br/>设置null则不显示内容。<br/>不设置则依赖是否设置数据最大最小值。<br/>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br/>若未设置最大最小值，则不显示内容。<br/>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
+| value  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \|&nbsp;undefined | 是   | 说明内容。<br/>**说明：** <br/>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br/>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br/>设置null则不显示内容。<br/>不设置则依赖是否设置数据最大最小值。<br/>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br/>若未设置最大最小值，则不显示内容。<br/>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
 
 ### trackShadow<sup>11+</sup>
 
-trackShadow(value: GaugeShadowOptions)
+ArkTS-Dyn: trackShadow(value: GaugeShadowOptions)
+
+ArkTS-Sta: trackShadow(value: GaugeShadowOptions | undefined)
 
 设置阴影样式。
 
@@ -205,15 +235,21 @@ trackShadow(value: GaugeShadowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [GaugeShadowOptions](#gaugeshadowoptions11对象说明) | 是   | 阴影样式。<br/>**说明：** <br/>阴影颜色与圆环颜色一致。<br/>设置null为不开启投影。 |
+| value  | ArkTS-Dyn: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) <br/>ArkTS-Sta: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) \|&nbsp;undefined | 是   | 阴影样式。<br/>**说明：** <br/>阴影颜色与圆环颜色一致。<br/>设置null为不开启投影。 |
 
 ### indicator<sup>11+</sup>
 
-indicator(value: GaugeIndicatorOptions)
+ArkTS-Dyn: indicator(value: GaugeIndicatorOptions)
+
+ArkTS-Sta: indicator(value: GaugeIndicatorOptions | undefined)
 
 设置指针样式。
 
@@ -221,15 +257,21 @@ indicator(value: GaugeIndicatorOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) | 是   | 指针样式。<br/>**说明：** <br/>设置null则不显示指针。 |
+| value  | ArkTS-Dyn: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) <br/>ArkTS-Sta: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) \|&nbsp;undefined | 是   | 指针样式。<br/>**说明：** <br/>设置null则不显示指针。 |
 
 ### privacySensitive<sup>12+</sup>
 
-privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
+ArkTS-Dyn: privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
+
+ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 设置隐私敏感。
 
@@ -239,15 +281,21 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | Optional\<boolean\> | 是   | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null则不敏感。<!--Del--><br/>需要在卡片中使用Gauge，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | ArkTS-Dyn: Optional\<boolean\> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null则不敏感。<!--Del--><br/>需要在卡片中使用Gauge，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<GaugeConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<GaugeConfiguration>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<GaugeConfiguration> | undefined)
 
 定制Gauge内容区的方法。
 
@@ -255,11 +303,15 @@ contentModifier(modifier: ContentModifier\<GaugeConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<GaugeConfiguration>](#gaugeconfiguration12对象说明) | 是   | 在Gauge组件上定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier\<GaugeConfiguration>](#gaugeconfiguration12对象说明) <br/>ArkTS-Sta: [ContentModifier\<GaugeConfiguration>](#gaugeconfiguration12对象说明) \|&nbsp;undefined | 是   | 在Gauge组件上定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## GaugeShadowOptions<sup>11+</sup>对象说明
 

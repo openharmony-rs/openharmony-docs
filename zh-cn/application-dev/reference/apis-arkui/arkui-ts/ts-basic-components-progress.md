@@ -4,7 +4,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -24,6 +24,10 @@ Progress(options: ProgressOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -114,7 +118,7 @@ Progress(options: ProgressOptions)
 
 ArkTS-Dyn: value(value: number)
 
-ArkTS-Sta: value(value: double)
+ArkTS-Sta: value(value: double | undefined)
 
 设置当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。非法数值不生效。
 
@@ -124,6 +128,10 @@ ArkTS-Sta: value(value: double)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 **ArkTs-Dyn起始版本：** 7
@@ -132,11 +140,13 @@ ArkTS-Sta: value(value: double)
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| value  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 当前进度值。<br/> 默认值：0|
+| value  | ArkTS-Dyn: number<br/> ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 当前进度值。<br/> 默认值：0 |
 
 ### color
 
-color(value: ResourceColor | LinearGradient)
+ArkTS-Dyn: color(value: ResourceColor | LinearGradient)
+
+ArkTS-Sta: color(value: ResourceColor | LinearGradient | undefined)
 
 设置进度条前景色。
 
@@ -148,28 +158,40 @@ color(value: ResourceColor | LinearGradient)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>10+</sup>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 进度条前景色。<br/>默认值：<br/>- Capsule：<br/>&nbsp;&nbsp;&nbsp;API version 9及以下：'\#ff007dff'<br/>&nbsp;&nbsp;&nbsp;API version 10：'\#33006cde'<br/>&nbsp;&nbsp;&nbsp;API version 11及以上：'\#33007dff'<br/>- Ring：<br/>&nbsp;&nbsp;&nbsp;API version 9及以下：'\#ff007dff'<br/>&nbsp;&nbsp;&nbsp;API version 10及以上：起始端：'\#ff86c1ff'，结束端：'\#ff254ff7'<br/>- 其他样式：'\#ff007dff' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>10+</sup>](ts-basic-components-datapanel.md#lineargradient10)<br/> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>10+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;undefined | 是   | 进度条前景色。<br/>默认值：<br/>- Capsule：<br/>&nbsp;&nbsp;&nbsp;API version 9及以下：'\#ff007dff'<br/>&nbsp;&nbsp;&nbsp;API version 10：'\#33006cde'<br/>&nbsp;&nbsp;&nbsp;API version 11及以上：'\#33007dff'<br/>- Ring：<br/>&nbsp;&nbsp;&nbsp;API version 9及以下：'\#ff007dff'<br/>&nbsp;&nbsp;&nbsp;API version 10及以上：起始端：'\#ff86c1ff'，结束端：'\#ff254ff7'<br/>- 其他样式：'\#ff007dff' |
 
 ### style<sup>8+</sup>
 
-style(value: ProgressStyleOptions \| CapsuleStyleOptions \| RingStyleOptions \| LinearStyleOptions \| ScaleRingStyleOptions \| EclipseStyleOptions)
+ArkTS-Dyn: style(value: ProgressStyleOptions \| CapsuleStyleOptions \| RingStyleOptions \| LinearStyleOptions \| ScaleRingStyleOptions \| EclipseStyleOptions)
+
+ArkTS-Sta: style(value: LinearStyleOptions \| RingStyleOptions \| CapsuleStyleOptions \| ProgressStyleOptions \| undefined)
 
 设置组件的样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br/>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;<br/>[ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp;\|&nbsp;[EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10) | 是   | 组件的样式。<br/>- CapsuleStyleOptions：设置Capsule的样式。<br/>- RingStyleOptions：设置Ring的样式。<br/>- LinearStyleOptions：设置Linear的样式。<br/>- ScaleRingStyleOptions：设置ScaleRing的样式。<br/>- EclipseStyleOptions：设置Eclipse的样式。<br/>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。 |
+| value  | ArkTS-Dyn: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br/>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;<br/>[ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp;\|&nbsp;[EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)<br/> ArkTS-Sta: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br/>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;undefined | 是   | 组件的样式。<br/>- CapsuleStyleOptions：设置Capsule的样式。<br/>- RingStyleOptions：设置Ring的样式。<br/>- LinearStyleOptions：设置Linear的样式。<br/>- ScaleRingStyleOptions：设置ScaleRing的样式。<br/>- EclipseStyleOptions：设置Eclipse的样式。<br/>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。 |
 
 ### contentModifier<sup>12+</sup>
-contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
+ArkTS-Dyn: contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<ProgressConfiguration\> | undefined)
 
 定制progress内容区的方法。
 
@@ -177,14 +199,20 @@ contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| modifier | [ContentModifier\<ProgressConfiguration\>](#progressconfiguration12) | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | ArkTS-Dyn: [ContentModifier\<ProgressConfiguration\>](#progressconfiguration12)<br/> ArkTS-Sta: [ContentModifier\<ProgressConfiguration\>](#progressconfiguration12)&nbsp;\|&nbsp;undefined | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### privacySensitive<sup>12+</sup>
 
-privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
+ArkTS-Dyn: privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
+
+ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 设置隐私敏感。
 
@@ -194,11 +222,15 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>] | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | ArkTS-Dyn: [Optional\<boolean\>]<br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 

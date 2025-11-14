@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -28,7 +30,9 @@ Counter()
 
 ### enableInc<sup>10+</sup>
 
-enableInc(value: boolean)
+ArkTS-Dyn: enableInc(value: boolean)
+
+ArkTS-Sta: enableInc(value: boolean | undefined)
 
 设置增加按钮的禁用或使能。
 
@@ -36,15 +40,21 @@ enableInc(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 增加按钮禁用或使能。<br/>默认值：true，true表示可以增加按钮，false表示禁止增加按钮。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean  \| undefined | 是   | 增加按钮禁用或使能。<br/>默认值：true，true表示可以增加按钮，false表示禁止增加按钮 |
 
 ### enableDec<sup>10+</sup>
 
-enableDec(value: boolean)
+ArkTS-Dyn: enableDec(value: boolean)
+
+ArkTS-Sta: enableDec(value: boolean | undefined)
 
 设置减少按钮的禁用或使能。
 
@@ -52,11 +62,15 @@ enableDec(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 减少按钮禁用或使能。<br/>默认值：true，true表示可以减少按钮，false表示禁止减少按钮。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean  \| undefined | 是   | 减少按钮禁用或使能。<br/>默认值：true，true表示可以减少按钮，false表示禁止减少按钮。 |
 
 ## 事件
 
@@ -64,7 +78,9 @@ enableDec(value: boolean)
 
 ### onInc
 
-onInc(event:&nbsp;VoidCallback)
+ArkTS-Dyn: onInc(event:&nbsp;VoidCallback)
+
+ArkTS-Sta: onInc(event:&nbsp;VoidCallback | undefined)
 
 监听数值增加事件。
 
@@ -74,15 +90,21 @@ onInc(event:&nbsp;VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | Counter数值增加的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)  \| undefined    | 是   | Counter数值增加的回调函数。 |
 
 ### onDec
 
-onDec(event:&nbsp;VoidCallback)
+ArkTS-Dyn: onDec(event:&nbsp;VoidCallback)
+
+ArkTS-Sta: onDec(event:&nbsp;VoidCallback | undefined)
 
 监听数值减少事件。
 
@@ -92,11 +114,15 @@ onDec(event:&nbsp;VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | Counter数值减少的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)  \| undefined    | 是   | Counter数值减少的回调函数。 |
 
 
 ## 示例

@@ -4,7 +4,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -95,7 +95,9 @@ DatePicker(options?: DatePickerOptions)
 
 ### lunar
 
-lunar(value: boolean)
+ArkTS-Dyn: lunar(value: boolean)
+
+ArkTS-Sta: lunar(value: boolean | undefined)
 
 设置弹窗的日期是否显示农历。
 
@@ -103,11 +105,15 @@ lunar(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 日期是否显示农历。<br/>-&nbsp;true：展示农历。<br/>-&nbsp;false：不展示农历。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean  \| undefined | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false |
 
 ### lunar<sup>18+</sup>
 
@@ -115,19 +121,25 @@ lunar(isLunar: Optional\<boolean>)
 
 设置弹窗的日期是否显示农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLunar | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 日期是否显示农历。<br/>-&nbsp;true：展示农历。<br/>-&nbsp;false：不展示农历。<br/>当isLunar的值为undefined时，默认值：false |
+| isLunar | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false |
 
 ### disappearTextStyle<sup>10+</sup>
 
-disappearTextStyle(value: PickerTextStyle)
+ArkTS-Dyn: disappearTextStyle(value: PickerTextStyle)
+
+ArkTS-Sta: disappearTextStyle(value: PickerTextStyle | undefined)
 
 设置过渡项（以选中项为基准向上或向下的第二项）的文本样式。
 
@@ -135,11 +147,15 @@ disappearTextStyle(value: PickerTextStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](#pickertextstyle10类型说明) | 是   | 过渡项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | ArkTS-Dyn: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) <br/>ArkTS-Sta: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)  \| undefined | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 ### disappearTextStyle<sup>18+</sup>
 
@@ -147,15 +163,19 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 设置过渡项的文本样式。与[disappearTextStyle](#disappeartextstyle10)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[PickerTextStyle](#pickertextstyle10类型说明)> | 是   | 过渡项的文本颜色、字号、字体粗细。<br/>当style的值为undefined时，默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 边缘项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 >  **说明：**
 >
@@ -163,7 +183,9 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 ### textStyle<sup>10+</sup>
 
-textStyle(value: PickerTextStyle)
+ArkTS-Dyn: textStyle(value: PickerTextStyle)
+
+ArkTS-Sta: textStyle(value: PickerTextStyle | undefined)
 
 设置一般项（以选中项为基准向上或向下的第一项）的文本样式。
 
@@ -171,11 +193,15 @@ textStyle(value: PickerTextStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](#pickertextstyle10类型说明) | 是   | 一般项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | ArkTS-Dyn: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) <br/>ArkTS-Sta: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)  \| undefined | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 ### textStyle<sup>18+</sup>
 
@@ -183,15 +209,19 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 设置一般项的文本样式。与[textStyle](#textstyle10)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[PickerTextStyle](#pickertextstyle10类型说明)> | 是   | 一般项的文本颜色、字号、字体粗细。<br/>当style的值为undefined时，默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 >  **说明：**
 >
@@ -199,7 +229,9 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 ### selectedTextStyle<sup>10+</sup>
 
-selectedTextStyle(value: PickerTextStyle)
+ArkTS-Dyn: selectedTextStyle(value: PickerTextStyle)
+
+ArkTS-Sta: selectedTextStyle(value: PickerTextStyle | undefined)
 
 设置选中项的文本样式。
 
@@ -207,11 +239,15 @@ selectedTextStyle(value: PickerTextStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](#pickertextstyle10类型说明) | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
+| value  | ArkTS-Dyn: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) <br/>ArkTS-Sta: [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)  \| undefined | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
 
 ### selectedTextStyle<sup>18+</sup>
 
@@ -219,19 +255,25 @@ selectedTextStyle(style: Optional\<PickerTextStyle>)
 
 设置选中项的文本样式。与[selectedTextStyle](#selectedtextstyle10)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[PickerTextStyle](#pickertextstyle10类型说明)> | 是   | 选中项的文本颜色、字号、字体粗细。<br/>当style的值为undefined时，默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} <br/>当style的值为undefined时，使用默认值。|
 
 ### enableHapticFeedback<sup>18+</sup>
 
-enableHapticFeedback(enable: Optional\<boolean>)
+ArkTS-Dyn: enableHapticFeedback(enable: Optional\<boolean>)
+
+ArkTS-Sta: enableHapticFeedback(enable:  boolean | undefined)
 
 设置是否开启触控反馈。
 
@@ -239,9 +281,13 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>默认值：true，true表示开启触控反馈，false表示不开启触控反馈。|
+| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 <br/>当enable的值为undefined时，使用默认值。|
 
 >  **说明：**
 >
@@ -320,7 +366,9 @@ onChange(callback: (value: DatePickerResult) => void)
 
 ### onDateChange<sup>10+</sup>
 
-onDateChange(callback: (value: Date) => void)
+ArkTS-Dyn: onDateChange(callback: Callback\<Date>)
+
+ArkTS-Sta: onDateChange(callback: Callback\<Date> \| undefined)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。
 
@@ -328,28 +376,36 @@ onDateChange(callback: (value: Date) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明                                                         |
 | ------ | ---- | ---- | ------------------------------------------------------------ |
-| value  | Date | 是   | 返回选中的时间，年月日为选中的日期，时分取决于当前系统时间的时分，秒恒为00。 |
-
+| callback  | ArkTS-Dyn: [Callback](ts-types.md#callback12)\<Date><br/>ArkTS-Sta: [Callback](ts-types.md#callback12)\<Date>  \| undefined | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 |
+ 
 ### onDateChange<sup>18+</sup>
 
 onDateChange(callback: Optional\<Callback\<Date>>)
 
 选择日期时触发该事件。与[onDateChange](#ondatechange10)<sup>10+</sup>相比，callback参数新增了对undefined类型的支持。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Callback](ts-types.md#callback12)\<Date>> | 是   | 返回选中的时间，年月日为选中的日期，时分取决于当前系统时间的时分，秒恒为00。<br/>当callback的值为undefined时，不使用回调函数。 |
-
+| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Callback](ts-types.md#callback12)\<Date>> | 是   | 返回选中的时间，年、月、日为选中的日期，时、分取决于当前系统时间的时、分，秒恒为00。 |
+ 
 ## DatePickerResult对象说明
 
 日期选择器返回的时间格式。

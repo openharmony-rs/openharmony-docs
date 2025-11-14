@@ -4,7 +4,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -31,7 +31,9 @@ ImageAnimator()
 
 ### images
 
-images(value: Array&lt;ImageFrameInfo&gt;)
+ArkTS-Dyn: images(value: Array&lt;ImageFrameInfo&gt;)
+
+ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
 设置图片帧信息集合。不支持动态更新。
 
@@ -41,15 +43,21 @@ images(value: Array&lt;ImageFrameInfo&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                   | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[ImageFrameInfo](#imageframeinfo对象说明)&gt; | 是   | 设置图片帧信息集合。每一帧的帧信息(ImageFrameInfo)包含图片路径、图片大小、图片位置和图片播放时长信息，详见[ImageFrameInfo](#imageframeinfo对象说明)对象说明。<br/>默认值：[] <br/> **说明：** 传入数组的内容过大时，内存占用会随之升高。此内存由开发者自行控制。因此，开发者在传入数据前，请充分评估内存消耗情况，以避免内存不足等问题。 |
+| value  | ArkTS-Dyn: Array&lt;[ImageFrameInfo](#imageframeinfo对象说明)&gt; <br/>ArkTS-Sta: Array&lt;[ImageFrameInfo](#imageframeinfo对象说明)&gt; \| undefined| 是   | 设置图片帧信息集合。每一帧的帧信息(ImageFrameInfo)包含图片路径、图片大小、图片位置和图片播放时长信息，详见[ImageFrameInfo](#imageframeinfo对象说明)对象说明。<br/>默认值：[] <br/> **说明：** 传入数组的内容过大时，内存占用会随之升高。此内存由开发者自行控制。因此，开发者在传入数据前，请充分评估内存消耗情况，以避免内存不足等问题。 |
 
 ### state
 
-state(value: AnimationStatus)
+ArkTS-Dyn: state(value: AnimationStatus)
+
+ArkTS-Sta: state(value: AnimationStatus | undefined)
 
 控制播放状态。
 
@@ -59,17 +67,21 @@ state(value: AnimationStatus)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | 是   | 默认为初始状态，用于控制播放状态。<br/>默认值：AnimationStatus.Initial |
+| value  | ArkTS-Dyn: [AnimationStatus](ts-appendix-enums.md#animationstatus) <br/>ArkTS-Sta: [AnimationStatus](ts-appendix-enums.md#animationstatus) \| undefined| 是   | 默认为初始状态，用于控制播放状态。<br/>默认值：AnimationStatus.Initial |
 
 ### duration
 
 ArkTS-Dyn: duration(value: number)
 
-ArkTS-Sta: duration(value: int)
+ArkTS-Sta: duration(value: int | undefined)
 
 设置播放时长。当Images中任意一帧图片设置了单独的duration后，该属性设置无效。
 
@@ -79,6 +91,10 @@ ArkTS-Sta: duration(value: int)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 **ArkTs-Dyn起始版本：** 7
@@ -87,11 +103,13 @@ ArkTS-Sta: duration(value: int)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
+| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
 
 ### reverse
 
-reverse(value: boolean)
+ArkTS-Dyn: reverse(value: boolean)
+
+ArkTS-Sta: reverse(value: boolean | undefined)
 
 设置播放方向。
 
@@ -101,15 +119,21 @@ reverse(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 播放方向。<br/>false表示从第1张图片播放到最后1张图片，true表示从最后1张图片播放到第1张图片。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 播放方向。<br/>false表示从第1张图片播放到最后1张图片，true表示从最后1张图片播放到第1张图片。<br/>默认值：false |
 
 ### fixedSize
 
-fixedSize(value: boolean)
+ArkTS-Dyn: fixedSize(value: boolean)
+
+ArkTS-Sta: fixedSize(value: boolean | undefined)
 
 设置图片大小是否固定为组件大小。
 
@@ -119,11 +143,15 @@ fixedSize(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置图片大小是否固定为组件大小。&nbsp;true表示图片大小与组件大小一致，此时设置图片的width&nbsp;、height&nbsp;、top&nbsp;和left属性无效。false表示每一张图片的width&nbsp;、height&nbsp;、top和left属性都要单独设置。图片宽高与组件宽高不一致时，图片不会被拉伸。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 设置图片大小是否固定为组件大小。&nbsp;true表示图片大小与组件大小一致，此时设置图片的width&nbsp;、height&nbsp;、top&nbsp;和left属性无效。false表示每一张图片的width&nbsp;、height&nbsp;、top和left属性都要单独设置。图片宽高与组件宽高不一致时，图片不会被拉伸。<br/>默认值：true |
 
 ### preDecode<sup>(deprecated)</sup>
 
@@ -143,7 +171,9 @@ preDecode(value: number)
 
 ### fillMode
 
-fillMode(value: FillMode)
+ArkTS-Dyn: fillMode(value: FillMode)
+
+ArkTS-Sta: fillMode(value: FillMode | undefined)
 
 设置当前播放方向下，动画开始前和结束后的状态。动画结束后的状态由fillMode和reverse属性共同决定。例如，fillMode为Forwards表示停止时维持动画最后一个关键帧的状态，若reverse为false则维持正播的最后一帧，即最后一张图，若reverse为true则维持逆播的最后一帧，即第一张图。
 
@@ -153,23 +183,31 @@ fillMode(value: FillMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [FillMode](ts-appendix-enums.md#fillmode) | 是   | 当前播放方向下，动画开始前和结束后的状态。<br/>默认值：FillMode.Forwards |
+| value  | ArkTS-Dyn: [FillMode](ts-appendix-enums.md#fillmode) <br/>ArkTS-Sta: [FillMode](ts-appendix-enums.md#fillmode) \| undefined| 是   | 当前播放方向下，动画开始前和结束后的状态。<br/>默认值：FillMode.Forwards |
 
 ### iterations
 
 ArkTS-Dyn: iterations(value: number)
 
-ArkTS-Sta: iterations(value: int)
+ArkTS-Sta: iterations(value: int | undefined)
 
 设置播放次数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -179,11 +217,13 @@ ArkTS-Sta: iterations(value: int)
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 默认播放一次，设置为-1时表示无限次播放，设置为小于-1的负数时取默认值。设置为浮点数时，数值向下取整。<br/>默认值：1 |
+| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | 默认播放一次，设置为-1时表示无限次播放，设置为小于-1的负数时取默认值。设置为浮点数时，数值向下取整。<br/>默认值：1 |
 
 ### monitorInvisibleArea<sup>17+</sup>
 
-monitorInvisibleArea(monitorInvisibleArea: boolean)
+ArkTS-Dyn: monitorInvisibleArea(monitorInvisibleArea: boolean)
+
+ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 
 设置组件是否通过系统[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的可见性判定，控制组件的暂停和播放。
 
@@ -191,11 +231,15 @@ monitorInvisibleArea(monitorInvisibleArea: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | boolean | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见暂停操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。|
+| monitorInvisibleArea  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见暂停操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。 |
 
 ## ImageFrameInfo对象说明
 
