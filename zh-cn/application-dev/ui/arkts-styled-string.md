@@ -1415,7 +1415,7 @@ struct styled_string_demo8 {
   private uiContext: UIContext = this.getUIContext();
 
   async fromHtmlCallback(): Promise<void> {
-    let styledString = await StyledString.fromHtml(this.html);
+    let styledString = await StyledString.fromHtml(this.html) as StyledString;
     this.controller2.setStyledString(styledString);
   }
 
@@ -1535,13 +1535,13 @@ struct styled_string_demo8 {
     controller: TextController = new TextController;
 
     async fromHtmlCallback1(): Promise<void> {
-      this.spanString = await StyledString.fromHtml(this.html);
+      this.spanString = await StyledString.fromHtml(this.html) as StyledString;
       this.controller.setStyledString(this.spanString);
       this.resultText = "Converted HTML to SpanString successfully.";
     }
 
     async fromHtmlCallback2(): Promise<void> {
-      this.spanString = await StyledString.fromHtml(this.html);
+      this.spanString = await StyledString.fromHtml(this.html) as StyledString;
       this.controller.setStyledString(this.spanString);
       this.resultText = "Converted HTML back to SpanString successfully.";
     }
