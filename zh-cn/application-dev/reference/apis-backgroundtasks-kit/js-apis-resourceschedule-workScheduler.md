@@ -217,7 +217,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
   })
 ```
 
-## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
+## workScheduler.obtainAllWorks<sup>(deprecated)</sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
