@@ -292,7 +292,7 @@ struct Child {
 
 - 当装饰的变量是嵌套类或对象数组时，\@Param无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
   <!-- @[Param_Observe_Change_Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeNestedClass.ets) -->
-
+  
   ``` TypeScript
   @ObservedV2
   class Region {
