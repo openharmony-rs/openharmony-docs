@@ -2413,7 +2413,7 @@ export default class EntryAbility extends UIAbility {
 
 getPreferredOrientation(): Orientation
 
-主窗口调用，获取窗口的显示方向属性。
+主窗口调用，获取窗口的显示方向属性。如果是子窗调用则返回子窗的显示方向属性，但是子窗上的方向属性不形象主窗的。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
