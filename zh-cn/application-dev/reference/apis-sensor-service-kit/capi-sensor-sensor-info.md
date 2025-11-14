@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```
+typedef struct Sensor_Info Sensor_Info
+```
+
 ## 概述
 
 定义传感器信息。
