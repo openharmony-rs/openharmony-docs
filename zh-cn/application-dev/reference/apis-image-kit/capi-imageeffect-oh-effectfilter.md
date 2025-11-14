@@ -1,5 +1,9 @@
 # OH_EffectFilter
 
+```
+typedef struct OH_EffectFilter OH_EffectFilter
+```
+
 ## 概述
 
 定义滤镜结构类型。
