@@ -1032,7 +1032,7 @@ ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_UIInputEvent* | ArkUI_UIInputEvent 输入事件数据指针。 |
+| [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent 输入事件数据指针。 |
 
 ### OH_ArkUI_NodeEvent_GetNodeComponentEvent()
 
@@ -1058,7 +1058,7 @@ ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEve
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_NodeComponentEvent* | ArkUI_NodeComponentEvent 数字类型数据指针。 |
+| [ArkUI_NodeComponentEvent*](capi-arkui-nativemodule-arkui-nodecomponentevent.md) | ArkUI_NodeComponentEvent 数字类型数据指针。 |
 
 ### OH_ArkUI_NodeEvent_GetStringAsyncEvent()
 
@@ -1084,7 +1084,7 @@ ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_StringAsyncEvent* | ArkUI_StringAsyncEvent 字符串数据指针。 |
+| [ArkUI_StringAsyncEvent*](capi-arkui-nativemodule-arkui-stringasyncevent.md) | ArkUI_StringAsyncEvent 字符串数据指针。 |
 
 ### OH_ArkUI_NodeEvent_GetTextChangeEvent()
 
@@ -1110,7 +1110,7 @@ ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* ev
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_TextChangeEvent* | 返回ArkUI_TextChangeEvent对象的指针。 |
+| [ArkUI_TextChangeEvent*](capi-arkui-nativemodule-arkui-textchangeevent.md) | 返回ArkUI_TextChangeEvent对象的指针。 |
 
 ### OH_ArkUI_NodeEvent_GetUserData()
 
@@ -1334,7 +1334,7 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_NodeAdapterHandle handle | 组件适配器对象。 |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapter8h.md) handle | 组件适配器对象。 |
 | void* userData | 自定义数据。 |
 | receiver | 事件接收回调。 |
 
@@ -1793,7 +1793,7 @@ ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCusto
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_DrawContext* | 绘制上下文。 |
+| [ArkUI_DrawContext*](capi-arkui-nativemodule-arkui-drawcontext.md) | 绘制上下文。 |
 
 ### OH_ArkUI_NodeCustomEvent_GetEventTargetId()
 
@@ -3571,8 +3571,8 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 | 参数项 | 描述 |
 | -- | -- |
-| uiContext | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
-| forceDark | 是否使用反色能力。取值为true：组件使用反色能力，取值为false：组件不使用反色能力。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
+| bool forceDark | 是否使用反色能力。取值为true：组件使用反色能力，取值为false：组件不使用反色能力。 |
 | [ArkUI_NodeType](#arkui_nodetype) | 指定使能反色能力生效组件的类型范围。<br>   ARKUI_NODE_UNDEFINED代表对所有组件类型生效。 |
 | colorInvertFunc | 开发者自定义反色算法函数。 |
 
