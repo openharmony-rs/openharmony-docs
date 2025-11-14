@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} Camera_SmoothZoomInfo
+```
+
 ## 概述
 
 平滑变焦参数信息。
