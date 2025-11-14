@@ -1598,15 +1598,8 @@ getSimLabelSync(slotId: number): SimLabel
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-function exampleGetSimLabelSync() {
-    try {
-        const slotId = 0; 
-        const simLabel = sim.getSimLabelSync(slotId);
-        console.info(`SIM卡标签: ${simLabel}`);
-    } catch (err) {
-        console.error(`获取SIM卡标签失败: ${err.message}`);
-    }
-}
+let simState: sim.SimLabel = sim.getSimLabelSync(0);
+console.info(`The sim state is:` + simLabel);
 ```
 
 ## SimType<sup>20+</sup>
