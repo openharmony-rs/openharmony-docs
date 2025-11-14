@@ -4,10 +4,12 @@
 
 >  **说明：**
 >
->  * 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  * 仅支持作为[Grid](ts-container-grid.md)组件的子组件使用。
->  * 当GridItem配合LazyForEach使用时，GridItem子组件在GridItem创建时创建。配合if/else、ForEach使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。
->  * 当Grid中存在大量GridItem时，使用columnStart/columnEnd、rowStart/rowEnd设置GridItem大小会导致在使用scrollToIndex滑动到指定Index时，依次遍历GridItem节点，耗时较长。建议使用GridLayoutOptions布局，以提高查找GridItem位置的效率。最佳实践请参考[优化Grid组件加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-improve_grid_performance)。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 仅支持作为[Grid](ts-container-grid.md)组件的子组件使用。
+>  - 当GridItem配合LazyForEach使用时，GridItem子组件在GridItem创建时创建。配合if/else、ForEach使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。
+>  - 当Grid中存在大量GridItem时，使用columnStart/columnEnd、rowStart/rowEnd设置GridItem大小会导致在使用scrollToIndex滑动到指定Index时，依次遍历GridItem节点，耗时较长。建议使用GridLayoutOptions布局，以提高查找GridItem位置的效率。最佳实践请参考[优化Grid组件加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-improve_grid_performance)。
 
 ## 子组件
 
@@ -33,7 +35,9 @@ GridItem(value?: GridItemOptions)
 
 ### rowStart
 
-rowStart(value: number)
+ArkTS-Dyn: rowStart(value: number)
+
+ArkTS-Sta: rowStart(value: int | undefined)
 
 设置当前元素起始行号。
 
@@ -41,15 +45,21 @@ rowStart(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | 是   | 当前元素起始行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素起始行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
 
 ### rowEnd
 
-rowEnd(value: number)
+ArkTS-Dyn: rowEnd(value: number)
+
+ArkTS-Sta: rowEnd(value: int | undefined)
 
 设置当前元素终点行号。
 
@@ -57,15 +67,21 @@ rowEnd(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | 是   | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点行号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总行数-1] |
 
 ### columnStart
 
-columnStart(value: number)
+ArkTS-Dyn: columnStart(value: number)
+
+ArkTS-Sta: columnStart(value: int | undefined)
 
 设置当前元素起始列号。
 
@@ -73,15 +89,21 @@ columnStart(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | 是   | 当前元素起始列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素起始列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
 
 ### columnEnd
 
-columnEnd(value: number)
+ArkTS-Dyn: columnEnd(value: number)
+
+ArkTS-Sta: columnEnd(value: int | undefined)
 
 设置当前元素终点列号。
 
@@ -89,11 +111,15 @@ columnEnd(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | 是   | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
 
 >  **说明：**
 >
@@ -144,7 +170,9 @@ forceRebuild(value: boolean)
 
 ### selectable<sup>8+</sup>
 
-selectable(value: boolean)
+ArkTS-Dyn: selectable(value: boolean)
+
+ArkTS-Sta: selectable(value: boolean | undefined)
 
 设置当前GridItem元素是否可以被鼠标框选。外层Grid容器的鼠标框选开启时，GridItem的框选才生效。
 
@@ -154,15 +182,21 @@ selectable(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                  |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| value  | boolean | 是   | 当前GridItem元素是否可以被鼠标框选。设置为true时可以被鼠标框选，设置为false时无法被鼠标框选。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 当前GridItem元素是否可以被鼠标框选。设置为true时可以被鼠标框选，设置为false时无法被鼠标框选。<br/>默认值：true  |
 
 ### selected<sup>10+</sup>
 
-selected(value: boolean)
+ArkTS-Dyn: selected(value: boolean)
+
+ArkTS-Sta: selected(value: boolean | Bindable\<boolean> | undefined)
 
 设置当前GridItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
@@ -172,11 +206,15 @@ selected(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| value  | boolean | 是   | 当前GridItem选中状态。设置为true时为选中状态，设置为false时为默认状态。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| Bindable\<boolean> \| undefined | 是   | 当前GridItem选中状态。设置为true时为选中状态，设置为false时为默认状态。<br/>默认值：false |
 
 ## GridItemOptions<sup>11+</sup>对象说明
 

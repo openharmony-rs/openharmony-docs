@@ -6,6 +6,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 该组件从API version 19开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - LazyVGridLayout组件高度默认自适应内容，不建议设置高度、高度约束或宽高比，设置后会导致显示异常。
 
@@ -25,7 +26,9 @@ LazyVGridLayout()
 
 ### columnsTemplate
 
-columnsTemplate(value: string)
+ArkTS-Dyn: columnsTemplate(value: string)
+
+ArkTS-Sta: columnsTemplate(value: string | undefined)
 
 设置当前网格布局列的数量、固定列宽或最小列宽值，不设置时默认1列。
 
@@ -46,15 +49,21 @@ auto-stretch模式只支持track-size为一个有效列宽值，并且track-size
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| value  | string | 是   | 当前网格布局列的数量或最小列宽值。 |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 当前网格布局列的数量、固定列宽或最小列宽值。 |
 
 ### columnsGap
 
-columnsGap(value: LengthMetrics): T
+ArkTS-Dyn: columnsGap(value: LengthMetrics): T
+
+ArkTS-Sta: columnsGap(value: LengthMetrics | undefined): this
 
 设置列与列的间距。设置为小于0的值时，按默认值显示。
 
@@ -62,21 +71,27 @@ columnsGap(value: LengthMetrics): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 列与列的间距。<br/>默认值：0vp |
+| value  |  ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>默认值：0vp |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前LazyVGridLayout组件。 |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前LazyVGridLayout组件。 |
 
 ### rowsGap
 
-rowsGap(value: LengthMetrics): T
+ArkTS-Dyn: rowsGap(value: LengthMetrics): T
+
+ArkTS-Sta: rowsGap(value: LengthMetrics | undefined): this
 
 设置行与行的间距。设置为小于0的值时，按默认值显示。
 
@@ -84,17 +99,21 @@ rowsGap(value: LengthMetrics): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 行与行的间距。<br/>默认值：0vp |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>默认值：0vp |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前LazyVGridLayout组件。 |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前LazyVGridLayout组件。 |
 
 ## 事件
 

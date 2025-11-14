@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件的父组件只能是[List](ts-container-list.md)或者[ListItemGroup](ts-container-listitemgroup.md)。
 > - 当ListItem配合LazyForEach使用时，ListItem子组件在ListItem创建时创建。配合if/else、ForEach使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
@@ -88,7 +90,9 @@ editable(value: boolean | EditMode)
 
 ### selectable<sup>8+</sup>
 
-selectable(value: boolean)
+ArkTS-Dyn: selectable(value: boolean)
+
+ArkTS-Sta: selectable(value: boolean | undefined)
 
 设置当前ListItem元素是否可以被鼠标框选。外层List容器的鼠标框选开启时，ListItem的框选才生效。
 
@@ -98,15 +102,21 @@ selectable(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                              |
 | ------ | ------- | ---- | ------------------------------------------------- |
-| value  | boolean | 是   | ListItem元素是否可以被鼠标框选。设置为true时可以被鼠标框选，设置为false时无法被鼠标框选。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | ListItem元素是否可以被鼠标框选。设置为true时可以被鼠标框选，设置为false时无法被鼠标框选。<br/>默认值：true |
 
 ### selected<sup>10+</sup>
 
-selected(value: boolean)
+ArkTS-Dyn: selected(value: boolean)
+
+ArkTS-Sta: selected(value: boolean | Bindable<boolean> | undefined)
 
 设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[选中态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
@@ -116,15 +126,21 @@ selected(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| value  | boolean | 是   | 当前ListItem选中状态。设置为true时为选中状态，设置为false时为默认状态。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable<boolean> \| undefined | 是   | 当前ListItem选中状态。设置为true时为选中状态，设置为false时为默认状态。<br/>默认值：false |
 
 ### swipeAction<sup>9+</sup>
 
-swipeAction(value: SwipeActionOptions)
+ArkTS-Dyn: swipeAction(value: SwipeActionOptions)
+
+ArkTS-Sta: swipeAction(value: SwipeActionOptions | undefined)
 
 用于设置ListItem的划出组件。
 
@@ -132,11 +148,15 @@ swipeAction(value: SwipeActionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                              | 必填 | 说明                 |
 | ------ | ------------------------------------------------- | ---- | -------------------- |
-| value  | [SwipeActionOptions](#swipeactionoptions9对象说明) | 是   | ListItem的划出组件。 |
+| value  | ArkTS-Dyn: [SwipeActionOptions](#swipeactionoptions9对象说明)<br/>ArkTS-Sta: [SwipeActionOptions](#swipeactionoptions9对象说明) \| undefined | 是   | ListItem的划出组件。 |
 
 ## Sticky<sup>(deprecated)</sup>枚举说明
 
