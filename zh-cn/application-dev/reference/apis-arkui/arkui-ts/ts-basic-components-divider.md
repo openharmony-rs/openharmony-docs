@@ -112,7 +112,9 @@ lineCap(value: LineCapStyle)
 
 ## 示例
 
-定义了Divider的样式，如方向、颜色及宽度。
+### 示例1（定义Divider方向、颜色及宽度）
+
+该示例定义了Divider的样式，如方向、颜色及宽度。
 
 ```ts
 // xxx.ets
@@ -185,3 +187,42 @@ struct DividerExample {
 ```
 
 ![zh-cn_image_0000001174422926](figures/zh-cn_image_0000001174422926.png)
+
+### 示例2（定义Divider的lineCap样式）
+
+该示例定义了Divider的lineCap样式。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct DividerExample {
+  build() {
+    Column({space:30}) {
+      Text("LineCap:Butt")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Butt)
+
+      Text("LineCap:Round")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Round)
+
+      Text("LineCap:Square")
+      Divider()
+        .strokeWidth(20)
+        .width("90%")
+        .color('#F1F3F5')
+        .lineCap(LineCapStyle.Square)
+
+    }.width('100%').padding({ top: 24 })
+  }
+}
+```
+
+![dividerLineCap.png](figures/dividerLineCap.png)
