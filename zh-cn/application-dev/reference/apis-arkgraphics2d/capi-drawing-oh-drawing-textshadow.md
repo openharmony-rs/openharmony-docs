@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_TextShadow OH_Drawing_TextShadow
+```
+
 ## 概述
 
 用于管理文本阴影。

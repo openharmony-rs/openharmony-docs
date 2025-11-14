@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_VBucket
+```
+
 ## 概述
 
 用于存储键值对的类型。

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 The **Web** component supports the intelligent tracking prevention feature. That is, when a tracking website is inserted into another web page as a third party, the network request sent by the website cannot carry cookies.
@@ -27,7 +27,7 @@ The **Web** component supports the intelligent tracking prevention feature. That
           .onClick(() => {
             try {
               this.controller.enableIntelligentTrackingPrevention(true);
-              console.log("enableIntelligentTrackingPrevention: true");
+              console.info("enableIntelligentTrackingPrevention: true");
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -56,7 +56,7 @@ The **Web** component supports the intelligent tracking prevention feature. That
           .onClick(() => {
             try {
               let result = this.controller.isIntelligentTrackingPreventionEnabled();
-              console.log("result: " + result);
+              console.info("result: " + result);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -92,7 +92,7 @@ The **Web** component supports the intelligent tracking prevention feature. That
           })
         Web({ src: 'www.example.com', controller: this.controller })
           .onIntelligentTrackingPreventionResult((details) => {
-            console.log("onIntelligentTrackingPreventionResult: [websiteHost]= " + details.host +
+            console.info("onIntelligentTrackingPreventionResult: [websiteHost]= " + details.host +
               ", [trackerHost]=" + details.trackerHost);
           })
       }
@@ -132,26 +132,27 @@ The intelligent tracking prevention feature provides a group of APIs for setting
   ```
 
 - Call the [removeIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removeintelligenttrackingpreventionbypassinglist12) API to delete some domain names in the bypass list.
-
-  ```ts
-  // xxx.ets
+  <!-- @[partial_domain_name_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/RemoveIntTrackPreventByPassList.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('removeIntelligentTrackingPreventionBypassingList')
           .onClick(() => {
             try {
-              let hostList = [ "www.test1.com", "www.test2.com" ];
+              let hostList = [ 'www.test1.com', 'www.test2.com' ];
               webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(hostList);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Web({ src: 'www.example.com', controller: this.controller })

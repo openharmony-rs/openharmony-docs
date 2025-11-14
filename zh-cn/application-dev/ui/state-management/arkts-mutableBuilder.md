@@ -79,10 +79,63 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 
 ## 限制条件
 
-1. mutableBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法。
+1. mutableBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法，传入局部@Builder方法编译时报错。
+```typescript
+class TextContent {
+  text: string = '';
+}
 
-2. MutableBuilder对象的builder属性方法仅限在自定义组件内部使用。
+@Builder
+function globalBuilder(p: TextContent) {
+  Text(p.text)
+}
 
+@ComponentV2
+struct MyApp {
+  @Local message: string = 'init';
+  // 正确用法，使用全局@Builder
+  @Local switchingBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
+  // 错误用法，使用局部@Builder，编译报错
+  @Local localBuilderObject: MutableBuilder<[TextContent]> = mutableBuilder(this.localBuilder);
+  
+  @Builder
+  localBuilder(p: TextContent) {
+    Text(p.text)
+  }
+  build() {
+    Column() {
+      this.switchingBuilder.builder({ text: this.message })
+    }
+  }
+}
+```
+2. MutableBuilder对象的builder属性方法仅限在自定义组件内部使用，在自定义组件外面使用会导致程序运行时崩溃。
+```typescript
+class TextContent {
+  text: string = '';
+}
+
+@Builder
+function globalBuilder(p: TextContent) {
+  Text(p.text)
+}
+
+// 错误用法，MutableBuilder对象的builder属性方法在自定义组件外面使用，运行时崩溃
+let outSideBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
+outSideBuilder.builder({ text: 'message' });
+
+@ComponentV2
+struct MyApp {
+  @Local message: string = 'init';
+  @Local switchingBuilder: MutableBuilder<[TextContent]> = mutableBuilder(globalBuilder);
+  build() {
+    Column() {
+      // 正确用法，MutableBuilder对象的builder属性方法在自定义组件中使用
+      this.switchingBuilder.builder({ text: this.message })
+    }
+  }
+}
+```
 3. 不建议与wrapBuilder混合使用，因为mutableBuilder创建的对象类型是MutableBuilder类型，会导致不符合预期的更新。
 
 如下为不推荐的用法：

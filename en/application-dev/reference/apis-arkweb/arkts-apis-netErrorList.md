@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Provides a list of ArkWeb network protocol stack errors.
 
@@ -81,7 +81,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_SOCKS_CONNECTION_FAILED | -120 |  The connection between the SOCKS proxy server and the target host fails to be established.   |
 |ERR_SOCKS_CONNECTION_HOST_UNREACHABLE | -121 | The domain name of the SOCKS proxy server is unreachable.|
 |ERR_ALPN_NEGOTIATION_FAILED | -122 | The request for negotiating the standby protocol fails.|
-|ERR_SSL_NO_RENEGOTIATION | -123 | The server sends an **SSL no_regregation** alert message.|
+|ERR_SSL_NO_RENEGOTIATION | -123 | The server sends an **SSL no_renegotiation** alert message.|
 |ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES | -124 | Winsock sometimes reports that more data is written than is passed. This may be caused by LSP damage.|
 |ERR_SSL_DECOMPRESSION_FAILURE_ALERT | -125 | The SSL peer sent a decompression failure alert to the local end. This usually occurs when the peer mistakenly believes that it supports DEFLATE compression.|
 |ERR_SSL_BAD_RECORD_MAC_ALERT | -126 | The SSL peer sent a **bad_record_mac** alert to the local end. This may occur on a server that is not support DELEGATE.|
@@ -119,11 +119,11 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CT_STH_INCOMPLETE | -169 | The Certificate Transparency parsed signed tree head successfully, but some information is missing.|
 |ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH | -170 | The attempt to re-send proxy authentication credentials failed because the AuthController has not generated the credentials yet. The caller should reconnect the AuthController.|
 |ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED | -171 | The Certificate Transparency failed to parse the consistency proof.|
-|ERR_SSL_OBSOLETE_CIPHER | -172 | The SSL server requires an unsupported cipher suite, which has been deleted. This error will immediately occurs in a rollback of one or two versions after the cipher suite is deleted, after which the rollback will be deleted.|
+|ERR_SSL_OBSOLETE_CIPHER | -172 | The SSL server requires an unsupported cipher suite, which has been deleted. This error will immediately occur in a rollback of one or two versions after the cipher suite is deleted, after which the rollback will be deleted.|
 |ERR_WS_UPGRADE | -173 | The WebSocket handshake is completed, the connection has been upgraded, and the URLRequest is canceled.|
 |ERR_READ_IF_READY_NOT_IMPLEMENTED | -174 | The ReadIfReady of socket is not implemented. |
 |ERR_NO_BUFFER_SPACE | -176 | No socket buffer space is available.|
-|ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS | -177 | There is no common signature algorithm between the private key of the local end certificate and the preferences of the server.|
+|ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS | -177 | There is no common signing algorithm between the private key of the local end certificate and the preferences of the server.|
 |ERR_EARLY_DATA_REJECTED | -178 | TLS 1.3 early data is rejected by the server. This error will be received before any data is returned from the socket. Retry the request when early data is disabled.|
 |ERR_WRONG_VERSION_ON_EARLY_DATA | -179 | The TLS 1.3 early data version is incorrect.|
 |ERR_TLS13_DOWNGRADE_DETECTED | -180 | TLS 1.3 is enabled, but an earlier version has been negotiated. This error indicates that it supports TLS 1.3. This is part of the security check in TLS 1.3, but it may also indicate that the user is using a problematic TLS-terminating proxy.|
@@ -139,7 +139,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | Revocation information for this website's security certificate is not available. This may mean: 1. The attacker compromises the private key in the certificate and prevents the local end from discovering that the certificate has been revoked. 2. The certificate is not revoked, but the revocation server is busy or unavailable.|
 |ERR_CERT_REVOKED | -206 | The certificate is revoked. The local end can ignore this error, but it should not do this.|
 |ERR_CERT_INVALID | -207 |  The certificate is invalid. |
-|ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | The server responds with a certificate signed with a weak signature algorithm.|
+|ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | The server responds with a certificate signed with a weak signing algorithm.|
 |ERR_CERT_NON_UNIQUE_NAME | -210 |  The domain name specified in the certificate is not unique.|
 |ERR_CERT_WEAK_KEY | -211 | The server responds with a certificate that contains a weak key (for example, a small RSA key).|
 |ERR_CERT_NAME_CONSTRAINT_VIOLATION | -212 | The certificate name constraint is violated.|

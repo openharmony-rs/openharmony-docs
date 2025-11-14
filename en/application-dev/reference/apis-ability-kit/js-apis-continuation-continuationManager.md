@@ -10,7 +10,7 @@ The continuationManager module provides the continuation/collaboration managemen
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8 and deprecated since API version 22. You are advised to use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 ## Modules to Import
 
@@ -26,7 +26,7 @@ Registers the continuation management service and obtains a token. This API does
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [ondevicestatechange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -60,7 +60,7 @@ Registers the continuation management service and obtains a token. This API uses
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -99,7 +99,7 @@ Registers the continuation management service and obtains a token. This API uses
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -139,7 +139,7 @@ Registers the continuation management service and obtains a token. This API does
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -192,7 +192,7 @@ Registers the continuation management service and obtains a token. This API uses
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -250,7 +250,7 @@ Registers the continuation management service and obtains a token. This API uses
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -312,7 +312,7 @@ Subscribes to device connection events. This API uses an asynchronous callback t
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -343,7 +343,7 @@ Subscribes to device disconnection events. This API uses an asynchronous callbac
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -372,7 +372,7 @@ Unsubscribes from device connection events. This API uses an asynchronous callba
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -403,7 +403,7 @@ Unsubscribes from device disconnection events. This API uses an asynchronous cal
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -432,7 +432,7 @@ Subscribes to device connection events. This API uses an asynchronous callback t
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -488,7 +488,7 @@ Subscribes to device disconnection events. This API uses an asynchronous callbac
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -545,7 +545,7 @@ Unsubscribes from device connection events.
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -593,7 +593,7 @@ Unsubscribes from device disconnection events.
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -641,7 +641,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -675,7 +675,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -715,7 +715,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -758,7 +758,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -811,7 +811,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -870,7 +870,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -932,7 +932,7 @@ Instructs the device selection module to update the device connection state. Thi
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -969,7 +969,7 @@ Instructs the device selection module to update the device connection state. Thi
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1012,7 +1012,7 @@ Instructs the device selection module to update the device connection state. Thi
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1068,7 +1068,7 @@ Instructs the device selection module to update the device connection state. Thi
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1131,7 +1131,7 @@ Unregisters the continuation management service. This API uses an asynchronous c
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1165,7 +1165,7 @@ Unregisters the continuation management service. This API uses a promise to retu
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1204,7 +1204,7 @@ Unregisters the continuation management service. This API uses an asynchronous c
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1257,7 +1257,7 @@ Unregisters the continuation management service. This API uses a promise to retu
 
 > **NOTE**
 > 
-> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1313,7 +1313,7 @@ Device connection state.
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 22. You are advised to use [DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1332,7 +1332,7 @@ Enumerates the continuation modes provided by the device selection module.
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 22. You are advised to use [DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1351,7 +1351,7 @@ Defines the device information returned by the continuation management entry.
 
 > **NOTE**
 > 
-> This API is supported since API version 10 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 10 and deprecated since API version 22. You are advised to use [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1369,7 +1369,7 @@ Defines the extra parameters required by the device selection module in the cont
 
 > **NOTE**
 > 
-> This API is supported since API version 10 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is supported since API version 10 and deprecated since API version 22. You are advised to use [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

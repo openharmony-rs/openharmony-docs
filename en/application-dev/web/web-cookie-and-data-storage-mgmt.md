@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Cookies are data sent from the server to the client. The client holds cookies so that the server can quickly identify its identity and status.
 
@@ -66,11 +66,9 @@ Use [cacheMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes
 
 
 In the following example, the cache mode is set to **None**.
+<!-- @[configure_the_caching_mode_for_page_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_one.ets) -->
 
-
-
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -90,9 +88,9 @@ struct WebComponent {
 
 
 To obtain up-to-date resources, you can use [removeCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removecache) to clear cached resources. The sample code is as follows:
+<!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -112,7 +110,7 @@ struct WebComponent {
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
-        })
+        });
       Web({ src: 'www.example.com', controller: this.controller })
         .cacheMode(this.mode)
     }
@@ -126,9 +124,9 @@ struct WebComponent {
 Dom Storage falls into Session Storage and Local Storage. Session Storage holds temporary data and it is stored and released based on the session lifecycle. Local Storage holds persistent data and is stored in the application directory. In both storage modes, data is stored in a form of key-value pair, and used when a page that needs to be stored on the client is accessed. You can use [domStorageAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) to enable Dom Storage. The following is the sample code:
 
 
+<!-- @[enable_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/DomStorage.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry

@@ -23,10 +23,16 @@ Under normal circumstances, environment variables change with system settings.
 
 You can use [getConfigurationSync](../../application-dev/reference/apis-localization-kit/js-apis-resource-manager.md#getconfigurationsync10) to obtain the [current environment variables](../../application-dev/reference/apis-localization-kit/js-apis-resource-manager.md#configuration), including the dark/light color mode, screen orientation, locale, screen density, and device type. The information helps your application react instantly and deliver a better user experience.
 
-  ```ts
+  <!-- @[get_envconf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility0.ets) -->
+  
+  ``` TypeScript
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-
-  export default class EntryAbility extends UIAbility {
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const DOMAIN_NUMBER = 0xF811;
+  const TAG = '[EnvAbility0]';
+  
+  export default class EnvAbility0 extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       try {
         let value = this.context.resourceManager.getConfigurationSync();
@@ -35,12 +41,12 @@ You can use [getConfigurationSync](../../application-dev/reference/apis-localiza
         // Locale.
         let locale = value.locale;
       } catch (error) {
-        console.error("getConfigurationSync error is " + error);
+        hilog.error(DOMAIN_NUMBER, TAG, 'getConfigurationSync error is ' + error);
       }
     }
   }
   ```
-  
+
 ## Setting Environment Variables
 
 The following environment variables can be customized: [font size](#setting-font-size), [dark/light color mode](#setting-darklight-color-mode), and [application language](#setting-application-language). Other environment variables (such as the screen orientation) are read-only.
@@ -51,11 +57,13 @@ By default, your application's font size does not change with the system. You ca
 
 You can use [setFontSizeScale](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) to set the font size for the application. After the setting, the application's font size will not change with the system, and you will no longer be able to subscribe to system font size changes.
 
-```ts
+<!-- @[env_setscale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility1.ets) --> 
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
-export default class MyAbility extends UIAbility {
+export default class EnvAbility1 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -76,12 +84,14 @@ The configuration takes effect in the following priority: UIAbility's or UIExten
 
 - **Application's dark/light color mode**: Use [setColorMode](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11) of ApplicationContext to set the dark/light color mode of the application.
 
-    ```ts
+    <!-- @[env_appsetcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility2.ets) --> 
+    
+    ``` TypeScript
     import { UIAbility, ConfigurationConstant } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
-
-    export default class MyAbility extends UIAbility {
+    
+    export default class EnvAbility2 extends UIAbility {
       onWindowStageCreate(windowStage: window.WindowStage) {
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
@@ -97,12 +107,14 @@ The configuration takes effect in the following priority: UIAbility's or UIExten
 
 - **UIAbility's dark/light color mode**: Use [setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18) of UIAbilityContext to set the dark/light color mode of the UIAbility.
 
-    ```ts
+    <!-- @[env_setabilitycolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility3.ets) --> 
+    
+    ``` TypeScript
     import { UIAbility, ConfigurationConstant } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
-
-    export default class MyAbility extends UIAbility {
+    
+    export default class EnvAbility3 extends UIAbility {
       onWindowStageCreate(windowStage: window.WindowStage) {
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
@@ -118,11 +130,13 @@ The configuration takes effect in the following priority: UIAbility's or UIExten
 
 - **UIExtensionAbility's dark/light color mode**: Use [setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#setcolormode18) of UIExtensionContext to set the dark/light color mode of the UIExtensionAbility.
 
-    ```ts
+    <!-- @[env_setcolormode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility4.ets) --> 
+    
+    ``` TypeScript
     // The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
     import { ShareExtensionAbility, ConfigurationConstant } from '@kit.AbilityKit';
-
-    export default class MyAbility extends ShareExtensionAbility {
+    
+    export default class EnvAbility4 extends ShareExtensionAbility {
       onForeground() {
         let uiExtensionContext = this.context;
         uiExtensionContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
@@ -134,12 +148,14 @@ The configuration takes effect in the following priority: UIAbility's or UIExten
 
 By default, the application language changes with the system language. You can use [setLanguage](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11) to set the application language. After the setting, you will no longer be able to subscribe to system language changes.
 
-```ts
+<!-- @[env_setlang](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility5.ets) --> 
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 
-export default class MyAbility extends UIAbility {
+export default class EnvAbility5 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -170,26 +186,28 @@ You can subscribe to environment variable changes in the following ways:
 
 1. Non-application components can call [on](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonenvironment) to subscribe to changes in environment variables. The code snippet below is used to subscribe to system language changes on a page.
 
-    ```ts
+    <!-- @[envconf_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage6.ets) --> 
+    
+    ``` TypeScript
     import { common, EnvironmentCallback, Configuration } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[MyAbility]';
+    
+    const TAG: string = '[EnvAbilityPage6]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Index {
+    struct EnvAbilityPage6 {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       private callbackId: number = 0; // ID of the subscription for system environment variable changes.
-
+    
       subscribeConfigurationUpdate(): void {
         let systemLanguage: string | undefined = this.context.config.language; // Obtain the system language in use.
-
+    
         // 1. Obtain an ApplicationContext object.
         let applicationContext = this.context.getApplicationContext();
-
+    
         // 2. Subscribe to environment variable changes through ApplicationContext.
         let environmentCallback: EnvironmentCallback = {
           onConfigurationUpdated(newConfig: Configuration) {
@@ -211,7 +229,7 @@ You can subscribe to environment variable changes in the following ways:
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to register applicationContext. Code is ${code}, message is ${message}`);
         }
       }
-
+    
       // Page display.
       build() {
         //...
@@ -221,20 +239,22 @@ You can subscribe to environment variable changes in the following ways:
 
 2. They can call [off](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextoffenvironment-1) to release the resources.
 
-    ```ts
+    <!-- @[envconf_apppage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage7.ets) --> 
+    
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[MyAbility]';
+    
+    const TAG: string = '[EnvAbilityPage7]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Index {
+    struct EnvAbilityPage7 {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       private callbackId: number = 0; // ID of the subscription for system environment variable changes.
-
+    
       unsubscribeConfigurationUpdate() {
         let applicationContext = this.context.getApplicationContext();
         try {
@@ -245,7 +265,7 @@ You can subscribe to environment variable changes in the following ways:
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister applicationContext. Code is ${code}, message is ${message}`);
         }
       }
-
+    
       // Page display.
       build() {
         //...
@@ -264,20 +284,21 @@ The AbilityStage component provides the [AbilityStage.onConfigurationUpdate()](.
 
 The code snippet below uses the [AbilityStage.onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate) callback to subscribe to the system language changes.
 
-```ts
+<!-- @[envconf_language](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbilityStage/EnvAbilityStage.ets) --> 
+
+``` TypeScript
 import { AbilityStage, Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[MyAbilityStage]';
+const TAG: string = '[EnvAbilityStage]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // System language in use.
 
-export default class MyAbilityStage extends AbilityStage {
+export default class EnvAbilityStage extends AbilityStage {
   onCreate(): void {
     systemLanguage = this.context.config.language; // Obtain the system language in use when the module is loaded for the first time.
     hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage is ${systemLanguage}`);
-    //...
   }
 
   onConfigurationUpdate(newConfig: Configuration): void {
@@ -303,16 +324,18 @@ The [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 
 
 The code snippet below uses the [onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) callback to subscribe to the system language changes.
 
-```ts
+<!-- @[envconf_lang](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility9.ets) --> 
+
+``` TypeScript
 import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[EnvAbility9]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // System language in use.
 
-export default class EntryAbility extends UIAbility {
+export default class EnvAbility9 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     systemLanguage = this.context.config.language; // Obtain the system language in use when the UIAbility instance is loaded for the first time.
     hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage is ${systemLanguage}`);
@@ -326,7 +349,6 @@ export default class EntryAbility extends UIAbility {
       systemLanguage = newConfig.language; // Save the new system language as the system language in use, which will be used for comparison.
     }
   }
-  // ...
 }
 ```
 
@@ -340,18 +362,19 @@ The [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensi
 
 The code snippet below uses [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) as an example to describe how to use the [onConfigurationUpdate()](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonconfigurationupdate) callback to subscribe to environment variable changes.
 
-```ts
+<!-- @[envconf_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvFormExtensionAbility/EnvFormExtensionAbility.ets) --> 
+
+``` TypeScript
 import { FormExtensionAbility } from '@kit.FormKit';
 import { Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[EnvFormExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class EntryFormAbility extends FormExtensionAbility {
+export default class EnvFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
-    hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(newConfig));
+    hilog.info(DOMAIN_NUMBER, TAG, 'onConfigurationUpdate: ' + JSON.stringify(newConfig));
   }
-  // ...
 }
 ```

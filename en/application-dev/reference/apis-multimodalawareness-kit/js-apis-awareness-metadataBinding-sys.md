@@ -40,7 +40,7 @@ Encodes metadata into an image.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;image.PixelMap&gt; | Promise used to return the image with encoded metadata.|
+  | Promise&lt;image.PixelMap&gt; | Promise object, which is used to return the image with encoded metadata.|
 
 **Error codes** 
 
@@ -88,7 +88,7 @@ Decodes the information carried in the image.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise used to return the result. used to return the encoded metadata of the image.|
+  | Promise&lt;string&gt; | Promise object, which is used to return the encoded metadata of the image.|
 
 **Error codes** 
 

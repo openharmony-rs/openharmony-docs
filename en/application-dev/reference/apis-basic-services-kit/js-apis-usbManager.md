@@ -25,7 +25,7 @@ Perform the following steps when using the APIs with the [USBDevicePipe](#usbdev
  
 **Before use**:
 
-1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the list of USB devices.
+1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
 
 2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the temporary device access permission.
 
@@ -69,7 +69,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-console.log(`devicesList = ${devicesList}`);
+console.info(`devicesList = ${devicesList}`);
 /*
 The following is a simple example of the data structure for devicesList:
 [
@@ -130,7 +130,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 Connects to the USB device based on the device information returned by **getDevices()**. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
 
 1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
-2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the permission to use the device.
+2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the device access permission.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -161,14 +161,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 usbManager.requestRight(device.name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-console.log(`devicepipe = ${devicepipe}`);
+console.info(`devicepipe = ${devicepipe}`);
 ```
 
 ## usbManager.hasRight
@@ -207,14 +207,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 usbManager.requestRight(device.name);
 let right: boolean = usbManager.hasRight(device.name);
-console.log(`${right}`);
+console.info(`${right}`);
 ```
 
 ## usbManager.requestRight
@@ -252,12 +252,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
   return;
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 usbManager.requestRight(device.name).then(ret => {
-  console.log(`requestRight = ${ret}`);
+  console.info(`requestRight = ${ret}`);
 });
 ```
 
@@ -295,13 +295,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 if (usbManager.removeRight(device.name)) {
-  console.log(`Succeed in removing right`);
+  console.info(`Succeed in removing right`);
 }
 ```
 
@@ -330,7 +330,7 @@ Claims a USB device interface.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the **claim** interface is called successfully; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the **claim** interface is called successfully; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
@@ -346,7 +346,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -355,7 +355,7 @@ usbManager.requestRight(device.name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
 let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-console.log(`claimInterface = ${ret}`);
+console.info(`claimInterface = ${ret}`);
 ```
 
 ## usbManager.releaseInterface
@@ -381,7 +381,7 @@ Releases the claimed communication interface.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB interface is successfully released; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080381: Invalid interface operation.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the USB interface is successfully released; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
@@ -397,7 +397,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -407,7 +407,7 @@ let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
 let ret: number = usbManager.claimInterface(devicepipe, interfaces);
 ret = usbManager.releaseInterface(devicepipe, interfaces);
-console.log(`releaseInterface = ${ret}`);
+console.info(`releaseInterface = ${ret}`);
 ```
 
 ## usbManager.setConfiguration
@@ -429,7 +429,7 @@ Sets the device configuration.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB configuration is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.<br>- -17: I/O failure.|
+| number | Returns **0** if the USB configuration is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.<br>- -17: I/O failure.|
 
 **Error codes**
 
@@ -445,7 +445,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -454,7 +454,7 @@ usbManager.requestRight(device.name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let config: usbManager.USBConfiguration = device.configs[0];
 let ret: number= usbManager.setConfiguration(devicepipe, config);
-console.log(`setConfiguration = ${ret}`);
+console.info(`setConfiguration = ${ret}`);
 ```
 
 ## usbManager.setInterface
@@ -482,7 +482,7 @@ Sets a USB interface.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB interface is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the USB interface is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
@@ -498,7 +498,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -508,14 +508,14 @@ let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
 let ret: number = usbManager.claimInterface(devicepipe, interfaces);
 ret = usbManager.setInterface(devicepipe, interfaces);
-console.log(`setInterface = ${ret}`);
+console.info(`setInterface = ${ret}`);
 ```
 
 ## usbManager.getRawDescriptor
 
 getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
-Obtains the raw USB descriptor. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
+Obtains a raw USB descriptor. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -529,7 +529,7 @@ Obtains the raw USB descriptor. If the USB service is abnormal, **undefined** ma
 
 | Type| Description|
 | -------- | -------- |
-| Uint8Array | Returns the raw USB descriptor if the operation is successful; returns **undefined** otherwise.|
+| Uint8Array | Returns a raw USB descriptor if the operation is successful; returns **undefined** otherwise.|
 
 **Error codes**
 
@@ -545,7 +545,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -558,7 +558,7 @@ let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
 
 getFileDescriptor(pipe: USBDevicePipe): number
 
-Obtains the file descriptor.
+Obtains a file descriptor.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -572,7 +572,7 @@ Obtains the file descriptor.
 
 | Type    | Description                  |
 | ------ | -------------------- |
-| number | Returns the file descriptor corresponding to the device if this API is successfully called; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns a file descriptor of the USB device if the operation is successful; returns a negative number otherwise.|
 
 **Error codes**
 
@@ -588,16 +588,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 let ret: number = usbManager.getFileDescriptor(devicepipe);
-console.log(`getFileDescriptor = ${ret}`);
+console.info(`getFileDescriptor = ${ret}`);
 let closeRet: number = usbManager.closePipe(devicepipe);
-console.log(`closePipe = ${closeRet}`);
+console.info(`closePipe = ${closeRet}`);
 ```
 
 ## usbManager.controlTransfer<sup>(deprecated)</sup>
@@ -624,7 +624,7 @@ Performs control transfer. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
@@ -657,14 +657,14 @@ let param: PARA = {
 
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-console.log(`controlTransfer = ${ret}`);
+console.info(`controlTransfer = ${ret}`);
 })
 ```
 
@@ -688,7 +688,7 @@ Performs control transfer. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
@@ -723,14 +723,14 @@ let param: PARA = {
 
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
-console.log(`usbControlTransfer = ${ret}`);
+console.info(`usbControlTransfer = ${ret}`);
 })
 ```
 
@@ -761,7 +761,7 @@ Performs bulk transfer. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.<br>- -3: The parameter is invalid.<br>- -202: The device is not found.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
@@ -784,7 +784,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -799,7 +799,7 @@ for (let i = 0; i < device.configs[0].interfaces.length; i++) {
     let ret: number = usbManager.claimInterface(devicepipe, interfaces);
     let buffer =  new Uint8Array(128);
     usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
-      console.log(`bulkTransfer = ${ret}`);
+      console.info(`bulkTransfer = ${ret}`);
     });
   }
 }
@@ -851,7 +851,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 let device: usbManager.USBDevice = devicesList[0];
@@ -932,7 +932,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 let device: usbManager.USBDevice = devicesList[0];
@@ -991,7 +991,7 @@ Closes a USB device pipe.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080393: An error occurs when the API data packet is read.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 22: The service is abnormal.|
 
 **Error codes**
 
@@ -1007,14 +1007,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 let ret: number = usbManager.closePipe(devicepipe);
-console.log(`closePipe = ${ret}`);
+console.info(`closePipe = ${ret}`);
 ```
 
 ## usbManager.hasAccessoryRight<sup>14+</sup>
@@ -1031,7 +1031,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Return value**
 
@@ -1078,7 +1078,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Return value**
 
@@ -1125,7 +1125,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Error codes**
 
@@ -1202,7 +1202,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Return value**
 
@@ -1256,7 +1256,7 @@ You need to call [usbManager.openAccessory](#usbmanageropenaccessory14) to obtai
 
 | Name         | Type              | Mandatory| Description                                  |
 | --------------- | ------------------ | ---- | -------------------------------------- |
-| accessoryHandle | [USBAccessoryHandle](#usbaccessoryhandle14) | Yes  | USB accessory handle.  |
+| accessoryHandle | [USBAccessoryHandle](#usbaccessoryhandle14) | Yes  | USB accessory handle, which is obtained through [openAccessory](#usbmanageropenaccessory14).|
 
 **Error codes**
 

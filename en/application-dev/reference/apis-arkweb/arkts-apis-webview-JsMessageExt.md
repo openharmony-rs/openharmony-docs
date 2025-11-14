@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **JsMessageExt** object that is returned after the [runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10) API is invoked.
 
@@ -139,3 +139,16 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
+## getErrorDescription<sup>22+</sup>
+
+getErrorDescription(): string \| null
+
+Obtains the error information about the JavaScript execution. For details about the sample code, see [runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type          | Description                                                     |
+| --------------| --------------------------------------------------------- |
+| string \| null | If an exception occurs or the return type is not supported, the error information is serialized into a string and returned. Otherwise, **null** is returned.|

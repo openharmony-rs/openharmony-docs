@@ -67,12 +67,12 @@
     - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (System API)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
     - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext) (System API)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
-    - commonEvent
+    - commonEvent<!--commonevent-->
       - [CommonEventData](js-apis-inner-commonEvent-commonEventData.md)
       - [CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md)
       - [CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md)
       - [CommonEventSubscribeInfo](js-apis-inner-commonEvent-commonEventSubscribeInfo.md)
-  - Others<!--others-->
+  - Others<!--basic-services-others-->
     <!--Del-->
     - [@ohos.ai.intelligentVoice (Intelligent Voice) (System API)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
@@ -82,11 +82,12 @@
     - [@ohos.settings (Data Item Settings)](js-apis-settings.md)
     - [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (System Load Level Management)](js-apis-resourceschedule-systemload.md)
+    - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
     <!--Del-->
     - [@ohos.configPolicy (Configuration Policy) (System API)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (Data Item Settings) (System API)](js-apis-settings-sys.md)
-    - [@ohos.systemDateTime (System Time and Time Zone) (System API)](js-apis-system-date-time-sys.md)
-    - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
+    - [@ohos.systemDateTime (System Time and Time Zone) (System API)](js-apis-system-date-time-sys.md)<!--DelEnd-->
+     <!--Del-->
     - [@ohos.wallpaper (Wallpaper) (System API)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (System Timer) (System API)](js-apis-system-timer-sys.md)
@@ -160,17 +161,19 @@
   - [Upload and Download Error Codes](errorcode-request.md)
   - [Time and Time Zone Service Error Codes](errorcode-time.md)
   - [Event Error Codes](errorcode-CommonEventService.md)
+  <!--Del-->
   - [System Parameter Error Codes](errorcode-system-parameterV9.md)
+  <!--DelEnd-->
   - [Power Manager Error Codes](errorcode-power.md)
   - [Account Management Error Codes](errorcode-account.md)
   <!--Del-->
   - [Update Error Codes](errorcode-update.md)
   <!--DelEnd-->
   - [Print Service Error Codes](errorcode-print.md)
+  - [Settings Error Codes](errorcode-settings.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
-  - [Settings Error Codes](errorcode-settings.md)
   - [Word Selection Service Error Codes](errorcode-selection.md)
   <!--DelEnd-->

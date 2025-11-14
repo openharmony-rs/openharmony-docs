@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ArkWeb provides the capability of interacting with the system clipboard to cut, copy, and paste various types of data through the following methods: the [Menu](web_menu.md) component, keyboard shortcuts, and [W3C clipboard API and events](https://www.w3.org/TR/clipboard-apis/).
 
@@ -60,8 +60,9 @@ const htmlBlob = await clipboardItems[0].getType('text/html');
 >
 > To access the system clipboard content through **read()** and **readText()**, you need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md): **ohos.permission.READ_PASTEBOARD**.
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -71,11 +72,12 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("clipboard.html"), controller: this.controller })
+      Web({ src: $rawfile('clipboard.html'), controller: this.controller })
     }
   }
 }
 ```
+
 
 Loaded HTML:
 
@@ -175,12 +177,13 @@ Configure permissions for the **module.json5** file.
 
 **Required permissions**: **ohos.permission.READ_PASTEBOARD**. To access clipboard content, applications need to [request permissions to access the pasteboard](../basic-services/pasteboard/get-pastedata-permission-guidelines.md).
 
-```json
-// module.json5
+<!-- @[web_clipboard_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/module.json5) -->
+
+``` JSON5
 {
-  "module" : {
-    // ...
-    "requestPermissions":[
+  "module": {
+    // ···
+    "requestPermissions": [
       {
         "name" : "ohos.permission.READ_PASTEBOARD",
         "reason": "$string:module_desc",
@@ -196,14 +199,16 @@ Configure permissions for the **module.json5** file.
 }
 ```
 
+
 ![clipboard_api](./figures/web-clipboard_api.gif)
 
 ## Using the W3C Clipboard Event API
 
 [Clipboard events](https://www.w3.org/TR/clipboard-apis/#clipboard-events-and-interfaces) describes the **cut**, **copy**, and **paste** events related to the clipboard. When a user performs the cut, copy, or paste operation, the corresponding event is triggered. By listening for these events, you can read and write the system clipboard or intercept the default behavior to change the copy or paste result.
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -213,11 +218,12 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("clipboard_event.html"), controller: this.controller })
+      Web({ src: $rawfile('clipboard_event.html'), controller: this.controller })
     }
   }
 }
 ```
+
 
 Loaded HTML:
 
@@ -286,8 +292,9 @@ Loaded HTML:
 
 You can set the [copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11) attribute of a **Web** component to specify the copy scope of the clipboard on the **Web** component. The available options are **CopyOptions.None** (copy is not supported), **CopyOptions.InApp** (in-application copy is supported), and **CopyOptions.LocalDevice** (in-device copy is supported). The default value is **CopyOptions.LocalDevice**, indicating that copy within a device is supported by default.
 
-```ts
-// xxx.ets
+<!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -298,12 +305,13 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("copyOptions.html"), controller: this.controller })
+      Web({ src: $rawfile('copyOptions.html'), controller: this.controller })
         .copyOptions(this.copyOption)
     }
   }
 }
 ```
+
 
 Loaded HTML:
 

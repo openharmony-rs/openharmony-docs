@@ -16,9 +16,7 @@
     - [向用户申请授权](request-user-authorization.md)
     - [再次向用户申请授权](request-user-authorization-second.md)
     - [向用户申请单次授权](one-time-authorization.md)
-    <!--Del-->
     - [申请受限权限](declare-permissions-in-acl.md)
-    <!--DelEnd-->
   - [应用权限列表](app-permissions.md)
     - [开放权限（系统授权）](permissions-for-all.md)
     - [开放权限（用户授权）](permissions-for-all-user.md)
@@ -34,4 +32,4 @@
 - 使用安全控件<!--security-components-->
   - [安全控件概述](security-component-overview.md)
   - [使用粘贴控件](pastebutton.md)
-  - [使用保存控件](savebutton.md)
+  - [使用保存控件](savebutton.md)<!--RP1--><!--RP1End-->

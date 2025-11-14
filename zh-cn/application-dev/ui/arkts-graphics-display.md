@@ -36,10 +36,10 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   Image组件引入本地图片路径，即可显示图片（根目录为ets文件夹）。不支持跨包、跨模块调用该Image组件。
 
-  <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  //  'images/view.jpg' 需要替换为开发者所需的资源文件
+  // 'images/view.jpg'需要替换为开发者所需的资源文件
   Image('images/view.jpg')
     .width(200)
   ```
@@ -52,19 +52,19 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   当前Image组件仅支持加载简单网络图片。
 
-  Image组件首次加载网络图片时，需要请求网络资源，非首次加载时，默认从缓存中直接读取图片，更多图片缓存设置请参考[setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7)、[setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7)、[setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7)。但是，这三个图片缓存接口并不灵活，且后续不继续演进，对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+  Image组件首次加载网络图片时，需要请求网络资源，非首次加载时，默认从缓存中直接读取图片，更多图片缓存设置请参考[setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7)、[setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7)、[setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7)。但是，这三个图片缓存接口并不灵活，且后续不演进，对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
 
-  网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用[HTTP](../network/http-request.md)工具提前预下载，提高图片加载性能，方便应用侧管理数据。
+  网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用[HTTP](../network/http-request.md)工具提前下载，提高图片加载性能，方便应用侧管理数据。
 
   在显示网络图片时，Image组件在机制上会依赖[缓存下载模块](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md)，开发者可参考[示例3下载与显示网络gif图片](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例3下载与显示网络gif图片)了解具体用法。
   
   缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
 
-  <!-- @[net_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  <!-- @[net_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  //  $r('app.string.LoadingResources') 需要替换为开发者所需的资源文件
-  Image($r('app.string.LoadingResources')) // 实际使用时请替换为真实地址
+  // $r('app.string.LoadingResources')需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+  Image($r('app.string.LoadingResources'))
   ```
 
 - Resource资源
@@ -77,10 +77,10 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   调用方式：
 
-  <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  //  $r('app.media.icon') 需要替换为开发者所需的资源文件
+  // $r('app.media.icon')需要替换为开发者所需的资源文件
   Image($r('app.media.icon'))
   ```
 
@@ -92,81 +92,80 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   调用方式：
 
-  <!-- @[rawfile_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  <!-- @[rawfile_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  //  $rawfile('example1.png') 需要替换为开发者所需的资源文件
+  // $rawfile('example1.png')需要替换为开发者所需的资源文件
   Image($rawfile('example1.png'))
   ```
 
 - 媒体库file://data/storage
-
+  
   支持file://路径前缀的字符串，用于访问通过[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)提供的图片路径。
-
   1. 调用接口获取图库的照片url。
-
-  <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->
+      <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->    
   
-  ``` TypeScript
-  import { photoAccessHelper } from '@kit.MediaLibraryKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  // ···
-  @Entry
-  @Component
-  struct MediaLibraryFile {
-    @State imgDatas: string[] = [];
-    // 获取照片url集
-    getAllImg() {
-      try {
-        let photoSelectOptions:photoAccessHelper.PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-        photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-        photoSelectOptions.maxSelectNumber = 5;
-        let photoPicker:photoAccessHelper.PhotoViewPicker = new photoAccessHelper.PhotoViewPicker();
-        photoPicker.select(photoSelectOptions).then((photoSelectResult:photoAccessHelper.PhotoSelectResult) => {
-          this.imgDatas = photoSelectResult.photoUris;
-          hilog.info(DOMAIN, TAG,'PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
-        }).catch((err:Error) => {
-          let message = (err as BusinessError).message;
-          let code = (err as BusinessError).code;
-          hilog.info(DOMAIN, TAG,`PhotoViewPicker.select failed with. Code: ${code}, message: ${message}`);
-        });
-      } catch (err) {
-        let message = (err as BusinessError).message;
-        let code = (err as BusinessError).code;
-        hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
-      };
-    };
-  
-    // aboutToAppear中调用上述函数，获取图库的所有图片url，存在imgDatas中
-    async aboutToAppear() {
-      this.getAllImg();
-    };
-    // 使用imgDatas的url加载图片。
-    build() {
-      Column() {
-        Grid() {
-          ForEach(this.imgDatas, (item:string) => {
-            GridItem() {
-              Image(item)
-                .width(200)
+      ``` TypeScript
+      import { photoAccessHelper } from '@kit.MediaLibraryKit';
+      import { BusinessError } from '@kit.BasicServicesKit';
+      import { hilog } from '@kit.PerformanceAnalysisKit';
+      const DOMAIN = 0x0001;
+      const TAG = 'Sample_imagecomponent';
+    
+      @Entry
+      @Component
+      struct MediaLibraryFile {
+        @State imgDatas: string[] = [];
+        // 使用PhotoViewPicker唤起图片选择器，选择图片并且渲染到页面中
+        // 获取照片url集
+        getAllImg() {
+          try {
+            let photoSelectOptions:photoAccessHelper.PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+            photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+            photoSelectOptions.maxSelectNumber = 5;
+            let photoPicker:photoAccessHelper.PhotoViewPicker = new photoAccessHelper.PhotoViewPicker();
+            photoPicker.select(photoSelectOptions).then((photoSelectResult:photoAccessHelper.PhotoSelectResult) => {
+              this.imgDatas = photoSelectResult.photoUris;
+              hilog.info(DOMAIN, TAG,'PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+            }).catch((err:Error) => {
+              let message = (err as BusinessError).message;
+              let code = (err as BusinessError).code;
+              hilog.info(DOMAIN, TAG,`PhotoViewPicker.select failed with. Code: ${code}, message: ${message}`);
+            });
+          } catch (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
+          };
+        };
+    
+        // aboutToAppear中调用上述函数，获取图库的所有图片url，存在imgDatas中
+        async aboutToAppear() {
+          this.getAllImg();
+        };
+        // 使用imgDatas的url加载图片
+        build() {
+          Column() {
+            Grid() {
+              ForEach(this.imgDatas, (item:string) => {
+                GridItem() {
+                  Image(item)
+                    .width(200)
+                }
+              }, (item:string):string => JSON.stringify(item))
             }
-          }, (item:string):string => JSON.stringify(item))
+          }.width('100%').height('100%')
         }
-      }.width('100%').height('100%')
-    }
-  }
-  ```
-
-  2. 从媒体库获取的url格式通常如下。
-
-  <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+      }
+      ```
+    2. 从媒体库获取的url格式通常如下。
+       <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
-  ``` TypeScript
-  //  'file://media/Photos/5' 需要替换为开发者所需的资源文件
-  Image('file://media/Photos/5')
-    .width(200)
-  ```
+       ``` TypeScript
+       // 'file://media/Photos/5'需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+       Image('file://media/Photos/5')
+         .width(200)
+       ```
 
 
 - base64
@@ -181,30 +180,33 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 PixelMap是图片解码后的像素图，具体用法请参考[图片开发指导](../media/image/image-overview.md)。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
 
 
-  <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
+  <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->    
   
   ``` TypeScript
   import { http } from '@kit.NetworkKit';
   import { image } from '@kit.ImageKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0001;
+  const TAG = 'Sample_imagecomponent';
   
-  // ···
   @Entry
   @Component
   struct HttpExample {
     outData: http.HttpResponse | undefined = undefined;
     code: http.ResponseCode | number | undefined = undefined;
-    @State image: PixelMap | undefined = undefined; //创建PixelMap状态变量。
+    @State image: PixelMap | undefined = undefined; // 创建PixelMap状态变量
   
+    // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
     aboutToAppear(): void {
-      http.createHttp().request('', //请填写一个具体的网络图片地址。
+      http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
         (error: BusinessError, data: http.HttpResponse) => {
           if (error) {
             hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
             return;
           };
           this.outData = data;
-          //将网络地址成功返回的数据，编码转码成pixelMap的图片格式。
+          // 将网络地址成功返回的数据，编码转码成pixelMap的图片格式
           if (http.ResponseCode.OK === this.outData.responseCode) {
             let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
             let imageSource: image.ImageSource = image.createImageSource(imageData);
@@ -220,7 +222,7 @@ PixelMap是图片解码后的像素图，具体用法请参考[图片开发指�
   
     build() {
       Column() {
-        //显示图片
+        // 显示图片
         Image(this.image)
           .height(100)
           .width(100)
@@ -235,7 +237,7 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
 
 通过DrawableDescriptor显示图片及动画的示例如下所示：
 
-  <!-- @[drawable_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets) -->
+  <!-- @[drawable_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets) -->    
   
   ``` TypeScript
   import {
@@ -261,33 +263,34 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
       iterations: -1
     };
   
+    // 开发者可利用DrawableDescriptor实现图片的分层叠加（如徽章图标），动态属性调整（如颜色滤镜），复杂动画序列等高级效果
     async aboutToAppear() {
       const resManager = this.getUIContext().getHostContext()?.resourceManager;
       if (!resManager) {
         return;
       };
       // 创建普通DrawableDescriptor
-      //  $r('app.media.landscape')需要替换为开发者所需的资源文件
+      // $r('app.media.landscape')需要替换为开发者所需的资源文件
       let pixmapDescResult = resManager.getDrawableDescriptor($r('app.media.landscape').id);
       if (pixmapDescResult) {
         this.pixmapDesc = pixmapDescResult as DrawableDescriptor;
       };
       // 创建PixelMapDrawableDescriptor
-      //  $r('app.media.landscape')需要替换为开发者所需的资源文件
+      // $r('app.media.landscape')需要替换为开发者所需的资源文件
       const pixelMap = await this.getPixmapFromMedia($r('app.media.landscape'));
       this.pixelMapDesc = new PixelMapDrawableDescriptor(pixelMap);
       // 创建分层图标
-      //  $r('app.media.foreground')需要替换为开发者所需的资源文件
+      // $r('app.media.foreground')需要替换为开发者所需的资源文件
       const foreground = await this.getDrawableDescriptor($r('app.media.foreground'));
-      //  $r('app.media.landscape')需要替换为开发者所需的资源文件
+      // $r('app.media.landscape')需要替换为开发者所需的资源文件
       const background = await this.getDrawableDescriptor($r('app.media.landscape'));
       this.layeredDesc = new LayeredDrawableDescriptor(foreground, background);
       // 创建动画图片（需加载多张图片）
-      //  $r('app.media.sky')需要替换为开发者所需的资源文件
+      // $r('app.media.sky')需要替换为开发者所需的资源文件
       const frame1 = await this.getPixmapFromMedia($r('app.media.sky'));
-      //  $r('app.media.landscape')需要替换为开发者所需的资源文件
+      // $r('app.media.landscape')需要替换为开发者所需的资源文件
       const frame2 = await this.getPixmapFromMedia($r('app.media.landscape'));
-      //  $r('app.media.clouds')需要替换为开发者所需的资源文件
+      // $r('app.media.clouds')需要替换为开发者所需的资源文件
       const frame3 = await this.getPixmapFromMedia($r('app.media.clouds'));
       if (frame1 && frame2 && frame3) {
         this.animatedDesc = new AnimatedDrawableDescriptor([frame1, frame2, frame3], this.animationOptions);
@@ -320,7 +323,6 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
     build() {
       RelativeContainer() {
         Column() {
-  
           // 显示普通图片
           Image(this.pixmapDesc)
             .width(100)
@@ -366,10 +368,10 @@ Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考
 SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
 
-  <!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  <!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
   ``` TypeScript
-  //  $r('app.media.cloud')需要替换为开发者所需的资源文件
+  // $r('app.media.cloud')需要替换为开发者所需的资源文件
   Image($r('app.media.cloud'))
     .width(50)
     .fillColor(Color.Blue)
@@ -389,11 +391,11 @@ SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
 Image加载的SVG图源路径设置方法如下所示：
 
-  <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
   ``` TypeScript
-  //  'images/icon.svg' 需要替换为开发者所需的资源文件
-  Image('images/icon.svg')
+  // 'images/icon.svg'需要替换为开发者所需的资源文件
+  Image('/images/icon.svg')
     .width(50)
     .height(50)
   ```
@@ -417,7 +419,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放。
 
 
-  <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->
+  <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
   
   ``` TypeScript
   @Entry
@@ -427,64 +429,76 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   
     build() {
       Scroll(this.scroller) {
-        Column() {
-          Row() {
-            //  $r('app.media.img_2')需要替换为开发者所需的资源文件
+        Row() {
+          Column() {
+            // $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内
               .objectFit(ImageFit.Contain)
-              .margin(15)
+              .margin({bottom:25,left:10})
+              // overlay接口暂不支持深色模式
               .overlay('Contain', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            //  $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
-            Image($r('app.media.ic_img_2'))
-              .width(200)
-              .height(150)
-              .border({ width: 1 })
-              // 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。
-              .objectFit(ImageFit.Cover)
-              .margin(15)
-              .overlay('Cover', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            //  $r('app.media.img_2')需要替换为开发者所需的资源文件
+            // $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 自适应显示。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界
+              .objectFit(ImageFit.Cover)
+              .margin({bottom:25,left:10})
+              // overlay接口暂不支持深色模式
+              .overlay('Cover', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+            // $r('app.media.img_2')需要替换为开发者所需的资源文件
+            Image($r('app.media.img_2'))
+              .width(200)
+              .height(150)
+              .border({ width: 1 })
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 自适应显示
               .objectFit(ImageFit.Auto)
-              .margin(15)
+              .margin({bottom:25,left:10})
+              // overlay接口暂不支持深色模式
               .overlay('Auto', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           }
   
-          Row() {
-            //  $r('app.media.img_2')需要替换为开发者所需的资源文件
+          Column() {
+            // $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 不保持宽高比进行放大缩小，使得图片充满显示边界。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 不保持宽高比进行放大缩小，使得图片充满显示边界
               .objectFit(ImageFit.Fill)
-              .margin(15)
+              .margin({bottom:25,left:10})
+              // overlay接口暂不支持深色模式
               .overlay('Fill', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            //  $r('app.media.img_2')需要替换为开发者所需的资源文件
+            // $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 保持宽高比显示，图片缩小或者保持不变。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持宽高比显示，图片缩小或者保持不变
               .objectFit(ImageFit.ScaleDown)
-              .margin(15)
+              .margin({bottom:25,left:10})
+              // overlay接口暂不支持深色模式
               .overlay('ScaleDown', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            //  $r('app.media.img_2')需要替换为开发者所需的资源文件
+            // $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 保持原有尺寸显示。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持原有尺寸显示
               .objectFit(ImageFit.None)
-              .margin(15)
+              .margin({bottom:25,left:10})
+              // overlay接口暂不支持深色模式
               .overlay('None', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           }
         }
@@ -501,7 +515,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用interpolation属性对图片进行插值，以提高显示清晰度。
 
 
-  <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->
+  <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -510,36 +524,44 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row() {
-          //  $r('app.media.grass')需要替换为开发者所需的资源文件
+          // $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.None)
             .borderWidth(1)
+            // overlay接口暂不支持深色模式
             .overlay('Interpolation.None', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
-          //  $r('app.media.grass')需要替换为开发者所需的资源文件
+          // $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.Low)
             .borderWidth(1)
+            // overlay接口暂不支持深色模式
             .overlay('Interpolation.Low', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
         }.width('100%')
         .justifyContent(FlexAlign.Center)
   
         Row() {
-          //  $r('app.media.grass')需要替换为开发者所需的资源文件
+          // $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.Medium)
             .borderWidth(1)
+            // overlay接口暂不支持深色模式
             .overlay('Interpolation.Medium', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
-          //  $r('app.media.grass')需要替换为开发者所需的资源文件
+          // $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.High)
             .borderWidth(1)
+            // overlay接口暂不支持深色模式
             .overlay('Interpolation.High', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
         }.width('100%')
@@ -558,7 +580,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过objectRepeat属性设置图片的重复样式方式，重复样式请参考[ImageRepeat](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#imagerepeat)枚举说明。
 
 
-  <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->
+  <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -566,33 +588,39 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   struct ImageRepetitionStyle {
     build() {
       Column({ space: 10 }) {
-        Row({ space: 5 }) {
-          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+        Column({ space: 25 }) {
+          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 在水平轴和竖直轴上同时重复绘制图片
             .objectRepeat(ImageRepeat.XY)
             .objectFit(ImageFit.ScaleDown)
-            // 在水平轴和竖直轴上同时重复绘制图片
+            // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.XY', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 只在竖直轴上重复绘制图片
             .objectRepeat(ImageRepeat.Y)
             .objectFit(ImageFit.ScaleDown)
-            // 只在竖直轴上重复绘制图片
+            // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.Y', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 只在水平轴上重复绘制图片
             .objectRepeat(ImageRepeat.X)
             .objectFit(ImageFit.ScaleDown)
-            // 只在水平轴上重复绘制图片
+            // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.X', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
         }
       }.height(150).width('100%').padding(8)
@@ -608,7 +636,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过renderMode属性设置图片的渲染模式为原色或黑白。
 
 
-  <!-- @[image_renderingmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets) -->
+  <!-- @[image_renderingmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -617,22 +645,23 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column({ space: 10 }) {
         Row({ space: 50 }) {
-          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          // $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
-            // 设置图片的渲染模式为原色
+            // 通过renderMode属性设置图片的渲染模式为原色或黑白
             .renderMode(ImageRenderMode.Original)
             .width(100)
             .height(100)
             .border({ width: 1 })
-              // overlay是通用属性，用于在组件上显示说明文字
+            // overlay接口暂不支持深色模式
             .overlay('Original', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          // $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
-            // 设置图片的渲染模式为黑白
+            // 通过renderMode属性设置图片的渲染模式为原色或黑白
             .renderMode(ImageRenderMode.Template)
             .width(100)
             .height(100)
             .border({ width: 1 })
+            // overlay接口暂不支持深色模式
             .overlay('Template', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
         }
       }.height(150).width('100%').padding({ top: 20,right: 10 })
@@ -650,7 +679,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 原图尺寸为1280×960，该示例将图片解码为40×40和90×90两个尺寸。
 
 
-  <!-- @[image_decodingsize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets) -->
+  <!-- @[image_decodingsize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -659,8 +688,9 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row({ space: 50 }) {
-          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          // $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
+          // 使用sourceSize接口对图片设置解码尺寸，降低图片分辨率
             .sourceSize({
               width: 40,
               height: 40
@@ -669,17 +699,21 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .aspectRatio(1)
             .width('25%')
             .border({ width: 1 })
+            // overlay接口暂不支持深色模式
             .overlay('width:40 height:40', { align: Alignment.Bottom, offset: { x: 0, y: 40 } })
-          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          // $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
+          // 使用sourceSize接口对图片设置解码尺寸，降低图片分辨率
             .sourceSize({
               width: 90,
               height: 90
             })
             .objectFit(ImageFit.ScaleDown)
-            .width('25%')
+            .width(100)
+            .height(100)
             .aspectRatio(1)
             .border({ width: 1 })
+            // overlay接口暂不支持深色模式
             .overlay('width:90 height:90', { align: Alignment.Bottom, offset: { x: 0, y: 40 } })
         }.height(150).width('100%').padding(20)
       }
@@ -695,7 +729,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过colorFilter调整图片的像素颜色，为图片添加滤镜。
 
 
-  <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->
+  <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -704,13 +738,14 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row() {
-          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          // $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
             .width('40%')
             .margin(10)
-          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          // $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
             .width('40%')
+            // 通过colorFilter调整图片的像素颜色，为图片添加滤镜
             .colorFilter(
                [1, 1, 0, 0, 0,
                 0, 1, 0, 0, 0,
@@ -732,10 +767,10 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 一般情况下，图片加载流程会异步进行，以避免阻塞主线程，影响UI交互。但是特定情况下，图片刷新时会出现闪烁，这时可以使用syncLoad属性，使图片同步加载，从而避免出现闪烁。不建议图片加载较长时间时使用，会导致页面无法响应。
 
 
-  <!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  <!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
   ``` TypeScript
-  //  $r('app.media.icon')需要替换为开发者所需的资源文件
+  // $r('app.media.icon')需要替换为开发者所需的资源文件
   Image($r('app.media.icon'))
     .syncLoad(true)
   ```
@@ -746,9 +781,13 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过在Image组件上绑定onComplete事件，图片加载成功后可以获取图片的必要信息。如果图片加载失败，也可以通过绑定onError回调来获得结果。
 
 
-  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->
+  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0001;
+  const TAG = 'Sample_imagecomponent';
+  
   @Entry
   @Component
   struct EventCall {
@@ -760,11 +799,12 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row() {
-          //  $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
+          // $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_img_2'))
             .width(200)
             .height(150)
             .margin(15)
+            // 图片加载成功后，通过onComplete获取图片必要信息
             .onComplete(msg => {
               if(msg){
                 this.widthValue = msg.width;
@@ -772,11 +812,13 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
                 this.componentWidth = msg.componentWidth;
                 this.componentHeight = msg.componentHeight;
               };
+              hilog.info(DOMAIN, TAG, `${msg}`);
             })
-              // 图片获取失败，打印结果
+            // 如果加载失败，使用onError触发回调函数获取结果
             .onError(() => {
               hilog.info(DOMAIN, TAG, 'load image fail');
             })
+            // overlay接口暂不支持深色模式
             .overlay('\nwidth: ' + String(this.widthValue) + ', height: ' + String(this.heightValue) + '\ncomponentWidth: ' + String(this.componentWidth) + '\ncomponentHeight: ' + String(this.componentHeight), {
               align: Alignment.Bottom,
               offset: { x: 0, y: 60 }

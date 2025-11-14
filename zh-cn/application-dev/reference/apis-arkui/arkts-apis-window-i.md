@@ -65,6 +65,19 @@
 | ------ | -------- | ---- | ---- | ------------------ |
 | statusBarContentColor   | string   | 否   | 是   | 状态栏文字颜色。默认值：`'#E5FFFFFF'`。|
 
+## FrameMetrics<sup>22+</sup>
+
+帧率指标。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| firstDrawFrame   | boolean   | 否   | 否   | 是否是首帧。true表示首帧，false表示非首帧。 |
+| inputHandlingDuration    | number   | 否   | 否   | 一帧中的手势处理耗时（单位：纳秒）。 |
+| layoutMeasureDuration  | number   | 否   | 否   | 一帧中的布局测量耗时（单位：纳秒）。 |
+| vsyncTimestamp | number   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
+
 ## Rect<sup>7+</sup>
 
 窗口矩形区域。
@@ -411,32 +424,6 @@
 | ------ | ---- | ----- | ---- | ----------------------- |
 | rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。 |
 | windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
-
-## RotationChangeCallback<sup>19+</sup>
-
-### (info: T)<sup>19+</sup>
-
-(info: T): U
-
-旋转事件通知通用回调函数。
-
-开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void。
-
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | -------------------------- |
-| info | T    | 是   | 回调函数调用时系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------------------------------- | ------------------------------------ |
-| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void类型的返回值。 |
 
 ## SubWindowOptions<sup>11+</sup>
 

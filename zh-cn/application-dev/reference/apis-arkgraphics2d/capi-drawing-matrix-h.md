@@ -61,6 +61,7 @@
 | [bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* other)](#oh_drawing_matrixisequal) | 判断两个矩阵是否相等。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixisidentity) | 判断矩阵是否是单位矩阵。  |
 | [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | 用于销毁矩阵对象并回收该对象占有的内存。 |
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)](#oh_drawing_matrixpreconcat) | 对矩阵a左乘矩阵b。 |
 
 ## 枚举类型说明
 
@@ -786,3 +787,29 @@ void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向字体对象的指针。 |
 
 
+### OH_Drawing_MatrixPreConcat()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)
+```
+
+**描述**
+
+对矩阵a左乘矩阵b。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* a | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* b | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回错误码。<br>返回OH_DRAWING_SUCCESS，表示成功执行左乘方法。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示入参异常，rect或other为空。 |

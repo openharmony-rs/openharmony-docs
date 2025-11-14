@@ -6,7 +6,7 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
-The **systemTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
+The **systemTime** module provides system time and time zone features. You can obtain the system time and time zone by using the following APIs.
 
 > **NOTE**
 >
@@ -753,7 +753,7 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 | Type  | Description                                                      |
 | ------ | ---------------------------------------------------------- |
-| boolean | Switch status of the automatic time setting.<br>- **true**: The automatic time setting is on.<br>- **false**: The automatic time setting is off. |
+| boolean | Switch status of the automatic time setting.<br>- **true**: The auto time setting is on.<br>- **false**: The auto time setting is off.|
 
 **Error codes**
 

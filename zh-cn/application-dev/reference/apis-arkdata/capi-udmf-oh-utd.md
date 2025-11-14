@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Utd OH_Utd
+```
+
 ## 概述
 
 统一数据类型描述符。

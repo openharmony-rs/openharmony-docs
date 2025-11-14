@@ -50,13 +50,15 @@ Configure the [module.json5 file](../quick-start/module-configuration-file.md) o
 
 For example, the configuration below declares that the application is associated with the domain name www.example.com.
 
-```json
+<!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
       {
-        // ...
+        // ···
         "skills": [
           {
             "entities": [
@@ -86,15 +88,16 @@ For example, the configuration below declares that the application is associated
               }
             ],
             // domainVerify must be set to true.
-           "domainVerify": true
+            "domainVerify": true
           } // Add a skill object for redirection. If there are multiple redirection scenarios, create multiple skill objects.
         ]
-      }
-    ]
+      },
+    // ···
+    ],
+    // ···
   }
 }
 ```
-
 
 ### Associating the Application on the Developer Website
 
@@ -132,22 +135,24 @@ Perform the following operations on the developer website to associate the appli
 
 Add code to the **onCreate()** or **onNewWant()** lifecycle callback of the ability (such as EntryAbility) of the application to handle the passed-in link.
 
-```ts
+<!-- @[applink_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
+export default class AppLinkEntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Obtain the input link information from want.
     // For example, the input URL is https://www.example.com/programs?action=showall.
-    let uri = want?.uri 
+    let uri = want?.uri;
     if (uri) {
       // Parse the query parameter from the link. You can perform subsequent processing based on service requirements.
       let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action')
+      let action = urlObject.params.get('action');
       // For example, if action is set to showall, all programs are displayed.
-      if (action === "showall") {
-         // ...
+      if (action === 'showall') {
+        // ...
       }
     }
   }
@@ -170,10 +175,15 @@ The **openLink** API provides two methods for starting the target application.
 
 This section describes method 1, in order to check whether the App Linking configuration is correct. The following is an example.
 
-```ts
+<!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN_NUMBER = 0xF811;
+const TAG = '[Sample_AppLinking]';
 @Entry
 @Component
 struct Index {
@@ -184,19 +194,20 @@ struct Index {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "https://www.example.com/programs?action=showall";
+        let link: string = 'https://www.example.com/programs?action=showall'; // Use the actual application link.
         // Open the application only in App Linking mode.
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            console.info('openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
           })
           .catch((error: BusinessError) => {
-            console.error(`openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
 }
 ```
+
 
 If the target application is started, the App Linking configuration of the target application is correct.
 

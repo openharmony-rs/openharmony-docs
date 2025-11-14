@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Rdb_Transaction OH_Rdb_Transaction
+```
+
 ## 概述
 
 定义[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)结构类型。

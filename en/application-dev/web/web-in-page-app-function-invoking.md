@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Register your application code with frontend pages. Then you can invoke application methods with the registered object names on frontend pages.
 
@@ -84,7 +84,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -235,7 +235,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -317,7 +317,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: ESObject): void {
-      console.log('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param["name"]);
     }
   }
 
@@ -391,7 +391,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: String): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -465,7 +465,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -579,7 +579,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -652,7 +652,7 @@ The following example registers the **test()** function with the frontend page. 
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log('Execution completed');
+          console.info('Execution completed');
           reject('fail');
         }, 10000);
       });
@@ -660,7 +660,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 
@@ -732,7 +732,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param:string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 

@@ -7,6 +7,10 @@
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_FontFullDescriptor OH_Drawing_FontFullDescriptor
+```
+
 ## 概述
 
 用于描述字体的详细信息，即字体描述符。

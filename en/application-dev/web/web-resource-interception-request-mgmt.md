@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 The **Web** component supports customization of the response to intercepted page requests. You can call [onInterceptRequest()](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) to customize web page responses, file resource responses, and more.  
@@ -16,7 +16,7 @@ When a resource loading request is initiated on a web page, the application laye
 In the following example, the **Web** component intercepts the web page request **https://www.example.com/test.html** and constructs a custom response in the application code.
 
 
-- Code of the **index.html** page:
+- Code of the **index1.html** page:
 
   ```html
   <!DOCTYPE html>
@@ -55,7 +55,7 @@ In the following example, the **Web** component intercepts the web page request 
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index1.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             if (event) {
               console.info('url:' + event.request.getRequestUrl());
@@ -85,7 +85,7 @@ Create a **CodeCache** object for a custom JS request response: If the resource 
 
 In the following example, the **Web** component intercepts the web page request **https://www.example.com/test.js**; a custom response is constructed in the application code, with the **ResponseDataID** field added to the response header.
 
-- Code of the **index.html** page:
+- Code of the **index2.html** page:
 
   ```html
   <!DOCTYPE html>
@@ -150,7 +150,7 @@ In the following example, the **Web** component intercepts the web page request 
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index2.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             // Intercept the web page request.
             if (event?.request.getRequestUrl() == 'https://www.example.com/test.js') {

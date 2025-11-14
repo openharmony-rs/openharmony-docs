@@ -90,7 +90,7 @@ try {
 }
 ```
 
-## getSelectionContent()
+## getSelectionContent()<sup>22+</sup>
 
 getSelectionContent(): Promise\<string>
 
@@ -105,10 +105,11 @@ Obtains this selected text content. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Word Selection Service Error Codes](errorcode-selection.md).
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
+| 202 | Permission denied. Called by non-system application. |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
 | 33600005   | The interface is called at the wrong time. |

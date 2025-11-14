@@ -1,17 +1,17 @@
-# Setting the Dark Mode
+# Setting Dark Mode
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @KeeGitee-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The system provides the light and dark theme modes for users. Dark mode reduces the screen brightness and visual stimulus in low-light environments, improving reading experience. The **Web** component is rendered based on the web page style. If the web page is not adapted to dark mode, it will be separated from the system theme. To ensure a consistent user experience, you need to consider users' theme preferences and adapt the web page to dark mode.
 
-ArkWeb allows you to flexibly control the dark mode of web components. The dark mode can be set independently of the system. In addition, ArkWeb can enforce dark mode on different web pages to ensure compatibility with various system themes.
+ArkWeb allows you to flexibly set dark mode for **Web** components without affecting the system. In addition, ArkWeb can enforce dark mode on different web pages to ensure compatibility with various system themes.
 
-## Adapting the Web Page to the Dark Mode
-You can adapt the web page to the dark mode using the **color-scheme** and **prefers-color-scheme** attributes.
+## Adapting Web Pages to Dark Mode
+You can adapt web pages to dark mode using the **color-scheme** and **prefers-color-scheme** attributes.
 
 - **color-scheme** is a CSS attribute that indicates the color scheme supported by a web page. It can affect the form, scroll bar, and CSS system color. The CSS system color refers to the built-in color of the **Web** component, which is the default color used when the style of some elements is not defined.
 
@@ -34,7 +34,7 @@ You can adapt the web page to the dark mode using the **color-scheme** and **pre
   }
   ```
 
-  The following figure shows the rendering effect of the **color-scheme.html** page when dark mode is enabled and disabled. When dark mode is disabled, light color scheme is used for web pages, and a custom background style is used for **input2**. When the dark mode is enabled, the web page uses dark color scheme, **input2** retains the custom style, and the colors of the web page background, font, form, progress bar, and buttons are automatically switched to the dark color.
+  The following figure shows the rendering effect of the **color-scheme.html** page when dark mode is enabled and disabled. When dark mode is disabled, light color scheme is used for web pages, and a custom background style is used for **input2**. When dark mode is enabled, the web page uses dark color scheme, **input2** retains the custom style, and the colors of the web page background, font, form, progress bar, and buttons are automatically switched to the dark color.
 
   ```html
   <!-- color-scheme.html -->
@@ -103,19 +103,19 @@ You can adapt the web page to the dark mode using the **color-scheme** and **pre
 
 ## Setting the Web Dark Mode
 
-You can use the [darkMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#darkmode9) API to configure the web dark mode, which is disabled by default. [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) can be set for applications to follow the system dark mode. You can also set [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) or [WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) to enable or disable the dark mode.
+You can use the [darkMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#darkmode9) API to configure the web dark mode, which is disabled by default. [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) can be set for applications to follow the system dark mode. You can also set [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) or [WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) to enable or disable dark mode.
 
-If you set [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) or [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) and enable the system dark mode, the web page enters the dark mode. When the dark mode is enabled, the web page uses the dark mode defined in **@media(prefers-color-scheme: dark)**. If the web page does not define the dark mode, the original mode is retained.
+If you set [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) or [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) and enable the system dark mode, the web page enters dark mode. When dark mode is enabled, the web page uses the dark style defined in **@media(prefers-color-scheme: dark)**. If the web page does not define a dark style, the original mode is retained.
 
-To forcibly convert a web page that is not adapted to the dark mode to the dark style, you can use the [forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9) API. The forcible dark mode can overwrite the default style of the web page and convert the background and text colors of the web page to the dark mode. The forcible dark mode cannot ensure that all color conversions meet the expectation.
+To forcibly convert a web page that is not adapted to dark mode to the dark style, you can use the [forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9) API. The forcible dark mode can overwrite the default style of the web page and convert the background and text colors of the web page to dark mode. The forcible dark mode cannot ensure that all color conversions meet the expectation.
 
 In forcible dark mode, the high-brightness color value is converted to a color value suitable for a low-light environment, and the low-brightness color value remains unchanged. The specific color value conversion algorithm adheres to the Chromium kernel standard and is updated in tandem with the Chromium kernel. Color conversion applies only to elements that do not support dark color schemes. If the global declaration of a web page supports the dark color scheme, the color values of the entire web page will not be converted.
 
 > **NOTE**
 >
-> If the dark mode of an element is defined in **@media(prefers-color-scheme: dark)** but the dark color scheme is not declared by using **color-scheme**, the web page converts the color value based on the dark mode, as shown in Table 1.
+> If the dark style of an element is defined in **@media(prefers-color-scheme: dark)** but the dark color scheme is not declared by using **color-scheme**, the web page converts the color value based on the dark style, as shown in Table 1.
 
-**Table 1** Relationship between the dark mode, forcible dark mode, and color-scheme
+**Table 1** Relationship between dark mode, forcible dark mode, and color-scheme
 
 | Dark Mode| Forcible Dark Mode| color-scheme | Expected Result|
 | - | - | - | - |
@@ -126,11 +126,12 @@ In forcible dark mode, the high-brightness color value is converted to a color v
 
 The [forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9) API takes effect only when the web dark mode is enabled. In the following example, the application sets the web dark mode to follow the system. When the system dark mode is enabled, the web page enters the forcible dark mode.
 
-```ts
-// xxx.ets
+<!-- @[force_the_page_to_be_configured_to_dark_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_two.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
-@Entry		
+@Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
@@ -139,7 +140,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
+      Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
         .darkMode(this.mode)
         .forceDarkAccess(this.access)
     }
@@ -147,10 +148,10 @@ struct WebComponent {
 }
 ```
 
-The code for the **index.html** page is as follows:
+The code for the **darkModePage** page is as follows:
 
 ```html
-<!-- index.html -->
+<!-- darkModePage.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,27 +172,111 @@ The code for the **index.html** page is as follows:
 </html>
 ```
 
-Figure 3 shows the style of the **index.html** page when the dark mode is disabled, the dark mode is enabled, and the forcible dark mode is enabled. When the dark mode is disabled, the web page uses the default style. After the dark mode is enabled, the color scheme of **input1** is switched to dark, and the gray background and brown text style defined in **@media (prefers-color-scheme: dark)** are used. When the forcible dark mode is enabled, the color scheme of **input1** is dark and is not converted by the web page. The web page background color, text color, and background color of **input2** are converted to those shown in (3) based on the color values in (2).
+Figure 3 shows the style of the **darkModePage.html** page in three scenarios: dark mode disabled, dark mode enabled, and forcible dark mode enabled. When dark mode is disabled, the web page uses the default style. After dark mode is enabled, the color scheme of **input1** is switched to dark, and the gray background and brown text style defined in **@media (prefers-color-scheme: dark)** are used. When the forcible dark mode is enabled, the color scheme of **input1** is dark and is not converted by the web page. The web page background color, text color, and background color of **input2** are converted to those shown in (3) based on the color values in (2).
 
 **Figure 3** Effects of the dark color mode and forcible dark color mode on the web page
 
 ![web-dark-mode](figures/arkweb_dark_mode.png)
 
+## Adapting the Web Component Background Color to Dark Mode
+
+When the **Web** component is rotated or its size changes, the web page size changes and the background color of the **Web** component may be displayed. In dark mode, you are advised to set the background color of the **Web** component to black to ensure a consistent experience with the web page background.
+
+You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) to set the background color of **Web** components. If no background color is set, the default background color white is used. In forcible dark mode, the default background color is black. If forcible dark mode is not enabled, you can use the following methods for adaptation.
+
+- When [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) and [WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) are set on the application side to control dark mode, the background color of **Web** components changes accordingly.
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State isDark: boolean = false;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
+          .darkMode(this.isDark ? WebDarkMode.On : WebDarkMode.Off)
+          .backgroundColor(this.isDark ? Color.Black : Color.White)
+      }
+    }
+  }
+  ```
+
+- When [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) is set on the application side to follow the system dark mode, the background color of **Web** components changes with the system.
+
+  ```ts
+  // EntryAbility.ets
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      // Save the current colorMode to AppStorage.
+      AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', this.context.config.colorMode);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    }
+
+    // ...
+
+    onConfigurationUpdate(newConfig: Configuration): void {
+      // Dynamically update the color mode.
+      const currentColorMode: ConfigurationConstant.ColorMode | undefined = AppStorage.get('currentColorMode');
+      if (currentColorMode !== newConfig.colorMode) {
+        AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', newConfig.colorMode);
+      }
+    }
+  }
+  ```
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { ConfigurationConstant } from '@kit.AbilityKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State bgColor: Color = Color.White;
+    @StorageProp('currentColorMode') @Watch('onCurrentColorModeChange')
+    currentColorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
+          .darkMode(WebDarkMode.Auto)
+          .backgroundColor(this.bgColor)
+      }
+    }
+
+    onCurrentColorModeChange(): void {
+      // Switch the background color based on the system settings.
+      if (this.currentColorMode === ConfigurationConstant.ColorMode.COLOR_MODE_DARK) {
+        this.bgColor = Color.Black;
+      } else {
+        this.bgColor = Color.White;
+      }
+    }
+  }
+  ```
+
+
 ## FAQs
 
-### What should I do if the web page is not switched to the dark mode?
+### What should I do if the web page is not switched to dark mode?
 
 **Symptom**
 
-The web page is not switched to the dark mode.
+The web page is not switched to dark mode.
 
 **Solution**
 
 There are multiple reasons for the switch failure. Perform the following steps to locate the fault:
 
-1. Check whether the dark mode is enabled on the web page. By default, [darkMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#darkmode9) is disabled. You need to explicitly declare [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) or [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) to enable the dark mode.
+1. Check whether dark mode is enabled on the web page. By default, [darkMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#darkmode9) is disabled. You need to explicitly declare [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) or [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) to enable dark mode.
 
-2. If the dark mode is enabled on the web page, check whether the dark style is defined for the web page.  If the dark style is not defined, the web page style remains unchanged even if the dark mode is enabled on the web page. To enable forcible adaptation, use [forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9) to enable the forcible dark mode.
+2. If dark mode is enabled on the web page, check whether the dark style is defined for the web page.  If the dark style is not defined, the web page style remains unchanged even if dark mode is enabled on the web page. To enable forcible adaptation, use [forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9) to enable the forcible dark mode.
 
 3. If the forcible dark mode is enabled on the web page, check whether the web page supports the dark color scheme. If a web page supports the dark color scheme by using **color-scheme**, the color value will not be converted by the web page in forcible dark mode. In addition, color-scheme does not affect the custom color style of elements on the web page. Therefore, the web page is not switched to the dark style. In this case, you need to modify the dark mode configuration.
 
@@ -205,7 +290,7 @@ When the forcible dark mode is enabled, the web page style conversion is abnorma
 
 In forcible dark mode, the web page uses the Chromium color value conversion algorithm to automatically adjust the element color style. The layout and style of different web pages are different. The algorithm cannot ensure that all conversions meet the expectation. You are advised to customize the dark style.
 
-### What should I do if the web page switches to a dark background when the dark mode is not enabled?
+### What should I do if the web page switches to a dark background when dark mode is not enabled?
 
 **Symptom**
 

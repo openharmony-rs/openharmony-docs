@@ -252,7 +252,7 @@ export default function abilityTest() {
     | OHOS_REPORT_STATUS: numtests | 当前测试包中测试用例总数。|
     | OHOS_REPORT_STATUS: stream | 当前用例发生错误时，记录错误信息。 |
     | OHOS_REPORT_STATUS: test| 当前用例执行的it name。 |
-    | OHOS_REPORT_STATUS_CODE | 当前用例执行结果状态。0表示通过，1表示错误，2表示失败。|
+    | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
     | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
 2. 命令行执行完成后，框架会打印如下相关日志信息。
     ```

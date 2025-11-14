@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Udmf_ProgressInfo OH_Udmf_ProgressInfo
+```
+
 ## 概述
 
 定义进度信息的数据结构。

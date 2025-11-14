@@ -1249,7 +1249,6 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
         TitleView({ tasksUnfinished: this.tasksUnfinished })
         ListView({ taskList: this.taskList, setting: this.setting });
         BottomView({ taskList: this.taskList });
-      // ···
       }
       .height('100%')
       .width('100%')

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **ClientAuthenticationHandler** object returned by the **Web** component. For details about the sample code, see [onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9).
 
@@ -24,11 +24,15 @@ Constructs a **ClientAuthenticationHandler**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-## confirm<sup>9+</sup>
+## confirm<sup>(deprecated)</sup>
 
 confirm(priKeyFile : string, certChainFile : string): void
 
 Uses the specified private key and client certificate chain.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10)<sup>10+</sup> instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

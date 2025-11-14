@@ -53,7 +53,7 @@
     - [HMAC介绍及算法规格](huks-hmac-overview.md)
     - 开发指导<!--huks-hmac-dev-->
       - [HMAC(ArkTS)](huks-hmac-arkts.md)
-      - [HMAC(C/C++)](huks-hmac-ndk.md)
+      - [HMAC(C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
 - 密钥删除<!--huks-delete-key-->
   - [密钥删除(ArkTS)](huks-delete-key-arkts.md)
   - [密钥删除(C/C++)](huks-delete-key-ndk.md)
