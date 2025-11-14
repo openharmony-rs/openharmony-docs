@@ -4,7 +4,7 @@
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 With the **Web** component, you can print HTML pages through W3C standards-compliant APIs or application APIs.
 
@@ -112,18 +112,20 @@ You can use the frontend CSS styles, for example, **@media print**, to control t
 
 - Application code:
 
-  ```ts
+  <!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct Index {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Row() {
         Column() {
-          Web({ src: $rawfile("print.html"), controller: this.controller })
+          Web({ src: $rawfile('print.html'), controller: this.controller })
             .javaScriptAccess(true)
         }
         .width('100%')

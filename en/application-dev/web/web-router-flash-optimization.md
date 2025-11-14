@@ -4,7 +4,7 @@
 <!--Owner: @wangxinbao01-->
 <!--Designer: @defeng20201-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 When an application uses a router such as the **Navigation** component to navigate to a **Web** component page, the bottom of the page may flash during web page loading, which affects user experience.
 
 ## Causes
@@ -30,7 +30,10 @@ To avoid visual flashes and improve user experience, you can set the background 
 and the background color of the web page is gray, white flashes may occur when a user navigates to a new web page. In this case, you can set the background color of the **Web** component to gray.
 
 Example of setting the background color of the **Web** component to gray (the default background color is white):
-  ```ts
+
+  <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
+
+  ``` TypeScript
   Web({ src: $rawfile('xxx.html'),  controller: this.webController})
     .backgroundColor(Color.Gray)
   ```

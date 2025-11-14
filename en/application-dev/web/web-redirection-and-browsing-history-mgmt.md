@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 To speed up page access, browsing history navigation allows users to switch between history pages with the forward and back buttons. The **Web** component supports redirection to other pages within the application and across different applications.
 
@@ -103,8 +103,9 @@ In the following example, the frontend page **route.html** is loaded on to the a
   ```
 
 - Code of the **ProfilePage.ets** page:
+  <!-- @[navigate_to_profile_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/ProfilePage.ets) -->
   
-  ```ts
+  ``` TypeScript
   @Entry
   @Component
   struct ProfilePage {

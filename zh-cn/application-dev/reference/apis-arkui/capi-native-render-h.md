@@ -1518,7 +1518,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| bool markNodeGroup | 布尔值，是否优先绘制该节点及其子节点。 |
+| bool markNodeGroup | 布尔值，是否优先绘制该节点及其子节点。<br/>true：优先绘制节点及其子节点；false：不优先绘制节点及其子节点。 |
 
 **返回：**
 | 类型 | 说明 |

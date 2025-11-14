@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebviewController** object for new **Web** components. For details about the sample code, see [onWindowNew](./arkts-basic-components-web-events.md#onwindownew9).
 

@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 A web page can be scrolled only when its content height or width exceeds the visible area. You can scroll a web page by using external devices, or by calling APIs on the ArkTS or JS side.
 
@@ -19,8 +19,11 @@ You can use the touchscreen, touchpad, and mouse to scroll the web page.
 + [scrollTo](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#scrollto): scrolls the page to a specified absolute position within a specified period.
 
   Return to the top of the page.
-  ```ts
-  this.controller.scrollTo(0, 0);
+
+  <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) -->
+  
+  ``` TypeScript
+  this.webController.scrollTo(0, 0);
   ```
 + [scrollBy](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#scrollby): scrolls the page by a specified offset within a specified period.
 
@@ -52,3 +55,65 @@ You can use the touchscreen, touchpad, and mouse to scroll the web page.
   ```javascript
   window.scrollTo (0, 500); // Scroll to a fixed pixel position (for example, 500 px).
   ```
+
+## Scrolling to the Top by Tapping the Status Bar
+
+By calling the [backToTop](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#backtotop22) method, you can touch the status bar to interrupt the fling and scroll back to the top of the web page.
+
++ The sample code is as follows:
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .backToTop(true)
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+          .blue {
+            background-color: lightblue;
+          }
+          .green {
+            background-color: lightgreen;
+          }
+          .blue, .green {
+           font-size:16px;
+           height:200px;
+           text-align: center;       /* Horizontally centered */
+           line-height: 200px;       /* Vertically centered (the height matches the container height) */
+          }
+      </style>
+  </head>
+  <body>
+  <div class="blue" >webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  <div class="green">webArea</div>
+  <div class="blue">webArea</div>
+  </body>
+  </html>
+  ```
+
++ Effect<br>
+![backToTop](figures/backToTop.gif)

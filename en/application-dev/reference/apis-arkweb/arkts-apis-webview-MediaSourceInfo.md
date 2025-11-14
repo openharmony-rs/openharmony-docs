@@ -4,7 +4,7 @@
 <!--Owner: @zhangyao75477-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **MediaSourceInfo** object to provide the information about the media source.
 

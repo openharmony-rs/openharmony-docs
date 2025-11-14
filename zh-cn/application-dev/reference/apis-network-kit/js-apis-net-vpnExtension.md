@@ -71,7 +71,7 @@ startVpnExtensionAbility(want: Want): Promise\<void>
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -142,7 +142,7 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -374,7 +374,7 @@ protect(socketFd: number): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -432,7 +432,7 @@ destroy(): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -483,7 +483,7 @@ destroy(vpnId: string): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -571,7 +571,7 @@ protectProcessNet(): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -610,7 +610,7 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。                                  |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。最多支持64个IP地址。                                  |
 | vpnId<sup>20+</sup>           | string | 否 | 是 | VPN唯一标识。 | 
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（目前最多可配置1024条路由）。                  |
 | dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。                                    |

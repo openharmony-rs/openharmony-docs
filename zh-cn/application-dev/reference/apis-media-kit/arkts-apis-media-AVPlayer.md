@@ -227,7 +227,7 @@ async function test(){
 
 setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
-流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。[视频播放开发指导](../../media/media/video-playback.md)。通过Promise获取返回值。
+流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 When **layoutMode(WebLayoutMode.FIT_CONTENT)** is used, the size of the **Web** component can automatically fit in the page content.
 
@@ -25,7 +25,7 @@ As shown in Figure 1, the height of the **Web** component is the same as the scr
 
 **Content-fitting web layout**
 
-As shown in Figure 3, the height of both the **Web** component and the HTML5 page is 8000 px. In this case, no scroll bar is generated in the **Web** component. When a user scrolls the page, other ArkUI components are scrolled at the same time, and the **Web** component is displayed on the entire screen, as shown in Figure 4.
+As shown in Figure 3, the height of the **Web** component automatically adapts to the HTML5 page. As shown in the right figure, the height of the **Web** component and the HTML5 page is 8000 px. In this case, no scroll bar is generated in the **Web** component. When a user scrolls the page, other ArkUI components is scrolled at the same time, and the **Web** component is displayed on the entire screen. Figure 4 shows the actual effect.
 
 | Figure 3 Web layout fitting in the page content| Figure 4 Real effect of the web layout|
 | --- | --- |
@@ -43,15 +43,16 @@ As shown in Figure 3, the height of both the **Web** component and the HTML5 pag
 
 ## Sample Code
 
-```typescript
-// fit_content_test.ets
+<!-- @[a_page_that_contains_a_webview_and_text_in_the_comment_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/FitPageContent.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct WebHeightPage {
-  private webviewController: WebviewController = new webview.WebviewController()
-  private scroller: Scroller = new Scroller()
+  private webviewController: WebviewController = new webview.WebviewController();
+  private scroller: Scroller = new Scroller();
 
   build() {
     Navigation() {
@@ -59,7 +60,7 @@ struct WebHeightPage {
         Scroll(this.scroller) {
           Column() {
             Web({
-              src: $rawfile("fit_content.html"),
+              src: $rawfile('fit_content.html'),
               controller: this.webviewController,
               renderMode: RenderMode.SYNC_RENDER // Set the synchronous rendering mode.
             })
@@ -67,19 +68,20 @@ struct WebHeightPage {
               .overScrollMode (OverScrollMode.NEVER) // Disable the overscroll mode.
             Text('Comments')
               .fontSize(28)
-              .fontColor("#FF0F0F")
+              .fontColor('#FF0F0F')
               .height(100)
-              .width("100%")
-              .backgroundColor("#f89f0f")
+              .width('100%')
+              .backgroundColor('#f89f0f')
           }
         }
-
       }
     }
-    .title("Title bar")
+    .title('Title')
   }
 }
 ```
+
+The code for the **fit_content.html** page is as follows:
 
 ```html
 <!--fit_content.html-->
@@ -145,7 +147,7 @@ struct WebHeightPage {
 **Solution**
 
 - Change the rendering mode to [synchronous rendering mode](web-render-mode.md#synchronous-rendering-mode).
-- Configure `<\meta name="viewport" content="width=device-width, initial-scale=1.0">` on the HTML5 page.
+- Configure `<meta name="viewport" content="width=device-width, initial-scale=1.0">` on the HTML5 page.
 
 
 ### What should I do if a white screen is displayed or the page disappears after FIT_CONTENT is set?

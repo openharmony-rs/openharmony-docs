@@ -686,6 +686,8 @@ struct Index {
 <!-- @[Local_Question_Expected_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets) -->
 
 ``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
@@ -699,12 +701,10 @@ struct Index {
         .margin(20)
         .onClick(() => {
           // 在执行动画前，存在额外的修改
-          this.w = 100;
-          this.h = 100;
-          this.message = 'Hello World';
-          animateToImmediately({
-            duration: 0
-          }, () => {
+          UIUtils.applySync(() => {
+            this.w = 100;
+            this.h = 100;
+            this.message = 'Hello World';
           })
           this.getUIContext().animateTo({
             duration: 1000

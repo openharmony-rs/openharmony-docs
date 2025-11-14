@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **FullScreenExitHandler** object to notify you that the **Web** component exits full screen mode. For details about the sample code, see [onFullScreenEnter](./arkts-basic-components-web-events.md#onfullscreenenter9).
 

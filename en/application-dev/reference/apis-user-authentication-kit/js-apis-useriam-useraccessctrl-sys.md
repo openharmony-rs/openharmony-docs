@@ -81,13 +81,13 @@ Verifies an authentication token.
 
 **Error codes**
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
 | 201      | Permission denied.        |
 | 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 | 12500015 | AuthToken integrity check failed.     |
 | 12500016 | AuthToken has expired.                |

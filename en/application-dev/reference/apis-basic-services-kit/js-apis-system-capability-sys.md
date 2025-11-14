@@ -24,7 +24,7 @@ import { systemcapability } from '@kit.BasicServicesKit';
 
 querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 
-Queries system capabilities. This API uses an asynchronous callback to return the result.
+Queries the system capabilities. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Developtools.Syscap
 
@@ -55,7 +55,7 @@ try {
 
 querySystemCapabilities(): Promise&lt;string&gt;
 
-Queries system capabilities. This API uses a promise to return the result.
+Queries the system capabilities. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Developtools.Syscap
 

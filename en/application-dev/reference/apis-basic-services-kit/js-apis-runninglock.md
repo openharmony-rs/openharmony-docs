@@ -23,7 +23,7 @@ import {runningLock} from '@kit.BasicServicesKit';
 
 isSupported(type: RunningLockType): boolean
 
-Checks whether a specified type of **RunningLock** is supported.
+**API description**: Checks whether the system supports the running lock of a specified type.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -62,7 +62,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -149,7 +149,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
 
-Checks whether a specified type of **RunningLock** is supported. This API uses an asynchronous callback to return the result.
+**API description**: Checks whether the system supports the running lock of a specified type. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -178,7 +178,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
 
-Checks whether a specified type of **RunningLock** is supported. This API uses a promise to return the result.
+**API description**: Checks whether the system supports the running lock of a specified type. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -212,7 +212,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -244,7 +244,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -283,7 +283,7 @@ Defines a **RunningLock** object.
 
 hold(timeout: number): void
 
-Locks and holds a **RunningLock** object.
+**API description**: Holds a running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -339,11 +339,13 @@ class RunningLockTest {
 
 unhold(): void
 
-Releases a **RunningLock** object.
+**API description**: Unholds this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
 **Required permission**: ohos.permission.RUNNING_LOCK
+
+**Parameters**: none
 
 **Error codes**
 
@@ -389,9 +391,11 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-Checks the hold status of the **RunningLock** object.
+**API description**: Checks whether this running lock is held.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**: none
 
 **Returns**
 
@@ -432,7 +436,7 @@ lock(timeout: number): void
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9).
 
-Locks and holds a **RunningLock** object.
+**API description**: Locks a running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -463,9 +467,11 @@ unlock(): void
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9).
 
-Releases a **RunningLock** object.
+**API description**: Unlocks this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**: none
 
 **Required permission**: ohos.permission.RUNNING_LOCK
 
@@ -488,9 +494,11 @@ isUsed(): boolean
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9).
 
-Checks the hold status of the **RunningLock** object.
+**API description**: Checks whether this running lock is used.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**: none
 
 **Returns**
 | Type   | Description                                                        |

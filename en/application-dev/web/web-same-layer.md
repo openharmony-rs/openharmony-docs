@@ -4,7 +4,7 @@
 <!--Owner: @ding-xin88-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 In the system, applications can use the **Web** component to load web pages. If the capability or performance of non-system UI components is inferior to that of system components, you can use the ArkUI component to render these components (same-layer components).
 
@@ -46,7 +46,7 @@ The following specifications take effect in both web pages and third-party frame
 
 - Self-drawing components: [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md), [Web](../reference/apis-arkweb/arkts-basic-components-web.md)
 
-- Command-based custom drawing nodes: [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md), [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md), [Graphics](../reference/apis-arkui/js-apis-arkui-graphics.md), [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), [XComponentNode](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md), [AttributeUpdater](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) and CAPI. (The components that support same-layer rendering are the same as that of ArkTS.)
+- Command-based custom drawing nodes: [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md), [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md), [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md), [Graphics](../reference/apis-arkui/js-apis-arkui-graphics.md), [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md), [XComponentNode](../reference/apis-arkui/js-apis-arkui-xcomponentNode.md), [AttributeUpdater](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) and [CAPI](../reference/apis-arkui/capi-arkui-nativemodule.md). (The components that support same-layer rendering are the same as that of ArkTS.)
 
 **Supported Common Component Attributes and Events**:
 
@@ -98,6 +98,15 @@ The [onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-compone
 - The visibility of the same-layer tag relative to the viewport can be reported.
 
 - By default, visibility changes caused by the CSS style or size change of the same-layer tag are not reported. For details, see [onNativeEmbedVisibilityChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedvisibilitychange12).
+
+Status change of the **param** element embedded in the same-layer rendering tag **\<object>**:
+The [onNativeEmbedObjectParamChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedobjectparamchange21) callback is triggered when the param element of the same-layer rendering tag **\<object>** changes.
+
+- The addition, modification, and deletion of the **param** element can be reported.
+
+- A maximum of 500 **param** element changes can be reported at a time. More changes will be reported subsequently.
+
+- For details about the report, see [NativeEmbedParamDataInfo](../reference/apis-arkweb/arkts-basic-components-web-i.md#nativeembedparamdatainfo21).
 
 **Constraints**:
 
@@ -446,7 +455,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    - Tapping or holding with the left, middle, or right mouse button.
    - Tapping or holding the left, middle, or right mouse button using the touchpad.
 
-   Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events of the same-layer rendered region.
+   Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events in the same-layer rendering region.
 
     ```ts
     build() {
@@ -496,15 +505,17 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
     ```
 **Sample Code**
 
-To start with, add network permissions to module.json5. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
+To start with, add network permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/module.json5) -->
+
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
 
 Code on the application side:
 
@@ -987,7 +998,7 @@ Code on the application side:
   ```ts
   // HAP's src/main/ets/pages/PlayerDemo.ets
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export class AVPlayerDemo {
     private count: number = 0;
@@ -1358,7 +1369,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
 
 - Example of a frontend page:
 
-  The sample code uses the **\<embed>** tag. If the **\<object>** tag is used, register the **\<object>** tag and **\<type>** on the eTS side.
+  The sample code uses the **\<embed>** tag. To use the **\<object>** tag, register it and **\<type>** on the eTS side.
   ```html
   <!--HAP's src/main/resources/rawfile/overlay.html-->
   <!DOCTYPE html>

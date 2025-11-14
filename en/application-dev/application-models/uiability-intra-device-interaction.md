@@ -30,38 +30,40 @@ Assume that your application has two UIAbility components: EntryAbility and Func
 
 1. In EntryAbility, call [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) and pass the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter to start the UIAbility instance. In the **want** parameter, **bundleName** indicates the bundle name of the application to start; **abilityName** indicates the name of the UIAbility to start; **moduleName** is required only when the target UIAbility belongs to a different module from EntryAbility; **parameters** is used to carry custom information. For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-    ```ts
+    <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+
+    ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
 
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct MainPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
       build() {
         Column() {
-          //...
-          List({ initialIndex: 0 }) {
+          List({ initialIndex: 0, space: 8 }) {
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 // Context is a member of the ability object and is required for invoking inside a non-ability object.
                 // Pass in the Context object.
                 let wantInfo: Want = {
                   deviceId: '', // An empty deviceId indicates the local device.
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilityinteraction',
                   moduleName: 'entry', // moduleName is optional.
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // Custom information.
-                    info: 'From Page_UIAbilityComponentsInteractive of EntryAbility'
+                    // The value of app.string.main_page_return_info in the resource file is 'From EntryAbility MainPage'.
+                   info: $r('app.string.main_page_return_info')
                   },
                 };
                 // context is the UIAbilityContext of the initiator UIAbility.
@@ -72,27 +74,32 @@ Assume that your application has two UIAbility components: EntryAbility and Func
                 });
               })
             }
-            //...
+            // ···
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
 
 2. In FuncAbility, use [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) to receive the parameters passed in by EntryAbility.
 
-    ```ts
+    <!-- @[Ability_FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityA.ets) -->
+
+    ``` TypeScript
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    // ···
 
     export default class FuncAbilityA extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Receive the parameters passed by the initiator UIAbility.
         let funcAbilityWant = want;
         let info = funcAbilityWant?.parameters?.info;
+        // ···
       }
-      //...
+
+    // ···
     }
     ```
 
@@ -102,20 +109,23 @@ Assume that your application has two UIAbility components: EntryAbility and Func
 
 3. To stop the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance after the FuncAbility service is not needed, call [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) in FuncAbility.
 
-    ```ts
+    <!-- @[FuncAbilityAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const TAG: string = '[Page_FromStageModel]';
+    
+    const TAG: string = '[FuncAbilityAPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_FromStageModel {
+    struct FuncAbilityAPage {
+    
       build() {
         Column() {
-          //...
-          Button('FuncAbilityB')
+          // The value of app.string.Stop_AbilityA in the resource file is 'StopFuncAbilityA'.
+          Button($r('app.string.Stop_AbilityA'))
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               // context is the UIAbilityContext of the UIAbility instance to stop.
@@ -126,8 +136,9 @@ Assume that your application has two UIAbility components: EntryAbility and Func
                 }
               });
             })
+            // ···
         }
-        //...
+        // ···
       }
     }
     ```
@@ -145,36 +156,43 @@ When starting FuncAbility from EntryAbility, you may want the result to be retur
 
 1. In EntryAbility, call [startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2) to start FuncAbility. Use **data** in the asynchronous callback to receive information returned after FuncAbility stops itself. For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-    ```ts
+    <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    
+    ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    
+    const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct MainPage {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    
       build() {
         Column() {
-          //...
-          List({ initialIndex: 0 }) {
+          List({ initialIndex: 0, space: 8 }) {
+    
+            // ···
+    
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
                 const RESULT_CODE: number = 1001;
                 let want: Want = {
                   deviceId: '', // An empty deviceId indicates the local device.
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilityinteraction',
                   moduleName: 'entry', // moduleName is optional.
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // Custom information.
-                    info: 'From UIAbilityComponentsInteractive of EntryAbility'
+                    // The value of app.string.main_page_return_info in the resource file is 'From EntryAbility MainPage'.
+                    info: $r('app.string.main_page_return_info')
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
@@ -194,46 +212,52 @@ When starting FuncAbility from EntryAbility, you may want the result to be retur
                 });
               })
             }
-            //...
+    
+            // ···
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
 
 2. Call [terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to stop FuncAbility. Use the input parameter [abilityResult](../reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md) to carry the information that FuncAbility needs to return to EntryAbility.
 
-    ```ts
+    <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const TAG: string = '[Page_FuncAbilityA]';
+    
+    const TAG: string = '[FuncAbilityAPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_FuncAbilityA {
+    struct FuncAbilityAPage {
+    
       build() {
         Column() {
-          //...
+        // ···
+    
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: number = 1001;
+                const RESULT_CODE: number = 1001; // Result returned by FuncAbilityA.
                 let abilityResult: common.AbilityResult = {
                   resultCode: RESULT_CODE,
                   want: {
-                    bundleName: 'com.samples.stagemodelabilitydevelop',
+                    bundleName: 'com.samples.uiabilityinteraction',
                     moduleName: 'entry', // moduleName is optional.
-                    abilityName: 'FuncAbilityB',
+                    abilityName: 'FuncAbilityA',
                     parameters: {
-                      info: 'From the Index page of FuncAbility'
+                      // The value of app.string.ability_return_info in the resource file is 'From FuncAbility Index page'.
+                      info: $r('app.string.ability_return_info')
                     },
                   },
                 };
@@ -245,48 +269,53 @@ When starting FuncAbility from EntryAbility, you may want the result to be retur
                 });
               })
             }
-            //...
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
 
 3. After FuncAbility stops itself, EntryAbility uses [startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2) to receive the information returned by FuncAbility. The value of **RESULT_CODE** must be the same as that specified in the preceding step.
 
-    ```ts
+    <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    
+    ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    
+    const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct MainPage {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    
       build() {
         Column() {
-          //...
-          List({ initialIndex: 0 }) {
+          List({ initialIndex: 0, space: 8 }) {
+    
+            // ···
+    
             ListItem() {
               Row() {
-                //...
+                // ···
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
                 const RESULT_CODE: number = 1001;
-
                 let want: Want = {
                   deviceId: '', // An empty deviceId indicates the local device.
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilityinteraction',
                   moduleName: 'entry', // moduleName is optional.
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // Custom information.
-                    info: 'From UIAbilityComponentsInteractive of EntryAbility'
+                    // The value of app.string.main_page_return_info in the resource file is 'From EntryAbility MainPage'.
+                    info: $r('app.string.main_page_return_info')
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
@@ -306,11 +335,12 @@ When starting FuncAbility from EntryAbility, you may want the result to be retur
                 });
               })
             }
-            //...
+    
+            // ···
           }
-          //...
+        // ···
         }
-        //...
+        // ···
       }
     }
     ```
@@ -334,32 +364,39 @@ This section describes how to start a specified page in both modes: [cold start]
 
 When the initiator [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) starts another UIAbility, it usually needs to redirect to a specified page of the target UIAbility. For example, with FuncAbility, which contains two pages, starting FuncAbility means to redirect to either of the pages: Index (corresponding to the home page) and Second (corresponding to feature A page). You can configure the specified page URL in the want parameter by adding a custom parameter to parameters in [want](../reference/apis-ability-kit/js-apis-app-ability-want.md). For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-```ts
+
+<!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+const TAG: string = '[MainPage]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Page_UIAbilityComponentsInteractive {
+struct MainPage {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
   build() {
     Column() {
-      //...
-      List({ initialIndex: 0 }) {
+      List({ initialIndex: 0, space: 8 }) {
+
+        // ···
+
         ListItem() {
           Row() {
-            //...
+            // ···
           }
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
             let want: Want = {
               deviceId: '', // An empty deviceId indicates the local device.
-              bundleName: 'com.samples.stagemodelabilityinteraction',
+              bundleName: 'com.samples.uiabilityinteraction',
               moduleName: 'entry', // moduleName is optional.
-              abilityName: 'FuncAbility',
+              abilityName: 'ColdStartAbility',
               parameters: { // Custom parameter used to pass the page information.
                 router: 'funcA'
               }
@@ -372,11 +409,12 @@ struct Page_UIAbilityComponentsInteractive {
             });
           })
         }
-        //...
+
+        // ···
       }
-      //...
+    // ···
     }
-    //...
+    // ···
   }
 }
 ```
@@ -386,17 +424,20 @@ struct Page_UIAbilityComponentsInteractive {
 
 In cold start mode, obtain the parameters from the initiator [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) through the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) callback of the target UIAbility. Then, in the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) callback of the target UIAbility, parse the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter passed by the EntryAbility to obtain the URL of the page to be loaded, and pass the URL to the [windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) method.
 
-```ts
+
+<!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, Want, UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window, UIContext } from '@kit.ArkUI';
 
 const DOMAIN_NUMBER: number = 0xFF00;
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[ColdStartAbility]';
 
-export default class EntryAbility extends UIAbility {
-  funcAbilityWant: Want | undefined = undefined;
-  uiContext: UIContext | undefined = undefined;
+export default class ColdStartAbility extends UIAbility {
+  private funcAbilityWant: Want | undefined = undefined;
+  private uiContext: UIContext | undefined = undefined;
 
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Receive the parameters passed by the initiator UIAbility.
@@ -409,10 +450,10 @@ export default class EntryAbility extends UIAbility {
     // Main window is created. Set a main page for this UIAbility.
     let url = 'pages/Index';
     if (this.funcAbilityWant?.parameters?.router && this.funcAbilityWant.parameters.router === 'funcA') {
-      url = 'pages/Page_ColdStartUp';
+      url = 'pages/ColdPage';
     }
     windowStage.loadContent(url, (err, data) => {
-      // ...
+    // ···
     });
   }
 }
@@ -430,41 +471,36 @@ An example scenario is as follows:
 4. The user touches the SMS button next to the contact. The UIAbility instance of the SMS application is restarted.
 5. Since the UIAbility instance of the SMS application has been started, the onNewWant() callback of the UIAbility is triggered, and the initialization logic such as [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) is skipped.
 
-**Figure 1** Hot starting the target UIAbility
-
+**Figure 1** Hot starting the target UIAbility 
 ![](figures/uiability-hot-start.png)
 
 The development procedure is as follows:
 
 1. When the UIAbility instance of the SMS application is cold started, call [getUIContext()](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10) in the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) lifecycle callback to obtain the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
 
-    ```ts
+    <!-- @[HotAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { Want, UIAbility } from '@kit.AbilityKit';
     import { window, UIContext } from '@kit.ArkUI';
-
     const DOMAIN_NUMBER: number = 0xFF00;
-    const TAG: string = '[EntryAbility]';
-
-    export default class EntryAbility extends UIAbility {
-      funcAbilityWant: Want | undefined = undefined;
-      uiContext: UIContext | undefined = undefined;
-
-      // ...
-
+    const TAG: string = '[HotStartAbility]';
+    
+    export default class HotStartAbility extends UIAbility {
+      private funcAbilityWant: Want | undefined = undefined;
+      private uiContext: UIContext | undefined = undefined;
+     // ···
+     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created. Set a main page for this UIAbility.
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
         let url = 'pages/Index';
-        if (this.funcAbilityWant?.parameters?.router && this.funcAbilityWant.parameters.router === 'funcA') {
-          url = 'pages/Page_ColdStartUp';
-        }
-
         windowStage.loadContent(url, (err, data) => {
           if (err.code) {
             return;
           }
-
+    
           let windowClass: window.Window;
           windowStage.getMainWindow((err, data) => {
             if (err.code) {
@@ -477,6 +513,8 @@ The development procedure is as follows:
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
         });
       }
+    
+    // ···
     }
     ```
 
@@ -484,26 +522,30 @@ The development procedure is as follows:
 
     1. Import the required modules, and set the global variable **nameForNavi** in the **onNewWant()** lifecycle callback.
 
-        ```ts
-        import { AbilityConstant, Want, UIAbility } from '@kit.AbilityKit';
+        <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
+        
+        ``` TypeScript
         import { hilog } from '@kit.PerformanceAnalysisKit';
-
+        import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+        // ···
         const DOMAIN_NUMBER: number = 0xFF00;
-        const TAG: string = '[EntryAbility]';
-
-        export default class EntryAbility extends UIAbility {
-          // ...
+        const TAG: string = '[HotStartAbility]';
+        
+        export default class HotStartAbility extends UIAbility {
+        // ···
+        
           onNewWant(want: Want, launchParam: AbilityConstant.   LaunchParam): void {
             hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'onNewWant');
-            AppStorage.setOrCreate<string>('nameForNavi', 'pageOne'); 
+            AppStorage.setOrCreate<string>('nameForNavi', 'pageOne');
           }
         }
         ```
 
     2. When the Index page is displayed, trigger the **onPageShow** callback to obtain the value of **nameForNavi**, and execute the page navigation.
 
-        ```ts
-        // Index.ets
+        <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
+
+        ``` TypeScript
         @Entry
         @Component
         struct Index {
@@ -539,8 +581,9 @@ The development procedure is as follows:
 
     3. Implement the **Navigation** subpage.
 
-        ```ts
-        // PageOne.ets
+        <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
+
+        ``` TypeScript
         @Builder
         export function PageOneBuilder() {
           PageOne();
@@ -592,12 +635,14 @@ The development procedure is as follows:
 
     5. Configure **routerMap** in the [module.json5](../quick-start/module-configuration-file.md#routermap) file.
 
-        ```ts
-        // module.json5
+        <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
+        
+        ``` JSON5
         {
-          "module":{
-            // ...
-            "routerMap": "$profile:route_map",
+          "module": {
+            // ···
+            "routerMap": "$profile:router_map",
+            // ···
           }
         }
         ```
@@ -621,8 +666,8 @@ The window mode is specified by the **windowMode** field in the [StartOptions](.
 
 > **NOTE**
 >
-> - If the **windowMode** field is not specified, the UIAbility is started in the default window mode.
-> - To ensure that the application can be displayed in the required window mode, check the **supportWindowMode** field under [abilities](../quick-start/module-configuration-file.md#abilities) in the [module.json5 file](../quick-start/module-configuration-file.md) of the UIAbility and make sure the specified window mode is supported.
+> 1. If the **windowMode** field is not specified, the UIAbility is started in the default window mode.
+> 2. To ensure that the application can be displayed in the required window mode, check the **supportWindowMode** field under [abilities](../quick-start/module-configuration-file.md#abilities) in the [module.json5 file](../quick-start/module-configuration-file.md) of the UIAbility and make sure the specified window mode is supported.
 
 The following describes how to start the FuncAbility from the EntryAbility page and display it in floating window mode.
 
@@ -632,39 +677,46 @@ The following describes how to start the FuncAbility from the EntryAbility page 
 
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-```ts
-import { AbilityConstant, common, Want, StartOptions } from '@kit.AbilityKit';
+<!-- @[FuncAbility_Window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+
+``` TypeScript
+import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+const TAG: string = '[MainPage]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Page_UIAbilityComponentsInteractive {
+struct MainPage {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
   build() {
     Column() {
-      //...
-      List({ initialIndex: 0 }) {
+      List({ initialIndex: 0, space: 8 }) {
+
+        // ···
+
         ListItem() {
           Row() {
-            //...
+            // ···
           }
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
             let want: Want = {
               deviceId: '', // An empty deviceId indicates the local device.
-              bundleName: 'com.samples.stagemodelabilitydevelop',
+              bundleName: 'com.samples.uiabilityinteraction',
               moduleName: 'entry', // moduleName is optional.
-              abilityName: 'FuncAbilityB',
+              abilityName: 'HotStartAbility',
               parameters: {
                 // Custom information.
-                info: 'From the Index page of EntryAbility'
+                // The value of app.string.index_return_info in the resource file is 'From EntryAbility Index page'.
+                info: $r('app.string.index_return_info')
               }
             };
             let options: StartOptions = {
-              windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING
+              windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING,
             };
             // context is the UIAbilityContext of the initiator UIAbility.
             context.startAbility(want, options).then(() => {
@@ -674,11 +726,10 @@ struct Page_UIAbilityComponentsInteractive {
             });
           })
         }
-        //...
       }
-      //...
+    // ···
     }
-    //...
+    // ···
   }
 }
 ```
@@ -717,7 +768,6 @@ Call is usually used in the following scenarios:
 The following figure shows the call process.
 
 **Figure 1** Call process
-
 ![call](figures/call.png)
 
 - The CallerAbility uses [startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to obtain a [Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller) object and uses [call](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#call) of the Caller object to send data to the CalleeAbility.
@@ -725,12 +775,11 @@ The following figure shows the call process.
 - The CalleeAbility, which holds a [Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee) object, uses [on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on) of the Callee object to register a callback. This callback is invoked when the CalleeAbility receives data from the CallerAbility.
 
 > **NOTE**
+> 1. Currently, only system applications can use the call.
 >
-> Currently, only system applications can use the call.
+> 2. The launch type of the CalleeAbility must be **singleton**.
 >
-> The launch type of the CalleeAbility must be **singleton**.
->
-> Both local (intra-device) and cross-device calls are supported. The following describes how to initiate a local call. For details about how to initiate a cross-device call, see [Using Cross-Device Call](hop-multi-device-collaboration.md#using-cross-device-call).
+> 3. Both local (intra-device) and cross-device calls are supported. The following describes how to initiate a local call. For details about how to initiate a cross-device call, see [Using Cross-Device Call](hop-multi-device-collaboration.md#using-cross-device-call).
 
 
 ### Available APIs
@@ -766,20 +815,25 @@ For the CalleeAbility, implement the callback to receive data and the methods to
 
 2. Import the **UIAbility** module.
 
-   ```ts
+   <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    ```
 
 3. Define the agreed parcelable data.
-
    The data formats sent and received by the CallerAbility and CalleeAbility must be consistent. In the following example, the data formats are number and string.
 
-    ```ts
+
+    <!-- @[MyParcelable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
+
+    ``` TypeScript
     import { rpc } from '@kit.IPCKit';
+    // ···
 
     class MyParcelable {
-      num: number = 0;
-      str: string = '';
+      public num: number = 0;
+      public str: string = '';
 
       constructor(num: number, string: string) {
         this.num = num;
@@ -809,7 +863,10 @@ For the CalleeAbility, implement the callback to receive data and the methods to
 
    The time to register a listener for the CalleeAbility depends on your application. The data sent and received before the listener is registered and that after the listener is deregistered are not processed. In the following example, the 'MSG_SEND_METHOD' listener is registered in [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) of the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) and deregistered in [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy). After receiving parcelable data, the application processes the data and returns the data result. You need to implement processing based on service requirements. The sample code is as follows:
 
-    ```ts
+
+    <!-- @[CalleeAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
+
+    ``` TypeScript
     import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { rpc } from '@kit.IPCKit';
@@ -819,8 +876,8 @@ For the CalleeAbility, implement the callback to receive data and the methods to
     const TAG: string = '[CalleeAbility]';
 
     class MyParcelable {
-      num: number = 0;
-      str: string = '';
+      public num: number = 0;
+      public str: string = '';
 
       constructor(num: number, string: string) {
         this.num = num;
@@ -860,7 +917,7 @@ For the CalleeAbility, implement the callback to receive data and the methods to
     }
 
     export default class CalleeAbility extends UIAbility {
-      caller: Caller | undefined;
+      private caller: Caller | undefined;
 
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -899,7 +956,9 @@ For the CalleeAbility, implement the callback to receive data and the methods to
 
 1. Import the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) module.
 
-    ```ts
+    <!-- @[UIAbility_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     import { UIAbility } from '@kit.AbilityKit';
     ```
 
@@ -907,17 +966,19 @@ For the CalleeAbility, implement the callback to receive data and the methods to
 
    The [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) attribute implements [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to obtain the Caller object for communication. The following example uses **this.context** to obtain the UIAbilityContext, uses **startAbilityByCall** to start the CalleeAbility, obtain the Caller object, and register the [onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease) listener of the CallerAbility. You need to implement processing based on service requirements.
 
-    ```ts
+    <!-- @[startAbilityByCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartUIAbilityByCaller/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
     import { common, Want, Caller } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    const TAG: string = '[Index]';
     const DOMAIN_NUMBER: number = 0xFF00;
 
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct Index {
       caller: Caller | undefined = undefined;
 
       // Register the onRelease() listener of the CallerAbility.
@@ -937,17 +998,15 @@ For the CalleeAbility, implement the callback to receive data and the methods to
 
       build() {
         Column() {
-          // ...
           List({ initialIndex: 0 }) {
-            // ...
             ListItem() {
               Row() {
-                // ...
+                // ···
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
                 let want: Want = {
-                  bundleName: 'com.samples.stagemodelabilityinteraction',
+                  bundleName: 'com.samples.uiabilityinteraction',
                   abilityName: 'CalleeAbility',
                   parameters: {
                     // Custom information.
@@ -971,7 +1030,7 @@ For the CalleeAbility, implement the callback to receive data and the methods to
                     } catch (releaseErr) {
                       let code = (releaseErr as BusinessError).code;
                       let msg = (releaseErr as BusinessError).message;
-                      console.error(`Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
+                      hilog.error(DOMAIN_NUMBER, TAG, `Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
                     }
                   }
                 }).catch((err: BusinessError) => {
@@ -979,13 +1038,13 @@ For the CalleeAbility, implement the callback to receive data and the methods to
                 });
               })
             }
-            // ...
           }
-          // ...
+        // ···
         }
-        // ...
+        // ···
       }
     }
     ```
+    
 <!--DelEnd-->
 

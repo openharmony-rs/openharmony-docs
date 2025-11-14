@@ -60,26 +60,27 @@
 
 - 第四个参数表示是否需要进行抗锯齿处理。
 
-```c++
-// sample_graphics.cpp
+
+<!-- @[ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画刷对象
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // 设置画刷填充颜色为蓝色
 OH_Drawing_BrushSetColor(brush, 0xff0000ff);
 // 在画布中设置画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(400, 400, 1200, 1200);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
 // 裁剪矩形区域
 OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
-OH_Drawing_Point *point = OH_Drawing_PointCreate(600, 600);
+OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
 // 绘制圆形
-OH_Drawing_CanvasDrawCircle(canvas, point, 600);
+OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁画刷对象并收回其占的内存
 OH_Drawing_BrushDestroy(brush);
 ```
-<!-- [ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 裁剪后的图 |
 | -------- | -------- |
@@ -117,27 +118,27 @@ OH_Drawing_BrushDestroy(brush);
 
 简单示例和示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置填充颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建在水平和垂直方向分别平移300px的矩阵对象
-OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(300, 300);
+OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(value300_, value300_);
 // 对Canvas进行矩阵变换
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // 绘制矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
-<!-- [ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
@@ -150,27 +151,27 @@ OH_Drawing_MatrixDestroy(matrix);
 
 简单示例和示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置填充颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建旋转的矩阵对象，三个参数分别是旋转角度和旋转中心坐标
-OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, 200, 300);
+OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, value200_, value300_);
 // 对Canvas进行矩阵变换
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // 绘制矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
-<!-- [ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
@@ -183,26 +184,26 @@ OH_Drawing_MatrixDestroy(matrix);
 
 简单示例和示意图如下所示：
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画刷对象
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // 设置填充颜色
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // 设置画布中的画刷
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // 创建缩放的矩阵对象，4个参数分别是旋转中心坐标和水平垂直方向的缩放因子
-OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, 200, 300);
+OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, value200_, value300_);
 // 对Canvas进行矩阵变换
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // 绘制矩形
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 300, 700, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 ```
-<!-- [ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | 原始图 | 放大后的效果图 |
 | -------- | -------- |
@@ -227,12 +228,13 @@ OH_Drawing_RectDestroy(rect);
 
 ### 开发示例
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // 创建画笔对象
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
 // 设置画笔描边颜色
-OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // 设置画笔线宽为20
 OH_Drawing_PenSetWidth(pen, 20);
 // 在画布中设置画笔
@@ -242,13 +244,13 @@ OH_Drawing_CanvasSave(canvas);
 OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(2, 2, 2, 2);
 // 放大画布
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
-OH_Drawing_Point* point = OH_Drawing_PointCreate(300, 300);
+OH_Drawing_Point* point = OH_Drawing_PointCreate(value300_, value300_);
 // 绘制圆形，因为执行过放大操作，所以此时绘制的是大圆
-OH_Drawing_CanvasDrawCircle(canvas, point, 200);
+OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
 // 恢复操作，将恢复到没有放大的原始状态
 OH_Drawing_CanvasRestore(canvas);
 // 绘制圆形，因为已经恢复没有放大的原始状态，所以此时绘制的小圆
-OH_Drawing_CanvasDrawCircle(canvas, point, 200);
+OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
 // 去除画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
 // 销毁画笔对象并收回其占的内存
@@ -256,7 +258,6 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
-<!-- [ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![zh-cn_image_0000002158744186](figures/zh-cn_image_0000002158744186.png)
 
@@ -265,5 +266,5 @@ OH_Drawing_MatrixDestroy(matrix);
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

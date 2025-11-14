@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -16,7 +16,7 @@ Enumerates the information levels of **ConsoleMessage**.
 
 > **NOTE**
 >
-> - On the HTML5 side, the information level of **ConsoleMessage** corresponding to **console.log** or **console.info** is **MessageLevel.Info**. 
+> - On the HTML5 side, the information level of **ConsoleMessage** corresponding to **console.log** or **console.info** is **MessageLevel.Info**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -40,11 +40,15 @@ Enumerates the mixed content modes.
 | Compatible | 1 | Compatible mode: HTTP and HTTPS hybrid content can be loaded in compatibility mode. This means that some insecure content may be loaded.          |
 | None       | 2 | Strict mode: HTTP and HTTPS hybrid content cannot be loaded.              |
 
-## HitTestType
+## HitTestType<sup>(deprecated)</sup>
 
 Enumerates the test result types of the click event.
 
  **System capability**: SystemCapability.Web.Webview.Core
+
+> **NOTE**
+>
+> This enum is supported since API version 9 and deprecated since API version 21. You are advised to use [WebHitTestType](./arkts-apis-webview-e.md#webhittesttype) instead.
 
 | Name           | Value| Description                      |
 | ------------- | -- | ------------------------ |
@@ -129,6 +133,8 @@ Enumerates the website threat types.
 | THREAT_FRAUD    | 1 | Fraudulent website.             |
 | THREAT_RISK     | 2 | Website that poses security risks.     |
 | THREAT_WARNING  | 3 | Website suspected to contain unsafe content.|
+| THREAT_NONE<sup>21+</sup>      | 4 | Website that passes the security check and no risk is found.|
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | Website that does not perform security check.|
 
 ## RenderExitReason<sup>9+</sup>
 
@@ -226,6 +232,19 @@ Enumerates the media types that trigger the context menu.
 | None  | 0 | Other non-image media types.|
 | Image | 1 | Image.          |
 
+## ContextMenuDataMediaType<sup>22+</sup>
+Enumerates the media types that trigger the context menu (enhanced type obtaining capability).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name   | Value| Description           |
+| ----- | -- | ------------- |
+| NONE  | 0 | Default value, indicating that the current context menu is not associated with any media type (for example, right-click text or blank area).|
+| IMAGE | 1 | Image.          |
+| VIDEO | 2 | Video.          |
+| AUDIO | 3 | Audio.          |
+| CANVAS| 4 | Canvas.          |
+
 ## ContextMenuInputFieldType<sup>9+</sup>
 
 Enumerates the input field types.
@@ -254,6 +273,18 @@ Enumerates the lifecycles of the same-layer tag. When a same-layer tag exists on
 | DESTROY                       | 2 | The same-layer tag is destroyed.|
 | ENTER_BFCACHE<sup>12+</sup>   | 3 | The same-layer tag enters BFCache.  |
 | LEAVE_BFCACHE<sup>12+</sup>   | 4 | The same-layer tag leaves BFCache.|
+
+## NativeEmbedParamStatus<sup>21+</sup>
+
+Defines the status change type of the **param** element embedded in the same-layer rendering tag **object**. **ADD** is triggered when the **param** element is added, **UPDATE** is triggered when it is modified, and **DELETE** is triggered when it is deleted.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name                          | Value| Description          |
+| ----------------------------- | -- | ------------ |
+| ADD                           | 0 | Triggered when a **param** element is added.  |
+| UPDATE                        | 1 | Triggered when a **param** element is modified.  |
+| DELETE                        | 2 | Triggered when a **param** element is deleted.|
 
 ## ContextMenuEditStateFlags<sup>9+</sup>
 
@@ -319,6 +350,7 @@ Enumerates the soft keyboard avoidance modes.
 | RESIZE_VISUAL      | 0 | For soft keyboard avoidance, the visual viewport is resized, but not the layout viewport.  |
 | RESIZE_CONTENT     | 1 | For soft keyboard avoidance, both the visual viewport and layout viewport are resized. Default value.|
 | OVERLAYS_CONTENT   | 2 | No viewport is resized, and soft keyboard avoidance is not triggered.  |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 2 | The soft keyboard avoidance behavior of the **Web** component follows the [KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) set by UIcontext. The **Web** component does not process the avoidance behavior of the component.|
 
 ## WebElementType<sup>13+</sup>
 
@@ -332,6 +364,7 @@ Enumerates the web element types.
 | --------- | -- | ----------------- |
 | IMAGE     | 1 | Image.|
 | LINK<sup>20+</sup>     | 2 | Hyperlink.|
+| TEXT<sup>21+</sup>     | 3 | Text or editable area.|
 
 ## WebResponseType<sup>13+</sup>
 
@@ -344,6 +377,7 @@ Enumerates the response types of the menu.
 | Name           | Value| Description               |
 | -------------- | -- | ------------------  |
 | LONG_PRESS     | 1 | The menu is displayed when the component is long-pressed.|
+| RIGHT_CLICK<sup>21+</sup>    | 2 | The menu is displayed when the component is right-clicked.|
 
 ## AudioSessionType<sup>20+</sup>
 
@@ -370,14 +404,14 @@ Enumerates the focus modes.
 
 ## WebRotateEffect<sup>22+</sup>
 
-Enumerates the effect of rotation.
+Enumerates the modes in which the component's content is rendered to fit the new size during its width and height animation process when the component is rotated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name                      | Value| Description          |
 | -------------------------- | -- | ------------- |
-| TOPLEFT_EFFECT                    | 0 | The content area is drawn in top-left of the node.|
-| RESIZE_COVER_EFFECT | 1 | The content area is scaled to completely fill the node.|
+| TOPLEFT_EFFECT                    | 0 | The component's content stays at the final size and always aligned with the upper left corner of the component. This value is used by default.|
+| RESIZE_COVER_EFFECT | 1 | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. It is always aligned with the center of the component, so that its middle part is displayed.|
 
 ## WebBypassVsyncCondition<sup>20+</sup>
 
@@ -403,3 +437,24 @@ Enumerates the PDF page loading results.
 | PARSE_ERROR_FORMAT | 2 | The PDF file format is not supported.|
 | PARSE_ERROR_PASSWORD | 3 | The PDF file password is incorrect.|
 | PARSE_ERROR_HANDLER | 4 | The PDF file fails to be processed.|
+
+## DetectedBlankScreenReason<sup>22+</sup>
+
+Enumerates the reasons for the blank screen.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name         | Value| Description                |
+| ----------- | -- | ------------------ |
+| NO_CONTENTFUL_NODES        | 0 | No contentful node is detected.<br>This may be triggered when the detection policy is **DETECTION_CONTENTFUL_NODES_SEVENTEEN**.        |
+| SUB_THRESHOLD_CONTENTFUL_NODES | 1 | The number of contentful nodes detected is less than or equal to the threshold.<br>This may be triggered when the detection policy is **DETECTION_CONTENTFUL_NODES_SEVENTEEN** and **contentfulNodesCountThreshold** is set.|
+
+## BlankScreenDetectionMethod<sup>22+</sup>
+
+Enumerates the methods for the blank screen detection.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name         | Value| Description                |
+| ----------- | -- | ------------------ |
+| DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | The page is detected using the 17-point detection method. When a rendered and contentful node is detected by a detection point, it is considered that the detection point is hit. A contentful node refers to an image, video, or text node.<br>If no contentful node is detected or the number of contentful nodes is less than the threshold, a blank or near-blank screen is displayed.<br>The 17 detection points are as follows:<br>Center point (1): The center point is at the geometric center of the page.<br>Internal grid intersection points (16): A 5 × 5 uniform grid is defined in the page area. The 16 points are the intersection points of four vertical equal division lines and four horizontal equal division lines in the page.        |

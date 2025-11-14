@@ -50,6 +50,7 @@ target_link_libraries(entry PUBLIC
 
 ```ts
 import { Context } from '@kit.AbilityKit';
+import testNapi from 'libentry.so';
 
 @Entry
 @Component
@@ -62,7 +63,7 @@ struct Index {
                     console.error('get fileUri or context failed');
                     return;
                 }
-                getContext(ctx);                                 // 传给 C++ 侧
+                testNapi.SetContext(ctx);                                 // 传给 C++ 侧
             });
     }
 }
@@ -70,20 +71,20 @@ struct Index {
 
 ```c++
 // 使用系统打印下发打印任务
-static void* context;
-static char* currentJobId;
+static void* g_context;
+static char* g_currentJobId;
 
 // 初始化打印服务
 Print_ErrorCode ret = OH_Print_Init();
 
-static napi_value getContext(napi_env env, napi_callback_info info)
+static napi_value SetContext(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value argv[1] = {nullptr};
     // 假设 napi_get_cb_info 正常返回
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     // 保存 context 于后续使用
-    napi_status ret = napi_unwrap(env, argv[0], &context);
+    napi_status ret = napi_unwrap(env, argv[0], &g_context);
     return nullptr;
 }
 
@@ -95,7 +96,7 @@ static void StartLayoutWriteCb(const char *jobId,
                                 Print_WriteResultCallback writeCallback)
 {
     // 缓存任务Id，任务Id唯一
-    currentJobId = jobId;
+    g_currentJobId = jobId;
     // WriteFile 由开发者实现，获取当前用户修改前后的打印参数，渲染对应的打印文件写入fd。如黑白彩色，指定页码等。
     uint32_t retCode = WriteFile(fd, oldAttrs, newAttrs);
     // 通知打印系统文件写入完成
@@ -112,7 +113,7 @@ static void JobStateChangedCb(const char *jobId, uint32_t state)
 // 调用打印接口以拉起系统打印预览界面。
 char printJobName[] = "fileName";
 Print_PrintDocCallback printDocCallback = { StartLayoutWriteCb, JobStateChangedCb };
-Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, context);
+Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, g_context);
 
 // 不再使用打印服务时释放资源
 OH_Print_Release()

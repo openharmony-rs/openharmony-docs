@@ -16,6 +16,7 @@
 3. Start the facial or fingerprint authentication pop-up component once the icon is tapped.
 
 > **NOTE**
+>
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -106,7 +107,7 @@ struct Index {
 }
 ```
 
-An error may be thrown when **onAuthResult** is called. For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+Calling **onAuthResult** may throw an error code. For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 **Facial authentication icon**
 
