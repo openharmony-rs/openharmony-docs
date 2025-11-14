@@ -216,6 +216,8 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
   })
 ```
 
+## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
+
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
