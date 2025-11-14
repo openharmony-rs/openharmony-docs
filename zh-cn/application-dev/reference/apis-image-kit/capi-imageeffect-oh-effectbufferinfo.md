@@ -1,5 +1,9 @@
 # OH_EffectBufferInfo
 
+```
+typedef struct OH_EffectBufferInfo OH_EffectBufferInfo
+```
+
 ## 概述
 
 定义图像信息。
