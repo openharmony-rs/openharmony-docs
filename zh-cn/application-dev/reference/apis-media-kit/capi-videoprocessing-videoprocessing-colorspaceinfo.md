@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} VideoProcessing_ColorSpaceInfo
+```
+
 ## 概述
 
 视频颜色空间信息数据结构。

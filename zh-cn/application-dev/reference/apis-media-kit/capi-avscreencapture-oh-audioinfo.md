@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_AudioInfo
+```
+
 ## 概述
 
 音频信息。

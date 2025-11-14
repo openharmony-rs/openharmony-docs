@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_AVScreenCaptureConfig
+```
+
 ## 概述
 
 屏幕录制配置参数。

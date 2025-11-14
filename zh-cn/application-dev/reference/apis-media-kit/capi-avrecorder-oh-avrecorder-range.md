@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_AVRecorder_Range
+```
+
 ## 概述
 
 表示类型的范围。

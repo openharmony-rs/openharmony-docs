@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVScreenCapture_CaptureStrategy OH_AVScreenCapture_CaptureStrategy
+```
+
 ## 概述
 
 通过OH_AVScreenCapture_CaptureStrategy设置录屏策略。
