@@ -1,5 +1,9 @@
 # OhosPixelMapCreateOps
 
+```
+struct OhosPixelMapCreateOps {...}
+```
+
 ## 概述
 
 用于定义创建 pixel map 设置选项的相关信息。
