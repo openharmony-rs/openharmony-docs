@@ -95,7 +95,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -107,10 +107,10 @@ controller: webview.WebviewController = new webview.WebviewController(undefined)
 build() {
   Column() {
     Button('fetchCookieSync')
-      .onClick((e: ClickEvent) => {
+      .onClick((e) => {
         try {
           let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com');
-          console.log("fetchCookieSync cookie = " + value);
+          console.info("fetchCookieSync cookie = " + value);
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
@@ -189,7 +189,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -201,7 +201,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('fetchCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.fetchCookie('https://www.example.com', (error, cookie) => {
               if (error) {
@@ -293,7 +293,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -305,7 +305,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('fetchCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.fetchCookie('https://www.example.com')
               .then(cookie => {
@@ -396,7 +396,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -408,7 +408,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('fetchCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.fetchCookie('https://www.example.com', false)
               .then(cookie => {
@@ -500,7 +500,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -512,7 +512,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookieSync')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             // configCookieSync每次仅支持设置单个cookie值。
             webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
@@ -590,7 +590,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
@@ -601,7 +601,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookieSync')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             // 仅支持设置单个cookie值。
             webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', false, false);
@@ -681,7 +681,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
@@ -692,7 +692,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.configCookie('https://www.example.com', "a=b", (error) => {
               if (error) {
@@ -782,7 +782,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -794,7 +794,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.configCookie('https://www.example.com', 'a=b')
               .then(() => {
@@ -888,7 +888,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -900,7 +900,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.configCookie('https://www.example.com', 'a=b', false, false)
               .then(() => {
@@ -967,7 +967,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -979,7 +979,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('saveCookieSync')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.saveCookieSync();
           } catch (error) {
@@ -1240,7 +1240,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1252,7 +1252,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('putAcceptCookieEnabled')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.putAcceptCookieEnabled(false);
           } catch (error) {
@@ -1310,7 +1310,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1322,9 +1322,9 @@ struct WebComponent {
   build() {
     Column() {
       Button('isCookieAllowed')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           let result = webview.WebCookieManager.isCookieAllowed();
-          console.log("result: " + result);
+          console.info("result: " + result);
         })
       Web({ src: 'www.example.com', controller: this.controller })
     }
@@ -1390,7 +1390,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1402,7 +1402,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('putAcceptThirdPartyCookieEnabled')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(false);
           } catch (error) {
@@ -1461,7 +1461,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -1472,9 +1472,9 @@ struct WebComponent {
   build() {
     Column() {
       Button('isThirdPartyCookieAllowed')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           let result = webview.WebCookieManager.isThirdPartyCookieAllowed();
-          console.log("result: " + result);
+          console.info("result: " + result);
         })
       Web({ src: 'www.example.com', controller: this.controller })
     }
@@ -1534,7 +1534,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -1545,9 +1545,9 @@ struct WebComponent {
   build() {
     Column() {
       Button('existCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           let result = webview.WebCookieManager.existCookie();
-          console.log("result: " + result);
+          console.info("result: " + result);
         })
       Web({ src: 'www.example.com', controller: this.controller })
     }
@@ -1600,7 +1600,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -1611,7 +1611,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearAllCookiesSync')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           webview.WebCookieManager.clearAllCookiesSync();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -1845,7 +1845,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -1856,7 +1856,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearSessionCookieSync')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           webview.WebCookieManager.clearSessionCookieSync();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -1927,7 +1927,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2020,7 +2020,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2032,7 +2032,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearSessionCookie')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebCookieManager.clearSessionCookie()
               .then(() => {

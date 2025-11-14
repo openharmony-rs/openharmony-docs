@@ -30,6 +30,10 @@ confirm(priKeyFile : string, certChainFile : string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名           | 类型   | 必填   | 说明               |
@@ -49,6 +53,10 @@ confirm(authUri : string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型   | 必填   | 说明    |
@@ -63,6 +71,10 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## ignore<sup>9+</sup>
 
 ignore(): void
@@ -70,3 +82,7 @@ ignore(): void
 通知Web组件忽略本次请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22

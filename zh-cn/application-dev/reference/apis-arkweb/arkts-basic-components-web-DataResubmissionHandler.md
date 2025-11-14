@@ -32,7 +32,13 @@ resend(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -55,6 +61,30 @@ resend(): void
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnDataResubmittedEvent } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onDataResubmitted((event: OnDataResubmittedEvent): void => {
+            console.info('onDataResubmitted');
+            event.handler.resend();
+          })
+      }
+    }
+  }
+  ```
+
 ## cancel<sup>9+</sup>
 
 cancel(): void
@@ -63,7 +93,13 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -79,6 +115,29 @@ cancel(): void
         Web({ src: 'www.example.com', controller: this.controller })
           .onDataResubmitted((event) => {
             console.log('onDataResubmitted');
+            event.handler.cancel();
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnDataResubmittedEvent } from '@kit.ArkUI';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onDataResubmitted((event: OnDataResubmittedEvent): void => {
+            console.info('onDataResubmitted');
             event.handler.cancel();
           })
       }

@@ -2,6 +2,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
@@ -353,6 +355,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | activeMatchOrdinal | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 当前匹配的查找项的序号（从0开始）。                       |
@@ -408,6 +414,10 @@ Web同层渲染的配置。
 定义当需要用户提供SSL客户端证书时触发回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -531,14 +541,18 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 是    | 参与注册的对象。只能声明方法，不能声明属性。                   |
-| name       | string                                   | 是    | 注册对象的名称，与window中调用的对象名一致。                |
-| methodList | Array\<string\>                          | 是    | 参与注册的应用侧JavaScript对象的同步方法。                 |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | 是    | -    | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
-| asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
-| permission<sup>12+</sup>  | string  | 否    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
+| ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 是    | 参与注册的对象。只能声明方法，不能声明属性。|
+| name       | string                                   | 是    | 注册对象的名称，与window中调用的对象名一致。|
+| methodList | Array\<string\>                          | 是    | 参与注册的应用侧JavaScript对象的同步方法。|
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) <br/>ArkTS-Sta: [WebviewController<sup>22+</sup>](./arkts-apis-webview-WebviewController.md)| 是    | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
+| asyncMethodList | Array\<string\>      | 否    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。|
+| permission  | string  | 否    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -641,8 +655,8 @@ Web组件进入全屏回调事件的详情。
 | 名称             | 类型                                  | 必填   | 说明                    |
 | -----------     | ------------------------------------ | ---- | --------------------- |
 | handler     | [FullScreenExitHandler](./arkts-basic-components-web-FullScreenExitHandler.md) | 是    | 用于退出全屏模式的函数句柄。 |
-| videoWidth  | number | 否    | 视频的宽度，单位：px。如果进入全屏的是 `<video>` 元素，表示其宽度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的宽度；其他情况下，为0。 |
-| videoHeight  | number | 否    | 视频的高度，单位：px。如果进入全屏的是 `<video>` 元素，表示其高度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的高度；其他情况下，为0。 |
+| videoWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 视频的宽度，单位：px。如果进入全屏的是 `<video>` 元素，表示其宽度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的宽度；其他情况下，为0。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
+| videoHeight  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 视频的高度，单位：px。如果进入全屏的是 `<video>` 元素，表示其高度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的高度；其他情况下，为0。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
 
 ## LoadCommittedDetails<sup>11+</sup>
 

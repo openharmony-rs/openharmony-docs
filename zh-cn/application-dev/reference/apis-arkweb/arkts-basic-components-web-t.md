@@ -40,6 +40,10 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -111,6 +115,10 @@ type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void
 Web组件进入全屏时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -200,6 +208,10 @@ type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => 
 onOverrideUrlLoading的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
