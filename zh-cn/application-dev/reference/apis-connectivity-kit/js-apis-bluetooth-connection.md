@@ -358,7 +358,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 22
 
@@ -408,7 +408,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 22
 
@@ -912,7 +912,6 @@ try {
     connection.setBluetoothScanMode(connection.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE, 0);
     console.info("setBluetoothScanMode success");
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("setBluetoothScanMode get errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1291,13 +1290,12 @@ onBatteryChange(callback: Callback&lt;BatteryInfo&gt;): void
 ```ts
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.bluetooth.connection';
-function onReceiveEvent1(data: connection.BatteryInfo) {
+function onReceiveEvent(data: connection.BatteryInfo) {
     console.info('bluetooth BatteryInfo result:'+ JSON.stringify(data));
 }
 try {
-    connection.onBatteryChange(onReceiveEvent1);
+    connection.onBatteryChange(onReceiveEvent);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testBatteryChange, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1387,14 +1385,13 @@ offBatteryChange(callback?: Callback&lt;BatteryInfo&gt;): void
 ```ts
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.bluetooth.connection';
-function onReceiveEvent1(data: connection.BatteryInfo) {
+function onReceiveEvent(data: connection.BatteryInfo) {
     console.info('bluetooth BatteryInfo result:'+ JSON.stringify(data));
 }
-connection.onBatteryChange(onReceiveEvent1);
+connection.onBatteryChange(onReceiveEvent);
 try {
-    connection.offBatteryChange(onReceiveEvent1);
+    connection.offBatteryChange(onReceiveEvent);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testBatteryChange, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1494,13 +1491,12 @@ onBluetoothDeviceFind(callback: Callback&lt;Array&lt;string&gt;&gt;): void
 ```ts
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.bluetooth.connection';
-function onReceiveEvent2(data: Array<string>) {
+function onReceiveEvent(data: Array<string>) {
     console.info('Device' + JSON.stringify(data) + 'length' + data.length);
 }
 try {
-    connection.onBluetoothDeviceFind(onReceiveEvent2);
+    connection.onBluetoothDeviceFind(onReceiveEvent);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testBluetoothDeviceFind, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1594,14 +1590,13 @@ offBluetoothDeviceFind(callback?: Callback&lt;Array&lt;string&gt;&gt;): void
 ```ts
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.bluetooth.connection';
-function onReceiveEvent2(data: Array<string>) {
+function onReceiveEvent(data: Array<string>) {
     console.info('Device' + JSON.stringify(data) + 'length' + data.length);
 }
-connection.onBluetoothDeviceFind(onReceiveEvent2);
+connection.onBluetoothDeviceFind(onReceiveEvent);
 try {
     connection.offBluetoothDeviceFind();
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testBluetoothDeviceFind, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1699,7 +1694,6 @@ function BondStateParam(data: connection.BondStateParam) {
 try {
     connection.onBondStateChange(BondStateParam);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testBondStateChange, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1799,7 +1793,6 @@ connection.onBondStateChange(BondStateParam);
 try {
     connection.offBondStateChange(BondStateParam);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testBondStateChange, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1897,7 +1890,6 @@ function onReceivePinRequiredEvent(data: connection.PinRequiredParam) {
 try {
     connection.onPinRequired(onReceivePinRequiredEvent);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testPinRequired, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -1997,7 +1989,6 @@ connection.onPinRequired(onReceivePinRequiredEvent);
 try {
     connection.offPinRequired(onReceivePinRequiredEvent);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testPinRequired, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -2019,7 +2010,7 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -2099,7 +2090,6 @@ function onReceiveEvent(data: Array<connection.DiscoveryResult>) {
 try {
     connection.onDiscoveryResult(onReceiveEvent);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testDiscoveryResult, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -2119,7 +2109,7 @@ off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -2198,7 +2188,6 @@ connection.onDiscoveryResult(onReceiveEvent);
 try {
     connection.offDiscoveryResult(onReceiveEvent);
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("testDiscoveryResult, errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -2268,7 +2257,6 @@ try {
         console.info("getLastConnectionTime result:" + JSON.stringify(time));
     });
 } catch (err: BusinessError) {
-    console.error("get error:" + JSON.stringify(err));
     console.error("getLastConnectionTime get errCode:" + err.code + ",errMessage:" + err.message);
 }
 ```
@@ -2285,7 +2273,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 16
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2339,7 +2327,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 16
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2390,15 +2378,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称       | 类型   | 只读 | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | 否    | 否    | 配对中的对端设备地址。 |
-| state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。 |
-| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。|
+| deviceId | string      | 否    | 否    | 配对中的对端设备地址。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 
 
 ## PinRequiredParam
@@ -2478,14 +2462,18 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                                       | 值  | 说明              |
 | ---------------------------------------- | ---- | --------------- |
-| SCAN_MODE_NONE                           | 0    | 不可发现、不可连接模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SCAN_MODE_CONNECTABLE                    | 1    | 可连接模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | 通用可发现模式，可被长时间发现。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | 有限可发现模式，持续一定时间。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | 可连接及通用可发现模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE | 5    | 可连接及有限可发现模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| SCAN_MODE_NONE                           | 0    | 不可发现、不可连接模式。 |
+| SCAN_MODE_CONNECTABLE                    | 1    | 可连接模式。 |
+| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | 通用可发现模式，可被长时间发现。 |
+| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | 有限可发现模式，持续一定时间。 |
+| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | 可连接及通用可发现模式。 |
+| SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE | 5    | 可连接及有限可发现模式。 |
 
 
 ## BondState
@@ -2513,13 +2501,17 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| USER_REMOVED        | 0    | 用户主动移除设备。若配对状态[BondState](#bondstate)是已配对，也表示配对成功。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| REMOTE_DEVICE_DOWN  | 1    | 对端设备不在线。例如：对端设备蓝牙是关闭的。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| AUTH_FAILURE        | 2    | 鉴权失败。例如：两端设备密钥不匹配。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| AUTH_REJECTED       | 3    | 鉴权被拒绝。例如：对端设备拒绝了配对请求。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| INTERNAL_ERROR      | 4    | 内部错误。例如：设备不支持配对、配对过程超时等异常。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| USER_REMOVED        | 0    | 用户主动移除设备。若配对状态[BondState](#bondstate)是已配对，也表示配对成功。 |
+| REMOTE_DEVICE_DOWN  | 1    | 对端设备不在线。例如：对端设备蓝牙是关闭的。 |
+| AUTH_FAILURE        | 2    | 鉴权失败。例如：两端设备密钥不匹配。 |
+| AUTH_REJECTED       | 3    | 鉴权被拒绝。例如：对端设备拒绝了配对请求。 |
+| INTERNAL_ERROR      | 4    | 内部错误。例如：设备不支持配对、配对过程超时等异常。 |
 
 
 ## DeviceChargeState<sup>12+</sup>
@@ -2545,7 +2537,7 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
 

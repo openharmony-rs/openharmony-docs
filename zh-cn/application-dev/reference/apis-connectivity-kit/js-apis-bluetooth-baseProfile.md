@@ -35,15 +35,11 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称     | 类型                           | 只读 | 可选 | 说明                            |
 | -------- | ----------------------------- | ---- | ---- | ------------------------------- |
-| deviceId | string                        | 否   | 否   | 蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。   |
-| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | 蓝牙设备的profile连接状态。 |
-| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | 断连的原因。|
+| deviceId | string                        | 否   | 否   | 蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | 蓝牙设备的profile连接状态。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | 断连的原因。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 
 
 ## DisconnectCause<sup>12+</sup>
@@ -52,14 +48,18 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| USER_DISCONNECT            | 0    | 用户主动断开连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| CONNECT_FROM_KEYBOARD      | 1    | 应该从键盘侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| CONNECT_FROM_MOUSE         | 2    | 应该从鼠标侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| CONNECT_FROM_CAR           | 3    | 应该从车机侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数超过上限。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| CONNECT_FAIL_INTERNAL      | 5    | 内部错误。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| USER_DISCONNECT            | 0    | 用户主动断开连接。 |
+| CONNECT_FROM_KEYBOARD      | 1    | 应该从键盘侧发起连接。 |
+| CONNECT_FROM_MOUSE         | 2    | 应该从鼠标侧发起连接。 |
+| CONNECT_FROM_CAR           | 3    | 应该从车机侧发起连接。 |
+| TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数超过上限。 |
+| CONNECT_FAIL_INTERNAL      | 5    | 内部错误。 |
 
 
 ## BaseProfile.getConnectedDevices

@@ -154,8 +154,8 @@ try {
 | codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | 否    | 否    | 表示每个采样点的位数，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
 | codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | 否    | 否    | 表示编码器的声道模式，默认值为CODEC_CHANNEL_MODE_NONE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
 | codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | 否    | 否    | 表示编码器的采样率，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 表示编码器的比特率，默认值为CODEC_BIT_RATE_ABR。<br/>**ArkTS-Dyn起始版本：** 19 |
-| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    | 表示编码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。<br/>**ArkTS-Dyn起始版本：** 19 |
+| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 表示编码器的比特率，默认值为CODEC_BIT_RATE_ABR。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22 |
+| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    | 表示编码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## CodecInfoList<sup>19+</sup>
 

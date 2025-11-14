@@ -245,7 +245,7 @@ try {
 ```
 
 
-## access.on('stateChange')<sup>18+</sup>
+## access.on('stateChange')<a name="stateChange"></a>
 
 on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
@@ -336,7 +336,7 @@ try {
 access.offStateChange(onReceiveEvent);
 ```
 
-## access.off('stateChange')<sup>18+</sup>
+## access.off('stateChange')
 
 off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
@@ -656,13 +656,17 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                    | 值  | 说明                 |
 | --------------------- | ---- | ------------------ |
-| STATE_OFF             | 0    | 表示蓝牙已关闭。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22  |
-| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_ON              | 2    | 表示蓝牙已打开。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22  |
-| STATE_BLE_TURNING_OFF | 6    | 表示蓝牙正在关闭LE-only模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| STATE_OFF             | 0    | 表示蓝牙已关闭。 |
+| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。 |
+| STATE_ON              | 2    | 表示蓝牙已打开。 |
+| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。 |
+| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。 |
+| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。  |
+| STATE_BLE_TURNING_OFF | 6    | 表示蓝牙正在关闭LE-only模式。 |
 
