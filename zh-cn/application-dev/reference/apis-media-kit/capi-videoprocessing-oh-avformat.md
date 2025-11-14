@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVFormat OH_AVFormat
+```
+
 ## 概述
 
 定义OH_AVFormat对象。

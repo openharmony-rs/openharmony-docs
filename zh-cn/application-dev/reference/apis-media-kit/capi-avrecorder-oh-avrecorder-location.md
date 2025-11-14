@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_AVRecorder_Location
+```
+
 ## 概述
 
 提供媒体资源的地理位置信息。

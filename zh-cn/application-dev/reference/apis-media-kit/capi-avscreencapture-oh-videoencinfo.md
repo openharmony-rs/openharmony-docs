@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_VideoEncInfo
+```
+
 ## 概述
 
 视频编码参数。

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
+```
+
 ## 概述
 
 DRM_MediaKeySystemInfo类型。

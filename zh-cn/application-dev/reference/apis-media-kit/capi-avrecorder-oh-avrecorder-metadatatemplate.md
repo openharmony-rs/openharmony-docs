@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct {...} OH_AVRecorder_MetadataTemplate
+```
+
 ## 概述
 
 定义元数据的基本模板。
