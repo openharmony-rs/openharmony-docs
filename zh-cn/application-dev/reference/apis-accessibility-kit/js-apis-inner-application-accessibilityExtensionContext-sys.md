@@ -35,6 +35,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。
 详见[无障碍节点元素可执行的操作](./js-apis-accessibility-sys.md#accessibilityaction)。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
@@ -42,7 +44,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | setText             | string | 否   |是 |设置组件文本时文本内容。                 |
 | selectTextBegin     | string | 否  | 是|选定组件内文本时的起始坐标，如：'2'。        |
 | selectTextEnd       | string | 否   | 是|选定组件内文本时的结束坐标，如：'8'。      |
-| selectTextInForWard | boolean   | 否    | 是|选定组件内文本时是否向前选择，如：true。      |
+| selectTextInForWard | boolean   | 否    | 是|表示选定组件内文本时是否向前选择。true表示向前选择，false表示不向前选择。      |
 | offset              | string | 否   | 是|设置光标的偏移量，如：'1'。    |
 | spanId              | string | 否   |是 |对超链接文本进行点击操作时文本编号。                |
 | scrollType          | string | 否   | 是|组件滚动类型，包括'fullScreen'（全屏）和'halfScreen'（半屏）。 |
@@ -118,7 +120,7 @@ import {
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import Want from '@ohos.app.ability.Want';
+import Want from '@kit.AbilityKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
