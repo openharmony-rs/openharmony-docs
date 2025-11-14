@@ -662,11 +662,11 @@ try {
 
 | 名称                    | 值  | 说明                 |
 | --------------------- | ---- | ------------------ |
-| STATE_OFF             | 0    | 表示蓝牙已关闭。          |	
-| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。          |	
-| STATE_ON              | 2    | 表示蓝牙已打开。           |	
-| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。          |	
-| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。 |	
-| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。  |	
+| STATE_OFF             | 0    | 表示蓝牙已关闭。          |
+| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。          |
+| STATE_ON              | 2    | 表示蓝牙已打开。           |
+| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。          |
+| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。 |
+| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。  |
 | STATE_BLE_TURNING_OFF | 6    | 表示蓝牙正在关闭LE-only模式。 |
 
