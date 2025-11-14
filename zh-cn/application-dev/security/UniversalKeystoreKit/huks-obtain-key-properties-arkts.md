@@ -78,7 +78,11 @@ async function getKeyItemProperties(keyAlias: string, emptyOptions: huks.HuksOpt
   try {
     await huks.getKeyItemProperties(keyAlias, emptyOptions)
       .then((data) => {
-        console.info(`promise: getKeyItemProperties success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+        if (data.properties) {
+          data.properties.forEach(param => {
+            console.info(`promise: getKeyItemProperties, currnt tag ${param.tag} value is ${param.value}`)
+          });
+        }
         ret = true;
       }).catch((error: BusinessError) => {
         console.error(`promise: getKeyItemProperties failed, errCode : ${error.code}, errMsg : ${error.message}`);
