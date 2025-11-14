@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.screenLock (锁屏管理)](js-apis-screen-lock.md)。
+>- 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+>- 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.screenLock (锁屏管理)](js-apis-screen-lock.md)。
 
 ## 导入模块
 
@@ -22,7 +24,11 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 **系统接口**：此接口为系统接口。
 
-| 事件类型            | 说明                     |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型            | 说明                     |
 | ------------------ | ------------------------ |
 | beginWakeUp        | 表示设备开始唤醒。 |
 | endWakeUp          | 表示设备结束唤醒。 |
@@ -38,6 +44,8 @@ import { screenLock } from '@kit.BasicServicesKit';
 | changeUser         | 表示切换用户。           |
 | screenlockEnabled  | 表示锁屏是否启用。       |
 | serviceRestart     | 表示锁屏服务进行重启。   |
+| strongAuthChanged  | 表示锁屏增强认证状态变化时候的事件类型。       |
+| screenLockDisabledChanged     | 表示锁屏被禁用、启用状态变化时候的事件类型。   |
 
 ## SystemEvent<sup>9+</sup>
 
@@ -47,10 +55,14 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 **系统接口**：此接口为系统接口。
 
-| 名称    | 类型   | 必填 |       说明        |
-| --------- | ------ | ---- | ------------- |
-| eventType   | [EventType](#eventtype9) | 是   | 系统事件类型。 |
-| params | string | 是   | 系统事件参数。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    | 类型   | 只读 | 可选 |       说明        |
+| --------- | ------ | ---- | ---- | ------------- |
+| eventType   | [EventType](#eventtype9) | 否   | 否   | 系统事件类型。 |
+| params | string | 否   | 否   | 系统事件参数。 |
 
 ## screenLock.isLocked<sup>9+</sup>
 
@@ -61,6 +73,10 @@ isLocked(): boolean
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：** 
 
@@ -78,9 +94,33 @@ isLocked(): boolean
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
 ```ts
-let isLocked = screenLock.isLocked();
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let ret = screenLock.isLocked();
+    console.info(`isLocked result: ${ret}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`isLocked fail Code:${error?.code}, message:${error?.message}`);
+}
 ```
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let ret = screenLock.isLocked();
+    console.info(`isLocked result: ${ret}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`isLocked fail Code:${error?.code}, message:${error?.message}`);
+}
+```
+
 
 ## screenLock.unlock<sup>9+</sup>
 
@@ -91,6 +131,10 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -111,6 +155,8 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -122,6 +168,20 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
     console.info(`Succeeded in unlocking the screen. result: ${data}`);
   });
   ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.unlock((err: BusinessError<void> | null, data: Boolean | undefined) => {
+    if (err) {
+      console.error(`Failed to unlock the screen, Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in unlocking the screen. result: ${data}`);
+  });
+```
 
 > **说明：**
 >
@@ -136,6 +196,10 @@ unlock(): Promise&lt;boolean&gt;
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：** 
 
@@ -155,6 +219,8 @@ unlock(): Promise&lt;boolean&gt;
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -164,6 +230,19 @@ unlock(): Promise&lt;boolean&gt;
     console.error(`Failed to unlock the screen, Code: ${err.code}, message: ${err.message}`);
   });
   ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+  screenLock.unlock().then((data: Boolean) => {
+    console.info(`Succeeded in unlocking the screen. result: ${data}`);
+  }).catch((err) => {
+    let error = err as BusinessError;
+    console.error(`Failed to unlock the screen, Code: ${error.code}, message: ${error.message}`);
+  });
+```
 
 > **说明：**
 >
@@ -180,6 +259,10 @@ lock(callback: AsyncCallback&lt;boolean&gt;): void
 **需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_INNER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -200,10 +283,25 @@ lock(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   screenLock.lock((err: BusinessError, data: Boolean) => {
+    if (err) {
+      console.error(`Failed to lock the screen, Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in locking the screen. result: ${data}`);
+  });
+  ```
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  screenLock.lock((err: BusinessError<void> | null, data: Boolean | undefined) => {
     if (err) {
       console.error(`Failed to lock the screen, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -224,6 +322,10 @@ lock(): Promise&lt;boolean&gt;
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型                   | 说明                                                         |
@@ -242,6 +344,8 @@ lock(): Promise&lt;boolean&gt;
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -249,6 +353,18 @@ lock(): Promise&lt;boolean&gt;
     console.info(`Succeeded in locking the screen. result: ${data}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to lock the screen, Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  screenLock.lock().then((data: Boolean) => {
+    console.info(`Succeeded in locking the screen. result: ${data}`);
+  }).catch((err) => {
+    let error = err as BusinessError;
+    console.error(`Failed to lock the screen, Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -263,6 +379,10 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 **需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_INNER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -289,6 +409,8 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -302,9 +424,25 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let isSuccess = screenLock.onSystemEvent((event: screenLock.SystemEvent) => {
+      console.info(`Succeeded in Registering the system event which related to screenlock. eventType: ${event.eventType}`);
+    });
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to register the system event which related to screenlock, Code: ${error.code}, message: ${error.message}`);
+  }
+  ```
+
 ## screenLock.sendScreenLockEvent<sup>9+</sup>
 
-sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Dyn: sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Sta: sendScreenLockEvent(event: String, parameter: int, callback: AsyncCallback&lt;boolean&gt;): void
 
 应用发送事件到锁屏服务，仅支持锁屏应用使用。使用callback异步回调。
 
@@ -314,12 +452,16 @@ sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型            | 必填 | 说明                                                                                                                |
 | --------- | ------------------------ | ---- |-------------------------------------------------------------------------------------------------------------------|
 | event     | String                   | 是   | 事件类型，支持如下取值：<br/>- "unlockScreenResult"，表示解锁结果。<br/>- "lockScreenResult"，表示锁屏结果。<br/>- "screenDrawDone"，表示屏幕绘制完成。 |
-| parameter | number                   | 是   | 事件结果。<br/>- parameter为0，表示成功。例如解锁成功或锁屏成功。<br/>- parameter为1，表示失败。例如解锁失败或锁屏失败。<br/>- parameter为2，表示取消。例如锁屏取消或解锁取消。 |
+| parameter | ArkTS-Dyn: number <br/>ArkTS-Sta: int                   | 是   | 事件结果。<br/>- parameter为0，表示成功。例如解锁成功或锁屏成功。<br/>- parameter为1，表示失败。例如解锁失败或锁屏失败。<br/>- parameter为2，表示取消。例如锁屏取消或解锁取消。 |
 | callback  | AsyncCallback\<boolean> | 是   | 回调函数。返回true表示发送事件成功；返回false表示发送事件失败。                                                                              |
 
 **错误码**：
@@ -335,6 +477,8 @@ sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -346,10 +490,24 @@ sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt
     console.info(`Succeeded in Sending screenlock event. result: ${result}`);
   });
   ```
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  screenLock.sendScreenLockEvent('unlockScreenResult', 0, (err: BusinessError<void> | null, result: Boolean | undefined) => {
+    if (err) {
+      console.error(`Failed to send screenlock event, Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in Sending screenlock event. result: ${result}`);
+  });
+  ```
 
 ## screenLock.sendScreenLockEvent<sup>9+</sup>
 
-sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
+ArkTS-Sta: sendScreenLockEvent(event: String, parameter: int): Promise&lt;boolean&gt;
 
 应用发送事件到锁屏服务，仅支持锁屏应用使用。使用Promise异步回调。
 
@@ -359,12 +517,16 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型   | 必填 | 说明                                                                                                                |
 | --------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------|
 | event     | String | 是   | 事件类型，支持如下取值：<br/>- "unlockScreenResult"，表示解锁结果。<br/>- "lockScreenResult"，表示锁屏结果。<br/>- "screenDrawDone"，表示屏幕绘制完成。 |
-| parameter | number | 是   | 事件结果。<br/>- parameter为0，表示成功。例如解锁成功或锁屏成功。<br/>- parameter为1，表示失败。例如解锁失败或锁屏失败。<br/>- parameter为2，表示取消。例如锁屏取消或解锁取消。 |
+| parameter | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 事件结果。<br/>- parameter为0，表示成功。例如解锁成功或锁屏成功。<br/>- parameter为1，表示失败。例如解锁失败或锁屏失败。<br/>- parameter为2，表示取消。例如锁屏取消或解锁取消。 |
 
 **返回值：** 
 
@@ -385,6 +547,8 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -394,4 +558,475 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
     console.error(`Failed to send screenlock event, Code: ${err.code}, message: ${err.message}`);
   });
   ```
+ArkTS-Sta示例：
 
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  screenLock.sendScreenLockEvent('unlockScreenResult', 0).then((result: Boolean) => {
+    console.info(`Succeeded in Sending screenlock event. result: ${result}`);
+  }).catch((err) => {
+    let error = err as BusinessError;
+    console.error(`Failed to send screenlock event, Code: ${error.code}, message: ${error.message}`);
+  });
+  ```
+
+ ## AuthState<sup>12+</sup>
+
+枚举，锁屏认证状态。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+
+| 名称  | 值 | 说明                                              |
+| ------- |------| ------------------------------------------------- |
+| NOT_AUTHED | 0 | 未认证 |
+| PRE_AUTHED_BY_CREDENTIAL | 1 | 凭据预认证 |
+| PRE_AUTHED_BY_FINGERPRINT | 2 | 指纹预认证 |
+| PRE_AUTHED_BY_FACE | 3 | 人脸预认证 |
+| AUTHED_BY_CREDENTIAL | 4 | 凭据认证 |
+| AUTHED_BY_FINGERPRINT | 5 | 指纹认证 |
+| AUTHED_BY_FACE | 6 | 人脸认证 |
+  
+  ## StrongAuthReasonFlags<sup>12+</sup>
+
+枚举，请求强认证原因标志。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 值 | 说明                                              |
+| ------- | - |------------------------------------------------- |
+| NONE | 0x00000000 | 无强认证 |
+| AFTER_BOOT | 0x00000001 | 重启强认证。 |
+| AFTER_TIMEOUT | 0x00000002 | 超时触发强认证。 |
+| ACTIVE_REQUEST | 0x00000004 | 主动请求强认证。 |
+| POLICY_RESTRICTION | 0x00000008 | 策略限制强认证。 |
+
+## screenLock.requestStrongAuth<sup>12+</sup>
+
+ArkTS-Dyn: requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: number): Promise<void>;
+ArkTS-Sta: requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: int): Promise<void>;
+
+应用发送事件到锁屏服务，仅支持锁屏应用使用。使用Promise异步回调。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名    | 类型   | 必填 | 说明 |
+| - | - | - | - |
+| reasonFlag     | StrongAuthReasonFlags | 是   | 强身份原因标志 。|
+| userId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 用户ID。 |
+
+**返回值：** 
+
+| 类型               | 说明                                           |
+| ----------------- | ---------------------------------------------- |
+| Promise\<void> | Promise对象。函数返回的promise。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201  | permission denied.         |
+| 202  | permission verification failed. A non-system application calls a system API.         |
+| 13200002  | the screenlock management service is abnormal.         |
+
+**示例：** 
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.requestStrongAuth(screenLock.StrongAuthReasonFlags.ACTIVE_REQUEST, 100)
+    .then(() => {
+        console.info(`Succeeded in request strong auth`);
+    }).catch((err: BusinessError) => {
+        let error = err as BusinessError;
+        console.error(`Failed to request strong auth Code: ${error.code}, message: ${error.message}`);
+    });
+```
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.requestStrongAuth(screenLock.StrongAuthReasonFlags.ACTIVE_REQUEST, 100)
+    .then(() => {
+        console.info(`Succeeded in request strong auth`);
+    }).catch((err) => {
+        let error = err as BusinessError;
+        console.error(`Failed to request strong auth Code: ${error.code}, message: ${error.message}`);
+    });
+```
+
+## screenLock.getStrongAuth<sup>12+</sup>
+
+ArkTS-Dyn: getStrongAuth(userId: number): number;
+ArkTS-Sta: getStrongAuth(userId: int): int;
+
+获取触发强认证原因。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名   | 类型                        | 必填 | 说明               |
+| -------- | ------------------------- | ---- | ----------------- |
+| userId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 用户ID。 |
+
+**返回值：** 
+
+| 类型    | 说明                                              |
+| ------- | ------------------------------------------------- |
+| ArkTS-Dyn: number <br/>ArkTS-Sta: int | 返回true表示锁屏相关系统事件注册成功；返回false表示锁屏相关系统事件注册失败。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201  | permission denied.         |
+| 202  | permission verification failed. A non-system application calls a system API.         |
+| 13200002  | the screenlock management service is abnormal.         |
+
+**示例：** 
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let ret = screenLock.getStrongAuth(100);
+    console.info(`Succeeded in get strong auth result: ${ret}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get strong auth fail code:${error?.code}, message:${error?.message}`);
+}
+```
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let ret = screenLock.getStrongAuth(100);
+    console.info(`Succeeded in get strong auth result: ${ret}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get strong auth fail code:${error?.code}, message:${error?.message}`);
+}
+```
+ ## screenLock.isScreenLockDisabled<sup>12+</sup>
+
+ArkTS-Dyn: isScreenLockDisabled(userId: number): boolean;
+ArkTS-Sta: isScreenLockDisabled(userId: int): boolean;
+
+查询用户是否禁用锁屏。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名   | 类型                        | 必填 | 说明               |
+| -------- | ------------------------- | ---- | ----------------- |
+| userId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 用户ID。 |
+
+**返回值：** 
+
+| 类型    | 说明                                              |
+| ------- | ------------------------------------------------- |
+| boolean | 返回true表示该用户已禁用锁屏；返回false表示该用户未禁用锁屏。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201  | permission denied.         |
+| 202  | permission verification failed. A non-system application calls a system API.         |
+| 13200002  | the screenlock management service is abnormal.         |
+
+**示例：** 
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let ret = screenLock.isScreenLockDisabled(100);
+    console.info(`isScreenLockDisabled result: ${ret}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`isScreenLockDisabled fail Code:${error?.code}, message:${error?.message}`);
+}
+```
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let ret = screenLock.isScreenLockDisabled(100);
+    console.info(`isScreenLockDisabled result: ${ret}`);
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`isScreenLockDisabled fail Code:${error?.code}, message:${error?.message}`);
+}
+```
+  ## screenLock.setScreenLockDisabled<sup>12+</sup>
+
+ArkTS-Dyn: setScreenLockDisabled(disable: boolean, userId: number): Promise<boolean>;
+ArkTS-Sta: setScreenLockDisabled(disable: boolean, userId: int): Promise<boolean>;
+
+禁用用户锁屏功能，仅无密码时生效。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名   | 类型                        | 必填 | 说明               |
+| -------- | ------------------------- | ---- | ----------------- |
+| disable | boolean | 是   | 是否禁用。 |
+| userId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 用户ID。 |
+
+**返回值：** 
+
+| 类型               | 说明                                           |
+| ----------------- | ---------------------------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示发送事件成功；返回false表示发送事件失败。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201  | permission denied.         |
+| 202  | permission verification failed. A non-system application calls a system API.         |
+| 13200002  | the screenlock management service is abnormal.         |
+
+**示例：** 
+
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  screenLock.setScreenLockDisabled(true, 100).then((data: Boolean) => {
+    console.info(`Succeeded in set screenLock disabled. result: ${data}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set screenLock disabled, Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+  screenLock.setScreenLockDisabled(true, 100).then((data: Boolean) => {
+    console.info(`Succeeded in set screenLock disabled. result: ${data}`);
+  }).catch((err) => {
+    let error = err as BusinessError;
+    console.error(`Failed to set screenLock disabled, Code: ${error.code}, message: ${error.message}`);
+  });
+```
+
+ ## screenLock.setScreenLockAuthState<sup>12+</sup>
+
+ArkTS-Dyn: setScreenLockAuthState(state: AuthState, userId: number, authToken: Uint8Array): Promise<boolean>;
+ArkTS-Sta: setScreenLockAuthState(state: AuthState, userId: int, authToken: Uint8Array): Promise<boolean>;
+
+设置用户的锁屏认证状态。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_INNER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名   | 类型                        | 必填 | 说明               |
+| -------- | ------------------------- | ---- | ----------------- |
+| state | AuthState | 是   | 锁屏认证状态。 |
+| userId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 用户ID。 |
+| authToken | Uint8Array | 是   | 认证标志。 |
+
+**返回值：** 
+
+| 类型               | 说明                                           |
+| ----------------- | ---------------------------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示发送事件成功；返回false表示发送事件失败。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201  | permission denied.         |
+| 202  | permission verification failed. A non-system application calls a system API.         |
+| 13200002  | the screenlock management service is abnormal.         |
+
+**示例：** 
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.setScreenLockAuthState(screenLock.AuthState.AUTHED_BY_FACE, 100, new Uint8Array([100]))
+      .then((data: Boolean) => {
+        console.info(`Succeeded in set screenLock authState. result: ${data}`);
+      }).catch((err: BusinessError) => {
+        let error = err as BusinessError;
+        console.error(`Failed to set screenLock authState, Code: ${error.code}, message: ${error.message}`);
+      });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.setScreenLockAuthState(screenLock.AuthState.AUTHED_BY_FACE, 100, new Uint8Array([100]))
+      .then((data: Boolean) => {
+        console.info(`Succeeded in set screenLock disabled. result: ${data}`);
+      }).catch((err) => {
+        let error = err as BusinessError;
+        console.error(`Failed to set screenLock disabled, Code: ${error.code}, message: ${error.message}`);
+      });
+```
+  
+ ## screenLock.getScreenLockAuthState<sup>12+</sup>
+
+ArkTS-Dyn: getScreenLockAuthState(userId: number): AuthState;
+ArkTS-Sta: getScreenLockAuthState(userId: int): AuthState;
+
+获取用户的锁屏认证状态。。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名   | 类型                        | 必填 | 说明               |
+| -------- | ------------------------- | ---- | ----------------- |
+| userId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 用户ID。 |
+
+**返回值：** 
+
+| 类型               | 说明                                           |
+| ----------------- | ---------------------------------------------- |
+| AuthState | 返回AUTHED_BY_FACE表示人脸认证；其余返回值可见AuthState说明栏。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201  | permission denied.         |
+| 202  | permission verification failed. A non-system application calls a system API.         |
+| 13200002  | the screenlock management service is abnormal.         |
+
+**示例：** 
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let authState = screenLock.getScreenLockAuthState(100);
+    console.info(`Succeeded in get screenLock authState: ${authState}`);
+} catch (err){
+    let error = err as BusinessError;
+    console.error(`Failed to get screenLock authState, Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let authState = screenLock.getScreenLockAuthState(100);
+    console.info(`Succeeded in getScreenLockAuthState: ${authState}`);
+} catch (err){
+    let error = err as BusinessError;
+    console.error(`Failed to get screenLock authState, Code: ${error.code}, message: ${error.message}`);
+}
+```
+  
