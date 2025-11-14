@@ -30,7 +30,7 @@ import { image } from '@kit.ImageKit';
 
 getComponent(componentType: ComponentType, callback: AsyncCallback\<Component>): void
 
-根据图像的组件类型从图像中获取组件缓存并使用callback返回结果。
+根据图像的组件类型从图像中获取组件缓存。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -98,7 +98,7 @@ function GetComponentFunc(img: image.Image): void {
   try {
     img.getComponent(image.ComponentType.JPEG, (err: BusinessError | null, component: image.Component | undefined) =>{
       if (err) {
-        console.info(0x00000, 'GetComponentFunc', 'getComponent failed: ' + err);
+        console.error(0x00000, 'GetComponentFunc', 'getComponent failed: ' + err);
       } else {
         console.info(0x00000, 'GetComponentFunc', 'getComponent success!');
       }
@@ -193,7 +193,7 @@ function GetComponentFunc(img: image.Image): void {
 
 release(callback: AsyncCallback\<void>): void
 
-释放当前图像并使用callback返回结果。
+释放当前图像。使用callback异步回调。
 
 在接收另一个图像前必须先释放对应资源。
 

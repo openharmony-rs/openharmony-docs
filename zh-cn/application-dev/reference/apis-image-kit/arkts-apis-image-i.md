@@ -26,7 +26,7 @@
 | stride | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |   否  | 跨距，内存中每行像素所占的空间。stride >= region.size.width * 4。                   |
 | region | [Region](#region8) | 否 |   否  |区域，按照区域读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。 |
 
-## ImageInfo
+## ImageInfo<sup>6+</sup>
 
 表示图片信息。
 
@@ -42,7 +42,7 @@
 | mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。</br>**ArkTS-Dyn版本：** 12</br>**ArkTS-Sta版本：** 22 |
 | isHdr<sup>12+</sup> | boolean  |  否  | 否  | true表示图片为高动态范围（HDR），false表示图片非高动态范围（SDR）。对于[ImageSource](arkts-apis-image-ImageSource.md)，代表源图片是否为HDR；对于[PixelMap](arkts-apis-image-PixelMap.md)，代表解码后的pixelmap是否为HDR。</br>**ArkTS-Dyn版本：** 12</br>**ArkTS-Sta版本：** 22 |
 
-## Size
+## Size<sup>6+</sup>
 
 表示图片尺寸。
 
@@ -128,7 +128,7 @@ PixelMap的初始化选项。
 | desiredSize        | [Size](#size)                      | 否   | 是   | 期望输出大小，必须为正整数，若与原尺寸比例不一致，则会进行拉伸/缩放到指定尺寸，默认为原始尺寸。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn版本：** 7</br>**ArkTS-Sta版本：** 22 |
 | desiredRegion      | [Region](#region8)                 | 否   | 是   | 解码图像中由Region指定的矩形区域，当原始图像很大而只需要解码图像的一部分时，可以设置该参数，有助于提升性能，默认为原始大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn版本：** 7</br>**ArkTS-Sta版本：** 22 |
 | desiredPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否   | 是   | 解码的像素格式。默认值为RGBA_8888。仅支持设置：RGBA_8888、BGRA_8888和RGB_565。有透明通道图片格式不支持设置RGB_565，如PNG、GIF、ICO和WEBP。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn版本：** 7</br>**ArkTS-Sta版本：** 22 |
-| index              | int                                | 否   | 是   | 解码图片序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：0~（帧数-1）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn版本：** 7</br>**ArkTS-Sta版本：** 22 |
+| index              | int                                | 否   | 是   | 解码图片序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn版本：** 7</br>**ArkTS-Sta版本：** 22 |
 | fitDensity<sup>9+</sup> | number                        | 否   | 是   | 图像像素密度，单位为ppi。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn版本：** 9</br>**ArkTS-Sta版本：** 22 |
 | desiredColorSpace<sup>11+</sup> | [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | 否   | 是   | 目标色彩空间。默认值为UNKNOWN。</br>**ArkTS-Dyn版本：** 11</br>**ArkTS-Sta版本：** 22 |
 | desiredDynamicRange<sup>12+</sup> | [DecodingDynamicRange](arkts-apis-image-e.md#decodingdynamicrange12) | 否   | 是   | 目标动态范围，默认值为SDR。<br>通过[CreateIncrementalSource](arkts-apis-image-f.md#imagecreateincrementalsource9)创建的imagesource不支持设置此属性，默认解码为SDR内容。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。</br>**ArkTS-Dyn版本：** 12</br>**ArkTS-Sta版本：** 22 |
@@ -168,7 +168,7 @@ PixelMap的初始化选项。
 | x<sup>7+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否  | 区域左上角横坐标。单位：像素。 |
 | y<sup>7+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否  | 区域左上角纵坐标。单位：像素。 |
 
-## PackingOption
+## PackingOption<sup>6+</sup>
 
 表示图片编码选项。
 

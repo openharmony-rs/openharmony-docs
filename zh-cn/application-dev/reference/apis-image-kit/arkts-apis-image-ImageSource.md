@@ -25,11 +25,11 @@ import { image } from '@kit.ImageKit';
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
 | supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png，jpeg，bmp，gif，webp，dng，heic<sup>12+</sup>（不同硬件设备支持情况不同）。 |
 
-## getImageInfo
+## getImageInfo<sup>6+</sup>
 
 ArkTS-Dyn: getImageInfo(index: number, callback: AsyncCallback\<ImageInfo>): void
 
-获取指定序号的图片信息，使用callback形式返回图片信息。
+获取指定序号的图片信息。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -45,7 +45,7 @@ ArkTS-Dyn: getImageInfo(index: number, callback: AsyncCallback\<ImageInfo>): voi
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| index    |  number | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：0~（帧数-1）。 |
+| index    |  number | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
 | callback |  AsyncCallback<[ImageInfo](arkts-apis-image-i.md#imageinfo)> | 是   | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
 **示例：**
@@ -62,9 +62,11 @@ imageSourceApi.getImageInfo(0, (error: BusinessError, imageInfo: image.ImageInfo
 })
 ```
 
+## getImageInfo<sup>22+</sup>
+
 getImageInfo(index: int, callback: AsyncCallback\<ImageInfo | undefined>): void
 
-获取指定序号的图片信息，使用callback形式返回图片信息。
+获取指定序号的图片信息。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -76,7 +78,7 @@ getImageInfo(index: int, callback: AsyncCallback\<ImageInfo | undefined>): void
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| index    | int | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：0~（帧数-1）。 |
+| index    | int | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
 | callback | AsyncCallback<[ImageInfo](arkts-apis-image-i.md#imageinfo) \| undefined> | 是   | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
 **示例：**
@@ -100,11 +102,11 @@ function GetImageInfoFunc(imageSource: image.ImageSource): void {
 }
 ```
 
-## getImageInfo
+## getImageInfo<sup>6+</sup>
 
 getImageInfo(callback: AsyncCallback\<ImageInfo>): void
 
-获取图片信息，使用callback形式返回图片信息。
+获取图片信息。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -136,9 +138,11 @@ imageSourceApi.getImageInfo((err: BusinessError, imageInfo: image.ImageInfo) => 
 })
 ```
 
+## getImageInfo<sup>22+</sup>
+
 getImageInfo(callback: AsyncCallback\<ImageInfo | undefined>): void
 
-获取图片信息，使用callback形式返回图片信息。
+获取图片信息。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -173,7 +177,7 @@ function GetImageInfoFunc(imageSource: image.ImageSource): void {
 }
 ```
 
-## getImageInfo
+## getImageInfo<sup>6+</sup>
 
 getImageInfo(index?: int): Promise\<ImageInfo>
 
@@ -193,7 +197,7 @@ getImageInfo(index?: int): Promise\<ImageInfo>
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：0~（帧数-1）。 |
+| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
 
 **返回值：**
 
@@ -214,6 +218,8 @@ imageSourceApi.getImageInfo(0)
   })
 ```
 
+## getImageInfo<sup>22+</sup>
+
 getImageInfo(index?: int): Promise\<ImageInfo | undefined>
 
 获取图片信息。使用Promise异步回调。
@@ -228,7 +234,7 @@ getImageInfo(index?: int): Promise\<ImageInfo | undefined>
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：0~（帧数-1）。 |
+| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0，帧数-1]。 |
 
 **返回值：**
 
@@ -267,7 +273,7 @@ getImageInfoSync(index?: number): ImageInfo
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：0~（帧数-1）。 |
+| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
 
 **返回值：**
 
@@ -297,6 +303,8 @@ if (imageInfo == undefined) {
 }
 ```
 
+## getImageInfoSync<sup>22+</sup>
+
 getImageInfoSync(index?: int): ImageInfo | undefined
 
 获取指定序号的图片信息，使用同步形式返回图片信息。
@@ -311,7 +319,7 @@ getImageInfoSync(index?: int): ImageInfo | undefined
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index |  int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：0~（帧数-1）。 |
+| index |  int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
 
 **返回值：**
 
@@ -754,7 +762,7 @@ ArkTS-Dyn: updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, len
 
 ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length: int, callback: AsyncCallback\<void>): void
 
-更新增量数据，callback形式返回结果。
+更新增量数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -957,7 +965,7 @@ createPixelMap(options?: DecodingOptions): Promise\<PixelMap | undefined>
 
 通过图片解码参数创建PixelMap对象。使用Promise异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+从API version 22开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator22)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -996,7 +1004,7 @@ function CreatePixelMapFunc(imageSource: image.ImageSource): void {
 
 createPixelMap(callback: AsyncCallback\<PixelMap>): void
 
-通过默认参数创建PixelMap对象，使用callback形式返回结果。
+通过默认参数创建PixelMap对象。使用callback异步回调。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
@@ -1036,7 +1044,7 @@ createPixelMap(callback: AsyncCallback\<PixelMap | undefined>): void
 
 通过默认参数创建PixelMap对象。使用callback异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+从API version 22开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator22)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1125,7 +1133,7 @@ createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap | und
 
 通过图片解码参数创建PixelMap对象。使用callback异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+从API version 22开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator22)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1232,7 +1240,7 @@ createPixelMapSync(options?: DecodingOptions): PixelMap | undefined
 
 通过图片解码参数同步创建PixelMap对象。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+从API version 22开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator22)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1362,7 +1370,7 @@ function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
 
 createPixelMapList(callback: AsyncCallback<Array\<PixelMap>>): void
 
-通过默认参数创建PixelMap数组，使用callback形式返回结果。针对动图如Gif、Webp，此接口返回每帧图片数据；针对静态图，此接口返回唯一的一帧图片数据。
+通过默认参数创建PixelMap数组。使用callback异步回调。针对动图如Gif、Webp，此接口返回每帧图片数据；针对静态图，此接口返回唯一的一帧图片数据。
 
 > **注意：**
 > 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
@@ -1429,7 +1437,7 @@ function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
       }
     });
   } catch (err) {
-    console.info(0x00000, 'CreatePixelMapListFunc', 'CreatePixelMapListFunc failed: ' + err);
+    console.error(0x00000, 'CreatePixelMapListFunc', 'CreatePixelMapListFunc failed: ' + err);
   }
 }
 ```
@@ -1438,7 +1446,7 @@ function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
 
 createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array\<PixelMap>>): void
 
-通过图片解码参数创建PixelMap数组，使用callback形式返回结果。针对动图如Gif、Webp，此接口返回每帧图片数据；针对静态图，此接口返回唯一的一帧图片数据。
+通过图片解码参数创建PixelMap数组。使用callback异步回调。针对动图如Gif、Webp，此接口返回每帧图片数据；针对静态图，此接口返回唯一的一帧图片数据。
 
 > **注意：**
 > 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
@@ -1629,11 +1637,11 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7700101  | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed. |
+| 7700101  | Bad source. |
 | 7700102  | Unsupported mimetype.                                        |
-| 7700103  | Image too large.  This status code is thrown when an error occurs during the process of checking size. |
-| 7700201  | Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata. |
-| 7700203  | Unsupported options, e.g., cannot convert image into desired pixel format. |
+| 7700103  | Image too large. |
+| 7700201  | Unsupported allocator type. For example, use share memory to decode HDR image as only DMA supported HDR metadata. |
+| 7700203  | Unsupported options, For example, unsupported desiredPixelFormat causes. |
 | 7700301  | Failed to decode image.                                      |
 | 7700302  | Failed to allocate memory.                                   |
 
@@ -1752,7 +1760,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 | 类型                   | 说明                   |
 | ---------------------- | ---------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
 
 **错误码：**
 
@@ -1797,7 +1805,7 @@ ArkTS-Dyn: getDelayTimeList(callback: AsyncCallback<Array\<number>>): void
 
 ArkTS-Sta: getDelayTimeList(callback: AsyncCallback<Array\<int>>): void
 
-获取图像延迟时间数组，使用callback形式返回结果。此接口仅用于gif图片和webp图片。
+获取图像延迟时间数组。使用callback异步回调。此接口仅用于gif图片和webp图片。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1929,7 +1937,7 @@ ArkTS-Dyn: getFrameCount(callback: AsyncCallback\<number>): void
 
 ArkTS-Sta: getFrameCount(callback: AsyncCallback\<int>): void
 
-获取图像帧数，使用callback形式返回结果。
+获取图像帧数。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2114,11 +2122,11 @@ function GetDisposalTypeListFunc(imageSource: image.ImageSource): void {
 }
 ```
 
-## release
+## release<sup>6+</sup>
 
 release(callback: AsyncCallback\<void>): void
 
-释放ImageSource实例，使用callback形式返回结果。
+释放ImageSource实例。使用callback异步回调。
 
 ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
@@ -2170,7 +2178,7 @@ function ReleaseFunc(imageSource: image.ImageSource): void {
 
 ```
 
-## release
+## release<sup>6+</sup>
 
 release(): Promise\<void>
 
@@ -2263,7 +2271,7 @@ imageSourceApi.getImageProperty("BitsPerSample")
 
 getImageProperty(key: string, callback: AsyncCallback\<string>): void
 
-获取图片中给定索引处图像的指定属性键的值，用callback形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+获取图片中给定索引处图像的指定属性键的值。使用callback异步回调。仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -2300,7 +2308,7 @@ imageSourceApi.getImageProperty("BitsPerSample", (error: BusinessError, data: st
 
 getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCallback\<string>): void
 
-获取图片指定属性键的值，callback形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+获取图片指定属性键的值。使用callback异步回调。仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -2386,7 +2394,7 @@ imageSourceApi.modifyImageProperty("ImageWidth", "120").then(() => {
 
 modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>): void
 
-通过指定的键修改图片属性的值，callback形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+通过指定的键修改图片属性的值。使用callback异步回调。仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >

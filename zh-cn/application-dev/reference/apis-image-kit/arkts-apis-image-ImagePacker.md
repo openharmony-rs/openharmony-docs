@@ -405,11 +405,11 @@ function PackToDataFromPixelmapSequenceFunc(context: common.UIAbilityContext): v
 }
 ```
 
-## release
+## release<sup>6+</sup>
 
 release(callback: AsyncCallback\<void>): void
 
-释放图片编码实例，使用callback形式返回结果。
+释放图片编码实例。使用callback异步回调。
 
 ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
@@ -462,7 +462,7 @@ function ReleaseFunc(): void {
 }
 ```
 
-## release
+## release<sup>6+</sup>
 
 release(): Promise\<void>
 
@@ -518,7 +518,7 @@ ArkTS-Dyn: packToFile(source: ImageSource, fd: number, options: PackingOption, c
 
 ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption, callback: AsyncCallback\<void>): void
 
-指定编码参数，将ImageSource直接编码进文件。使用callback形式返回结果。
+指定编码参数，将ImageSource直接编码进文件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -719,7 +719,7 @@ ArkTS-Dyn: packToFile(source: PixelMap, fd: number, options: PackingOption,  cal
 
 ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption,  callback: AsyncCallback\<void>): void
 
-指定编码参数，将PixelMap直接编码进文件。使用callback形式返回结果。
+指定编码参数，将PixelMap直接编码进文件。使用callback异步回调。
 
 > **注意：**
 > 接口如果返回62980115错误码，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
@@ -1145,7 +1145,7 @@ function PackToFileFromPixelmapSequenceFunc(context: common.UIAbilityContext): v
 
 packing(source: ImageSource, option: PackingOption, callback: AsyncCallback\<ArrayBuffer>): void
 
-图片压缩或重新编码，使用callback形式返回结果。
+图片压缩或重新编码。使用callback异步回调。
 
 > **说明：**
 >
@@ -1247,7 +1247,7 @@ imagePackerApi.packing(imageSourceApi, packOpts)
 
 packing(source: PixelMap, option: PackingOption, callback: AsyncCallback\<ArrayBuffer>): void
 
-图片压缩或重新编码，使用callback形式返回结果。
+图片压缩或重新编码。使用callback异步回调。
 
 > **说明：**
 >

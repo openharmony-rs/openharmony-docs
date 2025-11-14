@@ -57,6 +57,8 @@ async function GetMainPixelmap() {
 }
 ```
 
+## getMainPixelmap<sup>22+</sup>
+
 getMainPixelmap(): PixelMap | undefined
 
 获取主图的pixelmap。
@@ -140,6 +142,8 @@ async function GetHdrComposedPixelmap() {
 }
 ```
 
+## getHdrComposedPixelmap<sup>22+</sup>
+
 getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
 合成hdr图并获取hdr图的pixelmap。使用Promise异步回调。
@@ -162,8 +166,8 @@ getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 7600901  | Inner unknown error. Please check the logs for detailed information. |
-| 7600201  | Unsupported operation. e.g.,1. The picture does not has a gainmap. 2. MainPixelMap's allocator type is not DMA. |
+| 7600901  | Unknown error. |
+| 7600201  | Unsupported operation. |
 
 **示例：**
 
@@ -464,7 +468,7 @@ function SetMetadataFunc(picture: image.Picture): void {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let metaData: image.Metadata = await picture.getMetadata(metadataType);
     await picture.setMetadata(metadataType, metaData);
-    console.error(0x00000, 'SetMetadataFunc', 'setMetadata success!');
+    console.info(0x00000, 'SetMetadataFunc', 'setMetadata success!');
   } catch (err) {
     console.error(0x00000, 'SetMetadataFunc', 'SetMetadataFunc failed: ' + err);
   }
@@ -475,7 +479,7 @@ function SetMetadataFunc(picture: image.Picture): void {
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-获取主图的元数据。
+获取主图的元数据。使用Promise异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -524,9 +528,11 @@ async function GetPictureObjMetadataProperties() {
 }
 ```
 
+## getMetadata<sup>22+</sup>
+
 getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
-获取主图的元数据。
+获取主图的元数据。使用Promise异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -553,7 +559,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
+| 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type. |
 
 **示例：**
 

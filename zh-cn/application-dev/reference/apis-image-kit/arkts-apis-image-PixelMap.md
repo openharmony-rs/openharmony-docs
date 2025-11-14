@@ -75,7 +75,7 @@ async function ReadPixelsToBuffer(pixelMap : image.PixelMap) {
 
 readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
-按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中，使用callback形式返回。
+按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中。使用callback异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -225,7 +225,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
 
 readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
-固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区中，该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，使用callback形式返回。
+固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区中，该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定。使用callback异步回调。
 
 可用公式计算PositionArea需要申请的内存大小。
 
@@ -538,7 +538,7 @@ async function WritePixelsSync() {
 
 writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
-按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap，使用Promise形式返回。
+按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap。使用Promise异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -604,7 +604,7 @@ function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
 
 writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
-按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap，使用callback形式返回。
+按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap。使用callback异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2421,7 +2421,7 @@ async function SetColorSpace() {
 
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback: AsyncCallback\<void>): void
 
-根据输入的目标色彩空间对图像像素颜色进行色彩空间转换，使用callback形式返回。
+根据输入的目标色彩空间对图像像素颜色进行色彩空间转换。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2497,7 +2497,7 @@ function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
 
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\<void>
 
-根据输入的目标色彩空间对图像像素颜色进行色彩空间转换，使用Promise形式返回。
+根据输入的目标色彩空间对图像像素颜色进行色彩空间转换。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2569,7 +2569,7 @@ function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
 
 toSdr(): Promise\<void>
 
-将HDR的图像内容转换为SDR的图像内容，异步使用Promise形式返回。
+将HDR的图像内容转换为SDR的图像内容。Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

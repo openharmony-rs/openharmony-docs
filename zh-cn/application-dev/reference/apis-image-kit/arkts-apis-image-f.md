@@ -318,7 +318,7 @@ async function CreatePixelMap() {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback\<PixelMap>): void
 
-通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，通过callback返回结果。
+通过属性创建PixelMap，默认采用BGRA_8888格式处理数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -882,7 +882,7 @@ async function CreatePixelMapSync() {
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明通道非预乘模式转变为预乘模式，转换后的数据存入目标PixelMap，通过回调函数返回结果。
+将PixelMap的透明通道非预乘模式转变为预乘模式，转换后的数据存入目标PixelMap。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -996,7 +996,7 @@ async function CreatePremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap，通过回调函数返回结果。
+将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1106,7 +1106,7 @@ async function CreateUnpremultipliedPixelMap() {
 }
 ```
 
-## image.createImageSource
+## image.createImageSource<sup>6+</sup>
 
 createImageSource(uri: string): ImageSource
 
@@ -1145,6 +1145,8 @@ const path: string = context.filesDir + "/test.jpg";
 const imageSourceApi: image.ImageSource = image.createImageSource(path);
 ```
 
+## image.createImageSource<sup>22+</sup>
+
 createImageSource(uri: string): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
@@ -1152,6 +1154,8 @@ createImageSource(uri: string): ImageSource | undefined
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1237,7 +1241,9 @@ const path: string = context.filesDir + "/test.png";
 let imageSourceApi: image.ImageSource = image.createImageSource(path, sourceOptions);
 ```
 
-ArkTS-Sta: createImageSource(uri: string, options: SourceOptions): ImageSource | undefined
+## image.createImageSource<sup>22+</sup>
+
+createImageSource(uri: string, options: SourceOptions): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
 
@@ -1330,6 +1336,8 @@ let filePath: string = context.filesDir + "/test.jpg";
 let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 const imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
 ```
+
+## image.createImageSource<sup>22+</sup>
 
 createImageSource(fd: int): ImageSource | undefined
 
@@ -1428,6 +1436,8 @@ const filePath: string = context.filesDir + "/test.jpg";
 let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 const imageSourceApi: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
 ```
+
+## image.createImageSource<sup>22+</sup>
 
 createImageSource(fd: int, options: SourceOptions): ImageSource | undefined
 
@@ -1600,6 +1610,8 @@ let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
 const imageSourceApi: image.ImageSource = image.createImageSource(data, sourceOptions);
 ```
 
+## image.createImageSource<sup>22+</sup>
+
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
@@ -1693,13 +1705,13 @@ resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFil
 })
 ```
 
+## image.createImageSource<sup>22+</sup>
+
 createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource | undefined
 
 通过图像资源文件的RawFileDescriptor创建ImageSource实例。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1808,6 +1820,8 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
   console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
 })
 ```
+
+## image.createIncrementalSource<sup>22+</sup>
 
 createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
@@ -1920,6 +1934,8 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 })
 ```
 
+## image.createIncrementalSource<sup>22+</sup>
+
 createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
@@ -1999,7 +2015,7 @@ function GetImageSourceSupportedFormats() {
 }
 ```
 
-## image.createImagePacker
+## image.createImagePacker<sup>6+</sup>
 
 createImagePacker(): ImagePacker
 
@@ -2197,7 +2213,9 @@ let size: image.Size = {
 let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
 ```
 
-createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver
+## image.createImageReceiver<sup>22+</sup>
+
+createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver | undefined
 
 通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
@@ -2219,15 +2237,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiv
 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
-| [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 401| Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;   |
+| [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | 如果操作成功，则返回ImageReceiver实例。 |
 
 **示例：**
 
@@ -2243,9 +2253,9 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 
 ## image.createImageCreator<sup>11+</sup>
 
-createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
+ArkTS-Dyn: createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
 
-createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator
+ArkTS-Sta: createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator
 
 通过图片大小、图片格式、容量创建ImageCreator实例。
 

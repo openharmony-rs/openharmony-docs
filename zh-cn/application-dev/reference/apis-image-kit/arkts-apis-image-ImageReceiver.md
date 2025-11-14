@@ -34,7 +34,7 @@ import { image } from '@kit.ImageKit';
 
 getReceivingSurfaceId(callback: AsyncCallback\<string>): void
 
-用于获取一个surface id供Camera或其他组件使用。使用callback返回结果。
+用于获取一个surface id供Camera或其他组件使用。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -136,7 +136,7 @@ function GetReceivingSurfaceIdFunc(): void {
 
 readLatestImage(callback: AsyncCallback\<Image>): void
 
-从ImageReceiver读取最新的图片，并使用callback返回结果。
+从ImageReceiver读取最新的图片。使用callback异步回调。
 
 **注意**：此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
@@ -242,7 +242,7 @@ function ReadLatestImageFunc(): void {
 
 readNextImage(callback: AsyncCallback\<Image>): void
 
-从ImageReceiver读取下一张图片，并使用callback返回结果。
+从ImageReceiver读取下一张图片。使用callback异步回调。
 
 **注意**：此接口需要在[on](#on9)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](arkts-apis-image-Image.md)对象使用完毕后需要调用[release](arkts-apis-image-Image.md#release9)方法释放，释放后才可以继续接收新的数据。
 
@@ -353,6 +353,8 @@ on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onImageArrival](#onImageArrival22)。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **ArkTS-Dyn起始版本：** 9
@@ -415,6 +417,8 @@ off(type: 'imageArrival', callback?: AsyncCallback\<void>): void
 释放buffer时移除注册回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offImageArrival](#offImageArrival22)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 

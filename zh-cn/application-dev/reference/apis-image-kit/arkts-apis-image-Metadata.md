@@ -178,7 +178,7 @@ function SetPropertiesFunc(metadata: image.Metadata): void {
 
 ## getAllProperties<sup>13+</sup>
 
-ArkTS-Dyn: getAllProperties(): Promise\<Record<string, string | null>>
+getAllProperties(): Promise\<Record<string, string | null>>
 
 获取图片中所有元数据的属性和值。使用Promise异步回调。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
@@ -225,7 +225,9 @@ async function GetAllProperties(context: Context) {
 }
 ```
 
-ArkTS-Sta: getAllProperties(): Promise\<Record<string, string | null> | undefined>
+## getAllProperties<sup>22+</sup>
+
+getAllProperties(): Promise\<Record<string, string | null> | undefined>
 
 获取图片中所有元数据的属性和值。使用Promise异步回调。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
@@ -239,7 +241,7 @@ ArkTS-Sta: getAllProperties(): Promise\<Record<string, string | null> | undefine
 
 | 类型                                     | 说明                                        |
 | ---------------------------------------- | ------------------------------------------- |
-| Promise\<Record<string, string | null> \| undefined> | Promise对象，返回元数据拥有的所有属性的值。 |
+| Promise\<Record<string, string \| null> \| undefined> | Promise对象，返回元数据拥有的所有属性的值。 |
 
 **示例：**
 
@@ -258,7 +260,7 @@ function GetAllPropertiesFunc(metadata: image.Metadata): void {
 
 ## clone<sup>13+</sup>
 
-ArkTS-Dyn: clone(): Promise\<Metadata>
+clone(): Promise\<Metadata>
 
 对元数据进行克隆。使用Promise异步回调。
 
@@ -304,7 +306,9 @@ async function clone(context: Context) {
 }
 ```
 
-ArkTS-Sta: clone(): Promise\<Metadata | undefined>
+## clone<sup>22+</sup>
+
+clone(): Promise\<Metadata | undefined>
 
 对元数据进行克隆。使用Promise异步回调。
 

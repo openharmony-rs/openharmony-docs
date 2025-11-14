@@ -32,7 +32,7 @@ import { image } from '@kit.ImageKit';
 
 dequeueImage(callback: AsyncCallback\<Image>): void
 
-从空闲队列中获取buffer图片，用于绘制UI内容，并使用callback返回结果。
+从空闲队列中获取buffer图片，用于绘制UI内容。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -184,7 +184,7 @@ function DequeueImageFunc(creator: image.ImageCreator): void {
 
 queueImage(image: Image, callback: AsyncCallback\<void>): void
 
-将绘制好的图片放入队列，并使用callback返回结果。
+将绘制好的图片放入队列。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -369,9 +369,11 @@ function QueueImageFunc(creator: image.ImageCreator): void {
 
 on(type: 'imageRelease', callback: AsyncCallback\<void>): void
 
-监听imageRelease事件，并使用callback返回结果。
+监听imageRelease事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onImageRelease](#onimagerelease22)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -404,6 +406,8 @@ onImageRelease(callback: AsyncCallback\<void>): void
 监听imageRelease事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on9)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -471,6 +475,8 @@ off(type: 'imageRelease', callback?: AsyncCallback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offImageRelease](#offImageRelease22)。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
 **ArkTS-Dyn版本：** 13
@@ -499,6 +505,8 @@ offImageRelease(callback?: AsyncCallback\<void>): void
 释放buffer时，移除注册的回调函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off13)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -569,7 +577,7 @@ function OffFunc(creator: image.ImageCreator): void {
 
 release(callback: AsyncCallback\<void>): void
 
-释放当前图像，并使用callback返回结果。
+释放当前图像。使用callback异步回调。
 
 ArkTS有内存回收机制，ImageCreator对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
