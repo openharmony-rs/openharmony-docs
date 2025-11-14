@@ -3261,8 +3261,6 @@ export default class RaiseMainWindowAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
-**示例：**
-
 ```ts
 // EntryAbility.ets
 import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
