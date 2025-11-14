@@ -84,8 +84,9 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 ### CompletionHandlerForAtomicService示例
 
 ```ts
-import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
+import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want, CompletionHandlerForAtomicService } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { FailureCode } from '@ohos.app.ability.CompletionHandlerForAtomicService';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility {
