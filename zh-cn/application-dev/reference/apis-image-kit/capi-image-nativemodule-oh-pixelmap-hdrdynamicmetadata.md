@@ -1,5 +1,9 @@
 # OH_Pixelmap_HdrDynamicMetadata
 
+```
+typedef struct {...} OH_Pixelmap_HdrDynamicMetadata
+```
+
 ## 概述
 
 DR_DYNAMIC_METADATA关键字对应的动态元数据值。
