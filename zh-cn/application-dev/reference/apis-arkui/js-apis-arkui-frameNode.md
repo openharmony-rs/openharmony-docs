@@ -2358,7 +2358,7 @@ struct ListNodeTest {
 
 adoptChild(child: FrameNode): void
 
-当前节点收养目标子节点。被收养的节点不能已有父节点。此操作实际上不会将其添加为子节点，而仅是允许其接收生命周期回调，就像它是子节点一样。
+当前节点接纳目标节点为附属节点。被接纳的附属节点不能已有父节点。此操作实际上不会将其添加为子节点，而仅是允许其接收生命周期回调，就像它是子节点一样。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2368,7 +2368,7 @@ adoptChild(child: FrameNode): void
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | 是   | 将要被收养的节点。 |
+| child | [FrameNode](#framenode-1) | 是   | 将要被接纳的节点。 |
 
 **错误码：**
 
@@ -2382,13 +2382,13 @@ adoptChild(child: FrameNode): void
 
 **示例：**
 
-完整示例请参考[收养节点示例](#收养节点示例)。
+完整示例请参考[接纳为附属节点示例](#接纳为附属节点示例)。
 
 ### removeAdoptedChild<sup>23+</sup>
 
 removeAdoptedChild(child: FrameNode): void
 
-移除目标被收养的子节点。
+移除目标接纳的附属节点。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2398,7 +2398,7 @@ removeAdoptedChild(child: FrameNode): void
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | 是   | 正在被收养的节点 |
+| child | [FrameNode](#framenode-1) | 是   | 正在被接纳的节点 |
 
 **错误码：**
 
@@ -2412,7 +2412,7 @@ removeAdoptedChild(child: FrameNode): void
 
 **示例：**
 
-完整示例请参考[收养节点示例](#收养节点示例)。
+完整示例请参考[接纳为附属节点示例](#接纳为附属节点示例)。
  	
 ### convertPosition<sup>22+</sup>
 
@@ -10045,9 +10045,9 @@ struct Index {
 }
 ```
 
-## 收养节点示例
+## 接纳为附属节点示例
 
-从API version 23开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild23)和[removeAdoptedChild](#removeadoptedchild23)接口进行节点收养相关操作。
+从API version 23开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild23)和[removeAdoptedChild](#removeadoptedchild23)接口进行接纳为附属节点的相关操作。
 
 ```ts
 import {NodeController, FrameNode, UIContext} from '@kit.ArkUI';
