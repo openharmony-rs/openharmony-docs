@@ -513,7 +513,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage2.ets) -->
+<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 模块2
