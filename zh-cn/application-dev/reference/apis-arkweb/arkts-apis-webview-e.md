@@ -2,6 +2,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持，后续版本的新增接口，则采用上角标单独标记接口的起始版本。
 
 ## WebHitTestType
@@ -9,6 +11,10 @@
 [getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18)接口用于指示游标节点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
@@ -27,6 +33,10 @@ Web组件使用HTTPDNS的模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
 | OFF                                  | 0 |不使用HTTPDNS， 可以用于撤销之前使用的HTTPDNS配置。|
@@ -38,6 +48,10 @@ Web组件使用HTTPDNS的模式。
 当前网页的安全级别。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
@@ -51,6 +65,10 @@ Web组件使用HTTPDNS的模式。
 当前网页的播控状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称    | 值   | 说明               |
 | ------- | ---- | ------------------ |
@@ -76,6 +94,10 @@ Web组件使用HTTPDNS的模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称         | 值 | 说明                            |
 | ------------ | -- |------------------------------- |
 | NOT_SUPPORT  | 0 |不支持的数据类型。|
@@ -92,6 +114,10 @@ Web组件使用HTTPDNS的模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称         | 值 | 说明                              |
 | ------------ | -- |--------------------------------- |
 | NOT_SUPPORT  | 0 |不支持的数据类型。|
@@ -107,6 +133,10 @@ ArkWeb渲染子进程模式类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
 | SINGLE        | 0 |ArkWeb单渲染子进程模式。该模式下，多个Web复用一个渲染子进程。|
@@ -117,6 +147,10 @@ ArkWeb渲染子进程模式类型。
 [OfflineResourceMap](./arkts-apis-webview-i.md#offlineresourcemap12)对象对应的本地离线资源的接口类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称         | 值 | 说明                              |
 | ------------ | -- |--------------------------------- |
@@ -131,6 +165,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称         | 值 | 说明                              |
 | ------------ | -- |--------------------------------- |
 | EVENT  | 0 | 滚动事件，表示通过触摸屏，触摸板，鼠标滚轮生成的网页滚动。|
@@ -140,6 +178,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 下载任务的状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
@@ -156,6 +198,11 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 下载任务的错误码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
@@ -194,6 +241,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称         | 值 | 说明                              |
 | ------------ | -- |--------------------------------- |
 | MAIN_FRAME | 0 | 顶层页面。 |
@@ -223,6 +274,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值 | 说明 |
 |------|----|------|
 | PAUSED  | 0 | 播放状态为播放状态。 |
@@ -233,6 +288,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 播放器的网络状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 |------|----|------|
@@ -246,6 +305,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 播放器的缓存状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 |------|----|------|
@@ -261,6 +324,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值 | 说明 |
 |------|----|------|
 | NETWORK_ERROR | 1 | 网络错误。 |
@@ -272,6 +339,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 表示播放器的挂起类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 |------|----|------|
@@ -285,6 +356,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值 | 说明 |
 |------|----|------|
 | VIDEO | 0 | 视频。 |
@@ -295,6 +370,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 表示媒体源的类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 |------|----|------|
@@ -307,6 +386,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值 | 说明 |
 |------|----|------|
 | NONE     | 0 | 不预加载。 |
@@ -318,6 +401,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 使用代理的请求的scheme信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |

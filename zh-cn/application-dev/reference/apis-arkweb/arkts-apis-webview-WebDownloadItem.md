@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 11开始支持。
@@ -56,18 +58,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update guid: " + webDownloadItem.getGuid());
+              console.info("download update guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -107,18 +109,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update guid: " + webDownloadItem.getGuid());
+              console.info("download update guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -179,18 +181,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update current speed: " + webDownloadItem.getCurrentSpeed());
+              console.info("download update current speed: " + webDownloadItem.getCurrentSpeed());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -230,18 +232,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update current speed: " + webDownloadItem.getCurrentSpeed());
+              console.info("download update current speed: " + webDownloadItem.getCurrentSpeed());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -302,18 +304,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -353,18 +355,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -425,18 +427,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update total bytes: " + webDownloadItem.getTotalBytes());
+              console.info("download update total bytes: " + webDownloadItem.getTotalBytes());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -476,18 +478,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update total bytes: " + webDownloadItem.getTotalBytes());
+              console.info("download update total bytes: " + webDownloadItem.getTotalBytes());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -546,18 +548,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update download state: " + webDownloadItem.getState());
+              console.info("download update download state: " + webDownloadItem.getState());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -597,18 +599,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update download state: " + webDownloadItem.getState());
+              console.info("download update download state: " + webDownloadItem.getState());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -667,19 +669,19 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
-              console.log("download error code: " + webDownloadItem.getLastErrorCode());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download error code: " + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -719,19 +721,19 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
-              console.log("download error code: " + webDownloadItem.getLastErrorCode());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download error code: " + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -790,18 +792,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download， method:" + webDownloadItem.getMethod());
+              console.info("will start a download， method:" + webDownloadItem.getMethod());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -841,18 +843,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download， method:" + webDownloadItem.getMethod());
+              console.info("will start a download， method:" + webDownloadItem.getMethod());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -911,18 +913,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download， mime type:" + webDownloadItem.getMimeType());
+              console.info("will start a download， mime type:" + webDownloadItem.getMimeType());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -962,18 +964,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download， mime type:" + webDownloadItem.getMimeType());
+              console.info("will start a download， mime type:" + webDownloadItem.getMimeType());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1027,18 +1029,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download, url:" + webDownloadItem.getUrl());
+              console.info("will start a download, url:" + webDownloadItem.getUrl());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1097,18 +1099,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download, suggest name:" + webDownloadItem.getSuggestedFileName());
+              console.info("will start a download, suggest name:" + webDownloadItem.getSuggestedFileName());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1148,18 +1150,18 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download, suggest name:" + webDownloadItem.getSuggestedFileName());
+              console.info("will start a download, suggest name:" + webDownloadItem.getSuggestedFileName());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1220,19 +1222,19 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
-              console.log("download update received bytes: " + webDownloadItem.getReceivedBytes());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update received bytes: " + webDownloadItem.getReceivedBytes());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1272,19 +1274,19 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
-              console.log("download update received bytes: " + webDownloadItem.getReceivedBytes());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update received bytes: " + webDownloadItem.getReceivedBytes());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1343,19 +1345,19 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
-              console.log("download finish full path: " + webDownloadItem.getFullPath());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish full path: " + webDownloadItem.getFullPath());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1395,19 +1397,19 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
-              console.log("download finish full path: " + webDownloadItem.getFullPath());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish full path: " + webDownloadItem.getFullPath());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1462,20 +1464,20 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1549,20 +1551,20 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1611,20 +1613,20 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1704,20 +1706,20 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1766,20 +1768,20 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1842,21 +1844,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -1914,21 +1916,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -2007,21 +2009,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -2087,21 +2089,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -2188,21 +2190,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -2276,21 +2278,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("will start a download.");
+              console.info("will start a download.");
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download failed guid: " + webDownloadItem.getGuid());
+              console.info("download failed guid: " + webDownloadItem.getGuid());
               // 序列化失败的下载到一个字节数组。
               this.failedData = webDownloadItem.serialize();
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log("download finish guid: " + webDownloadItem.getGuid());
+              console.info("download finish guid: " + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {

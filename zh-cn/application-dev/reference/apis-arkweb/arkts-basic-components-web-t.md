@@ -2,6 +2,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
@@ -25,6 +27,10 @@ type OnAdsBlockedCallback = (details: AdsBlockedDetails) => void
 当页面发生广告过滤时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -58,6 +64,10 @@ type OnContextMenuHideCallback = () => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 ## OnRenderProcessNotRespondingCallback<sup>12+</sup>
 
 type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingData) => void
@@ -65,6 +75,10 @@ type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingDa
 渲染进程无响应时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -80,6 +94,10 @@ type OnRenderProcessRespondingCallback = () => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 ## OnViewportFitChangedCallback<sup>12+</sup>
 
 type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void
@@ -87,6 +105,10 @@ type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void
 网页meta中viewport-fit配置项更改时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -101,6 +123,10 @@ type OnNativeEmbedVisibilityChangeCallback = (nativeEmbedVisibilityInfo: NativeE
 当同层标签可见性变化时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -149,6 +175,10 @@ type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContent
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -162,6 +192,10 @@ type OnNavigationEntryCommittedCallback = (loadCommittedDetails: [LoadCommittedD
 导航条目提交时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -194,6 +228,10 @@ type OnIntelligentTrackingPreventionCallback = (details: IntelligentTrackingPrev
 当跟踪者cookie被拦截时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -232,6 +270,10 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 拦截网页可编辑元素拉起软键盘的回调，一般在点击网页input标签时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

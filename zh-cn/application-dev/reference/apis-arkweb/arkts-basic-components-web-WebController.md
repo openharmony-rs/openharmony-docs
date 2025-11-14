@@ -6,6 +6,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
@@ -129,7 +131,7 @@ accessBackward(): boolean
         Button('accessBackward')
           .onClick(() => {
             let result = this.controller.accessBackward()
-            console.log('result:' + result)
+            console.info('result:' + result)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -167,7 +169,7 @@ accessForward(): boolean
         Button('accessForward')
           .onClick(() => {
             let result = this.controller.accessForward()
-            console.log('result:' + result)
+            console.info('result:' + result)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -212,7 +214,7 @@ accessStep(step: number): boolean
         Button('accessStep')
           .onClick(() => {
             let result = this.controller.accessStep(this.steps)
-            console.log('result:' + result)
+            console.info('result:' + result)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -350,7 +352,7 @@ getHitTest(): HitTestType
         Button('getHitTest')
           .onClick(() => {
             let hitType = this.controller.getHitTest()
-            console.log("hitType: " + hitType)
+            console.info("hitType: " + hitType)
           })
         Web({ src: 'www.example.com', controller: this.controller })
       }
@@ -611,7 +613,7 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
     }
 
     toString(): void {
-      console.log('Web Component toString')
+      console.info('Web Component toString')
     }
   }
 
@@ -650,7 +652,7 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
       <script type="text/javascript">
       function htmlTest() {
           str = objName.test("test function")
-          console.log('objName.test result:'+ str)
+          console.info('objName.test result:'+ str)
       }
   </script>
   </html>
@@ -714,7 +716,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
     </body>
     <script type="text/javascript">
     function test() {
-        console.log('Ark WebComponent')
+        console.info('Ark WebComponent')
         return "This value is from index.html"
     }
     </script>

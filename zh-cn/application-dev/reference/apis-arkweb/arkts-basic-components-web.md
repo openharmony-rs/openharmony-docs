@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
@@ -400,7 +402,7 @@ ArkTS-Sta示例：
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // 通过在GlobalContext对象上绑定filesDir，可以实现UIAbility组件与UI之间的数据同步。
        GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.log("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
      }
    }
    ```

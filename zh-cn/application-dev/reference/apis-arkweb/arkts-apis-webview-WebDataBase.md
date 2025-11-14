@@ -4,6 +4,8 @@ Web组件数据库管理对象。
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -74,7 +76,7 @@ struct WebComponent {
           try {
             webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, "Stromgol", "Laroche");
             this.username_password = webview.WebDataBase.getHttpAuthCredentials(this.host, this.realm);
-            console.log('num: ' + this.username_password.length);
+            console.info('num: ' + this.username_password.length);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
