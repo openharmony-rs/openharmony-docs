@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_PictureNative OH_PictureNative
+```
+
 ## 概述
 
 Picture结构体类型，用于执行picture相关操作。
