@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明音频音量管理器接口。该文件接口用于创建AudioVolumeManager。
+声明音频音量管理器接口。<br> 该文件接口用于创建AudioVolumeManager。
 
 **引用文件：** <ohaudio/native_audio_volume_manager.h>
 

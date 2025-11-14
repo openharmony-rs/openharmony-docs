@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明与音频流管理器相关的接口。<br> 该文件接口用于创建audioStreamManager以及音频流设置和管理。
+声明音频流管理器相关的接口。<br> 该文件接口用于创建AudioStreamManager以及音频流设置和管理。
 
 **引用文件：** <ohaudio/native_audio_stream_manager.h>
 
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | 声明音频流管理器，用于管理音频流相关功能。 |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | 声明音频流管理器。用于管理音频流相关功能。 |
 
 ### 函数
 
