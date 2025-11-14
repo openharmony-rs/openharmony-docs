@@ -1,5 +1,9 @@
 # ImageEffect_Size
 
+```
+typedef struct {...} ImageEffect_Size
+```
+
 ## 概述
 
 图像尺寸结构体。
