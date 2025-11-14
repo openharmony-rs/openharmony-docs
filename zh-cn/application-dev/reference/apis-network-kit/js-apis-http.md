@@ -2129,7 +2129,7 @@ console.info(`Current interceptor chain has ${chain.length} interceptors`);
 
 ### apply<sup>22+</sup>
 
-apply(httpRequest: [HttpRequest](#httprequest)): boolean
+apply(httpRequest: HttpRequest): boolean
 
 将拦截器链附加到目标HTTP请求。每个HTTP请求实例只能附加一个拦截器链。
 
