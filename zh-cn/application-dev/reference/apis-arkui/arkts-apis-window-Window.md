@@ -9883,58 +9883,19 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-// ets/pages/Index.ets
-import { window } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let windowClass: window.Window | undefined;
-let keyUpEventAry: string[] = [];
-
-@Entry
-@Component
-struct Index {
-  private context = (this.getUIContext()?.getHostContext() as common.UIAbilityContext);
-  private windowStage = this.context.windowStage;
-
-  build() {
-    RelativeContainer() {
-      Button("窗口置顶")
-        .onClick(() => {
-          try {
-            windowClass = this.windowStage.getMainWindowSync();
-            //  true:窗口置顶，false:取消窗口置顶
-            let isWindowTopmost: boolean = true;
-            let promiseTopmost = windowClass.setWindowTopmost(isWindowTopmost);
-            promiseTopmost.then(() => {
-              console.info('Succeeded in setting the main window to be topmost.');
-            }).catch((err: Error) => {
-              console.error(`Failed to set the main window to be topmost. Cause code: ${err?.code}, message: ${err?.message}`);
-            });
-          } catch (exception) {
-            let err = exception as BusinessError;
-            console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`)
-          }
-        })
-    }
-    .height('100%')
-    .width('100%')
-    .onKeyEvent((event) => {
-      if(event) {
-        if(event.type === KeyType.Down) {
-          keyUpEventAry = [];
-        }
-        if(event.type === KeyType.Up) {
-          keyUpEventAry.push(event.keyText);
-          // 自定义快捷键 ctrl+T 执行主窗口置顶、取消置顶的操作
-          if(windowClass && keyUpEventAry.includes('KEYCODE_CTRL_LEFT') && keyUpEventAry.includes('KEYCODE_T')) {
-            let isWindowTopmost: boolean = false;
-            windowClass.setWindowTopmost(isWindowTopmost);
-          }
-        }
-      }
-    })
-  }
+try {
+  windowClass = this.windowStage.getMainWindowSync();
+  //  true:窗口置顶，false:取消窗口置顶
+  let isWindowTopmost: boolean = true;
+  let promiseTopmost = windowClass.setWindowTopmost(isWindowTopmost);
+  promiseTopmost.then(() => {
+    console.info('Succeeded in setting the main window to be topmost.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the main window to be topmost. Cause code: ${err?.comessage: ${err?.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: $message}`)
 }
 ```
 
