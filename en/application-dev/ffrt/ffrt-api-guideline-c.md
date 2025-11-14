@@ -190,7 +190,8 @@ Parameters
 
 Description
 
-- Sets the scheduling delay of a task. The task is scheduled and executed after the delay interval. If delay is not set, the value is **0** by default.
+- Sets the scheduling delay of a task. The task will be scheduled and executed after the delay interval. If no delay is set, the default delay is 0.
+- After the scheduling delay is set, the input and output dependencies of the task will not take effect.
 
 **ffrt_task_attr_get_delay**
 
@@ -208,7 +209,7 @@ Return Values
 
 Description
 
-- Obtains the configured scheduling delay.
+- Obtains the scheduling delay.
 
 **ffrt_task_attr_set_queue_priority**
 
