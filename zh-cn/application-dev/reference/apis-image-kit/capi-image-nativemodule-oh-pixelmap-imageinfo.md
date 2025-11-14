@@ -1,5 +1,9 @@
 # OH_Pixelmap_ImageInfo
 
+```
+struct OH_Pixelmap_ImageInfo
+```
+
 ## 概述
 
 OH_Pixelmap_ImageInfo是native层封装的图像像素信息结构体，保存图像像素的宽高、行跨距、像素格式、是否是HDR。
