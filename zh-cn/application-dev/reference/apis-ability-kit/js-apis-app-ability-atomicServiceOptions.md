@@ -37,8 +37,9 @@ import { AtomicServiceOptions } from '@kit.AbilityKit';
 **示例：**
 
 ```ts
-import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
+import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { FailureCode } from '@ohos.app.ability.CompletionHandlerForAtomicService';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility {
