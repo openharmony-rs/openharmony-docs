@@ -79,7 +79,8 @@
 3. 假如蓝牙连接已经存在,则直接使用这个连接发送消息。
 4. 如果使用该连接发送消息失败,则重新建立连接,如果连接能建立成功则发送消息。
 <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
-```ts
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 import SppClientManager from '../utils/SppClientManager'
@@ -147,7 +148,6 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 
   // Retries a cancel operation if it fails.
   private sendCancelWithRetry(hashCodes: string[]) {
-    this.sppClientManager!.sendCancelNotificationData(hashCodes);
     try {
       this.sppClientManager!.sendCancelNotificationData(hashCodes);
     } catch (err) {
