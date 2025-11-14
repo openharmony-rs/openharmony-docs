@@ -94,7 +94,7 @@ pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -147,7 +147,7 @@ pairDevice(deviceId: string): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -206,7 +206,7 @@ getRemoteDeviceName(deviceId: string): string
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -307,7 +307,7 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -358,7 +358,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -408,7 +408,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -463,7 +463,7 @@ getLocalName(): string
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -508,7 +508,7 @@ getPairedDevices(): Array&lt;string&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -554,7 +554,7 @@ getPairState(deviceId: string): BondState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 22
 
@@ -606,7 +606,7 @@ getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -928,7 +928,7 @@ getBluetoothScanMode(): ScanMode
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -977,7 +977,7 @@ startBluetoothDiscovery(): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -1023,7 +1023,7 @@ stopBluetoothDiscovery(): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -1061,7 +1061,7 @@ isBluetoothDiscovering(): boolean
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 22
 
@@ -1419,7 +1419,7 @@ on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): 
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1522,7 +1522,7 @@ off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;)
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1621,7 +1621,7 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1719,7 +1719,7 @@ off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2019,7 +2019,7 @@ on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&g
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2119,7 +2119,7 @@ off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2285,7 +2285,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 16
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2339,7 +2339,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 16
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2390,7 +2390,7 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2424,7 +2424,7 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2480,11 +2480,11 @@ try {
 
 | 名称                                       | 值  | 说明              |
 | ---------------------------------------- | ---- | --------------- |
-| SCAN_MODE_NONE                           | 0    | 不可发现、不可连接模式。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
-| SCAN_MODE_CONNECTABLE                    | 1    | 可连接模式。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| SCAN_MODE_NONE                           | 0    | 不可发现、不可连接模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| SCAN_MODE_CONNECTABLE                    | 1    | 可连接模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 | SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | 通用可发现模式，可被长时间发现。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 | SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | 有限可发现模式，持续一定时间。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | 可连接及通用可发现模式。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | 可连接及通用可发现模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 | SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE | 5    | 可连接及有限可发现模式。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 
 
@@ -2496,7 +2496,7 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -2515,7 +2515,7 @@ try {
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| USER_REMOVED        | 0    | 用户主动移除设备。若配对状态[BondState](#bondstate)是已配对，也表示配对成功。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| USER_REMOVED        | 0    | 用户主动移除设备。若配对状态[BondState](#bondstate)是已配对，也表示配对成功。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | REMOTE_DEVICE_DOWN  | 1    | 对端设备不在线。例如：对端设备蓝牙是关闭的。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | AUTH_FAILURE        | 2    | 鉴权失败。例如：两端设备密钥不匹配。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | AUTH_REJECTED       | 3    | 鉴权被拒绝。例如：对端设备拒绝了配对请求。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
@@ -2545,7 +2545,7 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 22
 
