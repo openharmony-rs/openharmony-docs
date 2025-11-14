@@ -23,7 +23,7 @@ import { contact } from '@kit.ContactsKit';
 
 addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;): void 
 
-添加联系人，使用callback异步回调。
+添加联系人。使用callback异步回调。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -81,7 +81,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 
 addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
-添加联系人，使用callback异步回调。
+添加联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -126,7 +126,7 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
 addContact(context: Context, contact: Contact): Promise<number&gt;
 
-添加联系人，使用Promise异步回调。
+添加联系人。使用Promise异步回调。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -188,7 +188,7 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
 
 addContact(contact: Contact): Promise&lt;number&gt;
 
-添加联系人，使用Promise异步回调。
+添加联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -234,7 +234,7 @@ addContact(contact: Contact): Promise&lt;number&gt;
 
 deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除联系人，使用callback异步回调。
+删除联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -287,7 +287,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 
 deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除联系人，使用callback异步回调。
+删除联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -330,7 +330,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 
-删除联系人，使用Promise异步回调。
+删除联系人。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -387,7 +387,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 
 deleteContact(key: string): Promise&lt;void&gt;
 
-删除联系人，使用Promise异步回调。
+删除联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -432,7 +432,7 @@ deleteContact(key: string): Promise&lt;void&gt;
 
 updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -492,7 +492,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 
 updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -542,7 +542,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
 updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人（支持传入联系人的属性列表）。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -605,7 +605,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 
 updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人（支持传入联系人的属性列表）。使用callback异步回调。
 
 > **说明**
 >
@@ -656,7 +656,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 
 updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
-更新联系人，使用Promise异步回调。
+更新联系人（支持传入联系人的属性列表）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -723,7 +723,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 
 updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
-更新联系人，使用Promise异步回调。
+更新联系人（支持传入联系人的属性列表）。使用Promise异步回调。
 
 > **说明**
 >
@@ -778,7 +778,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
 isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断当前联系人id是否在电话簿中，使用callback异步回调。
+判断当前联系人id是否在电话簿中。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -827,7 +827,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 
 isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断当前联系人id是否在电话簿中，使用callback异步回调。
+判断当前联系人id是否在电话簿中。使用callback异步回调。
 
 > **说明**
 >
@@ -862,7 +862,7 @@ isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 
-判断当前联系人id是否在电话簿中，使用Promise异步回调。
+判断当前联系人id是否在电话簿中。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -915,7 +915,7 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 
 isLocalContact(id: number): Promise&lt;boolean&gt;
 
-判断当前联系人id是否在电话簿中，使用Promise异步回调。
+判断当前联系人id是否在电话簿中。使用Promise异步回调。
 
 > **说明**
 >
@@ -954,7 +954,7 @@ isLocalContact(id: number): Promise&lt;boolean&gt;
 
 isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否为“我的名片”，使用callback异步回调。
+判断是否为“我的名片”。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1003,7 +1003,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 
 isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否为“我的名片”，使用callback异步回调。
+判断是否为“我的名片”。使用callback异步回调。
 
 > **说明**
 >
@@ -1038,7 +1038,7 @@ isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 
-判断是否为“我的名片”，使用Promise异步回调。
+判断是否为“我的名片”。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1091,7 +1091,7 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 
 isMyCard(id: number): Promise&lt;boolean&gt;
 
-判断是否为“我的名片”，使用Promise异步回调。
+判断是否为“我的名片”。使用Promise异步回调。
 
 > **说明**
 >
@@ -1130,7 +1130,7 @@ isMyCard(id: number): Promise&lt;boolean&gt;
 
 queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1178,7 +1178,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 
 queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”。使用callback异步回调。
 
 > **说明**
 >
@@ -1212,7 +1212,7 @@ queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
 queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1263,7 +1263,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 
 queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用callback异步回调。
 
 > **说明**
 >
@@ -1300,7 +1300,7 @@ queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): v
 
 queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-查询“我的名片”，使用Promise异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1355,7 +1355,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 
 queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-查询“我的名片”，使用Promise异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用Promise异步回调。
 
 > **说明**
 >
@@ -1396,7 +1396,7 @@ queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
 selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面，使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用callback异步回调。
 
 > **说明**
 >
@@ -1428,7 +1428,7 @@ selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 
-调用选择联系人接口，打开选择联系人UI界面，使用Promise异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用Promise异步回调。
 
 > **说明**
 >
@@ -1459,7 +1459,7 @@ selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面，使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1497,7 +1497,7 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
-调用选择联系人接口，打开选择联系人UI界面，使用Promise异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用Promise异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1527,7 +1527,7 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面，使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入筛选条件）。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1568,7 +1568,7 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 
 selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt;&gt;
 
-调用选择联系人接口，打开选择联系人UI界面，使用Promise异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入筛选条件）。使用Promise异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1611,7 +1611,7 @@ selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt
 
 queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key查询联系人，使用callback异步回调。
+根据key查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1660,7 +1660,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 
 queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key查询联系人，使用callback异步回调。
+根据key查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1695,7 +1695,7 @@ queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
 queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和holder查询联系人，使用callback异步回调。
+根据key和holder查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1749,7 +1749,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 
 queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和holder查询联系人，使用callback异步回调。
+根据key和holder查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1789,7 +1789,7 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
 
 queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和attrs查询联系人，使用callback异步回调。
+根据key和attrs查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1841,7 +1841,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 
 queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和attrs查询联系人，使用callback异步回调。
+根据key和attrs查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1879,7 +1879,7 @@ queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;
 
 queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key、holder和attrs查询联系人，使用callback异步回调。
+根据key、holder和attrs查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1936,7 +1936,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 
 queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key、holder和attrs查询联系人，使用callback异步回调。
+根据key、holder和attrs查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1979,7 +1979,7 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 
 queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-根据key、holder和attrs查询联系人，使用Promise异步回调。
+根据key、holder和attrs查询联系人。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2040,7 +2040,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 
 queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-根据key、holder和attrs查询联系人，使用Promise异步回调。
+根据key、holder和attrs查询联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -2087,7 +2087,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 
 queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-查询所有联系人，使用callback异步回调。
+查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2135,7 +2135,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 
 queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-查询所有联系人，使用callback异步回调。
+查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2169,7 +2169,7 @@ queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder查询所有联系人，使用callback异步回调。
+根据holder查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2222,7 +2222,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 
 queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder查询所有联系人，使用callback异步回调。
+根据holder查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2261,7 +2261,7 @@ queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt
 
 queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据attrs查询所有联系人，使用callback异步回调。
+根据attrs查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2312,7 +2312,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 
 queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据attrs查询所有联系人，使用callback异步回调。
+根据attrs查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2349,7 +2349,7 @@ queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Cont
 
 queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder和attrs查询所有联系人，使用callback异步回调。
+根据holder和attrs查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2405,7 +2405,7 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 
 queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder和attrs查询所有联系人，使用callback异步回调。
+根据holder和attrs查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2447,7 +2447,7 @@ queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&
 
 queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据holder和attrs查询所有联系人，使用Promise异步回调。
+根据holder和attrs查询所有联系人。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2507,7 +2507,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 
 queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据holder和attrs查询所有联系人，使用Promise异步回调。
+根据holder和attrs查询所有联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -2553,7 +2553,7 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2602,7 +2602,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 
 queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2637,7 +2637,7 @@ queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2691,7 +2691,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2731,7 +2731,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2783,7 +2783,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 
 queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2821,7 +2821,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2878,7 +2878,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2921,7 +2921,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据电话号码、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2982,7 +2982,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 
 queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据电话号码、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3029,7 +3029,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 
 queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3078,7 +3078,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 
 queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3113,7 +3113,7 @@ queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&
 
 queryContactsByEmail(context: Context,  email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3167,7 +3167,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 
 queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3207,7 +3207,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 
 queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3259,7 +3259,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 
 queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3297,7 +3297,7 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 
 queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3354,7 +3354,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 
 queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3397,7 +3397,7 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 
 queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据email、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3458,7 +3458,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 
 queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据email、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3505,7 +3505,7 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
 
 queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-查询联系人的所有群组，使用callback异步回调。
+查询联系人的所有群组。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3551,7 +3551,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 
 queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-查询联系人的所有群组，使用callback异步回调。
+查询联系人的所有群组。使用callback异步回调。
 
 > **说明**
 >
@@ -3585,7 +3585,7 @@ queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
 queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-根据holder查询联系人的所有群组，使用callback异步回调。
+根据holder查询联系人的所有群组。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3638,7 +3638,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 
 queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-根据holder查询联系人的所有群组，使用callback异步回调。
+根据holder查询联系人的所有群组。使用callback异步回调。
 
 > **说明**
 >
@@ -3677,7 +3677,7 @@ queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): 
 
 queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
-根据holder查询联系人的所有群组，使用Promise异步回调。
+根据holder查询联系人的所有群组。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3734,7 +3734,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 
 queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
-根据holder查询联系人的所有群组，使用Promise异步回调。
+根据holder查询联系人的所有群组。使用Promise异步回调。
 
 > **说明**
 >
@@ -3777,7 +3777,7 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
 queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息，使用callback异步回调。
+查询所有创建联系人的应用信息。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3825,7 +3825,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 
 queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息，使用callback异步回调。
+查询所有创建联系人的应用信息。使用callback异步回调。
 
 > **说明**
 >
@@ -3859,7 +3859,7 @@ queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
 queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息，使用Promise异步回调。
+查询所有创建联系人的应用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3911,7 +3911,7 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
 queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息，使用Promise异步回调。
+查询所有创建联系人的应用信息。使用Promise异步回调。
 
 > **说明**
 >
@@ -3944,7 +3944,7 @@ queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
 queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id查询联系人的key，使用callback异步回调。
+根据联系人的id查询联系人的key。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3993,7 +3993,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 
 queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id查询联系人的key，使用callback异步回调。
+根据联系人的id查询联系人的key。使用callback异步回调。
 
 > **说明**
 >
@@ -4028,7 +4028,7 @@ queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 
 queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id和holder查询联系人的key，使用callback异步回调。
+根据联系人的id和holder查询联系人的key。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -4082,7 +4082,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 
 queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id和holder查询联系人的key，使用callback异步回调。
+根据联系人的id和holder查询联系人的key。使用callback异步回调。
 
 > **说明**
 >
@@ -4122,7 +4122,7 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 
 queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 
-根据联系人的id和holder查询联系人的key，使用Promise异步回调。
+根据联系人的id和holder查询联系人的key。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -4180,7 +4180,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 
 queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
-根据联系人的id和holder查询联系人的key，使用Promise异步回调。
+根据联系人的id和holder查询联系人的key。使用Promise异步回调。
 
 > **说明**
 >
@@ -4224,7 +4224,7 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
 queryContactsCount(context: Context): Promise&lt;int&gt;
 
-查询所有联系人的数量，使用Promise异步回调。
+查询所有联系人的数量。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
