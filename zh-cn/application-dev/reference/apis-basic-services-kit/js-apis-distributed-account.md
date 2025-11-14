@@ -1,15 +1,29 @@
 # @ohos.account.distributedAccount (分布式账号管理)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 本模块提供管理分布式账号的一些基础功能，主要包括查询和更新账号登录状态。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedAccount } from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import distributedAccount from '@ohos.account.distributedAccount';
 ```
 
 ## distributedAccount.getDistributedAccountAbility
@@ -19,6 +33,10 @@ getDistributedAccountAbility(): DistributedAccountAbility
 获取分布式账号单实例对象。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -33,7 +51,7 @@ getDistributedAccountAbility(): DistributedAccountAbility
 
 ## DistributedAccountAbility
 
-提供查询和更新分布式账号登录状态方法(需要先获取分布式账号的单实例对象)。
+提供查询和更新分布式账号登录状态方法（需要先获取分布式账号的单实例对象）。
 
 ### getOsAccountDistributedInfo<sup>9+</sup>
 
@@ -45,6 +63,10 @@ getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): voi
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS（仅系统应用可申请）或ohos.permission.GET_DISTRIBUTED_ACCOUNTS（仅系统应用可申请）或ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -53,6 +75,8 @@ getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): voi
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -60,7 +84,10 @@ getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): voi
 | 12300001 | System service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
   ```ts
+  import { distributedAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
@@ -68,15 +95,38 @@ getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): voi
     accountAbility.getOsAccountDistributedInfo(
       (err: BusinessError, data: distributedAccount.DistributedInfo) => {
         if (err) {
-          console.error('getOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+          console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
         } else {
-          console.log('distributed information: ' + JSON.stringify(data));
+          console.info('distributed information: ' + JSON.stringify(data));
         }
       });
-  } catch (err) {
-    console.error('getOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  import distributedAccount from '@ohos.account.distributedAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+  try {
+    accountAbility.getOsAccountDistributedInfo(
+      (err: BusinessError | null, data: distributedAccount.DistributedInfo | undefined) => {
+        if (err) {
+          console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('distributed information: ' + JSON.stringify(data));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+  
 
 ### getOsAccountDistributedInfo<sup>9+</sup>
 
@@ -88,6 +138,10 @@ getOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS（仅系统应用可申请）或ohos.permission.GET_DISTRIBUTED_ACCOUNTS（仅系统应用可申请）或ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
   | 类型 | 说明 |
@@ -96,24 +150,49 @@ getOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | System service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
   ```ts
+  import { distributedAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   try {
     accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-        console.log('distributed information: ' + JSON.stringify(data));
+        console.info('distributed information: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-        console.error('getOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+        console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import distributedAccount from '@ohos.account.distributedAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+  try {
+    accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
+      console.info('distributed information: ' + JSON.stringify(data));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -126,9 +205,13 @@ queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): v
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -144,9 +227,9 @@ queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): v
   accountAbility.queryOsAccountDistributedInfo(
     (err: BusinessError, data: distributedAccount.DistributedInfo) => {
       if (err) {
-        console.error('queryOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+        console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('distributed information: ' + JSON.stringify(data));
+        console.info('distributed information: ' + JSON.stringify(data));
       }
     });
   ```
@@ -161,9 +244,13 @@ queryOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -177,9 +264,9 @@ queryOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
   
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-      console.log('distributed information: ' + JSON.stringify(data));
+      console.info('distributed information: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-      console.error('queryOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+      console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -193,6 +280,10 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS，该权限仅系统应用可申请。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -201,6 +292,8 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
   | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当更新分布式账号信息成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
@@ -211,7 +304,10 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
 | 12300003 | Account not found. |
 
 **示例：**
+
+ArkTS-Dyn示例：
   ```ts
+  import { distributedAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
@@ -220,13 +316,36 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
       if (err) {
-        console.error('setOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+        console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('setOsAccountDistributedInfo successfully');
+        console.info('setOsAccountDistributedInfo successfully');
       }
     });
-  } catch (err) {
-      console.error('setOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  import distributedAccount from '@ohos.account.distributedAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+  let accountInfo: distributedAccount.DistributedInfo =
+    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+  try {
+    accountAbility.setOsAccountDistributedInfo(accountInfo, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setOsAccountDistributedInfo successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -239,6 +358,10 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS，该权限仅系统应用可申请。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -254,6 +377,8 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -263,7 +388,10 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 
 **示例：**
+
+ArkTS-Dyn示例：
   ```ts
+  import { distributedAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
@@ -271,14 +399,36 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
     {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
-        console.log('setOsAccountDistributedInfo successfully');
+        console.info('setOsAccountDistributedInfo successfully');
     }).catch((err: BusinessError) => {
-        console.error('setOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+        console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-      console.error('setOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  import distributedAccount from '@ohos.account.distributedAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+  let accountInfo: distributedAccount.DistributedInfo =
+    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+  try {
+    accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
+      console.info('setOsAccountDistributedInfo successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 
 ### updateOsAccountDistributedInfo<sup>(deprecated)</sup>
 
@@ -290,9 +440,13 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -310,9 +464,9 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
     {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
   accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
     if (err) {
-      console.error('queryOsAccountDistributedInfo exception: ' + JSON.stringify(err));
+      console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('queryOsAccountDistributedInfo successfully');
+      console.info('updateOsAccountDistributedInfo successfully');
     }
   });
   ```
@@ -326,9 +480,13 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -350,9 +508,9 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
   let accountInfo: distributedAccount.DistributedInfo =
     {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
   accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
-      console.log('updateOsAccountDistributedInfo successfully');
+      console.info('updateOsAccountDistributedInfo successfully');
    }).catch((err: BusinessError) => {
-      console.error('updateOsAccountDistributedInfo exception: '  + JSON.stringify(err));
+      console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -362,21 +520,25 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| name | string |是 | 分布式账号名称，非空字符串。 |
-| id | string |是 | 分布式账号UID，非空字符串。 |
-| event | string |是 | 分布式账号登录状态，包括登录、登出、Token失效和注销，分别对应以下字符串：<br/>-&nbsp;Ohos.account.event.LOGIN<br/>-&nbsp;Ohos.account.event.LOGOUT<br/>-&nbsp;Ohos.account.event.TOKEN_INVALID<br/>-&nbsp;Ohos.account.event.LOGOFF |
-| nickname<sup>9+</sup> | string |否 | 分布式账号的昵称，默认为空。 |
-| avatar<sup>9+</sup> | string |否 | 分布式账号的头像，默认为空。 |
-| status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) |否 | 分布式账号的状态，枚举类型，默认为未登录状态。 |
-| scalableData<sup>8+</sup> | object |否 | 分布式账号扩展信息，根据业务所需，以k-v形式传递定制化信息，默认为空。|
+| 名称 | 类型 | 只读  | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| name | string | 否 | 否  | 分布式账号名称，非空字符串。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 22 |
+| id | string | 否 | 否  | 分布式账号UID，非空字符串。 <br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 22|
+| event | string | 否 | 否  | 分布式账号登录状态，包括登录、登出、Token失效和注销，分别对应以下字符串：<br/>-&nbsp;Ohos.account.event.LOGIN<br/>-&nbsp;Ohos.account.event.LOGOUT<br/>-&nbsp;Ohos.account.event.TOKEN_INVALID<br/>-&nbsp;Ohos.account.event.LOGOFF <br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 22|
+| nickname<sup>9+</sup> | string | 否 | 是  | 分布式账号的昵称，默认为空。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22|
+| avatar<sup>9+</sup> | string | 否 | 是  | 分布式账号的头像，默认为空。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22|
+| status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) | 是 | 是  | 分布式账号的状态，枚举类型，默认为未登录状态。 <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22|
+| scalableData<sup>8+</sup> | ArkTS-Dyn: object<br>ArkTS-Sta:  Record<string, RecordData> | 否 | 是  | 分布式账号扩展信息，根据业务所需，以k-v形式传递定制化信息，默认为空。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 22|
 
 ## DistributedAccountStatus<sup>10+</sup>
 
 表示分布式账号状态枚举。
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.Account.OsAccount
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称  | 值 | 说明        |
 | ---- | ------ | ----------- |
