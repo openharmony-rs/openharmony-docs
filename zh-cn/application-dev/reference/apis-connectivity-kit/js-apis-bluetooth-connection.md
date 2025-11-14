@@ -2488,11 +2488,11 @@ try {
 
 | 名称                                       | 值  | 说明              |
 | ---------------------------------------- | ---- | --------------- |
-| SCAN_MODE_NONE                           | 0    | 不可发现、不可连接模式。 |
-| SCAN_MODE_CONNECTABLE                    | 1    | 可连接模式。 |
-| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | 通用可发现模式，可被长时间发现。 |
-| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | 有限可发现模式，持续一定时间。 |
-| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | 可连接及通用可发现模式。 |
+| SCAN_MODE_NONE                           | 0    | 不可发现、不可连接模式。         |	
+| SCAN_MODE_CONNECTABLE                    | 1    | 可连接模式。        |	
+| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | 通用可发现模式，可被长时间发现。    |	
+| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | 有限可发现模式，持续一定时间。    |	
+| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | 可连接及通用可发现模式。 |	
 | SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE | 5    | 可连接及有限可发现模式。 |
 
 
@@ -2527,10 +2527,10 @@ try {
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| USER_REMOVED        | 0    | 用户主动移除设备。若配对状态[BondState](#bondstate)是已配对，也表示配对成功。 |
-| REMOTE_DEVICE_DOWN  | 1    | 对端设备不在线。例如：对端设备蓝牙是关闭的。 |
-| AUTH_FAILURE        | 2    | 鉴权失败。例如：两端设备密钥不匹配。 |
-| AUTH_REJECTED       | 3    | 鉴权被拒绝。例如：对端设备拒绝了配对请求。 |
+| USER_REMOVED        | 0    | 用户主动移除设备。若配对状态[BondState](#bondstate)是已配对，也表示配对成功。|	
+| REMOTE_DEVICE_DOWN  | 1    | 对端设备不在线。例如：对端设备蓝牙是关闭的。|	
+| AUTH_FAILURE        | 2    | 鉴权失败。例如：两端设备密钥不匹配。|	
+| AUTH_REJECTED       | 3    | 鉴权被拒绝。例如：对端设备拒绝了配对请求。 |	
 | INTERNAL_ERROR      | 4    | 内部错误。例如：设备不支持配对、配对过程超时等异常。 |
 
 

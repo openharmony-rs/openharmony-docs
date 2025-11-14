@@ -60,7 +60,7 @@ enableBluetoothAsync(): Promise&lt;void&gt;
 
 开启蓝牙。使用Promise异步回调。
 - 调用该接口时，系统弹出开启蓝牙的对话框，由用户确认是否需要开启蓝牙。应用可以感知用户操作对话框的行为。
-- 蓝牙开关状态结果可通过[access.on('stateChange')](#accessonstatechange18)的回调函数获取到。
+- 蓝牙开关状态结果可通过[access.on('stateChange')](#accessonstatechange)的回调函数获取到。
 - 建议蓝牙开关状态是[STATE_OFF](#bluetoothstate)时，才调用该接口开启蓝牙（可使用[access.getState](#accessgetstate)判断当前蓝牙开关状态）。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -154,7 +154,7 @@ disableBluetoothAsync(): Promise&lt;void&gt;
 
 关闭蓝牙。使用Promise异步回调。
 - 调用该接口时，系统弹出关闭蓝牙的对话框，由用户确认是否需要关闭蓝牙。应用可以感知用户操作对话框的行为。
-- 蓝牙开关状态结果可通过[access.on('stateChange')](#accessonstatechange18)的回调函数获取到。
+- 蓝牙开关状态结果可通过[access.on('stateChange')](#accessonstatechange)的回调函数获取到。
 - 建议蓝牙开关状态是[STATE_ON](#bluetoothstate)时，才调用该接口关闭蓝牙（可使用[access.getState](#accessgetstate)判断当前蓝牙开关状态）。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -300,7 +300,7 @@ onStateChange(callback: Callback&lt;BluetoothState&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('stateChange')](#accessonStateChange18)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('stateChange')](#accessonstatechange)。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -346,7 +346,7 @@ off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offStateChange](#accessoffStateChange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offStateChange](#accessoffstatechange22)。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -392,7 +392,7 @@ offStateChange(callback?: Callback&lt;BluetoothState&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('stateChange')](#accessoffStateChange18)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('stateChange')](#accessoffstatechange)。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -662,11 +662,11 @@ try {
 
 | 名称                    | 值  | 说明                 |
 | --------------------- | ---- | ------------------ |
-| STATE_OFF             | 0    | 表示蓝牙已关闭。 |
-| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。 |
-| STATE_ON              | 2    | 表示蓝牙已打开。 |
-| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。 |
-| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。 |
-| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。  |
+| STATE_OFF             | 0    | 表示蓝牙已关闭。          |	
+| STATE_TURNING_ON      | 1    | 表示蓝牙正在打开。          |	
+| STATE_ON              | 2    | 表示蓝牙已打开。           |	
+| STATE_TURNING_OFF     | 3    | 表示蓝牙正在关闭。          |	
+| STATE_BLE_TURNING_ON  | 4    | 表示蓝牙正在打开LE-only模式。 |	
+| STATE_BLE_ON          | 5    | 表示蓝牙正处于LE-only模式。  |	
 | STATE_BLE_TURNING_OFF | 6    | 表示蓝牙正在关闭LE-only模式。 |
 

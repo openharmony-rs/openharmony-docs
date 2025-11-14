@@ -852,7 +852,7 @@ try {
 
 ArkTS-Dyn: getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
 
-ArkTS-Dyn: getAutoPlayDisabledDuration(deviceId: string): Promise&lt;int&gt;
+ArkTS-Sta: getAutoPlayDisabledDuration(deviceId: string): Promise&lt;int&gt;
 
 获取拦截时长或自动播放开关。使用Promise异步回调。
 

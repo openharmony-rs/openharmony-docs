@@ -58,12 +58,12 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| USER_DISCONNECT            | 0    | 用户主动断开连接。 |
-| CONNECT_FROM_KEYBOARD      | 1    | 应该从键盘侧发起连接。 |
-| CONNECT_FROM_MOUSE         | 2    | 应该从鼠标侧发起连接。 |
-| CONNECT_FROM_CAR           | 3    | 应该从车机侧发起连接。 |
-| TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数超过上限。 |
-| CONNECT_FAIL_INTERNAL      | 5    | 内部错误。 |
+| USER_DISCONNECT            | 0    | 用户主动断开连接。|	
+| CONNECT_FROM_KEYBOARD      | 1    | 应该从键盘侧发起连接。|	
+| CONNECT_FROM_MOUSE         | 2    | 应该从鼠标侧发起连接。|	
+| CONNECT_FROM_CAR           | 3    | 应该从车机侧发起连接。|	
+| TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数超过上限。|	
+| CONNECT_FAIL_INTERNAL      | 5    | 内部错误。|
 
 
 ## BaseProfile.getConnectedDevices
