@@ -1,5 +1,9 @@
 # OH_PixelmapNative
 
+```
+struct OH_PixelmapNative
+```
+
 ## 概述
 
 OH_PixelmapNative结构体是native层封装的图像解码后无压缩的位图格式结构体。
