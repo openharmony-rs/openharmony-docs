@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -29,7 +31,9 @@ RowSplit()
 
 ### resizeable
 
-resizeable(value: boolean)
+ArkTS-Dyn: resizeable(value: boolean)
+
+ArkTS-Sta: resizeable(value: boolean | undefined)
 
 设置分割线是否可拖拽。
 
@@ -37,11 +41,15 @@ resizeable(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | boolean | 是 | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false |
+| value | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false |
 
 >  **说明：**
 >

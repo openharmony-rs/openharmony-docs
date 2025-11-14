@@ -4,10 +4,12 @@
 
 >  **说明：**
 >
-> * 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
-> * 从API version 11开始，在RelativeContainer组件中，[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)设置"auto"表示自适应子组件。当width设置"auto"时，如果水平方向上子组件以容器作为锚点，则"auto"不生效，垂直方向上同理。
-> * 从API version 20开始，在RelativeContainer组件中，[width](ts-universal-attributes-size.md#width15)、[height](ts-universal-attributes-size.md#height15)设置LayoutPolicy.wrapContent表示自适应子组件且被祖先节点尺寸约束，设置LayoutPolicy.fixAtIdealSize表示自适应子组件且不被祖先节点尺寸约束。当width设置wrapContent或fixAtIdealSize时，如果水平方向上子组件直接或间接以容器作为锚点，则容器在该方向上的尺寸不自适应该组件，垂直方向上同理。
-> * 相对布局容器内的子组件的[margin](ts-universal-attributes-size.md#margin)含义不同于通用属性的margin，其含义为到该方向上的锚点的距离。若该方向上没有锚点，则该方向的margin不生效。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始，在RelativeContainer组件中，[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)设置"auto"表示自适应子组件。当width设置"auto"时，如果水平方向上子组件以容器作为锚点，则"auto"不生效，垂直方向上同理。
+> - 从API version 20开始，在RelativeContainer组件中，[width](ts-universal-attributes-size.md#width15)、[height](ts-universal-attributes-size.md#height15)设置LayoutPolicy.wrapContent表示自适应子组件且被祖先节点尺寸约束，设置LayoutPolicy.fixAtIdealSize表示自适应子组件且不被祖先节点尺寸约束。当width设置wrapContent或fixAtIdealSize时，如果水平方向上子组件直接或间接以容器作为锚点，则容器在该方向上的尺寸不自适应该组件，垂直方向上同理。
+> - 相对布局容器内的子组件的[margin](ts-universal-attributes-size.md#margin)含义不同于通用属性的margin，其含义为到该方向上的锚点的距离。若该方向上没有锚点，则该方向的margin不生效。
 
 ## 子组件
 
@@ -30,7 +32,9 @@ RelativeContainer()
 
 ### guideLine<sup>12+</sup>
 
-guideLine(value: Array&lt;GuideLineStyle&gt;)
+ArkTS-Dyn: guideLine(value: Array&lt;GuideLineStyle&gt;)
+
+ArkTS-Sta: guideLine(value: Array&lt;GuideLineStyle&gt; | undefined)
 
 设置RelativeContainer容器内的辅助线，Array中每个项目即为一条guideline。
 
@@ -38,31 +42,43 @@ guideLine(value: Array&lt;GuideLineStyle&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                              |
 | ------ | ------------------------------------------ | ---- | --------------------------------- |
-| value  | Array<[GuideLineStyle](#guidelinestyle12对象说明)> | 是   | RelativeContainer容器内的辅助线。|
+| value  | ArkTS-Dyn: Array<[GuideLineStyle](#guidelinestyle12对象说明)><br/>ArkTS-Sta: Array<[GuideLineStyle](#guidelinestyle12对象说明)> \| undefined | 是   | RelativeContainer容器内的辅助线。|
 
 ### barrier<sup>12+</sup>
 
-barrier(value: Array&lt;BarrierStyle&gt;)
+ArkTS-Dyn: barrier(value: Array&lt;BarrierStyle&gt;)
+
+ArkTS-Sta: barrier(value: Array&lt;BarrierStyle&gt; | undefined)
 
 设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明                            |
 | ------ | -------------------------------------- | ---- | ------------------------------- |
-| value  | Array<[BarrierStyle](#barrierstyle12对象说明)> | 是   | RelativeContainer容器内的屏障。|
+| value  | ArkTS-Dyn: Array<[BarrierStyle](#barrierstyle12对象说明)><br/>ArkTS-Sta: Array<[BarrierStyle](#barrierstyle12对象说明)> \| undefined | 是   | RelativeContainer容器内的屏障。|
 
 ### barrier<sup>12+</sup>
 
-barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
+ArkTS-Dyn: barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
+
+ArkTS-Sta: barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt; | undefined)
 
 设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier。
 
@@ -70,11 +86,15 @@ barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明                           |
 | ------ | -------------------------------------- | ---- | ------------------------------ |
-| barrierStyle  | Array\<[LocalizedBarrierStyle](#localizedbarrierstyle12对象说明)\> | 是   | RelativeContainer容器内的屏障。|
+| barrierStyle  | ArkTS-Dyn: Array\<[LocalizedBarrierStyle](#localizedbarrierstyle12对象说明)\><br/>ArkTS-Sta: Array\<[LocalizedBarrierStyle](#localizedbarrierstyle12对象说明)\> \| undefined | 是   | RelativeContainer容器内的屏障。|
 
 ## GuideLineStyle<sup>12+</sup>对象说明
 

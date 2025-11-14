@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -39,7 +41,9 @@ Blank(min?: number&nbsp;|&nbsp;string)
 
 ### color
 
-color(value: ResourceColor)
+ArkTS-Dyn: color(value: ResourceColor)
+
+ArkTS-Sta: color(value: ResourceColor | undefined)
 
 设置空白填充的填充颜色。
 
@@ -49,11 +53,15 @@ color(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ResourceColor](ts-types.md#resourcecolor) | 是 | 空白填充的填充颜色。<br/>默认值：Color.Transparent |
+| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是 | 空白填充的填充颜色。<br/>默认值：Color.Transparent |
 
 ## 事件
 

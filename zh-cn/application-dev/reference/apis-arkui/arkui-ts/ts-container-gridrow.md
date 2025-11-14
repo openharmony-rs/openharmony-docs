@@ -6,7 +6,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -187,7 +189,9 @@ GridRow(option?: GridRowOptions)
 
 ### alignItems<sup>10+</sup>
 
-alignItems(value: ItemAlign)
+ArkTS-Dyn: alignItems(value: ItemAlign)
+
+ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 
 设置GridRow中的GridCol垂直主轴方向对齐方式。GridCol本身也可通过alignSelf([ItemAlign](ts-appendix-enums.md#itemalign))设置自身对齐方式。当上述两种对齐方式都设置时，以GridCol自身设置为准。
 
@@ -197,11 +201,15 @@ alignItems(value: ItemAlign)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ItemAlign](ts-appendix-enums.md#itemalign) | 是   | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。 |
+| value  | ArkTS-Dyn: [ItemAlign](ts-appendix-enums.md#itemalign)<br/>ArkTS-Sta: [ItemAlign](ts-appendix-enums.md#itemalign) \| undefined | 是   | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。 |
 
 
 ## 事件

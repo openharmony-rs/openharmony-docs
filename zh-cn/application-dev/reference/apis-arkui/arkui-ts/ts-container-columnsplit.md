@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 ## 子组件
 
 可以包含子组件。
@@ -28,7 +30,9 @@ ColumnSplit()
 
 ### resizeable
 
-resizeable(value: boolean)
+ArkTS-Dyn: resizeable(value: boolean)
+
+ArkTS-Sta: resizeable(value: boolean | undefined)
 
 设置分割线是否可拖拽。
 
@@ -36,15 +40,21 @@ resizeable(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | boolean | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false |
 
 ### divider<sup>10+</sup>
 
-divider(value: ColumnSplitDividerStyle | null)
+ArkTS-Dyn: divider(value: ColumnSplitDividerStyle | null)
+
+ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 
 设置分割线的margin。
 
@@ -52,11 +62,15 @@ divider(value: ColumnSplitDividerStyle | null)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null | 是   | 分割线的margin。<br/>默认值：null，分割线上下margin为0。ColumnSplitDividerStyle设置分割线与上下子节点的距离。 |
+| value  | ArkTS-Dyn: [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null<br/>ArkTS-Sta: [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null \| undefined | 是   | 分割线的margin。<br/>默认值：null，分割线上下margin为0。ColumnSplitDividerStyle设置分割线与上下子节点的距离。 |
 
 ## ColumnSplitDividerStyle<sup>10+</sup>对象说明
 
