@@ -67,7 +67,7 @@ type(value: InputType)
 
 设置输入框类型。
 
-不同的InputType会拉起对应类型的键盘，同时限制输入。<!--RP4--><!--RP4End-->
+不同的InputType会拉起对应类型的键盘，同时限制输入。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1061,7 +1061,7 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-设置输入框拉起的键盘样式，需要输入法适配后生效。<!--RP8--><!--RP8End-->
+设置输入框拉起的键盘样式，需要输入法适配后生效。具体参考[输入法应用沉浸模式](../../../inputmethod/inputmethod-immersive-mode-guide.md)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
