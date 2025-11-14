@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Image_String {...} Image_String/Image_MimeType
+```
+
 ## 概述
 
 字符串结构。
