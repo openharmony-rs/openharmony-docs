@@ -45,7 +45,7 @@ let resManager = this.getUIContext().getHostContext()?.resourceManager;
 let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
   .id)) as DrawableDescriptor; // 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。
 let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
-  ```
+```
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
