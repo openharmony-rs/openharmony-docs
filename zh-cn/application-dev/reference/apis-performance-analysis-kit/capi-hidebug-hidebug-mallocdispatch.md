@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} HiDebug_MallocDispatch
+```
+
 ## 概述
 
 应用程序进程可替换/恢复的HiDebug_MallocDispatch表结构类型定义。

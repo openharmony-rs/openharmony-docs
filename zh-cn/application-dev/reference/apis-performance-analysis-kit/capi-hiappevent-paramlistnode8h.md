@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct ParamListNode* ParamList
+```
+
 ## 概述
 
 事件参数列表节点。

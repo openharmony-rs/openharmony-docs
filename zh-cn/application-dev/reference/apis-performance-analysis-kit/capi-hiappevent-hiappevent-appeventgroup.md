@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} HiAppEvent_AppEventGroup
+```
+
 ## 概述
 
 一组事件信息，包含事件组的名称，按名称分组的单个事件信息数组，事件数组的长度。

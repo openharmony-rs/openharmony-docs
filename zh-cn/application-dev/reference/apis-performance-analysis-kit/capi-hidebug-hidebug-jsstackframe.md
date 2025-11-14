@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} HiDebug_JsStackFrame
+```
+
 ## 概述
 
 js栈帧内容的定义。

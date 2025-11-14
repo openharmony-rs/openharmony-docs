@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} HiDebug_SystemMemInfo
+```
+
 ## 概述
 
 系统内存信息结构类型定义。

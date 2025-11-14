@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```
+typedef struct {...} HiCollie_SetTimerParam
+```
+
 ## 概述
 
 定义OH_HiCollie_SetTimer函数的输入参数。
