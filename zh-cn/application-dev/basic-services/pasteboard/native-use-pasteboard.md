@@ -142,9 +142,9 @@ static void PasteboardFinalizeImpl2(void* context)
 
 6. 从剪贴板读取数据。
 
-    <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
+    <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+    
+    ``` C++
     // 1. 创建一个剪贴板实例
     OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
     if (pasteboard == nullptr) {
@@ -176,7 +176,7 @@ static void PasteboardFinalizeImpl2(void* context)
         }
         napi_value result;
         napi_create_string_utf8(env, content, strlen(content), &result);
-        // 5. 使用完销毁指针
+        // 6. 使用完销毁指针
         OH_UdsPlainText_Destroy(plainText);
         OH_UdmfRecord_Destroy(record);
         return result;
@@ -184,5 +184,5 @@ static void PasteboardFinalizeImpl2(void* context)
         OH_LOG_INFO(LOG_APP, "No plain text data in pasteboard.");
     }
     OH_Pasteboard_Destroy(pasteboard);
-```
+    ```
 

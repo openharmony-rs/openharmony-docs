@@ -116,35 +116,35 @@ void SyncCallback(int errorCode)
 
 4. 在剪贴板中准备延迟复制数据。此步骤完成后纯文本类型数据与HTML类型数据并未真正写入剪贴板服务，只有当数据使用者从`OH_UdmfRecord`中获取`OH_UdsPlainText`或`OH_UdsHtml`时，才会触发上文定义的`GetDataCallback`数据提供函数，从中得到数据。
    
-   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 4. 创建OH_UdmfRecord对象。
-    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-    // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
-    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-    OH_UdmfRecordProvider_SetData(provider, (void*)record, GetDataCallback, ProviderFinalizeCallback);
-
-    // 6. 将provider绑定到record，并设置支持的数据类型。
-    #define TYPE_COUNT 2
-    const char* types[TYPE_COUNT] = { UDMF_META_PLAIN_TEXT, UDMF_META_HTML };
-    OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
-
-    // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
-    OH_UdmfData* setData = OH_UdmfData_Create();
-    if (setData != nullptr) {
-        OH_UdmfData_AddRecord(setData, record);
-    }
-
-    // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
-    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-    if (setData != nullptr) {
-        OH_Pasteboard_SetData(pasteboard, setData);
-    }
-    OH_UdmfRecordProvider_Destroy(provider);
-    OH_UdmfRecord_Destroy(record);
-    OH_UdmfData_Destroy(setData);
-```
+   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   // 4. 创建OH_UdmfRecord对象。
+   OH_UdmfRecord* record = OH_UdmfRecord_Create();
+   // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
+   OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+   OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
+   
+   // 6. 将provider绑定到record，并设置支持的数据类型。
+   #define TYPE_COUNT 2
+   const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
+   OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
+   
+   // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
+   OH_UdmfData* setData = OH_UdmfData_Create();
+   if (setData != nullptr) {
+       OH_UdmfData_AddRecord(setData, record);
+   }
+   
+   // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
+   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   if (setData != nullptr) {
+       OH_Pasteboard_SetData(pasteboard, setData);
+   }
+   OH_UdmfRecordProvider_Destroy(provider);
+   OH_UdmfRecord_Destroy(record);
+   OH_UdmfData_Destroy(setData);
+   ```
 
 
 5. 从剪贴板获取延迟复制数据。
@@ -220,13 +220,20 @@ void ProcessRecord(OH_UdmfRecord* record)
 
 6. 应用退出时，如果剪贴板内的数据没有变化，则通知剪贴板获取全量数据，等待回调完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
 
-   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 15. 查询剪贴板内的数据是否变化。
-    uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-    // 16. 如果newChangeCount == changeCount通知剪贴板获取全量数据，需要等待SyncCallback回调完成再继续退出
-```
+   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   // 15. 查询剪贴板内的数据是否变化。
+   uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+   if (newChangeCount == changeCount) {
+       // 16. 通知剪贴板获取全量数据。
+       OH_Pasteboard_SyncDelayedDataAsync(pasteboard, SyncCallback);
+       // 需要等待SyncCallback回调完成再继续退出
+   } else {
+       // 继续退出
+       OH_LOG_INFO(LOG_APP, "No newChangeCount in pasteboard.");
+   }
+   ```
 
 7. 使用完毕后需要及时释放相关对象的内存。
    
@@ -260,106 +267,104 @@ void ProcessRecord(OH_UdmfRecord* record)
 
 1. 导入pasteboard,unifiedDataChannel和uniformTypeDescriptor模块。
    
-   <!-- @[pasteboard_timelaps_PasteData1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
-
-``` TypeScript
-// [Start pasteboard_usedata]
-// [Start pasteboard_useudc]
-import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
-// [StartExclude pasteboard_usedata]
-import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-```
+   <!-- @[pasteboard_timelaps_PasteData1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
+   import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+   import hilog from '@ohos.hilog';
+   import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+   ```
 
 
 2. 构造一条PlainText数据,并书写获取延时数据的函数。
 
-   <!-- @[pasteboard_timelaps_PasteData2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
-
-``` TypeScript
-    let plainTextData = new unifiedDataChannel.UnifiedData();
-    let getDelayPlainText = ((dataType:string) => {
-      let plainText = new unifiedDataChannel.PlainText();
-      plainText.details = {
-        Key: 'delayPlaintext',
-        Value: 'delayPlaintext',
-      };
-      plainText.textContent = 'delayTextContent';
-      plainText.abstract = 'delayTextContent';
-      plainTextData.addRecord(plainText);
-      return plainTextData;
-    });
-```
+   <!-- @[pasteboard_timelaps_PasteData2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->   
+   
+   ``` TypeScript
+   let plainTextData = new unifiedDataChannel.UnifiedData();
+   let getDelayPlainText = ((dataType: string) => {
+     let plainText = new unifiedDataChannel.PlainText();
+     plainText.details = {
+       Key: 'delayPlaintext',
+       Value: 'delayPlaintext',
+     };
+     plainText.textContent = 'delayTextContent';
+     plainText.abstract = 'delayTextContent';
+     plainTextData.addRecord(plainText);
+     return plainTextData;
+   });
+   ```
 
 
 3. 向系统剪贴板中存入一条PlainText数据。
 
-   <!-- @[pasteboard_timelaps_PasteData3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
-
-``` TypeScript
-    let setDelayPlainText = () => {
-      plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
-      // 跨应用使用时设置为CROSS_APP，本应用内使用时设置为IN_APP
-      plainTextData.properties.getDelayData = getDelayPlainText;
-      pasteboard.getSystemPasteboard().setUnifiedData(plainTextData).then(()=>{
-        console.info('Succeeded in set PlainText.');
-        // 存入成功，处理正常场景
-      }).catch((error: BusinessError) => {
-        console.error('Failed to set PlainText. Cause: ' + error.message);
-        // 处理异常场景
-      });
-    }
-```
+   <!-- @[pasteboard_timelaps_PasteData3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
+   let setDelayPlainText = () => {
+     plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+     // 跨应用使用时设置为CROSS_APP，本应用内使用时设置为IN_APP
+     plainTextData.properties.getDelayData = getDelayPlainText;
+     pasteboard.getSystemPasteboard().setUnifiedData(plainTextData).then(() => {
+       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in set PlainText.');
+       // 存入成功，处理正常场景
+     }).catch((error: BusinessError) => {
+       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set PlainText. Cause: ' + error.message);
+       // 处理异常场景
+     });
+   }
+   ```
 
 
 4. 从系统剪贴板中读取这条text数据。
 
-  <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
-
-``` TypeScript
-    let getPlainTextUnifiedData = (() => {
-      pasteboard.getSystemPasteboard().getUnifiedData().then((data) => {
-        let outputData = data;
-        let records = outputData.getRecords();
-        if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-          let record = records[0] as unifiedDataChannel.PlainText;
-          console.info('GetPlainText success, type:' + records[0].getType() );
-          //注意：用户复制的数据内容属于敏感信息，禁止应用程序使用日志明文打印从剪贴板获取到的数据内容。
-        } else {
-          console.info('Get Plain Text Data No Success, Type is: ' + records[0].getType());
-        }
-      }).catch((error: BusinessError) => {
-        console.error('Failed to get PlainTextUnifiedData. Cause: ' + error.message);
-        //处理异常场景
-      })
+  <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+  
+  ``` TypeScript
+  let getPlainTextUnifiedData = (() => {
+    pasteboard.getSystemPasteboard().getUnifiedData().then((data) => {
+      let outputData = data;
+      let records = outputData.getRecords();
+      if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+        let record = records[0] as unifiedDataChannel.PlainText;
+        hilog.info(0xFF00, '[Sample_pasteboard]', 'GetPlainText success, type:' + records[0].getType());
+        //注意：用户复制的数据内容属于敏感信息，禁止应用程序使用日志明文打印从剪贴板获取到的数据内容。
+      } else {
+        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get Plain Text Data No Success, Type is: ' + records[0].getType());
+      }
+    }).catch((error: BusinessError) => {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get PlainTextUnifiedData. Cause: ' + error.message);
+      //处理异常场景
     })
-```
+  })
+  ```
 
    
 5. 应用设置本应用剪贴板数据的可粘贴范围。
 
-   <!-- @[pasteboard_timelaps_PasteData5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
-
-``` TypeScript
-    try {
-      systemPasteboard.setAppShareOptions(pasteboard.ShareOption.LOCALDEVICE);
-      console.info('Set app share options success.');
-    } catch (err) {
-      console.error('Failed to gSet app share options. Cause: ' + err.message);
-      //处理异常场景
-    }
-```
+   <!-- @[pasteboard_timelaps_PasteData5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
+   try {
+     systemPasteboard.setAppShareOptions(pasteboard.ShareOption.LOCALDEVICE);
+     hilog.info(0xFF00, '[Sample_pasteboard]', 'Set app share options success.');
+   } catch (err) {
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to gSet app share options. Cause: ' + err.message);
+     //处理异常场景
+   }
+   ```
 
    
 6. 应用删除本应用设置的剪贴板数据可粘贴范围配置。
 
-   <!-- @[pasteboard_timelaps_PasteData6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
-
-``` TypeScript
-    try {
-      systemPasteboard.removeAppShareOptions();
-      console.info('Remove app share options success.');
-    } catch (err) {
-      console.error('Failed to Remove app share options. Cause: ' + err.message);
-      //处理异常场景
-    }
-```
+   <!-- @[pasteboard_timelaps_PasteData6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   
+   ``` TypeScript
+   try {
+     systemPasteboard.removeAppShareOptions();
+     hilog.info(0xFF00, '[Sample_pasteboard]', 'Remove app share options success.');
+   } catch (err) {
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Remove app share options. Cause: ' + err.message);
+     //处理异常场景
+   }
+   ```
