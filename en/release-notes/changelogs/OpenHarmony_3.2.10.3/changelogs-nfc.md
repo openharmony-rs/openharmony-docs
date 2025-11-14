@@ -50,13 +50,13 @@ Some JS APIs in API versions 6 to 8 are affected. Your application needs to adap
 **Adaptation Guide**
 
 View the following API references:
-[@ohos.nfc.cardEmulation (Standard NFC Card Emulation)](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-cardEmulation.md)
+[@ohos.nfc.cardEmulation (Standard NFC Card Emulation)](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-cardEmulation.md)
 
-[@ohos.nfc.controller (Standard NFC)](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-nfcController.md)
+[@ohos.nfc.controller (Standard NFC)](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-nfcController.md)
 
-[@ohos.nfc.tag (Standard NFC Tags)](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-nfcTag.md)
+[@ohos.nfc.tag (Standard NFC Tags)](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-nfcTag.md)
 
-[tagSession (Standard NFC Tag Session)](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-tagSession.md)
+[tagSession (Standard NFC Tag Session)](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-tagSession.md)
 ```
 
 ```

@@ -58,7 +58,7 @@ The codec module implements hardware encoding and decoding of video data. It con
 
   | API                                                                                                                                                      | Description                     |
   | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------|
-  | int32_t CreateComponent(sptr<ICodecComponent>& component, uint32_t& componentId,<br>const std::string& compName, int64_t appData, const sptr<ICodecCallback>& callbacks) | Creates a codec component instance.            |
+  | int32_t CreateComponent(sptr\<ICodecComponent>& component, uint32_t& componentId,<br>const std::string& compName, int64_t appData, const sptr\<ICodecCallback>& callbacks) | Creates a codec component instance.            |
   | int32_t DestoryComponent(uint32_t componentId)                                                                | Destroys a codec component instance.                 |
 
 - icodec_component.h
@@ -82,7 +82,7 @@ The codec module implements hardware encoding and decoding of video data. It con
   | int32_t EmptyBufferDone(int64_t appData, const OmxCodecBuffer& buffer) | Called to report an event indicating that the encoding or decoding in the input buffer is complete.|
   | int32_t FillBufferDone(int64_t appData, const OmxCodecBuffer& buffer) | Called to report an event indicating that the output buffer is filled.            |
 
-For more information, see [codec](https://gitee.com/openharmony/drivers_peripheral/tree/master/codec).
+For more information, see [codec](https://gitcode.com/openharmony/drivers_peripheral/tree/master/codec).
 
 ### Development Procedure
 The codec HDI driver development procedure is as follows:
@@ -771,4 +771,5 @@ View the **codec_host** log generated during encoding, search for "encode params
 
 # Reference
 
-For more information, see [codec](https://gitee.com/openharmony/drivers_peripheral/tree/master/codec).
+For more information, see [codec](https://gitcode.com/openharmony/drivers_peripheral/tree/master/codec).
+<!--no_check-->

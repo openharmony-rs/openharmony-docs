@@ -22,7 +22,7 @@ When executing test cases using the framework, you must connect to the OpenHarmo
 
 The development self-test framework depends on the Python environment. It is required that the Python version be 3.7.5 or later. Before using the framework, you can refer to the following document for configuration.
 
-Click [here](https://gitee.com/openharmony/docs/blob/master/en/device-dev/get-code/sourcecode-acquire.md) to obtain the source code.
+Click [here](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/get-code/sourcecode-acquire.md) to obtain the source code.
 
 ### Basic Self-Test Framework Environment
 
@@ -113,7 +113,7 @@ Click [here](https://gitee.com/openharmony/docs/blob/master/en/device-dev/get-co
     0 upgraded, 0 newly installed, 0 to remove and 11 not upgraded.
     ```
 
-7. If the device supports HDC connection, install the HDC tool. For details about the installation process, see [HDC-OpenHarmony Device Connector](https://gitee.com/openharmony/developtools_hdc/blob/master/README.md).
+7. If the device supports HDC connection, install the HDC tool. For details about the installation process, see [HDC-OpenHarmony Device Connector](https://gitcode.com/openharmony/developtools_hdc/blob/master/README.md).
 
 
 ### Environment Dependency Check
@@ -601,12 +601,12 @@ The test framework supports multiple types of tests and provides different test 
 
 **Fuzzing Test**
 
-[Fuzzing case specifications](https://gitee.com/openharmony/testfwk_developer_test/blob/master/libs/fuzzlib/README_zh.md)
+[Fuzzing case specifications](https://gitcode.com/openharmony/testfwk_developer_test/blob/master/libs/fuzzlib/README_zh.md)
 
 
 **Benchmark Test**
 
-[Benchmark case specifications](https://gitee.com/openharmony/testfwk_developer_test/blob/master/libs/benchmark/README_zh.md)
+[Benchmark case specifications](https://gitcode.com/openharmony/testfwk_developer_test/blob/master/libs/benchmark/README_zh.md)
 
 ## **Test Case Building**
 
@@ -1076,9 +1076,9 @@ Before executing test cases, you need to modify the configuration in **developer
   <environment>
     <!-- Configure the IP address and port number of the remote server to support connection to the device through the OpenHarmony Device Connector (HDC).-->
     <device type="usb-hdc">
-      <ip></ip>
-      <port></port>
-      <sn></sn>
+      \<ip\></ip>
+      \<port\></port>
+      \<sn\></sn>
     </device>
     <!-- Configure the serial port information of the device to enable connection through the serial port.-->
     <device type="com" label="ipcamera">
@@ -1232,9 +1232,9 @@ To enable test cases to be executed on a remote Linux server or a Linux VM, map 
 	<environment>
     <!-- Configure the IP address, port number, and SN of the remote server to support connection to the device through HDC. -->
     <device type="usb-hdc">
-      <ip></ip>
-      <port></port>
-      <sn></sn>
+      \<ip\></ip>
+      \<port\></port>
+      \<sn\></sn>
     </device>
 	<environment>
 	```
@@ -1384,7 +1384,7 @@ When GCDA data is available, you can execute the test cases as follows for subsy
        C:   cflags = [ "--coverage" ]
        C++: cflags_cc = [ "--coverage" ]
    
-   **Recommended**: You can also refer to the mode for the window subsystem. For details, see the files in this [pull request](https://gitee.com/openharmony/window_window_manager/pulls/1274/files).
+   **Recommended**: You can also refer to the mode for the window subsystem. For details, see the files in this [pull request](https://gitcode.com/openharmony/window_window_manager/pulls/1274/files).
    
 3. To execute coverage test cases, perform the following to install the dependencies:
    
@@ -1398,9 +1398,9 @@ When GCDA data is available, you can execute the test cases as follows for subsy
 
        <!-- Set the IP address of the remote host to map (IP address of the PC to which the device is mounted).-->
        <device type="usb-hdc">
-         <ip></ip>
-         <port></port>
-         <sn></sn>
+         \<ip\></ip>
+         \<port\></port>
+         \<sn\></sn>
        </device>
 
 5. Run the **./start.sh** command. Below are examples:
