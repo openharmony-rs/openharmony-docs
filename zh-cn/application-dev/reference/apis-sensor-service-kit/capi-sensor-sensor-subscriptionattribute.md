@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```
+typedef struct Sensor_SubscriptionAttribute Sensor_SubscriptionAttribute
+```
+
 ## 概述
 
 定义传感器订阅属性。
