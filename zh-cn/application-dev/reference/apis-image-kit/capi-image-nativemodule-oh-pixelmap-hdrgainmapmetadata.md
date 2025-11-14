@@ -1,5 +1,9 @@
 # OH_Pixelmap_HdrGainmapMetadata
 
+```
+typedef struct {...} OH_Pixelmap_HdrGainmapMetadata
+```
+
 ## 概述
 
 HDR_GAINMAP_METADATA关键字对应的gainmap相关元数据值，参考ISO 21496-1。
