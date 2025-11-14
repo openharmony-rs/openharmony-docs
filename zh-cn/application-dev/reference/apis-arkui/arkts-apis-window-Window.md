@@ -9884,18 +9884,18 @@ ArkTS-Sta示例：
 
 ```ts
 try {
-  windowClass = this.windowStage.getMainWindowSync();
+  let windowClass = windowStage.getMainWindowSync();
   //  true:窗口置顶，false:取消窗口置顶
   let isWindowTopmost: boolean = true;
   let promiseTopmost = windowClass.setWindowTopmost(isWindowTopmost);
   promiseTopmost.then(() => {
     console.info('Succeeded in setting the main window to be topmost.');
-  }).catch((err: Error) => {
-    console.error(`Failed to set the main window to be topmost. Cause code: ${err?.comessage: ${err?.message}`);
+  }).catch((exception) => {
+    let err = exception as BusinessError;
+    console.error(`Failed to set the main window to be topmost. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  let err = exception as BusinessError;
-  console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: $message}`)
+  console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`)
 }
 ```
 
