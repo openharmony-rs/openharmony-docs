@@ -952,7 +952,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T = void> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T = void>
 
 图片加载异常返回的错误信息。
 
