@@ -8,7 +8,7 @@
 
 ## 切换通话输出设备
 
-系统不再提供音频输出设备切换的API，如果需要应用内切换音频输出设备，请实现AVCastPicker组件，相关参数可参考[@ohos.multimedia.avCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。
+实现音频输出设备路由切换请参考[AudioKit](../audio/audio-output-device-switcher.md)。本文将主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker(投播组件)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam（投播组件参数）](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。
 
 本文将主要介绍AVCastPicker组件接入，实现通话输出设备切换功能。
 
