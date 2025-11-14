@@ -50,7 +50,8 @@ type Optional\<T> = T | undefined
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-| T \| undefined | 定义可选类型，其值可以是undefined。 |
+| T | 表示该类型声明的对象是自定义类型。 |
+| undefined | 表示该类型声明的对象是undefined。 |
 
 ## 示例
 
