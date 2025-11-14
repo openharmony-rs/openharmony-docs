@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_NN_Memory
+```
+
 ## 概述
 
 内存结构体。

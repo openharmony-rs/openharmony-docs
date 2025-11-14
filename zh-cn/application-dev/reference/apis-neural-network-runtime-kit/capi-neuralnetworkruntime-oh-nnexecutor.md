@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_NNExecutor OH_NNExecutor
+```
+
 ## 概述
 
 执行器句柄。

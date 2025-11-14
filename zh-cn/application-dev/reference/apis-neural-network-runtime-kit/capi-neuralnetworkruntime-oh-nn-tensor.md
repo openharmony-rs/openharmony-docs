@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_NN_Tensor
+```
+
 ## 概述
 
 张量结构体。

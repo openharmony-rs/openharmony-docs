@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_NN_QuantParam
+```
+
 ## 概述
 
 量化信息。

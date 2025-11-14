@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct NN_TensorDesc NN_TensorDesc
+```
+
 ## 概述
 
 Tensor描述的句柄。
