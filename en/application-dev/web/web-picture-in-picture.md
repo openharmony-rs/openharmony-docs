@@ -21,7 +21,7 @@ To use online video resources, you need to set the network permission in the con
 ## Constraints
 1. H.264/H.265/HLS videos can be played in the PiP window. 
 2. The size of the PiP window is adjusted based on the system capability. For details, see the system features and capabilities in the design guide.
-3. Since OpenHarmony6.0, the **Web** component supports the PiP feature.
+3. Since OpenHarmony 6.0, the **Web** component supports PiP. 
 
 ## Entering Picture-in-Picture
 

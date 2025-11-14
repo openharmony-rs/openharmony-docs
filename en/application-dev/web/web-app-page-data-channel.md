@@ -10,7 +10,7 @@
 The [createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports) API allows you to create message ports to implement communication between the application and frontend page.
 
 
-In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) is used to close the port after the port is used or before the WebView object is destroyed.
+In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. After the port is used or before the WebView object is destroyed, the [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) API is called to disable the port.
 
 
 - Application code:
@@ -184,5 +184,5 @@ To pass the object type, use the **JSON.stringify** method to convert it to the 
   }
 ```
 
-### What is the execution sequence of onControllerAttached and javaScriptOnDocumentStart?
+### Which is executed first, onControllerAttached or javaScriptOnDocumentStart?
 [javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11) is executed after [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10).

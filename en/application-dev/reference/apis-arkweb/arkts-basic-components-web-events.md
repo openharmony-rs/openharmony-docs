@@ -18,7 +18,7 @@ The following universal events are supported: [onAppear](../apis-arkui/arkui-ts/
 
 onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
-Triggered when **alert()** is invoked to display an alert dialog box on the web page.
+Triggered when **alert()** is invoked to display an alert dialog box on the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) API when this callback is triggered. Otherwise, the render process is blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -177,7 +177,7 @@ Called when the page refresh is about to complete or the current page is closed.
 
 onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
-Triggered when **confirm()** is invoked by the web page.
+Triggered when **confirm()** is invoked by the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm) API when this callback is triggered. Otherwise, the render process is blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -266,7 +266,7 @@ Triggered when **confirm()** is invoked by the web page.
 
 onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
-Triggered when **prompt()** is invoked by the web page.
+Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel) or [handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9) API when this callback is triggered. Otherwise, the render process is blocked.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -790,7 +790,7 @@ Called when the **\<title>** element of the page document changes. If no title i
 
 | Name  | Type  | Mandatory  | Description         |
 | ----- | ------ | ---- | ------------- |
-| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | Yes   | Called when the page document title changes.|
+| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | Yes   | Callback triggered when the document title on the page is changed.|
 
 **Example**
 
@@ -1292,7 +1292,7 @@ Triggered when an HTTP authentication request is received.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | Yes| Callback invoked when the browser requires user credentials.<br>Return value: boolean<br> If true is returned, the HTTP authentication is successful. If false is returned, the HTTP authentication fails.  |
+| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | Yes| Callback invoked when the browser requires user credentials.<br>Return value: boolean<br> The value **true** means that the HTTP authentication is successful, and **false** means the opposite.  |
 
 **Example**
 
@@ -1358,8 +1358,8 @@ To support errors for loading subframe resources, use the [OnSslErrorEvent](./ar
 >
 > - Main resource: Entry file for the browser to load web pages, which is usually an HTML document. 
 > - Subresource: Dependency file referenced by the main resource, which is loaded when a specific tag is encountered during main resource parsing.
-> - The application needs to call [handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9) or [handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9) to process the callback. If the callback is not processed, resource loading is canceled by default. The behavior of handleConfirm() or handleCancel() may be recorded to respond to future SSL errors.
-> - The application can be used to display a custom error page or silently record the problem.
+> - The application needs to call [handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9) or [handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9) to process the callback. Otherwise, resource loading is canceled by default. The behavior of **handleConfirm()** or **handleCancel()** may be recorded to respond to future SSL errors.
+> - The application can display a custom error page or silently record the problem.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1571,8 +1571,8 @@ Triggered when an SSL client certificate request is received.
 
 > **NOTE**
 >
-> - The web component can respond in one of the following ways: [ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10), [ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9), or [ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9).
-> - If ClientAuthenticationHandler.confirm or ClientAuthenticationHandler.cancel is called, ArkWeb stores the authentication result in the memory (within the application lifecycle) and does not call onClientAuthenticationRequest() again for the same host and port. If onClientAuthenticationRequest.ignore is called, ArkWeb does not store the authentication result.
+> - The **Web** component can respond with [ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10), [ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9), or [ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9).
+> - If **ClientAuthenticationHandler.confirm** or **ClientAuthenticationHandler.cancel** is called, the **Web** component stores the authentication result in the memory (within the application lifecycle) and does not call **onClientAuthenticationRequest()** again for the same host and port. If **onClientAuthenticationRequest.ignore** is called, the **Web** component does not store the authentication result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2188,7 +2188,7 @@ Triggered to notify the global scrolling position of the web page.
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-Called to notify the user that the geolocation information obtaining request is received. To use this API, the **ohos.permission.LOCATION** and **ohos.permission.APPROXIMATELY_LOCATION** permissions must be configured.
+Called to notify the user that the geolocation information obtaining request is received. To use this API, the **ohos.permission.LOCATION** and **ohos.permission.APPROXIMATELY_LOCATION** permissions must be configured. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2196,7 +2196,7 @@ Called to notify the user that the geolocation information obtaining request is 
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | Yes| Callback invoked when a request to obtain the geolocation information is received.    |
+| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | Yes| Callback triggered when the geolocation permission is requested, returning the geolocation information request object.    |
 
 **Example**
 
@@ -2942,7 +2942,7 @@ Triggered when the first content paint occurs on the web page.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes| Callback invoked when the first content paint occurs on the web page.         |
+| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes| Callback invoked when the first content paint occurs on the web page.      |
 
 **Example**
 
@@ -3060,7 +3060,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | Yes| Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it.<br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite.<br>If undefined or null is returned, the value is false.|
+| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | Yes| Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it.<br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite.<br>If **undefined** or **null** is returned, the value is **false**.|
 
 **Example**
 
@@ -3787,7 +3787,7 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> true: The URL loading is stopped. false: The URL continues to be loaded in the web page.|
+| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> The value **true** means to stop loading the URL, and the value **false** means the opposite. |
 
 **Example**
 
@@ -4549,3 +4549,26 @@ Called to notify the user that the PDF page has been scrolled to the bottom.
     }
   }
   ```
+## onRenderExited<sup>(deprecated)</sup>
+
+onRenderExited(callback: (event?: { detail: object }) => boolean)
+
+Triggered when the rendering process exits due to an error or crash.
+
+A rendering process may be shared by multiple **Web** components. Each affected **Web** component triggers this callback.
+
+You can call the bound **WebViewController** APIs to restore the web page when this callback is triggered. For example, [refresh](./arkts-apis-webview-WebviewController.md#refresh) and [loadUrl](./arkts-apis-webview-WebviewController.md#loadurl).
+
+For details, see [Lifecycle of the Web Component](../../web/web-event-sequence.md).
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [onRenderExited<sup>9+</sup>](#onrenderexited9) instead.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name             | Type                                    | Mandatory  | Description            |
+| ---------------- | ---------------------------------------- | ---- | ---------------- |
+| callback |(event?: { detail: object }) => boolean | Yes   | Callback triggered when the rendering process exits abnormally.|

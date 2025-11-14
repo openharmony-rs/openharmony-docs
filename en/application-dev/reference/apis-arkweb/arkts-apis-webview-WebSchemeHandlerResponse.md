@@ -34,9 +34,8 @@ Constructs a **Response** object.
 
 ```ts
 // xxx.ets
-import { webview } from '@kit.ArkWeb';
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component

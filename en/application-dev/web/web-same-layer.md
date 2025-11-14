@@ -446,7 +446,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
    - Tapping or holding with the left, middle, or right mouse button.
    - Tapping or holding the left, middle, or right mouse button using the touchpad.
 
-   You need to call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for mouse events in the same-layer rendering area.
+   Call [onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20) to listen for the mouse events in the same-layer rendering region.
 
     ```ts
     build() {
@@ -496,15 +496,15 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
     ```
 **Sample Code**
 
-To start with, add network permissions to module.json5. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
+To start with, add network permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
   ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
     ]
-  ```
+```
 
 Code on the application side:
 
@@ -987,7 +987,7 @@ Code on the application side:
   ```ts
   // HAP's src/main/ets/pages/PlayerDemo.ets
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export class AVPlayerDemo {
     private count: number = 0;
@@ -1358,7 +1358,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
 
 - Example of a frontend page:
 
-  The sample code uses the **\<embed>** tag. If the **\<object>** tag is used, register the **\<object>** tag and **\<type>** on the eTS side.
+  The sample code uses the **\<embed>** tag. To use the **\<object>** tag, register it and **\<type>** on the eTS side.
   ```html
   <!--HAP's src/main/resources/rawfile/overlay.html-->
   <!DOCTYPE html>

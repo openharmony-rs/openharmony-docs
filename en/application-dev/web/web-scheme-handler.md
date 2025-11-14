@@ -6,40 +6,40 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-You can intercept network requests initiated by web components using [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or SchemeHandler. SchemeHandler provides two sets of APIs: ArkTS APIs and NDK APIs.
+The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
-> **Notice**
+> **NOTE**
 >
-> You cannot obtain post data using the onInterceptRequest API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
+> You cannot obtain post data using the **onInterceptRequest** API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
 
-## Intercepting Network Requests (onInterceptRequest API)
+## Intercepting Network Requests (by onInterceptRequest)
 
-For details about how to intercept network requests initiated by web components through the onInterceptRequest API, see [Customizing Page Request Responses](./web-resource-interception-request-mgmt.md).
+For details about how to intercept network requests initiated by **Web** components through the **onInterceptRequest** API, see [Customizing Page Request Responses](./web-resource-interception-request-mgmt.md).
 
-## Intercepting Network Requests (SchemeHandler Mechanism)
+## Intercepting Network Requests (by SchemeHandler)
 
-Intercept network requests initiated by web components using the SchemeHandler mechanism.
+Intercept network requests initiated by **Web** components using the SchemeHandler mechanism.
 
 ### Setting SchemeHandler for Web Components
 
-ArkWeb allows you to intercept HTTP(s) and custom protocol requests sent by web components or ServiceWorker using SchemeHandler.
+ArkWeb allows you to use SchemeHandler to intercept HTTP(s) and custom protocol requests sent by **Web** components or ServiceWorker.
 
-When the web kernel sends a scheme request, the callback of the SchemeHandler set for the scheme is triggered. SchemeHandler contains two callbacks: one for the request start and the other for the request end. The app needs to notify the web kernel whether to intercept the request in the callback for the request start, and clear related resources after the request ends to avoid memory leakage.
+When the web kernel sends a scheme request, the callback of SchemeHandler set for the scheme is triggered. SchemeHandler contains two callbacks: one for the request start and the other for the request end. The application needs to notify the web kernel whether to intercept the request in the callback for the request start, and clear related resources after the request ends to avoid memory leaks.
 
-Callback for the request start: 
+Callbacks for the request start: 
 NDK: [ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart) 
 ArkTS: [onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12) 
 
-Callback for request end: 
+Callbacks for the request end: 
 NDK: [ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) 
 ArkTS: [onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12) 
 
-> **Notice**
+> **NOTE**
 >
-> - You need to set SchemeHandler after the web component is initialized. Otherwise, the setting will fail.
-> - If you want to intercept the first request sent by the web component, you can initialize the web component in advance by calling [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) and then set SchemeHandler to intercept the request. For details, see [Sample Code](#sample-code).
+> - You need to set SchemeHandler after the **Web** component is initialized. Otherwise, the setting will fail.
+> - To intercept the first request sent by a **Web** component, you can use the [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) method to initialize the **Web** component in advance, and then set the SchemeHandler to intercept the request. For details, see [Sample Code](#sample-code).
 
-In C++, use the NDK API to set SchemeHandler for the web component.
+In C++, use the NDK APIs to set SchemeHandler for **Web** components.
 
   ```c++
     // Create an ArkWeb_SchemeHandler object.
@@ -59,23 +59,23 @@ In C++, use the NDK API to set SchemeHandler for the web component.
     OH_ArkWebServiceWorker_SetSchemeHandler("custom", schemeHandler);
   ```
 
-In ArkTS, set the SchemeHandler for the web component.
+In ArkTS, set SchemeHandler for **Web** components.
 
   ```ts
-    // Initialize the WebView controller and Scheme processor.
+    // Initialize the WebviewController and SchemeHandler.
     controller: webview.WebviewController = new webview.WebviewController();
     schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
-    // Set the SchemeHandler for the current web component.
+    // Set SchemeHandler for the current Web component.
     this.controller.setWebSchemeHandler('https', this.schemeHandler);
   ```
 
 ### Rules for Setting a Custom Scheme
 
-To intercept the request of a custom scheme, you need to register the custom scheme with the web kernel before initializing the web component. If you register the custom scheme after the initialization, the registration will fail.
+To intercept requests from a custom scheme, you need to register the scheme with the web kernel before the **Web** component is initialized. Otherwise, the registration will fail.
 
-The creation of a web component triggers the initialization of the web kernel. In addition, ArkWeb provides the initializeWebEngine API for web initialization.
+The creation of a **Web** component triggers the initialization of the web kernel. ArkWeb also provides the **initializeWebEngine** API to initialize the web kernel independently.
 
-In the NDK, you can call testNapi.registerCustomSchemes on the ETS side to register a custom protocol, and then call [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel. The following is an example:
+In the NDK, you can call **testNapi.registerCustomSchemes** on the ETS side to register a custom scheme, and then call [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel. The sample code is as follows:
 
   ```ts
     export default class EntryAbility extends UIAbility {
@@ -91,7 +91,7 @@ In the NDK, you can call testNapi.registerCustomSchemes on the ETS side to regis
     };
   ```
 
-testNapi.registerCustomSchemes C++ implementation:
+C++ implementation of **testNapi.registerCustomSchemes**:
 
   ```c++
     // Register the custom scheme with the Web component and specify that this scheme should follow the standard scheme rules, allowing cross-origin requests from this scheme.
@@ -104,7 +104,7 @@ testNapi.registerCustomSchemes C++ implementation:
     OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
   ```
 
-You can register a custom protocol by using customizeSchemes. The following is an example:
+In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 
  ``` ts
     // xxx.ets
@@ -144,9 +144,9 @@ You can register a custom protocol by using customizeSchemes. The following is a
 
 ### Obtaining Information About Intercepted Requests
 
-In the callback at the beginning of a request, the app can obtain the basic request information, including the URL, method, referrer, request headers, resource type, and post data. You can obtain the upload data of PUT/POST requests. The data type can be BYTES, FILE, BLOB, or CHUNKED.
+In the callback of the request start, the application can obtain the basic request information, including the URL, method, referrer, request headers, resource type, and post data. In addition, the data uploaded by PUT/POST requests can be obtained and the data type can be **BYTES**, **FILE**, **BLOB**, or **CHUNKED**.
 
-Obtain information about intercepted requests in the NDK.
+In the NDK, obtain information about intercepted requests:
 
   ```c++
     char* url;
@@ -171,7 +171,7 @@ Obtain information about intercepted requests in the NDK.
     OH_ArkWebHttpBodyStream_Init(stream_, InitCallback);
   ```
 
-In ArkTS, obtain the information about the intercepted request.
+In ArkTS, obtain information about intercepted requests:
   ```ts
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     try {
@@ -199,19 +199,19 @@ In ArkTS, obtain the information about the intercepted request.
   })
   ```
 
-### Intercepting Web Core Requests and Providing Customized Responses for Intercepted Requests
+### Intercepting Web Kernel Requests and Providing Custom Responses
 
-Network interception enables you to provide customized responses for intercepted requests in streaming mode in the worker thread. You can also use specific network error codes to end the current intercepted request.
+The network interception provides custom response information for intercepted requests in stream mode in the worker thread. You can also use a specific network error code to end the current intercepted request.
 
-Error code definition: 
-NDK: [Network error code (arkweb_net_error_list.h)](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md) 
-ArkTS: [Network error code (@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/arkts-apis-netErrorList.md) 
+Error codes: 
+NDK: [arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md) 
+ArkTS: [@ohos.web.netErrorList(The List of ArkWeb Network Protocol Stack Errors)](../reference/apis-arkweb/arkts-apis-netErrorList.md) 
 
-> **Notice**
+> **NOTE**
 >
 > ArkWeb does not support custom error codes. Use the error codes provided by ArkWeb to end requests.
 
-In the NDK, provide customized responses for intercepted requests.
+In the NDK, provide custom responses for intercepted requests.
 
   ```c++
     // Create a response header for the intercepted request.
@@ -220,9 +220,9 @@ In the NDK, provide customized responses for intercepted requests.
 
     // Set the HTTP status code to 200.
     OH_ArkWebResponse_SetStatus(response, 200);
-    // Set the character set in the response header to UTF-8.
+    // Set the character set in the response header, specifying that the content uses UTF-8 encoding.
     OH_ArkWebResponse_SetCharset(response, "UTF-8");
-    // Set the content-length in the response header to the size of the response body.
+    // Set the response body size in content-length of the response header.
     OH_ArkWebResponse_SetHeaderByName(response, "content-length", "1024", false);
     // Pass the response header created for the intercepted request to the Web component.
     OH_ArkWebResourceHandler_DidReceiveResponse(resourceHandler, response);
@@ -253,10 +253,10 @@ In ArkTS, provide custom response information for intercepted requests.
       // Set the MIME type to text/html, indicating that the returned data is an HTML document.
       response.setMimeType("text/html");
 
-      // Set the encoding mode to utf-8, indicating that the content is encoded using UTF-8.
+      // Set the encoding mode to UTF-8, indicating that the content is encoded using UTF-8.
       response.setEncoding("utf-8");
 
-      // Set the value of the custom response header header1 to value1. false indicates that the existing header with the same name is not overwritten.
+      // Set the value of the custom header1 to value1. false indicates that the existing header with the same name is not overwritten.
       response.setHeaderByName("header1", "value1", false);
 
       // Call didReceiveResponse to pass the constructed response header to the intercepted request.
@@ -265,7 +265,7 @@ In ArkTS, provide custom response information for intercepted requests.
       // Call didReceiveResponseBody to pass the constructed response body to the intercepted request.
       resourceHandler.didReceiveResponseBody(buf.buffer);
 
-      // Call didFinish to notify the web component that the intercepted request is complete.
+      // Call didFinish to notify the Web component that the intercepted request is complete.
       resourceHandler.didFinish();
     } catch (error) {
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -273,9 +273,9 @@ In ArkTS, provide custom response information for intercepted requests.
   })
   ```
 
-If you want to end the current request by using [OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) or [didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12), you must return a response header to the web kernel by using [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12) before calling this interface. Otherwise, the request cannot be ended.
+Before calling [OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) or [didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12) to end the current request, you must return a response header to the web kernel through [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12). Otherwise, the request cannot be ended.
 
-From API version 20, you can end a network request directly by using [OH_ArkWebResourceHandler_DidFailWithErrorV2](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2) or [didFail(code: WebNetErrorList, completeIfNoResponse: boolean)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail20), without waiting for the response header returned by [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12).
+Since API version 20, you can directly use [OH_ArkWebResourceHandler_DidFailWithErrorV2](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2) or [didFail(code: WebNetErrorList, completeIfNoResponse: boolean)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail20) to end a network request. You do not need to use [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12) to return a response header to the web kernel.
 
 NDK sample code:
   ```c++
@@ -287,11 +287,13 @@ NDK sample code:
 ArkTS sample code:
   ```ts
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-    // Directly call didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
+    // Call didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
     resourceHandler.didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true);
   })
   ```
 
 ## Sample Code
 
-[Intercepting Network Requests Initiated by Web Components](https://gitee.com/harmonyos_samples/guide-snippets/tree/master/ArkWebKit/ArkWebSchemeHandler)
+<!--RP1-->
+[Intercepting Network Requests Initiated by the Web Component](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)
+<!--RP1End-->

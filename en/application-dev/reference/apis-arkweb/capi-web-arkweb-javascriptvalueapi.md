@@ -50,7 +50,7 @@ Sets the mode for processing key events.
 |---------------------------------|----|
 | ArkWeb_JavaScriptValueType type | Type of the JavaScript value.  |
 | void* data                                | Pointer to the JavaScript value data.  |
-| size_t dataLength                         | Data length of JavaScript values.  |
+| size_t dataLength                         | Length of the JavaScript value data.  |
 
 **Returns**
 
