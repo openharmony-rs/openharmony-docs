@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef void *OH_AI_ModelHandle
+```
+
 ## 概述
 
 指向模型对象的指针。
