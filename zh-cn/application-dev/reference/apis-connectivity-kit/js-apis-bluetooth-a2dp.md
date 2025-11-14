@@ -22,6 +22,10 @@ type BaseProfile = baseProfile.BaseProfile
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
 | [baseProfile.BaseProfile](js-apis-bluetooth-baseProfile.md#ohosbluetoothbaseprofile-蓝牙baseprofile模块) | 基础Profile接口定义。 |
@@ -150,12 +154,12 @@ try {
 
 | 名称        | 类型                    | 只读   | 可选   | 说明                                     |
 | ------------------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| codecType           | [CodecType](#codectype11)      | 否    | 否    | 表示编码器类型，默认值为CODEC_TYPE_SBC。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | 否    | 否    | 表示每个采样点的位数，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | 否    | 否    | 表示编码器的声道模式，默认值为CODEC_CHANNEL_MODE_NONE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | 否    | 否    | 表示编码器的采样率，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 表示编码器的比特率，默认值为CODEC_BIT_RATE_ABR。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22 |
-| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    | 表示编码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22 |
+| codecType           | [CodecType](#codectype11)      | 否    | 否    | 表示编码器类型，默认值为CODEC_TYPE_SBC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | 否    | 否    | 表示每个采样点的位数，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | 否    | 否    | 表示编码器的声道模式，默认值为CODEC_CHANNEL_MODE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | 否    | 否    | 表示编码器的采样率，默认值为CODEC_BITS_PER_SAMPLE_NONE。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 表示编码器的比特率，默认值为CODEC_BIT_RATE_ABR。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 22 |
+| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    | 表示编码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 22 |
 
 ## CodecInfoList<sup>19+</sup>
 
@@ -180,12 +184,12 @@ try {
 
 | 名称                | 值    | 说明      |
 | ----------------- | ------ | ------- |
-| CODEC_TYPE_INVALID | -1 | 未知编码类型。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_SBC     | 0 | SBC。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_AAC     | 1 | AAC。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_L2HC    | 2 | L2HC。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_L2HCST<sup>13+</sup>  | 3 | L2HCST。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
-| CODEC_TYPE_LDAC<sup>13+</sup>    | 4 | LDAC。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| CODEC_TYPE_INVALID | -1 | 未知编码类型。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| CODEC_TYPE_SBC     | 0 | SBC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| CODEC_TYPE_AAC     | 1 | AAC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| CODEC_TYPE_L2HC    | 2 | L2HC。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| CODEC_TYPE_L2HCST<sup>13+</sup>  | 3 | L2HCST。<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 22 |
+| CODEC_TYPE_LDAC<sup>13+</sup>    | 4 | LDAC。<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 22 |
 
 
 ## CodecChannelMode<sup>11+</sup>

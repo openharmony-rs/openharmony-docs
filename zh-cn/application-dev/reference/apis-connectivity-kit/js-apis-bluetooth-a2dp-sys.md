@@ -736,7 +736,7 @@ ArkTS-Sta: disableAutoPlay(deviceId: string, duration: int): Promise&lt;void&gt;
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| duration | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 拦截时长，取值范围：[3000, 20000]，单位：ms。 |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 拦截时长，取值范围：[3000, 20000]，单位：ms。 |
 
 **返回值：**
 
@@ -876,7 +876,7 @@ ArkTS-Dyn: getAutoPlayDisabledDuration(deviceId: string): Promise&lt;int&gt;
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | 以Promise的形式返回结果。number为返回的拦截时长，单位：ms。如果返回-1，则表示允许设备在连接成功后自动播放音乐。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | 以Promise的形式返回结果。number为返回的拦截时长，单位：ms。如果返回-1，则表示允许设备在连接成功后自动播放音乐。 |
 
 **错误码**：
 

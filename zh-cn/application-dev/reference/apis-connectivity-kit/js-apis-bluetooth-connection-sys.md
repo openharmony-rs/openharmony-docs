@@ -1050,8 +1050,8 @@ try {
 | serviceId  | string | 否    | 否    | 表示设备id。   |
 | deviceName  | string | 否    | 否    | 表示设备名字。   |
 | uuids  | string | 否    | 否    | 表示设备的UUID。   |
-| bluetoothClass  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 表示远端设备类型。   |
+| bluetoothClass  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 表示远端设备类型。   |
 | token  | ArrayBuffer | 否    | 否    | 表示设备的token信息。   |
-| deviceNameTime  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 表示设备名字的修改时间。   |
+| deviceNameTime  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 表示设备名字的修改时间。   |
 | secureAdvertisingInfo  | ArrayBuffer | 否    | 否    | 表示设备广播信息。   |
-| pairState  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 表示设备配对状态。   |
+| pairState  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 表示设备配对状态。   |

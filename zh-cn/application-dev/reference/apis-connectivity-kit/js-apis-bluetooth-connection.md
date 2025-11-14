@@ -24,6 +24,10 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
 | [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | 蓝牙设备的Profile协议连接状态。 |
@@ -36,6 +40,10 @@ type ProfileId = constant.ProfileId
 枚举，蓝牙Profile协议。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -50,6 +58,10 @@ type ProfileUuids = constant.ProfileUuids
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
 | [constant.ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12) | 蓝牙Profile协议的UUID。 |
@@ -63,6 +75,10 @@ type MajorClass = constant.MajorClass
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
 | [constant.MajorClass](js-apis-bluetooth-constant.md#majorclass) | 蓝牙设备的主要类型。 |
@@ -75,6 +91,10 @@ type MajorMinorClass = constant.MajorMinorClass
 蓝牙设备的子类型，在[MajorClass](js-apis-bluetooth-constant.md#majorclass)基础上进一步细分的类型。蓝牙标准协议字段。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -874,7 +894,7 @@ ArkTS-Sta: setBluetoothScanMode(mode: ScanMode, duration: int): void
 | 参数名      | 类型                    | 必填   | 说明                           |
 | -------- | --------------------- | ---- | ---------------------------- |
 | mode     | [ScanMode](#scanmode) | 是    | 蓝牙扫描模式。当扫描模式为SCAN_MODE_GENERAL_DISCOVERABLE时，超出duration持续时间(不为0)，扫描模式会重新设置为SCAN_MODE_CONNECTABLE。               |
-| duration | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是    | 设备可被发现的持续时间，单位：ms。设置为0则表示持续可发现。 |
+| duration | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 设备可被发现的持续时间，单位：ms。设置为0则表示持续可发现。 |
 
 **错误码**：
 
@@ -2217,7 +2237,7 @@ ArkTS-Sta: getLastConnectionTime(deviceId: string): Promise&lt;long&gt;
 
 | 类型                  | 说明         |
 | ------------------- | ------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回对端蓝牙设备最近一次连接的时间点。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回对端蓝牙设备最近一次连接的时间点。 |
 
 **错误码**：
 
@@ -2380,9 +2400,9 @@ try {
 
 | 名称       | 类型   | 只读 | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | 否    | 否    | 配对中的对端设备地址。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| deviceId | string      | 否    | 否    | 配对中的对端设备地址。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| state    | [BondState](#bondstate)   | 否    | 否    | 配对状态。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | 否 | 否 | 配对失败的原因。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 
 
 ## PinRequiredParam
@@ -2416,7 +2436,7 @@ try {
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
 | majorClass      | [MajorClass](js-apis-bluetooth-constant.md#majorclass)           | 否    | 否    | 主要类型。是蓝牙标准协议中定义的类型字段。   |
 | majorMinorClass | [MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | 否    | 否    | 子类型，是在主要类型上基础上进一步细分的类型。是蓝牙标准协议中定义的类型字段。 |
-| classOfDevice   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                              | 否    | 否    | 设备类型。是蓝牙标准协议中定义的类型字段，包含了[MajorClass](js-apis-bluetooth-constant.md#majorclass)、[MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass)和支持的主要服务这三种设备信息。          |
+| classOfDevice   | ArkTS-Dyn: number <br>ArkTS-Sta: int                              | 否    | 否    | 设备类型。是蓝牙标准协议中定义的类型字段，包含了[MajorClass](js-apis-bluetooth-constant.md#majorclass)、[MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass)和支持的主要服务这三种设备信息。          |
 
 
 ## BatteryInfo<sup>12+</sup>
@@ -2431,12 +2451,12 @@ try {
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| batteryLevel  | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    | 否    | 表示设备的电量值。<br>如果该值为-1，表示没有电量信息。   |
-| leftEarBatteryLevel  | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的电量值。<br>如果该值为-1，表示没有电量信息。   |
+| batteryLevel  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 表示设备的电量值。<br>如果该值为-1，表示没有电量信息。   |
+| leftEarBatteryLevel  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的电量值。<br>如果该值为-1，表示没有电量信息。   |
 | leftEarChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示左侧耳机的充电状态。   |
-| rightEarBatteryLevel  | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的电量值。<br>如果该值为-1，表示没有电量信息。   |
+| rightEarBatteryLevel  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的电量值。<br>如果该值为-1，表示没有电量信息。   |
 | rightEarChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示右侧耳机的充电状态。   |
-| boxBatteryLevel  | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的电量值。<br>如果值该为-1，表示没有电量信息。   |
+| boxBatteryLevel  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的电量值。<br>如果值该为-1，表示没有电量信息。   |
 | boxChargeState  | [DeviceChargeState](#devicechargestate12) | 否    | 否    | 若是蓝牙耳机设备类型，表示耳机仓的充电状态。   |
 
 
@@ -2544,6 +2564,6 @@ try {
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId    | string      | 否    | 否    | 扫描到的设备地址。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若取消配对该设备或蓝牙关闭后，再次重新发起扫描，该虚拟地址会变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。|
-| rssi     | ArkTS-Dyn: number <br/>ArkTS-Sta: int      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
+| rssi     | ArkTS-Dyn: number <br>ArkTS-Sta: int      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
