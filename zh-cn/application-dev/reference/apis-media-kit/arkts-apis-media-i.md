@@ -279,8 +279,8 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 | MD_KEY_HDR_TYPE | 'hdr_type' | 视频 |
 | MD_KEY_ORIGINAL_WIDTH<sup>21+</sup> | 'original_width' | 视频 |
 | MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup> | 'original_height' | 视频 |
-| MD_KEY_BITRATE<sup>8+</sup> | 'bitrate' | 音频、视频（从API Version 21开始，AVMetadata.tracks支持该值获取） |
-| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | 音频（从API Version 21开始，AVMetadata.tracks支持该值获取） |
+| MD_KEY_BITRATE<sup>8+</sup> | 'bitrate' | 音频、视频（从API version 21开始，AVMetadata.tracks支持该值获取） |
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | 音频（从API version 21开始，AVMetadata.tracks支持该值获取） |
 
 ## PixelMapParams<sup>12+</sup>
 
