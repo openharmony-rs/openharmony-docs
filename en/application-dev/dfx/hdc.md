@@ -558,7 +558,7 @@ hdc shell [-b bundlename] [command]
 
 | Parameter| Description|
 | -------- | -------- |
-| -b bundlename | This parameter is added in 3.1.0e. The bundle name of a debug application. The command is executed in non-interactive mode in the data directory of the debug application.<br>For details, [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section9381241102211)<br>Currently, this parameter can be used only in non-interactive mode, and the **command** parameter must be specified to enter an interactive shell session.<br>Otherwise, commands are executed in the system root directory by default.|
+| -b bundlename | This parameter is added in 3.1.0e. The bundle name of a debug application. The command is executed in non-interactive mode in the data directory of the debug application.<br>For details, [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)<br>Currently, this parameter can be used only in non-interactive mode, and the **command** parameter must be specified to enter an interactive shell session.<br>Otherwise, commands are executed in the system root directory by default.|
 | command | A single command to execute on the device. The command varies depending on the system type or version. You can run the **hdc shell ls /system/bin** command to obtain the supported command list. Currently, most commands are provided by [toybox](../tools/toybox.md). You can run the **hdc shell toybox --help** command to obtain the help information.<br>If this parameter is not specified, hdc starts an interactive shell session, in which you can enter commands such as **ls**, **cd**, and **pwd** at the command prompt.|
 
 > **NOTE**
@@ -716,7 +716,7 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
 | -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the file is **test** and the directory is **/data**, the actual file path is **/data/test**. If **-cwd "/user/"** is used, the actual file path is **/user/test**.|
-| -b | Used to specify the bundle name of the debug-type application. This parameter is added in 3.1.0e (If this parameter is used in an earlier version, the message "[Fail]Unknown file option: -b" is displayed). <br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section9381241102211).|
+| -b | Used to specify the bundle name of the debug-type application. This parameter is added in 3.1.0e (If this parameter is used in an earlier version, the message "[Fail]Unknown file option: -b" is displayed). <br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
 | bundlename | Bundle name of the debug-type application.|
 
 **Return value**
@@ -758,7 +758,7 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
 | -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the initial directory for receiving files is **/data/** but **-cwd "/user/"** is used, the actual directory for receiving files is **/user/**.|
-| -b | Used to send files in the data directory of a specified debug-type application process. This parameter is added in version 3.1.0e.<br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section9381241102211).|
+| -b | Used to send files in the data directory of a specified debug-type application process. This parameter is added in version 3.1.0e.<br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
 | bundlename | Bundle name of the debug application process.|
 
 **Return value**
