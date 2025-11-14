@@ -38,6 +38,7 @@
 - [Driver Development Kit API参考](apis-driverdevelopment-kit/Readme-CN.md)
 - [DRM Kit API参考](apis-drm-kit/Readme-CN.md)
 - [Form Kit API参考](apis-form-kit/Readme-CN.md)
+- [Game Controller Kit API参考](apis-game-controller-kit/Readme-CN.md)
 - [Function Flow Runtime Kit API参考](apis-ffrt-kit/Readme-CN.md)
 - [Image Kit API参考](apis-image-kit/Readme-CN.md)
 - [IME Kit API参考](apis-ime-kit/Readme-CN.md)
