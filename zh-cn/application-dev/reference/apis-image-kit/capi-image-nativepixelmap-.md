@@ -1,5 +1,9 @@
 # NativePixelMap_
 
+```
+typedef struct NativePixelMap_ NativePixelMap
+```
+
 ## 概述
 
 定义native层PixelMap数据类型名称。
