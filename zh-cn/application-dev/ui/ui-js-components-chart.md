@@ -515,7 +515,7 @@ export default {
     this.barData = this.barData.splice(0, this.barGroup + 1);
   },
   changes(e) {
-    console.log("Tab index: " + e.index);
+    console.info("Tab index: " + e.index);
   },
 }
 
