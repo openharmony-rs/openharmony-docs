@@ -376,9 +376,9 @@ struct Index {
 }
 ```
 
-- 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，编译时报错。
+- 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，运行时报错。
 
-<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->
+<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->   
 
 ``` TypeScript
 // 以@State装饰器为例
@@ -403,8 +403,8 @@ class Message extends Info {
 @Entry
 @ComponentV2
 struct Index {
-  // @State message: Message = new Message();  无法混用，编译时报错
-  @Local message: Message = new Message();
+  // @State message: Message = new Message();  无法混用，运行时报错
+  message: Message = new Message();
 
   build() {
     Column() {
