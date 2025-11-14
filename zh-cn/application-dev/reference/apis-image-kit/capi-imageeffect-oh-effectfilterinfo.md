@@ -1,5 +1,9 @@
 # OH_EffectFilterInfo
 
+```
+typedef struct OH_EffectFilterInfo OH_EffectFilterInfo
+```
+
 ## 概述
 
 定义滤镜信息结构体。
