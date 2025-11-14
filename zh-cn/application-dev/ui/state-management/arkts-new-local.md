@@ -686,6 +686,8 @@ struct Index {
 <!-- @[Local_Question_Expected_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets) -->
 
 ``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {

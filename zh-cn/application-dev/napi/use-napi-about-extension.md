@@ -323,7 +323,7 @@ test.js代码，将js代码编成.abc文件，步骤如下：
 
 ```js
 function add(a, b) {
-  return a+b;
+  return a + b;
 }
 add(1, 2);
 ```

@@ -40,7 +40,7 @@ ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType ty
 
 **描述：**
 
-设置按键事件处理的优先级。
+创建一个JavaScript值，用于返回给HTML。
 
 **起始版本：** 18
 
