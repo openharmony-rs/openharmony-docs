@@ -1,5 +1,9 @@
 # OH_ImageProcessing
 
+```
+typedef struct OH_ImageProcessing OH_ImageProcessing
+```
+
 ## 概述
 
 提供OH_ImageProcessing结构体声明。
