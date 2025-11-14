@@ -1,5 +1,9 @@
 # OH_Pixelmap_InitializationOptions
 
+```
+struct OH_Pixelmap_InitializationOptions
+```
+
 ## 概述
 
 OH_Pixelmap_InitializationOptions是native层封装的初始化参数结构体，用于设置Pixelmap的初始化参数。
