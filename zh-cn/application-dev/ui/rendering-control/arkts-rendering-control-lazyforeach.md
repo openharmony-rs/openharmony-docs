@@ -2480,7 +2480,7 @@ export class BasicDataSource implements IDataSource {
 }
 ```
 
-### StringData类型数组的SubBasicDataSource代码
+### StringData类型数组的BasicDataSource代码
 
 <!-- @[basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
 

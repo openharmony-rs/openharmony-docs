@@ -42,7 +42,7 @@ abstract class Content {
 
 ### ArkTS侧代码实现
 
-<!-- [contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import nativeNode from 'libentry.so'; // 开发者自己实现的so
