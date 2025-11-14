@@ -138,9 +138,9 @@
 
 4. 申请和取消长时任务。
 
-   **设备当前应用**申请和取消长时任务示例代码如下：   
+   **设备当前应用**申请和取消长时任务示例代码如下：
 
-  <!-- [continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
+    <!-- [continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
     function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
@@ -306,7 +306,7 @@
 
    **设备当前应用**申请和取消长时任务async/await写法示例代码如下：
 
-   <!-- [continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
+    <!-- [continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
 
    ```ts
     @Entry
@@ -415,7 +415,7 @@
 
    **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[Call调用开发指南（同设备）](../application-models/uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)和[Call调用开发指南（跨设备）](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
-   <!-- [continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
+    <!-- [continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
 
    ```ts
     const MSG_SEND_METHOD: string = 'CallSendMsg'
