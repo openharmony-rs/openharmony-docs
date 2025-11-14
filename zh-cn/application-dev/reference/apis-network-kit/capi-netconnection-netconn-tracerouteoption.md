@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```
+typedef struct {...} NetConn_TraceRouteOption
+```
+
 ## 概述
 
 定义网络跟踪路由选项。
