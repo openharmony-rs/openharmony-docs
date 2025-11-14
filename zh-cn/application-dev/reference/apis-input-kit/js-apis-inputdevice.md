@@ -299,34 +299,62 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Entry
 @Component
 struct Index {
+  @State isPhysicalKeyboardExist: boolean = false;
+  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
+
   build() {
     RelativeContainer() {
-      Text()
-        .onClick(() => {
-          let isPhysicalKeyboardExist = true;
-          try {
-            inputDevice.on("change", (data: inputDevice.DeviceListener) => {
-              console.info(`Device event info: ${JSON.stringify(data)}`);
-              inputDevice.getKeyboardType(data.deviceId, (err: Error, type: inputDevice.KeyboardType) => {
-                console.info("The keyboard type is: " + type);
-                if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
-                  // 监听物理键盘已连接。
-                  isPhysicalKeyboardExist = true;
-                } else if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
-                  // 监听物理键盘已断开。
-                  isPhysicalKeyboardExist = false;
+      Column() {
+        Text(this.message)
+          .onClick(() => {
+            try {
+              // 1.获取设备列表，判断是否有物理键盘连接
+              inputDevice.getDeviceList().then(data => {
+                for (let i = 0; i < data.length; ++i) {
+                  inputDevice.getKeyboardType(data[i]).then(type => {
+                    if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
+                      // 物理键盘已连接
+                      this.isPhysicalKeyboardExist = true;
+                      this.keyBoards.set(data[i], type);
+                    }
+                  });
                 }
               });
-            });
-            // 根据isPhysicalKeyboardExist的值决定软键盘是否弹出。
-          } catch (error) {
-            console.error(`Get device info failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
+              // 2.监听设备热插拔
+              inputDevice.on("change", (data) => {
+                hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
+                inputDevice.getKeyboardType(data.deviceId).then((type) => {
+                  hilog.info(DOMAIN, 'InputDevice', 'The keyboard type is: %{public}d', type);
+                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
+                    // 物理键盘已插入
+                    this.isPhysicalKeyboardExist = true;
+                    this.keyBoards.set(data.deviceId, type);
+                  }
+                });
+                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                  data.type === 'remove') {
+                  // 物理键盘已拔掉
+                  this.isPhysicalKeyboardExist = false;
+                  this.keyBoards.delete(data.deviceId);
+                }
+              });
+              this.message = "Device monitoring enabled successfully"
+            } catch (error) {
+              hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
+              this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
+                ["code", "message"])}`
+            }
+          })
+      }
     }
   }
 }
