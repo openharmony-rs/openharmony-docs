@@ -6763,10 +6763,10 @@ enum linkType {
   LINK_EXIST = 2
 }
 
-async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType) {
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
-        photoAccessHelper.getPhotoAccessHelper(getContext());
+        photoAccessHelper.getPhotoAccessHelper(context);
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
       assetChangeRequest.setHasAppLink(hasAppLink);
@@ -6811,10 +6811,10 @@ setAppLinkInfo(appLink: string): void
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 
-async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string) {
+async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
-        photoAccessHelper.getPhotoAccessHelper(getContext());
+        photoAccessHelper.getPhotoAccessHelper(context);
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
       assetChangeRequest.setAppLinkInfo(appLinkInfo);
