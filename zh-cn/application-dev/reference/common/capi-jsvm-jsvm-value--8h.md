@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct JSVM_Value__* JSVM_Value
+```
+
 ## 概述
 
 表示JavaScript值。

@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct JSVM_VM__* JSVM_VM
+```
+
 ## 概述
 
 表示JavaScript虚拟机实例。

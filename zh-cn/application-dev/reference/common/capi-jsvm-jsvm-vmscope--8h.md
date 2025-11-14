@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct JSVM_VMScope__* JSVM_VMScope
+```
+
 ## 概述
 
 表示JavaScript虚拟机作用域。
