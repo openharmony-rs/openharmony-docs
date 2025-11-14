@@ -143,7 +143,6 @@
   <!-- [continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
-    <!-- [] -->
     function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
       // 长时任务id
       console.info('OnContinuousTaskCancel callback id ' + info.id);
