@@ -52,19 +52,19 @@ import { NodeContent } from '@kit.ArkUI';
 @Component
 struct Parent {
   private nodeContent: Content = new NodeContent();
-  // ···
+  // ...
 
   aboutToAppear() {
     // 通过C-API创建节点，并添加到管理器nodeContent上
     nativeNode.createNativeNode(this.nodeContent);
-    // ···
+    // ...
   }
 
   build() {
     Column() {
       // 显示nodeContent管理器里存放的Native侧的组件
       ContentSlot(this.nodeContent);
-    // ···
+      // ...
     }
   }
 }
