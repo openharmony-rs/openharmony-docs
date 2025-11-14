@@ -68,6 +68,7 @@ try {
 }
 ```
 
+
 ## HandsFreeAudioGatewayProfile
 
 使用HandsFreeAudioGatewayProfile方法之前需要创建该类的实例进行操作，通过[createHfpAgProfile()](#hfpcreatehfpagprofile)方法构造此实例。

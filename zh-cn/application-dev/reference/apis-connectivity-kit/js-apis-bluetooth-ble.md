@@ -5003,7 +5003,7 @@ BLE扫描的配置参数。
 | DISABLED<sup>11+</sup>  | 3    | 调用[disableAdvertising](#bledisableadvertising11)方法后，广播停止成功。 |
 | STOPPED<sup>11+</sup>    | 4    | 调用[stopAdvertising](#blestopadvertising11)方法后，广播停止成功，且会释放首次启动广播时分配的相关资源。 |
 
-## PhyType
+## PhyType<sup>12+</sup>
 
 枚举，指定扫描过程中接收BLE广播报文的物理通道。
 
@@ -5017,8 +5017,8 @@ BLE扫描的配置参数。
 
 | 名称      | 值    | 说明                           |
 | --------  | ---- | ------------------------------ |
-| PHY_LE_1M   | 1    | 使用1M PHY类型扫描。       |
-| PHY_LE_ALL_SUPPORTED   | 255    | 使用所有支持的PHY类型扫描。    |
+| PHY_LE_1M<sup>12+</sup>   | 1    | 使用1M PHY类型扫描。       |
+| PHY_LE_ALL_SUPPORTED<sup>12+</sup>   | 255    | 使用所有支持的PHY类型扫描。    |
 
 ## ScanReport<sup>15+</sup>
 
