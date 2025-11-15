@@ -31,7 +31,8 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    ``` C
    dragImage2 = nodeAPI->createNode(ARKUI_NODE_IMAGE);
    SetId(dragImage2, "dragImage");
-   SetCommonAttribute(dragImage2, SIZE_140, SIZE_140, DEFAULT_BG_COLOR, BLANK_5);
+   SetCommonAttribute(dragImage2, 140.0f, 140.0f, 0xFFFFFFFF, 5.0f);
+   // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
    SetImageSrc(dragImage2, "/resources/seagull.png");
    OH_ArkUI_SetNodeDraggable(dragImage2, true);
    nodeAPI->registerNodeEvent(dragImage2, NODE_ON_DRAG_START, 1, nullptr);
@@ -39,6 +40,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    <!-- @[set_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
    
    ``` C
+   #define DEFAULT_WIDTH 200.0
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -49,6 +51,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_WIDTH, &widthItem);
    }
    
+   #define DEFAULT_HEIGHT 200.0
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -59,6 +62,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_HEIGHT, &heightItem);
    }
    
+   #define DEFAULT_BG_COLOR 0xFFFFFFFF
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -69,6 +73,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &colorItem);
    }
    
+   #define DEFAULT_MARGIN 5.0
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -97,6 +102,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_ID, &idItem);
    }
    
+   #define DEFAULT_BORDER_WIDTH 0.0
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -107,6 +113,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BORDER_WIDTH, &borderWidthItem);
    }
    
+   #define DEFAULT_BORDER_COLOR 0xFF000000
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -152,29 +159,29 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    uint8_t data[960000];
    size_t dataSize = 960000;
    for (int i = 0; i < dataSize; i++) {
-   data[i] = i + 1;
+       data[i] = i + 1;
    }
    // 创建参数结构体实例，并设置参数
    OH_Pixelmap_InitializationOptions *createOpts;
    OH_PixelmapInitializationOptions_Create(&createOpts);
-   OH_PixelmapInitializationOptions_SetWidth(createOpts, SIZE_200);
-   OH_PixelmapInitializationOptions_SetHeight(createOpts, SIZE_200);
+   OH_PixelmapInitializationOptions_SetWidth(createOpts, 200U);
+   OH_PixelmapInitializationOptions_SetHeight(createOpts, 200U);
    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
    OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
    // 设置自定义跟手图
    OH_PixelmapNative *pixelmap = nullptr;
    OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelmap);
-   OH_PixelmapNative_Opacity(pixelmap, DEFAULT_OPACITY);
+   OH_PixelmapNative_Opacity(pixelmap, 0.1f);
    OH_ArkUI_SetNodeDragPreview(node, pixelmap);
    // 设置跟手图选项
    auto *previewOptionsText = OH_ArkUI_CreateDragPreviewOption();
    OH_ArkUI_DragPreviewOption_SetScaleMode(previewOptionsText, ARKUI_DRAG_PREVIEW_SCALE_DISABLED);
    OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled(previewOptionsText, true);
-   OH_ArkUI_DragPreviewOption_SetBadgeNumber(previewOptionsText, DRAG_COUNT);
+   OH_ArkUI_DragPreviewOption_SetBadgeNumber(previewOptionsText, 10U);
    OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(previewOptionsText, true);
    OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(previewOptionsText, true);
    int returnValue = OH_ArkUI_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled(previewOptionsText, true);
-   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "Manager",
        "dragTest DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled returnValue = %{public}d",
        returnValue);
    OH_ArkUI_SetNodeDragPreviewOption(node, previewOptionsText);
@@ -188,31 +195,44 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
    nodeAPI->addNodeEventReceiver(dragNode, [](ArkUI_NodeEvent *event) {
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "RegisterNodeEventFirstReceiver called");
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "RegisterNodeEventFirstReceiver called");
        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
        auto preDragStatus = OH_ArkUI_NodeEvent_GetPreDragStatus(event);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "eventType = %{public}d, preDragStatus = %{public}d", eventType, preDragStatus);
        auto *dragEvent = OH_ArkUI_NodeEvent_GetDragEvent(event);
        switch (eventType) {
-           case NODE_ON_PRE_DRAG: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_PRE_DRAG EventReceiver");
+           case NODE_ON_PRE_DRAG:
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_PRE_DRAG Event Receive");
                break;
-           }
+           case NODE_ON_CLICK:
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_CLICK Event Receive");
+               break;
+           case NODE_ON_DROP:
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DROP Event Receive");
+               break;
+           case NODE_ON_DRAG_ENTER:
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_ENTER Event Receive");
+               break;
+           case NODE_ON_DRAG_MOVE:
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_MOVE Event Receive");
+               break;
+           case NODE_ON_DRAG_LEAVE:
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_LEAVE Event Receive");
+               break;
            case NODE_ON_DRAG_START: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DRAG_START EventReceiver");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START Event Receive");
                // ···
                break;
            }
            case NODE_ON_DRAG_END: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DRAG_END EventReceiver");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_END Event Receive");
                // ···
                break;
            }
-           default: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "UNKOWN EventReceiver");
+           default:
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKOWN Event Receive");
                break;
-           }
        }
    });
    ```
@@ -229,6 +249,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        int returnValue;
        OH_UdmfRecord *record = OH_UdmfRecord_Create();
        OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
+       // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
        returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/seagull.png");
        returnValue = OH_UdmfRecord_AddFileUri(record, imageValue);
        OH_UdmfData *data = OH_UdmfData_Create();
@@ -237,7 +258,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    // ···
                case NODE_ON_DRAG_START: {
-                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DRAG_START EventReceiver");
+                   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START EventReceiver");
                    SetImageData(dragEvent);
                    break;
                }
@@ -257,7 +278,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        // 创建OH_UdmfData对象
        OH_UdmfData *data = OH_UdmfData_Create();
        returnValue = OH_ArkUI_DragEvent_GetUdmfData(dragEvent, data);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragEvent_GetUdmfData returnValue = %{public}d", returnValue);
        // 判断OH_UdmfData是否有对应的类型
        bool resultUdmf = OH_UdmfData_HasType(data, UDMF_META_GENERAL_FILE);
@@ -272,7 +293,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
                returnStatus = OH_UdmfRecord_GetFileUri(records[i], imageValue);
                const char *fileUri = OH_UdsFileUri_GetFileUri(imageValue);
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                    "dragTest OH_UdmfRecord_GetPlainText "
                    "returnStatus= %{public}d "
                    "fileUri= %{public}s",
@@ -284,32 +305,32 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                OH_ArkUI_DragEvent_SetDragResult(dragEvent, ARKUI_DRAG_RESULT_SUCCESSFUL);
                ArkUI_DropOperation option;
                OH_ArkUI_DragEvent_GetDropOperation(dragEvent, &option);
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                    "OH_ArkUI_DragEvent_GetDropOperation returnValue = %{public}d", option);
            }
        } else {
-           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                "OH_UdmfData_HasType not contain UDMF_META_GENERAL_FILE");
        }
        int32_t count;
        OH_ArkUI_DragEvent_GetDataTypeCount(dragEvent, &count);
-       if (count <= 0 || count >= MAX_LENGTH) {
+       if (count <= 0 || count >= 128U) {
            return;
        }
        char **eventTypeArray = new char *[count];
        for (int i = 0; i < count; i++) {
-           eventTypeArray[i] = new char[MAX_LENGTH];
+           eventTypeArray[i] = new char[128U];
        }
-       OH_ArkUI_DragEvent_GetDataTypes(dragEvent, eventTypeArray, count, MAX_LENGTH);
+       OH_ArkUI_DragEvent_GetDataTypes(dragEvent, eventTypeArray, count, 128U);
        for (int i = 0; i < count; i++) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                "OH_ArkUI_DragEvent_GetDataTypes returnValue = %{public}s", eventTypeArray[i]);
        }
    }
    // ···
                case NODE_ON_DROP: {
                    OH_ArkUI_DragEvent_SetSuggestedDropOperation(dragEvent, ARKUI_DROP_OPERATION_COPY);
-                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DROP EventReceiver");
+                   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DROP EventReceiver");
                    GetDragData(dragEvent);
                    break;
                }
@@ -333,13 +354,14 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    dragButton = nodeAPI->createNode(ARKUI_NODE_BUTTON);
    SetId(dragButton, "dragBt3");
-   SetCommonAttribute(dragButton, SIZE_80, SIZE_50, 0xFFFF0000, BLANK_20);
+   SetCommonAttribute(dragButton, 80.0f, 50.0f, 0xFFFF0000, 20.0f);
    SetButtonLabel(dragButton, "拖起");
    nodeAPI->registerNodeEvent(dragButton, NODE_ON_TOUCH_INTERCEPT, BUTTON_TOUCH, nullptr);
    ```
    <!-- @[set_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
    
    ``` C
+   #define DEFAULT_WIDTH 200.0
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -350,6 +372,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_WIDTH, &widthItem);
    }
    
+   #define DEFAULT_HEIGHT 200.0
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -360,6 +383,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_HEIGHT, &heightItem);
    }
    
+   #define DEFAULT_BG_COLOR 0xFFFFFFFF
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -370,6 +394,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &colorItem);
    }
    
+   #define DEFAULT_MARGIN 5.0
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -398,6 +423,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_ID, &idItem);
    }
    
+   #define DEFAULT_BORDER_WIDTH 0.0
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -408,6 +434,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BORDER_WIDTH, &borderWidthItem);
    }
    
+   #define DEFAULT_BORDER_COLOR 0xFF000000
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -438,21 +465,21 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
    nodeAPI->addNodeEventReceiver(dragButton, [](ArkUI_NodeEvent *event) {
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "RegisterNodeEventForthReceiver called");
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "RegisterNodeEventForthReceiver called");
        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
        auto preDragStatus = OH_ArkUI_NodeEvent_GetPreDragStatus(event);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "eventType = %{public}d, preDragStatus = %{public}d", eventType, preDragStatus);
    
        auto *dragEvent = OH_ArkUI_NodeEvent_GetDragEvent(event);
        switch (eventType) {
            case NODE_ON_TOUCH_INTERCEPT: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
                // ···
                break;
            }
            default: {
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "UNKOWN EventReceiver");
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "UNKOWN EventReceiver");
                break;
            }
        }
@@ -466,10 +493,10 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
                case NODE_ON_TOUCH_INTERCEPT: {
-                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
+                   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
                    // 创建DragAction
                    action = OH_ArkUI_CreateDragActionWithNode(dragButton);
-                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                        "OH_ArkUI_CreateDragActionWithNode returnValue = %{public}p", action);
                    // 设置pixelMap
                    std::vector<OH_PixelmapNative *> pixelVector;
@@ -482,7 +509,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                    SetDragActionData();
                    // startDrag
                    int returnValue = OH_ArkUI_StartDrag(action);
-                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                        "OH_ArkUI_StartDrag returnValue = %{public}d",
                        returnValue);
                    OH_ArkUI_DragAction_Dispose(action);
@@ -499,16 +526,16 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        OH_UdsPlainText_SetAbstract(plainText, "this is plainText Abstract example");
        OH_UdsPlainText_SetContent(plainText, "this is plainText Content example");
        returnStatus = OH_UdmfRecord_AddPlainText(record, plainText);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "dragTest OH_UdmfRecord_AddPlainText returnStatus = %{public}d", returnStatus);
        // 创建OH_UdmfData对象
        OH_UdmfData *data = OH_UdmfData_Create();
        // 向OH_UdmfData中添加OH_UdmfRecord
        returnStatus = OH_UdmfData_AddRecord(data, record);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "dragTest OH_UdmfData_AddRecord returnStatus = %{public}d", returnStatus);
        int returnValue = OH_ArkUI_DragAction_SetData(action, data);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragAction_SetData returnValue = %{public}d", returnValue);
        // 注册拖拽状态监听回调
        OH_ArkUI_DragAction_RegisterStatusListener(action, data, &DragStatusListener);
@@ -527,8 +554,8 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        // 创建参数结构体实例，并设置参数
        OH_Pixelmap_InitializationOptions *createOpts;
        OH_PixelmapInitializationOptions_Create(&createOpts);
-       OH_PixelmapInitializationOptions_SetWidth(createOpts, SIZE_200);
-       OH_PixelmapInitializationOptions_SetHeight(createOpts, SIZE_300);
+       OH_PixelmapInitializationOptions_SetWidth(createOpts, 200U);
+       OH_PixelmapInitializationOptions_SetHeight(createOpts, 300U);
        OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
        OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
        // 创建Pixelmap实例
@@ -537,20 +564,20 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        OH_PixelmapNative_Flip(pixelmap, true, true);
        pixelVector.push_back(pixelmap);
        int returnValue = OH_ArkUI_DragAction_SetPixelMaps(action, pixelVector.data(), pixelVector.size());
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragAction_SetPixelMaps returnValue = %{public}d", returnValue);
    }
    
    void SetDragPreviewOption()
    {
-       auto *previewOptions1 = OH_ArkUI_CreateDragPreviewOption();
-       OH_ArkUI_DragPreviewOption_SetScaleMode(previewOptions1,
+       auto *previewOptions = OH_ArkUI_CreateDragPreviewOption();
+       OH_ArkUI_DragPreviewOption_SetScaleMode(previewOptions,
            ArkUI_DragPreviewScaleMode::ARKUI_DRAG_PREVIEW_SCALE_DISABLED);
-       OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(previewOptions1, true);
-       OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(previewOptions1, true);
-       int returnValue = OH_ArkUI_DragAction_SetDragPreviewOption(action, previewOptions1);
-       OH_ArkUI_DragPreviewOption_Dispose(previewOptions1);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(previewOptions, true);
+       OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(previewOptions, true);
+       int returnValue = OH_ArkUI_DragAction_SetDragPreviewOption(action, previewOptions);
+       OH_ArkUI_DragPreviewOption_Dispose(previewOptions);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragAction_SetDragPreviewOption returnValue = %{public}d", returnValue);
    }
    
@@ -558,14 +585,14 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    {
        // 设置pointerId
        int returnValue = OH_ArkUI_DragAction_SetPointerId(action, 0);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragAction_SetPointerId returnValue = %{public}d", returnValue);
        // 设置touchPoint
-       returnValue = OH_ArkUI_DragAction_SetTouchPointX(action, POINT_POS);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       returnValue = OH_ArkUI_DragAction_SetTouchPointX(action, 200.0f);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragAction_SetTouchPointX returnValue = %{public}d", returnValue);
-       returnValue = OH_ArkUI_DragAction_SetTouchPointY(action, POINT_POS);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       returnValue = OH_ArkUI_DragAction_SetTouchPointY(action, 200.0f);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragAction_SetTouchPointY returnValue = %{public}d", returnValue);
    }
    ```
@@ -577,7 +604,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
                case NODE_ON_DROP: {
-                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DROP EventReceiver");
+                   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DROP EventReceiver");
                    GetUdmfDataText(dragEvent);
                    OH_ArkUI_DragAction_UnregisterStatusListener(action);
                    break;
@@ -590,7 +617,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        // 创建OH_UdmfData对象
        OH_UdmfData *data = OH_UdmfData_Create();
        returnValue = OH_ArkUI_DragEvent_GetUdmfData(dragEvent, data);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
            "OH_ArkUI_DragEvent_GetUdmfData returnValue = %{public}d", returnValue);
        // 判断OH_UdmfData是否有对应的类型
        bool resultUdmf = OH_UdmfData_HasType(data, UDMF_META_PLAIN_TEXT);
@@ -604,13 +631,13 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                // 从OH_UdmfRecord中获取纯文本类型数据
                OH_UdsPlainText *plainTextValue = OH_UdsPlainText_Create();
                returnStatus = OH_UdmfRecord_GetPlainText(records[i], plainTextValue);
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                    "dragTest OH_UdmfRecord_GetPlainText "
                    "returnStatus= %{public}d",
                    returnStatus);
                auto getAbstract = OH_UdsPlainText_GetAbstract(plainTextValue);
                auto getContent = OH_UdsPlainText_GetContent(plainTextValue);
-               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+               OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                    "OH_UdsPlainText_GetAbstract = "
                    "%{public}s, OH_UdsPlainText_GetContent = "
                    "%{public}s",
@@ -619,7 +646,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
                OH_UdsPlainText_Destroy(plainTextValue);
            }
        } else {
-           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest",
                "OH_UdmfData_HasType not contain UDMF_META_PLAIN_TEXT");
        }
        OH_UdmfData_Destroy(data);
