@@ -237,9 +237,9 @@ try {
 
 ## systemDateTime.setTimezone
 
-ArkTS-Dyn: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void;
+ArkTS-Dyn: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
-ArkTS-Sta: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void;
+ArkTS-Sta: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统时区，使用callback异步回调。
 
@@ -308,9 +308,9 @@ try {
 
 ## systemDateTime.setTimezone
 
-ArkTs-Dyn: setTimezone(timezone: string): Promise&lt;void&gt;;
+ArkTs-Dyn: setTimezone(timezone: string): Promise&lt;void&gt;
 
-ArkTS-Sta: setTimezone(timezone: string): Promise&lt;void&gt;;
+ArkTS-Sta: setTimezone(timezone: string): Promise&lt;void&gt;
 
 设置系统时区，使用Promise异步回调。
 
@@ -384,9 +384,9 @@ try {
 
 ## systemDateTime.updateNtpTime<sup>14+</sup>
 
-ArkTs-Dyn: updateNtpTime(): Promise&lt;void&gt;;
+ArkTs-Dyn: updateNtpTime(): Promise&lt;void&gt;
 
-ArkTS-Sta: updateNtpTime(): Promise&lt;void&gt;;
+ArkTS-Sta: updateNtpTime(): Promise&lt;void&gt;
 
 使用异步方式从NTP服务器更新NTP时间。该方法一小时内只会从NTP服务器更新一次NTP时间。
 
@@ -447,9 +447,9 @@ try {
 
 ## systemDateTime.getNtpTime<sup>14+</sup>
 
-ArkTs-Dyn: getNtpTime(): number;
+ArkTs-Dyn: getNtpTime(): number
 
-ArkTS-Sta: getNtpTime(): long;
+ArkTS-Sta: getNtpTime(): long
 
 使用同步方式获取基于上次更新的NTP时间所计算出的真实时间。
 
