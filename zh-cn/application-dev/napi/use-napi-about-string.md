@@ -389,6 +389,10 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
 
 <!-- @[napi_create_external_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
+``` TypeScript
+export const CreateExternalStringUtf16: () => string | void;
+```
+
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
