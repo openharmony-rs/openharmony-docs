@@ -4575,6 +4575,10 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
@@ -4599,6 +4603,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -4633,6 +4638,41 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // 加载主窗口对应的页面。
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError | null): void => {
+      if (err && err.code) {
+        console.error(Failed to load the content. Cause code: ${err.code}, message: ${err.message});
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      // 获取应用主窗口。
+      windowStage.getMainWindow((err: BusinessError | null, mainWindow: window.Window | undefined) => {
+        if (err && err.code) {
+          console.error(Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message});
+          return;
+        }
+        try {
+          // 调用setTitleButtonVisible接口，隐藏主窗标题栏最大化、最小化、分屏按钮。
+          mainWindow?.setTitleButtonVisible(false, false, false);
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message});
+        }
+      });
+    });
+  }
+};
 ```
 
 ### setWindowType<sup>(deprecated)</sup>
@@ -4795,6 +4835,10 @@ disableWindowDecor(): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
