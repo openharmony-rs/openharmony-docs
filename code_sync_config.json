@@ -16031,7 +16031,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUITextNode.h",
 				"functions":[
 					{
-						"end_line":134,
+						"end_line":130,
 						"name":"arkUITestNode_start",
 						"start_line":15
 					}
@@ -16776,7 +16776,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp",
 				"functions":[
 					{
-						"end_line":638,
+						"end_line":642,
 						"name":"arkUICustomNodeCpp_start",
 						"start_line":28
 					}
