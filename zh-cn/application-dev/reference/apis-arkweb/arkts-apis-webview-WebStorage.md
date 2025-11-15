@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -162,9 +164,9 @@ struct WebComponent {
                 return;
               }
               for (let i = 0; i < origins.length; i++) {
-                console.log('origin: ' + origins[i].origin);
-                console.log('usage: ' + origins[i].usage);
-                console.log('quota: ' + origins[i].quota);
+                console.info('origin: ' + origins[i].origin);
+                console.info('usage: ' + origins[i].usage);
+                console.info('quota: ' + origins[i].quota);
               }
             })
           } catch (error) {
@@ -224,13 +226,13 @@ struct WebComponent {
             webview.WebStorage.getOrigins()
               .then(origins => {
                 for (let i = 0; i < origins.length; i++) {
-                  console.log('origin: ' + origins[i].origin);
-                  console.log('usage: ' + origins[i].usage);
-                  console.log('quota: ' + origins[i].quota);
+                  console.info('origin: ' + origins[i].origin);
+                  console.info('usage: ' + origins[i].usage);
+                  console.info('quota: ' + origins[i].quota);
                 }
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.info('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -293,7 +295,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('quota: ' + quota);
+              console.info('quota: ' + quota);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -358,10 +360,10 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginQuota(this.origin)
               .then(quota => {
-                console.log('quota: ' + quota);
+                console.info('quota: ' + quota);
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.info('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -424,7 +426,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('usage: ' + usage);
+              console.info('usage: ' + usage);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -489,7 +491,7 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginUsage(this.origin)
               .then(usage => {
-                console.log('usage: ' + usage);
+                console.info('usage: ' + usage);
               }).catch((e: BusinessError) => {
               console.error('error: ' + JSON.stringify(e));
             })

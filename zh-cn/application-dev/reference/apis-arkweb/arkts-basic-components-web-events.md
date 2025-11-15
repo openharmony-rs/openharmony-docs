@@ -89,8 +89,8 @@ ArkTS-Sta示例：
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onAlert((event: OnAlertEvent): boolean => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
 
               this.uiContext.showAlertDialog({
                 title: 'onAlert',
@@ -307,8 +307,8 @@ ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined):
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onConfirm((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: 'onConfirm',
                 message: 'text',
@@ -354,8 +354,8 @@ ArkTS-Sta示例：
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onConfirm((event: OnConfirmEvent): boolean => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
 
               this.uiContext.showAlertDialog({
                 title: 'onConfirm',
@@ -498,9 +498,9 @@ ArkTS-Dyn示例：
         Web({ src: $rawfile('index.html'), controller: this.webviewController })
           .onPrompt((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
-              console.log("event.value:" + event.value);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.value:" + event.value);
               this.title = "来自" + event.url + "的消息";
               this.message = event.message;
               this.promptResult = event.value;
@@ -580,9 +580,9 @@ ArkTS-Sta示例：
         Web({ src: $rawfile('index.html'), controller: this.webviewController })
           .onPrompt((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
-              console.log("event.value:" + event.value);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.value:" + event.value);
               this.title = "来自" + event.url + "的消息";
               this.message = event.message;
               this.promptResult = event.value;
@@ -714,7 +714,7 @@ ArkTS-Sta示例：
   <body>
   <script>
       function myFunction() {
-          console.log("onconsole printf");
+          console.info("onconsole printf");
       }
   </script>
   </body>
@@ -759,11 +759,11 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onDownloadStart((event) => {
             if (event) {
-              console.log('url:' + event.url)
-              console.log('userAgent:' + event.userAgent)
-              console.log('contentDisposition:' + event.contentDisposition)
-              console.log('contentLength:' + event.contentLength)
-              console.log('mimetype:' + event.mimetype)
+              console.info('url:' + event.url)
+              console.info('userAgent:' + event.userAgent)
+              console.info('contentDisposition:' + event.contentDisposition)
+              console.info('contentLength:' + event.contentLength)
+              console.info('mimetype:' + event.mimetype)
             }
           })
       }
@@ -836,17 +836,17 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onErrorReceive((event) => {
             if (event) {
-              console.log('getErrorInfo:' + event.error.getErrorInfo());
-              console.log('getErrorCode:' + event.error.getErrorCode());
-              console.log('url:' + event.request.getRequestUrl());
-              console.log('isMainFrame:' + event.request.isMainFrame());
-              console.log('isRedirect:' + event.request.isRedirect());
-              console.log('isRequestGesture:' + event.request.isRequestGesture());
-              console.log('getRequestHeader_headerKey:' + event.request.getRequestHeader().toString());
+              console.info('getErrorInfo:' + event.error.getErrorInfo());
+              console.info('getErrorCode:' + event.error.getErrorCode());
+              console.info('url:' + event.request.getRequestUrl());
+              console.info('isMainFrame:' + event.request.isMainFrame());
+              console.info('isRedirect:' + event.request.isRedirect());
+              console.info('isRequestGesture:' + event.request.isRequestGesture());
+              console.info('getRequestHeader_headerKey:' + event.request.getRequestHeader().toString());
               let result = event.request.getRequestHeader();
-              console.log('The request header result size is ' + result.length);
+              console.info('The request header result size is ' + result.length);
               for (let i of result) {
-                console.log('The request header key is : ' + i.headerKey + ', value is : ' + i.headerValue);
+                console.info('The request header key is : ' + i.headerKey + ', value is : ' + i.headerValue);
               }
             }
           })
@@ -870,17 +870,17 @@ ArkTS-Sta示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onErrorReceive((event) => {
             if (event) {
-              console.log('getErrorInfo:' + event.error.getErrorInfo());
-              console.log('getErrorCode:' + event.error.getErrorCode());
-              console.log('url:' + event.request.getRequestUrl());
-              console.log('isMainFrame:' + event.request.isMainFrame());
-              console.log('isRedirect:' + event.request.isRedirect());
-              console.log('isRequestGesture:' + event.request.isRequestGesture());
-              console.log('getRequestHeader_headerKey:' + event.request.getRequestHeader().toString());
+              console.info('getErrorInfo:' + event.error.getErrorInfo());
+              console.info('getErrorCode:' + event.error.getErrorCode());
+              console.info('url:' + event.request.getRequestUrl());
+              console.info('isMainFrame:' + event.request.isMainFrame());
+              console.info('isRedirect:' + event.request.isRedirect());
+              console.info('isRequestGesture:' + event.request.isRequestGesture());
+              console.info('getRequestHeader_headerKey:' + event.request.getRequestHeader().toString());
               let result = event.request.getRequestHeader();
-              console.log('The request header result size is ' + result.length);
+              console.info('The request header result size is ' + result.length);
               for (let i of result) {
-                console.log('The request header key is : ' + i.headerKey + ', value is : ' + i.headerValue);
+                console.info('The request header key is : ' + i.headerKey + ', value is : ' + i.headerValue);
               }
             }
           })
@@ -1029,7 +1029,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onPageBegin((event) => {
             if (event) {
-              console.log('url:' + event.url);
+              console.info('url:' + event.url);
             }
           })
       }
@@ -1096,7 +1096,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onPageEnd((event) => {
             if (event) {
-              console.log('url:' + event.url);
+              console.info('url:' + event.url);
             }
           })
       }
@@ -1163,7 +1163,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onLoadStarted((event) => {
             if (event) {
-              console.log('url:' + event.url);
+              console.info('url:' + event.url);
             }
           })
       }
@@ -1230,7 +1230,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onLoadFinished((event) => {
             if (event) {
-              console.log('url:' + event.url);
+              console.info('url:' + event.url);
             }
           })
       }
@@ -1298,7 +1298,7 @@ ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefi
         Web({ src: 'www.example.com', controller: this.controller })
           .onProgressChange((event) => {
             if (event) {
-              console.log('newProgress:' + event.newProgress);
+              console.info('newProgress:' + event.newProgress);
             }
           })
       }
@@ -1322,7 +1322,7 @@ ArkTS-Sta示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onProgressChange((event: OnProgressChangeEvent): void => {
             if (event) {
-              console.log('newProgress:' + event.newProgress);
+              console.info('newProgress:' + event.newProgress);
             }
           })
       }
@@ -1367,8 +1367,8 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onTitleReceive((event) => {
             if (event) {
-              console.log('title:' + event.title);
-              console.log('isRealTitle:' + event.isRealTitle);
+              console.info('title:' + event.title);
+              console.info('isRealTitle:' + event.isRealTitle);
             }
           })
       }
@@ -1438,7 +1438,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onRefreshAccessedHistory((event) => {
             if (event) {
-              console.log('url:' + event.url + ' isReload:' + event.isRefreshed);
+              console.info('url:' + event.url + ' isReload:' + event.isRefreshed);
             }
           })
       }
@@ -1513,7 +1513,7 @@ ArkTS-Sta: onRenderExited(callback: Callback<OnRenderExitedEvent> | undefined): 
         Web({ src: 'chrome://crash/', controller: this.controller })
           .onRenderExited((event) => {
             if (event) {
-              console.log('reason:' + event.renderExitReason);
+              console.info('reason:' + event.renderExitReason);
             }
           })
       }
@@ -1537,7 +1537,7 @@ ArkTS-Sta: onRenderExited(callback: Callback<OnRenderExitedEvent> | undefined): 
         Web({ src: 'chrome://crash/', controller: this.controller })
           .onRenderExited((event: OnRenderExitedEvent): void => {
             if (event) {
-              console.log('reason:' + event.renderExitReason);
+              console.info('reason:' + event.renderExitReason);
             }
           })
       }
@@ -1585,7 +1585,7 @@ ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCa
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onRenderProcessNotResponding((data) => {
-            console.log("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
+            console.info("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
               ", [process]=" + data.pid + ", [reason]=" + data.reason);
           })
       }
@@ -1652,7 +1652,7 @@ ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onRenderProcessResponding(() => {
-            console.log("onRenderProcessResponding again");
+            console.info("onRenderProcessResponding again");
           })
       }
     }
@@ -1674,7 +1674,7 @@ ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onRenderProcessResponding((): void => {
-            console.log("onRenderProcessResponding again");
+            console.info("onRenderProcessResponding again");
           })
       }
     }
@@ -1714,7 +1714,7 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
        Column() {
          Web({ src: $rawfile('index.html'), controller: this.controller })
            .onShowFileSelector((event) => {
-             console.log('MyFileUploader onShowFileSelector invoked')
+             console.info('MyFileUploader onShowFileSelector invoked')
              const documentSelectOptions = new picker.DocumentSelectOptions();
              let uri: string | null = null;
              const documentViewPicker = new picker.DocumentViewPicker();
@@ -1809,11 +1809,11 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
            .onShowFileSelector((event) => {
              openCamera((result) => {
                if (event) {
-                 console.log('Title is ' + event.fileSelector.getTitle());
-                 console.log('Mode is ' + event.fileSelector.getMode());
-                 console.log('Accept types are ' + event.fileSelector.getAcceptType());
-                 console.log('Capture is ' + event.fileSelector.isCapture());
-                 console.log('Mime types are ' + event.fileSelector.getMimeTypes());
+                 console.info('Title is ' + event.fileSelector.getTitle());
+                 console.info('Mode is ' + event.fileSelector.getMode());
+                 console.info('Accept types are ' + event.fileSelector.getAcceptType());
+                 console.info('Capture is ' + event.fileSelector.isCapture());
+                 console.info('Mime types are ' + event.fileSelector.getMimeTypes());
                  event.result.handleFileList([result]);
                }
              }, this.getUIContext())
@@ -1929,7 +1929,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onResourceLoad((event) => {
-            console.log('onResourceLoad: ' + event.url);
+            console.info('onResourceLoad: ' + event.url);
           })
       }
     }
@@ -1994,7 +1994,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onScaleChange((event) => {
-            console.log('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+            console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           })
       }
     }
@@ -2065,7 +2065,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
         Web({ src: 'www.example.com', controller: this.controller })
           .onInterceptRequest((event) => {
             if (event) {
-              console.log('url:' + event.request.getRequestUrl());
+              console.info('url:' + event.request.getRequestUrl());
             }
             let head1: Header = {
               headerKey: "Connection",
@@ -2078,7 +2078,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
             // 将新元素追加到数组的末尾，并返回数组的新长度。
             let length = this.heads.push(head1);
             length = this.heads.push(head2);
-            console.log('The response header result length is :' + length);
+            console.info('The response header result length is :' + length);
             const promise: Promise<String> = new Promise((resolve: Function, reject: Function) => {
               this.responseWeb.setResponseHeader(this.heads);
               this.responseWeb.setResponseData(this.webData);
@@ -2089,7 +2089,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
               resolve("success");
             })
             promise.then(() => {
-              console.log("prepare response ready");
+              console.info("prepare response ready");
               this.responseWeb.setResponseIsReady(true);
             })
             this.responseWeb.setResponseIsReady(false);
@@ -2191,7 +2191,7 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.log('failed, cert chain data type is not array');
+      console.info('failed, cert chain data type is not array');
       return;
     }
 
@@ -2204,8 +2204,8 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
         if (error) {
           console.error('Index : ' + i + ',createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
         } else {
-          console.log('createX509Cert success');
-          console.log(ParseX509CertInfo(x509Cert));
+          console.info('createX509Cert success');
+          console.info(ParseX509CertInfo(x509Cert));
         }
       });
     }
@@ -2289,7 +2289,7 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.log('failed, cert chain data type is not array');
+      console.info('failed, cert chain data type is not array');
       return;
     }
 
@@ -2302,8 +2302,8 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
         if (error) {
           console.error('Index : ' + i + ',createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
         } else {
-          console.log('createX509Cert success');
-          console.log(ParseX509CertInfo(x509Cert));
+          console.info('createX509Cert success');
+          console.info(ParseX509CertInfo(x509Cert));
         }
       });
     }
@@ -2338,12 +2338,12 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSslErrorEvent((event: SslErrorEvent) => {
-            console.log("onSslErrorEvent url: " + event.url);
-            console.log("onSslErrorEvent error: " + event.error);
-            console.log("onSslErrorEvent originalUrl: " + event.originalUrl);
-            console.log("onSslErrorEvent referrer: " + event.referrer);
-            console.log("onSslErrorEvent isFatalError: " + event.isFatalError);
-            console.log("onSslErrorEvent isMainFrame: " + event.isMainFrame);
+            console.info("onSslErrorEvent url: " + event.url);
+            console.info("onSslErrorEvent error: " + event.error);
+            console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
+            console.info("onSslErrorEvent referrer: " + event.referrer);
+            console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+            console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
             LogCertInfo(event.certChainData);
             this.uiContext.showAlertDialog({
               title: 'onSslErrorEvent',
@@ -3038,7 +3038,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onContextMenuHide(() => {
-            console.log("onContextMenuHide callback");
+            console.info("onContextMenuHide callback");
           })
       }
     }
@@ -3060,7 +3060,7 @@ ArkTS-Sta示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onContextMenuHide((): void => {
-            console.log("onContextMenuHide callback");
+            console.info("onContextMenuHide callback");
           })
       }
     }
@@ -3248,7 +3248,7 @@ onGeolocationHide(callback: () => void)
         Web({ src: 'www.example.com', controller: this.controller })
           .geolocationAccess(true)
           .onGeolocationHide(() => {
-            console.log("onGeolocationHide...");
+            console.info("onGeolocationHide...");
           })
       }
     }
@@ -3292,7 +3292,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onFullScreenEnter((event) => {
-            console.log("onFullScreenEnter videoWidth: " + event.videoWidth +
+            console.info("onFullScreenEnter videoWidth: " + event.videoWidth +
               ", videoHeight: " + event.videoHeight);
             // 应用可以通过 this.handler.exitFullScreen() 主动退出全屏。
             this.handler = event.handler;
@@ -3366,7 +3366,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onFullScreenExit(() => {
-            console.log("onFullScreenExit...")
+            console.info("onFullScreenExit...")
             if (this.handler) {
               this.handler.exitFullScreen();
             }
@@ -3621,7 +3621,7 @@ ArkTS-Dyn示例：
           })
           .onActivateContent(() => {
             //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web。
-            console.log("NewWebViewComp onActivateContent")
+            console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
     }
@@ -3683,7 +3683,7 @@ ArkTS-Dyn示例：
           })
           .onActivateContent(() => {
             //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web。
-            console.log("NewWebViewComp onActivateContent")
+            console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
     }
@@ -3800,7 +3800,7 @@ ArkTS-Sta示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onWindowExit(() => {
-            console.log("onWindowExit...");
+            console.info("onWindowExit...");
           })
       }
     }
@@ -3844,7 +3844,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onSearchResultReceive(ret => {
             if (ret) {
-              console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
+              console.info("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
                 "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
             }
           })
@@ -3924,7 +3924,7 @@ ArkTS-Dyn示例：
           })
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onDataResubmitted((event) => {
-            console.log('onDataResubmitted');
+            console.info('onDataResubmitted');
             event.handler.resend();
           })
       }
@@ -4012,7 +4012,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onPageVisible((event) => {
-            console.log('onPageVisible url:' + event.url);
+            console.info('onPageVisible url:' + event.url);
           })
       }
     }
@@ -4034,7 +4034,7 @@ ArkTS-Sta示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onPageVisible((event) => {
-            console.log('onPageVisible url:' + event.url);
+            console.info('onPageVisible url:' + event.url);
           })
       }
     }
@@ -4358,7 +4358,7 @@ ArkTS-Sta示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onFirstContentfulPaint(event => {
             if (event) {
-              console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+              console.info("onFirstContentfulPaint:" + "[navigationStartTick]:" +
               event.navigationStartTick + ", [firstContentfulPaintMs]:" +
               event.firstContentfulPaintMs);
             }
@@ -4384,7 +4384,7 @@ ArkTS-Sta示例：
       Web({ src: 'www.example.com', controller: this.controller })
         .onFirstContentfulPaint((event:OnFirstContentfulPaintEvent):void => {
           if (event) {
-            console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+            console.info("onFirstContentfulPaint:" + "[navigationStartTick]:" +
             event.navigationStartTick + ", [firstContentfulPaintMs]:" +
             event.firstContentfulPaintMs);
           }
@@ -4430,7 +4430,7 @@ ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./a
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onFirstMeaningfulPaint((details) => {
-            console.log("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
+            console.info("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
               ", [firstMeaningfulPaintTime]=" + details.firstMeaningfulPaintTime);
           })
       }
@@ -4454,7 +4454,7 @@ ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./a
       Web({ src: 'www.example.com', controller: this.controller })
         .onFirstMeaningfulPaint((event:FirstMeaningfulPaint):void => {
           if(event) {
-            console.log("onFirstMeaningfulPaint: [navigationStartTime]= " + event.navigationStartTime +
+            console.info("onFirstMeaningfulPaint: [navigationStartTime]= " + event.navigationStartTime +
               ", [firstMeaningfulPaintTime]=" + event.firstMeaningfulPaintTime);
             }
           })
@@ -4499,7 +4499,7 @@ ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback]
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onLargestContentfulPaint((details) => {
-            console.log("onLargestContentfulPaint: [navigationStartTime]= " + details.navigationStartTime +
+            console.info("onLargestContentfulPaint: [navigationStartTime]= " + details.navigationStartTime +
               ", [largestImagePaintTime]=" + details.largestImagePaintTime +
               ", [largestTextPaintTime]=" + details.largestTextPaintTime +
               ", [largestImageLoadStartTime]=" + details.largestImageLoadStartTime +
@@ -4527,7 +4527,7 @@ ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback]
       Web({ src: 'www.example.com', controller: this.controller })
         .onLargestContentfulPaint((event:LargestContentfulPaint):void => {
           if(event) {
-            console.log("onLargestContentfulPaint: [navigationStartTime]= " + event.navigationStartTime +
+            console.info("onLargestContentfulPaint: [navigationStartTime]= " + event.navigationStartTime +
               ", [largestImagePaintTime]=" + event.largestImagePaintTime +
               ", [largestTextPaintTime]=" + event.largestTextPaintTime +
               ", [largestImageLoadStartTime]=" + event.largestImageLoadStartTime +
@@ -4574,10 +4574,10 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onLoadIntercept((event) => {
-            console.log('url:' + event.data.getRequestUrl());
-            console.log('isMainFrame:' + event.data.isMainFrame());
-            console.log('isRedirect:' + event.data.isRedirect());
-            console.log('isRequestGesture:' + event.data.isRequestGesture());
+            console.info('url:' + event.data.getRequestUrl());
+            console.info('isMainFrame:' + event.data.isMainFrame());
+            console.info('isRedirect:' + event.data.isRedirect());
+            console.info('isRequestGesture:' + event.data.isRequestGesture());
             return true;
           })
       }
@@ -4649,7 +4649,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onRequestSelected(() => {
-            console.log('onRequestSelected');
+            console.info('onRequestSelected');
           })
       }
     }
@@ -4671,7 +4671,7 @@ ArkTS-Sta示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onRequestSelected(() => {
-            console.log('onRequestSelected');
+            console.info('onRequestSelected');
           })
       }
     }
@@ -4947,7 +4947,7 @@ onControllerAttached(callback: (() => void) | undefined): this
           .onControllerAttached(() => {
             try {
               let id = this.controller.getWebId();
-              console.log("id: " + id);
+              console.info("id: " + id);
             } catch (error) {
               let code = (error as BusinessError).code;
               let message = (error as BusinessError).message;
@@ -4977,7 +4977,7 @@ onControllerAttached(callback: (() => void) | undefined): this
           .onControllerAttached(() => {
             try {
               let id = this.controller.getWebId();
-              console.log("id: " + id);
+              console.info("id: " + id);
             } catch (error) {
               let code = (error as BusinessError).code;
               let message = (error as BusinessError).message;
@@ -5116,7 +5116,7 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
           .onSafeBrowsingCheckResult((callback) => {
             let jsonData = JSON.stringify(callback);
             let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
-            console.log("onSafeBrowsingCheckResult: [threatType]= " + json.threatType);
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + json.threatType);
           })
       }
     }
@@ -5422,16 +5422,16 @@ ArkTS-Dyn示例：
             if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
               this.embedStatus = 'Leave BFCache';
             }
-            console.log("status = " + this.embedStatus);
-            console.log("surfaceId = " + event.surfaceId);
-            console.log("embedId = " + event.embedId);
+            console.info("status = " + this.embedStatus);
+            console.info("surfaceId = " + event.surfaceId);
+            console.info("embedId = " + event.embedId);
             if (event.info) {
-              console.log("id = " + event.info.id);
-              console.log("type = " + event.info.type);
-              console.log("src = " + event.info.src);
-              console.log("width = " + event.info.width);
-              console.log("height = " + event.info.height);
-              console.log("url = " + event.info.url);
+              console.info("id = " + event.info.id);
+              console.info("type = " + event.info.type);
+              console.info("src = " + event.info.src);
+              console.info("width = " + event.info.width);
+              console.info("height = " + event.info.height);
+              console.info("url = " + event.info.url);
             }
           })
       }
@@ -5512,16 +5512,16 @@ ArkTS-Sta示例：
             if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
               this.embedStatus = 'Leave BFCache';
             }
-            console.log("status = " + this.embedStatus);
-            console.log("surfaceId = " + event.surfaceId);
-            console.log("embedId = " + event.embedId);
+            console.info("status = " + this.embedStatus);
+            console.info("surfaceId = " + event.surfaceId);
+            console.info("embedId = " + event.embedId);
             if (event.info) {
-              console.log("id = " + event.info?.id);
-              console.log("type = " + event.info?.type);
-              console.log("src = " + event.info?.src);
-              console.log("width = " + event.info?.width);
-              console.log("height = " + event.info?.height);
-              console.log("url = " + event.info?.url);
+              console.info("id = " + event.info?.id);
+              console.info("type = " + event.info?.type);
+              console.info("src = " + event.info?.src);
+              console.info("width = " + event.info?.width);
+              console.info("height = " + event.info?.height);
+              console.info("url = " + event.info?.url);
             }
           })
       }
@@ -5682,13 +5682,13 @@ ArkTS-Dyn示例：
                 if (event.result) {
                   event.result.setGestureEventResult(ret, true);
                 }
-                console.log("embedId = " + event.embedId);
-                console.log("touchType = " + this.eventType);
-                console.log("x = " + event.touchEvent.touches[0].x);
-                console.log("y = " + event.touchEvent.touches[0].y);
-                console.log("Component globalPos:(" + event.touchEvent.target.area.globalPosition.x + "," + event.touchEvent.target.area.globalPosition.y + ")");
-                console.log("width = " + event.touchEvent.target.area.width);
-                console.log("height = " + event.touchEvent.target.area.height);
+                console.info("embedId = " + event.embedId);
+                console.info("touchType = " + this.eventType);
+                console.info("x = " + event.touchEvent.touches[0].x);
+                console.info("y = " + event.touchEvent.touches[0].y);
+                console.info("Component globalPos:(" + event.touchEvent.target.area.globalPosition.x + "," + event.touchEvent.target.area.globalPosition.y + ")");
+                console.info("width = " + event.touchEvent.target.area.width);
+                console.info("height = " + event.touchEvent.target.area.height);
               }
             })
         }
@@ -6094,7 +6094,7 @@ ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefin
         .onViewportFitChanged((data:ViewportFit):void => {
           let jsonData = JSON.stringify(data);
           let viewportFit: ViewportFit = JSON.parse(jsonData).viewportFit;
-          console.log("jsonData:",jsonData)
+          console.info("jsonData:",jsonData)
           if (viewportFit === ViewportFit.COVER) {
             // index.html网页支持沉浸式布局，可调用expandSafeArea调整web控件布局视口覆盖避让区域(状态栏或导航条)。
           } else if (viewportFit === ViewportFit.CONTAINS) {
@@ -6221,13 +6221,13 @@ ArkTS-Dyn示例：
           // 遍历attributes。
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
           }
 
           if (attributes) {
             if (attributes['data-keyboard'] == 'customKeyboard') {
               // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘。
-              console.log('WebCustomKeyboard use custom keyboard')
+              console.info('WebCustomKeyboard use custom keyboard')
               option.useSystemKeyboard = false;
               // 设置自定义键盘builder。
               option.customKeyboard = () => {
@@ -6331,13 +6331,13 @@ ArkTS-Sta示例：
           // 遍历attributes。
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
           }
 
           if (attributes) {
             if (attributes['data-keyboard'] == 'customKeyboard') {
               // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘。
-              console.log('WebCustomKeyboard use custom keyboard')
+              console.info('WebCustomKeyboard use custom keyboard')
               option.useSystemKeyboard = false;
               // 设置自定义键盘builder。
               option.customKeyboard = () => {
@@ -6539,8 +6539,8 @@ ArkTS-Dyn示例：
               } else {
                 this.embedVisibility = 'Hidden';
               }
-              console.log("embedId = " + embed.embedId);
-              console.log("visibility = " + embed.visibility);
+              console.info("embedId = " + embed.embedId);
+              console.info("visibility = " + embed.visibility);
             })
         }
       }
@@ -7073,11 +7073,11 @@ ArkTS-Dyn示例：
               }
             })
             .onNativeEmbedObjectParamChange((event) => {
-              console.log("embed id: " + event.embedId);
+              console.info("embed id: " + event.embedId);
               let paramItems = event.paramItems;
               if (paramItems) {
                 for (let i = 0; i < paramItems.length; ++i) {
-                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                  console.info("param info: " + JSON.stringify(paramItems[i]));
                 }
               }
             })
@@ -7187,11 +7187,11 @@ ArkTS-Sta示例：
               }
             })
             .onNativeEmbedObjectParamChange((event) => {
-              console.log("embed id: " + event.embedId);
+              console.info("embed id: " + event.embedId);
               let paramItems = event.paramItems;
               if (paramItems) {
                 for (let i = 0; i < paramItems.length; ++i) {
-                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                  console.info("param info: " + JSON.stringify(paramItems[i]));
                 }
               }
             })
@@ -7277,7 +7277,7 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
         Web({ src: 'www.example.com', controller: this.controller })
           .onUrlLoadIntercept((event) => {
             if (event) {
-              console.log('onUrlLoadIntercept ' + event.data.toString());
+              console.info('onUrlLoadIntercept ' + event.data.toString());
             }
             return true
           })

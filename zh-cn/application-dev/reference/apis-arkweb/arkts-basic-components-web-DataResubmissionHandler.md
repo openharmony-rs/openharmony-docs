@@ -53,7 +53,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onDataResubmitted((event) => {
-            console.log('onDataResubmitted');
+            console.info('onDataResubmitted');
             event.handler.resend();
           })
       }
@@ -114,7 +114,7 @@ ArkTS-Dyn示例：
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onDataResubmitted((event) => {
-            console.log('onDataResubmitted');
+            console.info('onDataResubmitted');
             event.handler.cancel();
           })
       }

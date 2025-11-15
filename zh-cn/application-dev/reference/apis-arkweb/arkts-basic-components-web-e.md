@@ -2,6 +2,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
@@ -71,6 +73,10 @@ ConsoleMessage的信息级别。
 
  **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称     | 值 | 说明          |
 | ------ | -- | ----------- |
 | NEVER  | 0 | Web过滚动模式关闭。 |
@@ -81,6 +87,10 @@ ConsoleMessage的信息级别。
 设置手动收起软键盘时Web元素是否失焦。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -110,6 +120,10 @@ Web深色模式的配置。
 Web屏幕捕获模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值 | 说明      |
 | ----------- | -- | ------- |
@@ -192,6 +206,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | Web布局跟随系统。         |
@@ -203,6 +221,9 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | INPUT_TIMEOUT                  | 0 | 发送给渲染进程的input事件响应超时。   |
@@ -271,6 +292,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | CREATE                        | 0 | 同层标签创建。   |
@@ -303,6 +328,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | UNKNOWN                       | 0 | 未知类型。   |
@@ -330,6 +359,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | AUTO                  | 0 | 默认值，整个网页可见。   |
@@ -342,6 +375,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称               | 值 | 说明           |
 | ------------------ | -- | ------------ |
 | RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
@@ -353,6 +390,10 @@ Web布局模式的配置。
 网页元素信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -367,6 +408,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称            | 值 | 说明                |
@@ -378,6 +423,10 @@ Web布局模式的配置。
 应用中Web音频类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

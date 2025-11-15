@@ -4,6 +4,8 @@ Web组件地理位置权限管理对象。
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -249,7 +251,7 @@ struct WebComponent {
                 console.error(`getAccessibleGeolocationAsync error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('getAccessibleGeolocationAsync result: ' + result);
+              console.info('getAccessibleGeolocationAsync result: ' + result);
             });
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -284,7 +286,7 @@ struct WebComponent {
                 console.error(`getAccessibleGeolocationAsync error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('getAccessibleGeolocationAsync result: ' + result);
+              console.info('getAccessibleGeolocationAsync result: ' + result);
             });
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -351,7 +353,7 @@ struct WebComponent {
           try {
             webview.GeolocationPermissions.getAccessibleGeolocation(this.origin)
               .then(result => {
-                console.log('getAccessibleGeolocationPromise result: ' + result);
+                console.info('getAccessibleGeolocationPromise result: ' + result);
               }).catch((error: BusinessError) => {
               console.error(`getAccessibleGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
             });
@@ -385,7 +387,7 @@ struct WebComponent {
           try {
             webview.GeolocationPermissions.getAccessibleGeolocation(this.origin)
               .then(result => {
-                console.log('getAccessibleGeolocationPromise result: ' + result);
+                console.info('getAccessibleGeolocationPromise result: ' + result);
               }).catch((error) => {
               console.error(`getAccessibleGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
             });
@@ -450,7 +452,7 @@ struct WebComponent {
                 return;
               }
               let origins_str: string = origins.join();
-              console.log('getStoredGeolocationAsync origins: ' + origins_str);
+              console.info('getStoredGeolocationAsync origins: ' + origins_str);
             });
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -485,7 +487,7 @@ struct WebComponent {
                 return;
               }
               let origins_str: string = origins!.join();
-              console.log('getStoredGeolocationAsync origins: ' + origins_str);
+              console.info('getStoredGeolocationAsync origins: ' + origins_str);
             });
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -550,7 +552,7 @@ struct WebComponent {
             webview.GeolocationPermissions.getStoredGeolocation()
               .then(origins => {
                 let origins_str: string = origins.join();
-                console.log('getStoredGeolocationPromise origins: ' + origins_str);
+                console.info('getStoredGeolocationPromise origins: ' + origins_str);
               }).catch((error: BusinessError) => {
               console.error(`getStoredGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
             });
@@ -584,7 +586,7 @@ struct WebComponent {
             webview.GeolocationPermissions.getStoredGeolocation()
               .then(origins => {
                 let origins_str: string = origins.join();
-                console.log('getStoredGeolocationPromise origins: ' + origins_str);
+                console.info('getStoredGeolocationPromise origins: ' + origins_str);
               }).catch((error) => {
               console.error(`getStoredGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
             });
