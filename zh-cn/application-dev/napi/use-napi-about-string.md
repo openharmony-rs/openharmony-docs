@@ -396,6 +396,11 @@ export const CreateExternalStringUtf16: () => string | void;
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+  testNapi.CreateExternalStringUtf16());
+```
 如果创建出来的external_string对象被其他对象所引用，则所有引用结束后才会被GC回收，从而调用StringFinalizerUTF16函数
 
 ### napi_create_external_string_ascii
