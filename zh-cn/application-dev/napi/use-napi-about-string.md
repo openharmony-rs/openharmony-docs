@@ -411,6 +411,42 @@ cpp部分代码
 
 <!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
+// hint参数可以传递一些额外的信息，如引用计数等，也可以忽略此参数，直接传入nullptr
+static void StringFinalizerASCII(void* data, void* hint)
+{
+    // 释放外部资源
+    delete[] static_cast<char*>(data);
+}
+
+static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info info)
+{
+    const char source[] = "hello, World!, successes to create ASCII string! 111";
+    napi_value result = nullptr;
+    int charLength = sizeof(source) / sizeof(char);
+    // 在堆上动态分配内存，并复制字符串内容
+    char* str = new char[charLength];
+    std::copy(source, source + charLength, str);
+    // 当创建出来的字符串在ArkTS侧生命周期结束被GC回收时，会调用StringFinalizerASCII函数，调用方式为StringFinalizerASCII(str, finalize_hint);
+    // 如果finalize_callback传入nullptr，则不会调用任何回调函数。开发者需要自行管理外部资源str的生命周期。
+    napi_status status = napi_create_external_string_ascii(
+        env,
+        str,                    // 外部字符串缓冲区
+        NAPI_AUTO_LENGTH,       // 字符串长度，传入NAPI_AUTO_LENGTH表示字符串以'\0'结尾
+        StringFinalizerASCII,   // 字符串的析构回调函数
+        nullptr,                // 传递给析构回调函数的hint参数，本例不需要
+        &result                 // 接受创建的ArkTS字符串值
+    );
+    if (status != napi_ok) {
+        // 处理错误
+        napi_throw_error(env, nullptr, "Failed to create ascii string");
+        return nullptr;
+    }
+    return result;
+}
+```
+
 接口声明
 
 <!-- @[napi_create_external_string_ascii_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
