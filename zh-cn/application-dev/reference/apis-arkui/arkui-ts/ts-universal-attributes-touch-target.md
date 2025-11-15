@@ -63,7 +63,7 @@ mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 responseRegionList(value: Array&lt;ResponseRegion): T
 
-设置组件的触摸热区列表。
+设置组件的触摸热区列表。采用responseRegionList接口时，responseRegion与mouseResponseRegion接口不再生效。
 
 **卡片能力：** 不支持
 
@@ -120,12 +120,19 @@ responseRegionList(value: Array&lt;ResponseRegion): T
 
 | 名称        | 类型                        | 只读    |  可选   |  说明                             |
 | ------ | ----------------------------- | -----| -----|-------------------------------- |
-| tool      | [ResponseRegionSupportedTool](#ResponseRegionSupportedTool)  | 否   | 是   |触摸热区适用的输入工具类型。<br/>默认值：ResponseRegionSupportedTool.FINGER |
+| tool   | [ResponseRegionSupportedTool](#ResponseRegionSupportedTool)  | 否   | 是   |触摸热区适用的输入工具类型。<br/>默认值：ResponseRegionSupportedTool.FINGER |
 | x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br/>默认值：LengthMetrics.vp(0) |
 | y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br/>默认值：LengthMetrics.vp(0) |
 | width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的宽度。<br/>默认值：LengthMetrics.percent(1) |
 | height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的高度。<br/>默认值：LengthMetrics.percent(1) |
 
+  >  **说明：**
+  >
+  >  百分比相对于组件自身宽高进行计算。
+  >
+  >  当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
+  >
+  >  width和height字符串支持calc计算特性。
 
 ### ResponseRegionSupportedTool
 
@@ -133,15 +140,17 @@ responseRegionList(value: Array&lt;ResponseRegion): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 值 | 说明                             |
-| ------ | -----|-------------------------------- |
-| ALL      | 0 | 所有输入工具类型   |
-| FINGER      | 1 | 手指   |
-| PEN      | 2  | 手写笔   |
+| 名称   | 值 | 说明                             |
+| ------ | -----|------------------------------- |
+| ALL    | 0 | 所有输入工具类型   |
+| FINGER | 1 | 手指   |
+| PEN    | 2 | 手写笔 |
 | MOUSE  | 3 | 鼠标   |
 
 
 ## 示例
+
+### 示例1（采用responseRegion接口设置触摸热区）
 
 该示例通过responseRegion设置按钮的触摸热区以响应点击事件。
 
@@ -188,3 +197,59 @@ struct TouchTargetExample {
 ```
 
 ![touchtarget.gif](figures/touchtarget.gif)
+
+### 示例2（采用responseRegionList接口设置触摸热区）
+
+该示例通过responseRegionList设置按钮的触摸热区以响应点击事件。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TouchTargetExample {
+  @State text: string = "";
+
+  build() {
+    Column({ space: 20 }) {
+      Text("left part of button1")
+      // 热区宽度为按钮的一半，点击右侧无响应
+      Button("button1")
+        .responseRegionList([{
+          x: LengthMetrics.vp(0),
+          y: LengthMetrics.vp(0),
+          width: LengthMetrics.percent(0.5),
+          height: LengthMetrics.percent(1),
+        }])
+        .onClick(() => {
+          this.text = 'button1 clicked'
+        })
+
+      // 热区一的大小为整个按钮，且右移一个按钮宽度，点击button2左边按钮大小区域，点击事件生效
+      // 热区二的大小为整个按钮，且下移一个按钮高度，鼠标点击button2下方按钮大小区域，点击事件生效
+      Text("one button size right of button2," + "\none button size below button2")
+      Button("button2")
+        .responseRegionList([{
+          x: LengthMetrics.percent(1),
+          y: LengthMetrics.vp(0),
+          width: LengthMetrics.percent(1),
+          height: LengthMetrics.percent(1),
+        }, {
+          tool: ResponseRegionSupportedTool.MOUSE,
+          x: LengthMetrics.vp(0),
+          y: LengthMetrics.percent(1),
+          width: 'calc(100%)',
+          height: 'calc(100%)',
+        }])
+        .onClick(() => {
+          this.text = 'button2 clicked'
+        })
+
+      Text(this.text).margin({ top: 50 })
+    }.width('100%').margin({ top: 10 })
+  }
+}
+```
+
+![touchtarget2.gif](figures/touchtarget2.gif)
