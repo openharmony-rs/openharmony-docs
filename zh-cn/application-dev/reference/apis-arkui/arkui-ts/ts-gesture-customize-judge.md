@@ -6,7 +6,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## onGestureJudgeBegin
@@ -23,9 +23,9 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 **ArkTS-Sta起始版本：** 22
 
 **参数：**
-| 参数名        | 参数类型                    | 必填  | 参数描述                          |
+| 参数名        | 类型                    | 必填  | 说明                        |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | ArkTS-Dyn: (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11对象说明), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11)<br/> ArkTS-Sta: (gestureInfo: [GestureInfo](./ts-gesture-common.md#gestureinfo11对象说明), event: [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明)) => [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) \| undefined | 是     | 自定义手势判定回调。当手势即将成功时，触发用户定义的回调获取结果。 |
+| callback      | ArkTS-Dyn: (gestureInfo: [GestureInfo](#gestureinfo对象说明), event: [BaseGestureEvent](#basegestureevent对象说明)) => [GestureJudgeResult](#gesturejudgeresult)<br/> ArkTS-Sta: (gestureInfo: [GestureInfo](#gestureinfo对象说明), event: [BaseGestureEvent](#basegestureevent对象说明)) => [GestureJudgeResult](#gesturejudgeresult) \| undefined | 是     | 自定义手势判定回调。当手势即将成功时，触发用户定义的回调获取结果。 |
 
 **返回值：**
 
@@ -34,7 +34,7 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 | ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 
-## GestureJudgeResult<sup>11+</sup>
+## GestureJudgeResult
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -54,10 +54,10 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 | 名称            | 类型                        | 描述         |
 | ---------------  | -------------------------   | -----------|
 | tag              | string                      | 手势标记。<br/>**说明：**<br/>未设置事件标识tag属性时，tag不返回或返回undefined。      |
-| type             | [GestureControl.GestureType](#gesturetype12)  | 手势类型。<br/>**说明：**<br/> 当手势为未暴露类型的系统内置手势事件时，type的值为-1。 |
+| type             | [GestureControl.GestureType](#gesturetype)  | 手势类型。<br/>**说明：**<br/> 当手势为未暴露类型的系统内置手势事件时，type的值为-1。 |
 | isSystemGesture  | boolean                     | 判断当前手势是否为组件自带手势。true表示是，false表示否。<br/>默认值：false |
 
-## GestureType<sup>12+</sup>
+## GestureType
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -76,23 +76,25 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 
 ## BaseEvent对象说明<sup>8+</sup>
 
+基础事件类型。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                                      | 描述         |
 | ---------| ----------------------------------------  | -----------|
-| target   | [EventTarget](ts-universal-events-click.md#eventtarget8对象说明) | 触发手势事件的元素对象。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| timestamp| number | 事件时间戳，触发事件时距离系统启动的时间间隔。<br>单位：ns<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| source   | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8) | 事件输入设备的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| pressure<sup>9+</sup> | number | 按压的压力大小。<br/>默认值：0<br/>取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| tiltX<sup>9+</sup> | number | 手写笔在设备平面上的投影与设备平面X轴的夹角。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| tiltY<sup>9+</sup> | number | 手写笔在设备平面上的投影与设备平面Y轴的夹角。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| rollAngle<sup>17+</sup> | number | 手写笔与设备平面的夹角。<br/>**卡片能力：** 从API version 17开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 |
-| sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9) | 事件输入源的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| axisHorizontal<sup>12+</sup> | number | 水平轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在由鼠标滚轮或者触控板双指滑动场景下触发的Pan手势中可以获取。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| axisVertical<sup>12+</sup> | number | 垂直轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在由鼠标滚轮或者触控板双指滑动场景下触发的Pan手势中可以获取。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| getModifierKeyState<sup>12+</sup> | (Array&lt;string&gt;) => bool | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\|'Alt'\|'Shift'。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。|
-| deviceId<sup>12+</sup> | number | 触发当前事件的输入设备ID。<br/>默认值：0<br />取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| targetDisplayId<sup>15+</sup> | number | 事件发生的屏幕ID。  <br/>默认值：0<br />取值范围：[0, +∞)<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| target   | [EventTarget](ts-universal-events-click.md#eventtarget8对象说明) | 触发手势事件的元素对象。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22|
+| timestamp| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 事件时间戳，触发事件时距离系统启动的时间间隔。<br>单位：ns<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
+| source   | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8) | 事件输入设备的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22  |
+| pressure<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 按压的压力大小。<br/>默认值：0<br/>取值范围：[0,1]，典型值0.913168，压感大小与数值正相关。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22  |
+| tiltX<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 手写笔在设备平面上的投影与设备平面X轴的夹角。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
+| tiltY<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 手写笔在设备平面上的投影与设备平面Y轴的夹角。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
+| rollAngle<sup>17+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 手写笔与设备平面的夹角。<br/>**卡片能力：** 从API version 17开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
+| sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9) | 事件输入源的类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22  |
+| axisHorizontal<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 水平轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在由鼠标滚轮或者触控板双指滑动场景下触发的Pan手势中可以获取。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22|
+| axisVertical<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 垂直轴值。<br/>默认值：0<br/>**说明：**<br/>当前仅在由鼠标滚轮或者触控板双指滑动场景下触发的Pan手势中可以获取。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| getModifierKeyState<sup>12+</sup> | (Array&lt;string&gt;) => bool | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\|'Alt'\|'Shift'。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。|
+| deviceId<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 触发当前事件的输入设备ID。<br/>默认值：0<br />取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22|
+| targetDisplayId<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 事件发生的屏幕ID。  <br/>默认值：0<br />取值范围：[0, +∞)<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
 
 **错误码**：
 
@@ -135,19 +137,24 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 | repeat     | boolean | 是否为重复触发事件。true表示为重复触发事件，false表示非重复触发事件。  |
 
 ## PanGestureEvent对象说明
-继承于[BaseGestureEvent](#basegestureevent对象说明)。可将该对象作为[onGestureJudgeBegin](#ongesturejudgebegin)的event参数来传递。
+
+继承自[BaseGestureEvent](#basegestureevent对象说明)。可将该对象作为[onGestureJudgeBegin](#ongesturejudgebegin)的event参数来传递。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称      | 类型                                      | 描述         |
 | ---------  | ----------------------------------------  | -----------|
-| offsetX    | number | 手势事件x轴相对当前组件元素原始区域的偏移量，单位为vp，从左向右滑动offsetX为正，反之为负。  |
-| offsetY    | number | 手势事件y轴相对当前组件元素原始区域的偏移量，单位为vp，从上向下滑动offsetY为正，反之为负。  |
-| velocityX  | number | 获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。  |
-| velocityY  | number | 获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。|
-| velocity   | number | 获取当前的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。  |
+| offsetX    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 手势事件x轴相对当前组件元素原始区域的偏移量，单位为vp，从左向右滑动offsetX为正，反之为负。  |
+| offsetY    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 手势事件y轴相对当前组件元素原始区域的偏移量，单位为vp，从上向下滑动offsetY为正，反之为负。  |
+| velocityX  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。  |
+| velocityY  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。|
+| velocity   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 获取当前的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。  |
 
 ## PinchGestureEvent对象说明
 
@@ -155,12 +162,16 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 继承于[BaseGestureEvent](#basegestureevent对象说明)。可将该对象作为[onGestureJudgeBegin](#ongesturejudgebegin)的event参数来传递。
 | 名称         | 类型                                      | 描述         |
 | ------------  | ----------------------------------------  | -----------|
-| scale         | number | 缩放比例。  |
-| pinchCenterX  | number | 捏合手势中心点相对于当前组件元素原始区域左上角x轴坐标，单位为vp。  |
-| pinchCenterY  | number | 捏合手势中心点相对于当前组件元素原始区域左上角y轴坐标，单位为vp。  |
+| scale         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 缩放比例。  |
+| pinchCenterX  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 捏合手势中心点相对于当前组件元素原始区域左上角x轴坐标，单位为vp。  |
+| pinchCenterY  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 捏合手势中心点相对于当前组件元素原始区域左上角y轴坐标，单位为vp。  |
 
 ## RotationGestureEvent对象说明
 
@@ -168,10 +179,14 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 继承于[BaseGestureEvent](#basegestureevent对象说明)。可将该对象作为[onGestureJudgeBegin](#ongesturejudgebegin)的event参数来传递。
 | 名称         | 类型                                      | 描述         |
 | ------------  | ----------------------------------------  | -----------|
-| angle         | number | 表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。  |
+| angle         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。  |
 
 ## SwipeGestureEvent对象说明
 继承于[BaseGestureEvent](#basegestureevent对象说明)。可将该对象作为[onGestureJudgeBegin](#ongesturejudgebegin)的event参数来传递。
@@ -180,10 +195,15 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称         | 类型                                      | 描述         |
 | ------------  | ----------------------------------------  | -----------|
-| angle         | number | 表示滑动手势的角度，即两根手指间的线段与水平方向的夹角变化的度数，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。|
-| speed         | number | 滑动手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s。  |
+| angle         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 表示滑动手势的角度，即两根手指间的线段与水平方向的夹角变化的度数，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。|
+| speed         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 滑动手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s。  |
+
 ## 示例
 
 ### 示例1（自定义手势判定）

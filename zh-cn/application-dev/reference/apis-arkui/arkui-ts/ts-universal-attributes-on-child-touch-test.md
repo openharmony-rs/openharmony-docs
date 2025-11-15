@@ -6,7 +6,7 @@
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  - onClick以及旋转、捏合手势经过自定义事件分发之后可能会因为未命中触摸热区导致事件不响应。
 
@@ -50,14 +50,18 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array<TouchTestInfo>) => TouchResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称          | 类型   | 描述                                       |
 | ------------- | ------ | ---------------------------------------- |
-| windowX | number | 按压点相对于窗口左上角的x轴坐标。<br />单位：vp |
-| windowY   | number |按压点相对于窗口左上角的y轴坐标。<br />单位：vp|
-| parentX   | number |按压点相对于父组件左上角的x轴坐标。<br />单位：vp  |
-| parentY   | number |按压点相对于父组件左上角的y轴坐标。<br />单位：vp  |
-| x   | number | 按压点相对于子组件左上角的x轴坐标。<br />单位：vp |
-| y   | number | 按压点相对于子组件左上角的y轴坐标。<br />单位：vp |
+| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 按压点相对于窗口左上角的x轴坐标。<br />单位：vp |
+| windowY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double |按压点相对于窗口左上角的y轴坐标。<br />单位：vp|
+| parentX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double |按压点相对于父组件左上角的x轴坐标。<br />单位：vp  |
+| parentY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double |按压点相对于父组件左上角的y轴坐标。<br />单位：vp  |
+| x   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 按压点相对于子组件左上角的x轴坐标。<br />单位：vp |
+| y   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 按压点相对于子组件左上角的y轴坐标。<br />单位：vp |
 | rect   | [RectResult](ts-types.md#rectresult10) |子组件的大小。  |
 | [id](ts-universal-attributes-component-id.md)   | string | 通过id属性设置的组件id。 |
 

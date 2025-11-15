@@ -6,7 +6,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API Version 17开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 17开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onAxisEvent
 
@@ -46,23 +46,29 @@ ArkTS-Sta: onAxisEvent(event: Callback<AxisEvent> | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 ### 属性
 
 | 名称            | 类型  | 只读|可选                              | 说明                                                    |
 | ------------------- | -----------------------|------|----- | -------------------------------------------------------- |
-| action              | [AxisAction](ts-appendix-enums.md#axisaction17)           | 是   | 否   | 轴事件的动作类型                   |
-| x                   | number                 | 是   | 否   | 鼠标光标相对于被点击元素左边缘的X坐标。<br/>单位：vp  |
-| y                   | number                 | 是   | 否   | 鼠标光标相对于被点击元素上边缘的Y坐标。<br/>单位：vp  |
-| windowX             | number                 | 是   | 否   | 鼠标光标相对于当前窗口左上角的X坐标。<br/>单位：vp |
-| windowY             | number                 | 是   | 否   | 鼠标光标相对于当前窗口左上角的Y坐标。<br/>单位：vp |
-| displayX            | number                 | 是   | 否   | 鼠标光标相对于当前屏幕左上角的X坐标。<br/>单位：vp |
-| displayY            | number                 | 是   | 否   | 鼠标光标相对于当前屏幕左上角的Y坐标。<br/>单位：vp |
-| scrollStep          | number                 | 是   | 否   | 鼠标轴滚动步长配置。<br/> **说明：**&nbsp;仅支持鼠标滚轮，取值范围0~65535。|
-| propagation         | Callback\<void>        | 是   | 否   | 激活事件冒泡。   |
+| action              | [AxisAction](ts-appendix-enums.md#axisaction17)         | 否   | 否   | 轴事件的动作类型                   |
+| x                   | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于被点击元素左边缘的X坐标。<br/>单位：vp  |
+| y                   | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于被点击元素上边缘的Y坐标。<br/>单位：vp  |
+| windowX             | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前窗口左上角的X坐标。<br/>单位：vp |
+| windowY             | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前窗口左上角的Y坐标。<br/>单位：vp |
+| displayX            | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的X坐标。<br/>单位：vp |
+| displayY            | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的Y坐标。<br/>单位：vp |
+| scrollStep          | ArkTs-Dyn: number<br/>ArkTs-Sta: int                 | 否   | 是   | 鼠标轴滚动步长配置。<br/> **说明：**&nbsp;仅支持鼠标滚轮，取值范围0~65535。|
+| propagation         | Callback\<void>        | 否   | 否   | 激活事件冒泡。   |
 
 ### getHorizontalAxisValue
 
-getHorizontalAxisValue(): number
+ArkTs-Dyn: getHorizontalAxisValue(): number
+
+ArkTs-Sta: getHorizontalAxisValue(): double
 
 获取此次轴事件的水平轴值。
 
@@ -70,15 +76,21 @@ getHorizontalAxisValue(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| number | 水平轴值。<br>单位：vp |
+| ArkTs-Dyn: number<br/>ArkTs-Sta: double | 水平轴值。<br>单位：vp |
 
 ### getVerticalAxisValue
 
-getVerticalAxisValue(): number
+ArkTs-Dyn: getVerticalAxisValue(): number
+
+ArkTs-Sta: getVerticalAxisValue(): double
 
 获取此次轴事件的垂直轴值。
 
@@ -86,11 +98,15 @@ getVerticalAxisValue(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| number | 垂直轴值。<br>单位：vp |
+| ArkTs-Dyn: number<br/>ArkTs-Sta: double | 垂直轴值。<br>单位：vp |
 
 ## 示例
 
