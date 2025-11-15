@@ -14081,7 +14081,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateFloatWindow/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":79,
 						"name":"create_float_window",
 						"start_line":16
 					}
