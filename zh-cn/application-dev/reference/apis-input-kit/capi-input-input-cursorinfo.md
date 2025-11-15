@@ -16,3 +16,10 @@
 **相关模块：** [input](capi-input.md)
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
+
+**相关接口：**
+
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#OH_Input_CursorInfo_Create) | 创建鼠标光标信息对象。 |
+| [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#OH_Input_CursorInfo_Destroy) | 销毁鼠标光标信息对象。 |

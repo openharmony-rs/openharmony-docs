@@ -17,3 +17,9 @@
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 
+**相关接口：**
+
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Input_CustomCursor_Create](capi-oh-input-manager-h.md#OH_Input_CustomCursor_Create) | 创建自定义鼠标光标资源对象。 |
+| [OH_Input_CustomCursor_Destroy](capi-oh-input-manager-h.md#OH_Input_CustomCursor_Destroy) | 销毁自定义鼠标光标资源对象。 |
