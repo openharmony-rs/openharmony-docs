@@ -55,7 +55,7 @@ ArkTS-Sta: grantUserGrantedPermission(tokenID: int, permissionName: Permissions,
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -100,7 +100,7 @@ let permissionFlags: int = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantUserGrantedPermission success');
 }).catch((err: BusinessError): void => {
-  console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -175,7 +175,7 @@ let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInf
 let permissionFlags: int = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError | null): void => {
   if (err) {
-    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.data}`);
+    console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('grantUserGrantedPermission success');
   }
@@ -212,7 +212,7 @@ ArkTS-Sta: revokeUserGrantedPermission(tokenID: int, permissionName: Permissions
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -257,7 +257,7 @@ let permissionFlags: int = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokeUserGrantedPermission success');
 }).catch((err: BusinessError): void => {
-  console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -332,7 +332,7 @@ let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInf
 let permissionFlags: int = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError | null): void => {
   if (err) {
-    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.data}`);
+    console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('revokeUserGrantedPermission success');
   }
@@ -411,7 +411,7 @@ let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInf
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: int) => {
   console.info(`getPermissionFlags success, result: ${data}`);
 }).catch((err: BusinessError): void => {
-  console.error(`getPermissionFlags fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`getPermissionFlags fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -442,7 +442,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -486,7 +486,7 @@ let permission: Permissions = 'ohos.permission.CAMERA';
 atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then((err) => {
   console.info('setPermissionRequestToggleStatus: set closed successful');
 }).catch((err: BusinessError): void => {
-  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -567,7 +567,7 @@ atManager.getPermissionRequestToggleStatus(permission).then((res) => {
     console.info('getPermissionRequestToggleStatus: The toggle status is open');
   }
 }).catch((err: BusinessError): void => {
-  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -610,7 +610,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let promise = atManager.getVersion();
 promise.then((data: number) => {
-    console.info(`getVersion promise: data->${data}`);
+  console.info(`getVersion promise: data->${data}`);
 });
 ```
 
@@ -621,7 +621,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let promise = atManager.getVersion();
 promise.then((data: int) => {
-    console.info(`getVersion promise: data->${data}`);
+  console.info(`getVersion promise: data->${data}`);
 });
 ```
 
@@ -695,7 +695,7 @@ let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInf
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
   console.info(`getPermissionsStatus success, result: ${data}`);
 }).catch((err: BusinessError): void => {
-  console.error(`getPermissionsStatus fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`getPermissionsStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -749,16 +749,18 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
-let tokenIDList: Array<number> = [appInfo.accessTokenId];
-let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
-    atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.debug(`receive permission state change, data: ${data}`);
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
+  let tokenIDList: Array<number> = [appInfo.accessTokenId];
+  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
+
+  atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
     });
 } catch(err) {
-    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -808,14 +810,14 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
-let tokenIDList: Array<number> = [appInfo.accessTokenId];
-let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
-    atManager.off('permissionStateChange', tokenIDList, permissionList);
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
+  let tokenIDList: Array<number> = [appInfo.accessTokenId];
+  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
+  atManager.off('permissionStateChange', tokenIDList, permissionList);
 } catch(err) {
-    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -867,18 +869,18 @@ onPermissionStateChange(tokenIDList: Array&lt;int&gt;, permissionList: Array&lt;
 
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
-let tokenIDList: Array<int> = [appInfo.accessTokenId as int];
-let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
-    atManager.onPermissionStateChange(tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.debug(`receive permission state change, data: ${data}`);
-    });
-} catch(err: BusinessError) {
-    console.error(`catch errcode: ${err.code}, message: ${err.data}`);
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
+  let tokenIDList: Array<int> = [appInfo.accessTokenId as int];
+  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
+  atManager.onPermissionStateChange(tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
+  });
+} catch(err: Error) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -926,16 +928,15 @@ offPermissionStateChange(tokenIDList: Array&lt;int&gt;, permissionList: Array&lt
 
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
-let tokenIDList: Array<int> = [appInfo.accessTokenId as int];
-let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
-    atManager.offPermissionStateChange(tokenIDList, permissionList);
-} catch(err: BusinessError) {
-    console.error(`catch errcode: ${err.code}, message: ${err.data}`);
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
+  let tokenIDList: Array<int> = [appInfo.accessTokenId as int];
+  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
+  atManager.offPermissionStateChange(tokenIDList, permissionList);
+} catch(err: Error) {
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -967,7 +968,7 @@ ArkTS-Sta: requestPermissionOnApplicationSetting(tokenID: int): Promise&lt;void&
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1005,7 +1006,167 @@ let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInf
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.info('requestPermissionOnApplicationSetting success');
 }).catch((err: BusinessError): void => {
-  console.error(`requestPermissionOnApplicationSetting fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`requestPermissionOnApplicationSetting fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### grantPermission<sup>21+</sup>
+
+ArkTS-Dyn: grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+
+ArkTS-Sta: grantPermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise&lt;void&gt;
+
+授予应用权限。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS，仅系统应用可用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| permissionName | Permissions              | 是   | 被授予的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
+| permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100007 | The service is abnormal. |
+| 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取
+let permissionFlags: number = 2;
+atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('grantPermission success');
+}).catch((err: BusinessError) => {
+  console.error(`grantPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取
+let permissionFlags: int = 2;
+atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('grantPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`grantPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### revokePermission<sup>21+</sup>
+
+ArkTS-Dyn: revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+
+ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise&lt;void&gt;
+
+撤销应用权限。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
+| permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100003 | The specified permission does not exist. |
+| 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100007 | The service is abnormal. |
+| 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取
+let permissionFlags: number = 2;
+atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('revokePermission success');
+}).catch((err: BusinessError) => {
+  console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取
+let permissionFlags: int = 2;
+atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
+  console.info('revokePermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 

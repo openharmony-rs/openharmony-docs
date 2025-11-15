@@ -17,6 +17,7 @@
 
 以下示例代码以再次拉起弹窗申请ohos.permission.APPROXIMATELY_LOCATION权限为例。
 
+ArkTS-Dyn示例：
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -26,6 +27,20 @@ let context: Context = this.getUIContext().getHostContext() as common.UIAbilityC
 atManager.requestPermissionOnSetting(context, ['ohos.permission.APPROXIMATELY_LOCATION']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
   console.info('data:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
+  console.error('data:' + JSON.stringify(err));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+atManager.requestPermissionOnSetting(context, ['ohos.permission.APPROXIMATELY_LOCATION']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
+  console.info('data:' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
   console.error('data:' + JSON.stringify(err));
 });
 ```

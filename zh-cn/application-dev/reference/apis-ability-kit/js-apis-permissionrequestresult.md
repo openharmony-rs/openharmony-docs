@@ -37,15 +37,13 @@
 
 ArkTS-Dyn示例：
 ```ts
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import { BusinessError } from '@ohos.base';
-import common from '@ohos.app.ability.common';
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@Kit.BasicServicesKit';
 
 let atManager = abilityAccessCtrl.createAtManager();
 try {
   let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   atManager.requestPermissionsFromUser(context, ["ohos.permission.CAMERA"]).then((data) => {
-      console.info(`data: ${data}`);
       console.info("data permissions:" + data.permissions);
       console.info("data authResults:" + data.authResults);
       console.info("data dialogShownResults:" + data.dialogShownResults);
@@ -60,22 +58,21 @@ try {
 
 ArkTS-Sta示例：
 ```ts
-import { abilityAccessCtrl, Context, common, Permissions, PermissionRequestResult } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Context, common, PermissionRequestResult } from '@kit.AbilityKit';
 import { BusinessError } from '@Kit.BasicServicesKit';
 
 let atManager = abilityAccessCtrl.createAtManager();
 try {
   let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   atManager.requestPermissionsFromUser(context, ["ohos.permission.CAMERA"]).then((data: PermissionRequestResult) => {
-      console.info("data:" + JSON.stringify(data));
       console.info("data permissions:" + data.permissions);
       console.info("data authResults:" + data.authResults);
       console.info("data dialogShownResults:" + data.dialogShownResults);
       console.info("data errorReasons:" + data.errorReasons);
   }).catch((err: BusinessError): void => {
-      console.error(`code: ${err.code}, message: ${err.data}`);
+      console.error(`code: ${err.code}, message: ${err.message}`);
   })
-} catch(err: BusinessError) {
+} catch(err: Error) {
   console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
