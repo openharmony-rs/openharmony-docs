@@ -451,6 +451,10 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
 
 <!-- @[napi_create_external_string_ascii_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
+``` TypeScript
+export const CreateExternalStringAscii: () => string | void;
+```
+
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
