@@ -6590,7 +6590,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let state = this.controller.serializeWebState();
-            let path:string | undefined = AppStorage.get("cacheDir");
+            let path:string | undefined = AppStorage.get<string>("cacheDir") as string;
             if (path) {
               path += '/WebState';
               // 以同步方法打开文件。
@@ -6648,6 +6648,10 @@ restoreWebState(state: Uint8Array): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型       | 必填 | 说明                         |
@@ -6666,6 +6670,8 @@ restoreWebState(state: Uint8Array): void
 **示例：**
 
 1.对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6710,11 +6716,77 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Web, AppStorage} from '@kit.ArkUI'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('RestoreWebState')
+        .onClick(() => {
+          try {
+            let path: string | undefined = AppStorage.get<string>("cacheDir") as string;
+            if (path !== undefined) {
+              let pathTemp: string = path + '/WebState';
+              console.info("read file data is null" + pathTemp);
+              // 以同步方法打开文件。
+              let file = fileIo.openSync(pathTemp, fileIo.OpenMode.READ_WRITE);
+              let stat = fileIo.statSync(pathTemp);
+              console.info("read file data is null");
+              let size = stat.size;
+              let buf = new ArrayBuffer(size);
+              fileIo.read(file.fd, buf, (err, readLen) => {
+                if (err) {
+                  console.error("console error with error message: " + err.message + ", error code: " + err.code);
+                } else {
+                  if (readLen) {
+                    let readLenTemp = readLen as Int;
+                    console.info("read file data succeed");
+                    this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
+                    fileIo.closeSync(file);
+                  }
+                }
+              });
+            }
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 2.修改EntryAbility.ets。
 获取应用缓存文件路径。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+    AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { AppStorage} from '@kit.ArkUI'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -6841,6 +6913,10 @@ getCertificate(): Promise<Array<cert.X509Cert>>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型       | 说明                                          |
@@ -6857,6 +6933,7 @@ getCertificate(): Promise<Array<cert.X509Cert>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6994,6 +7071,149 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Web, State, Row, List, ListItem, FontWeight, ButtonType, Axis } from '@kit.ArkUI'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cert } from '@kit.DeviceCertificateKit';
+
+function Uint8ArrayToString(dataArray: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i]);
+  }
+  return dataString;
+}
+
+function ParseX509CertInfo(x509CertArray: Array<cert.X509Cert>|undefined) {
+  if (x509CertArray !== undefined) {
+    let res: string = 'getCertificate success: len = ' + x509CertArray.length;
+    for (let i = 0; i < x509CertArray.length; i++) {
+      res += ', index = ' + i + ', issuer name = '
+        + Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = '
+        + Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = '
+        + x509CertArray[i].getNotBeforeTime()
+        + ', valid end = ' + x509CertArray[i].getNotAfterTime();
+    }
+    return res
+  } else {
+    console.error("ParseX509CertInfo x509CertArray is undefined");
+    return "";
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  // outputStr在UI界面显示调试信息。
+  @State outputStr: string = '';
+  webviewCtl: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Row() {
+      Column() {
+        List({ space: 20, initialIndex: 0 }) {
+          ListItem() {
+            Button() {
+              Text('load bad ssl')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              // 加载一个过期的证书网站，查看获取到的证书信息。
+              this.webviewCtl.loadUrl('https://expired.badssl.com');
+            })
+            .height(50)
+          }
+
+          ListItem() {
+            Button() {
+              Text('load example')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              // 加载一个https网站，查看网站的证书信息。
+              this.webviewCtl.loadUrl('https://www.example.com');
+            })
+            .height(50)
+          }
+
+          ListItem() {
+            Button() {
+              Text('getCertificate Promise')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              try {
+                this.webviewCtl.getCertificate().then((x509CertArray: Array<cert.X509Cert>) => {
+                  this.outputStr = ParseX509CertInfo(x509CertArray);
+                })
+              } catch (error) {
+                this.outputStr = 'getCertificate failed: ' + (error as BusinessError).code + ", errMsg: " + (error as BusinessError).message;
+              }
+            })
+            .height(50)
+          }
+
+          ListItem() {
+            Button() {
+              Text('getCertificate AsyncCallback')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              try {
+                this.webviewCtl.getCertificate((error: BusinessError|null, x509CertArray: Array<cert.X509Cert>|undefined):void=> {
+                  if (error) {
+                    this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;
+                  } else {
+                    this.outputStr = ParseX509CertInfo(x509CertArray);
+                  }
+                })
+              } catch (error) {
+                this.outputStr = 'getCertificate failed: ' + (error as BusinessError).code + ", errMsg: " + (error as BusinessError).message;
+              }
+            })
+            .height(50)
+          }
+        }
+        .listDirection(Axis.Horizontal)
+        .height('10%')
+
+        Text(this.outputStr)
+          .width('100%')
+          .fontSize(10)
+
+        Web({ src: 'https://www.example.com', controller: this.webviewCtl })
+          .fileAccess(true)
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .onlineImageAccess(true)
+          .onPageEnd((e) => {
+            if (e) {
+              this.outputStr = 'onPageEnd : url = ' + e.url;
+            }
+          })
+          .onSslErrorEventReceive((e) => {
+            // 忽略ssl证书错误，便于测试一些证书过期的网站，如：https://expired.badssl.com。
+            e.handler.handleConfirm();
+          })
+          .width('100%')
+          .height('70%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
 ## getCertificate<sup>10+</sup>
 
 getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
@@ -7001,6 +7221,10 @@ getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 获取当前网站的证书信息。使用Web组件加载https网站，会进行SSL证书校验，该接口会通过AsyncCallback异步返回当前网站的X509格式证书（X509Cert证书类型定义见[X509Cert定义](../apis-device-certificate-kit/js-apis-cert.md)），便于开发者展示网站证书信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7019,6 +7243,7 @@ getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7048,7 +7273,7 @@ function ParseX509CertInfo(x509CertArray: Array<cert.X509Cert>) {
 @Entry
 @Component
 struct Index {
-  // outputStr在UI界面显示调试信息
+  // outputStr在UI界面显示调试信息。
   @State outputStr: string = '';
   webviewCtl: webview.WebviewController = new webview.WebviewController();
 
@@ -7064,7 +7289,7 @@ struct Index {
             }
             .type(ButtonType.Capsule)
             .onClick(() => {
-              // 加载一个过期的证书网站，查看获取到的证书信息
+              // 加载一个过期的证书网站，查看获取到的证书信息。
               this.webviewCtl.loadUrl('https://expired.badssl.com');
             })
             .height(50)
@@ -7078,7 +7303,7 @@ struct Index {
             }
             .type(ButtonType.Capsule)
             .onClick(() => {
-              // 加载一个https网站，查看网站的证书信息
+              // 加载一个https网站，查看网站的证书信息。
               this.webviewCtl.loadUrl('https://www.example.com');
             })
             .height(50)
@@ -7144,7 +7369,151 @@ struct Index {
             }
           })
           .onSslErrorEventReceive((e) => {
-            // 忽略ssl证书错误，便于测试一些证书过期的网站，如：https://expired.badssl.com
+            // 忽略ssl证书错误，便于测试一些证书过期的网站，如：https://expired.badssl.com。
+            e.handler.handleConfirm();
+          })
+          .width('100%')
+          .height('70%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, Web, State, Row, List, ListItem, FontWeight, ButtonType, Axis } from '@kit.ArkUI'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cert } from '@kit.DeviceCertificateKit';
+
+function Uint8ArrayToString(dataArray: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i]);
+  }
+  return dataString;
+}
+
+function ParseX509CertInfo(x509CertArray: Array<cert.X509Cert>|undefined) {
+  if (x509CertArray !== undefined) {
+    let res: string = 'getCertificate success: len = ' + x509CertArray.length;
+    for (let i = 0; i < x509CertArray.length; i++) {
+      res += ', index = ' + i + ', issuer name = '
+        + Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = '
+        + Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = '
+        + x509CertArray[i].getNotBeforeTime()
+        + ', valid end = ' + x509CertArray[i].getNotAfterTime();
+    }
+    return res
+  } else {
+    console.error("ParseX509CertInfo x509CertArray is undefined");
+    return "";
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  // outputStr在UI界面显示调试信息。
+  @State outputStr: string = '';
+  webviewCtl: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Row() {
+      Column() {
+        List({ space: 20, initialIndex: 0 }) {
+          ListItem() {
+            Button() {
+              Text('load bad ssl')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              // 加载一个过期的证书网站，查看获取到的证书信息。
+              this.webviewCtl.loadUrl('https://expired.badssl.com');
+            })
+            .height(50)
+          }
+
+          ListItem() {
+            Button() {
+              Text('load example')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              // 加载一个https网站，查看网站的证书信息。
+              this.webviewCtl.loadUrl('https://www.example.com');
+            })
+            .height(50)
+          }
+
+          ListItem() {
+            Button() {
+              Text('getCertificate Promise')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              try {
+                this.webviewCtl.getCertificate().then((x509CertArray: Array<cert.X509Cert>) => {
+                  this.outputStr = ParseX509CertInfo(x509CertArray);
+                })
+              } catch (error) {
+                this.outputStr = 'getCertificate failed: ' + (error as BusinessError).code + ", errMsg: " + (error as BusinessError).message;
+              }
+            })
+            .height(50)
+          }
+
+          ListItem() {
+            Button() {
+              Text('getCertificate AsyncCallback')
+                .fontSize(10)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .onClick(() => {
+              try {
+                this.webviewCtl.getCertificate((error: BusinessError|null, x509CertArray: Array<cert.X509Cert>|undefined):void=> {
+                  if (error) {
+                    this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;
+                  } else {
+                    this.outputStr = ParseX509CertInfo(x509CertArray);
+                  }
+                })
+              } catch (error) {
+                this.outputStr = 'getCertificate failed: ' + (error as BusinessError).code + ", errMsg: " + (error as BusinessError).message;
+              }
+            })
+            .height(50)
+          }
+        }
+        .listDirection(Axis.Horizontal)
+        .height('10%')
+
+        Text(this.outputStr)
+          .width('100%')
+          .fontSize(10)
+
+        Web({ src: 'https://www.example.com', controller: this.webviewCtl })
+          .fileAccess(true)
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .onlineImageAccess(true)
+          .onPageEnd((e) => {
+            if (e) {
+              this.outputStr = 'onPageEnd : url = ' + e.url;
+            }
+          })
+          .onSslErrorEventReceive((e) => {
+            // 忽略ssl证书错误，便于测试一些证书过期的网站，如：https://expired.badssl.com。
             e.handler.handleConfirm();
           })
           .width('100%')
