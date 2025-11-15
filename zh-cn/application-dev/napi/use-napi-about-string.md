@@ -458,6 +458,11 @@ export const CreateExternalStringAscii: () => string | void;
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+  testNapi.CreateExternalStringAscii());
+```
 如果创建出来的external_string对象被其他对象所引用，则所有引用结束后才会被GC回收，从而调用StringFinalizerASCII函数
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
