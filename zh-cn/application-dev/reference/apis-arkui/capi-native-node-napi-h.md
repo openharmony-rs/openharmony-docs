@@ -622,11 +622,11 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 
 | 参数项 | 描述 |
 | -- | -- |
-| ArkUI_ContextHandle uiContext | UIContext对象，用以绑定实例。 |
-|  void* userData | 自定义事件参数，当事件触发时在回调参数中携带回来。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象，用以绑定实例。 |
+| void* userData | 自定义事件参数，当事件触发时在回调参数中携带回来。 |
 | callback | 自定义回调函数。 |
 | uint64_t nanoTimestamp | 帧信号的时间戳。 |
-|  uint32_t frameCount | 帧号。 |
+| uint32_t frameCount | 帧号。 |
 
 **返回：**
 
@@ -652,11 +652,11 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 
 | 参数项 | 描述 |
 | -- | -- |
-| uiContext | UIContext对象，用以绑定实例。 |
-|  void* userData | 自定义事件参数，当自定义回调函数触发时在回调参数中携带回来。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象，用以绑定实例。 |
+| void* userData | 自定义事件参数，当自定义回调函数触发时在回调参数中携带回来。 |
 | callback | 自定义回调函数，会在下一帧事件结束后剩余时间大于1ms时回调执行。 |
 | uint64_t nanoTimeLeft | 下一帧渲染后的剩余时间。 |
-|  uint32_t frameCount | 帧号。 |
+| uint32_t frameCount | 帧号。 |
 
 **返回：**
 
