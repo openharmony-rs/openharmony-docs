@@ -107,7 +107,7 @@ controller: webview.WebviewController = new webview.WebviewController(undefined)
 build() {
   Column() {
     Button('fetchCookieSync')
-      .onClick((e) => {
+      .onClick(() => {
         try {
           let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com');
           console.info("fetchCookieSync cookie = " + value);
@@ -201,7 +201,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('fetchCookie')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.fetchCookie('https://www.example.com', (error, cookie) => {
               if (error) {
@@ -305,7 +305,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('fetchCookie')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.fetchCookie('https://www.example.com')
               .then(cookie => {
@@ -408,7 +408,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('fetchCookie')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.fetchCookie('https://www.example.com', false)
               .then(cookie => {
@@ -512,7 +512,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookieSync')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             // configCookieSync每次仅支持设置单个cookie值。
             webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
@@ -601,7 +601,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookieSync')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             // 仅支持设置单个cookie值。
             webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', false, false);
@@ -692,7 +692,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookie')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.configCookie('https://www.example.com', "a=b", (error) => {
               if (error) {
@@ -794,7 +794,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookie')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.configCookie('https://www.example.com', 'a=b')
               .then(() => {
@@ -900,7 +900,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('configCookie')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.configCookie('https://www.example.com', 'a=b', false, false)
               .then(() => {
@@ -979,7 +979,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('saveCookieSync')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.saveCookieSync();
           } catch (error) {
@@ -1252,7 +1252,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('putAcceptCookieEnabled')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.putAcceptCookieEnabled(false);
           } catch (error) {
@@ -1322,7 +1322,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isCookieAllowed')
-        .onClick((e) => {
+        .onClick(() => {
           let result = webview.WebCookieManager.isCookieAllowed();
           console.info("result: " + result);
         })
@@ -1402,7 +1402,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('putAcceptThirdPartyCookieEnabled')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(false);
           } catch (error) {
@@ -1472,7 +1472,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isThirdPartyCookieAllowed')
-        .onClick((e) => {
+        .onClick(() => {
           let result = webview.WebCookieManager.isThirdPartyCookieAllowed();
           console.info("result: " + result);
         })
@@ -1545,7 +1545,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('existCookie')
-        .onClick((e) => {
+        .onClick(() => {
           let result = webview.WebCookieManager.existCookie();
           console.info("result: " + result);
         })
@@ -1611,7 +1611,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearAllCookiesSync')
-        .onClick((e) => {
+        .onClick(() => {
           webview.WebCookieManager.clearAllCookiesSync();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -1856,7 +1856,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearSessionCookieSync')
-        .onClick((e) => {
+        .onClick(() => {
           webview.WebCookieManager.clearSessionCookieSync();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -2032,7 +2032,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearSessionCookie')
-        .onClick((e) => {
+        .onClick(() => {
           try {
             webview.WebCookieManager.clearSessionCookie()
               .then(() => {

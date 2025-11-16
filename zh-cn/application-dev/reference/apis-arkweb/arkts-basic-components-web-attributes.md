@@ -224,10 +224,11 @@ ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined): this
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- |---------------------------------------- |
-| javaScriptProxy     |ArkTS-Dyn: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) <br/>ArkTS-Sta: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) \|  undefined| 是    |  参与注册的对象。只能声明方法，不能声明属性。                   |
+| javaScriptProxy     | ArkTS-Dyn: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)  <br/>ArkTS-Sta: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) \| boolean \|  undefined| 是    |  参与注册的对象。只能声明方法，不能声明属性。                   |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -280,6 +281,62 @@ ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined): this
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Web, JavaScriptProxy, WebKeyboardAvoidMode } from '@kit.ArkUI'
+import { State } from '@ohos.arkui.stateManagement'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestObj {
+  constructor() {
+  }
+
+  test(data1: string, data2: string, data3: string): string {
+    console.info("data1:" + data1);
+    console.info("data2:" + data2);
+    console.info("data3:" + data3);
+    return "AceString";
+  }
+
+  asyncTest(data: string): void {
+    console.info("async data:" + data);
+  }
+
+  testString(): void {
+    console.info('toString' + "interface instead.");
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State testObj: TestObj = new TestObj();
+  build() {
+    Column() {
+      Button('deleteJavaScriptRegister')
+        .onClick(() => {
+          try {
+            this.controller.deleteJavaScriptRegister("objName");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .javaScriptAccess(true)
+        .javaScriptProxy({
+          jsObject: this.testObj,
+          name: "objName",
+          methodList: ["test", "testString"],
+          asyncMethodList: ["asyncTest"],
+          controller: this.controller,
+        } as JavaScriptProxy)
+    }
+  }
+}
+```
 
 ## javaScriptAccess
 
@@ -4452,7 +4509,7 @@ import { $rawfile, Web, Column, Component, Entry, Image, ImageFit, Builder, Stat
 import { webview } from '@kit.ArkWeb';
 import { UIContext } from '@ohos.arkui.UIContext';
 import { MenuItem, Resource, WebElementType, WebResponseType, MenuType, WebContextMenuResult } from '@kit.ArkUI';
-import { ClickEvent, MenuItemOptions, DrawableDescriptor, ImageContent, PixelMap } from '@kit.ArkUI';
+import { MenuItemOptions, DrawableDescriptor, ImageContent, PixelMap } from '@kit.ArkUI';
 import { OnContextMenuShowEvent } from '@kit.ArkUI';
 
 interface PreviewBuilderParam {
@@ -4475,12 +4532,12 @@ struct WebComponent {
   MenuBuilder() {
     Menu() {
       MenuItem({ content: '复制', } as MenuItemOptions)
-        .onClick((e): void => {
+        .onClick((): void => {
           this.result?.copy();
           this.result?.closeContextMenu();
         })
       MenuItem({ content: '全选', } as MenuItemOptions)
-        .onClick((e): void => {
+        .onClick((): void => {
           this.result?.selectAll();
           this.result?.closeContextMenu();
         })

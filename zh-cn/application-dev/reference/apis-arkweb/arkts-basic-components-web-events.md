@@ -1392,8 +1392,8 @@ ArkTS-Sta示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onTitleReceive((event: OnTitleReceiveEvent): void => {
             if (event) {
-              console.log('title:' + event.title);
-              console.log('isRealTitle:' + event.isRealTitle);
+              console.info('title:' + event.title);
+              console.info('isRealTitle:' + event.isRealTitle);
             }
           })
       }
@@ -2026,7 +2026,9 @@ ArkTS-Sta示例：
 
 ## onInterceptRequest<sup>9+</sup>
 
-onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
+ArkTS-Dyn: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
+
+ArkTS-Sta: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse | null> | undefined): this
 
 当Web组件加载url之前触发该回调，用于拦截url并返回响应数据。onInterceptRequest可以拦截所有跳转，需要根据具体业务去做判断。
 
@@ -2036,10 +2038,11 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> | 是 | 当Web组件加载url之前触发。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
+| callback | ArkTS-Dyn: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> <br/>ArkTS-Sta: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md) \| null> \|  undefined| 是 | 当Web组件加载url之前触发。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2100,22 +2103,99 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, WebResourceResponse, Header, Promise, Function } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  heads: Header[] = [
+    {
+      headerKey: "Connection",
+      headerValue: "keep-alive"
+    },
+    {
+      headerKey: "Cache-Control",
+      headerValue: "no-cache"
+    }
+  ] as Header[]
+  webData: string = "<!DOCTYPE html>\n" +
+    "<html>\n" +
+    "<head>\n" +
+    "<title>intercept test</title>\n" +
+    "</head>\n" +
+    "<body>\n" +
+    "<h1>intercept test</h1>\n" +
+    "</body>\n" +
+    "</html>";
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onInterceptRequest((event) => {
+          if (event) {
+            console.info('url:' + event.request.getRequestUrl());
+          }
+          let head1: Header = {
+            headerKey: "Connection",
+            headerValue: "keep-alive"
+          }
+          let head2: Header = {
+            headerKey: "Cache-Control",
+            headerValue: "no-cache"
+          }
+          // 将新元素追加到数组的末尾，并返回数组的新长度。
+          let length = this.heads.push(head1);
+          length = this.heads.push(head2);
+          console.info('The response header result length is :' + length);
+          const promise = new Promise<string>((resolve: Function, reject: Function) => {
+            this.responseWeb.setResponseHeader(this.heads);
+            this.responseWeb.setResponseData(this.webData);
+            this.responseWeb.setResponseEncoding('utf-8');
+            this.responseWeb.setResponseMimeType('text/html');
+            this.responseWeb.setResponseCode(200);
+            this.responseWeb.setReasonMessage('OK');
+            console.info('The 111response header result length is :' + length);
+          }) as Promise<String>
+          promise.then(() => {
+            console.info("prepare response ready");
+            this.responseWeb.setResponseIsReady(true);
+          })
+          this.responseWeb.setResponseIsReady(false);
+          return null;
+        })
+    }
+  }
+}
+```
+
 ## onHttpAuthRequest<sup>9+</sup>
 
-onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
+ArkTS-Dyn: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
+
+ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\> | undefined): this
 
 通知收到http auth认证请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回ture表示http auth认证成功，返回false表示http auth认证失败。   |
+| callback | ArkTS-Dyn: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> \|  undefined| 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回ture表示http auth认证成功，返回false表示http auth认证失败。   |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2167,6 +2247,60 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, State, AppStorage, UIContext, AlertDialogParamWithButtons, OnHttpAuthRequestEvent } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+  httpAuth: boolean = false;
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onHttpAuthRequest((event: OnHttpAuthRequestEvent):boolean => {
+          if (event) {
+            this.uiContext.showAlertDialog({
+              title: 'onHttpAuthRequest',
+              message: 'text',
+              primaryButton: {
+                value: 'cancel',
+                action: () => {
+                  event.handler.cancel();
+                }
+              },
+              secondaryButton: {
+                value: 'ok',
+                action: () => {
+                  this.httpAuth = event.handler.isHttpAuthInfoSaved();
+                  if (this.httpAuth == false) {
+                    webview.WebDataBase.saveHttpAuthCredentials(
+                      event.host,
+                      event.realm,
+                      "2222",
+                      "2222"
+                    )
+                    event.handler.cancel();
+                  }
+                }
+              },
+              cancel: () => {
+                event.handler.cancel();
+              }
+            } as AlertDialogParamWithButtons);
+          }
+          return true;
+        })
+    }
+  }
+}
+```
+
 ## onSslErrorEventReceive<sup>9+</sup>
 
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
@@ -2278,7 +2412,7 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12) | 是 | 通知用户加载资源时发生SSL错误。 |
+| callback | [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12)| 是 | 通知用户加载资源时发生SSL错误。 |
 
 **示例：**
 
@@ -5917,7 +6051,7 @@ ArkTS-Sta示例：
       Column() {
         // 需要打开智能防跟踪功能，才会触发onIntelligentTrackingPreventionResult回调。
         Button('enableIntelligentTrackingPrevention')
-          .onClick((e) => {
+          .onClick(() => {
             try {
               this.controller.enableIntelligentTrackingPrevention(true);
             } catch (error) {
