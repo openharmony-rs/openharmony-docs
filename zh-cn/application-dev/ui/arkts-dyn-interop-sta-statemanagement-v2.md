@@ -1,60 +1,100 @@
-# ArkTS-Dyn使用ArkTS-Sta状态管理V2组件内互操作
-状态管理V2互操作适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用UI的场景，遵循[语言互操作](../quick-start/arkts-interop-overview.md#交互基本原则)的基本规范。
-完整示例结构如下图所示：
+# 在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态
+
+## 概述
+
+ArkTS-Dyn使用ArkTS-Sta管理组件拥有的状态，涉及状态管理V2交互的场景主要包括：
+
+1. ArkTS-Sta子组件通过ArkTS-Dyn父组件初始化状态数据并进行状态绑定。
+
+2. ArkTS-Sta子组件通过[@Consumer](../ui/state-management-static/arkts-static-new-provider-and-consumer.md)和ArkTS-Dyn祖先节点进行交互。
+
+
+## 使用限制
+
+- 遵循ArkTS-Dyn @Local的[使用限制](../ui/state-management/arkts-new-local.md#限制条件)；
+
+- 遵循ArkTS-Dyn @Param的[使用限制](../ui/state-management/arkts-new-param.md#限制条件)；
+
+- 遵循ArkTS-Dyn @Event的[使用限制](../ui/state-management/arkts-new-event.md#限制条件)；
+
+- 遵循ArkTS-Dyn @Provider和@Consumer的[使用限制](../ui/state-management/arkts-new-provider-and-consumer.md#限制条件)；
+
+- 遵循ArkTS-Sta @Local的[使用限制](../ui/state-management-static/arkts-static-new-local.md#限制条件)；
+
+- 遵循ArkTS-Sta @Param的[使用限制](../ui/state-management-static/arkts-static-new-param.md#限制条件)；
+
+- 遵循ArkTS-Sta @Event的[使用限制](../ui/state-management-static/arkts-static-new-event.md#限制条件)；
+
+- 遵循ArkTS-Sta @Provider和@Consumer的[使用限制](../ui/state-management-static/arkts-static-new-provider-and-consumer.md#限制条件)。
+
+
+## 使用场景
+
+基于以下示例结构，说明在ArkTS-Dyn中与ArkTS-Sta状态管理V2变量进行互操作的场景。
+
 ```text
 project/
-├── entry/          # ArkTS-Dyn主模块
+├── entry/                           # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── MainPage.ets
+│                   └── Index.ets     # 在ArkTS-Dyn主模块中引入ArkTS-Sta自定义组件，并给其状态变量赋值
 │
-└── library/         # ArkTS-Sta子模块
+└── static_module/                    # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets
+                    └── MainPage.ets   # 定义ArkTS-Sta自定义组件，与ArkTS-Dyn状态变量互操作
 ```
 
-下面的代码示例展示了ArkTS-Dyn与ArkTS-Sta状态变量V2的互操作。
+示例如下：
 
-- 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta组件。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。
 
 ```TypeScript
+'use static'
 
-// entry/src/main/ets/pages/Index.ets
-import { MainPage } from 'library';
+// static_module/src/main/ets/components/MainPage.ets
+import { Entry, ComponentV2, Column, Button, ClickEvent, Text, Color } from '@ohos.arkui.component';
+import { Param, Consumer, Event } from '@ohos.arkui.stateManagement';
 
-@Entry
 @ComponentV2
-struct ParentComp {
-  @Local message1: string = 'Hello Interop';
-  @Provider() message2: string = 'Provider Interop';
-  
+export struct MainPage {
+  // 通过@Param接收ArkTS-Dyn父组件传递的状态变量
+  @Param paramMessage: string = 'static Param';
+  // 通过@Consumer与ArkTS-Dyn父组件进行交互
+  @Consumer() consumerMessage: string = 'static Consumer';
+  // 通过@Event与ArkTS-Dyn父组件进行交互
+  @Event changeFactory: () => void = () => {};
+
   build() {
     Column() {
-      Button(this.message1)
-        .onClick(() => {
-          this.message1 += '~';
+      Text(this.paramMessage)
+        .fontSize(30)
+      Text(this.consumerMessage)
+        .fontSize(30)
+        .onClick((e: ClickEvent) => {
+          // 通过@Consumer修改ArkTS-Dyn父组件的状态变量
+          this.consumerMessage += '!';
         })
-      Button(this.message2)
-        .onClick(() => {
-          this.message2 += '~';
+      Button('excute changeFactory')
+        .onClick((e: ClickEvent) => {
+          // 通过@Event修改ArkTS-Dyn父组件的状态变量
+          this.changeFactory();
         })
-      MainPage({
-        message1: this.message1,
-        changeFactory: () => {
-          this.message2 += '@Event';
-        }
-      })
     }
-    .width('100%')
-    .height('100%')
-    .backgroundColor('#F1F3F5')
+    .padding(20)
   }
 }
+```
+
+```TypeScript
+'use static'
+
+// static_module/index.ets
+export { MainPage } from from './src/main/ets/components/MainPage';
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
@@ -63,64 +103,44 @@ struct ParentComp {
 // entry/oh-package.json5
 
 "dependencies": {
-  "library": "file:../library",
+  "static_module": "file:../static_module"
 }
 ```
 
-- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录创建并导出自定义组件。
+- 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta组件。
 
 ```TypeScript
-// library/src/main/ets/components/MainPage.ets
-'use static';
+// entry/src/main/ets/pages/Index.ets
+import { MainPage } from 'static_module';
 
-import { Entry, ComponentV2, Column, Button, ClickEvent, Text, Color } from '@ohos.arkui.component';
-import { Param, Consumer, Event } from '@ohos.arkui.stateManagement';
-
+@Entry
 @ComponentV2
-export struct MainPage {
-  @Param message1: string = 'static Param';
-  @Consumer() message2: string = 'static Consumer';
-  @Event changeFactory: () => void = () => {};
-
+struct ParentComp {
+  @Local localMessage: string = 'Hello Interop';
+  @Provider() consumerMessage: string = 'Provider Interop';
+  
   build() {
     Column() {
-      Text(this.message1)
-        .fontSize(30)
-        .fontColor(Color.Blue)
-      Text(this.message2)
-        .fontSize(30)
-        .fontColor(Color.Blue)
-        .onClick((e: ClickEvent) => {
-          this.message2 += '!';
+      Button(this.localMessage)
+        .onClick(() => {
+          // 通过@Local修改本组件的状态变量
+          this.localMessage += '~';
         })
-      Button('excute changeFactory')
-        .onClick((e: ClickEvent) => {
-          this.changeFactory();
+      Button(this.consumerMessage)
+        .onClick(() => {
+          // 通过@Provider修改本组件的状态变量
+          this.consumerMessage += '~';
         })
+      MainPage({
+        paramMessage: this.localMessage,
+        changeFactory: () => {
+          // 子组件调用，通过@Event修改父组件的状态变量
+          this.consumerMessage += '@Event';
+        }
+      })
     }
-    .padding(20)
-    .backgroundColor(Color.White)
-  }
-}
-```
-
-```TypeScript
-// library/index.ets
-'use static';
-export { MainPage } from from './src/main/ets/components/MainPage';
-```
-
-- 在项目根目录`build-profile.json5`配置文件中，将`app.products`节点下的`arkTSVersion`字段指定为`1.2`。
-
-```json
-{
-  "app": { 
-    "products": [
-      {
-        "name": "default",
-        "arkTSVersion": "1.2"  // 需显式配置为1.2以支持互操作
-      }
-    ]
+    .width('100%')
+    .height('100%')
   }
 }
 ```

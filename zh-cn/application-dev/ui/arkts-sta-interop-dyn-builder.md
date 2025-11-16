@@ -1,103 +1,226 @@
-# ArkTS-Sta使用ArkTS-Dyn全局自定义构建函数
+# 在ArkTS-Sta中使用ArkTS-Dyn的自定义构建函数（@Builder）
 
 ## 概述
 
-全局自定义构建函数互操作适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用全局自定义构建函数的场景。
+从API version 22开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义构建函数([\@Builder](./state-management/arkts-builder.md))。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用@Builder自定义构建函数的场景。
 
 
-## 架构原理
+## 使用限制
 
-在互操作场景下，将ArkTS-Dyn全局自定义构建函数的调用转换为占位组件，链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
+- 遵守ArkTS-Dyn自定义构建函数[限制条件](./state-management/arkts-builder.md#限制条件)；
+
+- ArkTS-Dyn自定义构建函数的参数最多不超过10个，否则会编译报错。
 
 
-## 设计理念
+## 使用场景
 
-全局自定义构建函数互操作适用于主模块使用ArkTS-Sta、子模块使用ArkTS-Dyn的场景。
+\@Builder的参数传递包括[按引用传递](./state-management/arkts-builder.md#按引用传递参数)与[按值传递](./state-management/arkts-builder.md#按值传递参数)，详见[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
 
-- 渐进式迁移：逐步将ArkTS-Dyn组件迁移到新版本。
 
-- 使用旧全局自定义构建函数：使用稳定的ArkTS-Dyn全局自定义构建函数。
+### 按引用传递参数
 
-## 参数传递规则
+仅接收一个参数且该参数为对象字面量时为按引用传递参数，其余情况均为按值传递参数。该对象字面量包含状态变量时，其变化会触发\@Builder函数内的UI刷新。
 
-- 遵循语言[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)的规范。
+由于ArkTS-Dyn不支持跨语言创建对象字面量，因此ArkTS-Sta创建对象字面量时，需要使用ArkTS-Sta侧的对象。
 
-- 遵循ArkTS-Dyn自定义构建函数[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
+如下示例展示了ArkTS-Sta引用ArkTS-Dyn自定义构建函数按引用传递参数的场景。
 
-- ArkTS-Dyn全局自定义构建函数的参数最多不超过10个。
+完整示例结构如下所示：
 
-## 开发场景
-
-### 在ArkTS-Sta中引用ArkTS-Dyn的全局自定义构建函数显示UI
-
-ArkUI互操作能力支持在静态上下文中使用动态模块的\@Builder函数，使用规格限制与非互操作场景相同。
-
-以下示例展示在静态上下文中使用动态模块的\@Builder函数来显示“Hello World!”。
+```text
+project/
+├── entry/                             # ArkTS-Sta主模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── pages/
+│                   └── Index.ets      # 调用@Builder并按引用传递
+│
+└── static_module/                     # ArkTS-Sta子模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── components/
+│                   └── MainPage.ets    # Person类定义
+│
+└── dynamic_module/                     # ArkTS-Dyn子模块
+    └── src/
+        └── main/
+            └── ets/
+                └── components/
+                    └── MainPage.ets    # 定义@Builder
+```
 
 示例如下：
 
-- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出全局自定义构建函数。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出`Person`类。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
-// har1_1/src/main/ets/components/MainPage.ets
+'use static'
 
-@Builder
-export function showTextBuilder() {
-  Text('Hello World!')
-    .fontSize(30)
+// static_module/src/main/ets/components/MainPage.ets
+export class Person {
+  name: string = '';
+  age: number = 0;
 }
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+```TypeScript
+'use static'
+
+// static_module/index.ets
+export { Person } from './src/main/ets/components/MainPage';
+```
+
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义构建函数。且在`oh-package.json5`文件中配置子模块依赖。
+
+```TypeScript
+// dynamic_module/src/main/ets/components/MainPage.ets
+import { Person } from 'static_module';
+
+@Builder
+export function personInfo(person: Person) {
+  Column(){
+    Text(`Name: ${person.name}`)
+    Text(`Age: ${person.age}`)
+  }
+}
+```
+
+```TypeScript
+// dynamic_module/index.ets
+export { personInfo } from './src/main/ets/components/MainPage';
+```
+
+```json
+// dynamic_module/oh-package.json5
+
+"dependencies": {
+  "static_module": "file:../static_module"
+}
+```
+
+- 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn自定义构建函数。且在`oh-package.json5`文件中配置子模块依赖。
+
+```TypeScript
+'use static'
+
+// entry/src/main/ets/pages/Index.ets
+import { Entry, Component, Column, Button } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+import { personInfo } from 'dynamic_module';
+
+@Entry
+@Component
+struct Parent {
+  @State name: string = 'Kevin';
+  @State age: number = 20;
+
+  build() {
+    Column() {
+      // 传入对象字面量，状态变量的改变引起@Builder的UI刷新
+      personInfo({ name: this.name, age: this.age })
+      Button('changeName')
+        .onClick(() => {
+          this.name += 'a';
+        })
+      Button('changeAge')
+        .onClick(() => {
+          this.age += 1;
+        })
+    }
+  }
+}
+```
 
 ```json
 // entry/oh-package.json5
 
 "dependencies": {
-  "har1_1": "file:../har1_1"
+  "dynamic_module": "file:../dynamic_module"
 }
 ```
 
-- 在ArkTS-Sta主模块中引入ArkTS-Dyn全局自定义构建函数。
+
+### 按值传递参数
+
+调用@Builder函数默认按值传递，当传入状态变量时，其变化不会触发@Builder内部UI刷新。
+
+完整示例结构如下图所示：
+
+```text
+project/
+├── entry/                            # ArkTS-Sta主模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── pages/
+│                   └── Index.ets     # 调用@Builder并按值传递参数
+│
+└── dynamic_module/                   # ArkTS-Dyn子模块
+    └── src/
+        └── main/
+            └── ets/
+                └── components/
+                    └── MainPage.ets   # 定义@Builder并导出
+```
+
+示例如下：
+
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出@Builder自定义构建函数。
+
+```TypeScript
+// dynamic_module/src/main/ets/components/MainPage.ets
+
+@Builder
+export function showTextBuilder(input: string) { // 按值传递参数，不会触发UI刷新
+  Text(input)
+    .fontSize(30)
+}
+```
+
+```TypeScript
+// dynamic_module/index.ets
+
+export { showTextBuilder } from './src/main/ets/components/MainPage'; // 导出@Builder函数
+```
+
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](har-package.md)）说明。
+
+```json
+// entry/oh-package.json5
+
+"dependencies": {
+  "dynamic_module": "file:../dynamic_module"
+}
+```
+
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn自定义构建函数。
 
 ```TypeScript
 'use static'
 
-// entry/src/main/ets/pages/MainPage.ets
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column } from '@ohos.arkui.component';
 
-import { showTextBuilder } from 'har1_1';
+import { showTextBuilder } from 'dynamic_module'; // 引入@Builder函数
 
 @Entry
 @Component
 struct MainPage {
   build() {
     Column() {
-      // 无需显式使用占位组件API，框架会自动处理
-      showTextBuilder()
+      // 直接使用ArkTS-Dyn自定义构建函数
+      showTextBuilder('Hello World!')
     }
     .width('100%')
     .height('100%')
-    .backgroundColor('#F1F3F5')
   }
 }
 ```
 
-### 完整示例结构
 
-```text
-project/
-├── entry/          # ArkTS-Sta主模块
-│   └── src/
-│       └── main/
-│           └── ets/
-│               └── pages/
-│                   └── MainPage.ets
-│
-└── har1_1/         # ArkTS-Dyn子模块
-    └── src/
-        └── main/
-            └── ets/
-                └── components/
-                    └── MainPage.ets
-```
+### 按回调函数传递参数
+
+不支持通过`UIUtils.makeBinding()`函数、`Binding`类、`MutableBinding`类实现@Builder函数中状态变量的刷新。

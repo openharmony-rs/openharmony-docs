@@ -1,59 +1,73 @@
-# ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性
+# 在ArkTS-Sta中使用ArkTS-Dyn的@BuilderParam（引用@Builder函数）
 
 ## 概述
 
-适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性的场景。
+从API version 22开始，从API version 22开始，支持在ArkTS-Sta中使用[\@Builder](./state-management/arkts-builder.md)函数初始化ArkTS-Dyn自定义组件的\@BuilderParam成员属性。
+
+在阅读本文档前，建议阅读：[\@BuilderParam](./state-management/arkts-builderparam.md#装饰器使用说明)。
 
 
-## 架构原理
+## 使用限制
 
-在互操作场景下，针对ArkTS-Dyn的自定义组件，通过`@BuilderParam`定制化功能模块。UI互操作通过编译期适配优化，支持在ArkTS-Sta上下文中初始化ArkTS-Dyn自定义组件的`@BuilderParam`成员属性，构建完整的UI界面。
+- 遵循ArkTS-Sta自定义构建函数[限制条件](./state-management/arkts-builder.md#限制条件)；
 
-
-## 设计理念
-
-适用于主模块使用ArkTS-Sta、子模块使用ArkTS-Dyn的场景。
-
-- 渐进式迁移：逐步将ArkTS-Dyn组件迁移到新版本。
-
-- 使用ArkTS-Dyn带@BuilderParam的自定义组件。
-
-## 参数传递规则
-
-- 遵循语言[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)的规范。
-
-- 遵循ArkTS-Dyn自定义构建函数[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
+- 遵循ArkTS-Dyn \@BuilderParam装饰器[限制条件](./state-management/arkts-builderparam.md#限制条件)。
 
 
-## 开发场景
-
-### 给ArkTS-Dyn自定义组件的\@BuilderParam赋值显示UI
+## 使用场景
 
 ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性，使用规格限制与非互操作场景相同。
 
-以下示例展示在静态上下文中给ArkTS-Dyn自定义组件的\@BuilderParam赋值来显示UI。
+基于以下示例结构，说明在ArkTS-Sta中给ArkTS-Dyn自定义组件的\@BuilderParam赋值来显示UI的场景。
+
+```text
+project/
+├── entry/                         # ArkTS-Sta主模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── pages/
+│                   └── Index.ets   # ArkTS-Sta主模块入口页面
+│
+└── dynamic_module/                 # ArkTS-Dyn子模块
+    └── src/
+        └── main/
+            └── ets/
+                └── components/
+                    └── MainPage.ets # 定义ArkTS-Dyn自定义组件并导出
+```
 
 示例如下：
 
-- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
-// har1_1/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/MainPage.ets
 
 @Component
-export struct CustomContainer {
+export struct CustomContainer { // 导出ArkTS-Dyn自定义组件
+  text: string = '';
+
   @Builder
   closerBuilder() {
   }
 
+  // 使用@BuilderParam装饰器声明成员属性closer，ArkTS-Sta的@Builder函数将传递给该成员属性
   @BuilderParam closer: () => void = this.closerBuilder;
 
   build() {
     Column() {
+      // 使用传入的@BuilderParam成员属性closer构建UI
       this.closer()
     }
   }
 }
+```
+
+```TypeScript
+// dynamic_module/index.ets
+
+export { CustomContainer } from './src/main/ets/components/MainPage'; // 导出自定义组件
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
@@ -62,29 +76,32 @@ export struct CustomContainer {
 // entry/oh-package.json5
 
 "dependencies": {
-  "har1_1": "file:../har1_1"
+  "dynamic_module": "file:../dynamic_module"
 }
 ```
 
-- 在ArkTS-Sta主模块中引入ArkTS-Dyn动态模块的自定义组件。
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn的自定义组件。
 
 ```TypeScript
 'use static'
 
-// entry/src/main/ets/pages/MainPage.ets
-import { Entry, Component, Builder, Column, Text, ClickEvent, Color } from '@ohos.arkui.component';
+// entry/src/main/ets/pages/Index.ets
+import { Entry, Component, Builder, Column, Text, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
-import { CustomContainer } from 'har1_1';
+
+import { CustomContainer } from 'dynamic_module';
 
 @Entry
 @Component
-struct CustomContainerUser {
+struct CustomContainerUser { // 主模块中使用ArkTS-Dyn自定义组件
   @State text: string = 'header';
 
   @Builder
   localBuilder() {
     Text(this.text)
+      .fontSize(30)
       .onClick((value: ClickEvent) => {
+        // 修改成员属性text的值
         this.text = 'changeHeader';
       })
   }
@@ -92,37 +109,19 @@ struct CustomContainerUser {
   build() {
     Column() {
       // 创建CustomContainer，在创建CustomContainer时，通过其后紧跟一个大括号“{}”形成尾随闭包
-      // 作为传递给子组件CustomContainer 的 @BuilderParam 参数 closer: () => void
-      CustomContainer() {
+      // 作为传递给子组件CustomContainer的@BuilderParam参数closer
+      CustomContainer({ text: this.text }) {
         Column() {
           Text(this.text)
-        }.backgroundColor(Color.Yellow)
+            .fontSize(30)
+        }
         .onClick((value: ClickEvent) => {
           this.text = 'changeHeader';
         })
       }
-      // 通过参数初始化 @BuilderParam 成员。
-      CustomContainer({closer: this.localBuilder})
+      // 通过参数初始化@BuilderParam成员
+      CustomContainer({ text: this.text, closer: this.localBuilder })
     }
   }
 }
-```
-
-### 完整示例结构
-
-```text
-project/
-├── entry/          # ArkTS-Sta主模块
-│   └── src/
-│       └── main/
-│           └── ets/
-│               └── pages/
-│                   └── MainPage.ets
-│
-└── har1_1/         # ArkTS-Dyn子模块
-    └── src/
-        └── main/
-            └── ets/
-                └── components/
-                    └── MainPage.ets
 ```
