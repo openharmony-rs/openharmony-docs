@@ -8,9 +8,13 @@
 
 ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 
->**说明：**
+> **说明：**
 >
->本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 直接使用vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx可能存在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，以下接口从API version 18开始废弃，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，再使用UIContext下的[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)/[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)/[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)/[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)/[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)/[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12)调用绑定实例的接口。
+>
+> - 在UI实例未创建时，vp2px/px2vp使用默认屏幕的虚拟像素比进行转换。在该场景下，使用UIContext接口替换时，开发者可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 
 | 名称 | 描述                                                         |
@@ -20,10 +24,15 @@ ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 | fp   | 字体像素，与vp类似适用屏幕密度变化，随系统字体大小设置变化。 |
 | lpx  | 视窗逻辑像素单位，lpx单位为实际屏幕宽度与逻辑宽度（通过[designWidth](../../../quick-start/module-configuration-file.md#pages标签)配置）的比值，designWidth默认值为720。当designWidth为720时，在实际宽度为1440物理像素的屏幕上，1lpx为2px大小。 |
 
+## vp2px<sup>(deprecated)</sup>
 
-## 像素单位转换
+vp2px(value: number): number
 
-提供其他单位与px单位互相转换的方法。
+将vp单位的数值转换为以px为单位的数值。
+
+> **说明：**
+>
+> 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -31,19 +40,141 @@ ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 接口                                                | 描述                                                         |
-| --------------------------------------------------- | ------------------------------------------------------------ |
-| vp2px(value&nbsp;:&nbsp;number)&nbsp;:&nbsp;number<sup>(deprecated)</sup>  | 将vp单位的数值转换为以px为单位的数值。<br/>value取值范围：(-∞, +∞)<br/>返回值取值范围：(-∞, +∞)<br/> **说明：** <br/> 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换。 |
-| px2vp(value&nbsp;:&nbsp;number)&nbsp;:&nbsp;number<sup>(deprecated)</sup>  | 将px单位的数值转换为以vp为单位的数值。<br/>value取值范围：(-∞, +∞)<br/>返回值取值范围：(-∞, +∞)<br/> **说明：** <br/> 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换。 |
-| fp2px(value&nbsp;:&nbsp;number)&nbsp;:&nbsp;number<sup>(deprecated)</sup>  | 将fp单位的数值转换为以px为单位的数值。<br/>value取值范围：(-∞, +∞)<br/>返回值取值范围：(-∞, +∞)                       |
-| px2fp(value&nbsp;:&nbsp;number)&nbsp;:&nbsp;number<sup>(deprecated)</sup>  | 将px单位的数值转换为以fp为单位的数值。<br/>value取值范围：(-∞, +∞)<br/>返回值取值范围：(-∞, +∞)                       |
-| lpx2px(value&nbsp;:&nbsp;number)&nbsp;:&nbsp;number<sup>(deprecated)</sup> | 将lpx单位的数值转换为以px为单位的数值。<br/>value取值范围：(-∞, +∞)<br/>返回值取值范围：(-∞, +∞)                      |
-| px2lpx(value&nbsp;:&nbsp;number)&nbsp;:&nbsp;number<sup>(deprecated)</sup> | 将px单位的数值转换为以lpx为单位的数值。<br/>value取值范围：(-∞, +∞)<br/>返回值取值范围：(-∞, +∞)                      |
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+## px2vp<sup>(deprecated)</sup>
+
+px2vp(value: number): number
+
+将px单位的数值转换为以vp为单位的数值。
 
 > **说明：**
 >
-> 1. 直接使用vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx可能存在[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，以上接口从API version 18开始废弃，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，再使用UIContext下的[vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx](../arkts-apis-uicontext-uicontext.md#vp2px12)调用绑定实例的接口。
-> 2. 在UI实例未创建时，vp2px/px2vp使用默认屏幕的虚拟像素比进行转换。在该场景下，使用UIContext接口替换时，开发者可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+> 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+## fp2px<sup>(deprecated)</sup>
+
+fp2px(value: number): number
+
+将fp单位的数值转换为以px为单位的数值。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+## px2fp<sup>(deprecated)</sup>
+
+px2fp(value: number): number
+
+将px单位的数值转换为以fp为单位的数值。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+## lpx2px<sup>(deprecated)</sup>
+
+lpx2px(value: number): number
+
+将lpx单位的数值转换为以px为单位的数值。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+## px2lpx<sup>(deprecated)</sup>
+
+px2lpx(value: number): number
+
+将px单位的数值转换为以lpx为单位的数值。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 ## 示例
 
