@@ -2296,7 +2296,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 | -- | -- |
 | [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) modifier | 目标内容修改器。 |
 | void* userData | 要传递给回调的自定义数据。 |
-| void (callback)(ArkUI_DrawContext context, void* userData) | 绘制事件接收回调。 |
+| void (callback)([ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) context, void* userData) | 绘制事件接收回调。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2703,7 +2703,7 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 | [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* option | 指向圆角矩形形状的指针。 |
 | float x | 目标角的X坐标（以像素为单位）。 |
 | float y | 目标角的Y坐标（以像素为单位）。 |
-| ArkUI_CornerDirection direction | 角的方向。 |
+| [ArkUI_CornerDirection](capi-native-type-h.md#arkui_cornerdirection) direction | 角的方向。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
@@ -2768,7 +2768,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向矩形形状的指针。 |
+| [ArkUI_RectShapeOption*](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向矩形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2789,7 +2789,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md) shape | 指向圆角矩形形状的指针。 |
+| [ArkUI_RoundRectShapeOption*](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md) shape | 指向圆角矩形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2810,7 +2810,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md) shape | 指向圆形形状的指针。 |
+| [ArkUI_CircleShapeOption*](./capi-arkui-nativemodule-arkui-circleshapeoption.md) shape | 指向圆形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2831,7 +2831,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向椭圆形形状的指针。 |
+| [ArkUI_RectShapeOption*](./capi-arkui-nativemodule-arkui-rectshapeoption.md) shape | 指向椭圆形形状的指针。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2852,7 +2852,7 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md) path | 指向自定义绘制路径的指针。 |
+| [ArkUI_CommandPathOption*](./capi-arkui-nativemodule-arkui-commandpathoption.md) path | 指向自定义绘制路径的指针。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2873,7 +2873,7 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOp
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) option | 指向渲染节点遮罩的指针。 |
+| [ArkUI_RenderNodeMaskOption*](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md) option | 指向渲染节点遮罩的指针。 |
 
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor()
 
