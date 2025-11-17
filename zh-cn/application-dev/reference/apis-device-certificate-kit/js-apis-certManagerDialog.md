@@ -95,7 +95,7 @@ import certificateManagerDialog from '@kit.DeviceCertificateKit';
 
 ## CertReference<sup>22+</sup>
 
-表示证书凭据类型。
+表示证书凭据的引用信息。
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -108,7 +108,7 @@ import certificateManagerDialog from '@kit.DeviceCertificateKit';
 
 ## UkeyAuthRequest<sup>22+</sup>
 
-提供USB凭据授权请求信息
+USB证书凭据授权请求信息。
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -120,7 +120,7 @@ import certificateManagerDialog from '@kit.DeviceCertificateKit';
 
 ## AuthorizeRequest<sup>22+</sup>
 
-提供证书授权请求信息
+证书授权请求信息。
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
@@ -547,7 +547,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 | 801      | Capability not supported.  |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
 | 29700002 | The user cancels the authorization.                                                                                                             |
-| 29700003 | The authentication operation fail, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
+| 29700003 | The authentication operation failed, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 
 **示例**：

@@ -24,4 +24,4 @@
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t credentialCount | 表示证书凭据详细信息的个数。 |
-| [OH_CM_Credential ](capi-certmanagertype-oh-cm-credential.md)*credential certPurpose | 表示证书凭据详细信息列表。|
+| [OH_CM_Credential ](capi-certmanagertype-oh-cm-credential.md)*credential certPurpose | 表示证书凭据详情列表。|

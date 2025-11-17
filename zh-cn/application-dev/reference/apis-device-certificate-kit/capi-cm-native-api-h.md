@@ -27,9 +27,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)](#OH_CertManager_GetUkeyCertificate) | 获取特定USB证书凭据详细信息列表。 |
-| [int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#OH_CertManager_GetPrivateCertificate) | 获取特定应用私有证书凭据详细信息。 |
-| [int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#OH_CertManager_GetPublicCertificate) | 获取特定用户公共证书凭据详细信息。 |
+| [int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)](#OH_CertManager_GetUkeyCertificate) | 获取特定USB证书凭据详情列表。 |
+| [int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#OH_CertManager_GetPrivateCertificate) | 获取指定应用私有证书凭据详情。 |
+| [int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)](#OH_CertManager_GetPublicCertificate) | 获取指定用户的公共证书凭据详细信息。 |
 | [void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)](#OH_CertManager_FreeUkeyCertificate) | 销毁证书详情信息列表。 |
 | [void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)](#OH_CertManager_FreeCredential) | 销毁证书详情信息。 |
 
@@ -71,7 +71,7 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 
 **描述**
 
-获取特定应用私有证书凭据详细信息。
+获取指定应用私有证书凭据详细信息。
 
 **起始版本：** 22
 
@@ -97,7 +97,7 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 
 **描述**
 
-获取特定用户公共证书凭据详细信息。
+获取指定用户的公共证书凭据详细信息。
 
 **起始版本：** 22
 
@@ -123,7 +123,7 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 **描述**
 
-销毁证书详情信息列表。
+销毁证书详情列表。
 
 **起始版本：** 22
 
@@ -142,7 +142,7 @@ void OH_CertManager_FreeCredential(OH_CM_Credential *certificate);
 
 **描述**
 
-销毁证书详情信息。
+销毁证书对象及其关联的所有数据。
 
 **起始版本：** 22
 
