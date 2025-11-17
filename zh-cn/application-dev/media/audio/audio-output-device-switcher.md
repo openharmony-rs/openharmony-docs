@@ -20,7 +20,7 @@
 
 ### 内置听筒和扬声器路由切换
 
-语音通话场景系统默认听筒发声，其他场景系统默认扬声器发声（如果连接外设系统默认通过外接设备发声）。
+如果未连接外设，语音通话场景系统默认听筒发声，其他场景系统默认扬声器发声；如果连接了外设，系统默认通过外接设备发声。
 
 调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
@@ -54,7 +54,7 @@
 
    > **说明：**
    >
-   > 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备会对当前应用所有适用范围内的音频流生效且会覆盖AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口设置的默认音频输出设备信息。
+   > 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备，会对当前应用所有适用范围内的音频流生效，且会覆盖AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口设置的默认音频输出设备信息。
 
    ```ts
    import { audio } from '@kit.AudioKit';  // 导入audio模块。
