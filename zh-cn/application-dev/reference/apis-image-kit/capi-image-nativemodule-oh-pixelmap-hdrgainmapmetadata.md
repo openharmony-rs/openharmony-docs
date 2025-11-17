@@ -1,7 +1,7 @@
 # OH_Pixelmap_HdrGainmapMetadata
 
 ```
-typedef struct {...} OH_Pixelmap_HdrGainmapMetadata
+typedef struct OH_Pixelmap_HdrGainmapMetadata {...} OH_Pixelmap_HdrGainmapMetadata
 ```
 
 ## 概述
