@@ -61,11 +61,9 @@ mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 ## responseRegionList<sup>23+</sup>
 
-responseRegionList(value: Array&lt;ResponseRegion): T
+responseRegionList(regions: Array&lt;ResponseRegion): T
 
 设置组件的触摸热区列表。采用responseRegionList接口时，responseRegion与mouseResponseRegion接口不再生效。
-
-**卡片能力：** 不支持
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -75,7 +73,7 @@ responseRegionList(value: Array&lt;ResponseRegion): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[ResponseRegion](#ResponseRegion对象说明)&gt;&nbsp; | 是   | 组件的触摸热区列表。<br/>默认值：不涉及<br/>合法取值范围：触摸热区数组<br/>非法值设置范围：恢复默认值 |
+| regions  | Array&lt;[ResponseRegion](#responseregion对象说明)&gt;&nbsp; | 是   | 组件的触摸热区列表。<br/>取值范围：触摸热区数组。<br/>非法值设置范围：恢复默认值。 |
 
 **返回值：**
 
@@ -110,9 +108,7 @@ responseRegionList(value: Array&lt;ResponseRegion): T
   >
   >  width和height不支持calc()的动态计算。
 
-## ResponseRegion对象说明
-
-**卡片能力：** 不支持
+## ResponseRegion对象说明<sup>23+</sup>
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -142,15 +138,15 @@ responseRegionList(value: Array&lt;ResponseRegion): T
 
 | 名称   | 值 | 说明                             |
 | ------ | -----|------------------------------- |
-| ALL    | 0 | 所有输入工具类型   |
-| FINGER | 1 | 手指   |
-| PEN    | 2 | 手写笔 |
-| MOUSE  | 3 | 鼠标   |
+| ALL    | 0 | 所有输入工具类型。   |
+| FINGER | 1 | 手指。   |
+| PEN    | 2 | 手写笔。 |
+| MOUSE  | 3 | 鼠标。   |
 
 
 ## 示例
 
-### 示例1（采用responseRegion接口设置触摸热区）
+### 示例1（通过responseRegion接口设置触摸热区）
 
 该示例通过responseRegion设置按钮的触摸热区以响应点击事件。
 
@@ -198,9 +194,9 @@ struct TouchTargetExample {
 
 ![touchtarget.gif](figures/touchtarget.gif)
 
-### 示例2（采用responseRegionList接口设置触摸热区）
+### 示例2（通过responseRegionList接口设置触摸热区）
 
-该示例通过responseRegionList设置按钮的触摸热区以响应点击事件。
+从API version 23开始，该示例通过responseRegionList设置按钮的触摸热区以响应点击事件。
 
 ```ts
 // xxx.ets
