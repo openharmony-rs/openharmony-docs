@@ -1,4 +1,4 @@
-****************# @ohos.wifiManager (WLAN)（系统接口）
+# @ohos.wifiManager (WLAN)（系统接口）
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
