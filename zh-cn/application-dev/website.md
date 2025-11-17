@@ -5492,6 +5492,7 @@
     - [Zlib](reference/native-lib/zlib.md)
     - [Mutex (互斥锁)](reference/native-lib/arkts1.2-mutex.md)
     - [RWLock (读写锁)](reference/native-lib/arkts1.2-rwlock.md)
+    - [ConcurrentSet (并发集合)](reference/native-lib/arkts-sta-concurrentset.md)
     - Vulkan<!--vulkan-guide-->
       - [Vulkan开发指导](reference/native-lib/vulkan-guidelines.md)
       - [Vulkan支持能力](reference/native-lib/vulkan.md)
