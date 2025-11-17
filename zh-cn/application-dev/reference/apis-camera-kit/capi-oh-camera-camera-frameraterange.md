@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Camera_FrameRateRange
+typedef struct Camera_FrameRateRange {...} Camera_FrameRateRange
 ```
 
 ## 概述
