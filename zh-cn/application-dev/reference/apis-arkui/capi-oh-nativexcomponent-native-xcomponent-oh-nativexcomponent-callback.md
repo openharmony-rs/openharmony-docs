@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
+```
+
 ## 概述
 
 注册Surface生命周期和触摸事件回调。

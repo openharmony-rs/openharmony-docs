@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_BarrierOption ArkUI_BarrierOption
+```
+
 ## 概述
 
 barrier参数，用于定义barrier的id、方向和生成时所依赖的组件。

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_FloatAnimatableProperty* ArkUI_FloatAnimatablePropertyHandle
+```
+
 ## 概述
 
 定义可动画的浮点数属性指针。

@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_NativeDialogAPI_2
+```
+
 ## 概述
 
 ArkUI提供的Native侧自定义弹窗接口集合。

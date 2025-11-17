@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_DrawableDescriptor_AnimationController ArkUI_DrawableDescriptor_AnimationController
+```
+
 ## 概述
 
 定义DrawableDescriptor动图控制器对象。

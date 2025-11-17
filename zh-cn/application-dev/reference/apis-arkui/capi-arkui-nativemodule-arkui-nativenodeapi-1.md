@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_NativeNodeAPI_1
+```
+
 ## 概述
 
 ArkUI提供的Native侧Node类型接口集合。Node模块相关接口需要在主线程上调用。

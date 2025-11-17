@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_Context ArkUI_Context
+```
+
 ## 概述
 
 native UI的上下文实例对象。

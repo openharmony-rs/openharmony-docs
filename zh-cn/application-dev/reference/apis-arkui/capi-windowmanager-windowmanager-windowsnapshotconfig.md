@@ -7,6 +7,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} WindowManager_WindowSnapshotConfig
+```
+
 ## 概述
 
 主窗口截图的配置项。
