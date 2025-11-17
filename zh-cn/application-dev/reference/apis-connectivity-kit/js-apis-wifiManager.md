@@ -196,6 +196,8 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 获取扫描结果，使用Promise异步回调。
 
+- 返回一个Promise对象，解析后得到一个包含多个WifiScanInfo对象的数组，每个对象表示一个WLAN网络的扫描信息。
+
 > **说明：**
 > 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)代替。
 
@@ -224,6 +226,8 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 获取扫描结果，使用callback异步回调。
+
+- 通过回调函数返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个WLAN网络的扫描信息。
 
 > **说明：**
 > 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)代替。
@@ -295,7 +299,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;
 
-获取扫描结果，使用同步方式返回结果。
+获取扫描结果，使用同步方式返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个WLAN网络的扫描信息。
 
 > **说明：**
 > 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)代替。
@@ -437,6 +441,9 @@ WLAN热点信息。
 
 Wi-Fi 设备地址（MAC/bssid）类型。
 
+- DeviceAddressType是一个用于表示Wi-Fi设备地址（MAC地址或BSSID）的类型，通常用于标识Wi-Fi设备或接入点的唯一地址。
+- 在Wi-Fi相关操作中，如连接指定的Wi-Fi网络、获取设备信息等，可能需要使用DeviceAddressType类型的参数。
+
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -550,6 +557,10 @@ WLAN配置信息。
 
 可扩展身份验证协议配置信息。
 
+- WifiEapConfig是一个用于配置WLAN网络EAP认证的类型。
+- 通常用于需要EAP认证的WLAN网络连接，如企业级网络。
+- 包含EAP认证方式、第二阶段认证方式、身份信息、密码、证书等配置项。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
@@ -648,6 +659,10 @@ WAPI认证方式的枚举。
 addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 添加候选网络配置，使用Promise异步回调，使用前先使能WLAN。
+
+- 该接口用于添加一个WLAN候选配置。
+- 通过传入WifiDeviceConfig对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
+- 返回一个Promise对象，解析后得到一个数字，表示配置的ID。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -850,6 +865,10 @@ removeDevice(id: number): void
 
 移除网络配置。
 
+- 通过网络配置ID删除已保存的WIFI网络配置信息
+- 该操作为同步执行，无需异步回调
+- 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络
+
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -889,6 +908,10 @@ removeDevice(id: number): void
 getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取候选网络配置。
+
+- 该接口返回系统中所有已保存但当前未连接的WIFI网络配置
+- 候选网络通常是指曾经连接过或者手动添加的网络配置
+- 可用于展示可连接的网络列表或进行网络管理操作
 
 **需要权限：**
 

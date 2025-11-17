@@ -60,6 +60,10 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 设置是否始终允许扫描。
 
+- 该接口控制设备是否可以在Wi-Fi关闭时仍然进行网络扫描
+- 启用后即使Wi-Fi开关关闭，系统仍可以扫描附近的Wi-Fi网络
+- 主要用于位置服务和网络发现功能
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
