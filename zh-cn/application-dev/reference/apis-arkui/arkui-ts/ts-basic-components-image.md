@@ -579,6 +579,8 @@ orientation(orientation: ImageRotateOrientation)
 
 设置图像内容的显示方向。
 
+不支持设置[alt](#alt)占位图。
+
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
