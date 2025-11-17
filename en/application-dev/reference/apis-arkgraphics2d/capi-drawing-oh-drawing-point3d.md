@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_Point3D
+```
+
 ## Overview
 
 This struct describes a three-dimensional coordinate point.

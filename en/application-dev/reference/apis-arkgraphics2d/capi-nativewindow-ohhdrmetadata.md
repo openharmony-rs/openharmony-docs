@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OHHDRMetaData
+```
+
 ## **Overview**
 
 Describes the HDR metadata.

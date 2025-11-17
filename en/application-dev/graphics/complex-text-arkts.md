@@ -482,7 +482,7 @@ You can add text decoration lines to improve the visual effect and readability o
 
 To use a decoration line, you need to initialize the decoration line style object and add it to the text style so that the decoration line takes effect during text drawing.
 
-For details, see Example 1.
+For details, see [Example 1].
 
 ### Font Feature
 
@@ -490,7 +490,7 @@ For details, see Example 1.
 
 Common **FontFeature** includes liga, frac, and case, which can be enabled only when the corresponding TTF file is supported.
 
-For details, see Example 1.
+For details, see [Example 1].
 
 ### Variable Font
 
@@ -498,7 +498,7 @@ For details, see Example 1.
 
 Unlike traditional font files (each variant requires an independent file), variable fonts contain multiple variant axes in a single font file. You can use variable fonts to implement smooth transition during text rendering and drawing.
 
-For details, see Example 2.
+For details, see [Example 2].
 
 ### Text shadow
 
@@ -508,7 +508,7 @@ TextShadow has three attributes: color (shadow color), point (shadow offset base
 
 To use the shadow effect, you need to set the corresponding shadow effect array in the text style so that the shadow effect takes effect during text drawing.
 
-For details, see Example 2.
+For details, see [Example 2].
 
 ### Placeholder
 
@@ -516,7 +516,7 @@ Placeholder drawing is used to render placeholders in text.
 
 Placeholders are also key to implementing mixed layout of images and text. They are visual elements used to provide or replace a position before the actual image or content is registered.
 
-For details, see Example 2.
+For details, see [Example 2].
 
 ### Automatic Spacing
 
@@ -538,7 +538,7 @@ let myParagraphStyle: text.ParagraphStyle = {
 };
 ```
 
-For details, see Example 3.
+For details, see [Example 3].
 
 ### Superscript and subscript
 
@@ -550,7 +550,7 @@ let superScriptStyle: text.TextStyle = {
 };
 ```
 
-For details, see Example 4.
+For details, see [Example 4].
 
 ### High contrast ratio
 
@@ -558,7 +558,7 @@ High contrast can change dark text to black and light text to white. You can ena
 
 There are three high contrast modes. For details, see [TextHighContrast](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#texthighcontrast20).
 
-For details, see Example 5.
+For details, see [Example 5].
 
 ### Line Height Adjustment
 
@@ -1376,132 +1376,133 @@ The following figures show the effect.
 ### Example 6 (line height adjustment mode 1)
 In this example, the upper and lower limits of the line height are set to the same value to show the drawing effect when the line height is fixed.
 
-```ts
-import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+  
+  ``` TypeScript
+  import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+  import { text } from '@kit.ArkGraphics2D'
 
-// Create a MyRenderNode class and draw the text.
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    let canvas = context.canvas;
+  // Create a MyRenderNode class and draw the text.
+  class MyRenderNode extends RenderNode {
+    async draw(context: DrawContext) {
+      let canvas = context.canvas;
 
-    let myTextStyle: text.TextStyle = {
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      fontSize: 50,
-      // Set the upper limit of the row height.
-      lineHeightMaximum: 65,
-      // Set the lower limit of the row height.
-      lineHeightMinimum: 65,
-    };
+      let myTextStyle: text.TextStyle = {
+        color: {
+          alpha: 255,
+          red: 255,
+          green: 0,
+          blue: 0
+        },
+        fontSize: 50,
+        // Set the upper limit of the row height.
+        lineHeightMaximum: 65,
+        // Set the lower limit of the row height.
+        lineHeightMinimum: 65,
+      };
 
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-    };
+      let myParagraphStyle: text.ParagraphStyle = {
+        textStyle: myTextStyle,
+      };
 
-    let fontCollection = text.FontCollection.getGlobalInstance();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+      let fontCollection = text.FontCollection.getGlobalInstance();
+      let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
 
-    // Set the style to be applied to the text to be typeset.
-    paragraphBuilder.pushStyle(myTextStyle);
-    // Add text.
-    paragraphBuilder.addText("Hello World!");
+      // Set the style to be applied to the text to be typeset.
+      paragraphBuilder.pushStyle(myTextStyle);
+      // Add text.
+      paragraphBuilder.addText('Hello World!');
 
-    // Generate a paragraph.
-    let paragraph = paragraphBuilder.build();
-    // Layout
-    paragraph.layoutSync(1000);
-    // Draw text.
-    paragraph.paint(canvas, 0, 0);
-  }
-}
-
-// Create a MyRenderNode object.
-const textNode = new MyRenderNode()
-// Define the pixel format of MyRenderNode.
-textNode.frame = {
-  x: 0,
-  y: 0,
-  width: 400,
-  height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
-    if (this.rootNode == null) {
-      return this.rootNode
+      // Generate a paragraph.
+      let paragraph = paragraphBuilder.build();
+      // Layout
+      paragraph.layoutSync(1000);
+      // Draw text.
+      paragraph.paint(canvas, 0, 0);
     }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 10,
-        height: 500
+  }
+
+  // Create a MyRenderNode object.
+  const textNode = new MyRenderNode()
+  // Define the pixel format of MyRenderNode.
+  textNode.frame = {
+    x: 0,
+    y: 0,
+    width: 400,
+    height: 600
+  }
+  textNode.pivot = { x: 0.2, y: 0.8 };
+  textNode.scale = { x: 1, y: 1 };
+
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+
+    makeNode(uiContext: UIContext): FrameNode {
+      this.rootNode = new FrameNode(uiContext)
+      if (this.rootNode == null) {
+        return this.rootNode;
       }
-      renderNode.pivot = { x: 50, y: 50 }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.frame = {
+          x: 0,
+          y: 0,
+          width: 10,
+          height: 500
+        }
+        renderNode.pivot = { x: 50, y: 50 };
+      }
+      return this.rootNode;
     }
-    return this.rootNode
-  }
 
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.appendChild(node)
-    }
-  }
-
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.clearChildren()
-    }
-  }
-}
-
-let myNodeController: MyNodeController = new MyNodeController()
-
-async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
-}
-
-@Entry
-@Component
-struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(myNodeController)
-          .height('100%')
-          .width('100%')
-        Text("Test for line height limit")
-          .onAppear(() => {
-            performTask();
-          })
+    addNode(node: RenderNode): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.appendChild(node);
       }
     }
+
+    clearNodes(): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode()
+      if (renderNode != null) {
+        renderNode.clearChildren();
+      }
+    }
+  }
+
+  let myNodeController: MyNodeController = new MyNodeController();
+
+  async function performTask() {
+    myNodeController.clearNodes();
+    myNodeController.addNode(textNode);
+  }
+
+  @Entry
+  @Component
+  struct Font08 {
+    @State src: Resource = $r('app.media.startIcon')
+    build() {
+      Column() {
+        Row() {
+          NodeContainer(myNodeController)
+            .height('100%')
+            .width('100%')
+          Text('Test for line height limit')
+            .onAppear(() => {
+              performTask();
+            })
+        }
+      }
       .width('100%')
+    }
   }
-}
-```
+  ```
 
 The effect is as follows:
 
@@ -1513,135 +1514,135 @@ The effect is as follows:
 ### Example 7 (Line Height Adjustment Mode 2)
 This example uses the line height scaling style FontHeight as an example to describe how to draw and display text after line height adjustment.
 
-```ts
-import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  
+  ``` TypeScript
+  import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+  import { text } from '@kit.ArkGraphics2D'
 
-// Create a MyRenderNode class and draw the text.
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    let canvas = context.canvas;
+  // Create a MyRenderNode class and draw the text.
+  class MyRenderNode extends RenderNode {
+    async draw(context: DrawContext) {
+      let canvas = context.canvas;
 
-    let myTextStyle: text.TextStyle = {
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      fontSize: 50,
-      // Enable line height scaling.
-      heightOnly: true,
-      // Set the line height scaling coefficient.
-      heightScale: 1.5,
-      // Set the line height scaling style.
-      lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT,
-    };
+      let myTextStyle: text.TextStyle = {
+        color: {
+          alpha: 255,
+          red: 255,
+          green: 0,
+          blue: 0
+        },
+        fontSize: 50,
+        // Enable line height scaling.
+        heightOnly: true,
+        // Set the line height scaling coefficient.
+        heightScale: 1.5,
+        // Set the line height scaling style.
+        lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT,
+      };
 
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-    };
+      let myParagraphStyle: text.ParagraphStyle = {
+        textStyle: myTextStyle,
+      };
 
-    let fontCollection = text.FontCollection.getGlobalInstance();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+      let fontCollection = text.FontCollection.getGlobalInstance();
+      let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
 
-    // Set the style to be applied to the text to be typeset.
-    paragraphBuilder.pushStyle(myTextStyle);
-    // Add text.
-    paragraphBuilder.addText("Hello World!");
+      // Set the style to be applied to the text to be typeset.
+      paragraphBuilder.pushStyle(myTextStyle);
+      // Add text.
+      paragraphBuilder.addText('Hello World!');
 
-    // Generate a paragraph.
-    let paragraph = paragraphBuilder.build();
-    // Layout
-    paragraph.layoutSync(1000);
-    // Draw text.
-    paragraph.paint(canvas, 0, 0);
-  }
-}
-
-// Create a MyRenderNode object.
-const textNode = new MyRenderNode()
-// Define the pixel format of MyRenderNode.
-textNode.frame = {
-  x: 0,
-  y: 0,
-  width: 400,
-  height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
-    if (this.rootNode == null) {
-      return this.rootNode
+      // Generate a paragraph.
+      let paragraph = paragraphBuilder.build();
+      // Layout
+      paragraph.layoutSync(1000);
+      // Draw text.
+      paragraph.paint(canvas, 0, 0);
     }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 10,
-        height: 500
+  }
+
+  // Create a MyRenderNode object.
+  const textNode = new MyRenderNode();
+  // Define the pixel format of MyRenderNode.
+  textNode.frame = {
+    x: 0,
+    y: 0,
+    width: 400,
+    height: 600
+  }
+  textNode.pivot = { x: 0.2, y: 0.8 };
+  textNode.scale = { x: 1, y: 1 };
+
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+
+    makeNode(uiContext: UIContext): FrameNode {
+      this.rootNode = new FrameNode(uiContext)
+      if (this.rootNode == null) {
+        return this.rootNode;
       }
-      renderNode.pivot = { x: 50, y: 50 }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.frame = {
+          x: 0,
+          y: 0,
+          width: 10,
+          height: 500
+        };
+        renderNode.pivot = { x: 50, y: 50 };
+      }
+      return this.rootNode;
     }
-    return this.rootNode
-  }
 
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.appendChild(node)
-    }
-  }
-
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.clearChildren()
-    }
-  }
-}
-
-let myNodeController: MyNodeController = new MyNodeController()
-
-async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
-}
-
-@Entry
-@Component
-struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(myNodeController)
-          .height('100%')
-          .width('100%')
-        Text("Test for line height limit")
-          .onAppear(() => {
-            performTask();
-          })
+    addNode(node: RenderNode): void {
+      if (this.rootNode == null) {
+        return
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.appendChild(node);
       }
     }
+
+    clearNodes(): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode()
+      if (renderNode != null) {
+        renderNode.clearChildren();
+      }
+    }
+  }
+
+  let myNodeController: MyNodeController = new MyNodeController();
+
+  async function performTask() {
+    myNodeController.clearNodes();
+    myNodeController.addNode(textNode);
+  }
+
+  @Entry
+  @Component
+  struct Font08 {
+    @State src: Resource = $r('app.media.startIcon')
+    build() {
+      Column() {
+        Row() {
+          NodeContainer(myNodeController)
+            .height('100%')
+            .width('100%')
+          Text('Test for line height limit')
+            .onAppear(() => {
+              performTask();
+            })
+        }
+      }
       .width('100%')
+    }
   }
-}
-```
-
+  ```
 The effect is as follows:
 
 | Line height scaling style| Example (The black box only shows the text drawing area and is not drawn in actual.)|
@@ -1652,133 +1653,133 @@ The effect is as follows:
 ### Example 8 (line spacing adjustment)
 The following uses disabling the paragraph ascent and descent and setting the line spacing as an example to show the text drawing and display after the line spacing is increased.
 
-```ts
-import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  
+  ``` TypeScript
+  import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+  import { text } from '@kit.ArkGraphics2D'
 
-// Create a MyRenderNode class and draw the text.
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    let canvas = context.canvas;
+  // Create a MyRenderNode class and draw the text.
+  class MyRenderNode extends RenderNode {
+    async draw(context: DrawContext) {
+      let canvas = context.canvas;
 
-    let myTextStyle: text.TextStyle = {
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      fontSize: 50,
-    };
+      let myTextStyle: text.TextStyle = {
+        color: {
+          alpha: 255,
+          red: 255,
+          green: 0,
+          blue: 0
+        },
+        fontSize: 50,
+      };
 
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-      // Set the row spacing.
-      lineSpacing: 100,
-      // Disable the top and bottom of the paragraph.
-      textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
-    };
+      let myParagraphStyle: text.ParagraphStyle = {
+        textStyle: myTextStyle,
+        // Set the row spacing.
+        lineSpacing: 100,
+        // Disable the paragraph ascender and descender.
+        textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
+      };
 
-    let fontCollection = text.FontCollection.getGlobalInstance();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+      let fontCollection = text.FontCollection.getGlobalInstance();
+      let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
 
-    // Set the style to be applied to the text to be typeset.
-    paragraphBuilder.pushStyle(myTextStyle);
-    // Add text.
-    paragraphBuilder.addText("Hello World!");
+      // Set the style to be applied to the text to be typeset.
+      paragraphBuilder.pushStyle(myTextStyle);
+      // Add text.
+      paragraphBuilder.addText('Hello World!');
 
-    // Generate a paragraph.
-    let paragraph = paragraphBuilder.build();
-    // Layout
-    paragraph.layoutSync(200);
-    // Draw text.
-    paragraph.paint(canvas, 0, 0);
-  }
-}
-
-// Create a MyRenderNode object.
-const textNode = new MyRenderNode()
-// Define the pixel format of MyRenderNode.
-textNode.frame = {
-  x: 0,
-  y: 0,
-  width: 400,
-  height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
-    if (this.rootNode == null) {
-      return this.rootNode
+      // Generate a paragraph.
+      let paragraph = paragraphBuilder.build();
+      // Layout
+      paragraph.layoutSync(200);
+      // Draw text.
+      paragraph.paint(canvas, 0, 0);
     }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 10,
-        height: 500
+  }
+
+  // Create a MyRenderNode object.
+  const textNode = new MyRenderNode();
+  // Define the pixel format of MyRenderNode.
+  textNode.frame = {
+    x: 0,
+    y: 0,
+    width: 400,
+    height: 600
+  }
+  textNode.pivot = { x: 0.2, y: 0.8 };
+  textNode.scale = { x: 1, y: 1 };
+
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+
+    makeNode(uiContext: UIContext): FrameNode {
+      this.rootNode = new FrameNode(uiContext);
+      if (this.rootNode == null) {
+        return this.rootNode
       }
-      renderNode.pivot = { x: 50, y: 50 }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.frame = {
+          x: 0,
+          y: 0,
+          width: 10,
+          height: 500
+        }
+        renderNode.pivot = { x: 50, y: 50 };
+      }
+      return this.rootNode;
     }
-    return this.rootNode
-  }
 
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.appendChild(node)
-    }
-  }
-
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.clearChildren()
-    }
-  }
-}
-
-let myNodeController: MyNodeController = new MyNodeController()
-
-async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
-}
-
-@Entry
-@Component
-struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(myNodeController)
-          .height('100%')
-          .width('100%')
-        Text("Test for lineSpacing and height behavior")
-          .onAppear(() => {
-            performTask();
-          })
+    addNode(node: RenderNode): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.appendChild(node);
       }
     }
+
+    clearNodes(): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.clearChildren();
+      }
+    }
+  }
+
+  let myNodeController: MyNodeController = new MyNodeController();
+
+  async function performTask() {
+    myNodeController.clearNodes();
+    myNodeController.addNode(textNode);
+  }
+
+  @Entry
+  @Component
+  struct Font08 {
+    @State src: Resource = $r('app.media.startIcon')
+    build() {
+      Column() {
+        Row() {
+          NodeContainer(myNodeController)
+            .height('100%')
+            .width('100%')
+          Text('Test for lineSpacing and height behavior')
+            .onAppear(() => {
+              performTask();
+            })
+        }
+      }
       .width('100%')
+    }
   }
-}
-```
-
+  ```
 The effect is as follows.
 
 | Rising part Falling part Switch| Effect (The black box is only used to draw the text area and is not drawn.)|

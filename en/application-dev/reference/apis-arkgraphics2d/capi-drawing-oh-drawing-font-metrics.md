@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_Font_Metrics
+```
+
 ## Overview
 
 This struct describes the measurement information about a font.

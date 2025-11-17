@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Rect OH_Drawing_Rect
+```
+
 ## Overview
 
 Defines a struct for a rectangle.

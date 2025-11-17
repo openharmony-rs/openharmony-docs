@@ -351,14 +351,6 @@ libnative_buffer.so
             }
         ```
 
-    4. Destroy NativeWindow when it is no longer needed.
-        <!-- @[destroy_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-
-        ``` C++
-        (void)OH_NativeWindow_DestroyNativeWindow(nativeWindow_);
-        nativeWindow_ = nullptr;
-        ```
-
 6. Update the content to the OpenGL texture.
    <!-- @[update_surfaceimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
