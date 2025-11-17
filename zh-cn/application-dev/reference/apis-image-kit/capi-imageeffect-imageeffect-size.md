@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} ImageEffect_Size
+typedef struct ImageEffect_Size {...} ImageEffect_Size
 ```
 
 ## 概述
