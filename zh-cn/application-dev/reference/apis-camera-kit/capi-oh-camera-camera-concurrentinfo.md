@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Camera_ConcurrentInfo
+typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
 ```
 
 ## 概述
