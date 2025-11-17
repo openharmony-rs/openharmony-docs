@@ -1422,7 +1422,7 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | maxPower       | number                                           | 否 | 否 |最大功耗，以毫安为单位。    |
 | name           | string                                           | 否 | 否 |配置的名称，可以为空。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |true:当前配置支持远程唤醒，false:当前配置不支持远程唤醒。 |
-| isSelfPowered  | boolean                                          | 否 | 否 | true:当前配置支持独立电源，false:当前配置不支持独立电源。 |
+| isSelfPowered  | boolean                                          | 否 | 否 |true:当前配置支持独立电源，false:当前配置不支持独立电源。 |
 | interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | 否 | 否 |配置支持的接口属性。      |
 
 ## USBDevice
