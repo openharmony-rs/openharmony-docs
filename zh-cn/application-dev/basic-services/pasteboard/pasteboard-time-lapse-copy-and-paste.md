@@ -58,7 +58,7 @@
 
 1. 引用头文件。
    
-   <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
 #include <database/pasteboard/oh_pasteboard.h>
@@ -71,7 +71,7 @@
 
 2. 定义`OH_UdmfRecordProvider`的数据提供函数和实例注销回调函数。
    
-   <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
 // 1. 获取数据时触发的提供剪贴板数据的回调函数。
@@ -103,7 +103,7 @@ void ProviderFinalizeCallback(void* context)
 
 3. 定义`OH_Pasteboard_SyncDelayedDataAsync`的回调函数。
 
-   <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
 // 3. 定义应用退出时调用延迟同步接口触发的回调函数。
@@ -149,7 +149,7 @@ void SyncCallback(int errorCode)
 
 5. 从剪贴板获取延迟复制数据。
    
-   <!-- @[pasteboard_timelapse_Record5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_timelapse_Record5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
 void ProcessRecordType(OH_UdmfRecord* record, const char* recordType)
@@ -237,7 +237,7 @@ void ProcessRecord(OH_UdmfRecord* record)
 
 7. 使用完毕后需要及时释放相关对象的内存。
    
-   <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
     OH_UdsPlainText_Destroy(udsText);
@@ -318,7 +318,7 @@ void ProcessRecord(OH_UdmfRecord* record)
 
 4. 从系统剪贴板中读取这条text数据。
 
-  <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
+   <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
   
   ``` TypeScript
   let getPlainTextUnifiedData = (() => {
