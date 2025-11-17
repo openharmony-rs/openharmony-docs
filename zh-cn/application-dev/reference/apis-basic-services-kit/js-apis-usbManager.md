@@ -303,7 +303,7 @@ removeRight(deviceName: string): boolean
 function removeRight(): boolean {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
-    console.info(`device list is empty`);c
+    console.info(`device list is empty`);
     return false;
   }
 
