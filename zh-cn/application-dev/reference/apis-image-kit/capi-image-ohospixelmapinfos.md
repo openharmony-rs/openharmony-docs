@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OhosPixelMapInfos
+typedef struct OhosPixelMapInfos {...} OhosPixelMapInfos
 ```
 
 ## 概述
