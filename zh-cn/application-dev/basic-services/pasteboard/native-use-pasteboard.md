@@ -61,14 +61,13 @@
 2. 引用头文件。
 
    <!-- @[pasteboard_native2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include <cstdio>
-// [Start pasteboard_timelapse_Record1]
-#include <database/pasteboard/oh_pasteboard.h>
-#include <database/udmf/udmf.h>
-#include <database/udmf/uds.h>
-```
+   
+   ``` C++
+   #include <cstdio>
+   #include <database/pasteboard/oh_pasteboard.h>
+   #include <database/udmf/udmf.h>
+   #include <database/udmf/uds.h>
+   ```
 
 
 3. 定义剪贴板变化监听的回调函数。
