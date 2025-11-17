@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件对齐方式、布局方向及显示位置。
 
@@ -329,6 +329,10 @@ chainMode(direction: Axis, style: ChainStyle): T
 chainWeight(chainWeight: ChainWeightOptions): T
 
 对形成链的组件进行重新布局。仅当父容器为[RelativeContainer](ts-container-relativecontainer.md)时生效。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

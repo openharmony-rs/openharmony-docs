@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 音频池提供了短音频的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。
 
@@ -63,7 +63,7 @@ import { audio } from '@kit.AudioKit';
 
 ## SoundPool
 
-音频池提供了系统声音的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能, 在调用SoundPool的接口前，需要先通过[createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10)创建实例。
+音频池提供了系统声音的加载、播放、音量设置、循环设置、停止播放和资源卸载等功能，在调用SoundPool的接口前，需要先通过[media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10)创建实例。
 
 > **说明：**
 >

@@ -1,5 +1,12 @@
 # Adding a WantAgent Object to a Notification
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 An application requests [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) from Ability Kit and encapsulates it into the notification. When a notification is published, the user may tap a message or a button in the notification panel to start the target application or publish a common event.
 
 The following figure shows a notification carrying action buttons.
@@ -43,8 +50,8 @@ The following figure shows a notification carrying action buttons.
      wants: [
        {
          deviceId: '',
-         bundleName: 'com.samples.notification',
-         abilityName: 'SecondAbility',
+         bundleName: 'com.samples.notification', // Use the actual bundle name.
+         abilityName: 'SecondAbility', // Use the actual ability name.
          action: '',
          entities: [],
          uri: '',

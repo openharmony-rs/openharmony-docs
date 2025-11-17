@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
 
@@ -166,6 +166,7 @@ auto-stretch模式只支持track-size为一个有效行高值，并且track-size
 >  - 此模式下以下属性不生效：layoutDirection、maxCount、minCount、cellLength。
 >  - 网格交叉轴方向尺寸根据Grid自身内容区域交叉轴尺寸减去交叉轴方向所有Gap后按所占比重分配。
 >  - 网格主轴方向尺寸取当前网格交叉轴方向所有GridItem主轴方向尺寸最大值。
+>  - 此模式下GridItem交叉轴方向尺寸与网格一致，可以通过设置[constraintSize](./ts-universal-attributes-size.md#constraintsize)中的maxWidth或maxHeight限制GridItem交叉轴方向尺寸小于网格。
 >
 >  3、rowsTemplate、columnsTemplate都不设置：
 >
@@ -614,6 +615,8 @@ onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => (() => any) \
 
 拖拽浮起的网格元素可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
+不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现griditem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -695,7 +698,7 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 | event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
 | itemIndex   | number                                | 是   | 拖拽起始位置。 |
 | insertIndex | number                                | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                               | 是   | 是否成功释放   |
+| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的网格元素之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的网格元素之内；false：表示拖拽释放位置在设置了onItemDrop的网格元素之外。  |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -835,7 +838,7 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | 是 | 每帧滚动的偏移量，Grid的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| scrollOffset | number | 是 | 相对于上一帧的偏移量，Grid的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
 ## ComputedBarAttribute<sup>10+</sup>对象说明
@@ -1930,7 +1933,7 @@ struct GridExample {
 
 ### 示例12（方向键走焦换行模式）
 
-该示例通过focusWrapMode接口，实现了Grid组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了Grid组件方向键走焦换行效果。
 
 ```ts
 // xxx.ets
@@ -2730,3 +2733,75 @@ struct GridItemExample {
 ```
 
 ![gridCustomDrag](figures/gridCustomDrag.gif)
+
+### 示例17（通过拖拽事件实现GridItem拖拽）
+
+该示例通过[拖拽事件](./ts-universal-events-drag-drop.md)实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
+GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct Example {
+  numbers: GridDataSource = new GridDataSource([]);
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let index = 0; index < 100; index++) {
+      list.push(index.toString());
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  changeIndex(index1: number, index2: number) { // 交换数组位置
+    console.info(index1 + 'index2:' + index2);
+    this.numbers.swapItem(index1, index2);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Grid() {
+        LazyForEach(this.numbers, (item: number, index: number) => {
+          GridItem() {
+            Text(item + '')
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width(80)
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+          .width(90)
+          .height(90)
+          .selectable(true)
+          .selected(true)
+          .allowDrop([])
+          .onDragStart((event: DragEvent) => {
+            return { extraInfo: index + '' };
+          })
+          .onDragEnter((event: DragEvent, extraParams?: string) => {
+            console.info(index + "" + extraParams);
+          })
+          .onDragEnd((event: DragEvent, extraParams?: string) => {
+            console.info('onDragEnd' + index + "" + extraParams);
+          })
+          .onDrop((event?: DragEvent, extraParams?: string) => {
+            console.info('drop:' + item + "" + extraParams + JSON.stringify(event!));
+            this.changeIndex(parseInt(JSON.parse(extraParams!).extraInfo), index);
+          })
+        }, (item: string) => item)
+      }
+      .columnsGap(5)
+      .rowsGap(5)
+      .columnsTemplate('1fr 1fr 1fr')
+      .height(300)
+    }
+    .width('100%')
+  }
+}
+```
+
+![universal-drag-drop-GridItem](figures/universal-drag-drop-GridItem.gif)

@@ -4,9 +4,9 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-当开发者希望在组件上设置自定义的属性时，可以使用自定义属性设置功能，在组件上设置自定义的属性。而这些自定义属性可以在其对应的FrameNode上获取，从而实现更自由的组件管理。
+当开发者希望在组件上设置自定义的属性时，可以使用自定义属性设置功能。这些自定义属性可以在其对应的FrameNode上获取，从而实现更自由的组件管理。
 
 >  **说明：**
 >
@@ -50,7 +50,8 @@ type Optional\<T> = T | undefined
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-| T \| undefined | 定义可选类型，其值可以是undefined。 |
+| T | 表示该类型声明的对象是自定义类型。 |
+| undefined | 表示该类型声明的对象是undefined。 |
 
 ## 示例
 
@@ -75,7 +76,7 @@ struct CustomPropertyExample {
             for (let i = 1; i < 4; i++) {
               const key = 'customProperty' + i;
               const property = node.getCustomProperty(key);
-              console.log(key, JSON.stringify(property));
+              console.info(key, JSON.stringify(property));
             }
           }
         }

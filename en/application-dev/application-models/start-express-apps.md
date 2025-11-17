@@ -1,5 +1,12 @@
 # Using startAbilityByType to Start an Express Delivery Application
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: AGC-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 This topic describes how to open the vertical domain panel of express delivery applications.
 
 For example, in a messaging application, when a user receives a delivery tracking number, the application can identify this number and provide a link for querying the package. After the user touches the link, the application calls [UIAbilityContext.startAbilityByType](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybytype11) or [UIExtensionContentSession.startAbilityByType](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#startabilitybytype11) to open a panel. This panel displays all available applications on the device that support express delivery query, enabling the user to select and switch to the application that meets their needs.
@@ -43,10 +50,10 @@ If the **type** field in **startAbilityByType** is set to **express**, the inten
                             };
                             let abilityStartCallback: common.AbilityStartCallback = {
                                 onError: (code: number, name: string, message: string) => {
-                                    console.log(`onError code ${code} name: ${name} message: ${message}`);
+                                    console.error(`onError code ${code} name: ${name} message: ${message}`);
                                 },
                                 onResult: (result) => {
-                                    console.log(`onResult result: ${JSON.stringify(result)}`);
+                                    console.info(`onResult result: ${JSON.stringify(result)}`);
                                 }
                             }
 
@@ -55,7 +62,7 @@ If the **type** field in **startAbilityByType** is set to **express**, the inten
                                     if (err) {
                                         console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
                                     } else {
-                                        console.log(`success`);
+                                        console.info(`success`);
                                     }
                                 });
                         });

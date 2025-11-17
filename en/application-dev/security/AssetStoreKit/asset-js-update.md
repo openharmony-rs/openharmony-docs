@@ -1,5 +1,12 @@
 # Updating an Asset (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 You can use [update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate), an asynchronous API, or [updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12), a synchronous API, to update an asset.
@@ -8,7 +15,7 @@ The following table describes the attributes of **AssetMap** for updating an ass
 
 >**NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 - Attributes of **AssetMap** in **query**:
 
@@ -55,7 +62,7 @@ The following table describes the attributes of **AssetMap** for updating an ass
 >
 > The **asset** module provides an asynchronous API and a synchronous API for updating an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
-> For details about how to update an asset in a group, see [Updating an asset in a Group](asset-js-group-access-control.md#updating-an-asset-in-a-group).
+> For details about how to update an asset in a group, see [Updating an Asset in a Group](asset-js-group-access-control.md#updating-an-asset-in-a-group).
 
 Update asset **demo_alias** as follows: change the asset plaintext to **demo_pwd_new** and additional attribute to **demo_label_new**.
 
@@ -76,12 +83,11 @@ attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
 attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
 try {
   asset.update(query, attrsToUpdate).then(() => {
-    console.info(`Asset updated successfully.`);
+    console.info(`Succeeded in updating Asset.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to update Asset. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

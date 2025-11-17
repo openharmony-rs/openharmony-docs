@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 本开发指导将介绍如何使用AVPlayer开发播放功能，在不同的场景下如何设置URL。
 
 当前指导仅介绍播放URL设置方法，其他场景及完整示例代码，请参考[视频播放](video-playback.md)。

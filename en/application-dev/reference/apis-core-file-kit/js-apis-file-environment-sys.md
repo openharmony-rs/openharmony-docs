@@ -6,12 +6,12 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
-The **Environment** module provides APIs for obtaining the root directories of the storage and user files.
+The **Environment** module provides JS APIs for obtaining the root directories of the storage and user files.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.file.environment](js-apis-file-environment-sys.md).
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.file.environment (Directory Environment Capability)](js-apis-file-environment.md).
 
 ## Modules to Import
 

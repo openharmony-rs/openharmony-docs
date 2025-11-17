@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)组件提供滑动轮播显示的能力。Swiper本身是一个容器组件，当设置了多个子组件后，可以对这些子组件进行轮播显示。通常，在一些应用首页显示推荐的内容时，需要用到轮播显示的能力。
@@ -25,44 +25,44 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 - loop为true
 
-```ts
-Swiper() {
-  Text('0')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Gray)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+  ```ts
+  Swiper() {
+    Text('0')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Gray)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('1')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Green)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+    Text('1')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Green)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('2')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Pink)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
-}
-.loop(true)
-```
+    Text('2')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Pink)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  }
+  .loop(true)
+  ```
 
-![loop_true](figures/loop_true.gif)
+  ![loop_true](figures/loop_true.gif)
 
 - loop为false
 
-```ts
-Swiper() {
-  // ...
-}
-.loop(false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .loop(false)
+  ```
 
-![loop_false](figures/loop_false.gif)
+  ![loop_false](figures/loop_false.gif)
 
 
 ## 自动轮播
@@ -91,87 +91,87 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 
 - 导航点使用默认样式
 
-```ts
-Swiper() {
-  Text('0')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Gray)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+  ```ts
+  Swiper() {
+    Text('0')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Gray)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('1')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Green)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
+    Text('1')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Green)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
 
-  Text('2')
-    .width('90%')
-    .height('100%')
-    .backgroundColor(Color.Pink)
-    .textAlign(TextAlign.Center)
-    .fontSize(30)
-}
-```
+    Text('2')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Pink)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  }
+  ```
 
-![indicator](figures/indicator.PNG)
+  ![indicator](figures/indicator.PNG)
 
 - 自定义导航点样式
 
-导航点直径设为30vp，左边距为0，导航点颜色设为红色。
+  选中的导航点，宽和高分别设置为30vp和15vp，且颜色为蓝色；未选中的导航点，宽和高同时设置为15vp，颜色设为红色。
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(
-  Indicator.dot()
-    .left(0)
-    .itemWidth(15)
-    .itemHeight(15)
-    .selectedItemWidth(30)
-    .selectedItemHeight(15)
-    .color(Color.Red)
-    .selectedColor(Color.Blue)
-)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(
+    Indicator.dot()
+      .left(0)
+      .itemWidth(15)
+      .itemHeight(15)
+      .selectedItemWidth(30)
+      .selectedItemHeight(15)
+      .color(Color.Red)
+      .selectedColor(Color.Blue)
+  )
+  ```
 
-![ind](figures/ind.PNG)
+  ![ind](figures/ind.PNG)
 
 Swiper通过设置[displayArrow](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displayarrow10)属性，可以控制导航点箭头的大小、位置、颜色，底板的大小及颜色，以及鼠标悬停时是否显示箭头。
 
 - 箭头使用默认样式
 
-```ts
-Swiper() {
-  // ...
-}
-.displayArrow(true, false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .displayArrow(true, false)
+  ```
 
-![arrow1](figures/arrow1.gif)
+  ![arrow1](figures/arrow1.gif)
 
 - 自定义箭头样式
 
-箭头显示在组件两侧，大小为18vp，导航点箭头颜色设为蓝色。
+  箭头显示在组件两侧，大小为18vp，导航点箭头颜色设为蓝色。
 
-```ts
-Swiper() {
-  // ...
-}
-.displayArrow({ 
-  showBackground: true,
-  isSidebarMiddle: true,
-  backgroundSize: 24,
-  backgroundColor: Color.White,
-  arrowSize: 18,
-  arrowColor: Color.Blue
-  }, false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .displayArrow({ 
+    showBackground: true,
+    isSidebarMiddle: true,
+    backgroundSize: 24,
+    backgroundColor: Color.White,
+    arrowSize: 18,
+    arrowColor: Color.Blue
+    }, false)
+  ```
 
-![arrow2](figures/arrow2.gif)
+  ![arrow2](figures/arrow2.gif)
 
 ## 页面切换方式
 
@@ -273,30 +273,30 @@ Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控
 
 - 设置水平方向上轮播。
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(true)
-.vertical(false)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(true)
+  .vertical(false)
+  ```
 
 
-![截图2](figures/截图2.PNG)
+  ![截图2](figures/截图2.PNG)
 
 
 - 设置垂直方向轮播。
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(true)
-.vertical(true)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(true)
+  .vertical(true)
+  ```
 
 
-![截图3](figures/截图3.PNG)
+  ![截图3](figures/截图3.PNG)
 
 
 ## 每页显示多个子页面
@@ -533,27 +533,27 @@ Swiper() {
 
 - 圆点导航点忽略组件大小。
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(
-  new DotIndicator()
-    .bottom(LengthMetrics.vp(0), true)
-)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(
+    new DotIndicator()
+      .bottom(LengthMetrics.vp(0), true)
+  )
+  ```
 
 - 数字导航点忽略组件大小。
 
-```ts
-Swiper() {
-  // ...
-}
-.indicator(
-  new DigitIndicator()
-    .bottom(LengthMetrics.vp(0), true)
-)
-```
+  ```ts
+  Swiper() {
+    // ...
+  }
+  .indicator(
+    new DigitIndicator()
+      .bottom(LengthMetrics.vp(0), true)
+  )
+  ```
 
 圆点导航点设置间距及忽略组件大小完整示例代码如下：
 

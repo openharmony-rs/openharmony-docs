@@ -14,16 +14,16 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 | 名称 | 说明                                                                                                                                        |
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| getData(callback: AsyncCallback&lt;PasteData&gt;): void | 读取系统剪贴板内容，使用callback异步回调。 |
-| getData(): Promise&lt;PasteData&gt; | 读取系统剪贴板内容，使用Promise异步回调。 |
-| getDataSync(): PasteData | 读取系统剪贴板内容, 此接口为同步接口。 |
-| getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData\> | 从系统剪贴板中读取统一数据对象的数据。 |
-| getUnifiedDataSync(): unifiedDataChannel.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。 |
-| OH_UdmfData* OH_Pasteboard_GetData (OH_Pasteboard *pasteboard, int *status) | 获取剪贴板中的数据。 |
-| getDataWithProgress(params: GetDataParams): Promise\<PasteData\> | 获取剪贴板的内容和进度，使用Promise异步回调，不支持对文件夹的拷贝。 |
-| OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status) | 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。 |
+| [getData(callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | 读取系统剪贴板内容，使用callback异步回调。 |
+| [getData(): Promise&lt;PasteData&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9-1) | 读取系统剪贴板内容，使用Promise异步回调。 |
+| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | 读取系统剪贴板内容, 此接口为同步接口。 |
+| [getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12) | 从系统剪贴板中读取统一数据对象的数据。 |
+| [getUnifiedDataSync(): unifiedDataChannel.UnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddatasync12) | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。 |
+| [OH_UdmfData* OH_Pasteboard_GetData (OH_Pasteboard *pasteboard, int *status)](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_getdata) | 获取剪贴板中的数据。 |
+| [getDataWithProgress(params: GetDataParams): Promise\<PasteData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatawithprogress15) | 获取剪贴板的内容和进度，使用Promise异步回调，不支持对文件夹的拷贝。 |
+| [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress) | 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。 |
 
-**说明：** 申请访问剪贴板权限前，需提前判断剪贴板上的内容是否包含应用所需数据，包括不限于hasData检查是否有数据、hasDataType/getMimeTypes检查是否有应用所需类型、getChangeCount检查数据是否改变。
+**说明：** 申请访问剪贴板权限前，需提前判断剪贴板上的内容是否包含应用所需数据，包括不限于hasData检查是否有数据、hasDataType/getMimeTypes检查是否有应用所需类型、getChangeCount检查数据是否改变，详见[剪贴板弹窗适配优化](#剪贴板弹窗适配优化)。
 
 ## 访问剪贴板内容
 
@@ -37,7 +37,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 - 申请ohos.permission.READ_PASTEBOARD权限
 
-    ohos.permission.READ_PASTEBOARD是受限的user_grant（用户授权）权限，使用自定义控件的应用可以通过申请ohos.permission.READ_PASTEBOARD权限，在用户授权的场景下访问剪贴板内容。
+    ohos.permission.READ_PASTEBOARD是受限的user_grant（用户授权）权限，使用自定义控件的应用申请此权限后，在用户授权场景下可访问剪贴板内容。
 
     权限申请步骤：
     <!--RP1-->
@@ -58,4 +58,4 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 - 使用[getChangeCount](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getchangecount18)获取剪贴板的内容变化次数，与上次读取剪贴板时查询的变化次数比较是否一致，一致则剪贴板内容无变化，不访问剪贴板。
 
-- 使用[detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13)判断是否包含应用自身口令的格式，如果格式不匹配，则不访问剪贴板。应用读取口令后如果确认是应用自身的口令，建议应用使用[cleardata](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9)清除剪贴板口令内容。
+- 使用[detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13)判断是否包含应用自身口令的格式，如果格式不匹配，则不访问剪贴板。应用读取口令后如果确认是自身的口令，建议使用[cleardata](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9)清除剪贴板口令内容。

@@ -46,7 +46,7 @@
 
  初始化规则图示：
 
-![zh-cn_image_0000001552972029](figures/zh-cn_image_0000001552972029.png)
+![prop-initialization](figures/prop-initialization.png)
 
 ## 观察变化和行为表现
 
@@ -97,7 +97,7 @@ this.title.info.value = 'ArkUI';
 - 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。
 
 ```ts
-// @State装饰的对象为数组时
+// @Prop装饰的对象为数组时
 @Prop title: string[];
 // 数组自身的赋值可以观察到
 this.title = ['1'];

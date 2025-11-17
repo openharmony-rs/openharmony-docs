@@ -466,9 +466,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
-允许应用固化对端蓝牙设备MAC对应的虚拟随机地址。
+允许应用固化对端蓝牙设备MAC对应的虚拟地址。
 
-通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟随机地址，申请该权限后，可保持该虚拟随机地址长时间保持，即使是开/关/重启蓝牙也不发生变化。
+通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟地址，申请该权限且调用[access.addPersistentDeviceId](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法后，可保持该虚拟地址长时间存储，即使是开/关/重启蓝牙也不发生变化。
 
 <!--RP36--><!--RP36End-->
 
@@ -838,5 +838,21 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：手动设置授权（manual_settings）
 
 **支持设备**：PC/2in1 | Tablet
+
+**起始版本**：21
+
+## ohos.permission.WEB_NATIVE_MESSAGING
+
+允许应用使用Web本地通信能力。
+
+应用获取此权限后，可以使用web本地通信能力，使浏览器扩展与本地应用进行通信。
+
+<!--RP54--><!--RP54End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
 
 **起始版本**：21

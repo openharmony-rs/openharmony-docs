@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 为[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)组件提供获取文本和光标信息、插入和删除文本、设置计数器以及文本装饰线的能力。
 为[Search](ts-basic-components-search.md)组件提供获取文本和光标信息、插入和删除文本以及设置文本装饰线的能力。
@@ -65,6 +65,8 @@ getTextContentLineCount(): number
 getCaretOffset(): CaretOffset
 
 返回当前光标所在位置信息。
+
+当无法获取光标位置时（例如[TextInputController](./ts-basic-components-textinput.md#textinputcontroller8)未与[TextInput](./ts-basic-components-textinput.md)组件绑定时），该接口返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -165,7 +167,7 @@ clearPreviewText(): void
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | thresholdPercentage | number  | 否 | 是 | thresholdPercentage是可输入字符数占最大字符限制的百分比值。字符计数器显示的样式为当前输入字符数/最大字符数。当输入字符数大于最大字符数乘百分比值时，显示字符计数器。thresholdPercentage值的有效值区间为[1,100]，数值为小数时，向下取整，如果设置的number超出有效值区间内，不显示字符计数器。thresholdPercentage设置为undefined，显示字符计数器，但此参数不生效。 |
-| highlightBorder     | boolean | 否  | 是 | 如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。如果用户设置显示字符计数器同时thresholdPercentage参数数值在有效区间内，那么当输入字符数超过最大字符数时，边框和计数器下标将变成红色。如果此参数为true，则显示红色边框。计数器默认显示红色边框。 |
+| highlightBorder     | boolean | 否  | 是 | 如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。如果用户设置显示字符计数器同时thresholdPercentage参数数值在有效区间内，那么当输入字符数超过最大字符数时，边框和计数器下标将变成红色。如果此参数为true，则显示红色边框，参数为false则不显示。计数器默认显示红色边框。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## CaretOffset<sup>11+</sup>对象说明
 

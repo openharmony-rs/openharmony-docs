@@ -1,6 +1,12 @@
 # RowSplit
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
-The **RowSplit** lays out child components horizontally and inserts a vertical divider between every two child components.
+The **RowSplit** component lays out child components horizontally and inserts a vertical divider between every two child components.
 
 >  **NOTE**
 >
@@ -10,18 +16,26 @@ The **RowSplit** lays out child components horizontally and inserts a vertical d
 
 Supported
 
-This component limits the width of its child components through dividers. During initialization, the divider positions are calculated based on the width of its child components. After initialization, changes to the width of the child components do not take effect. Still, the space occupied by the child components can be changed by dragging the dividers between them.
+This component limits the width of its child components through dividers. During initialization, the divider positions are calculated based on the width of its child components. After initialization, dynamic width modifications to child components do not affect divider positions. To adjust child component widths, drag the adjacent dividers.
 
 After initialization, dynamic changes to the [margin](ts-universal-attributes-size.md#margin), [border](ts-universal-attributes-border.md#border), or [padding](ts-universal-attributes-size.md#padding) attributes may cause the width of the child components to exceed the allowable distance between adjacent dividers. In such cases, dividers cannot be dragged to adjust the width of the child components.
 ## APIs
 
 RowSplit()
 
+Creates a horizontal split layout container with dividers between child components.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## Attributes
+
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+
+> **NOTE**
+>
+> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md) is **true** for the **RowSplit** component.
 
 ### resizeable
 
@@ -37,14 +51,15 @@ Sets whether the divider can be dragged.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | boolean | Yes| Whether the divider can be dragged.<br>Default value: **false**|
+| value | boolean | Yes| Whether the divider can be dragged. **true**: The divider can be dragged. **false**: The divider cannot be dragged.<br>Default value: **false**<br>Invalid values are treated as the default value.|
 
 >  **NOTE**
 >
 > The divider of **RowSplit** can change the width of the left and right child components, but only to the extent that the resultant width falls within the maximum and minimum widths of the child components.
->
-> Universal attributes such as [clip](ts-universal-attributes-sharp-clipping.md#clip12) and [margin](ts-universal-attributes-size.md#margin) are supported. If **clip** is not set, the default value **true** is used.
 
+## Events
+
+The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 

@@ -1,9 +1,17 @@
 # Thread Model (Stage Model)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+
 A thread is the basic unit for the operating system to perform computing and scheduling. It is an execution flow within a [process](./process-model-stage.md) and shares the resources of the process. A process can contain multiple threads.
 
 ## Thread Type
-There are three types of threads in the stage model:
+There are three types of threads in the [stage model](ability-terminology.md#stage-model):
 - Main thread
   - Draws the UI.
   - Manages the [ArkTS engine](../arkts-utils/arkts-runtime-overview.md) instance of the main thread so that multiple UIAbility components can run on it.

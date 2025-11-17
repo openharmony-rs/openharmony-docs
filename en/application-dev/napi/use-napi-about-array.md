@@ -16,29 +16,29 @@ Node-API can be used to create, access, modify, and traverse arrays. Before usin
 
 - Array creation: You can use **napi_create_array** to create an array and pass it to the ArkTS layer.
 - Array-related operations: You can use the APIs provides by the Node-API module to obtain the length of an ArkTS array, retrieve the element at the specified index, and set the element value at the specified index.
-- **TypedArray**: A **TypedArray** object in ArkTS is an array-like view of an underlying binary data buffer. It can be simply understood as an array of elements of the specified type. There is no constructor for **TypedArray** objects, but its child class constructor can be used to construct **TypedArray** data. The child classes of **TypedArray** include **Int8Array**, **Uint8Array**, **Uint8ClampedArray**, **Int16Array**, and **Int32Array**.
-- **DataView**: **DataView** is an ArkTS view that allows a variety of number types to be read and written in an **ArrayBuffer** object.
-- **ArrayBuffer**: **ArrayBuffer** is a data struct used to represent a binary data buffer of fixed length.
+- **TypedArray**: A **TypedArray** object in ArkTS is an array-like view of an underlying binary data buffer. It can be understood as an array of elements of the specified type. There is no constructor for **TypedArray** objects, but they can be constructed by their child class constructors. The child classes of **TypedArray** include **Int8Array**, **Uint8Array**, **Uint8ClampedArray**, **Int16Array**, and **Int32Array**.
+- **DataView**: **DataView** is a flexible binary data access view in ArkTS. It provides methods for reading and writing multiple number types from an **ArrayBuffer**. Unlike **TypedArray**, **DataView** does not require data to be aligned at specific bytes. Therefore, it can process data structures with arbitrary byte offsets. DataView supports the following methods (each method has a **get** and **set** version): **Int8**, **Uint8**, **Int16**, **Uint16**, **Int32**, **Uint32**, **Float32**, and **Float64**.
+- **ArrayBuffer**: **ArrayBuffer** is a data struct used to represent a binary data buffer of fixed length. It cannot be read or written directly, but its content can be operated through **TypedArray** or **DataView**.
 
 ## Available APIs
 
 The following table describes the APIs for managing ArkTS arrays.
 | API| Description|
 | -------- | -------- |
-| napi_create_array | Creates an ArkTS array.|
-| napi_create_array_with_length | Creates an ArkTS array of the specified length.|
-| napi_get_array_length | Obtains the length of an ArkTS array.|
-| napi_is_array | Checks whether the given **napi_value** is an array.|
-| napi_set_element | Sets an element at the specified index in the given ArkTS array.|
-| napi_get_element | Obtains the element at the specified index in the given ArkTS array.|
-| napi_has_element | Checks whether the element at the specified index exists.|
-| napi_delete_element | Deletes the element at the specified index of the given ArkTS array.|
-| napi_create_typedarray | Creates an ArkTS **TypedArray** object of the specified type, such as **Uint8Array** or **Int32Array**. You can use this API to convert a native value into a **TypedArray** object for performant data processing.  |
-| napi_is_typedarray | Checks whether the given **napi_value** is a **TypedArray** object.|
-| napi_get_typedarray_info | Obtains the properties of a **TypedArray** object.|
-| napi_create_dataview |  Creates a **DataView** object, which allows access to binary data.|
-| napi_is_dataview | Checks whether the given **napi_value** is a **DataView** object in ArkTS.|
-| napi_get_dataview_info | Obtains the properties of a **DataView** object.|
+| [napi_create_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array) | Creates an ArkTS array.|
+| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | Creates an ArkTS array of the specified length.|
+| [napi_get_array_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_array_length) | Obtains the length of an ArkTS array.|
+| [napi_is_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_array) | Checks whether the given **napi_value** is an array.|
+| [napi_set_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_set_element) | Sets an element at the specified index in the given ArkTS array.|
+| [napi_get_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_element) | Obtains the element at the specified index in the given ArkTS array.|
+| [napi_has_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_has_element) | Checks whether the element at the specified index exists.|
+| [napi_delete_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_delete_element) | Deletes the element at the specified index of the given ArkTS array.|
+| [napi_create_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_typedarray) | Creates an ArkTS **TypedArray** object of the specified type, such as **Uint8Array** or **Int32Array**. You can use this API to convert a native value into a **TypedArray** object for performant data processing.  |
+| [napi_is_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_typedarray) | Checks whether the given **napi_value** is a **TypedArray** object.|
+| [napi_get_typedarray_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_typedarray_info) | Obtains the properties of a **TypedArray** object.|
+| [napi_create_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_dataview) |  Creates a **DataView** object, which allows access to binary data.|
+| [napi_is_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_dataview) | Checks whether the given **napi_value** is a **DataView** object in ArkTS.|
+| [napi_get_dataview_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_dataview_info) | Obtains the properties of a **DataView** object.|
 
 ## Example
 
@@ -755,9 +755,9 @@ enum InfoType {
     BYTE_OFFSET = 4 // Offset of the first ArrayBuffer element in the native array.
 };
 try {
-  let arrbuff = testNapi.getTypedarrayInfo(int8Array, InfoType.ARRAY_BUFFER) as ArrayBuffer;
+  let arrBuffer = testNapi.getTypedarrayInfo(int8Array, InfoType.ARRAY_BUFFER) as ArrayBuffer;
   // Convert arraybuffer to an array.
-  let arr = new Array(new Int8Array(arrbuff));
+  let arr = new Array(new Int8Array(arrBuffer));
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_arraybuffer: %{public}s', arr.toString());
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_isIn8Array: %{public}s', testNapi.getTypedarrayInfo(int8Array, InfoType.TYPE).toString());
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_length: %{public}d', testNapi.getTypedarrayInfo(int8Array, InfoType.LENGTH));
@@ -972,9 +972,9 @@ try {
   // Pass in the parameter of DataView to obtain the number of bytes in DataView.
   hilog.info(0x0000, 'Node-API', 'get_dataview_info_bytelength %{public}d', testNapi.getDataViewInfo(dataView, InfoType.BYTE_LENGTH));
   // Pass in the parameter of DataView to obtain the ArrayBuffer of DataView.
-  let arrbuff = testNapi.getDataViewInfo(dataView, InfoType.ARRAY_BUFFER) as ArrayBuffer;
+  let arrBuffer = testNapi.getDataViewInfo(dataView, InfoType.ARRAY_BUFFER) as ArrayBuffer;
   // Convert arraybuffer to an array.
-  let arr = Array.from(new Int8Array(arrbuff));
+  let arr = Array.from(new Int8Array(arrBuffer));
   hilog.info(0x0000, 'Node-API', 'get_dataview_info_arraybuffer %{public}s', arr.toString());
   // Pass in the parameter of DataView to obtain the byte offset in the data buffer of DataView.
   hilog.info(0x0000, 'Node-API', 'get_dataview_info_byteoffset %{public}d', testNapi.getDataViewInfo(dataView, InfoType.BYTE_OFFSET));

@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 Use **getEnrolledState()** to obtain the change in the credentials (face, fingerprint, and password) enrolled by a user.
 
@@ -36,3 +37,4 @@ try {
   console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+<!-- [obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->

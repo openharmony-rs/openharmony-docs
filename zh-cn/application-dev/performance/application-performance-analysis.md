@@ -204,7 +204,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 2. 按照下图所示①-⑤的步骤打开 **Profiler > Time** ，选择设备及应用，创建一个新的Time Session监视器。
 
-   图12 **DevEco Studio Prifiler采集指引**
+   图12 **DevEco Studio Profiler采集指引**
 
    ![DevEco Studio Profiler采集指引](figures/deveco-studio-profiler-catch-guide.png)
 
@@ -254,7 +254,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
     图14 **JavaScript Profile视图布局**
 
-   ![JavaScript Profile视图布局](figures/jsvascript-profiler-view.png)
+   ![JavaScript Profile视图布局](figures/javascript-profiler-view.png)
 
 ### hdc shell命令采集
 
@@ -351,7 +351,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
     > 插桩位置建议选择为不会重复执行的关键位置，例如`onClick`中的首行和末行；若重复执行start、stop，仅有第一次的start、stop会成功执行。
 
     ```ts
-    import hidebug from '@ohos.hidebug';
+    import { hidebug } from '@kit.PerformanceAnalysisKit';
     // 参数为输出文件的文件名，无需加后缀。该参数为必要参数。
     hidebug.startJsCpuProfiling("filename");
     // code block

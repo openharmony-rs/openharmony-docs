@@ -1,8 +1,15 @@
 # Input_TouchEvent
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
-Defines the touch event to be injected.
+Defines a touch event.
 
 **Since**: 12
 

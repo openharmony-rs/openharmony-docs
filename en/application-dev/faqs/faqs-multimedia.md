@@ -20,8 +20,8 @@ Create a dual-channel preview to obtain the frame data.
 
    ```
    // Obtain a PreviewOutput instance.
-   const surfaceId = globalThis.mxXComponentController.getXComponentSurfaceld();
-   this.mPreviewOutput = await Camera.createPreviewOutput(surfaceld) ;
+   const surfaceId = globalThis.mxXComponentController.getXComponentSurfaceId();
+   this.mPreviewOutput = await Camera.createPreviewOutput(surfaceId);
    ```
 
 2. Use imageReceiver to listen for image information.
@@ -30,10 +30,10 @@ Create a dual-channel preview to obtain the frame data.
    // Add dual-channel preview.
    const fullWidth = this.mFullScreenSize.width;
    const fullHeight = this.mFullScreenSize.height;
-   const imageReceiver = await image.createImageReceiver(fullwidth, fullHeight, 
-     formatImage, capacityImage) ;
-   const photoSurfaceId = await imageReceiver.getReceivingSurfaceld();
-   this.mPreviewOutputDouble = await Camera.createPreviewOutput ( photoSurfaceld)
+   const imageReceiver = await image.createImageReceiver(fullWidth, fullHeight, 
+     formatImage, capacityImage);
+   const photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+   this.mPreviewOutputDouble = await Camera.createPreviewOutput(photoSurfaceId);
    ```
 
 
@@ -46,7 +46,7 @@ Create a dual-channel preview to obtain the frame data.
    ```
    let cameraManager = await camera.getCameraManager(context);
    let camerasInfo = await cameraManager.getSupportedCameras();
-   let cameraDevice = this.camerasInfo[0];
+   let cameraDevice = camerasInfo[0];
    ```
 
 2. Create and start the input stream channel of the physical camera.
@@ -60,7 +60,7 @@ Create a dual-channel preview to obtain the frame data.
 
    ```
    let outputCapability = await this.cameraManager.getSupportedOutputCapability(cameraDevice);
-   let previewProfile = this.outputCapability.previewProfiles[0];
+   let previewProfile = outputCapability.previewProfiles[0];
    let previewOutput = await cameraManager.createPreviewOutput(previewProfile, previewId);
    ```
 

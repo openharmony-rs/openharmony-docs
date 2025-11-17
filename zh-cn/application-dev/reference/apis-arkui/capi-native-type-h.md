@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -19,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[native_type_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/native_type_sample)<!--RP1End-->
 
 ## 汇总
 
@@ -73,6 +75,8 @@
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | 定义文本选择器的数据选择列表。 |
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | 定义多列联动数据选择器的多列联动数据选择列表。 |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | 可见区域变化监听的参数。 |
+|[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|相对容器内容区边界的位置参数。|
+|[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|定义组件的像素取整策略结构体。|
 
 ### 枚举
 
@@ -193,6 +197,8 @@
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode)                         | ArkUI_FocusWrapMode             | 组件走焦换行规则。                         |
 | [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | 定义矩形边方向。                         |
 | [ArkUI_CornerDirection](#arkui_cornerdirection)                     | ArkUI_CornerDirection           | 定义角度方向。                         |
+| [ArkUI_LayoutPolicy](#arkui_layoutpolicy)                         | ArkUI_LayoutPolicy             | 布局策略枚举。                         |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | 定义像素取整计算策略枚举。 |
 
 ### 函数
 
@@ -465,6 +471,27 @@
 | [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | 删除EmbeddedComponent组件选项的对象。 |
 | [void OH_ArkUI_EmbeddedComponentOption_SetOnError (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, const char* name, const char* message))](#oh_arkui_embeddedcomponentoption_setonerror) | 设置EmbeddedComponent组件的onError回调。EmbeddedComponent组件在运行过程中发生异常时触发本回调。 |
 | [void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, AbilityBase_Want* want))](#oh_arkui_embeddedcomponentoption_setonterminated) | 设置EmbeddedComponent组件的onTerminated回调。EmbeddedComponent组件正常退出时触发本回调。 |
+|[ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()](#oh_arkui_positionedges_create)|创建PositionEdges属性对象。|
+|[ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_copy)|深拷贝PositionEdges属性对象。|
+|[void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_dispose)|销毁PositionEdges属性对象。|
+|[void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_settop)|设置PositionEdges属性对象的上方向值。|
+|[int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_gettop)|获取PositionEdges属性对象的上方向值。|
+|[void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setleft)|设置PositionEdges属性对象的左方向值。|
+|[int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getleft)|获取PositionEdges属性对象的左方向值。|
+|[void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom)|设置PositionEdges属性对象的下方向值。|
+|[int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getbottom)|获取PositionEdges属性对象的下方向值。|
+|[void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setright)|设置PositionEdges属性对象的右方向值。|
+|[int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getright)|获取PositionEdges属性对象的右方向值。|
+|[ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()](#oh_arkui_pixelroundpolicy_create)|创建PixelRoundPolicy属性对象。|
+|[void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)](#oh_arkui_pixelroundpolicy_dispose)|释放PixelRoundPolicy属性对象。|
+|[void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_settop)|设置PixelRoundPolicy属性对象的上部方向值。|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_gettop)|获取PixelRoundPolicy属性对象的上部方向值。|
+|[void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setstart)|设置PixelRoundPolicy属性对象的前部方向值。|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getstart)|获取PixelRoundPolicy属性对象的前部方向值。|
+|[void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setbottom)|设置PixelRoundPolicy属性对象的下部方向值。|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getbottom)|获取PixelRoundPolicy属性对象的下部方向值。|
+|[void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setend)|设置PixelRoundPolicy属性对象的尾部方向值。|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend)|获取PixelRoundPolicy属性对象的尾部方向值。|
 
 ## 枚举类型说明
 
@@ -1031,7 +1058,7 @@ enum ArkUI_Axis
 **描述：**
 
 
-定义滚动方向和List组件排列方向枚举值。
+定义滚动方向和[List](./arkui-ts/ts-container-list.md)组件排列方向枚举值。
 
 **起始版本：** 12
 
@@ -2589,9 +2616,9 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  当前XComponent状态异常，方法调用失败。错误码的详细介绍请参见[XComponent组件错误码](../apis-arkui/errorcode-xcomponent.md)。<br>**起始版本：** 19 |
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。 |
 | ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE = 106103 | 对应的操作不支持ArkTS创建的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。 |
-| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。 |
-| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。 |
-| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。 |
+| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见[106104-适配器未绑定](../apis-arkui/errorcode-nodeadapter.md#106104-适配器未绑定)。 |
+| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见[106105-适配器已存在](../apis-arkui/errorcode-nodeadapter.md#106105-适配器已存在)。 |
+| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见[106106-子节点已存在](../apis-arkui/errorcode-nodeadapter.md#106106-子节点已存在)。 |
 | ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中参数长度超限。错误码的详细介绍请参见[106107-参数下标越界](../apis-arkui/errorcode-nodeadapter.md#106107-参数下标越界)。 |
 | ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见[106108-数据不存在](../apis-arkui/errorcode-nodeadapter.md#106108-数据不存在)。 |
 | ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见[106109-不支持返回值](../apis-arkui/errorcode-nodeadapter.md#106109-不支持返回值)。 |
@@ -2601,6 +2628,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常。<br/>错误码的详细介绍请参见[导航错误码](../apis-arkui/errorcode-router.md#106202-传入的buffer-size异常)。 |
 | ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md)。<br>**起始版本：** 16 |
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  不支持在非UI线程操作传入的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md#106204-不支持在非ui线程操作传入的节点)。<br>**起始版本：** 21 |
+| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[反色能力错误码](../apis-arkui/errorcode-force-dark.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  当前节点不是自定义节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  当前节点已存在子节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父组件。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
@@ -2910,6 +2938,42 @@ enum ArkUI_CornerDirection
 | ARKUI_CORNER_DIRECTION_BOTTOM_LEFT = 1 << 2 | 设置左下侧方向内容。 |
 | ARKUI_CORNER_DIRECTION_BOTTOM_RIGHT = 1 << 3 | 设置右下侧方向容。 |
 
+### ArkUI_LayoutPolicy
+
+```
+enum ArkUI_LayoutPolicy
+```
+
+**描述：**
+
+定义布局策略枚举。
+
+**起始版本：** 21
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_LAYOUTPOLICY_MATCHPARENT = 0 | 组件自适应父组件布局。 |
+| ARKUI_LAYOUTPOLICY_WRAPCONTENT | 组件自适应子组件（内容），且其大小受父组件内容区大小约束。 |
+| ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE | 组件自适应子组件（内容），且其大小不受父组件内容区大小约束。 |
+
+### ArkUI_PixelRoundCalcPolicy
+
+```
+enum ArkUI_PixelRoundCalcPolicy
+```
+
+**描述：**
+
+定义像素取整计算策略枚举。
+
+**起始版本：** 21
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_PIXELROUNDCALCPOLICY_NOFORCE = 0 | 非取整计算。 |
+| ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | 向上取整计算。 |
+| ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | 向下取整计算。 |
+
 ## 函数说明
 
 ### OH_ArkUI_LayoutConstraint_Create()
@@ -2949,7 +3013,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
 
 **返回：**
 
@@ -3001,7 +3065,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
 
 **返回：**
 
@@ -3027,7 +3091,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
 
 **返回：**
 
@@ -3053,7 +3117,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
 
 **返回：**
 
@@ -3079,7 +3143,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Con
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
 
 **返回：**
 
@@ -3105,7 +3169,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutCon
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
 
 **返回：**
 
@@ -3131,7 +3195,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutCo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
 
 **返回：**
 
@@ -9133,4 +9197,452 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | EmbeddedComponent组件选项的对象的指针。 |
 | void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | 开发者自定义回调函数。<br>- code：被拉起EmbeddedUIExtensionAbility退出时返回的结果码。若Ability通过调用terminateSelfWithResult退出，结果码为Ability设置的值。若Ability通过调用terminateSelf退出，结果码为默认值"0"。<br>- want：被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
 
+### OH_ArkUI_PositionEdges_Create()
 
+```
+ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
+```
+
+**描述：**
+
+创建PositionEdges属性对象。
+
+**起始版本：** 21
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | 指向PositionEdges对象的指针。 |
+
+
+### OH_ArkUI_PositionEdges_Copy()
+
+```
+ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)
+```
+
+**描述：**
+
+深拷贝PositionEdges属性对象。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | 指向新PositionEdges对象的指针。 |
+
+### OH_ArkUI_PositionEdges_Dispose()
+
+```
+void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
+```
+
+**描述：**
+
+销毁PositionEdges属性对象。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+
+### OH_ArkUI_PositionEdges_SetTop()
+
+```
+void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
+```
+
+**描述：**
+
+设置PositionEdges属性对象的上方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float value|PositionEdges对应方向的值，单位vp。|
+
+### OH_ArkUI_PositionEdges_GetTop()
+
+```
+int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
+```
+
+**描述：**
+
+获取PositionEdges属性对象的上方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float* value|PositionEdges对应方向的值，单位vp。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+
+### OH_ArkUI_PositionEdges_SetLeft()
+
+```
+void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
+```
+
+**描述：**
+
+设置PositionEdges属性对象的左方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float value|PositionEdges对应方向的值，单位vp。|
+
+### OH_ArkUI_PositionEdges_GetLeft()
+
+```
+int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
+```
+
+**描述：**
+
+获取PositionEdges属性对象的左方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float* value|PositionEdges对应方向的值，单位vp。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+
+
+### OH_ArkUI_PositionEdges_SetBottom()
+
+```
+void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
+```
+
+**描述：**
+
+设置PositionEdges属性对象的下方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float value|PositionEdges对应方向的值，单位vp。|
+
+### OH_ArkUI_PositionEdges_GetBottom()
+
+```
+int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)
+```
+
+**描述：**
+
+获取PositionEdges属性对象的下方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float* value|PositionEdges对应方向的值，单位vp。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+
+### OH_ArkUI_PositionEdges_SetRight()
+
+```
+void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
+```
+
+**描述：**
+
+设置PositionEdges属性对象的右方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float value|PositionEdges对应方向的值，单位vp。|
+
+### OH_ArkUI_PositionEdges_GetRight()
+
+```
+int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)
+```
+
+**描述：**
+
+获取PositionEdges属性对象的右方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项 | 描述                           |
+| -- |------------------------------|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
+|float* value|PositionEdges对应方向的值，单位vp。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+
+### OH_ArkUI_PixelRoundPolicy_Create()
+
+```
+ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
+```
+
+**描述：**
+
+创建PixelRoundPolicy属性对象。
+
+**起始版本：** 21
+
+**返回：**
+
+| 类型                                                         | 说明                             |
+| ------------------------------------------------------------ | -------------------------------- |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* | 指向PixelRoundPolicy对象的指针。 |
+
+### OH_ArkUI_PixelRoundPolicy_Dispose()
+
+```
+void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
+```
+
+**描述：**
+
+释放PixelRoundPolicy属性对象。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                     |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向要释放的PixelRoundPolicy对象的指针。 |
+
+### OH_ArkUI_PixelRoundPolicy_SetTop()
+
+```
+void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
+```
+
+**描述：**
+
+设置PixelRoundPolicy属性对象的上部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | PixelRoundPolicy对应方向的取整策略。 |
+
+### OH_ArkUI_PixelRoundPolicy_GetTop()
+
+```
+int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
+```
+
+**描述：**
+
+获取PixelRoundPolicy属性对象的上部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
+
+**返回：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+
+### OH_ArkUI_PixelRoundPolicy_SetStart()
+
+```
+void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
+```
+
+**描述：**
+
+设置PixelRoundPolicy属性对象的前部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | PixelRoundPolicy对应方向的取整策略。 |
+
+### OH_ArkUI_PixelRoundPolicy_GetStart()
+
+```
+int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
+```
+
+**描述：**
+
+获取PixelRoundPolicy属性对象的前部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
+
+**返回：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+
+### OH_ArkUI_PixelRoundPolicy_SetBottom()
+
+```
+void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
+```
+
+**描述：**
+
+设置PixelRoundPolicy属性对象的下部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | PixelRoundPolicy对应方向的取整策略。 |
+
+### OH_ArkUI_PixelRoundPolicy_GetBottom()
+
+```
+int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
+```
+
+**描述：**
+
+获取PixelRoundPolicy属性对象的下部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
+
+**返回：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |
+
+### OH_ArkUI_PixelRoundPolicy_SetEnd()
+
+```
+void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
+```
+
+**描述：**
+
+设置PixelRoundPolicy属性对象的尾部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | PixelRoundPolicy对应方向的取整策略。 |
+
+### OH_ArkUI_PixelRoundPolicy_GetEnd()
+
+```
+int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
+```
+
+**描述：**
+
+获取PixelRoundPolicy属性对象的尾部方向值。
+
+**起始版本：** 21
+
+**参数：**
+
+| 参数项                                                       | 描述                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。     |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
+
+**返回：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。 |

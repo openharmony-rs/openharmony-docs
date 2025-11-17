@@ -80,7 +80,7 @@ You can use the user file access framework to access and manage user files. This
 
 - **FilePicker**: a system prebuilt application that allows a client to select and save user files without any permission. For details, see [Selecting User Files](select-user-file.md).
 
-- **FileManager**: You can also develop your own file picker or file manager application as required. <!--RP1-->File picker is a subset of file manager. For details about how to develop a file manager application, see [Developing a File Manager Application](dev-user-file-manager.md).<!--RP1End-->
+- **FileManager**: You can also develop your own file picker or file manager application as required. <!--RP1-->File picker is a subset of file manager. For details about how to develop a file manager application, see [Developing a File Manager Application (for System Applications Only)](dev-user-file-manager-sys.md).<!--RP1End-->
 
 - The user file access framework provides the following functional modules:
   - **File Access Helper**: provides APIs for the **FileManager** and **FilePicker** to access user files.

@@ -1,5 +1,13 @@
 # OH_NativeXComponent_ExpectedRateRange
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 定义期望帧率范围。

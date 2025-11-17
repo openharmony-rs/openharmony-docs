@@ -1,5 +1,12 @@
 # GridItem
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zcdqs; @fangyuhao-->
+<!--Designer: @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
 The **GridItem** component provides a single item in a grid.
 
 >  **NOTE**
@@ -105,26 +112,26 @@ Sets the end column number of the component.
 >
 > * If **rowStart**, **rowEnd**, **columnStart**, or **columnEnd** is set, the grid item occupies the specified number of rows (**rowEnd** - **rowStart** + 1) or columns (**columnEnd** - **columnStart** + 1).
 >
-> * Settings outside of the valid ranges do not take effect.
+> * **GridItem** components with properly configured **rowStart**/**rowEnd**/**columnStart**/**columnEnd** attributes can only be laid out according to the specified grid coordinates when the parent **Grid** has both **columnsTemplate** and **rowsTemplate** defined.
 >
-> * In the grid that has both **columnTemplate** and **rowTemplate** set, grid items that have **rowStart**/**rowEnd** or **columnStart**/**columnEnd** set are laid out in a row-by-row then column-by-column manner.
+> * In the grid that has both **columnsTemplate** and **rowsTemplate** set, **GridItem** components that have **rowStart**/**rowEnd** or **columnStart**/**columnEnd** set are laid out in a row-by-row then column-by-column manner.
 >
->  * In the grid that has only **columnTemplate** set, grid items that have **columnStart**/**columnEnd** set are laid out in the specified columns. If there are already grid items in those columns, the grid items will be laid out in another row.
+>  * In the grid that has only **columnsTemplate** set, grid items that have **columnStart**/**columnEnd** set are laid out in the specified columns. If there are already grid items in those columns, the grid items will be laid out in another row.
 >
-> * In the grid that has only **rowTemplate** set, grid items that have **rowStart**/**rowEnd** set are laid out on the specified rows. If there are already grid items in those rows, the grid items will be laid out in another column.
+> * In the grid that has only **rowsTemplate** set, grid items that have **rowStart**/**rowEnd** set are laid out on the specified rows. If there are already grid items in those rows, the grid items will be laid out in another column.
 >
-> * In the grid that has neither **columnTemplate** nor **rowTemplate** set, the row and column number attributes do not work.
+> * In the grid that has neither **columnsTemplate** nor **rowsTemplate** set, the row and column number attributes have no effect.
 >  
 >  The following table describes the rules for handling abnormal values for **GridItem** row and column numbers.
 >
 >  | Attribute Setting | Exception Type | Correction Applied |
 >  | ----- |----| ------------------------ |
->  | Only **columnTemplate** set | Invalid row or column value | Single-row and single-column layout |                 |
->  | Only **rowTemplate** set | Invalid row or column value | Single-row and single-column layout | |
->  | Both **rowTemplate** and **columnTemplate** set |  **rowStart** < **rowEnd** | Row span = min(rowEnd-rowStart+1, total number of rows) |
->  | Both **rowTemplate** and **columnTemplate** set | **rowStart** > **rowEnd** | Single-row and single-column layout |
->  | Both **rowTemplate** and **columnTemplate** set | **columnStart** < **columnEnd** | Column span = min(columnEnd-columnStart+1, total number of rows), total number of columns) |
->  | Both **rowTemplate** and **columnTemplate** set | **columnStart** > **columnEnd** | Single-row and single-column layout |
+>  | Only **columnsTemplate** set | Invalid row or column value | Single-row and single-column layout |                 |
+>  | Only **rowsTemplate** set | Invalid row or column value | Single-row and single-column layout | |
+>  | Both **rowsTemplate** and **columnsTemplate** set |  **rowStart** < **rowEnd** | Row span = min(rowEnd-rowStart+1, total number of rows) |
+>  | Both **rowsTemplate** and **columnsTemplate** set | **rowStart** > **rowEnd** | Single-row and single-column layout |
+>  | Both **rowsTemplate** and **columnsTemplate** set | **columnStart** < **columnEnd** | Column span = min(columnEnd-columnStart+1, total number of rows), total number of columns) |
+>  | Both **rowsTemplate** and **columnsTemplate** set | **columnStart** > **columnEnd** | Single-row and single-column layout |
 
 ### forceRebuild<sup>(deprecated)</sup>
 
@@ -140,7 +147,7 @@ This API is deprecated since API version 9.
 
 | Name| Type   | Mandatory| Description                                                   |
 | ------ | ------- | ---- | ------------------------------------------------------- |
-| value  | boolean | Yes  | Sets whether to re-create the component when it is being built.<br>Default value: **false**|
+| value  | boolean | Yes  | Sets whether to re-create the component when it is being built.<br>Default value: **false**.|
 
 ### selectable<sup>8+</sup>
 
@@ -186,9 +193,9 @@ Defines the style of a grid item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type                 | Mandatory| Description                        |
-| ----- | -------------------- | ---- | ---------------------------- |
-| style | [GridItemStyle](#griditemstyle11) | No  | Style of the grid item.<br>Default value: **GridItemStyle.NONE**.<br>If this parameter is set to **GridItemStyle.NONE**, no style is applied.<br>If this parameter is set to **GridItemStyle.PLAIN**, the grid item is in hover or press style depending on the state.|
+| Name | Type                 | Read-Only| Optional| Description                        |
+| ----- | -------------------- | ---- | --- | ---------------------------- |
+| style | [GridItemStyle](#griditemstyle11) | No  | Yes| Style of the grid item.<br>Default value: **GridItemStyle.NONE**.<br>If this parameter is set to **GridItemStyle.NONE**, no style is applied.<br>If this parameter is set to **GridItemStyle.PLAIN**, the grid item is in hover or press style depending on the state.|
 
 ## GridItemStyle<sup>11+</sup>
 

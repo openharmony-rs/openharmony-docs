@@ -29,7 +29,7 @@
     - [Extensible Authentication](net-eap.md)
   
     <!--Del-->
-    - [Network Sharing (for System Applications Only)](net-sharing.md)
-    - [Ethernet Connection Management (for System Applications Only)](net-ethernet.md)  
-    - [VPN Management (for System Applications Only)](net-vpn.md)
+    - [Network Sharing (for System Applications Only)](net-sharing-sys.md)
+    - [Ethernet Connection Management (for System Applications Only)](net-ethernet-sys.md)  
+    - [VPN Management (for System Applications Only)](net-vpn-sys.md)
     <!--DelEnd-->

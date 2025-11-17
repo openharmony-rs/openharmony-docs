@@ -62,10 +62,12 @@ USB DDK error code definitions.
 | Enum| Description|
 | -- | -- |
 | USB_DDK_SUCCESS = 0 | Operation succeeded.|
-| USB_DDK_FAILED = -1 | Operation failed.|
-| USB_DDK_INVALID_PARAMETER = -2 | Invalid parameter.|
-| USB_DDK_MEMORY_ERROR = -3 | Memory-related error, for example, insufficient memory, memory data copy failure, or memory application failure.|
-| USB_DDK_INVALID_OPERATION = -4 | Invalid operation.|
-| USB_DDK_NULL_PTR = -5 | Null pointer.|
-| USB_DDK_DEVICE_BUSY = -6 | Device busy.|
-| USB_DDK_TIMEOUT = -7 | Transfer timeout.|
+| USB_DDK_FAILED = -1 | Operation failed.<br> **Deprecated from**: 16|
+| USB_DDK_NO_PERM = 201 | No permission.<br> **Since**: 14|
+| USB_DDK_INVALID_PARAMETER = 401 | Invalid parameter. The value is **-2** before API version 16.|
+| USB_DDK_MEMORY_ERROR = 27400001 | Memory errors, such as insufficient memory, memory data copy failure, or memory allocation failure. The value is **-3** before API version 16.|
+| USB_DDK_INVALID_OPERATION = 27400002 | Invalid operation. The value is **-4** before API version 16.|
+| USB_DDK_NULL_PTR = -5 | Null pointer.<br> **Deprecated from**: 16|
+| USB_DDK_DEVICE_BUSY = -6 | Device busy.<br> **Deprecated from**: 16|
+| USB_DDK_IO_FAILED = 27400003 | Device I/O operation failure.<br> **Since**: 14|
+| USB_DDK_TIMEOUT = 27400004 | Transmission timeout. The value is **-7** before API version 16.|

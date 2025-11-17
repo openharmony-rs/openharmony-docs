@@ -26,9 +26,9 @@ Defines the response to the cipher interface called.
 
 **System capability**: SystemCapability.Security.Cipher
 
-| Name| Type  | Readable| Writable|Description        |
+| Name| Type  | Read-Only| Optional|Description        |
 | ------ | ------ | ---- | ---- | ------------ |
-| text   | string | Yes  | No  | Response content.|
+| text   | string | No  | No  | Response content.|
 
 
 ## CipherRsaOptions

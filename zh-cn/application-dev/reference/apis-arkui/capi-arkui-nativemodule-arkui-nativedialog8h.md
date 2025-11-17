@@ -1,5 +1,13 @@
 # ArkUI_NativeDialog*
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 定义ArkUI在Native侧的自定义弹窗控制器对象指针。

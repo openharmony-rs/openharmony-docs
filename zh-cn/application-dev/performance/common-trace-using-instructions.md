@@ -124,10 +124,12 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 @Component
 struct LazyForEachPage {
   private iconItemSourceList = new ListData();
+
   aboutToAppear() {
     // 添加120个IconItem的数据
     // ......
   }
+
   build() {
     Column() {
       Text('懒加载示例')
@@ -163,6 +165,7 @@ struct LazyForEachPage {
 export struct IconItem {
   image: string | Resource = '';
   text: string | Resource = '';
+
   build() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignContent: FlexAlign.Center }) {
       Image(this.image)

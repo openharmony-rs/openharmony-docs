@@ -6,6 +6,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+<!--RP1-->
 DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称为DLP的文件格式。后缀格式为“原始文件名（包含原始文件后缀）.dlp”，例如“test.docx.dlp”，文件由授权凭证和原始文件密文组成。
 
 通过端云协同认证（需要联网）来获取文件的访问授权，授权类型包含只读、编辑、文件拥有者三种。
@@ -63,7 +64,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
    import { dlpPermission } from '@kit.DataProtectionKit';
    ```
 
-2. 打开DLP文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。
+2. 打开加密文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。
 
     ```ts
     import { common, Want } from '@kit.AbilityKit';
@@ -116,7 +117,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ]
     ```
 
-3. 生成DLP文件。
+3. 2B生成dlp加密文件。
 
     [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
 
@@ -450,3 +451,5 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
       console.error('error message', err.message);
     }
     ```
+
+<!--RP1End-->

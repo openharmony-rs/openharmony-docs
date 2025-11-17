@@ -176,6 +176,7 @@ The following table lists the key APIs of the backup and restore extension capab
     }
     ```
 
+
 ### Description of the Metadata Profile
 
 | Field            | Type  | Mandatory| Description                                                        |
@@ -224,8 +225,3 @@ The following lists the paths supported by **includes**:
 }
 ```
 
-##  
-
- 
-
--  

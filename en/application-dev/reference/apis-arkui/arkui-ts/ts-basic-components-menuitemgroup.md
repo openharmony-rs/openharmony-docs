@@ -1,4 +1,10 @@
 # MenuItemGroup
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Armstrong15-->
+<!--Designer: @zhanghaibo0-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **MenuItemGroup** component represents a group of menu items.
 
@@ -26,14 +32,16 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 ## MenuItemGroupOptions
 
+Describes the header and footer of the menu item group.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type                                                        | Mandatory| Description                         |
-| ------ | ------------------------------------------------------------ | ---- | ----------------------------- |
-| header | [ResourceStr](ts-types.md#resourcestr) \| [CustomBuilder](ts-types.md#custombuilder8) | No  | Header of the menu item group.|
-| footer | [ResourceStr](ts-types.md#resourcestr) \| [CustomBuilder](ts-types.md#custombuilder8) | No  | Footer of the menu item group.|
+| Name  | Type                                                        | Read-Only| Optional| Description                         |
+| ------ | ------------------------------------------------------------ | ---- | ---- | ----------------------------- |
+| header | [ResourceStr](ts-types.md#resourcestr) \| [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes  | Header of the menu item group.|
+| footer | [ResourceStr](ts-types.md#resourcestr) \| [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes  | Footer of the menu item group.|
 
 ## Sample
 

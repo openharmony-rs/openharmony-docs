@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Photo capture is an important function of the camera application. Based on the complex logic of the camera device, the camera module provides APIs for you to set information such as resolution, flash, focal length, photo quality, and rotation angle.
 

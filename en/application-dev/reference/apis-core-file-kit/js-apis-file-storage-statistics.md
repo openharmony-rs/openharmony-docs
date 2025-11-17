@@ -15,7 +15,7 @@ The **storageStatistics** module provides APIs for obtaining storage space infor
 ## Modules to Import
 
 ```ts
-import  { storageStatistics } from '@kit.CoreFileKit';
+import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
 ## storageStatistics.getCurrentBundleStats<sup>9+</sup>
@@ -311,8 +311,8 @@ try {
 
 **System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
 
-| Name     | Type  | Mandatory| Description          |
-| --------- | ------ | --- | -------------- |
-| appSize   | number | Yes| Size of the application installation files, in bytes.   |
-| cacheSize | number | Yes| Size of the application cache files, in bytes.  |
-| dataSize  | number | Yes| Size of application files (excluding application installation files), in bytes.|
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| appSize   | number  | No| No| Size of the application installation files, in bytes.   |
+| cacheSize | number  | No| No | Size of the application cache files, in bytes.  |
+| dataSize  | number  | No| No | Size of application files (excluding application installation files), in bytes.|

@@ -1,4 +1,4 @@
-# @ohos.app.appstartup.StartupConfig (Startup Task Configuration)
+# @ohos.app.appstartup.StartupConfig (AppStartup Configuration)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The module provides APIs for startup task configuration.
+The module defines the configuration of [AppStartup](../../application-models/app-startup.md).
 
 > **NOTE**
 >
@@ -21,6 +21,8 @@ import { StartupConfig } from '@kit.AbilityKit';
 ```
 
 ## StartupConfig
+
+Describes the timeout duration and listener of startup tasks in AppStartup. For details, see [Setting Startup Parameters](../../application-models/app-startup.md#setting-startup-parameters).
 
 **System capability**: SystemCapability.Ability.AppStartup
 

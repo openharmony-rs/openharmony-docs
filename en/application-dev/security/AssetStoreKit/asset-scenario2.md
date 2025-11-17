@@ -1,5 +1,12 @@
 # Protecting Asset Data with User Authentication
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 > **NOTE**
 >
 > The asset data mentioned in this topic refers to sensitive data, including passwords, app tokens, and other critical data (such as bank card numbers).
@@ -22,10 +29,10 @@ The following figure illustrates the development process.
 
 1. The service queries an asset and determines whether the asset exists in the asset store based on the query result.
 
-   For details about the development procedure, see [Querying Assets](asset-js-query.md). For details about the sample code, see [Querying Attributes of an Asset](asset-js-query.md#querying-attributes-of-an-asset).
+   - For details about the development procedure, see [Querying Assets](asset-js-query.md). For details about the sample code, see [Querying Attributes of an Asset](asset-js-query.md#querying-attributes-of-an-asset).
 2. If the asset does not exist:
-    * Add an asset. For details, see [Adding an Asset](asset-js-add.md).
+    - Add an asset. For details, see [Adding an Asset](asset-js-add.md).
 3. If the asset exists, the service can perform any of the following operations based on service requirements:
-    * Remove the asset. For details, see [Removing Assets](asset-js-remove.md).
-    * Update the asset. For details, see [Updating an Asset](asset-js-update.md).
-    * Query the plaintext of the asset. The query process involves preprocessing, user authentication, plaintext query, and postprocessing. For details, see [Querying an Asset with User Authentication](asset-js-query-auth.md).
+    - Remove the asset. For details, see [Removing Assets](asset-js-remove.md).
+    - Update the asset. For details, see [Updating an Asset](asset-js-update.md).
+    - Query the plaintext of the asset. The query process involves preprocessing, user authentication, plaintext query, and postprocessing. For details, see [Querying an Asset with User Authentication](asset-js-query-auth.md).

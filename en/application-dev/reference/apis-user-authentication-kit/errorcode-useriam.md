@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -15,6 +16,10 @@
 **Error Message**
 
 Authentication failed.
+
+**Description**
+
+The authentication failed.
 
 **Possible Causes**
 
@@ -29,6 +34,10 @@ Initiate authentication again.
 **Error Message**
 
 General operation error.
+
+**Description**
+
+An operation error occurred.
 
 **Possible Causes**
 
@@ -48,6 +57,10 @@ Call the API again later or restart the device.
 
 Authentication canceled.
 
+**Description**
+
+The authentication operation is canceled.
+
 **Possible Causes**
 
 The authentication operation has been canceled.
@@ -62,6 +75,10 @@ Initiate authentication again.
 
 Authentication timeout.
 
+**Description**
+
+The authentication operation times out.
+
 **Possible Causes**
 
 The authentication is not complete within the specified time.
@@ -73,6 +90,10 @@ Initiate authentication again.
 ## 12500005 Unsupported Authentication Type
 
 **Error Message**
+
+The authentication type is not supported.
+
+**Description**
 
 The authentication type is not supported.
 
@@ -91,6 +112,10 @@ Check the authentication type parameter and call the API again.
 
 The authentication trust level is not supported.
 
+**Description**
+
+The authentication trust level is not supported.
+
 **Possible Causes**
 
 1. The **authTrustLevel** value in **getAvailableStatus** or **getAuthInstance** of the **userAuth** module is not in the range [ATL1, ATL2, ATL3, ATL4].
@@ -105,6 +130,10 @@ Check that the **authTrustLevel** passed in is within the value range, and the d
 **Error Message**
 
 Authentication service is busy.
+
+**Description**
+
+The authentication service is busy.
 
 **Possible Causes**
 
@@ -138,6 +167,10 @@ Check the API parameters and initiate the request again.
 
 Authentication is locked out.
 
+**Description**
+
+The authentication operation is locked.
+
 **Possible Causes**
 
 The number of authentication failures exceeds the limit.
@@ -151,6 +184,10 @@ Initiate authentication later.
 **Error Message**
 
 The type of credential has not been enrolled.
+
+**Description**
+
+No credential of this type is enrolled.
 
 **Possible Causes**
 
@@ -166,6 +203,10 @@ Check that the related type of credential has been enrolled in the device.
 
 Switched to the custom authentication process.
 
+**Description**
+
+The system switches to the custom authentication process.
+
 **Possible Causes**
 
 The authentication is canceled by the user, who tapped the authentication widget button to apply custom authentication.
@@ -179,6 +220,10 @@ Initiate authentication again.
 **Error Message**
 
 Operation failed because of PIN expired.
+
+**Description**
+
+The password has expired.
 
 **Possible Causes**
 
@@ -195,6 +240,10 @@ Initiate an authentication again after the user sets a new lock screen password.
 
 Operation failed because of authToken integrity check failed.
 
+**Description**
+
+The AuthToken integrity check fails.
+
 **Possible Causes**
 
 The authentication token is invalid.
@@ -208,6 +257,10 @@ Initiate authentication again and issue a valid token.
 **Error Message**
 
 Operation failed because of authToken has expired.
+
+**Description**
+
+The AuthToken has expired.
 
 **Possible Causes**
 
@@ -241,6 +294,10 @@ Initiate an authentication request to obtain a valid authentication token with t
 **Error Message**
 
 The service is unavailable.
+
+**Description**
+
+The facial authentication service is unavailable.
 
 **Possible Causes**
 

@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 [Audio stream](audio-kit-intro.md#introduction-to-audio-streams) types are crucial for determining the mode of audio playback and recording. For audio playback streams, the stream type is determined by [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage). For audio recording streams, the stream type is determined by [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8). These types pose a significant impact on volume control, audio focus management, and input/output device selection.
 
@@ -44,7 +44,7 @@ The following table describes the typical stream types used for audio recording.
 | SOURCE_TYPE_VOICE_MESSAGE | Recording voice short messages.|
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup> | Camera recording.|
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup> | Obtaining pure audio data captured by the microphone (without any system processing).|
-| SOURCE_TYPE_LIVE<sup>20+</sup> | Live streaming. This source type provides system echo cancellation capabilities on supported platforms.|
+| SOURCE_TYPE_LIVE<sup>20+</sup> | Live streaming. This source type provides system echo cancellation capabilities on supported devices.|
 
 ## Effects of Audio Stream Types on Audio Services
 

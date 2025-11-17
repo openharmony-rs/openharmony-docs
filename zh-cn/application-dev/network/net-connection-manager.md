@@ -8,7 +8,7 @@
 
 ## 简介
 
-网络连接管理提供管理网络一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
+网络连接管理提供管理网络的一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
 
 > **说明：**
 >
@@ -64,17 +64,8 @@
     // 创建NetConnection对象。
     let conn = connection.createNetConnection(netSpecifier, timeout);
     ```
-
-4. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
-
-    ```ts
-    // 订阅指定网络状态变化的通知。
-    conn.register((err: BusinessError, data: void) => {
-      console.info(JSON.stringify(err));
-    });
-    ```
-
-5. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
+    
+4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback参数，订阅关心的事件。
 
     ```ts
     // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
@@ -87,6 +78,16 @@
       console.info("net is unavailable, data is " + JSON.stringify(data));
     }));
     ```
+    
+5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知，此接口要在调用on后调用。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
+
+    ```ts
+    // 订阅指定网络状态变化的通知。
+    conn.register((err: BusinessError, data: void) => {
+      console.info(JSON.stringify(err));
+    });
+    ```
+    
 6. 当不使用该网络时，可以调用该对象的[unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister)方法，取消订阅。
 
     ```ts
@@ -202,7 +203,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     // 调用getAllNets方法，获取所有处于连接状态的网络列表。
     connection.getAllNets().then((data: connection.NetHandle[]) => {
@@ -225,7 +225,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     
     function getDefaultNetsInfo() {
       let netHandleInfo:connection.NetHandle|null = null;
@@ -296,7 +295,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     function getAllNetsInfo() {
       // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
@@ -336,7 +334,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     // 获取默认激活的数据网络。
     let netHandle = connection.getDefaultNetSync();
@@ -375,7 +372,6 @@ function socketTest() {
     ```ts
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     // 使用默认网络解析主机名以获取所有IP地址。
     connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));

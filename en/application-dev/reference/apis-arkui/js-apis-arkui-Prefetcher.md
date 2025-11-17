@@ -1,4 +1,11 @@
 # @ohos.arkui.Prefetcher (Prefetching)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @maorh-->
+<!--Designer: @lixingchi1-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @HelloCrease-->
+
 Used in conjunction with **LazyForEach**, the **Prefetcher** module provides content prefetching capabilities for container components such as **List**, **Grid**, **WaterFlow**, and **Swiper** during scrolling, to enhance the user browsing experience.
 
 >  **NOTE**
@@ -133,7 +140,7 @@ Called when the boundaries of the visible area change. This API works with the *
 
 ## IDataSourcePrefetching
 
-Extends the [IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource10) API to provide a data source with prefetching capabilities.
+Extends the [IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource) API to provide a data source with prefetching capabilities.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -154,6 +161,12 @@ Prefetches a specified data item from the dataset. This API can be either synchr
 |-------|--------|----|----------|
 | index | number | Yes | Index of the data item to prefetch.|
 
+**Return value**
+
+| Type| Description|
+| ----------------------- | -------- |
+| Promise\<void\> \| void | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content.|
+
 ### cancel
 cancel?(index: number): Promise\<void\> | void;
 
@@ -168,6 +181,12 @@ Cancels the prefetching of a specified data item from the dataset. This API can 
 | Name  | Type    | Mandatory| Description        |
 |-------|--------|----|------------|
 | index | number | Yes | Index of the data item to cancel prefetching for.|
+
+**Return value**
+
+| Type| Description|
+| ----------------------- | -------- |
+| Promise\<void\> \| void | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content.|
 
 When list content moves off the screen (for example, during fast scrolling), the prefetching algorithm identifies which off-screen items can have their prefetching canceled. This API is then called to handle the cancellation. For example, if the HTTP framework supports request cancellation, this API can be used to terminate the network requests initiated by the **prefetch** API.
 

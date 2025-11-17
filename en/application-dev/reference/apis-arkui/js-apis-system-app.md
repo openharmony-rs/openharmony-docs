@@ -1,4 +1,10 @@
 # @system.app (Application Context)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -74,7 +80,7 @@ Sets the maximum number of decoded images that can be cached in the memory to sp
 
 **setImageCacheCount** takes effect only when used in [onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) on the page decorated by @Entry.
 
-The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCacheSize** APIs are not flexible and will not be further evolved in future developments. In light of this, consider using [ImageKnife](https://gitee.com/openharmony-tpc/ImageKnife) for more complex scenarios.
+The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCacheSize** APIs are not flexible and will not be further evolved in future developments. In light of this, consider using [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife) for more complex scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -84,7 +90,7 @@ The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCach
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | number | Yes| Number of decoded images that are cached in the memory.|
+| value | number | Yes| Number of decoded images that are cached in the memory. The value must be greater than 0.|
 
 **Example**
 
@@ -131,7 +137,7 @@ Sets the maximum size (in bytes) of the image data cached in the memory before d
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | number | Yes| Size of the image data cached before decoding, in bytes.|
+| value | number | Yes| Size of the image data cached before decoding, in bytes. The value must be greater than 0.|
 
 **Example**
 
@@ -176,7 +182,7 @@ Sets the maximum size of the image file cache (in bytes) to speed up the loading
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | number | Yes| Size of the image file cache, in bytes.|
+| value | number | Yes| Size of the image file cache, in bytes. The value must be greater than 0.|
 
 **Example**
 
@@ -216,7 +222,7 @@ static requestFullWindow(options?: RequestFullWindowOptions): void
 
 Requests the application to run in full window. You can call this API when the FA runs in a non-full window, for example, semi-modal FA. This API is invalid for an application already in full-window mode.
 
-You are advised to use [@ohos.window](js-apis-window.md) since API version 7.
+You are advised to use [@ohos.window](arkts-apis-window.md) since API version 7.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,4 +1,10 @@
 # GridContainer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **GridContainer** component lays out components vertically. It is used only in the grid layout.
 
@@ -12,7 +18,6 @@ The **GridContainer** component lays out components vertically. It is used only 
 ## Child Components
 
 Supported
-
 
 ## APIs
 

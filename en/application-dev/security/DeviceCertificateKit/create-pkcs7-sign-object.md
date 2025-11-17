@@ -9,7 +9,7 @@
 
 This feature is supported since API version 18.
 
-PKCS #7 is a standard syntax for storing signed or encrypted data. The extension of PKCS#7, which is CMS, supports the following data types: data, signed data, enveloped data, signed and enveloped data, digest data, and encrypted data. It is often used to protect data integrity and confidentiality. Currently, only PKCS #7 signed data is supported.
+PKCS #7 is a standard syntax for storing signed or encrypted data. The extension of PKCS #7, which is CMS, supports the following data types: data, signed data, enveloped data, signed and enveloped data, digest data, and encrypted data. It is often used to protect data integrity and confidentiality. Currently, only PKCS #7 signed data is supported.
 
 ## How to Develop
 
@@ -112,7 +112,7 @@ PKCS #7 is a standard syntax for storing signed or encrypted data. The extension
             isDetached : true
           };
           cmsGenerator.doFinal(content, optionsFinal).then(result => {
-            console.log('testPkcs7SignByPromise doFinal success, resullt = %s', result);
+            console.info('testPkcs7SignByPromise doFinal success, result = %s', result);
           }).catch((error: BusinessError) => {
             console.error('testPkcs7SignByPromise failed, errCode: ' + error.code + ', errMsg: ' + error.message);
           });

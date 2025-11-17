@@ -1,14 +1,11 @@
 # Using MindSpore Lite for Model Conversion
 
-## Basic Concepts
-
-- MindSpore Lite: a built-in AI inference engine of OpenHarmony that provides inference deployment for deep learning models.
-
-- Neural Network Runtime (NNRt): a bridge that connects the upper-layer AI inference framework to the bottom-layer acceleration chip to implement cross-chip inference and computing of AI models.
-
-- Common neural network model: network models commonly used for AI applications, including MindSpore, ONNX, TensorFlow, and CAFFE.
-
-- Offline models: network models obtained using the offline model conversion tool of the AI hardware vendor. The hardware vendor is responsible for parsing and inference of offline models.
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
 
 ## When to Use
 
@@ -44,7 +41,7 @@ You can obtain the MindSpore Lite model conversion tool in either of the followi
      -  CMake >= 3.18.3
      -  Git >= 2.28.0
 
-2. Obtain the [MindSpore Lite source code](https://gitee.com/openharmony/third_party_mindspore).
+2. Obtain the [MindSpore Lite source code](https://gitcode.com/openharmony/third_party_mindspore).
    The complete source code of MindSpore Lite is available at `mindspore-src/source/`.
 
 3. Start building.
@@ -63,10 +60,10 @@ You can obtain the MindSpore Lite model conversion tool in either of the followi
 After obtaining the model conversion tool, you need to add the dynamic link library (DLL) required by the conversion tool to the environment variable `LD_LIBRARY_PATH`.
 
 ```bash
-export LD_LIBRARY_PATH=${PACKAGE_ROOT_PATH}/tools/converter/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${PACKAGE_PATH}/tools/converter/lib:${LD_LIBRARY_PATH}
 ```
 
-${PACKAGE_ROOT_PATH} indicates the path where the MindSpore Lite release package is decompressed.
+${PACKAGE_PATH} indicates the path where the MindSpore Lite release package is decompressed.
 
 
 ## Parameter Description
@@ -111,7 +108,7 @@ This indicates that the CAFFE model is successfully converted to the MindSpore L
 
 ## (Optional) Offline Model Conversion
 
-If you want to reduce the loading delay to meet the requirements of the deployment scenario, you can use offline model-based inference as an alternative. The operation procedure is as follows:
+If you want to reduce the loading delay to meet the requirements of the deployment scenario, you can use offline model-based inference as an alternative. Offline models are network models obtained using the offline model conversion tool of the AI hardware vendor. The hardware vendor is responsible for parsing and inference of offline models.
 
 During inference, MindSpore Lite directly sends the offline model to the AI hardware connected to NNRt. This way, the model can be loaded without the need for online image composition, greatly reducing the model loading delay. In addition, MindSpore Lite can provide additional hardware-specific information to assist the AI hardware in model inference.
 

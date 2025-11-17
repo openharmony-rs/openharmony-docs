@@ -39,13 +39,13 @@
 DataShare实现跨应用数据共享方式如下：
 
 <!--RP1-->
-- [使用DataShareExtensionAbility实现数据共享](share-data-by-datashareextensionability.md)
+- [使用DataShareExtensionAbility实现数据共享](share-data-by-datashareextensionability-sys.md)
 
   这种方式通过在HAP中实现一个extension，在extension中可以实现回调，在访问方调用对应接口时，会自动拉起提供方对应的extension，并调用对应回调。
 
   这种方式适用于跨应用数据访问时有业务的操作，不仅是对数据库的增删改查的情况。
 
-- [通过数据管理服务实现数据共享静默访问](share-data-by-silent-access.md)
+- [通过数据管理服务实现数据共享静默访问](share-data-by-silent-access-sys.md)
 
   这种方式通过在HAP中配置数据库的访问规则，在访问方调用对应接口时，会自动通过系统服务读取HAP配置规则，按照规则返回数据，不会拉起数据提供方。
 

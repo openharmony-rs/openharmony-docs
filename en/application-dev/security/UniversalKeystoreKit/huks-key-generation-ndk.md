@@ -19,9 +19,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ## How to Develop
 
-1. Set the alias (**keyAlias**) of the key to generate.
-   - The key alias can contain a maximum of 128 bytes and cannot contain sensitive information, such as personal data.
-   - For the keys generated for different services, HUKS isolates the storage paths based on the service identity information to prevent conflicts caused by the same key alias.
+1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
 2. Initialize the key property set. Construct **paramSet** using [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset), [OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams), and [OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset).
    The key property set must contain the [OH_Huks_KeyAlg](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg), [OH_Huks_KeySize](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize), and [OH_Huks_KeyPurpose](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose) properties. Note that a key can have only one purpose, and the purpose specified during key generation must match the key purpose during usage. Otherwise, an exception occurs.

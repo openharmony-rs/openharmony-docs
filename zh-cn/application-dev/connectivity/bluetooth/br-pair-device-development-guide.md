@@ -18,7 +18,7 @@
 ### 导入所需API模块
 导入connection、a2dp、 hfp、 hid、baseProfile、constant和错误码模块。
 ```ts
-import { connection, a2dp, hfp, hid, baseProfile, constant } from '@kit.ConnectivityKit';
+import { connection, a2dp, hfp, hid, baseProfile, constant, common } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
@@ -42,6 +42,7 @@ try {
 
 ### 发起配对
 若目标设备的配对状态是[BOND_STATE_INVALID](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate)，则可以主动配对目标设备。
+
 - 目标设备可以通过发现设备流程获取，详情请参考：[传统蓝牙查找设备](br-discovery-development-guide.md)或者[低功耗蓝牙查找设备](ble-development-guide.md)。
 
 配对过程中，系统会弹出对话框。不同配对类型，对话框样式可能不一样，其中“确认配对密钥（Confirm Passkey）”模式如下图1。若用户同意授权，才能配对成功。
@@ -49,19 +50,48 @@ try {
 ![pair request dialog](figures/pair-request-dialog.png)
 
 **图1** 蓝牙配对请求对话框
+
+蓝牙设备的实际MAC地址属于用户的隐私信息，在发现设备过程中，蓝牙子系统会给每个蓝牙外设分配一个虚拟MAC地址，并保存该虚拟MAC地址与外设实际MAC地址的映射关系。
+
+若开发者不知道目标设备的[地址类型](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype)。，推荐使用API version 20及以前的配对方式发起配对，详情请见[connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice)。
+
+- 此配对方式不需要关注目标设备的MAC地址类型。
+
 ```ts
-// 设备地址可以通过查找设备流程获取
-let device = 'XX:XX:XX:XX:XX:XX';
+// 通过发现设备流程获取目标设备地址
+let device = '11:22:33:44:55:66';
 
 try {
   // 发起配对
   connection.pairDevice(device).then(() => {
     console.info('pairDevice');
   }, (error: BusinessError) => {
-    console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
+    console.error('pairDevice: errCode:' + error.code + ', errMessage:' + error.message);
   });
 } catch (err) {
-  console.error('startPair: errCode:' + err.code + ',errMessage' + err.message);
+  console.error('startPair: errCode:' + err.code + ', errMessage:' + err.message);
+}
+```
+
+若开发者已知目标设备的[地址类型](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype)，推荐使用API version 21开始支持的配对方式发起配对，详情请见[connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice21)。
+
+- 此配对方式需要同时指定目标设备的MAC地址和地址类型。
+
+```js
+let btAddr: common.BluetoothAddress = {
+    "address": '11:22:33:44:55:66', // 目标设备的实际MAC地址或虚拟MAC地址
+    "addressType": common.BluetoothAddressType.REAL, // 相应的地址类型
+}
+
+try {
+    // 发起配对
+    connection.pairDevice(btAddr).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('pairDevice: errCode:' + error.code + ', errMessage:' + error.message);
+    });
+} catch (err) {
+  console.error('startPair: errCode:' + err.code + ', errMessage:' + err.message);
 }
 ```
 

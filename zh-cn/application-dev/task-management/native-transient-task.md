@@ -4,7 +4,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 场景介绍
@@ -18,10 +18,10 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info); | 申请短时任务。 |
-| int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime); | 获取对应短时任务的剩余时间。 |
-| int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId); | 取消短时任务。 |
-| int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo); | 获取所有短时任务信息，如当日剩余总配额等。 |
+| [int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_requestsuspenddelay)  | 申请短时任务。 |
+| [int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_getremainingdelaytime) | 获取对应短时任务的剩余时间。 |
+| [int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_cancelsuspenddelay) | 取消短时任务。 |
+| [int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_gettransienttaskinfo) | 获取所有短时任务信息，如当日剩余总配额等。 |
 
 ## 开发步骤
 
@@ -166,7 +166,7 @@
 ### 在index.d.ts文件中声明函数
 
    ```ts
-   import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
+   import backgroundTaskManager from '@kit.BackgroundTasksKit';
 
    export const RequestSuspendDelay: () => number;
    export const GetRemainingDelayTime: () => number;
@@ -210,22 +210,22 @@
 
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
-       console.log("The return requestId is " + requestId);
+       console.info("The return requestId is " + requestId);
      }
 
      GetRemainingDelayTime() {
        let time = testTransientTask.GetRemainingDelayTime();
-       console.log("The time is " + time);
+       console.info("The time is " + time);
      }
 
      CancelSuspendDelay() {
        let ret = testTransientTask.CancelSuspendDelay();
-       console.log("The ret is " + ret);
+       console.info("The ret is " + ret);
      }
 
      GetTransientTaskInfo() {
        let ret = testTransientTask.GetTransientTaskInfo();
-       console.log("The ret is " + JSON.stringify(ret));
+       console.info("The ret is " + JSON.stringify(ret));
      }
    }
 
@@ -266,4 +266,4 @@
    ```
 > **说明**
 >
->申请短时任务的按钮，不可连续点击超过3次，否则会报错。使用过程中更多的约束与限制请参考[短时任务(ArkTS)](transient-task.md#约束与限制)。
+>申请短时任务的按钮，不可连续点击超过3次，否则会超出短时任务数量限制并报错。使用过程中更多的约束与限制请参考[短时任务(ArkTS)](transient-task.md#约束与限制)。

@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -39,6 +39,7 @@ You can call the functions to create an audio stream manager and set and manage 
 | [OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType sourceType, bool *supported)](#oh_audiostreammanager_isacousticechocancelersupported) | Checks whether the audio stream of the specified source type supports acoustic echo cancellation.|
 | [bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isfastplaybacksupported) | Checks whether the current device supports low-latency playback for the specified audio stream information and usage scenario.|
 | [bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isfastrecordingsupported) | Checks whether the current device supports low-latency recording for the specified audio stream information and usage scenario.|
+| [bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isintelligentnoisereductionenabledforcurrentdevice) | Checks whether the intelligent noise reduction feature is enabled for the audio stream of the specified source type.|
 
 ## Function Description
 
@@ -53,7 +54,6 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManage
 Obtains the handle to the audio stream manager.
 
 **Since**: 19
-
 
 **Parameters**
 
@@ -78,7 +78,6 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 Obtains the direct playback mode supported by an audio stream.
 
 **Since**: 19
-
 
 **Parameters**
 
@@ -107,7 +106,6 @@ Checks whether the audio stream of the specified source type supports acoustic e
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -133,7 +131,6 @@ bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *stream
 Checks whether the current device supports low-latency playback for the specified audio stream information and usage scenario.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -161,7 +158,6 @@ Checks whether the current device supports low-latency recording for the specifi
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -175,3 +171,28 @@ Checks whether the current device supports low-latency recording for the specifi
 | Type| Description|
 | -- | -- |
 | bool | Check result for the support of low-latency recording. **true** if supported, **false** otherwise.|
+
+### OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice()
+
+```
+bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType source)
+```
+
+**Description**
+
+Checks whether the intelligent noise reduction feature is enabled for the audio stream of the specified source type.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Handle to the audio stream manager. which is obtained by calling [OH_AudioManager_GetAudioStreamManager](#oh_audiomanager_getaudiostreammanager).|
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | Audio stream usage scenario determined based on the audio device and pipe type.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | Check result for whether the intelligent noise reduction feature is enabled. **true** if enabled, and **false** otherwise.|

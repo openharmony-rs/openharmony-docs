@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开发调试工具，支持在电脑上调试移动设备前端页面。开发者通过[setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess)接口开启Web组件前端页面调试能力，使用DevTools在电脑上调试移动前端网页，设备需为4.1.0及以上版本。
@@ -145,9 +145,12 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
    ```
 
 ### 端口转发
-当应用代码调用setWebDebuggingAccess接口开启Web调试开关后，ArkWeb内核将启动一个domain socket的监听，以此实现DevTools对网页的调试功能。也可以参考[自动映射WebView调试链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516)。  
+当应用代码调用setWebDebuggingAccess接口开启Web调试开关后，ArkWeb内核将启动一个domain socket的监听，以此实现DevTools对网页的调试功能。  
 Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将设备上的domain socket转发到电脑上。
 
+**推荐使用[自动映射WebView调试链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516)**。
+
+若当前DevEco版本低，可参考以下方法：
 1. 先在hdc shell里执行如下命令，查询ArkWeb在设备里创建的domain socket。  
    ```shell
    cat /proc/net/unix | grep devtools
@@ -186,8 +189,8 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
    ![hdc_fport_ls_empty](figures/devtools_resources_hdc_fport_ls_empty.jpg)
 
 ### 便捷脚本
-#### Windows平台
-请复制以下信息建立bat文件，开启调试应用后执行。
+**Windows平台** <br>
+请复制以下信息创建bat文件，开启调试应用后执行。
    ```
    @echo off
    setlocal enabledelayedexpansion
@@ -261,8 +264,8 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 
    endlocal
    ```
-#### Linux或Mac平台
-请复制以下信息建立sh文件，注意chmod以及格式转换，开启调试应用后执行。
+**Linux或Mac平台** <br>
+请复制以下信息创建sh文件，注意chmod以及格式转换，开启调试应用后执行。
 本脚本会先删除所有的端口转发，如果有其他的工具(如：DevEco Studio)也在使用端口转发功能，会受到影响。
    ```
    #!/bin/bash
@@ -462,7 +465,22 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 
 **问题原因**
 
-* 当同时使用HDC和ADB时，ADB会干扰DevTools与设备之间的WebSocket连接
+* 当同时使用HDC和ADB时，ADB会干扰DevTools与设备之间的WebSocket连接。
 
 **解决方法**
-* 如果同时使用HDC和ADB，先关闭ADB进程，确保DevTools与设备建立WebSocket连接
+* 如果同时使用HDC和ADB，先关闭ADB进程，确保DevTools与设备建立WebSocket连接。
+
+### 使用DevTools工具进行调试出现404报错
+**问题现象**
+
+  在电脑端Chrome浏览器中调试网页时，出现报错：“HTTP/1.1 404 Not Found”。
+
+**问题原因**
+
+* Chrome浏览器版本较低，导致无法使用DevTools调试。
+
+**解决方法**
+* 方案一，将电脑端Chrome升级到最新版本。
+* 方案二，如果不希望升级浏览器，可以手动拼接调试URL。完整的URL链接为：“devtools://devtools/bundled/inspector.html?ws=localhost:9222/devtools/page/xxx”。
+  - 该链接由两部分组成：“devtools://devtools/bundled/inspector.html”前半段固定不变。“?ws=localhost:9222/devtools/page/xxx”后半段需要根据实际配置修改。
+  - 端口转发成功后，使用Chrome浏览器打开 http://localhost:9222/json 页面。请注意，URL中的9222应替换为实际配置的TCP端口。然后取“devtoolsFrontendUrl”后的value值“?ws”及其后部分。

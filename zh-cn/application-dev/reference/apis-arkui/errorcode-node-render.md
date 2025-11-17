@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -18,7 +18,7 @@ The node type is not custom node.
 
 **错误描述**
 
-当前的操作的节点不是NDK侧的自定义节点。
+当前操作的节点不是NDK侧的自定义节点。
 
 **可能原因**
 
@@ -36,7 +36,7 @@ Node already has children.
 
 **错误描述**
 
-当前的操作的自定义节点已存在子节点。
+当前操作的自定义节点已存在子节点。
 
 **可能原因**
 

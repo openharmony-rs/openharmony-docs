@@ -30,9 +30,9 @@
     - [@ohos.notification (Notification) (System API)](js-apis-notification-sys.md)
     <!--DelEnd-->
 - C APIs
-  - Module
+  - Modules
       - [NOTIFICATION](capi-notification.md)
-  - Header File
+  - Header Files
       - [notification.h](capi-notification-h.md)
 - Error Codes
   - [Notification Error Codes](errorcode-notification.md)

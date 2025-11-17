@@ -22,6 +22,8 @@ import { buffer } from '@kit.ArkTS';
 
 ## BufferEncoding
 
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+
 表示支持的编码格式类型。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
@@ -270,7 +272,7 @@ concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
 | totalLength | number | 否 | 需要复制的总字节长度，默认值为0。 |
 
 **返回值：**
@@ -711,7 +713,7 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -761,7 +763,7 @@ copy(target: Buffer| Uint8Array, targetStart?: number, sourceStart?: number, sou
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -895,7 +897,7 @@ fill(value: string | Buffer | Uint8Array | number, offset?: number, end?: number
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[offset/end]" is out of range. |
+| 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **示例：**
 

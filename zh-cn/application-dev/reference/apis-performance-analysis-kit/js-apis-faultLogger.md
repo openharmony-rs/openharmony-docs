@@ -39,16 +39,16 @@ import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pid | number | 是 | 故障进程的进程id。 |
-| uid | number | 是 | 故障进程的用户id。 |
-| type | [FaultType](#faulttype) | 是 | 故障类型。 |
-| timestamp | number | 是 | 日志生成时的毫秒级时间戳。 |
-| reason | string | 是 | 发生故障的原因。 |
-| module | string | 是 | 发生故障的模块。 |
-| summary | string | 是 | 故障的概要。 |
-| fullLog | string | 是 | 故障日志全文。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| pid | number | 否 | 否 | 故障进程的进程id。 |
+| uid | number | 否 | 否 | 故障进程的用户id。 |
+| type | [FaultType](#faulttype) | 否 | 否 | 故障类型。 |
+| timestamp | number | 否 | 否 | 日志生成时的毫秒级时间戳。 |
+| reason | string | 否 | 否 | 发生故障的原因。 |
+| module | string | 否 | 否 | 发生故障的模块。 |
+| summary | string | 否 | 否 | 故障的概要。 |
+| fullLog | string | 否 | 否 | 故障日志全文。 |
 
 ## FaultLogger.query<sup>9+</sup>
 

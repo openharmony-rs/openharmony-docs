@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebDownloadManager** class. You can use the APIs of this class to resume failed download tasks.
 
@@ -27,6 +27,10 @@ import { webview } from '@kit.ArkWeb';
 static setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 Sets the delegate used to receive download progress triggered by **WebDownloadManager**.
+
+> **NOTE**
+>
+>Before calling this API, you must call the **initializeWebEngine** method to initialize the web kernel. Otherwise, calling this API is invalid.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -66,7 +70,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })
@@ -131,6 +135,10 @@ static resumeDownload(webDownloadItem: WebDownloadItem): void
 
 Resumes a failed download task.
 
+> **NOTE**
+>
+>Before calling this API, you must call the **initializeWebEngine** method to initialize the web kernel. Otherwise, calling this API is invalid.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -177,7 +185,7 @@ struct WebComponent {
               this.download = webDownloadItem;
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download failed guid: " + webDownloadItem.getGuid());
+              console.error("download failed guid: " + webDownloadItem.getGuid());
               // Serialize the failed download to a byte array.
               this.failedData = webDownloadItem.serialize();
             })

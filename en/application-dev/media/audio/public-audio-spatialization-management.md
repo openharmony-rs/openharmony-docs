@@ -1,12 +1,12 @@
-# Spatial Audio Management
+# Spatial Audio Capability Query and Status Subscription
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
-Spatial audio management is supported since API version 18.
+Starting from API version 18, you can query the spatial audio capabilities and  subscribe to their status changes.
 
 Spatial audio is an advanced audio technology that transforms traditional stereo sound into a three-dimensional experience. It enhances monaural, stereo, and surround sound by adding a sense of height, delivering an all-encompassing audio experience. Spatial audio immerses users in an interactive, spatially aware soundscape, making them feel as though they are truly present in the audio environment.
 
@@ -31,11 +31,11 @@ Before using any APIs of AudioSpatializationManager, you must call [getSpatializ
 
 ### Checking Whether a Device Supports Spatial Audio Rendering
 
-Use the **spatializationSupported** property in [AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor) to check whether a specified device supports spatial audio rendering. You need to use other audio APIs to obtain AudioDeviceDescriptor of a connected device or the current audio device.
+Use the **spatializationSupported** property in [AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor) to check whether a specified device supports spatial audio rendering. You need to use other audio APIs to obtain AudioDeviceDescriptor of a connected device or the current audio device. For example, you can use [getDevicesSync](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevicessync10) of the AudioRoutingManager instance created by [getRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getroutingmanager9) to obtain AudioDeviceDescriptor.
 
   ```ts
   import { audio } from '@kit.AudioKit';
-
+  let audioRoutingManager = audioManager.getRoutingManager();
   let deviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
   console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(deviceDescriptors)}.`);
   ```

@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 页签型标题栏，用于页面之间的切换。仅一级页面适用。
@@ -12,8 +12,9 @@
 
 > **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 如果TabTitleBar设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到TabTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议TabTitleBar设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -26,10 +27,6 @@ import { TabTitleBar } from '@kit.ArkUI';
 ## 子组件
 
 无
-
-## 属性
-不支持[通用属性](ts-component-general-attributes.md)。
-
 
 ## TabTitleBar
 
@@ -76,11 +73,11 @@ TabTitleBar({tabItems: Array&lt;TabTitleBarTabItem&gt;, menuItems?: Array&lt;Tab
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| title | [ResourceStr](ts-types.md#resourcestr) | 是 | 文字页签。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 图片页签资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | Symbol图片页签资源，优先级大于icon。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| title | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 文字页签。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图片页签资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图片页签资源，优先级大于icon。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 
 ## 事件

@@ -1,4 +1,10 @@
 # CPU特性
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @huang_huijin-->
+<!--Designer: @huang_huijin-->
+<!--Tester: @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 
 CPU特性是CPU提供的一些硬件扩展。开发者可以通过调用指令，设置特殊寄存器来使用这些CPU特性，例如ARMv7a架构上的VFP-v32d32、NEON、IDIV、AES等CPU特性。很多CPU特性是可选的，不同厂商的CPU通常有不同的特性。
@@ -12,7 +18,7 @@ OpenHarmony系统当前没有提供获取CPU特性的接口，开发者可以导
 
 ## 使用建议
 
-1. 在OpenHarmony系统C++工程中引入开源库，下载[cpu_features库](https://github.com/google/cpu_features)，解压到工程的cpp目录下。如下以DevEco Studio C++模版示例应用举例：
+1. 在OpenHarmony系统C++工程中引入开源库，下载[cpu_features库](https://github.com/google/cpu_features)，解压到工程的cpp目录下，解压后的文件名改为cpu_features。如下以DevEco Studio C++模版示例应用举例：
    - 解压后目录结构如下
       ```
       MyApplication
@@ -27,7 +33,7 @@ OpenHarmony系统当前没有提供获取CPU特性的接口，开发者可以导
    - 在CMakeLists.txt添加导入目录
       ```makefile
       add_subdirectory(cpu_features) # 添加子目录到工程
-      target_link_libraries(entry PUBLIC CpuFeature::cpu_features) # 添加需要链接依赖的库文件
+      target_link_libraries(entry PUBLIC cpu_features) # 添加需要链接依赖的库文件
       ```
 
 2. 在代码中加入判断CPU特性支持能力语句，如下以支持ARM与AARCH64两种架构举例：

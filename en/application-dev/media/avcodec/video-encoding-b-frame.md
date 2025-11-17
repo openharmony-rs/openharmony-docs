@@ -5,7 +5,7 @@
 <!--Owner: @jiangfan56-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, B-frame video encoding is supported.
 
@@ -54,7 +54,7 @@ For details about basic encoding functionality, see [Video Encoding](video-encod
     // 1.1 Obtain the video encoder capability instance. The following uses H.265 as an example.
     OH_AVCapability *cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
     if (cap != nullptr) {
-        OH_LOG_INFO("Get codec Capability sucess!");
+        OH_LOG_INFO("Get codec Capability success!");
         // 1.2 Check whether B-frame encoding is supported.
         bool isSupported = OH_AVCapability_IsFeatureSupported(cap, VIDEO_ENCODER_B_FRAME);
         int32_t supportedMaxBFrameCount = 0;

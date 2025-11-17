@@ -1,5 +1,12 @@
 # @ohos.multimedia.videoProcessingEngine (Video Processing Engine)
 
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @pxh123456-->
+<!--Designer: @gongzheng92-->
+<!--Tester: @gongzheng92-->
+<!--Adviser: @w_Machine_cc-->
+
 The module provides the capabilities for enhancing the clarity and scaling of image content.
 
 This module includes a base class: [ImageProcessor](#imageprocessor).
@@ -46,8 +53,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { videoProcessingEngine } from '@kit.ImageKit';
+
 async function initializeEnvironment() {
-videoProcessingEngine.initializeEnvironment();
+  videoProcessingEngine.initializeEnvironment();
 }
 ```
 
@@ -79,6 +87,7 @@ For details about the error codes, see [Video Processing Engine Error Codes](err
 
 ```ts
 import { videoProcessingEngine } from '@kit.ImageKit';
+
 async function deinitializeEnvironment() {
   videoProcessingEngine.initializeEnvironment();
   videoProcessingEngine.deinitializeEnvironment();
@@ -115,9 +124,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { videoProcessingEngine } from '@kit.ImageKit';
+
 async function create() {
-videoProcessingEngine.initializeEnvironment();
-let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
+  videoProcessingEngine.initializeEnvironment();
+  let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
 }
 ```
 
@@ -145,8 +155,8 @@ Carries out detail enhancement processing. This API uses a promise to return the
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
-|  width |  number | Yes | Target width, in px. |
-|  height |  number | Yes |  Target height, in px.|
+|  width |  number | Yes |  Target width, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
+|  height |  number | Yes |  Target height, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
 
 **Return value**
@@ -169,10 +179,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
+
 async function enhanceDetail(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  let enhancedPixelmap: Promise<image.PixelMap> = imageProcessor.enhanceDetail(sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
+  // Example: The width can be set to 1024, and the height can be set to 1280.
+  let enhancedPixelmap: Promise<image.PixelMap> =
+    imageProcessor.enhanceDetail(sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 
@@ -191,7 +204,7 @@ Carries out detail enhancement processing. This API uses a promise to return the
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
-|  scale |  number |  Yes|  Target scale factor.|
+|  scale |  number |  Yes|  Target scale factor. Its value range is (0.0, 32.0]. The maximum supported scale is 32x, provided the [resulting resolution](#enhancedetail) stays within the required bounds.|
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
 
 **Return value**
@@ -214,10 +227,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
+
 async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  let enhancedPixelmap: Promise<image.PixelMap> = imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
+  // Example: The scale can be set to 2.0.
+  let enhancedPixelmap: Promise<image.PixelMap> =
+    imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 
@@ -236,8 +252,8 @@ Carries out detail enhancement processing. This API returns the result synchrono
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
-|  width |  number | Yes | Target width, in px. |
-|  height |  number | Yes|  Target height, in px.|
+|  width |  number | Yes |  Target width, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
+|  height |  number | Yes|  Target height, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
 
 **Return value**
@@ -261,11 +277,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
-async function enhanceDetailSync(sourceImage:image.PixelMap, width: number, height: number) {
+
+async function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
+  // Example: The width can be set to 1024, and the height can be set to 1280.
   let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
-sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
+    sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 
@@ -284,7 +302,7 @@ Carries out detail enhancement processing. This API returns the result synchrono
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
-|  scale |  number |  Yes|  Target scale factor.|
+|  scale |  number |  Yes|  Target scale factor. Its value range is (0.0, 32.0]. The maximum supported scale is 32x, provided the [resulting resolution](#enhancedetail) stays within the required bounds.|
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
 
 **Return value**
@@ -308,11 +326,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
-async function enhanceDetailSync(sourceImage:image.PixelMap, scale: number) {
+
+async function enhanceDetailSync(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
+  // Example: The scale can be set to 2.0.
   let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
-sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
+    sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
 

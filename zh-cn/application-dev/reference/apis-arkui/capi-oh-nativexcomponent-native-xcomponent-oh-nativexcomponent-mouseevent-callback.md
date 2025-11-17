@@ -1,5 +1,12 @@
 # OH_NativeXComponent_MouseEvent_Callback
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 注册鼠标事件的回调。

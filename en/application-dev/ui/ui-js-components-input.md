@@ -1,5 +1,10 @@
-# &lt;input&gt; Development
-
+# input Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;input&gt;** component provides an interactive way to receive user input of various types, including **date**, **checkbox**, and **button**. For details, see [input](../reference/apis-arkui/arkui-js/js-components-basic-input.md).
 
@@ -116,11 +121,10 @@ export default {
 ```html
 <!-- xxx.hml -->
 <div class="content">
-  <text style="margin-left: -7px;">
-    <span>Enter text and then touch and hold what you've entered</span>
-  </text>
-  <input class="input" type="text" onsearch="search" placeholder="search"> </input>
-  <input class="input" type="text" ontranslate="translate" placeholder="translate"> </input>
+    <text style="margin-left: -7px;">
+        <span>Enter text and then touch and hold what you've entered</span>
+    </text>
+    <input class="input" type="text" ontranslate="translate" placeholder="translate"> </input>
 </div>
 ```
 
@@ -149,23 +153,18 @@ text{
 ```js
 // xxx.js
 import promptAction from '@ohos.promptAction'
+
 export default {
-  search(e){
-    promptAction.showToast({
-      message:  e.value,
-      duration: 3000,
-    });
-  },
-  translate(e){
-    promptAction.showToast({
-      message:  e.value,
-      duration: 3000,
-    });
-  }
+    translate(e) {
+        promptAction.showToast({
+            message: e.value,
+            duration: 3000,
+        });
+    }
 }
 ```
 
-![en-us_image_0000001267647853](figures/en-us_image_0000001267647853.gif)
+
 
 
 ## Setting the Input Error Message

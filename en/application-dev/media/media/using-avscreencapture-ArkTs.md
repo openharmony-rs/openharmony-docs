@@ -1,10 +1,10 @@
-# Using AVScreenCaptureRecorder to Record Screens and Save Them to Files (ArkTS)
+# Using AVScreenCaptureRecorder to Record Screens and Write Them to Files (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Screen capture is mainly used to record the main screen.
 
@@ -12,7 +12,7 @@ You can call the ArkTS APIs of the [AVScreenCaptureRecorder](media-kit-intro.md#
 
 The AVScreenCaptureRecorder, Window, and Graphics modules together implement the entire video capture process.
 
-The full screen capture process involves creating an AVScreenCaptureRecorder instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
+The full-screen capture process involves creating an AVScreenCaptureRecorder instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
 
 If you are in a call when screen capture starts or a call is coming during screen capture, screen capture automatically stops, and the **SCREENCAPTURE_STATE_STOPPED_BY_CALL** status is reported.
 
@@ -40,8 +40,8 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
     ```javascript
     import { common } from '@kit.AbilityKit';
-    import media from '@ohos.multimedia.media';
-    import fs from '@ohos.file.fs';
+    import { media } from '@kit.MediaKit';
+    import { fileIo as fs } from '@kit.CoreFileKit';
     ```
 
 2. Create the member variable **screenCapture** of the **AVScreenCaptureRecorder** type.
@@ -177,20 +177,18 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
 ## Complete Sample Code
 
-Refer to the sample code below to implement captured file storage using **AVScreenCaptureRecorder**.
+The following is the complete sample code for capturing a screen and saving the screen data captured to a file using **AVScreenCaptureRecorder**.
 
 ```javascript
-import { common } from '@kit.AbilityKit';
-import media from '@ohos.multimedia.media';
-import fs from '@ohos.file.fs';
+import { media } from '@kit.MediaKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
   private captureFile: fs.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
 
-  private openFile(): void {
-    const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private openFile(context: Context): void {
     const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the container format.
     this.captureFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
@@ -280,13 +278,13 @@ export class AVScreenCaptureDemo {
   }
 
   // Call startRecording to start screen capture. To stop screen capture, click the stop button in the screen capture capsule.
-  async startRecording(): Promise<void> {
+  async startRecording(context: Context): Promise<void> {
     this.screenCapture = await media.createAVScreenCaptureRecorder();
     if (!this.screenCapture) {
       // failed.
       return;
     }
-    this.openFile();
+    this.openFile(context);
     if (!this.captureFile) {
       console.error("Handle exceptions.");
       return;

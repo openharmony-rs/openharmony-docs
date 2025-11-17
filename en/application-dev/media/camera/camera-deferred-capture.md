@@ -4,12 +4,12 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 As an important feature of the camera, deferred photo delivery enables the system, after receiving a photo capture task from an application, to report images of different quality levels in multiple phases.
 
 - In the first phase, the system promptly delivers an image that has undergone lightweight processing, offering a balance between reduced quality and swift image availability. The application receives a PhotoAsset object through the callback. Through this object, the application can call the media library APIs to read the image or flush the image to the disk.
-- In the second phase, the camera framework enhances the image to achieve full quality, either in response to the application's request for higher quality or when the system is not busy. The enhanced image is then sent back to the media library to replace the previously provided one.
+- In the second phase, the camera framework enhances the image to achieve full quality, either in response to the application's request for higher quality or when the camera application runs in the background. The enhanced image is then sent back to the media library to replace the previously provided one.
 
 Deferred photo delivery further reduces the response delay, delivering a better user experience.
 
@@ -52,7 +52,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
       if (photoProfilesArray.length > 0) {
           photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
       } else {
-          console.log("the length of photoProfilesArray<=0!");
+          console.error("the length of photoProfilesArray<=0!");
           return undefined;
       }
      } catch (error) {

@@ -448,7 +448,7 @@ async function Verify(keyAlias: string, plaintext: string, signature: Uint8Array
 }
 
 async function DeleteSm2Key(keyAlias: string) {
-  console.info(`enter DeleteRsaKey`);
+  console.info(`enter DeleteSm2Key`);
   let emptyOptions: huks.HuksOptions = {
     properties: []
   }

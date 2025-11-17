@@ -1,4 +1,4 @@
-# @ohos.bundle.bundleResourceManager (bundleResourceManager) (System API)
+# @ohos.bundle.bundleResourceManager (bundleResourceManager Module) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
@@ -86,8 +86,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -140,8 +140,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
@@ -170,7 +170,7 @@ Obtains the bundle resource information of all applications based on the given r
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
-| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is the bundle resource information. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a BundleResourceInfo array. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -186,8 +186,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllBundleResourceInfo(resourceFlag, (err, data) => {
@@ -225,7 +225,7 @@ Obtains the bundle resource information of all applications based on the given r
 
 | Type                                                        | Description                            |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Promise used to return the resource information of the application obtained.|
+| Promise\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Promise used to return the BundleResourceInfo array.|
 
 **Error codes**
 
@@ -241,8 +241,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllBundleResourceInfo(resourceFlag).then(data=> {
@@ -273,7 +273,7 @@ Obtains the resource information of the entry abilities of the current applicati
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is the launcher ability resource information. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a LauncherAbilityResourceInfo array. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -289,8 +289,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag, (err, data) => {
@@ -328,7 +328,7 @@ Obtains the resource information of the entry abilities of the current applicati
 
 | Type                                                        | Description                            |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Promise used to return the resource information of the entry abilities obtained.|
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Promise used to return the LauncherAbilityResourceInfo array.|
 
 **Error codes**
 
@@ -343,8 +343,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
     bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag).then(data=> {
@@ -402,8 +402,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 let appIndex = 1;
@@ -458,8 +458,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 let appIndex = 1;
@@ -526,6 +526,59 @@ try {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
     console.error(`getExtensionAbilityResourceInfo failed, err code:${code}, err msg: ${message}`);
+}
+```
+
+### bundleResourceManager.getAllUninstalledBundleResourceInfo<sup>21+</sup>
+
+getAllUninstalledBundleResourceInfo(resourceFlags: number): Promise\<Array\<BundleResourceInfo>>
+
+Obtains the bundle resource information of all uninstalled applications that have retained data based on the given resource flags. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_RESOURCES
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Resource
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description               |
+| ----------- | ------ | ---- | --------------------- |
+| resourceFlags | number | Yes  | Type of the resource information to obtain. For details, see [ResourceFlag](#resourceflag).|
+
+**Return value**
+
+| Type                                                        | Description                            |
+| ------------------------------------------------------------ | -------------------------------- |
+| Promise\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Promise used to return the BundleResourceInfo array.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                             |
+| -------- | ------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**Example**
+
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+    bundleResourceManager.getAllUninstalledBundleResourceInfo(resourceFlag).then(data=> {
+        hilog.info(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
+    }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed. err: %{public}s', err.message);
+    })
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed: %{public}s', message);
 }
 ```
 

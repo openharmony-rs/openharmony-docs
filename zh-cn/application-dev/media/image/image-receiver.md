@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 图片接收类ImageReceiver用于获取组件surface id，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
 

@@ -4056,6 +4056,77 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 });
 ```
 
+## notificationManager.setDistributedEnableByBundles<sup>20+</sup>
+
+setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
+
+批量设置应用是否支持跨设备协同。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                       |
+| -------- | ------------------------ | ---- | -------------------------- |
+| bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
+| deviceType | string | 是   | 设备类型。|
+
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ----|
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                          |
+| 1600002  | Marshalling or unmarshalling error.      |
+| 1600003  | Failed to connect to the service.               |
+| 1600010  | Distributed operation failed.            |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle1: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName1",
+    uid: 1,
+    enable: true
+};
+let bundle2: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName2",
+    uid: 2,
+    enable: true
+};
+let bunles: Array<notificationManager.DistributedBundleEnableInfo> = [
+    bundle1,bundle2
+]
+
+let deviceType: string = "liteWearable";
+notificationManager.setDistributedEnableByBundles(bunles, deviceType).then(() => {
+    console.info("setDistributedEnableByBundles success");
+}).catch((err: BusinessError) => {
+    console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.isDistributedEnabledByBundle<sup>12+</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
@@ -5312,3 +5383,17 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | USER_MODIFIED_ON    | 1   | 表示用户设置的开启状态。                 |
 | SYSTEM_DEFAULT_OFF  | 2   | 表示在用户设置前的初始关闭状态。            |
 | SYSTEM_DEFAULT_ON   | 3   | 表示在用户设置前的初始开启状态。                 |
+
+## DistributedBundleEnableInfo<sup>20+</sup>
+
+描述多设备协同的包信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称          | 类型                                                       | 只读 | 可选 | 说明              |
+| --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
+| bundleName   | string | 否 | 否 | 包名。          |
+| uid          | number | 否 | 否 | 应用程序的UID。          |
+| enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |

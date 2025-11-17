@@ -4,10 +4,10 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 ## 功能介绍
 
-开发者可以调用DRM Kit的Native API接口，完成DRM节目播放。
+开发者可以调用DRM Kit的Native API，完成DRM节目播放。
 
 当前支持的解密能力如下：
 

@@ -130,7 +130,7 @@ scan(): void
 启动WLAN扫描，使用前先使能WLAN。
 
 > **说明：**
-> 从 API version 9开始支持，从API version 10开始废弃。替代接口仅向系统应用开放。
+> 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.startScan](#wifimanagerstartscan21)代替。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO、ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -158,6 +158,37 @@ scan(): void
 	}
 ```
 
+## wifiManager.startScan<sup>21+</sup>
+
+startScan(): void
+
+启动WLAN扫描。应用程序在前台运行时，两分钟内最多可扫描四次。在后台运行时，三十分钟内最多可扫描一次。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**示例：**
+
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		wifiManager.startScan();
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+```
 
 ## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
 
@@ -400,7 +431,7 @@ WLAN热点信息。
 | infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem9)&gt; | 否 | 否 | 信息元素。 |
 | timestamp | number | 否 | 否 | 时间戳。 |
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
-| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 是| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
+| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
 
 ## DeviceAddressType<sup>10+</sup>
 
@@ -1009,7 +1040,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加网络配置，使用Promise异步回调。
+添加网络配置。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
@@ -1063,7 +1094,7 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-添加网络配置，使用callback异步回调。
+添加网络配置。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
@@ -1241,7 +1272,7 @@ getSignalLevel(rssi: number, band: number): number
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-获取WLAN连接信息，使用Promise异步回调。
+获取WLAN连接信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1272,7 +1303,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-获取WLAN连接信息，使用callback异步回调。
+获取WLAN连接信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1302,13 +1333,14 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 **示例：**
 ```ts
-  import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-  wifiManager.getLinkedInfo().then(data => {
-      console.info("get wifi linked info: " + JSON.stringify(data));
-  }).catch((error) => {
-      console.error("get linked info error");
-  });
+wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
+    console.info("get wifi linked info: " + JSON.stringify(data));
+}).catch((error: Error) => {
+    console.error("get linked info error: ", error);
+});
+
 ```
 
 ## wifiManager.getLinkedInfoSync<sup>18+</sup>
@@ -1555,6 +1587,49 @@ isFeatureSupported(featureId: number): boolean
 ```
 
 
+## wifiManager.getDeviceMacAddress<sup>15+</sup>
+
+getDeviceMacAddress(): string[]
+
+获取设备的MAC地址。
+
+**需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO
+
+API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从API16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**返回值：**
+
+  | **类型** | **说明** |
+  | -------- | -------- |
+  | string[] | MAC地址。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+| 2501001  | Wi-Fi STA disabled.|
+
+**示例：**
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		let ret = wifiManager.getDeviceMacAddress();
+		console.info("deviceMacAddress:" + JSON.stringify(ret));
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+
+```
+
+
 ## wifiManager.getIpInfo<sup>9+</sup>
 
 getIpInfo(): IpInfo
@@ -1703,9 +1778,6 @@ getCountryCode(): string
 	}
 ```
 
-
-
-
 ## wifiManager.isBandTypeSupported<sup>10+</sup>
 
 isBandTypeSupported(bandType: WifiBandType): boolean
@@ -1735,7 +1807,6 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1837,7 +1908,7 @@ isHotspotActive(): boolean
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
-获取P2P连接信息，使用Promise异步回调。
+获取P2P连接信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1866,7 +1937,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
-获取P2P连接信息，使用callback异步回调。
+获取P2P连接信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1937,7 +2008,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
-获取P2P当前组信息，使用Promise异步回调。
+获取P2P当前组信息。使用Promise异步回调。
 
 **需要权限：**
 
@@ -1965,7 +2036,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
-获取P2P当前组信息，使用callback异步回调。
+获取P2P当前组信息。使用callback异步回调。
 
 **需要权限：**
 
@@ -2010,7 +2081,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
-获取P2P对端设备列表信息，使用Promise异步回调。
+获取P2P对端设备列表信息。使用Promise异步回调。
 
 **需要权限：**
 
@@ -2038,7 +2109,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
-获取P2P对端设备列表信息，使用callback异步回调。
+获取P2P对端设备列表信息。使用callback异步回调。
 
 **需要权限：**
 

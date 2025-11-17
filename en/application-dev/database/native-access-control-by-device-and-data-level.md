@@ -21,7 +21,7 @@ A higher data security label and device security level indicate stricter encrypt
 
 ### Data Security Labels
 
-The data can be rated into four security levels as below.
+The data can be rated into four security levels as below. For details, see [OH_Rdb_SecurityLevel](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_securitylevel).
 
   | Risk Level| Security Level| Definition| Example| 
 | -------- | -------- | -------- | -------- |

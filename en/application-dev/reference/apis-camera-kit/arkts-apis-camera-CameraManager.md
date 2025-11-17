@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -372,7 +372,7 @@ Creates a PhotoOutput instance. This API returns the result synchronously.
 
 | Name    | Type                                        | Mandatory| Description                                 |
 | -------- | ------------------------------------------- |----| ----------------------------------- |
-| profile  | [Profile](arkts-apis-camera-i.md#profile)                         | No | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability11).<br>In API version 11, this parameter is mandatory. Since API version 12, it will overwrite the preconfigured parameters passed in through [preconfig](arkts-apis-camera-PhotoSession.md#preconfig12).|
+| profile  | [Profile](arkts-apis-camera-i.md#profile)                         | No | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability11).<br>In API version 11, this parameter is mandatory. Starting from API version 12, it will overwrite the preconfigured parameters passed in through [preconfig](arkts-apis-camera-PhotoSession.md#preconfig12).|
 
 **Return value**
 
@@ -750,7 +750,7 @@ Checks whether the camera device supports the flashlight.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the flashlight. **true** if supported, **false** otherwise.|
+| boolean    | Check result for the support of the flashlight. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -781,7 +781,7 @@ Checks whether a flashlight mode is supported.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the flashlight mode. **true** if supported, **false** otherwise.|
+| boolean    | Check result for the support of the flashlight mode. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 

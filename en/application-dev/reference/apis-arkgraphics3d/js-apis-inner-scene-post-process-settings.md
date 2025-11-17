@@ -39,7 +39,7 @@ Describes the tone mapping settings.
 | exposure | number | No| Yes| Exposure. The value must be greater than 0. The default value is undefined.|
 
 ## BloomSettings<sup>18+</sup>
-Describes the bloom settings.
+Describes the settings for bloom effects. It is unavailable when [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) is set to **FORWARD_LIGHTWEIGHT**.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -57,5 +57,5 @@ Describes the post-processing settings.
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| toneMapping | [ToneMappingSettings](#tonemappingsettings) | No| Yes| Tone mapping. The default value is undefined.|
-| bloom<sup>18+</sup> | [BloomSettings](#bloomsettings18) | No| Yes| Bloom. The default value is undefined.|
+| toneMapping | [ToneMappingSettings](#tonemappingsettings) | No| Yes| Tone mapping settings. The default value is undefined.|
+| bloom<sup>18+</sup> | [BloomSettings](#bloomsettings18) | No| Yes| Bloom settings. The default value is undefined.|

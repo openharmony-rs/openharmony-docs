@@ -8,14 +8,14 @@
 
 ## Overview
 
-Node-APIs provide APIs for performing basic operations on objects, such as creating objects, obtaining prototypes, freezing and sealing objects, and checking object types.
+Node-API provides APIs for basic object operations, including creating an object, obtaining the prototype of an object, freezing or sealing an object, and checking the object type.
 
 ## Basic Concepts
 
 You may need to define and operate objects when using Node-API in development. For example, define an API with an object as an input parameter, perform operations on the object, and have a result object returned. In this process, you need to ensure that the API definition is clear and compatible with the properties and methods of the object.
 
 - API: defines the interaction protocol between components. An API includes input parameters, output result, and possible error handling. By calling APIs, components can interact and exchange data with each other without knowing the internal implementation details.
-- Object: a composite data type that allows values of different types to be stored as an independent entity in ArkTS. An object is a collection of properties and methods. A property is a value associated with an object, and a method is an operation that the object can perform.
+- Object: a composite data type that allows values of different types in an independent entity in ArkTS. An object is a collection of properties and methods. A property is a value associated with an object, and a method is an operation that the object can perform.
 
 ## Available APIs
 
@@ -29,7 +29,7 @@ The following table lists the APIs for operating and managing ArkTS objects.
 | napi_typeof | Obtains the type of an ArkTS value.|
 | napi_instanceof | Checks whether an ArkTS object is an instance of the specified constructor.|
 | napi_type_tag_object | Associates the value of a tag pointer with an ArkTS object.|
-| napi_check_object_type_tag | Checks whether a tag pointer is associated with an ArkTS object.|
+| napi_check_object_type_tag | Checks whether a tag pointer is associated with a ArkTS object.|
 | napi_create_symbol | Creates an ArkTS **Symbol** object.|
 | napi_create_external | Creates an ArkTS external object, which can be used to pass custom data structs or objects in C/C++ to ArkTS so that it can be accessible from ArkTS.|
 | napi_get_value_external | Obtains the ArkTS data from the external object created by **napi_create_external**. This API can be used to pass data between ArkTS and C/C++.|
@@ -76,6 +76,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // Define a class.
 class Person {
   // Property.
@@ -92,7 +93,10 @@ const person = new Person('Alice', 30);
 // Pass in an instance object and obtain the prototype of the object.
 let applePrototype = testNapi.getPrototype(person);
 // Check whether the prototype obtained by testNapi.getPrototype() is an Apple prototype.
-// ArkTS does not have the prototype concept in DevEco Studio 4.1 and later. When you perform prototype-related operations, 'Prototype assignment is not supported (arkts-no-prototype-assignment)' will be displayed. Therefore, you need to run the following code in a TS file:
+// Since DevEco Studio 4.1, ArkTS does not have the prototype concept.
+// When you perform prototype-related operations,
+// 'Prototype assignment is not supported (arkts-no-prototype-assignment)' will be displayed.
+// Therefore, you need to run the following code in a TS file:
 if (applePrototype === Person.prototype) {
   hilog.info(0x0000, 'Node-API', 'get_prototype_success');
 } else {
@@ -142,6 +146,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   const myObject = testNapi.createObject();
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_object: %{public}s', myObject.name);
@@ -197,6 +202,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -260,6 +266,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
@@ -281,17 +288,19 @@ try {
 
 ### napi_typeof
 
-Obtains the ArkTS type of a given ArkTS value.
+Call **napi_typeof** to obtain the ArkTS type of an ArkTS value.
 
-**Note**: napi_typeof can be used to determine the following types:  
-undefined  
-null  
-boolean  
-number  
-string  
-object  
-function  
-bigint
+**Note**: **napi_typeof** can determine the following types:  
+|Type| 
+|-----|
+|undefined|
+|null|  
+|boolean|  
+|number|  
+|string  
+|object|  
+|function|  
+|bigint|
 
 CPP code:
 
@@ -361,6 +370,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   let varUndefined: undefined;
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_typeof: %{public}s', testNapi.napiTypeOf(varUndefined));
@@ -432,6 +442,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Person {
     name: string;
@@ -537,6 +548,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   data: number = 0
   message: string = ""
@@ -552,7 +564,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_check_object_type_tag objB -> 
 
 ### napi_create_external
 
-Call **napi_create_external** to create an ArkTS external object wrapping a custom C/C++ object and expose it to ArkTS. With this API, you can create a Node-API value that contains a pointer to a custom C/C++ object so that the object can be accessed and managed by ArkTS.
+Call **napi_create_external** to create an ArkTS external object with a custom C/C++ object and expose it to ArkTS. With this API, you can create a Node-API value that contains a pointer to a custom C/C++ object so that the object can be accessed and managed by ArkTS.
 
 CPP code:
 
@@ -624,6 +636,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 const externalData = testNapi.createExternal();
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_external:%{public}s', testNapi.getExternalType(externalData));
 ```
@@ -669,6 +682,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 hilog.info(0x0000, 'Node-API', 'get_value_external:%{public}d', testNapi.getValueExternal());
 ```
 <!-- @[ark_napi_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
@@ -718,6 +732,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 let varSymbol = testNapi.createSymbol();
 hilog.info(0x0000, 'Node-API', 'createSymbol:%{public}s', typeof varSymbol);
 ```

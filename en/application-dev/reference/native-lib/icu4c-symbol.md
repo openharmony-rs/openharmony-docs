@@ -1,5 +1,12 @@
 # ICU4C Symbols Exported from Native APIs
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @fang-jinxu-->
+
 |Type|Symbol|
 | --- | --- |
 |FUNC|UCNV_TO_U_CALLBACK_ESCAPE|
@@ -121,6 +128,7 @@
 |FUNC|ubrk_preceding|
 |FUNC|ubrk_previous|
 |FUNC|ubrk_setText|
+|FUNC|ubrk_setUText|
 |FUNC|ucal_add|
 |FUNC|ucal_clear|
 |FUNC|ucal_clearField|

@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -17,7 +17,7 @@ It implements a secure session, which provides operations on the flash, exposure
 
 > **NOTE**
 >
-> You can call [createSession](arkts-apis-camera-CameraManager.md#createsession11) with [SceneMode](arkts-apis-camera-e.md#scenemode11) set to **SECURE_PHOTO** to create a session in secure mode. This secure mode is designed for applications with high security requirements, such as facial recognition systems and banking services. It must be used together with the <!--RP1-->security TA<!--RP1End--> to support service scenarios where both standard preview streams and security streams are generated.<!--RP2-->
+> You can call [createSession](arkts-apis-camera-CameraManager.md#createsession11) with [SceneMode](arkts-apis-camera-e.md#scenemode11) set to **SECURE_PHOTO** to create a session in secure mode. The secure mode is designed for applications with high security requirements, such as facial recognition systems and banking services. It must be used together with the <!--RP1-->security TA<!--RP1End--> to support service scenarios where both standard preview streams and security streams are generated.<!--RP2-->
 >
 > The security TA can verify the signature of data delivered by the server, sign images, parse and assemble TLV logic, and read, create, and operate keys. It applies to image processing.<!--RP2End-->
 

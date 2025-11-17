@@ -4,7 +4,7 @@
 <!--Owner: @ZhangYu-Coder-->
 <!--Designer: @sunbees-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -19,6 +19,8 @@
 **起始版本：** 8
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
+
+**相关示例：** <!--RP1-->[NativeXComponentSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP1End-->
 
 ## 汇总
 
@@ -343,7 +345,7 @@ int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetXComponentSize()
 
@@ -372,7 +374,7 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetXComponentOffset()
 
@@ -401,7 +403,7 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchEvent()
 
@@ -429,7 +431,7 @@ int32_t OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointToolType()
 
@@ -457,7 +459,7 @@ int32_t OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointTiltX()
 
@@ -485,7 +487,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointTiltY()
 
@@ -513,7 +515,7 @@ int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchPointWindowX()
 
@@ -654,7 +656,7 @@ int32_t OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetMouseEvent()
 
@@ -682,7 +684,7 @@ int32_t OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterCallback()
 
@@ -709,7 +711,7 @@ int32_t OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterMouseEventCallback()
 
@@ -736,7 +738,7 @@ int32_t OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* comp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetExtraMouseEventInfo()
 
@@ -817,7 +819,7 @@ int32_t OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* comp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterKeyEventCallback()
 
@@ -844,7 +846,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* compon
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterBlurEventCallback()
 
@@ -871,7 +873,7 @@ int32_t OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEvent()
 
@@ -898,7 +900,7 @@ int32_t OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_Nativ
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventAction()
 
@@ -925,7 +927,7 @@ int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyE
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventCode()
 
@@ -952,7 +954,7 @@ int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventSourceType()
 
@@ -979,7 +981,7 @@ int32_t OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventDeviceId()
 
@@ -1006,7 +1008,7 @@ int32_t OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* ke
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventTimestamp()
 
@@ -1033,7 +1035,7 @@ int32_t OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* k
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetKeyEventModifierKeyStates()
 
@@ -1168,7 +1170,7 @@ int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterOnFrameCallback()
 
@@ -1195,7 +1197,7 @@ int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* compone
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_UnregisterOnFrameCallback()
 
@@ -1221,7 +1223,7 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_AttachNativeRootNode()
 
@@ -1359,13 +1361,13 @@ int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| bool needSoftKeyboard | 表示此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例是否需要软键盘。默认值为false。 |
+| bool needSoftKeyboard | 表示此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例是否需要软键盘。需要时为true，不需要时为false，默认值为false。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterSurfaceShowCallback()
 
@@ -1392,7 +1394,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* com
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_RegisterSurfaceHideCallback()
 
@@ -1419,7 +1421,7 @@ int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* com
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t  | 返回执行的状态代码。 |
+| int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
 ### OH_NativeXComponent_GetTouchEventSourceType()
 
@@ -2069,7 +2071,7 @@ int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool need
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示XComponent组件实例。 |
-| bool needSoftKeyboard | 表示是否需要软键盘。默认值为false。 |
+| bool needSoftKeyboard | 表示是否需要软键盘。需要时为true，不需要时为false，默认值为false。 |
 
 **返回：**
 

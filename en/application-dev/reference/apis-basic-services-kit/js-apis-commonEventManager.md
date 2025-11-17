@@ -1,5 +1,12 @@
 # @ohos.commonEventManager (Common Event)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 The **CommonEventManager** module provides common event capabilities, including the capabilities to publish, subscribe to, and unsubscribe from common events.
 
 > **NOTE**
@@ -152,7 +159,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -210,7 +217,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -259,7 +266,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -307,7 +314,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber;
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -377,7 +384,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber | undefined; 
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
 };
@@ -471,7 +478,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber; 
-// Attributes of a subscriber.
+// Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ["event"]
 };

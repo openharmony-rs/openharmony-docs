@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 开发者可以调用本模块的Native API接口，完成媒体数据的解封装相关操作，即从比特流数据中取出音频、视频、字幕等媒体sample，获得DRM相关信息。
 
@@ -200,7 +200,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    //    示例key仅为演示，实际应替换为用户自定义的字符串。
    //    例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，
    //       获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
-   // 2. value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API 20起，支持buffer类型。
+   // 2. value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API version 20起，支持buffer类型。
    const char *customKey = "com.openharmony.custom.meta.string"; // 替换为实际封装时使用的完整key。
    const char *customValue;
    if (!OH_AVFormat_GetStringValue(customMetadataFormat, customKey, &customValue)) {
@@ -345,7 +345,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVDemuxer_ReadSampleBuffer接口本身可能存在耗时久，取决于文件IO，建议以异步方式进行调用。
    ```c++
    // 为每个线程定义处理函数。
-   void ReadTrackSamples(OH_AVFormatDemuxer *demuxer, uint32_t trackIndex, int buffer_size, 
+   void ReadTrackSamples(OH_AVDemuxer *demuxer, uint32_t trackIndex, int32_t buffer_size, 
                          std::atomic<bool>& isEnd, std::atomic<bool>& threadFinished)
    {
       // 创建缓冲区。
@@ -380,8 +380,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
 
    // 根据需求计算合适的缓冲区大小。
-   int audioBufferSize = 4096;  // 典型音频缓冲区大小。
-   int videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
+   int32_t audioBufferSize = 4096;  // 典型音频缓冲区大小。
+   int32_t videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
 
    // 创建原子变量用于线程通信。
    std::atomic<bool> audioIsEnd{false}, videoIsEnd{false}; // 表示流是否结束。
@@ -418,7 +418,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 正常解析时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解析异常，无法获取数据。
 > 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
 > 
-> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表1** 文件级别属性支持范围
 | 名称 | 描述 |
@@ -444,7 +444,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 正常解析时才可以获取对应属性数据；如果文件信息错误或缺失，将导致解析异常，无法获取数据。
 > 辅助轨属性范围与实际媒体类型（音频、视频）保持一致。
 > 
-> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表2** 轨道级别属性支持范围
 | 名称 | 描述 | 视频轨支持 | 音频轨支持 | 字幕轨支持 | 辅助轨支持 |

@@ -39,13 +39,13 @@ The data provider can directly use **DataShare** to share data with other applic
 **DataShare** implements cross-application data sharing in either of the following ways:
 
 <!--RP1-->
-- [Using DataShareExtensionAbility](share-data-by-datashareextensionability.md)
+- [Using DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md)
 
   You need to implement an ExtensionAbility with callbacks in the HAP. When the data consumer calls an API, the ExtensionAbility of the data provider will be automatically started to invoke the registered callback.
 
   You can use **DataShareExtensionAbility** when the cross-application data access involves service operations other than mere addition, deletion, modification, and query of data in databases.
 
-- [Using Silent Access via the DatamgrService](share-data-by-silent-access.md)
+- [Using Silent Access via DatamgrService](share-data-by-silent-access-sys.md)
 
   You need to configure database access rules in the HAP. When the data consumer calls an API, the system ability automatically obtains the access rules in the HAP and returns data without starting the data provider.
 

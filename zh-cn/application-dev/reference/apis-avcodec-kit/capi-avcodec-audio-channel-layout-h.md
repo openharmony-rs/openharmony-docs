@@ -5,11 +5,11 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
-音频编解码枚举的声明。
+音频编解码声道布局枚举的声明。
 
 **引用文件：** <multimedia/player_framework/avcodec_audio_channel_layout.h>
 
@@ -17,7 +17,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
-**起始版本：** 9
+**起始版本：** 10
 
 **废弃版本：** 11
 
@@ -29,8 +29,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [AudioChannelSet](#audiochannelset) | 音频声道数集合，将每一个声道数映射为int64的变量。 |
-| [AudioChannelLayout](#audiochannellayout) | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。 |
+| [AudioChannelSet](#audiochannelset) | 音频声道数集合，将每一个声道数映射为int64的变量。(API11废弃) |
+| [AudioChannelLayout](#audiochannellayout) | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。(API11废弃) |
 
 ## 枚举类型说明
 

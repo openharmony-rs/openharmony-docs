@@ -1,10 +1,18 @@
 # Divider
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
-The **Divider** component is used to separate content blocks and elements.
+The **Divider** component is used to separate content blocks and content elements.
 
 >  **NOTE**
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+>  If the thickness of the division line is inconsistent or the division line disappears, see [FAQs](./ts-universal-attributes-pixelRoundForComponent.md#faqs).
 
 ## Child Components
 
@@ -13,6 +21,8 @@ Not supported
 ## APIs
 
 Divider()
+
+Creates a divider.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -28,7 +38,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 vertical(value: boolean)
 
-Sets the direction of the divider.
+Sets the direction of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -40,13 +50,13 @@ Sets the direction of the divider.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the divider is vertical or horizontal.<br>**false**: A horizontal divider is used.<br>**true**: A vertical divider is used.<br>Default value: **false**|
+| value  | boolean | Yes  | Whether the divider is vertical or horizontal.<br>**false**: A horizontal divider is used.<br>**true**: A vertical divider is used.<br>Default value: **false**<br>Invalid values are treated as the default value.|
 
 ### color
 
 color(value: ResourceColor)
 
-Sets the color of the divider.
+Sets the color of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -58,13 +68,13 @@ Sets the color of the divider.
 
 | Name| Type                                      | Mandatory| Description                                 |
 | ------ | ------------------------------------------ | ---- | ------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the divider.<br>Default value: **'\#33182431'**<br>You can set a common divider color using [WithTheme](ts-container-with-theme.md#withtheme).|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the divider.<br>Default value: **'\#33182431'**<br>Invalid values are treated as the default value.<br>You can set a common divider color using [WithTheme](ts-container-with-theme.md).|
 
 ### strokeWidth
 
 strokeWidth(value: number | string)
 
-Sets the stroke width of the divider.
+Sets the stroke width of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -76,13 +86,13 @@ Sets the stroke width of the divider.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| string | Yes  | Stroke width of the divider.<br>Default value: **1px**<br>Unit: vp<br>**NOTE**<br>This attribute cannot be set to a percentage. The priority of this attribute is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
+| value  | number \| string | Yes  | Stroke width of the divider.<br>Default value: **1px**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>This attribute cannot be set to a percentage. The priority of this attribute is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
 
 ### lineCap
 
 lineCap(value: LineCapStyle)
 
-Sets the cap style of the divider.
+Sets the cap style of the divider. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -94,8 +104,11 @@ Sets the cap style of the divider.
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the divider.<br>Default value: **LineCapStyle.Butt**|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the divider.<br>Default value: **LineCapStyle.Butt**<br>Invalid values are treated as the default value.|
 
+## Events
+
+The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 
@@ -140,7 +153,12 @@ struct DividerExample {
               .fontColor('#007DFF')
               .fontWeight(500)
               .backgroundColor(Color.Transparent)
-            Divider().vertical(true).height(22).color('#182431').opacity(0.6).margin({ left: 8, right: 8 })
+            Divider()
+              .vertical(true)
+              .height(22)
+              .color('#182431')
+              .opacity(0.6)
+              .margin({ left: 8, right: 8 })
             Button('Button')
               .width(136)
               .height(22)

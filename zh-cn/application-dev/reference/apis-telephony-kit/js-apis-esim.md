@@ -54,8 +54,8 @@ isSupported\(slotId: number\): boolean
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-let isSupported: boolean = eSIM.isSupported(0);
-console.log(`the esim is Supported:` + isSupported);
+let isSupported: boolean = eSIM.isSupported(1);
+console.info(`the esim is Supported:` + isSupported);
 ```
 
 ## eSIM.addProfile<sup>18+</sup>
@@ -110,8 +110,8 @@ let profile: eSIM.DownloadableProfile = {
 };
 
 eSIM.addProfile(profile).then(() => {
-    console.log(`addProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+    console.info(`addProfile invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`addProfile, promise: err->${JSON.stringify(err)}`);
 });
 ```

@@ -6,8 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-In state management V1, two-way binding for built-in components is implemented using [$$](./arkts-two-way-sync.md).
-In state management V2, the **!!** syntactic sugar provides a unified way to achieve two-way binding for components.
+In state management V1, [$$](./arkts-two-way-sync.md) is recommended for implementing two-way binding for built-in components.
+
+In state management V2, the **!!** syntax is recommended for unified two-way binding handling.
 
 >**NOTE**
 >

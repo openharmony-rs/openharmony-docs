@@ -1,5 +1,13 @@
 # 自定义占位节点
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)和[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)作为自定义节点的占位节点。主要用于自定义节点以及自定义节点树的显示。
 
 [NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)作为容器节点存在，具备通用属性，是UI节点。[ContentSlot](../ui/rendering-control/arkts-rendering-control-contentslot.md)只是一个语法节点，无通用属性，不参与布局和渲染。支持混合模式开发，当容器是ArkTS组件，子组件在Native侧创建时，推荐使用ContentSlot占位组件。具体使用参考[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)的接口文档说明。
@@ -73,6 +81,7 @@ export function getOrCreateNode(uiContext: UIContext): BuilderNode<[Params]> | n
 // Index.ets
 import { FrameNode, NodeController, Size, UIContext } from '@kit.ArkUI';
 import { getOrCreateNode } from "./common";
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TEST_TAG: string = "NodeContainer";
 
@@ -93,19 +102,19 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.log(TEST_TAG + " aboutToResize width : " + size.width + " height : " + size.height);
+    hilog.info(DOMAIN, TAG,' aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   aboutToAppear() {
-    console.log(TEST_TAG + " aboutToAppear");
+    hilog.info(DOMAIN, TAG,' aboutToAppear');
   }
 
   aboutToDisappear() {
-    console.log(TEST_TAG + " aboutToDisappear");
+    hilog.info(DOMAIN, TAG,' aboutToDisappear');
   }
 
   onTouchEvent(event: TouchEvent) {
-    console.log(TEST_TAG + " onTouchEvent");
+    hilog.info(DOMAIN, TAG,' onTouchEvent');
   }
 
   toShow() {

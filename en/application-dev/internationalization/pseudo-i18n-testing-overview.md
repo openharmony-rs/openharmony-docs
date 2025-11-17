@@ -1,5 +1,11 @@
 # Overview of Pseudo-Localization Testing
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Pseudo-localization is also called pseudo-translation. It simulates the localization process to help find potential problems and avoid function defects. It is commonly used in software testing to test whether the software complies with localization and internationalization specifications. Pseudo-localization does not translate the text of the software into a foreign language. Instead, it replaces the text with localized text according to certain rules to simulate the localization process.
 

@@ -1,8 +1,13 @@
 # @ohos.multimodalInput.inputDevice (Input Device) (System API)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **inputDevice** module implements input device management functions such as querying input device information.
-
+The **inputDevice** module provides APIs for input device management, including querying input device information, setting/obtaining the keyboard repeat delay, and setting the input device switch status.
 
 > **NOTE**
 >
@@ -46,16 +51,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.setKeyboardRepeatDelay(350, (error: Error) => {
-    if (error) {
-      console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setKeyboardRepeatDelay(350, (error: Error) => {
+              if (error) {
+                console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.info(`Set keyboard repeat delay success`);
+            });
+          } catch (error) {
+            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
     }
-    console.log(`Set keyboard repeat delay success`);
-  });
-} catch (error) {
-  console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  }
 }
 ```
 
@@ -79,7 +97,7 @@ Sets the keyboard repeat delay. This API uses a promise to return the result.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | A promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -93,12 +111,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.setKeyboardRepeatDelay(350).then(() => {
-    console.log(`Set keyboard repeat delay success`);
-  });
-} catch (error) {
-  console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setKeyboardRepeatDelay(350).then(() => {
+              console.info(`Set keyboard repeat delay success`);
+            });
+          } catch (error) {
+            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -130,16 +161,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.getKeyboardRepeatDelay((error: Error, delay: Number) => {
-    if (error) {
-      console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getKeyboardRepeatDelay((error: Error, delay: Number) => {
+              if (error) {
+                console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.info(`Get keyboard repeat delay success`);
+            });
+          } catch (error) {
+            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
     }
-    console.log(`Get keyboard repeat delay success`);
-  });
-} catch (error) {
-  console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  }
 }
 ```
 
@@ -171,12 +215,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
-    console.log(`Get keyboard repeat delay success`);
-  });
-} catch (error) {
-  console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
+              console.info(`Get keyboard repeat delay success`);
+            });
+          } catch (error) {
+            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -209,16 +266,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.setKeyboardRepeatRate(60, (error: Error) => {
-    if (error) {
-      console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setKeyboardRepeatRate(60, (error: Error) => {
+              if (error) {
+                console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.info(`Set keyboard repeat rate success`);
+            });
+          } catch (error) {
+            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
     }
-    console.log(`Set keyboard repeat rate success`);
-  });
-} catch (error) {
-  console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  }
 }
 ```
 
@@ -242,7 +312,7 @@ Sets the keyboard repeat rate. This API uses a promise to return the result.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | A promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -256,12 +326,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.setKeyboardRepeatRate(60).then(() => {
-    console.log(`Set keyboard repeat rate success`);
-  });
-} catch (error) {
-  console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setKeyboardRepeatRate(60).then(() => {
+              console.info(`Set keyboard repeat rate success`);
+            });
+          } catch (error) {
+            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -293,16 +376,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.getKeyboardRepeatRate((error: Error, rate: Number) => {
-    if (error) {
-      console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getKeyboardRepeatRate((error: Error, rate: Number) => {
+              if (error) {
+                console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.info(`Get keyboard repeat rate success`);
+            });
+          } catch (error) {
+            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
     }
-    console.log(`Get keyboard repeat rate success`);
-  });
-} catch (error) {
-  console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  }
 }
 ```
 
@@ -334,12 +430,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-try {
-  inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
-    console.log(`Get keyboard repeat rate success`);
-  });
-} catch (error) {
-  console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
+              console.info(`Get keyboard repeat rate success`);
+            });
+          } catch (error) {
+            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
 
@@ -347,7 +456,7 @@ try {
 
 setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
-Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched.
+Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -359,8 +468,14 @@ Sets the input switch status of an input device. Take the touchscreen as an exam
 
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | ------------------------- |
-| deviceId | number  | Yes  | Device ID.             |
+| deviceId | number  | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.             |
 | enabled  | boolean | Yes  | Switch status of the input device. The value **true** indicates that the input device is enabled, and the value **false** indicates the opposite.|
+
+**Return value**
+
+| Type                 | Description              |
+| ------------------- | ---------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -369,19 +484,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
+| 201      | Permission denied. The application does not have the permission required to call the API |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
 **Example**
 
 ```js
-try {
-  inputDevice.setInputDeviceEnabled(0, true).then(() => {
-    console.info(`Set input device enable success`);
-  });
-} catch (error) {
-    console.error(`Set input device enable error`);
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setInputDeviceEnabled(0, true).then(() => {
+              console.info(`Set input device enable success`);
+            });
+          } catch (error) {
+            console.error(`Set input device enable error`);
+          }
+        })
+    }
+  }
 }
 ```

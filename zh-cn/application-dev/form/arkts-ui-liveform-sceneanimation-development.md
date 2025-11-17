@@ -244,6 +244,7 @@
             Text('点击触发互动卡片动效')
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
+              // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')
@@ -386,7 +387,6 @@
       public static readonly OVERFLOW_DURATION: number = 3500;
     }
     ```
-
 ## 实现效果
 以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) 接口，打断当前破框动效，卡片切换为非激活态。
 

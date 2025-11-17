@@ -1,5 +1,12 @@
 # asset_type.h
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Overview
 
 Defines the enums, structs, and error codes used in the asset store service.

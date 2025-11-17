@@ -1891,23 +1891,26 @@ The target bundle is not in u1.
 将指定的应用安装在userId为1的用户下。
 <!--DelEnd-->
 
-## 16000115 当前进程未运行isolationProcess字段设为true的组件
+## 16000115 当前进程不支持设置为备选主控进程
 
 **错误信息**
 
-The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process.
+The current process cannot be set as a candidate master process.
 
 **错误描述**
 
-当前进程未运行配置了"isolationProcess"的组件，不支持设置为备选主控进程。
+当前进程不支持设置为备选主控进程。
 
 **可能原因**
 
-当前进程没有运行配置了isolationProcess字段的组件，不支持声明为主控进程。
+当前进程不满足以下任一条件：
+
+1. 运行了isolationProcess字段设为true的组件。
+2. 曾经成为过主控进程。
 
 **处理步骤**
 
-不支持处理，当前进程未运行isolationProcess字段设为true的组件，无法将其设置为备选主控进程。
+不支持处理。当前进程只有运行了isolationProcess字段设为true的组件，或曾为主控进程，才可设置为备选主控进程。
 
 ## 16000116 当前进程已经是主控进程
 
@@ -1963,23 +1966,26 @@ Not a master process.
 
 不支持处理，当前进程不是主控进程，无法放弃其主控进程身份。
 
-## 16000119 存在未完成的onNewProcessRequest请求
+## 16000119 存在未完成的请求
 
 **错误信息**
 
-Cannot exit because there is an unfinished onNewProcessRequest.
+Cannot exit because there is an unfinished request.
 
 **错误描述**
 
-放弃当前进程的主控进程身份失败，因为有未完成的onNewProcessRequest请求。
+因为存在未完成的请求，放弃当前进程的主控进程身份失败。
 
 **可能原因**
 
-当前进程存在未完成的onNewProcessRequest请求。
+当前进程存在未完成的请求：
+
+1. 进程中存在未完成的[onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11)请求。
+2. 当启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility运行在独立进程时，当前进程中存在未完成的[onAcceptWant](js-apis-app-ability-abilityStage.md#onacceptwant)请求。
 
 **处理步骤**
 
-等待当前进程中的onNewProcessRequest请求完成，然后再放弃当前进程的主控进程身份。
+等待当前进程中的请求完成，然后再放弃当前进程的主控进程身份。
 
 ## 16000205 当前接口未在主线程中调用
 

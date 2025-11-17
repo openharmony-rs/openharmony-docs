@@ -41,7 +41,7 @@ Shuts down the system.
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -65,7 +65,7 @@ try {
 
 reboot(reason: string): void
 
-The device is restarted.
+Reboots a device.
 
 **System API**: This is a system API.
 
@@ -81,7 +81,7 @@ The device is restarted.
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -122,7 +122,7 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -145,7 +145,7 @@ try {
 
 suspend(isImmediate?: boolean): void
 
-Hibernates a device.
+Enables a device to enter the sleep state.
 
 **System API**: This is a system API.
 
@@ -159,12 +159,12 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| isImmediate<sup>10+</sup> | boolean |  No | Whether to hibernate a device immediately after the screen is turned off. The value **true** indicates that the device is hibernated immediately; **false** indicates that the system controls when the device is hibernated. If this parameter is not set, the default value **false** is used. If you only want to turn off the screen, you are advised not to set this parameter.<br>**NOTE**: This parameter is supported since API version 10.|
+| isImmediate<sup>10+</sup> | boolean |  No | Whether the device enters the sleep state immediately. The value **true** indicates that the device enters the sleep state immediately after the screen is turned off; **false** indicates that the system controls when the device enters the sleep state. If this parameter is not set, the default value **false** is used. If you only want to turn off the screen, you are advised not to set this parameter.<br>**NOTE**: This parameter is supported since API version 10.|
 
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -187,7 +187,7 @@ try {
 
 setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the power mode of this device. This API uses an asynchronous callback to return the result.
+Sets the power mode of a device. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -200,7 +200,7 @@ Sets the power mode of this device. This API uses an asynchronous callback to re
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | mode     | DevicePowerMode | Yes  | Power mode. The value must be an enum.                                                  |
-| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br> If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br>If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -228,7 +228,7 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: Error) => {
 
 setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
-Sets the power mode of this device. This API uses a promise to return the result.
+Sets the power mode of a device. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -274,7 +274,7 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 
 setScreenOffTime(timeout: number): void
 
-Set the screen-off timeout duration.
+Sets the screen-off timeout duration.
 
 **System API**: This is a system API.
 
@@ -292,7 +292,7 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -301,7 +301,7 @@ For details about the error codes, see [Power Manager Error Codes]errorcode-powe
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**:
 
 ```js
 try {
@@ -333,7 +333,7 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -342,7 +342,7 @@ For details about the error codes, see [Power Manager Error Codes]errorcode-powe
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
-**Example:**
+**Example**:
 
 ```js
 try {
@@ -373,7 +373,7 @@ This API takes effect only when the device is active. For details about the devi
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -382,12 +382,51 @@ For details about the error codes, see [Power Manager Error Codes]errorcode-powe
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**:
 
 ```js
 try {
     power.refreshActivity('refreshActivity_test');
 } catch(err) {
     console.error('refreshActivity failed, err: ' + err);
+}
+```
+
+## power.setPowerKeyFilteringStrategy<sup>21+</sup>
+
+setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void;
+
+Sets the power key filtering strategy. After the power service subscribes to the power key event, this API is used to configure the processing mode of this event.
+For details about the power key filtering strategy, see [power.PowerKeyFilteringStrategy](js-apis-power.md#powerkeyfilteringstrategy21).
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.POWER_MANAGER
+
+**System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description   |
+| ------ | ------ | ---- | ----- |
+| strategy | PowerKeyFilteringStrategy | Yes   | Power key filtering strategy. The value must be of the enum type.|
+
+**Error codes**
+
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message   |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**Example**:
+
+```js
+try {
+    power.setPowerKeyFilteringStrategy(power.PowerKeyFilteringStrategy.LONG_PRESS_FILTERING_ONCE);
+} catch(err) {
+    console.error('setPowerKeyFilteringStrategy failed, err: ' + err);
 }
 ```

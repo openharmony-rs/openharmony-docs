@@ -39,7 +39,7 @@ Currently, **getRdbStore()** does not support multi-thread concurrent operations
 
 | Name  | Type                                          | Mandatory| Description                                                        |
 | -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                                        | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                                        | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)               | Yes  | Configuration of the RDB store.                               |
 | callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | Yes  | Callback invoked to return the RDB store obtained.                  |
 
@@ -145,7 +145,7 @@ Currently, **getRdbStore()** does not support multi-thread concurrent operations
 
 | Name | Type                            | Mandatory| Description                                                        |
 | ------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 
 **Return value**
@@ -243,7 +243,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | name     | string                    | Yes  | Name of the RDB store to delete.                                                |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback invoked to return the result.                                      |
 
@@ -317,7 +317,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name | Type   | Mandatory| Description                                                        |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | name    | string  | Yes  | Name of the RDB store to delete.                                                |
 
 **Return value**
@@ -392,7 +392,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 | callback | AsyncCallback&lt;void&gt;   | Yes  | Callback invoked to return the result.                                      |
 
@@ -477,7 +477,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 | Name | Type                       | Mandatory| Description                                                        |
 | ------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
 
 **Return value**

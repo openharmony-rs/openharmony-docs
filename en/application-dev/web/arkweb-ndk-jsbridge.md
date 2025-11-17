@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
 For details about how to optimize the performance of JSBridge, see [JSBridge Optimization Solution] (https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section58781855115017).
@@ -133,8 +133,8 @@ Use [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-control
   ```c++
   // Register an object.
   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk registerJavaScriptProxyEx begin");
-  ArkWeb_ProxyMethodWithResult method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
-  ArkWeb_ProxyMethodWithResult method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
+  ArkWeb_ProxyMethodWithResult method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  ArkWeb_ProxyMethodWithResult method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
   // Call the NDK API to register an object.
   // In this case, you can use proxy.method1 and proxy.method2 to call ProxyMethod1 and ProxyMethod2 in this file on HTML5 pages.
@@ -252,7 +252,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
         }
 
         let retStr = window.ndkProxy.method1("hello", "world", [1.2, -3.4, 123.456], ["Saab", "Volvo", "BMW", undefined], 1.23456, 123789, true, false, 0,  undefined);
-        console.log("ndkProxy and method1 is ok, " + retStr + ", type:" + typeof(retStr));
+        console.info("ndkProxy and method1 is ok, " + retStr + ", type:" + typeof(retStr));
   }
 
   function testNdkProxyObjMethod2() {
@@ -275,7 +275,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
       let params = "[\"{\\\"scope\\\"]";
 
       let retStr = window.ndkProxy.method2("hello", "world", false, cars, params);
-      console.log("ndkProxy and method2 is ok, " + retStr + ", type:" + typeof(retStr));
+      console.info("ndkProxy and method2 is ok, " + retStr + ", type:" + typeof(retStr));
   }
 
   function runJSRetStr(data) {
@@ -299,12 +299,12 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
     }
 
     test(): string {
-      console.log('ArkUI Web Component');
+      console.info('ArkUI Web Component');
       return "ArkUI Web Component";
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -515,7 +515,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
   }
 
   void DestroyCallback(const char *webTag, void *userData) {
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestoryCallback webTag: %{public}s", webTag);
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback webTag: %{public}s", webTag);
       if (!userData) {
           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback userData is nullptr");
           return;
@@ -849,8 +849,8 @@ Use [registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controlle
   ```c++
   // Register an object.
   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk RegisterJavaScriptProxy begin");
-  ArkWeb_ProxyMethod method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
-  ArkWeb_ProxyMethod method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPt  ())};
+  ArkWeb_ProxyMethod method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  ArkWeb_ProxyMethod method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethod methodList[2] = {method1, method2};
   // Call the NDK API to register an object.
   // In this case, you can use proxy.method1 and proxy.method2 to call ProxyMethod1 and ProxyMethod2 in this file on HTML5 pages.
@@ -954,12 +954,12 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
     }
 
     test(): string {
-      console.log('ArkUI Web Component');
+      console.info('ArkUI Web Component');
       return "ArkUI Web Component";
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -1163,7 +1163,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
   }
 
   void DestroyCallback(const char *webTag, void *userData) {
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestoryCallback webTag: %{public}s", webTag);
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback webTag: %{public}s", webTag);
       if (!userData) {
           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk DestroyCallback userData is nullptr");
           return;

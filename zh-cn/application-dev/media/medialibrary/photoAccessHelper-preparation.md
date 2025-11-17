@@ -4,9 +4,9 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
-应用需获取相册管理模块实例，才能访问和修改相册中的媒体数据。相册管理模块涉及用户个人数据信息，应用需向用户申请相册管理模块读写权限，以保证功能的正常运行。使用相册管理模块接口时，如无其他注明，默认在工程代码的pages/index.ets或其他自创的ets文件中使用。
+应用需获取相册管理模块实例，才能访问和修改相册中的媒体数据。相册管理模块涉及用户个人数据信息，应用需向用户申请读写权限，以保证功能的正常运行。使用相册管理模块接口时，如无其他注明，默认在工程代码的pages/index.ets或其他自定义的ets文件中使用。
 
 ## 获取相册管理模块实例
 
@@ -49,6 +49,7 @@ struct Index {
 | ------------------------------ | ------------------------------------------ | ---------- |
 | ohos.permission.READ_IMAGEVIDEO     | 允许应用读取媒体库的图片和视频媒体文件信息。 | user_grant |
 | ohos.permission.WRITE_IMAGEVIDEO    | 允许应用读写媒体库的图片和视频媒体文件信息。 | user_grant |
+| ohos.permission.MEDIA_LOCATION    | 允许应用访问用户媒体文件中的地理位置信息。 | user_grant |
 
 以上权限的授权方式均为user_grant（用户授权），即开发者在module.json5文件中配置对应的权限后，需要使用接口[abilityAccessCtrl.requestPermissionsFromUser](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)去校验当前用户是否已授权。如果已授权，应用可以直接访问和修改目标对象；否则需要弹框向用户申请授权。
 

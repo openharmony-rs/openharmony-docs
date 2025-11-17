@@ -1,4 +1,10 @@
 # textPath
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **\<textPath>** component is used to draw text along the path.
 
@@ -34,7 +40,7 @@ The attributes in the following table are supported.
 | font-size      | &lt;length&gt;                     | 30px   | Font size.<br>Default value: **30px**                           |
 | fill           | &lt;color&gt;                      | black  | Font fill color.<br>Default value: **black**                            |
 | by             | number                             | -      | Attribute offset relative to the specified animation. By default, **from** is the original attribute value.            |
-| opacity        | number                             | 1      | Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.<br>Default value: **0**|
+| opacity        | number                             | 1      | Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.<br>Default value: **1**|
 | fill-opacity   | number                             | 1.0    | Font fill opacity.<br>Default value: **1.0**                            |
 | stroke         | &lt;color&gt;                      | black  | Stroke color.<br>Default value: **black**                  |
 | stroke-width   | number                             | 1px    | Stroke width.<br>Default value: **1px**                              |

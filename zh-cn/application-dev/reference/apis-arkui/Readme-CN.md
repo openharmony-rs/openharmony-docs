@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - ArkTS API<!--arkui-arkts-->
   - UI界面<!--ui-->
@@ -60,7 +60,7 @@
     - [postCardAction](js-apis-postCardAction.md)
     <!--Del-->
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](js-apis-arkui-drawableDescriptor-sys.md)
-    - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)  
+    - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)
     - [@ohos.arkui.uiExtension (uiExtension)(系统接口)](js-apis-arkui-uiExtension-sys.md)
     - [@ohos.deviceStatus.dragInteraction (拖拽)(系统接口)](js-apis-devicestatus-draginteraction-sys.md)
     - [@ohos.pluginComponent (PluginComponentManager)(系统接口)](js-apis-plugincomponent-sys.md)
@@ -94,7 +94,7 @@
     <!--Del-->
     - [@ohos.animation.windowAnimationManager (窗口动画管理)(系统接口)](js-apis-windowAnimationManager-sys.md)
     - [@ohos.window (窗口)(系统接口)](js-apis-window-sys.md)
-    <!--DelEnd-->  
+    <!--DelEnd-->
   - 屏幕管理<!--display-manager-api-->
     - [@ohos.display (屏幕属性)](js-apis-display.md)
     - [@ohos.screenshot (屏幕截图)](js-apis-screenshot.md)
@@ -153,6 +153,7 @@
       - [浮层](arkui-ts/ts-universal-attributes-overlay.md)
       - [Z序控制](arkui-ts/ts-universal-attributes-z-order.md)
       - [隐私遮罩](arkui-ts/ts-universal-attributes-obscured.md)
+      - [禁用反色能力](arkui-ts/ts-allow-force-dark.md) 
     - 布局与边框<!--layout-property-->
       - [尺寸设置](arkui-ts/ts-universal-attributes-size.md)
       - [位置设置](arkui-ts/ts-universal-attributes-location.md)
@@ -325,7 +326,8 @@
     - [ImageAnimator](arkui-ts/ts-basic-components-imageanimator.md)
     - [Video](arkui-ts/ts-media-components-video.md)
     - [图像类型定义](arkui-ts/ts-image-common.md)
-    - [SVG新增解析能力](arkui-ts/ts-image-svg2-capabilities.md)
+    - [SVG标签说明](arkui-ts/ts-basic-svg.md)
+    - [SVG标签解析能力增强](arkui-ts/ts-image-svg2-capabilities.md)
     <!--Del-->
     - [Image (系统接口)](arkui-ts/ts-basic-components-image-sys.md)
     - [MediaCachedImage (系统接口)](arkui-ts/ts-basic-components-mediacachedimage-sys.md)
@@ -374,7 +376,9 @@
     - [XComponent](arkui-ts/ts-basic-components-xcomponent.md)
     - [Component3D](arkui-ts/ts-basic-components-component3d.md)
     - [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md)
-    - [XComponent(系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
+    <!--Del-->
+    - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
+    <!--DelEnd-->
   - 菜单<!--menus-->
     - [Menu](arkui-ts/ts-basic-components-menu.md)
     - [MenuItem](arkui-ts/ts-basic-components-menuitem.md)
@@ -393,7 +397,7 @@
     - [显式动画立即下发 (animateToImmediately)](arkui-ts/ts-explicit-animatetoimmediately.md)
     <!--Del-->
     - [组件内隐式共享元素转场 (geometryTransition)(系统接口)](arkui-ts/ts-transition-animation-geometrytransition-sys.md)
-    <!--DelEnd-->  
+    <!--DelEnd-->
   - 弹窗<!--dialog-boxes-->
     - [警告弹窗 (AlertDialog)](arkui-ts/ts-methods-alert-dialog-box.md)
     - [列表选择弹窗 (ActionSheet)](arkui-ts/ts-methods-action-sheet.md)
@@ -416,8 +420,8 @@
     - [SaveButton (系统接口)](arkui-ts/ts-security-components-savebutton-sys.md)
     <!--DelEnd-->
   - 主题<!--themes-->
-    - [WithTheme](arkui-ts/ts-container-with-theme.md) 
-  - 原子化服务<!--atomic-services-->
+    - [WithTheme](arkui-ts/ts-container-with-theme.md)
+  - AtomicService<!--atomic-services-->
     - [AtomicServiceNavigation](arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md)
     - [AtomicServiceSearch](arkui-ts/ohos-atomicservice-AtomicServiceSearch.md)
     - [AtomicServiceTabs](arkui-ts/ohos-atomicservice-AtomicServiceTabs.md)
@@ -489,7 +493,6 @@
     - [像素单位](arkui-ts/ts-pixel-units.md)
     - [枚举说明](arkui-ts/ts-appendix-enums.md)
     - [设置事件回调](arkui-ts/ts-uicommonevent.md)
-    - [SVG标签说明](arkui-ts/ts-basic-svg.md)
     <!--Del-->
     - [枚举说明 (系统接口)](arkui-ts/ts-appendix-enums-sys.md)
     <!--DelEnd-->
@@ -512,9 +515,9 @@
     - [点击控制](arkui-ts/ts-universal-attributes-click.md)
     - [栅格设置](arkui-ts/ts-universal-attributes-grid.md)
 - JS组件 <!--arkui-js-comp-->
-  - [兼容JS的类Web开发范式（ArkUI.Full）](arkui-js/Readme-CN.md)    
-  - [兼容JS的类Web开发范式（ArkUI.Lite）](arkui-js-lite/Readme-CN.md)
-  - [JS服务卡片UI组件](js-service-widget-ui/Readme-CN.md)
+  - [兼容JS的类Web开发范式（ArkUI.Full）](arkui-js/Readme-CN.md)<!--arkui-js-full-comp-->
+  - [兼容JS的类Web开发范式（ArkUI.Lite）](arkui-js-lite/Readme-CN.md)<!--arkui-js-lite-comp-->
+  - [JS服务卡片UI组件](js-service-widget-ui/Readme-CN.md)<!--arkui-card-comp-->
 - C API<!--arkui-c-->
   - 模块<!--arkui-module-->
     - [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -665,6 +668,8 @@
     - [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)
     - [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)
     - [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)
+    - [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)
+    - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)
@@ -672,6 +677,8 @@
     - [OH_PixelmapNative](capi-struct.md)
     - [WindowManager_WindowProperties](capi-windowmanager-windowproperties.md)
     - [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)
+    - [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)
+    - [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md)
     - [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md)
@@ -699,7 +706,7 @@
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
-    - [动画错误码](errorcode-animator.md)
+    - [接口调用异常错误码](errorcode-internal.md)
     - [弹窗错误码](errorcode-promptAction.md)
     - [页面路由错误码](errorcode-router.md)
     - [拖拽事件错误码](errorcode-drag-event.md)
@@ -714,7 +721,7 @@
     - [注册节点渲染状态监听错误码](errorcode-node-render-monitor.md)
     - [交互事件错误码](errorcode-event.md)
     - [Canvas错误码](errorcode-canvas.md)
-    - [自定义节点错误码](errorcode-node.md)   
+    - [自定义节点错误码](errorcode-node.md)
     - [UIExtension错误码](errorcode-uiextension.md)
     - [用户界面外观服务错误码](errorcode-uiappearance.md)
     - [NodeAdapter错误码](errorcode-nodeadapter.md)
@@ -722,9 +729,10 @@
     - [Video组件错误码](errorcode-video.md)
     - [状态管理错误码](errorcode-stateManagement.md)
     - [渲染节点错误码](errorcode-node-render.md)
+    - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
+    - [反色能力错误码](errorcode-force-dark.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
-  - UI编译
+  - UI编译<!--arkui-compile-arkts-errcode-->
     - [编译错误码](_ark_ui_compile.md)
-

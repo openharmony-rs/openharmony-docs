@@ -31,7 +31,7 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 | Name  | Type                               | Mandatory| Description                                                        |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | event    | [InnerEvent](#innerevent)           | Yes  | Event to subscribe to in persistent manner. The [EventPriority](#eventpriority) parameter is not required and does not take effect.|
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be executed when the event is received.                      |
+| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.                      |
 
 **Example**
 
@@ -64,8 +64,8 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event to subscribe to in persistent manner. The value cannot be an empty string and exceed 10240 bytes.                      |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be executed when the event is received.|
+| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
 
@@ -93,8 +93,8 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event to subscribe to in persistent manner. The value cannot be an empty string and exceed 10240 bytes.                      |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be executed when the event is received.|
+| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
 
@@ -137,7 +137,7 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 | Name  | Type                               | Mandatory| Description                                                        |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | event    | [InnerEvent](#innerevent)           | Yes  | Event to subscribe to in one-shot manner. The [EventPriority](#eventpriority) parameter is not required and does not take effect.|
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be executed when the event is received.                      |
+| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.                      |
 
 **Example**
 
@@ -169,8 +169,8 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event to subscribe to in one-shot manner. The value cannot be an empty string and exceed 10240 bytes.                      |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be executed when the event is received.|
+| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
 
@@ -198,8 +198,8 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| eventId    | string                              | Yes  | Event to subscribe to in one-shot manner. The value cannot be an empty string and exceed 10240 bytes.                      |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be executed when the event is received.|
+| eventId    | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                      |
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
 
 **Example**
 
@@ -268,7 +268,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name | Type  | Mandatory| Description    |
 | ------- | ------ | ---- | -------- |
-| eventId | string | Yes  | Event ID. The value cannot be an empty string and exceed 10240 bytes.|
+| eventId | string | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
 
 **Example**
 
@@ -325,7 +325,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| eventId  | string                              | Yes  | Event ID. The value cannot be an empty string and exceed 10240 bytes.                  |
+| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                  |
 | callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to unregister.|
 
 **Example**
@@ -357,7 +357,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| eventId  | string                              | Yes  | Event ID. The value cannot be an empty string and exceed 10240 bytes.                  |
+| eventId  | string                              | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.                  |
 | callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to unregister.|
 
 **Example**
@@ -391,9 +391,9 @@ emitter.off("eventId", callback);
 
 emit(event: InnerEvent, data?: EventData): void
 
-Emits the specified event.
+Emits a specified event.
 
-This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -428,9 +428,9 @@ emitter.emit(innerEvent, eventData);
 
 emit(eventId: string, data?: EventData): void
 
-Emits the specified event.
+Emits a specified event.
 
-This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -440,7 +440,7 @@ This API can be used to emit data objects across threads. The data objects must 
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | ID of the event to emit. The value cannot be an empty string and exceed 10240 bytes.  |
+| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | data    | [EventData](#eventdata) | No  | Data passed in the event.|
 
 **Example**
@@ -460,9 +460,9 @@ emitter.emit("eventId", eventData);
 
 emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
-Emits the specified event.
+Emits a specified event.
 
-This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -472,7 +472,7 @@ This API can be used to emit data objects across threads. The data objects must 
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | ID of the event to emit. The value cannot be an empty string and exceed 10240 bytes.  |
+| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
 
 **Example**
@@ -501,7 +501,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 Emits an event of a specified priority.
 
-This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -511,7 +511,7 @@ This API can be used to emit data objects across threads. The data objects must 
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | ID of the event to emit. The value cannot be an empty string and exceed 10240 bytes.  |
+| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
 | data    | [EventData](#eventdata) | No  | Data passed in the event.|
 
@@ -538,7 +538,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 Emits an event of a specified priority.
 
-This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -548,7 +548,7 @@ This API can be used to emit data objects across threads. The data objects must 
 
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
-| eventId | string                  | Yes  | ID of the event to emit. The value cannot be an empty string and exceed 10240 bytes.  |
+| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
 | data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
 
@@ -590,7 +590,7 @@ Obtains the number of subscriptions to a specified event.
 
 | Name | Type          | Mandatory| Description    |
 | ------- | -------------- | ---- | -------- |
-| eventId | number \| string | Yes  | Event ID, which is a custom string. The value cannot be an empty string and exceed 10240 bytes.|
+| eventId | number \| string | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
 
 **Returns**
 

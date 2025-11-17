@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -256,7 +256,7 @@ Called when an error occurs during recording.
 | Parameter| Description|
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance.|
-|  int32_t errorCode | Error code. For details, see [AVErrorCode](../apis-avcodec-kit/_core.md#oh_averrcode-1).|
+|  int32_t errorCode | Error code. For details, see [AVErrorCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode).|
 |  const char *errorMsg | Pointer to the error message.|
 | void *userData | Pointer to user-defined data.|
 

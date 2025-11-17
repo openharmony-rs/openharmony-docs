@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @li-weifeng2-->
-<!--Designer: @li-weifeng2-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -185,11 +185,16 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 	- 对于UIAbility组件，系统将创建新的空进程作为主控进程。
 	- 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
 
-<!--Del-->
 > **说明：**
+> 
+> 如果当前进程已经是[主控进程](../../application-models/ability-terminology.md#masterprocess主控进程)，调用该接口无效并且不会抛出错误码。
 >
+> 当前进程只有运行了isolationProcess字段设为true的组件，或曾经成为过主控进程，开发者才可将其设置为备选主控进程。
+>
+> <!--Del-->
 > 当前仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
 <!--DelEnd-->
+
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -214,7 +219,7 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 | 错误码ID | 错误信息        |
 | -------- | --------------- |
 | 801 | Capability not supported.|
-| 16000115 | The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process. |
+| 16000115 | The current process cannot be set as a candidate master process. |
 
 
 **示例：**
@@ -317,7 +322,7 @@ exitMasterProcessRole(): Promise\<void>
 | -------- | --------------- |
 | 801 | Capability not supported.|
 | 16000118 | Not a master process. |
-| 16000119 | Cannot exit because there is an unfinished onNewProcessRequest. |
+| 16000119 | Cannot exit because there is an unfinished request. |
 
 **示例：**
 

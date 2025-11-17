@@ -1,4 +1,4 @@
-# Vulkan开发指导
+# Vulkan Surface开发指导
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
@@ -9,9 +9,9 @@
 
 ## 场景介绍
 
-Vulkan是一套用来做2D和3D渲染的图形应用程序接口，其中创建VkSurfaceKHR对象是一个非常关键的步骤，在OpenHarmony中，VkSurfaceKHR会对接到OHNativeWindow模块功能，实现Buffer轮转。
+在OpenHarmony中，扩展`VK_OHOS_surface`相关的API创建出来的VkSurfaceKHR会对接到本机窗口（OHNativeWindow）模块，实现本机缓冲区（OHNativeBuffer）的轮转，用于屏幕显示。
 
-在OpenHarmony中，需要通过OHNativeWindow来创建VkSurfaceKHR对象，而OHNativeWindow需要从XComponent中获取，所以此场景下需要配合XComponent模块和NativeWindow模块一起使用。
+创建VkSurfaceKHR对象需要通过OHNativeWindow，而OHNativeWindow需要从XComponent中获取，所以此场景下需要配合XComponent模块和NativeWindow模块一起使用。XComponent模块的具体使用方法请参考[XComponent开发指导](../../ui/napi-xcomponent-guidelines.md)。
 
 ## 接口说明
 
@@ -25,7 +25,9 @@ Vulkan是一套用来做2D和3D渲染的图形应用程序接口，其中创建V
 
 以下步骤说明了如何创建一个VkSurfaceKHR对象。
 
-首先，使用平台扩展的接口，需要定义一个宏`VK_USE_PLATFORM_OHOS`，我们在CMakeLists.txt定义这个宏。
+**OpenHarmony平台宏**
+
+使用平台扩展的接口，需要定义一个宏`VK_USE_PLATFORM_OHOS`，我们在CMakeLists.txt定义这个宏。
 
 ```txt
 ADD_DEFINITIONS(-DVK_USE_PLATFORM_OHOS=1)
@@ -33,12 +35,14 @@ ADD_DEFINITIONS(-DVK_USE_PLATFORM_OHOS=1)
 
 **添加动态链接库**
 
-CMakeLists.txt中添加以下lib。
+CMakeLists.txt中添加Vulkan的lib和周边模块的lib。
 
 ```txt
+libvulkan.so
 libace_ndk.z.so
 libnative_window.so
-libvulkan.so
+libnative_image.so
+libnative_buffer.so
 ```
 
 > **说明:**
@@ -52,6 +56,7 @@ libvulkan.so
 #include <native_window/external_window.h>
 #include <vulkan/vulkan.h>
 ```
+
 
 1. **首先需要创建一个Vulkan实例**。
 
@@ -148,5 +153,3 @@ libvulkan.so
 针对Vulkan的使用，具体可见以下相关实例：
 
 - [XComponent组件对接Vulkan（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkVulkan)
-
-后续更多vulkan的用法请参考[Vulkan官方网站](https://www.vulkan.org/)。

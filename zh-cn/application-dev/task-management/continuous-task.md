@@ -4,7 +4,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -20,21 +20,21 @@
 **表1** 长时任务类型
 | 参数名 | 描述 | 配置项 | 场景举例 |
 | -------- | -------- | -------- | -------- |
-| DATA_TRANSFER | 数据传输 | dataTransfer | 非托管形式的上传、下载，如在浏览器后台上传或下载数据。 |
-| AUDIO_PLAYBACK | 音视频播放 | audioPlayback | 音频、视频在后台播放，音视频投播。 <br> **说明：** 支持在原子化服务中使用。|
-| AUDIO_RECORDING | 录制 | audioRecording | 录音、录屏退后台。 |
-| LOCATION | 定位导航 | location | 定位、导航。 |
-| BLUETOOTH_INTERACTION | 蓝牙相关业务 | bluetoothInteraction | 通过蓝牙传输文件时退后台。 |
-| MULTI_DEVICE_CONNECTION | 多设备互联 | multiDeviceConnection | 分布式业务连接、投播。<br> **说明：** 支持在原子化服务中使用。 |
-| <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放） | wifiInteraction  | 通过WLAN传输文件时退后台。 |
-| VOIP<sup>13+</sup> | 音视频通话 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
-| TASK_KEEPING | 计算任务（仅对2in1设备开放） | taskKeeping  | 如杀毒软件。 |
+| DATA_TRANSFER | 数据传输。 | dataTransfer | 非托管形式的上传、下载，如在浏览器后台上传或下载数据。 |
+| AUDIO_PLAYBACK | 音视频播放。 | audioPlayback | 音频、视频在后台播放，音视频投播。 <br> **说明：** 支持在原子化服务中使用。|
+| AUDIO_RECORDING | 录制。 | audioRecording | 录音、录屏退后台。 |
+| LOCATION | 定位导航。 | location | 定位、导航。 |
+| BLUETOOTH_INTERACTION | 蓝牙相关业务。 | bluetoothInteraction | 通过蓝牙传输文件时退后台。 |
+| MULTI_DEVICE_CONNECTION | 多设备互联。 | multiDeviceConnection | 分布式业务连接、投播。<br> **说明：** 支持在原子化服务中使用。 |
+| <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
+| VOIP<sup>13+</sup> | 音视频通话。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
+| TASK_KEEPING | 计算任务（仅对PC/2in1设备开放）。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
 
 关于DATA_TRANSFER（数据传输）说明：
 
 - 在数据传输时，若应用使用[上传下载代理接口](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
-- 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
+- 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
 
 关于AUDIO_PLAYBACK（音视频播放）说明：
 
@@ -52,7 +52,9 @@
 
 **申请限制**：Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
-**数量限制**：一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才可能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility；一个应用的一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
+**数量限制**：
+- 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
+- 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
 **运行限制**：
 
@@ -66,7 +68,7 @@
 
 > **说明：**
 >
-> 应用按需求申请长时任务，当应用无需在后台运行（任务结束）时，要及时主动取消长时任务，否则系统会强行取消。例如用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。
+> 应用按需求申请长时任务，当应用无需在后台运行（任务结束）时，要及时主动取消长时任务，否则应用退至后台会被系统挂起。例如用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。
 >
 > 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
@@ -80,12 +82,14 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)): Promise&lt;void&gt; | 申请长时任务 |
-| stopBackgroundRunning(context: Context): Promise&lt;void&gt; | 取消长时任务 |
+| [startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) | 申请长时任务，本接口一个UIAbility同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。 |
+| [stopBackgroundRunning(context: Context): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)  | 取消长时任务。 |
+| [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21) | 申请多个长时任务。本接口支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
+| [stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning21) | 取消指定Id的长时任务。 |
 
 ## 开发步骤
 
-本文以申请录制长时任务为例，实现如下功能：
+本文以申请一个录制长时任务为例，实现如下功能：
 
 - 点击“申请长时任务”按钮，应用申请录制长时任务成功，通知栏显示“正在运行录制任务”通知。
 
@@ -96,7 +100,7 @@
 1. 需要申请ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 2. 声明后台模式类型。
-   在module.json5文件中为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
+   在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
    
    ```json
     "module": {
@@ -201,6 +205,7 @@
               backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
                 console.info("Operation startBackgroundRunning succeeded");
                 // 此处执行具体的长时任务逻辑，如录音，录制等。
+                // 系统会对业务场景的真实性进行检测，如果没有实际执行对应的业务，系统可能会取消对应的长时任务并挂起应用。
               }).catch((error: BusinessError) => {
                 console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
               });
@@ -619,7 +624,7 @@
       }
 
       onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption) {
-        console.log('ServiceAbility onRemoteRequest called');
+        console.info('ServiceAbility onRemoteRequest called');
         // code 的具体含义用户自定义
         if (code === 1) {
           // 接收到申请长时任务的请求码
@@ -629,7 +634,7 @@
           // 接收到取消长时任务的请求码
           stopContinuousTask();
         } else {
-          console.log('ServiceAbility unknown request code');
+          console.info('ServiceAbility unknown request code');
         }
         return true;
       }

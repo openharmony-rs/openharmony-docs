@@ -1,4 +1,10 @@
 # Shadow Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can use the [shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)API to apply a shadow effect to a component. Even better, you can set the parameter of this API to [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions) to customize the shadow effect. When the radius or color opacity in **ShadowOptions** is set to **0**, there is no shadow effect.

@@ -320,7 +320,7 @@ Starts an ability with the account ID specified. This API can be called only by 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated).|
+| accountId | number | Yes| ID of the target system account.|
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -394,7 +394,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
-Starts an ability with the account ID and start options specified This API can be called only by the main thread. It uses an asynchronous callback to return the result.
+Starts an ability with the account ID and start options specified. This API can be called only by the main thread. It uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -411,7 +411,7 @@ Starts an ability with the account ID and start options specified This API can b
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated).|
+| accountId | number | Yes| ID of the target system account.|
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -507,7 +507,7 @@ Starts an ability with the account ID specified. This API can be called only by 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated-1).|
+| accountId | number | Yes| ID of the target system account.|
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
 
 **Return value**
@@ -755,7 +755,7 @@ Starts a ServiceExtensionAbility with the account ID specified. This API uses an
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated).|
+| accountId | number | Yes| ID of the target system account.|
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ServiceExtensionAbility is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -835,7 +835,7 @@ Starts a new ServiceExtensionAbility with the account ID specified. This API use
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated-1).|
+| accountId | number | Yes| ID of the target system account.|
 
 **Return value**
 
@@ -968,7 +968,7 @@ class EntryAbility extends ServiceExtensionAbility {
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, (err) => {
       if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, err: ${JSON.stringify(err)}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
@@ -1050,7 +1050,7 @@ class EntryAbility extends ServiceExtensionAbility {
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, option, (err) => {
       if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, err: ${JSON.stringify(err)}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
@@ -1143,7 +1143,7 @@ class EntryAbility extends ServiceExtensionAbility {
         console.info('startAbilityAsCaller success.');
       })
       .catch((err: BusinessError) => {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+        console.error(`startAbilityAsCaller failed, err: ${JSON.stringify(err)}`);
       })
   }
 }
@@ -1153,7 +1153,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-Stops a ServiceExtensionAbility in the same application. This API uses an asynchronous callback to return the result.
+Stops a ServiceExtensionAbility. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1220,7 +1220,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-Stops a ServiceExtensionAbility in the same application. This API uses a promise to return the result.
+Stops a ServiceExtensionAbility. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1292,7 +1292,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
-Stops a ServiceExtensionAbility in the same application with the account ID specified. This API uses an asynchronous callback to return the result.
+Stops a ServiceExtensionAbility with the specified account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -1309,7 +1309,7 @@ Stops a ServiceExtensionAbility in the same application with the account ID spec
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated).|
+| accountId | number | Yes| ID of the target system account.|
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ServiceExtensionAbility is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1367,7 +1367,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-Stops a ServiceExtensionAbility in the same application with the account ID specified. This API uses a promise to return the result.
+Stops a ServiceExtensionAbility with the specified account. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -1384,7 +1384,7 @@ Stops a ServiceExtensionAbility in the same application with the account ID spec
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated-1).|
+| accountId | number | Yes| ID of the target system account.|
 
 **Return value**
 
@@ -1627,8 +1627,6 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 Connects this ability to a ServiceExtensionAbility of a given account. This API can be called only by the main thread.
 
-Currently, this API takes effect only on phones and tablets.
-
 > **NOTE**
 >
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md). 
@@ -1638,6 +1636,8 @@ Currently, this API takes effect only on phones and tablets.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 16000006 is returned.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -1645,7 +1645,7 @@ Currently, this API takes effect only on phones and tablets.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated).|
+| accountId | number | Yes| ID of the target system account.|
 | options | ConnectOptions | Yes| Remote object instance.|
 
 **Return value**
@@ -2246,7 +2246,7 @@ Observe the following when using this API:
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Information about the ability to start, including **abilityName**, **moduleName**, **bundleName**, **deviceId** (optional), and **parameters** (optional). If **deviceId** is left blank or null, the local ability is started. If **parameters** is left blank or null, the ability is started in the background.|
-| accountId | number | Yes| ID of a system account. The value **-1** indicates the current user. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated-1).|
+| accountId | number | Yes| ID of the target system account. The value **-1** indicates the current user.|
 
 **Return value**
 
@@ -2320,9 +2320,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
-Requests the specified foreground application to start the UIExtensionAbility of the corresponding type. The foreground application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the application specified by **bundleName** is not running in the foreground or does not exist, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **Want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**. This API can be called only by the main thread. It uses a promise to return the result.
+Requests the specified focused application to start the UIExtensionAbility of the corresponding type. The focused application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the specified application does not gain focus, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **Want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**. This API can be called only by the main thread. It uses a promise to return the result.
 
-Before starting the UIExtensionAbility, ensure that the foreground application has finished page initialization. Otherwise, the UIExtensionAbility fails to start and the error message "uiContent is nullptr" is displayed. The application can determine the time to start the UIExtensionAbility by listening for the page loading status. After the page initialization is successful, the key log information "UIContentImpl: focus again" is recorded.
+Before starting the UIExtensionAbility, ensure that the focused application has finished page initialization. Otherwise, the UIExtensionAbility fails to start. The application can determine the time to start the UIExtensionAbility by listening for the page loading status.
 
 > **NOTE**
 >
@@ -2397,9 +2397,9 @@ class ServiceExtension extends ServiceExtensionAbility {
 
 requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
-Requests the specified foreground application to start the UIExtensionAbility of the corresponding type. The foreground application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the application specified by **bundleName** is not running in the foreground or does not exist, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **Want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**. This API can be called only by the main thread. It uses an asynchronous callback to return the result.
+Requests the specified focused application to start the UIExtensionAbility of the corresponding type. The focused application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the specified application does not gain focus, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **Want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**. This API can be called only by the main thread. It uses an asynchronous callback to return the result.
 
-Before starting the UIExtensionAbility, ensure that the foreground application has finished page initialization. Otherwise, the UIExtensionAbility fails to start and the error message "uiContent is nullptr" is displayed. The application can determine the time to start the UIExtensionAbility by listening for the page loading status. After the page initialization is successful, the key log information "UIContentImpl: focus again" is recorded.
+Before starting the UIExtensionAbility, ensure that the focused application has finished page initialization. Otherwise, the UIExtensionAbility fails to start. The application can determine the time to start the UIExtensionAbility by listening for the page loading status.
 
 > **NOTE**
 >
@@ -2659,9 +2659,9 @@ Starts a new [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionA
 **System API**: This is a system API.
 
 **Parameters**
-| Name| Type| Read Only| Optional| Description                |
-| ------ | ---- | ---- | -------------------- | -------------------- |
-| want   | [Want](js-apis-app-ability-want.md) | Yes | No| Want information about the target ability, such as the ability name and bundle name.|
+| Name| Type| Mandatory| Description                |
+| ------ | ---- | ---- | -------------------- |
+| want   | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability, such as the ability name and bundle name.|
 
 **Return value**
 
@@ -2787,19 +2787,20 @@ export default class ServiceExtension extends ServiceExtensionAbility {
 
 startUIAbilities(wantList: Array\<Want>): Promise\<void>
 
-Starts multiple UIAbilities simultaneously. This API uses a promise to return the result.
+Starts multiple UIAbility components simultaneously. This API uses a promise to return the result.
 
 You can pass the Want information of multiple UIAbility instances, which can point to one or more applications. If all the UIAbility instances can be started successfully, the system displays these UIAbility instances in multiple windows simultaneously. Depending on the window handling, different devices may have varying display effects (including window shape, quantity, and layout).
 
 > **NOTE**
 >
-> This API takes effect only on phones and tablets.
 > 
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other devices, error code 801 is returned.
 
 **Parameters**
 
@@ -2823,7 +2824,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system application. |
 | 801 | Capability not supported. |
 | 16000001 | The specified ability does not exist. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |

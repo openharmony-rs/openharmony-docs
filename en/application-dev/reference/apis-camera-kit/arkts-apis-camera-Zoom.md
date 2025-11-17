@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -129,8 +129,6 @@ Sets smooth zoom.
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number, mode: camera.SmoothZoomMode): void {
   sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
 }

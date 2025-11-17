@@ -1,5 +1,13 @@
 # ArkUI_StringAsyncEvent
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 定义组件回调事件使用字符串参数的类型。

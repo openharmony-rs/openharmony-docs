@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only. They are suitable for playback applications that implement audio input at the native layer.
 
@@ -236,13 +236,13 @@ The following walks you through how to implement simple recording:
 
 ## Setting the Low Latency Mode
 
-If the device supports the low-latency channel, you can use the low-latency mode to create an audio capturer for a higher-quality audio experience.
+If the device supports the low-latency channel, you can use the low-latency mode to create an audio capturer for a low-latency audio experience.
 
 The development process is similar to that in the common recording scenario. The only difference is that you need to set the low-latency mode by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) when creating an audio stream builder.
 
 > **NOTE**
->
-> In audio recording scenarios, if [OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is set to **AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
+> - In audio recording scenarios, if [OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is set to **AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
+> - In some scenarios (for example, incoming calls), the system capability is limited and the audio channel mode falls back to the common audio channel mode, and the buffer size changes accordingly. In this case, you need to obtain all data in the buffer at a time based on the buffer size, which is the same as that in the common audio channel mode. Otherwise, the recorded data will be discontinuous, resulting in noises.
 
 Code snippet:
 
@@ -253,6 +253,12 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ## Setting the Mute Interruption Mode
 To ensure that the recording is not interrupted by the system's focus concurrency rules, a feature is introduced to change the interruption strategy from stopping the recording to simply muting it. You can control this behavior by calling [OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerwillmutewheninterrupted) when creating an audio stream builder. By default, this mode is disabled, and the audio focus strategy manages the order of concurrent audio streams. When enabled, if the recording is interrupted by another application, it will go into a muted state instead of stopping or pausing. In this state, the audio captured is silent.
+
+## Echo Cancellation
+
+Echo cancellation effectively eliminates echo interference during recording on supported devices, thereby improving audio capture quality. You can enable this feature by specifying particular audio input source types [OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) (**AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION** or **AUDIOSTREAM_SOURCE_TYPE_LIVE**). Once enabled, the system automatically processes the captured audio signal to cancel echoes.
+
+Before enabling this feature, you are advised to call [OH_AudioStreamManager_IsAcousticEchoCancelerSupported](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isacousticechocancelersupported) to check whether the device supports echo cancellation for the audio input source type [OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype). (This API is available since API version 20.) If supported, you can activate the echo cancellation processing by calling [OH_AudioStreamBuilder_SetCapturerInfo](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerinfo) to set the corresponding audio input source type when creating the audio capturer.
 
 <!--RP1-->
 <!--RP1End-->

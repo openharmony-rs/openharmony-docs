@@ -1,7 +1,13 @@
 # @ohos.app.ability.UIServiceExtensionAbility (UIServiceExtensionAbility) (System API)
 
-UIServiceExtensionAbility provides extended capabilities related to the floating window component. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It is mainly used to provide services with UIs for third-party applications.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo; @xuzhihao666-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
+UIServiceExtensionAbility provides extended capabilities related to the floating window component. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It is mainly used to provide services with UIs for third-party applications.
 
 > **NOTE**
 >
@@ -44,9 +50,9 @@ Called to initialize the service logic.
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- |  -------- |
-| want |  [Want](js-apis-app-ability-want.md) | Yes | No| [Want](js-apis-app-ability-want.md) information about the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including the ability name and bundle name.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want |  [Want](js-apis-app-ability-want.md) | Yes| [Want](js-apis-app-ability-want.md) information about the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including the ability name and bundle name.|
 
 **Example**
 
@@ -104,10 +110,10 @@ Called when the connection to a [UIServiceExtensionAbility](js-apis-app-ability-
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| want |  [Want](js-apis-app-ability-want.md)| Yes| No| [Want](js-apis-app-ability-want.md) information about the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including the ability name and bundle name.|
-| proxy | [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) | Yes| No| [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) object, used for communication between the client and server.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want |  [Want](js-apis-app-ability-want.md)| Yes| [Want](js-apis-app-ability-want.md) information about the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including the ability name and bundle name.|
+| proxy | [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) | Yes| [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) object, used for communication between the client and server.|
 
 
 **Example**
@@ -135,10 +141,10 @@ Called when the connection to a [UIServiceExtensionAbility](js-apis-app-ability-
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md)| Yes| No| [Want](js-apis-app-ability-want.md) information about the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including the ability name and bundle name.|
-| proxy |[UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md)| Yes| No| Proxy that sends data to the sender.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want |[Want](js-apis-app-ability-want.md)| Yes| [Want](js-apis-app-ability-want.md) information about the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md), including the ability name and bundle name.|
+| proxy |[UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md)| Yes| Proxy that sends data to the sender.|
 
 **Example**
 
@@ -165,9 +171,9 @@ Called when a window will be created for the [UIServiceExtensionAbility](js-apis
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| config |[window.ExtensionWindowConfig](../apis-arkui/js-apis-window-sys.md#extensionwindowconfig14)| Yes| No| Window configuration information.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| config |[window.ExtensionWindowConfig](../apis-arkui/js-apis-window-sys.md#extensionwindowconfig14)| Yes| Window configuration information.|
 
 **Example**
 
@@ -194,9 +200,9 @@ Called when a window is created for the [UIServiceExtensionAbility](js-apis-app-
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- |  -------- |
-| window | [window.Window](../apis-arkui/js-apis-window-sys.md#window) | Yes| No| Window object created.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- |  -------- |
+| window | [window.Window](../apis-arkui/js-apis-window-sys.md#window) | Yes| Window object created.|
 
 **Example**
 
@@ -223,10 +229,10 @@ Callback invoked when data is received.
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- |  -------- |
-| proxy | [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) | Yes| No| Proxy that sends data to the client.|
-| data | Record&lt;string, Object&gt; | Yes| No| Data received.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- |  -------- |
+| proxy | [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) | Yes| Proxy that sends data to the client.|
+| data | Record&lt;string, Object&gt; | Yes| Data received.|
 
 **Example**
 

@@ -1,4 +1,10 @@
-# PersistenceV2: Persisting Application State
+# PersistenceV2: Persisting UI State
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 To enhance the state management framework's capability of persistently storing UIs, you can use **PersistenceV2** to persist data.
 
@@ -17,9 +23,9 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-c
 
 ## Overview
 
-**PersistenceV2** is a singleton to be created when the application UI is started. Its purpose is to provide central storage for application UI state attributes. Each attribute is accessed using a unique key, which is a string. Unlike **AppStorageV2**, **PersistenceV2** also persistently stores the latest data on device disks. In this way, the selected result can still be saved even when the application is closed.
+**PersistenceV2** is a singleton to be created when the application UI is started. It provides central storage for application state data that is accessible at the application level Data is accessed through a unique key string. Unlike AppStorageV2, PersistenceV2 also stores the latest data on the device disk (persistent). In this way, the selected result can still be saved even when the application is closed.
 
-For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with **PersistenceV2**, the change of the [\@Trace](./arkts-new-observedV2-and-trace.md) attribute of the object triggers automatic persistence of the entire associated object. If necessary, you can call **PersistenceV2** APIs to manually perform persistence.
+For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with **PersistenceV2**, the change of the [\@Trace](./arkts-new-observedV2-and-trace.md) attribute of the object triggers automatic persistence of the entire associated object. If necessary, you can call **PersistenceV2** APIs to manually perform persistence. Note that the class attributes that are persisted by PersistenceV2 must have initial values. Otherwise, persistence is not supported.
 
 **PersistenceV2** can synchronize application state attributes with UI components and can be accessed during implementation of application service logic as well.
 
@@ -27,151 +33,23 @@ For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with
 
 ## How to Use
 
-### connect: Creating or Obtaining Stored Data
-
-```JavaScript
-static connect<T extends object>(
-    type: TypeConstructorWithArgs<T>,
-    keyOrDefaultCreator?: string | StorageDefaultCreator<T>,
-    defaultCreator?: StorageDefaultCreator<T> 
-): T | undefined;
-```
-
-| connect      | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | **type**: specified type. If no **key** is specified, the name of the **type** is used as the **key**.<br> **keyOrDefaultCreator**: specified key or default constructor.<br> **defaultCreator**: default constructor.                                         |
-| Return value      | After creating or obtaining data, value is returned. Otherwise, **undefined** is returned.|
+- connect: creates or obtains the stored data.
 
 >**NOTE**
 >
->1. The second parameter is used when no **key** is specified or the second parameter is invalid, and the third parameter is used in all other cases.
+>1. When matching the key with the [\@Observed](./arkts-observed-and-objectlink.md) object, specify the key or customize the **name** attribute.
 >
->2. If the data has been stored in **PersistenceV2**, you can obtain the stored data without using the default constructor. Otherwise, you must specify the default constructor. If no constructor is specified, the application exception occurs.
+>2. The data storage path is at the module level. That is, the data copy is stored in the persistent file of the corresponding module when the module calls the **connect** function. If multiple modules use the same key, the data of the module that uses the **connect** function first is used, and the data in **PersistenceV2** is also stored in the module that uses the **connect** function first.
 >
->3. Ensure that the data types match the key. Connecting different types of data to the same key will result in an application exception.
->
->4. You are advised to use meaningful values for keys. The values can contain letters, digits, and underscores (_) and a maximum of 255 characters. Using invalid characters or null characters will result in undefined behavior.
->
->5. When matching the key with the [\@Observed](./arkts-observed-and-objectlink.md) object, specify the key or customize the **name** attribute.
->
->6. The data storage path is at the module level. That is, the data copy is stored in the persistent file of the corresponding module when the module calls the **connect** function. If multiple modules use the same key, the data of the module that uses the **connect** function first is used, and the data in **PersistenceV2** is also stored in the module that uses the **connect** function first.
->
->7. The storage path, determined when the first ability of the application is started, is the module to which the ability belongs. If an ability calls the **connect** function and can be started by different modules, the number of data copies is the same as the number of startup modes of the ability.
+>3. The storage path, determined when the first ability of the application is started, is the module to which the ability belongs. If an ability calls the **connect** function and can be started by different modules, the number of data copies is the same as the number of startup modes of the ability.
 
-### globalConnect: Creating or Obtaining Stored Data
+- globalConnect: creates or obtains the stored data.
+- remove: deletes the stored data of a specified key. If a key that does not exist in **PersistenceV2** is deleted, a warning is reported.
+- keys: Returning All Keys Stored in PersistenceV2 Includes all keys in the module-level and application-level storage paths.
+- save: Persisting Stored Data Manually
+- **notifyOnError**: Callback for Responding to a Serialization or Deserialization Failure When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. As a result, this API can be called to capture exceptions.
 
-```ts
-// globalConnect API
-static globalConnect<T extends object>(
-    type: ConnectOptions<T>
-  ): T | undefined;
-```
-
-```ts
-// ConnectOptions parameters
-class ConnectOptions<T extends object> {
-  type: TypeConstructorWithArgs<T>;	// (Mandatory) Specified type.
-  key?: string;	// (Optional) Input key. If no key is specified, the name of the type is used as the key.
-  defaultCreator?: StorageDefaultCreator<T> // Default constructor. You are advised to set this parameter.
-  areaMode?: contextConstant.AreaMode; // (Optional) Encryption parameter.
-}
-```
-
-| globalConnect | Description                                                     |
-| ------------- | --------------------------------------------------------- |
-| Parameter         | type: input parameter of **connect**. For details, see the description of **ConnectOptions**.|
-| Return value       | After creating or obtaining data, value is returned. Otherwise, **undefined** is returned.      |
-
-| ConnectOptions| Description                                                        |
-| :----------------: | :----------------------------------------------------------- |
-|        type        | **TypeConstructorWithArgs\<T\>**: (mandatory) specified type.        |
-|        key         | Input key of the string type. If no value is passed in, the type name is used as the key.            |
-|   defaultCreator   | **StorageDefaultCreator\<T\>**: default constructor. It is recommended that this parameter be passed in. If **globalConnect** is connected to the key for the first time, an error is reported if no parameter is passed in.|
-|      areaMode      | **contextConstant.AreaMode**: encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
-
-> **NOTE**
->
-> 1. The second parameter is used when no **key** is specified or the second parameter is invalid, and the third parameter is used in all other cases.
->
-> 2. If the data has been stored in **PersistenceV2**, you can obtain the stored data without using the default constructor. Otherwise, you must specify the default constructor. If no constructor is specified, the application exception occurs.
->
-> 3. Ensure that the data types match the key. Matching different types of **globalConnect** data to the same key will result in an application exception.
->
-> 4. You are advised to use meaningful values for keys. The values can contain letters, digits, and underscores (_) and a maximum of 255 characters. Using invalid characters or null characters will result in undefined behavior.
->
-> 5. When matching the key with the [\@Observed](./arkts-observed-and-objectlink.md) object, specify the key or customize the **name** attribute.
->
-> 6. Data is stored in an application-level path. Different modules use the same key and encryption level for **globalConnect**. Only one copy of data is stored.
->
-> 7. **globalConnect** uses the same key but sets different encryption levels, in which the first-set encryption level is used. Data in **PersistenceV2** is also stored at the encryption level that uses the key first.
->
-> 8. You are not advised to use **connect** and **globalConnect** together because the data copy paths are different. If they are used together, the keys must be different; otherwise, a crash occurs.
->
-> 9. To make EL5 encryption level take effect, you need to configure the **ohos.permission.PROTECT_SCREEN_LOCK_DATA** field in the **module.json** file. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
-
-### remove: Deleting the Stored Data of a Specified Key
-
-```ts
-static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void;
-```
-
-| remove       | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | **keyOrType**: key to be deleted. If the key is of the **type**, the key to be deleted is the name of the **type**.                                         |
-| Return value      | None.|
-
->**NOTE**
->
->If a key that does not exist in **PersistenceV2** is deleted, a warning is reported.
-
-### keys: Returning All Keys Stored in PersistenceV2
-
-```ts
-static keys(): Array<string>;
-```
-
-| keys         | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | None.                                        |
-| Return value      | All keys in **PersistenceV2**.|
-
-> **NOTE**
->
-> All keys in the module-level and application-level storage paths are returned.
-
-### save: Persisting Stored Data Manually
-
-```ts
-static save<T>(keyOrType: string | TypeConstructorWithArgs<T>): void;
-```
-
-| save         | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | **keyOrType**: key that needs to be manually persist. If the key is of the **Type**, the key is the name of the **Type**.                                         |
-| Return value      | None.|
-
->**NOTE**
->
->Changes to the non-[\@Trace](./arkts-new-observedV2-and-trace.md) data do not trigger **PersistenceV2**. If necessary, call this API to persist the data of the corresponding key.
->
->It is useless to manually persist the keys that are not in the **connect** state in the memory.
-
-
-### **notifyOnError**: Callback for Responding to a Serialization or Deserialization Failure
-
-```ts
-static notifyOnError(callback: PersistenceErrorCallback | undefined): void;
-```
-
-| notifyOnError| Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | **callback**: When a serialization or deserialization fails, the callback is executed. Pass in **undefined** can cancel this callback.|
-| Return value      | None.|
-
->**NOTE**
->
->When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. As a result, this API can be called to capture exceptions.
-
+For details about the preceding APIs, see [State Management API Guide](../../reference/apis-arkui/js-apis-StateManagement.md).
 
 ## Constraints
 
@@ -179,11 +57,11 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void;
 
 2. Types such as **collections.Set** and **collections.Map** are not supported.
 
-3. Non-buildin types, such as native PixelMap, NativePointer, and ArrayList types, are not supported.
+3. Non-built-in types, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), NativePointer, and [ArrayList](../../reference/apis-arkts/js-apis-arraylist.md), are not supported.
 
 4. A single key supports a maximum of 8 KB data. If the data is too large, the persistence fails.
 
-5. The persistent data must be a class object. Containers, such as Array, Set, and Map, or objects of the built-in types, such as Date and Number, are not supported.
+5. The data to be persisted must be a class object. Container types (such as Array, Set, and Map), built-in constructed objects (such as Date and Number), and basic types (such as string, number, and boolean) are not supported. If you need to persist non-class objects, you are advised to use [Preferences](../../database/preferences-guidelines.md) for data persistence.
 
 6. Objects that used for loop reference are not supported.
 
@@ -192,6 +70,31 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void;
 8. Do not store a large amount of persistent data. Otherwise, frame freezing may occur.
 
 9. Do not use **connect** and **globalConnect** together. If you have to, their keys must be different; otherwise, a crash occurs.
+
+10. PersistenceV2 must be associated with a UI instance. The persistence operation must be called after the UI instance is initialized (that is, after the [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) callback is triggered).
+```ts
+// EntryAbility.ets
+// The following is a code snippet. You need to complete it in EntryAbility.ets.
+import { PersistenceV2 } from '@kit.ArkUI';
+
+// Define a class outside EntryAbility.
+@ObservedV2
+class Storage {
+  @Trace isPersist: boolean = false;
+}
+
+// Call PersistenceV2 in the loadContent callback of onWindowStageCreate.
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  windowStage.loadContent('pages/Index', (err) => {
+    if (err.code) {
+      return;
+    }
+    PersistenceV2.connect(Storage, () => new Storage());
+  });
+}
+```
+
+11. If you have strong requirements on data persistence, for example, the persistence time, you are advised to use [Preferences](../../database/preferences-guidelines.md) for data persistence. Note: PersistenceV2 and Preferences cannot be used together because the data stored in Preferences does not have state variable information, and the deserialized data cannot trigger automatic storage of PersistenceV2.
 
 ## Use Scenarios
 
@@ -211,7 +114,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // Complex objects need to be decorated by @Type to ensure successful serialization.
+  // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
   @Trace f: SampleChild = new SampleChild();
 }
@@ -223,7 +126,7 @@ Page 1
 import { PersistenceV2 } from '@kit.ArkUI';
 import { Sample } from '../Sample';
 
-// Callback used to receive serialization failure.
+// Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
@@ -337,7 +240,7 @@ struct Page2 {
   }
 }
 ```
-When using **Navigation**, you need to add the **route_map.json** file to the **src/main/resources/base/profile** directory, replace the value of **pageSourceFile** with the path of **Page2**, and add **"routerMap": "$profile: route_map"** to the **module.json5** file.
+When using **Navigation**, create a **route_map.json** file as shown below in the **src/main/resources/base/profile** directory, replacing the value of **pageSourceFile** with the actual path to **Page2**. Then, add **"routerMap": "$profile: route_map"** to the **module.json5** file.
 ```json
 {
   "routerMap": [
@@ -359,7 +262,7 @@ When using **Navigation**, you need to add the **route_map.json** file to the **
 import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
-// Callback used to receive serialization failure.
+// Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
@@ -372,7 +275,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // Complex objects need to be decorated by @Type to ensure successful serialization.
+  // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
   @Trace father: SampleChild = new SampleChild();
 }
@@ -381,7 +284,7 @@ export class Sample {
 @ComponentV2
 struct Page1 {
   @Local refresh: number = 0;
-  // Use the type name as the key if no key is passed in; use EL2 as the default encryption level if no encryption parameter is passed in.
+  // If no key is provided, the type name is used as the key. If the encryption level is not specified, the default EL2 level is used.
   @Local p: Sample = PersistenceV2.globalConnect({type: Sample, defaultCreator:() => new Sample()})!;
 
   // Use key:global1 for connection and set the encryption level to EL1.
@@ -493,24 +396,24 @@ struct Page1 {
 
 ### Using connect and globalConnect in Different Modules
 
-**For the storage path of connect:**
+Pay attention to the following points when using connect to store data:
 
-1. **connect** uses the first-started module path as the storage path and data is written back from the memory to this storage path in the disk. If the application is started from another module, the path of the new module is used as the storage path.
+1. connect uses the module-level storage path. The path of the module that is started first is used as the storage path. When data is written back from the memory to the disk, the data is written back to the path of the first module that is connected. If the application is started from another module, the path of the new module is used as the storage path.
 
-2. When different modules use the same key, the key-value pair stored in the module that is started first is written back to the corresponding module.
+2. When different modules use the same key, the key-value pair saved in the module that is started first is written back to the corresponding module.
 
-**For the storage path of GlobalConnect:**
+Pay attention to the storage path of globalConnect:
 
-Although **globalConnect** is an application-level path, different encryption levels can be set, indicating different storage paths. **connect** does not support the setting of the encryption level. However, when the encryption level of the module is switched, the module storage path is also switched to the path of the corresponding encryption level.
+Although globalConnect is an application-level path, you can set different encryption partitions. Different encryption partitions indicate different storage paths. The connect does not support the setting of encryption partitions. However, when the encryption level of a module is switched, the storage path of the module is switched to the corresponding encryption partition path.
 
 Create a module based on the project and redirect to the new module based on the sample code. The sample code is as follows:
 
 ```ts
-// Module 1
+module 1
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { contextConstant, common, Want } from '@kit.AbilityKit';
 
-// Callback used to receive serialization failure.
+// Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
@@ -523,7 +426,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // Complex objects need to be decorated by @Type to ensure successful serialization.
+  // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
   @Trace father: SampleChild = new SampleChild();
 }
@@ -537,8 +440,7 @@ struct Page1 {
 
   // Use key:global2 for connection and use the constructor function. If no encryption parameter is passed in, EL2 is used by default.
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
-
-  private context = getContext(this) as common.UIAbilityContext;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     Column() {
@@ -557,12 +459,12 @@ struct Page1 {
         .fontColor(Color.Red)
 
       /**************************** Redirection **************************/
-      Button('Redirect to newModule').onClick(() => { // Used between different modules. You are advised to use globalConnect.
+      Button('Redirection newModule').onClick (() => { // is used between different modules. globalConnect is recommended.
         let want: Want = {
-          deviceId: '', // If deviceId is empty, the device is the local device.
-          bundleName: 'com.example.myPersistenceV2', // Check it in app.json5.
-          moduleName: 'newModule', // Check this optional value in the module.json5 file of the module to be redirected to.
-          abilityName: 'NewModuleAbility',  // Redirect to the ability to start. You can check the ability name in the ability.ets file of the target module.
+          deviceId: '', // If deviceId is empty, the current device is used.
+          bundleName: 'com.example.myPersistenceV2', // View in app.json5.
+          moduleName: 'newModule', // View in module.json5 of the module to be redirected to. This parameter is optional.
+          abilityName: 'NewModuleAbility', // Ability to be redirected to. View in the ability.ets file of the redirected module.
           uri:'src/main/ets/pages/Index'
         }
         // context is the UIAbilityContext of the initiator UIAbility.
@@ -586,7 +488,7 @@ struct Page1 {
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
-// Callback used to receive serialization failure.
+// Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
@@ -599,7 +501,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // Complex objects need to be decorated by @Type to ensure successful serialization.
+  // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
   @Trace father: SampleChild = new SampleChild();
 }
@@ -651,7 +553,7 @@ You are advised to use the new API **globalConnect** to create and obtain data. 
 // Use connect to store data.
 import { PersistenceV2, Type } from '@kit.ArkUI';
 
-// Callback used to receive serialization failure.
+// Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
@@ -664,7 +566,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // Complex objects need to be decorated by @Type to ensure successful serialization.
+  // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
   @Trace father: SampleChild = new SampleChild();
 }
@@ -693,7 +595,7 @@ struct Page1 {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
-          this.refresh += 1
+          this.refresh += 1;
         })
         .fontSize(25)
     }
@@ -703,10 +605,10 @@ struct Page1 {
 ```
 
 ```ts
-// Migrate to GlobalConnect.
+// Migrate to globalConnect.
 import { PersistenceV2, Type } from '@kit.ArkUI';
 
-// Callback used to receive serialization failure.
+// Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
   console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
@@ -719,12 +621,12 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // Complex objects need to be decorated by @Type to ensure successful serialization.
+  // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
   @Trace father: SampleChild = new SampleChild();
 }
 
-// Auxiliary data used to determine whether data migration is complete
+// Auxiliary data used to determine whether data migration is complete.
 @ObservedV2
 class StorageState {
   @Trace isCompleteMoving: boolean = false;
@@ -749,7 +651,7 @@ move();
 @ComponentV2
 struct Page1 {
   @Local refresh: number = 0;
-  // Use key:connect2 to store data.
+  // Store data with key: connect2.
   @Local p: Sample = PersistenceV2.globalConnect({type: Sample, key:'connect2', defaultCreator:() => new Sample()})!;
 
   build() {
@@ -769,7 +671,7 @@ struct Page1 {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
-          this.refresh += 1
+          this.refresh += 1;
         })
         .fontSize(25)
     }

@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 多层级手势事件指父子组件嵌套时，父子组件均绑定了手势或事件。在该场景下，手势或者事件的响应受到多个因素的影响，相互之间发生传递和竞争，容易出现预期外的响应。
 
@@ -34,7 +34,7 @@ ComponentA() {
 因此，当触摸组件B时，会触发组件A和组件B的onTouch回调，不会触发组件C的onTouch回调。
 当触摸组件C时，会触发组件A和组件C的onTouch回调，不触发组件B的回调。
 
-特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也互相存在遮盖关系。
+特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也存在相互遮盖关系。
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
 ```ts
@@ -172,6 +172,52 @@ HitTestMode.None自身不响应触摸测试，不会阻塞子节点和兄弟节�
 当组件A未设置hitTestBehavior时，点击组件B区域时，组件A和组件B的onTouch事件均会触发，组件B的点击手势会触发。
 
 当组件A设置hitTestBehavior为HitTestMode.None时，点击组件B区域时，组件B的onTouch事件触发，而组件A的onTouch事件无法触发，组件B的点击手势触发。
+
+```ts
+Stack A() {
+    ComponentB()
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+    ComponentC() {
+        ComponentD()
+        .onTouch(() => {})
+        .gesture(TapGesture({count: 1}))
+    }
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+    .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
+}
+.onTouch(() => {})
+.gesture(TapGesture({count: 1}))
+```
+从API version 20开始，HitTestMode.BLOCK_HIERARCHY自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。
+
+当组件C未设置hitTestBehavior时，点击组件B和组件D的重叠区域时，组件A，组件C和组件D的onTouch事件均会触发，组件D的点击手势会触发。
+
+当组件C设置hitTestBehavior为BLOCK_HIERARCHY时，点击组件B和组件D的重叠区域时，组件C和组件D的onTouch事件触发，组件A和组件B的onTouch事件无法触发，组件D的点击手势会触发。
+
+```ts
+Stack A() {
+    ComponentB()
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+    ComponentC() {
+        ComponentD()
+        .onTouch(() => {})
+        .gesture(TapGesture({count: 1}))
+    }
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+    .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
+}
+.onTouch(() => {})
+.gesture(TapGesture({count: 1}))
+```
+从API version 20开始，[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9).BLOCK_DESCENDANTS自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
+
+若组件C未设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)，点击组件B和组件D的重叠区域时，组件A、组件C和组件D都会触发[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件，同时组件D的点击手势也会被触发。
+
+当组件C设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为BLOCK_DESCENDANTS时，点击组件B和组件D的重叠区域时，组件A和组件B的[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件触发，组件C和组件D的[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件无法触发，组件B的点击手势会触发。
 
 针对简单的场景，建议在单个组件上绑定hitTestBehavior。
 针对复杂场景，建议在多个组件上绑定不同的hitTestBehavior来控制Touch事件的分发。

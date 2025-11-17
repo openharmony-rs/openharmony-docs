@@ -19,7 +19,6 @@
     - [Class (NativeMediaPlayerSurfaceInfo)](arkts-apis-webview-NativeMediaPlayerSurfaceInfo.md)
     - [Class (PdfData)](arkts-apis-webview-PdfData.md)
     - [Class (ProxyConfig)](arkts-apis-webview-ProxyConfig.md)
-    - [Class (PrefetchOptions)](arkts-apis-webview-PrefetchOptions.md)
     - [Class (ProxyController)](arkts-apis-webview-ProxyController.md)
     - [Class (ProxyRule)](arkts-apis-webview-ProxyRule.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
@@ -43,6 +42,9 @@
     - [Enums](arkts-apis-webview-e.md)
     - [Types](arkts-apis-webview-t.md)
   - [@ohos.web.netErrorList](arkts-apis-netErrorList.md)
+  - [@ohos.web.webNativeMessagingExtensionAbility](arkts-apis-web-webNativeMessagingExtensionAbility.md)
+  - [@ohos.web.webNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md)
+  - [@ohos.web.webNativeMessagingExtensionManager](arkts-apis-web-webNativeMessagingExtensionManager.md)
 - ArkTS 组件<!--arkweb-comp-->
   - Web<!--ts-basic-components-web-->
     - [组件描述](arkts-basic-components-web.md)

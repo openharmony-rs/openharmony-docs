@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供画布组件，用于自定义绘制图形。
 
@@ -63,6 +63,10 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 需要搭配[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)中的[StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12)和[StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12)一起使用。
 不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -71,7 +75,7 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | 是   | 组件支持AI分析，设置为true时，组件可进行AI分析。<br>异常值null和undefined按默认值处理。<br/>默认值：false |
+| enable  | boolean | 是   | 组件支持AI分析，需要组件内容支持主体识别、文字识别或对象查找。<br>设置为true时，组件可进行AI分析，设置为false时，组件不可进行AI分析。<br>异常值null和undefined按默认值处理。<br/>默认值：false |
 
 ## 事件
 
@@ -204,10 +208,10 @@ struct attributeDemo {
           .onClick(() => {
             this.context.startImageAnalyzer(this.config)
               .then(() => {
-                console.log("analysis complete")
+                console.info("analysis complete")
               })
               .catch((error: BusinessError) => {
-                console.log("error code: " + error.code)
+                console.info("error code: " + error.code)
               })
           })
         Button('stop')

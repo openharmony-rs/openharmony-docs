@@ -1,5 +1,13 @@
 # ArkUI_Margin
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 外边距属性，用于描述组件的外边距属性。

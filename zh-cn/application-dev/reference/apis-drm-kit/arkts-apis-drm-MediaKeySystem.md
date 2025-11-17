@@ -4,7 +4,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -282,7 +282,7 @@ try {
 
 generateKeySystemRequest(): Promise<ProvisionRequest\>
 
-生成获取mediaKeySystem设备证书的请求。
+生成获取mediaKeySystem设备证书的请求。使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -312,7 +312,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 // 设备上已有设备证书的情况下不需要调用。
 mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
-  console.log("generateKeySystemRequest");
+  console.info("generateKeySystemRequest");
 }).catch((err: BusinessError) => {
   console.error(`generateKeySystemRequest: ERROR: ${err}`);
 });
@@ -322,7 +322,7 @@ mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionR
 
 processKeySystemResponse(response: Uint8Array): Promise<void\>
 
-处理获得的设备证书请求的响应。
+处理获得的设备证书请求的响应。使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -360,7 +360,7 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 // keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入；
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
-  console.log("processKeySystemResponse");
+  console.info("processKeySystemResponse");
 }).catch((err: BusinessError) => {
   console.error(`processKeySystemResponse: ERROR: ${err}`);
 });
@@ -410,7 +410,7 @@ try {
 
 on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
-监听设备证书请求事件，获取事件信息。
+监听设备证书请求事件，获取事件信息。使用callback异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -439,7 +439,7 @@ import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
-  console.log('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -447,7 +447,7 @@ mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
 
 off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
-注销设备证书请求事件的监听。
+注销设备证书请求事件的监听。使用callback异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 

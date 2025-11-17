@@ -1,13 +1,14 @@
-# 开发参考
-- [开发说明](development-intro-api.md)
-- [系统能力SystemCapability使用指南](syscap.md)
+# API参考<!--api-reference-->
+- API参考概述<!--ref-overview-api-->
+  - [开发说明](development-intro-api.md)
+  - [系统能力SystemCapability使用指南](syscap.md)
 <!--Del-->
 - 系统能力SystemCapability列表<!--syscap-list-->
-    - [Phone](phone-syscap-list.md)
-    - [Tablet](tablet-syscap-list.md)
-    - [LiteWearable](litewearable-syscap-list.md)
-    - [TV](tv-syscap-list.md)
-    - [Wearable](wearable-syscap-list.md)
+  - [Phone](phone-syscap-list.md)
+  - [Tablet](tablet-syscap-list.md)
+  - [LiteWearable](litewearable-syscap-list.md)
+  - [TV](tv-syscap-list.md)
+  - [Wearable](wearable-syscap-list.md)
 <!--DelEnd-->
 - [通用错误码](errorcode-universal.md)
 - [Ability Kit API参考](apis-ability-kit/Readme-CN.md)
@@ -38,6 +39,7 @@
 - [DRM Kit API参考](apis-drm-kit/Readme-CN.md)
 - [Form Kit API参考](apis-form-kit/Readme-CN.md)
 - [Function Flow Runtime Kit API参考](apis-ffrt-kit/Readme-CN.md)
+- [Game Controller Kit API参考](apis-game-controller-kit/Readme-CN.md)
 - [Image Kit API参考](apis-image-kit/Readme-CN.md)
 - [IME Kit API参考](apis-ime-kit/Readme-CN.md)
 - [Input Kit API参考](apis-input-kit/Readme-CN.md)

@@ -1,5 +1,11 @@
 # 伪本地化测试概述
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 伪本地化（pseudo-localization）又称伪翻译，是在正式的本地化之前，通过模拟本地化过程帮助发现潜在问题，避免功能缺陷。这是软件测试中用来测试软件是否符合本地化与国际化的方法之一。伪翻译不是将软件的文本翻译成外语，而是在源语言软件的基础上，按规则将需要本地化的文本使用本地化文字替换，模拟本地化过程。
 

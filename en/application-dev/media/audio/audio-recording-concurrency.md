@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio input sources usually consist of audio data captured by built-in microphones, external devices, or remote distributed devices. They can also be audio data sent by other applications to the system for playback. Depending on the audio source, audio input can be categorized into two types: internal recording and external recording.
 

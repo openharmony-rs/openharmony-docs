@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Function calling allows you to call ArkTS functions from the Node-API module and pass parameters, or create ArkTS functions in the Node-API module.
+Node-API provides APIs for calling ArkTS functions and passing parameters or creating ArkTS functions in C/C++.
 
 ## Basic Concepts
 
@@ -76,6 +76,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 function summation(arr: Array<number>) {
   let sum: number = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -114,7 +115,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 ## napi_call_function
 
 Use **napi_call_function** to call an ArkTS function from a C/C++ addon.
-Note: The length of argv passed by napi_call_function must be greater than or equal to the number of argc declarations, and each element must be initialized to nullptr.
+Note: The length of **argv** passed to **napi_call_function** must be greater than or equal to the number of **argc** declarations, and each element must be initialized to **nullptr**.
 
 CPP code:
 

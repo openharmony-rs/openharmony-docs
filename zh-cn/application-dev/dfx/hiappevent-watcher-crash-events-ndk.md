@@ -272,6 +272,8 @@
 
 若应用未主动捕获崩溃异常，则系统处理崩溃后应用将退出。**应用下次启动时**，HiAppEvent将崩溃事件上报给已注册的监听，完成回调。
 
+从API version 21开始，若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
+
 **应用主动捕获崩溃异常场景**
 
 若应用主动捕获崩溃异常，HiAppEvent事件将在**应用退出前**触发回调，例如：

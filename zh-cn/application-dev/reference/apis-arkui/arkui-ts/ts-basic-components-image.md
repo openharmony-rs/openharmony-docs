@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif和heif类型的图片格式，不支持apng和svga格式。
 
@@ -393,7 +393,7 @@ syncLoad(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false，false表示异步加载图片，true表示同步加载图片。 |
+| value  | boolean | 是   | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false，false表示异步加载图片，true表示同步加载图片。<br/>阻塞主线程超过6s将导致AppFreeze，具体参考[AppFreeze（应用冻屏）检测](../../../dfx/appfreeze-guidelines.md)。|
 
 ### copyOption<sup>9+</sup>
 
@@ -435,7 +435,8 @@ colorFilter(value: ColorFilter | DrawingColorFilter)
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
-颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)
+颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
+
 ### draggable<sup>9+</sup>
 
 draggable(value: boolean)
@@ -470,7 +471,9 @@ enableAnalyzer(enable:&nbsp;boolean)
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.INTERNET。
+> - 需要配置权限：ohos.permission.INTERNET。
+>
+> - 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -493,6 +496,10 @@ resizable(value: ResizableOptions)
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -554,7 +561,7 @@ orientation(orientation: ImageRotateOrientation)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | 是   | 图像内容的显示方向。<br/>不支持gif和svg类型的图片。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>默认值：ImageRotateOrientation.UP<br/>设置为undefined或null时，取值为ImageRotateOrientation.AUTO。 |
+| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | 是   | 图像内容的显示方向。<br/>仅支持静态位图的显示。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>默认值：ImageRotateOrientation.UP<br/>设置为undefined或null时，取值为ImageRotateOrientation.AUTO。 |
 
 ### hdrBrightness<sup>19+</sup>
 
@@ -580,7 +587,7 @@ SVG类型图源不支持该属性。
 
 supportSvg2(enable: boolean)
 
-开启或关闭[SVG新增解析能力](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
+开启或关闭[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
 
 Image组件创建后，不支持动态修改该属性的值。
 
@@ -594,23 +601,7 @@ Image组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable | boolean | 是   | 控制是否开启SVG解析新能力。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
-
-### contentTransition<sup>21+</sup>
-
-contentTransition(transition: ContentTransitionEffect)
-
-图片内容发生变化时，会触发过渡动效，OPACITY为淡入淡出效果，IDENTITY为无动画效果。
-
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型                                    | 必填 | 说明                             |
-| ------ | --------------------------------------- | ---- | -------------------------------- |
-| contentTransition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
+| enable | boolean | 是   | 控制是否开启SVG标签解析能力增强功能。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -904,7 +895,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -1168,9 +1159,9 @@ struct ImageExample4 {
         .width(200)
         .height(200)
         .margin({bottom:10})
-      Button('getTypes')
-        .width(80)
-        .height(80)
+      Button('getTypes', { type: ButtonType.Circle, stateEffect: false })
+        .width(100)
+        .height(100)
         .onClick(() => {
           this.aiController.getImageAnalyzerSupportTypes();
         })
@@ -1515,8 +1506,8 @@ struct ImageContentExample {
       Image(this.imageSrcList[this.imageSrcIndex])
         .width(100)
         .height(100)
-      Button('点击切换Image的src')
-        .padding(20)
+      Button('点击切换Image的src', { type: ButtonType.Capsule, stateEffect: false })
+        .height(50)
         .onClick(() => {
           this.imageSrcIndex = (this.imageSrcIndex + 1) % this.imageSrcList.length;
         })
@@ -2268,7 +2259,7 @@ struct Index {
 
 ### 示例26（使用supportSvg2属性时，SVG图片的显示效果）
 
-该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG新增解析能力生效。
+该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
 
 ```ts
 @Entry
@@ -2278,6 +2269,7 @@ struct Index {
     Row() {
       Column() {
         Text('supportSvg2参数设置为true')
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
         Image($rawfile('image.svg'))
           .width(200)
           .height(200)
@@ -2285,6 +2277,7 @@ struct Index {
           .supportSvg2(true)
           .margin({ bottom: 30 })
         Text('supportSvg2参数设置为false（默认值）')
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
         Image($rawfile('image.svg'))
           .width(200)
           .height(200)
@@ -2298,35 +2291,3 @@ struct Index {
 ```
 
 ![sandBox](figures/svg2.PNG)
-
-### 示例27（使用ContentTransition属性实现图片淡入淡出切换效果）
-
-该示例演示了在点击图片切换图源时，通过设置[contentTransition](#contenttransition21)属性为淡入淡出效果，实现图片的平滑过渡。
-
-```ts
-@Entry
-@Component
-struct ImageExample {
-  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
-  @State imageResource: Resource = $r('app.media.icon');
-
-  build() {
-    Row() {
-      Column() {
-        Image(this.imageResource)
-          .width(200)
-          .height(200)
-          // 启用淡入淡出过渡效果。
-          .contentTransition(ContentTransitionEffect.OPACITY)
-          .onClick(() => {
-            // $r('app.media.cloud1')需要替换为开发者所需的图像资源文件。
-            this.imageResource = $r('app.media.cloud1')
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-![sandBox](figures/trans.gif)

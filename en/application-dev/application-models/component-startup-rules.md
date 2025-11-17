@@ -32,15 +32,18 @@ In view of this, the system formulates a set of component startup rules, as foll
 
   If the **exported** field of the component is set to **true**, the component can be called by other applications. If the field is set to **false**, the component cannot be called by other applications. If this is the case, you must also verify the permission **ohos.permission.START_INVISIBLE_ABILITY**, which is available only for system applications. For details about the **exported** fields, see [abilities](../quick-start/module-configuration-file.md#abilities).
 
-- Before starting a UIAbility component of a background application, the caller must verify the permission ohos.permission.START_ABILITIES_FROM_BACKGROUND, which is available only for system applications. For 2-in-1 devices and tablets, if an application has created a floating window in the foreground, it can start other abilities without verifying this permission after it transitions to the background.
+- Before starting a UIAbility component of a background application, verify the permission **ohos.permission.START_ABILITIES_FROM_BACKGROUND**, which is available only for system applications.
 
   > **NOTE**
   > 
-  > An application is considered as a foreground application only when the application process gains focus or its UIAbility component is running in the foreground.
+  > - An application is considered as a foreground application only when the application process gains focus or its UIAbility component is running in the foreground.
+  > - For 2-in-1 devices and tablets:
+  >   - Starting from API version 18, if an application has a floating window in the foreground, it can start other abilities without checking the BACKGROUND permission after the application moves to the background.
+  >   - Starting from API version 21 onwards, if an application is already in the status bar, it can start its own UIAbility without checking the BACKGROUND permission after the application moves to the background.
  
 - Before using **startAbilityByCall()** to start a component running on another device, verify the permission **ohos.permission.DISTRIBUTED_DATASYNC**.
 
-The preceding component startup rules take effect since API version 9. Familiarity with these rules helps you prevent service exceptions.  
+The component startup rules described above apply from API version 9 onwards. The specific version when new rules come into effect is noted separately within the rules. Familiarity with these rules helps you prevent service exceptions.  
 
 
 
@@ -54,6 +57,10 @@ The preceding component startup rules take effect since API version 9. Familiari
 
 - Using [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to start the UIAbility component
 
+> **NOTE**
+> 
+> The BACKGROUND and CALL permissions in the following figure refer to ohos.permission.START_ABILITIES_FROM_BACKGROUND and ohos.permission.ABILITY_BACKGROUND_COMMUNICATION, respectively.
+
 ![startup-rule](figures/component-startup-inner-stage.png)
 
 
@@ -66,5 +73,9 @@ The preceding component startup rules take effect since API version 9. Familiari
 - Starting the ServiceExtensionAbility and DataShareExtensionAbility components
 
 - Using [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to start the UIAbility component
+
+> **NOTE**
+> 
+> The BACKGROUND and DATASYNC permissions in the following figure refer to ohos.permission.START_ABILITIES_FROM_BACKGROUND and ohos.permission.DISTRIBUTED_DATASYNC, respectively.
 
 ![component-startup-rules](figures/component-startup-inter-stage.png)

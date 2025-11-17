@@ -5,7 +5,7 @@
 <!--Owner: @michael_woo888-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
@@ -54,9 +54,9 @@ Defines the APIs for subscribing to and unsubscribing from common events and enu
 | [CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info,CommonEvent_ReceiveCallback callback)](#oh_commonevent_createsubscriber) | - | Creates a subscriber.|
 | [void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)](#oh_commonevent_destroysubscriber) | - | Destroys a subscriber.|
 | [CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_subscribe) | - | Subscribes to a common event.|
-| [CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_unsubscribe) | - | Unsubscribes from the common event.|
+| [CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_unsubscribe) | - | Unsubscribes from a common event.|
 | [const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_geteventfromrcvdata) | - | Obtains the name of a common event.|
-| [int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getcodefromrcvdata) | - | Obtains the result code (number type) of a common event.|
+| [int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getcodefromrcvdata) | - | Obtains the result data (integer type) of a common event.|
 | [const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getdatastrfromrcvdata) | - | Obtains the result data (string type) of a common event.|
 | [const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getbundlenamefromrcvdata) | - | Obtains the bundle name of a common event.|
 | [const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)](#oh_commonevent_getparametersfromrcvdata) | - | Obtains the additional information of a common event.|
@@ -64,7 +64,7 @@ Defines the APIs for subscribing to and unsubscribing from common events and enu
 | [void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)](#oh_commonevent_destroypublishinfo) | - | Destroys a property object of a common event.|
 | [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)](#oh_commonevent_setpublishinfobundlename) | - | Sets the bundle name of a common event.|
 | [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info,const char* permissions[], int32_t num)](#oh_commonevent_setpublishinfopermissions) | - | Sets permissions for a common event.|
-| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)](#oh_commonevent_setpublishinfocode) | - | Sets the result code (number type) of a common event.|
+| [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)](#oh_commonevent_setpublishinfocode) | - | Sets the result code (integer type) of a common event.|
 | [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info,const char* data, size_t length)](#oh_commonevent_setpublishinfodata) | - | Sets the result data (string type) of a common event.|
 | [CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info,CommonEvent_Parameters* param)](#oh_commonevent_setpublishinfoparameters) | - | Sets the additional information of a common event.|
 | [CommonEvent_Parameters* OH_CommonEvent_CreateParameters()](#oh_commonevent_createparameters) | - | Creates an additional information object of a common event.|
@@ -97,8 +97,8 @@ Defines the APIs for subscribing to and unsubscribing from common events and enu
 | [bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getabortcommonevent) | - | Checks whether an ordered common event is aborted.|
 | [bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)](#oh_commonevent_abortcommonevent) | - | Aborts an ordered common event when used with [OH_CommonEvent_FinishCommonEvent](#oh_commonevent_finishcommonevent). After the abort, the common event is not sent to the next subscriber.|
 | [bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)](#oh_commonevent_clearabortcommonevent) | - | Clears the aborted state of an ordered common event when used with [OH_CommonEvent_FinishCommonEvent](#oh_commonevent_finishcommonevent). After the clearance, the common event is sent to the next subscriber.|
-| [int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getcodefromsubscriber) | - | Obtains the result code (number type) of an ordered common event.|
-| [bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)](#oh_commonevent_setcodetosubscriber) | - | Sets the result code (number type) of an ordered common event.|
+| [int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getcodefromsubscriber) | - | Obtains the result code (integer type) of an ordered common event.|
+| [bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)](#oh_commonevent_setcodetosubscriber) | - | Sets the result code (string type) of an ordered common event.|
 | [const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getdatafromsubscriber) | - | Obtains the result data (string type) of an ordered common event.|
 | [bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)](#oh_commonevent_setdatatosubscriber) | - | Sets the result data (string type) of an ordered common event.|
 
@@ -168,7 +168,7 @@ Creates the subscriber information.
 
 | Name| Description|
 | -- | -- |
-| const char* events[] | Pointer to the common events.|
+| const char* events[] | Pointer to the common events. The valid number of subscribed common events is the smaller value between **eventsNum** and **events[]**.|
 | int32_t eventsNum | Number of common events to subscribe.|
 
 **Returns**
@@ -326,7 +326,7 @@ CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* sub
 
 **Description**
 
-Unsubscribes from the common events.
+Unsubscribes from a common event.
 
 **Since**: 12
 
@@ -376,7 +376,7 @@ int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)
 
 **Description**
 
-Obtains the result code (number type) of a common event.
+Obtains the result code (integer type) of a common event.
 
 **Since**: 12
 
@@ -556,7 +556,7 @@ Sets permissions for a common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
-| const char* permissions[] | Pointer to the array of permission names.|
+| const char* permissions[] | Pointer to the array of permission names. The valid number of permissions is the smaller value between **num** and **permissions[]**.|
 | int32_t num | Number of permissions.|
 
 **Returns**
@@ -573,7 +573,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* i
 
 **Description**
 
-Sets the result code (number type) of a common event.
+Sets the result code (integer type) of a common event.
 
 **Since**: 18
 
@@ -609,7 +609,7 @@ Sets the result data (string type) of a common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
-| const char* data | Pointer to the result data to set.|
+| const char* data | Pointer to the result data to set. The valid data length is the smaller value between **length** and **data**.|
 | size_t length | Length of the result data.|
 
 **Returns**
@@ -724,7 +724,7 @@ Obtains the int data with a specific key from the additional information of a co
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | const int defaultValue | Default value.|
 
@@ -778,9 +778,9 @@ Obtains the int array with a specific key from the additional information of a c
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
-| int** array | The int array to obtain.|
+| int** array | Double pointer to the int array to obtain.|
 
 **Returns**
 
@@ -833,7 +833,7 @@ Obtains the long data with a specific key from the additional information of a c
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | const long defaultValue | Default value.|
 
@@ -887,7 +887,7 @@ Obtains the long array with a specific key from the additional information of a 
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | long** array | Double pointer to the long array to obtain.|
 
@@ -942,7 +942,7 @@ Obtains the Boolean data with a specific key from the additional information of 
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | const bool defaultValue | Default value.|
 
@@ -996,7 +996,7 @@ Obtains the Boolean array with a specific key from the additional information of
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | bool** array | Double pointer to the Boolean array to obtain.|
 
@@ -1051,7 +1051,7 @@ Obtains the character data with a specific key from the additional information o
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | const char defaultValue | Default value.|
 
@@ -1105,7 +1105,7 @@ Obtains the character array with a specific key from the additional information 
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | char** array | Double pointer to the character array to obtain.|
 
@@ -1160,7 +1160,7 @@ Obtains the double data with a specific key from the additional information of a
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | const double defaultValue | Default value.|
 
@@ -1214,7 +1214,7 @@ Obtains the double array with a specific key from the additional information of 
 
 | Name| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) * para| Pointer to the additional information of a common event.|
+| const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
 | double** array | Double pointer to the array to obtain.|
 
@@ -1295,7 +1295,7 @@ Publishes a common event with specified properties.
 | Name| Description|
 | -- | -- |
 | const char* event | Pointer to the name of the common event.|
-| const [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of the common event.|
+| const [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
 
 **Returns**
 
@@ -1436,7 +1436,7 @@ int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subsc
 
 **Description**
 
-Obtains the result code (number type) of an ordered common event.
+Obtains the result code (integer type) of an ordered common event.
 
 **Since**: 18
 
@@ -1461,7 +1461,7 @@ bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int3
 
 **Description**
 
-Sets the result code (number type) of an ordered common event.
+Sets the result code (integer type) of an ordered common event.
 
 **Since**: 18
 
@@ -1522,7 +1522,7 @@ Sets the result data (string type) of an ordered common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_Subscriber](#variables)* subscriber| Pointer to the common event subscriber.|
-| const char* data | Pointer to the result data to set.|
+| const char* data | Pointer to the result data to set. The valid data length is the smaller value between **length** and **data**.|
 | size_t length | Data length.|
 
 **Returns**

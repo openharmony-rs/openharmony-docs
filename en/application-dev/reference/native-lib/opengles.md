@@ -421,17 +421,17 @@ Column() {
 ```typescript
 class MyXComponentController extends XComponentController {
     onSurfaceCreated(surfaceId: string): void {
-        console.log(`onSurfaceCreated surfaceId: ${surfaceId}`);
+        console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
         nativeRender.SetSurfaceId(BigInt(surfaceId));
         // The surface ID will be used to associate with the native window.
     }
 
     onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-        console.log(`onSurfaceChanged surfaceId: ${surfaceId}`);
+        console.info(`onSurfaceChanged surfaceId: ${surfaceId}`);
     }
     
     onSurfaceDestroyed(surfaceId: string): void {
-        console.log(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+        console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
     }
 }
 ```
@@ -457,7 +457,10 @@ napi_value PluginManager::SetSurfaceId(napi_env env, napi_callback_info info)
     return nullptr;
 }
 ```
+<!--Del-->
 For details about how to use the **XComponent**, see [ArkTS XComponent Usage Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent).
+<!--DelEnd-->
+
 ### Using eglCreateContext to Create a Rendering Context
 
 The **eglCreateContext** function is used to create an EGL rendering context and associate it with a specific display and configuration. You can specify a shared context to share status information with an existing OpenGL context. The parameters in the function are described as follows:

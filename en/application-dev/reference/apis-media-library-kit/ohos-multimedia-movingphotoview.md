@@ -4,7 +4,7 @@
 <!--Owner: @tangye123456-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The **MovingPhotoView** component is used to play moving photos and control the playback status.
 
@@ -13,6 +13,8 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > Currently, the **MovingPhotoView** component cannot be used in Previewer.
+
+
 
 ## Modules to Import
 
@@ -41,11 +43,11 @@ MovingPhotoView(options: MovingPhotoViewOptions)
 ## MovingPhotoViewOptions
 
 
-| Name     | Type                                                                                        | Mandatory| Description                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhoto | [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | Yes  | MovingPhoto instance. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
-| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No  | AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| Name     | Type                                                                                        | Read-Only| Optional| Description                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| movingPhoto | [photoAccessHelper.MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | No| No | MovingPhoto instance. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No| Yes  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
+| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No| Yes| AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## Properties
 
@@ -407,19 +409,19 @@ struct MovingPhotoViewDemo {
             .autoPlayPeriod(0, 600)
             .objectFit(ImageFit.Cover)
             .onComplete(() => {
-              console.log('Completed');
+              console.info('Completed');
             })
             .onStart(() => {
-              console.log('onStart')
+              console.info('onStart')
             })
             .onFinish(() => {
-              console.log('onFinish')
+              console.info('onFinish')
             })
             .onStop(() => {
-              console.log('onStop')
+              console.info('onStop')
             })
             .onError(() => {
-              console.log('onError')
+              console.error('onError')
             })
         }
       }
@@ -575,5 +577,3 @@ struct Index {
 ![AutomicEnergy](figures/AutomicEnergy.gif)
 
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->

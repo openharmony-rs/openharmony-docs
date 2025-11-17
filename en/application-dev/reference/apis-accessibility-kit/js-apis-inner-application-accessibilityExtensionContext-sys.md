@@ -85,7 +85,7 @@ For details, see [AccessibilityElement.spans](#accessibilityelement12).
 
 startAbility(want: Want): Promise\<void>;
 
-Starts the foreground page.
+Starts the foreground page. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -131,7 +131,7 @@ axContext.startAbility(want).then(() => {
 
 getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>;
 
-Obtains node elements in batches.
+Obtains node elements in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -167,7 +167,7 @@ let windowId: number = 10;
 let elementId: number = 10;
 
 axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -177,7 +177,7 @@ axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) =>
 
 getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>;
 
-Obtains the custom default focuses of an application.
+Obtains the custom default focuses of an application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -211,7 +211,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId: number = 10;
 
 axContext.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
-  console.log(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
 });
@@ -285,7 +285,7 @@ try {
 
 on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 
-Subscribes to the pre-disconnection event of the accessibility extension service. This API is called when the accessibility extension service is about to be disconnected.
+Subscribes to the pre-disconnection event of the accessibility extension service. This API is called when the accessibility extension service is about to be disconnected. This API uses an asynchronous callback to return the result.
 
 Used together with [notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20); otherwise, the accessibility extension service is automatically disconnected 30 seconds later by default.
 
@@ -328,7 +328,7 @@ try {
 
 off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the pre-disconnection event of the accessibility extension service. This API is not called until the accessibility extension service is disconnected.
+Unsubscribes from the pre-disconnection event of the accessibility extension service. This API is not called until the accessibility extension service is disconnected. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -431,7 +431,7 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.log(`Succeeded in get accessibility focused element, ${element.bundleName}`);
+  console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -441,7 +441,7 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement12)>;
 
-Obtains the root element of an active window.
+Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -450,7 +450,7 @@ Obtains the root element of an active window.
 **Parameters**
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| windowId | number | No | Window ID to be obtained.|
+| windowId | number | No| Window ID to be obtained.|
 
 **Return value**
 | Type                                | Description                   |
@@ -475,7 +475,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId: number = 0;
 
 axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.log(`Succeeded in get root inactive window element, ${element.bundleName}`);
+  console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -494,7 +494,7 @@ Obtains the accessibility windows.
 **Parameters**
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| displayId | number | No | Display ID. If this parameter is not specified, the default display ID is used.|
+| displayId | number | No| Display ID. If this parameter is not specified, the default display ID is used.|
 
 **Return value**
 
@@ -521,11 +521,11 @@ try {
   let windowList = context?.getAccessibilityWindowsSync(displayId);
   if (windowList) {
     for (let window of windowList) {
-      console.log(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
+      console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
     }
   }
 } catch (err) {
-  console.log(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
+  console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
 }
 ```
 
@@ -622,7 +622,7 @@ axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) =
   console.info("AccessibilityElement.description: " + element.description)
   // ....
 }).catch((err) => {
-  console.log(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -685,9 +685,9 @@ export default class AccessibilityManager {
       return;
     }
     this.context.getWindowRootElement().then((rootElement: AccessibilityElement) => {
-      console.log(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
+      console.info(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
       rootElement.enableScreenCurtain(true);
-      console.log(`Succeeded in enableScreenCurtain`);
+      console.info(`Succeeded in enableScreenCurtain`);
     }).catch((err: BusinessError) => {
       console.error(`failed to enableScreenCurtain, Code is ${err.code}, message is ${err.message}`);
     });
@@ -734,7 +734,7 @@ let condition = 10;
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -779,7 +779,7 @@ let condition = 'location';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -933,7 +933,7 @@ try {
 
 getParent(): Promise\<AccessibilityElement>;
 
-Obtains the parent element of an accessibility node.
+Obtains the parent element of an accessibility node. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -943,7 +943,7 @@ Obtains the parent element of an accessibility node.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Parent element.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -961,14 +961,14 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.log(`element parent id: ${element.parentId}`);
+  console.info(`element parent id: ${element.parentId}`);
   element.getParent().then((parent: AccessibilityElement) => {
-    console.log(`parent element's parent id: ${parent.parentId}`);
+    console.info(`parent element's parent id: ${parent.parentId}`);
   }).catch((err) => {
-    console.log(`getParent failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getParent failed, code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -976,7 +976,7 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 getChildren(): Promise\<Array\<AccessibilityElement>>;
 
-Obtains the child elements of an element.
+Obtains the child elements of an element. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -986,7 +986,7 @@ Obtains the child elements of an element.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Array of child elements.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1004,14 +1004,14 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.log(`element childrenIds: ${element.childrenIds}`);
+  console.info(`element childrenIds: ${element.childrenIds}`);
   element.getChildren().then((children: AccessibilityElement[]) => {
-    console.log(`children element's size: ${children.length}`);
+    console.info(`children element's size: ${children.length}`);
   }).catch((err) => {
-    console.log(`getChildren failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getChildren failed, code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1019,7 +1019,7 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 getRoot(): Promise\<AccessibilityElement>;
 
-Obtains the root element of an active window.
+Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1029,7 +1029,7 @@ Obtains the root element of an active window.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Root element.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1048,11 +1048,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let windows: AccessibilityWindow[] = axContext.getAccessibilityWindowsSync()
 for (let window of windows) {
-  console.log(`window id: ${window.windowId}`);
+  console.info(`window id: ${window.windowId}`);
   window.getRoot().then((root: AccessibilityElement) => {
-    console.log(`root element's componentId: ${root.componentId}`);
+    console.info(`root element's componentId: ${root.componentId}`);
   }).catch((err) => {
-    console.log(`getRoot failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getRoot failed, code: ${err.code}, message: ${err.message}`);
   })
 }
 ```
@@ -1061,7 +1061,7 @@ for (let window of windows) {
 
 findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>;
 
-Finds elements based on the content.
+Finds elements based on the content. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1077,7 +1077,7 @@ Finds elements based on the content.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Elements obtained.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1108,12 +1108,12 @@ let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementByContent('connect').then((elements: AccessibilityElement[]) => {
-        console.log("findElementByContent size=" + elements.length)
+        console.info("findElementByContent size=" + elements.length)
     }).catch((err) => {
-        console.log(`findElementByContent failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementByContent failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1121,7 +1121,7 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>;
 
-Finds elements based on the focus direction.
+Finds elements based on the focus direction. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1137,7 +1137,7 @@ Finds elements based on the focus direction.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | AccessibilityElement.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1171,12 +1171,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementByFocusDirection('up').then((element: AccessibilityElement) => {
-        console.log("findElementByFocusDirection UP componentId: " + element.componentId);
+        console.info("findElementByFocusDirection UP componentId: " + element.componentId);
     }).catch((err) => {
-        console.log(`findElementByFocusDirection UP failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementByFocusDirection UP failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1184,7 +1184,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>;
 
-Finds elements based on the hint text.
+Finds elements based on the hint text. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1200,7 +1200,7 @@ Finds elements based on the hint text.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Elements obtained.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1236,12 +1236,12 @@ let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementsByAccessibilityHintText('location').then((elements: AccessibilityElement[]) => {
-        console.log("findElementsByAccessibilityHintText size=" + elements.length)
+        console.info("findElementsByAccessibilityHintText size=" + elements.length)
     }).catch((err) => {
-        console.log(`findElementsByAccessibilityHintText failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementsByAccessibilityHintText failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1249,7 +1249,7 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 findElementById(condition: number): Promise\<AccessibilityElement>;
 
-Finds elements based on element ID.
+Finds elements based on element ID. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1265,7 +1265,7 @@ Finds elements based on element ID.
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | AccessibilityElement.|
+| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1299,11 +1299,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementById(0).then((element: AccessibilityElement) => {
-        console.log("findElementById componentId: " + element.componentId);
+        console.info("findElementById componentId: " + element.componentId);
     }).catch((err) => {
-        console.log(`findElementById failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```

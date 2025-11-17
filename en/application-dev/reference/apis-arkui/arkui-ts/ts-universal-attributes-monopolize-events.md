@@ -1,4 +1,10 @@
 # Event Monopolization
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 Event monopolization determines whether a component exclusively handles events, including built-in events and custom click, touch, or gesture events.<br>
 When a component with event monopolization is the first to respond to an interaction, only the events defined on this component will be triggered, and other components within the same window will not respond to the interaction.
@@ -21,7 +27,7 @@ Sets whether the component exclusively handles events.
 
 | Name  | Type| Mandatory| Description                 |
 | ----------- | -------- | ------------------------ | ------------------------ |
-| monopolize | boolean  | Yes| Whether the component exclusively handles events. <br>**true**: The component exclusively handles events.<br>**false**: The component does not exclusively handle events.<br>Default value: **false**.<br>**NOTE**<br>1. If a component is exclusively handling events after a finger is pressed on it, and another finger is pressed before the first finger is lifted, the component continues to exclusively handle events while interacting with the second finger. The same case applies to a third and more fingers.<br>2. If a component is bound through [parallelGesture](ts-gesture-settings.md) to a gesture, for example, [pan gesture](ts-basic-gestures-pangesture.md), that can also be triggered by its child component, and the child component has event monopolization and is the first to respond, then the parent will not respond to the gesture.|
+| monopolize | boolean  | Yes| Whether the component exclusively handles events. **true**: The component exclusively handles events. **false**: The component does not exclusively handle events.<br>Default value: **false**.<br>**NOTE**<br>1. If a component is exclusively handling events after a finger is pressed on it, and another finger is pressed before the first finger is lifted, the component continues to exclusively handle events while interacting with the second finger. The same case applies to a third and more fingers.<br>2. If a component is bound through [parallelGesture](ts-gesture-settings.md) to a gesture, for example, [pan gesture](ts-basic-gestures-pangesture.md), that can also be triggered by its child component, and the child component has event monopolization and is the first to respond, then the parent will not respond to the gesture.|
 
 **Return value**
 
@@ -85,7 +91,7 @@ struct Index {
         // Bind the inner column to the touch event.
         .onTouch((event:TouchEvent)=>{
           if (event.type == TouchType.Down) {
-            console.log("inner column touch down")
+            console.info("inner column touch down")
             this.messageInner = "inner column touch down"
           }
         })
@@ -96,8 +102,8 @@ struct Index {
       // Bind the outer column to the touch event.
       .onTouch((event)=>{
         if (event.type == TouchType.Down) {
-          console.log("outside column touch down")
-          this.messageOut = "inner column touch down"
+          console.info("outside column touch down")
+          this.messageOut = "outside column touch down"
         }
       })
     }

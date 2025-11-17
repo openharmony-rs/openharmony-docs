@@ -1,4 +1,11 @@
 # @ohos.resourceschedule.deviceStandby (Device Standby) (System API)
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @geng_wd-->
+<!--Designer: @geng_wd-->
+<!--Tester: @wzzqishi-->
+<!--Adviser: @Brilliantry_Rui-->
+
 A device enters standby mode if it is unused for a long period of time or after the Power button is pressed. The standby mode prolongs the battery life without affecting the use of applications. The **deviceStandby** module provides APIs for you to check whether a device is in standby mode and request or cancel standby resource control for an application.
 
 >  **NOTE**
@@ -10,7 +17,7 @@ A device enters standby mode if it is unused for a long period of time or after 
 ## Modules to Import
 
 ```ts
-import deviceStandby from '@ohos.resourceschedule.deviceStandby';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 ```
 
 ## deviceStandby.getExemptedApps
@@ -39,17 +46,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
-| 9800002 | Parcel operation failed. |
-| 9800003 | Inner transact failed. |
-| 9800004 | System service operation failed. |
+| 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters. |
+| 9800003 | Failed to complete inner transaction. |
+| 9800004 | Failed to get device standby service. Possible cause: A necessary system service is not ready. |
 | 18700001 | Caller information verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resourceTypes: deviceStandby.ResourceType  = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
 deviceStandby.getExemptedApps(resourceTypes, (err: BusinessError, res: Array<deviceStandby.ExemptedAppInfo>) => {
@@ -95,17 +103,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
-| 9800002 | Parcel operation failed. |
-| 9800003 | Inner transact failed. |
-| 9800004 | System service operation failed. |
+| 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters. |
+| 9800003 | Failed to complete inner transaction. |
+| 9800004 | Failed to get device standby service. Possible cause: A necessary system service is not ready. |
 | 18700001 | Caller information verification failed. |
 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resourceTypes: deviceStandby.ResourceType = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
 deviceStandby.getExemptedApps(resourceTypes).then( (res: Array<deviceStandby.ExemptedAppInfo>) => {
@@ -143,16 +152,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
-| 9800002 | Parcel operation failed. |
-| 9800003 | Inner transact failed. |
-| 9800004 | System service operation failed. |
+| 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters. |
+| 9800003 | Failed to complete inner transaction. |
+| 9800004 | Failed to get device standby service. Possible cause: A necessary system service is not ready. |
 | 18700001 | Caller information verification failed. |
 
 **Example**
 
 ```ts
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
 let resRequest: deviceStandby.ResourceRequest = {
   resourceTypes: deviceStandby.ResourceType.TIMER,
   uid:10003,
@@ -188,16 +199,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
-| 9800002 | Parcel operation failed. |
-| 9800003 | Inner transact failed. |
-| 9800004 | System service operation failed. |
+| 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters. |
+| 9800003 | Failed to complete inner transaction. |
+| 9800004 | Failed to get device standby service. Possible cause: A necessary system service is not ready. |
 | 18700001 | Caller information verification failed. |
 
 **Example**
 
 ```ts
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
 let resRequest: deviceStandby.ResourceRequest = {
   resourceTypes: deviceStandby.ResourceType.TIMER,
   uid:10003,
@@ -232,11 +245,11 @@ Defines the information about an exempted application.
 **System capability**: SystemCapability.ResourceSchedule.DeviceStandby
 
 
-|Name |Type  | Mandatory  |Description  |
-| ------------ | ------------ |------------ | ------------ |
-|resourceTypes   | number  | Yes  |Resource types. For details, see [ResourceType](#resourcetype).  |
-|name   |string   | Yes  |  Name of the application. |
-|duration   | number  | Yes  | Exemption duration.|
+|Name |Type  | Read-Only  | Optional  |Description  |
+| ------------ | ------------ |------------ |------------ | ------------ |
+|resourceTypes   | number  | No  | No  |Resource types. For details, see [ResourceType](#resourcetype).  |
+|name   |string   | No  | No  |  Name of the application. |
+|duration   | number  | No  | No  | Exemption duration.|
 
 ## ResourceRequest
 
@@ -245,10 +258,10 @@ Defines the message used to request to be an exempted application.
 **System capability**: SystemCapability.ResourceSchedule.DeviceStandby
 
 
-|Name  |Type  | Mandatory  |Description  |
-| ------------ | ------------ |------------| ------------ |
-|resourceTypes   | number  | Yes  |Resource types. For details, see [ResourceType](#resourcetype).  |
-|uid   | number  | Yes  |UID of the application.  |
-|name   |string   | Yes  | Name of the application. |
-|duration   | number  | Yes  | Exemption duration.|
-|reason   |string   | Yes  |  Reason for the request. |
+|Name  |Type  | Read-Only | Optional  |Description  |
+| ------------ | ------------ |------------ |------------| ------------ |
+|resourceTypes   | number  | No| No  |Resource types. For details, see [ResourceType](#resourcetype).  |
+|uid   | number  | No | No  |UID of the application.  |
+|name   |string   | No| No   | Name of the application. |
+|duration   | number    | No| No   | Exemption duration.|
+|reason   |string   | No | No  |  Reason for the request. |

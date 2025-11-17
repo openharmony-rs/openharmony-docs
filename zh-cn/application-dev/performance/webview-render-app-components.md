@@ -1,5 +1,12 @@
 # 使用同层渲染在Web上渲染原生组件
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 在使用Web组件加载H5页面时，经常会有长列表、视频等场景。由于Web目前最高只有60帧，想要更加流畅的体验，必须要将原生组件放到Web上。
 
 在什么场景下应该在Web上使用原生组件：
@@ -38,7 +45,6 @@
 
 ```html
 <!-- nativeembed_view.html -->
-...
   <body>
     <div>
       <div id="bodyId">
@@ -47,7 +53,6 @@
       </div>
     </div>
   </body>
-...
 ```
 
 上图中，搜索框+下方列表的原生商城组件如下：
@@ -372,9 +377,7 @@ export struct SearchComponent {
       .zoomAccess(false)// 不允许执行缩放
       .enableNativeEmbedMode(true) // 开启同层渲染模式
       .onNativeEmbedLifecycleChange((embed) => {
-        ...
         // 此处进行下一步
-        ...
       })
       .onNativeEmbedGestureEvent((touch) => { 
         // 获取同层渲染组件触摸事件信息

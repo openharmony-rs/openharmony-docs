@@ -1,8 +1,15 @@
 # @ohos.advertising (Ads Service Framework)
 
+<!--Kit: Ads Kit-->
+<!--Subsystem: Advertising-->
+<!--Owner: @SukiEvas-->
+<!--Designer: @zhansf1988-->
+<!--Tester: @hongmei_may-->
+<!--Adviser: @RayShih-->
+
 The advertising module provides APIs for requesting and displaying ads.
 
-> **NOTE**
+> **NOTE**<br>
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -42,38 +49,17 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 **Example**
 
+For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-@Entry
-@Component
-struct Index {
-  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // Requested ad content.
-  private ad?: advertising.Advertisement;
-  // Ad display parameters.
-  private adDisplayOptions: advertising.AdDisplayOptions = {
-    // Whether to mute the ad. By default, the ad is not muted.
-    mute: false
-  }
-
-  build() {
-    Column() {
-      Button('showAd')
-        .onClick(() => {
-          try {
-            // Show the ad.
-            advertising.showAd(this.ad, this.adDisplayOptions, this.context);
-          } catch (err) {
-            hilog.error(0x0000, 'testTag', `Fail to show ad. Code is ${err.code}, message is ${err.message}`);
-          }
-        });
-    }
-    .width('100%')
-    .height('100%')
-  }
+function showAd(ad: advertising.Advertisement, context?: common.UIAbilityContext): void {
+  // Ad display parameters. You can set the parameters based on the project requirements.
+  const adDisplayOptions: advertising.AdDisplayOptions = {};
+  // Show the ad.
+  advertising.showAd(ad, adDisplayOptions, context);
 }
 ```
 
@@ -81,16 +67,16 @@ struct Index {
 
 getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise&lt;string&gt;
 
-Obtains the body of an ad request. This API uses a promise to return the result. (This API is available only for some preset applications.)
+Obtains the body of an ad request. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Advertising.Ads
 
 **Parameters**
 
-| Name   | Type                                 | Mandatory| Description                                            |
-|-----------|---------------------------------------|-----|------------------------------------------------|
-| adParams  | [AdRequestParams[]](#adrequestparams) | Yes  | Ad request parameters.<br> - The **adid** parameter is optional.|
-| adOptions | [AdOptions](#adoptions)               | Yes  | Ad configuration.                                       |
+| Name   | Type                                 | Mandatory| Description         |
+|-----------|---------------------------------------|-----|-------------|
+| adParams  | [AdRequestParams[]](#adrequestparams) | Yes  | Ad request parameters.|
+| adOptions | [AdOptions](#adoptions)               | Yes  | Ad configuration options.|
 
 **Return value**
 
@@ -112,43 +98,14 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 ```ts
 import { advertising } from '@kit.AdsKit';
-import { Prompt } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function getAdRequestBody(): void {
-  const adRequestParamsArray: advertising.AdRequestParams[] = [];
-  const adRequestParams: advertising.AdRequestParams = {
-    adId: 'testu7m3hc4gvm',
-    adType: 3,
-    adCount: 2,
-    adWidth: 100,
-    adHeight: 100
-  };
-  adRequestParamsArray.push(adRequestParams);
-  const adOptions: advertising.AdOptions = {
-    // Set whether to request only non-personalized ads. 0: to request personalized ads and non-personalized ads; 1: to request only non-personalized ads. If this parameter is left blank, the service logic prevails.
-    nonPersonalizedAd: 0,
-    // Specify whether you want your ad content to be treated as COPPA-compliant. The following values are available: -1 (default value): uncertain; 0: no; 1: yes.
-    tagForChildProtection: -1,
-    // Specify whether you want the ad request to be processed in a way that meets the GDPR for users in the EEA under the age of consent. The following values are available: -1 (default value): uncertain; 0: no; 1: yes.
-    tagForUnderAgeOfPromise: -1,
-    // Maximum ad content rating. W: aged 3 and up; PI: aged 7 and up, under parental guidance; J: teenagers aged 12 and up; A: adults aged 16 or 18 and up.
-    adContentClassification: 'A'
-  };
-  advertising.getAdRequestBody(adRequestParamsArray, adOptions).then((data) => {
-    hilog.info(0x0000, 'testTag', `Succeeded in getting ad request body. Data is ${JSON.stringify(data)}`);
-    Prompt.showToast({
-      message: data,
-      duration: 1000
-    });
-  }).catch((error: BusinessError) => {
-    hilog.error(0x0000, 'testTag', `Fail to get ad request body. Code is ${error.code}, message is ${error.message}`);
-    Prompt.showToast({
-      message: error.code.toString() + ',' + error.message,
-      duration: 1000
-    });
-  })
+function getAdRequestBody(adRequestParamsArray: advertising.AdRequestParams[]): void {
+  // Ad configuration options. You can set the options based on the project requirements.
+  const adOptions: advertising.AdOptions = {};
+  advertising.getAdRequestBody(adRequestParamsArray, adOptions).then((data: string) => {
+    hilog.info(0x0000, 'testTag', `Succeeded in getting ad request body. Data is ${data}`);
+  });
 }
 ```
 
@@ -156,7 +113,7 @@ function getAdRequestBody(): void {
 
 parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context: common.UIAbilityContext): void
 
-Parses and processes the ad response body. (This API is available only for some preset applications.)
+Parses the body of an ad response.
 
 **System capability**: SystemCapability.Advertising.Ads
 
@@ -181,7 +138,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 **Example**
 
-For details about how to obtain the context, see [Obtaining the Context of UIAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).
+For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -191,20 +148,17 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function parseAdResponse(adResponse: string, context: common.UIAbilityContext): void {
   // Listen for the ad parsing callback.
   const multiSlotsAdLoaderListener: advertising.MultiSlotsAdLoadListener = {
-    // Called when ad parsing fails.
     onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-      hilog.error(0x0000, 'testTag', `Fail to load multiSlots ad. Code is ${errorCode}, message is ${errorMsg}`);
+      hilog.error(0x0000, 'testTag', `Failed to load multiSlots ad. Code is ${errorCode}, message is ${errorMsg}`);
     },
-    // Called when ad parsing is successful.
     onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
-      hilog.info(0x0000, 'testTag', 'Succeed in loading multiSlots ad');
-      // Save the parsed ad content as an array for display.
-      const returnAds: Array<advertising.Advertisement> = [];
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading multiSlots ad');
+      // Save the parsed ad content for display.
+      const returnAds: advertising.Advertisement[] = [];
       ads.forEach((adsArray) => returnAds.push(...adsArray));
     }
   };
   // Call the API to parse the response body.
-  hilog.info(0x0000, 'testTag', 'Start to parse ad response');
   advertising.parseAdResponse(adResponse, multiSlotsAdLoaderListener, context);
 }
 ```
@@ -213,7 +167,7 @@ function parseAdResponse(adResponse: string, context: common.UIAbilityContext): 
 
 registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext): void
 
-Injects an ad JavaScript object to the **Web** component. (This API is available only for some preset applications.)
+Injects an ad JavaScript object to the **Web** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -241,32 +195,24 @@ For details about the following error codes, see [Ads Service Framework Error Co
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { webview } from '@kit.ArkWeb';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
 struct Index {
-  private webController: webview.WebviewController = new webview.WebviewController();
   private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private webViewController: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Column() {
       Button('registerWebAdInterface')
         .onClick(() => {
-          try {
-            advertising.registerWebAdInterface(this.webController, this.context);
-          } catch (err) {
-            hilog.error(0x0000, 'testTag', `Fail to register web ad interface. Code is ${err.code}, message is ${err.message}`);
-          }
+          advertising.registerWebAdInterface(this.webViewController, this.context);
         })
 
-      Web({
-        src: 'www.example.com',
-        controller: this.webController
-      })
-        .width("100%")
-        .height("100%")
+      Web({ src: 'https://www.example.com', controller: this.webViewController })
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -275,7 +221,7 @@ struct Index {
 
 registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext, needRefresh: boolean): void
 
-Injects an ad JavaScript object to the **Web** component. (This API is available only for some preset applications.)
+Injects an ad JavaScript object to the **Web** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 16.
 
@@ -304,32 +250,24 @@ For details about the following error codes, see [Ads Service Framework Error Co
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { webview } from '@kit.ArkWeb';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
 struct Index {
-  private webController: webview.WebviewController = new webview.WebviewController();
   private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private webViewController: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Column() {
       Button('registerWebAdInterface')
         .onClick(() => {
-          try {
-            advertising.registerWebAdInterface(this.webController, this.context, true);
-          } catch (err) {
-            hilog.error(0x0000, 'testTag', `Fail to register web ad interface. Code is ${err.code}, message is ${err.message}`);
-          }
+          advertising.registerWebAdInterface(this.webViewController, this.context, true);
         })
 
-      Web({
-        src: 'www.example.com',
-        controller: this.webController
-      })
-        .width("100%")
-        .height("100%")
+      Web({ src: 'https://www.example.com', controller: this.webViewController })
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -338,7 +276,7 @@ struct Index {
 
 deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boolean): void
 
-Deletes the ad JavaScript object injected through **registerWebAdInterface**. (This API is available only to some preset applications.)
+Deletes the ad JavaScript object injected through **registerWebAdInterface**.
 
 **Atomic service API**: This API can be used in atomic services since API version 16.
 
@@ -365,31 +303,23 @@ For details about the following error codes, see [Ads Service Framework Error Co
 ```ts
 import { advertising } from '@kit.AdsKit';
 import { webview } from '@kit.ArkWeb';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
 struct Index {
-  private webController: webview.WebviewController = new webview.WebviewController();
+  private webViewController: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Column() {
       Button('deleteWebAdInterface')
         .onClick(() => {
-          try {
-            advertising.deleteWebAdInterface(this.webController, true);
-          } catch (err) {
-            hilog.error(0x0000, 'testTag', `Fail to delete web ad interface. Code is ${err.code}, message is ${err.message}`);
-          }
+          advertising.deleteWebAdInterface(this.webViewController, true);
         })
 
-      Web({
-        src: 'www.example.com',
-        controller: this.webController,
-      })
-        .width('100%')
-        .height('100%')
+      Web({ src: 'https://www.example.com', controller: this.webViewController })
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -420,13 +350,13 @@ Constructor.
 
 **Example**
 
-For details about how to obtain the context, see [Context](../../application-models/application-context-stage.md#overview).
+For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
 
 ```ts
-import { advertising } from '@kit.AdsKit';
 import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
 
-function createConstructor(context: common.Context): void {
+function createAdLoader(context: common.Context): void {
   const adLoader: advertising.AdLoader = new advertising.AdLoader(context);
 }
 ```
@@ -446,7 +376,7 @@ Loads an ad.
 | Name   | Type                               | Mandatory| Description             |
 |-----------|-------------------------------------|-----|-----------------|
 | adParam   | [AdRequestParams](#adrequestparams) | Yes  | Ad request parameters.    |
-| adOptions | [AdOptions](#adoptions)             | Yes  | Ad configuration.        |
+| adOptions | [AdOptions](#adoptions)             | Yes  | Ad configuration options.    |
 | listener  | [AdLoadListener](#adloadlistener)   | Yes  | Ad request callback.|
 
 **Error codes**
@@ -462,47 +392,30 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 **Example**
 
-For details about how to obtain the context, see [Context](../../application-models/application-context-stage.md#overview).
+For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
 
 ```ts
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function loadAd(context: common.Context): void {
-  const adRequestParams: advertising.AdRequestParams = {
-    // Ad type.
-    adType: 3,
-    // Ad ID.
-    adId: 'testy63txaom86'
-  };
-  const adOptions: advertising.AdOptions = {
-    // Optional custom parameter, which specifies whether to allow ad asset download using mobile data. The options are 0 (no) and 1 (yes). If this parameter is not set, the advertiser's setting will be used.
-    allowMobileTraffic: 0,
-    // Specify whether you want your ad content to be treated as COPPA-compliant. The following values are available: -1 (default value): uncertain; 0: no; 1: yes.
-    tagForChildProtection: -1,
-    // Specify whether you want the ad request to be processed in a way that meets the GDPR for users in the EEA under the age of consent. The following values are available: -1 (default value): uncertain; 0: no; 1: yes.
-    tagForUnderAgeOfPromise: -1,
-    // Maximum ad content rating. W: aged 3 and up; PI: aged 7 and up, under parental guidance; J: teenagers aged 12 and up; A: adults aged 16 or 18 and up.
-    adContentClassification: 'A'
-  };
+function loadAd(context: common.Context, adRequestParams: advertising.AdRequestParams): void {
+  // Ad configuration options. You can set the options based on the project requirements.
+  const adOptions: advertising.AdOptions = {};
   // Listener for the ad loading status.
   const adLoaderListener: advertising.AdLoadListener = {
-    // Called when the ad request fails.
     onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-      hilog.error(0x0000, 'testTag', `Fail to load ad. Code is ${errorCode}, message is ${errorMsg}`);
+      hilog.error(0x0000, 'testTag', `Failed to load ad. Code is ${errorCode}, message is ${errorMsg}`);
     },
-    // Called when the ad request is successful.
     onAdLoadSuccess: (ads: Array<advertising.Advertisement>) => {
-      hilog.info(0x0000, 'testTag', 'Succeed in loading ad');
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading ad');
       // Save the requested ad content for display.
-      const returnAds = ads;
+      const returnAds: advertising.Advertisement[] = ads;
     }
   };
   // Create an AdLoader object.
   const adLoader: advertising.AdLoader = new advertising.AdLoader(context);
   // Load the ad.
-  hilog.info(0x0000, 'testTag', 'Start to load ad');
   adLoader.loadAd(adRequestParams, adOptions, adLoaderListener);
 }
 ```
@@ -522,7 +435,7 @@ Loads multiple ads.
 | Name   | Type                                                 | Mandatory| Description             |
 |-----------|-------------------------------------------------------|-----|-----------------|
 | adParams  | [AdRequestParams](#adrequestparams)[]                 | Yes  | Ad request parameters.    |
-| adOptions | [AdOptions](#adoptions)                               | Yes  | Ad configuration.        |
+| adOptions | [AdOptions](#adoptions)                               | Yes  | Ad configuration options.    |
 | listener  | [MultiSlotsAdLoadListener](#multislotsadloadlistener) | Yes  | Ad request callback.|
 
 **Error codes**
@@ -538,56 +451,31 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 **Example**
 
-For details about how to obtain the context, see [Context](../../application-models/application-context-stage.md#overview).
+For details about how to obtain the context, see [Acquisition of Context](../../application-models/application-context-stage.md#acquisition-of-context).
 
 ```ts
 import { common } from '@kit.AbilityKit';
 import { advertising } from '@kit.AdsKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function loadAdWithMultiSlots(context: common.Context): void {
-  const adRequestParamsArray: advertising.AdRequestParams[] = [
-    {
-      // Ad type.
-      adType: 3,
-      // Ad ID.
-      adId: 'testy63txaom86'
-    },
-    {
-      // Ad type.
-      adType: 3,
-      // Ad ID.
-      adId: 'testy63txaom86'
-    }
-  ];
-  const adOptions: advertising.AdOptions = {
-    // Optional custom parameter, which specifies whether to allow ad asset download using mobile data. The options are 0 (no) and 1 (yes). If this parameter is not set, the advertiser's setting will be used.
-    allowMobileTraffic: 0,
-    // Specify whether you want your ad content to be treated as COPPA-compliant. The following values are available: -1 (default value): uncertain; 0: no; 1: yes.
-    tagForChildProtection: -1,
-    // Specify whether you want the ad request to be processed in a way that meets the GDPR for users in the EEA under the age of consent. The following values are available: -1 (default value): uncertain; 0: no; 1: yes.
-    tagForUnderAgeOfPromise: -1,
-    // Maximum ad content rating. W: aged 3 and up; PI: aged 7 and up, under parental guidance; J: teenagers aged 12 and up; A: adults aged 16 or 18 and up.
-    adContentClassification: 'A'
-  };
+function loadAdWithMultiSlots(context: common.Context, adRequestParamsArray: advertising.AdRequestParams[]): void {
+  // Ad configuration options. You can set the options based on the project requirements.
+  const adOptions: advertising.AdOptions = {};
   // Listener for the ad loading status.
   const multiSlotsAdLoaderListener: advertising.MultiSlotsAdLoadListener = {
-    // Called when the ad request fails.
     onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-      hilog.error(0x0000, 'testTag', `Fail to load multiSlots ad. Code is ${errorCode}, message is ${errorMsg}`);
+      hilog.error(0x0000, 'testTag', `Failed to load multiSlots ad. Code is ${errorCode}, message is ${errorMsg}`);
     },
-    // Called when the ad request is successful.
     onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
-      hilog.info(0x0000, 'testTag', 'Succeed in loading multiSlots ad');
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading multiSlots ad');
       // Save the requested ad content for display.
-      const returnAds: Array<advertising.Advertisement> = [];
+      const returnAds: advertising.Advertisement[] = [];
       ads.forEach((adsArray) => returnAds.push(...adsArray));
     }
   };
   // Create an AdLoader object.
   const adLoader: advertising.AdLoader = new advertising.AdLoader(context);
   // Load the ad.
-  hilog.info(0x0000, 'testTag', 'Start to load multiSlots ad');
   adLoader.loadAdWithMultiSlots(adRequestParamsArray, adOptions, multiSlotsAdLoaderListener);
 }
 ```
@@ -720,11 +608,11 @@ Called when the ad display status changes.
 
 **Parameters**
 
-| Name| Type                           | Mandatory| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|--------|---------------------------------|-----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| status | string                          | Yes  | **status**: ad display status, which can be<br>**onAdOpen**, **onAdClose**, **onAdClick**, **onVideoPlayBegin**, **onVideoPlayEnd**, **onAdLoad**, **onAdFail**, **onMediaProgress**, **onMediaStart**, **onMediaPause**, **onMediaStop**, **onMediaComplete**, **onMediaError**, **onLandscape**, **onPortrait**, **onAdReward**, **onMediaCountDown**, or **onBackClicked**.|
-| ad     | [Advertisement](#advertisement) | Yes  | Content of the ad.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| data   | string                          | Yes  | Extended information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Name| Type                           | Mandatory| Description                                                                        |
+|--------|---------------------------------|------|------------------------------------------------------------------------------|
+| status | string                          | Yes  | Ad display status.<br>- **onAdLoad**: The ad is successfully loaded.<br>- **onAdFail**: The ad fails to be loaded.|
+| ad     | [Advertisement](#advertisement) | Yes  | Content of the ad.                                                    |
+| data   | string                          | Yes  | Extended information.                                                                  |
 
 **Example**
 
@@ -733,7 +621,6 @@ import { advertising } from '@kit.AdsKit';
 
 const adInteractionListener: advertising.AdInteractionListener = {
   onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
-
   }
 }
 ```
@@ -746,12 +633,12 @@ Defines the ad configuration.
 
 **System capability**: SystemCapability.Advertising.Ads
 
-| Name                   | Type                                    | Read-Only| Optional| Description                                                                                                                |
-|-------------------------|------------------------------------------|-----|-----|--------------------------------------------------------------------------------------------------------------------|
+| Name                   | Type                                    | Read-Only| Optional| Description                                                                                                                  |
+|-------------------------|------------------------------------------|-----|-----|----------------------------------------------------------------------------------------------------------------------|
 | tagForChildProtection   | number                                   | No  | Yes  | Tag for child protection, which specifies whether you want the ad content to be treated as COPPA-compliant.<br>- **-1**: Uncertain.<br>- **0**: No. You do not want the ad content to be treated as COPPA-compliant.<br>- **1**: Yes. You want the ad content to be treated as COPPA-compliant.|
-| adContentClassification | string                                   | No  | Yes  | Maximum ad content rating.<br>- **W**: ages 3+, all audiences.<br>- **PI**: ages 7+, audiences under parental instruction.<br>- **J**: ages 12+, teenagers.<br>- **A**: ages 16+/18+, adults.      |
-| nonPersonalizedAd       | number                                   | No  | Yes  | Whether to request only non-personalized ads.<br>- **0**: request for personalized and non-personalized ads.<br>- **1**: request for only non-personalized ads.                       |
-| [key: string]           | number \| boolean \| string \| undefined | No  | Yes  | Custom parameters.                                                                                                         |
+| adContentClassification | string                                   | No  | Yes  | Maximum ad content rating.<br>- **W**: ages 3+, all audiences.<br>- **PI**: ages 7+, audiences under parental instruction.<br>- **J**: ages 12+, teenagers.<br>- **A**: ages 16+/18+, adults.        |
+| nonPersonalizedAd       | number                                   | No  | Yes  | Whether to request only non-personalized ads.<br>- **0**: request for personalized and non-personalized ads.<br>- **1**: request for only non-personalized ads.                         |
+| [key: string]           | number \| boolean \| string \| undefined | No  | Yes  | Custom parameters.                                                                                                           |
 
 ## AdRequestParams
 
@@ -763,13 +650,13 @@ Defines the ad request parameters.
 
 | Name           | Type                                    | Read-Only| Optional| Description                                                                                                                         |
 |-----------------|------------------------------------------|-----|-----|-----------------------------------------------------------------------------------------------------------------------------|
-| adId            | string                                   | No  | No  | Ad ID.<br>- This parameter is optional for **getAdRequestBody**.                                                                          |
+| adId            | string                                   | No  | No  | Ad ID.                                                                                                                    |
 | adType          | number                                   | No  | Yes  | Type of the requested ad.<br>- **1**: splash ad.<br>- **3**: native ad.<br>- **7**: rewarded ad.<br>- **8**: banner ad.<br>- **12**: interstitial ad.<br>- **60**: roll ad.|
 | adCount         | number                                   | No  | Yes  | Number of ads requested.                                                                                                              |
 | adWidth         | number                                   | No  | Yes  | Expected creative width of ads requested, in vp.                                                                                             |
 | adHeight        | number                                   | No  | Yes  | Expected creative height of ads requested, in vp.                                                                                             |
 | adSearchKeyword | string                                   | No  | Yes  | Ad keyword.                                                                                                                  |
-| [key: string]   | number \| boolean \| string \| undefined | No  | Yes  | Custom parameters.<br>- **oaid**: A string indicates the Open Anonymous Device Identifier (OAID), which is used to precisely push ads.                                                      |
+| [key: string]   | number \| boolean \| string \| undefined | No  | Yes  | Custom parameters.<br>- **oaid**: open anonymous device identifier, which is used to push ads accurately. The value is of the string type.                                                      |
 
 ## AdDisplayOptions
 
@@ -801,5 +688,3 @@ Defines the requested ad content.
 | Type                                                        | Description                  |
 |--------------------------------------------------------------|----------------------|
 | [_Advertisement](js-apis-inner-advertising-advertisement.md) | Advertisement object.|
-
- <!--no_check--> 

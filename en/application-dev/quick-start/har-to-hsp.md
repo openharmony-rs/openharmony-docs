@@ -7,6 +7,13 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 Currently, the HAR has a problem with duplicate packaging, leading an oversize application package. To fix this problem, you can convert the HAR to the HSP by changing the configuration items.
+
+>
+> **NOTE**
+>
+> There are differences when some components and modules are integrated and used in the HAP, HSP, and HAR. For example, separate constraints are provided on loading the Worker thread file in the HAR compared with that in the HSP. For details, see [Precautions for File URLs](../arkts-utils/worker-introduction.md#precautions-for-file-urls). Therefore, after HAR is converted to HSP by performing the following steps, pay attention to the corresponding components and modules and perform adaptation.
+>
+
 ## How to Convert
 
 1. Set **type** to **shared** and add the **deliveryWithInstall** and **pages** fields in the **module.json5** file of the HAR module.

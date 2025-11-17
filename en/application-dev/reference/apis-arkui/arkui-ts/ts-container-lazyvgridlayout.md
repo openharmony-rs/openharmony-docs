@@ -1,5 +1,12 @@
 # LazyVGridLayout
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
 The **LazyVGridLayout** component implements a lazy-loading grid layout, with its parent component restricted to [WaterFlow](ts-container-waterflow.md) or [FlowItem](ts-container-flowitem.md). It can also be used within the **WaterFlow** or **FlowItem** component after being wrapped by custom components or [NodeContainer](ts-basic-components-nodecontainer.md).
 
 Lazy loading is supported only when the **WaterFlow** component uses single-column mode or single-column segments in segmented layout and the layout direction is **FlexDirection.Column**. Lazy loading is not supported if the **WaterFlow** component is in multi-column mode or the layout direction is **FlexDirection.Row** or **FlexDirection.RowReverse**. Using this component with **FlexDirection.ColumnReverse** in the **WaterFlow** component causes display anomalies. When lazy loading is enabled, the component only loads child components within the **WaterFlow** visible area, with pre-loading of half-screen content above and below the viewport during frame idle periods.
@@ -103,6 +110,8 @@ Only the [universal events](ts-component-general-events.md) are supported.
 ## Example
 
 This example demonstrates how to implement a lazy-loading grid layout using the **WaterFlow** and **LazyVGridLayout** components.
+
+MyDataSource implements the [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) data source API of **LazyForEach**, which is used to provide child components for **LazyVGridLayout** through **LazyForEach**.
 
 <!--code_no_check-->
 ```ts

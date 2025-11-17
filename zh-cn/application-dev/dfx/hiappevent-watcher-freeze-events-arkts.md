@@ -113,7 +113,7 @@
 
    ```ts
     Button("appFreeze").onClick(()=>{
-      // 在按钮点击函数中构造一个freeze场景，触发应用应用冻屏事件
+      // 在按钮点击函数中构造一个freeze场景，触发应用冻屏事件
       setTimeout(() => {
         let t = Date.now();
         while (Date.now() - t <= 15000) {}
@@ -153,6 +153,8 @@
    HiAppEvent eventInfo.params.log_over_limit=false
    HiAppEvent eventInfo.params.test_data=100
    ```
+
+2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
 <!--RP1-->
 <!--RP1End-->

@@ -4,13 +4,13 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供通过不同的url访问不同的页面，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等。
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 10开始支持。
 >
@@ -40,7 +40,7 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -113,7 +113,7 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -194,7 +194,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -275,7 +275,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -362,7 +362,7 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -431,7 +431,7 @@ replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -508,7 +508,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -585,7 +585,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -668,7 +668,7 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -741,7 +741,7 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -821,7 +821,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -901,7 +901,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
@@ -988,7 +988,7 @@ replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1057,7 +1057,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1135,7 +1135,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1212,7 +1212,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, c
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                                     |
 | ------ | ---------------------------------------- |
@@ -1524,7 +1524,7 @@ showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[页面路由错误码](errorcode-router.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |

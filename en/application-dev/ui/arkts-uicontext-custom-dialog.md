@@ -1,16 +1,24 @@
 # Global Custom Dialog Box Independent of UI Components (openCustomDialog) (Recommended)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-Due to the restrictions of [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), such as lack of support for dynamic creation and refresh, for more complex use cases, you are advised to use the [openCustomDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12) API provided by the **PromptAction** object obtained from **UIContext** to implement a custom dialog box.
+For complex application scenarios, use the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API from the **PromptAction** object obtained through UIContext to implement custom dialog boxes. Compared with [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), this approach offers better page decoupling and supports [dynamic updates](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update).
 
 > **NOTE**
 > 
 > There are two ways to create a custom dialog using **openCustomDialog**:
 > - **openCustomDialog** with **ComponentContent**: By encapsulating content using **ComponentContent**, the dialog box can be decoupled from the UI, offering greater flexibility and satisfying needs for encapsulation. This approach provides full customizability of the dialog box style and allows for dynamic updates to dialog box parameters using the **updateCustomDialog** API after the dialog box is opened.
-> - **openCustomDialog** with **builder**: Unlike **ComponentContent**, the builder must be bound to the context and is somewhat coupled with the UI. This approach provides a default dialog box style, suitable for those who want to achieve a look consistent with the system's default dialog box style.
+> - **openCustomDialog** with builder parameters: Unlike **ComponentContent**, the builder must be context-bound, creating some coupling with the UI layer. This approach provides a default dialog box style, suitable for those who want to achieve a look consistent with the system's default dialog box style.
 > 
-> This topic focuses on creating custom dialog boxes using **ComponentContent**. For the usage of the builder-based dialog box, see [openCustomDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12-1).
+> This topic focuses on creating custom dialog boxes using **ComponentContent**. For the usage of the builder-based dialog box, see [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1).
 
-**openCustomDialog** can be configured with [isModal](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12) to create modal and non-modal dialog boxes. When **isModal** is set to **true**, the dialog box is modal. When **isModal** is set to **false**, the dialog box is non-modal.
+By default, dialog boxes implemented using **openCustomDialog** are modal and include a mask. Interactions with underlying components are blocked (click and gesture events are not transmitted). You can configure dialog box modality by setting the **isModal** property in [promptAction.BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11). For details, see [Types of Popup Windows](arkts-dialog-overview.md#types-of-popup-windows).
+
+When **isModal** is **true**, the dialog box is modal, and the mask area does not transmit events. When **isModal** is **false**, the dialog box is non-modal, and the mask area allows event transmission. To enable simultaneous interaction with both the dialog box and the page outside the dialog box, set the dialog box to non-modal.
 
 ## Lifecycle
 
@@ -43,7 +51,7 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
    ```ts
    PromptActionClass.ctx.getPromptAction().openCustomDialog(PromptActionClass.contentNode, PromptActionClass.options)
      .then(() => {
-       console.info('OpenCustomDialog complete.')
+       console.info('OpenCustomDialog complete.');
      })
      .catch((error: BusinessError) => {
        let message = (error as BusinessError).message;
@@ -61,7 +69,7 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
 
    PromptActionClass.ctx.getPromptAction().closeCustomDialog(PromptActionClass.contentNode)
      .then(() => {
-       console.info('CloseCustomDialog complete.')
+       console.info('CloseCustomDialog complete.');
        if (this.contentNode !== null) {
             this.contentNode.dispose();   // Dispose of contentNode.
         }
@@ -75,7 +83,7 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
 
 ## Updating the Content of a Custom Dialog Box
 
-**ComponentContent** has the same usage constraints as [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md) and does not support custom components using decorators such as [@Reusable](../ui/state-management/arkts-create-custom-components.md#basic-structure-of-a-custom-component), [@Link](../ui/state-management/arkts-link.md), [@Provide](../ui/state-management/arkts-provide-and-consume.md), and [@Consume](../ui/state-management/arkts-provide-and-consume.md) to synchronize the state between the page where the dialog box pops up and the custom component in **ComponentContent**. Therefore, if you need to update the content of the custom component in the dialog box, use the **update** API provided by **ComponentContent**.
+**ComponentContent** has the same usage constraints as [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md) and does not support custom components using decorators such as [@Reusable](state-management/arkts-reusable.md), [@Link](state-management/arkts-link.md), [@Provide](state-management/arkts-provide-and-consume.md), and [@Consume](state-management/arkts-provide-and-consume.md) to synchronize the state between the page where the dialog box pops up and the custom component in **ComponentContent**. Therefore, if you need to update the content of the custom component in the dialog box, use the **update** API provided by **ComponentContent**.
 
 ```ts
 this.contentNode.update(new Params('update'))
@@ -83,13 +91,14 @@ this.contentNode.update(new Params('update'))
 
 ## Updating the Attributes of a Custom Dialog Box
 
-You can dynamically update the attributes of the dialog box through **updateCustomDialog**. Currently, the following attributes are supported: **alignment**, **offset**, **autoCancel**, and **maskColor**.
-Note that when attributes are updated, those unset will be restored to their default values. For example, if you initially set **{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }** and then update it to **{ alignment: DialogAlignment.Bottom }**, the initially set **offset: { dx: 0, dy: 50 }** will not be retained; the offset will be restored to the default value.
+You can dynamically update the attributes of the dialog box through **updateCustomDialog**. Currently supported updates include the following: **alignment** (alignment mode), **offset** (position offset relative to alignment), **autoCancel** (whether clicking the mask closes the dialog box), **maskColor** (background mask color).
+
+During attribute updates, any unspecified attributes revert to their default values. For example, if you initially set **{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }** and then update it to **{ alignment: DialogAlignment.Bottom }**, the initially set **offset: { dx: 0, dy: 50 }** will not be retained; the offset will be restored to the default value.
 
 ```ts
 PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.contentNode, options)
   .then(() => {
-    console.info('UpdateCustomDialog complete.')
+    console.info('UpdateCustomDialog complete.');
   })
   .catch((error: BusinessError) => {
     let message = (error as BusinessError).message;
@@ -98,13 +107,125 @@ PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.con
   })
 ```
 
+## Configuring Separate Animations for the Dialog Box Content and Mask
+
+By default, dialog box content and mask share the same animation when displayed. Starting from API version 19, you can configure distinct animations using the **dialogTransition** and **maskTransition** properties in [BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) to define separate transitions for dialog box content and background mask. For animation implementation details, see [Component Transition (transition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md).
+
+> **NOTE**
+>
+> The **maskTransition** property only takes effect when **isModal** is set to **true**, which enables mask display. When **isModal** is **false**, mask transition settings are ignored.
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private customDialogComponentId: number = 0
+  @Builder
+  customDialogComponent() {
+    Row({ space: 50 }) {
+      Button("This is a dialog box")
+    }.height(200).padding(5)
+  }
+
+  build() {
+    Row() {
+      Row({ space: 20 }) {
+        Text('Open dialog box')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: () => {
+                this.customDialogComponent()
+              },
+              isModal:true,
+              showInSubWindow:false,
+              maskColor: Color.Pink,
+              maskRect:{ x: 20, y: 20, width: '90%', height: '90%' },
+
+              dialogTransition: // Set the transition effect for dialog box content display.
+              TransitionEffect.translate({ x: 0, y: 290, z: 0 })
+                .animation({ duration: 4000, curve: Curve.Smooth }),// 4-second translation animation
+
+              maskTransition: // Set the transition effect for mask display.
+              TransitionEffect.opacity(0)
+                .animation({ duration: 4000, curve: Curve.Smooth }) // 4-second opacity animation
+
+            }).then((dialogId: number) => {
+              this.customDialogComponentId = dialogId
+            })
+              .catch((error: BusinessError) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
+
+## Setting the Distance Between the Dialog Box and the Soft Keyboard
+
+To maintain dialog box independence, dialog boxes automatically avoid surrounding elements like status bars, navigation bars, and keyboards. When the soft keyboard appears, dialog boxes maintain a default 16 vp distance. Since API version 15, you can use **keyboardAvoidMode** and **keyboardAvoidDistance** in [BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) to configure keyboard avoidance behavior.
+
+Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMode.DEFAULT**.
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  customDialogComponent() {
+      Column() {
+        Text('keyboardAvoidDistance: 0vp')
+          .fontSize(20)
+          .margin({ bottom: 36 })
+        TextInput({ placeholder: '' })
+      }.backgroundColor('#FFF0F0F0')
+  }
+
+  build() {
+    Row() {
+      Row({ space: 20 }) {
+        Text('Open dialog box')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: () => {
+                this.customDialogComponent()
+              },
+              alignment:DialogAlignment.Bottom,
+              keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
+              keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
+            }).catch((error: BusinessError) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
+
+
 ## Example
 
 ```ts
 // PromptActionClass.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ComponentContent, promptAction } from '@kit.ArkUI';
-import { UIContext } from '@ohos.arkui.UIContext';
+import { ComponentContent, promptAction, UIContext } from '@kit.ArkUI';
 
 export class PromptActionClass {
   static ctx: UIContext;
@@ -127,7 +248,7 @@ export class PromptActionClass {
     if (PromptActionClass.contentNode !== null) {
       PromptActionClass.ctx.getPromptAction().openCustomDialog(PromptActionClass.contentNode, PromptActionClass.options)
         .then(() => {
-          console.info('OpenCustomDialog complete.')
+          console.info('OpenCustomDialog complete.');
         })
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
@@ -141,7 +262,7 @@ export class PromptActionClass {
     if (PromptActionClass.contentNode !== null) {
       PromptActionClass.ctx.getPromptAction().closeCustomDialog(PromptActionClass.contentNode)
         .then(() => {
-          console.info('CloseCustomDialog complete.')
+          console.info('CloseCustomDialog complete.');
         })
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
@@ -155,7 +276,7 @@ export class PromptActionClass {
     if (PromptActionClass.contentNode !== null) {
       PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.contentNode, options)
         .then(() => {
-          console.info('UpdateCustomDialog complete.')
+          console.info('UpdateCustomDialog complete.');
         })
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
@@ -173,7 +294,7 @@ import { ComponentContent } from '@kit.ArkUI';
 import { PromptActionClass } from './PromptActionClass';
 
 class Params {
-  text: string = ""
+  text: string = "";
 
   constructor(text: string) {
     this.text = text;
@@ -189,7 +310,7 @@ function buildText(params: Params) {
       .margin({ bottom: 36 })
     Button('Close')
       .onClick(() => {
-        PromptActionClass.closeDialog()
+        PromptActionClass.closeDialog();
       })
   }.backgroundColor('#FFF0F0F0')
 }
@@ -197,7 +318,7 @@ function buildText(params: Params) {
 @Entry
 @Component
 struct Index {
-  @State message: string = "hello"
+  @State message: string = "hello";
   private ctx: UIContext = this.getUIContext();
   private contentNode: ComponentContent<Object> =
     new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
@@ -214,22 +335,22 @@ struct Index {
         Button("open dialog and update options")
           .margin({ top: 50 })
           .onClick(() => {
-            PromptActionClass.openDialog()
+            PromptActionClass.openDialog();
 
             setTimeout(() => {
               PromptActionClass.updateDialog({
                 alignment: DialogAlignment.Bottom,
                 offset: { dx: 0, dy: -50 }
-              })
+              });
             }, 1500)
           })
         Button("open dialog and update content")
           .margin({ top: 50 })
           .onClick(() => {
-            PromptActionClass.openDialog()
+            PromptActionClass.openDialog();
 
             setTimeout(() => {
-              this.contentNode.update(new Params('update'))
+              this.contentNode.update(new Params('update'));
             }, 1500)
           })
       }

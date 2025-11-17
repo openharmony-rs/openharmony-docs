@@ -1,5 +1,13 @@
 # ArkUI_LayoutConstraint
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 约束尺寸，组件布局时，进行尺寸范围限制。

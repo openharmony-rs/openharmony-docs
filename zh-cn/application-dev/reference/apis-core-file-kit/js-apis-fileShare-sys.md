@@ -56,7 +56,9 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let uri: string = 'file://docs/storage/Users/currentUser/Document/1.txt';  // 推荐使用系统接口生成URI。fileUri.getUriFromPath("沙箱路径");
+
+  let uri: string =
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath("沙箱路径");
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
@@ -115,7 +117,9 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let uri: string = 'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath("沙箱路径");
+
+  let uri: string =
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath("沙箱路径");
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |

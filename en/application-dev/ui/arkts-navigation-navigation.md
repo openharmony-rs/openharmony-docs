@@ -329,7 +329,7 @@ Since API version 12, the navigation controller can be inherited. You can custom
 @Entry
 @Component
 struct Index {
-  //Create a navigation controller object and pass it to the Navigation component.
+  // Create a navigation controller object and pass it to the Navigation component.
   pageStack: NavPathStack = new NavPathStack();
 
   build() {

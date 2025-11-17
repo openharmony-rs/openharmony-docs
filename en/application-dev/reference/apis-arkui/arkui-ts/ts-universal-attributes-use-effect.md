@@ -1,10 +1,16 @@
 # Special Effect Drawing Combination
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **useEffect** attribute is used to combine the drawing of special effects, such as background blur.
 
 > **NOTE**
 >
-> The initial APIs of this module is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
 
 ## useEffect

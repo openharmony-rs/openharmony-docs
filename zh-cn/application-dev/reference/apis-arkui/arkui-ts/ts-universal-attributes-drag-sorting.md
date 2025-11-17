@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在List组件下使用ForEach/LazyForEach/Repeat，并设置onMove事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。确保数据仅顺序发生变化，才能正常执行落位动画。
 
@@ -135,7 +135,7 @@ struct ForEachSort {
 
 ### 示例2（使用OnMove进行拖拽，并设置拖拽事件回调）
 
-以下示例展示了ForEach在List组件设置拖拽效果后触发的回调事件。
+从API version 20开始，以下示例展示了ForEach在List组件设置拖拽效果后触发的回调事件。
 
 ```ts
 // xxx.ets

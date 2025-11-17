@@ -4,7 +4,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -21,7 +21,7 @@ import { drm } from '@kit.DrmKit';
 
 generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: number, options?: OptionsData[]): Promise<MediaKeyRequest\>
 
-Generates a media key request.
+Generates a media key request. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -63,7 +63,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // PSSH data is the descriptive header of the copyright protection system and is encapsulated in encrypted streams. Specifically, in MP4 file, the PSSH data is found within the PSSH box; for DASH streams, the PSSH data is located in the MPD and MP4 PSSH box; for HLS+TS streams, the PSSH data is located in the M3U8 file and each TS segment. Pass in the actual value.
 let uint8pssh = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE).then((mediaKeyRequest: drm.MediaKeyRequest) =>{
-  console.log('generateMediaKeyRequest' + mediaKeyRequest);
+  console.info('generateMediaKeyRequest' + mediaKeyRequest);
 }).catch((err: BusinessError) => {
   console.error(`generateMediaKeyRequest: ERROR: ${err}`);
 });
@@ -73,7 +73,7 @@ mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType
 
 processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 
-Processes a media key response.
+Processes a media key response. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -112,7 +112,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyResponse is obtained from the DRM service. Pass in the actual value obtained.
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
-  console.log('processMediaKeyResponse:' + mediaKeyId);
+  console.info('processMediaKeyResponse:' + mediaKeyId);
 }).catch((err: BusinessError) => {
   console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
@@ -189,7 +189,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyResponse is obtained from the DRM service. Pass in the actual value obtained.
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
-  console.log('processMediaKeyResponse:' + mediaKeyId);
+  console.info('processMediaKeyResponse:' + mediaKeyId);
 }).catch((err: BusinessError) => {
   console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
@@ -205,7 +205,7 @@ try {
 
 generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 
-Generates a request to release offline media keys.
+Generates a request to release offline media keys. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -244,7 +244,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual data returned.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
-  console.log('generateOfflineReleaseRequest:' + offlineReleaseRequest);
+  console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
 }).catch((err: BusinessError) => {
   console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
@@ -254,7 +254,7 @@ mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRe
 
 processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Promise<void\>
 
-Processes a response to a request for releasing offline media keys.
+Processes a response to a request for releasing offline media keys. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -294,14 +294,14 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Apply for memory based on the actual length.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
-  console.log('generateOfflineReleaseRequest:' + offlineReleaseRequest);
+  console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
 }).catch((err: BusinessError) => {
   console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
 // offlineReleaseResponse is obtained from the DRM service. Apply for memory based on the actual length.
 let offlineReleaseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processOfflineReleaseResponse(mediaKeyId, offlineReleaseResponse).then(() => {
-  console.log('processOfflineReleaseResponse');
+  console.info('processOfflineReleaseResponse');
 }).catch((err: BusinessError) => {
   console.error(`processOfflineReleaseResponse: ERROR: ${err}`);
 });
@@ -311,7 +311,7 @@ mediaKeySession.processOfflineReleaseResponse(mediaKeyId, offlineReleaseResponse
 
 restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 
-Restores offline media keys.
+Restores offline media keys. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -350,7 +350,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 // mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual data returned.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.restoreOfflineMediaKeys(mediaKeyId).then(() => {
-  console.log("restoreOfflineMediaKeys");
+  console.info("restoreOfflineMediaKeys");
 }).catch((err: BusinessError) => {
   console.error(`restoreOfflineMediaKeys: ERROR: ${err}`);
 });
@@ -449,7 +449,7 @@ try {
 
 on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 
-Subscribes to events indicating that the application requests a media key.
+Subscribes to events indicating that the application requests a media key. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -479,7 +479,7 @@ import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keyRequired', (eventInfo: drm.EventInfo) => {
-  console.log('keyRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keyRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -487,7 +487,7 @@ mediaKeySession.on('keyRequired', (eventInfo: drm.EventInfo) => {
 
 off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 
-Unsubscribes from events indicating that the application requests a media key.
+Unsubscribes from events indicating that the application requests a media key. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -523,7 +523,7 @@ mediaKeySession.off('keyRequired');
 
 on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 
-Subscribes to events indicating that a media key expires.
+Subscribes to events indicating that a media key expires. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -553,7 +553,7 @@ import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keyExpired', (eventInfo: drm.EventInfo) => {
-  console.log('keyExpired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keyExpired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -561,7 +561,7 @@ mediaKeySession.on('keyExpired', (eventInfo: drm.EventInfo) => {
 
 off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 
-Unsubscribes from events indicating that a media key expires.
+Unsubscribes from events indicating that a media key expires. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -597,7 +597,7 @@ mediaKeySession.off('keyExpired');
 
 on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 
-Subscribes to vendor-defined events.
+Subscribes to vendor-defined events. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -627,7 +627,7 @@ import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('vendorDefined', (eventInfo: drm.EventInfo) => {
-  console.log('vendorDefined ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('vendorDefined ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -635,7 +635,7 @@ mediaKeySession.on('vendorDefined', (eventInfo: drm.EventInfo) => {
 
 off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 
-Unsubscribes from vendor-defined events.
+Unsubscribes from vendor-defined events. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -671,7 +671,7 @@ mediaKeySession.off('vendorDefined');
 
 on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
-Subscribes to events indicating that a media key updates on expiry.
+Subscribes to events indicating that a media key updates on expiry. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -701,7 +701,7 @@ import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
-  console.log('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('expirationUpdate ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -709,7 +709,7 @@ mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
 
 off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 
-Unsubscribes from events indicating that a media key updates on expiry. 
+Unsubscribes from events indicating that a media key updates on expiry. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -745,7 +745,7 @@ mediaKeySession.off('expirationUpdate');
 
 on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void): void
 
-Subscribes to events indicating that a media key changes.
+Subscribes to events indicating that a media key changes. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -776,7 +776,7 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
   for (let i = 0; i < keyInfo.length; i++) {
-    console.log('keysChange' + 'keyId:' + keyInfo[i].keyId + ' data:' + keyInfo[i].value);
+    console.info('keysChange' + 'keyId:' + keyInfo[i].keyId + ' data:' + keyInfo[i].value);
   }
 });
 ```
@@ -785,7 +785,7 @@ mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: bool
 
 off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolean) => void): void
 
-Unsubscribes from events indicating that a media key changes.
+Unsubscribes from events indicating that a media key changes. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -1,6 +1,12 @@
 # @system.vibrator (Vibrator)
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
-The **Vibrator** module provides APIs for controlling LED lights and vibrators. You can use the APIs to query the LED light list, turn on and off the LED light, query the vibrator list, query the vibrator effect, and trigger and turn off the vibrator.
+The **Vibrator** module provides APIs for controlling LED lights and vibrators. You can use the APIs to query the LED light list, vibrator list, and vibration effect, and turn on or off the LED light and the vibrator.
 
 Misc devices refer to LED lights and vibrators on devices. LED lights are mainly used for indication (for example, indicating the charging state) and blinking (such as tri-colored lights). Vibrators are mainly used in scenarios such as the alarm clock, power-on/off, and incoming call vibration.
 
@@ -45,7 +51,7 @@ let vibrateOptions: VibrateOptions = {
     console.info('Succeed in vibrating');
   },
   fail: (data: string, code: number) => {
-    console.info(`Failed to vibrate. Data: ${data}, code: ${code}`);
+    console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
   },
   complete: () => {
     console.info('completed in vibrating');

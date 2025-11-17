@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
@@ -335,9 +335,18 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
     await resources.avRecorder!.start();
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`avRecorder stop error: ${err}`);
+    console.error(`avRecorder start error: ${err}`);
   }
 
+  // 停止录像。
+  try {
+    await resources.avRecorder!.stop();
+    await resources.videoOutput!.stop();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`avRecorder stop error: ${err}`);
+  }
+  
   // 停止当前会话。
   await resources.videoSession.stop();
 

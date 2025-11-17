@@ -5,15 +5,15 @@
 <!--Owner: @tianjian97861-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+Starting from API version 15, the video variable refresh rate feature is supported.
 
 With the C APIs related to the video variable refresh rate feature, you can dynamically adjust the screen refresh rate based on the video content during playback. This helps save display power while maintaining smooth video playback.
 
 ## When to Use
 
-The video variable refresh rate feature is ideal for video sources with high frame rates (>30 fps). For video sources with frame rates at or below 30 fps, a refresh rate of 30 Hz is recommended.
-
-The figure below demonstrates the playback of a 60 fps video. The algorithm adjusts the screen refresh rate in real-time based on the video content. If the refresh rate drops below the video frame rate, some frames will be discarded to save power.
+The video variable refresh rate feature is ideal for video sources with high frame rates (>30 fps). For video sources with frame rates at or below 30 fps, a refresh rate of 30 Hz is recommended. The figure below demonstrates the playback of a 60 fps video. The algorithm adjusts the screen refresh rate in real-time based on the video content. If the refresh rate drops below the video frame rate, some frames will be discarded to save power.
 
 ![Video variable refreshrate](figures/video-variable-refreshrate.png)
 

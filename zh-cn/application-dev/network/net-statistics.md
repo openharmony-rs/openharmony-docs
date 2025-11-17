@@ -129,7 +129,6 @@
 
 ```ts
 import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 class IfaceInfo {
   iface: string = "wlan0"

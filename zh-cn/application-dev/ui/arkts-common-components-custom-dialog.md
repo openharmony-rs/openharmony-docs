@@ -1,10 +1,10 @@
-# 基础自定义弹出框 (CustomDialog)(不推荐)
+# 基础自定义弹出框 (CustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件更新等与用户交互响应操作。开发者可以通过CustomDialogController类显示自定义弹出框。具体用法请参考[自定义弹出框](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)。
 
 > **说明：**
@@ -277,7 +277,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 ## 弹出框的动画
 
-弹出框通过定义openAnimation控制弹出框出现动画的持续时间，速度等参数。
+弹出框通过定义openAnimation控制出现动画的持续时间，速度等参数。
 
 ```ts
 @CustomDialog

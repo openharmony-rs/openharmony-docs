@@ -1,4 +1,10 @@
 # Visual Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The visual effect attributes set filter effects (such as blur and pixel stretch) and non-filter effects (such as point light) for components.
 
@@ -20,7 +26,7 @@ Sets a visual effect that is not a filter effect.
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| effect | [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Yes  | Visual effect.|
+| effect | [VisualEffect](#visualeffect) | Yes  | Visual effect.|
 
 **Return value**
 
@@ -42,7 +48,7 @@ Sets the visual effect of the background filter.
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| filter | [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Yes  | Visual effect of the background filter.|
+| filter | [Filter](#filter) | Yes  | Visual effect of the background filter.|
 
 **Return value**
 
@@ -64,7 +70,7 @@ Sets the visual effect of the foreground (content) filter.
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| filter | [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Yes  | Visual effect of the foreground (content) filter.|
+| filter | [Filter](#filter) | Yes  | Visual effect of the foreground (content) filter.|
 
 **Return value**
 
@@ -86,13 +92,41 @@ Sets the visual effect of the compositing filter.
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| filter | [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Yes  | Visual effect of the compositing filter.|
+| filter | [Filter](#filter) | Yes  | Visual effect of the compositing filter.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | T | Current component.|
+
+## Filter
+
+type Filter = Filter
+
+Represents a Filter object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Applies a visual effect to a component.|
+
+## VisualEffect
+
+type VisualEffect = VisualEffect
+
+Represents a VisualEffect object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Applies a visual effect to a component.|
 
 ## Example
 

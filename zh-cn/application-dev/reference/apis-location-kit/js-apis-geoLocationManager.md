@@ -487,11 +487,11 @@ GNSS地理围栏请求参数。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceId | string | 是 | 否 | 表示扫描到的设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
-| rssi | number | 是 | 否 | 表示扫描到的设备的rssi值。 |
-| data | ArrayBuffer | 是 | 是 | 表示扫描到的设备发送的广播包。 |
-| deviceName | string | 是 | 否 | 表示扫描到的设备名称。 |
-| connectable | boolean | 是 | 否 | 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。 |
+| deviceId | string | 否 | 否 | 表示扫描到的设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| rssi | number | 否 | 否 | 表示扫描到的设备的rssi值。 |
+| data | ArrayBuffer | 否 | 是 | 表示扫描到的设备发送的广播包。 |
+| deviceName | string | 否 | 否 | 表示扫描到的设备名称。 |
+| connectable | boolean | 否 | 否 | 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。 |
 
 
 ## Poi<sup>19+</sup>
@@ -1038,22 +1038,22 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
       let satelliteAdditionalInfos: Array<number> | undefined = satelliteStatusInfo.satelliteAdditionalInfo;
       for (let i = 0;i < totalNumber;i++) {
         // 卫星的ID
-        let satelliteId: Number = satelliteIds[i];
+        let satelliteId: number = satelliteIds[i];
         // 表示卫星的ID为 ${satelliteId} 的卫星的载波噪声功率谱密度比
-        let carrierToNoiseDensity: Number = carrierToNoiseDensitys[i];
+        let carrierToNoiseDensity: number = carrierToNoiseDensitys[i];
         // 表示卫星的ID为 ${satelliteId} 的卫星的高度角信息
-        let altitude: Number = altitudes[i];
+        let altitude: number = altitudes[i];
         // 表示卫星的ID为 ${satelliteId} 的卫星的方位角
-        let azimuth: Number = azimuths[i];
+        let azimuth: number = azimuths[i];
         // 表示卫星的ID为 ${satelliteId} 的卫星的载波频率
-        let carrierFrequencie: Number = carrierFrequencies[i];
+        let carrierFrequencie: number = carrierFrequencies[i];
         if (satelliteConstellations != undefined) {
           // 表示卫星的ID为 ${satelliteId} 的卫星的星座类型
           let satelliteConstellation: geoLocationManager.SatelliteConstellationCategory = satelliteConstellations[i];
         }
         if (satelliteAdditionalInfos != undefined) {
           // 表示卫星的ID为 ${satelliteId} 的卫星的附加信息；表示是否在最新的位置解算中使用了本卫星，是否具有星历数据，是否具有年历数据，是否具有载波频率信息等。
-          let satelliteAdditionalInfo: Number = satelliteAdditionalInfos[i];
+          let satelliteAdditionalInfo: number = satelliteAdditionalInfos[i];
         }
       }
   }
@@ -2491,7 +2491,7 @@ getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
 getCurrentWifiBssidForLocating(): string
 
-获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息
+获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息。如果当前设备未连接Wi-Fi，调用该接口将抛出错误码3301900。建议参考示例代码，通过try-catch结构捕获异常。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2963,7 +2963,7 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.isWlanBssidMatched} due to limited device capabilities.          |
 |3301100 | The location switch is off.                                           |
-|3301800 | Failed to start Wifi scanning.                                        |
+|3301800 | Failed to start WiFi scanning.                                        |
 
 **示例**
 

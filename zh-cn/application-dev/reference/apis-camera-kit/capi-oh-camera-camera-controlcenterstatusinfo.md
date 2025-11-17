@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -23,6 +23,6 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Camera_ControlCenterEffectType](capi-camera-h.md#camera_controlcentereffecttype) effectType | 控制器效果类型。 |
-| bool isActive | 控制器是否激活。 |
+| bool isActive | 控制器是否激活。true表示激活，false表示未激活。 |
 
 

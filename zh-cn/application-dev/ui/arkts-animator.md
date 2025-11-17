@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 帧动画具备逐帧回调的特性，便于开发者在每一帧中处理需调整的属性。通过向应用提供onFrame逐帧回调，帧动画使开发者能够在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出动画效果。帧动画接口详情可参考[@ohos.animator (动画)](../reference/apis-arkui/js-apis-animator.md)。
 
@@ -50,7 +50,7 @@
    let result: AnimatorResult = this.getUIContext().createAnimator(options);
    // 设置接收到帧时回调，动画播放过程中每帧会调用onFrame回调
    result.onFrame = (value: number) => {
-     console.log("current value is :" + value);
+     console.info("current value is :" + value);
    }
    ```
 
@@ -107,7 +107,7 @@
      }
      //动画重复播放时执行方法
      this.animatorOptions.onRepeat = () => {
-       console.log("动画重复播放");
+       console.info("动画重复播放");
      }
    }
    ```
@@ -178,7 +178,7 @@ struct Index {
       this.animatorStatus = '完成';
     }
     this.animatorOptions.onRepeat = () => {
-      console.log("动画重复播放");
+      console.info("动画重复播放");
     }
   }
 

@@ -1,5 +1,12 @@
 # native_audio_channel_layout.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The file declares the functions related to the speaker layout during recording and playback.
@@ -20,9 +27,9 @@ The file declares the functions related to the speaker layout during recording a
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioChannelSet](#oh_audiochannelset) | OH_AudioChannelSet | Enumerates the audio channels.<br>Each channel is mapped to a variable of int64.|
-| [OH_AmbAttributeSet](#oh_ambattributeset) | OH_AmbAttributeSet | Enumerates the Hi-Fi stereo reverberation settings.<br>Int64 integers are used to indicate the Hi-Fi stereo reverberation attributes.|
-| [OH_AudioChannelLayout](#oh_audiochannellayout) | OH_AudioChannelLayout | Enumerates the layouts of audio channels.<br>Int64 integers are used to indicate the appearance and sequence of speakers during recording or playback.|
+| [OH_AudioChannelSet](#oh_audiochannelset) | OH_AudioChannelSet | Enumerates the audio channels.<br> Each channel is mapped to a variable of int64.|
+| [OH_AmbAttributeSet](#oh_ambattributeset) | OH_AmbAttributeSet | Enumerates the Hi-Fi stereo reverberation settings.<br> Int64 integers are used to indicate the Hi-Fi stereo reverberation attributes.|
+| [OH_AudioChannelLayout](#oh_audiochannellayout) | OH_AudioChannelLayout | Enumerates the layouts of audio channels.<br> Int64 integers are used to indicate the appearance and sequence of speakers during recording or playback.|
 
 ## Enum Description
 
@@ -34,7 +41,7 @@ enum OH_AudioChannelSet
 
 **Description**
 
-Enumerates the audio channels.<br>Each channel is mapped to a variable of int64.
+Enumerates the audio channels.<br> Each channel is mapped to a variable of int64.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -81,7 +88,7 @@ enum OH_AmbAttributeSet
 
 **Description**
 
-Enumerates the Hi-Fi stereo reverberation settings.<br>Int64 integers are used to indicate the Hi-Fi stereo reverberation attributes.
+Enumerates the Hi-Fi stereo reverberation settings.<br> Int64 integers are used to indicate the Hi-Fi stereo reverberation attributes.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -106,7 +113,7 @@ enum OH_AudioChannelLayout
 
 **Description**
 
-Enumerates the audio channel layouts.<br>Int64 integers are used to indicate the appearance and sequence of speakers during recording or playback.
+Enumerates the layouts of audio channels.<br> Int64 integers are used to indicate the appearance and sequence of speakers during recording or playback.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

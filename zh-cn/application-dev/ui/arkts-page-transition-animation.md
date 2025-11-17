@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 为了实现更好的转场效果，推荐使用[组件导航(Navigation)](arkts-navigation-navigation.md)和[模态转场](arkts-modal-transition.md)。
 

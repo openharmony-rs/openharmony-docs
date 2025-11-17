@@ -51,7 +51,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 
 > **注意：**
 >
-> 如果DevEco Studio工具提示不能识别"type": "vpn"，需要您手动在SDK的toolchains\modulecheck\module.json文件中，给extensionAbilities对应的type枚举添加"vpn"定义，并清除build缓存。
+> 如果DevEco Studio工具提示不能识别"type": "vpn"，需要您手动在SDK的toolchains\modulecheck\module.json文件中，给extensionAbilities对应的type枚举添加"vpn"定义，并清除build缓存和重启DevEco Studio工具。
 
 接下来您需要在创建的VpnExtensionAbility中实现VPN的配置、启动和停止操作：
 
@@ -66,7 +66,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 当VPN应用启动VPN连接时，需要调用startVpnExtensionAbility接口，携带需要启动的VpnExtensionAbility信息，其中bundleName需要与您的VPN应用bundleName一致，abilityName为您在前面创建的VpnExtensionAbility名。您可参考如下示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 
 let want: Want = {
@@ -110,7 +110,7 @@ struct Index {
 您可参考如下示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 
 let want: Want = {
@@ -150,7 +150,6 @@ stopVpnExtensionAbility后，您的VPN Extension Ability的[onDestroy](../refere
 
 ```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
-import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let context: vpnExtension.VpnExtensionContext;
@@ -174,8 +173,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 可参考如下示例：
 
 ```ts
-import VpnExtensionAbility from "@ohos.app.ability.VpnExtensionAbility";
-import { vpnExtension } from "@kit.NetworkKit";
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 
 export default class VpnTest extends VpnExtensionAbility {
   vpnId: string = ''
@@ -195,8 +193,7 @@ export default class VpnTest extends VpnExtensionAbility {
 
 若需断开VPN，可参考如下示例：
 ```ts
-import VpnExtensionAbility from "@ohos.app.ability.VpnExtensionAbility";
-import { vpnExtension } from "@kit.NetworkKit";
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 
 export default class VpnTest extends VpnExtensionAbility {
   vpnId: string = 'test_vpn_id'

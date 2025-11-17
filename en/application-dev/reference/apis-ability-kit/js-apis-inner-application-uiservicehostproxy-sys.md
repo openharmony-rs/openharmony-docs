@@ -1,5 +1,6 @@
 # UIServiceHostProxy (System API)
 
+
 UIServiceHostProxy functions as a proxy to send data from the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md) server to the client.
 
 

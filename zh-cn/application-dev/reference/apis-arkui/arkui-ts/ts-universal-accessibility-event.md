@@ -4,7 +4,7 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在开启无障碍模式后，需要判断是否拦截无障碍控制操作。
 

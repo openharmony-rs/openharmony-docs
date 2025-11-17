@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **WebResourceResponse** object. For details about the sample code, see [onHttpErrorReceive](./arkts-basic-components-web-events.md#onhttperrorreceive).
 

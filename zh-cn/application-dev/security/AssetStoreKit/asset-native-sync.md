@@ -19,8 +19,8 @@ target_link_libraries(entry PUBLIC libasset_ndk.z.so)
 新增密码demo_pwd（别名demo_alias），附属信息为demo_label，支持同步的关键资产。
 
 ```c
+#include "napi/native_api.h"
 #include <string.h>
-
 #include "asset/asset_api.h"
 
 static napi_value AddAsset(napi_env env, napi_callback_info info)
@@ -67,8 +67,8 @@ static napi_value AddAsset(napi_env env, napi_callback_info info)
 ### 代码示例
 
 ```c
+#include "napi/native_api.h"
 #include <string.h>
-
 #include "asset/asset_api.h"
 
 static napi_value QuerySyncResults(napi_env env, napi_callback_info info)

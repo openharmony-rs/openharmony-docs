@@ -36,6 +36,7 @@ You can also import a key. For details about the supported algorithms, see [Supp
  * Perform HMAC calculation using promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit";
 
 let keyAlias = 'test_HMAC';
 let handle: number;
@@ -77,61 +78,66 @@ function GetHMACProperties() {
 
 async function GenerateHMACKey() {
   /*
-  * Simulate the key generation scenario.
-  * 1. Set the key alias.
-  */
+   * Simulate the key generation scenario.
+   * 1. Set the key alias.
+   */
   /*
-  * 2. Obtain the parameters for key generation.
-  */
+   * 2. Obtain the parameters for key generation.
+   */
   let genProperties = GetHMACProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
   /*
-  * 3. Call generateKeyItem to generate a key.
-  */
+   * 3. Call generateKeyItem to generate a key.
+   */
   await huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: generate HMAC Key success`);
-    }).catch((error: Error) => {
-      console.error(`promise: generate HMAC Key failed, ${JSON.stringify(error)}`);
+    }).catch((error: BusinessError) => {
+      console.error(`promise: generate HMAC Key failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
 async function HMACData() {
   /*
-  * Simulate the HMAC scenario.
-  * 1. Obtain the key alias.
-  */
+   * Simulate the HMAC scenario.
+   * 1. Obtain the key alias.
+   */
   /*
-  * 2. Obtain the data to be hashed.
-  */
+   * 2. Obtain the data to be hashed.
+   */
   /*
-  * 3. Obtain HMAC algorithm parameter settings.
-  */
+   * 3. Obtain HMAC algorithm parameter settings.
+   */
   let hmacProperties = GetHMACProperties();
   let options: huks.HuksOptions = {
     properties: hmacProperties,
     inData: StringToUint8Array(plainText)
   }
   /*
-  * 4. Call initSession to obtain a session handle.
-  */
+   * 4. Call initSession to obtain a session handle.
+   */
   await huks.initSession(keyAlias, options)
     .then((data) => {
       handle = data.handle;
-    }).catch((error: Error) => {
-      console.error(`promise: init EncryptData failed, ${JSON.stringify(error)}`);
+    }).catch((error: BusinessError) => {
+      console.error(`promise: init EncryptData failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-  * 5. Call finishSession to obtain the HMAC result.
-  */
+   * 5. Call finishSession to obtain the HMAC result.
+   */
   await huks.finishSession(handle, options)
     .then((data) => {
       console.info(`promise: HMAC data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
       hashData = data.outData as Uint8Array;
-    }).catch((error: Error) => {
-      console.error(`promise: HMAC data failed, ${JSON.stringify(error)}`);
+    }).catch((error: BusinessError) => {
+      console.error(`promise: HMAC data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
+}
+
+async function testHMAC() {
+  await GenerateHMACKey();
+  await HMACData();
 }
 ```

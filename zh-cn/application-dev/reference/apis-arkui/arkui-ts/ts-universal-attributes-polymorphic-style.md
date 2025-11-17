@@ -1,10 +1,10 @@
 # 多态样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件不同状态下的样式。
 
@@ -26,6 +26,10 @@ stateStyles(value: StateStyles): T
 
 设置组件不同状态的样式。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -36,7 +40,7 @@ stateStyles(value: StateStyles): T
 
 | 参数名 | 类型                                | 必填 | 说明                     |
 | ------ | ----------------------------------- | ---- | ------------------------ |
-| value  | [StateStyles](#statestyles) | 是   | 设置组件不同状态的样式。 |
+| value  | [StateStyles](#statestyles-1) | 是   | 设置组件不同状态的样式。 |
 
 **返回值：**
 
@@ -263,7 +267,7 @@ struct Child {
   build() {
     Row()
       .zIndex(10)
-      .width(100)
+      .width(200)
       .height(200)
       .stateStyles({
         normal: {
@@ -277,8 +281,7 @@ struct Child {
 }
 
 @Builder
-function
-buildText() {
+function buildText() {
   Child()
 }
 
@@ -289,19 +292,23 @@ struct Index {
     new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
 
   build() {
-    Button().onClick((event: ClickEvent) => {
-      this.getUIContext()
-        .getPromptAction()
-        .openCustomDialog(this.contentNode)
-        .then(() => {
-          console.info('OpenCustomDialog complete.')
-        })
-        .catch((error: BusinessError) => {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
-        })
-    })
+    Column() {
+      Button().margin({ top: 200 }).onClick((event: ClickEvent) => {
+        this.getUIContext()
+          .getPromptAction()
+          .openCustomDialog(this.contentNode)
+          .then(() => {
+            console.info('OpenCustomDialog complete.')
+          })
+          .catch((error: BusinessError) => {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+          })
+      })
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```

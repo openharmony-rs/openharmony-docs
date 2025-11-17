@@ -1,5 +1,12 @@
 # Media Kit
 
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @chenkun-->
+<!--Designer: @yxc2-->
+<!--Tester: @zengxi_3007-->
+<!--Adviser: @w_Machine_cc-->
+
 - [Introduction to Media Kit](media-kit-intro.md)
 - Media Development (ArkTS)<!--media-kit-dev--arkts-->
   - Playback<!--media-playback-arkts-->
@@ -28,8 +35,12 @@
   - Recording<!--media-recording-c-->
     - [Using AVRecorder to Record Audio (C/C++)](using-ndk-avrecorder-for-audio-recording.md)
     - [Using AVRecorder to Record Videos (C/C++)](using-ndk-avrecorder-for-video-recording.md)
-    - [Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)](using-avscreencapture-for-buffer.md)
+    - Screen and Stream Capture with AVScreenCapture (C/C++)<!--using-avscreencapture-for-buffer-->
+      - [Using AVScreenCapture in Basic Scenarios](avscreencapture-c-basic-process.md)
+      - [Using AVScreenCapture in Custom Scenarios](avscreencapture-c-custom-scenarios.md)
+      - [Screen Capture FAQs](avscreencapture-faqs.md)
     - [Using AVScreenCapture to Capture Screens and Write Them to Files (C/C++)](using-avscreencapture-for-file.md)
+    - [Capturing the Specified Area on a Screen (C/C++)](video-supports-rectangular-area-recording.md)
   - Media Information Query<!--media-info-c-->
     - [Using AVMetadataExtractor to Obtain Metadata (C/C++)](using-ndk-avmetadataextractor-for-media.md)
     - [Using AVImageGenerator to Obtain Video Frames (C/C++)](using-ndk-avimagegenerator-for-video.md)

@@ -1,5 +1,11 @@
 # Crown Event
-A crown event is an event triggered when the crown of a wearable device is rotated. Event dispatch relies on component focus, and you can customize event handling through [focus events](ts-universal-attributes-focus.md).
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
+   A crown event is an event triggered when the crown of a wearable device is rotated. Event dispatch relies on component focus, and you can customize event handling through [focus events](ts-universal-attributes-focus.md).
 
 >  **NOTE**
 >
@@ -7,11 +13,11 @@ A crown event is an event triggered when the crown of a wearable device is rotat
 >
 >  - Manual rotation of the crown has default interaction logic. For example, rotating the crown causes the scrollbar to scroll in the direction of the rotation.
 >
->  - A component must have focus to receive crown events. Focus control can be managed using [focusable](ts-universal-attributes-focus.md#focusable), [defaultFocus](ts-universal-attributes-focus.md#defaultFocus9), and [focusOnTouch](ts-universal-attributes-focus.md#focusOnTouch9).
+>  - A component must have focus to receive crown events. Focus control can be managed using [focusable](ts-universal-attributes-focus.md#focusable), [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9), and [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9).
 >
 >  - This event is only supported on wearable devices.
 >
->  - By default, the following components support crown events: [Slider](ts-basic-components-slider.md), [DatePicker](ts-basic-components-datepicker.md), [TextPicker](ts-basic-components-textpicker.md), [TimePicker](ts-basic-components-timepicker.md), [Scroll](ts-container-scroll.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [WaterFlow](ts-container-waterflow.md), [ArcList](ts-container-arclist.md), [Refresh](ts-container-refresh.md), and [Swiper](ts-container-swiper.md).
+>  - By default, the following components support crown events: [Slider](ts-basic-components-slider.md), [DatePicker](ts-basic-components-datepicker.md), [TextPicker](ts-basic-components-textpicker.md), [TimePicker](ts-basic-components-timepicker.md), [Scroll](ts-container-scroll.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [WaterFlow](ts-container-waterflow.md), [ArcList](ts-container-arclist.md), [Refresh](ts-container-refresh.md), and [ArcSwiper](ts-container-arcswiper.md).
 
 ## onDigitalCrown
 
@@ -43,13 +49,13 @@ Defines a data structure for the crown event received by a component. It include
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                  | Type          | Description                                   |
-| --------------------- | -------------- | -------------------------------------- |
-| timestamp	        | number	 | Timestamp.                                 |
-| angularVelocity	| number	 | Angular velocity in degrees per second (°/s).                  |
-| degree	        | number 	 | Relative rotation angle.<br>Unit: degrees<br>Value range: [-360, 360]    |
-| action	        | [CrownAction](ts-appendix-enums.md#crownaction18)   | Crown action. |
-| stopPropagation	| () => void     | Stops event propagation.                        |
+| Name                  | Type      | Read-Only   |  Optional  |  Description                                                      |
+| --------------------- | ------------- | ---------- |------------ |-------------------------------------- |
+| timestamp	        | number	 |  No    | No   |Timestamp.                                 |
+| angularVelocity	| number	 |  No    | No   |Angular velocity in degrees per second (°/s).                  |
+| degree	        | number 	 |  No    | No   |Relative rotation angle.<br>Unit: degrees<br>Value range: [-360, 360]    |
+| action	        | [CrownAction](ts-appendix-enums.md#crownaction18)   |  No    | No   |Crown action. |
+| stopPropagation	| Callback\<void>    |  No     | No   |Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.                        |
 
 ## Example
 This example demonstrates how to register a crown event on a component and receive event data.

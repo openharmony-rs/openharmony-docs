@@ -139,6 +139,8 @@ Since API version 20, synchronization of [assets](../reference/apis-arkdata/js-a
 
 Most of the APIs for cross-device sync of distributed data objects are executed asynchronously in callback or promise mode. The following table uses the callback-based APIs as an example. For more information about the APIs, see [Distributed Data Object](../reference/apis-arkdata/js-apis-data-distributedobject.md).
 
+
+
 | API| Description|
 | -------- | -------- |
 | create(context: Context, source: object): DataObject | Creates a distributed data object instance.|

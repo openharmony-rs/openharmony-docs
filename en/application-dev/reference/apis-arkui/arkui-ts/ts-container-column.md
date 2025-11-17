@@ -1,10 +1,18 @@
 # Column
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @camlostshi-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **Column** component lays out child components vertically.
 
 >  **NOTE**
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+>  If no height or width is set for the **Column** component, the component automatically adapts to the size of its child components in the main axis and cross axis respectively.
 
 
 ## Child Components
@@ -19,6 +27,10 @@ Column(options?: ColumnOptions)
 
 Creates a vertical linear layout container. You can set the spacing between child components, which can be of type number or string.
 
+>  **NOTE**
+>
+>  Excessive component nesting (either too deep a hierarchy or too many nested components) incurs significant performance overhead. For performance purposes, you are advised to remove redundant nodes to simplify the component tree, use layout boundaries to reduce redundant layout calculations, properly apply rendering control syntax and layout component methods to minimize unnecessary re-renders and computations. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -29,16 +41,16 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions14) | No| Vertical spacing between two adjacent child components.|
+| options | [ColumnOptions<sup>18+</sup>](#columnoptions18) | No| Vertical spacing between two adjacent child components.|
 
-### Column<sup>16+</sup>
+### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
 
 Creates a vertical linear layout container. You can set the spacing between child components, which can be of type number, string, or Resource.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 16.
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,41 +58,51 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions14) \| [ColumnOptionsV2](#columnoptionsv216) | No| Vertical spacing between two adjacent child components.|
+| options | [ColumnOptions](#columnoptions18) \| [ColumnOptionsV2](#columnoptionsv218) | No| Vertical spacing between two adjacent child components.|
 
-## ColumnOptions<sup>14+</sup>
+## ColumnOptions<sup>18+</sup>
 
-Defines the spacing properties for child components used for constructing a **Column** component.
+Sets the spacing between child components of the **Column** component.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 14.
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| space | string \| number | No| Vertical spacing between two adjacent child components.<br>This parameter does not take effect if the value specified is a negative number, or if [justifyContent](ts-container-column.md#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.|
-
-## ColumnOptionsV2<sup>16+</sup>
-
-Defines the spacing properties for child components used for constructing a **Column** component.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 16.
-
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| space | [SpaceType](#spacetype16) | No| Vertical spacing between two adjacent child components.<br>This parameter does not take effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**, in vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| space<sup>7+</sup> | string \| number | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if [justifyContent](ts-container-column.md#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**<br>Default value: **0**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
-## SpaceType<sup>16+</sup>
+## ColumnOptionsV2<sup>18+</sup>
 
-type SpaceType = number | string | Resource
+Sets the spacing between child components of the **Column** component. The spacing type **SpaceType** can be number, string, or Resource.
 
-Describes the supported data types for the **space** parameter in the constructors of **Row** and **Column** components. The type is a union of the following types.
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| space | [SpaceType](#spacetype18) | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**, in vp<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
+
+## SpaceType<sup>18+</sup>
+
+type SpaceType = string | number | Resource
+
+Describes the supported data types for the **space** parameter in the constructors of the **Column** component. The type is a union of the following types.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 |Type|Description|
 |---|---|
@@ -88,7 +110,6 @@ Describes the supported data types for the **space** parameter in the constructo
 |string|Represents a string value. It can take any string value.|
 |[Resource](ts-types.md#resource)|Represents a resource reference type. It can take values from system resources or application resources.|
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
 
 ## Attributes
 
@@ -132,13 +153,13 @@ Alignment mode of the child components in the vertical direction.
 
 >  **NOTE**
 >
->  During column layout, child components do not shrink if [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for them. In this case, the total size of the child components on the main axis can exceed the size of the container on the main axis.
+>  During the column layout, if [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for a child component, the child component is not compressed by default. This can result in the total main axis size of all child components exceeding the container's main axis size, which makes **FlexAlign.Center** and **FlexAlign.End** ineffective.
 
 ### reverse<sup>12+</sup>
 
 reverse(isReversed: Optional\<boolean\>)
 
-Sets whether to reverse the arrangement of child components on the main axis (vertical direction).
+Sets whether to reverse the vertical arrangement of child components.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -150,7 +171,7 @@ Sets whether to reverse the arrangement of child components on the main axis (ve
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | Yes  | Whether to reverse the arrangement of child components on the main axis (vertical direction).<br>Default value: **true**|
+| isReversed  | Optional\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
 
 >  **NOTE**
 >

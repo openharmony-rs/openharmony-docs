@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 使用CanvasRenderingContext2D在Canvas画布组件上进行绘制，绘制对象可以是图形、文本、线段、图片等。具体请参考[CanvasRenderingContext2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)。
@@ -12,7 +12,7 @@
 
 ## 画线段
 
-使用moveTo和lineTo画出一条线段，当使用closePath方法时会结束当前路径形成一个封闭图形。设置quadraticCurveTo（二次贝赛尔曲线）或bezierCurveTo（三次贝赛尔曲线）的值组成图形。
+使用moveTo和lineTo画出一条线段，当使用closePath方法时会结束当前路径形成一个封闭图形。设置quadraticCurveTo（二次贝塞尔曲线）或bezierCurveTo（三次贝塞尔曲线）的值组成图形。
 
 
 ```html
@@ -122,7 +122,7 @@ export default {
       // 上
       this.ctx.beginPath();
       this.ctx.moveTo(100, 150);
-      // 二次贝赛尔曲线的路径
+      // 二次贝塞尔曲线的路径
       this.ctx.quadraticCurveTo(300, 50, 500, 150);
       this.ctx.stroke();
       // 左
@@ -140,7 +140,7 @@ export default {
       // 下
       this.ctx.beginPath();
       this.ctx.moveTo(100, 200);
-      // 三次贝赛尔曲线的路径
+      // 三次贝塞尔曲线的路径
       this.ctx.bezierCurveTo(150, 100, 200, 100,250, 200);
       this.ctx.stroke();
       // 左

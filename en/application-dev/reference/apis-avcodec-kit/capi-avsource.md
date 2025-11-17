@@ -1,5 +1,12 @@
 # AVSource
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The AVSource module provides the functions for constructing media resource objects.

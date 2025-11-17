@@ -1,5 +1,12 @@
 # @ohos.selectionInput.SelectionExtensionContext (SelectionExtensionContext) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 **SelectionExtensionContext** is the context of [SelectionExtensionAbility](./js-apis-selectionInput-selectionExtensionAbility-sys.md), which is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
 When a SelectionExtensionAbility component is instantiated, the system automatically creates the corresponding **SelectionExtensionContext**. You can use **SelectionExtensionContext** to start other abilities in the same application.

@@ -1,4 +1,10 @@
 # NotificationCommonDef
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationCommonDef** module provides APIs for describing the **BundleOption** information, that is, the bundle information of a specified application.
 

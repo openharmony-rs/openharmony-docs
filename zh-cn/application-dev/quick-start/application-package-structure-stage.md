@@ -31,7 +31,7 @@
 
 
 ## 编译态包结构
-不同类型的Module编译后会生成对应的HAP、HAR、HSP等文件，开发态视图与编译态视图的对照关系如下：
+不同类型的Module编译后会生成对应的HAP、HAR、HSP等文件，编译后可通过DevEco Studio或打包工具打包成APP包，用于上架应用市场。编译HAP和HSP时，会把它们所依赖的HAR直接编译到HAP和HSP中，因此打包成APP包后，编译打包视图中只有.hap和.hsp文件，没有.har文件。开发态视图与编译态视图的对照关系如下：
 
 **图2** 开发态与编译态的工程结构视图
 
@@ -42,15 +42,12 @@
 - **resources目录**：AppScope目录下的资源文件会合入到Module下面资源目录中，如果两个目录下存在重名文件，编译打包后只会保留AppScope目录下的资源文件。
 - **module配置文件**：AppScope目录下的app.json5文件字段会合入到Module下面的module.json5文件之中，编译后生成HAP或HSP最终的module.json文件。
 
-> **说明：**
->
-> 在编译HAP和HSP时，会把它们所依赖的HAR直接编译到HAP和HSP中。
 
 ## 发布态包结构
 
 每个应用中至少包含一个.hap文件，可能包含若干个.hsp文件、也可能不含，一个应用中的所有.hap与.hsp文件合在一起称为**Bundle**，其对应的bundleName是应用的唯一标识（详见[app.json5配置文件](app-configuration-file.md)中的bundleName标签）。
 
-当应用发布上架到应用市场时，需要将Bundle打包为一个.app后缀的文件用于上架，这个.app文件称为**App Pack**（Application Package），与此同时，DevEco Studio工具自动会生成一个**pack.info**文件。**pack.info**文件描述了App Pack中每个HAP和HSP的属性，包含APP中的bundleName和versionCode信息、以及Module中的name、type和abilities等信息。
+当应用发布上架到应用市场时，需要将Bundle打包为一个.app后缀的文件用于上架，这个.app文件称为**App Pack**（Application Package），与此同时，DevEco Studio工具会自动生成一个**pack.info**文件。**pack.info**文件描述了App Pack中每个HAP和HSP的属性，包含APP中的bundleName和versionCode信息、以及Module中的name、type和abilities等信息。
 
 > **说明：**
 >

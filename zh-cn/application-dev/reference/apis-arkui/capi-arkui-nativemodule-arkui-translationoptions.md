@@ -1,5 +1,13 @@
 # ArkUI_TranslationOptions
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 ## 概述
 
 定义组件转场时的平移效果对象。

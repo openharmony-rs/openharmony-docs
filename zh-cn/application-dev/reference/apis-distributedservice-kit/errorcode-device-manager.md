@@ -1,4 +1,10 @@
 # 设备管理错误码
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
 >
@@ -9,6 +15,10 @@
 **错误信息**
 
 Failed to execute the function.
+
+**错误描述**
+
+业务调用时，服务内部异常导致调用失败。
 
 **可能原因**
 
@@ -24,6 +34,10 @@ Failed to execute the function.
 
 Failed to obtain the service.
 
+**错误描述**
+
+服务启动异常, 业务访问服务失败。
+
 **可能原因**
 
 服务未启动或者服务启动失败。
@@ -37,6 +51,10 @@ Failed to obtain the service.
 **错误信息**
 
 Authentication unavailable.
+
+**错误描述**
+
+业务调用时，上一次认证业务未结束，导致本次调用不可用。
 
 **可能原因**
 
@@ -52,6 +70,10 @@ Authentication unavailable.
 
 Discovery unavailable.
 
+**错误描述**
+
+业务调用时，上一次发现业务未结束，导致本次调用不可用。
+
 **可能原因**
 
 上一次发现业务未结束。
@@ -65,6 +87,10 @@ Discovery unavailable.
 **错误信息**
 
 Publish unavailable.
+
+**错误描述**
+
+业务调用时，上一次发布业务未结束，导致本次调用不可用。
 
 **可能原因**
 
@@ -80,6 +106,10 @@ Publish unavailable.
 
 Failed to get data from the cloud.
 
+**错误描述**
+
+网络异常，从云端获取数据失败。
+
 **可能原因**
 
 网络链路异常，或网络请求返回异常信息。
@@ -93,6 +123,10 @@ Failed to get data from the cloud.
 **错误信息**
 
 A login account is required.
+
+**错误描述**
+
+业务调用需要登录账号。
 
 **可能原因**
 
@@ -108,6 +142,10 @@ A login account is required.
 
 The device name contains non-compliant content.
 
+**错误描述**
+
+设备名称含有非法信息，无法使用。
+
 **可能原因**
 
 修改的设备名称中含有非法的信息。
@@ -121,6 +159,10 @@ The device name contains non-compliant content.
 **错误信息**
 
 Only one stream can be created for the current session.
+
+**错误描述**
+
+每个会话只能创建一个传输流。
 
 **可能原因**
 
@@ -136,6 +178,10 @@ Only one stream can be created for the current session.
 
 The stream at the receive end is not started.
 
+**错误描述**
+
+接收端的传输流未启动。
+
 **可能原因**
 
 接收端未启动。
@@ -150,6 +196,10 @@ The stream at the receive end is not started.
 
 Bitrate not supported.
 
+**错误描述**
+
+比特率未支持。
+
 **可能原因**
 
 配置的比特率与设备支持的比特率不匹配。
@@ -163,6 +213,10 @@ Bitrate not supported.
 **错误信息**
 
 Color space not supported.
+
+**错误描述**
+
+色彩空间未支持。
 
 **可能原因**
 

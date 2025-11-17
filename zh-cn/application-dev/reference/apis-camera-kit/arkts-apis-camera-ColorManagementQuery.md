@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -33,7 +33,7 @@ getSupportedColorSpaces(): Array\<colorSpaceManager.ColorSpace\>
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)>| 支持的色彩空间列表。     |
+| Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)>| 支持的色彩空间列表。若接口调用失败，返回undefined。    |
 
 **示例：**
 

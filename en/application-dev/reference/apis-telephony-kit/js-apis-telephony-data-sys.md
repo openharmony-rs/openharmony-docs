@@ -1,5 +1,12 @@
 # @ohos.telephony.data (Cellular Data) (System API)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **data** module provides basic mobile data management functions. With the APIs provided by this module, you can set the default slot of the SIM card used for cellular data services and enable or disable cellular data services and data roaming.
 
 > **NOTE**
@@ -58,10 +65,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.setDefaultCellularDataSlotId(0, (err: BusinessError) => {
-    if(err){
-        console.error(`setDefaultCellularDataSlotId fail,callback: err->${JSON.stringify(err)}.`);
-    }else{
-        console.log(`setDefaultCellularDataSlotId success`);
+    if(err) {
+        console.error(`setDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
+    } else {
+        console.info(`setDefaultCellularDataSlotId success`);
     }
 });
 ```
@@ -113,9 +120,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.setDefaultCellularDataSlotId(0).then(() => {
-    console.log(`setDefaultCellularDataSlotId success.`);
+    console.info(`setDefaultCellularDataSlotId success.`);
 }).catch((err: BusinessError) => {
-    console.error(`setDefaultCellularDataSlotId fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`setDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -159,10 +166,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.enableCellularData((err: BusinessError) => {
-    if(err){
-        console.error(`enableCellularData fail,callback: callback: err->${JSON.stringify(err)}`);
-    }else{
-        console.log(`enableCellularData success`);
+    if(err) {
+        console.error(`enableCellularData fail. code: ${err.code}, message: ${err.message}`);
+    } else {
+        console.info(`enableCellularData success`);
     }
 });
 ```
@@ -204,9 +211,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.enableCellularData().then(() => {
-    console.log(`enableCellularData success.`);
+    console.info(`enableCellularData success.`);
 }).catch((err: BusinessError) => {
-    console.error(`enableCellularData fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`enableCellularData fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -249,10 +256,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.disableCellularData((err: BusinessError) => {
-    if(err){
-        console.error(`disableCellularData fail,callback: callback: err->${JSON.stringify(err)}`);
-    }else{
-        console.log(`disableCellularData success`);
+    if(err) {
+        console.error(`disableCellularData fail. code: ${err.code}, message: ${err.message}`);
+    } else {
+        console.info(`disableCellularData success`);
     }
 });
 ```
@@ -294,9 +301,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.disableCellularData().then(() => {
-    console.log(`disableCellularData success.`);
+    console.info(`disableCellularData success.`);
 }).catch((err: BusinessError) => {
-    console.error(`disableCellularData fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`disableCellularData fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -340,10 +347,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.enableCellularDataRoaming(0, (err: BusinessError) => {
-    if(err){
-        console.error(`enableCellularDataRoaming fail,callback: err->${JSON.stringify(err)}`);
-    }else{
-        console.log(`enableCellularDataRoaming success`);
+    if(err) {
+        console.error(`enableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
+    } else {
+        console.info(`enableCellularDataRoaming success`);
     }
 });
 ```
@@ -393,9 +400,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.enableCellularDataRoaming(0).then(() => {
-    console.log(`enableCellularDataRoaming success.`);
+    console.info(`enableCellularDataRoaming success.`);
 }).catch((err: BusinessError) => {
-    console.error(`enableCellularDataRoaming fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`enableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -439,10 +446,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.disableCellularDataRoaming(0, (err: BusinessError) => {
-    if(err){
-        console.error(`disableCellularDataRoaming fail,callback: err->${JSON.stringify(err)}`);
-    }else{
-        console.log(`disableCellularDataRoaming success`);
+    if(err) {
+        console.error(`disableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
+    } else {
+        console.info(`disableCellularDataRoaming success`);
     }
 });
 ```
@@ -492,8 +499,8 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.disableCellularDataRoaming(0).then(() => {
-    console.log(`disableCellularDataRoaming success.`);
+    console.info(`disableCellularDataRoaming success.`);
 }).catch((err: BusinessError) => {
-    console.error(`disableCellularDataRoaming fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`disableCellularDataRoaming fail. code: ${err.code}, message: ${err.message}`);
 });
 ```

@@ -1,4 +1,11 @@
-# @ohos.app.ability.InsightIntentEntryExecutor (Base Class for Intent Execution of @InsightIntentEntry)
+# @ohos.app.ability.InsightIntentEntryExecutor (Base Class for @InsightIntentEntry Intent Execution)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The module provides the base class for implementing the execution of intents decorated with [@InsightIntentEntry](js-apis-app-ability-InsightIntentDecorator.md#insightintententry). It must be used together with the @InsightIntentEntry decorator.
 
@@ -71,7 +78,7 @@ const LOG_TAG: string = 'testTag-EntryIntent';
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('app.media.app_icon'),
+  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   abilityName: 'EntryAbility',

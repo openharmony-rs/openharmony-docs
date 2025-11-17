@@ -1,29 +1,68 @@
-# Screen Hopping Error Codes
+# Device Status Awareness Error Codes
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @dilligencer-->
+<!--Designer: @zou_ye-->
+<!--Tester: @judan-->
+<!--Adviser: @hu-zhiqiong-->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 20900001 Input Device Operation Failed
+## 32500001 Abnormal Service
 
 **Error Message**
 
-Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status.
+Service exception.
 
-**Description**
+**Symptom**
 
-This error code is reported if the screen hopping status is abnormal when the screen hopping API is called.
+This error code is reported if a service exception occurs when the **on** or **off** API of the deviceStatus module is called.
 
 **Possible Causes**
 
-1. When screen hopping is initiated, the local device is in the hopped state.
-2. When screen hopping is disabled, the local device is in the free state.
-3. When screen hopping is disabled, the local device is in the hopping state.
-4. A system error (for example, null pointer, container exception, or IPC exception) has occurred.
-5. The native API call is abnormal, or the native API status is invalid.
+The service status is abnormal.
 
-**Procedure**
+**Solution**
 
-1. When initiating screen hopping, make sure that the local device is not in the hopped state.
-2. When disabling screen hopping, make sure that the local device is not in the free state.
-3. When disabling screen hopping, make sure that the local device is not in the hopping state.
+1. Retry the operation at a specified interval (for example, 1s) or at an exponential increase interval.
+2. If the operation fails for three consecutive times, stop the retry. During this period, you can preferentially obtain the device list to check for device availability.
+
+## 32500002 Subscription Failed
+
+**Error Message**
+
+Subscription failed.
+
+**Symptom**
+
+This error code is reported if subscription fails when the **on** API of the deviceStatus module is called.
+
+**Possible Causes**
+
+Subscription to change events has failed.
+
+**Solution**
+
+1. Retry the operation at a specified interval (for example, 1s) or at an exponential increase interval.
+2. If the operation fails for three consecutive times, stop the retry. 
+
+## 32500003 Unsubscription Failed
+
+**Error Message**
+
+Unsubscription failed.
+
+**Symptom**
+
+This error code is reported if unsubscription fails when the **off** API of the deviceStatus module is called.
+
+**Possible Causes**
+
+Unsubscription from change events has failed.
+
+**Solution**
+
+1. Retry the operation at a specified interval (for example, 1s) or at an exponential increase interval.
+2. If the operation fails for three consecutive times, stop the retry. 

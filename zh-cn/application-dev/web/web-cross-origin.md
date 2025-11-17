@@ -180,8 +180,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
         // 使用file协议通过XMLHttpRequest跨域访问本地js文件。
   			var xmlHttpReq = new XMLHttpRequest();
   			xmlHttpReq.onreadystatechange = function(){
-  			    console.log("readyState:" + xmlHttpReq.readyState);
-  			    console.log("status:" + xmlHttpReq.status);
+  			    console.info("readyState:" + xmlHttpReq.readyState);
+  			    console.info("status:" + xmlHttpReq.status);
   				if(xmlHttpReq.readyState == 4){
   				    if (xmlHttpReq.status == 200) {
                   // 如果ets侧正确设置路径列表，则此处能正常获取资源

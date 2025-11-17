@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 铃声播放器提供了系统铃声的播放、配置、获取信息等功能。
 
@@ -29,10 +29,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
-| 名称      | 类型            |必填   | 说明                              |
-| --------- | -------------- | ---- | --------------------------------- |
-| volume    | number         | 是   | 指定的相对音量大小，取值范围为[0.00, 1.00]，1表示最大音量，即100%。 |
-| loop      | boolean        | 是   | 是否开启循环播放，true表示开启循环播放，false表示不开启循环播放。 |
+| 名称      | 类型            |只读   |可选   | 说明                              |
+| --------- | -------------- | ---- | ---- | --------------------------------- |
+| volume    | number         | 否   | 否   | 指定的相对音量大小，取值范围为[0.00, 1.00]，1表示最大音量，即100%。 |
+| loop      | boolean        | 否   | 否   | 是否开启循环播放，true表示开启循环播放，false表示不开启循环播放。 |
 
 ## RingtonePlayer
 

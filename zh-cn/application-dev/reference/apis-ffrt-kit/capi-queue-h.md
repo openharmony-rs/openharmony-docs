@@ -228,6 +228,7 @@ FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_funct
 **描述**
 
 设置串行队列超时回调方法。
+不建议在`f`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 10
 
