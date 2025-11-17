@@ -4665,6 +4665,7 @@ export default class EntryAbility extends UIAbility {
         try {
           // 调用setTitleButtonVisible接口，隐藏主窗标题栏最大化、最小化、分屏按钮。
           mainWindow?.setTitleButtonVisible(false, false, false);
+          console.info('Succeeded in setTitleButtonVisible.');
         } catch (exception) {
           let err = exception as BusinessError;
           console.error(Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message});
