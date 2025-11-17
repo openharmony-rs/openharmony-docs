@@ -25815,11 +25815,6 @@
 						"end_line":210,
 						"name":"FuncAbility_Cold",
 						"start_line":19
-					},
-					{
-						"end_line":250,
-						"name":"FuncAbility_Window",
-						"start_line":21
 					}
 				]
 			},
@@ -25905,43 +25900,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets",
-				"functions":[
-					{
-						"end_line":20,
-						"name":"UIAbility",
-						"start_line":16
-					},
-					{
-						"end_line":19,
-						"name":"UIAbility_label",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets",
-				"functions":[
-					{
-						"end_line":53,
-						"name":"MyParcelable",
-						"start_line":19
-					},
-					{
-						"end_line":102,
-						"name":"CalleeAbility",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/StartUIAbilityByCaller/entry/src/main/ets/pages/Index.ets",
-				"functions":[
-					{
-						"end_line":100,
-						"name":"startAbilityByCall",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
