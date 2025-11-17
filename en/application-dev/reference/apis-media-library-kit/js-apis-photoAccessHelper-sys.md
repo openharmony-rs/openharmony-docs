@@ -1934,7 +1934,7 @@ Starts asset analysis.
 
 | Name   | Type               | Mandatory| Description                                                        |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type      | [AnalysisType](#analysistype11) | Yes  | Smart analysis type.                                    |
+| type      | [AnalysisType](#analysistype11) | Yes  | Smart analysis type. Only **ANALYSIS_SEARCH_INDEX** is supported.                                    |
 | assetUris | Array&lt;string&gt; | No  | Array of asset URIs.<br>- If this parameter is specified, only the given assets are analyzed.<br>- If this parameter is left blank, full analysis is performed.|
 
 **Return value**
