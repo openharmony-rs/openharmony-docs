@@ -7,6 +7,10 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
+```
+struct OH_Filter_ColorMatrix {...}
+```
+
 ## Overview
 
 Describes a matrix used to create an effect filter.

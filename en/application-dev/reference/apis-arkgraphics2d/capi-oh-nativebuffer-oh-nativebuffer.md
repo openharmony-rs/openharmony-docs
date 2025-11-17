@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## Overview
 
 Provides the declaration of an **OH_NativeBuffer** struct.

@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_RecordCmdUtils OH_Drawing_RecordCmdUtils
+```
+
 ## Overview
 
 Defines the recording command tool, which is used to generate recording commands.

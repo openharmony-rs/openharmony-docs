@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct NativeWindowBuffer OHNativeWindowBuffer
+```
+
 ## Overview
 
 Provides the capability of accessing the **OHNativeWindowBuffer**.

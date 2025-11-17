@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Matrix OH_Drawing_Matrix
+```
+
 ## Overview
 
 Defines a struct for a matrix, which is used to describe coordinate transformation.
