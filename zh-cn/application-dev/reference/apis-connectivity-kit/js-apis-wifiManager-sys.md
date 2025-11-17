@@ -1,4 +1,4 @@
-# @ohos.wifiManager (WLAN)（系统接口）
+****************# @ohos.wifiManager (WLAN)（系统接口）
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -157,7 +157,7 @@ WLAN配置信息。
 | configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
 | isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。|
-| isRandomMacDisabled<sup>21+</sup> | boolean | 否 | 是 | 是否禁用随机mac。false:未禁用随机mac，true：禁用随机mac。<br /> **系统接口：** 此接口为系统接口。|
+| isRandomMacDisabled<sup>21+</sup> | boolean | 否 | 是 | 是否禁用随机MAC地址。false:未禁用随机MAC地址，true：禁用随机MAC地址。<br /> **系统接口：** 此接口为系统接口。|
 ## IpType<sup>9+</sup>
 
 表示IP类型的枚举。
@@ -1802,7 +1802,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 isRandomMacDisabled(): boolean
 
-随机mac是否被禁用。
+随机MAC地址是否被禁用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1814,7 +1814,7 @@ isRandomMacDisabled(): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:禁用随机mac，&nbsp;false:未随机mac。|
+  | boolean | true:禁用随机MAC地址，&nbsp;false:未禁用随机MAC地址。|
 
 **错误码：**
 
