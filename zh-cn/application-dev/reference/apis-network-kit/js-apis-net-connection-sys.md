@@ -445,11 +445,12 @@ setProxyMode(mode: ProxyMode): Promise\<void\>
 **示例：**
 
 ```ts
-import { connection, ProxyMode } from '@kit.NetworkKit';
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.setProxyMode(ProxyMode.AUTO).then(() => {
+connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
     console.info("Proxy mode set successfully.");
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error setting proxy mode:", error);
 });
 ```
