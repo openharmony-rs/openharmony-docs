@@ -4,8 +4,9 @@ hfp模块提供了访问蓝牙呼叫接口的方法。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.hfp (蓝牙hfp模块)](js-apis-bluetooth-hfp.md)。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.hfp (蓝牙hfp模块)](js-apis-bluetooth-hfp.md)。
 
 
 ## 导入模块
@@ -26,6 +27,10 @@ connect(deviceId: string): void
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -72,6 +77,10 @@ disconnect(deviceId: string): void
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

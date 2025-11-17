@@ -4,7 +4,8 @@ constant模块提供了蓝牙中常量的定义。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 
@@ -19,6 +20,10 @@ import { constant } from '@kit.ConnectivityKit';
 蓝牙profile枚举。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
@@ -36,6 +41,10 @@ import { constant } from '@kit.ConnectivityKit';
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                  | 值  | 说明             |
 | ------------------- | ---- | -------------- |
 | STATE_DISCONNECTED  | 0    | 表示profile已断连。  |
@@ -49,6 +58,10 @@ import { constant } from '@kit.ConnectivityKit';
 枚举，蓝牙设备主要类别。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                  | 值    | 说明         |
 | ------------------- | ------ | ---------- |
@@ -70,6 +83,10 @@ import { constant } from '@kit.ConnectivityKit';
 枚举，主要次要蓝牙设备类别。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                       | 值    | 说明              |
 | ---------------------------------------- | ------ | --------------- |
@@ -166,6 +183,10 @@ import { constant } from '@kit.ConnectivityKit';
 枚举，表示Profile的UUID。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                   | 值    | 说明              |
 | ------------------------------------| ------ | --------------- |

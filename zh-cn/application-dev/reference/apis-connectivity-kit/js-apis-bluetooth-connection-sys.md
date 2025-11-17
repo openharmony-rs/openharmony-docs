@@ -4,8 +4,9 @@ connection模块提供了对蓝牙操作和管理的方法。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.connection (蓝牙connection模块)](js-apis-bluetooth-connection.md)
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.connection (蓝牙connection模块)](js-apis-bluetooth-connection.md)
 
 
 ## 导入模块
@@ -26,6 +27,10 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -79,6 +84,10 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -135,6 +144,10 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                    |
@@ -182,6 +195,10 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -239,6 +256,10 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                    |
@@ -283,6 +304,10 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -334,6 +359,10 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                  |
@@ -379,6 +408,10 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -427,6 +460,10 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -478,6 +515,10 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -531,6 +572,10 @@ getRemoteProductId(deviceId: string): string
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                |
@@ -577,6 +622,10 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -627,6 +676,10 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型      | 必填   | 说明                               |
@@ -674,6 +727,10 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH（该权限仅系统应用可申请）。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -734,6 +791,10 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -811,6 +872,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | pinType | [PinType](#pintype) | 否    | 否    | 表示要配对的设备类型。<br/>此接口为系统接口。   |
@@ -820,6 +885,10 @@ try {
 控制命令的配置参数。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -835,6 +904,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
@@ -857,6 +930,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
 | DEVICE_TYPE_DEFAULT<sup>12+</sup> | 0 | 默认设备类型，与原类型一致。<br/>此接口为系统接口。 |
@@ -875,6 +952,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId | string | 否    | 否    | 表示远端设备的MAC地址。<br/>此接口为系统接口。 |
@@ -885,6 +966,10 @@ try {
 枚举，控制类型。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
@@ -900,6 +985,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称    | 值   | 说明       |
 | ------- | ---- | ---------- |
 | DISABLE | 0    | 表示禁用。 |
@@ -912,6 +1001,10 @@ try {
 枚举，控制对象。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 值   | 说明                 |
 | -------------- | ---- | -------------------- |
@@ -926,6 +1019,10 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | trustedPairedDevices  | Array&lt;[TrustedPairedDevice](#trustedpaireddevice15)&gt; | 否    | 否    | 表示云设备列表。   |
@@ -935,6 +1032,10 @@ try {
 云设备信息。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -949,8 +1050,8 @@ try {
 | serviceId  | string | 否    | 否    | 表示设备id。   |
 | deviceName  | string | 否    | 否    | 表示设备名字。   |
 | uuids  | string | 否    | 否    | 表示设备的UUID。   |
-| bluetoothClass  | number | 否    | 否    | 表示远端设备类型。   |
+| bluetoothClass  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 表示远端设备类型。   |
 | token  | ArrayBuffer | 否    | 否    | 表示设备的token信息。   |
-| deviceNameTime  | number | 否    | 否    | 表示设备名字的修改时间。   |
+| deviceNameTime  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 表示设备名字的修改时间。   |
 | secureAdvertisingInfo  | ArrayBuffer | 否    | 否    | 表示设备广播信息。   |
-| pairState  | number | 否    | 否    | 表示设备配对状态。   |
+| pairState  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 表示设备配对状态。   |

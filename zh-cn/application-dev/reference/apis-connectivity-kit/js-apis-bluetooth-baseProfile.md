@@ -4,7 +4,8 @@ baseProfile模块提供了基础的profile方法。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 
@@ -23,6 +24,10 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
 | [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | 蓝牙设备的profile连接状态。 |
@@ -36,9 +41,9 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 | 名称     | 类型                           | 只读 | 可选 | 说明                            |
 | -------- | ----------------------------- | ---- | ---- | ------------------------------- |
-| deviceId | string                        | 否   | 否   | 蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。   |
-| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | 蓝牙设备的profile连接状态。 |
-| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | 断连的原因。|
+| deviceId | string                        | 否   | 否   | 蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | 蓝牙设备的profile连接状态。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | 断连的原因。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 
 
 ## DisconnectCause<sup>12+</sup>
@@ -46,6 +51,10 @@ type ProfileConnectionState = constant.ProfileConnectionState
 枚举，断连的原因。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
@@ -66,6 +75,10 @@ getConnectedDevices(): Array&lt;string&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -109,6 +122,10 @@ getConnectionState(deviceId: string): ProfileConnectionState
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

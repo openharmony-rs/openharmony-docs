@@ -4,8 +4,9 @@ a2dp模块提供了访问蓝牙音频接口的方法。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.a2dp (蓝牙a2dp模块)](js-apis-bluetooth-a2dp.md)。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.a2dp (蓝牙a2dp模块)](js-apis-bluetooth-a2dp.md)。
 
 
 ## 导入模块
@@ -26,6 +27,10 @@ connect(deviceId: string): void
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -73,6 +78,10 @@ disconnect(deviceId: string): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
@@ -118,6 +127,10 @@ isAbsoluteVolumeSupported(deviceId: string, callback: AsyncCallback&lt;boolean&g
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -166,6 +179,10 @@ isAbsoluteVolumeSupported(deviceId: string): Promise&lt;boolean&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -219,6 +236,10 @@ isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
@@ -266,6 +287,10 @@ isAbsoluteVolumeEnabled(deviceId: string): Promise&lt;boolean&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -319,6 +344,10 @@ enableAbsoluteVolume(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
@@ -368,6 +397,10 @@ enableAbsoluteVolume(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -422,6 +455,10 @@ disableAbsoluteVolume(deviceId: string, callback: AsyncCallback&lt;void&gt;): vo
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
@@ -471,6 +508,10 @@ disableAbsoluteVolume(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -523,6 +564,10 @@ getCurrentCodecInfo(deviceId: string): CodecInfo
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -624,6 +669,10 @@ setCurrentCodecInfo(deviceId: string, codecInfo: CodecInfo): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
@@ -666,7 +715,9 @@ try {
 
 ### disableAutoPlay<sup>12+</sup>
 
-disableAutoPlay(deviceId: string, duration: number): Promise&lt;void&gt;
+ArkTS-Dyn: disableAutoPlay(deviceId: string, duration: number): Promise&lt;void&gt;
+
+ArkTS-Sta: disableAutoPlay(deviceId: string, duration: int): Promise&lt;void&gt;
 
 限制设备在连接成功的若干毫秒内播放音乐。使用Promise异步回调。
 
@@ -676,12 +727,16 @@ disableAutoPlay(deviceId: string, duration: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| duration | number | 是    | 拦截时长，取值范围：[3000, 20000]，单位：ms。 |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 拦截时长，取值范围：[3000, 20000]，单位：ms。 |
 
 **返回值：**
 
@@ -705,6 +760,8 @@ disableAutoPlay(deviceId: string, duration: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
@@ -715,6 +772,21 @@ try {
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+let a2dpSrc: a2dp.A2dpSourceProfile = a2dp.createA2dpSrcProfile();
+try {
+    let durationNumber: int = 1000;
+    a2dpSrc.disableAutoPlay('XX:XX:XX:XX:XX:XX', durationNumber).then(() => {
+        console.info('disableAutoPlay success');
+    });
+} catch (err: BusinessError) {
+    console.error('disableAutoPlay_promise get errCode:' + err.code + ',errMessage:' + err.message);
 }
 ```
 
@@ -730,6 +802,10 @@ enableAutoPlay(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -774,7 +850,9 @@ try {
 
 ### getAutoPlayDisabledDuration<sup>12+</sup>
 
-getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
+ArkTS-Dyn: getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getAutoPlayDisabledDuration(deviceId: string): Promise&lt;int&gt;
 
 获取拦截时长或自动播放开关。使用Promise异步回调。
 
@@ -783,6 +861,10 @@ getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -794,7 +876,7 @@ getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| Promise&lt;number&gt; | 以Promise的形式返回结果。number为返回的拦截时长，单位：ms。如果返回-1，则表示允许设备在连接成功后自动播放音乐。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | 以Promise的形式返回结果。number为返回的拦截时长，单位：ms。如果返回-1，则表示允许设备在连接成功后自动播放音乐。 |
 
 **错误码**：
 
@@ -812,6 +894,8 @@ getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
@@ -821,5 +905,19 @@ try {
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+let a2dpSrc: a2dp.A2dpSourceProfile = a2dp.createA2dpSrcProfile();
+try {
+    a2dpSrc.getAutoPlayDisabledDuration('XX:XX:XX:XX:XX:XX').then((data: int) => {
+        console.info('getAutoPlayDisabledDuration success');
+    });
+} catch (err: BusinessError) {
+    console.error('getAutoPlayDisabledDuration get errCode:' + err.code + ',errMessage:' + err.message);
 }
 ```
