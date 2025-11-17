@@ -35,8 +35,6 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_NativeBuffer_Usage](#oh_nativebuffer_usage) | OH_NativeBuffer_Usage | OH_NativeBuffer的用途。 |
-| [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | OH_NativeBuffer的格式。 |
-| [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | OH_NativeBuffer的转换类型。 |
 | [OH_NativeBuffer_ColorGamut](#oh_nativebuffer_colorgamut) | OH_NativeBuffer_ColorGamut | OH_NativeBuffer的色域。 |
 
 ### 函数
@@ -84,96 +82,6 @@ OH_NativeBuffer的用途。
 | NATIVEBUFFER_USAGE_HW_TEXTURE = (1ULL << 9) | GPU可读。<br/>**起始版本：** 12 |
 | NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) | CPU可直接映射。<br/>**起始版本：** 12 |
 | NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) | 512字节对齐。<br/>**起始版本：** 12 |
-
-### OH_NativeBuffer_Format
-
-```
-enum OH_NativeBuffer_Format
-```
-
-**描述**
-
-OH_NativeBuffer的格式。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
-
-**起始版本：** 10
-
-| 枚举项 | 描述 |
-| -- | -- |
-| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 | CLUT8格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_CLUT1 | CLUT1格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_CLUT4 | CLUT4格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_4444 | RGBA4444格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGB_444 | RGB444格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_5551 | RGBX5551格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5551 | RGBA5551格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGB_555 | RGB555格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_8888 | RGBX8888格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | RGBA8888格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RGB_888 | RGB888格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BGR_565 | BGR565格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_4444 | BGRX4444格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_4444 | BGRA4444格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_5551 | BGRX5551格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888格式。 |
-| NATIVEBUFFER_PIXEL_FMT_YUV_422_I | YUV422 interleaved 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP | YCBCR422 semi-planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP | YCRCB422 semi-planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP | YCBCR420 semi-planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP | YCRCB420 semi-planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P | YCBCR422 planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P | YCRCB422 planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P | YCBCR420 planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P | YCRCB420 planar 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG | YUYV422 packed 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed 格式。 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed 格式。 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed 格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed 格式。 |
-| NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB格式。<br/>**起始版本：** 15 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float格式。<br/>**起始版本：** 15 |
-| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8格式。<br/>**起始版本：** 20 |
-| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16格式。<br/>**起始版本：** 20 |
-| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | vender mask 格式。<br/>**起始版本：** 12|
-| NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | 无效格式。 |
-
-### OH_NativeBuffer_TransformType
-
-```
-enum OH_NativeBuffer_TransformType
-```
-
-**描述**
-
-OH_NativeBuffer的转换类型。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| NATIVEBUFFER_ROTATE_NONE = 0 | 不旋转。 |
-| NATIVEBUFFER_ROTATE_90 | 旋转90度。 |
-| NATIVEBUFFER_ROTATE_180 | 旋转180度。 |
-| NATIVEBUFFER_ROTATE_270 | 旋转270度。 |
-| NATIVEBUFFER_FLIP_H | 水平翻转。 |
-| NATIVEBUFFER_FLIP_V | 垂直翻转。 |
-| NATIVEBUFFER_FLIP_H_ROT90 | 水平翻转并旋转90度。 |
-| NATIVEBUFFER_FLIP_V_ROT90 | 垂直翻转并旋转90度。 |
-| NATIVEBUFFER_FLIP_H_ROT180 | 水平翻转并旋转180度。 |
-| NATIVEBUFFER_FLIP_V_ROT180 | 垂直翻转并旋转180度。 |
-| NATIVEBUFFER_FLIP_H_ROT270 | 水平翻转并旋转270度。 |
-| NATIVEBUFFER_FLIP_V_ROT270 | 垂直翻转并旋转270度。 |
 
 ### OH_NativeBuffer_ColorGamut
 
