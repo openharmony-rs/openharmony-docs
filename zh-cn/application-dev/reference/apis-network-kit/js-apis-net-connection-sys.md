@@ -477,10 +477,11 @@ getProxyMode(): Promise\<ProxyMode\>
 
 ```ts
 import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getProxyMode().then(mode => {
     console.info("Current proxy mode:", mode);
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error getting proxy mode:", error);
 });
 ```
