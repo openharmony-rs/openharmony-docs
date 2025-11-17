@@ -203,6 +203,9 @@ struct FreezeChild {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
+const PAGE_ONE_INDEX = 1;
+const PAGE_TWO_INDEX = 2;
+const PAGE_THREE_INDEX = 3;
 
 @Entry
 @ComponentV2
@@ -248,7 +251,7 @@ struct MyNavigationTestStack {
 @ComponentV2
 struct PageOneStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 1;
+  @Local index: number = PAGE_ONE_INDEX;
   @Param message: number = 0;
 
   build() {
@@ -277,7 +280,7 @@ struct PageOneStack {
 @ComponentV2
 struct PageTwoStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 2;
+  @Local index: number = PAGE_TWO_INDEX;
   @Param message: number = 0;
 
   build() {
@@ -306,7 +309,7 @@ struct PageTwoStack {
 @ComponentV2
 struct PageThreeStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 3;
+  @Local index: number = PAGE_THREE_INDEX;
   @Param message: number = 0;
 
   build() {
@@ -337,7 +340,7 @@ struct PageThreeStack {
 @ComponentV2({ freezeWhenInactive: true })
 struct NavigationContentMsgStack {
   @Param message: number = 0;
-  @Param index: number = 0;
+  @Param index: number = PAGE_ONE_INDEX;
 
   @Monitor('message') info() {
     hilog.info(DOMAIN, 'testTag', `freeze-test NavigationContent message callback ${this.message}`);
