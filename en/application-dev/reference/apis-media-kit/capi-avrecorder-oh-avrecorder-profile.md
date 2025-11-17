@@ -39,5 +39,5 @@ For details about the value range of each parameter, see [AVRecorderProfile](ark
 | int32_t videoFrameWidth | Video width.|
 | int32_t videoFrameHeight | Video height.|
 | int32_t videoFrameRate | Video frame rate.|
-| bool isHdr | Whether to record HDR videos.|
-| bool enableTemporalScale | Whether to enable temporal scaling encoding mode.|
+| bool isHdr | Whether HDR videos are recorded.<br> **true** if recorded, **false** otherwise.<br> The default value is **false**.|
+| bool enableTemporalScale | Whether temporal scalable encoding is enabled.<br> When this parameter is set to **true**, some frames in the encoded output stream can be skipped to optimize encoding efficiency. When it is set to **false**, all frames in the encoded output stream must be encoded without skipping. For details, see [Temporally Scalable Video Coding](../../media/avcodec/video-encoding-temporal-scalability.md)<br> The default value is **false**.|
