@@ -1085,7 +1085,7 @@ ArkTS1.2示例：
 ```ts
 import pasteboard from '@ohos.pasteboard';
 import { Entry, Component, Column, ColumnOptions } from '@ohos.arkui.component';
-import { Text, RichEditor, RichEditorController, RichEditorOptions, Color, HorizontalAlign, PasteEvent } from '@ohos.arkui.component';
+import { Text, RichEditor, RichEditorController, RichEditorOptions, RichEditorSelection, Color, HorizontalAlign, PasteEvent } from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -1096,12 +1096,12 @@ struct on_cut_copy_paste {
   infoShowOptions: RichEditorOptions = { controller: this.infoShowController } as RichEditorOptions
 
   PopDataFromPasteboard() {
-    let selection = this.controller.getSelection();
+    let selection = this.controller.getSelection() as RichEditorSelection;
     let start = selection.selection[0];
     let end = selection.selection[1];
     if (start == end) {
-      start = this.controller.getCaretOffset();
-      end = this.controller.getCaretOffset();
+      start = this.controller.getCaretOffset() as Int;
+      end = this.controller.getCaretOffset() as Int;
     }
     let moveOffset = 0;
     let sysBoard = pasteboard.getSystemPasteboard();
