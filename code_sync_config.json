@@ -24827,7 +24827,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets",
 				"functions":[
 					{
-						"end_line":94,
+						"end_line":95,
 						"name":"persistence_v2_module_connect_storage_one",
 						"start_line":16
 					}
@@ -24857,7 +24857,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":70,
 						"name":"persistence_v2_module_connect_storage_two",
 						"start_line":16
 					}
