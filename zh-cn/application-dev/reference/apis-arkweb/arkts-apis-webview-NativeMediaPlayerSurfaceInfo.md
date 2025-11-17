@@ -20,7 +20,7 @@
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| id<sup>12+</sup> | string | 是 | surface的id，用于同层渲染的NativeImage的psurfaceid。<br/>详见[NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)。 |
-| rect<sup>12+</sup> | [RectEvent](./arkts-apis-webview-i.md#rectevent12) | 是 | surface的位置信息。 |
+| 名称        | 类型   | 只读 | 可选 |说明                 |
+| ----------- | ------ | -----|------|------------------- |
+| id<sup>12+</sup> | string | 否 | 否 | surface的id，用于同层渲染的NativeImage的psurfaceid。<br/>详见[NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)。 |
+| rect<sup>12+</sup> | [RectEvent](./arkts-apis-webview-i.md#rectevent12) | 否 | 否 | surface的位置信息。 |
