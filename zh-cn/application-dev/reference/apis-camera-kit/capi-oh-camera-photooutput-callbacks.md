@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} PhotoOutput_Callbacks
+typedef struct PhotoOutput_Callbacks {...} PhotoOutput_Callbacks
 ```
 
 ## 概述
