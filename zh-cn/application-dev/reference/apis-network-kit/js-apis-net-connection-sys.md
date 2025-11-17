@@ -396,7 +396,7 @@ connection.factoryReset().then(() => {
 
 ## ProxyMode<sup>20+</sup>
 
-表示代理模式的枚举。
+表示代理模式的枚举。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -459,7 +459,7 @@ connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
 
 getProxyMode(): Promise\<ProxyMode\>
 
-获取当前的代理模式。
+获取当前的代理模式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -471,7 +471,7 @@ getProxyMode(): Promise\<ProxyMode\>
 
 | 类型                        | 说明                          |
 |---------------------------| ------------------------ |
-| Promise\<[ProxyMode](#proxymode20)\> | 返回的Promise对象，包含当前代理模式。 |
+| Promise\<[ProxyMode](#proxymode20)\> | Promise对象，返回当前代理模式。 |
 
 
 **示例：**
