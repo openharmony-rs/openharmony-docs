@@ -16486,7 +16486,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/WrappedBuilder.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":105,
 						"name":"Main_WrappedBuilder",
 						"start_line":15
 					}
@@ -16586,7 +16586,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/LocalStoragePage.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":88,
 						"name":"Main_LocalStoragePage",
 						"start_line":15
 					}
@@ -16606,7 +16606,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/InheritFreezeOptionsPage.ets",
 				"functions":[
 					{
-						"end_line":206,
+						"end_line":205,
 						"name":"Main_InheritFreezeOptionsPage",
 						"start_line":15
 					}
@@ -21311,7 +21311,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV1.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":35,
 						"name":"Parent5_start",
 						"start_line":15
 					}
@@ -21321,7 +21321,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":35,
 						"name":"Parent6_start",
 						"start_line":15
 					}
@@ -21341,7 +21341,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":47,
 						"name":"Parent8_start",
 						"start_line":15
 					}
@@ -21361,7 +21361,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":34,
 						"name":"Parent10_start",
 						"start_line":15
 					}
@@ -21401,7 +21401,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV2.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":41,
 						"name":"Parent14_start",
 						"start_line":15
 					}
@@ -21411,7 +21411,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":50,
 						"name":"Parent15_start",
 						"start_line":15
 					}
@@ -21421,7 +21421,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":61,
 						"name":"Parent16_start",
 						"start_line":15
 					}
@@ -21471,7 +21471,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentInitV1.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":41,
 						"name":"Parent21_start",
 						"start_line":15
 					}
@@ -21481,7 +21481,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":42,
 						"name":"Parent22_start",
 						"start_line":15
 					}
@@ -21501,7 +21501,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":49,
 						"name":"GrandParent2_start",
 						"start_line":15
 					}
@@ -21511,7 +21511,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV1.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":40,
 						"name":"WatchExample1_start",
 						"start_line":15
 					}
@@ -21521,7 +21521,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":41,
 						"name":"MonitorExample1_start",
 						"start_line":15
 					}
@@ -21531,7 +21531,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV1.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":52,
 						"name":"WatchExample2_start",
 						"start_line":15
 					}
@@ -21541,7 +21541,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":50,
 						"name":"MonitorExample2_start",
 						"start_line":15
 					}
@@ -21931,7 +21931,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":62,
 						"name":"freeze_template2_start",
 						"start_line":15
 					}
@@ -21941,7 +21941,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets",
 				"functions":[
 					{
-						"end_line":171,
+						"end_line":170,
 						"name":"freeze_template3_start",
 						"start_line":15
 					}
@@ -22001,7 +22001,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template7/BuilderNode.ets",
 				"functions":[
 					{
-						"end_line":145,
+						"end_line":144,
 						"name":"freeze_template7_start",
 						"start_line":15
 					}
@@ -24877,7 +24877,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":43,
 						"name":"arkts_custom_components_freeze2",
 						"start_line":15
 					}
@@ -24887,7 +24887,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":65,
 						"name":"arkts_custom_components_freeze3",
 						"start_line":15
 					}
@@ -24907,7 +24907,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets",
 				"functions":[
 					{
-						"end_line":204,
+						"end_line":202,
 						"name":"arkts_custom_components_freeze5",
 						"start_line":15
 					}
@@ -24917,7 +24917,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":72,
 						"name":"arkts_custom_components_freeze6",
 						"start_line":16
 					}
@@ -24927,7 +24927,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse1.ets",
 				"functions":[
 					{
-						"end_line":169,
+						"end_line":168,
 						"name":"arkts_custom_components_freeze7",
 						"start_line":15
 					}
@@ -24937,7 +24937,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse2.ets",
 				"functions":[
 					{
-						"end_line":179,
+						"end_line":178,
 						"name":"arkts_custom_components_freeze8",
 						"start_line":15
 					}
@@ -24957,7 +24957,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets",
 				"functions":[
 					{
-						"end_line":176,
+						"end_line":175,
 						"name":"arkts_custom_components_freeze10",
 						"start_line":15
 					}
@@ -24967,7 +24967,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Constraints.ets",
 				"functions":[
 					{
-						"end_line":120,
+						"end_line":119,
 						"name":"arkts_custom_components_freeze11",
 						"start_line":15
 					}
