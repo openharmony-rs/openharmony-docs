@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Camera_FrameShutterInfo
+typedef struct Camera_FrameShutterInfo {...} Camera_FrameShutterInfo
 ```
 
 ## 概述
