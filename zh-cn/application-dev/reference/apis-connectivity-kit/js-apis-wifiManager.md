@@ -866,8 +866,8 @@ removeDevice(id: number): void
 移除网络配置。
 
 - 通过网络配置ID删除已保存的WIFI网络配置信息。
-- 该操作为同步执行，无需异步回调
-- 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络
+- 该操作为同步执行，无需异步回调。
+- 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
@@ -909,9 +909,9 @@ getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取候选网络配置。
 
-- 该接口返回系统中所有已保存但当前未连接的WIFI网络配置
-- 候选网络是指曾经连接过或者手动添加的网络配置
-- 可用于展示可连接的网络列表或进行网络管理操作
+- 该接口返回系统中所有已保存但当前未连接的WIFI网络配置。
+- 候选网络是指曾经连接过或者手动添加的网络配置。
+- 可用于展示可连接的网络列表或进行网络管理操作。
 
 **需要权限：**
 
