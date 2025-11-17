@@ -27,7 +27,7 @@ OH_NativeBuffer的属性配置，用于申请新的OH_NativeBuffer实例或查�
 | -------------- | ------------------------------------------------------------ |
 | int32_t width  | 宽度（像素）。                                               |
 | int32_t height | 高度（像素）。                                               |
-| int32_t format | 像素格式，具体可参见[OH_NativeBuffer_Format](capi-native-buffer-h.md#oh_nativebuffer_format)枚举。 |
+| int32_t format | 像素格式，具体可参见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举。 |
 | int32_t usage  | buffer的用途说明，具体可参见[OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage)枚举。 |
 | int32_t stride | 输出参数。本地窗口缓冲区步幅，单位为Byte。<br/>**起始版本：** 10 |
 
