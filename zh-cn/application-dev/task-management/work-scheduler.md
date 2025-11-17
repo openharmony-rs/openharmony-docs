@@ -153,7 +153,7 @@
    ```
 
 2. 申请延迟任务。
-   <!-- [startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
 
    ```ts
    // 创建workinfo
