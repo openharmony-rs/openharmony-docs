@@ -696,7 +696,9 @@ uiContext.getAttachedFrameNodeById("TestNode");
 
 ### getFrameNodeByUniqueId<sup>12+</sup>
 
-getFrameNodeByUniqueId(id: number): FrameNode | null
+ArkTS-Dyn: getFrameNodeByUniqueId(id: number): FrameNode | null
+
+ArkTS-Sta: getFrameNodeByUniqueId(id: int): FrameNode | null
 
 提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
@@ -707,11 +709,15 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| id | number | 是    | 节点对应的UniqueId                          |
+| id | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 节点对应的UniqueId。                          |
 
 **返回值：**
 
@@ -743,7 +749,9 @@ struct MyComponent {
 
 ### getPageInfoByUniqueId<sup>12+</sup>
 
-getPageInfoByUniqueId(id: number): PageInfo
+ArkTS-Dyn: getPageInfoByUniqueId(id: number): PageInfo
+
+ArkTS-Sta: getPageInfoByUniqueId(id: int): PageInfo
 
 提供getPageInfoByUniqueId接口通过组件的uniqueId获取该节点对应的Router和NavDestination页面信息。
 1. 当uniqueId对应的节点在Page节点中，routerPageInfo属性为其对应的Router信息；
@@ -755,11 +763,15 @@ getPageInfoByUniqueId(id: number): PageInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| id | number | 是    | 节点对应的UniqueId                          |
+| id | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 节点对应的UniqueId。                          |
 
 **返回值：**
 
@@ -1637,7 +1649,9 @@ first child of InsTree : {"$type":"JsView","$ID":2,"type":"custom","state":{"vie
 
 ### getFilteredInspectorTreeById<sup>12+</sup>
 
-getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\>): string
+ArkTS-Dyn: getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\>): string
+
+ArkTS-Sta: getFilteredInspectorTreeById(id: string, depth: int, filters?: Array\<string\>): string
 
 获取指定的组件及其子组件的属性。此接口耗时较长，仅适用于测试场景。
 
@@ -1647,14 +1661,14 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | id      | string          | 是   | 指定的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)id。 |
-| depth   | number          | 是   | 获取子组件的层数。当取值0时，获取指定的组件及其所有的子孙组件的属性。当取值1时，仅获取指定的组件的属性。当取值2时，指定的组件及其1层子组件的属性。以此类推。 |
+| depth   | ArkTS-Dyn: number <br>ArkTS-Sta: int          | 是   | 获取子组件的层数。当取值0时，获取指定的组件及其所有的子孙组件的属性。当取值1时，仅获取指定的组件的属性。当取值2时，指定的组件及其1层子组件的属性。以此类推。 |
 | filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>其余字段仅供测试场景使用。 |
 
 **返回值：** 
@@ -2567,7 +2581,9 @@ uiContext.DynamicSyncScene("dynamicSyncScene");
 
 ### openBindSheet<sup>12+</sup>
 
-openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: number): Promise&lt;void&gt;
+ArkTS-Dyn: openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: int): Promise&lt;void&gt;
 
 创建并弹出以bindSheetContent作为内容的半模态页面，使用Promise异步回调。通过该接口弹出的半模态页面样式完全按照bindSheetContent中设置的样式显示。
 
@@ -2584,13 +2600,17 @@ openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOp
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
 | bindSheetContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 否    |   半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)文档。 |
-| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。 |
+| targetId | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。 |
 
 **返回值：**
 
@@ -2979,7 +2999,9 @@ uiContext.isFollowingSystemFontScale();
 
 ### getMaxFontScale<sup>13+</sup>
 
-getMaxFontScale(): number
+ArkTS-Dyn: getMaxFontScale(): number
+
+ArkTS-Sta: getMaxFontScale(): double
 
 获取当前UI上下文最大字体倍率。
 
@@ -2987,11 +3009,15 @@ getMaxFontScale(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型      | 说明        |
 |---------|-----------|
-| number | 当前UI上下文最大字体倍率。 |
+| ArkTS-Dyn: number <br>ArkTS-Sta: double | 当前UI上下文最大字体倍率。 |
 
 **示例：**
 
@@ -4221,7 +4247,9 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 
 ### on('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
-on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
+ArkTS-Dyn: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
+
+ArkTS-Sta: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, callback: Callback\<observer.NavDestinationInfo\>): void
 
 通过Navigation的uniqueId监听NavDestination组件的状态变化，uniqueId可通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。
 
@@ -4229,12 +4257,16 @@ on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback:
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
-| navigationUniqueId  | number | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| navigationUniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
 
 **示例：**
@@ -4303,7 +4335,9 @@ struct Index {
 
 ### off('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
-off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
+ArkTS-Dyn: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, callback?: Callback\<observer.NavDestinationInfo\>): void
 
 取消通过navigationUniqueId监听NavDestination组件的变化。
 
@@ -4311,12 +4345,16 @@ off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
-| navigationUniqueId  | number | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| navigationUniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                             |
 
 **示例：**
@@ -5818,7 +5856,10 @@ off(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback?: NodeRenderSt
 参考[on('nodeRenderState')](#onnoderenderstate20)接口示例。
 
 ## NodeIdentity<sup>20+</sup>
-type NodeIdentity = string | number
+
+ArkTS-Dyn: type NodeIdentity = string | number
+
+ArkTS-Sta: type NodeIdentity = string | int
 
 组件标识。
 
@@ -5826,10 +5867,14 @@ type NodeIdentity = string | number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型              | 说明                                |
 | ----------------- | --------------------------------- |
 | string      | 指定组件id，该id通过通用属性[id](./arkui-ts/ts-universal-attributes-component-id.md#id)设置。   |
-| number | 系统分配的唯一标识的节点UniqueID，可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。  |
+| ArkTS-Dyn: number <br>ArkTS-Sta: int | 系统分配的唯一标识的节点UniqueID，可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。  |
 
 ## NodeRenderStateChangeCallback<sup>20+</sup>
 type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) => void
@@ -7238,7 +7283,9 @@ router.back({url:'pages/detail'});
 
 ### back<sup>12+</sup>
 
-back(index: number, params?: Object): void
+ArkTS-Dyn: back(index: number, params?: Object): void
+
+ArkTS-Sta: back(index: int, params?: Object): void
 
 返回指定的页面。
 
@@ -7246,11 +7293,15 @@ back(index: number, params?: Object): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index | number | 是    | 跳转目标页面的索引值。 <br/> 取值范围：[0, +∞) |
+| index | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 跳转目标页面的索引值。 <br/> 取值范围：[0, +∞) |
 | params    | Object      | 否    | 页面返回时携带的参数。 |
 
 **示例：**
@@ -7345,7 +7396,9 @@ console.info('current path = ' + page.path);
 
 ### getStateByIndex<sup>12+</sup>
 
-getStateByIndex(index: number): router.RouterState | undefined
+ArkTS-Dyn: getStateByIndex(index: number): router.RouterState | undefined
+
+ArkTS-Sta: getStateByIndex(index: int): router.RouterState | undefined
 
 通过索引值获取对应页面的状态信息。
 
@@ -7353,11 +7406,15 @@ getStateByIndex(index: number): router.RouterState | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[0, +∞) |
+| index    | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 表示要获取的页面索引。 <br/> 取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -7510,7 +7567,9 @@ router.getParams();
 
 ## CustomBuilderWithId<sup>18+</sup>
 
-type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
+ArkTS-Dyn: type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
+
+ArkTS-Sta: type CustomBuilderWithId = (id: int)&nbsp;=&gt;&nbsp;void
 
 组件属性、方法参数可使用CustomBuilderWithId类型来自定义UI描述，并且可以指定组件ID生成用户自定义组件。
 
@@ -7518,11 +7577,15 @@ type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| id | number | 是 | 组件ID |
+| id | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 组件ID。 |
 
 ## TargetInfo<sup>18+</sup>
 
@@ -7532,12 +7595,16 @@ type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| id | string&nbsp;\|&nbsp;number | 否 | 否 | 指定popup或menu绑定的目标节点。<br/>**说明：** <br/>1. 当id是number时，对应组件实例的UniquelD，此id由系统保证唯一性。<br/>2. 当id是string时，对应[通用属性id](arkui-ts/ts-universal-attributes-component-id.md#id)所指定的组件，此id的唯一性需由开发者确保，但实际可能会有多个。 |
-| componentId | number | 否 | 是 | 目标节点所在的自定义组件的UniquelD。当上述id指定为string类型时，可通过此属性圈定范围。方便开发者在一定范围内保证id: string的唯一性。 |
+| id | ArkTS-Dyn: string&nbsp;\|&nbsp;number <br>ArkTS-Sta: string&nbsp;\|&nbsp;int | 否 | 否 | 指定popup或menu绑定的目标节点。<br/>**说明：** <br/>1. 当id是number时，对应组件实例的UniquelD，此id由系统保证唯一性。<br/>2. 当id是string时，对应[通用属性id](arkui-ts/ts-universal-attributes-component-id.md#id)所指定的组件，此id的唯一性需由开发者确保，但实际可能会有多个。 |
+| componentId | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 是 | 目标节点所在的自定义组件的UniquelD。当上述id指定为string类型时，可通过此属性圈定范围。方便开发者在一定范围内保证id: string的唯一性。 |
 
 ## PromptAction
 
@@ -7592,13 +7659,19 @@ try {
 
 ### openToast<sup>18+</sup>
 
-openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
+ArkTS-Dyn: openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
+
+ArkTS-Sta: openToast(options: promptAction.ShowToastOptions): Promise&lt;int&gt;
 
 显示文本提示框并通过Promise返回其id。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7610,7 +7683,7 @@ openToast(options: promptAction.ShowToastOptions): Promise&lt;number&gt;
 
 | 类型             | 说明                                 |
 | ---------------- | ------------------------------------ |
-| Promise&lt;number&gt; | 返回供closeToast使用的文本提示框id。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | 返回供closeToast使用的文本提示框id。 |
 
 **错误码：**
 
@@ -7671,7 +7744,9 @@ struct toastExample {
 
 ### closeToast<sup>18+</sup>
 
-closeToast(toastId: number): void
+ArkTS-Dyn: closeToast(toastId: number): void
+
+ArkTS-Sta: closeToast(toastId: int): void
 
 关闭文本提示框。
 
@@ -7679,11 +7754,15 @@ closeToast(toastId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数**
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |
-| toastId | number | 是   | openToast返回的文本提示框id。 |
+| toastId | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | openToast返回的文本提示框id。 |
 
 **错误码：**
 
@@ -8437,13 +8516,19 @@ struct Index {
 
 ### openCustomDialog<sup>12+</sup>
 
-openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
+ArkTS-Dyn: openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
+
+ArkTS-Sta: openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<int>
 
 创建并弹出自定义弹窗。通过Promise异步回调返回供closeCustomDialog使用的对话框id。暂不支持isModal = true与showInSubWindow = true同时使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8455,7 +8540,7 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | 返回供closeCustomDialog使用的对话框id。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt;| 返回供closeCustomDialog使用的对话框id。 |
 
 **错误码：**
 
@@ -8468,7 +8553,9 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 ### presentCustomDialog<sup>18+</sup>
 
-presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: promptAction.DialogController, options?: promptAction.DialogOptions): Promise\<number>
+ArkTS-Dyn: presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: promptAction.DialogController, options?: promptAction.DialogOptions): Promise\<number>
+
+ArkTS-Sta: presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: promptAction.DialogController, options?: promptAction.DialogOptions): Promise\<int>
 
 创建并弹出自定义弹窗。通过Promise异步回调返回供closeCustomDialog使用的对话框id。
 
@@ -8479,6 +8566,10 @@ presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8492,7 +8583,7 @@ presentCustomDialog(builder: CustomBuilder \| CustomBuilderWithId, controller?: 
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | 返回自定义弹窗ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | 返回自定义弹窗ID。 |
 
 **错误码：**
 
@@ -8583,7 +8674,9 @@ struct Index {
 
 ### closeCustomDialog<sup>12+</sup>
 
-closeCustomDialog(dialogId: number): void
+ArkTS-Dyn: closeCustomDialog(dialogId: number): void
+
+ArkTS-Sta: closeCustomDialog(dialogId: int): void
 
 关闭自定义弹窗。
 
@@ -8591,11 +8684,15 @@ closeCustomDialog(dialogId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                             |
 | -------- | ------ | ---- | -------------------------------- |
-| dialogId | number | 是   | openCustomDialog返回的对话框id。 |
+| dialogId | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | openCustomDialog返回的对话框id。 |
 
 **错误码：**
 
@@ -10242,7 +10339,9 @@ import { window, UIContext } from '@kit.ArkUI';
 
 ### addComponentContent<sup>12+</sup>
 
-addComponentContent(content: ComponentContent, index?: number): void
+ArkTS-Dyn: addComponentContent(content: ComponentContent, index?: number): void
+
+ArkTS-Sta: addComponentContent(content: ComponentContent, index?: int): void
 
 在OverlayManager上新增指定节点。
 
@@ -10250,12 +10349,16 @@ addComponentContent(content: ComponentContent, index?: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明          |
 | ------- | ---------------------------------------- | ---- | ----------- |
 | content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager上新增指定节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中，按层级堆叠。|
-| index | number | 否    | 新增节点在OverlayManager上的层级位置。<br>**说明：** <br/> 当index ≥ 0时，越大，ComponentContent的层级越高；若多个ComponentContent的index相同，ComponentContent添加的时间越晚层级越高。<br/> 当index < 0、index = null或index = undefined时，ComponentContent默认添加至最高层。<br/>当同一个ComponentContent被添加多次时，只保留最后一次添加的ComponentContent。
+| index | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 新增节点在OverlayManager上的层级位置。<br>**说明：** <br/> 当index ≥ 0时，越大，ComponentContent的层级越高；若多个ComponentContent的index相同，ComponentContent添加的时间越晚层级越高。<br/> 当index < 0、index = null或index = undefined时，ComponentContent默认添加至最高层。<br/>当同一个ComponentContent被添加多次时，只保留最后一次添加的ComponentContent。 |
 
 **示例：**
 
@@ -10607,7 +10710,9 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 
 ### setBackgroundColor<sup>11+</sup>
 
-setBackgroundColor(color:Nullable<Color | number | string>): void
+ArkTS-Dyn: setBackgroundColor(color:Nullable<Color | number | string>): void
+
+ArkTS-Sta: setBackgroundColor(color:Nullable<Color | int | string>): void
 
 通过该方法设置原子化服务menuBar的背景颜色。
 > **说明：**
@@ -10618,11 +10723,15 @@ setBackgroundColor(color:Nullable<Color | number | string>): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------ |
-| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | 是 | 通过该方法设置原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。|
+| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string> | 是 | 通过该方法设置原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。|
 
 **示例：**
 
@@ -10729,7 +10838,9 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 
 ### setIconColor<sup>11+</sup>
 
-setIconColor(color:Nullable<Color | number | string>): void
+ArkTS-Dyn: setIconColor(color:Nullable<Color | number | string>): void
+
+ArkTS-Sta: setIconColor(color:Nullable<Color | int | string>): void
 
 通过该方法设置原子化服务图标的颜色。
 > **说明：**
@@ -10740,12 +10851,15 @@ setIconColor(color:Nullable<Color | number | string>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| color | Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> | 是 | 原子化服务图标的颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
-
+| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string> | 是 | 原子化服务图标的颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
 **示例：**
 
@@ -11396,13 +11510,19 @@ struct Index {
 
 ### measureText<sup>12+</sup>
 
-measureText(options: MeasureOptions): number
+ArkTS-Dyn: measureText(options: MeasureOptions): number
+
+ArkTS-Sta: measureText(options: MeasureOptions): double
 
 计算指定文本单行布局下的宽度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11414,7 +11534,7 @@ measureText(options: MeasureOptions): number
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| number        | 文本宽度。<br/>**说明:**<br/>浮点数会向上取整。<br/>单位：px |
+| ArkTS-Dyn: number <br>ArkTS-Sta: double        | 文本宽度。<br/>**说明:**<br/>浮点数会向上取整。<br/>单位：px |
 
 
 **示例：**
@@ -12332,7 +12452,9 @@ struct Index {
 
 ### onIdle<sup>12+</sup>
 
-onIdle(timeLeftInNano: number): void
+ArkTS-Dyn: onIdle(timeLeftInNano: number): void
+
+ArkTS-Sta: onIdle(timeLeftInNano: long): void
 
 在下一帧渲染结束时，如果距离下一个Vsync信号到来还有1ms以上的剩余时间，该方法将被执行，否则将顺延至后面的帧。
 
@@ -12340,11 +12462,15 @@ onIdle(timeLeftInNano: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
-| timeLeftInNano | number | 是   | 这一帧剩余的空闲时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
+| timeLeftInNano | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是   | 这一帧剩余的空闲时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
 
 **示例：**
 

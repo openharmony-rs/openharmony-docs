@@ -63,15 +63,19 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称              | 类型       | 必填 | 说明      |
 | --------------- | ---------- | ------- | ------- |
 | type             | [AccessibilityHoverType](#accessibilityhovertype) | 否 | 无障碍悬浮动作。                |
-| x                      | number                         | 否 | 手指位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/> |
-| y                      | number                         | 否 | 手指位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/> |
-| windowX                | number                         | 否 | 手指位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/> |
-| windowY                | number                         | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/> |
-| displayX               | number                         | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/> |
-| displayY               | number                         | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/> |
+| x                      | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/> |
+| y                      | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/> |
+| windowX                | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/> |
+| windowY                | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/> |
+| displayX               | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/> |
+| displayY               | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/> |
 
 ## AccessibilityHoverType
 
