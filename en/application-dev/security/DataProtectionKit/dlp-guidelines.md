@@ -61,7 +61,7 @@ This document provides API sample code. For details about how to create a projec
    import { dlpPermission } from '@kit.DataProtectionKit';
    ```
 
-2. Open a DLP file. The system automatically installs a DLP sandbox application for your application. <br>Add the following code to your application:
+2. Open an encrypted file. The system automatically installs a DLP sandbox application for your application. <br>Add the following code to your application:
 
     ```ts
     import { common, Want } from '@kit.AbilityKit';
@@ -114,7 +114,7 @@ This document provides API sample code. For details about how to create a projec
     ]
     ```
 
-3. Generate a .dlp file.
+3. Generate an encrypted .dlp file.
 
     [You need to set up the cloud module for this feature](../DataProtectionKit/dlp-overview.md) and configure a domain account environment.
 
