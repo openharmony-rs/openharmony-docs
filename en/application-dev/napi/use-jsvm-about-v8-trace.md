@@ -30,5 +30,5 @@ hdc shell param set web.debug.rcs true
 5. To view the trace data of **compile**, **runtime**, **builtin**, and **JS_Execution**, use the following keywords to filter the data:
 - **compile**: **RCS_v8.compile**
 - **runtime**: **RCS_V8.Runtime**
-- **Builtin**: **RCS_v8.runtime_V8.Builtin**
+- **builtin**: **RCS_v8.runtime_V8.Builtin**
 - **JS_Execution**: **RCS_JS_Execution**
