@@ -1,12 +1,5 @@
 # OH_Drawing_BitmapFormat
 
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
-<!--Tester: @nobuggers-->
-<!--Adviser: @ge-yafang-->
-
 ## Overview
 
 This struct describes the pixel format of a bitmap, including the color type and alpha type.
