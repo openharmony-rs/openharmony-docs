@@ -26,7 +26,7 @@ VerifyPinHandler的构造函数。
 
 ## confirm<sup>22+</sup>
 
-confirm(result: PinVerifyResult): void;
+confirm(result: PinVerifyResult): void
 
 通知Web组件PIN码认证结果。
 
