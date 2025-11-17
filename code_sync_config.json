@@ -13511,7 +13511,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":57,
 						"name":"search_click",
 						"start_line":15
 					}
