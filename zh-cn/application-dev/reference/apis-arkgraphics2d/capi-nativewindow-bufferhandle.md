@@ -30,8 +30,8 @@ typedef struct {...} BufferHandle
 | int32_t stride | 缓冲区内存的步幅，单位为字节。 |
 | int32_t height | 缓冲区内存的高度，单位为像素。 |
 | int32_t size | 缓冲区内存的大小，单位为字节。 |
-| int32_t format | 缓冲区内存的格式，取值具体可见[OH_NativeBuffer_Format](capi-native-buffer-h.md#oh_nativebuffer_format)枚举值。 |
-| uint64_t usage | 缓冲区内存的用途，按位标志位，取值具体可见[OH_NativeBuffer_Format](capi-native-buffer-h.md#oh_nativebuffer_format)枚举值。 |
+| int32_t format | 缓冲区内存的格式，取值具体可见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举值。 |
+| uint64_t usage | 缓冲区内存的用途，按位标志位，取值具体可见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举值。 |
 | void* virAddr | 缓冲区内存的虚拟地址。 |
 | int32_t key | 缓冲区共享内存键值。 |
 | uint64_t phyAddr | 缓冲区内存的物理地址。 |
