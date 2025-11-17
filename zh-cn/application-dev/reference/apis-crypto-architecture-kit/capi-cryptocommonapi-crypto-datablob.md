@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ```
-typedef struct {...} Crypto_DataBlob
+typedef struct Crypto_DataBlob {...} Crypto_DataBlob
 ```
 
 ## 概述
