@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} MetadataOutput_Callbacks
+typedef struct MetadataOutput_Callbacks {...} MetadataOutput_Callbacks
 ```
 
 ## 概述
