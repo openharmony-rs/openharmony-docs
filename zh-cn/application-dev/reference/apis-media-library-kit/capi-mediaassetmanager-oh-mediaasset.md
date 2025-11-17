@@ -1,4 +1,10 @@
 # OH_MediaAsset
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ```
 typedef struct OH_MediaAsset OH_MediaAsset
