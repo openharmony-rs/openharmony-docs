@@ -45,6 +45,12 @@ Websocket URL错误。
 
 未配置正确的URL。
 
+**处理步骤**
+
+1.检查URL是否为空或者未包含正确的协议（ws://或wss://)。
+
+2.检查URL长度是否超过2048。
+
 ## 2302002 Websocket 证书不存在
 
 **错误信息**
@@ -59,6 +65,13 @@ Websocket 证书不存在。
 
 证书路径错误或未配置证书。
 
+**处理步骤**
+
+1.检查CA证书路径是否有效。
+
+2.如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
+
+
 ## 2302003 Websocket 连接已经存在
 
 **错误信息**
@@ -72,6 +85,10 @@ Websocket 连接已经存在。
 **可能原因**
 
 Websocket 连接已经建立。
+
+**处理步骤**
+
+已建立websocket连接，无需重复调用WebSocket.connect进行建连。
 
 ## 2302004 WebsocketServer 无法在指定的NIC（网络接口）上进行网络监听
 
@@ -140,3 +157,7 @@ Internal error.
 **可能原因**
 
 其他系统故障。
+
+**处理步骤**
+
+其他系统故障，请联系系统开发人员。
