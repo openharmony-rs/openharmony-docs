@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} ImageEffect_FilterDelegate
+typedef struct ImageEffect_FilterDelegate {...} ImageEffect_FilterDelegate
 ```
 
 ## 概述
