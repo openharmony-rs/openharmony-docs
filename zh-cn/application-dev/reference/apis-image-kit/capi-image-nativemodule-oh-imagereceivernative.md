@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct OH_ImageReceiverNative OH_ImageReceiverNative
+struct OH_ImageReceiverNative 
 ```
 
 ## 概述
