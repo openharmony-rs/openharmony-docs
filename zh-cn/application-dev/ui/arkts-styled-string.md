@@ -68,9 +68,8 @@
   @Entry
   @Component
   struct styled_string_demo2 {
-    // 'app.string.CreateApply_Text_3'资源文件中的value值为"运动45分钟 目标达成"
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_3')) as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_3') as string;
     textStyleAttrs: TextStyle =
       new TextStyle({
         fontWeight: FontWeight.Bolder,
@@ -124,9 +123,8 @@
   @Entry
   @Component
   struct styled_string_demo3 {
-    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five')) as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -168,10 +166,9 @@
   @Entry
   @Component
   struct styled_string_demo4 {
-    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
     @State str: string =
       this.getUIContext()
-        .getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five')) as string;
+        .getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -237,9 +234,9 @@
   @Entry
   @Component
   struct styled_string_demo5 {
-    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five')) as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+  
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -277,10 +274,9 @@
   @Entry
   @Component
   struct styled_string_demo6 {
-    //'app.string.StyledStringStyle_Text_5'资源文件中的value值为"运动35分钟\n顶顶顶\n得到"
     @State str: string =
       this.getUIContext()
-        .getHostContext()?.resourceManager.getStringSync($r('app.string.StyledStringStyle_Text_5')) as string;
+        .getHostContext()?.resourceManager.getStringByNameSync('StyledStringStyle_Text_5') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 8,
@@ -319,9 +315,8 @@
   @Entry
   @Component
   struct styled_string_demo7 {
-    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five')) as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -365,10 +360,9 @@
   @Entry
   @Component
   struct Index {
-    //'app.string.StyledStringParagraphStyle_Text_1'资源文件中的value值为"段落标题\n正文第一段落开始0123456789正文第一段落结束。"
     @State str: string =
       this.getUIContext()
-        .getHostContext()?.resourceManager.getStringSync($r('app.string.StyledStringParagraphStyle_Text_1')) as string;
+        .getHostContext()?.resourceManager.getStringByNameSync('StyledStringParagraphStyle_Text_1') as string;
     titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
     // 段落首行缩进15vp
     paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(15) });
@@ -582,16 +576,12 @@
   @Entry
   @Component
   struct Index {
-    //'app.string.Full_text'资源文件中的value值为"... 全文"
     @State fullText: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.Full_text')) as string;
-    //'app.string.Original_text'资源文件中的value值为"原文"
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Full_text') as string;
     @State originalText: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.Original_text')) as string;
-    //'app.string.After_typesetting'资源文件中的value值为"排版后"
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Original_text') as string;
     @State afterTypesetting: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.After_typesetting')) as string;
-  
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('After_typesetting') as string;
     str: string =
       'Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.';
     mutableStr2 = new MutableStyledString(this.str, [
@@ -780,11 +770,7 @@
     }
   
     private async getPixmapFromMedia(resource: Resource) {
-      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-        bundleName: resource.bundleName,
-        moduleName: resource.moduleName,
-        id: resource.id
-      });
+      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
       let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
       let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
         desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -799,7 +785,7 @@
     //Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     //创建含段落样式的对象paragraphStyledString1
-    //'app.string.StyledStringImageAttachment_Text_1'资源文件中的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量增送"
+    //'app.string.StyledStringImageAttachment_Text_1'资源文件中的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送"
     paragraphStyledString1: MutableStyledString =
       new MutableStyledString(resource.resourceToString($r('app.string.StyledStringImageAttachment_Text_1')), [
       {
@@ -1118,11 +1104,7 @@ export struct StyledStringHtml {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -1137,7 +1119,7 @@ export struct StyledStringHtml {
         //'app.string.StyledStringHtml_title'资源文件中的value值为"格式转换"
         ComponentCard({ title: $r('app.string.StyledStringHtml_title') }) {
           Column() {
-            Text(undefined, { controller: this.controller1 }).height(100).id('text1')
+            Text(undefined, { controller: this.controller1 }).height(100)
             Row() {
               //'app.string.StyledStringHtml_Button_1'资源文件中的value值为"添加属性字符串"
               Button($r('app.string.StyledStringHtml_Button_1')).onClick(() => {
@@ -1170,8 +1152,8 @@ export struct StyledStringHtml {
               }).margin(5)
             }
 
-            Text(undefined, { controller: this.controller2 }).height(100).id('text2')
-            Text(this.html).id('text3')
+            Text(undefined, { controller: this.controller2 }).height(100)
+            Text(this.html)
           }.width('100%')
         }
       }
