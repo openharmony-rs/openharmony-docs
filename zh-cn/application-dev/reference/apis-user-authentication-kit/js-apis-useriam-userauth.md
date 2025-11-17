@@ -202,7 +202,7 @@ onResult(result: UserAuthResult): void
 **示例1：**
 
 
-发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果：
+发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果。
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
