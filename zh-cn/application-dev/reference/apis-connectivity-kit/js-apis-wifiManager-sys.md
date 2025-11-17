@@ -1817,7 +1817,7 @@ isRandomMacDisabled(): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | true:禁用随机MAC地址，&nbsp;false:未禁用随机MAC地址。|
+  | boolean | true:禁用随机MAC地址; false:未禁用随机MAC地址。|
 
 **错误码：**
 
