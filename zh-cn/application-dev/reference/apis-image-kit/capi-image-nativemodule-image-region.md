@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Image_Region
+struct Image_Region {...}
 ```
 
 ## 概述
