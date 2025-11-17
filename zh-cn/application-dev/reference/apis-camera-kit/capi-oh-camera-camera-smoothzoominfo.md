@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Camera_SmoothZoomInfo
+typedef struct Camera_SmoothZoomInfo {...} Camera_SmoothZoomInfo
 ```
 
 ## 概述
