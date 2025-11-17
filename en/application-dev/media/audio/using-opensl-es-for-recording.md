@@ -19,7 +19,7 @@ If you have used the OpenSL ES APIs in your code, you can switch them to the OHA
 
 ## OpenSL ES on OpenHarmony
 
-Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitee.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio recording functionalities.
+Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio recording functionalities.
 
 If an API that has not been implemented on OpenHarmony is called, **SL_RESULT_FEATURE_UNSUPPORTED** is returned.
 

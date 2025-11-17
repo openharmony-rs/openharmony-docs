@@ -305,10 +305,7 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 > **说明：**
 >
 > - 本接口适用于以下情况：当设置的[AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20)为VoIP场景时，激活AudioSession后立即生效。若[AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20)为非VoIP场景，激活AudioSession时不会生效，仅在启动播放的[StreamUsage](arkts-apis-audio-e.md#streamusage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。
->
 > - 本接口允许在AudioSessionManager创建后随时调用，系统会记录应用设置的默认本机内置发声设备。但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声。否则，系统遵循应用设置的默认本机内置发声设备。
->
-> - 本接口优先级低于[AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)。如果使用AVCastPicker切换过发声设备，再次调用本接口将不生效。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 

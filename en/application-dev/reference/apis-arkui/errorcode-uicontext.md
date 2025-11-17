@@ -4,20 +4,38 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 100001 Internal Error
+## 190001 Invalid UIContext Object
 
 **Error Message**
 
-Internal error.
+The uiContext is invalid.
 
 **Description**
 
-This error code is reported when an internal error that cannot be rectified by developers occurs.
+This error code is reported when an invalid UIContext object is detected.
 
 **Possible Causes**
 
-There is insufficient memory allocation, an exception with the JS virtual machine, or any other system issue that prevents successful creation of UI instances.
+The provided UIContext object is invalid.
 
 **Solution**
 
-N/A
+Provide a valid UIContext object.
+
+## 190002 Invalid Callback Function
+
+**Error Message**
+
+The callback function is invalid.
+
+**Description**
+
+This error code is reported when an invalid callback function is detected.
+
+**Possible Causes**
+
+The type of callback function is incorrect.
+
+**Solution**
+
+Pass a callback function of the correct type.

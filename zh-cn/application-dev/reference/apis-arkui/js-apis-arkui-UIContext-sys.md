@@ -59,7 +59,7 @@ struct Index {
 
 ### animateToImmediately<sup>12+</sup>
 
-animateToImmediately(param: AnimateParam , event: () => void): void
+animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 animateToImmediately接口允许用户通过UIContext对象，获取显式立即动画的能力。同时加载多个属性动画的情况下，使用该接口可以立即执行闭包代码中状态变化导致的过渡动效。
 
@@ -72,7 +72,7 @@ animateToImmediately接口允许用户通过UIContext对象，获取显式立即
 | 参数名   | 类型                                       | 必填   | 说明                                    |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
 | param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
-| event | () => void                               | 是    | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| processor | Callback&lt;void&gt;                              | 是    | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 **示例：**
 
@@ -490,12 +490,12 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------- |
 | 202     | The caller is not a system application. |
-| 100001 | Invalid ID. |
+| 100001 | Invalid ID detected. |
 
 **示例：** 
 

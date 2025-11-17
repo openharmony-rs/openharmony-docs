@@ -63,7 +63,7 @@ Worker initialization failed.
 
 **处理步骤**
 
-1. 检查Worker的数量是否超出8个，如果存在，及时销毁空闲的Worker。
+1. 检查Worker的数量是否超出64个，如果超出，及时销毁空闲的Worker。
 2. 如果设置WorkerOptions，检查参数类型及其合法性。
 
 ## 10200004 Worker处于非运行状态
@@ -118,8 +118,7 @@ Worker传输信息序列化异常。
 
 **处理步骤**
 
-确保传输信息属于Worker支持的合法序列化对象，支持的序列化类型详查[ArkTS线程间通信概述](../../arkts-utils/interthread-communication-overview.md
-)。
+确保传输信息属于Worker支持的合法序列化对象，支持的序列化类型详查[ArkTS线程间通信概述](../../arkts-utils/interthread-communication-overview.md)。
 
 ## 10200007 Worker文件路径异常
 
@@ -133,7 +132,7 @@ The worker file path is invalid.
 
 **可能原因**
 
-Worker文件路径异常导致无法正常编译生成合法的worker.abc。
+Worker文件路径异常。
 
 **处理步骤**
 

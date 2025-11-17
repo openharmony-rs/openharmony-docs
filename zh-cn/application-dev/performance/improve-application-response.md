@@ -1,5 +1,12 @@
 # 提升应用响应速度
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 应用对用户的输入需要快速反馈，以提升交互体验，因此本文提供了以下方法来提升应用响应速度。
 
 - 避免主线程被非UI任务阻塞
@@ -66,7 +73,7 @@ struct ImageExample2 {
 当前系统提供了[TaskPool线程池](../reference/apis-arkts/js-apis-taskpool.md)，TaskPool提供了任务优先级设置、线程池自动管理机制，示例如下：
 
 ```typescript
-import taskpool from '@ohos.taskpool';
+import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
 function computeTask(arr: string[]): string[] {
@@ -425,7 +432,7 @@ AVPlayer实例的创建与销毁都很消耗性能，针对这个问题可以使
 
 反例：打开新页面时创建实例，离开页面时使用release方法销毁实例。
 ```typescript
-import media from '@ohos.multimedia.media';
+import { media } from '@kit.MediaKit';
 
 @Entry
 @Component
@@ -455,7 +462,7 @@ struct Index {
 
 正例：首次加载页面时维护两个实例，在切换页面时切换实例，并将之前的实例通过reset方法重置。
 ```typescript
-import media from '@ohos.multimedia.media';
+import { media } from '@kit.MediaKit';
 
 @Entry
 @Component
@@ -535,9 +542,6 @@ class AVPlayerManager {
 1、模拟广告页，通过点击不同按钮分别进入普通页面和预加载页面。
 ```typescript
 // Index.ets
-
-import router from '@ohos.router';
-
 @Entry
 @Component
 struct Index {
@@ -684,8 +688,7 @@ struct PreloadedPage {
 ```typescript
 // CustomerController.ets
 
-import { UIContext } from '@ohos.arkui.UIContext';
-import { NodeController, BuilderNode, FrameNode } from "@ohos.arkui.node";
+import { BuilderNode, NodeController } from '@kit.ArkUI';
 import { MyBuilder } from './CustomerBuilder';
 
 export class MyNodeController extends NodeController {

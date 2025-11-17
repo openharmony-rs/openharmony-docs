@@ -81,7 +81,7 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 检测表示支持该闪光灯模式。true表示支持，false表示不支持。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| boolean    | 检测表示支持该闪光灯模式。true表示支持，false表示不支持。接口调用失败会抛出相应错误码并返回undefined，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 

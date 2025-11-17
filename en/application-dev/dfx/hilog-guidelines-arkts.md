@@ -52,6 +52,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 
   You can set multiple parameters in the **format** string, for example, **%{public}s World**, where **%{public}s** indicates a variable of the string type and its value is defined by **args**. 
 
+  The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding private flags is used to print logs.
+
 - **args**: parameters of the types specified by **specifier** in **format**. This parameter can be left blank. The number and type of parameters must match **specifier**.
 
 > **NOTE**

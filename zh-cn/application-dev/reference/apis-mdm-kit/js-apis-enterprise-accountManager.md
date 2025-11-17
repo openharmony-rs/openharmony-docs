@@ -63,7 +63,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -121,7 +121,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -182,7 +182,7 @@ import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 参数需根据实际情况进行替换
@@ -236,7 +236,7 @@ async function setDomainAccountPolicy() {
   let wantTemp: Want = {
     // 需根据实际情况进行替换
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   };
   let policy: accountManager.DomainAccountPolicy = {
     // 需根据实际情况进行替换
@@ -330,7 +330,7 @@ async function getDomainAccountPolicy() {
   let wantTemp: Want = {
     // 需根据实际情况进行替换
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EnterpriseAdminAbility'
   };
   let domainAccountPolicy: accountManager.DomainAccountPolicy = {};
   // 查询全局域账号策略

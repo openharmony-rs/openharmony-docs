@@ -1,4 +1,10 @@
-# JavaScript Service Widget UI Components
+# JavaScript Service Widget UI Components<!--arkui-card-comp-->
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - Framework Overview<!--card-comp-framework-overview-->
   - [File Organization](js-service-widget-file.md)
@@ -8,7 +14,7 @@
   - [Multi-Language Capability](js-service-widget-multiple-languages.md)
   - [Version Compatibility Adaptation](js-service-widget-version-compatibility.md)
   - [Theme Configuration](js-service-widget-theme.md)
-- Universal Component Information<!--card-comp-universal-comp-infor-->
+- Universal Components<!--card-comp-universal-comp-infor-->
   - [Universal Attributes](js-service-widget-common-attributes.md)
   - [Universal Styles](js-service-widget-common-styles.md)
   - [Universal Events](js-service-widget-common-events.md)

@@ -4,13 +4,15 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 方便灵活应用文本样式的对象，可通过TextController中的[setStyledString](./ts-basic-components-text.md#setstyledstring12)方法与Text组件绑定，可通过RichEditorStyledStringController中的[setStyledString](ts-basic-components-richeditor.md#setstyledstring12)方法与RichEditor组件绑定。
 
 >  **说明：**
 >
 >  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  从API version 20开始，支持通过[getParagraphs](./../arkts-apis-uicontext-measureutils.md#getparagraphs20)获取属性字符串的文本布局信息。
 >
 >  属性字符串目前不支持在worker线程中使用。
 >
@@ -40,7 +42,7 @@ constructor(value: string | ImageAttachment | CustomSpan , styles?: Array\<Style
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | string \| [ImageAttachment](#imageattachment) \| [CustomSpan](#customspan) | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value值为ImageAttachment或CustomSpan时，styles参数不生效；<br/>需要设置styles时，通过[insertStyledString](#insertstyledstring)实现。 |
+| value | string \| [ImageAttachment](#imageattachment) \| [CustomSpan](#customspan) | 是 | 属性字符串文本内容。<br/>**说明：** <br/>当value的类型为ImageAttachment或CustomSpan时，styles参数不生效。<br/>需要设置styles时，通过[setStyle](#setstyle)等方法实现。 |
 | styles | Array<[StyleOptions](#styleoptions对象说明)> | 否 | 属性字符串初始化选项。<br/>**说明：** <br/>start为异常值时，按默认值0处理；<br/>当length为异常值时，length等于属性字符串在start后的实际长度；<br/>当StyledStringKey与StyledStringValue不匹配时，styles不生效。 |
 
 ### 属性
@@ -67,7 +69,7 @@ getString(): string
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| string | 属性字符串文本内容。<br/>**说明：** <br/>当属性字符串中包含图片时，其返回的结果用空格表示。 |
+| string | 属性字符串文本内容。<br/>**说明：** <br/>当属性字符串中包含图片或[CustomSpan](#customspan)时，其返回的结果用空格表示。 |
 
 ### equals
 
@@ -95,7 +97,7 @@ equals(other: StyledString): boolean
 
 subStyledString(start: number, length?: number): StyledString
 
-获取属性字符串的子字符串。不能超出属性字符串的长度。
+获取属性字符串的子属性字符串。不能超出属性字符串的长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -127,6 +129,8 @@ subStyledString(start: number, length?: number): StyledString
 getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<SpanStyle>
 
 获取指定范围属性字符串的样式集合。不能超出属性字符串的长度。
+
+该接口仅返回开发者设置的样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -165,7 +169,7 @@ static fromHtml(html: string): Promise\<StyledString>
 | 标签名称 | 说明                   |
 |-------------|----------------------------|
 | \<p\>       | 段落，分隔文本段落         |
-| \<span\>    | 行内文本，支持样式设置     |
+| \<span\>    | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。     |
 | \<img\>     | 插入图片                   |
 | \<strong\>  | 加粗文本                   |
 | \<br\><sup>20+</sup>      | 换行                       |
@@ -304,7 +308,7 @@ removeString(start: number , length: number): void
 
 移除指定范围的字符串。
 
-当属性字符串中包含图片时，同样生效。
+当属性字符串中包含图片或[CustomSpan](#customspan)时，同样生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -363,7 +367,11 @@ setStyle(spanStyle: SpanStyle): void
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| spanStyle | [SpanStyle](#spanstyle对象说明) | 是   | 样式对象。<br/>**说明：** <br/>默认不清空原有样式，叠加新样式。若是已有样式，则更新。<br/>当SpanStyle的styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或者CustomSpan且长度为1，才会生效，其余情况无效果。 |
+| spanStyle | [SpanStyle](#spanstyle对象说明) | 是   | 样式对象。<br/>默认不清空原有样式，叠加新样式。如果StyledStringValue类型相同，则新样式将覆盖旧样式。<br/>当SpanStyle的styledKey为IMAGE或CUSTOM_SPAN时，只有当start的位置当前是image或CustomSpan且长度为1，才会生效，其余情况无效果。 |
+
+> **说明：**
+>
+> 样式的最小颗粒度是StyledStringValue，如果设置了多个相同的StyledStringValue，只有最后一次设置会生效。如设置两个属性不同的TextStyle，则只有第二次设置的TextStyle生效。
 
 **错误码**：
 
@@ -2010,7 +2018,7 @@ struct styled_string_set_lineheight_paragraphstyle_demo {
 
 ### 示例6（设置自定义绘制Span）
 
-从API version 12开始，该示例通过[CustomSpan](#customspan)接口实现属性字符串设置自定义绘制Span。
+从API version 12开始，该示例通过[CustomSpan](#customspan)接口和[measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12)实现属性字符串设置自定义绘制Span。
 
 ```ts
 // xxx.ets
@@ -2028,7 +2036,14 @@ class MyCustomSpan extends CustomSpan {
   }
 
   onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics {
-    return { width: this.width, height: this.height };
+    this.setPx(gUIContext.vp2px(2));
+    let textSize = gUIContext.getMeasureUtils().measureTextSize({ textContent: this.word, fontSize: this.wordFontSize })
+    this.width = textSize.width as number;
+    this.height = textSize.height as number;
+    return {
+      width: gUIContext.px2vp(this.width) + (this.paddingLeft + this.paddingRight) * 2,
+      height: gUIContext.px2vp(this.height) + this.paddingTop + this.paddingBottom
+    };
   }
 
   onDraw(context: DrawContext, options: CustomSpanDrawInfo) {
@@ -2042,14 +2057,15 @@ class MyCustomSpan extends CustomSpan {
       blue: 175
     });
     const font = new drawing.Font();
-    font.setSize(25);
+    font.setSize(gUIContext.vp2px(this.wordFontSize));
     const textBlob = drawing.TextBlob.makeFromString(this.word, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     canvas.attachBrush(brush);
     canvas.drawRect({
-      left: options.x + 10,
-      right: options.x + gUIContext.vp2px(this.width) - 10,
-      top: options.lineTop + 10,
-      bottom: options.lineBottom - 10
+      // 绘制的矩形在Span占位大小的范围里居中
+      left: options.x + gUIContext.vp2px(this.paddingLeft),
+      right: options.x + this.width + 2 * gUIContext.vp2px(this.paddingLeft) + gUIContext.vp2px(this.paddingRight),
+      top: options.lineTop,
+      bottom: options.baseline
     });
 
     brush.setColor({
@@ -2059,7 +2075,9 @@ class MyCustomSpan extends CustomSpan {
       blue: 141
     });
     canvas.attachBrush(brush);
-    canvas.drawTextBlob(textBlob, options.x + 20, options.lineBottom - 15);
+    // 文字在绘制的矩形里居中
+    canvas.drawTextBlob(textBlob, options.x + 2 * gUIContext.vp2px(this.paddingLeft),
+      options.baseline - gUIContext.vp2px(this.paddingBottom));
     canvas.detachBrush();
   }
 
@@ -2067,9 +2085,21 @@ class MyCustomSpan extends CustomSpan {
     this.word = word;
   }
 
+  setPx(px: number) {
+    this.paddingLeft = px;
+    this.paddingRight = px;
+    this.paddingTop = px;
+    this.paddingBottom = px;
+  }
+
   width: number = 160;
   word: string = "drawing";
   height: number = 10;
+  paddingLeft: number = 0;
+  paddingRight: number = 0;
+  paddingTop: number = 0;
+  paddingBottom: number = 0;
+  wordFontSize: number = 20;
 }
 
 @Entry
@@ -2138,7 +2168,7 @@ struct styled_string_set_customspan_demo {
 }
 ```
 
-![](figures/styledstring_6.gif)
+![](figures/CustomSpan-Hello-2.gif)
 
 ### 示例7（支持存储自定义扩展信息）
 
@@ -2450,14 +2480,14 @@ struct styled_string_strokewidth_strokecolor_demo {
 
 ### 示例12（fromHtml和toHtml互相转换）
 
-该示例通过[fromHtml](#fromhtml)（从API version 12开始）、[toHtml](#tohtml14)（从API version 14开始）接口，将HTML中b、strong、em、i、u、del、s、a、sub、sup标签及其style属性中的background-color转换为属性字符串并转回HTML。
+该示例通过[fromHtml](#fromhtml)（从API version 12开始）、[toHtml](#tohtml14)（从API version 14开始）接口，将HTML中strong、b<sup>20+</sup>、em<sup>20+</sup>、i<sup>20+</sup>、u<sup>20+</sup>、del<sup>20+</sup>、s<sup>20+</sup>、a<sup>20+</sup>、sub<sup>20+</sup>、sup<sup>20+</sup>标签及其style属性中的background-color转换为属性字符串并转回HTML。
 
 ``` ts
 // xxx.ets
 @Entry
 @Component
 struct styled_string_html_convert_demo {
-  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
+  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>"; // 从API version 20开始支持b、em、i、u、del、s、a、sup、sub标签
   @State spanString: StyledString | undefined = undefined;
   @State resultText: string = ""; // 保存结果文本的状态
   controller: TextController = new TextController;

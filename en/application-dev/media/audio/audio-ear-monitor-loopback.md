@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Low-latency audio monitoring is supported since API version 20.
 
@@ -229,3 +229,6 @@ async function disable() {
   }
 }
 ```
+
+### Sample of Low-Latency Audio Loopback
+For details, see [Enabling Low-Latency Audio Loopback Using AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio).

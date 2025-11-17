@@ -22,7 +22,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 
 > **说明：**
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
+> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/uitest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 
 ## 导入模块
@@ -302,7 +302,7 @@ let on:On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目�
 
 id(id: string, pattern: MatchPattern): On
 
-指定目标控件id属性，返回On对象自身。
+指定目标控件id属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -378,7 +378,7 @@ let on:On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定
 
 type(tp: string, pattern: MatchPattern): On
 
-指定目标控件的控件类型属性，返回On对象自身。
+指定目标控件的控件类型属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -980,7 +980,7 @@ belongingDisplay(displayId: number): On
 
 originalText(text: string, pattern?: MatchPattern): On
 
-指定目标控件的文本属性，支持多种匹配模式，返回On对象自身。
+指定控件的文本内容和文本匹配模式，返回On对象自身。
 
 > **说明**
 >
@@ -1809,7 +1809,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2179,11 +2179,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
-
-> **说明**
->
-> 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
+获取控件对象的文本信息，使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3740,7 +3736,7 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled:boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000,5000);
 }
 ```
 
@@ -3845,9 +3841,9 @@ async function demo() {
 
 ### fling<sup>10+</sup>
 
-fling(direction: UiDirection, speed: number): Promise\<void>;
+fling(direction: UiDirection, speed: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3889,7 +3885,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3931,7 +3927,7 @@ async function demo() {
 
 ### screenCapture<sup>10+</sup>
 
-screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
+screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
 
@@ -3973,7 +3969,7 @@ async function demo() {
 
 ### mouseClick<sup>10+</sup>
 
-mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
 在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
 
@@ -4017,7 +4013,7 @@ async function demo() {
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
@@ -4063,7 +4059,7 @@ async function demo() {
 
 ### mouseMoveTo<sup>10+</sup>
 
-mouseMoveTo(p: Point): Promise\<void>;
+mouseMoveTo(p: Point): Promise\<void>
 
 将鼠标光标移到目标点，使用Promise异步回调。
 
@@ -4784,7 +4780,7 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
+| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
 | speed      | number| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
 | pressure      | number | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
@@ -5583,7 +5579,7 @@ UI事件监听器。
 
 ### once('toastShow')<sup>10+</sup>
 
-once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 开始监听toast控件出现的事件，使用callback的形式返回结果。
 
@@ -5625,7 +5621,7 @@ async function demo() {
 
 ### once('dialogShow')<sup>10+</sup>
 
-once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 开始监听dialog控件出现的事件，使用callback的形式返回结果。
 

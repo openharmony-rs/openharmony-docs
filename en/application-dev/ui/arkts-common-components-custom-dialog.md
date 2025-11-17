@@ -1,11 +1,30 @@
 # Basic Custom Dialog Box (CustomDialog) (Not Recommended)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 A custom dialog box is a dialog box you customize by using APIs of the **CustomDialogController** class. It can be used for user interactions, showing ads, award announcements, alerts, software update notifications, and more. For details, see [Custom Dialog Box](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md).
 
 > **NOTE**
 > 
 > In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation page displayed in dialog mode](arkts-navigation-navigation.md#page-display-mode) or [page-level dialog box](arkts-embedded-dialog.md).
 
-You can specify the modality of a dialog box by setting [isModal](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions). A dialog box is modal if **isModal** is set to **true** and non-modal otherwise.
+By default, dialog boxes are modal and include a mask. Interactions with underlying components are blocked (click and gesture events are not transmitted). You can configure dialog box modality by setting the **isModal** property in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions). For details, see [Types of Popup Windows](arkts-dialog-overview.md#types-of-popup-windows).
+
+When **isModal** is **true**, the dialog box is modal, and the mask area does not transmit events. When **isModal** is **false**, the dialog box is non-modal, and the mask area allows event transmission. To enable simultaneous interaction with both the dialog box and the page outside the dialog box, set the dialog box to non-modal.
+
+## Lifecycle
+
+Since API version 19, the custom dialog box provides lifecycle callbacks to notify users of dialog box state changes. The order in which these lifecycle events are triggered is as follows: **onWillAppear**, **onDidAppear**, **onWillDisappear**, **onDidDisappear**.
+
+| Name           |Type| Description                      |
+| ----------------- | ------ | ---------------------------- |
+| onWillAppear    | Callback&lt;void&gt; | Triggered before the dialog box display animation.|
+| onDidAppear    | Callback&lt;void&gt;  | Triggered after the dialog box appears.   |
+| onWillDisappear | Callback&lt;void&gt; | Triggered before the dialog box exit animation.|
+| onDidDisappear | Callback&lt;void&gt;  | Triggered after the dialog box disappears.   |
 
 ## Creating a Custom Dialog Box
 
@@ -14,9 +33,7 @@ You can specify the modality of a dialog box by setting [isModal](../reference/a
    ```ts
    @CustomDialog
    struct CustomDialogExample {
-     controller: CustomDialogController = new CustomDialogController({
-       builder: CustomDialogExample({}),
-     })
+     controller: CustomDialogController
    
      build() {
        Column() {
@@ -51,7 +68,7 @@ You can specify the modality of a dialog box by setting [isModal](../reference/a
        Column() {
          Button('click me')
            .onClick(() => {
-             this.dialogController.open()
+             this.dialogController.open();
            })
        }.width('100%').margin({ top: 5 })
      }
@@ -60,18 +77,20 @@ You can specify the modality of a dialog box by setting [isModal](../reference/a
    
    ![en-us_image_0000001562700493](figures/en-us_image_0000001562700493.png)
 
-## Implementing Interaction with the Custom Dialog Box
+## Implementing Dialog Box Interaction
 
-Custom dialog boxes can be used for data interactions to complete a series of operations.
+Custom dialog boxes support data interactions to complete various operations.
 
-1. Add buttons in the \@CustomDialog decorator structure and add data functions.
+1. Add buttons and data functions to the \@CustomDialog decorator.
    
    ```ts
    @CustomDialog
    struct CustomDialogExample {
-     cancel?: () => void
-     confirm?: () => void
-     controller: CustomDialogController
+     cancel: () => void = () => {
+     }
+     confirm: () => void = () => {
+     }
+     controller: CustomDialogController;
    
      build() {
        Column() {
@@ -79,16 +98,16 @@ Custom dialog boxes can be used for data interactions to complete a series of op
          Flex({ justifyContent: FlexAlign.SpaceAround }) {
            Button('Cancel')
              .onClick(() => {
-               this.controller.close()
+               this.controller.close();
                if (this.cancel) {
-                 this.cancel()
+                 this.cancel();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Black)
            Button('Obtain')
              .onClick(() => {
-               this.controller.close()
+               this.controller.close();
                if (this.confirm) {
-                 this.confirm()
+                 this.confirm();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Red)
          }.margin({ bottom: 10 })
@@ -107,21 +126,21 @@ Custom dialog boxes can be used for data interactions to complete a series of op
          cancel: ()=> { this.onCancel() },
          confirm: ()=> { this.onAccept() },
        }),
-     })
+     });
    
      onCancel() {
-       console.info('Callback when the first button is clicked')
+       console.info('Callback when the first button is clicked');
      }
    
      onAccept() {
-       console.info('Callback when the second button is clicked')
+       console.info('Callback when the second button is clicked');
      }
    
      build() {
        Column() {
          Button('click me')
            .onClick(() => {
-             this.dialogController.open()
+             this.dialogController.open();
            })
        }.width('100%').margin({ top: 5 })
      }
@@ -130,14 +149,14 @@ Custom dialog boxes can be used for data interactions to complete a series of op
    
    ![en-us_image_0000001511421320](figures/en-us_image_0000001511421320.png)
    
-   3. Use the button in the dialog box to implement route redirection and obtain the parameters passed in from the redirection target page.
+   3. Use dialog box buttons to implement navigation and obtain parameters from the target page.
    
    ```ts
    // Index.ets
    @CustomDialog
    struct CustomDialogExample {
-     @Link textValue: string
-     controller?: CustomDialogController
+     @Link textValue: string;
+     controller?: CustomDialogController;
      cancel: () => void = () => {
      }
      confirm: () => void = () => {
@@ -156,19 +175,19 @@ Custom dialog boxes can be used for data interactions to complete a series of op
            Button('Cancel')
              .onClick(() => {
                if (this.controller != undefined) {
-                 this.controller.close()
-                 this.cancel()
+                 this.controller.close();
+                 this.cancel();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Black)
            Button('Obtain')
              .onClick(() => {
                if (this.controller != undefined && this.textValue != '') {
-                 this.controller.close()
+                 this.controller.close();
                } else if (this.controller != undefined) {
                  this.getUIContext().getRouter().pushUrl({
                    url: 'pages/Index2'
-                 })
-                 this.controller.close()
+                 });
+                 this.controller.close();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Red)
          }.margin({ bottom: 10 })
@@ -179,7 +198,7 @@ Custom dialog boxes can be used for data interactions to complete a series of op
    @Entry
    @Component
    struct CustomDialogUser {
-     @State textValue: string = ''
+     @State textValue: string = '';
      dialogController: CustomDialogController | null = new CustomDialogController({
        builder: CustomDialogExample({
          cancel: () => {
@@ -188,33 +207,33 @@ Custom dialog boxes can be used for data interactions to complete a series of op
          confirm: () => {
            this.onAccept()
          },
-         textValue: $textValue
+         textValue: this.textValue
        })
-     })
+     });
    
      // Set dialogController to null when the custom component is about to be destroyed.
      aboutToDisappear() {
-       this.dialogController = null // Set dialogController to null.
+       this.dialogController = null; // Set dialogController to null.
      }
    
      onPageShow() {
        const params = this.getUIContext().getRouter().getParams() as Record<string, string>; // Obtain the passed parameter object.
        if (params) {
-         this.dialogController?.open()
+         this.dialogController?.open();
          this.textValue = params.info as string; // Obtain the value of the id attribute.
        }
      }
    
      onCancel() {
-       console.info('Callback when the first button is clicked')
+       console.info('Callback when the first button is clicked');
      }
    
      onAccept() {
-       console.info('Callback when the second button is clicked')
+       console.info('Callback when the second button is clicked');
      }
    
      exitApp() {
-       console.info('Click the callback in the blank area')
+       console.info('Click the callback in the blank area');
      }
    
      build() {
@@ -222,7 +241,7 @@ Custom dialog boxes can be used for data interactions to complete a series of op
          Button('Click Me')
            .onClick(() => {
              if (this.dialogController != null) {
-               this.dialogController.open()
+               this.dialogController.open();
              }
            }).backgroundColor(0x317aff)
        }.width('100%').margin({ top: 5 })
@@ -263,7 +282,7 @@ You can define the custom dialog box animation, including its duration and speed
 ```ts
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController
+  controller?: CustomDialogController;
 
   build() {
     Column() {
@@ -275,8 +294,8 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State textValue: string = ''
-  @State inputValue: string = 'click me'
+  @State textValue: string = '';
+  @State inputValue: string = 'click me';
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample(),
     openAnimation: {
@@ -295,11 +314,11 @@ struct CustomDialogUser {
     customStyle: false,
     backgroundColor: 0xd9ffffff,
     cornerRadius: 10,
-  })
+  });
 
   // Set dialogController to null when the custom component is about to be destroyed.
   aboutToDisappear() {
-    this.dialogController = null // Set dialogController to null.
+    this.dialogController = null; // Set dialogController to null.
   }
 
   build() {
@@ -307,7 +326,7 @@ struct CustomDialogUser {
       Button(this.inputValue)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open()
+            this.dialogController.open();
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -317,14 +336,14 @@ struct CustomDialogUser {
 
 ![openAnimator](figures/openAnimator.gif)
 
-## Defining the Custom Dialog Box Style
+## Customizing the Dialog Box Style
 
-You can set style parameters, such as the width, height, background color, and shadow, for a custom dialog box.
+Control the dialog box appearance by defining width, height, background color, and shadow.
 
 ```ts
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController
+  controller?: CustomDialogController;
 
   build() {
     Column() {
@@ -336,8 +355,8 @@ struct CustomDialogExample {
 @Entry
 @Component
 struct CustomDialogUser {
-  @State textValue: string = ''
-  @State inputValue: string = 'Click Me'
+  @State textValue: string = '';
+  @State inputValue: string = 'click me';
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample(),
     autoCancel: true,
@@ -353,11 +372,11 @@ struct CustomDialogUser {
     borderStyle: BorderStyle.Dashed,// borderStyle must be used with borderWidth in pairs.
     borderColor: Color.Blue,// borderColor must be used with borderWidth in pairs.
     shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}),
-  })
+  });
 
   // Set dialogController to null when the custom component is about to be destroyed.
   aboutToDisappear() {
-    this.dialogController = null // Set dialogController to null.
+    this.dialogController = null; // Set dialogController to null.
   }
 
   build() {
@@ -365,7 +384,7 @@ struct CustomDialogUser {
       Button(this.inputValue)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open()
+            this.dialogController.open();
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -382,9 +401,10 @@ To nest a dialog box (dialog 2) inside another dialog box (dialog 1), it is reco
 ```ts
 @CustomDialog
 struct CustomDialogExampleTwo {
-  controllerTwo?: CustomDialogController
-  @State message: string = "I'm the second dialog box."
+  controllerTwo?: CustomDialogController;
+  @State message: string = "I'm the second dialog box.";
   @State showIf: boolean = false;
+
   build() {
     Column() {
       if (this.showIf) {
@@ -396,27 +416,28 @@ struct CustomDialogExampleTwo {
         .fontSize(30)
         .height(100)
       Button("Create Text")
-        .onClick(()=>{
+        .onClick(() => {
           this.showIf = true;
         })
       Button('Close Second Dialog Box')
         .onClick(() => {
           if (this.controllerTwo != undefined) {
-            this.controllerTwo.close()
+            this.controllerTwo.close();
           }
         })
         .margin(20)
     }
   }
 }
+
 @CustomDialog
 struct CustomDialogExample {
-  openSecondBox?: ()=>void
+  openSecondBox?: () => void
   controller?: CustomDialogController
 
   build() {
     Column() {
-      Button('Open Second Dialog Box and Close This Box')
+      Button('Open Second Dialog Box and close this box')
         .onClick(() => {
           this.controller!.close();
           this.openSecondBox!();
@@ -425,13 +446,14 @@ struct CustomDialogExample {
     }.borderRadius(10)
   }
 }
+
 @Entry
 @Component
 struct CustomDialogUser {
-  @State inputValue: string = 'Click Me'
+  @State inputValue: string = 'Click Me';
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample({
-      openSecondBox: ()=>{
+      openSecondBox: () => {
         if (this.dialogControllerTwo != null) {
           this.dialogControllerTwo.open()
         }
@@ -443,34 +465,36 @@ struct CustomDialogUser {
     offset: { dx: 0, dy: -20 },
     gridCount: 4,
     customStyle: false
-  })
+  });
   dialogControllerTwo: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExampleTwo(),
     alignment: DialogAlignment.Bottom,
-    offset: { dx: 0, dy: -25 } })
+    offset: { dx: 0, dy: -25 }
+  });
 
   aboutToDisappear() {
-    this.dialogController = null
-    this.dialogControllerTwo = null
+    this.dialogController = null;
+    this.dialogControllerTwo = null;
   }
 
   onCancel() {
-    console.info('Callback when the first button is clicked')
+    console.info('Callback when the first button is clicked');
   }
 
   onAccept() {
-    console.info('Callback when the second button is clicked')
+    console.info('Callback when the second button is clicked');
   }
 
   exitApp() {
-    console.info('Click the callback in the blank area')
+    console.info('Click the callback in the blank area');
   }
+
   build() {
     Column() {
       Button(this.inputValue)
         .onClick(() => {
           if (this.dialogController != null) {
-            this.dialogController.open()
+            this.dialogController.open();
           }
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
@@ -480,5 +504,224 @@ struct CustomDialogUser {
 
 ![nested_dialog](figures/nested_dialog.gif)
 
-If you define dialog 2 within dialog 1 instead, because of the parent-child relationship that exists between custom dialog boxes in terms of state management, you will not be able to create any component in dialog 2 once dialog 1 is destroyed (closed).
+Note: Defining dialog 2 within dialog 1 is not recommended, as components cannot be created in dialog 2 after dialog 1 is destroyed (closed) due to state management dependencies.
+
+## Implementing Physical Back Button Interception
+
+When the **onWillDismiss** callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The callback provides the dismissal reason via **reason** in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), allowing conditional dismissal.
+
+```ts
+@CustomDialog
+struct CustomDialogExample {
+  cancel: () => void = () => {
+  }
+  confirm: () => void = () => {
+  }
+  controller?: CustomDialogController;
+
+  build() {
+    Column() {
+      Text('Are you sure?')
+        .fontSize(20)
+        .margin({
+          top: 10,
+          bottom: 10
+        })
+      Row() {
+        Button('Cancel')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.controller.close();
+            }
+          })
+          .backgroundColor(0xffffff)
+          .fontColor(Color.Black)
+        Button('Obtain')
+          .onClick(() => {
+            if (this.controller != undefined) {
+              this.controller.close();
+            }
+          })
+          .backgroundColor(0xffffff)
+          .fontColor(Color.Red)
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceAround)
+      .margin({ bottom: 10 })
+    }
+  }
+}
+
+@Entry
+@Component
+struct InterceptCustomDialog {
+  dialogController: CustomDialogController = new CustomDialogController({
+    builder: CustomDialogExample({
+      cancel: () => {
+        this.onCancel();
+      },
+      confirm: () => {
+        this.onAccept();
+      }
+    }),
+    onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+      console.info('dialog onWillDismiss reason: ' + dismissDialogAction.reason);
+      // 1. PRESS_BACK: touching the Back button, swiping left or right on the screen, or pressing the Esc key.
+      // 2. TOUCH_OUTSIDE: touching the mask.
+      // 3. CLOSE_BUTTON: touching the Close button.
+      if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+        // Proactively close the dialog box after handling the service logic.
+        // dismissDialogAction.dismiss();
+      }
+      if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+        // dismissDialogAction.dismiss();
+      }
+    },
+    alignment: DialogAlignment.Bottom,
+    offset: { dx: 0, dy: -20 }
+  })
+
+  onCancel() {
+    console.info('Callback when the first button is clicked');
+  }
+
+  onAccept() {
+    console.info('Callback when the second button is clicked');
+  }
+
+  build() {
+    Column() {
+      Button('click me')
+        .onClick(() => {
+          this.dialogController.open();
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![onWillDismiss_dialog](figures/onWillDismiss_dialog.gif)
+
+## Setting the Distance Between the Dialog Box and the Soft Keyboard
+
+To maintain dialog box independence, dialog boxes automatically avoid surrounding elements like status bars, navigation bars, and keyboards. When the soft keyboard appears, dialog boxes maintain a default 16 vp distance. Since API version 15, use **keyboardAvoidMode** and **keyboardAvoidDistance** in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to configure keyboard avoidance behavior.
+Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMode.DEFAULT**.
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI'
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+  build() {
+    Column() {
+      Column() {
+        Text('keyboardAvoidDistance: 0vp')
+          .fontSize(20)
+          .margin({ bottom: 36 })
+        TextInput({ placeholder: '' })
+      }.backgroundColor('#FFF0F0F0')
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({
+    }),
+    autoCancel: true,
+    gridCount: 4,
+    showInSubWindow: true,
+    isModal: true,
+    customStyle: false,
+    cornerRadius: 30,
+    alignment:DialogAlignment.Bottom,
+    keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
+    keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
+  })
+
+  build() {
+    Row() {
+      Row({ space: 20 }) {
+        Text('Open dialog box')
+          .fontSize(30)
+          .onClick(() => {
+            if (this.dialogController != null) {
+              this.dialogController.open();
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+
+
+## Obtaining the Dialog Box Status
+
+In service modules, multiple dialog boxes may appear simultaneously. To prevent duplicate openings, check the dialog box status via the controller before display. If a dialog box is already displayed, do not open it again.
+The **getState** API, available since API version 20, obtains the current dialog box status. For details about the dialog box status, see [CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20).
+
+The following example uses [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) and [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) to obtain the dialog box status.
+
+```ts
+// xxx.ets
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController
+
+  build() {
+    Column() {
+      Button('Check Status: Custom Component Controller')
+        .onClick(() => {
+          if (this.getDialogController() != undefined) {
+            console.info('state:' + this.getDialogController().getState())
+          } else {
+            console.info('state: no exist')
+          }
+        }).margin(20)
+      Button('Check Status: CustomDialogController')
+        .onClick(() => {
+          console.info('state:' + this.controller?.getState())
+        }).margin(20)
+      Button('Close Dialog Box')
+        .onClick(() => {
+          if (this.getDialogController() != undefined) {
+            this.getDialogController().close()
+          }
+        }).margin(20)
+      
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({
+    }),
+    autoCancel: false
+  })
+
+  build() {
+    Column() {
+      Button('click me')
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open()
+          }
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
 

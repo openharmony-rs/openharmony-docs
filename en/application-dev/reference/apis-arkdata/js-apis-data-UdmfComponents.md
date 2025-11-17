@@ -37,7 +37,7 @@ Defines the information of a content card component that displayed in an applica
 | contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | Yes| - | Content card data.|
 | formType | [FormType](#formtype) | Yes| @Prop | Content card type, which affects the size of the content card.|
 | formWidth | number | No| @Prop | Card width. The value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type.|
-| formHeight | number | No| @Prop | Card height. If title in **contentFormData** is an empty string, the card height is the passed value. Otherwise, the value is 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value is 0.4 to 1.2 times the default width of the content card type.|
+| formHeight | number | No| @Prop | Card height. If title in **contentFormData** is an empty string, the card height is the passed value. Otherwise, the value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type.|
 | handleOnClick | Function | No| - | Callback for the click event.|
 
 ## FormType

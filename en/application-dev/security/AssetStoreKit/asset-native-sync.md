@@ -1,5 +1,11 @@
 # Syncing Assets (Backup and Restore) (C/C++)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 ## Adding Dependencies
 
@@ -17,27 +23,26 @@ Add an asset with the password **demo_pwd**, alias **demo_alias**, and additiona
 
 #include "asset/asset_api.h"
 
-void AddAsset() {
-    static const char *SECRET = "demo_pwd";
-    static const char *ALIAS = "demo_alias";
-    static const char *LABEL = "demo_label";
+static napi_value AddAsset(napi_env env, napi_callback_info info)
+{
+    static const char *SECRET = "demo_pwd2";
+    static const char *ALIAS = "demo_alias2";
+    static const char *LABEL = "demo_label2";
 
-    Asset_Blob secret = { (uint32_t)(strlen(SECRET)), (uint8_t *)SECRET };
-    Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
-    Asset_Blob label = { (uint32_t)(strlen(LABEL)), (uint8_t *)LABEL };
+    Asset_Blob secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
+    Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
+    Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
     Asset_Attr attr[] = {
-        { .tag = ASSET_TAG_SECRET, .value.blob = secret },
-        { .tag = ASSET_TAG_ALIAS, .value.blob = alias },
-        { .tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label },
-        { .tag = ASSET_TAG_SYNC_TYPE, .value.u32 = ASSET_SYNC_TYPE_TRUSTED_DEVICE }, // You need to specify the sync type between trusted devices (for example, clone between old and new devices).
+        {.tag = ASSET_TAG_SECRET, .value.blob = secret},
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
+        {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
+        {.tag = ASSET_TAG_SYNC_TYPE, .value.u32 = ASSET_SYNC_TYPE_TRUSTED_DEVICE}, // You need to specify the sync type between trusted devices (for example, clone between old and new devices).
     };
 
-    int32_t ret = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
-    if (ret == ASSET_SUCCESS) {
-        // The asset that supports sync is added successfully.
-    } else {
-        // The asset that supports sync failed to be added.
-    }
+    int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
+    napi_value ret;
+    napi_create_int32(env, addResult, &ret);
+    return ret;
 }
 ```
 
@@ -66,14 +71,13 @@ The following table describes the attributes for querying an asset.
 
 #include "asset/asset_api.h"
 
-void QuerySyncResults() {
+static napi_value QuerySyncResults(napi_env env, napi_callback_info info)
+{
     Asset_SyncResult syncResult = {0};
-    int32_t ret = OH_Asset_QuerySyncResult(NULL, 0, &syncResult);
-    if (ret == ASSET_SUCCESS) {
-        // The asset sync result is successfully queried.
-    } else {
-        // The asset sync result failed to be queried.
-    }
+    int32_t queryResult = OH_Asset_QuerySyncResult(NULL, 0, &syncResult);
+    napi_value ret;
+    napi_create_int32(env, queryResult, &ret);
+    return ret;
 }
 ```
 
@@ -81,8 +85,8 @@ void QuerySyncResults() {
 
 For a successful sync between trusted devices, the assets of both old and new devices must be accessible. Otherwise, the sync might fail.
 
-* For assets that are accessible only when a password is set, the sync will fail if no lock screen password is set on either the old or new device.
+- For assets that are accessible only when a password is set, the sync will fail if no lock screen password is set on either the old or new device.
   
-* For assets that are accessible only when the screen is unlocked, the sync will fail if the screen of either the old or new device is locked.
+- For assets that are accessible only when the screen is unlocked, the sync will fail if the screen of either the old or new device is locked.
 
-* For assets that are accessible only after user authentication, the sync will fail if no lock screen password is set on the old device.
+- For assets that are accessible only after user authentication, the sync will fail if no lock screen password is set on the old device.

@@ -24,10 +24,10 @@
       - [UIAbility备份恢复](ability-recover-guideline.md)
     - [ExtensionAbility组件](extensionability-overview.md)
       <!--Del-->
-      - [ServiceExtensionAbility（仅对系统应用开放）](serviceextensionability.md)
+      - [ServiceExtensionAbility（仅对系统应用开放）](serviceextensionability-sys.md)
       - [UIServiceExtension（仅对系统应用开放）](uiserviceextension-sys.md)
-      - [UIExtensionAbility（仅对系统应用开放）](uiextensionability.md)
-      - [使用AutoFillExtensionAbility实现自动填充功能（仅对系统应用开放）](autofillextensionability-guide.md)
+      - [UIExtensionAbility（仅对系统应用开放）](uiextensionability-sys.md)
+      - [使用AutoFillExtensionAbility实现自动填充功能（仅对系统应用开放）](autofillextensionability-guide-sys.md)
       - [使用通过UIServiceExtensionAbility实现的系统悬浮窗](uiserviceextension.md)
       <!--DelEnd-->
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
@@ -76,10 +76,10 @@
   - [线程模型](thread-model-stage.md)
   <!--Del-->
   - 任务（Mission）管理（仅对系统应用开放）<!--mission-management-->
-    - [任务（Mission）管理场景介绍](mission-management-overview.md)
-    - [任务（Mission）与启动模式](mission-management-launch-type.md)
-    - [页面栈及任务链](page-mission-stack.md)
-    - [设置任务快照的图标和名称](mission-set-icon-name-for-task-snapshot.md)
+    - [任务（Mission）管理场景介绍（仅对系统应用开放）](mission-management-overview-sys.md)
+    - [任务（Mission）与启动模式（仅对系统应用开放）](mission-management-launch-type-sys.md)
+    - [页面栈及任务链（仅对系统应用开放）](page-mission-stack-sys.md)
+    - [设置任务快照的图标和名称（仅对系统应用开放）](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
   - [Stage模型应用配置文件](config-file-stage.md)
   - 意图框架开发指导<!--insight-intent-->
@@ -103,7 +103,7 @@
       - [启动本地PageAbility](start-local-pageability.md)
       - [停止PageAbility](stop-pageability.md)
       <!--Del-->
-      - [启动远程PageAbility（仅对系统应用开放）](start-remote-pageability.md)
+      - [启动远程PageAbility（仅对系统应用开放）](start-remote-pageability-sys.md)
       <!--DelEnd-->
       - [启动指定页面](start-page.md)
       - [窗口属性](window-properties.md)
@@ -130,7 +130,7 @@
   - [进程模型](process-model-fa.md)
   - [线程模型](thread-model-fa.md)
   <!--Del-->
-  - [任务管理（仅对系统应用开放）](mission-management-fa.md)
+  - [任务管理（仅对系统应用开放）](mission-management-fa-sys.md)
   <!--DelEnd-->
   - [FA模型应用配置文件](config-file-fa.md)
 <!--Del-->

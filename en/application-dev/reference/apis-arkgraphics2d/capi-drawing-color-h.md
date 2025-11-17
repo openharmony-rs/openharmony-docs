@@ -9,9 +9,9 @@
 
 ## Overview
 
-The **drawing_color.h** file declares the functions related to the color in the drawing module.
+This file declares the functions related to the color in the drawing module.
 
-**File to import**: <native_drawing/drawing_color.h>
+**File to include**: <native_drawing/drawing_color.h>
 
 **Library**: libnative_drawing.so
 
@@ -19,7 +19,7 @@ The **drawing_color.h** file declares the functions related to the color in the 
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Functions
 

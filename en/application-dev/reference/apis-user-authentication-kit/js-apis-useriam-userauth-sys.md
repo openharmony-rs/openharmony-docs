@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 The **userIAM.userAuth** module provides user authentication capabilities in identity authentication scenarios, such as device unlocking, payment, and app login.
 
@@ -27,7 +28,7 @@ Represents the user authentication parameters.
 
 | Name          | Type                              | Mandatory| Description                                                        |
 | -------------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | number | No  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.|
+| userId<sup>18+</sup> | number | No  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.<br>**System API**: This is a system API.|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -332,7 +333,7 @@ Enumerates the types of credentials for identity authentication.
 
 | Name       | Value  | Description      |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | Privacy password.|
+| PRIVATE_PIN<sup>14+</sup>  | 16   | Privacy password.<br>**System API**: This is a system API.|
 
 **Example**
 
@@ -389,7 +390,7 @@ Queries whether there is any reusable identity authentication result.
 
 | Name | Type  | Mandatory| Description                |
 | ------- | ------ | ---- | -------------------- |
-| authParam | [userAuth.AuthParam](js-apis-useriam-userauth.md#authparam10) | Yes| Represents the user authentication parameters.|
+| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | Yes| Represents the user authentication parameters.|
 
 **Return value**
 

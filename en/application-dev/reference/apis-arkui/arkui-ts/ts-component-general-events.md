@@ -1,4 +1,10 @@
 # Universal Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 <!--Del-->
 - [Click Event](ts-universal-events-click.md)
 - [Touch Event](ts-universal-events-touch.md)

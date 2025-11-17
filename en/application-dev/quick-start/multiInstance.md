@@ -34,6 +34,7 @@ Application multi-instance can run on only 2-in-1 devices.
     }
     ```
 
+
 2. Create a multi-instance.
 
 - Build and package the configured project and install it on the device.

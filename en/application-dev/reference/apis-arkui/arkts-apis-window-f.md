@@ -240,6 +240,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -252,13 +253,14 @@ export default class EntryAbility extends UIAbility {
           }
           subWindow.showWindow().then(() => {
             try {
-              window.getLastWindow(this.context, (err: BusinessError, topWindow) => {
+              window.getLastWindow(this.context, (err: BusinessError, data) => {
                 const errCode: number = err.code;
                 if (errCode) {
                   console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
                   return;
                 }
-                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
+                windowClass = data;
+                console.info(`Succeeded in obtaining the top window. Window id: ${windowClass.getWindowProperties().id}`);
               });
             } catch (exception) {
               console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -350,7 +352,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowFocus<sup>11+</sup>
 shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted within the main window and child windows.
+Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted within the main window and child windows. This API uses a promise to return the result.
 
 Ensure that the target window can gain focus (configurable by calling [setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)) and that [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
 
@@ -457,7 +459,7 @@ export default class EntryAbility extends UIAbility {
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-Transfers a mouse input event from one window to another within the same application. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and takes effect only for the main window and its child windows. This API uses a promise to return the result.
+Transfers a mouse input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
 To transfer mouse input events, the source window must call this API within the callback of the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
@@ -465,7 +467,7 @@ To transfer mouse input events, the source window must call this API within the 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -531,13 +533,13 @@ struct Index {
 ## window.shiftAppWindowTouchEvent<sup>20+</sup>
 shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
 
-Transfers a touchscreen input event from one window to another within the same application. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and takes effect only for the main window and its child windows. This API uses a promise to return the result.
+Transfers a touchscreen input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result.
 
 To transfer touchscreen input events, the source window must call this API within the callback of the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) event (the event type must be **TouchType.Down**). After a successful call, the system sends a **TouchType.Up** event to the source window and a **TouchType.Down** event to the target window.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -862,7 +864,7 @@ import { ColorMetrics, window } from '@kit.ArkUI';
 try {
   let promise = window.setStartWindowBackgroundColor("entry", "EntryAbility", ColorMetrics.numeric(0xff000000));
   promise.then(() => {
-    console.log('Succeeded in setting the starting window color.');
+    console.info('Succeeded in setting the starting window color.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the starting window color. Cause code: ${err.code}, message: ${err.message}`);
   });
@@ -1279,5 +1281,3 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<!--no_check-->

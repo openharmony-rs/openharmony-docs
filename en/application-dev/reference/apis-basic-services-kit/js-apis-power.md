@@ -45,7 +45,7 @@ console.info('power is active: ' + isActive);
 
 rebootDevice(reason: string): void
 
-> **NOTE**<br>This API is supported since API version 7 and is deprecated since API version 9. The substitute API is available only for system applications.
+> **NOTE**<br>This API is supported since API version 7 and is deprecated since API version 9. You are advised to use **power.reboot** instead. The substitute API is available only for system applications.
 
 Reboots a device.
 

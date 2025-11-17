@@ -1,5 +1,6 @@
 # @ohos.application.ConfigurationConstant (ConfigurationConstant)
 
+
 The ConfigurationConstant module provides the enumerated values of the environment configuration information.
 
 > **NOTE**

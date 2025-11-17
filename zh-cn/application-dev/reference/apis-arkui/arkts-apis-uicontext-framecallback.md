@@ -1,10 +1,16 @@
 # Class (FrameCallback)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于设置下一帧渲染时需要执行的任务。
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
 >
@@ -85,7 +91,7 @@ onIdle(timeLeftInNano: number): void
 **示例：**
 
 ```ts
-import { FrameCallback } from '@ohos.arkui.UIContext';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyIdleCallback extends FrameCallback {
   private tag: string;

@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 该组件用于展示一系列宽度相同的列表项，适用于展示连续、多行的同类数据组合（如图片与文本）。
@@ -12,8 +12,9 @@
 
 > **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 如果ComposeListItem设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeListItem本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ComposeListItem设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -26,10 +27,6 @@ import { ComposeListItem } from "@kit.ArkUI";
 ## 子组件
 
 无
-
-## 属性
-不支持[通用属性](ts-component-general-attributes.md)。
-
 
 ## ComposeListItem
 
@@ -136,10 +133,10 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                                                                                                                                    |
 | -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 右侧按钮文字。<br/>默认值：""<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                |
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | 否 | 否 | 右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：""<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                             |
-| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | 否 | 否 | 右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值："单指双击即可执行"。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
-| accessibilityLevel<sup>18+</sup>       | string                                                    | 否 | 否 | 右侧按钮的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换"no"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto" <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧按钮文字。<br/>默认值：""<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | 否 | 是 | 右侧按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：""<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                             |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | 否 | 是 | 右侧按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值："单指双击即可执行"。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| accessibilityLevel<sup>18+</sup>       | string                                                    | 否 | 是 | 右侧按钮的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换"no"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto" <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## OperateCheck
 

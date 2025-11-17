@@ -1,5 +1,12 @@
 # tagSession (Standard NFC Tag Session) 
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 The **tagSession** module provides common APIs for establishing connections and transferring data.
 
 > **NOTE**
@@ -41,7 +48,7 @@ Obtains the **tagInfo** object provided by the NFC service when the tag is dispa
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| TagInfo  | **Taginfo** object obtained.|
+| tag.TagInfo  | **Taginfo** object obtained.|
 
 **Example**
 
@@ -492,7 +499,7 @@ try {
 
 sendData(data: number[]): Promise<number[]>
 
-Sends data to this tag. This API uses a promise to return the result.
+Sends a command to the tag. This API uses a promise to return the result.
 
 > **NOTE**
 > This API is supported since API version 7 and deprecated since API version 9. Use [tagSession.transmit](#transmit9) instead.
@@ -511,7 +518,7 @@ Sends data to this tag. This API uses a promise to return the result.
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| Promise<number[]> | Promise used to return the response from the tag. The response consists of hexadecimal numbers ranging from **0x00** to **0xFF**.|
+| Promise<number[]> | Promise used to return the response data from the peer tag. Each number is in hexadecimal format, ranging from 0x00 to 0xFF.|
 
 **Example**
 
@@ -544,7 +551,7 @@ function tagSessionDemo() {
 
 sendData(data: number[], callback: AsyncCallback<number[]>): void
 
-Sends data to this tag. This API uses an asynchronous callback to return the result.
+Sends a command to the tag. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This parameter is supported since API version 7 and deprecated since API version 9. Use [tagSession.transmit](#transmit9-1) instead.
@@ -592,7 +599,7 @@ function tagSessionDemo() {
 
 transmit(data: number[]): Promise<number[]>
 
-Transmits data to this tag. This API uses a promise to return the result.
+Sends a command to the tag. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -610,7 +617,7 @@ Transmits data to this tag. This API uses a promise to return the result.
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| Promise<number[]> | Promise used to return the response from the tag. The response consists of hexadecimal numbers ranging from **0x00** to **0xFF**.|
+| Promise<number[]> | Promise used to return the response data from the peer tag. Each number is in hexadecimal format, ranging from 0x00 to 0xFF.|
 
 **Error codes**
 
@@ -662,7 +669,7 @@ function tagSessionDemo() {
 
 transmit(data: number[], callback: AsyncCallback<number[]>): void
 
-Transmits data to this tag. This API uses an asynchronous callback to return the result.
+Sends a command to the tag. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 

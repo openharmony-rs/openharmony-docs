@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件的宽高、边距。
 
@@ -208,6 +208,10 @@ safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 
 设置安全区边距属性。允许容器向自身添加组件级安全区域，供子组件延伸，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 14开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
@@ -314,9 +318,11 @@ constraintSize(value: ConstraintSizeOptions): T
 >
 > - wrapContent和fixAtIdealSize场景，组件无法通过内容确定大小时，如果组件大小有默认值，则按照默认值进行测算；如果没有默认值，则按照宽高(0,0)进行测算。
 > 
-> - 容器设置wrapContent，并且有子组件设置matchParent时，容器先由确定大小的子组件撑大，设置matchParent的子组件再匹配容器大小；如果没有确定大小的子组件，容器和子组件大小均为0。
+> - 容器设置wrapContent，并且有子组件设置matchParent时（包括仅一边设置matchParent），容器先由确定大小的子组件撑大，设置matchParent的子组件再匹配容器大小；如果没有确定大小的子组件，容器和子组件大小均为0。
 >
 > - LayoutPolicy优先级低于constraintSize。
+> 
+> - 从API version 15开始，仅Row和Column组件的width和height属性支持设置LayoutPolicy类型参数，其他组件设置LayoutPolicy类型参数后与不设置宽度或高度表现一致；从API version 20开始，所有基础组件均支持设置LayoutPolicy类型参数。
 
 ## 示例
 

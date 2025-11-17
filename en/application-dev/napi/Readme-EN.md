@@ -1,10 +1,5 @@
 # Node-API
-<!--Kit: Common-->
-<!--Subsystem: Common-->
-<!--Owner: @fang-jinxu-->
-<!--Designer: @lingminghw-->
-<!--Tester: @RayShih-->
-<!--Adviser: @fang-jinxu-->
+
 - [Getting Started with the NDK](ndk-development-overview.md)
 - [Creating an NDK Project](create-with-ndk.md)
 - Building an NDK Project<!--build-with-ndk-->
@@ -78,7 +73,7 @@
       - [Working with Arrays Using JSVM-API](use-jsvm-about-array.md)
       - [Working with ArrayBuffer Using JSVM-API](use-jsvm-about-arraybuffer.md)
       - [Working with BigInt Using JSVM-API](use-jsvm-about-bigint.md)
-      - [Working with Class Using JSVM-API](use-jsvm-about-class.md)
+      - [Working with Classes Using JSVM-API](use-jsvm-about-class.md)
       - [Working with Date Using JSVM-API](use-jsvm-about-date.md)
       - [Performing Debug Operations Using JSVM-API](use-jsvm-about-debug-option.md)
       - [Working with Objects Using JSVM-API](use-jsvm-about-object.md)

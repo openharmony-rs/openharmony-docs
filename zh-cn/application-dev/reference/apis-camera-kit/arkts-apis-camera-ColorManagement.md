@@ -36,12 +36,14 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void
 在拍照模式下若需要获取HDR高显效果的图片可通过设置色彩空间P3色域实现。
 应用针对不同模式使能HDR效果、设置的色彩空间以及设置相机输出流[Profile](arkts-apis-camera-i.md#profile)中的[CameraFormat](arkts-apis-camera-e.md#cameraformat)一一对应关系可参考下表。例如，在录像模式下若需要选择HDR拍摄，相机预览输出流和录像输出流[Profile](arkts-apis-camera-i.md#profile)中的[CameraFormat](arkts-apis-camera-e.md#cameraformat)可选择CAMERA_FORMAT_YCRCB_P010，色彩空间ColorSpace可选择设置2020_HLG_LIMIT。
 
+在录像模式下，使能SDR或HDR_VIVID拍摄效果时，CameraFormat与ColorSpace必须按照下列表格中的对应关系配置，若不满足表格中CameraFormat与ColorSpace配置，会导致预览异常等问题。
+
 **录像模式：**
 
 | SDR/HDR拍摄         | CameraFormat             | ColorSpace       |
 |--------------------|--------------------------|------------------|
 | SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
-| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT/BT2020_HLG_FULL |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **拍照模式：**
 

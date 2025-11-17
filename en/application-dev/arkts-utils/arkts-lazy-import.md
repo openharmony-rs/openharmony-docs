@@ -475,7 +475,7 @@ struct Index {
       Button('Click to execute file A')
         .onClick(() => {
           // Click to execute file A.
-          console.log("Execute file A", A);
+          console.info("Execute file A", A);
         })
     }
     // ...
@@ -522,7 +522,7 @@ struct Index {
       Button('Click to execute file A')
         .onClick(() => {
           // Click to execute file A.
-          console.log("Execute file A", A);
+          console.info("Execute file A", A);
         })
     }
     // ...

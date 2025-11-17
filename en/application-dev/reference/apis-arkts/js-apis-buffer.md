@@ -22,6 +22,8 @@ import { buffer } from '@kit.ArkTS';
 
 ## BufferEncoding
 
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+
 Enumerates the supported encoding formats.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -613,7 +615,7 @@ Transcodes a **Buffer** or **Uint8Array** object from one encoding format to ano
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| source | [Buffer](#buffer) \| Uint8Array | Yes| Object to encode.|
+| source | [Buffer](#buffer) \| Uint8Array | Yes| Instance object.|
 | fromEnc | string | Yes| Current encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 | toEnc | string | Yes| Target encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 
@@ -711,7 +713,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **Example**
 
@@ -761,7 +763,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **Example**
 
@@ -895,7 +897,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[offset/end]" is out of range. |
+| 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **Example**
 

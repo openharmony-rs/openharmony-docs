@@ -125,7 +125,7 @@ An incorrect server domain name is configured for the atomic service.
 
 **Solution**
 
-Configure a correct server domain name for the atomic service. For details, see [Network Connection Management](https://developer.huawei.com/consumer/en/doc/atomic-guides-V5/atomic-net-connection-manager-V5).
+Configure a correct server domain name for the atomic service. For details, see [Configuring Server Domain Names](https://developer.huawei.com/consumer/en/doc/atomic-guides/agc-help-harmonyos-server-domain).
 
 ## 2302999 Internal Error
 

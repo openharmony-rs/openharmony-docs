@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                     | Type                    | Readable| Writable| Description                                                  |
+| Name                     | Type                    | Read-Only| Optional| Description                                                  |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | Yes  | No  | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                                              |
@@ -392,8 +392,6 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 Obtains the thumbnail of this file. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -449,8 +447,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 Obtains the file thumbnail of the given size. This API uses an asynchronous callback to return the result.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -510,8 +506,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 Obtains the file thumbnail of the given size. This API uses a promise to return the result.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 

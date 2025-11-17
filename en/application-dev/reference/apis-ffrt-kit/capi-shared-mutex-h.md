@@ -61,7 +61,7 @@ Initializes a read-write lock.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read-write lock is successfully initialized;<br>          returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | If `rwlock` is not empty and `attr` is empty, the initialization is successful, and **ffrt_success** is returned. Otherwise, the rwlock fails to be initialized, and **ffrt_error_inval** is returned.|
 
 ### ffrt_rwlock_wrlock()
 
@@ -86,7 +86,7 @@ Obtains a write lock.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the write lock is successfully obtained;<br>          returns **ffrt_error_inval** or blocks the task otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the write lock is successfully obtained; returns **ffrt_error_inval** or blocks the task otherwise.|
 
 ### ffrt_rwlock_trywrlock()
 
@@ -111,7 +111,7 @@ Attempts to obtain a write lock.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the write lock is successfully obtained;<br>          returns **ffrt_error_inval** or **ffrt_error_busy** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the write lock is successfully obtained; returns **ffrt_error_inval** or **ffrt_error_busy** otherwise.|
 
 ### ffrt_rwlock_rdlock()
 
@@ -136,7 +136,7 @@ Obtains a read lock.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read lock is successfully obtained;<br>          returns **ffrt_error_inval** or blocks the task otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the read lock is successfully obtained; returns **ffrt_error_inval** or blocks the task otherwise.|
 
 ### ffrt_rwlock_tryrdlock()
 
@@ -161,7 +161,7 @@ Attempts to obtain a read lock.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read lock is successfully obtained;<br>          returns **ffrt_error_inval** or **ffrt_error_busy** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the read lock is successfully obtained; returns **ffrt_error_inval** or **ffrt_error_busy** otherwise.|
 
 ### ffrt_rwlock_unlock()
 
@@ -186,7 +186,7 @@ Releases the read-write lock.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read-write lock is successfully released;<br>          returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the read-write lock is successfully released; returns **ffrt_error_inval** otherwise.|
 
 ### ffrt_rwlock_destroy()
 
@@ -211,4 +211,4 @@ Destroys the read-write lock.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read-write lock is destroyed successfully;<br>returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the read-write lock is destroyed successfully; returns **ffrt_error_inval** otherwise.|

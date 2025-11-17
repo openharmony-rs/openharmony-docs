@@ -13,11 +13,11 @@ The Drawing module provides the functions for 2D graphics rendering, text drawin
 | -- | -- |
 | [drawing_bitmap.h](capi-drawing-bitmap-h.md) | Declares the functions related to the bitmap in the drawing module.|
 | [drawing_brush.h](capi-drawing-brush-h.md) | Declares the functions related to the brush in the drawing module.|
-| [drawing_canvas.h](capi-drawing-canvas-h.md) | This file declares the functions related to the canvas in the drawing module.<br>By default, the canvas has a black brush with anti-aliasing enabled but no any other style. This default brush takes effect only when no brush or pen is proactively set in the canvas.|
+| [drawing_canvas.h](capi-drawing-canvas-h.md) | Declares the functions related to the canvas in the drawing module.<br>By default, the canvas has a black brush with anti-aliasing enabled but no any other style. This default brush takes effect only when no brush or pen is proactively set in the canvas.|
 | [drawing_color.h](capi-drawing-color-h.md) | Declares the functions related to the color in the drawing module.|
 | [drawing_color_filter.h](capi-drawing-color-filter-h.md) | Declares the functions related to the color filter in the drawing module.|
 | [drawing_color_space.h](capi-drawing-color-space-h.md) | Declares the functions related to the color space in the drawing module.|
-| [drawing_error_code.h](capi-drawing-error-code-h.md) | The **drawing_error_code.h** file declares the functions related to the error code in the drawing module.include native_drawing/drawing_error_code.h |
+| [drawing_error_code.h](capi-drawing-error-code-h.md) | Declares the functions related to the error code in the drawing module.include native_drawing/drawing_error_code.h |
 | [drawing_filter.h](capi-drawing-filter-h.md) | Declares the functions related to the filter in the drawing module.|
 | [drawing_font.h](capi-drawing-font-h.md) | Declares the functions related to the font in the drawing module.|
 | [drawing_font_collection.h](capi-drawing-font-collection-h.md) | Declares the functions related to the font collection in the drawing module.|
@@ -45,7 +45,7 @@ The Drawing module provides the functions for 2D graphics rendering, text drawin
 | [drawing_text_blob.h](capi-drawing-text-blob-h.md) | Declares the functions related to the text blob in the drawing module.|
 | [drawing_text_declaration.h](capi-drawing-text-declaration-h.md) | Declares the structs related to text in 2D drawing.|
 | [drawing_text_font_descriptor.h](capi-drawing-text-font-descriptor-h.md) | Declares the capabilities of font information, such as obtaining font information and searching for a font.|
-| [drawing_text_global.h](capi-drawing-text-global-h.md) | Provides APIs for setting text rendering attributes, for example, setting the high-contrast mode.|
+| [drawing_text_global.h](capi-drawing-text-global-h.md) | Declares the functions related to global text information, for example, setting the high contrast mode for text rendering.|
 | [drawing_text_line.h](capi-drawing-text-line-h.md) | Declares the capabilities for obtaining the character position in a text line, obtaining the run information, and truncating text by line.|
 | [drawing_text_lineTypography.h](capi-drawing-text-linetypography-h.md) | Declares the functions related to line typography, including functions to determine the number of characters that can be formatted from a given position within the text.|
 | [drawing_text_run.h](capi-drawing-text-run-h.md) | Declares the capabilities of runs, such as obtaining the typographic boundary and drawing.|

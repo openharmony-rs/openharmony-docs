@@ -16,7 +16,7 @@
       - [Active Update of ArkTS Widgets](arkts-ui-widget-active-refresh.md)
       - [Passive Update of ArkTS Widgets](arkts-ui-widget-passive-refresh.md)
       <!--Del-->
-      - [Updating Widget Content Through a Proxy](arkts-ui-widget-update-by-proxy.md)
+      - [Updating Widget Content Through a Proxy](arkts-ui-widget-update-by-proxy-sys.md)
       <!--DelEnd-->
       - [Updating Local and Online Images in the Widget](arkts-ui-widget-image-update.md)
       - [Updating Widget Content by State](arkts-ui-widget-update-by-status.md)
@@ -32,7 +32,7 @@
     - Widget Addition to Home Screen<!--arkts-ui-widget-add-->
       - [Adding Widgets to the Home Screen](arkts-ui-widget-open-formmanager.md)
   <!--Del--> 
-  - [ArkTS Widget Host Development (for System Applications Only)](widget-host-development-guide.md)
+  - [ArkTS Widget Host Development (for System Applications Only)](widget-host-development-guide-sys.md)
   <!--DelEnd-->
   - Interactive Widget Development<!--arkts-ui-liveform-->
     - [Overview of Interactive Widgets](arkts-ui-liveform-overview.md)

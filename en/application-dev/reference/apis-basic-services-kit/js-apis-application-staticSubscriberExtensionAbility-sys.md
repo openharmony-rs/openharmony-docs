@@ -61,7 +61,7 @@ Represents a callback of the common event of a static subscriber.
 
     class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
         onReceiveEvent(event: commonEventManager.CommonEventData) {
-            console.log(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+            console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
         }
     }
   ```

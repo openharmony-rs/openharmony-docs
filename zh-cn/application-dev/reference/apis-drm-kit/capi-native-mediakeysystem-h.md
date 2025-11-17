@@ -1,12 +1,19 @@
 # native_mediakeysystem.h
 
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @zengyawen-->
+
 ## 概述
 
 定义Drm MediaKeySystem API。提供以下功能：<br>查询是否支持特定的drm、创建媒体密钥会话、获取和设置配置、获取统计信息、获取内容保护级别、生成提供请求、处理提供响应、事件监听、获取内容防护级别、管理离线媒体密钥等。
 
 **引用文件：** <multimedia/drm_framework/native_mediakeysystem.h>
 
-**库：** libnative_drm.z.so
+**库：** libnative_drm.so
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -178,7 +185,8 @@ bool OH_MediaKeySystem_IsSupported(const char *name)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持。 |
+| bool | 表示是否支持指定DRM解决方案。true表示支持，false表示不支持。   |
+
 
 ### OH_MediaKeySystem_IsSupported2()
 
@@ -204,7 +212,7 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持。 |
+| bool |  表示是否支持指定DRM解决方案及媒体类型。true表示支持，false表示不支持。    |
 
 ### OH_MediaKeySystem_IsSupported3()
 
@@ -231,7 +239,7 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_C
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持。 |
+| bool |  表示是否支持指定DRM解决方案，媒体类型以及内容保护级别。true表示支持，false表示不支持。    |
 
 ### OH_MediaKeySystem_Create()
 

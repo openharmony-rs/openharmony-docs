@@ -32,29 +32,29 @@ nameCache.json file:
 
 After source code obfuscation:
 
-```txt
+```json
 {
   "entry/src/main/ets/entryability/EntryAbility.ets": {
     "IdentifierCache": {
       "#UIAbility": "UIAbility",
-       ......
       "#testObject": "i",
       "#EntryAbility": "j"
     },
     "MemberMethodCache": {
-        ....
+      "onCreate:6:8": "onCreate",
+      "onDestroy:10:12": "onDestroy",
+      "onWindowStageCreate:14:25": "onWindowStageCreate",
+      "onWindowStageDestroy:27:30": "onWindowStageDestroy",
+      "onForeground:32:35": "onForeground",
+      "onBackground:37:40": "onBackground"
     },
     "obfName": "entry/src/main/ets/entryability/EntryAbility.ets"
   },
-     ......
-  },
   "compileSdkVersion": "5.0.0.70",
   "entryPackageInfo": "entry|1.0.0",
-  "PropertyCache": {
-      ......
-  },
+  "PropertyCache": {},
   "FileNameCache": {
-      ......
+    "Hide": "b"
   }
 }
 ```
@@ -70,24 +70,25 @@ After bytecode obfuscation:
     },
     "MemberMethodCache": {
       "EntryAbility:0:0": "a",
-     ......
+      "onBackground:33:35": "onBackground",
+      "onCreate:7:9": "onCreate",
+      "onDestroy:10:12": "onDestroy",
+      "onForeground:29:31": "onForeground",
+      "onWindowStageCreate:14:23": "onWindowStageCreate",
+      "onWindowStageDestroy:25:27": "onWindowStageDestroy"
     },
     "obfName": "entry/src/main/ets/entryability/EntryAbility.ets",
     "OriSourceFile": "entry|entry|1.0.0|src/main/ets/entryability/EntryAbility.ts",
     "ObfSourceFile": "entry|entry|1.0.0|src/main/ets/entryability/EntryAbility.ts"
   },
- ......
   "entryPackageInfo": "entry|1.0.0",
   "compileSdkVersion": "5.0.0.70",
-  "PropertyCache": {
-   ......
-  },
+  "PropertyCache": {},
   "FileNameCache": {
-   ......
+    "Hide": "b"
   }
 }
 ```
-
 1. Difference in bytecode obfuscation in **IdentifierCache**:
     1. Function parameter names are not obfuscated.
     2. There are no obfuscation name mappings for anonymous functions.
@@ -536,7 +537,6 @@ The **add** function is in the top-level scope when it is defined, but is consid
 Solution 1: Configure the **-enable-property-obfuscation** option.
 
 Solution 2: Use **-keep-global-name** to configure **add** to the trustlist.
-
 
 **Case 2: For a method in a namespace, the method definition is confused, but the statement that uses the method is not, causing an error.**
 

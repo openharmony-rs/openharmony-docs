@@ -1,10 +1,10 @@
 # 支持键盘输入事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 物理按键产生的按键事件为非指向性事件，与触摸等指向性事件不同，其事件并没有坐标位置信息，所以其会按照一定次序向获焦组件进行派发，大多数文字输入场景下，按键事件都会优先派发给输入法进行处理，以便其处理文字的联想和候选词，应用可以通过`onKeyPreIme`提前感知事件。
 
@@ -267,13 +267,13 @@ struct TextAreaDemo {
       Text('Submissions: ' + this.content)
       TextArea({ controller: this.controller, text: this.text })
         .onKeyPreIme((event: KeyEvent) => {
-          console.log(`${JSON.stringify(event)}`);
+          console.info(`${JSON.stringify(event)}`);
           if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
             const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
             if (hasCtrl) {
-              console.log('Line break');
+              console.info('Line break');
             } else {
-              console.log('Submissions：' + this.text);
+              console.info('Submissions：' + this.text);
               this.content = this.text;
               this.text = '';
               event.stopPropagation();

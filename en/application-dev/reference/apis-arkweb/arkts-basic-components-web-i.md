@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ Defines web options through the [APIs](./arkts-basic-components-web.md).
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | No   | No   | Address of a web page resource. To access local resource files, use the $rawfile or resource protocol. To load a local resource file (in HTML or TXT format) in the sandbox outside of the application package, use **file://** to specify the path of the sandbox.<br>**src** cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl).|
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | No   | No  | Controller that controls various behaviors of **Web** components, including page navigation, declaration period status, and JavaScript interaction. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| No   | Yes  | Rendering mode.<br>**RenderMode.ASYNC_RENDER** (default, cannot be dynamically adjusted): The **Web** component is rendered asynchronously.<br>**RenderMode.SYNC_RENDER**: The **Web** component is rendered synchronously.|
-| incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.|
+| incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.<br>If **undefined** or **null** is passed, the value is **false**.|
 | sharedRenderProcessToken<sup>12+</sup> | string | No   | Yes| Token of the shared rendering process specified by the **Web** component. In multi-rendering process mode, the **Web** component with the same token preferentially attempts to reuse the rendering process bound to the token. The token is bound to the rendering process when the rendering process is initialized. When the rendering process is not associated with a **Web** component, its binding to the token is removed.<br> Default value: **""**. |
 
 ## WebMediaOptions<sup>10+</sup>
@@ -149,7 +149,7 @@ Represents the callback invoked when this page is about to exit after the user r
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-| Name                  | Type    | Read Only| Optional | Description                             |
+| Name                  | Type    | Read-Only| Optional | Description                             |
 | --------------------- | -------- | -- | ----|--------------------------------- |
 | url                   | string   | No| No | URL of the web page where the dialog box is displayed.                |
 | message               | string   | No| No | Message displayed in the dialog box.                             |
@@ -508,7 +508,7 @@ Represents the JavaScript object to be injected.
 | methodList | Array\<string\>                          | No| No   | Synchronous methods of the JavaScript object to be registered at the application side.                |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | No| No   |  Controller. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | No| Yes   | Asynchronous methods of the JavaScript object to be registered at the application side. Asynchronous methods cannot obtain return values.  |
-| permission<sup>12+</sup>  | string  | No| Yes   | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).|
+| permission<sup>12+</sup>  | string  | No| Yes   | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>The **permission** parameter of JavaScriptProxy supports the resource, HTTP, and HTTPS protocols, but does not support the file protocol.<br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).|
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -677,7 +677,7 @@ Provides detailed information about the first meaningful paint.
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-Provides detailed information about the largest content paint.
+Provides detailed information about the largest contentful paint.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

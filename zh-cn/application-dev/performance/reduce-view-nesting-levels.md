@@ -1,5 +1,12 @@
 # 优化布局性能
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 背景介绍
 
 应用开发中的用户界面（UI）布局是用户与应用程序交互的关键部分。使用不同类型的布局可以将页面排布的更加美观，但也容易带来不合理的布局。不合理的布局虽然能在界面显示上达到相同效果，但是过度的布局计算，界面嵌套带来了渲染和计算的大量开销，造成性能的衰退，本文重点介绍了几种常见的布局功能和适用场景，同时提供了几种优化布局结构的方法。
@@ -389,9 +396,6 @@ struct TopicItem {
 使用线性布局，布局耗时166ms313us。
 
 ```ts
-
-import measure from '@ohos.measure';
-import prompt from '@ohos.prompt';
 
 @Entry
 @Component

@@ -10,7 +10,7 @@ Core File Kit（文件基础服务）为开发者提供一套访问和管理应�
 
 ## Core File Kit概述
 
-在Core File Kit套件中，按文件所有者的不同，有如下文件分类模型，其示意图如下面文件分类模型示意图：
+在Core File Kit套件中，按文件所有者的不同，有如下文件分类模型，其示意图如下：
 
 - [应用文件](app-file-overview.md)：文件所有者为应用，包括应用安装文件、应用资源文件、应用缓存文件等。
 
@@ -80,7 +80,7 @@ Core File Kit常见的使用场景：
 
 - FilePicker：系统预置应用，提供文件访问客户端选择和保存文件的能力，无需配置权限。FilePicker的使用指导请参见[选择用户文件](select-user-file.md)。
 
-- FileManager：对于设备开发者，还可以按需开发自己的文件选择器或文件管理器应用。<!--RP1-->其中，选择器功能是管理器的子集，本文目前提供了管理器的开发指导，请参见[开发用户文件管理器（仅对系统应用开放）](dev-user-file-manager.md)。<!--RP1End-->
+- FileManager：对于设备开发者，还可以按需开发自己的文件选择器或文件管理器应用。<!--RP1-->其中，选择器功能是管理器的子集，本文目前提供了管理器的开发指导，请参见[开发用户文件管理器（仅对系统应用开放）](dev-user-file-manager-sys.md)。<!--RP1End-->
 
 - File Access Framework（用户文件访问框架）的主要功能模块如下：
   - File Access Helper：提供给文件管理器和文件选择器访问用户文件的API接口。

@@ -12,16 +12,16 @@
 >
 >  This gesture is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  On some devices, the system's two-finger long press gesture may take precedence, causing the application's two-finger long press gesture to be ineffective.
+>  Since API version 18, on some devices, the system's two-finger long press gesture may take precedence, causing the application's two-finger long press gesture to be ineffective.
 
 
 ## APIs
 
 ### LongPressGesture
 
-LongPressGesture(value?: { fingers?: number, repeat?: boolean, duration?: number })
+LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number })
 
-Sets the parameters for the long press gesture.
+Creates a long press gesture. Inherits from [GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11).
 
 In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows:
 
@@ -37,13 +37,13 @@ If the long press duration reaches or exceeds 500 milliseconds, the system prior
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number, repeat?: boolean, duration?: number } | No| Parameters for the long press gesture.<br> - **fingers**: minimum number of fingers to trigger a long press gesture. The value ranges from 1 to 10.<br>Default value: **1**.<br> - **repeat**: whether to continuously trigger the event callback. The value **true** means to continuously trigger the event callback, and **false** means the opposite.<br>Default value: **false**.<br> - **duration**: minimum hold-down time, in ms.<br>Default value: **500**.|
+| value | { fingers?: number; repeat?: boolean; duration?: number } | No| Parameters for the long press gesture.<br> - **fingers**: minimum number of fingers to trigger a long press gesture. The value ranges from 1 to 10.<br>Default value: **1**.<br> - **repeat**: whether to continuously trigger the event callback. The value **true** means to continuously trigger the event callback, and **false** means the opposite.<br>Default value: **false**.<br> - **duration**: minimum hold-down time, in ms.<br>Default value: **500**.|
 
 ### LongPressGesture<sup>15+</sup>
 
 LongPressGesture(options?: LongPressGestureHandlerOptions)
 
-Sets the parameters for the long press gesture. Compared with [LongPressGesture](#longpressgesture-1), this API adds the **isFingerCountLimited** parameter to **options**, which determines whether to enforce the exact number of fingers touching the screen.
+Creates a long press gesture. Compared with [LongPressGesture](#longpressgesture-1), this API adds the **isFingerCountLimited** parameter to **options**, which determines whether to enforce the exact number of fingers touching the screen.
 
 In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows:
 
@@ -59,22 +59,22 @@ If the long press duration reaches or exceeds 500 milliseconds, the system prior
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [LongPressGestureHandlerOptions](./ts-uigestureevent.md#longpressgesturehandleroptions) | No| Parameters of the long press gesture handler.|
+| options | [LongPressGestureHandlerOptions](./ts-gesturehandler.md#longpressgesturehandleroptions) | No| Parameters of the long press gesture handler.|
 
 
 ## Events
 
 >  **NOTE**
 >
->  In **fingerList** of [GestureEvent](ts-gesture-settings.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
+>  In **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
 >
->  Once a long press gesture is triggered, the information in **fingerList** and **fingerInfo** within the [GestureEvent](ts-gesture-settings.md#gestureevent) object is only updated when fingers are pressed down and not updated when fingers are lifted.
+>  Once a long press gesture is triggered, the information in **fingerList** and **fingerInfo** within the [GestureEvent](ts-gesture-common.md#gestureevent) object is only updated when fingers are pressed down and not updated when fingers are lifted.
 
 ### onAction
 
 onAction(event: (event: GestureEvent) => void)
 
-Invoked when a long press gesture is recognized.
+Registers the callback for successful long press gesture recognition.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -84,13 +84,13 @@ Invoked when a long press gesture is recognized.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the long press event.|
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for successful long press gesture recognition.|
 
 ### onActionEnd
 
 onActionEnd(event: (event: GestureEvent) => void)
 
-Invoked when the last finger is lifted after the long press gesture is recognized.
+Registers the callback for long press gesture completion. This callback is triggered when all fingers are lifted after successful recognition.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -100,13 +100,13 @@ Invoked when the last finger is lifted after the long press gesture is recognize
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the long press event.|
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for long press gesture completion.|
 
 ### onActionCancel
 
 onActionCancel(event: () => void)
 
-Invoked when a tap cancellation event is received after the long press gesture is recognized. No gesture event information is returned.
+Registers the callback for long press gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful long press gesture recognition. No gesture event information is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -116,13 +116,13 @@ Invoked when a tap cancellation event is received after the long press gesture i
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  () => void | Yes  | Callback for the long press event.|
+| event  |  () => void | Yes  | Callback for long press gesture cancellation.|
 
 ### onActionCancel<sup>18+</sup>
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Invoked when a tap cancellation event is received after the long press gesture is recognized. Gesture event information is returned.
+Registers the callback for long press gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful long press gesture recognition. Gesture event information is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -132,17 +132,7 @@ Invoked when a tap cancellation event is received after the long press gesture i
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  Callback\<[GestureEvent](ts-gesture-settings.md#gestureevent)> | Yes  | Callback for the long press event.|
-
-## Attributes
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type   | Read-Only| Optional| Description                                       |
-| ----  | ------  | ----------- | ------------ | ----------------- |
-| tag<sup>11+</sup>   | string  | No| No| Tag for the long press gesture. It is used to distinguish the gesture during custom gesture judgment.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| allowedTypes<sup>14+</sup> | Array\<[SourceTool](ts-gesture-settings.md#sourcetool9)> | No| No| Allowed event input types for the long press gesture.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-
+| event  |  Callback\<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes  | Callback for long press gesture cancellation.|
 
 ## Example
 

@@ -14,7 +14,7 @@
 
 type AudioRendererChangeInfoArray = Array&lt;Readonly&lt;AudioRendererChangeInfo&gt;&gt;
 
-Defines an AudioRenderChangeInfo array, which is read-only.
+Defines an AudioRendererChangeInfo array, which is read-only.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 

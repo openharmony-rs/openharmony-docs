@@ -1,4 +1,10 @@
 #  Dialog Box (Dialog)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @HelloCrease-->
 
 
 The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting.
@@ -27,7 +33,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 ## TipsDialog
 
 
-TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, ischecked?: boolean, checkAction?: (isChecked: boolean) => void, onCheckedChange?: Callback\<boolean>, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
+TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, checkAction?: (isChecked: boolean) => void, onCheckedChange?: Callback\<boolean>, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
 
 Displays an image-attached confirmation dialog box. If necessary, the confirmation dialog box can be displayed in a graphical manner.
@@ -48,11 +54,11 @@ Displays an image-attached confirmation dialog box. If necessary, the confirmati
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                       | No  | -          | Content of the check box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                    |
 | isChecked                     | boolean                                                      | No  | \@Prop     | Whether to select the check box. The value **true** means to select the checkbox , and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                       |
 | checkAction<sup>12+</sup>     | (isChecked: boolean) => void                                 | No  | -          | Event triggered when the selected status of the check box changes. **isChecked** indicates whether the check box is selected. The value **true** means the check box is selected, and **false** means the opposite. You are advised to use **onCheckedChange<sup>12+</sup>** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onCheckedChange<sup>12+</sup> | Callback\<boolean>                                           | No  | -          | Event triggered when the selected status of the check box changes. The value **Callback\<true>** means the check box is selected, and **Callback\<false>** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                |
+| onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                           | No  | -          | Event triggered when the selected status of the check box changes. The value **Callback\<true>** means the check box is selected, and **Callback\<false>** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                              | No  | -          | Left button of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                          |
 | secondaryButton               | [ButtonOptions](#buttonoptions)                              | No  | -          | Right button of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                          |
 | theme<sup>12+</sup>           | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | No  | -          | Theme information, which can be a custom theme or a **Theme** instance obtained from **onWillApplyTheme**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                 |
-| themeColorMode<sup>12+</sup>  | [ThemeColorMode](ts-container-with-theme.md#themecolormode10) | No| -     | Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                       |
+| themeColorMode<sup>12+</sup>  | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| -     | Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                       |
 
 ## SelectDialog
 
@@ -73,7 +79,7 @@ Displays a dialog box from which the user can select options presented in a list
 | confirm             | [ButtonOptions](#buttonoptions)                              | No  | Button at the bottom of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                         |
 | radioContent        | Array&lt;[SheetInfo](ts-methods-action-sheet.md#sheetinfo)&gt; | Yes  | List of subitems in the dialog box. You can set text and a select callback for each subitem.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                  |
 | theme<sup>12+</sup> | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | No  | Theme information, which can be a custom theme or a **Theme** instance obtained from **onWillApplyTheme**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                  |
-| themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-container-with-theme.md#themecolormode10) | No| Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                        |
+| themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                        |
 
 ## ConfirmDialog
 
@@ -92,11 +98,11 @@ Displays an error dialog box that informs the user of an operational error (for 
 | content                       | [ResourceStr](ts-types.md#resourcestr)                       | No  | -          | Content of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                       | No  | -          | Content of the check box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | isChecked                     | boolean                                                      | No  | \@Prop     | Whether to select the check box. The value **true** means to select the checkbox , and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| onCheckedChange<sup>12+</sup> | Callback\<boolean>                                           | No  | -          | Event triggered when the selected status of the check box changes. The value **Callback\<true>** means the check box is selected, and **Callback\<false>** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                           | No  | -          | Event triggered when the selected status of the check box changes. The value **Callback\<true>** means the check box is selected, and **Callback\<false>** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | primaryButton                 | [ButtonOptions](#buttonoptions)                              | No  | -          | Left button of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | secondaryButton               | [ButtonOptions](#buttonoptions)                              | No  | -          | Right button of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | theme<sup>12+</sup>           | [Theme](../js-apis-arkui-theme.md#theme)\| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | No  | -          | Theme information, which can be a custom theme or a **Theme** instance obtained from **onWillApplyTheme**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| themeColorMode<sup>12+</sup>  | [ThemeColorMode](ts-container-with-theme.md#themecolormode10) | No| -     | Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                |
+| themeColorMode<sup>12+</sup>  | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| -     | Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                |
 
 
 ## AlertDialog
@@ -118,7 +124,7 @@ Displays an alert dialog box to prompt the user to confirm an action that is irr
 | primaryButton                | [ButtonOptions](#buttonoptions)                              | No  | Left button of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | secondaryButton              | [ButtonOptions](#buttonoptions)                              | No  | Right button of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | theme<sup>12+</sup>          | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | No  | Theme information, which can be a custom theme or a **Theme** instance obtained from **onWillApplyTheme**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-container-with-theme.md#themecolormode10) | No| Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 
 ## LoadingDialog
@@ -136,7 +142,7 @@ Displays a loading dialog box to inform the user of the operation progress.
 | Controller         | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller) | Yes| Controller of the dialog box.<br>**NOTE**<br>If not decorated by @Require, this parameter is not subject to mandatory validation during construction.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | content             | [ResourceStr](ts-types.md#resourcestr)                       | No  | Content of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | theme<sup>12+</sup> | [Theme](../js-apis-arkui-theme.md#theme)\| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | No  | Theme information, which can be a custom theme or a **Theme** instance obtained from **onWillApplyTheme**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-container-with-theme.md#themecolormode10) | No| Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| Theme color mode of the dialog box.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 
 ## CustomContentDialog<sup>12+</sup>
@@ -161,7 +167,7 @@ Displays a dialog box that contains custom content and operation area.
 | contentAreaPadding  | [Padding](ts-types.md#padding)                               | No  | -  | Padding of the content area of the dialog box. This attribute does not take effect when **localizedContentAreaPadding** is set.|
 | buttons             | [ButtonOptions](#buttonoptions)[]                     | No  | -  | Buttons in the operation area of the dialog box. A maximum of four buttons are allowed.                         |
 | theme | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | No  | -  | Theme information, which can be a custom theme or a **Theme** instance obtained from **onWillApplyTheme**.|
-| themeColorMode | [ThemeColorMode](ts-container-with-theme.md#themecolormode10) | No| - | Theme color mode of the dialog box.|
+| themeColorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| - | Theme color mode of the dialog box.|
 
 >  **NOTE**
 >

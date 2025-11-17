@@ -48,7 +48,7 @@ The preceding content describes the main drawing capabilities and implementation
 
 There are two drawing display modes:
 
-1. Display on the screen using [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) (ArkTS): Use RenderNode to obtain Canvas for drawing. RenderNode displays the drawing result on the screen. For details, see [Obtaining a Canvas and Displaying Drawing Results (ArkTS)](canvas-get-result-draw-arkts.md#obtaining-the-canvas-that-can-be-directly-displayed).
+1. Display on the screen using [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) (ArkTS): Use RenderNode to obtain Canvas for drawing. RenderNode displays the drawing result on the screen. For details, see [Obtaining a Canvas and Displaying Drawing Results (ArkTS)](canvas-get-result-draw-arkts.md#obtaining-a-canvas-that-can-be-directly-displayed).
 
 2. Display on the screen by using the XComponent (C/C++): Create a canvas, perform drawing, and copy the drawing result to the buffer. The XComponent displays the drawing result on the screen. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md#obtaining-the-canvas-that-can-be-directly-displayed).
 
@@ -67,4 +67,3 @@ The [../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md] component 
 The unit used during graphics drawing is pixel (px).
 
 <!--RP1--><!--RP1End-->
-<!--no_check-->

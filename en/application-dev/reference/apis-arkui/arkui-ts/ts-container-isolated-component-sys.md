@@ -1,8 +1,14 @@
 # IsolatedComponent (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @HelloCrease-->
 
 **IsolatedComponent** is designed to support the embedding and display of UIs provided by independent .abc files within the current page, with the displayed content running in a restricted Worker thread.
 
-The **FolderStack** component is usually used in modular development scenarios where .abc file hot update is required.
+It is typically used in modular development scenarios where ABC hot update is required (ABC files loaded by IsolatedComponent can be dynamically replaced, and content update can be implemented without reinstalling the application).
 
 > **NOTE**
 >
@@ -64,10 +70,10 @@ Describes the optional construction parameters during **IsolatedComponent** cons
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name              | Type                                | Mandatory| Description                                                                                                     |
-| ----                 | ---------------------------------------- | ---- | ---------------                                                                                               |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)                                  | Yes  | .abc file information to load.|
-| worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11)       | Yes  | Restricted Worker thread where the .abc file is running.|
+| Name | Type      | Read-Only| Optional| Description|
+| ---- | ------------ | ---- | ---- | --------------- |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | No| No| .abc file information to load.|
+| worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | No| No| Restricted Worker thread where the .abc file is running.|
 
 ## Attributes
 Only the [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), and [backgroundColor](ts-universal-attributes-background.md#backgroundcolor) universal attributes are supported.
@@ -108,11 +114,15 @@ This example demonstrates the basic usage of the **IsolatedComponent** component
   ```ts
   // OhCardWorker.ets
   import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+
   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
-  workerPort.onmessage = (e: MessageEvents) => {}
-  workerPort.onmessageerror = (e: MessageEvents) => {}
-  workerPort.onerror = (e: ErrorEvent) => {}
+  workerPort.onmessage = (e: MessageEvents) => {
+  }
+  workerPort.onmessageerror = (e: MessageEvents) => {
+  }
+  workerPort.onerror = (e: ErrorEvent) => {
+  }
   ```
 
 - Home page (**ets/pages/Index.ets**) loaded by the entry ability (**EntryAbility**):
@@ -224,7 +234,7 @@ This example demonstrates the basic usage of the **IsolatedComponent** component
   }
   ```
 
-- Add the **requestPermissions** tag in the **module.json5** configuration file to allow the execution of dynamically distributed Ark bytecode in restricted mode:
+- Add the **requestPermissions** tag to the **module.json5** configuration file to allow the execution of dynamically delivered Ark bytecode in restricted mode.
   ```json
   "requestPermissions": [
     {

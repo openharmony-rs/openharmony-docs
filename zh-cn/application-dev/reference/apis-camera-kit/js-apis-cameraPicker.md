@@ -15,14 +15,18 @@
 ## 导入模块
 
 ```ts
-import { cameraPicker as picker } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
 ```
 
-## picker.pick
+## cameraPicker.pick
 
 pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: PickerProfile): Promise\<PickerResult\>
 
 拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。
+
+> **说明：**
+>
+> 当应用在阔折叠设备上运行时，如果已在设备展开态下启动相机picker，将设备由展开态切换到折叠态，相机picker被自动推至后台。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -45,17 +49,17 @@ pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: Pick
 **示例：**
 
 ```ts
-import { cameraPicker as picker } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function demo(context: Context) {
   try {
-    let pickerProfile: picker.PickerProfile = {
+    let pickerProfile: cameraPicker.PickerProfile = {
       cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
     };
-    let pickerResult: picker.PickerResult = await picker.pick(context,
-      [picker.PickerMediaType.PHOTO, picker.PickerMediaType.VIDEO], pickerProfile);
+    let pickerResult: cameraPicker.PickerResult = await cameraPicker.pick(context,
+      [cameraPicker.PickerMediaType.PHOTO, cameraPicker.PickerMediaType.VIDEO], pickerProfile);
     console.info("the pick pickerResult is:" + JSON.stringify(pickerResult));
   } catch (error) {
     let err = error as BusinessError;

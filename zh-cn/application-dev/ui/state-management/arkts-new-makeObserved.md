@@ -21,7 +21,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
 
   - class的定义在三方包中：开发者无法手动对class中需要观察的属性加上@Trace标签，可以使用makeObserved使得当前对象可以被观察。
 
-  - 当前类的成员属性不能被修改：因为@Trace观察类属性会动态修改类的属性，这个行为在@Sendable装饰的class中是不被允许的，此时可以使用makeObserved。
+  - 当前类的成员属性不能被修改：因为@Trace观察类属性会动态修改类的属性，这个行为在[@Sendable](../../arkts-utils/arkts-sendable.md#sendable装饰器)装饰的class中是不被允许的，此时可以使用makeObserved。
 
   - interface或者JSON.parse返回的匿名对象：这类场景往往没有明确的class声明，开发者无法使用@Trace标记当前属性可以被观察，此时可以使用makeObserved。
 
@@ -49,7 +49,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
   let rawInfo: Info = UIUtils.makeObserved(new Info()); // 正确用法
   ```
 
-- makeObserved不支持传入被[@ObservedV2](./arkts-new-observedV2-and-trace.md)、[@Observed](./arkts-observed-and-objectlink.md)装饰的类的实例以及已经被makeObserved封装过的代理数据。为了防止双重代理，makeObserved发现入参为上述情况时则直接返回，不做处理。
+- makeObserved不支持传入被[@ObservedV2](./arkts-new-observedV2-and-trace.md)、[@Observed](./arkts-observed-and-objectlink.md)装饰的类的实例和被makeObserved封装过的代理数据。为了防止数据被双重代理，makeObserved发现入参为上述情况时则直接返回，不做处理。
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   @ObservedV2
@@ -73,7 +73,11 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
   // 错误写法，运行时异常
   @State message: Info = UIUtils.makeObserved(new Info(20));
   ```
-  下面`message2`的写法不会抛异常，原因是this.message是[@State](./arkts-state.md)装饰的，其实现等同于@Observed，而UIUtils.makeObserved的入参是@Observed装饰的class，会直接返回自身。因此对于`message2`来说，他的初始值不是makeObserved的返回值，而是@State装饰的变量。
+  注意：下面`message2`的写法不会抛异常。原因是：
+  - this.message是[@State](./arkts-state.md)装饰的，其实现等同于@Observed。
+  - UIUtils.makeObserved的入参如果是@Observed装饰的class的实例，会直接返回自身。
+  
+  因此`message2`的初始值不是makeObserved返回的代理对象，而是@State装饰的`this.message`。
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   class Person {
@@ -99,12 +103,12 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
     }
   }
   ```
-### makeObserved仅对入参生效，不会改变接受返回值的观察能力
+### makeObserved仅对入参对象进行深度观察
 
- - `message`被[@Local](./arkts-new-local.md)装饰，本身具有观察自身赋值的能力。其初始值为makeObserved的返回值，具有深度观察能力。
+ - `message`被[@Local](./arkts-new-local.md)装饰，本身具有观察自身赋值的能力。其初始值为makeObserved的返回值，具有深度观察能力。需要注意，makeObserved仅对`message`进行深度观察，而`message`自身赋值的变化，则是由@Local观察的。
  - 点击`change id`可以触发UI刷新。
- - 点击`change Info`将`this.message`重新赋值为不可观察数据后，再次点击`change id`无法触发UI刷新。
- - 再次点击`change Info1`将`this.message`重新赋值为可观察数据后，点击`change id`可以触发UI刷新。
+ - 点击`change Info`，将`this.message`重新赋值为不可观察数据后，再次点击`change id`，无法触发UI刷新。
+ - 再次点击`change Info1`，将`this.message`重新赋值为可观察数据，再次点击`change id`，可以触发UI刷新。
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
@@ -138,9 +142,9 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
 
 ### 支持类型
 
-- 支持未被@Observed或@ObservedV2装饰的类。
+- 支持未被[\@Observed](./arkts-observed-and-objectlink.md)或[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类。
 - 支持Array、Map、Set和Date。
-- 支持collections.Array, collections.Set和collections.Map。
+- 支持[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md), [collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)和[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)。
 - JSON.parse返回的Object。
 - @Sendable装饰的类。
 
@@ -160,7 +164,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
 
 ### makeObserved和@Sendable装饰的class配合使用
 
-[@Sendable](../../arkts-utils/arkts-sendable.md)主要是为了处理应用场景中的并发任务。将makeObserved和@Sendable配合使用是为了满足一般应用开发中，在子线程做大数据处理，在UI线程做ViewModel的显示和观察数据的需求。@Sendable具体内容可参考[并发任务文档](../../arkts-utils/multi-thread-concurrency-overview.md)。
+[@Sendable](../../arkts-utils/arkts-sendable.md)主要是为了处理应用场景中的并发任务。将makeObserved和@Sendable配合使用，可以满足一般应用开发中，在子线程做大数据处理，在UI线程做ViewModel的显示和观察数据的需求。@Sendable具体内容可参考[并发任务文档](../../arkts-utils/multi-thread-concurrency-overview.md)。
 
 本章节将说明下面的场景：
 - makeObserved在传入@Sendable类型的数据后有观察能力，且其变化可以触发UI刷新。

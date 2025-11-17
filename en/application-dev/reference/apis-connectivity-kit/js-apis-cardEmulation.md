@@ -1,5 +1,12 @@
 # @ohos.nfc.cardEmulation (Standard NFC Card Emulation)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 The **cardEmulation** module implements Near-Field Communication (NFC) card emulation. You can use the APIs provided by this module to determine the card emulation type supported and implement Host Card Emulation (HCE).<br>
 HCE provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader through the NFC service.
 
@@ -41,7 +48,7 @@ Before developing an application related to HCE, you must declare NFC-related at
       {
         "name": "ohos.permission.NFC_CARD_EMULATION",
         // Set reason to card_emulation_reason.
-        "reason": "$string:card_emulation_reason",
+        "reason": "$string:card_emulation_reason"
       }
     ]
   }
@@ -55,7 +62,7 @@ Before developing an application related to HCE, you must declare NFC-related at
     "abilities": [
       {
         // Other declared attributes
-        "metadata": {
+        "metaData": {
           "customizeData": [
             {
               "name": "paymentAid",
@@ -108,7 +115,7 @@ Before developing an application related to HCE, you must declare NFC-related at
 ```
 > **NOTE**
 >1. The **actions** field must contain **ohos.nfc.cardemulation.action.HOST_APDU_SERVICE** and cannot be changed.
->2. The **name** fields under **metadata** must be **payment-aid** or **other-aid** when application IDs (AIDs) are declared. Incorrect setting will cause a parsing failure.
+>2. When declaring an AID (in compliance with ISO/IEC 7816-4), ensure that **name** is set to **payment-aid** or **other-aid**. Incorrect setting will cause a parsing failure.
 >3. The **name** field of **requestPermissions** must be **ohos.permission.NFC_CARD_EMULATION** and cannot be changed.
 >4. Lite wearables support only the FA model, with attribute configurations and API invocation methods differing from those of other device types. Refer to the example code for detailed implementations.
 
@@ -117,7 +124,10 @@ Before developing an application related to HCE, you must declare NFC-related at
 ```
 // Applicable to devices other than lite wearables
 import { cardEmulation } from '@kit.ConnectivityKit';
+```
 
+<!--code_no_check_fa-->
+```
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
 ```
@@ -183,16 +193,17 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 
 let isHceSupported: boolean = cardEmulation.isSupported(cardEmulation.FeatureType.HCE);
 if (!isHceSupported) {
-    console.log('this device is not supported for HCE, ignore it.');
+    console.info('this device is not supported for HCE, ignore it.');
 }
 ```
+<!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let isHceSupported = cardEmulation.isSupported(cardEmulation.FeatureType.HCE);
 if (!isHceSupported) {
-    console.log('this device is not supported for HCE, ignore it.');
+    console.error('this device is not supported for HCE, ignore it.');
 }
 ```
 
@@ -231,17 +242,18 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 
 let hasHceCap: boolean = cardEmulation.hasHceCapability();
 if (!hasHceCap) {
-    console.log('this device hasHceCapability false, ignore it.');
+    console.error('this device hasHceCapability false, ignore it.');
 }
 ```
 
+<!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let hasHceCap = cardEmulation.hasHceCapability();
 if (!hasHceCap) {
-    console.log('this device hasHceCapability false, ignore it.');
+    console.error('this device hasHceCapability false, ignore it.');
 }
 ```
 
@@ -261,7 +273,7 @@ Checks whether an application is the default application of the specified servic
 
 | Name        | Type                                      | Mandatory  | Description                     |
 | ----------- | ---------------------------------------- | ---- |-------------------------|
-| elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md#elementname-1) | Yes   | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty.|
+| elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | Yes   | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty.|
 | type        | [CardType](#cardtype9)                   | Yes   | Card emulation service type. Currently, only the default payment application can be queried.  |
 
 **Error codes**
@@ -297,6 +309,7 @@ let elementName: bundleManager.ElementName = {
 let isDefaultService: boolean = cardEmulation.isDefaultService(elementName, cardEmulation.CardType.PAYMENT);
 ```
 
+<!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -336,7 +349,7 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 ### start<sup>9+</sup>
 
-start(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md#elementname-1), aidList: string[]): void
+start(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), aidList: string[]): void
 
 Starts HCE, including enabling this application to run in the foreground preferentially and dynamically registering the AID list.
 
@@ -350,7 +363,7 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 | Name | Type    | Mandatory| Description                   |
 | ------- | -------- | ---- | ----------------------- |
-| elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md#elementname-1) | Yes  | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty.|
+| elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | Yes  | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty.|
 | aidList | string[] | Yes  | List of AIDs to register. This parameter can be left empty.|
 
 **Error codes**
@@ -389,7 +402,7 @@ For details, see the example of [on](#on8).
 
 ### stop<sup>9+</sup>
 
-stop(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md#elementname-1)): void 
+stop(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)): void 
 
 Stops HCE, including canceling the subscription of APDU data, exiting this application from the foreground, and releasing the dynamically registered AID list. The application needs to call this API in **onDestroy** of the HCE page.
 
@@ -403,7 +416,7 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 
 | Name | Type    | Mandatory| Description                   |
 | ------- | -------- | ---- | ----------------------- |
-| elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md#elementname-1) | Yes  | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty.|
+| elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | Yes  | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty.|
 
 **Error codes**
 
@@ -420,7 +433,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 
-Subscribes to events indicating receiving of APDUs from the peer card reader. The application needs to call this API in **onCreate()** of the HCE page.
+Subscribes to events indicating receiving of APDUs from the peer card reader. The application needs to call this API in **onCreate()** of the HCE page. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
@@ -433,7 +446,7 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 | Name  | Type                   | Mandatory| Description                                        |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | Yes  | Event type. It has a fixed value of **hceCmd**.                        |
-| callback | AsyncCallback\<number[]> | Yes  | Event callback. Each number is represented in hexadecimal notation, with values ranging from **0x00** to **0xFF**.|
+| callback | AsyncCallback\<number[]> | Yes  | Event callback used to return the data array that complies with the APDU. Each number is represented in hexadecimal notation, with values ranging from 0x00 to 0xFF.|
 
 **Error codes**
 
@@ -467,7 +480,7 @@ export default class EntryAbility extends UIAbility {
     }
     const apduCallback: AsyncCallback<number[]> = (err, data) => {
       // Implement data processing and handle exceptions.
-      console.log("got apdu data");
+      console.info("got apdu data");
     };
     hceService.on('hceCmd', apduCallback);
   }
@@ -480,6 +493,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 **Example**
+<!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -489,7 +503,7 @@ let appName = "com.example.testquestionlite";
 export default {
   data:{
     fontSize: '30px',
-    fontClolor: '#50609f',
+    fontColor: '#50609f',
     hide: 'show',
     headCon: appName,
     paymentAid: ["A0000000041010", "A0000000041012"]
@@ -501,17 +515,17 @@ export default {
     cardEmulation.hasHceCapability();
     cardEmulation.isDefaultService(appName, cardEmulation.CardType.PAYMENT);
     cardEmulation.isDefaultService(appName, cardEmulation.CardType.OTHER);
-    let hcesrv = new cardEmulation.HceService();
+    let HceService = new cardEmulation.HceService();
 
-    hcesrv.start(appName, this.paymentAid);
-    hcesrv.on("hceCmd", (data) => {
-      console.log('data:' + data);
+    HceService.start(appName, this.paymentAid);
+    HceService.on("hceCmd", (data) => {
+      console.info('data:' + data);
       // Data to be sent by the application. The following data is for reference only.
       let responseData = [0x1, 0x2];
-      hcesrv.transmit(responseData, () => {
-        console.log('sendResponse start');
+      HceService.transmit(responseData, () => {
+        console.info('sendResponse start');
       });
-      console.log('sendResponse end');
+      console.info('sendResponse end');
     });
   },
   onDestroy() {
@@ -524,7 +538,7 @@ export default {
 
 off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 
-Unsubscribes from events indicating receiving of APDUs from the peer card reader.
+Unsubscribes from events indicating receiving of APDUs from the peer card reader. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
@@ -537,7 +551,7 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 | Name  | Type                   | Mandatory| Description                                        |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | Yes  | Event type. It has a fixed value of **hceCmd**.                        |
-| callback | AsyncCallback\<number[]> | No  | Event callback. Each number is represented in hexadecimal notation, with values ranging from **0x00** to **0xFF**.|
+| callback | AsyncCallback\<number[]> | No  | Event callback. Each number is represented in hexadecimal notation, with values ranging from 0x00 to 0xFF.|
 
 **Error codes**
 
@@ -561,7 +575,7 @@ let hceService: cardEmulation.HceService = new cardEmulation.HceService();
 let element: ElementName;
 const apduCallback: AsyncCallback<number[]> = (err, data) => {
   // Implement data processing and handle exceptions.
-  console.log("AsyncCallback got apdu data");
+  console.info("AsyncCallback got apdu data");
 };
 
 export default class EntryAbility extends UIAbility {
@@ -572,10 +586,6 @@ export default class EntryAbility extends UIAbility {
       abilityName: want.abilityName ?? '',
       moduleName: want.moduleName
     }
-    const apduCallback: AsyncCallback<number[]> = (err, data) => {
-      // Implement data processing and handle exceptions.
-      console.log("got apdu data");
-    };
     hceService.on('hceCmd', apduCallback);
   }
   onDestroy() {
@@ -628,7 +638,7 @@ Transmits an APDU to the peer card reader. This API uses a promise to return the
 
 | **Type** | **Description**                                |
 | ------- | -------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -653,12 +663,13 @@ let hceService: cardEmulation.HceService = new cardEmulation.HceService();
 const responseData = [0x1, 0x2];
 hceService.transmit(responseData).then(() => {
   // Process the promise.
-  console.log("transmit Promise success.");
+  console.info("transmit Promise success.");
 }).catch((err: BusinessError) => {
   console.error("transmit Promise error:", err);
 });
 ```
 
+<!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -669,16 +680,16 @@ let hceService = new cardEmulation.HceService();
 let responseData = [0x1, 0x2];
 hceService.transmit(responseData).then(() => {
   // Process the promise.
-  console.log("transmit Promise success.");
+  console.info("transmit Promise success.");
 });
-console.log("transmit Promise end.");
+console.info("transmit Promise end.");
 ```
 
 ### transmit<sup>9+</sup>
 
 transmit(response: number[], callback: AsyncCallback\<void>): void
 
-Transmits an APDU to the peer card reader. This API uses an asynchronous callback to return the result. The application calls this API only after receiving an APDU sent by the card reader via [on](#on8).
+Sends APDU data to the peer card reader. The application can call this API only after receiving an APDU sent by the card reader via [on](#on8). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
@@ -720,7 +731,7 @@ try {
     if (err) {
       console.error(`transmit AsyncCallback err Code: ${err.code}, message: ${err.message}`);
     } else {
-      console.log("transmit AsyncCallback success.");
+      console.info("transmit AsyncCallback success.");
     }
   });
 } catch (error) {
@@ -728,6 +739,8 @@ try {
     `message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -737,7 +750,7 @@ let hceService = new cardEmulation.HceService();
 // Data to be sent by the application. The following data is for reference only.
 let responseData = [0x1, 0x2];
 hceService.transmit(responseData, () => {
-  console.log("transmit Promise success.");
+  console.info("transmit Promise success.");
 });
-console.log("transmit Promise end.");
+console.info("transmit Promise end.");
 ```

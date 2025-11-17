@@ -1,5 +1,12 @@
 # @ohos.app.ability.abilityManager (Ability Information Management)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025 -->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The AbilityManager module provides APIs for obtaining ability information and running status information.
 
 > **NOTE**
@@ -42,7 +49,7 @@ Obtains the UIAbility running information. This API uses a promise to return the
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise used to return the API call result and the UIAbility running information. You can perform error handling or custom processing in it.|
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise used to return the UIAbility running information. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -61,7 +68,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   abilityManager.getAbilityRunningInfos()
     .then((data: abilityManager.AbilityRunningInfo[]) => {
-      console.log(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
+      console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
     })
     .catch((error: BusinessError) => {
       console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(error.code)}, error msg: ${JSON.stringify(error.message)}`);

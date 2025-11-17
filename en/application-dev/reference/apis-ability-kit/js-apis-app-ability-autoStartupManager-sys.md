@@ -1,4 +1,4 @@
-# @ohos.app.ability.autoStartupManager (autoStartupManager) (System API)
+# @ohos.app.ability.autoStartupManager (Auto-Startup Management) (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The autoStartupManager module provides APIs for listening for auto-startup status changes of application components and setting application components to automatically start upon system boot.
+The autoStartupManager module provides APIs to listen for auto-startup status changes of application components. You can use the APIs to get updates on these changes.
 
 > **NOTE**
 >
@@ -49,7 +49,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -69,7 +69,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let msg = (err as BusinessError).message;
-  console.error(`autostartupmanager on success, err code: ${code}, err msg: ${msg}.`);
+  console.error(`autostartupmanager on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -99,7 +99,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -119,7 +119,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let msg = (err as BusinessError).message;
-  console.error(`autostartupmanager on success, err code: ${code}, err msg: ${msg}.`);
+  console.error(`autostartupmanager on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -155,7 +155,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -218,7 +218,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -274,7 +274,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -337,7 +337,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -390,7 +390,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -399,7 +399,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  autoStartupManager.queryAllAutoStartupApplications((err, data: common.AutoStartupInfo[]) => {
+  autoStartupManager.queryAllAutoStartupApplications((err: BusinessError, data: common.AutoStartupInfo[]) => {
     if (err) {
       console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
       return;
@@ -442,7 +442,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
 | 202      | Permission denied, non-system app called system api. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-| 16000050 | Internal error. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 

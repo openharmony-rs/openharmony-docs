@@ -1,4 +1,10 @@
 # Time and Time Zone Service Error Codes
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Time-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -22,6 +28,7 @@ The system is not running properly due to a common kernel error, such as a memor
 
 Make sure that the memory is sufficient.
 
+<!--Del-->
 ## 13000001 Network or OS Error
 
 **Error Message**
@@ -40,7 +47,6 @@ The network or OS is not running properly due to a system error, such as network
 
 Make sure the network is connected and the system resources are sufficient.
 
-
 ## 13000002 NTP Time Not Updated
 
 **Error Message**
@@ -58,3 +64,4 @@ The local NTP time has not been updated and becomes invalid.
 **Solution**
 
 Call the **updateNtpTime()** API to update the NTP time.
+<!--DelEnd-->

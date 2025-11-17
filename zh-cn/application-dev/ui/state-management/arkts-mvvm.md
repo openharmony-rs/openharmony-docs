@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者掌握了状态管理的基本概念后，通常会尝试开发自己的应用，在应用开发初期，如果未能精心规划项目结构，随着项目扩展和复杂化，状态变量的增多将导致组件间关系变得错综复杂。此时，开发新功能可能引起连锁反应，维护成本也会增加。为此，本文旨在介绍MVVM模式以及ArkUI的UI开发模式与MVVM的关系，指导开发者如何设计项目结构，以便在产品迭代和升级时，能更轻松的开发和维护。
+当开发者掌握了状态管理的基本概念后，通常会尝试开发自己的应用，在应用开发初期，如果未能精心规划项目结构，随着项目扩展和复杂化，状态变量的增多将导致组件间关系变得错综复杂。此时，开发新功能可能引起连锁反应，维护成本也会增加。为此，本文旨在介绍MVVM模式以及ArkUI的UI开发模式与MVVM的关系，指导开发者如何设计项目结构，以便在产品迭代和升级时能更轻松地开发和维护。
 
 
 本文档涵盖了大多数状态管理V1装饰器，所以在阅读本文档前，建议开发者对状态管理V1有一定的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)和状态管理V1装饰器相关文档。
@@ -59,7 +59,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 **不可跨层访问**
 
 * View层不可以直接调用Model层的数据，只能通过ViewModel提供的方法进行调用。
-* Model层数据，不可以直接操作UI，Model层只能通知ViewModel层数据有更新，由ViewModel层更新对应的数据。
+* Model层不能直接操作UI，只能通知ViewModel层数据有更新，由ViewModel层更新对应的数据。
 
 **下层不可访问上层数据**
 
@@ -607,6 +607,39 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 文件代码如下：
 
+  * ThingModel.ets
+
+  ```typescript
+  export default class ThingModel {
+    thingName: string = 'Todo';
+    isFinish: boolean = false;
+  }
+  ```
+
+  * TodoListModel.ets
+
+  ```typescript
+  import { common } from '@kit.AbilityKit';
+  import { util } from '@kit.ArkTS';
+  import ThingModel from './ThingModel';
+
+  export default class TodoListModel {
+    things: Array<ThingModel> = [];
+
+    constructor(things: Array<ThingModel>) {
+      this.things = things;
+    }
+
+    async loadTasks(context: common.UIAbilityContext) {
+      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
+      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+      let result = textDecoder.decodeToString(getJson, { stream: false });
+      this.things = JSON.parse(result);
+    }
+  }
+  ```
+
 * Index.ets
 
   ```typescript
@@ -646,39 +679,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
       .width('100%')
       .margin({ top: 5, bottom: 5 })
       .backgroundColor('#90f1f3f5')
-    }
-  }
-  ```
-
-  * ThingModel.ets
-
-  ```typescript
-  export default class ThingModel {
-    thingName: string = 'Todo';
-    isFinish: boolean = false;
-  }
-  ```
-
-  * TodoListModel.ets
-
-  ```typescript
-  import { common } from '@kit.AbilityKit';
-  import { util } from '@kit.ArkTs';
-  import ThingModel from './ThingModel';
-
-  export default class TodoListModel {
-    things: Array<ThingModel> = [];
-
-    constructor(things: Array<ThingModel>) {
-      this.things = things;
-    }
-
-    async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson, { stream: false });
-      this.things = JSON.parse(result);
     }
   }
   ```

@@ -1,20 +1,28 @@
 # Application Link Description
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45; @liusu23-->
+<!--Designer: @ccllee1; @xukeke-->
+<!--Tester: @lixueqing513; @lusq-->
+<!--Adviser: @huipeizi-->
 
 ## Description of uris
 **uris** declared in [skills](../quick-start/module-configuration-file.md#skills) of the [module.json5 file](../quick-start/module-configuration-file.md) contains the following fields.
-
-> **NOTE**
->
-> - When an application page is opened using a browser, the browser automatically converts uppercase letters in **scheme** and **host** in **uris** to lowercase letters, causing a failure to match the application. Therefore, it is recommended that **scheme** and **host** do not contain uppercase letters.
-> - Do not add slashes (/) before and after the values of **path**, **pathStartWith**, and **pathRegex**. For example, for the application link **https://developer.huawei.com/consumer/en/support**, set **path** to **consumer/en/support**.
 
 - **scheme**: scheme name, for example, **http**, **https**, **file**, and **ftp**. Custom values are also supported.
 - **host**: domain name or IP address, for example, developer.huawei.com or 127.0.0.1.
 - **port**: port number, for example, 80 in developer.huawei.com:80.
 - **path**: directory or file path on the DNS. It is valid only when the scheme exists. The **path** field does not support wildcards. If wildcards are required, use **pathRegex**.
+    
+
 - **pathStartWith**: prefix of the directory or file path on the DNS. It is used for prefix matching.
 - **pathRegex**: regular expression of the directory or file path on the DNS. It is used for regular expression matching. It is valid only when the scheme exists.
 - [linkFeature](#description-of-linkfeature): application's function type (such as file opening, sharing, and navigation). The value is a string with a maximum of 127 bytes.
+
+> **NOTE**
+>
+> - When an application page is opened using a browser, the browser automatically converts uppercase letters in **scheme** and **host** in **uris** to lowercase letters, causing a failure to match the application. Therefore, it is recommended that **scheme** and **host** do not contain uppercase letters.
+> - Do not add slashes (/) before and after the values of **path**, **pathStartWith**, and **pathRegex**. For example, for the application link `https://developer.huawei.com/consumer/en/support`, set **path** to `consumer/en/support`, **pathStartWith** to `consumer/en`, and **pathRegex** to `^consumer/en/support$`.
 
 ### Basic URL Format
 
@@ -47,11 +55,12 @@ The use of the **linkFeature** field enables an application to deliver a more us
 
     |Value|Description|
     |---|---|
-    |AppStorageMgmt|Clears cache data in the application sandbox directory.|
-    |FileOpen|Opens a file.|
-    |Navigation|Provides navigation.|
-    |RoutePlan|Plans a route.|
-    |PlaceSearch|Searches a location.|
+    |AppStorageMgmt|Clears cache data in the application sandbox directory. For details about the use scenario, see [Clearing Application Sandbox Cache Data](#clearing-application-sandbox-cache-data).|
+    |FileOpen|Opens a file. For details about the use scenario, see [Using startAbility to Start a File Application](./file-processing-apps-startup.md).|
+    |Navigation|Provides navigation. For details about the use scenario, see [Using startAbilityByType to Start a Navigation Application](./start-navigation-apps.md).|
+    |RoutePlan|Plans a route. For details about the use scenario, see [Using startAbilityByType to Start a Navigation Application](./start-navigation-apps.md).|
+    |PlaceSearch|Searches a location. For details about the use scenario, see [Using startAbilityByType to Start a Navigation Application](./start-navigation-apps.md).|
+    |AppNotificationMgmt|Enables notification settings within an application.|
 
 2. One-touch return: When a user switches from application A to application B, application B calls the [quick return API](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#backtocallerabilitywithresult12) to return to application A. For example, if application A is redirected to the payment page of application B and application B has applied for the **linkFeature** of payment, the user can return to application A at one touch after finishing the payment in application B.
 

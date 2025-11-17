@@ -4,13 +4,13 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI开发框架针对拖拽事件提供了[NODE_ON_PRE_DRAG](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_START](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_ENTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_MOVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_LEAVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，[NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)等组件事件，当拖拽在不同的阶段时会触发对应的组件事件，完成对应的数据处理操作，实现期望的拖拽交互能力。
 
 ## 通用拖拽
 
-ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API实现拖拽功能。以下以Image组件为例，详细介绍实现C API实现拖拽功能的基本步骤，以及在开发过程中需要注意的事项。
+ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API实现拖拽功能。以下以Image组件为例，详细介绍C API实现拖拽功能的基本步骤，以及在开发过程中需要注意的事项。
 
 1. 组件拖拽设置。
 
@@ -154,7 +154,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
     ```cpp
     case NODE_ON_DROP: {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
-                      "NODE_ON_DRAG_START EventReceiver");
+                      "NODE_ON_DROP EventReceiver");
         // 获取UDMF data
         int returnValue;
         // 创建OH_UdmfData对象
@@ -193,7 +193,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 ## DragAction主动发起拖拽
 
-除了通用拖拽以外，ArkUI还提供了使用C API实现主动发起拖拽的能力。以下以文本拖拽为例，详细介绍实现C-API实现主动发起拖拽的基本步骤，以及在开发过程中需要注意的事项。
+除了通用拖拽以外，ArkUI还提供了使用C API实现主动发起拖拽的能力。以下以文本拖拽为例，详细介绍C-API实现主动发起拖拽的基本步骤，以及在开发过程中需要注意的事项。
 
 1. 节点注册事件。
 

@@ -128,7 +128,6 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("collaborateEvent", sessionId);
@@ -165,7 +164,6 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("receiveImage", sessionId);
@@ -175,7 +173,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
-应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片。
+应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片，使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -247,7 +245,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
-应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流。
+应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流，使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -594,10 +592,10 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| SEND_FAILURE   | 表示发送任务失败。 |
-| COLOR_SPACE_CONVERSION_FAILURE | 表示色彩空间转换失败。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| SEND_FAILURE | 0 |表示任务发送失败。|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
 
 ## FlipOptions
 
@@ -605,10 +603,10 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| HORIZONTAL   | 表示水平翻转。 |
-| VERTICAL | 表示垂直翻转。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| HORIZONTAL | 0 | 表示水平翻转。 |
+| VERTICAL | 1 | 表示垂直翻转。 |
 
 ## StreamRole
 
@@ -616,10 +614,10 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| SOURCE  | 表示流是发送流。 |
-| SINK  | 表示流是接收流。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| SOURCE  | 0 | 表示流是发送流。 |
+| SINK  | 1 | 表示流是接收流。 |
 
 ## VideoPixelFormat
 
@@ -627,11 +625,11 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| UNKNOWN   | 表示未知的像素格式。 |
-| NV12  | 表示NV12，YUV420半平面格式。 |
-| NV21  | 表示NV21，YUV420半平面格式。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| UNKNOWN   | -1 | 表示未知的像素格式。 |
+| NV12  | 0 | 表示NV12，YUV420半平面格式。 |
+| NV21  | 1 | 表示NV21，YUV420半平面格式。 |
 
 ## ConnectOptions
 
@@ -641,8 +639,8 @@ Surface配置参数。
 
 | 名称          | 类型    | 只读   | 可选   | 说明          |
 | ----------- | ------- | ---- | ---- | ----------- |
-| needSendStream    | boolean  | 否    | 否    | true表示需要发送流，false表示不需要发送流。    |
-| needReceiveStream    | boolean  | 否    | 否    | true表示需要接收流，false表示不需要接收流。     |
+| needSendStream    | boolean  | 否    | 是    | true表示需要发送流，false表示不需要发送流。    |
+| needReceiveStream    | boolean  | 否    | 是    | true表示需要接收流，false表示不需要接收流。     |
 
 ## EventCallbackInfo
 

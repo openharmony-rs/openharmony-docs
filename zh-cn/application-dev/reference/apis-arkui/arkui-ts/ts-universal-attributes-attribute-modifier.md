@@ -4,19 +4,19 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 动态设置组件的属性，支持开发者在属性设置时使用if/else语法，且根据需要使用多态样式设置属性。
 
 > **说明：**
 >
-> 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
+> - 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
 >
-> 对于仅需根据条件设置组件单一属性的简单场景，可以使用[三目表达式](../../../ui/state-management/arkts-declarative-ui-description.md#配置属性)（如.width(isFullScreen ? 200 : 100)）。
+> - 对于仅需根据条件设置组件单一属性的简单场景，可以使用[三目表达式](../../../ui/state-management/arkts-declarative-ui-description.md#配置属性)（如.width(isFullScreen ? 200 : 100)）。
 >
-> 从API version 20开始，attributeModifier支持自定义组件。
+> - 从API version 20开始，attributeModifier支持自定义组件。
 
 ## attributeModifier
 
@@ -144,7 +144,7 @@ applySelectedAttribute?(instance: T) : void
 <!--Del-->
 7. 不支持系统组件属性。<!--DelEnd-->
 
-不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围同基类属性接口的支持范围，详见表格[Attribute支持范围](#attribute支持范围)。
+不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围可参考[属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
 
 ## 自定义Modifier
 从API version 12开始，开发者可使用自定义Modifier构建组件并配置属性，通过此自定义的Modifier可调用所封装组件的属性和样式接口。 
@@ -277,14 +277,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             this.width1 = 10;
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
             this.height1 = 10;
-            console.log(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -341,14 +341,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.log(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -499,7 +499,7 @@ class CustomModifier implements AttributeModifier<CommonAttribute> {
   }
 
   applyPressedAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Red)
+    instance.backgroundColor(Color.Gray)
   }
 }
 
@@ -524,7 +524,7 @@ struct attributePressedDemo {
 @Component
 struct ChildComponent {
   build() {
-    Text("common").fontColor(Color.Green).fontSize(28).textAlign(TextAlign.Center)
+    Text("common").fontColor(Color.White).fontSize(28).textAlign(TextAlign.Center)
       .width('35%')
       .height('10%')
   }
@@ -532,41 +532,4 @@ struct ChildComponent {
 ```
 ![attributeModifier_common](figures/attributeModifier_common.gif)
 
-## Attribute支持范围
 
-未在表格中列举的属性默认为支持。
-
-**表1** CommonAttribute属性接口支持例外范围
-
-| 属性                     | 支持情况 | 告警信息                  | 备注                                      |
-| ------------------------ | -------- | ------------------------- | ----------------------------------------- |
-| [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)     | 不支持   | is not callable           | -                                         |
-| [accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)    | 不支持   | is not callable           | -                                         |
-| [accessibilityTextHint](ts-universal-attributes-accessibility.md#accessibilitytexthint12)    | 不支持   | is not callable           | -                                         |
-| [accessibilityVirtualNode](ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)  | 不支持   | is not callable           | 不支持入参为CustomBuilder。               |
-| [animation](ts-animatorproperty.md#animation)                | 不支持   | Method not implemented.   | 不支持animation相关属性。                 |
-| [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)        | 不支持   | -                         | attributeModifier不支持嵌套使用，不生效。 |
-| [background](ts-universal-attributes-background.md#background10)                 | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| [backgroundFilter](ts-universal-attributes-filter-effect.md#backgroundfilter)         | 不支持   | is not callable           | -                                         |
-| [bindContentCover](ts-universal-attributes-modal-transition.md#bindcontentcover)           | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)          | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| [bindPopup](ts-universal-attributes-popup.md#bindpopup)               | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| [bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)                | 不支持   | Method not implemented.   | 不支持入参为CustomBuilder。               |
-| [chainWeight](ts-universal-attributes-location.md#chainweight14)              | 不支持   | is not callable           | -                                         |
-| [compositingFilter](ts-universal-attributes-filter-effect.md#compositingfilter)        | 不支持   | is not callable           | -                                         |
-| [drawModifier](ts-universal-attributes-draw-modifier.md#drawmodifier)             | 不支持   | is not callable           | 不支持modifier相关的属性。                |
-| [foregroundFilter](ts-universal-attributes-filter-effect.md#foregroundfilter)         | 不支持   | is not callable           | -                                         |
-| [freeze](ts-universal-attributes-image-effect.md#freeze18)                   | 不支持   | is not callable           | -                                         |
-| [gesture](ts-gesture-settings.md#gesture)                   | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
-| [gestureModifier](ts-universal-attributes-gesture-modifier.md#gesturemodifier)          | 不支持   | is not callable           | 不支持modifier相关的属性。                |
-| [onAccessibilityHover](ts-universal-accessibility-hover-event.md#onaccessibilityhover)      | 不支持   | is not callable           | -                                         |
-| [onDigitalCrown](ts-universal-events-crown.md#ondigitalcrown)            | 不支持   | is not callable.          | -                                       |
-| [onDragStart](ts-universal-events-drag-drop.md#ondragstart)              | 不支持   | Method not implemented.   | 不支持返回值为CustomBuilder。             |
-| [parallelGesture](ts-gesture-settings.md#parallelgesture)          | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
-| [priorityGesture](ts-gesture-settings.md#prioritygesture)          | 不支持   | Method not implemented.   | 不支持gesture相关的属性。                 |
-| [reuseId](ts-universal-attributes-reuse-id.md#reuseid)                  | 不支持   | Method not implemented.   | -                                         |
-| [stateStyles](ts-universal-attributes-polymorphic-style.md#statestyles)              | 不支持   | Method not implemented.   | 不支持stateStyles相关的属性。             |
-| useSizeType<sup>deprecated</sup>             | 不支持   | Method not implemented.   | 不支持已废弃属性。                        |
-| [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect)             | 不支持   | is not callable           | -                                         |
-| [bindMenu](ts-universal-attributes-menu.md#bindmenu11)                 | 部分支持 | -                         | 不支持入参为CustomBuilder。               |
-| [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview15)              | 部分支持 | Builder is not supported. | 不支持入参为CustomBuilder。               |

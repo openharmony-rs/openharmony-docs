@@ -1,6 +1,6 @@
-# Connectivity Kit (Short-Range Communication Service)
+# Connectivity Kit<!--connectivity-api-->
 
-- ArkTS APIs
+- ArkTS APIs<!--connectivity-arkts-->
   - [@ohos.bluetooth.a2dp (Bluetooth A2DP Module) (Recommended)](js-apis-bluetooth-a2dp.md)
   - [@ohos.bluetooth.access (Bluetooth Access Module) (Recommended)](js-apis-bluetooth-access.md)
   - [@ohos.bluetooth.baseProfile (Bluetooth baseProfile Module) (Recommended)](js-apis-bluetooth-baseProfile.md)
@@ -38,22 +38,22 @@
   - [@ohos.nfc.tag (Standard NFC Tags) (System API)](js-apis-nfcTag-sys.md)
   - [@ohos.wifiManager (WLAN) (Recommended) (System API)](js-apis-wifiManager-sys.md)
   <!--DelEnd-->
-  - tag
+  - tag<!--connectivity-nfc-tag-arkts-->
     - [nfctech (Standard NFC Technologies)](js-apis-nfctech.md)
     - [tagSession (Standard NFC Tag Session)](js-apis-tagSession.md)
 - C APIs<!--connectivity-c-->
   - Modules<!--connectivity-module-->
-    - [Bluetooth](_bluetooth.md)
-    - [Wifi](_wifi.md)
+    - [Bluetooth](capi-bluetooth.md)
+    - [Wifi](capi-wifi.md)
   - Header Files<!--connectivity-headerfile-->
-    - [oh_bluetooth.h](oh__bluetooth_8h.md)
-    - [oh_wifi.h](oh__wifi_8h.md)
-- Error Codes
+    - [oh_bluetooth.h](capi-oh-bluetooth-h.md)
+    - [oh_wifi.h](capi-oh-wifi-h.md)
+- Error Codes<!--connectivity-arkts-errcode-->
   - [Bluetooth Error Codes](errorcode-bluetoothManager.md)
   - [Wi-Fi Error Codes](errorcode-wifi.md)
   - [NFC Error Codes](errorcode-nfc.md)
   - [SE Error Codes](errorcode-se.md)
-- APIs No Longer Maintained
+- APIs No Longer Maintained<!--connectivity-arkts-dep-->
   - [@ohos.bluetooth (Bluetooth) (To Be Deprecated)](js-apis-bluetooth.md)
   - [@ohos.bluetoothManager (Bluetooth) (To Be Deprecated)](js-apis-bluetoothManager.md)
   - [@ohos.wifi (WLAN) (To Be Deprecated)](js-apis-wifi.md)

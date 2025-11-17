@@ -9339,7 +9339,8 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 设置录像质量优先级。
 
 > **说明：**
-> 默认为高质量，设置为功耗平衡将降低录像质量以减少功耗。实际功耗收益因平台而异。
+> - 默认为高录像质量，设置为功耗平衡将降低录像质量以减少功耗。实际功耗收益因平台而异。
+> - 建议该接口在[commitConfig](arkts-apis-camera-Session.md#commitconfig11)和[start](arkts-apis-camera-Session.md#start11-1)之间调用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 

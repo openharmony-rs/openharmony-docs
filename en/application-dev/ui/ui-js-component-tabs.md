@@ -1,4 +1,4 @@
-# &lt;tabs&gt; Development
+# tabs Development
 
 
 The **&lt;tabs&gt;** component is a common UI component for navigation. It allows quick access to different functions of an app. For details, see [tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md).

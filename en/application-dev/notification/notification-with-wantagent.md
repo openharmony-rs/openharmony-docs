@@ -43,8 +43,8 @@ The following figure shows a notification carrying action buttons.
      wants: [
        {
          deviceId: '',
-         bundleName: 'com.samples.notification',
-         abilityName: 'SecondAbility',
+         bundleName: 'com.samples.notification', // Use the actual bundle name.
+         abilityName: 'SecondAbility', // Use the actual ability name.
          action: '',
          entities: [],
          uri: '',

@@ -106,7 +106,7 @@ factorial(n3)  //  1
 factorial(n4)  //  9.33262154439441e+157 
 ```
 
-`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
+`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
 
 ```typescript
 
@@ -233,7 +233,7 @@ class Frog { sleep () {}; leap () {} }
 type Animal = Cat | Dog | Frog;
 
 function foo(animal: Animal) {
-  if (animal instanceof Frog) {
+  if (animal instanceof Frog) {  // 判断animal是否是Frog类型
     animal.leap();  // animal在这里是Frog类型
   }
   animal.sleep(); // Animal具有sleep方法
@@ -245,10 +245,29 @@ function foo(animal: Animal) {
 `Aliases`类型为匿名类型（如数组、函数、对象字面量或联合类型）提供名称，或为已定义的类型提供替代名称。
 
 ```typescript
+// 二维数组类型
 type Matrix = number[][];
+const gameBoard: Matrix = [
+  [1, 0],
+  [0, 1]
+];
+
+// 函数类型
 type Handler = (s: string, no: number) => string;
-type Predicate <T> = (x: T) => boolean;
+const repeatString: Handler = (str, times) => {
+  return str.repeat(times);
+};
+console.info(repeatString("abc", 3)); // "abcabcabc"
+
+// 泛型函数类型
+type Predicate<T> = (x: T) => boolean;
+const isEven: Predicate<number> = (num) => num % 2 === 0;
+
+// 可为空的对象类型
 type NullableObject = Object | null;
+class cat {}
+let animalData: NullableObject = new cat();
+let emptyData: NullableObject = null;
 ```
 
 ### 运算符
@@ -318,6 +337,32 @@ console.info(String(null === undefined)); // false
 | `a && b`   | 逻辑与 |
 | `a \|\| b` | 逻辑或 |
 | `! a`      | 逻辑非 |
+
+**`instanceof`运算符**
+
+`instanceof`运算符用于在运行时检查一个对象是否是指定类或其子类的实例。
+
+示例如下：
+
+```typescript
+obj instanceof className
+```
+
+返回值类型为`boolean`。
+如果`obj`是`className`类或其子类的实例，则返回值为`true`；否则，返回值为`false`。
+
+示例：
+
+```typescript
+class Person {}
+const person = new Person();
+if ((person instanceof Person)) console.info("true") // true
+
+class Animal {}
+class Bird extends Animal {}
+const bird = new Bird();
+if (bird instanceof Animal)  console.info("true") // true
+```
 
 ### 语句
 
@@ -897,7 +942,7 @@ ArkTS要求所有字段在声明时或构造函数中显式初始化，与标准
 class Person {
   name: string; // undefined
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -919,7 +964,7 @@ jack.getName().length; // 运行时异常：name is undefined
 class Person {
   name: string = '';
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -941,7 +986,7 @@ jack.getName().length; // 0, 没有运行时异常
 class Person {
   name?: string; // 可能为`undefined`
 
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
 
@@ -966,7 +1011,7 @@ jack.getName()?.length; // 编译成功，没有运行时错误
 
 **getter和setter**
 
-setter和getter可用于提供对对象属性的受控访问。
+setter和getter可用于提供对类属性的受控访问。
 
 在以下示例中，setter用于禁止将`_age`属性设置为无效值：
 
@@ -1315,7 +1360,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-类型`K`可以是字符串类型或数值类型(不包括bigint)，而`V`可以是任何类型。
+类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
 
 ```typescript
 interface PersonInfo {
@@ -1969,7 +2014,7 @@ class MyClass {
 >**说明：**
 >
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持bigint。
+> - 注解字段类型不支持BigInt。
 
 注解字段的默认值必须使用常量表达式来指定。<br>常量表达式的场景如下所示：
 * 数字字面量
@@ -2016,7 +2061,7 @@ class Position { // 编译错误：注解的名称不能与注解定义所在作
 }
 
 @interface ClassAuthor { // 编译错误：注解的名称不能与注解定义所在作用域内可见的其他实体名称相同
-  data: sting;
+  data: string;
 }
 ```
 注解不是类型，把注解当类型使用时会出现编译报错（例如：对注解使用类型别名）。
@@ -2163,8 +2208,7 @@ console.info("hello");
 import { Anno } from './a';
 import * as ns from './a';
 
-@MyAnno
-@ns.ClassAuthor // 仅引用了ns的注解，不会导致a.ets的console.info执行
+// 仅引用了Anno注解，不会导致a.ets的console.info执行
 class X {
   // ...
 }
@@ -2212,53 +2256,53 @@ class C {
 **编译器自动生成的.d.ets文件**<br>
 当编译器根据ets代码自动生成.d.ets文件时，存在以下2种情况。
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
-```typescript
-// a.ets
-export @interface ClassAuthor {}
+   ```typescript
+   // a.ets
+   export @interface ClassAuthor {}
 
-@interface MethodAnno { // 没导出
-  data: number;
-}
+   @interface MethodAnno { // 没导出
+     data: number;
+   }
 
-// a.d.ets 编译器生成的声明文件
-export declare @interface ClassAuthor {}
-```
+   // a.d.ets 编译器生成的声明文件
+   export declare @interface ClassAuthor {}
+   ```
 2. 当下面所有条件成立时，源代码中实体的注解实例会在.d.ets文件中保留。<br>
-    2.1 注解的定义被导出（import的注解也算作被导出）。<br>
-    2.2 如果实体是类，则类被导出。<br>
-    2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
-```typescript
-// a.ets
-import { ClassAuthor } from './author';
+  2.1 注解的定义被导出（import的注解也算作被导出）。<br>
+  2.2 如果实体是类，则类被导出。<br>
+  2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
+   ```typescript
+   // a.ets
+   import { ClassAuthor } from './author';
 
-export @interface MethodAnno {
-  data: number = 0;
-}
+   export @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-class MyClass {
-  @MethodAnno({data: 123})
-  foo() {}
+   @ClassAuthor
+   class MyClass {
+     @MethodAnno({data: 123})
+     foo() {}
 
-  @MethodAnno({data: 456})
-  private bar() {}
-}
+     @MethodAnno({data: 456})
+     private bar() {}
+   }
 
-// a.d.ets 编译器生成的声明文件
-import {ClassAuthor} from "./author";
+   // a.d.ets 编译器生成的声明文件
+   import {ClassAuthor} from "./author";
 
-export declare @interface MethodAnno {
-  data: number = 0;
-}
+   export declare @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-export declare class MyClass {
-  @MethodAnno({data: 123})
-  foo(): void;
+   @ClassAuthor
+   export declare class MyClass {
+     @MethodAnno({data: 123})
+     foo(): void;
 
-  bar; // 私有方法不保留注解
-}
-```
+     bar; // 私有方法不保留注解
+   }
+   ```
 
 **开发者生成的.d.ets文件**<br>
 开发者生成的.d.ets文件中的注解信息不会自动应用到实现的源代码中。<br>

@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -77,7 +77,7 @@ Obtains the focus mode in use.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [FocusMode](arkts-apis-camera-e.md#focusmode)   | Focus mode obtained. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [FocusMode](arkts-apis-camera-e.md#focusmode)   | Focus mode obtained. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
 
 **Error codes**
 

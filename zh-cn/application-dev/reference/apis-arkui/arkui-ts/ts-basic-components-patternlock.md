@@ -1,16 +1,16 @@
 # PatternLock
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 图案密码锁组件，以九宫格图案的方式输入密码，用于密码验证场景。手指在PatternLock组件区域按下时开始进入输入状态，手指离开屏幕时结束输入状态完成密码输入。
 
 >  **说明：** 
 >
-> 该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -74,6 +74,10 @@ circleRadius(value: Length)
 backgroundColor(value: ResourceColor)
 
 设置背景颜色。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -179,7 +183,7 @@ autoReset(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 在完成密码输入后再次在组件区域按下时是否重置组件状态。<br/>为true时，完成密码输入后再次在组件区域按下时会重置组件状态（即清除之前输入的密码）；为false时，不会重置组件状态。<br/>默认值：true |
+| value  | boolean | 是   | 在完成密码输入后再次在组件区域按下时是否重置组件状态。<br/>true：完成密码输入后再次在组件区域按下时重置组件状态（即清除之前输入的密码）；false：完成密码输入后再次在组件区域按下时不重置组件状态。<br/>默认值：true |
 
 ### activateCircleStyle<sup>12+</sup>
 
@@ -231,7 +235,7 @@ onPatternComplete(callback: (input: Array\<number\>) => void)
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| input  | Array\<number\> | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。 |
+| input  | Array\<number\> | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
 
 ### onDotConnect<sup>11+</sup>
 
@@ -239,7 +243,11 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 密码输入选中宫格圆点时触发该回调。
 
-回调参数为选中宫格圆点顺序的数字，数字为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。
+回调参数为选中宫格圆点顺序的数字，数字为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -260,10 +268,10 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：与pathColor值相同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：circleRadius的11/6。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableWaveEffect | boolean | 否 | 是 | 波浪效果开关。<br/>默认值：true，表示波浪效果开关打开，显示波浪效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否在前景显示。<br/>默认值：false，背景圆环不在前景显示。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：与[pathColor](#pathcolor)值相同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：[circleRadius](#circleradius)的1.833倍（即11/6）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>默认值：true，表示波浪效果打开。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>默认值：false，背景圆环显示在宫格圆点下层，不遮盖宫格圆点。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## PatternLockController
 

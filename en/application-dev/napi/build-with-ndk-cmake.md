@@ -1,16 +1,20 @@
 # Building an NDK Project with CMake
-
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @huang_huijin-->
+<!--Designer: @huang_huijin-->
+<!--Tester: @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 In many complex application projects, C++ projects are compiled and built in command line mode through build systems such as CMake. The following describes how to switch an existing CMake project to the OpenHarmony toolchain so that CMake can be used to build the project.
-
-
+<!--Del-->
 ## Downloading the NDK
+<!--DelEnd-->
 <!--RP1-->
 1. (Recommended) Acquire source code from mirrors for an officially released version. Specifically, access the release notes of the target version, locate the **Acquiring Source Code from Mirror** section, and download the source code based on your system type.
 
 
 2. Download the NDK from the SDK Manager in DevEco Studio.
-<!--RP1End-->
 
 ## Decompressing the NDK
 
@@ -24,6 +28,7 @@ Below shows the directory structure after decompression on macOS.
 
 ![en-us_image_20-24-01-16-14-35](figures/en-us_image_20-24-01-16-14-35.png)
 
+<!--RP1End-->
 ### Configuring the Environment Variable
 Skip this step if the NDK is downloaded from DevEco Studio.
 1. Add the CMake tool that comes with the NDK to the environment variables.
@@ -80,7 +85,7 @@ You can use the NDK to quickly develop a native program, including native dynami
 
 ### Demo Project
 
-The following is a CMake demo project. This project contains two directories. The **include** directory contains the header files of the library, and the **src** directory contains all source code. Specifically, the **src** directory contains two files: **sum.cpp** (algorithm file) and **main.cpp** (main entry file for invoking algorithms). The two files are compiled into an executable program and an algorithm dynamic library.
+The following is a CMake demo project. This project contains two directories. The **include** directory contains the header files of the library, and the **src** directory contains all source code. Specifically, the **src** directory contains two files: **sum.cpp** (algorithm file) and **hello.cpp** (main entry file for invoking algorithms). The two files are compiled into an executable program and an algorithm dynamic library.
 
 **Demo Project Directory**
 
@@ -171,13 +176,13 @@ int sum(int a, int b)
 
 **For Linux and macOS**
 
-In the project directory, create the **build** directory to store the intermediate files generated during CMake building. **NOTE**<br>In the following commands, **ohos-sdk** is the root directory of the downloaded SDK. Replace it with the actual directory.
+In the module directory of the project directory, create the **build** directory to store the intermediate files generated during CMake building. **NOTE**<br>In the following commands, **ohos-sdk** is the root directory of the downloaded SDK. Replace it with the actual directory.
 
 1. To build the project using dynamic linking with the C++ shared library, use **OHOS_STL=c++_shared**. Note that if **OHOS_STL** is not specified, **c++_shared** is used by default. Set **DOHOS_ARCH** based on the target system architecture. With **DOHOS_ARCH=armeabi-v7a**, a 32-bit dynamic library is compiled; with **DOHOS_ARCH=arm64-v8a**, a 64-bit dynamic library is compiled.
 
    ```
     >mkdir build && cd build
-    >cmake -DOHOS_STL=c++_shared -DOHOS_ARCH=armeabi-v7a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
+    >cmake -DOHOS_STL=c++_shared -DOHOS_ARCH=arm64-v8a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
     >cmake --build .
    ```
 
@@ -185,7 +190,7 @@ In the project directory, create the **build** directory to store the intermedia
 
    ```
     >mkdir build && cd build
-    >cmake -DOHOS_STL=c++_static -DOHOS_ARCH=armeabi-v7a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
+    >cmake -DOHOS_STL=c++_static -DOHOS_ARCH=arm64-v8a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
     >cmake --build .
    ```
 
@@ -203,9 +208,9 @@ In this example, the Ninja generator, which comes with the NDK, is used, as indi
 
 ![en-us_image_20-24-01-16-14-57](figures/en-us_image_20-24-01-16-14-57.png)
 
-Step 1. Create the **build** folder in the project directory and run the following command:
+Step 1. Create the **build** folder in the module directory of the project directory and run the following command:
 ```
- F:\windows\native\build-tools\cmake\bin\cmake.exe -G "Ninja" -D OHOS_STL=c++_shared -D OHOS_ARCH=armeabi-v7a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE=F:\windows\native\build\cmake\ohos.toolchain.cmake ..
+ F:\windows\native\build-tools\cmake\bin\cmake.exe -G "Ninja" -D OHOS_STL=c++_shared -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE=F:\windows\native\build\cmake\ohos.toolchain.cmake ..
 ```
 **NOTE**<br>If debugging is required, add the **-D CMAKE_BUILD_TYPE=normal** option. Both the CMake path and the toolchain file path (**ohos.toolchain.cmake**) should point to your downloaded NDK directory.
 The following figure shows the command output.

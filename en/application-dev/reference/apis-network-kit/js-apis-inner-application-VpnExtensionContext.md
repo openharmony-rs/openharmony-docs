@@ -1,5 +1,12 @@
 # VpnExtensionContext
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 **VpnExtensionContext** represents the context of **VpnExtensionAbility** and is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
 This module provides the context required for APIs to access the resources of a **VpnExtensionAbility** object.
@@ -41,9 +48,9 @@ Represents the VPN extension capability.
 
 **Model restriction**: This API can be used only in the stage model.
 
-| Name  | Type                                                        | Mandatory| Description          |
-|------| ------------------------------------------------------------ | ---- | -------------- |
-| context | [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md) | Yes  | Specified context.|
+| Name  | Type                                                        | Read-Only|Optional| Description          |
+|------| ------------------------------------------------------------ | ---- | ---|----------- |
+| context | [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md) | No  | No|Specified context.|
 
 
 ### onCreate

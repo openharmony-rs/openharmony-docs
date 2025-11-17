@@ -57,7 +57,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 2、不支持collections.Set、collections.Map等类型。
 
-3、不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+3、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
 4、单个key支持数据大小约8k，过大会导致持久化失败。
 
@@ -382,7 +382,7 @@ struct Page1 {
         .fontSize(25)
       Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save(Sample);
           this.refresh += 1;
@@ -592,7 +592,7 @@ struct Page1 {
       // 非状态变量需要借助状态变量refresh才能刷新
       Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
           this.refresh += 1;
@@ -668,7 +668,7 @@ struct Page1 {
       // 非状态变量需要借助状态变量refresh才能刷新
       Text('save key connect2: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
           PersistenceV2.save('connect2');
           this.refresh += 1;

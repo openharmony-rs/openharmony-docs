@@ -26,10 +26,10 @@ Defines the **param** field in the **properties** array of **options** used in t
 
 **System capability**: SystemCapability.Security.Huks.Core
 
-| Name| Type                               | Mandatory| Description        |
-| ------ | ----------------------------------- | ---- | ------------ |
-| tag    | [HuksTag](#hukstag)                 | Yes  | Tag.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| value  | boolean\|number\|bigint\|Uint8Array | Yes  | Value of the tag.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name| Type                               | Read-Only| Optional| Description        |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| tag    | [HuksTag](#hukstag)                 | No  | No  | Tag.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| value  | boolean\|number\|bigint\|Uint8Array | No  | No  | Value of the tag.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## HuksOptions
 
@@ -37,10 +37,10 @@ Defines **options** used in the APIs.
 
 **System capability**: SystemCapability.Security.Huks.Core
 
-| Name    | Type             | Mandatory| Description                    |
-| ---------- | ----------------- | ---- | ------------------------ |
-| properties | Array\<[HuksParam](#huksparam)> | No  | Properties used to hold the **HuksParam** array.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| inData     | Uint8Array        | No  | Input data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
+| Name| Type                               | Read-Only| Optional| Description        |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| properties | Array\<[HuksParam](#huksparam)> | No  | Yes  | Properties used to hold the **HuksParam** array. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| inData     | Uint8Array        | No  | Yes  | Input data. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
 
 ## HuksSessionHandle<sup>9+</sup>
 
@@ -48,10 +48,10 @@ Defines the struct for a HUKS handle.
 
 **System capability**: SystemCapability.Security.Huks.Core
 
-| Name   | Type      | Mandatory| Description                                                |
-| --------- | ---------- | ---- | ---------------------------------------------------- |
-| handle    | number     | Yes  | Handle of the unsigned integer type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                      |
-| challenge | Uint8Array | No  | Challenge obtained after the [initSession](#huksinitsession9) operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name| Type                               | Read-Only| Optional| Description        |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| handle    | number     | No  | No  | Handle of the unsigned integer type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                      |
+| challenge | Uint8Array | No  | Yes  | Challenge obtained after the [initSession](#huksinitsession9) operation. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## HuksReturnResult<sup>9+</sup>
 
@@ -59,11 +59,11 @@ Represents the result returned.
 
 **System capability**: SystemCapability.Security.Huks.Core
 
-| Name    | Type                           | Mandatory| Description            |
-| ---------- | ------------------------------- | ---- | ---------------- |
-| outData    | Uint8Array                      | No  | Output data.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| properties | Array\<[HuksParam](#huksparam)> | No  | Property information.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| certChains | Array\<string>                  | No  | Certificate chain information.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name| Type                               | Read-Only| Optional| Description        |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| outData    | Uint8Array                      | No  | Yes  | Output data.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| properties | Array\<[HuksParam](#huksparam)> | No  | Yes  | Property information.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| certChains | Array\<string>                  | No  | Yes  | Certificate chain information.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## HuksListAliasesReturnResult<sup>12+</sup>
 
@@ -73,9 +73,9 @@ Represents the result returned.
 
 
 
-| Name    | Type                           | Mandatory| Description            |
-| ---------- | ------------------------------- | ---- | ---------------- |
-| keyAliases | Array\<string>                  | Yes  | Array of key aliases.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name| Type                               | Read-Only| Optional| Description        |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| keyAliases | Array\<string>                  | No  | No  | Array of key aliases.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## huks.generateKeyItem<sup>9+</sup>
 
@@ -1612,7 +1612,7 @@ Checks whether a key exists. This API uses an asynchronous callback to return th
 | -------- | --------------------------- | ---- |--------------------------------------------------------|
 | keyAlias | string                      | Yes  | Alias of the key to check.                                           |
 | options  | [HuksOptions](#huksoptions) | Yes  | Attribute tag of the key to be checked. If [HuksAuthStorageLevel](#huksauthstoragelevel11) is used to specify the security level of the key to be checked,<br>this parameter can be left empty. If the API version is 12 or later, the default value **CE** is passed in. If the API version is earlier than 12, the default value **DE** is passed in.    |
-| callback | AsyncCallback\<boolean>     | Yes  | Callback used to return the result. If the key exists, the value of **data** is **true**. If the key does not exist, the error code is stored in **err**.|
+| callback | AsyncCallback\<boolean>     | Yes  | Callback used to return the result. If the key exists, the value of **data** is **true**. If the key does not exist, the error code in **err** is **12000011** with the error description attached.|
 
 **Error codes**
 
@@ -2649,8 +2649,8 @@ Enumerates the key storage modes.
 
 | Name                                         | Value  | Description                          |
 | --------------------------------------------  | ---- | ------------------------------ |
-| HUKS_STORAGE_TEMP<sup>(deprecated)</sup>      | 0    | The key is managed locally.<br> > **NOTE**<br>This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
-| HUKS_STORAGE_PERSISTENT<sup>(deprecated)</sup>      | 1    | The key is managed by the HUKS service.<br> > **NOTE**<br>This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_STORAGE_TEMP<sup>(deprecated)</sup>      | 0    | The key is managed locally.<br> > **Note**: This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_STORAGE_PERSISTENT<sup>(deprecated)</sup>      | 1    | The key is managed by the HUKS service.<br> > **Note**: This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_STORAGE_ONLY_USED_IN_HUKS<sup>10+</sup>  | 2    | The key derived from the master key is stored in the HUKS and managed by the HUKS.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
 | HUKS_STORAGE_KEY_EXPORT_ALLOWED<sup>10+</sup> | 3    | The key derived from the master key is exported to the service, and not managed by the HUKS.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
 
@@ -2723,7 +2723,7 @@ Enumerates the user authentication types.
 
 | Name                           | Value  | Description                     |
 | ------------------------------- | ---- | ------------------------- |
-| HUKS_USER_AUTH_TYPE_FINGERPRINT | 1 << 0 | Fingerprint authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| **HUKS_USER_AUTH_TYPE_FINGERPRINT**.| 1 << 0 | Fingerprint authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | HUKS_USER_AUTH_TYPE_FACE        | 1 << 1 | Facial authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | HUKS_USER_AUTH_TYPE_PIN         | 1 << 2  | PIN authentication.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | HUKS_USER_AUTH_TYPE_TUI_PIN<sup>20+</sup>         | 1 << 5  | TUI PIN authentication. <!--Del--> (not supported currently)<!--DelEnd--> |
@@ -3152,12 +3152,17 @@ Deletes a key. This API uses a promise to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
     properties: []
 };
-let result = huks.deleteKey(keyAlias, emptyOptions);
+let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
+    console.info('delete key success');
+}).catch((err: BusinessError) => {
+    console.error("Failed to delete the key. Error code: " + err.code + " Error message: " + err.message)
+});
 ```
 
 ## huks.importKey<sup>(deprecated)</sup>
@@ -3897,11 +3902,11 @@ Defines the struct for a HUKS handle.
 >
 > This API is deprecated since API version 9. You are advised to use [HuksSessionHandle<sup>9+</sup>](#hukssessionhandle9).
 
-| Name    | Type            | Mandatory| Description    |
-| ---------- | ---------------- | ---- | -------- |
-| errorCode  | number           | Yes  | Error code.|
-| handle    | number       | Yes| Handle of the unsigned integer type.|
-| token | Uint8Array | No| Challenge obtained after the [init](#huksinitdeprecated) operation.|
+| Name| Type                               | Read-Only| Optional| Description        |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| errorCode  | number           | No  | No  | Error code.|
+| handle    | number       | No  | No| Handle of the unsigned integer type.|
+| token | Uint8Array | No  | Yes| Challenge obtained after the [init](#huksinitdeprecated) operation. This parameter is left empty by default.|
 
 ## HuksResult<sup>(deprecated)</sup>
 
@@ -3914,12 +3919,12 @@ Represents the result returned.
 > - This API is deprecated since API version 9. You are advised to use [HuksReturnResult<sup>9+</sup>](#huksreturnresult9).
 > - For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 
-| Name    | Type                           | Mandatory| Description            |
-| ---------- | ------------------------------- | ---- | ---------------- |
-| errorCode  | number                          | Yes  | Error code.    |
-| outData    | Uint8Array                      | No  | Output data.  |
-| properties | Array\<[HuksParam](#huksparam)> | No  | Property information.  |
-| certChains | Array\<string>                  | No  | Certificate chain information.|
+| Name| Type                               | Read-Only| Optional| Description        |
+| ------ | ----------------------------------- | ---- | ---- | ------------ |
+| errorCode  | number                          | No  | No  | Error code.    |
+| outData    | Uint8Array                      | No  | Yes  | Output data. This parameter is left empty by default.  |
+| properties | Array\<[HuksParam](#huksparam)> | No  | Yes  | Property information. This parameter is left empty by default.  |
+| certChains | Array\<string>                  | No  | Yes  | Certificate chain information. This parameter is left empty by default.|
 
 ## HuksErrorCode<sup>(deprecated)</sup>
 

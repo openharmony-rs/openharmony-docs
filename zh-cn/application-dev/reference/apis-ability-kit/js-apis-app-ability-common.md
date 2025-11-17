@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -87,8 +87,8 @@ type BaseContext = _BaseContext.default
 
 type Context = _Context.default
 
-
 [Stage模型](../../application-models/ability-terminology.md#stage模型)的上下文基类。
+
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core

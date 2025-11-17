@@ -29,23 +29,23 @@ Git 下载网址：[Git官网链接](https://git-scm.com/)
 使用 git 命令拉取 UI 模拟器最小代码仓：
 
 ```git
-git clone https://gitee.com/openharmony/arkui_ui_lite.git                        -b   master  foundation/arkui/ui_lite
-git clone https://gitee.com/openharmony/graphic_graphic_utils_lite.git           -b   master  foundation/graphic/graphic_utils_lite
+git clone https://gitcode.com/openharmony/arkui_ui_lite.git                        -b   master  foundation/arkui/ui_lite
+git clone https://gitcode.com/openharmony/graphic_graphic_utils_lite.git           -b   master  foundation/graphic/graphic_utils_lite
 
-git clone https://gitee.com/openharmony/graphic_surface_lite.git                 -b   master  foundation/graphic/surface_lite
-git clone https://gitee.com/openharmony/window_window_manager_lite.git           -b   master  foundation/window/window_window_manager_lite
+git clone https://gitcode.com/openharmony/graphic_surface_lite.git                 -b   master  foundation/graphic/surface_lite
+git clone https://gitcode.com/openharmony/window_window_manager_lite.git           -b   master  foundation/window/window_window_manager_lite
 
-git clone https://gitee.com/openharmony/third_party_zlib.git                     -b   master  third_party/zlib
-git clone https://gitee.com/openharmony/third_party_qrcodegen.git                -b   master  third_party/qrcodegen
-git clone https://gitee.com/openharmony/third_party_libpng.git                   -b   master  third_party/libpng
-git clone https://gitee.com/openharmony/third_party_libjpeg.git                  -b   master  third_party/libjpeg
-git clone https://gitee.com/openharmony/third_party_icu.git                      -b   master  third_party/icu
-git clone https://gitee.com/openharmony/third_party_harfbuzz.git                 -b   master  third_party/harfbuzz
-git clone https://gitee.com/openharmony/third_party_freetype.git                 -b   master  third_party/freetype
-git clone https://gitee.com/openharmony/third_party_bounds_checking_function.git -b   master  third_party/bounds_checking_function
-git clone https://gitee.com/openharmony/third_party_cJSON.git                    -b   master  third_party/cJSON
-git clone https://gitee.com/openharmony/third_party_giflib.git                   -b   master  third_party/giflib
-git clone https://gitee.com/openharmony/third_party_libjpeg-turbo.git            -b   master  third_party/libjpeg-turbo
+git clone https://gitcode.com/openharmony/third_party_zlib.git                     -b   master  third_party/zlib
+git clone https://gitcode.com/openharmony/third_party_qrcodegen.git                -b   master  third_party/qrcodegen
+git clone https://gitcode.com/openharmony/third_party_libpng.git                   -b   master  third_party/libpng
+git clone https://gitcode.com/openharmony/third_party_libjpeg.git                  -b   master  third_party/libjpeg
+git clone https://gitcode.com/openharmony/third_party_icu.git                      -b   master  third_party/icu
+git clone https://gitcode.com/openharmony/third_party_harfbuzz.git                 -b   master  third_party/harfbuzz
+git clone https://gitcode.com/openharmony/third_party_freetype.git                 -b   master  third_party/freetype
+git clone https://gitcode.com/openharmony/third_party_bounds_checking_function.git -b   master  third_party/bounds_checking_function
+git clone https://gitcode.com/openharmony/third_party_cJSON.git                    -b   master  third_party/cJSON
+git clone https://gitcode.com/openharmony/third_party_giflib.git                   -b   master  third_party/giflib
+git clone https://gitcode.com/openharmony/third_party_libjpeg-turbo.git            -b   master  third_party/libjpeg-turbo
 ```
 
 1. 新建一个源码工程目录。

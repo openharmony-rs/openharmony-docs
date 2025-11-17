@@ -1,4 +1,10 @@
 # TextInput (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 The **TextInput** component provides single-line text input.
 
@@ -12,6 +18,6 @@ The **TextInput** component provides single-line text input.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                | Description                                      |
-| ---------------------------------- | ---------------------------------------- |
-| SCREEN_LOCK_PASSWORD<sup>11+</sup> | Lock screen password input mode. This mode accepts only digits, letters, underscores (_), spaces, and special characters. An eye icon is used to show or hide the password, and the entered text is hidden behind dots by default. Since API version 12, on specific devices, the entered text is displayed directly as dots. The password input mode does not support underlines.<br>**System API**: This is a system API.|
+| Name                                | Value| Description                                      |
+| ---------------------------------- | --- | ---------------------------------------- |
+| SCREEN_LOCK_PASSWORD<sup>11+</sup> | 9 | Lock screen password input mode. This mode accepts only digits, letters, underscores (_), spaces, and special characters. An eye icon is used to show or hide the password, and the entered text is hidden behind dots by default. Since API version 12, on specific devices, the entered text is displayed directly as dots. The password input mode does not support underlines.<br>**System API**: This is a system API.|

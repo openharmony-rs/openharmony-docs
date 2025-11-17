@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 相对布局组件，用于复杂场景中元素对齐的布局。
 
@@ -73,7 +73,7 @@ barrier(value: Array&lt;BarrierStyle&gt;)
 
 barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt;)
 
-设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier。
+设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier，支持定义镜像模式的屏障线。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

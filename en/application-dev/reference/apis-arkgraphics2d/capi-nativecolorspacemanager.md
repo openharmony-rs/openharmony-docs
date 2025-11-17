@@ -2,7 +2,7 @@
 
 ## Overview
 
-The module provides the capabilities for creating a color space and obtaining its properties.
+This module provides the capabilities for creating a color space and obtaining its properties.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

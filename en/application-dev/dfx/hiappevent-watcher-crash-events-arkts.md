@@ -42,7 +42,7 @@ The following describes how to subscribe to the crash event triggered by a butto
    ```ts
     // Build custom parameters for the crash event.
     let params: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100,
+      "test_data": 100, // test_data is the custom data. You can customize the params parameter as required.
     };
     // Set custom parameters for the crash event.
     hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -66,7 +66,7 @@ The following describes how to subscribe to the crash event triggered by a butto
     });
    ```
 
-3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add the system event subscription to **onCreate()**. The sample code is as follows:
+3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
    ```ts
     let watcher: hiAppEvent.Watcher = {
@@ -108,7 +108,7 @@ The following describes how to subscribe to the crash event triggered by a butto
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
             // Obtain the log information about the crash event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-            // Obtain the crash log file about the crash event.
+            // Obtain the life time of the faulty process when the crash event occurs.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
             // Obtain the custom test_data of the crash event.

@@ -4,7 +4,9 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+Starting from API version 20, NDK (C/C++) APIs are provided for video transcoding.
 
 You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can call [canIUse](../../reference/common/init.md#caniuse) to check whether the device supports AVTranscoder and continue the operations described in this topic only when the return value of **canIUse("SystemCapability.Multimedia.Media.AVTranscoder")** is **true**.
 

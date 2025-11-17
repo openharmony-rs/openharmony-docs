@@ -76,7 +76,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果反初始化成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 如果存在图片处理实例未被销毁或[OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment)接口未被调用，则返回MAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果反初始化成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 如果存在图片处理实例未被销毁或[OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment)接口未被调用，则返回IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED。 |
 
 ### OH_ImageProcessing_IsColorSpaceConversionSupported()
 
@@ -284,7 +284,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* im
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果获取参数不成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当参数为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。 |
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | 如果获取参数成功，则返回IMAGE_PROCESSING_SUCCESS。<br> 当该实例为空或该实例不是图片处理模块实例时，返回IMAGE_PROCESSING_ERROR_INVALID_INSTANCE。<br> 当参数为空时，返回IMAGE_PROCESSING_ERROR_INVALID_PARAMETER。 |
 
 ### OH_ImageProcessing_ConvertColorSpace()
 

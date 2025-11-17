@@ -186,3 +186,39 @@ napi_value CreateNativeNode(napi_env env, napi_callback_info info) {
   ```
   void *userData = OH_ArkUI_NodeContent_GetUserData(nodeContentHandle_);
   ```
+
+## Bind Rule Description
+
+A **Content** object can only be bound to one **ContentSlot** component at a time. If the same **Content** object is bound to multiple **ContentSlot** components, only the last binding takes effect and displays the content.
+
+**Reason**
+
+**Content** and **ContentSlot** nodes maintain a strict one-to-one binding relationship. A **Content** node cannot be simultaneously associated with multiple **ContentSlot** nodes. When attempts are made to bind the same **Content** node to multiple **ContentSlot** nodes only the final binding remains active. Previous **ContentSlot** nodes lose their association with the **Content** node, resulting in missing component content.
+
+To display the same content in multiple **ContentSlot** nodes, create separate **Content** node instances for each slot. The following is an example:
+
+```typescript
+import nativeNode from 'libNativeNode.so'; // Developer-implemented .so file.
+import { NodeContent } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Parent {
+  private nodeContent_1: Content = new NodeContent();
+  private nodeContent_2: Content = new NodeContent();
+
+  aboutToAppear() {
+    // Create a node through the C API and add it to nodeContent_1 and nodeContent_2.
+    nativeNode.createNativeNode(this.nodeContent_1);
+    nativeNode.createNativeNode(this.nodeContent_2);
+  }
+
+  build() {
+    Column() {
+      ContentSlot(this.nodeContent_1) // nodeContent_1 will be mounted to the next Contentslot node and cannot be displayed here.
+      ContentSlot(this.nodeContent_1) // Content is displayed properly.
+      ContentSlot(this.nodeContent_2) // Content is displayed properly.
+    }
+  }
+}
+```

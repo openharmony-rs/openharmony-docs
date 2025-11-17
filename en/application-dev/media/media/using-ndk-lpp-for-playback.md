@@ -1,6 +1,7 @@
 # Using LPP to Play Audio and Video (C/C++)
 
-The Low Power Player (LPP) offers an end-to-end media pipeline from the source to rendering, while keeping power consumption to a minimum. This guide walks you through playing a local video file using the LPP APIs.
+
+Starting from API version 20, the Low Power Player (LPP) offers an end-to-end media pipeline from the source to rendering, while keeping power consumption to a minimum. This guide walks you through playing a local video file using the LPP APIs.
 
 The full playback process includes creating a demuxer, creating a player, setting callback functions, configuring playback parameters (speed and volume), controlling playback (play, pause, resume, stop, and reset), and releasing the player instance.
 

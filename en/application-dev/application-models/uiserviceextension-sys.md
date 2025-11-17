@@ -1,5 +1,12 @@
 # UIServiceExtensionAbility (for System Applications Only)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhangyafei-echo-->
+<!--Designer: @zhangyafei-echo-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 [UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md) is an [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) component of the UIService type. It provides UI pages (such as preview pages) and background service capabilities. This component internally holds a [UIServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiserviceExtensionContext-sys.md), which provides a variety of APIs for external systems.

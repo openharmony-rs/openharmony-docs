@@ -1,5 +1,12 @@
 # @ohos.net.statistics (Traffic Management)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **statistics** module provides APIs to obtain the real-time uplink and downlink data traffic of the specified NIC.
 
 > **NOTE**
@@ -48,7 +55,7 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceRxBytes("wlan0", (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -90,7 +97,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -130,7 +137,7 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -172,7 +179,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -210,7 +217,7 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularRxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -245,7 +252,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularRxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -283,7 +290,7 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularTxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -318,7 +325,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getCellularTxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -357,7 +364,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 statistics.getAllRxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -393,7 +400,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getAllRxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -432,7 +439,7 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getAllTxBytes((error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -468,7 +475,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getAllTxBytes().then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -507,7 +514,7 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidRxBytes(20010038, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -548,7 +555,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidRxBytes(20010038).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -587,7 +594,7 @@ import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidTxBytes(20010038, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -628,7 +635,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 import { statistics } from '@kit.NetworkKit';
 
 statistics.getUidTxBytes(20010038).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -668,7 +675,7 @@ import { statistics } from '@kit.NetworkKit';
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -711,7 +718,7 @@ import { statistics } from '@kit.NetworkKit';
 
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 }).catch((err: BusinessError) => {
   console.error(JSON.stringify(err));
 });
@@ -752,7 +759,7 @@ import { statistics } from '@kit.NetworkKit';
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 });
 ```
 
@@ -795,7 +802,7 @@ import { statistics } from '@kit.NetworkKit';
 
 let sockfd = 50; // FD of the socket you created.
 statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
-  console.log(JSON.stringify(stats));
+  console.info(JSON.stringify(stats));
 }).catch((err: BusinessError) => {
   console.error(JSON.stringify(err));
 });

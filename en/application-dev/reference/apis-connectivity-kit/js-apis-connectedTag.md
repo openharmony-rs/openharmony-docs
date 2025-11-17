@@ -119,7 +119,7 @@ import { connectedTag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connectedTag.readNdefTag().then((data) => {
-    console.log("connectedTag readNdefTag Promise data = " + data);
+    console.info("connectedTag readNdefTag Promise data = " + data);
 }).catch((err: BusinessError)=> {
     console.error("connectedTag readNdefTag Promise err: " + err);
 });
@@ -158,7 +158,7 @@ import { connectedTag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connectedTag.read().then((data) => {
-    console.log("connectedTag read Promise data = " + data);
+    console.info("connectedTag read Promise data = " + data);
 }).catch((err: BusinessError)=> {
     console.error("connectedTag read Promise err: " + err);
 });
@@ -193,7 +193,7 @@ connectedTag.readNdefTag((err, data)=> {
     if (err) {
         console.error("connectedTag readNdefTag AsyncCallback err: " + err);
     } else {
-        console.log("connectedTag readNdefTag AsyncCallback data: " + data);
+        console.info("connectedTag readNdefTag AsyncCallback data: " + data);
     }
 });
 ```
@@ -233,7 +233,7 @@ connectedTag.read((err, data)=> {
     if (err) {
         console.error("connectedTag read AsyncCallback err: " + err);
     } else {
-        console.log("connectedTag read AsyncCallback data: " + data);
+        console.info("connectedTag read AsyncCallback data: " + data);
     }
 });
 ```
@@ -272,7 +272,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let rawData = "010203"; // change it to be correct.
 connectedTag.writeNdefTag(rawData).then(() => {
-    console.log("connectedTag.writeNdefTag Promise success.");
+    console.info("connectedTag.writeNdefTag Promise success.");
 }).catch((err: BusinessError)=> {
     console.error("connectedTag.writeNdefTag Promise err: " + err);
 });
@@ -319,7 +319,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let rawData = [0x01, 0x02, 0x03]; // change it to be correct.
 connectedTag.write(rawData).then(() => {
-    console.log("connectedTag.writeNdefTag Promise success.");
+    console.info("connectedTag.writeNdefTag Promise success.");
 }).catch((err: BusinessError)=> {
     console.error("connectedTag.writeNdefTag Promise err: " + err);
 });
@@ -356,7 +356,7 @@ connectedTag.writeNdefTag(rawData, (err)=> {
     if (err) {
         console.error("connectedTag.writeNdefTag AsyncCallback err: " + err);
     } else {
-        console.log("connectedTag.writeNdefTag AsyncCallback success.");
+        console.info("connectedTag.writeNdefTag AsyncCallback success.");
     }
 });
 ```
@@ -399,7 +399,7 @@ connectedTag.write(rawData, (err)=> {
     if (err) {
         console.error("connectedTag.writeNdefTag AsyncCallback err: " + err);
     } else {
-        console.log("connectedTag.writeNdefTag AsyncCallback success.");
+        console.info("connectedTag.writeNdefTag AsyncCallback success.");
     }
 });
 ```
@@ -408,7 +408,7 @@ connectedTag.write(rawData, (err)=> {
 
 on(type: "notify", callback: Callback&lt;number&gt;): void
 
-Registers the NFC field strength state events.
+Registers the NFC field strength status change events.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -425,7 +425,7 @@ Registers the NFC field strength state events.
 
 off(type: "notify", callback?: Callback&lt;number&gt;): void
 
-Unregisters the NFC field strength state events.
+Unregisters the NFC field strength status change events.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -436,33 +436,51 @@ Unregisters the NFC field strength state events.
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. This parameter has a fixed value of **notify**.|
-| callback | Callback&lt;number&gt; | No| Callback used to return the field strength state. If this parameter is not specified, all callbacks associated with the specified event will be unregistered.|
+| callback | Callback&lt;number&gt; | No| Callback used to return the field strength status. If this parameter is not specified, all callbacks associated with the specified event will be unregistered.|
 
 **Example**
 
 ```js
 import { connectedTag } from '@kit.ConnectivityKit';
 
-// Register the event.
-connectedTag.on("notify", (rfState : number)=> {
-  console.log("connectedTag on Callback rfState: " + rfState);
-});
-try {
-    connectedTag.initialize();
-    let tag = [3, 1, 0];
-    console.log("connectedTag write: tag=" + tag);
-    await connectedTag.write(tag);
-    let data = await connectedTag.read();
-    console.log("connectedTag read: data=" + data);
-    connectedTag.uninitialize();
-} catch (error) {
-    console.error("connectedTag error: " + error);
+function nfcStatusCb(rfState: connectedTag.NfcRfType) {
+    console.info("connectedTag on Callback rfState: ", rfState);
 }
 
-// Unregister the event.
-connectedTag.off("notify", (rfState : number)=> {
-  console.log("connectedTag off Callback rfState: " + rfState);
-});
+// Process of using an active NFC tag
+async function nfcTagTestOn(): Promise<void> {
+    try {
+        console.info("connectedTag initialize");
+        connectedTag.initialize();
+    } catch (error) {
+        console.error("initialize error:" + error);
+    }
+    // Register a callback for NFC status change events.
+    connectedTag.on("notify", nfcStatusCb);
+    try {
+        let tag = [3, 1, 0];
+        console.info("connectedTag write: tag=" + tag);
+        await connectedTag.write(tag);
+        let data = await connectedTag.read();
+        console.info("connectedTag read: data=" + data);
+    } catch (error) {
+        console.error("connectedTag error: " + error);
+    }
+}
+
+// Unregister the callback for NFC status change events and uninitialize the NFC tag.
+async function nfcTagTestOff(): Promise<void> {
+    // Unregister the callback for NFC status change events.
+    connectedTag.off("notify", nfcStatusCb);
+    try {
+        console.info("connectedTag uninitialize");
+        connectedTag.uninitialize();
+    } catch (error) {
+        console.error("connectedTag error: " + error);
+    }
+}
+
+export { nfcTagTestOn, nfcTagTestOff }
 ```
 
 ## NfcRfType

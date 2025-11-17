@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 通过不同的uri访问不同的页面。
 

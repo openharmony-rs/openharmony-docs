@@ -39,7 +39,7 @@ Called when a system environment variable changes. You can override this callbac
 
 > **NOTE**
 >
-> There are certain restrictions when this callback is actually triggered. If you set the application language by calling [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system does not trigger the **onConfigurationUpdate** callback even if the system language changes. For details, see [When to Use](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
+> There are certain restrictions when this callback is actually triggered. For example, if you set the application language by calling [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system does not trigger the **onConfigurationUpdate** callback even if the system language changes. For details, see [When to Use](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -59,7 +59,7 @@ import { UIAbility, Configuration } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
   onConfigurationUpdate(config: Configuration) {
-    console.log(`onConfigurationUpdate, config: ${JSON.stringify(config)}`);
+    console.info(`onConfigurationUpdate, config: ${JSON.stringify(config)}`);
   }
 }
 ```
@@ -88,7 +88,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
-    console.log(`onMemoryLevel, level: ${JSON.stringify(level)}`);
+    console.info(`onMemoryLevel, level: ${JSON.stringify(level)}`);
   }
 }
 ```

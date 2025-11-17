@@ -11,6 +11,8 @@
 
 The **condition_variable.h** file declares the condition variable APIs in C.
 
+**File to include**: <ffrt/condition_variable.h>
+
 **Library**: libffrt.z.so
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
@@ -58,7 +60,7 @@ Initializes a condition variable.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the condition variable is initialized;<br>          returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the condition variable is initialized; returns **ffrt_error_inval** otherwise.|
 
 ### ffrt_cond_signal()
 
@@ -83,7 +85,7 @@ Unblocks at least one of the threads that are blocked on a condition variable.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if at least one of the threads is unblocked;<br>          returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if at least one of the threads is unblocked; returns **ffrt_error_inval** otherwise.|
 
 ### ffrt_cond_broadcast()
 
@@ -108,7 +110,7 @@ Unblocks all threads currently blocked on a condition variable.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if all threads are unblocked;<br>          returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if all threads are unblocked successfully; returns **ffrt_error_inval** otherwise.|
 
 ### ffrt_cond_wait()
 
@@ -134,7 +136,7 @@ Blocks the calling thread on a condition variable.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the thread is unblocked after being blocked;<br>          returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the thread is unblocked after being blocked; returns **ffrt_error_inval** otherwise.|
 
 ### ffrt_cond_timedwait()
 
@@ -161,7 +163,7 @@ Blocks the calling thread on a condition variable for a given duration. If **ffr
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the thread is unblocked after being blocked;<br>          returns **ffrt_error_timedout** if the wait times out;<br>          returns **ffrt_error_inval** if the wait fails.|
+| FFRT_C_API int | Returns **ffrt_success** if the thread is unblocked after being blocked; returns **ffrt_error_timedout** if the wait times out; returns **ffrt_error_inval** if the wait fails.|
 
 ### ffrt_cond_destroy()
 
@@ -186,4 +188,4 @@ Destroys a condition variable.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the condition variable is destroyed successfully;<br>returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the condition variable is destroyed successfully; returns **ffrt_error_inval** otherwise.|

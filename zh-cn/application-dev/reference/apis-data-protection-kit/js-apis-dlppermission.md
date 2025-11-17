@@ -772,7 +772,7 @@ async function ExampleFunction() {
 
 getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void
 
-查询指定应用的保留沙箱信息列表。使用callback方式异步返回结果。
+查询指定应用的保留沙箱信息列表。使用callback异步回调。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -817,7 +817,7 @@ try {
 
 getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void
 
-查询指定应用的保留沙箱信息列表。使用callback方式异步返回结果。
+查询当前应用的保留沙箱信息列表。使用callback异步回调。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 

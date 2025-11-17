@@ -252,7 +252,7 @@
         }
 
         let retStr = window.ndkProxy.method1("hello", "world", [1.2, -3.4, 123.456], ["Saab", "Volvo", "BMW", undefined], 1.23456, 123789, true, false, 0,  undefined);
-        console.log("ndkProxy and method1 is ok, " + retStr + ", type:" + typeof(retStr));
+        console.info("ndkProxy and method1 is ok, " + retStr + ", type:" + typeof(retStr));
   }
 
   function testNdkProxyObjMethod2() {
@@ -275,7 +275,7 @@
       let params = "[\"{\\\"scope\\\"]";
 
       let retStr = window.ndkProxy.method2("hello", "world", false, cars, params);
-      console.log("ndkProxy and method2 is ok, " + retStr + ", type:" + typeof(retStr));
+      console.info("ndkProxy and method2 is ok, " + retStr + ", type:" + typeof(retStr));
   }
 
   function runJSRetStr(data) {
@@ -299,12 +299,12 @@
     }
 
     test(): string {
-      console.log('ArkUI Web Component');
+      console.info('ArkUI Web Component');
       return "ArkUI Web Component";
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -954,12 +954,12 @@ ArkWeb Native侧得先获取API结构体，才能调用结构体里的Native API
     }
 
     test(): string {
-      console.log('ArkUI Web Component');
+      console.info('ArkUI Web Component');
       return "ArkUI Web Component";
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 

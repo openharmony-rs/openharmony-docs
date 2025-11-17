@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -16,7 +16,7 @@ Enumerates the information levels of **ConsoleMessage**.
 
 > **NOTE**
 >
-> - On the HTML5 side, the information level of **ConsoleMessage** corresponding to **console.log** or **console.info** is **MessageLevel.Info**. 
+> - On the HTML5 side, the information level of **ConsoleMessage** corresponding to **console.log** or **console.info** is **MessageLevel.Info**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

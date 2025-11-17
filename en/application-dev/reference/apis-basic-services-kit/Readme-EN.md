@@ -4,10 +4,10 @@
   - Account Management<!--account-management-arkts-->
     - [@ohos.account.appAccount (Application Account Management)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
-    - [@ohos.account.osAccount (OS Account Management)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount (System Account Management)](js-apis-osAccount.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
-    - [@ohos.account.osAccount (OS Account Management) (System API)](js-apis-osAccount-sys.md)
+    - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
@@ -35,12 +35,14 @@
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
     - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
+    - [@ohos.scan (Scan)](js-apis-scan.md)
     - [@ohos.request (Upload and Download)](js-apis-request.md)
     - [@ohos.request.cacheDownload (Download and Cache)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip)](js-apis-zlib.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (Print) (System API)](js-apis-print-sys.md)
+    - [@ohos.scan (Scan) (System API)](js-apis-scan-sys.md)
     - [@ohos.request (Upload and Download) (System API)](js-apis-request-sys.md)
     - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
     - [@ohos.selectionInput.SelectionExtensionContext (SelectionExtensionContext) (System API)](js-apis-selectionInput-selectionExtensionContext-sys.md)
@@ -59,12 +61,12 @@
     - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (System API)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
     - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext) (System API)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
-    - commonEvent
+    - commonEvent<!--commonevent-->
       - [CommonEventData](js-apis-inner-commonEvent-commonEventData.md)
       - [CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md)
       - [CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md)
       - [CommonEventSubscribeInfo](js-apis-inner-commonEvent-commonEventSubscribeInfo.md)
-  - Others<!--others-->
+  - Others<!--basic-services-others-->
     <!--Del-->
     - [@ohos.ai.intelligentVoice (Intelligent Voice) (System API)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
@@ -77,11 +79,11 @@
     - [@ohos.configPolicy (Configuration Policy) (System API)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (Data Item Settings) (System API)](js-apis-settings-sys.md)
     - [@ohos.systemDateTime (System Time and Time Zone) (System API)](js-apis-system-date-time-sys.md)
-    - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
     - [@ohos.wallpaper (Wallpaper) (System API)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (System Timer) (System API)](js-apis-system-timer-sys.md)
     <!--DelEnd-->
+    - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
   - APIs No Longer Maintained<!--basic-services-arkts-dep-->
     - [System Common Events](common_event/commonEvent-definitions.md)
     - [@ohos.commonEvent (Common Event)](js-apis-commonEvent.md)
@@ -103,7 +105,7 @@
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [OH_Scan](c-apis-scan.md)
+    - [OH_Scan](c-apis-scan-module.md)
     - [OH_Print](_o_h___print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
@@ -148,14 +150,19 @@
   - [Upload and Download Error Codes](errorcode-request.md)
   - [Time and Time Zone Service Error Codes](errorcode-time.md)
   - [Event Error Codes](errorcode-CommonEventService.md)
+  <!--Del-->
   - [System Parameter Error Codes](errorcode-system-parameterV9.md)
+  <!--DelEnd-->
   - [Power Manager Error Codes](errorcode-power.md)
   - [Account Management Error Codes](errorcode-account.md)
+  <!--Del-->
   - [Update Error Codes](errorcode-update.md)
+  <!--DelEnd-->
+  - [Print Service Error Codes](errorcode-print.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
-  - [Settings Error Codes](errorcode-settings.md)
   - [Word Selection Service Error Codes](errorcode-selection.md)
   <!--DelEnd-->
+  - [Settings Error Codes](errorcode-settings.md)

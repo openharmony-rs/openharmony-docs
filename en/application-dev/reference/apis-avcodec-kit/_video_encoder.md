@@ -680,8 +680,6 @@ One of the following result codes:
 
 **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.
 
-**AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoEncoder_Prepare**.
-
 
 ### OH_VideoEncoder_RegisterParameterCallback()
 
@@ -1072,8 +1070,6 @@ One of the following result codes:
 **AV_ERR_UNKNOWN**: An unknown error occurs.
 
 **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.
-
-**AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoEncoder_Prepare**.
 
 
 ### OH_VideoEncoder_PushInputData()

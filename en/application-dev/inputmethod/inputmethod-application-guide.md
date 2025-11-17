@@ -23,7 +23,6 @@
 
 ## How to Develop
 
-<!--RP1-->
 To implement an input method application, manually create an InputMethodExtensionAbility component in DevEco Studio. The procedure is as follows:
 
 1. In the **ets** directory of the target module, right-click and choose **New** > **Directory** to create a directory named **InputMethodExtensionAbility**.
@@ -40,7 +39,6 @@ To implement an input method application, manually create an InputMethodExtensio
 │         └── KeyboardKeyData.ts			    # Defines keyboard attributes.
 ├── resources/base/profile/main_pages.json  
 ```
-<!--RP1End-->
 
 ## Related Files
 
@@ -60,18 +58,19 @@ To implement an input method application, manually create an InputMethodExtensio
      }
    
      onDestroy(): void {
-       console.log("onDestroy.");
+       console.info("onDestroy.");
        keyboardController.onDestroy(); // Destroy the window and deregister the event listener.
      }
    }
    ```
 
-<!--RP2-->
+
 2. **KeyboardController.ts** file:
 
    ```ts
    import { display } from '@kit.ArkUI';
    import { inputMethodEngine, InputMethodExtensionContext } from '@kit.IMEKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    
    // Call the getInputMethodAbility API to obtain an instance, and then call the other APIs of the input method framework based on the instance.
    const inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
@@ -132,11 +131,13 @@ To implement an input method application, manually create an InputMethodExtensio
        };
        inputMethodAbility.createPanel(this.mContext, panelInfo).then(async (inputPanel: inputMethodEngine.Panel) => {
          this.panel = inputPanel;
-         if(this.panel) {
+         if (this.panel) {
            await this.panel.resize(dWidth, keyHeight);
            await this.panel.moveTo(0, nonBarPosition);
            await this.panel.setUiContent('InputMethodExtensionAbility/pages/Index');
          }
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
        });
      }
    
@@ -146,20 +147,22 @@ To implement an input method application, manually create an InputMethodExtensio
        // Register a listener for keyboard hiding.
      }
    
-     private registerInputListener(): void { // Register a listener for the enabling and disabling events of the input method framework service.
+     private registerInputListener(): void {
+       // Register an event listener for the input start event.
        inputMethodAbility.on('inputStart', (kbController, textInputClient) => {
          this.textInputClient = textInputClient; // This is an input method client instance, based on which you can call the APIs that the input method framework provides for the input method.
          this.keyboardController = kbController;
        })
-       inputMethodAbility.on('inputStop', () => {
-         this.onDestroy (); // Destroy the KeyboardController instance.
-       });
+       inputMethodAbility.on('inputStop', this.inputStopCallback);
      }
    
-     private unRegisterListener(): void
-     {
+     private inputStopCallback(): void {
+       this.onDestroy(); // Destroy the KeyboardController instance.
+     }
+   
+     private unRegisterListener(): void {
        inputMethodAbility.off('inputStart');
-       inputMethodAbility.off('inputStop', () => {});
+       inputMethodAbility.off('inputStop', this.inputStopCallback);
      }
    }
    
@@ -167,7 +170,7 @@ To implement an input method application, manually create an InputMethodExtensio
    
    export default keyboardController;
    ```
-<!--RP2End-->
+
 3. **KeyboardKeyData.ts** file:
 
    In this file you can define the content displayed on the soft keyboard.
@@ -177,7 +180,7 @@ To implement an input method application, manually create an InputMethodExtensio
      content: string,
    }
    
-   export let numberSourceListData: sourceListType[] = [
+   export const numberSourceListData: sourceListType[] = [
      {
        content: '1'
      },
@@ -323,7 +326,7 @@ To implement an input method application, manually create an InputMethodExtensio
    }
    ```
 
-<!--Del-->
+
 5. **module.json5** file:<br>Register the InputMethodExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) corresponding to the **Module** project. Set **type** to **"inputMethod"** and **srcEntry** to the code path of the **InputMethodExtensionAbility** component.
 
    ```json
@@ -343,12 +346,9 @@ To implement an input method application, manually create an InputMethodExtensio
      }
    }
    ```
-<!--DelEnd-->
 
 
-<!--RP3-->
 
-<!--RP3End-->
 
 ## Constraints
 
@@ -357,3 +357,4 @@ To protect the InputMethodExtensionAbility against abuse, functional constraints
 > **NOTE**
 >
 > Strictly comply with the functional constraints of the basic access mode. In this mode, you should provide only basic typing features, not interaction with online services in any form. The system will gradually introduce measures for compliance with the basic access mode, including but not limited to running the Extension process as an independent process and in sandbox mode, preventing the Extension process from creating subprocesses, and restricting inter-process communication and network access. Violations may result in service exceptions.
+

@@ -979,7 +979,7 @@ enableLocationByUserId(userId: number): Promise&lt;void&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | userId | number | 是 | 系统账号ID，获取系统账号ID可参考[查询所有已创建的系统账号](../../basic-services/account/manage-os-account.md#查询所有已创建的系统账号)|
+  | userId | number | 是 | 系统账号ID，获取系统账号ID可参考[查询所有已创建的系统账号](../../basic-services/account/manage-os-account-sys.md#查询所有已创建的系统账号)|
 
 **返回值**：
 
@@ -1034,7 +1034,7 @@ disableLocationByUserId(userId: number): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | userId | number | 是 | 系统账号ID，获取系统账号ID可参考[查询所有已创建的系统账号](../../basic-services/account/manage-os-account.md#查询所有已创建的系统账号)|
+  | userId | number | 是 | 系统账号ID，获取系统账号ID可参考[查询所有已创建的系统账号](../../basic-services/account/manage-os-account-sys.md#查询所有已创建的系统账号)|
 
 **错误码**：
 
@@ -1075,7 +1075,7 @@ isLocationEnabledByUserId(userId: number): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | userId | number | 是 | 系统账号ID，获取系统账号ID可参考 [查询所有已创建的系统账号](../../basic-services/account/manage-os-account.md#查询所有已创建的系统账号)|
+  | userId | number | 是 | 系统账号ID，获取系统账号ID可参考 [查询所有已创建的系统账号](../../basic-services/account/manage-os-account-sys.md#查询所有已创建的系统账号)|
 
 **返回值**：
 

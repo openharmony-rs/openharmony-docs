@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对应用全局UI状态变量存储的能力，开发者可以使用AppStorageV2存储应用全局UI状态变量数据。
+为了增强状态管理框架对应用全局UI状态变量的共享能力，开发者可以使用AppStorageV2存储应用全局UI的状态变量数据。
 
 AppStorageV2是提供状态变量在应用级全局共享的能力，开发者可以通过connect绑定同一个key，进行跨ability的数据共享。
 
@@ -60,7 +60,7 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 3、不支持collections.Set、collections.Map等类型。
 
-4、不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+4、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
 5、不支持存储基本类型，如string、number、boolean等。注意：不支持存储基本类型意味着connect接口传入的类型不能是基本类型，但connect传入的class中可以包含基本类型。
 

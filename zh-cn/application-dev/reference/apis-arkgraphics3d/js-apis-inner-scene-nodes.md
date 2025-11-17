@@ -131,8 +131,10 @@ function append(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // append 节点
-      result.root?.children.get(0)?.children.append(node);
+      if (node) {
+        // append 结点，如果node已经在children中，数量不会增加，但操作仍然生效
+        result.root?.children.get(0)?.children.append(node);
+      }
     }
   }).catch((error: Error) => {
     console.error('Scene load failed:', error);
@@ -164,7 +166,7 @@ function insertAfter(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       if (node) {
-        // insertAfter 节点
+        // insertAfter 结点，如果node已经在children中，数量不会增加，但操作仍然生效
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
@@ -320,7 +322,7 @@ function count(): void {
 | layerMask | [LayerMask](#layermask) | 是 | 否 | 结点的图层掩码。 |
 | path | string | 是 | 否 | 结点路径。 |
 | parent | [Node](#node) \| null | 是 | 否 | 结点的父结点，不存在则为空值。 |
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的结点，不存在则为空值。 |
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的子结点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子结点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的结点已存在于容器中，容器会先移除该结点再插入，因此数量不会增加，看似“无效”；添加新结点才会真正增加子结点数量。 |
 
 ### getNodeByPath
 getNodeByPath(path: string): Node | null
@@ -425,7 +427,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 标准化设备坐标(NDC)，范围[-1, 1]。(-1, -1)为屏幕左下角，(1, 1)为屏幕右上角。|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 使用UI坐标系定义的屏幕归一化坐标，取值范围为[0, 1]。其中(0,0)表示Component3D控件的左上角，(1,1)表示Component3D控件的右下角。|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | 是 | 射线检测的配置参数（如检测范围、过滤节点等）。|
 
 **返回值：**

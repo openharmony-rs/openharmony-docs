@@ -96,9 +96,9 @@ Obtains the remaining duration before the application is suspended. This API use
   let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
   backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessError, res: number) => {
       if(err) {
-          console.log('callback => Operation getRemainingDelayTime failed. Cause: ' + err.code);
+          console.info('callback => Operation getRemainingDelayTime failed. Cause: ' + err.code);
       } else {
-          console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+          console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
       }
   })
   ```
@@ -135,9 +135,9 @@ import { BusinessError } from '@ohos.base';
 
 let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
     backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId).then((res:number) => {
-    console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((err : BusinessError) => {
-    console.log('promise => Operation getRemainingDelayTime failed. Cause: ' + err.code);
+    console.info('promise => Operation getRemainingDelayTime failed. Cause: ' + err.code);
 })
 ```
 
@@ -497,11 +497,10 @@ Provides the information about the suspension delay.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-| Name            | Type    | Mandatory  | Description                                      |
-| --------------- | ------ | ---- | ---------------------------------------- |
-| requestId       | number | Yes   | ID of the suspension delay request.                              |
-| actualDelayTime | number | Yes   | Actual suspension delay duration of the application, in milliseconds.<br>The default duration is 180000 when the battery level is higher than or equal to the broadcast low battery level and 60000 when the battery level is lower than the broadcast low battery level.|
-
+| Name            | Type    | Read-Only  | Optional  | Description                                      |
+| --------------- | ------ | ---- | ---- | ---------------------------------------- |
+| requestId       | number | No   | No   | ID of the suspension delay request.                              |
+| actualDelayTime | number | No   | No   | Actual suspension delay duration of the application, in milliseconds.<br>The default duration is 180000 when the battery level is higher than or equal to the broadcast low battery level and 60000 when the battery level is lower than the broadcast low battery level.|
 
 ## BackgroundMode<sup>(deprecated)</sup>
 

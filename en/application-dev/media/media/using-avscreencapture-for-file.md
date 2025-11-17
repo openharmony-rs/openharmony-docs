@@ -12,7 +12,7 @@ You can call the C APIs of the [AVScreenCapture](media-kit-intro.md#avscreencapt
 
 The AVScreenCapture, Window, and Graphics modules together implement the entire video capture process.
 
-The full screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing the instance.
+The full-screen capture process involves creating an AVScreenCapture instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing the instance.
 
 If you are in a call when screen capture starts or a call is coming during screen capture, screen capture automatically stops, and the **OH_SCREEN_CAPTURE_STATE_STOPPED_BY_CALL** status is reported.
 
@@ -272,13 +272,13 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // (Optional) Set a callback to handle user selection results on the manual confirmation UI. This operation must be performed before screen capture starts.
     OH_AVScreenCapture_SetSelectionCallback(capture, OnUserSelected, nullptr);
 
-    // (Optional) Set the cursor display switch. This operation must be performed before screen capture starts.
+    // (Optional) Set the cursor display switch. This operation can be performed before or after screen capture starts.
     OH_AVScreenCapture_ShowCursor(capture, false);
 
     // Initialize AVScreenCapture.
     int32_t retInit = OH_AVScreenCapture_Init(capture, config);
 
-    // Optional (supported since API version 20) Set the coordinates and size of the area to capture. For example, the following creates a rectangle area starting at (0, 0) with a length of 100 and a width of 100. This API can also be set after screen capture starts.
+    // Optional (supported since API version 20) Set the coordinates and size of the area to capture. The example below creates a 100 px * 100 px rectangle area starting at (0, 0). This API can also be set after screen capture starts.
     OH_Rect* region = new OH_Rect;
     region->x = 0;
     region->y = 0;
@@ -309,7 +309,7 @@ static napi_value StopScreenCapture(napi_env env, napi_callback_info info) {
         int32_t retRelease = OH_AVScreenCapture_Release(capture);
         capture = nullptr;
     }
-    // Return the call result. In the example, only a random number is returned.
+
     napi_value sum;
     napi_create_double(env, 5, &sum);
 

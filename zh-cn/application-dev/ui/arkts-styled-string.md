@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 属性字符串StyledString/MutableStyledString（其中MutableStyledString继承自StyledString，下文统称为StyledString），可用于在字符或段落级别上设置文本样式。将StyledString应用到文本组件上，可以采用多种方式修改文本，包括调整字号、添加字体颜色、使文本具备可点击性，以及通过自定义方式绘制文本等。具体使用方法请参考[属性字符串](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md)的文档。
 
@@ -549,7 +549,7 @@
       // 使用二分查找
       while (low <= high) {
         let mid = (low + high) >> 1;
-        console.log("demo: get " + low + " " + high + " " + mid);
+        console.info("demo: get " + low + " " + high + " " + mid);
         let moreStyledString = new MutableStyledString("... 全文", [{
           start: 4,
           length: 2,
@@ -664,6 +664,10 @@
 可通过[ImageAttachment](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#imageattachment)来添加图片。
 
 以下示例展示了如何将图片和文本附加到同一个MutableStyledString对象上，并实现图文混排。
+
+> **说明：**
+>
+> 属性字符串的构造函数[constructor](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#constructor)中，当入参value的类型为ImageAttachment或CustomSpan时，styles参数不生效。需要设置styles时，通过[setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle)、[insertStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#insertstyledstring)等方法实现。
 
   ```ts
   // xxx.ets

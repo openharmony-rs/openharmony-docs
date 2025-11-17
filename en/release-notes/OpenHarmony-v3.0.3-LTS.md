@@ -89,7 +89,7 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 | I4WRWM | Some TDD test cases are unavailable in the **aafwk_aafwk_lite** repository.|
 | [I4VPVY](https://gitee.com/openharmony/applications_sample_camera/issues/I4VPVY) | In the Hi3516D V300 development board running on a mini-system device, a user searches for Wi-Fi in **Settings** and touches the back button twice to return to the home screen. No application can be started from the home screen.|
 | [I4UTY0](https://gitee.com/openharmony/applications_photos/issues/I4UTY0) | The HP copyright statement exists in the metadata of the **1.jpg** file in **demos**.|
-| [I4TP6D](https://gitee.com/openharmony/xts_acts/issues/I4TP6D) | The ActsWorkerJSTest test suite newly added for the Hi3516 development board running on a standard-system device cannot be executed properly.|
+| [I4TP6D](https://gitcode.com/openharmony/xts_acts/issues/I4TP6D) | The ActsWorkerJSTest test suite newly added for the Hi3516 development board running on a standard-system device cannot be executed properly.|
 
   **Table 4** Resolved security vulnerabilities
 

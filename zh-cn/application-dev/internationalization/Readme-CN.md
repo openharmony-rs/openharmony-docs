@@ -1,5 +1,12 @@
 # Localization Kit（本地化开发服务）<!--localization-kit-->
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 - [Localization Kit简介](i18n-l10n.md)
 - 应用国际化<!--i18n-->
     - [国际化界面设计](i18n-ui-design.md)

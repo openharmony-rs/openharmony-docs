@@ -4,7 +4,7 @@
 <!--Owner: @zhangyao75477-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides the capability for applications to take over media playback on web pages, which improves media playback qualities on the web page.
 
@@ -81,8 +81,8 @@ The application needs to register a callback for creating a native media player 
 
 The callback function determines whether to create a native media player to take over the web page media resources based on the media information.
 
-  * If the application does not take over the web page media resource, **null** is returned in the callback.
-  * If the application takes over the web page media resource, a native media player instance is returned in the callback.
+  * If the application does not take over the web page media resource, **null** is returned by the callback.
+  * If the application takes over the web page media resource, a native media player instance is returned by the callback.
 
 The native media player needs to implement the [NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md) API so that the ArkWeb kernel can control the playback on the native media player.
 
@@ -276,7 +276,7 @@ To facilitate the control over native media player by the ArkWeb kernel, the app
     }
 
     play() {
-      // Starts the native media player for playback.
+      // Start the native media player for playback.
     }
 
     pause() {

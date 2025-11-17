@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 通过CustomDialogController类显示自定义弹窗。使用弹窗组件时，优先考虑自定义弹窗，便于弹窗样式与内容的自定义。
 
@@ -39,7 +39,7 @@ constructor(value: CustomDialogControllerOptions)
 
 > **说明：**
 >
-> 自定义弹窗的所有参数，不支持动态刷新。
+> 自定义弹窗的所有参数，不支持动态刷新，但可以通过设置customStyle为true，并在自定义组件上设置[背景色](ts-universal-attributes-background.md#backgroundcolor)、[背景模糊](ts-universal-attributes-background.md#backgroundblurstyle9)、[宽高](ts-universal-attributes-size.md)等属性，通过属性绑定的状态变量来实现动态刷新的效果。
 >
 > 在CustomDialogController作为全局变量以实现全局自定义弹窗的场景下，若对controller重新赋值，则无法通过其关闭之前的弹窗。建议在重新赋值前先关闭弹窗。
 >
@@ -124,7 +124,7 @@ type PromptActionCommonState = promptAction.CommonState
 | autoCancel                    | boolean                                  | 否    | 是   | 是否允许点击遮障层退出，true表示关闭弹窗。false表示不关闭弹窗。<br>默认值：true<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | alignment                     | [DialogAlignment](ts-methods-alert-dialog-box.md#dialogalignment枚举说明) | 否    | 是   | 弹窗在竖直方向上的对齐方式。<br>默认值：DialogAlignment.Default<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | offset                        | [Offset](ts-types.md#offset)             | 否    | 是   | 弹窗相对alignment所在位置的偏移量。<br/>默认值：{ dx: 0, dy: 0 }<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| customStyle                   | boolean                                  | 否    | 是   | 弹窗容器样式是否自定义。值为true表示弹窗容器样式不能自定义，值为false表示弹窗样式可以自定义。<br>设置false时（默认值）：<br/>1.圆角为32vp。<br/>2.未设置弹窗宽度高度：弹窗容器的宽度根据栅格系统自适应。高度自适应自定义的内容节点。<br/>3.设置弹窗宽度高度：弹窗容器的宽度不超过默认样式下的最大宽度（自定义节点设置100%的宽度），弹窗容器的高度不超过默认样式下的最大高度（自定义节点设置100%的高度）。<br/>4.受安全区域的影响，弹窗显示区域将排除安全区域。<br/>设置为true：<br/>1.圆角为0，弹窗背景色为透明色。<br/>2.不支持设置弹窗宽度、高度、边框宽度、边框样式、边框颜色以及阴影宽度。<br/>3.弹窗显示区域为屏幕。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| customStyle                   | boolean                                  | 否    | 是   | 弹窗容器样式是否自定义。值为true表示弹窗容器样式不能自定义，值为false表示弹窗容器样式能自定义。<br/>默认值：false<br/>设置为false时：<br/>1. 默认圆角为32vp。<br/>2. 未设置弹窗宽度高度：弹窗容器的宽度根据栅格系统自适应。高度自适应自定义的内容节点。<br/>3. 设置弹窗宽度高度：弹窗容器的宽度不超过默认样式下的最大宽度（自定义节点设置100%的宽度），弹窗容器的高度不超过默认样式下的最大高度（自定义节点设置100%的高度）。<br/>4. 受安全区域的影响，弹窗显示区域将排除安全区域。例如在PC/2in1设备上避让屏幕边缘以及窗口标题栏。<br/>设置为true时：<br/>1. 圆角为0，弹窗背景色为透明色。<br/>2. 不支持设置弹窗宽度、高度、边框宽度、边框样式、边框颜色以及阴影宽度。<br/>3. 弹窗显示区域为屏幕。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | gridCount<sup>8+</sup>        | number                                   | 否    | 是   | 弹窗宽度占[栅格宽度](../../../ui/arkts-layout-development-grid-layout.md)的个数。<br>默认为按照窗口大小自适应，异常值按默认值处理，最大栅格数为系统最大栅格数。<br/>取值范围：大于等于0的整数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | maskColor<sup>10+</sup>       | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 自定义蒙层颜色。<br>默认值：0x33000000<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
 | maskRect<sup>10+</sup>        | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否     | 是    | 弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -774,7 +774,7 @@ struct CustomDialogUser {
 该示例使用maskColor，maskRect和LoadingProgress，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
 
 ```ts
-import window from '@ohos.window';
+import { window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -878,7 +878,7 @@ struct CustomDialogUser {
 该示例通过监听键盘变化，调整布局margin的bottom，实现与使用keyboardAvoidDistance调整弹窗与软键盘的间距一样的效果。
 
 ```ts
-import window from '@ohos.window';
+import { window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -1309,3 +1309,70 @@ struct CustomDialogUser {
 ```
 
 ![zh-cn_image_custom-backgroundEffect](figures/zh-cn_image_custom-backgroundEffect.png)
+
+### 示例13（自定义弹窗动态刷新宽度）
+
+该示例通过状态变量同步自定义组件的宽度，实现自定义弹窗宽度动态切换。
+
+```ts
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+  @Link currentWidth: number;
+
+  build() {
+    Column() {
+      Text('这是自定义弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close();
+          }
+        })
+        .margin(20)
+    }
+    .borderRadius(32)
+    .backgroundColor(Color.White)
+    .shadow(ShadowStyle.OUTER_DEFAULT_SM)
+    .width(this.currentWidth + "%")
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  @State currentWidth: number = 0
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({ currentWidth: this.currentWidth }),
+    customStyle: true,
+    isModal: false,
+  })
+
+  build() {
+    Column() {
+
+      Row() {
+        Text("宽度设置：")
+          .height(50)
+        Slider({ min: 60, max: 100, step: 5 })
+          .showTips(true, this.currentWidth + '%')
+          .onChange((value: number, mode: SliderChangeMode) => {
+            this.currentWidth = value;
+          }).width(200)
+      }
+
+      Button('CustomDialog')
+        .margin(20)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open();
+          }
+        })
+    }.width('100%')
+  }
+}
+```
+
+![zh-cn_image_custom-backgroundEffect](figures/zh-cn_image_dynamicRefreshwidth.gif)

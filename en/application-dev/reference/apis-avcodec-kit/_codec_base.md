@@ -115,7 +115,7 @@ Key-value pairs dedicated for video:
 | [OH_MD_KEY_VIDEO_ENCODER_ENABLE_B_FRAME](#oh_md_key_video_encoder_enable_b_frame)    | Enabled status of B-frame encoding. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional and used only in the configuration phase of video encoding. The default value is **0**.|
 | [OH_MD_KEY_VIDEO_ENCODER_MAX_B_FRAMES](#oh_md_key_video_encoder_max_b_frames)    | Maximum number of B-frames supported by B-frame encoding in video encoding. The value type is int32_t.|
 | [OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE](#oh_md_key_video_decoder_output_color_space)    | Output color space of the video decoder. The value type is int32_t. The supported value is **OH_COLORSPACE_BT709_LIMIT**.|
-| [OH_MD_KEY_ROTATION](#oh_md_key_rotation)                    | Rotation angle of the surface. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is optional and is used only for video decoding in surface mode  |
+| [OH_MD_KEY_ROTATION](#oh_md_key_rotation)                    | Rotation angle of the surface, with a clockwise direction. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is optional and is used only for video decoding in surface mode  |
 | [OH_MD_KEY_SCALING_MODE](#oh_md_key_scaling_mode)            | Video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](#oh_scalingmode). This key is optional and is used only for video decoding in surface mode. You are advised to set the scaling mode by calling [OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2). (It is deprecated from API version 14.)|
 | [OH_MD_KEY_VIDEO_CROP_TOP](#oh_md_key_video_crop_top)       | Top coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
 | [OH_MD_KEY_VIDEO_CROP_BOTTOM](#oh_md_key_video_crop_bottom)        | Bottom coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
@@ -311,7 +311,7 @@ Key-value pairs dedicated for multiplexing and demultiplexing:
 | const char \* [OH_MD_KEY_ROTATION](#oh_md_key_rotation) | Pointer to the key that describes the rotation angle of the surface. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is used only for video decoding in surface mode.|
 | const char \* [OH_MD_KEY_RANGE_FLAG](#oh_md_key_range_flag) | Pointer to the key that describes the video YUV value range flag. The value type is int32_t. The value **1** means a full range, and **0** means a limited range.|
 | const char \* [OH_MD_KEY_COLOR_PRIMARIES](#oh_md_key_color_primaries) | Pointer to the key that describes the video primary colors. The value type is int32_t. For details, see [OH_ColorPrimary](#oh_colorprimary). The value complies with Table 2 in H.273.|
-| const char \* [OH_MD_KEY_TRANSFER_CHARACTERISTICS](#oh_md_key_transfer_characteristics) | Pointer to the key that describes the video transfer characteristics. The value type is int32_t. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 4 in H.273.|
+| const char \* [OH_MD_KEY_TRANSFER_CHARACTERISTICS](#oh_md_key_transfer_characteristics) | Pointer to the key that describes the video transfer characteristics. The value type is int32_t. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 3 in H.273.|
 | const char \* [OH_MD_KEY_MATRIX_COEFFICIENTS](#oh_md_key_matrix_coefficients) | Pointer to the key that describes the video matrix coefficients. The value type is int32_t. For details, see [OH_MatrixCoefficient](#oh_matrixcoefficient). The value complies with Table 4 in H.273.|
 | const char \* [OH_MD_KEY_SCALING_MODE](#oh_md_key_scaling_mode) | Pointer to the key that describes the video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](#oh_scalingmode). This key is optional and is used only for video decoding in surface mode. You are advised to set the scaling mode by calling [OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2). (It is deprecated from API version 14.)|
 | const char \* [OH_MD_KEY_VIDEO_CROP_TOP](#oh_md_key_video_crop_top) | Pointer to the key that describes the top coordinate (y) of the cropped rectangle. The value type is int32_t. | 
@@ -326,7 +326,7 @@ Key-value pairs dedicated for multiplexing and demultiplexing:
 | const char \* [OH_MD_KEY_VIDEO_SLICE_HEIGHT](#oh_md_key_video_slice_height) | Pointer to the key that describes the height of the video frame. The value type is int32_t. | 
 | const char \* [OH_MD_KEY_VIDEO_PIC_WIDTH](#oh_md_key_video_pic_width) | Pointer to the key that describes the width of the video frame. The value type is int32_t. | 
 | const char \* [OH_MD_KEY_VIDEO_PIC_HEIGHT](#oh_md_key_video_pic_height) | Pointer to the key that describes the height of the video frame. The value type is int32_t. | 
-| const char \* [OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY](#oh_md_key_video_enable_low_latency) | Pointer to the key that describes the enabled status of low-latency video decoding. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. If enabled, the input and output data held by the video decoder does not exceed the amount required by the codec standard.  |
+| const char \* [OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY](#oh_md_key_video_enable_low_latency) | Pointer to the key that describes the enabled status of low-latency video decoding. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. If enabled, the input and output data held by the video decoder does not exceed the amount required by the decoder standard.  |
 | const char \* [OH_MD_KEY_ENABLE_SYNC_MODE](#oh_md_key_enable_sync_mode) | Pointer to the key that describes the enabled status of audio/video codec synchronization. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and used only in the configuration phase.|
 | const char \* [OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL](#oh_md_key_video_encoder_enable_pts_based_ratecontrol) | Pointer to the key that describes the enabled status of the PTS-based bit rate control mode. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. If this feature is enabled, each video frame must contain PTS information and be sent to the encoder.|
 | const char \* [OH_MD_KEY_VIDEO_ENCODER_ENABLE_B_FRAME](#oh_md_key_video_encoder_enable_b_frame) | Pointer to the key that describes the enabled status of B-frame encoding. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional and used only in the configuration phase of video encoding. The default value is **0**.|
@@ -1370,17 +1370,17 @@ Enumerates the primary colors. This enum is used for both encoding and decoding.
 
 | Value| Description| 
 | -------- | -------- |
-| COLOR_PRIMARY_BT709  | BT.709 color gamut.  | 
+| COLOR_PRIMARY_BT709  | BT709 color gamut.  | 
 | COLOR_PRIMARY_UNSPECIFIED  | Unspecified color gamut.  | 
-| COLOR_PRIMARY_BT470_M  | BT.470 System M color gamut.  | 
-| COLOR_PRIMARY_BT601_625  | BT.601 625 color gamut.  | 
-| COLOR_PRIMARY_BT601_525  | BT.601 525 color gamut.  | 
-| COLOR_PRIMARY_SMPTE_ST240  | SMPTE ST 240 color gamut.  | 
-| COLOR_PRIMARY_GENERIC_FILM  | Generic film color gamut.  | 
-| COLOR_PRIMARY_BT2020  | BT.2020 color gamut.  | 
-| COLOR_PRIMARY_SMPTE_ST428  | SMPTE ST 428 color gamut.  | 
-| COLOR_PRIMARY_P3DCI  | DCI-P3 color gamut.  | 
-| COLOR_PRIMARY_P3D65  | P3-D65 color gamut.  | 
+| COLOR_PRIMARY_BT470_M  | BT470_M color gamut.  | 
+| COLOR_PRIMARY_BT601_625  | BT601_625 color gamut.  | 
+| COLOR_PRIMARY_BT601_525  | BT601_525 color gamut.  | 
+| COLOR_PRIMARY_SMPTE_ST240  | SMPTE_ST240 color gamut.  | 
+| COLOR_PRIMARY_GENERIC_FILM  | GENERIC_FILM color gamut.  | 
+| COLOR_PRIMARY_BT2020  | BT2020 color gamut.  | 
+| COLOR_PRIMARY_SMPTE_ST428  | SMPTE_ST428 color gamut.  | 
+| COLOR_PRIMARY_P3DCI  | P3DCI color gamut.  | 
+| COLOR_PRIMARY_P3D65  | P3D65 color gamut.  | 
 
 
 ### OH_HEVCLevel
@@ -1457,15 +1457,15 @@ Enumerates the matrix coefficients. This enum is used for both encoding and deco
 | MATRIX_COEFFICIENT_BT709  | BT.709 conversion matrix.  | 
 | MATRIX_COEFFICIENT_UNSPECIFIED  | Unspecified conversion matrix.  | 
 | MATRIX_COEFFICIENT_FCC  | FCC conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT601_625  | BT.601 625 conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT601_525  | BT.601 525 conversion matrix.  | 
-| MATRIX_COEFFICIENT_SMPTE_ST240  | SMPTE ST 240 conversion matrix.  | 
-| MATRIX_COEFFICIENT_YCGCO  | YCgCo conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT2020_NCL  | BT.2020 NCL conversion matrix.  | 
-| MATRIX_COEFFICIENT_BT2020_CL  | BT.2020 CL conversion matrix.  | 
-| MATRIX_COEFFICIENT_SMPTE_ST2085  | SMPTE ST 2085 conversion matrix.  | 
-| MATRIX_COEFFICIENT_CHROMATICITY_NCL  | Chromaticity NCL conversion matrix.  | 
-| MATRIX_COEFFICIENT_CHROMATICITY_CL  | Chromaticity CL conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT601_625  | BT601_625 conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT601_525  | BT601_525 conversion matrix.  | 
+| MATRIX_COEFFICIENT_SMPTE_ST240  | SMPTE_ST240 conversion matrix.  | 
+| MATRIX_COEFFICIENT_YCGCO  | YCGCO conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT2020_NCL  | BT2020_NCL conversion matrix.  | 
+| MATRIX_COEFFICIENT_BT2020_CL  | BT2020_CL conversion matrix.  | 
+| MATRIX_COEFFICIENT_SMPTE_ST2085  | SMPTE_ST2085 conversion matrix.  | 
+| MATRIX_COEFFICIENT_CHROMATICITY_NCL  | CHROMATICITY_NCL conversion matrix.  | 
+| MATRIX_COEFFICIENT_CHROMATICITY_CL  | CHROMATICITY_CL conversion matrix.  | 
 | MATRIX_COEFFICIENT_ICTCP  | ICTCP conversion matrix.  | 
 
 
@@ -1487,7 +1487,7 @@ Enumerates the media types.
 | -------- | -------- |
 | MEDIA_TYPE_AUD  | Audio track.  | 
 | MEDIA_TYPE_VID  | Video track.  | 
-| MEDIA_TYPE_SUBTITLE   | Subtitle track.<br>**Since**: 12  |
+| MEDIA_TYPE_SUBTITLE  | Subtitle track.<br>**Since**: 12  |
 | MEDIA_TYPE_TIMED_METADATA  | Timed metadata track.<br>**Since**: 20  |
 | MEDIA_TYPE_AUXILIARY  | Auxiliary track.<br>**Since**: 20  |
 
@@ -1775,20 +1775,20 @@ Enumerates the transfer characteristics. This enum is used for both encoding and
 | -------- | -------- |
 | TRANSFER_CHARACTERISTIC_BT709  | BT.709 transfer function.  | 
 | TRANSFER_CHARACTERISTIC_UNSPECIFIED  | Unspecified transfer function.  | 
-| TRANSFER_CHARACTERISTIC_GAMMA_2_2  | Gamma 2-2 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_GAMMA_2_8  | Gamma 2-8 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT601  | BT.601 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_SMPTE_ST240  | SMPTE ST 240 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_GAMMA_2_2  | GAMMA_2_2 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_GAMMA_2_8  | GAMMA_2_8 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT601  | BT601 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_SMPTE_ST240  | SMPTE_ST240 transfer function.  | 
 | TRANSFER_CHARACTERISTIC_LINEAR  | Linear transfer function.  | 
 | TRANSFER_CHARACTERISTIC_LOG  | Log transfer function.  | 
-| TRANSFER_CHARACTERISTIC_LOG_SQRT  | Log SQRT transfer function.  | 
-| TRANSFER_CHARACTERISTIC_IEC_61966_2_4  | IEC61966-2.4 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT1361  | BT.1361 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_IEC_61966_2_1  | IEC61966 2.1 transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT2020_10BIT  | BT.2020 10-bit transfer function.  | 
-| TRANSFER_CHARACTERISTIC_BT2020_12BIT  | BT.2020 12-bit transfer function.  | 
+| TRANSFER_CHARACTERISTIC_LOG_SQRT  | LOG_SQRT transfer function.  | 
+| TRANSFER_CHARACTERISTIC_IEC_61966_2_4  | IEC_61966_2_4 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT1361  | BT1361 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_IEC_61966_2_1  | IEC_61966_2_1 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT2020_10BIT  | BT2020_10BIT transfer function.  | 
+| TRANSFER_CHARACTERISTIC_BT2020_12BIT  | BT2020_12BIT transfer function.  | 
 | TRANSFER_CHARACTERISTIC_PQ  | PQ transfer function.  | 
-| TRANSFER_CHARACTERISTIC_SMPTE_ST428  | SMPTE ST.428 transfer function.  | 
+| TRANSFER_CHARACTERISTIC_SMPTE_ST428  | SMPTE_ST428 transfer function.  | 
 | TRANSFER_CHARACTERISTIC_HLG  | HLG transfer function.  | 
 
 
@@ -2611,7 +2611,7 @@ This key is used to set the display height of a video frame when **Configure** i
 
 You can call [OH_AVCapability_GetVideoHeightRange](_a_v_capability.md#oh_avcapability_getvideoheightrange) to obtain the value range.
 
-For details about the development guide, see step 5 in surface mode or step 4 in buffer mode in [Video Encoding](../../media/avcodec/video-encoding.md).
+For details about the development guide, see step 5 in [surface mode](../../media/avcodec/video-encoding.md#surface-mode) (see../../media/avcodec/video-encoding.md#surface) or step 4 in [buffer mode](../../media/avcodec/video-encoding.md#buffer-mode) of video encoding.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -2904,7 +2904,7 @@ const char* OH_MD_KEY_TRANSFER_CHARACTERISTICS
 
 **Description**
 
-Pointer to the key that describes the video transfer characteristics. The value type is int32_t. The default value is **MATRIX_COEFFICIENT_UNSPECIFIED**. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 3 in H.273.
+Pointer to the key that describes the video transfer characteristics. The value type is int32_t. The default value is **TRANSFER_CHARACTERISTIC_UNSPECIFIED**. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 3 in H.273.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -3356,7 +3356,7 @@ Pointer to the key that describes the height of the video frame. The value type 
 
 When [OH_VideoDecoder_GetOutputDescription](_video_decoder.md#oh_videodecoder_getoutputdescription) is called during video decoding, the height can be parsed from the returned OH_AVFormat instance.
 
-When the decoded output stream<!--RP2--><!--RP2End--> changes, the height can be parsed from the OH_AVForamt instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
+When the decoded output stream<!--RP2--><!--RP2End--> changes, the height can be parsed from the OH_AVFormat instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
 
 The width and height parsed from the OH_AVFormat instance are aligned, which are different from **OH_MD_KEY_WIDTH** and **OH_MD_KEY_HEIGHT** set by calling **Configure**.
 
@@ -3379,7 +3379,7 @@ Pointer to the key that describes the width of the video frame. The value type i
 
 When [OH_VideoDecoder_GetOutputDescription](_video_decoder.md#oh_videodecoder_getoutputdescription) is called during video decoding, the width can be parsed from the returned OH_AVFormat instance.
 
-When the decoded output stream<!--RP2--><!--RP2End--> changes, the width can be parsed from the OH_AVForamt instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
+When the decoded output stream<!--RP2--><!--RP2End--> changes, the width can be parsed from the OH_AVFormat instance returned by [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged).
 
 The width and height parsed from the OH_AVFormat instance are aligned, which are different from **OH_MD_KEY_WIDTH** and **OH_MD_KEY_HEIGHT** set by calling **Configure**.
 
@@ -3759,5 +3759,3 @@ When this feature is enabled, the video decoder outputs blank frames (usually bl
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 20
-
-<!--no_check-->

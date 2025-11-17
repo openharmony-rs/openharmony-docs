@@ -1,5 +1,12 @@
 # Removing Assets (C/C++)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 You can use [OH_Asset_Remove](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_remove) to remove an asset.
@@ -8,7 +15,7 @@ The following table describes the asset attributes.
 
 >**NOTE**
 >
->In the following table, the attributes starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ASSET_TAG_ALIAS** and those starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory| Description                                            |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
@@ -50,19 +57,18 @@ For details about how to remove an asset in a group, see [Removing an Asset from
 
    #include "asset/asset_api.h"
 
-   void RemoveAsset() {
-      static const char *ALIAS = "demo_alias";
-      Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
+   static napi_value RemoveAsset(napi_env env, napi_callback_info info) 
+   {
+       static const char *ALIAS = "demo_alias";
+       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
 
-      Asset_Attr attr[] = {
-         { .tag = ASSET_TAG_ALIAS, .value.blob = alias }, // You can specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
-      };
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // You can specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
+       };
 
-      int32_t ret = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
-      if (ret == ASSET_SUCCESS) {
-         // Asset removed successfully.
-      } else {
-         // Failed to remove Asset.
-      }
+       int32_t removeResult = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
+       napi_value ret;
+       napi_create_int32(env, removeResult, &ret);
+       return ret;
    }
    ```

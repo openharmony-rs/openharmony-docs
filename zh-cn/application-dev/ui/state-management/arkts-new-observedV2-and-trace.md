@@ -814,13 +814,13 @@ struct SetSample {
 ```ts
 @ObservedV2
 class Info {
-  @Trace selectedDate: Date = new Date('2021-08-08')
+  @Trace selectedDate: Date = new Date('2021-08-08');
 }
 
 @Entry
 @ComponentV2
 struct DateSample {
-  info: Info = new Info()
+  info: Info = new Info();
 
   build() {
     Column() {

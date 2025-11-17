@@ -31,7 +31,7 @@ CES（Common Event Service，公共事件服务）为应用程序提供订阅、
 
 - 动态订阅：指订阅方在运行时调用公共事件订阅的API实现对公共事件的订阅，详细请参见[动态订阅公共事件](common-event-subscription.md)。
 
-- 静态订阅：订阅方通过配置文件声明和实现继承自StaticSubscriberExtensionAbility的类实现对公共事件的订阅，详细请参见[静态订阅公共事件](common-event-static-subscription.md)。
+- 静态订阅：订阅方通过配置文件声明和实现继承自StaticSubscriberExtensionAbility的类实现对公共事件的订阅，详细请参见[静态订阅公共事件](common-event-static-subscription-sys.md)。
 <!--DelEnd-->
 
 **图1** 公共事件示意图  

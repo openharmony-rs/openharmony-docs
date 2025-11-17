@@ -1,5 +1,12 @@
 # Reuse Options
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 The **reuse** attribute is used to specify reuse options for custom components decorated with @ReusableV2.
 
 This document is solely for API reference. For details about the usage guidelines and constraints, see [@ReusableV2 Decorator: Reusing Components](../../../ui/state-management/arkts-new-reusableV2.md).
@@ -10,7 +17,7 @@ This document is solely for API reference. For details about the usage guideline
 
 ## reuse
 
-reuse(options: ReuseOptions)
+reuse(options: ReuseOptions): T
 
 Sets the reuse options for custom components decorated with @ReusableV2.
 
@@ -24,19 +31,25 @@ Sets the reuse options for custom components decorated with @ReusableV2.
 | ------- | ----------------------------- | ---- | ---------------------------------------------- |
 | options | [ReuseOptions](#reuseoptions) | Yes  | Custom reuse configuration.|
 
+**Return value**
+
+| Type                         | Description                                          |
+| ----------------------------|---------------------------------------------- |
+|   T |   Current component.|
+
 ## ReuseOptions
 
 Defines the reuse options.
+
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
-
-| Name   | Type                               | Mandatory| Description                                                        |
-| ------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| reuseId | [ReuseIdCallback](#reuseidcallback) | No  | Reuse ID. Components with same **reuseId** will be mutually reused. The default reuse ID is the component name.|
+| Name| Type| Read-Only| Optional| Description|
+| ------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| reuseId | [ReuseIdCallback](#reuseidcallback) | No| Yes| Reuse ID. Components with same **reuseId** will be mutually reused. The default reuse ID is the component name.|
 
 ## ReuseIdCallback
 

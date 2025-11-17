@@ -9,7 +9,7 @@
 
 ## reuseId
 
-reuseId(id: string)
+reuseId(id: string): T
 
 Sets the ID that identifies the reuse group of the component.
 
@@ -26,6 +26,12 @@ Sets the ID that identifies the reuse group of the component.
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | id     | string | Yes  | ID that identifies the reuse group of the component.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| T | Current component.|
 
 ## Example
 
@@ -65,11 +71,11 @@ struct ReusableChildComponent {
   @State type: string = ''
 
   aboutToAppear() {
-    console.log(`ReusableChildComponent Appear ${this.type}`)
+    console.info(`ReusableChildComponent Appear ${this.type}`)
   }
 
   aboutToReuse(params: ESObject) {
-    console.log(`ReusableChildComponent Reuse ${this.type}`)
+    console.info(`ReusableChildComponent Reuse ${this.type}`)
     this.type = params.type;
   }
 

@@ -31,7 +31,7 @@ The table below lists the main file types in the project structure.
 
 
 ## Package Structure in the Build Phase
-Depending on its type, a module is built into a HAP, HAR, or HSP. Below you can see the mapping between the development view (in the development phase) and the view after build and packaging (in the build phase).
+Depending on its type, a module is built into a HAP, a HAR, or an HSP. Then you can use DevEco Studio or a packaging tool to package the module into an App Pack and release it to the AppGallery. When the HAP and HSP are built, the HARs on which they depend are packaged into them. Therefore, only the .hap and .hsp files are contained in the App Pack. Below you can see the mapping between the development view (in the development phase) and the view after build and packaging (in the build phase).
 
 **Figure 2** Mapping between the development view and the view after build and packaging
 
@@ -42,9 +42,6 @@ The module file is changed from the development state to the compilation state a
 - **resources** directory: The resource files in the **AppScope** directory are merged into this directory. If files with the same name exist in these two directories, the ones in the **AppScope** directory are retained after build and packaging.
 - Module configuration file: Fields in the **app.json5** file in the **AppScope** directory are integrated into the **module.json5** file in the **Module_name** directory, generating the final **module.json** file for the created HAP or HSP.
 
-> **NOTE**
->
-> When the HAP and HSP are built, the HARs on which they depend are also packaged into them.
 
 ## Package Structure in the Release Phase
 

@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 导航组件，默认提供点击响应处理，不需要开发者自定义点击事件逻辑。
 
@@ -78,10 +78,10 @@ mode(mode: NavRouteMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型                                                     | 必填 | 说明                                                         |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name             | string            | 是   | 点击NavRouter跳转到的NavDestination页面的名称。 |
-| param             | unknown            | 否   | 点击NavRouter跳转到NavDestination页面时，传递的参数。 |
+| 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
+| -------------------- | ------------------------------------------------------- |---- | ---- | ------------------------------------------------------------ |
+| name             | string            | 否   | 否   | 点击NavRouter跳转到的NavDestination页面的名称。 |
+| param             | unknown            | 否   | 是   | 点击NavRouter跳转到NavDestination页面时，传递的参数。 |
 
 ## NavRouteMode<sup>10+</sup>枚举说明
 

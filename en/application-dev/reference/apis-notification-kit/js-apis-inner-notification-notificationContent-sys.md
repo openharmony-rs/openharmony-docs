@@ -33,6 +33,7 @@ Describes the common live view.
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | No | Yes | Whether the live view is updated only locally.  <br> - **true**: Yes.<br> - **false** (default): No.    |
 | liveViewType<sup>18+</sup>  | [LiveViewTypes](#liveviewtypes18)  | No| Yes | Live view types. |
 | cardButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  No |  Yes | Live view buttons (a maximum of three buttons are supported).     |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  No |  Yes | Redirection by tapping in the auxiliary area.     |
 
 ## NotificationCapsule<sup>11+</sup>
 

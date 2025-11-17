@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Currently, you can add external subtitles to a video only before it starts playing.
 

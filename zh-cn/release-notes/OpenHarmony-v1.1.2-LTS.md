@@ -89,10 +89,10 @@ repo forall -c 'git lfs pull'
 | 启动         | [startup_syspara_lite/pulls/31](https://gitee.com/openharmony/startup_syspara_lite/pulls/31) | 修改安全补丁日期                                             |
 | 驱动         | [drivers_adapter_khdf_linux/pulls/28](https://gitee.com/openharmony/drivers_adapter_khdf_linux/pulls/28) | 修复CVE-2021-22441安全漏洞                                   |
 |              | [drivers_adapter/pulls/50](https://gitee.com/openharmony/drivers_adapter/pulls/50) | 修复CVE-2021-22480安全漏洞                                   |
-| 测试         | [xts_acts/pulls/294](https://gitee.com/openharmony/xts_acts/pulls/294) | 删除fs_posix模块的不稳定测试用例                             |
-|              | [xts_acts/pulls/287](https://gitee.com/openharmony/xts_acts/pulls/287) | 修复acts测试失败的相关问题                                   |
-|              | [xts_acts/pulls/283](https://gitee.com/openharmony/xts_acts/pulls/283) | 修复CMSIS测试部分用例概率失败问题                            |
-|              | [xts_acts/pulls/270](https://gitee.com/openharmony/xts_acts/pulls/270) | 修改不稳定用例：shared_memory 模块ShmTest.cpp用例ShmTest.testShmatSHM_REMAP 未按照预想逻辑运行问题。 |
-|              | [xts_acts/pulls/314](https://gitee.com/openharmony/xts_acts/pulls/314) | 修复net_posix模块测试卡死问题                                |
+| 测试         | [xts_acts/pulls/294](https://gitcode.com/openharmony/xts_acts/pulls/294) | 删除fs_posix模块的不稳定测试用例                             |
+|              | [xts_acts/pulls/287](https://gitcode.com/openharmony/xts_acts/pulls/287) | 修复acts测试失败的相关问题                                   |
+|              | [xts_acts/pulls/283](https://gitcode.com/openharmony/xts_acts/pulls/283) | 修复CMSIS测试部分用例概率失败问题                            |
+|              | [xts_acts/pulls/270](https://gitcode.com/openharmony/xts_acts/pulls/270) | 修改不稳定用例：shared_memory 模块ShmTest.cpp用例ShmTest.testShmatSHM_REMAP 未按照预想逻辑运行问题。 |
+|              | [xts_acts/pulls/314](https://gitcode.com/openharmony/xts_acts/pulls/314) | 修复net_posix模块测试卡死问题                                |
 
 

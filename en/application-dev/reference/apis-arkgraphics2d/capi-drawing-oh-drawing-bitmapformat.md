@@ -2,7 +2,7 @@
 
 ## Overview
 
-The OH_Drawing_BitmapFormat struct describes the pixel format of a bitmap, including the color type and alpha type.
+This struct describes the pixel format of a bitmap, including the color type and alpha type.
 
 **Since**: 8
 
@@ -10,7 +10,7 @@ The OH_Drawing_BitmapFormat struct describes the pixel format of a bitmap, inclu
 
 **Header file**: [drawing_bitmap.h](capi-drawing-bitmap-h.md)
 
-## Total
+## Summary
 
 ### Member Variables
 

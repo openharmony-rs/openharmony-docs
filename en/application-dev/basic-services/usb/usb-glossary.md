@@ -1,4 +1,4 @@
-# USB Service Terms
+# USB Service Glossary
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
@@ -68,7 +68,7 @@ A parity bit is a 1-bit binary value appended to a data frame. It is generated b
 ### Pipe
 
 A pipe is a logical communication channel between a host and an endpoint for data transfer. A pipe is not a physical connection, but an abstract communication path between a host and a device endpoint. Each pipe corresponds to a specific endpoint of the device. Pipes provide one-way data transfer, and the direction is determined by the endpoint. For example, the IN endpoint indicates that the data is transferred from a pipe to the host, while the OUT endpoint indicates that the data is transferred from the host to a pipe.
-  
+
 ## S
 
 ### Stop bit

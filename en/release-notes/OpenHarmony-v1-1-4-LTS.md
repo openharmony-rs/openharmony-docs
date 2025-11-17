@@ -91,8 +91,8 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 | [I4AJI2](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg/issues/I4AJI2) | Upgraded the FFmpeg version to 4.3.1.|
 | [I3HXIX](https://gitee.com/openharmony/third_party_NuttX/issues/I3HXIX?from=project-issue) | Fixed the possible system error in the case of multiple processes, which is caused because the kernel operation node of the pipe uses the dirty private field dev.|
 | [I4QO9B](https://gitee.com/openharmony/communication_wifi_lite/issues/I4QO9B?from=project-issue) | Fixed freezing when returning from the WLAN list to the home screen.|
-| [I4EPVL](https://gitee.com/openharmony/xts_acts/issues/I4EPVL?from=project-issue) | Temporarily removed the ActsCMSISTest test case since the CMSIS code is not yet compatible with third-party chips.|
-| [I4QQU9](https://gitee.com/openharmony/xts_acts/issues/I4QQU9) | Fixed the issue where the serial port logs contain the board IP address and MAC address when the XTS test suite ActsNetTest is executed on the Hi3516 or Hi3518 board of a small-system device.|
+| [I4EPVL](https://gitcode.com/openharmony/xts_acts/issues/I4EPVL?from=project-issue) | Temporarily removed the ActsCMSISTest test case since the CMSIS code is not yet compatible with third-party chips.|
+| [I4QQU9](https://gitcode.com/openharmony/xts_acts/issues/I4QQU9) | Fixed the issue where the serial port logs contain the board IP address and MAC address when the XTS test suite ActsNetTest is executed on the Hi3516 or Hi3518 board of a small-system device.|
 
 
 ## Known Issues

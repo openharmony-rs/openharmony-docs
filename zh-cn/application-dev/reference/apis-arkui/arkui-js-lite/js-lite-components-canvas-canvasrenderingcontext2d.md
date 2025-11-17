@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 使用CanvasRenderingContext2D在canvas画布组件上进行绘制，绘制对象可以是矩形、文本。
@@ -13,9 +13,10 @@
 
 ```html
 <!-- xxx.hml -->
-<canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
-<input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
-
+<div>
+    <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
+    <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
+</div>
 ```
 
 

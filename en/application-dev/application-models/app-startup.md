@@ -176,7 +176,7 @@ It is assumed that the application has six startup tasks. The dependencies betwe
        }
      ],
      "appPreloadHintStartupTasks": [
-       // A .so file preloading file.
+       // A .so file preloading task.
      ],
      "configEntry": "./ets/startup/StartupConfig.ets"
    }
@@ -466,7 +466,7 @@ export default class EntryAbility extends UIAbility {
     let startParams = ['StartupTask_005', 'StartupTask_006'];
     try {
       startupManager.run(startParams).then(() => {
-        console.log(`StartupTest startupManager run then, startParams = ${JSON.stringify(startParams)}.`);
+        console.info(`StartupTest startupManager run then, startParams = ${JSON.stringify(startParams)}.`);
       }).catch((error: BusinessError) => {
         console.error(`StartupTest promise catch error, error = ${JSON.stringify(error)}.`);
         console.error(`StartupTest promise catch error, startParams = ${JSON.stringify(startParams)}.`);
@@ -536,7 +536,7 @@ You can add match rules in either of the following ways:
   | uris | Range of URIs for tasks executed in automatic mode. When the UIAbility is launched, **uri** in the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) is matched against the configured **uris** array. The format is `scheme://host/path`, and other parts of the URI (such as port and fragment) are ignored.| String array| Optional, defaults to empty| The UIAbility is started through a specific URI.|
   | actions | Range of actions for tasks executed in automatic mode. When the UIAbility is launched, **action** in the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) is matched against the configured **actions** array.| String array| Optional, defaults to empty| The UIAbility is started through a specific action.|
   | insightIntents | Range of intent names for tasks executed in automatic mode. When the UIAbility is launched, **intentName** is matched against the configured **insightIntents** array.| String array| Optional, defaults to empty| The UIAbility is started through a specific intent name.|
-  | customization | Range of custom rules for tasks executed in automatic mode. Custom rules are returned by [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#startupconfigentryonrequestcustommatchrule20) of StartupConfigEntry. When the UIAbility is started, the custom rule is matched against the configured **customization** array.<br>**NOTE**<br>Only tasks in **startupTasks** are supported.| String array| Optional, defaults to empty| If the **uris**, **actions**, and **insightIntents** fields do not meet your needs, you can use **customization** to customize rules.|
+  | customization | Range of custom rules for tasks executed in automatic mode. Custom rules are returned by [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20) of StartupConfigEntry. When the UIAbility is started, the custom rule is matched against the configured **customization** array.<br>**NOTE**<br>Only tasks in **startupTasks** are supported.| String array| Optional, defaults to empty| If the **uris**, **actions**, and **insightIntents** fields do not meet your needs, you can use **customization** to customize rules.|
 
   > **NOTE**
   >
@@ -588,7 +588,7 @@ Suppose you want to automatically execute StartupTask_004 and libentry_006 tasks
 
 Suppose you want to automatically execute StartupTask_006 and .so file preloading tasks with **excludeFromAutoStart=false** when a user taps a weather widget to jump to the weather screen. If the custom parameter **fromType** in the Want when launching the weather UIAbility is **card**, you can match it via customization. Here is an example:
 
-  1. Modify the **MyStartupConfigEntry.ets** file in [Setting Startup Parameters](#setting-startup-parameters) and add [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#startupconfigentryonrequestcustommatchrule20).
+  1. Modify the **MyStartupConfigEntry.ets** file in [Setting Startup Parameters](#setting-startup-parameters) and add [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20).
 
       ```ts
       import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';

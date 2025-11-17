@@ -8,13 +8,9 @@
 
 ## Basic Concepts
 
-- Immersive window: a window display mode where the system windows (generally the status bar and navigation bar) are hidden to allow users to fully engage with the content.
+- Immersive window: a window display mode where the system windows (generally the status bar and navigation bar) are hidden to allow users to fully engage with the content. The immersive window feature is applicable only to the main window of an application in full-screen mode. It does not apply to a main window in freeform window mode or an auxiliary window (for example, a child window or a global floating window).
 
-  The immersive window feature is applicable only to the main window of an application in full-screen mode. It does not apply to a main window in freeform window mode or a child window (for example, a dialog box or a floating window).
-
-- Floating window: a special application window that can still be displayed in the foreground when the main window and corresponding ability are running in the background.
-  
-  The floating window can be used to continue playing a video after the application is switched to the background, or offer a quick entry (for example, bubbles) to the application. Before creating a floating window, an application must apply for the required permission.
+- Global floating window: a special type of application auxiliary window that can remain displayed on the foreground even after the application's main window and corresponding ability are moved to the background. Global floating windows can be used to continue displaying the UI in a small window after the application is moved to the background, such as displaying lyrics on the home screen for a music application. Before creating a global floating window, the application needs to request the corresponding permission.
 
 
 ## When to Use
@@ -27,7 +23,7 @@ In the stage model, you can perform the following operations during application 
 
 - Experiencing the immersive window feature
 
-- Setting a floating window
+- Setting a global floating window
 
 - Listening for interactive and non-interactive window events
 
@@ -123,7 +119,7 @@ You can create an application child window, such as a dialog box, and set its pr
 > **NOTE**
 >
 > In the following scenarios, you are not advised to use child windows. Instead, consider using the [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability of components first. 
-> - On mobile devices (tablets in non-freeform mode and phones), child windows cannot extend beyond the boundaries of the main window when it is in floating or split-screen mode, just like components. 
+> - On mobile devices (tablets in non-freeform mode and phones), child windows cannot extend beyond the boundaries of the application's main window when it is in floating-window or split-screen mode, just like components. 
 > - In split-screen or freeform window mode, components, when compared with child windows, offer better real-time adaptability to changes in the main window's position and size. 
 > - On certain platforms, system configurations may restrict child windows to default system animations and rounded shadows, offering no customization options for applications and thereby limiting their versatility.
 
@@ -132,7 +128,6 @@ You can create an application child window, such as a dialog box, and set its pr
 1. Create a child window.
 
    Call **createSubWindow** to create a child window.
-
    The child window created uses an [immersive layout](../windowmanager/window-terminology.md#immersive-layout) by default.
 
 2. Set the properties of the child window.
@@ -506,32 +501,32 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--RP2-->
-## Setting a Floating Window<!--RP2End-->
+## Setting a Global Floating Window<!--RP2End-->
 
-A floating window is created based on an existing task. It is always displayed in the foreground, even if the task used for creating the floating window is switched to the background. Generally, the floating window is above all application windows. You can create a floating window and set its properties.
+A global floating window can be created on top of an existing task to display a window that always stays in the foreground. Even if the task that creates the global floating window is moved to the background, the global floating window can still be displayed in the foreground. Typically, a global floating window is positioned above all application windows, and you can create a global floating window and perform operations such as setting its properties.
 
 
 ### How to Develop
 
 <!--RP1-->
-**Prerequisites**: To create a floating window (a window of the type **WindowType.TYPE_FLOAT**), you must request the ohos.permission.SYSTEM_FLOAT_WINDOW permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+**Prerequisites**: To create a global floating window (a window of the type **WindowType.TYPE_FLOAT**), you must request the ohos.permission.SYSTEM_FLOAT_WINDOW permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 <!--RP1End-->
 
-1. Create a floating window.
+1. Create a global floating window.
 
-   Call **window.createWindow** to create a floating window.
+   Call **window.createWindow** to create a global floating window.
 
-2. Set properties of the floating window.
+2. Set properties of the global floating window.
 
-   After the floating window is created, you can set its properties, such as the size, position, background color, and brightness.
+   After the global floating window is created, you can set its properties, such as the size, position, background color, and brightness.
 
-3. Load content to and show the floating window.
+3. Load content to and show the global floating window.
 
-   Call **setUIContent** to load content to the floating window and **showWindow** to show the window.
+   Call **setUIContent** to load content to the global floating window and **showWindow** to show the window.
 
-4. Destroy the floating window.
+4. Destroy the global floating window.
 
-   When the floating window is no longer needed, you can call **destroyWindow** to destroy it.
+   When the global floating window is no longer needed, you can call **destroyWindow** to destroy it.
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -540,7 +535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // 1. Create a floating window.
+    // 1. Create a global floating window.
     let windowClass: window.Window | null = null;
     let config: window.Configuration = {
       name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
@@ -553,7 +548,7 @@ export default class EntryAbility extends UIAbility {
       }
       console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
       windowClass = data;
-      // 2. Set the position, size, and other properties of the floating window.
+      // 2. Set the position, size, and other properties of the global floating window.
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -570,7 +565,7 @@ export default class EntryAbility extends UIAbility {
         }
         console.info('Succeeded in changing the window size.');
       });
-      // 3.1 Load content to the floating window.
+      // 3.1 Load content to the global floating window.
       windowClass.setUIContent("pages/page4", (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -578,7 +573,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         console.info('Succeeded in loading the content.');
-        // 3.2 Show the floating window.
+        // 3.2 Show the global floating window.
         (windowClass as window.Window).showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
@@ -588,7 +583,7 @@ export default class EntryAbility extends UIAbility {
           console.info('Succeeded in showing the window.');
         });
       });
-      // 4. Destroy the floating window when it is no longer needed (depending on the service logic).
+      // 4. Destroy the global floating window when it is no longer needed (depending on the service logic).
       windowClass.destroyWindow((err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {

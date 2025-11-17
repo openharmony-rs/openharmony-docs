@@ -1,8 +1,14 @@
 # MDM Kit Development
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Introduction
 
-MDM Kit provides capabilities for the device administrator application, including enterprise device management and event listening, application management, feature restriction management, security management, device settings, device control, device information acquisition, hardware peripheral management, system management, and network management. For details about the APIs, see [API Reference](../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md).
+MDM Kit provides capabilities for the device administrator application, including enterprise device management and event listening, application management, feature restriction management, security management, device settings, device control, device information acquisition, hardware peripheral management, system management, and network management. For details about the APIs, see <!--RP7-->[API Reference](../reference/apis-mdm-kit/Readme-EN.md)<!--RP7End-->.
 
 A device administrator application is an application with the [EnterpriseAdminExtensionAbility](./mdm-kit-admin.md).
 
@@ -47,7 +53,7 @@ Before declaring the required permissions, ensure that the [basic principles for
 
 ### Developing MDM Functionalities
 
-1. Import modules. MDM Kit provides a wide variety of APIs for application management, communication management, security management, feature restriction management, intra-system management, device settings and query, device control, and more. Import related modules based on service requirements. In this example, **adminManager** and **restrictions** are imported.
+1. Import modules. MDM Kit provides a wide variety of APIs for application management, communication management, security management, feature restriction management, system management, device settings and query, device control, and more. Import related modules based on service requirements. In this example, **adminManager** and **restrictions** are imported.
 
    ```ts
    import { adminManager, restrictions } from '@kit.MDMKit';
@@ -57,6 +63,7 @@ Before declaring the required permissions, ensure that the [basic principles for
 
    ```ts
    import { Want } from '@kit.AbilityKit';
+   import { restrictions } from '@kit.MDMKit';
 
    let wantTemp: Want = {
      bundleName: 'com.example.xxx',

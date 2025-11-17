@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @ctqctq99-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Webview** module provides APIs for web control. It can work with the [Web](arkts-basic-components-web.md) component, which is used to display web pages.
 

@@ -1588,7 +1588,7 @@ let concatArray = array.concat(array1, array2); // concatArray的内容为：[1,
 
 splice(start: number): Array\<T>
 
-删除Array中指定位置的元素。
+删除Array中指定位置(start)以及之后的所有元素。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 

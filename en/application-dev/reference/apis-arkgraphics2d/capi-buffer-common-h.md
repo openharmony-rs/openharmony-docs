@@ -2,9 +2,9 @@
 
 ## Overview
 
-Declares the common types used in the NativeBuffer module.<br>From API version 12, some type definitions are moved from native_buffer.h to this header file. These types can be used in versions earlier than API version 12.
+This file declares the common types used in the NativeBuffer module.<br>Since API version 12, certain type definitions have been relocated from **native_buffer.h** to this header file for a more cohesive presentation. These types were available prior to API version 12 and can be used seamlessly across all versions.
 
-**File to import**: <native_buffer/buffer_common.h>
+**File to include**: <native_buffer/buffer_common.h>
 
 **Library**: libnative_buffer.so
 
@@ -14,7 +14,7 @@ Declares the common types used in the NativeBuffer module.<br>From API version 1
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
 
-## Total
+## Summary
 
 ### Structs
 
@@ -43,7 +43,7 @@ enum OH_NativeBuffer_ColorSpace
 
 **Description**
 
-Defines an enum for the color spaces of an **OH_NativeBuffer** instance. Moved from native_buffer.h to this header file.
+Defines an enum for the color spaces of an **OH_NativeBuffer** instance. It is relocated from **native_buffer.h** to this header file for a more cohesive presentation.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -73,7 +73,7 @@ Defines an enum for the color spaces of an **OH_NativeBuffer** instance. Moved f
 | OH_COLORSPACE_P3_PQ_LIMIT | The color gamut is P3_D65, the transfer function is PQ, the conversion matrix is P3, and the data range is RANGE_LIMITED.|
 | OH_COLORSPACE_ADOBERGB_LIMIT | The color gamut is ADOBERGB, the transfer function is ADOBERGB, the conversion matrix is ADOBERGB, and the data range is RANGE_LIMITED.|
 | OH_COLORSPACE_LINEAR_SRGB | The color gamut is SRGB, and the transfer function is LINEAR.|
-| OH_COLORSPACE_LINEAR_BT709 | Equivalent to OH_COLORSPACE_LINEAR_SRGB.|
+| OH_COLORSPACE_LINEAR_BT709 | It is equivalent to **OH_COLORSPACE_LINEAR_SRGB**.|
 | OH_COLORSPACE_LINEAR_P3 | The color gamut is P3_D65, and the transfer function is LINEAR.|
 | OH_COLORSPACE_LINEAR_BT2020 | The color gamut is BT2020, and the transfer function is LINEAR.|
 | OH_COLORSPACE_DISPLAY_SRGB | It is equivalent to **OH_COLORSPACE_SRGB_FULL**.|
@@ -81,7 +81,7 @@ Defines an enum for the color spaces of an **OH_NativeBuffer** instance. Moved f
 | OH_COLORSPACE_DISPLAY_P3_HLG | It is equivalent to **OH_COLORSPACE_P3_HLG_FULL**.|
 | OH_COLORSPACE_DISPLAY_P3_PQ | It is equivalent to **OH_COLORSPACE_P3_PQ_FULL**.|
 | OH_COLORSPACE_DISPLAY_BT2020_SRGB | The color gamut is BT2020, the transfer function is SRGB, the conversion matrix is BT2020, and the data range is RANGE_FULL.|
-| OH_COLORSPACE_DISPLAY_BT2020_HLG | Equivalent to OH_COLORSPACE_BT2020_HLG_FULL.|
+| OH_COLORSPACE_DISPLAY_BT2020_HLG | It is equivalent to **OH_COLORSPACE_BT2020_HLG_FULL**.|
 | OH_COLORSPACE_DISPLAY_BT2020_PQ | It is equivalent to **OH_COLORSPACE_BT2020_PQ_FULL**.|
 
 ### OH_NativeBuffer_MetadataType
@@ -121,6 +121,6 @@ Defines an enum for the keys that specify the HDR metadata of an **OH_NativeBuff
 
 | Value| Description|
 | -- | -- |
-| OH_HDR_METADATA_TYPE | Metadata type. For details about the value, see [OH_NativeBuffer_MetadataType](capi-buffer-common-h.md#oh_nativebuffer_metadatatype). The size is the size of OH_NativeBuffer_MetadataType.|
-| OH_HDR_STATIC_METADATA | Static metadata. For details about the value, see [OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md). The size is the size of OH_NativeBuffer_StaticMetadata.|
+| OH_HDR_METADATA_TYPE | Metadata type. For details about the available options, see [OH_NativeBuffer_MetadataType](capi-buffer-common-h.md#oh_nativebuffer_metadatatype). **size** indicates the size of **OH_NativeBuffer_MetadataType**.|
+| OH_HDR_STATIC_METADATA | Static metadata. For details about the available options, see [OH_NativeBuffer_StaticMetadata](capi-oh-nativebuffer-oh-nativebuffer-staticmetadata.md). **size** indicates the size of **OH_NativeBuffer_StaticMetadata**.|
 | OH_HDR_DYNAMIC_METADATA | Dynamic metadata. For details about the available options, see the SEI byte stream in the video stream. The value range of **size** is 1-3000.|

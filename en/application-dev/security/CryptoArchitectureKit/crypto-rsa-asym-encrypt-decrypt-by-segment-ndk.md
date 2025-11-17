@@ -41,6 +41,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include <algorithm>
 #include <vector>
+#include <string>
 
 static std::vector<uint8_t> doTestRsaEnc(OH_CryptoKeyPair *keyPair, std::vector<uint8_t> &plainText)
 {

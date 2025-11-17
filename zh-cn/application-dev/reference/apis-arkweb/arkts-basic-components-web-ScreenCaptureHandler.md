@@ -62,4 +62,4 @@ grant(config: ScreenCaptureConfig): void
 
 | 参数名    | 类型                                     | 必填   | 说明    |
 | ------ | ---------------------------------------- | ---- | ------- |
-| config | [ScreenCaptureConfig](./arkts-basic-components-web-ScreenCaptureHandler.md) | 是   | 屏幕捕获配置。 |
+| config | [ScreenCaptureConfig](./arkts-basic-components-web-i.md#screencaptureconfig10) | 是   | 屏幕捕获配置。 |

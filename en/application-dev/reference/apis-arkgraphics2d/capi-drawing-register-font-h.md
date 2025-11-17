@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The **drawing_register_font.h** file declares the functions related to the font manager in the drawing module.
+This file declares the functions related to the font manager in the drawing module.
 
-**File to import**: <native_drawing/drawing_register_font.h>
+**File to include**: <native_drawing/drawing_register_font.h>
 
 **Library**: libnative_drawing.so
 
@@ -17,15 +17,15 @@ The **drawing_register_font.h** file declares the functions related to the font 
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Functions
 
 | Name| Description|
 | -- | -- |
 | [uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection*, const char* fontFamily, const char* familySrc)](#oh_drawing_registerfont) | Registers a custom font with the font manager. The supported font file formats are .ttf and .otf.|
-| [uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* fontFamily, uint8_t* fontBuffer,size_t length)](#oh_drawing_registerfontbuffer) | Registers a font buffer in the font manager.|
-| [uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)](#oh_drawing_unregisterfont) | Unregisters custom fonts by font family name.<br> Unregistering the font in use may cause text rendering exceptions, including garbled characters or missing glyphs.<br> All text objects using the font family name that has been unregistered must be destroyed and recreated.|
+| [uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* fontFamily, uint8_t* fontBuffer,size_t length)](#oh_drawing_registerfontbuffer) | Registers a font buffer with the font manager.|
+| [uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)](#oh_drawing_unregisterfont) | Unregisters a custom font by font family name.<br> Unregistering a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).<br> All typography objects using the unregistered font family should be destroyed and re-created.|
 
 ## Function Description
 
@@ -48,15 +48,15 @@ Registers a custom font with the font manager. The supported font file formats a
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* | Pointer to the [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
 | const char* fontFamily | Pointer to the family name of the font to register.|
 | const char* familySrc | Pointer to the path of the font file.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| uint32_t | An error code. 0: success; 1: file not found; 2: file opening failure; 3: file reading failure; 4: file search failure; 5: file size obtaining failure; 9: file damage.|
+| uint32_t | Returns **0** if the font is registered; returns **1** if the file does not exist; returns **2** if opening the file fails; returns **3** if reading the file fails; returns **4** if the file is not found; returns **5** if the file size is not obtained; returns **9** if the file is damaged.|
 
 ### OH_Drawing_RegisterFontBuffer()
 
@@ -77,16 +77,16 @@ Registers a font buffer with the font manager.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* |  Pointer to the [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* |  Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
 | const char* fontFamily | Pointer to the family name of the font to register.|
 | uint8_t* fontBuffer | Pointer to the buffer of the font file.|
 | size_t length | Length of the font file.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| uint32_t | Result code. 0: success; 6: The buffer size is 0. 7: The font set is empty. 9: The file is damaged.|
+| uint32_t | Returns **0** if the font is registered; returns **6** if the buffer size is zero; returns **7** if the font set is empty; returns **9** if the file is damaged.|
 
 ### OH_Drawing_UnregisterFont()
 
@@ -96,11 +96,11 @@ uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, co
 
 **Description**
 
-Cancels the registration of a custom font by font family name.
+Unregisters a custom font by font family name.
 
-Canceling the registration of a font that is being used may cause text rendering exceptions, including garbled characters or missing glyphs.
+- Unregistering a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).
 
-All layout objects using the font family name that is canceled must be destroyed and recreated.
+All typography objects using the unregistered font family should be destroyed and re-created.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -111,11 +111,11 @@ All layout objects using the font family name that is canceled must be destroyed
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Pointer to the [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
-| const char* fontFamily | Font family name to be canceled.|
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
+| const char* fontFamily | Name of the font family to be unregistered.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| uint32_t | Execution result code. 0: success; 8: invalid input parameter; 1: failure.|
+| uint32_t | Returns the result code. **0**: success; **8**: invalid input parameter; **1**: failure.|

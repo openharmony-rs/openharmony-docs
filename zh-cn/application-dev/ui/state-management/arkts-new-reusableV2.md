@@ -321,7 +321,7 @@ struct ReusableV2Component {
 1. 点击`改值`按钮，可以观察到UI变化，\@Monitor触发并输出日志`info.age change`以及`info.age onRender`，说明此时能够正常监听到变化以及触发UI刷新。
 2. 点击`复用/回收`按钮，此时调用`aboutToRecycle`回调并输出`aboutToRecycle`的日志，但\@Monitor不被触发，且`onRender`方法不被回调。
 3. 点击`改值`按钮，UI无变化，\@Monitor不触发且`onRender`方法不被回调。
-4. 点击`复用/回收`按钮，此时UI变化，\@Monitor触发并输出日志`info.age change`且`onRender`方法回调输出`info.age onRender`。
+4. 点击`复用/回收`按钮，此时调用`aboutToReuse`回调并输出`aboutToReuse`的日志，\@Monitor触发并输出日志`info.age change`且`onRender`方法回调输出`info.age onRender`，UI发生变化。
 
 如果去掉`aboutToReuse`方法中的自增操作，则上述第四步不会触发\@Monitor回调。
 

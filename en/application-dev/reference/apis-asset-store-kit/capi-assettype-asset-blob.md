@@ -1,5 +1,12 @@
 # Asset_Blob
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Overview
 
 Defines a binary array, that is, an array of bytes with variable length.

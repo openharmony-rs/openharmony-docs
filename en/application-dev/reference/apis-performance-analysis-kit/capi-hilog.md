@@ -1,5 +1,12 @@
 # HiLog
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 HiLog provides logging functionalities. For example, you can use logging functions to output logs of the specified log type, service domain, log tag, and log level.

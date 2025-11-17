@@ -66,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create a decoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the decoder instance created.
+2. Create a decoder instance. In the code snippet below, OH_AVCodec * is the pointer to the decoder instance created.
 
    You can create a decoder by MIME type or codec name.
 
@@ -410,7 +410,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    You should fill in complete input data before calling this API.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
     ```c++
     uint32_t index = signal_->inQueue_.front();

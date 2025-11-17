@@ -7,6 +7,8 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @zengyawen-->
 
+The capabilities for encoding and decoding audio and video, as well as for multiplexing and demultiplexing file formats, vary across different platforms in terms of functionality and specifications. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
+
 ## Media Codec
 
 ### Video Decoding
@@ -115,7 +117,18 @@ Currently, the following muxer capabilities are supported:
 > - When the container format is mp4 and the audio codec type is MPEG (MP3), the sample rate must be greater than or equal to 16000 Hz. 
 > - When the container format is mp4 or m4a and the audio codec type is AAC, the number of audio channels ranges from 1 to 7.
 
-Key values of configuration options are described as follows: 
+The keys defined for file-level data are as follows:
+   |                key                 |                       Description                   |
+   | ---------------------------------- | :-------------------------------------------: |
+   | OH_MD_KEY_CREATION_TIME            | Media file creation time. The value type is string. This key is supported since API version 14.       |
+   | OH_MD_KEY_COMMENT                  | Comment in a media file. The value type is string. This key is supported since API version 20.              |
+   | OH_MD_KEY_ENABLE_MOOV_FRONT        | Whether the moov metadata should be at the front of a media file. The value type is int32_t. This key is supported since API version 20.|
+
+> **NOTE**
+>
+> Custom keys must start with **com.openharmony.**. The value type can be int32_t, float, or string. The value type uint8_t* is supported since API version 20.
+
+Key values of configuration options are described as follows:
 
 mp4 container format:
    |                key                 |         Description        |   aac  |   mp3  |  H.264  |  H.265  |  jpg   |  png   |  bmp   |

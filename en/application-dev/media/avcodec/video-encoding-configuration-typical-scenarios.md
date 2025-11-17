@@ -55,13 +55,14 @@ This section describes only the steps involved in the encoder configuration phas
     | 640x360  | 30       | 550     | -1 |  CBR  |
     | 320x180  | 20       | 200     | -1 |  CBR  |
 
+
     In the code snippet below, the following variables are used:
     - **videoEnc**: pointer to a video encoder instance. For details, see step 2 in [Video Encoding in Surface Mode](video-encoding.md#surface-mode).
 
     ```c++
     // 1.1 Create an AVFormat parameter instance.
     OH_AVFormat *format = OH_AVFormat_Create();
-    
+
     // 1.2 Fill in the encoding parameter key-value pairs (using the 1080p@30 fps SDR input source as an example).
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920); // (Mandatory) Video width.
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080); // (Mandatory) Video height.
@@ -75,7 +76,7 @@ This section describes only the steps involved in the encoder configuration phas
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, -1); // (Mandatory) Key frame interval.
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, OH_BitrateMode::BITRATE_MODE_CBR); // (Mandatory) Set the bit rate control mode to CBR.
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, 1500000); // (Mandatory). Bit rate, in bit/s.
-    
+
     // 1.3 Set the encoding parameters of the video encoder.
     int32_t ret = OH_VideoEncoder_Configure(videoEnc, format);
     if (ret != AV_ERR_OK) {
@@ -86,7 +87,7 @@ This section describes only the steps involved in the encoder configuration phas
     ```
 
     > **NOTE**
-    > 
+    >
     > A key frame interval of -1 indicates that only the first frame is a key frame. You can dynamically configure encoder parameters during running based on transmission conditions and image quality to insert new key frames (IDR).
 
 2. (Optional) Dynamically configure encoder parameters during running.
@@ -97,7 +98,7 @@ This section describes only the steps involved in the encoder configuration phas
     // 2.1 Create an AVFormat parameter instance.
     OH_AVFormat *format = OH_AVFormat_Create();
     // 2.2 Fill in the encoding parameter key-value pairs (dynamically requesting IDR frames).
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_REQUEST_I_FRAME, true);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_REQUEST_I_FRAME, 1);
     // 2.3 Make the encoder parameters take effect.
     ret = OH_VideoEncoder_SetParameter(videoEnc, format);
     if (ret != AV_ERR_OK) {

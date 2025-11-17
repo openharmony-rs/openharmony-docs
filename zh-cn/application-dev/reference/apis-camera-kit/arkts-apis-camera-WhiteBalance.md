@@ -75,7 +75,7 @@ getWhiteBalanceMode(): WhiteBalanceMode
 
 | 类型                                      | 说明                          |
 |-----------------------------------------| ----------------------------- |
-| [WhiteBalanceMode](arkts-apis-camera-e.md#whitebalancemode20) | 获取当前白平衡模式。 |
+| [WhiteBalanceMode](arkts-apis-camera-e.md#whitebalancemode20) | 获取当前白平衡模式。若接口调用失败，返回undefined。 |
 
 **错误码：**
 

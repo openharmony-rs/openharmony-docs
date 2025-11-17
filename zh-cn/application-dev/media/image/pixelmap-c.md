@@ -150,4 +150,50 @@ Image_ErrorCode PixelmapTest()
     OH_PixelmapInitializationOptions_Release(createOpts);
     return IMAGE_SUCCESS;
 }
+
+// PixelMap预乘/非预乘格式转换示例。
+Image_ErrorCode PixelmapConverAlphaTypeTest()
+{
+    uint8_t data[96];
+    size_t dataSize = 96;
+    for (int i = 0; i < dataSize; i++) {
+        data[i] = i + 1;
+    }
+
+    // 创建参数结构体实例，并设置参数。
+    OH_Pixelmap_InitializationOptions *createOpts;
+    OH_PixelmapInitializationOptions_Create(&createOpts);
+    OH_PixelmapInitializationOptions_SetWidth(createOpts, 6);
+    OH_PixelmapInitializationOptions_SetHeight(createOpts, 4);
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
+    OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED);
+
+    // 创建非预乘格式的位图实例。
+    OH_PixelmapNative *SrcPixelmap = nullptr;
+    Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &SrcPixelmap);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateSrcPixelMap failed, errCode: %{public}d.", errCode);
+    }
+
+    // 创建预乘格式的位图实例，该DstPixelmap实例将用于保存SrcPixelmap转换AlphaType后的数据。
+    OH_PixelmapNative *DstPixelmap = nullptr;
+    OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_PREMULTIPLIED);
+    errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &DstPixelmap);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateDstPixelMap failed, errCode: %{public}d.", errCode);
+    }
+
+    // 转换AlphaType，SrcPixelmap的数据将被转换为预乘格式，并保存到DstPixelmap中。
+    errCode = OH_PixelmapNative_ConvertAlphaFormat(SrcPixelmap, DstPixelmap, true);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest ConvertAlphaFormat failed, errCode: %{public}d.", errCode);
+    }
+
+    // 释放Pixelmap，InitializationOptions实例。
+    OH_PixelmapNative_Release(SrcPixelmap);
+    OH_PixelmapNative_Release(DstPixelmap);
+    OH_PixelmapInitializationOptions_Release(createOpts);
+    return errCode;
+}
 ```

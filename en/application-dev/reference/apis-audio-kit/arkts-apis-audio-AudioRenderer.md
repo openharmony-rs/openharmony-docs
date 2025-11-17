@@ -1670,10 +1670,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 > **NOTE**
 >
 > - This API applies only to the scenarios where [StreamUsage](arkts-apis-audio-e.md#streamusage) is set to voice message, VoIP voice calls, or VoIP video calls. It supports only receivers, speakers, and system default devices.
->
-> - This API can be called at any time after an AudioRenderer instance is created. The system records the device set by the application. When the application is started, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
->
-> - This API has a lower priority than [AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker). If you have already switched the audio device using AVCastPicker, using this API to switch devices again does not take effect.
+> - This API can be called at any time after an AudioRenderer instance is created. When this API is called, the system registers the specified device as the default built-in audio output device for the application. If an external audio device, such as a Bluetooth speaker or wired headset, is connected when the application starts, the system preferentially uses the external device for audio playback. In the absence of an external device, the system uses the device specified by this API for playback.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 

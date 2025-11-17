@@ -2,7 +2,7 @@
 
 ## Overview
 
-The file describes the error codes defined by AbilityBase.
+The file declares the error codes defined by AbilityBase.
 
 **File to include**: <AbilityKit/ability_base/ability_base_common.h>
 

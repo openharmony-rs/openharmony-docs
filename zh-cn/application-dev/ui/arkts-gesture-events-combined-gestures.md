@@ -1,10 +1,10 @@
 # 组合手势
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 组合手势由多种单一手势组合而成，通过在GestureGroup中使用不同的[GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode枚举说明)来声明该组合手势的类型，支持[顺序识别](#顺序识别)、[并行识别](#并行识别)和[互斥识别](#互斥识别)三种类型。
@@ -16,7 +16,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 - mode：为GestureMode枚举类。用于声明该组合手势的类型。
 
-- gesture：由多个手势组合而成的数组。用于声明组合成该组合手势的各个手势。
+- gesture：由多个手势组合而成的数组。用于声明该组合手势的各个手势。
 
 
 ## 顺序识别
@@ -88,7 +88,7 @@ struct Index {
           })
       )
       .onCancel(() => {
-        console.log("sequence gesture canceled")
+        console.info("sequence gesture canceled")
       })
     )
   }

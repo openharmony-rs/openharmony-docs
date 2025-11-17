@@ -8,7 +8,7 @@ During application development, you often need to draw different elements. Typic
 >
 > - This module uses the physical pixel unit, px.
 >
-> - This module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
+> - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
 
 ## Modules to Import
 
@@ -34,35 +34,35 @@ The table below shows the effect of each blend mode, where the yellow rectangle 
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ----------- | ---- | ------------------------------------------------------------ | -------- |
-| CLEAR       | 0    | r = 0, sets the destination pixels to fully transparent.                               | ![CLEAR](./figures/image_BlendMode_Clear.png)|
-| SRC         | 1    | r = s (all channels of the result equal those of the source), replaces the destination pixels with the source pixels.| ![SRC](./figures/image_BlendMode_Src.png)|
-| DST         | 2    | r = d (all channels of the result equal those of the destination), keeps the destination pixels unchanged.| ![DST](./figures/image_BlendMode_Dst.png)|
-| SRC_OVER    | 3    | r = s + (1 - sa) * d, draws the source pixels over the destination pixels, considering the source's transparency.| ![SRC_OVER](./figures/image_BlendMode_SrcOver.png)|
-| DST_OVER    | 4    | r = d + (1 - da) * s, draws the destination pixels over the source pixels, considering the destination's transparency.| ![DST_OVER](./figures/image_BlendMode_DstOver.png)|
-| SRC_IN      | 5    | r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.| ![SRC_IN](./figures/image_BlendMode_SrcIn.png)|
-| DST_IN      | 6    | r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.| ![DST_IN](./figures/image_BlendMode_DstIn.png)|
-| SRC_OUT     | 7    | r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.| ![SRC_OUT](./figures/image_BlendMode_SrcOut.png)|
-| DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![DST_OUT](./figures/image_BlendMode_DstOut.png)|
-| SRC_ATOP    | 9    | r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.| ![SRC_ATOP](./figures/image_BlendMode_SrcATop.png)|
-| DST_ATOP    | 10   | r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.| ![DST_ATOP](./figures/image_BlendMode_DstATop.png)|
-| XOR         | 11   | r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.| ![XOR](./figures/image_BlendMode_Xor.png)|
-| PLUS        | 12   | r = min(s + d, 1), adds the color values of the source and destination pixels.                  | ![PLUS](./figures/image_BlendMode_Plus.png)|
-| MODULATE    | 13   | r = s * d, multiplies the color values of the source and destination pixels.                          | ![MODULATE](./figures/image_BlendMode_Modulate.png)|
-| SCREEN      | 14   | r = s + d - s * d, inverts the color values of the source and destination pixels, multiplies them, and then inverts the result, typically producing a brighter outcome.| ![SCREEN](./figures/image_BlendMode_Screen.png)|
-| OVERLAY     | 15   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the destination pixels, enhancing contrast.| ![OVERLAY](./figures/image_BlendMode_Overlay.png)|
-| DARKEN      | 16   | rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d, takes the darker color values between the source and destination pixels.| ![DARKEN](./figures/image_BlendMode_Darken.png)|
-| LIGHTEN     | 17   | rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d, takes the lighter color values between the source and destination pixels.| ![LIGHTEN](./figures/image_BlendMode_Lighten.png)|
-| COLOR_DODGE | 18   | Brightens the destination pixels by reducing contrast to reflect the source pixels.          | ![COLOR_DODGE](./figures/image_BlendMode_ColorDodge.png)|
-| COLOR_BURN  | 19   | Darkens the destination pixels by increasing contrast to reflect the source pixels.          | ![COLOR_BURN](./figures/image_BlendMode_ColorBurn.png)|
-| HARD_LIGHT  | 20   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.   | ![HARD_LIGHT](./figures/image_BlendMode_HardLight.png)|
-| SOFT_LIGHT  | 21   | Softly brightens or darkens the destination pixels based on the brightness of the source pixels.            | ![SOFT_LIGHT](./figures/image_BlendMode_SoftLight.png)|
-| DIFFERENCE  | 22   | rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the difference between the color values of the source and destination pixels.| ![DIFFERENCE](./figures/image_BlendMode_Difference.png)|
-| EXCLUSION   | 23   | rc = s + d - two(s * d), ra = s + (1 - sa) * d, similar to **DIFFERENCE** but with lower contrast.| ![EXCLUSION](./figures/image_BlendMode_Exclusion.png)|
-| MULTIPLY    | 24   | r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.| ![MULTIPLY](./figures/image_BlendMode_Multiply.png)|
-| HUE         | 25   | Uses the hue of the source pixels and the saturation and brightness of the destination pixels.              | ![HUE](./figures/image_BlendMode_Hue.png)|
-| SATURATION  | 26   | Uses the saturation of the source pixels and the hue and brightness of the destination pixels.            | ![SATURATION](./figures/image_BlendMode_Saturation.png)|
-| COLOR       | 27   | Uses the hue and saturation of the source pixels and the brightness of the destination pixels.              | ![COLOR](./figures/image_BlendMode_Color.png)|
-| LUMINOSITY  | 28   | Uses the brightness of the source pixels and the hue and saturation of the destination pixels.              | ![LUMINOSITY](./figures/image_BlendMode_Luminosity.png)|
+| CLEAR       | 0    | r = 0, sets the the destination pixels to fully transparent.                               | ![CLEAR](./figures/image_BlendMode_Clear.png) |
+| SRC         | 1    | r = s (all channels of the result equal those of the source), replaces the destination pixels with the source pixels.| ![SRC](./figures/image_BlendMode_Src.png) |
+| DST         | 2    | r = d (all channels of the result equal those of the destination), keeps the destination pixels unchanged.| ![DST](./figures/image_BlendMode_Dst.png) |
+| SRC_OVER    | 3    | r = s + (1 - sa) * d, draws the source pixels over the destination pixels, considering the source's transparency.| ![SRC_OVER](./figures/image_BlendMode_SrcOver.png) |
+| DST_OVER    | 4    | r = d + (1 - da) * s, draws the destination pixels over the source pixels, considering the destination's transparency.| ![DST_OVER](./figures/image_BlendMode_DstOver.png) |
+| SRC_IN      | 5    | r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.| ![SRC_IN](./figures/image_BlendMode_SrcIn.png) |
+| DST_IN      | 6    | r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.| ![DST_IN](./figures/image_BlendMode_DstIn.png) |
+| SRC_OUT     | 7    | r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.| ![SRC_OUT](./figures/image_BlendMode_SrcOut.png) |
+| DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![DST_OUT](./figures/image_BlendMode_DstOut.png) |
+| SRC_ATOP    | 9    | r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.| ![SRC_ATOP](./figures/image_BlendMode_SrcATop.png) |
+| DST_ATOP    | 10   | r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.| ![DST_ATOP](./figures/image_BlendMode_DstATop.png) |
+| XOR         | 11   | r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.| ![XOR](./figures/image_BlendMode_Xor.png) |
+| PLUS        | 12   | r = min(s + d, 1), adds the color values of the source and destination pixels.                  | ![PLUS](./figures/image_BlendMode_Plus.png) |
+| MODULATE    | 13   | r = s * d, multiplies the color values of the source and destination pixels.                          | ![MODULATE](./figures/image_BlendMode_Modulate.png) |
+| SCREEN      | 14   | r = s + d - s * d, inverts the color values of the source and destination pixels, multiplies them, and then inverts the result, typically producing a brighter outcome.| ![SCREEN](./figures/image_BlendMode_Screen.png) |
+| OVERLAY     | 15   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the destination pixels, enhancing contrast.| ![OVERLAY](./figures/image_BlendMode_Overlay.png) |
+| DARKEN      | 16   | rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d, takes the darker color values between the source and destination pixels.| ![DARKEN](./figures/image_BlendMode_Darken.png) |
+| LIGHTEN     | 17   | rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d, takes the lighter color values between the source and destination pixels.| ![LIGHTEN](./figures/image_BlendMode_Lighten.png) |
+| COLOR_DODGE | 18   | Brightens the destination pixels by reducing contrast to reflect the source pixels.          | ![COLOR_DODGE](./figures/image_BlendMode_ColorDodge.png) |
+| COLOR_BURN  | 19   | Darkens the destination pixels by increasing contrast to reflect the source pixels.          | ![COLOR_BURN](./figures/image_BlendMode_ColorBurn.png) |
+| HARD_LIGHT  | 20   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.   | ![HARD_LIGHT](./figures/image_BlendMode_HardLight.png) |
+| SOFT_LIGHT  | 21   | Softly brightens or darkens the destination pixels based on the brightness of the source pixels.            | ![SOFT_LIGHT](./figures/image_BlendMode_SoftLight.png) |
+| DIFFERENCE  | 22   | rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the difference between the color values of the source and destination pixels.| ![DIFFERENCE](./figures/image_BlendMode_Difference.png) |
+| EXCLUSION   | 23   | rc = s + d - two(s * d), ra = s + (1 - sa) * d, similar to **DIFFERENCE** but with lower contrast.| ![EXCLUSION](./figures/image_BlendMode_Exclusion.png) |
+| MULTIPLY    | 24   | r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.| ![MULTIPLY](./figures/image_BlendMode_Multiply.png) |
+| HUE         | 25   | Uses the hue of the source pixels and the saturation and brightness of the destination pixels.              | ![HUE](./figures/image_BlendMode_Hue.png) |
+| SATURATION  | 26   | Uses the saturation of the source pixels and the hue and brightness of the destination pixels.            | ![SATURATION](./figures/image_BlendMode_Saturation.png) |
+| COLOR       | 27   | Uses the hue and saturation of the source pixels and the brightness of the destination pixels.              | ![COLOR](./figures/image_BlendMode_Color.png) |
+| LUMINOSITY  | 28   | Uses the brightness of the source pixels and the hue and saturation of the destination pixels.              | ![LUMINOSITY](./figures/image_BlendMode_Luminosity.png) |
 
 ## PathMeasureMatrixFlags<sup>12+</sup>
 
@@ -95,10 +95,10 @@ Enumerates the shadow drawing behaviors.
 
 | Name                        | Value   | Description                |
 | -------------------------- | ---- | ------------------ |
-| NONE      | 0    | No shadow effect is used.       |
-| TRANSPARENT_OCCLUDER | 1    | The occluder is translucent.        |
+| NONE      | 0    | None of the flags are enabled.       |
+| TRANSPARENT_OCCLUDER | 1    | The occluder is transparent.        |
 | GEOMETRIC_ONLY    | 2    | Only the geometric shadow effect is used.       |
-| ALL           | 3    | Shadow effects are combined, including the translucent occluder and geometric shadow.|
+| ALL           | 3    | All the flags are enabled.|
 
 ## PathOp<sup>12+</sup>
 
@@ -235,7 +235,7 @@ let res = iter.peek();
 
 hasNext(): boolean
 
-Check result.
+Checks whether there is a next operation in the path operation iterator.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -243,7 +243,7 @@ Check result.
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** means yes; **false** otherwise.|
+| boolean | Check result. The value **true** means that there is a next operation in the path operation iterator, and **false** means the opposite.|
 
 **Example**
 
@@ -300,33 +300,6 @@ path.lineTo(0, 700);
 path.lineTo(700, 0);
 path.close();
 let path1: drawing.Path =  new drawing.Path(path);
-```
-
-### set<sup>20+</sup>
-
-set(src: Path): void
-
-Updates the existing path with another path.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name  | Type                                        | Mandatory| Description                           |
-| -------- | -------------------------------------------- | ---- | ------------------------------- |
-| src | [Path](#path) | Yes  | Path for the update.                |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-let path: drawing.Path = new drawing.Path();
-path.moveTo(0, 0);
-path.lineTo(0, 700);
-path.lineTo(700, 0);
-path.close();
-let path1: drawing.Path = new drawing.Path();
-path1.set(path);
 ```
 
 ### moveTo
@@ -818,7 +791,7 @@ path.addOval(rect, 5, drawing.PathDirection.CLOCKWISE);
 
 addRect(rect: common2D.Rect, pathDirection?: PathDirection): void
 
-Adds a rectangle to a path in the specified direction. The start point is the upper left corner of the rectangle.
+Adds a rectangle to this path in the specified direction. The start point is the upper left corner of the rectangle.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -851,7 +824,7 @@ path.addRect(rect, drawing.PathDirection.CLOCKWISE);
 
 addRoundRect(roundRect: RoundRect, pathDirection?: PathDirection): void
 
-Adds a rounded rectangle to a path in the specified direction. When the path direction is clockwise, the start point is at the intersection of the rounded rectangle's left boundary and its lower left corner. When the path direction is counterclockwise, the start point is at the intersection point between the left boundary and the upper left corner.
+Adds a rounded rectangle to this path in the specified direction. When the path direction is clockwise, the start point is at the intersection of the rounded rectangle's left boundary and its lower left corner. When the path direction is counterclockwise, the start point is at the intersection point between the left boundary and the upper left corner.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -922,7 +895,7 @@ dstPath.addPath(path, matrix);
 
 transform(matrix: Matrix): void
 
-Transforms the points in a path by matrix.
+Transforms the points in this path by a matrix.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -995,37 +968,6 @@ console.info("test contains: " + path.contains(0, 0));
 console.info("test contains: " + path.contains(60, 60));
 ```
 
-### setLastPoint<sup>20+</sup>
-
-setLastPoint(x: number, y: number): void
-
-Sets the last point of a path.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| x      | number | Yes  | X coordinate of a point. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| y      | number | Yes  | Y coordinate of a point. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-const path = new drawing.Path();
-path.moveTo(0, 0);
-path.lineTo(0, 700);
-let isEmpty = path.isEmpty();
-console.info('isEmpty:', isEmpty);
-path.reset();
-isEmpty = path.isEmpty();
-console.info('isEmpty:', isEmpty);
-path.setLastPoint(50, 50);
-console.info('isEmpty:', isEmpty);
-```
-
 ### setFillType<sup>12+</sup>
 
 setFillType(pathFillType: PathFillType): void
@@ -1055,30 +997,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 const path = new drawing.Path();
 path.setFillType(drawing.PathFillType.WINDING);
-```
-
-### getFillType<sup>20+</sup>
-
-getFillType(): PathFillType
-
-Obtains the fill type of a path.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type                                              | Description                  |
-| -------------------------------------------------- | ---------------------- |
-| [PathFillType](#pathfilltype12) | Fill type of a path.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-const path = new drawing.Path();
-path.setFillType(drawing.PathFillType.WINDING);
-let type = path.getFillType();
-console.info("type :" + type);
 ```
 
 ### getBounds<sup>12+</sup>
@@ -1204,7 +1122,7 @@ Combines this path with the passed-in path based on the specified operation mode
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
 | path    | [Path](#path) | Yes  | Path object, which will be combined with the current path.|
-| pathOp  | [PathOp](#pathop12)   | Yes   | Defines an enum for the operation modes available for a path.   |
+| pathOp  | [PathOp](#pathop12)   | Yes   | Operation mode.   |
 
 **Return value**
 
@@ -1269,89 +1187,6 @@ path.cubicTo(10, 10, 10, 10, 15, 15);
 path.reset();
 ```
 
-### rewind<sup>20+</sup>
-
-rewind(): void
-
-Rewinds a path by clearing all its points and lines but reserves the memory space.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-let path = new drawing.Path();
-path.moveTo(10,10);
-path.lineTo(20,20);
-path.rewind();
-let empty = path.isEmpty();
-console.info('empty : ', empty);
-```
-
-### isEmpty<sup>20+</sup>
-
-isEmpty(): boolean
-
-Checks whether a path is empty.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type | Description|
-| ------ | ---- |
-| boolean | Whether a path is empty. **true** means yes; **false** otherwise.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-let path = new drawing.Path();
-path.moveTo(10,10);
-path.lineTo(20,20);
-let isEmpty = path.isEmpty();
-console.info('isEmpty:', isEmpty);
-```
-
-### isRect<sup>20+</sup>
-
-isRect(rect: common2D.Rect | null): boolean
-
-Checks whether a path forms a rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect)\| null | Yes  | Rectangle object, which is used as an output parameter. If the path forms a rectangle, the rectangle object is overwritten with the rectangle represented by the path. Otherwise, the rectangle object remains unchanged. The value can be **null**, indicating that the rectangle represented by the path does not need to be obtained.|
-
-**Return value**
-
-| Type | Description|
-| ------ | ---- |
-| boolean | Whether a path forms a rectangle. **true** means yes; **false** otherwise.|
-
-**Example**
-
-```ts
-import { common2D, drawing } from '@kit.ArkGraphics2D';
-
-let path = new drawing.Path();
-path.moveTo(10,10);
-path.lineTo(20,10);
-let isRect = path.isRect(null);
-console.info("isRect: ", isRect);
-let rect: common2D.Rect = { left : 100, top : 100, right : 400, bottom : 500 };
-path.lineTo(20, 20);
-path.lineTo(10, 20);
-path.lineTo(10, 10);
-isRect = path.isRect(rect);
-console.info('isRect: ', isRect);
-```
-
 ### getLength<sup>12+</sup>
 
 getLength(forceClosed: boolean): number
@@ -1360,9 +1195,9 @@ Obtains the path length.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
-**Parameters:**
+**Parameters**
 
-| Name| Type | Yes| Description    |
+| Name| Type | Mandatory| Description    |
 | ----- | ------ | ---- | --------- |
 | forceClosed  | boolean | Yes | Whether the path is measured as a closed path. The value **true** means that the path is considered closed during measurement, and **false** means that the path is measured based on the actual closed status.|
 
@@ -1437,7 +1272,7 @@ if (path.getPositionAndTangent(false, 0.1, position, tangent)) {
 
 getSegment(forceClosed: boolean, start: number, stop: number, startWithMoveTo: boolean, dst: Path): boolean
 
-Extracts a segment of a path and appends it to a destination path.
+Extracts a segment of this path and appends it to a destination path.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1449,7 +1284,7 @@ Extracts a segment of a path and appends it to a destination path.
 | start | number | Yes  | Distance from the start point of the path to the start point of the segment. If it is less than 0, it defaults to 0. If it is greater than or equal to **stop**, the extraction fails. The value is a floating point number.              |
 | stop | number | Yes  | Distance from the start point of the path to the end point of the segment. If it is less than or equal to **start**, the extraction fails. If it is greater than the path length, it defaults to the path length. The value is a floating point number.                 |
 | startWithMoveTo | boolean | Yes  | Whether to execute [moveTo](#moveto) in the destination path to move to its start point. The value **true** means to move to the start point, and **false** means the opposite.               |
-| dst | [Path](#path) | Yes  | Destination path. If the extraction succeeds, the segment is appended to the path. If the extraction fails, nothing changes.              |
+| dst | number | [Path](#path)   | Destination path. If the extraction succeeds, the segment is appended to the path. If the extraction fails, nothing changes.              |
 
 **Return value**
 
@@ -1520,7 +1355,7 @@ Obtains a transformation matrix at a specific position along the path, which rep
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| boolean | Result indicating whether the transformation matrix is obtained. **true** means successful; **false** otherwise.|
+| boolean | Result indicating whether the transformation matrix is obtained. The value **true** means that the operation is successful, and **false** means the opposite.|
 
 **Error codes**
 
@@ -1609,142 +1444,6 @@ let path: drawing.Path = new drawing.Path();
 let iter = path.getPathIterator();
 ```
 
-### approximate<sup>20+</sup>
-
-approximate(acceptableError: number): Array\<number>
-
-Converts the existing path into an approximate path consisting of consecutive line segments.
-
-> **NOTE**
->
-> - Avoid setting **acceptableError** to **0** as it heavily divides the curve path, significantly impacting performance and memory usage.
-> - Setting a high **acceptableError** simplifies the path greatly by keeping only essential points, potentially distorting the original shape.
-> - When you set a high **acceptableError** for curves such as ellipses, the fitting process often simplifies them to polygons by keeping just the start and end points of their Bezier curve segments.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name  | Type                                        | Mandatory| Description                           |
-| -------- | -------------------------------------------- | ---- | ------------------------------- |
-| acceptableError | number | Yes| Acceptable error of each line segment on a path. The value is a floating point number. If the value is less than 0, an error is reported.|
-
-**Return value**
-
-| Type                 | Description          |
-| --------------------- | -------------- |
-| Array\<number> | An array of points in the approximate path, which contains at least two points. Each point consists of three values:<br>1. Length ratio of the point to the start point of the path. The value range is [0.0, 1.0].<br>2. X coordinate of a point.<br>3. Y coordinate of a point.|
-
-**Error codes**
-
-For details about the following error code, see [Drawing and Display Error Codes](../apis-arkgraphics2d/errorcode-drawing.md).
-
-| ID| Error Message|
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let path: drawing.Path = new drawing.Path();
-path.moveTo(100, 100);
-path.lineTo(500, 500);
-let points: number[] = path.approximate(0.5);
-for (let i = 0; i < points.length; i += 3) {
-  console.info("PathApproximate Fraction =" + points[i] + ", X =" + points[i + 1] + ", Y =" + points[i + 2] + "\n");
-}
-```
-
-### interpolate<sup>20+</sup>
-
-interpolate(other: Path, weight: number, interpolatedPath: Path): boolean
-
-Interpolates between the existing path and another path based on the given weight and stores the result in the target path object. Interpolation is achievable if the two paths have the same number of points. The target path is created based on the structure of the existing path.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name  | Type                                        | Mandatory| Description                           |
-| -------- | -------------------------------------------- | ---- | ------------------------------- |
-| other | [Path](#path) | Yes| Another path object.|
-| weight | number | Yes| Interpolation weight, which must be within the range of [0.0, 1.0]. The value is a floating point number.|
-| interpolatedPath | [Path](#path) | Yes| Target path object used to store the interpolation result.|
-
-**Return value**
-
-| Type                 | Description          |
-| --------------------- | -------------- |
-| boolean | Whether interpolation is successful. **true** means yes; **false** otherwise.|
-
-**Error codes**
-
-For details about the following error code, see [Drawing and Display Error Codes](../apis-arkgraphics2d/errorcode-drawing.md).
-
-| ID| Error Message|
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let path: drawing.Path = new drawing.Path();
-path.moveTo(50, 50);
-path.lineTo(100, 100);
-path.lineTo(200, 200);
-let other: drawing.Path = new drawing.Path();
-other.moveTo(80, 80);
-other.lineTo(300, 300);
-let interpolatedPath: drawing.Path = new drawing.Path();
-if (path.interpolate(other, 0.0, interpolatedPath)) {
-  console.info('interpolate return true');
-} else {
-  console.info('interpolate return false');
-}
-```
-
-### isInterpolate<sup>20+</sup>
-
-isInterpolate(other: Path): boolean
-
-Checks whether the existing path and another path are compatible for interpolation in terms of structure and operation sequence. If the paths contain conic operations, the weight values of the operations must be the same.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name  | Type                                        | Mandatory| Description                           |
-| -------- | -------------------------------------------- | ---- | ------------------------------- |
-| other | [Path](#path) | Yes| Another path object.|
-
-**Return value**
-
-| Type                 | Description          |
-| --------------------- | -------------- |
-| boolean | Whether the existing path and another path are compatible for interpolation. **true** means yes; **false** otherwise.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let path: drawing.Path = new drawing.Path();
-path.moveTo(0, 0);
-path.lineTo(100, 100);
-let other: drawing.Path = new drawing.Path();
-other.moveTo(0, 1);
-other.lineTo(200, 200);
-if (path.isInterpolate(other)) {
-  console.info('isInterpolate return true');
-} else {
-  console.info('isInterpolate return false');
-}
-```
-
 ## Canvas
 
 A carrier that carries the drawn content and drawing status.
@@ -1765,7 +1464,7 @@ Creates a **Canvas** object that uses a PixelMap as the drawing target.
 
 | Name  | Type                                        | Mandatory| Description          |
 | -------- | -------------------------------------------- | ---- | -------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap used to create the object.|
+| pixelmap | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | PixelMap used to create the object.|
 
 **Error codes**
 
@@ -2018,7 +1717,7 @@ Draws a spot shadow and uses a given path to outline the ambient shadow.
 | lightRadius   | number           | Yes   | Radius of the light. The value is a floating point number.     |
 | ambientColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes   | Color of the ambient shadow.|
 | spotColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes   | Color of the spot shadow.|
-| flag         | [ShadowFlag](#shadowflag12)                  | Yes   | Defines an enum for the shadow flags.   |
+| flag         | [ShadowFlag](#shadowflag12)                  | Yes   | Shadow flag.   |
 
 **Error codes**
 
@@ -2077,7 +1776,7 @@ Draws a spot shadow and uses a given path to outline the ambient shadow.
 | lightRadius   | number           | Yes   | Radius of the light. The value is a floating point number.     |
 | ambientColor  |[common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes   | Ambient shadow color, represented by a 32-bit unsigned integer in hexadecimal ARGB format.|
 | spotColor  |[common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes   | Spot shadow color, represented by a 32-bit unsigned integer in hexadecimal ARGB format.|
-| flag         | [ShadowFlag](#shadowflag12)                  | Yes   | Defines an enum for the shadow flags.   |
+| flag         | [ShadowFlag](#shadowflag12)                  | Yes   | Shadow flag.   |
 
 **Error codes**
 
@@ -2228,7 +1927,7 @@ Draws an image. The coordinates of the upper left corner of the image are (left,
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap.                 |
+| pixelmap | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | PixelMap.                 |
 | left     | number                                       | Yes  | X coordinate of the upper left corner of the image. The value is a floating point number.|
 | top      | number                                       | Yes  | Y coordinate of the upper left corner of the image. The value is a floating point number.|
 | samplingOptions<sup>12+</sup>  | [SamplingOptions](#samplingoptions12)  | No | Sampling options. By default, the **SamplingOptions** object created using the no-argument constructor is used.|
@@ -2273,7 +1972,7 @@ Draws an image onto a specified area of the canvas.
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap.                |
+| pixelmap | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | PixelMap.                |
 | dstRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | Yes  | **Rectangle** object, which specifies the area of the canvas onto which the image will be drawn.|
 | samplingOptions     | [SamplingOptions](#samplingoptions12)                           | No  | Sampling options. By default, the **SamplingOptions** object created using the no-argument constructor is used.|
 
@@ -2317,7 +2016,7 @@ Draws a portion of an image onto a specified area of the canvas.
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap.                |
+| pixelmap | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | PixelMap.                |
 | srcRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | Yes  | **Rectangle** object, which specifies the portion of the image to draw.|
 | dstRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | Yes  | **Rectangle** object, which specifies the area of the canvas onto which the image will be drawn.|
 | samplingOptions     | [SamplingOptions](#samplingoptions12)                           | No  | Sampling options. By default, the **SamplingOptions** object created using the no-argument constructor is used.|
@@ -2484,7 +2183,7 @@ Draws a PixelMap based on a mesh, where mesh vertices are evenly distributed acr
 
 | Name     | Type           | Mandatory| Description                           |
 | ----------- | -------------  | ---- | ------------------------------- |
-| pixelmap    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap to draw.|
+| pixelmap    | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | PixelMap to draw.|
 | meshWidth   | number         | Yes  | Number of columns in the mesh. The value is an integer greater than 0.|
 | meshHeight  | number         | Yes  | Number of rows in the mesh. The value is an integer greater than 0.|
 | vertices    | Array\<number> | Yes  | Array of vertices, which specify the position to draw. The value is a floating-point array and the size must be ((meshWidth+1) * (meshHeight+1) + vertOffset) * 2.|
@@ -2694,7 +2393,7 @@ class DrawingRenderNode extends RenderNode {
 
 drawArc(arc: common2D.Rect, startAngle: number, sweepAngle: number): void
 
-Draws an arc on the canvas. with the start angle and sweep angle specified. If the absolute value of the sweep angle exceeds 360 degrees, an ellipse is drawn.
+Draws an arc on the canvas, with the start angle and sweep angle specified. If the absolute value of the sweep angle exceeds 360 degrees, an ellipse is drawn.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3203,7 +2902,7 @@ Clips the drawable area of the canvas using a custom path.
 | ------------ | ----------------- | ---- | ------------------------------------|
 | path         | [Path](#path)     | Yes  | **Path** object.                                                |
 | clipOp       | [ClipOp](#clipop12) | No  | Clip mode. The default value is **INTERSECT**.                                    |
-| doAntiAlias  | boolean           | No  | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite. Default value: **false**.|
+| doAntiAlias  | boolean           | No  | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite. The default value is **false**.|
 
 **Error codes**
 
@@ -3246,7 +2945,7 @@ Clips the drawable area of the canvas using a rectangle.
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangle.     |
 | clipOp      | [ClipOp](#clipop12)                  | No   | Clip mode. The default value is **INTERSECT**.    |
-| doAntiAlias | boolean           | No  | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite. Default value: **false**.|
+| doAntiAlias | boolean           | No  | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite. The default value is **false**.|
 
 **Error codes**
 
@@ -3659,7 +3358,7 @@ Multiplies the current canvas matrix by the incoming matrix on the left. This AP
 
 | Name   | Type               | Mandatory  | Description   |
 | ------ | ----------------- | ---- | ----- |
-| matrix | [Matrix](#matrix12) | Yes   | Matrix object.|
+| matrix | [Matrix](#matrix12) | Yes   | **Matrix** object.|
 
 **Error codes**
 
@@ -3698,7 +3397,7 @@ Sets a matrix for the canvas. Subsequent drawing and clipping operations will be
 
 | Name   | Type               | Mandatory  | Description   |
 | ------ | ----------------- | ---- | ----- |
-| matrix | [Matrix](#matrix12) | Yes   | Matrix object.|
+| matrix | [Matrix](#matrix12) | Yes   | **Matrix** object.|
 
 **Error codes**
 
@@ -3812,7 +3511,7 @@ Clips a rounded rectangle on the canvas.
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | roundRect | [RoundRect](#roundrect12) | Yes  | **RoundRect** object, which indicates the range to clip.|
 | clipOp | [ClipOp](#clipop12)   | No  | Clipping mode. The default value is **INTERSECT**.|
-| doAntiAlias | boolean | No  | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite. Default value: **false**.|
+| doAntiAlias | boolean | No  | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite. The default value is **false**.|
 
 **Error codes**
 
@@ -3875,7 +3574,7 @@ Checks whether the path is not intersecting with the canvas area. The canvas are
 
 | Name| Type         | Mandatory| Description              |
 | ------ | ------------- | ---- | ------------------ |
-| path   | [Path](#path) | Yes  | **Path** object.|
+| path   | [Path](#path) | Yes  | Path object.|
 
 **Return value**
 
@@ -3917,7 +3616,7 @@ Checks whether the rectangle is not intersecting with the canvas area. The canva
 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Describes a rectangle.|
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle.|
 
 **Return value**
 
@@ -3995,7 +3694,7 @@ If the four corner sections are smaller than the target rectangle, they will be 
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| pixelmap   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap to draw.|
+| pixelmap   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | PixelMap to split.|
 | center    | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Central rectangle that divides the image into nine sections by extending its four edges.|
 | dstRect  | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Target rectangle drawn on the canvas.|
 | filterMode | [FilterMode](#filtermode12) | Yes  | Filter mode.|
@@ -4043,7 +3742,7 @@ The intersections of even-numbered rows and columns (starting from 0) are fixed 
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| pixelmap   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap to draw.|
+| pixelmap   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | PixelMap to split.|
 | lattice  | [Lattice](#lattice12) | Yes  | Lattice object.|
 | dstRect    | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Target rectangle.|
 | filterMode | [FilterMode](#filtermode12) | Yes  | Filter mode.|
@@ -4122,129 +3821,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
 ```
-### createFromImage<sup>20+</sup>
 
-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter
-
-Creates an image filter from a given image. You are advised not to use the function for the canvas of the capture type because it affects the performance.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name         | Type   | Mandatory| Description                                                       |
-| --------------- | ------- | ---- | ----------------------------------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes  | Image object.|
-| srcRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | No  | (Optional) Pixel area of the image to be applied to the filter. This parameter is left empty by default, which means that the entire PixelMap area is applied.|
-| dstRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | No  | (Optional) Area to be rendered. This parameter is left empty by default, which means that the value is the same as that of **srcRect**.|
-
-**Return value**
-
-| Type                 | Description          |
-| --------------------- | -------------- |
-| [ImageFilter](#imagefilter12) | Image filter created.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
-class DrawingRenderNode extends RenderNode {
-  pixelMap: image.PixelMap | null = null;
-
-  async draw(context : DrawContext) {
-    const canvas = context.canvas;
-    let srcRect: common2D.Rect = { left: 10, top: 10, right: 80, bottom: 80 };
-    let dstRect: common2D.Rect = { left: 200, top: 200, right: 400, bottom: 400 };
-    if (this.pixelMap != null) {
-      let filter = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
-    }
-  }
-}
-```
-### createBlendImageFilter<sup>20+</sup>
-
-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter
-
-Creates a filter by blending two existing filters in a certain way.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name         | Type   | Mandatory| Description                                                       |
-| --------------- | ------- | ---- | ----------------------------------------------------------- |
-| mode   | [BlendMode](#blendmode)                              | Yes  | Blend mode.|
-| background | [ImageFilter](#imagefilter12) | Yes  | Filter that serves as the destination color in blend mode.|
-| foreground | [ImageFilter](#imagefilter12) | Yes  | Filter that serves as the source color in blend mode.|
-
-**Return value**
-
-| Type                 | Description           |
-| --------------------- | -------------- |
-| [ImageFilter](#imagefilter12) | Image filter created.|
-
-**Error codes**
-
-For details about the following error code, see [Drawing and Display Error Codes](../apis-arkgraphics2d/errorcode-drawing.md).
-
-| ID| Error Message|
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let dx = 15.0;
-let dy = 10.0;
-let offsetFilter1 = drawing.ImageFilter.createOffsetImageFilter(dx, dy, null);
-let x = 15.0;
-let y = 30.0;
-let offsetFilter2 = drawing.ImageFilter.createOffsetImageFilter(x, y, null);
-let blendImageFilter = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC_IN, offsetFilter1, offsetFilter2);
-```
-### createComposeImageFilter<sup>20+</sup>
-
-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter
-
-Cascades two image filters to create a new image filter. The first filter's output becomes the second filter's input. The second filter then processes this input to produce the final result.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name         | Type   | Mandatory| Description                                                         |
-| --------------- | ------- | ---- | ----------------------------------------------------------- |
-| cOuter | [ImageFilter](#imagefilter12) | Yes  | The second filter in the cascade, which processes the first filter's output. If the second filter is empty and the first filter is not empty, the final result is the first filter's output. The two filters cannot be empty at the same time.|
-| cInner | [ImageFilter](#imagefilter12) | Yes  | The first filter in the cascade, which directly processes the original image content. If the first filter is empty and the second filter is not empty, the final result is the second filter's output. The two filters cannot be empty at the same time.|
-
-**Return value**
-
-| Type                 | Description          |
-| --------------------- | -------------- |
-| [ImageFilter](#imagefilter12) | Image filter created.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let blurSigmaX = 10.0;
-let blurSigmaY = 10.0;
-let blurFilter = drawing.ImageFilter.createBlurImageFilter(blurSigmaX, blurSigmaY, drawing.TileMode.CLAMP, null);
-let colorMatrix:Array<number> = [
-  0, 0, 0, 0, 0,
-  0, 1, 0, 0, 0,
-  0, 0, 1, 0, 0,
-  0, 0, 0, 1, 0
-];
-let redRemovalFilter = drawing.ColorFilter.createMatrixColorFilter(colorMatrix);
-let colorFilter = drawing.ImageFilter.createFromColorFilter(redRemovalFilter, null);
-let composedImageFilter = drawing.ImageFilter.createComposeImageFilter(colorFilter, blurFilter);
-```
 ### createFromColorFilter<sup>12+</sup>
 
 static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter
@@ -4272,87 +3849,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
+| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 
 **Example**
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
+
 let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
 let clolorfilter = drawing.ColorFilter.createSRGBGammaToLinear();
 let imgFilter1 = drawing.ImageFilter.createFromColorFilter(clolorfilter, imgFilter);
 ```
-### createOffsetImageFilter<sup>20+</sup>
 
-static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter
-
-Creates an offset filter to translate the input filter based on the specified vector.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name         | Type   | Mandatory| Description                                                       |
-| --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | Yes  | Horizontal translation distance. The value is a floating point number.|
-| dy | number | Yes  | Vertical translation distance. The value is a floating point number.|
-| input | [ImageFilter](#imagefilter12) \| null | No  | Filter to be translated. This parameter is left empty by default, which means that the drawing result without the filtering effect is translated.|
-
-**Return value**
-
-| Type                 | Description          |
-| --------------------- | -------------- |
-| [ImageFilter](#imagefilter12) | Image filter created.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let dx = 15.0;
-let dy = 10.0;
-let offsetFilter = drawing.ImageFilter.createOffsetImageFilter(dx, dy, null);
-```
-
-### createFromShaderEffect<sup>20+</sup>
-
-static createFromShaderEffect(shader: ShaderEffect): ImageFilter
-
-Creates an **ImageFilter** object based on a shader.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name         | Type   | Mandatory| Description                                                       |
-| --------------- | ------- | ---- | ----------------------------------------------------------- |
-| shader   | [ShaderEffect](#shadereffect12) | Yes  | Shader effect to be applied to the image.|
-
-**Return value**
-
-| Type                 | Description          |
-| --------------------- | -------------- |
-| [ImageFilter](#imagefilter12) | Image filter created.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let shaderEffect = drawing.ShaderEffect.createColorShader(0xFF00FF00);
-let renderEffect = drawing.ImageFilter.createFromShaderEffect(shaderEffect);
-```
 ## TextBlobRunBuffer
 
 Describes a series of consecutive glyphs with the same attributes in a text blob.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
-| Name     | Type  | Read-Only| Optional| Description                     |
+| Name     | Type  | Readable| Writable| Description                     |
 | --------- | ------ | ---- | ---- | ------------------------- |
-| glyph     | number | No  | No  | Index of the glyph. The value is an integer. If a floating point number is passed in, the value is rounded down.|
-| positionX | number | No  | No  | X coordinate of the start point of the text blob. The value is a floating point number.|
-| positionY | number | No  | No  | Y coordinate of the start point of the text blob. The value is a floating point number.|
+| glyph     | number | Yes  | Yes  | Index of the glyph. The value is an integer. If a floating point number is passed in, the value is rounded down.|
+| positionX | number | Yes  | Yes  | X coordinate of the start point of the text blob. The value is a floating point number.|
+| positionY | number | Yes  | Yes  | Y coordinate of the start point of the text blob. The value is a floating point number.|
 
 ## TextEncoding
 
@@ -4375,8 +3894,8 @@ Enumerates the canvas clipping modes.
 
 | Name                | Value   | Description          | Diagram  |
 | ------------------ | ---- | ---------------- | -------- |
-| DIFFERENCE | 0    | Clips a specified area. That is, the difference set is obtained.| ![DIFFERENCE](./figures/image_ClipOp_Difference.png)|
-| INTERSECT  | 1    | Retains a specified area. That is, the intersection is obtained.| ![INTERSECT](./figures/image_ClipOp_Intersect.png)|
+| DIFFERENCE | 0    | Clips a specified area. That is, the difference set is obtained.| ![DIFFERENCE](./figures/image_ClipOp_Difference.png) |
+| INTERSECT  | 1    | Retains a specified area. That is, the intersection is obtained.| ![INTERSECT](./figures/image_ClipOp_Intersect.png) |
 
 > **NOTE**
 >
@@ -4413,7 +3932,7 @@ Enumerates the fill types of a path.
 | Name                 | Value   | Description     |
 | ------------------- | ---- | ------- |
 | WINDING   | 0    | Specifies that "inside" is computed by a non-zero sum of signed edge crossings. Specifically, draws a point and emits a ray in any direction. A count is used to record the number of intersection points of the ray and path, and the initial count is 0. When encountering a clockwise intersection point (the path passes from the left to the right of the ray), the count increases by 1. When encountering a counterclockwise intersection point (the path passes from the right to the left of the ray), the count decreases by 1. If the final count is not 0, the point is inside the path and needs to be colored. If the final count is 0, the point is not colored.|
-| EVEN_ODD  | 1    | For any point in the drawing area, a ray is cast in an arbitrary direction. If the number of intersections between this ray and the path is odd, the point is deemed inside the path and needs to be colored; if the number is even, it remains uncolored.|
+| EVEN_ODD  | 1    | Specifies that "inside" is computed by an odd number of edge crossings. Specifically, draws a point and emits a ray in any direction. If the number of intersection points of the ray and path is an odd number, the point is considered to be inside the path and needs to be colored. If the number is an even number, the point is not colored.|
 | INVERSE_WINDING  | 2    | Same as **WINDING**, but draws outside of the path, rather than inside.|
 | INVERSE_EVEN_ODD  | 3    | Same as **EVEN_ODD**, but draws outside of the path, rather than inside.|
 
@@ -4447,7 +3966,7 @@ Enumerates the font edging types.
 
 ## FontHinting<sup>12+</sup>
 
-Defines an enum for the font hinting types.
+Enumerates the font hinting types.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -4678,56 +4197,6 @@ const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEn
 let bounds = textBlob.bounds();
 ```
 
-## TypefaceArguments<sup>20+</sup>
-
-This module defines a struct for setting typeface arguments.
-
-### constructor<sup>20+</sup>
-
-constructor()
-
-Constructor for typeface arguments.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-let typeFaceArgument = new drawing.TypefaceArguments();
-```
-
-### addVariation<sup>20+</sup>
-
-addVariation(axis: string, value: number)
-
-Defines the typeface weight.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-| Name        | Type                                      | Mandatory  | Description            |
-| ----------- | ---------------------------------------- | ---- | -------------------   |
-| axis  | string           | Yes  | The **'wght'** tag for the weight variation in the **typeFaceArgument** object. Whether the tag is supported depends on the loaded typeface file. For details, check the typeface file.  |
-| value | number           | Yes  | Value linked to the **'wght'** tag for the weight variation in the **typeFaceArgument** object. The value must be within the range defined in the typeface file. Otherwise, the value does not take effect. Values below the minimum will be set to the minimum and values above the maximum to the maximum. For details, check the typeface file.   |
-
-**Error codes**
-
-For details about the following error code, see [Drawing and Display Error Codes](../apis-arkgraphics2d/errorcode-drawing.md).
-
-| ID| Error Message|
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let typeFaceArgument = new drawing.TypefaceArguments();
-typeFaceArgument.addVariation('wght', 10);
-```
-
 ## Typeface
 
 Describes the style of a typeface, such as SimSun or KaiTi.
@@ -4756,46 +4225,6 @@ let typeface = font.getTypeface();
 let familyName = typeface.getFamilyName();
 ```
 
-### makeFromCurrent<sup>20+</sup>
-
-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
-
-Constructs a typeface object from the current typeface and its arguments.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-| Name        | Type                                      | Mandatory  | Description                 |
-| ----------- | ---------------------------------------- | ---- | ------------------- |
-| typefaceArguments | [TypefaceArguments](#typefacearguments20)           | Yes  | Typeface arguments.|
-
-**Return value**
-
-| Type  | Description                 |
-| ------ | -------------------- |
-| [Typeface](#typeface) | Typeface object. In abnormal cases, a null pointer is returned.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class TextRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    const canvas = context.canvas;
-    let typeArguments = new drawing.TypefaceArguments();
-    typeArguments.addVariation("wght", 100);
-    const myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
-    const typeFace1 = myTypeFace.makeFromCurrent(typeArguments);
-    let font = new drawing.Font();
-    font.setTypeface(typeFace1);
-    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-    canvas.drawTextBlob(textBlob, 60, 100);
-  }
-}
-```
-
 ### makeFromFile<sup>12+</sup>
 
 static makeFromFile(filePath: string): Typeface
@@ -4814,7 +4243,7 @@ Constructs a typeface from a file.
 
 | Type  | Description                |
 | ------ | -------------------- |
-| [Typeface](#typeface) | Typeface object.|
+| [Typeface](#typeface) | **Typeface** object.|
 
 **Error codes**
 
@@ -4855,13 +4284,13 @@ Constructs a typeface from a file, which must be stored in the **resources/rawfi
 
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| rawfile | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)           | Yes  | Resource object corresponding to the file. Currently, only resource objects referenced in `$rawfile` format are supported. The corresponding format is `$rawfile('filePath')`, where filePath indicates the relative path of the specified font file to the resources/rawfile directory in the project. For example, if the font file is stored in the resources/rawfile directory, the reference format is `$rawfile('HarmonyOS_Sans_Bold.ttf')`. You can also create a subdirectory and store the font file in resources/rawfile/ttf. In this case, the reference format is `$rawfile('ttf/HarmonyOS_Sans_Bold.ttf')`.|
+| rawfile | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)           | Yes  | Resource object corresponding to the file. Currently, only resource objects referenced in **$rawfile** format are supported. The corresponding format is **$rawfile('filePath')**, where **filePath** is the relative path of the file to the **resources/rawfile** directory in the project. If the file is stored in **resources/rawfile**, the reference format is **$rawfile('HarmonyOS_Sans_Bold.ttf')**. If the file is stored in a subdirectory, for example, in **resources/rawfile/ttf**, the reference format is **$rawfile('ttf/HarmonyOS_Sans_Bold.ttf')**.|
 
 **Return value**
 
 | Type  | Description                |
 | ------ | -------------------- |
-| [Typeface](#typeface) | Typeface object. In abnormal cases, a null pointer is returned.|
+| [Typeface](#typeface) | **Typeface** object. In abnormal cases, a null pointer is returned.|
 
 **Example**
 
@@ -4873,89 +4302,8 @@ class TextRenderNode extends RenderNode {
   async draw(context: DrawContext) {
     const canvas = context.canvas;
     let font = new drawing.Font();
-    const myTypeFace = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Bold.ttf'));
-    font.setTypeface(myTypeFace);
-    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-    canvas.drawTextBlob(textBlob, 60, 100);
-  }
-}
-
-```
-### makeFromFileWithArguments<sup>20+</sup>
-
-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface
-
-Constructs a typeface from the typeface file path and arguments.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description                 |
-| ----------- | ---------------------------------------- | ---- | ------------------- |
-| filePath | string           | Yes  | Path of the file. For details, see [Mappings Between Application Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
-| typefaceArguments | [TypefaceArguments](#typefacearguments20) | Yes | Typeface arguments.|
-
-**Return value**
-
-| Type  | Description                 |
-| ------ | -------------------- |
-| [Typeface](#typeface) | Typeface object. In abnormal cases, a null pointer is returned.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class TextRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    const canvas = context.canvas;
-    let font = new drawing.Font();
-    let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
-    let typeFaceArgument = new drawing.TypefaceArguments();
-    const myTypeFace = drawing.Typeface.makeFromFileWithArguments(str, typeFaceArgument);
-    font.setTypeface(myTypeFace);
-    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-    canvas.drawTextBlob(textBlob, 60, 100);
-  }
-}
-```
-
-### makeFromRawFileWithArguments<sup>20+</sup>
-
-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface
-
-Constructs a typeface from a file with typeface arguments, which must be stored in the **resources/rawfile** directory of the application project.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description                 |
-| ----------- | ---------------------------------------- | ---- | ------------------- |
-| rawfile | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)           | Yes  | Resource object corresponding to the file. Currently, only resource objects in the `$rawfile` format can be referenced. The format is `$rawfile('filePath')`, where filePath is the relative path of the specified font file to the resources/rawfile directory in the project.|
-| typefaceArguments | [TypefaceArguments](#typefacearguments20) | Yes| Typeface arguments.|
-
-**Return value**
-
-| Type  | Description                |
-| ------ | ------------------- |
-| [Typeface](#typeface) | Typeface object. In abnormal cases, a null pointer is returned.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class TextRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    const canvas = context.canvas;
-    let font = new drawing.Font();
-    let typeFaceArgument = new drawing.TypefaceArguments();
-    const myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Bold.ttf'), typeFaceArgument);
-    font.setTypeface(myTypeFace);
+    const mytypeface = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Bold.ttf'));
+    font.setTypeface(mytypeface);
     const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     canvas.drawTextBlob(textBlob, 60, 100);
   }
@@ -4970,7 +4318,7 @@ Describes the attributes used for text rendering, such as size and typeface.
 
 isSubpixel(): boolean
 
-Checks whether sub-pixel rendering is used for a font.
+Checks whether sub-pixel rendering is used for this font.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -5144,7 +4492,7 @@ Enables subpixel font rendering.
 
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| isSubpixel | boolean | Yes  | Whether to enable subpixel font rendering. **true** to enable, **false** otherwise.|
+| isSubpixel | boolean | Yes  | Whether to enable subpixel font rendering. The value **true** means to enable subpixel font rendering, and **false** means the opposite.|
 
 **Error codes**
 
@@ -5175,7 +4523,7 @@ Enables emboldened fonts.
 
 | Name    | Type   | Mandatory| Description                                                 |
 | ---------- | ------- | ---- | ----------------------------------------------------- |
-| isEmbolden | boolean | Yes  | Whether to enable emboldened fonts. **true** to enable, **false** otherwise.|
+| isEmbolden | boolean | Yes  | Whether to enable emboldened fonts. The value **true** means to enable emboldened fonts, and **false** means the opposite.|
 
 **Error codes**
 
@@ -5206,7 +4554,7 @@ Enables linear font scaling.
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| isLinearMetrics | boolean | Yes  | Whether to enable linear font scaling. **true** to enable, **false** otherwise.|
+| isLinearMetrics | boolean | Yes  | Whether to enable linear font scaling. The value **true** means to enable linear font scaling, and **false** means the opposite.|
 
 **Error codes**
 
@@ -5323,7 +4671,7 @@ Obtains the typeface.
 
 | Type                 | Description  |
 | --------------------- | ------ |
-| [Typeface](#typeface) | Font.|
+| [Typeface](#typeface) | **Typeface** object.|
 
 **Example**
 
@@ -5365,7 +4713,7 @@ Measures the text width.
 
 > **NOTE**
 >
-> This API is used to measure the text width of the original string. To measure the text width after typesetting, call **measure.measureText**.
+> This API is used to measure the text width of the original string. To measure the text width after typesetting, call [measure.measureText](../apis-arkui/arkts-apis-uicontext-measureutils.md#measuretext12).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -5373,8 +4721,8 @@ Measures the text width.
 
 | Name  | Type                         | Mandatory| Description      |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | Yes  | Content of the item in the operation area.|
-| encoding | [TextEncoding](#textencoding) | Yes  | Pointer to the encoding format.|
+| text     | string                        | Yes  | Text content.|
+| encoding | [TextEncoding](#textencoding) | Yes  | Encoding format.|
 
 **Return value**
 
@@ -5605,7 +4953,7 @@ Obtains the number of glyphs represented by text.
 
 | Name  | Type                         | Mandatory| Description      |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | Yes  | Content of the item in the operation area.|
+| text     | string                        | Yes  | Text content.|
 
 **Return value**
 
@@ -5643,7 +4991,7 @@ Sets whether to request that baselines be snapped to pixels when the current can
 
 | Name         | Type   | Mandatory| Description                                      |
 | --------------- | ------- | ---- | ---------------------------------------- |
-| isBaselineSnap | boolean | Yes  | Check result. The value **true** means to request that baselines be snapped to pixels, and **false** means the opposite.|
+| isBaselineSnap | boolean | Yes  | Whether to request that baselines be snapped to pixels. The value **true** means to request that baselines be snapped to pixels, and **false** means the opposite.|
 
 **Error codes**
 
@@ -5758,7 +5106,7 @@ Sets whether to forcibly use auto hinting, that is, whether to always hint glyph
 
 | Name  | Type  | Mandatory| Description            |
 | -------- | ------ | ---- | ---------------- |
-| isForceAutoHinting | boolean | Yes  | Check result. The value **true** means to forcibly use auto hinting, and **false** means the opposite.|
+| isForceAutoHinting | boolean | Yes  | Whether to forcibly use auto hinting. The value **true** means to forcibly use auto hinting, and **false** means the opposite.|
 
 **Error codes**
 
@@ -6071,7 +5419,7 @@ console.info("font is theme font followed: " + font.isThemeFontFollowed());
 
 ## FontMetricsFlags<sup>12+</sup>
 
-Enumerates the font measurement flags, which is used to specify whether a field in the [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) struct is valid.
+Enumerates the font measurement flags, which is used to specify whether a field in the font measurement information is valid.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -6089,24 +5437,24 @@ Describes the attributes that describe the font size and layout. A typeface has 
 
 **System capability**: SystemCapability.Graphics.Drawing
 
-| Name   | Type  | Read-Only| Optional| Description                                                        |
+| Name   | Type  | Read Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| flags<sup>12+</sup>   | [FontMetricsFlags](#fontmetricsflags12) | No  | Yes  | Font measurement flags that are valid.       |
-| top     | number | No  | No  | Maximum distance from the baseline to the highest coordinate of the text. The value is a floating point number.                        |
-| ascent  | number | No  | No  | Distance from the baseline to the highest coordinate of the text. The value is a floating point number.                            |
-| descent | number | No  | No  | Distance from the baseline to the lowest coordinate of the text. The value is a floating point number.                            |
-| bottom  | number | No  | No  | Maximum distance from the baseline to the lowest coordinate of the text. The value is a floating point number.                        |
-| leading | number | No  | No  | Interline spacing, that is, the distance from the descent of one line of text to the ascent of the next line. The value is a floating point number.|
-| avgCharWidth<sup>12+</sup> | number | No  | Yes  | Average character width.                            |
-| maxCharWidth<sup>12+</sup> | number | No  | Yes  | Maximum character width.                            |
-| xMin<sup>12+</sup> | number | No   | Yes  | Horizontal distance from the leftmost edge of any glyph bounding box to the origin. This value is usually less than 0, indicating the minimum horizontal coordinate across all glyph bounding boxes.               |
-| xMax<sup>12+</sup> | number | No  | Yes  | Horizontal distance from the rightmost edge of any glyph bounding box to the origin. The value is a positive number, indicating the maximum horizontal coordinate across all glyph bounding boxes.       |
-| xHeight<sup>12+</sup> | number | No  | Yes  | Height of the lowercase letter x. The value is usually a negative value.                    |
-| capHeight<sup>12+</sup> | number | No  | Yes  | Height of a capital letter. The value is usually a negative value.                     |
-| underlineThickness<sup>12+</sup> | number | No  | Yes  | Thickness of the underline.                                         |
-| underlinePosition<sup>12+</sup>  | number | No  | Yes  | Vertical distance from the baseline to the top of the underline. The value is usually a positive number.            |
-| strikethroughThickness<sup>12+</sup>  | number | No  | Yes  | Thickness of the strikethrough.   |
-| strikethroughPosition<sup>12+</sup>  | number | No  | Yes  | Vertical distance from the baseline to the bottom of the strikethrough. The value is usually a negative value.        |
+| flags<sup>12+</sup>   | [FontMetricsFlags](#fontmetricsflags12) | Yes  | Yes  | Font measurement flags that are valid.       |
+| top     | number | Yes  | No  | Maximum distance from the baseline to the highest coordinate of the text. The value is a floating point number.                        |
+| ascent  | number | Yes  | No  | Distance from the baseline to the highest coordinate of the text. The value is a floating point number.                            |
+| descent | number | Yes  | No  | Distance from the baseline to the lowest coordinate of the text. The value is a floating point number.                            |
+| bottom  | number | Yes  | No  | Maximum distance from the baseline to the lowest coordinate of the text. The value is a floating point number.                        |
+| leading | number | Yes  | No  | Interline spacing, that is, the distance from the descent of one line of text to the ascent of the next line. The value is a floating point number.|
+| avgCharWidth<sup>12+</sup> | number | Yes  | Yes  | Average character width.                            |
+| maxCharWidth<sup>12+</sup> | number | Yes  | Yes  | Maximum character width.                            |
+| xMin<sup>12+</sup> | number | Yes   | Yes  | Horizontal distance from the leftmost edge of any glyph bounding box to the origin. This value is usually less than 0, indicating the minimum horizontal coordinate across all glyph bounding boxes.               |
+| xMax<sup>12+</sup> | number | Yes  | Yes  | Horizontal distance from the rightmost edge of any glyph bounding box to the origin. The value is a positive number, indicating the maximum horizontal coordinate across all glyph bounding boxes.       |
+| xHeight<sup>12+</sup> | number | Yes  | Yes  | Height of the lowercase letter x. The value is usually a negative value.                    |
+| capHeight<sup>12+</sup> | number | Yes  | Yes  | Height of a capital letter. The value is usually a negative value.                     |
+| underlineThickness<sup>12+</sup> | number | Yes  | Yes  | Thickness of the underline.                                         |
+| underlinePosition<sup>12+</sup>  | number | Yes  | Yes  | Vertical distance from the baseline to the top of the underline. The value is usually a positive number.            |
+| strikethroughThickness<sup>12+</sup>  | number | Yes  | Yes  | Thickness of the strikethrough.   |
+| strikethroughPosition<sup>12+</sup>  | number | Yes  | Yes  | Vertical distance from the baseline to the bottom of the strikethrough. The value is usually a negative value.        |
 
 ## ColorFilter
 
@@ -6131,7 +5479,7 @@ Creates a **ColorFilter** object with a given color and blend mode.
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | Color filter.|
+| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
 
 **Error codes**
 
@@ -6169,7 +5517,7 @@ Creates a **ColorFilter** object with a given color and blend mode.
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | Color filter.|
+| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
 
 **Error codes**
 
@@ -6206,7 +5554,7 @@ Creates a **ColorFilter** object by combining another two color filters.
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | Color filter.|
+| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
 
 **Error codes**
 
@@ -6239,7 +5587,7 @@ Creates a **ColorFilter** object that applies the sRGB gamma curve to the RGB ch
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | Color filter.|
+| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
 
 **Example**
 
@@ -6261,7 +5609,7 @@ Creates a **ColorFilter** object that applies the RGB channels to the sRGB gamma
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | Color filter.|
+| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
 
 **Example**
 
@@ -6283,7 +5631,7 @@ Creates a **ColorFilter** object that multiplies the luma into the alpha channel
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | Color filter.|
+| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
 
 **Example**
 
@@ -6311,7 +5659,7 @@ Creates a color filter object with a 4*5 color matrix.
 
 | Type                       | Description              |
 | --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | Color filter.|
+| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
 
 **Error codes**
 
@@ -6334,35 +5682,7 @@ let matrix: Array<number> = [
 ];
 let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix);
 ```
-### createLightingColorFilter<sup>20+</sup>
 
-static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter
-
-Creates a lighting color filter. It multiplies the RGB channel values by one color and then adds another color value. The final output stays between 0 and 255.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name  | Type                                        | Mandatory| Description                           |
-| -------- | -------------------------------------------- | ---- | ------------------------------- |
-| mutColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes  | Color used for multiplication. The value is in the ARGB format, and each color channel is an integer ranging from 0 to 255. If the value is of the number type, it must be an unsigned integer in the hexadecimal ARGB format.|
-| addColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | Yes  | Color used for addition. The value is in the ARGB format, and each color channel is an integer ranging from 0 to 255. If the value is of the number type, it must be an unsigned integer in the hexadecimal ARGB format.|
-
-**Return value**
-
-| Type                       | Description               |
-| --------------------------- | ------------------ |
-| [ColorFilter](#colorfilter) | **ColorFilter** object created.|
-
-**Example**
-
-```ts
-import { common2D, drawing } from '@kit.ArkGraphics2D';
-let mulColor : common2D.Color = { alpha: 0, red: 0, green: 0, blue: 20 };
-let addColor : common2D.Color = { alpha: 0, red: 0, green: 0, blue: 125 };
-let colorFilter = drawing.ColorFilter.createLightingColorFilter(mulColor, addColor);
-```
 ## JoinStyle<sup>12+</sup>
 
 Enumerates the join styles of a pen. The join style defines the shape of the joints of a polyline segment drawn by the pen.
@@ -6371,9 +5691,9 @@ Enumerates the join styles of a pen. The join style defines the shape of the joi
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ----------- | ---- | ----------------------------------------------------------- | -------- |
-| MITER_JOIN | 0    | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.| ![MITER_JOIN](./figures/image_JoinStyle_Miter_Join.png)|
-| ROUND_JOIN | 1    | Round corner.| ![ROUND_JOIN](./figures/image_JoinStyle_Round_Join.png)|
-| BEVEL_JOIN | 2    | Beveled corner.| ![BEVEL_JOIN](./figures/image_JoinStyle_Bevel_Join.png)|
+| MITER_JOIN | 0    | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.| ![MITER_JOIN](./figures/image_JoinStyle_Miter_Join.png) |
+| ROUND_JOIN | 1    | Round corner.| ![ROUND_JOIN](./figures/image_JoinStyle_Round_Join.png) |
+| BEVEL_JOIN | 2    | Beveled corner.| ![BEVEL_JOIN](./figures/image_JoinStyle_Bevel_Join.png) |
 
 ## CapStyle<sup>12+</sup>
 
@@ -6383,9 +5703,9 @@ Enumerates the cap styles of a pen. The cap style defines the style of both ends
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | There is no cap style. Both ends of the line segment are cut off square.| ![FLAT_CAP](./figures/image_CapStyle_Flat_Cap.jpg)|
-| SQUARE_CAP | 1    | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.| ![SQUARE_CAP](./figures/image_CapStyle_Square_Cap.jpg)|
-| ROUND_CAP  | 2    | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment.| ![ROUND_CAP](./figures/image_CapStyle_Round_Cap.jpg)|
+| FLAT_CAP   | 0    | There is no cap style. Both ends of the line segment are cut off square.| ![FLAT_CAP](./figures/image_CapStyle_Flat_Cap.jpg) |
+| SQUARE_CAP | 1    | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.| ![SQUARE_CAP](./figures/image_CapStyle_Square_Cap.jpg) |
+| ROUND_CAP  | 2    | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment.| ![ROUND_CAP](./figures/image_CapStyle_Round_Cap.jpg) |
 
 ## BlurType<sup>12+</sup>
 
@@ -6395,10 +5715,10 @@ Enumerates the blur types of a mask filter.
 
 | Name  | Value| Description              | Diagram  |
 | ------ | - | ------------------ | -------- |
-| NORMAL | 0 | Both the outer edges and the inner solid parts are blurred.| ![NORMAL](./figures/image_BlueType_Normal.png)|
-| SOLID  | 1 | The inner solid part remains unchanged, while only the outer edges are blurred.| ![SOLID](./figures/image_BlueType_Solid.png)|
-| OUTER  | 2 | Only the outer edges are blurred, with the inner solid part being fully transparent.| ![OUTER](./figures/image_BlueType_Outer.png)|
-| INNER  | 3 | Only the inner solid part is blurred, while the outer edges remain sharp.| ![INNER](./figures/image_BlueType_Inner.png)|
+| NORMAL | 0 | Both the outer edges and the inner solid parts are blurred.| ![NORMAL](./figures/image_BlueType_Normal.png) |
+| SOLID  | 1 | The inner solid part remains unchanged, while only the outer edges are blurred.| ![SOLID](./figures/image_BlueType_Solid.png) |
+| OUTER  | 2 | Only the outer edges are blurred, with the inner solid part being fully transparent.| ![OUTER](./figures/image_BlueType_Outer.png) |
+| INNER  | 3 | Only the inner solid part is blurred, while the outer edges remain sharp.| ![INNER](./figures/image_BlueType_Inner.png) |
 
 ## SamplingOptions<sup>12+</sup>
 
@@ -6465,7 +5785,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## Lattice<sup>12+</sup>
 
-Lattice object. which is used to divide an image by lattice.
+Implements a lattice object, which is used to divide an image by lattice.
 
 ### createImageLattice<sup>12+</sup>
 
@@ -6602,7 +5922,7 @@ Creates a mask filter with a blur effect.
 
 | Type                     | Description               |
 | ------------------------- | ------------------ |
-| [MaskFilter](#maskfilter12) | **Maskfilter** object created.|
+| [MaskFilter](#maskfilter12) | **MaskFilter** object created.|
 
 **Error codes**
 
@@ -6628,7 +5948,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## PathDashStyle<sup>18+</sup>
 
-Enumerates the drawing styles for path effects.
+Enumerates the styles of the dashed path effect.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -7259,32 +6579,6 @@ const pen = new drawing.Pen();
 pen.setColor(0xffff0000);
 ```
 
-### setColor4f<sup>20+</sup>
-
-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
-
-Sets the color and standard color gamut for this pen. The difference between this method and [setColor](#setcolor) is that the color gamut can be set separately.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type                                                | Mandatory| Description            |
-| ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, and values below 0.0 default to 0.0.|
-| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. null indicates SRGB.|
-
-**Example**
-
-```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
-
-const pen = new drawing.Pen();
-let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
-pen.setColor4f(color4f, colorSpace);
-```
-
 ### getColor<sup>12+</sup>
 
 getColor(): common2D.Color
@@ -7308,32 +6602,6 @@ const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 const pen = new drawing.Pen();
 pen.setColor(color);
 let colorGet = pen.getColor();
-```
-
-### getColor4f<sup>20+</sup>
-
-getColor4f(): common2D.Color4f
-
-Obtains the pen color. The difference between this method and [getColor](#getcolor12) is that this method returns a floating point number.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type          | Description           |
-| -------------- | -------------- |
-|[common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Color of the pen.|
-
-**Example**
-
-```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
-
-const pen = new drawing.Pen();
-let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
-pen.setColor4f(color4f, colorSpace);
-let color = pen.getColor4f();
 ```
 
 ### getHexColor<sup>18+</sup>
@@ -7374,7 +6642,7 @@ Sets the stroke width for this pen. The value **0** is treated as an unusually t
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| width  | number | Yes  | Stroke width. The value is a floating point number. If a value less than 1 is passed in, the value **1** is used.|
+| width  | number | Yes  | Stroke width. The value is a floating point number.|
 
 **Error codes**
 
@@ -7428,7 +6696,7 @@ Enables anti-aliasing for this pen. Anti-aliasing makes the edges of the content
 
 | Name| Type   | Mandatory| Description                                             |
 | ------ | ------- | ---- | ------------------------------------------------- |
-| aa     | boolean | Yes  | Whether to enable anti-aliasing. **true** to enable, **false** otherwise.|
+| aa     | boolean | Yes  | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite.|
 
 **Error codes**
 
@@ -7536,7 +6804,7 @@ Sets a color filter for this pen.
 
 | Name| Type                       | Mandatory| Description        |
 | ------ | --------------------------- | ---- | ------------ |
-| filter | [ColorFilter](#colorfilter) | Yes  | Defines a color filter. If null is passed in, the color filter is cleared.|
+| filter | [ColorFilter](#colorfilter) | Yes  | Color filter. If null is passed in, the color filter is cleared.|
 
 **Error codes**
 
@@ -7608,7 +6876,7 @@ Sets the path effect for this pen.
 
 | Name | Type                      | Mandatory| Description        |
 | ------- | ------------------------- | ---- | ------------ |
-| effect  | [PathEffect](#patheffect12) | Yes  | Implements a path effect. If null is passed in, the path filter is cleared.|
+| effect  | [PathEffect](#patheffect12) | Yes  | Path effect. If null is passed in, the path filter is cleared.|
 
 **Error codes**
 
@@ -7680,7 +6948,7 @@ Sets a shadow layer for this pen. The shadow layer effect takes effect only when
 
 | Name | Type                      | Mandatory| Description     |
 | ------- | ------------------------- | ---- | --------- |
-| shadowLayer  | [ShadowLayer](#shadowlayer12) | Yes  | Implements a shadow layer. If null is passed in, the shadow layer is cleared.|
+| shadowLayer  | [ShadowLayer](#shadowlayer12) | Yes  | Shadow layer. If null is passed in, the shadow layer is cleared.|
 
 **Error codes**
 
@@ -7904,7 +7172,7 @@ Enables dithering for this pen. Dithering make the drawn color more realistic.
 
 | Name| Type   | Mandatory| Description                                                     |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| dither | boolean | Yes  | Whether to enable dithering. **true** to enable, **false** otherwise.|
+| dither | boolean | Yes  | Whether to enable dithering. The value **true** means to enable dithering, and **false** means the opposite.|
 
 **Error codes**
 
@@ -8132,32 +7400,6 @@ const brush = new drawing.Brush();
 brush.setColor(0xffff0000);
 ```
 
-### setColor4f<sup>20+</sup>
-
-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
-
-Sets the color and standard color gamut of a brush. The difference between this method and [setColor](#setcolor-1) is that the color gamut can be set separately. This method applies to scenarios where the color gamut needs to be set separately.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type                                                | Mandatory| Description            |
-| ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, and values below 0.0 default to 0.0.|
-| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. null indicates SRGB.|
-
-**Example**
-
-```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
-
-const brush = new drawing.Brush();
-let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
-brush.setColor4f(color4f, colorSpace);
-```
-
 ### getColor<sup>12+</sup>
 
 getColor(): common2D.Color
@@ -8181,32 +7423,6 @@ const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 const brush = new drawing.Brush();
 brush.setColor(color);
 let colorGet = brush.getColor();
-```
-
-### getColor4f<sup>20+</sup>
-
-getColor4f(): common2D.Color4f
-
-Obtains the color of a brush. The return value is a floating point number, which is applicable to scenarios where a floating point number is required.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type          | Description           |
-| -------------- | -------------- |
-| [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Color of the brush.|
-
-**Example**
-
-```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
-
-const brush = new drawing.Brush();
-let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
-brush.setColor4f(color4f, colorSpace);
-let color = brush.getColor4f();
 ```
 
 ### getHexColor<sup>18+</sup>
@@ -8355,7 +7571,7 @@ Sets a color filter for this brush.
 
 | Name| Type                       | Mandatory| Description        |
 | ------ | --------------------------- | ---- | ------------ |
-| filter | [ColorFilter](#colorfilter) | Yes  | Defines a color filter. If null is passed in, the color filter is cleared.|
+| filter | [ColorFilter](#colorfilter) | Yes  | Color filter. If null is passed in, the color filter is cleared.|
 
 **Error codes**
 
@@ -8457,7 +7673,7 @@ Sets a shadow layer for this brush. The shadow layer effect takes effect only wh
 
 | Name | Type                      | Mandatory| Description     |
 | ------- | ------------------------- | ---- | --------- |
-| shadowLayer  | [ShadowLayer](#shadowlayer12) | Yes  | Implements a shadow layer. If null is passed in, the shadow layer is cleared.|
+| shadowLayer  | [ShadowLayer](#shadowlayer12) | Yes  | Shadow layer. If null is passed in, the shadow layer is cleared.|
 
 **Error codes**
 
@@ -8659,133 +7875,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 let matrix = new drawing.Matrix();
 ```
 
-### constructor<sup>20+</sup>
-
-constructor(matrix: Matrix)
-
-Copies a matrix.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description                 |
-| ----------- | ---------------------------------------- | ---- | ------------------- |
-| matrix      | [Matrix](#matrix12)                  | Yes   | Matrix to be copied.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix = new drawing.Matrix();
-let matrix2 = new drawing.Matrix(matrix);
-```
-
-### isAffine<sup>20+</sup>
-
-isAffine(): boolean
-
-Checks whether the existing matrix is an affine matrix, which includes transformations such as translation, rotation, and scaling.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type                       | Description                 |
-| --------------------------- | -------------------- |
-| boolean | Whether the existing matrix is an affine matrix. **true** means yes; **false** otherwise.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
-let isAff = matrix.isAffine();
-console.info('isAff :', isAff);
-```
-
-### rectStaysRect<sup>20+</sup>
-
-rectStaysRect(): boolean
-
-Checks whether a rectangle stays a rectangle after being mapped by a matrix.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type                       | Description                 |
-| --------------------------- | -------------------- |
-| boolean | Whether a rectangle stays a rectangle after being mapped by a matrix. **true** means yes; false otherwise.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
-let matrix2 = new drawing.Matrix(matrix);
-let isRect = matrix2.rectStaysRect();
-console.info('isRect :', isRect);
-```
-
-### setSkew<sup>20+</sup>
-
-setSkew(kx: number, ky: number, px: number, py: number): void
-
-Sets the skew coefficients of a matrix.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description                      |
-| ----------- | ---------------------------------------- | ---- | -------------------             |
-| kx          | number                  | Yes   | Amount of tilt on the X axis. The value is a floating point number. A positive number tilts the drawing rightwards along the positive direction of the Y axis, and a negative number tilts the drawing leftwards along the positive direction of the Y axis.       |
-| ky          | number                  | Yes   | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis.       |
-| px          | number                  | Yes   | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.    |
-| py          | number                  | Yes   | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.    |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
-matrix.setSkew(2, 0.5, 0.5, 2);
-```
-
-### setSinCos<sup>20+</sup>
-
-setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
-
-Sets the matrix to rotate around the rotation center (px, py) with the specified sine and cosine values.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description           |
-| ----------- | ---------------------------------------- | ---- | ------------------- |
-| sinValue          | number                  | Yes   | Sine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is 1, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.         |
-| cosValue          | number                  | Yes   | Cosine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is 1, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.           |
-| px          | number                  | Yes   | X coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.    |
-| py          | number                  | Yes   | Y coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.   |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
-matrix.setSinCos(0, 1, 1, 0);
-```
 ### setRotation<sup>12+</sup>
 
 setRotation(degree: number, px: number, py: number): void
@@ -8951,89 +8040,11 @@ matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
 matrix1.preConcat(matrix2);
 ```
 
-### setMatrix<sup>20+</sup>
-
-setMatrix(matrix: Array\<number\> \| Matrix): void
-
-Updates the existing matrix with another matrix.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-| Name| Type                                                | Mandatory| Description            |
-| ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix | Array\<number\> \| [Matrix](#matrix12) | Yes  | Array or matrix for the update.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix1 = new drawing.Matrix();
-matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
-let matrix2 = new drawing.Matrix();
-matrix1.setMatrix(matrix2);
-```
-
-### setConcat<sup>20+</sup>
-
-setConcat(matrixA: Matrix, matrixB: Matrix): void
-
-Updates the existing matrix with the product of two matrices.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-| Name| Type                                                | Mandatory| Description            |
-| ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrixA  | [Matrix](#matrix12) | Yes  | Matrix A used for calculation.|
-| matrixB  | [Matrix](#matrix12) | Yes  | Matrix B used for calculation.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix1 = new drawing.Matrix();
-matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
-let matrix2 = new drawing.Matrix();
-matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
-matrix1.setConcat(matrix2, matrix1);
-```
-
-### postConcat<sup>20+</sup>
-
-postConcat(matrix: Matrix): void
-
-Right-multiply the existing matrix by another matrix.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-| Name| Type                                                | Mandatory| Description            |
-| ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix | [Matrix](#matrix12) | Yes  | Matrix used for calculation.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix = new drawing.Matrix();
-if (matrix.isIdentity()) {
-  console.info("matrix is identity.");
-} else {
-  console.info("matrix is not identity.");
-}
-let matrix1 = new drawing.Matrix();
-matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
-let matrix2 = new drawing.Matrix();
-matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
-matrix1.postConcat(matrix2);
-```
-
 ### isEqual<sup>12+</sup>
 
 isEqual(matrix: Matrix): Boolean
 
-Checks whether two **OH_Drawing_Matrix** objects are equal.
+Checks whether this matrix is equal to another matrix.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -9121,7 +8132,7 @@ if (matrix1.invert(matrix2)) {
 
 isIdentity(): Boolean
 
-Checks whether an **OH_Drawing_Matrix** object is an identity matrix.
+Checks whether this matrix is an identity matrix.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -9148,7 +8159,7 @@ if (matrix.isIdentity()) {
 
 getValue(index: number): number
 
-Obtains a matrix value of a given index, which ranges from 0 to 8.
+Obtains the value of a given index in this matrix. The index ranges from 0 to 8.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -9331,85 +8342,6 @@ matrix.preRotate(degree, px, py);
 console.info("matrix= "+matrix.getAll().toString());
 ```
 
-### postSkew<sup>20+</sup>
-
-postSkew(kx: number, ky: number, px: number, py: number): void
-
-Right-multiply the existing matrix by a skew transformation matrix.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description            |
-| ----------- | ---------------------------------------- | ---- | -------------------   |
-| kx          | number                  | Yes   | Amount of tilt on the X axis. The value is a floating point number. A positive number tilts the drawing rightwards along the positive direction of the Y axis, and a negative number tilts the drawing leftwards along the positive direction of the Y axis.          |
-| ky          | number                  | Yes   | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis.          |
-| px          | number                  | Yes   | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.   |
-| py          | number                  | Yes   | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.  |
-
-**Example**
-
-```ts
-import {drawing} from "@kit.ArkGraphics2D"
-let matrix = new drawing.Matrix();
-matrix.postSkew(2.0, 1.0, 2.0, 1.0);
-```
-
-### preSkew<sup>20+</sup>
-
- preSkew(kx: number, ky: number, px: number, py: number): void
-
-Left-multiply the existing matrix by a skew transformation matrix.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description            |
-| ----------- | ---------------------------------------- | ---- | -------------------   |
-| kx          | number                  | Yes   | Amount of tilt on the X axis. The value is a floating point number. A positive number tilts the drawing rightwards along the positive direction of the Y axis, and a negative number tilts the drawing leftwards along the positive direction of the Y axis.          |
-| ky          | number                  | Yes   | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis.          |
-| px          | number                  | Yes   | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.       |
-| py          | number                  | Yes   | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.       |
-
-**Example**
-
-```ts
-import {drawing} from "@kit.ArkGraphics2D"
-let matrix = new drawing.Matrix();
-matrix.preSkew(2.0, 1.0, 2.0, 1.0);
-```
-
-### mapRadius<sup>20+</sup>
-
-mapRadius(radius: number): number
-
-Returns the average radius of the ellipse formed after a circle with the specified **radius** is mapped by the existing matrix. The square of the average radius is the product of the major axis length and minor axis length of the ellipse. If the matrix contains perspective transformation, the result is meaningless.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-| Name| Type                                                | Mandatory| Description            |
-| ------ | ---------------------------------------------------- | ---- | ---------------- |
-| radius  | number | Yes  | Radius of the circle used for calculation. The value is a floating point number. The absolute value is used if the number is negative.|
-
-**Return value**
-
-| Type                       | Description                 |
-| --------------------------- | -------------------- |
-| number | Average radius after transformation.|
-
-**Example**
-
-```ts
-import {drawing} from "@kit.ArkGraphics2D"
-
-let matrix = new drawing.Matrix();
-matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
-let radius = matrix.mapRadius(10);
-console.info('radius', radius);
-```
-
 ### preScale<sup>12+</sup>
 
 preScale(sx: number, sy: number, px: number, py: number): void
@@ -9488,7 +8420,7 @@ console.info("matrix"+matrix.getAll().toString());
 
 reset(): void
 
-Resets a matrix to an identity matrix.
+Resets this matrix to an identity matrix.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -9702,31 +8634,7 @@ if (matrix.setPolyToPoly(srcPoints, dstPoints, 2)) {
 
 ## RoundRect<sup>12+</sup>
 
-Rounded rectangle.
-
-### constructor<sup>20+</sup>
-
-constructor(roundRect: RoundRect)
-
-Copies a rounded rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name        | Type                                      | Mandatory  | Description                 |
-| ----------- | ---------------------------------------- | ---- | ------------------- |
-| roundRect        | [RoundRect](#roundrect12) | Yes   |  Rounded rectangle to be copied.  |
-
-**Example**
-
-```ts
-import { common2D, drawing } from '@kit.ArkGraphics2D';
-
-let rect: common2D.Rect = {left : 100, top : 100, right : 500, bottom : 300};
-let roundRect = new drawing.RoundRect(rect, 50, 50);
-let roundRect2 = new drawing.RoundRect(roundRect);
-```
+Implements a rounded rectangle.
 
 ### constructor<sup>12+</sup>
 
@@ -9868,274 +8776,6 @@ roundRect.offset(100, 100);
 
 Describes a region, which is used to describe the region where the shape can be drawn.
 
-### constructor<sup>20+</sup>
-
-constructor()
-
-Constructs a **Region** object.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    region.setRect(200, 200, 400, 400);
-    canvas.drawRegion(region);
-    canvas.detachPen();
-  }
-}
-```
-
-### constructor<sup>20+</sup>
-
-constructor(region: Region)
-
-Copies a **Region** object.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| region     | [Region](#region12) | Yes  | Region to be copied.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    region.setRect(200, 200, 400, 400);
-    let region2 = new drawing.Region(region);
-    canvas.drawRegion(region2);
-    canvas.detachPen();
-  }
-}
-```
-
-### constructor<sup>20+</sup>
-
-constructor(left: number, top: number, right: number, bottom: number)
-
-Constructs a rectangular region.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| left   | number | Yes  | Left position of the rectangle (X coordinate of the upper left corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Top position of the rectangle (Y coordinate of the upper left corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | Right position of the rectangle (X coordinate of the lower right corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Bottom position of the rectangle (Y coordinate of the lower right corner). The value must be an integer. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region(100, 100, 200, 200);
-    canvas.drawRegion(region);
-    canvas.detachPen();
-  }
-}
-```
-
-### isEqual<sup>20+</sup>
-
-isEqual(other: Region): boolean
-
-Checks whether another region is equal to this region.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| other      | [Region](#region12) | Yes  | **Region** object.|
-
-**Return value**
-
-| Type   | Description          |
-| ------- | -------------- |
-| boolean | Check result. **true** if the objects are equal; **false** otherwise.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    let other = new drawing.Region();
-    region.setRect(100, 100, 400, 400);
-    other.setRect(150, 150, 250 ,250);
-    let flag: boolean = false;
-    flag = region.isEqual(other);
-    console.info('flag: ', flag);
-    canvas.drawRegion(region);
-    canvas.drawRegion(other);
-    canvas.detachPen();
-  }
-}
-```
-
-### isComplex<sup>20+</sup>
-
-isComplex(): boolean
-
-Checks whether this region contains multiple rectangles.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type   | Description          |
-| ------- | -------------- |
-| boolean | Check result. **true** means yes; **false** otherwise.|
-
-**Example**
-
-```ts
-import { common2D, drawing } from '@kit.ArkGraphics2D';
-import { RenderNode } from '@kit.ArkUI';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    let other = new drawing.Region();
-    region.setRect(100, 100, 200, 200);
-    region.op(new drawing.Region(220, 200, 280, 280), drawing.RegionOp.UNION);
-    let flag: boolean = false;
-    flag = region.isComplex();
-    console.info('flag :', flag);
-    canvas.drawRegion(region);
-    canvas.drawRegion(other);
-    canvas.detachPen();
-  }
-}
-```
-
-### isEmpty<sup>20+</sup>
-
-isEmpty(): boolean
-
-Checks whether the existing region is empty.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type   | Description                   |
-| ------- | --------------         |
-| boolean | Check result. **true** means yes; **false** otherwise.  |
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    let flag: boolean = region.isEmpty();
-    console.info('flag: ', flag);
-    region.setRect(100, 100, 400, 400);
-    flag = region.isEmpty();
-    console.info('flag: ', flag);
-    canvas.drawRegion(region);
-    canvas.detachPen();
-  }
-}
-```
-
-### getBounds<sup>20+</sup>
-
-getBounds(): common2D.Rect
-
-Obtains the boundaries of the existing region.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type   | Description          |
-| ------- | -------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | Bounding rectangle of this region.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let region = new drawing.Region();
-let rect = region.getBounds();
-```
-
-### getBoundaryPath<sup>20+</sup>
-
-getBoundaryPath(): Path
-
-Obtains a new path that is the boundary of the existing region.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type   | Description          |
-| ------- | -------------- |
-| [Path](#path)  | Path of the boundary of the existing region.|
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-let region = new drawing.Region();
-let path = region.getBoundaryPath();
-```
-
 ### isPointContained<sup>12+</sup>
 
 isPointContained(x: number, y: number) : boolean
@@ -10155,7 +8795,7 @@ Checks whether a point is contained in this region.
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** means yes; **false** otherwise.|
+| boolean | Check result. The value **true** means that the point is contained, and **false** means the opposite.|
 
 **Error codes**
 
@@ -10190,43 +8830,6 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-### offset<sup>20+</sup>
-
-offset(dx: number, dy: number): void
-
-Translates a region.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| dx      | number | Yes  | X offset. A positive number indicates an offset towards the positive direction of the X axis, and a negative number indicates an offset towards the negative direction of the X axis. The value is an integer.|
-| dy      | number | Yes  | Y offset. A positive number indicates an offset towards the positive direction of the Y axis, and a negative number indicates an offset towards the negative direction of the Y axis. The value is an integer.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    region.setRect(100, 100, 400, 400);
-    region.offset(10, 20);
-    canvas.drawPoint(200,200);
-    canvas.drawRegion(region);
-    canvas.detachPen();
-  }
-}
-```
-
 ### isRegionContained<sup>12+</sup>
 
 isRegionContained(other: Region) : boolean
@@ -10245,7 +8848,7 @@ Checks whether another region is contained in this region.
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** means yes; **false** otherwise.|
+| boolean | Check result. The value **true** means that the other region is contained, and **false** means the opposite.|
 
 **Error codes**
 
@@ -10358,7 +8961,7 @@ Checks whether a rectangle do not intersect with this region. Actually, this API
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** means that the two do not intersect; **false** otherwise.|
+| boolean | Check result. The value **true** means that the two do not intersect, and **false** means the opposite.|
 
 **Error codes**
 
@@ -10392,51 +8995,6 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-### quickRejectRegion<sup>20+</sup>
-
-quickRejectRegion(region: Region): boolean
-
-Checks whether the existing region does not intersect with another region. Actually, the outer rectangles of the two regions are compared to determine whether they do not intersect. Therefore, there may be an error.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| region      | [Region](#region12) | Yes  | **Region** object.|
-
-**Return value**
-
-| Type   | Description          |
-| ------- | -------------- |
-| boolean | Check result. **true** if the regions do not intersect; **false** otherwise. The value **true** is returned only if the regions intersect with each other by point or edge.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    let region2 = new drawing.Region();
-    region2.setRect(100, 100, 400, 400);
-    let flag: boolean = false;
-    flag = region.quickRejectRegion(region2);
-    console.info("region quickRejectRegion: " + flag);
-    canvas.drawRegion(region);
-    canvas.detachPen();
-  }
-}
-```
-
 ### setPath<sup>12+</sup>
 
 setPath(path: Path, clip: Region) : boolean
@@ -10456,7 +9014,7 @@ Sets a region that matches the outline of a path within the cropping area.
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Result of the setting operation. The value **true** is returned if the corked status is successfully set; otherwise, **false** is returned.|
+| boolean | Result of the setting operation. The value **true** means that the setting is successful, and **false** means the opposite.|
 
 **Error codes**
 
@@ -10488,70 +9046,6 @@ class DrawingRenderNode extends RenderNode {
     console.info("region setPath : " + flag);
     canvas.drawRegion(region);
     canvas.detachPen();
-  }
-}
-```
-
-### setRegion<sup>20+</sup>
-
-setRegion(region: Region): void
-
-Sets the existing region to another region.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                   |
-| ------ | ------ | ---- | ----------------------- |
-| region      | [Region](#region12) | Yes  | Region to be set.|
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    region.setRect(100, 100, 200, 200);
-    let region2 = new drawing.Region();
-    region2.setRegion(region);
-    canvas.drawRegion(region2);
-    canvas.detachPen();
-  }
-}
-```
-
-### setEmpty<sup>20+</sup>
-
-setEmpty(): void
-
-Set the existing region to empty.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    let region = new drawing.Region();
-    region.setRect(100, 100, 200, 200);
-    let isEmpty = region.isEmpty();
-    console.info("isEmpty :" + isEmpty);
-    region.setEmpty();
-    isEmpty = region.isEmpty();
-    console.info("isEmpty :" + isEmpty);
   }
 }
 ```
@@ -10612,7 +9106,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## TileMode<sup>12+</sup>
 
-Defines an enum for the tile modes of the shader effect.
+Enumerates the tile modes of the shader effect.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -10627,102 +9121,11 @@ Defines an enum for the tile modes of the shader effect.
 
 Implements the shader effect. After a shader effect is set for a pen or brush, the shader effect instead of the color attribute is used for drawing. In this case, the alpha value set for the pen or brush still takes effect.
 
-### createComposeShader<sup>20+</sup>
-
-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect, blendMode: BlendMode): ShaderEffect
-
-Creates a shader by blending two existing shaders in a certain way.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type                                              | Mandatory| Description          |
-| ------ | -------------------------------------------------- | ---- | -------------- |
-| dstShaderEffect  | [ShaderEffect](#shadereffect12) | Yes  | Shader that serves as the destination color in blend mode.|
-| srcShaderEffect  | [ShaderEffect](#shadereffect12) | Yes  | Shader that serves as the source color in blend mode.  |
-| blendMode  | [BlendMode](#blendmode) | Yes  | Blend mode.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| [ShaderEffect](#shadereffect12) | **ShaderEffect** object created.|
-
-**Error codes**
-
-For details about the following error code, see [Drawing and Display Error Codes](../apis-arkgraphics2d/errorcode-drawing.md).
-
-| ID| Error Message|
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
-
-**Example**
-
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF);
-let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000);
-let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
-```
-
-### createImageShader<sup>20+</sup>
-
-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode, samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect
-
-Creates a shader based on an image. You are advised not to use the function for the canvas of the capture type because it affects the performance.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type                                              | Mandatory| Description          |
-| ------ | -------------------------------------------------- | ---- | -------------- |
-| pixelmap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes  | Image object to be sampled.|
-| tileX   | [TileMode](#tilemode12)  | Yes  | Tile mode in the horizontal direction.|
-| tileY   | [TileMode](#tilemode12)  | Yes  | Tile mode in the vertical direction.|
-| samplingOptions     | [SamplingOptions](#samplingoptions12)                           | Yes  | Image sampling options.|
-| matrix | [Matrix](#matrix12) \| null | No  | (Optional) Matrix transformation applied to an image. If this parameter is left empty, no transformation is applied.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| [ShaderEffect](#shadereffect12) | **ShaderEffect** object created.|
-
-**Error codes**
-
-For details about the following error code, see [Drawing and Display Error Codes](../apis-arkgraphics2d/errorcode-drawing.md).
-
-| ID| Error Message|
-| ------- | --------------------------------------------|
-| 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
-
-**Example**
-
-```ts
-import { RenderNode } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { drawing } from '@kit.ArkGraphics2D';
-class DrawingRenderNode extends RenderNode {
-  pixelMap: image.PixelMap | null = null;
-
-  async draw(context : DrawContext) {
-    let matrix = new drawing.Matrix();
-    let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
-    if (this.pixelMap != null) {
-      let imageShader = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
-    }
-  }
-}
-```
-
 ### createColorShader<sup>12+</sup>
 
 static createColorShader(color: number): ShaderEffect
 
-Creates an **OH_Drawing_ShaderEffect** object with a single color.
+Creates a **ShaderEffect** object with a single color.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -10963,7 +9366,7 @@ Converts a color value of the **ResourceColor** type to a **common2D.Color** obj
 
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
-| resourceColor | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Yes  | Color value of the **ResourceColor** type. (All four types of inputs are supported. The following provides 13 example inputs.) The fourth type [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) only accepts the `$r('belonging.type.name')` constructor. Ensure that the resource has been defined in the main/resources/base/element directory. (app supports color, string, and integer, and sys supports only color.)|
+| resourceColor | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Yes  | Color value of the **ResourceColor** type. (All four types of inputs are supported. The following provides 13 example inputs.) The fourth type of [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) supports only the construction method **$r('belonging.type.name')**. Ensure that the resource has been defined in the **main/resources/base/element** directory. (The types **color**, **string**, and **integer** are available for the belonging **app**, whereas only the type **color** is available for the belonging **sys**.)|
 
 **Return value**
 
@@ -11041,663 +9444,3 @@ Enumerates the corner positions of a rounded rectangle.
 | TOP_RIGHT_POS         | 1    | Top right corner of the rounded rectangle.|
 | BOTTOM_RIGHT_POS      | 2    | Bottom right corner of the rounded rectangle.  |
 | BOTTOM_LEFT_POS       | 3    | Bottom left corner of the rounded rectangle.  |
-
-## RectUtils<sup>20+</sup>
-
-This module provides tools for processing rectangles.
-
-Use scenarios:
-
-1. Quickly create rectangles and get their basic features, like making a new rectangle, copying one, and obtaining its width, height, and center point.
-
-2. Calculate and adjust boundaries, such as obtaining the inclusion relationship, calculating and updating intersections and unions between rectangles, and updating boundary values.
-
-### makeEmpty<sup>20+</sup>
-
-static makeEmpty(): common2D.Rect
-
-Creates a rectangle with the top, bottom, left, and right boundary coordinates all being 0.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | Created rectangle object.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-
-let rect = drawing.RectUtils.makeEmpty();
-```
-
-### makeLtrb<sup>20+</sup>
-
-static makeLtrb(left: number, top: number, right: number, bottom: number): common2D.Rect
-
-Creates a rectangle with specified top, bottom, left, and right boundaries.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| left   | number | Yes  | X coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Y coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | X coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | Created rectangle.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-
-let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
-```
-
-### makeCopy<sup>20+</sup>
-
-static makeCopy(src: common2D.Rect): common2D.Rect;
-
-Copies a rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| src   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle to be copied.|
-
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | Created rectangle.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
-let rect2 = drawing.RectUtils.makeCopy(rect);
-console.info('rect2.left:', rect2.left);
-console.info('rect2.top: ', rect2.top);
-console.info('rect2.right: ', rect2.right);
-console.info('rect2.bottom: ', rect2.bottom);
-```
-
-### getWidth<sup>20+</sup>
-
-static getWidth(rect: common2D.Rect): number
-
-Obtains the width of a rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| number | Width of a rectangle. If the left boundary is greater than the right, the width is negative. If the left boundary is less than the right, the width is positive.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
-let width = drawing.RectUtils.getWidth(rect);
-console.info('width : ', width);
-```
-
-### getHeight<sup>20+</sup>
-
-static getHeight(rect: common2D.Rect): number
-
-Obtains the height of a rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| number | Height of the rectangle. If the top boundary is greater than the bottom, the height is negative. If the top boundary is less than the bottom, the height is positive.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
-let height = drawing.RectUtils.getHeight(rect);
-```
-
-### centerX<sup>20+</sup>
-
-static centerX(rect: common2D.Rect): number
-
-Obtains the X coordinate of the rectangle center.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| number | X coordinate of the rectangle center.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
-let x = drawing.RectUtils.centerX(rect);
-```
-
-### centerY<sup>20+</sup>
-
-static centerY(rect: common2D.Rect): number
-
-Obtains the Y coordinate of the rectangle center.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| number | Y coordinate of the rectangle center.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
-let x = drawing.RectUtils.centerY(rect);
-```
-
-### contains<sup>20+</sup>
-
-static contains(rect: common2D.Rect, other: common2D.Rect): boolean
-
-Checks whether a rectangle completely contains another rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Another rectangle object.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| boolean | Check result. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
-let rect2 = drawing.RectUtils.makeLtrb(0, 0, 40, 40);
-let isContains = drawing.RectUtils.contains(rect2, rect);
-console.info('isContains: ', isContains);
-```
-
-### contains<sup>20+</sup>
-
-static contains(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): boolean
-
-Checks whether a rectangle completely contains another rectangle (which is marked by the coordinates of the upper left and lower right corners).
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| left   | number | Yes  | X coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Y coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | X coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| boolean | Check result. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
-let isContains = drawing.RectUtils.contains(rect, 10, 20, 30, 40);
-console.info('isContains :', isContains);
-```
-
-### contains<sup>20+</sup>
-
-static contains(rect: common2D.Rect, x: number, y: number): boolean
-
-Checks whether a rectangle completely contains a specified point.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| x   | number | Yes  | X coordinate of a point. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| y    | number | Yes | Y coordinate of a point. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| boolean | Whether the rectangle completely contains the point **(x, y)**. **true** means yes; **false** otherwise. The left and top boundaries belong to the rectangle, and the right and bottom boundaries do not belong to the rectangle. An empty rectangle does not contain any point.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
-let isContains = drawing.RectUtils.contains(rect, 10, 20);
-console.info('isContains: ', isContains);
-```
-
-### inset<sup>20+</sup>
-
-static inset(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
-
-Adds the values of the left, top, right, and bottom boundaries of a specified rectangle to the input values of the left, top, right, and bottom boundaries, respectively.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| left   | number | Yes  | Value to be added to the left boundary of the rectangle (X coordinate of the upper left corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| top    | number | Yes  | Value to be added to the top boundary of the rectangle (Y coordinate of the upper left corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| right  | number | Yes  | Value to be added to the right boundary of the rectangle (X coordinate of the lower right corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| bottom | number | Yes  | Value to be added to the bottom boundary of the rectangle (Y coordinate of the lower right corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
-drawing.RectUtils.inset(rect, 10, -20, 30, 60);
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### intersect<sup>20+</sup>
-
-static intersect(rect: common2D.Rect, other: common2D.Rect): boolean
-
-Calculates the intersection of two rectangles and updates the intersection result to the rectangle represented by the first input parameter.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Original rectangle used to calculate the intersection.|
-| other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes | Another rectangle used to calculate the intersection.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| boolean |  Whether two rectangles have an intersection. **true** means yes; **false** otherwise.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
-let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
-let isIntersect = drawing.RectUtils.intersect(rect, rect2);
-console.info('isIntersect :', isIntersect);
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### isIntersect<sup>20+</sup>
-
-static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean
-
-Checks whether two rectangles intersect.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Original rectangle used to calculate the intersection.|
-| other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes | Another rectangle used to calculate the intersection.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| boolean |  Whether two rectangles have an intersection. **true** means yes; **false** otherwise. If the two rectangles only overlap on the edge or intersect at a point, **false** is returned.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
-let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
-let isIntersect = drawing.RectUtils.isIntersect(rect, rect2);
-console.info('isIntersect :', isIntersect);
-```
-
-### union<sup>20+</sup>
-
-static union(rect: common2D.Rect, other: common2D.Rect): void
-
-Calculates the union of two rectangles and updates the union result to the rectangle represented by the first input parameter. If the first input parameter is empty, the union result is updated to the rectangle represented by the second input parameter. If the second input parameter is empty, no operation is performed.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Original rectangle used to calculate the union.|
-| other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes | Another rectangle used to calculate the union.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
-let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
-drawing.RectUtils.union(rect, rect2);
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### isEmpty<sup>20+</sup>
-
-static isEmpty(rect: common2D.Rect): boolean
-
-Checks whether a rectangle is empty (the left boundary is greater than or equal to the right boundary or the top boundary is greater than or equal to the bottom boundary).
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description           |
-| ------ | ------ | ---- | --------------  |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object to be checked.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| boolean | Whether the rectangle is empty. **true** means yes; **false** otherwise.      |
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeEmpty();
-let isEmpty = drawing.RectUtils.isEmpty(rect);
-console.info('isEmpty :', isEmpty);
-let rect2 = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
-isEmpty = drawing.RectUtils.isEmpty(rect);
-console.info('isEmpty :', isEmpty);
-```
-
-### offset<sup>20+</sup>
-
-static offset(rect: common2D.Rect, dx: number, dy: number): void
-
-Translates a rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle to be translated.|
-| dx   | number | Yes   | Horizontal translation distance. The value is a floating point number. 0 indicates no translation. A negative value indicates translation to the left, and a positive value indicates translation to the right.|
-| dy    | number | Yes  | Vertical translation distance. The value is a floating point number. 0 indicates no translation. A negative number indicates upward translation, and a positive number indicates right translation.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
-drawing.RectUtils.offset(rect, 10, 20);
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### offsetTo<sup>20+</sup>
-
-static offsetTo(rect: common2D.Rect, newLeft: number, newTop: number): void
-
-Translates a rectangle to a specified position.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle to be translated.|
-| newLeft   | number | Yes  | X coordinate of the position to which the rectangle is translated. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| newTop    | number | Yes  | Y coordinate of the position to which the rectangle is translated. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(40, 40, 20, 20);
-drawing.RectUtils.offsetTo(rect, 10, 20);
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### setRect<sup>20+</sup>
-
-static setRect(rect: common2D.Rect, other: common2D.Rect): void
-
-Assigns the existing rectangle with another rectangle.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  |  Original rectangle.|
-| other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Another rectangle.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 20, 30, 40);
-let rect2 = drawing.RectUtils.makeEmpty();
-drawing.RectUtils.setRect(rect2, rect);
-console.info('rect2.left:', rect2.left);
-console.info('rect2.top: ', rect2.top);
-console.info('rect2.right: ', rect2.right);
-console.info('rect2.bottom: ', rect2.bottom);
-```
-
-### setLtrb<sup>20+</sup>
-
-static setLtrb(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
-
-Updates the top, bottom, left, and right boundary values of the existing rectangle using the input values of top, bottom, left, and right.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| left   | number | Yes  | X coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| top    | number | Yes  | Y coordinate of the upper left corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-| right  | number | Yes  | X coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point to the right of the coordinate origin, while a negative value places the point to the left.|
-| bottom | number | Yes  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the point below the coordinate origin, while a negative value places the point above the coordinate origin.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeEmpty();
-drawing.RectUtils.setLtrb(rect, 10, 20, 30, 60);
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### setEmpty<sup>20+</sup>
-
-static setEmpty(rect: common2D.Rect): void
-
-Sets the left, right, top, and bottom boundaries of the rectangle to **0**.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description           |
-| ------ | ------ | ---- | --------------  |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Empty rectangle object.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
-drawing.RectUtils.setEmpty(rect)
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### sort<sup>20+</sup>
-
-static sort(rect: common2D.Rect): void
-
-If the rectangle is reversed (that is, the left boundary is greater than the right boundary or the top boundary is greater than the bottom boundary), the top and bottom (left and right) boundary values of the rectangle are exchanged, so that the top boundary is less than the bottom boundary (the left boundary is less than the right boundary).
-
-If the rectangle is not reversed (that is, the left boundary is less than or equal to the right boundary or the top boundary is less than or equal to the bottom boundary), no operation is performed.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description           |
-| ------ | ------ | ---- | --------------  |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(20, 40, 30, 30);
-drawing.RectUtils.sort(rect);
-console.info('rect.left:', rect.left);
-console.info('rect.top: ', rect.top);
-console.info('rect.right: ', rect.right);
-console.info('rect.bottom: ', rect.bottom);
-```
-
-### isEqual<sup>20+</sup>
-
-static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean
-
-Checks whether two rectangles are equal.
-
-**System capability**: SystemCapability.Graphics.Drawing
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Original rectangle.|
-| other  | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Another rectangle.|
-
-**Return value**
-
-| Type   | Description                      |
-| ------- | ------------------------- |
-| boolean | Whether two rectangles are equal. **true** means yes; **false** otherwise.|
-
-**Example**
-
-```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
-let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
-let rect2 = drawing.RectUtils.makeEmpty();
-let isEqual = drawing.RectUtils.isEqual(rect, rect2);
-console.info('isEqual :', isEqual);
-```

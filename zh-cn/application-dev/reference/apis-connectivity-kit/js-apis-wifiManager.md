@@ -1302,13 +1302,14 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 **示例：**
 ```ts
-  import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-  wifiManager.getLinkedInfo().then(data => {
-      console.info("get wifi linked info: " + JSON.stringify(data));
-  }).catch((error) => {
-      console.error("get linked info error");
-  });
+wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
+    console.info("get wifi linked info: " + JSON.stringify(data));
+}).catch((error: Error) => {
+    console.error("get linked info error: ", error);
+});
+
 ```
 
 ## wifiManager.getLinkedInfoSync<sup>18+</sup>
@@ -1555,6 +1556,49 @@ isFeatureSupported(featureId: number): boolean
 ```
 
 
+## wifiManager.getDeviceMacAddress<sup>15+</sup>
+
+getDeviceMacAddress(): string[]
+
+获取设备的MAC地址。
+
+**需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO
+
+API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从API16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**返回值：**
+
+  | **类型** | **说明** |
+  | -------- | -------- |
+  | string[] | MAC地址。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+| 2501001  | Wi-Fi STA disabled.|
+
+**示例：**
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		let ret = wifiManager.getDeviceMacAddress();
+		console.info("deviceMacAddress:" + JSON.stringify(ret));
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+
+```
+
+
 ## wifiManager.getIpInfo<sup>9+</sup>
 
 getIpInfo(): IpInfo
@@ -1735,7 +1779,6 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 

@@ -4,22 +4,22 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 When creating a **Web** component, you can enable incognito mode for it by setting the optional parameter [incognitoMode](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) to **true**. When incognito mode is enabled, data such as cookies and cache data during web page browsing is not stored in local persistent files. This means that such data is lost when the **Web** component is destroyed.
 
 - Create a [Web](../reference/apis-arkweb/arkts-basic-components-web.md) component in incognito mode.
- 
+  
    ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
@@ -46,7 +46,7 @@ When creating a **Web** component, you can enable incognito mode for it by setti
           .onClick(() => {
             try {
               let result = this.controller.isIncognitoMode();
-              console.log('isIncognitoMode' + result);
+              console.info('isIncognitoMode' + result);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -60,18 +60,18 @@ When creating a **Web** component, you can enable incognito mode for it by setti
 In incognito mode, you can use the following APIs for geolocation information, cookies, and cache data:
 
 - Use [allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) to allow the specified origin to use the geolocation information.
-
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     origin: string = "file:///";
-
+  
     build() {
       Column() {
         Button('allowGeolocation')
@@ -90,18 +90,18 @@ In incognito mode, you can use the following APIs for geolocation information, c
   ```
 
 - Use [deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation) to clear the geolocation permission status of a specified origin.
-
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     origin: string = "file:///";
-
+  
     build() {
       Column() {
         Button('deleteGeolocation')
@@ -140,10 +140,10 @@ In incognito mode, you can use the following APIs for geolocation information, c
               // The third parameter of getAccessibleGeolocation specifies whether to obtain the geolocation permission status of the specified origin in incognito mode (true) or in non-incognito mode (false). This API uses an asynchronous callback to return the result.
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
-                  console.log('getAccessibleGeolocationAsync error: ' + JSON.stringify(error));
+                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
                   return;
                 }
-                console.log('getAccessibleGeolocationAsync result: ' + result);
+                console.info('getAccessibleGeolocationAsync result: ' + result);
               }, true);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -156,17 +156,17 @@ In incognito mode, you can use the following APIs for geolocation information, c
   ```
 
 - Use [deleteAllData](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata) to delete all data in the Web SQL Database.
-
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('deleteAllData')
@@ -248,7 +248,7 @@ In incognito mode, you can use the following APIs for geolocation information, c
             try {
               // The second parameter of fetchCookieSync specifies whether to obtain the cookie in incognito mode (true) or in non-incognito mode (false).
               let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', true);
-              console.log("fetchCookieSync cookie = " + value);
+              console.info("fetchCookieSync cookie = " + value);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -305,7 +305,7 @@ In incognito mode, you can use the following APIs for geolocation information, c
           .onClick(() => {
             // The parameter of existCookie specifies whether to check for cookies in incognito mode (true) or in non-incognito mode (false).
             let result = webview.WebCookieManager.existCookie(true);
-            console.log("result: " + result);
+            console.info("result: " + result);
           })
         Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
       }
@@ -314,16 +314,16 @@ In incognito mode, you can use the following APIs for geolocation information, c
   ```
 
 - Use [clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11) to clear all cookies.
-
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('clearAllCookiesSync')

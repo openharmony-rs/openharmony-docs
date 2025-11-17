@@ -9,6 +9,11 @@
 SQLite is a lightweight, embedded, serverless relational database management system. Its core advantage is that the entire database is stored in a single file, without the need for an independent server process. It supports cross-platform operation and is widely used in mobile applications, embedded devices, and desktop software.
 
 This debugging tool implements operations on the SQLite database based on the hdc command. It provides an efficient way to manage the SQLite database through the CLI, which is applicable to quick database operations and verification in the development, debugging, and O&M phases.
+<!--RP1-->
+>**NOTE**
+>
+>The SQLite debugging tool is available since OpenHarmony 6.0.
+<!--RP1End-->
 
 ## Environment Requirements
 

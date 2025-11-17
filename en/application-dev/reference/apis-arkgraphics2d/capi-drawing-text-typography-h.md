@@ -59,6 +59,9 @@ This file declares the functions related to typography in the drawing module.
 | [OH_Drawing_TextHeightBehavior](#oh_drawing_textheightbehavior) | - | Enumerates the text height modifier patterns.|
 | [OH_Drawing_TextStyleType](#oh_drawing_textstyletype) | - | Enumerates the text style types.|
 | [OH_Drawing_TextVerticalAlignment](#oh_drawing_textverticalalignment) | OH_Drawing_TextVerticalAlignment | Enumerates the vertical alignment modes.|
+| [OH_Drawing_LineHeightStyle](#oh_drawing_lineheightstyle) | OH_Drawing_LineHeightStyle | Enumerates the scaling base styles of the line height. The default style is **TEXT_LINE_HEIGHT_BY_FONT_SIZE**.|
+| [OH_Drawing_TextStyleAttributeId](#oh_drawing_textstyleattributeid) | OH_Drawing_TextStyleAttributeId | Enumerates the text style attributes.|
+| [OH_Drawing_TypographyStyleAttributeId](#oh_drawing_typographystyleattributeid) | OH_Drawing_TypographyStyleAttributeId | Enumerates the typography style attributes.<br>For the common attributes of the typography styles and text styles, you are advised to use the text style attributes, which can be obtained from [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).|
 
 ### Functions
 
@@ -272,6 +275,14 @@ This file declares the functions related to typography in the drawing module.
 | [OH_Drawing_TypographyStyle* OH_Drawing_CopyTypographyStyle(OH_Drawing_TypographyStyle* style)](#oh_drawing_copytypographystyle) | Creates a copy of an existing paragraph style object.|
 | [OH_Drawing_TextStyle* OH_Drawing_CopyTextStyle(OH_Drawing_TextStyle* style)](#oh_drawing_copytextstyle) | Creates a copy of an existing text style object.|
 | [OH_Drawing_TextShadow* OH_Drawing_CopyTextShadow(OH_Drawing_TextShadow* shadow)](#oh_drawing_copytextshadow) | Creates a copy of an existing text shadow object.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](#oh_drawing_settextstyleattributedouble) | Sets the text style attribute of the **double** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)](#oh_drawing_gettextstyleattributedouble) | Obtains the text style attribute of the **double** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](#oh_drawing_settextstyleattributeint) | Sets the text style attribute of the **int** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)](#oh_drawing_gettextstyleattributeint) | Obtains the text style attribute of the **int** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](#oh_drawing_settypographystyleattributedouble) | Sets the typography style attribute of the **double** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)](#oh_drawing_gettypographystyleattributedouble) | Obtains the typography style attribute of the **double** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](#oh_drawing_settypographystyleattributeint) | Sets the typography style attribute of the **int** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | Obtains the typography style attribute of the **int** type.|
 
 ## Enum Description
 
@@ -637,6 +648,62 @@ Enumerates the text style types.
 | TEXT_STYLE_DECORATIONS | Text decoration style.|
 | TEXT_STYLE_LETTER_SPACING | Text letter spacing style.|
 | TEXT_STYLE_WORD_SPACING | Text word spacing style.|
+
+### OH_Drawing_LineHeightStyle
+
+```
+enum OH_Drawing_LineHeightStyle
+```
+
+**Description**
+
+Enumerates the scaling base styles of the line height. The default style is **TEXT_LINE_HEIGHT_BY_FONT_SIZE**.
+
+**Since**: 21
+
+| Value| Description|
+| -- | -- |
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | Uses the font size as the scaling base.<br>Formula for calculating the line height: FontSize x FontHeight.<br>**FontSize** can be obtained from the [OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize) API.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | Uses the font height as the scaling base.<br>Formula for calculating the line height: FontHeight x FontHeight.<br>The font height is obtained after the text is shaped using the font file.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
+
+### OH_Drawing_TextStyleAttributeId
+
+```
+enum OH_Drawing_TextStyleAttributeId
+```
+
+**Description**
+
+Enumerates the text style attributes.
+
+**Since**: 21
+
+| Value| Description|
+| -- | -- |
+| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | Maximum line height.<br>If line height scaling is enabled, the maximum line height takes effect only when **FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the positive part of a single-precision floating point number. By default, it equals the maximum possible value for such a number.|
+| TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when **FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**.|
+| TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle).|
+| TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | Font width.|
+
+### OH_Drawing_TypographyStyleAttributeId
+
+```
+enum OH_Drawing_TypographyStyleAttributeId
+```
+
+**Description**
+
+Enumerates the typography style attributes.<br>For the common attributes of the typography styles and text styles, you are advised to use the text style attributes, which can be obtained from [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).
+
+**Since**: 21
+
+| Value| Description|
+| -- | -- |
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM = 0 | Maximum line height.<br>If line height scaling is enabled, the maximum line height takes effect only when **FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the positive part of a single-precision floating point number.|
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when **FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**.|
+| TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | Interline spacing.<br>**lineSpacing** is not restricted by the maximum and minimum line heights.<br>By default, line spacing is added to the last line.<br>You can set **textHeightBehavior** to **DISABLE_LAST_ASCENT** in [OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior) to disable the line spacing of the last line.<br>The default value is **0**.|
+| TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle).|
+| TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | Font width.|
 
 
 ## Function Description
@@ -2379,7 +2446,7 @@ Sets the ellipsis style for a text style.
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the **OH_Drawing_TextStyle** object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| int ellipsisModal | Sets the ellipsis style. For details about the available options, see [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal).|
+| int ellipsisModal | Ellipsis style. For details about the available options, see [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal).|
 
 ### OH_Drawing_SetTypographyTextBreakStrategy()
 
@@ -4660,7 +4727,7 @@ Reclaims the memory occupied by the font families.
 
 | Name| Description|
 | -- | -- |
-| char** fontFamilies | Pointer to the font families.|
+| char** fontFamilies | Double pointer to the font families.|
 | size_t fontFamiliesNum | Number of font families.|
 
 ### OH_Drawing_TypographyTextlineStyleGetFontSize()
@@ -5623,7 +5690,7 @@ void OH_Drawing_SetTypographyVerticalAlignment(OH_Drawing_TypographyStyle* style
 
 **Description**
 
-Sets the vertical alignment mode of the text.
+Vertical alignment mode of the text.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -5716,3 +5783,227 @@ Creates a copy of an existing text shadow object.
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md)* | Pointer to the copied [OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md) object. If a null pointer is returned, the creation fails. The possible cause is that no memory is available or **shadow** is a null pointer. Release this pointer by calling [OH_Drawing_DestroyTextShadow](capi-drawing-text-typography-h.md#oh_drawing_destroytextshadow) when this object is no longer needed.|
+
+### OH_Drawing_SetTextStyleAttributeDouble()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)
+```
+
+**Description**
+
+Sets the text style attribute of the **double** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Text style attribute ID.|
+| double value | Text style attribute value.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.<br>**OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** if the input value exceeds the value range of the attribute to be set.|
+
+### OH_Drawing_GetTextStyleAttributeDouble()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)
+```
+
+**Description**
+
+Obtains the text style attribute of the **double** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Text style attribute ID.|
+| double* value | Pointer to the attribute of the **double** type. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_SetTextStyleAttributeInt()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)
+```
+
+**Description**
+
+Sets the text style attribute of the **int** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Text style attribute ID.|
+| int value | Attribute value to set.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.<br>**OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** if the input value exceeds the value range of the attribute to be set.|
+
+### OH_Drawing_GetTextStyleAttributeInt()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)
+```
+
+**Description**
+
+Obtains the text style attribute of the **int** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Text style attribute ID.|
+| int* value | Pointer to the attribute of the **int** type. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_SetTypographyStyleAttributeDouble()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)
+```
+
+**Description**
+
+Sets the typography style attribute of the **double** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Attribute ID of the text style.|
+| double value | Attribute value to set.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.<br>**OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** if the input value exceeds the value range of the attribute to be set.|
+
+### OH_Drawing_GetTypographyStyleAttributeDouble()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)
+```
+
+**Description**
+
+Obtains the typography style attribute of the **double** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Attribute ID of the text style.|
+| double* value | Pointer to the attribute of the **double** type. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_SetTypographyStyleAttributeInt()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)
+```
+
+**Description**
+
+Sets the typography style attribute of the **int** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Attribute ID of the text style.|
+| int value | Attribute value to set.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.<br>**OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** if the input value exceeds the value range of the attribute to be set.|
+
+### OH_Drawing_GetTypographyStyleAttributeInt()
+
+```
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)
+```
+
+**Description**
+
+Obtains the typography style attribute of the **int** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | Attribute ID of the text style.|
+| int* value | Pointer to the attribute of the **int** type. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|

@@ -177,7 +177,7 @@ backDisplaySync?.start()
 > **NOTE**
 >
 > The **start()** API associates a **DisplaySync** object with a UI instance and window. If the start operation is performed on a non-UI page or in an asynchronous callback, the context of the current UI may not be obtained, causing the API call to fail and consequently the subscription function to fail.
-> You can use the [runScopedTask](../apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask) API of UIContext to specify the UI context where the start() API is executed.
+> Therefore, you can use [runScopedTask](../apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask) of **UIContext** to specify the UI context for executing the **start()** API.
 
 **Example**
 

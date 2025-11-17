@@ -1,12 +1,16 @@
 # Native Buffer Development (C/C++)
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @li_hui180; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 ## When to Use
 
 The native buffer module provides APIs that you can use to apply for, use, and release the shared memory, and query memory properties.
-
 The following scenario is common for native buffer development:
 
-Use the native buffer APIs to create an **OH_NativeBuffer** instance, obtain memory properties, and map the corresponding ION memory to the process address space.
+* Use the native buffer APIs to create an **OH_NativeBuffer** instance, obtain memory properties, and map the corresponding ION memory to the process address space.
 
 ## Available APIs
 
@@ -20,7 +24,7 @@ Use the native buffer APIs to create an **OH_NativeBuffer** instance, obtain mem
 | OH_NativeBuffer_Unmap (OH_NativeBuffer \*buffer) | Unmaps the ION memory allocated to an **OH_NativeBuffer** instance from the process address space.| 
 | OH_NativeBuffer_GetSeqNum (OH_NativeBuffer \*buffer) | Obtains the sequence number of an **OH_NativeBuffer** instance.| 
 
-For details about the APIs, see [native_buffer](../reference/apis-arkgraphics2d/_o_h___native_buffer.md).
+For details about the APIs, see [native_buffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md).
 
 ## How to Develop
 
@@ -52,7 +56,8 @@ libnative_buffer.so
     }
     ```
    
-2. If the application needs to access the memory space of the **OH_NativeBuffer** instance, map the ION memory allocated to the instance to the process address space by calling **OH_NativeBuffer_Map**.
+2. If the application needs to access the memory space of the **OH_NativeBuffer** instance, map the ION memory allocated to the instance to the process address space
+    by calling **OH_NativeBuffer_Map**.
     ```c++
     // Map the ION memory to the process address space.
     void* virAddr = nullptr;

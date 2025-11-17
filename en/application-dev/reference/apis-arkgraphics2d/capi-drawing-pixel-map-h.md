@@ -2,9 +2,9 @@
 
 ## Overview
 
-The **drawing_pixel_map.h** file declares the functions related to the pixel map in the drawing module.
+This file declares the functions related to the pixel map in the drawing module.
 
-**Header file**: <native_drawing/drawing_pixel_map.h>
+**File to include**: <native_drawing/drawing_pixel_map.h>
 
 **Library**: libnative_drawing.so
 
@@ -12,14 +12,14 @@ The **drawing_pixel_map.h** file declares the functions related to the pixel map
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Structs
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [NativePixelMap_](capi-drawing-nativepixelmap-.md) | NativePixelMap_ | Declares the pixel map object defined by the image framework.|
-| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md) | OH_PixelmapNative | Declares the pixel map object defined by the image framework.|
+| [NativePixelMap_](capi-drawing-nativepixelmap-.md) | NativePixelMap_ | Defines a pixel map defined by the image framework.|
+| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md) | OH_PixelmapNative | Defines a pixel map defined by the image framework.|
 
 ### Functions
 
@@ -27,7 +27,7 @@ The **drawing_pixel_map.h** file declares the functions related to the pixel map
 | -- | -- |
 | [OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* nativePixelMap)](#oh_drawing_pixelmapgetfromnativepixelmap) | Obtains the pixel map defined by this module from a pixel map defined by the image framework.|
 | [OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNative* pixelmapNative)](#oh_drawing_pixelmapgetfromohpixelmapnative) | Obtains the pixel map defined by this module from a pixel map defined by the image framework.|
-| [void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)](#oh_drawing_pixelmapdissolve) | Removes the relationship between the pixel map object defined by this module and the pixel map object defined by the image framework. The relationship is established by calling [OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap) or [OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative).|
+| [void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)](#oh_drawing_pixelmapdissolve) | Removes the relationship between a pixel map defined by this module and a pixel map defined by the image framework. The relationship is established by calling [OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap) or [OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative).|
 
 ## Function Description
 
@@ -50,13 +50,13 @@ Obtains the pixel map defined by this module from a pixel map defined by the ima
 
 | Name| Description|
 | -- | -- |
-| [NativePixelMap_](capi-drawing-nativepixelmap-.md)* nativePixelMap | Pointer to the pixel map object [NativePixelMap_](capi-drawing-nativepixelmap-.md) defined by the image framework.|
+| [NativePixelMap_](capi-drawing-nativepixelmap-.md)* nativePixelMap | Pointer to a [NativePixelMap_](capi-drawing-nativepixelmap-.md) object, which is the pixel map defined by the image framework.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* | A pointer to the pixel map object [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) defined by this module. If NULL is returned, the creation fails. The possible cause is that NativePixelMap_ is NULL.|
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* | Returns the pointer to an [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object, which is the pixel map defined by this module. If NULL is returned, the creation fails. The possible failure cause is that **NativePixelMap_** is NULL.|
 
 ### OH_Drawing_PixelMapGetFromOhPixelMapNative()
 
@@ -77,13 +77,13 @@ Obtains the pixel map defined by this module from a pixel map defined by the ima
 
 | Name| Description|
 | -- | -- |
-| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md)* pixelmapNative | Pointer to the pixel map object [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md) defined by the image framework.|
+| [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md)* pixelmapNative | Pointer to a [OH_PixelmapNative](capi-drawing-oh-pixelmapnative.md) object, which is the pixel map defined by the image framework.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* | Pointer to the pixel map object [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) defined by the current module. If NULL is returned, the creation fails. The possible cause is that OH_PixelmapNative is NULL.|
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* | Returns the pointer to an [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object, which is the pixel map defined by this module. If NULL is returned, the creation fails. The possible failure cause is that **OH_PixelmapNative** is NULL.|
 
 ### OH_Drawing_PixelMapDissolve()
 
@@ -93,7 +93,7 @@ void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)
 
 **Description**
 
-Removes the relationship between the pixel map object defined by the current module and the pixel map object defined by the image framework. The relationship is established by calling [OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap) or [OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative).
+Removes the relationship between a pixel map defined by this module and a pixel map defined by the image framework. The relationship is established by calling [OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap) or [OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative).
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -103,4 +103,4 @@ Removes the relationship between the pixel map object defined by the current mod
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to the pixel map object [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md).|
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to an [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object.|

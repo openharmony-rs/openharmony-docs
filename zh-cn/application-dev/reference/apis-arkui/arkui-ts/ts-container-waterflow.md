@@ -5,7 +5,7 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 瀑布流容器，由“行”和“列”分割的单元格所组成，通过容器自身的排列规则，将不同大小的“项目”自上而下，如瀑布般紧密布局。
 
@@ -554,6 +554,10 @@ onScrollIndex(event: (first: number, last: number) => void)
 当前瀑布流显示的起始位置/终止位置的子组件发生变化时触发。瀑布流初始化时会触发一次。
 
 瀑布流显示区域上第一个子组件/最后一个组件的索引值有变化就会触发。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1227,7 +1231,7 @@ struct WaterFlowDemo {
           .onClick(() => {
             const sections: Array<SectionOptions> = this.sections.values();
             for (const value of sections) {
-              console.log(JSON.stringify(value));
+              console.info(JSON.stringify(value));
             }
             console.info('count:' + this.sections.length());
           })
@@ -1345,7 +1349,7 @@ struct WaterFlowDemo {
 
   // 组件生命周期：初始化数据和恢复上次的列数设置
   aboutToAppear() {
-    // 读取上次最后切换到到列数
+    // 读取上次最后切换到的列数
     let lastCount = AppStorage.get<number>('columnsCount');
     if (typeof lastCount != 'undefined') {
       this.columns = lastCount;
@@ -1626,7 +1630,7 @@ struct WaterFlowDemo {
 
 ### 示例7（WaterFlow组件设置和改变尾部组件）
 
-该示例通过footerContent接口，实现了WaterFlow组件设置尾部组件。通过ComponentContent的update函数更新尾部组件。
+从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过[ComponentContent](../js-apis-arkui-ComponentContent.md)的update函数更新尾部组件。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 

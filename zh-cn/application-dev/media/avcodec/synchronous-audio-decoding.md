@@ -350,7 +350,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    需开发者填充完整的输入数据后调用。
 
-   结束时需要对flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
     ```c++
     bool inputFinished = false;

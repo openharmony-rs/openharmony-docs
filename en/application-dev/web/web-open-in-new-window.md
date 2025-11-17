@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 The **Web** component provides the capability of opening pages in a new window. You can call [multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9) to specify whether to allow a web page to be opened in a new window. When a new window is opened in the **Web** component, the application will receive a new window event through [onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9). You need to create a window for processing the window opening request in the event callback.

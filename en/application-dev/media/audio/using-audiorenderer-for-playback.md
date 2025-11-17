@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The AudioRenderer is used to play Pulse Code Modulation (PCM) audio data. Unlike the [AVPlayer](../media/using-avplayer-for-playback.md), the AudioRenderer can perform data preprocessing before audio input. Therefore, the AudioRenderer is more suitable if you have extensive audio development experience and want to implement more flexible playback features.
 
@@ -190,6 +190,8 @@ During application development, you are advised to use [on('stateChange')](../..
     ```
 
 5. Call **release()** to release the instance.
+
+    Applications must properly manage AudioRenderer instances according to their needs, creating them as needed and releasing them promptly. This prevents excessive consumption of audio resources, which can lead to exceptions.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,13 +1,21 @@
 # Querying Assets (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 You can use [query(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquery), an asynchronous API, and [querySync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquerysync12), a synchronous API, to query assets.
 
 The following table describes the attributes of **AssetMap** for querying an asset.
->**NOTE**
+> **NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+> In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> It takes a long time to query the plaintext of the asset attribute **SECRET** due to the need of decryption. Therefore, **RETURN_TYPE** must be set to **ALL**. For other asset attributes, decryption is not required, so the query takes a short time. Therefore, **RETURN_TYPE** must be set to **ATTRIBUTES**.
 
 | Attribute Name (Tag)       | Value                                            | Mandatory | Description                                                        |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -70,21 +78,20 @@ function arrayToString(arr: Uint8Array): string {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query.
-query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL); // Return all asset information, including attributes and asset plaintext.
+query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL); // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
 try {
   asset.query(query).then((res: Array<asset.AssetMap>) => {
     for (let i = 0; i < res.length; i++) {
       // Parse the secret.
       let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
-      // Convert uint8array to string
+      // Convert Uint8Array into the string type.
       let secretStr: string = arrayToString(secret);
     }
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to query Asset. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -104,19 +111,19 @@ function stringToArray(str: string): Uint8Array {
 
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query.
-query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // Return only the attributes of the asset, that is, the result does not include the asset plaintext.
+query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // Return only the asset attributes, excluding the asset plaintext. The attributes do not need to be decrypted, so the query takes a short time.
 try {
   asset.query(query).then((res: Array<asset.AssetMap>) => {
     for (let i = 0; i < res.length; i++) {
       // Parse the attributes.
       let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+      console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
     }
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to query Asset. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -137,7 +144,6 @@ function stringToArray(str: string): Uint8Array {
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // Return only the attributes of the asset, that is, the result does not include the asset plaintext.
 query.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-query.set(asset.Tag.RETURN_OFFSET, 5); // Return results from the fifth asset that matches the search criteria.
 query.set(asset.Tag.RETURN_LIMIT, 10); // Return information about 10 assets that match the search criteria.
 query.set(asset.Tag.RETURN_ORDERED_BY, asset.Tag.DATA_LABEL_NORMAL_1); // Sort the query results by DATA_LABEL_NORMAL_1.
 try {
@@ -145,12 +151,12 @@ try {
     for (let i = 0; i < res.length; i++) {
       // Parse the attributes.
       let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+      console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
     }
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
   });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
+} catch (err) {
+  console.error(`Failed to query Asset. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

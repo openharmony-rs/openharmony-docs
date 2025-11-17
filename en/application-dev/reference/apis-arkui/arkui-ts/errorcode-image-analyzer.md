@@ -1,4 +1,10 @@
 # AI Image Analyzer Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -22,7 +28,7 @@ An unsupported API is called.
 
 N/A
 
-## 110002 AI Image Analysis Already In Progress
+## 110002 AI Image Analysis Already in Progress
 
 **Error Message**
 

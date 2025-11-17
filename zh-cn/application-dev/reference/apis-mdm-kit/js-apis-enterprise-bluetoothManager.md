@@ -69,7 +69,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -84,7 +84,7 @@ try {
 
 addAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
-添加蓝牙设备可用名单。添加蓝牙设备可用名单后当前设备仅允许连接该名单下的蓝牙设备。
+添加蓝牙设备可用名单。添加蓝牙设备可用名单后当前设备仅允许连接该名单下的蓝牙设备。建议添加到数组中的MAC地址符合蓝牙MAC规范（例如：00:1A:2B:3C:4D:5E）。
 
 以下情况下，通过本接口添加蓝牙设备可用名单，会报策略冲突：
 
@@ -126,7 +126,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -178,7 +178,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -235,7 +235,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(wantTemp);
@@ -249,7 +249,7 @@ try {
 
 addDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): void
 
-添加蓝牙设备禁用名单。添加禁用名单后当前设备不允许连接该名单下的蓝牙设备。
+添加蓝牙设备禁用名单。添加禁用名单后当前设备不允许连接该名单下的蓝牙设备。建议添加到数组中的MAC地址符合蓝牙MAC规范（例如：00:1A:2B:3C:4D:5E）。
 
 以下情况下，通过本接口添加蓝牙设备禁用名单，会报策略冲突：
 
@@ -289,7 +289,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 //需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -339,7 +339,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 //需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -394,7 +394,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     let result: Array<string> = bluetoothManager.getDisallowedBluetoothDevices(wantTemp);
@@ -457,7 +457,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     bluetoothManager.turnOnBluetooth(wantTemp);
@@ -506,7 +506,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     bluetoothManager.turnOffBluetooth(wantTemp);
@@ -555,7 +555,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let accountId: number = 100;
@@ -607,7 +607,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let accountId: number = 100;
@@ -664,7 +664,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let accountId: number = 100;

@@ -8,9 +8,9 @@
 
 ## Overview
 
-The **drawing_types.h** file declares the data types of the canvas, brush, pen, bitmap, and path used to draw 2D graphics.
+This file declares the data types of the canvas, brush, pen, bitmap, and path used to draw 2D graphics.
 
-**Header file**: <native_drawing/drawing_types.h>
+**File to include**: <native_drawing/drawing_types.h>
 
 **Library**: libnative_drawing.so
 
@@ -18,7 +18,7 @@ The **drawing_types.h** file declares the data types of the canvas, brush, pen, 
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Structs
 
@@ -48,13 +48,13 @@ The **drawing_types.h** file declares the data types of the canvas, brush, pen, 
 | [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md) | OH_Drawing_MaskFilter | Defines a struct for a mask filter.|
 | [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md) | OH_Drawing_ColorFilter | Defines a struct for a color filter, which is used to convert a color into a new one.|
 | [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) | OH_Drawing_Font | Defines a struct for a font.|
-| [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md) | OH_Drawing_FontFeatures | Defines a struct for font features, which are typesetting rules within a font that determine how glyphs look, For example, ligatures, alternative glyphs, and superscripts and subscripts.|
+| [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md) | OH_Drawing_FontFeatures | Defines a struct for font features, which are typesetting rules within a font that determine how glyphs look, such as ligatures, alternates, and superscripts/subscripts.|
 | [OH_Drawing_MemoryStream](capi-drawing-oh-drawing-memorystream.md) | OH_Drawing_MemoryStream | Defines a struct for a memory stream.|
 | [OH_Drawing_FontArguments](capi-drawing-oh-drawing-fontarguments.md) | OH_Drawing_FontArguments | Defines a struct for font arguments.|
 | [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) | OH_Drawing_Typeface | Defines a struct for a typeface.|
 | [OH_Drawing_TextBlob](capi-drawing-oh-drawing-textblob.md) | OH_Drawing_TextBlob | Defines a struct for a text blob, an immutable container that holds multiple texts. Each text blob consists of glyphs and position.|
 | [OH_Drawing_Image](capi-drawing-oh-drawing-image.md) | OH_Drawing_Image | Defines a struct for an image that describes a two-dimensional pixel array.|
-| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | Defines an image filter, which is used to operate all color bits that constitute image pixels.|
+| [OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md) | OH_Drawing_ImageFilter | Defines a struct for an image filter, which is used to operate all color bits that make up image pixels.|
 | [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) | OH_Drawing_SamplingOptions | Defines a struct for sampling options, which describe the sampling methods for images and bitmaps.|
 | [OH_Drawing_TextBlobBuilder](capi-drawing-oh-drawing-textblobbuilder.md) | OH_Drawing_TextBlobBuilder | Defines a struct for a text blob builder, which is used to build a text blob.|
 | [OH_Drawing_GpuContext](capi-drawing-oh-drawing-gpucontext.md) | OH_Drawing_GpuContext | Defines a struct for the GPU context, which is used to describe the GPU backend context.|
@@ -71,7 +71,7 @@ The **drawing_types.h** file declares the data types of the canvas, brush, pen, 
 | -- | -- | -- |
 | [OH_Drawing_ColorFormat](#oh_drawing_colorformat) | OH_Drawing_ColorFormat | Defines an enum for the storage formats of bitmap pixels.|
 | [OH_Drawing_AlphaFormat](#oh_drawing_alphaformat) | OH_Drawing_AlphaFormat | Defines an enum for the alpha formats of bitmap pixels.|
-| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | Defines an enum for blend modes. In blend mode, each operation generates a new color from two colors (source color and destination color).<br>These operations are the same for the red, green, and blue color channels (the alpha channel follows a different rule).<br>For simplicity, the following description uses the alpha channel as an example rather than naming each channel individually. For brevity, the following abbreviations are used:<br>s: source<br>d: destination<br>**sa**: source alpha.<br>**da**: destination alpha.<br>The following abbreviations are used in the calculation result:<br>r: If the four channels are calculated in the same way, r is used.<br>**ra**: used when only the alpha channel is manipulated.<br>rc: If three color channels are operated, rc is used.|
+| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | Defines an enum for blend modes. In blend mode, each operation generates a new color from two colors (source color and destination color).<br>These operations are the same for the red, green, and blue color channels (the alpha channel follows a different rule).<br>For simplicity, the following description uses the alpha channel as an example rather than naming each channel individually. For brevity, the following abbreviations are used:<br>**s**: source.<br>**d**: destination.<br>**sa**: source alpha.<br>**da**: destination alpha.<br>The following abbreviations are used in the calculation result:<br>**r**: The calculation methods of the four channels are the same.<br>**ra**: used when only the alpha channel is manipulated.<br>**rc**: used when the other three color channels are manipulated.|
 | [OH_Drawing_TextEncoding](#oh_drawing_textencoding) | OH_Drawing_TextEncoding | Defines an enum for the text encoding types.|
 
 ## Enum Description
@@ -84,14 +84,14 @@ enum OH_Drawing_ColorFormat
 
 **Description**
 
-Enumerates the storage formats of bitmap pixels.
+Defines an enum for the storage formats of bitmap pixels.
 
 **Since**: 8
 
 | Value| Description|
 | -- | -- |
 | COLOR_FORMAT_UNKNOWN | Unknown format.|
-| COLOR_FORMAT_ALPHA_8 | Each pixel is represented by an 8-bit value, and the 8 bits indicate the alpha component.|
+| COLOR_FORMAT_ALPHA_8 | Each pixel is represented by 8 bits, which together indicate alpha.|
 | COLOR_FORMAT_RGB_565 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, the first 5 bits indicate red, the subsequent 6 bits indicate green, and the last 5 bits indicate blue.|
 | COLOR_FORMAT_ARGB_4444 | Each pixel is represented by 16 bits. From the most significant bit to the least significant bit, every 4 bits indicate alpha, red, green, and blue, respectively.|
 | COLOR_FORMAT_RGBA_8888 | Each pixel is represented by 32 bits. From the most significant bit to the least significant bit, every 8 bits indicate alpha, red, green, and blue, respectively.|
@@ -105,7 +105,7 @@ enum OH_Drawing_AlphaFormat
 
 **Description**
 
-Enumerates the alpha formats of bitmap pixels.
+Defines an enum for the alpha formats of bitmap pixels.
 
 **Since**: 8
 
@@ -124,7 +124,7 @@ enum OH_Drawing_BlendMode
 
 **Description**
 
-Defines an enum for blend modes. In blend mode, each operation generates a new color from two colors (source color and destination color).<br>These operations are the same for the red, green, and blue color channels (the alpha channel follows a different rule).<br>For simplicity, the following description uses the alpha channel as an example rather than naming each channel individually. For brevity, the following abbreviations are used:<br>s: source<br>d: destination<br>**sa**: source alpha.<br>**da**: destination alpha.<br>The following abbreviations are used in the calculation result:<br>r: If the calculation methods of the four channels are the same, r is used.<br>**ra**: used when only the alpha channel is manipulated.<br>**rc**: used when the other three color channels are manipulated.
+Defines an enum for blend modes. In blend mode, each operation generates a new color from two colors (source color and destination color).<br>These operations are the same for the red, green, and blue color channels (the alpha channel follows a different rule).<br>For simplicity, the following description uses the alpha channel as an example rather than naming each channel individually. For brevity, the following abbreviations are used:<br>**s**: source.<br>**d**: destination.<br>**sa**: source alpha.<br>**da**: destination alpha.<br>The following abbreviations are used in the calculation result:<br>**r**: The calculation methods of the four channels are the same.<br>**ra**: used when only the alpha channel is manipulated.<br>**rc**: used when the other three color channels are manipulated.
 
 **Since**: 11
 
@@ -144,17 +144,17 @@ Defines an enum for blend modes. In blend mode, each operation generates a new c
 | BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa).|
 | BLEND_MODE_PLUS | r = min(s + d, 1).|
 | BLEND_MODE_MODULATE | r = s * d.|
-| BLEND_MODE_SCREEN | Screen mode, r = s + d – s x d.|
+| BLEND_MODE_SCREEN | Screen mode. r = s + d - s * d.|
 | BLEND_MODE_OVERLAY | Overlay mode.|
-| BLEND_MODE_DARKEN | Darken mode. rc = s + d – max(s * da, d * sa), ra = s + (1 – sa) * d.|
-| BLEND_MODE_LIGHTEN | Lighten mode. rc = s + d – min(s * da, d * sa), ra = s + (1 – sa) * d.|
+| BLEND_MODE_DARKEN | Darken mode. rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d.|
+| BLEND_MODE_LIGHTEN | Lighten mode. rc = rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d.|
 | BLEND_MODE_COLOR_DODGE | Color dodge mode.|
 | BLEND_MODE_COLOR_BURN | Color burn mode.|
 | BLEND_MODE_HARD_LIGHT | Hard light mode.|
 | BLEND_MODE_SOFT_LIGHT | Soft light mode.|
-| BLEND_MODE_DIFFERENCE | Difference mode. rc = s + d – 2 * (min(s * da, d * sa)), ra = s + (1 – sa) * d.|
-| BLEND_MODE_EXCLUSION | Exclusion mode. rc = s + d – two(s * d), ra = s + (1 – sa) * d.|
-| BLEND_MODE_MULTIPLY | Multiply mode. r = s * (1 – da) + d * (1 – sa) + s * d.|
+| BLEND_MODE_DIFFERENCE | Difference mode. rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d.|
+| BLEND_MODE_EXCLUSION | Exclusion mode. rc = s + d - two(s * d), ra = s + (1 - sa) * d.|
+| BLEND_MODE_MULTIPLY | Multiply mode. r = s * (1 - da) + d * (1 - sa) + s * d.|
 | BLEND_MODE_HUE | Hue mode.|
 | BLEND_MODE_SATURATION | Saturation mode.|
 | BLEND_MODE_COLOR | Color mode.|
@@ -168,7 +168,7 @@ enum OH_Drawing_TextEncoding
 
 **Description**
 
-Enumerates the text encoding types.
+Defines an enum for the text encoding types.
 
 **Since**: 12
 

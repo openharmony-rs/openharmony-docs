@@ -1,10 +1,10 @@
-# XComponent
+# XComponent (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供用于图形绘制和媒体数据写入的Surface，XComponent负责将其嵌入到视图中，支持应用自定义Surface位置和大小。
 
@@ -21,8 +21,6 @@
 定义XComponent的具体配置参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |

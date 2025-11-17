@@ -284,7 +284,7 @@ try {
 
 off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
-Deregisters the observer used to listen for application start or exit events.
+Unregisters the observer used to listen for application start or exit events.
 
 **System API**: This is a system API.
 
@@ -407,7 +407,7 @@ try {
 
 getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
-Obtains applications that are running in the foreground. This API uses an asynchronous callback to return the result. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md).
+Obtains applications that are running in the foreground. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -459,7 +459,7 @@ try {
 
 getForegroundApplications(): Promise\<Array\<AppStateData>>
 
-Obtains applications that are running in the foreground. This API uses a promise to return the result. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md).
+Obtains applications that are running in the foreground. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -1221,7 +1221,7 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-Checks whether an application is running. This API uses a promise to return the result.
+Checks whether the application with the specified bundle name is running across all users. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1239,7 +1239,7 @@ Checks whether an application is running. This API uses a promise to return the 
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<boolean> | Promise used to return the result. **true** if the application is running, **false** otherwise.|
+| Promise\<boolean> | Promise used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 
@@ -1271,7 +1271,7 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-Checks whether an application is running. This API uses an asynchronous callback to return the result.
+Checks whether the application with the specified bundle name is running across all users. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1283,8 +1283,8 @@ Checks whether an application is running. This API uses an asynchronous callback
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| bundleName    | string   | Yes   | Bundle name of the shared library.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** if the application is running, **false** otherwise.|
+| bundleName    | string   | Yes   | Bundle name.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 
@@ -1461,7 +1461,7 @@ try {
 
 getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
-Obtains the information about running applications in multi-app mode. This API uses a promise to return the result. The multi-app mode means that an application can be simultaneously logged in with different accounts on the same device.
+Obtains the information about running applications in multi-app mode. The multi-app mode means that an application can be simultaneously logged in with different accounts on the same device. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -1710,7 +1710,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 >
 >- To support keep-alive, **mainElement** in the [module.json5](../../quick-start/module-configuration-file.md) file of the application must be a UIAbility. The system initiates the keep-alive operation only when this mainElement has been launched.
 >- On 2-in-1 devices, the application must appear in the status bar within 5 seconds of launch. Otherwise, the system revokes the application's keep-alive status and terminate the restarted process.
->- When the kept-alive application process exits, the system attempts to restart it. If three consecutive restart attempts fail, the application's keep-alive status is canceled.
+>- When the kept-alive application process exits, the system attempts to restart it. If three consecutive restart attempts fail, the system stops restarting the process.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -1726,7 +1726,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 | -------- | -------- | -------- | -------- |
 | bundleName    | string   | Yes   | Bundle name.|
 | userId    | number   | Yes   | User ID.|
-| enable    | boolean   | Yes   | Whether to keep the application alive or cancel its keep-alive status. **true** to keep the application alive,**false** otherwise.|
+| enable    | boolean   | Yes   | Whether to keep the application alive or cancel its keep-alive status. **true** to keep the application alive, **false** otherwise.|
 
 **Return value**
 
@@ -1776,11 +1776,13 @@ try {
 getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
 
 Obtains information about a specified type of keep-alive application of a user. The application information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14).
-This API uses a promise to return the result. Currently, this API takes effect only on 2-in-1 devices.
+This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1835,11 +1837,13 @@ try {
 
 killProcessesInBatch(pids: Array\<number>): Promise\<void>
 
-Kill processes in batches. Currently, this API takes effect only on 2-in-1 devices.
+Kills processes in batches.
 
 **Required permissions**: ohos.permission.KILL_APP_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1847,7 +1851,7 @@ Kill processes in batches. Currently, this API takes effect only on 2-in-1 devic
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pids    | Array\<number>   | Yes   | IDs of the processes to kill.|
+| pids    | Array\<number>   | Yes   | Array of process IDs.|
 
 **Return value**
 
@@ -1894,12 +1898,13 @@ setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean): Promis
 Sets or cancels the keep-alive status for an AppServiceExtensionAbility. This API uses a promise to return the result.
 > **NOTE**
 >
-> - Currently, this API takes effect only on 2-in-1 devices.
 > - This API takes effect only when the application is installed under the user with **userId** of 1 and the **mainElement** field in the **module.json5** file of the entry HAP is set to **AppServiceExtensionAbility**.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1957,11 +1962,12 @@ getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 
 Obtains information about all AppServiceExtensionAbility components that are kept alive. The information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14). This API uses a promise to return the result.
 
-Currently, this API takes effect only on 2-in-1 devices.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 

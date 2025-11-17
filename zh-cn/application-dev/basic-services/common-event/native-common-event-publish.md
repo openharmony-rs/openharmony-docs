@@ -17,7 +17,7 @@
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
-|[struct CommonEvent_PublishInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#结构体)|发布公共事件时使用的公共事件属性对象。|
+|[struct CommonEvent_PublishInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-commonevent-publishinfo.md)|发布公共事件时使用的公共事件属性对象。|
 |[CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_publish)|发布公共事件。|
 |[CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_publishwithinfo)| 发布带有指定属性的公共事件。 |
 |[CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createpublishinfo)|创建公共事件属性对象。|

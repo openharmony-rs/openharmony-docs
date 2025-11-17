@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the AVRecorder to develop the audio and video recording service. The AVRecorder supports audio capture, audio encoding, video encoding, audio encapsulation, and video encapsulation. It is applicable to simple video recording scenarios and can be used to generate local media files directly.
 
@@ -29,7 +29,7 @@ Before your development, configure the following permissions for your applicatio
 
 > **NOTE**
 >
-> To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
+> To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio/video files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
 
 
 ## How to Develop
@@ -250,7 +250,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
             OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
         }
       
-        // Release the memory.
+        // 4. Release the memory.
         delete config->metadata.videoOrientation;
         delete config;
         config = nullptr;

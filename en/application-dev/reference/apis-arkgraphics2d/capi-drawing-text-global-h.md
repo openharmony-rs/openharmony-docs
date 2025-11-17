@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-Provides APIs for setting text rendering information, such as the high contrast mode.
+This file declares the functions related to global text information, for example, setting the high contrast mode for text rendering.
 
-**File to import**: <native_drawing/drawing_text_global.h>
+**File to include**: <native_drawing/drawing_text_global.h>
 
 **Library**: libnative_drawing.so
 
@@ -19,21 +19,21 @@ Provides APIs for setting text rendering information, such as the high contrast 
 
 **Related module**: [Drawing](capi-drawing.md)
 
-## Total
+## Summary
 
 ### Enumerated value
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) | OH_Drawing_TextHighContrast | Enumerates the high contrast modes for text rendering.|
-| [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) | OH_Drawing_TextUndefinedGlyphDisplay | Mode mode for displaying undefined glyphs.|
+| [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) | OH_Drawing_TextHighContrast | Enum of the high contrast modes for text rendering.|
+| [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) | OH_Drawing_TextUndefinedGlyphDisplay | Enum of the modes for displaying undefined glyphs.|
 
 ### Functions
 
 | Name| Description|
 | -- | -- |
 | [void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)](#oh_drawing_settexthighcontrast) | Sets the high contrast mode for text rendering.|
-| [void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)](#oh_drawing_settextundefinedglyphdisplay) | Controls the display mode of undefined glyphs, which affects all subsequent text rendering.|
+| [void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)](#oh_drawing_settextundefinedglyphdisplay) | Sets how undefined glyphs are displayed. The setting affects all subsequent text rendering.|
 
 ## Enum Description
 
@@ -45,15 +45,15 @@ enum OH_Drawing_TextHighContrast
 
 **Description**
 
-Enumerates the high contrast text rendering modes.
+Defines an enum of the high contrast modes for text rendering.
 
 **Since**: 20
 
 | Value| Description|
 | -- | -- |
-| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | Follow the high contrast text setting in the system settings.|
-| TEXT_APP_DISABLE_HIGH_CONTRAST | Disable the high contrast text rendering mode of the app. The priority of this mode is higher than that of the high contrast text setting in the system settings.|
-| TEXT_APP_ENABLE_HIGH_CONTRAST | Enable the high contrast text rendering mode of the app. The priority of this mode is higher than that of the high contrast text setting in the system settings.|
+| TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST | Follows the high contrast mode for text rendering in the system settings.|
+| TEXT_APP_DISABLE_HIGH_CONTRAST | Disables the high contrast mode for text rendering in the application. This mode takes precedence over the one based on system settings.|
+| TEXT_APP_ENABLE_HIGH_CONTRAST | Enables the high contrast mode for text rendering in the application. The priority of this mode is higher than the mode following the system settings.|
 
 ### OH_Drawing_TextUndefinedGlyphDisplay
 
@@ -63,7 +63,7 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 
 **Description**
 
-Enumerates the ways to display undefined glyphs.
+Defines an enum of the modes for displaying undefined glyphs.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -71,8 +71,8 @@ Enumerates the ways to display undefined glyphs.
 
 | Value| Description|
 | -- | -- |
-| TEXT_NO_GLYPH_USE_DEFAULT = 0 | Use the default glyph defined in the font file (which may be an empty box, blank, or custom symbol).|
-| TEXT_NO_GLYPH_USE_TOFU = 1 | Always use tofu blocks to display missing fonts.|
+| TEXT_NO_GLYPH_USE_DEFAULT = 0 | Uses the default glyph (which may be a blank box, space, or custom symbol) defined in the font file.|
+| TEXT_NO_GLYPH_USE_TOFU = 1 | Always uses tofu blocks to represent absent glyphs.|
 
 ## Function Description
 
@@ -84,13 +84,13 @@ void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 
 **Description**
 
-Sets the high contrast text rendering mode.
+Sets the high contrast mode for text rendering.
 
-The setting of this API takes effect for the entire process. All pages in the process share the same mode.
+The setting of this API takes effect for the entire process, and all pages in the process share the same mode.
 
-You can call this API to set the high contrast text rendering mode or enable or disable the high contrast text rendering mode by enabling or disabling the high contrast text setting in the system settings. The priority of using this API to set the high contrast text rendering mode is higher than that of using the system setting.
+You can call this API to set the high contrast mode, or enable or disable the high contrast mode by toggling the switch on the system settings screen. This API is used to set the high contrast mode for text rendering. The setting of this API takes precedence over the one based on system settings.
 
-This API does not take effect for the text self-drawing scenario of an app.
+This API does not take effect for the text drawing scenario.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -101,7 +101,7 @@ This API does not take effect for the text self-drawing scenario of an app.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) action | Enumerates the text rendering high contrast modes, which are of the [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) type.|
+| [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) action | High contrast mode for text rendering. The value is an enumerated value of the [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) type.|
 
 ### OH_Drawing_SetTextUndefinedGlyphDisplay()
 
@@ -111,7 +111,7 @@ void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDispla
 
 **Description**
 
-Controls the display of undefined glyphs, which affects all subsequent text rendering.
+Sets how undefined glyphs are displayed. The setting affects all subsequent text rendering.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -122,4 +122,4 @@ Controls the display of undefined glyphs, which affects all subsequent text rend
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) undefinedGlyphDisplay | Enumerates the display modes of undefined glyphs, which are of the [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) type.|
+| [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) undefinedGlyphDisplay | Mode of displaying undefined glyphs. The value is an enumerated value of the [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) type.|

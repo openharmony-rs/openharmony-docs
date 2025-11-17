@@ -14,6 +14,10 @@ The error codes of the file management subsystem include the following:<br>- [Ba
 
 Operation not permitted
 
+**Description**
+
+The operation is not allowed.
+
 **Possible Causes**
 
 The caller does not have the permission to access the URI or path.
@@ -32,6 +36,10 @@ The caller does not have the permission to access the URI or path.
 
 No such file or directory
 
+**Description**
+
+The file or directory does not exist.
+
 **Possible Causes**
 
 The file or directory does not exist.
@@ -45,6 +53,10 @@ Check whether the file directory exists.
 **Error Message**
 
 No such process
+
+**Description**
+
+No such process exists.
 
 **Possible Causes**
 
@@ -62,6 +74,10 @@ This error code is reported if a process does not exist.
 
 Interrupted system call
 
+**Description**
+
+The system call is interrupted.
+
 **Possible Causes**
 
 The system call is interrupted by another thread.
@@ -78,19 +94,37 @@ The system call is interrupted by another thread.
 
 I/O error
 
+**Description**
+
+I/O error.
+
 **Possible Causes**
 
-The I/O request is invalid.
+Underlying I/O error: It is usually related to hardware or driver device faults.
+
+1. Hardware fault: The device is physically damaged and I/O instructions cannot be executed.
+
+2. Communication link interruption: The link is disconnected during data transmission.
+
+3. Driver error: The driver is abnormal or the driver version is incompatible.
 
 **Solution**
 
-Make the I/O request again.
+1. Check whether the hardware is normal.
+
+2. Check whether the USB device is properly connected.
+
+3. Check and update the driver.
 
 ### 13900006 Device or Address Not Exist
 
 **Error Message**
 
 No such device or address
+
+**Description**
+
+The device or address does not exist.
 
 **Possible Causes**
 
@@ -106,6 +140,10 @@ Check that the device information or address is correct.
 
 Arg list too long
 
+**Description**
+
+The parameter list is too long.
+
 **Possible Causes**
 
 The parameter list is too long.
@@ -114,11 +152,15 @@ The parameter list is too long.
 
 Reduce the number of parameters.
 
-### 13900008 File Descriptor Corrupted
+### 13900008 Abnormal File Descriptor
 
 **Error Message**
 
 Bad file descriptor
+
+**Description**
+
+The file descriptor is abnormal.
 
 **Possible Causes**
 
@@ -138,6 +180,10 @@ Bad file descriptor
 
 No child processes
 
+**Description**
+
+No child process exists.
+
 **Possible Causes**
 
 The child process cannot be created.
@@ -152,6 +198,10 @@ Check the maximum number of processes in the system.
 
 Try again
 
+**Description**
+
+The resources are unavailable.
+
 **Possible Causes**
 
 The resources are blocked.
@@ -165,6 +215,10 @@ Request the resource again.
 **Error Message**
 
 Out of memory
+
+**Description**
+
+A memory overflow occurs.
 
 **Possible Causes**
 
@@ -181,6 +235,10 @@ A memory overflow occurs.
 **Error Message**
 
 Permission denied
+
+**Description**
+
+The permission is denied.
 
 **Possible Causes**
 
@@ -202,6 +260,10 @@ Permission denied
 
 Bad address
 
+**Description**
+
+The address is incorrect.
+
 **Possible Causes**
 
 The address is incorrect.
@@ -215,6 +277,10 @@ Check that the address is correct.
 **Error Message**
 
 Device or resource busy
+
+**Description**
+
+The device or resource is busy.
 
 **Possible Causes**
 
@@ -230,6 +296,10 @@ Request the resource again.
 
 File exists
 
+**Description**
+
+The file already exists.
+
 **Possible Causes**
 
 The file to be created already exists.
@@ -243,6 +313,10 @@ Check whether the file path is correct.
 **Error Message**
 
 Cross-device link
+
+**Description**
+
+The cross-device link is invalid.
 
 **Possible Causes**
 
@@ -258,6 +332,10 @@ Check the devices and create the link correctly.
 
 No such device
 
+**Description**
+
+The device does not exist.
+
 **Possible Causes**
 
 The device is not identified.
@@ -271,6 +349,10 @@ Check the connection to the target device.
 **Error Message**
 
 Not a directory
+
+**Description**
+
+The specified directory is invalid.
 
 **Possible Causes**
 
@@ -286,6 +368,10 @@ Check that the specified data is correct.
 
 Is a directory
 
+**Description**
+
+The specified object is a directory.
+
 **Possible Causes**
 
 The specified object is a directory.
@@ -299,6 +385,10 @@ Check that the specified data is correct.
 **Error Message**
 
 Invalid argument
+
+**Description**
+
+The parameter is invalid.
 
 **Possible Causes**
 
@@ -314,6 +404,10 @@ Check that the input parameters are valid.
 
 File table overflow
 
+**Description**
+
+Too many file descriptors are opened.
+
 **Possible Causes**
 
 The number of file descriptors opened has reached the limit.
@@ -327,6 +421,10 @@ Close the file descriptors that are no longer required.
 **Error Message**
 
 Too many open files
+
+**Description**
+
+Too many files are opened.
 
 **Possible Causes**
 
@@ -342,6 +440,10 @@ Close the files that are not required.
 
 Text file busy
 
+**Description**
+
+The text file is busy.
+
 **Possible Causes**
 
 The executable file of the program is in use.
@@ -355,6 +457,10 @@ Close the program that is being debugged.
 **Error Message**
 
 File too large
+
+**Description**
+
+The file is too large.
 
 **Possible Causes**
 
@@ -370,6 +476,10 @@ Check whether the file size exceeds the limit.
 
 No space left on device
 
+**Description**
+
+The remaining space on the device is insufficient.
+
 **Possible Causes**
 
 The device storage space is insufficient.
@@ -383,6 +493,10 @@ Clear the space of the device.
 **Error Message**
 
 Illegal seek
+
+**Description**
+
+Invalid shift.
 
 **Possible Causes**
 
@@ -398,6 +512,10 @@ Check the use of **seek()**.
 
 Read-only file system
 
+**Description**
+
+This is a read-only file system.
+
 **Possible Causes**
 
 The file system allows read operations only.
@@ -411,6 +529,10 @@ Check whether the file is read-only.
 **Error Message**
 
 Too many links
+
+**Description**
+
+There are too many links.
 
 **Possible Causes**
 
@@ -426,6 +548,10 @@ Delete the links that are no longer required.
 
 Resource deadlock would occur
 
+**Description**
+
+Resource deadlock occurs.
+
 **Possible Causes**
 
 Resource deadlock occurs.
@@ -439,6 +565,10 @@ Terminate the deadlock process.
 **Error Message**
 
 Filename too Long
+
+**Description**
+
+The file name is too long.
 
 **Possible Causes**
 
@@ -454,6 +584,10 @@ Check the file name length.
 
 Function not implemented
 
+**Description**
+
+The function is not implemented.
+
 **Possible Causes**
 
 The function is not supported by the system.
@@ -467,6 +601,10 @@ Check the system version and update the system if required.
 **Error Message**
 
 Directory not empty
+
+**Description**
+
+The directory is not empty.
 
 **Possible Causes**
 
@@ -484,6 +622,10 @@ The specified directory is not empty.
 
 Too many symbolic links encountered
 
+**Description**
+
+There are too many symbolic links.
+
 **Possible Causes**
 
 There are too many symbolic links.
@@ -497,6 +639,10 @@ Delete unnecessary symbol links.
 **Error Message**
 
 Operation would block
+
+**Description**
+
+The operation is blocked.
 
 **Possible Causes**
 
@@ -512,6 +658,10 @@ Perform the operation again.
 
 Invalid request descriptor
 
+**Description**
+
+The requested file descriptor is invalid.
+
 **Possible Causes**
 
 The requested file descriptor is invalid.
@@ -525,6 +675,10 @@ Check that the file descriptor is valid.
 **Error Message**
 
 Device not a stream
+
+**Description**
+
+The device is not a character stream.
 
 **Possible Causes**
 
@@ -540,6 +694,10 @@ Check whether the file descriptor points to a stream.
 
 No data available
 
+**Description**
+
+No data is available.
+
 **Possible Causes**
 
 The required data is not available.
@@ -553,6 +711,10 @@ Request the data again.
 **Error Message**
 
 Value too large for defined data type
+
+**Description**
+
+The variable value exceeds the maximum value specified by the data type.
 
 **Possible Causes**
 
@@ -568,6 +730,10 @@ Modify the data type.
 
 File descriptor in bad state
 
+**Description**
+
+The file descriptor is in an abnormal state.
+
 **Possible Causes**
 
 The file descriptor is corrupted.
@@ -581,6 +747,10 @@ Check that the file descriptor is valid.
 **Error Message**
 
 Interrupted system call should be restarted
+
+**Description**
+
+The interrupted system call should be restarted.
 
 **Possible Causes**
 
@@ -596,6 +766,10 @@ Invoke the system call again.
 
 Quota exceeded
 
+**Description**
+
+The disk quota is exceeded.
+
 **Possible Causes**
 
 Insufficient storage space.
@@ -609,6 +783,10 @@ Clear disk space.
 **Error Message**
 
 Unknown error
+
+**Description**
+
+Unknown error.
 
 **Possible Causes**
 
@@ -626,6 +804,10 @@ Internal error
 
 No record is locks available
 
+**Description**
+
+No lock is available.
+
 **Possible Causes**
 
 System resources are insufficient.
@@ -640,6 +822,10 @@ Wait until a lock is released and try again.
 
 Network is unreachable
 
+**Description**
+
+The network cannot be accessed.
+
 **Possible Causes**
 
 A network error occurs.
@@ -653,6 +839,10 @@ Check the network status.
 **Error Message**
 
 Connection failed
+
+**Description**
+
+The connection fails.
 
 **Possible Causes**
 
@@ -669,6 +859,10 @@ The device is abnormal, or Wi-Fi or Bluetooth is unavailable.
 **Error Message**
 
 Software caused connection abort
+
+**Description**
+
+The connection is interrupted by software.
 
 **Possible Causes**
 
@@ -774,6 +968,10 @@ Ensure that the input string is the member name of the class or interface.
 
 IPC error
 
+**Description**
+
+IPC fails.
+
 **Possible Causes**
 
 The called service does not exist.
@@ -787,6 +985,10 @@ Check whether the service is started.
 **Error Message**
 
 File system not supported
+
+**Description**
+
+The file system is not supported.
 
 **Possible Causes**
 
@@ -802,6 +1004,10 @@ Use a supported file system.
 
 Mount failed
 
+**Description**
+
+The mounting fails.
+
 **Possible Causes**
 
 The **mount** command fails.
@@ -815,6 +1021,10 @@ Remove the card and run the **mount** command again.
 **Error Message**
 
 Unmount failed
+
+**Description**
+
+The unmounting fails.
 
 **Possible Causes**
 
@@ -830,6 +1040,10 @@ Check whether the file is being used. If yes, kill the thread that uses the file
 
 Incorrect volume state
 
+**Description**
+
+The volume state is incorrect.
+
 **Possible Causes**
 
 The volume state is incorrect.
@@ -843,6 +1057,10 @@ Check whether the current volume state is correct.
 **Error Message**
 
 Failed to create the directory or node
+
+**Description**
+
+Failed to create a directory or node.
 
 **Possible Causes**
 
@@ -858,6 +1076,10 @@ Check whether the directory or node to be created already exists.
 
 Failed to delete the directory or node
 
+**Description**
+
+Failed to delete the directory or node.
+
 **Possible Causes**
 
 The specified directory or node has been deleted.
@@ -871,6 +1093,10 @@ Check whether the specified directory or node exists.
 **Error Message**
 
 No such object
+
+**Description**
+
+The operation object does not exist.
 
 **Possible Causes**
 
@@ -890,6 +1116,10 @@ No such object
 
 User ID out of range
 
+**Description**
+
+The user ID is out of range.
+
 **Possible Causes**
 
 The specified user ID is incorrect.
@@ -905,6 +1135,10 @@ Check that the user ID is correct.
 **Error Message**
 
 IPC error
+
+**Description**
+
+IPC fails.
 
 **Possible Causes**
 
@@ -922,6 +1156,10 @@ Check that the server service exists.
 
 Invalid URI
 
+**Description**
+
+The URI format is incorrect.
+
 **Possible Causes**
 
 The URI is invalid.
@@ -935,6 +1173,10 @@ Check that the URI is in correct format.
 **Error Message**
 
 Failed to obtain the server ability information
+
+**Description**
+
+Failed to obtain the server ability information.
 
 **Possible Causes**
 
@@ -950,6 +1192,10 @@ Check for basic system capability errors. <!--RP1-->Please contact the OpenHarmo
 
 Incorrect result returned by js-server
 
+**Description**
+
+An incorrect result is returned by js-server.
+
 **Possible Causes**
 
 The data returned by the server is incorrect.
@@ -963,6 +1209,10 @@ Check the data returned by the server.
 **Error Message**
 
 Failed to register notify
+
+**Description**
+
+Failed to register notify.
 
 **Possible Causes**
 
@@ -980,6 +1230,10 @@ Check that the server service exists.
 
 Failed to unregister notify
 
+**Description**
+
+Failed to remove the notify.
+
 **Possible Causes**
 
 1. The server service does not exist.
@@ -996,6 +1250,10 @@ Check that the server service exists.
 
 Failed to initialize the notify agent
 
+**Description**
+
+The notify agent fails to be initialized.
+
 **Possible Causes**
 
 The specified Notify agent has not been registered.
@@ -1009,6 +1267,10 @@ Check whether the Notify agent has been registered.
 **Error Message**
 
 Failed to notify the agent
+
+**Description**
+
+The js-server fails to notify the agent.
 
 **Possible Causes**
 

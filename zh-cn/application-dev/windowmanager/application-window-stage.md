@@ -8,11 +8,9 @@
 
 ## 基本概念
 
-- 窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。
-  沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用子窗口（弹窗、悬浮窗口等辅助窗口）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
+- 窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用的辅助窗口（子窗、全局悬浮窗等）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
 
-- 悬浮窗：全局悬浮窗口是一种特殊的应用窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
-  悬浮窗口可以用于应用退至后台后，使用小窗继续播放视频，或者为特定的应用创建悬浮球等快速入口。应用在创建悬浮窗口前，需要申请对应的权限。
+- 全局悬浮窗：全局悬浮窗是一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。全局悬浮窗可以用于应用退至后台后，使用小窗继续显示UI，例如音乐应用用于显示桌面歌词等。应用在创建全局悬浮窗前，需要申请对应的权限。
 
 
 ## 场景介绍
@@ -25,7 +23,7 @@
 
 - 体验窗口沉浸式能力
 
-- 设置悬浮窗
+- 设置全局悬浮窗
 
 - 监听窗口不可交互与可交互事件
 
@@ -120,7 +118,7 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**  
 > 以下几种场景不建议使用子窗口，建议优先考虑使用控件[overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。  
-> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于悬浮窗、分屏状态的主窗口范围，与控件一致。  
+> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。
 
@@ -502,32 +500,32 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--RP2-->
-## 设置悬浮窗<!--RP2End-->
+## 设置全局悬浮窗<!--RP2End-->
 
-悬浮窗可以在已有的任务基础上，创建一个始终在前台显示的窗口。即使创建悬浮窗的任务退至后台，悬浮窗仍然可以在前台显示。通常悬浮窗位于所有应用窗口之上，开发者可以创建悬浮窗，并对悬浮窗进行属性设置等操作。
+全局悬浮窗可以在已有的任务基础上，创建一个始终在前台显示的窗口。即使创建全局悬浮窗的任务退至后台，全局悬浮窗仍然可以在前台显示。通常全局悬浮窗位于所有应用窗口之上，开发者可以创建全局悬浮窗，并对全局悬浮窗进行属性设置等操作。
 
 
 ### 开发步骤
 
 <!--RP1-->
-**前提条件：** 创建`WindowType.TYPE_FLOAT`即悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+**前提条件：** 创建`WindowType.TYPE_FLOAT`即全局悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 <!--RP1End-->
 
-1. 创建悬浮窗。
+1. 创建全局悬浮窗。
 
-   通过`window.createWindow`接口创建悬浮窗类型的窗口。
+   通过`window.createWindow`接口创建全局悬浮窗类型的窗口。
 
-2. 对悬浮窗进行属性设置等操作。
+2. 对全局悬浮窗进行属性设置等操作。
 
-   悬浮窗窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置悬浮窗背景色、亮度等属性。
+   全局悬浮窗窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置全局悬浮窗背景色、亮度等属性。
 
-3. 加载显示悬浮窗的具体内容。
+3. 加载显示全局悬浮窗的具体内容。
 
-   通过`setUIContent`和`showWindow`接口加载显示悬浮窗的具体内容。
+   通过`setUIContent`和`showWindow`接口加载显示全局悬浮窗的具体内容。
 
-4. 销毁悬浮窗。
+4. 销毁全局悬浮窗。
 
-   当不再需要悬浮窗时，可根据具体实现逻辑，使用`destroyWindow`接口销毁悬浮窗。
+   当不再需要全局悬浮窗时，可根据具体实现逻辑，使用`destroyWindow`接口销毁全局悬浮窗。
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -536,7 +534,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // 1.创建悬浮窗。
+    // 1.创建全局悬浮窗。
     let windowClass: window.Window | null = null;
     let config: window.Configuration = {
       name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
@@ -549,7 +547,7 @@ export default class EntryAbility extends UIAbility {
       }
       console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
       windowClass = data;
-      // 2.悬浮窗窗口创建成功后，设置悬浮窗的位置、大小及相关属性等。
+      // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -566,7 +564,7 @@ export default class EntryAbility extends UIAbility {
         }
         console.info('Succeeded in changing the window size.');
       });
-      // 3.为悬浮窗加载对应的目标页面。
+      // 3.为全局悬浮窗加载对应的目标页面。
       windowClass.setUIContent("pages/page4", (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -574,7 +572,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         console.info('Succeeded in loading the content.');
-        // 3.显示悬浮窗。
+        // 3.显示全局悬浮窗。
         (windowClass as window.Window).showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
@@ -584,7 +582,7 @@ export default class EntryAbility extends UIAbility {
           console.info('Succeeded in showing the window.');
         });
       });
-      // 4.销毁悬浮窗。当不再需要悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
+      // 4.销毁全局悬浮窗。当不再需要全局悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
       windowClass.destroyWindow((err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -652,6 +650,6 @@ export default class EntryAbility extends UIAbility {
 
 - [`Window`：一多设置典型页面（Settings）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings)
 
-- [悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
+- [全局悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
 
 - [窗口管理（ArkTS）（API12）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowManage)

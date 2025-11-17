@@ -1,5 +1,12 @@
 # AppVersionInfo
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @ykzp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the application version information. You can use [getAppVersionInfo](js-apis-inner-app-context.md#contextgetappversioninfo7) to obtain the version information of the current application.
 
 > **NOTE**

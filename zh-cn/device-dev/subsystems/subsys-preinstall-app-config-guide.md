@@ -65,7 +65,7 @@ hdc file recv /system/etc/app/install_list.json .
 
 # 预置不安装列表配置
 
-[uninstall_list.json](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/uninstall_list.json)的配置优先级高于install_list.json,在该文件中配置后，则对应的预置应用不会安装。
+[uninstall_list.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/uninstall_list.json)的配置优先级高于install_list.json,在该文件中配置后，则对应的预置应用不会安装。
 
 ## 示例一
 

@@ -41,7 +41,7 @@ Defines key derivation function (KDF) APIs.
 | Name| Description|
 | -- | -- |
 | [OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)](#oh_cryptokdfparams_create) | Creates KDF parameters.|
-| [OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type,Crypto_DataBlob *value)](#oh_cryptokdfparams_setparam) | Sets KDF parameters.|
+| [OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)](#oh_cryptokdfparams_setparam) | Sets KDF parameters.|
 | [void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)](#oh_cryptokdfparams_destroy) | Destroys KDF parameters.|
 | [OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)](#oh_cryptokdf_create) | Creates a KDF instance.|
 | [OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen,Crypto_DataBlob *key)](#oh_cryptokdf_derive) | Derives a key.|

@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the AVRecorder to develop the audio or video recording service. The AVRecorder supports audio capture, audio encoding, video encoding, audio encapsulation, and video encapsulation. It is applicable to simple audio/video recording scenarios and can be used to generate local media files directly.
 

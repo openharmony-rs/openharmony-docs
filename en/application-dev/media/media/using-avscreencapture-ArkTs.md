@@ -1,4 +1,4 @@
-# Using AVScreenCaptureRecorder to Record Screens and Save Them to Files (ArkTS)
+# Using AVScreenCaptureRecorder to Record Screens and Write Them to Files (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zzs_911-->

@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件边框样式。
 

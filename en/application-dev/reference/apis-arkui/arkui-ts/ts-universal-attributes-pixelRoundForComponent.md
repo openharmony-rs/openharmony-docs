@@ -61,7 +61,7 @@ Enumerates the directions of pixel rounding at the component level.
 | start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's start edge.|
 | top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's top edge.|
 | end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's end edge.|
-| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |Yes| No| Rounding alignment for the component's bottom edge.|
+| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's bottom edge.|
 
 ## FAQs
 

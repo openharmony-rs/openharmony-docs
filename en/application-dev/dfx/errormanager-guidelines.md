@@ -15,7 +15,7 @@ After the errorManager APIs are used to listen for exceptions and errors, the ap
 
 ## Available APIs
 
-The errorManager APIs are provided by the [@ohos.app.ability.errorManager (Error Observation Management)](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md) module. You can import the APIs by referring to [How to Develop](#how-to-develop).
+The errorManager APIs are provided by the [@ohos.app.ability.errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md). You need to register the error observer before using the APIs. You can import the APIs by referring to [How to Develop](#how-to-develop).
 
 **errorManager APIs**
 

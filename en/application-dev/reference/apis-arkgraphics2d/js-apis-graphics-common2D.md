@@ -1,6 +1,6 @@
 # @ohos.graphics.common2D (Common Data Types of 2D Graphics)
 
-The common2D module defines some common data types in the 2D graphics field.
+This module defines some common data types in the 2D graphics field.
 
 > **NOTE**
 >
@@ -59,10 +59,10 @@ Describes a color in ARGB format.
 
 | Name | Type  | Read-Only| Optional| Description                                    |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| alpha | number | No  | No  | Alpha component (transparency) of the color. The value is a floating point number ranging from 0.0 to 1.0.|
-| red   | number | No  | No  | R component of the color, which is a floating point number ranging from 0.0 to 1.0.|
-| green | number | No  | No  | G component of the color, which is a floating point number ranging from 0.0 to 1.0.|
-| blue  | number | No  | No  | B component of the color, which is a floating point number ranging from 0.0 to 1.0.|
+| alpha | number | No  | No  | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0.|
+| red   | number | No  | No  | Red component of the color. The value is a floating point number ranging from 0.0 to 1.0.|
+| green | number | No  | No  | Green component of the color. The value is a floating point number ranging from 0.0 to 1.0.|
+| blue  | number | No  | No  | Blue component of the color. The value is a floating point number ranging from 0.0 to 1.0.|
 
 ## Point3d<sup>12+</sup>
 

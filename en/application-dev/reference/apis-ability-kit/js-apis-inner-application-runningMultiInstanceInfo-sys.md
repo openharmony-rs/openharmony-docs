@@ -1,14 +1,21 @@
 # RunningMultiInstanceInfo (System API)
 
-The RunningMultiInstanceInfo module defines the information of a multi-instance application in the running state.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel; @Luobniz21-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The module defines the information of a multi-instance application in the running state. The information can be obtained through [getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) of appManager.
 
 > **NOTE**
->
+> 
 > The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs provided by this module are system APIs.
 
-## Properties
+## RunningMultiInstanceInfo
 
 **System API**: This is a system API.
 
@@ -16,13 +23,9 @@ The RunningMultiInstanceInfo module defines the information of a multi-instance 
 
 | Name                     | Type  | Read-Only| Optional | Description      |
 | ------------------------- | ------ | ---- | ---- | --------- |
-| instanceKey | string | Yes| No | Unique instance ID of a multi-instance application.|
-| uid | number | Yes| No | UID of the application.|
-| pids | Array\<number> | Yes| No | Process ID set of the application.|
-
-## How to Use
-
-The **RunningMultiInstanceInfo** struct is obtained from [getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) of **appManager**.
+| instanceKey | string | No| No | Unique instance ID of a multi-instance application.|
+| uid | number | No| No | UID of the application.|
+| pids | Array\<number> | No| No | Process ID set of the application.|
 
 **Example**
 

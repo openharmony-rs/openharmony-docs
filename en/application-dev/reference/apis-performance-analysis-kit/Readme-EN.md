@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @mzyan-->
-<!--SE: @liyueric-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @liyueric-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 - ArkTS API<!--performance-analysis-arkts-->
   - [@ohos.hichecker (HiChecker)](js-apis-hichecker.md)
@@ -63,6 +64,7 @@
   - [HiAppEvent Error Codes](errorcode-hiappevent.md)
   - [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md)
   - [HiDebug CPU Usage Error Codes](errorcode-hiviewdfx-hidebug-cpuusage.md)
+  - [HiDebug Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md)
   - [HiCollie Error Codes](errorcode-hiviewdfx-hicollie.md)
   - [JsLeakWatcher Error Codes](errorcode-jsleakwatcher.md)
     <!--Del-->

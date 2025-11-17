@@ -164,7 +164,7 @@ Enumerates the rendering scaling modes.
 | OH_SCALING_MODE_SCALE_TO_WINDOW_V2 | Scales the buffer to match the window size.|
 | OH_SCALING_MODE_SCALE_CROP_V2 | Scales the buffer at the original aspect ratio to enable the smaller side of the buffer to match the window, while making the excess part transparent.|
 | OH_SCALING_MODE_NO_SCALE_CROP_V2 | Crops the buffer by window size. Pixels outside the cropping rectangle are considered completely transparent.|
-| OH_SCALING_MODE_SCALE_FIT_V2 | Scales the buffer at the original aspect ratio to fully display the buffer content, while filling the unfilled area of the window with the background color.<br>This mode is not available for the development board and emulator.|
+| OH_SCALING_MODE_SCALE_FIT_V2 | Scales the buffer at the original aspect ratio to fully display the buffer content, while filling the unfilled area of the window with the background color.<br>This mode is not available for the <!--Del-->development board and <!--DelEnd-->emulator.|
 
 ### OHHDRMetadataKey
 

@@ -960,7 +960,7 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
     | fdTotal                 | 文件描述符总数。         |-|
     | fds                     | 文件描述符。             |单位：Hz|
     | cpuFrequency            | CPU大中小核频率。        |单位：Hz|
-    | cpuUasge                | CPU各核使用率。          |%|
+    | cpuUsage                | CPU各核使用率。          |%|
     | cpuidleUsage            | CPU空闲态使用率。        |%| 
     | cpuioWaitUsage          | 等待I/O的使用率。        |%|
     | cpuirqUsage             | 硬中断的使用率。         |%|  

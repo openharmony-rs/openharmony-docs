@@ -1,5 +1,12 @@
 # StartAbilityParameter
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the parameters for starting an ability. The parameters can be used as input parameters in [startAbility](js-apis-ability-featureAbility.md#featureabilitystartability) to start the specified ability.
 
 > **NOTE**
@@ -18,11 +25,11 @@ import ability from '@ohos.ability.ability';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.FAModel
 
-| Name              |   Type  | Mandatory  | Description                                   |
-| ------------------- | -------- | ---- | -------------------------------------- |
-| want                | [Want](js-apis-app-ability-want.md)|   Yes  | Want information about the target ability.                    |
-| abilityStartSetting | { [key: string]: any } | No   | Special attribute of the target ability. This attribute can be passed in the call.|
-| abilityStartSettings<sup>11+<sup> | Record\<string, Object> | No   | Special attribute of the target ability. This attribute can be passed in the call. You are advised to use this attribute to replace **abilityStartSetting**. When this attribute is set, **abilityStartSetting** does not take effect.|
+| Name              |   Type  | Read-Only | Optional  | Description                                |
+| ----------------- | -------- | ---- | ---- | -------------------------------------- |
+| want                | [Want](js-apis-app-ability-want.md)| No | No | Want information about the target ability.                    |
+| abilityStartSetting | { [key: string]: any } | No | Yes | Special attribute of the target ability. This attribute can be passed in the call.|
+| abilityStartSettings<sup>11+<sup> | Record\<string, Object> | No | Yes | Special attribute of the target ability. This attribute can be passed in the call. You are advised to use this attribute to replace **abilityStartSetting**. When this attribute is set, **abilityStartSetting** does not take effect.|
 
 **Example**
 

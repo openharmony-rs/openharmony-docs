@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 沿水平方向布局的容器。
 

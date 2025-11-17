@@ -1,10 +1,10 @@
 # 浮层
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件的浮层。
 
@@ -95,7 +95,7 @@ type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 
 | 类型|说明 |
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md) | 组件内容的实体封装。|
+| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
 
 ## 示例
 

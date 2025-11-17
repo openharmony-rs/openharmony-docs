@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 All the permissions in this topic are available to all applications and granted by the system.
 
@@ -135,9 +136,9 @@ With this permission, the application can activate or deactivate a network, and 
 
 ## ohos.permission.GET_WIFI_INFO
 
-Allows an application to obtain Wi-Fi information.
+Allows an application to obtain Wi-Fi information and use the Wi-Fi P2P capability.
 
-The Wi-Fi information includes whether Wi-Fi is enabled, scan results, connection information, connection state, device capability, and peer-to-peer (P2P) state.
+With this permission, the application can obtain Wi-Fi information, including the Wi-Fi on/off state, scan results, connection information, connection state, device capability, and P2P state. In addition, the application can use the P2P capability.
 
 **Permission level**: normal
 

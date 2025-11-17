@@ -317,4 +317,4 @@ export const getModuleMetadata: () => object;           // Add the exposed API g
     }
     ```
 
-For details about the NDK APIs, see [Native_Bundle](../reference/apis-ability-kit/capi-native-bundle.md).
+For details about the APIs, see [Native_Bundle](../reference/apis-ability-kit/capi-native-bundle.md).

@@ -14,7 +14,7 @@ You can use **uploadFile()** in [ohos.request](../../reference/apis-basic-servic
 
 > **NOTE**
 >
-> · Currently, only files in the **cacheDir** directory can be uploaded using **request.uploadFile**; user public files and files in the **cacheDir** directory can be uploaded together using **request.agent**.
+> · Currently, the **request.uploadFile** API can upload only files in the **cacheDir** directory, while the **request.agent** API can upload the user public files and files in the **cacheDir** directory.
 >
 > · The ohos.permission.INTERNET permission is required for using **ohos.request**. For details about how to request the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 >
@@ -179,7 +179,7 @@ The following sample code shows how to download network resource files to the ap
 ```ts
 // Method 1: Use request.downloadFile.
 // pages/xxx.ets
-// Download the network resource file to the local application file directory, and read data from the file.
+// Download a network resource file to a local application directory, and read data from the file.
 import { common } from '@kit.AbilityKit';
 import fs from '@ohos.file.fs';
 import { BusinessError, request } from '@kit.BasicServicesKit';
@@ -227,9 +227,9 @@ struct Index {
 ```ts
 // Method 2: Use request.agent.
 // pages/xxx.ets
-// Download the network resource file to the local application file directory, and read data from the file.
+// Download a network resource file to a local application directory, and read data from the file.
 import { common } from '@kit.AbilityKit';
-import fs from '@ohos.file.fs';
+import fileIo from '@ohos.file.fs';
 import { BusinessError, request } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
 
@@ -265,13 +265,19 @@ struct Index {
             })
             task.on('completed', async () => {
               console.warn(`/Request download completed`);
-              let file = fs.openSync(filesDir + '/xxxx.txt', fs.OpenMode.READ_WRITE);
-              let arrayBuffer = new ArrayBuffer(1024);
-              let readLen = fs.readSync(file.fd, arrayBuffer);
+              let filePath = filesDir + '/xxxx.txt';
+              let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY); // Open the file in read-only mode to obtain the file size.
+
+              // Obtain the file status information, including the file size.
+              let fileStat = fileIo.statSync(filePath);
+              let fileSize = fileStat.size;
+
+              // Create a buffer of sufficient size based on the file size.
+              let arrayBuffer = new ArrayBuffer(fileSize);
+              let readLen = fileIo.readSync(file.fd, arrayBuffer); // Now, all content can be read safely.
               let buf = buffer.from(arrayBuffer, 0, readLen);
               console.info(`The content of file: ${buf.toString()}`);
-              fs.closeSync(file);
-              // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
+              fileIo.closeSync(file);
               request.agent.remove(task.tid);
             })
           }).catch((err: BusinessError) => {
@@ -282,7 +288,6 @@ struct Index {
     }
   }
 }
-
 ```
 
 ## Downloading Network Resource Files to the User File
@@ -294,7 +299,7 @@ You can use the [request.agent](../../reference/apis-basic-services-kit/js-apis-
 
 ### Downloading Documents
 
-Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save) API of [DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to save a document and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#config10) to download the document.
+Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save) API of [DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to save a document and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the document.
 
 ```ts
 import { BusinessError, request } from '@kit.BasicServicesKit';
@@ -375,7 +380,7 @@ struct Index {
 
 ### Downloading Audios
 
-Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3) API of [AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) to save an audio and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#config10) to download the audio.
+Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3) API of [AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) to save an audio and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the audio.
 
 ```ts
 import { BusinessError, request } from '@kit.BasicServicesKit';
@@ -449,11 +454,11 @@ struct Index {
 
 ### Downloading Images or Videos
 
-Call the [createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2) API of [PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md) to create a media file and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#config10) to download the media file.
+Call the [createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2) API of [PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md) to create a media file and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the media file.
 
-Permission required: [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/permissions-for-all-user.md#ohospermissionwrite_media)
+Permission required: [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
 
-[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/permissions-for-all-user.md#ohospermissionwrite_media) is a [restricted permission](../../security/AccessToken/restricted-permissions.md) of the [system_basic](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) level. If the normal-level application needs to request this permission, its APL level must be declared as system_basic or higher. In addition, you should [request the user_grant permission from users](../../security/AccessToken/request-user-authorization.md).
+[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo) is a [restricted permission](../../security/AccessToken/restricted-permissions.md) of the [system_basic](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) level. If the normal-level application needs to request this permission, its APL level must be declared as system_basic or higher. In addition, you should [request the user_grant permission from users](../../security/AccessToken/request-user-authorization.md).
 
 ```ts
 import { BusinessError, request } from '@kit.BasicServicesKit';
@@ -574,7 +579,7 @@ The following sample code shows how to configure the speed and timeout of a down
 
 ```ts
 // pages/xxx.ets
-// Download the network resource file to the local application file directory, and read data from the file.
+// Download a network resource file to a local application directory, and read data from the file.
 import { common } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError, request } from '@kit.BasicServicesKit';
@@ -623,17 +628,17 @@ struct Index {
                         }
                     };
                     request.agent.create(context, config).then((task: request.agent.Task) => {
+                        // Set the maximum task speed.
+                        task.setMaxSpeed(10 * 1024 * 1024).then(() => {
+                            console.info(`Succeeded in setting the max speed of the task. result: ${task.tid}`);
+                        }).catch((err: BusinessError) => {
+                            console.error(`Failed to set the max speed of the task. result: ${task.tid}`);
+                        });
                         task.start((err: BusinessError) => {
                             if (err) {
                                 console.error(`Failed to start the download task, Code: ${err.code}  message: ${err.message}`);
                                 return;
                             }
-                            // Set the maximum task speed.
-                            task.setMaxSpeed(10 * 1024 * 1024).then(() => {
-                                console.info(`Succeeded in setting the max speed of the task. result: ${task.tid}`);
-                            }).catch((err: BusinessError) => {
-                                console.error(`Failed to set the max speed of the task. result: ${task.tid}`);
-                            });
                         });
                         task.on('progress', async (progress) => {
                             console.warn(`/Request download status ${progress.state}, downloaded ${progress.processed}`);
@@ -662,7 +667,7 @@ struct Index {
 
 ### Intercepting HTTP
 
-You can set the configuration file to intercept HTTP. After HTTP is disabled for the **ohos.request** module, upload and download tasks using plaintext HTTP cannot be created. The configuration file is stored in the **src/main/resources/base/profile/network_config.json** directory of the application. For details, see the parameters in the [configuration file](../../reference/apis-network-kit/js-apis-net-connection.md#connectionsetapphttpproxy11) of the network management module.
+You can set the configuration file to intercept HTTP. After HTTP is disabled for the **ohos.request** module, upload and download tasks using plaintext HTTP cannot be created. The configuration file is stored in the **src/main/resources/base/profile/network_config.json** directory of the application. For details about the parameters to be configured, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
 
 The sample configuration file is as follows:
 

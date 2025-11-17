@@ -30,7 +30,6 @@ Create a test file **data.txt** in the application sandbox directory and write d
 
    ```ts
    import { fileIo as fs} from '@kit.CoreFileKit';
-   import { BusinessError, zlib } from '@kit.BasicServicesKit';
 
    @Entry
    @Component
@@ -69,7 +68,6 @@ Create a test file **data.txt** in the application sandbox directory and write d
 Use [zlib.compressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibcompressfile9-1) to compress the **data.txt** into to the **data.zip** file, and use [zlib.decompressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibdecompressfile9-1) to decompress the .zip file to the application sandbox directory. The sample code is as follows:
 
    ```ts
-   import { fileIo as fs} from '@kit.CoreFileKit';
    import { BusinessError, zlib } from '@kit.BasicServicesKit';
 
    @Entry
@@ -201,7 +199,7 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
 
    ```ts
    import { fileIo as fs} from '@kit.CoreFileKit';
-   import { BusinessError, zlib } from '@kit.BasicServicesKit';
+   import { zlib } from '@kit.BasicServicesKit';
 
    @Entry
    @Component
@@ -226,7 +224,7 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
            let inFile = fs.openSync(path + '/data.bin', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
            let outFile = fs.openSync(path + '/data.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
            inflateFile(inFile, outFile).then(() => {
-             console.info('deflateFile success');
+             console.info('inflateFile success');
              fs.closeSync(inFile.fd);
              fs.closeSync(outFile.fd);
            })
@@ -351,7 +349,7 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
 
    ```ts
    import { fileIo as fs} from '@kit.CoreFileKit';
-   import { BusinessError, zlib } from '@kit.BasicServicesKit';
+   import { zlib } from '@kit.BasicServicesKit';
 
    @Entry
    @Component

@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -26,8 +26,8 @@ You can use the strings listed in the following table.
 | -----  | ---- |
 | 'audio' | Audio session.|
 | 'video' | Video session.|
-| 'voice_call'<sup>11+<sup> | Voice call.|
-| 'video_call'<sup>12+<sup> | Video call.|
+| 'voice_call'<sup>11+</sup> | Voice call.|
+| 'video_call'<sup>12+</sup> | Video call.|
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -58,7 +58,7 @@ Defines the commands that can be sent by a cast controller.
 
 ## ExtraInfo<sup>18+</sup>
 
-type ExtraInfo = { [key: string]: Object; }
+type ExtraInfo = Record\<string, Object\>  
 
 Defines the custom media packet set by the provider.
 
@@ -66,7 +66,7 @@ Defines the custom media packet set by the provider.
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-| [key: string]: Object   | **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**'AUDIO_GET_VOLUME'**: obtains the volume of the remote device.<br>**'AUDIO_GET_AVAILABLE_DEVICES'**: obtains all remote devices that can be connected.<br>**'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
+|Record\<string, Object\>| **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all remote devices that can be connected.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
 
 ## KeyRequestCallback<sup>12+</sup>
 

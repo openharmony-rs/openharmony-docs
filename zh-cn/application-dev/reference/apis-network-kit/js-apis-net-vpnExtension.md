@@ -71,7 +71,7 @@ startVpnExtensionAbility(want: Want): Promise\<void>
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -142,7 +142,7 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -374,7 +374,7 @@ protect(socketFd: number): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -432,7 +432,7 @@ destroy(): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -483,7 +483,7 @@ destroy(vpnId: string): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -509,7 +509,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     vpnConnection.destroy(vpnId).then(() => {
       console.info("destroy success");
     }).catch((error: BusinessError) => {
-      console.error(`destroy fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
     });
   }
 }
@@ -554,7 +554,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
         console.info("generateVpnId success, vpnId = " + JSON.stringify(data));
       }
     }).catch((error: BusinessError) => {
-      console.error(`generateVpnId fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`generateVpnId fail, Code is ${error.code}, message is ${error.message}`);
     });
   }
 }
