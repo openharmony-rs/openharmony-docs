@@ -401,7 +401,7 @@ ArkTS侧示例代码
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
   testNapi.CreateExternalStringUtf16());
 ```
-如果创建出来的external_string对象被其他对象所引用，则所有引用结束后才会被GC回收，从而调用StringFinalizerUTF16函数
+通过napi_create_external_string_utf16接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerUTF16函数来回收ArkTS string对象指向的native侧资源。
 
 ### napi_create_external_string_ascii
 
@@ -463,7 +463,7 @@ ArkTS侧示例代码
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
   testNapi.CreateExternalStringAscii());
 ```
-如果创建出来的external_string对象被其他对象所引用，则所有引用结束后才会被GC回收，从而调用StringFinalizerASCII函数
+通过napi_create_external_string_ascii接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerASCII函数来回收ArkTS string对象指向的native侧资源。
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

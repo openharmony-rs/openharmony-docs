@@ -1575,7 +1575,7 @@ typedef void (*napi_finalize_callback)(void* finalize_data,
 
 **描述：**
 
-用于定义在external_string对象生命周期结束时触发的回调函数。
+用于定义通过接口napi_create_external_string_utf16和napi_create_external_string_ascii创建出的ArkTS string对象生命周期结束时触发的回调函数。
 
 **参数：**
 
