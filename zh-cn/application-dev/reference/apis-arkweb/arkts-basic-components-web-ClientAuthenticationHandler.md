@@ -88,7 +88,7 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 ## cancel<sup>9+</sup>
 
 cancel(): void
-c-components-web-ClientAuthenticationHandler.md
+
 通知Web组件取消相同host和port服务器发送的客户端证书请求事件。同时，相同host和port服务器的请求，不重复上报该事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
