@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct OH_PictureNative OH_PictureNative
+struct OH_PictureNative
 ```
 
 ## 概述
