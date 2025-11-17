@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVDemuxer OH_AVDemuxer
+```
+
 ## 概述
 
 为OH_AVDemuxer接口定义native层对象。

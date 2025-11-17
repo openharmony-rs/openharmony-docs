@@ -5,17 +5,33 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
+
+List的懒加载是指组件按需加载可见区域可见的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
+
+ - 当List和ForEach结合，会一次性创建所有的子节点，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，划出屏幕范围的节点不会下树销毁，划入屏幕范围的节点会布局和渲染。
+
+ - 当List和LazyForEach结合，会一次性创建、布局、渲染屏幕范围的节点。当用户滑动时，划出屏幕范围的节点会下树销毁，划入屏幕范围的节点会创建、布局、渲染。
+
+ - 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的懒加载行为和ForEach一致。
+
+如果可滚动组件嵌套List组件，并且滚动方向相同，List组件又没有设置主轴尺寸时，List组件会全量加载子组件，导致懒加载失效。该场景推荐使用List嵌套[ListItemGroup](ts-container-listitemgroup.md)组件以实现优化性能。
+
+List的预加载是指除了加载显示区域可见区域外子组件外，还支持空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](#cachedcount)设置预加载的数量。默认会预加载显示区域上下各一屏子节点（最大预加载16行子节点）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
+
+ - 当List和ForEach结合，如果设置了cachedCount，除了会布局显示区域内子组件外，还会在空闲时隙预布局显示区域外cachedCount范围内的子节点。
+
+ - 当List和LazyForEach结合，如果设置了cachedCount，除了会创建和布局显示区域内子组件外，还会在空闲时隙预创建和预布局显示区域外cachedCount范围内的子节点。
+
+ - 当List和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的预加载行为和LazyForEach一致。当List和不带virtualScroll的Repeat结合，它的预加载行为和ForEach一致。
 
 > **说明：**
 >
 > 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
-
-
 
 ## 子组件
 
@@ -25,6 +41,8 @@
 > **说明：**
 >
 > 如果在处理大量子组件时遇到卡顿问题，请考虑采用懒加载、缓存列表项、动态预加载、组件复用和布局优化等方法来进行优化。最佳实践请参考[优化长列表加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
+>
+> 从API version 21开始，List单个子组件的宽高最大为16777216px；API version 20及之前，List单个子组件的宽高最大为1000000px。子组件超出该大小可能导致滚动或显示异常。
 >
 > List的子组件的索引值计算规则：
 >
@@ -39,9 +57,6 @@
 > - ListItemGroup作为一个整体计算一个索引值，ListItemGroup内部的ListItem不计算索引值。
 >
 > - List子组件visibility属性设置为Hidden或None依然会计算索引值。
->
-> - 从API version 21开始，List单个子组件的宽高最大为16777216px；API version 20及之前，List单个子组件的宽高最大为1000000px。子组件超出该大小可能导致滚动或显示异常。
-
 
 ## 接口
 
@@ -197,6 +212,38 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 | count  | number | 是   | 预加载的ListItem的数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞) |
 | show  | boolean | 是   | 被预加载的ListItem是否需要显示。设置为true时显示预加载的ListItem，设置为false时不显示预加载的ListItem。 <br/> 默认值：false |
 
+### cachedCount<sup>22+</sup>
+
+cachedCount(count: number | CacheCountInfo, show: boolean)
+
+设置列表中ListItem/ListItemGroup的预加载数量，并配置是否显示预加载节点。
+
+若cachedCount属性的第一个参数为number类型，在帧间空闲时隙会在显示区域外上下各预加载并布局count行ListItem。
+
+若cachedCount属性的第一个参数为CacheCountInfo类型，当已缓存行数小于CacheCountInfo.minCount时，会在帧间空闲时隙预加载和布局。当已缓存行数大于CacheCountInfo.maxCount时，会将超出范围的节点销毁或回收复用。UI空闲时（无动画或用户操作），会在显示区域外上下各预加载CacheCountInfo.maxCount行ListItem。
+
+在计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](ts-universal-attributes-sharp-clipping.md#clip12)或[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+
+默认行为：count参数默认为number类型，数值根据屏幕内显示的节点个数设置，最大值为16。预加载的ListItem默认不参与绘制。
+
+> **说明：**
+>
+> 通常建议设置cachedCount=n/2（n代表一屏显示的列表项数量），同时需考虑其他因素以实现体验和内存使用的平衡。从API version 22开始，支持设置最大最小缓存数，可以将最大缓存数设置稍大，如设置为最小缓存数的两倍，利用UI线程空闲时间创建节点，减少滚动过程中预加载创建节点，提升滚动流畅性。最佳实践请参考[优化长列表加载慢丢帧问题-缓存列表项](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list#section11667144010222)。
+
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22对象说明) | 是   | 当参数类型为number时，表示预加载的ListItem的数量。 <br/>取值范围：[0, +∞) <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。|
+| show  | boolean | 是   | 被预加载的ListItem是否需要显示。<br/>true：显示预加载的ListItem。<br/>false：不显示预加载的ListItem。 |
+
 ### edgeEffect
 
 edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
@@ -307,7 +354,7 @@ lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 
 | 参数名               | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应断点类型确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
 | gutter | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0 <br/>取值范围：[0, +∞)   
 
 ### alignListItem<sup>9+</sup>
@@ -458,7 +505,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 contentStartOffset(offset: number | Resource)
 
-设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。
+设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。与[contentStartOffset<sup>11+</sup>](#contentstartoffset11)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 
@@ -494,7 +541,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 contentEndOffset(offset: number | Resource)
 
-设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。
+设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。与[contentEndOffset<sup>11+</sup>](#contentendoffset11)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 
@@ -882,6 +929,10 @@ onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) 
 
 不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例12（使用OnMove进行拖拽）](#示例12使用onmove进行拖拽)。但需注意[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口不支持跨ListItemGroup拖拽。
 
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1208,6 +1259,10 @@ type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end:
 start和end的index同时返回-1，代表List从有数据变成空的List。
 
 start和end的index同时返回0，代表List内只有一个子组件。
+
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1650,7 +1705,7 @@ struct ListExample {
 ### 示例5（跳转准确）
 该示例通过设置childrenMainSize属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
 
-如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滑动组件)。
+如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滚动组件)。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
 
@@ -1955,7 +2010,7 @@ struct ListExample {
 
 ### 示例9（设置折行走焦）
 
-该示例通过focusWrapMode接口，实现了List组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
 
 ```ts
 @Entry
@@ -2170,15 +2225,16 @@ struct ListExample {
   }
 }
 ```
-List宽度相当于sm及以下时显示2列。
+
+List宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_list](figures/list_itemFillPolicy_SM.png)
 
-List宽度相当于md及以下时显示3列。
+List宽度属于md断点区间时显示3列。
 
 ![md_list](figures/list_itemFillPolicy_MD.png)
 
-List宽度相当于lg及以下时显示5列。
+List宽度属于lg及更大的断点区间时显示5列。
 
 ![lg_list](figures/list_itemFillPolicy_LG.png)
 
@@ -2207,12 +2263,15 @@ struct ListExample {
         }, (item: string) => item)
       }
       .width('90%').height('90%')
-
+      // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(()=> {
+          // 通过调用contentSize函数获取内容尺寸的宽度值
           this.contentWidth=this.scrollerForList.contentSize().width;
+          // 通过调用contentSize函数获取内容尺寸的高度值
           this.contentHeight=this.scrollerForList.contentSize().height;
         })
+      // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width：'+ this.contentWidth+'，Height：'+ this.contentHeight)
         .fontColor(Color.Red)
         .height(50)

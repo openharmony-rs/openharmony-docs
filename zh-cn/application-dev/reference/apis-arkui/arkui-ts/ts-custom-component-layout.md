@@ -4,7 +4,7 @@
 <!--Owner: @song-song-song-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 自定义组件的自定义布局通过数据计算的方式布局自定义组件内的子组件。
 
@@ -336,7 +336,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 
 ### measure<sup>(deprecated)</sup>
 
-measure(childConstraint: ConstraintSizeOptions) : void
+measure(childConstraint: ConstraintSizeOptions)
 
 调用此方法对子组件的尺寸范围进行限制。
 
@@ -356,7 +356,7 @@ measure(childConstraint: ConstraintSizeOptions) : void
 
 ### layout<sup>(deprecated)</sup>
 
-layout(childLayoutInfo: LayoutInfo) : void
+layout(childLayoutInfo: LayoutInfo)
 
 调用此方法对子组件的位置信息进行限制。
 
@@ -378,7 +378,9 @@ layout(childLayoutInfo: LayoutInfo) : void
 
 子组件border信息。
 
-从API version 9开始，从API version 10开始废弃，该接口支持在ArkTS卡片中使用。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[getBorderWidth](#getborderwidth12)，[getMargin](#getmargin12)和[getPadding](#getpadding12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -394,7 +396,9 @@ layout(childLayoutInfo: LayoutInfo) : void
 
 子组件layout信息。
 
-从API version 9开始，从API version 10开始废弃，该接口支持在ArkTS卡片中使用。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

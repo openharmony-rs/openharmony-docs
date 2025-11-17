@@ -9,9 +9,12 @@
 HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资源和配置文件，通过HSP可以实现代码和资源的共享。HSP不支持独立发布上架，而是跟随宿主应用的APP包一起发布，与宿主应用同进程，具有相同的包名和生命周期。
 > **说明：**
 > 
-> 应用内HSP：在编译过程中与应用包名（bundleName）强耦合，只能给某个特定的应用使用，本页面介绍应用内HSP。
+> * 应用内HSP：在编译过程中与应用包名（bundleName）强耦合，只能给某个特定的应用使用。
 > 
-> [集成态HSP](integrated-hsp.md)：构建、发布过程中，不与特定的应用包名耦合；使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。
+> * [集成态HSP](integrated-hsp.md)：构建、发布过程中，不与特定的应用包名耦合；使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。
+>
+> * 指南和API参考文档中如无特殊说明，默认HSP都为应用内HSP。
+>
 
 ## 使用场景
 - 多个HAP/HSP共用的代码和资源放在同一个HSP中，可以提高代码、资源的可重用性和可维护性，同时编译打包时也只保留一份HSP代码和资源，能够控制应用包的大小。
@@ -223,13 +226,6 @@ export { ResManager } from './src/main/ets/ResManager';
 要使用HSP中的接口，首先需要在使用方的 `oh-package.json5` 文件中配置对它的依赖。具体配置方法请参考[引用动态共享包](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
 依赖配置成功后，就可以像使用HAR一样调用HSP的对外接口了。例如，上面的library已经导出了下面这些接口：
 
-```ts
-// library/index.ets
-export { Log, add, minus } from './src/main/ets/utils/test';
-export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-export { ResManager } from './src/main/ets/ResManager';
-export { nativeMulti } from './src/main/ets/utils/nativeTest';
-```
 <!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
 
 ``` TypeScript
@@ -249,6 +245,7 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 
 <!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';

@@ -77,26 +77,30 @@ The following describes how to configure a static shortcut in a project.
 
 3. Configure **metadata** in the **module.json5** file of the application, which points to the shortcut file.
 
-    ```json
-    {
-      "module": {
-      // ...
-        "abilities": [
+    <!-- @[typical_scenario_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/TypicalScenarioConfiguration/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+	// ···
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "metadata": [
           {
-            "name": "EntryAbility",
-            "srcEntry": "./ets/entryability/EntryAbility.ets",
-            // ...
-            "metadata": [
-              {
-                "name": "ohos.ability.shortcuts",  // Configure a shortcut. The value is fixed at ohos.ability.shortcuts.
-                "resource": "$profile:shortcuts_config"  // Specify the resources of the shortcuts.
-              }
-            ]
+            "name": "ohos.ability.shortcuts",  // Configure a shortcut. The value is fixed at ohos.ability.shortcuts.
+            "resource": "$profile:shortcuts_config"  // Specify the resources of the shortcuts.
           }
-        ]
+        ],
+		// ···
       }
-    }
-    ```
+    ],
+	// ···
+  },
+}
+```
+
 
 After installing the application, long press the icon on the home screen. The shortcuts (**Favorites** and **Share**) configured by you are displayed above the application icon. Tap a label to start the corresponding component. The following figure shows a static shortcut of an application displayed on the home screen.
 

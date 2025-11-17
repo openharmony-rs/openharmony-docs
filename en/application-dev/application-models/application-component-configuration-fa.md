@@ -18,7 +18,7 @@ The bundle name is specified by the **bundleName** field under **app** in the **
 
 Icons and labels are usually configured together. There are four types: application icon, application label, entry icon, and entry label.
 
-The application icon and application label are used to identify an application, and they are usually displayed on a screen for identifying the application. Example scenarios are as follows:
+The application icon and application label are used to identify an application, and they are usually displayed on the application screen. Example scenarios are as follows:
 * Application list in Settings
 * Applications with permissions granted in the privacy management screen
 * Notification messages displayed in the status bar

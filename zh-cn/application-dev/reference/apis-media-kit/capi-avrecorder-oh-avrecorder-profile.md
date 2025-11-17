@@ -39,7 +39,7 @@
 | int32_t videoFrameWidth | 视频宽度。 |
 | int32_t videoFrameHeight | 视频高度。 |
 | int32_t videoFrameRate | 视频帧率。 |
-| bool isHdr | 是否录制HDR视频。 |
-| bool enableTemporalScale | 是否启用时间缩放编码模式。 |
+| bool isHdr | 是否录制HDR视频。 <br> true表示录制HDR视频，false表示不录制HDR视频。<br> 默认是false。 |
+| bool enableTemporalScale | 是否支持时域分层编码功能。<br> true表示编码输出的码流中部分帧可以支持跳过不编码，false表示编码输出的码流中所有帧不支持跳过不编码，详情请参考[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md)。<br> 默认是false。 |
 
 

@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
 
@@ -127,7 +127,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 当value设置为ItemFillPolicy类型时，将根据Grid组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
-例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度相当于sm及更小的设备上显示2列，相当于md设备时显示3列，相当于lg及更大的设备时显示5列，且每列均为1fr。
+例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -268,7 +268,7 @@ scrollBarColor(value: Color | number | string)
 
 scrollBarColor(color: Color | number | string | Resource)
 
-设置滚动条的颜色。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比， 参数名改为color，并开始支持Resource类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -736,7 +736,7 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 | event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
 | itemIndex   | number                                | 是   | 拖拽起始位置。 |
 | insertIndex | number                                | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                               | 是   | 是否成功释放   |
+| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的网格元素之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的网格元素之内；false：表示拖拽释放位置在设置了onItemDrop的网格元素之外。  |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -1971,7 +1971,7 @@ struct GridExample {
 
 ### 示例12（方向键走焦换行模式）
 
-该示例通过focusWrapMode接口，实现了Grid组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了Grid组件方向键走焦换行效果。
 
 ```ts
 // xxx.ets
@@ -2894,15 +2894,15 @@ struct GridExample {
   }
 }
 ```
-Grid宽度相当于sm及以下时显示2列。
+Grid宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_grid](figures/grid_itemFillPolicy_SM.png)
 
-Grid宽度相当于sm及以下时显示2列。
+Grid宽度属于md断点区间时显示3列。
 
 ![md_grid](figures/grid_itemFillPolicy_MD.png)
 
-Grid宽度相当于sm及以下时显示2列。
+Grid宽度属于lg及更大的断点区间时显示5列。
 
 ![lg_grid](figures/grid_itemFillPolicy_LG.png)
 
@@ -2937,11 +2937,15 @@ struct GridExample {
     Column({ space: 5 }) {
       Text('可滚动Grid和LazyForEach')
       Row() {
+        // 点击按钮来调用contentSize函数获取内容尺寸
         Button('GetContentSize')
           .onClick(() => {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
             this.contentWidth = this.scroller.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
             this.contentHeight = this.scroller.contentSize().height;
           })
+        // 将获取到的内容尺寸信息通过文本进行呈现
         Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
           .fontColor(Color.Red)
           .height(50)

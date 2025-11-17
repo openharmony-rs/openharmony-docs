@@ -1,4 +1,10 @@
 # Clipping Shapes (clipShape)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 You can use the [clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12) API to clip components into desired shapes. After this API is called, only the portion of the component covered by the shape will remain, while the rest will be removed. The clipping shape itself is invisible.
 

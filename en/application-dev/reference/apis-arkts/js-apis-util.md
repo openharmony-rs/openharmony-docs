@@ -190,7 +190,9 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 > **NOTE**
 >
-> **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+> - **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+>
+> - This API converts an async function that returns a promise into an error-first callback function. The function returned by this API accepts a callback as its second input parameter. When this method is called, the original function is executed first. When the promise of **original** returns **resolve**, the first parameter of the callback function is **null**, and the second parameter is the value of **resolve**. When the promise of **original** returns **reject**, the first parameter of the callback function is an error object, and the second parameter is **null**. When **original** is a function without input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -219,11 +221,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-async function fn() {
-  return 'hello world';
+async function fn(input: string) {
+  return input;
 }
 let cb = util.callbackWrapper(fn);
-cb(1, (err : Object, ret : string) => {
+cb('hello world', (err : Object, ret : string) => {
   if (err) throw new Error;
   console.info(ret);
 });
@@ -566,10 +568,10 @@ Describes decoding-related options, which include **fatal** and **ignoreBOM**.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name     | Type| Mandatory| Description              |
-| --------- | -------- | ---- | ------------------ |
-| fatal     | boolean  | No  | Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
-| ignoreBOM | boolean  | No  | Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
+| Name     | Type| Read-Only| Optional| Description              |
+| --------- | -------- | ---- | ---- | ------------------ |
+| fatal     | boolean  | No  | Yes| Whether to display fatal errors. The value **true** means to display fatal errors, and **false** means the opposite. The default value is **false**.|
+| ignoreBOM | boolean  | No  | Yes| Whether to ignore the BOM. The value **true** means to ignore the BOM, and **false** means the opposite. The default value is **false**. |
 
 ## DecodeToStringOptions<sup>12+</sup>
 
@@ -579,9 +581,9 @@ Describes the behavioral parameters for the **decodeToString** method when decod
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| --------- | -------- | ---- | ---- | ------------------ |
+| stream | boolean | No| Yes| Whether the incomplete byte sequence at the end of the input needs to be appended to the parameter for the next call of **decodeToString**. The value **true** means that the incomplete byte sequence is stored in the internal buffer until the function is called next time. If the value is false, the byte sequence is directly decoded when the function is called currently. The default value is **false**.|
 
 ## DecodeWithStreamOptions<sup>11+</sup>
 
@@ -591,9 +593,9 @@ Defines whether decoding follows data blocks.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| stream | boolean | No| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | -------- |
+| stream | boolean | No| Yes| Whether to allow data blocks in subsequent **decodeWithStream()**. If data is processed in blocks, set this parameter to **true**. If this is the last data block to process or data is not divided into blocks, set this parameter to **false**. The default value is **false**.|
 
 ## Aspect<sup>11+</sup>
 
@@ -1395,7 +1397,7 @@ let rationalNumber = new util.RationalNumber();
 
 static parseRationalNumber(numerator: number,denominator: number): RationalNumber
 
-Create a **RationalNumber** instance with a given numerator and denominator.
+Creates a **RationalNumber** instance with a given numerator and denominator.
 
 > **NOTE**
 >
@@ -5237,6 +5239,68 @@ Checks whether the value is of the SharedArrayBuffer type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
+## AutoFinalizer&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizer is a class that provides callback APIs when an ArkTS object is released. By implementing it, you can customize the resource cleanup logic that triggers automatically when an object is reclaimed.
+
+> **NOTE**
+>
+> AutoFinalizer&lt;T&gt; must be used together with AutoFinalizerCleaner&lt;T&gt;. Implementing AutoFinalizer&lt;T&gt; alone will yield no functionality.
+
+### onFinalization<sup>22+</sup>
+
+onFinalization(heldValue: T): void
+
+Defines the resource cleanup callback that triggers automatically when an object is reclaimed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| heldValue | T | Yes| When the listened object is reclaimed, this value is passed to the `onFinalization` callback method.|
+
+## AutoFinalizerCleaner&lt;T&gt;<sup>22+</sup>
+
+AutoFinalizerCleaner is a utility class that associates an object's lifecycle with resource cleanup logic. Its primary role is to bind an object implementing AutoFinalizer&lt;T&gt; to a specific value, and automatically trigger the resource cleanup callback when the object is reclaimed.
+
+### register&lt;T&gt;<sup>22+</sup>
+
+static register&lt;T&gt;(obj: AutoFinalizer&lt;T&gt;, heldValue: T): void
+
+Associates an object implementing `AutoFinalizer` with an input value, and triggers the resource cleanup callback when the object is reclaimed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| obj | [AutoFinalizer&lt;T&gt;](#autofinalizert22) | Yes| Object that implements `AutoFinalizer`. The `onFinalization` method is called when the object is reclaimed.|
+| heldValue | T | Yes| When the listened object is reclaimed, this value is passed to the `obj.onFinalization` method.|
+
+**Example**
+
+```ts
+class DeviceManageViewModel implements util.AutoFinalizer<string> {
+  constructor(heldValue: string) {
+    util.AutoFinalizerCleaner.register(this, heldValue);
+  }
+
+  onFinalization(heldValue: string) {
+    console.info("onFinalization: ", heldValue);
+    // Wait for the garbage collection to be triggered. Once it is triggered, the following result is displayed: onFinalization: test
+  }
+}
+
+const device = new DeviceManageViewModel("test");
+```
 
 ## LruBuffer<sup>(deprecated)</sup>
 

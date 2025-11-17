@@ -1,5 +1,12 @@
 # @ohos.bluetooth (Bluetooth)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The **Bluetooth** module provides classic Bluetooth capabilities and Bluetooth Low Energy (BLE) scan and advertising.
 
 > **NOTE**
@@ -870,10 +877,10 @@ Initiates an SPP connection to a remote device from the client.
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let clientNumber = -1;
 function clientSocket(code : BusinessError, number : number) {
-  if (code.code != 0 || code == null) {
+  if (code == null || code.code != 0) {
     return;
   }
   console.log('bluetooth serverSocket Number: ' + number);
@@ -938,10 +945,10 @@ Closes the client socket.
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let clientNumber = -1;
 function clientSocket(code : BusinessError, number : number) {
-  if (code.code != 0 || code == null) {
+  if (code == null || code.code != 0) {
     return;
   }
   console.log('bluetooth serverSocket Number: ' + number);
@@ -979,10 +986,10 @@ Writes data to the remote device through the socket.
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let clientNumber = -1;
 function clientSocket(code : BusinessError, number : number) {
-  if (code.code != 0 || code == null) {
+  if (code == null || code.code != 0) {
     return;
   }
   console.log('bluetooth serverSocket Number: ' + number);
@@ -1027,10 +1034,10 @@ No value is returned.
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let clientNumber = -1;
 function clientSocket(code : BusinessError, number : number) {
-  if (code.code != 0 || code == null) {
+  if (code == null || code.code != 0) {
     return;
   }
   console.log('bluetooth serverSocket Number: ' + number);
@@ -1071,10 +1078,10 @@ No value is returned.
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let clientNumber = -1;
 function clientSocket(code : BusinessError, number : number) {
-  if (code.code != 0 || code == null) {
+  if (code == null || code.code != 0) {
     return;
   }
   console.log('bluetooth serverSocket Number: ' + number);
@@ -1106,7 +1113,7 @@ Obtains a profile object.
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [A2dpSourceProfile](#a2dpsourceprofile) or [HandsFreeAudioGatewayProfile](#handsfreeaudiogatewayprofile)| Profile object obtained. Only **A2dpSourceProfile** and **HandsFreeAudioGatewayProfile** are supported.|
+| [A2dpSourceProfile](#a2dpsourceprofile) \| [HandsFreeAudioGatewayProfile](#handsfreeaudiogatewayprofile) | Profile object obtained. Only **A2dpSourceProfile** and **HandsFreeAudioGatewayProfile** are supported.|
 
 **Example**
 
@@ -2010,7 +2017,7 @@ Sends a response to a read or write request from the GATT client.
 /* send response */
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
-cccValue[0] = 1123;
+cccValue[0] = 1;
 let serverResponse : bluetooth.ServerResponse = {
     "deviceId": "XX:XX:XX:XX:XX:XX",
     "transId": 0,
@@ -2058,7 +2065,7 @@ No value is returned.
 ```js
 let arrayBufferCCC = new ArrayBuffer(8);
 let cccValue = new Uint8Array(arrayBufferCCC);
-cccValue[0] = 1123;
+cccValue[0] = 1;
 function ReadCharacteristicReq(CharacteristicReadReq : bluetooth.CharacteristicReadReq) {
   let deviceId : string = CharacteristicReadReq.deviceId;
   let transId : number = CharacteristicReadReq.transId;
@@ -2229,7 +2236,7 @@ No value is returned.
 ```js
 let arrayBufferDesc = new ArrayBuffer(8);
 let descValue = new Uint8Array(arrayBufferDesc);
-descValue[0] = 1101;
+descValue[0] = 1;
 function ReadDescriptorReq(DescriptorReadReq : bluetooth.DescriptorReadReq) {
   let deviceId : string = DescriptorReadReq.deviceId;
   let transId : number = DescriptorReadReq.transId;
@@ -2557,12 +2564,11 @@ import { BusinessError } from '@ohos.base';
 // Callback mode.
 function getServices(code : BusinessError, gattServices : Array<bluetooth.GattService>) {
   if (code.code == 0) {
-      let services : Array<bluetooth.GattService> = gattServices;
       console.log('bluetooth code is ' + code.code);
-      console.log("bluetooth services size is ", services.length);
+      console.log("bluetooth services size is ", gattServices.length);
 
-      for (let i = 0; i < services.length; i++) {
-        console.log('bluetooth serviceUuid is ' + services[i].serviceUuid);
+      for (let i = 0; i < gattServices.length; i++) {
+        console.log('bluetooth serviceUuid is ' + gattServices[i].serviceUuid);
       }
   }
 }
@@ -3286,11 +3292,11 @@ Defines the SPP configuration parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name    | Type               | Readable  | Writable  | Description         |
+| Name    | Type               | Read-Only  | Optional  | Description         |
 | ------ | ------------------- | ---- | ---- | ----------- |
-| uuid   | string              | Yes   | Yes   | UUID of the SPP.|
-| secure | boolean             | Yes   | Yes   | Whether it is a secure channel.   |
-| type   | [SppType](#spptypedeprecated) | Yes   | Yes   | Type of the SPP link.   |
+| uuid   | string              | No   | No   | UUID of the SPP.|
+| secure | boolean             | No   | No   | Whether it is a secure channel.   |
+| type   | [SppType](#spptypedeprecated) | No   | No   | Type of the SPP link.   |
 
 
 ## SppType<sup>(deprecated)</sup>
@@ -3316,12 +3322,12 @@ Defines the GATT service API parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name             | Type                                    | Readable  | Writable  | Description                                      |
+| Name             | Type                                    | Read-Only  | Optional  | Description                                      |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid     | string                                   | Yes   | Yes   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
-| isPrimary       | boolean                                  | Yes   | Yes   | Whether the service is a primary service. The value **true** means a primary service.               |
-| characteristics | Array&lt;[BLECharacteristic](#blecharacteristicdeprecated)&gt; | Yes   | Yes   | List of characteristics of the service.                            |
-| includeServices | Array&lt;[GattService](#gattservicedeprecated)&gt; | Yes   | Yes   | Services on which the service depends.                            |
+| serviceUuid     | string                                   | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| isPrimary       | boolean                                  | No   | No   | Whether the service is a primary service. The value **true** means a primary service.               |
+| characteristics | Array&lt;[BLECharacteristic](#blecharacteristicdeprecated)&gt; | No   | No   | List of characteristics of the service.                            |
+| includeServices | Array&lt;[GattService](#gattservicedeprecated)&gt; | No   | Yes   | Services on which the service depends.                            |
 
 
 ## BLECharacteristic<sup>(deprecated)</sup>
@@ -3333,12 +3339,12 @@ Defines the characteristic API parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                 | Type                                    | Readable  | Writable  | Description                                      |
+| Name                 | Type                                    | Read-Only  | Optional  | Description                                      |
 | ------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string                                   | Yes   | Yes   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
-| characteristicUuid  | string                                   | Yes   | Yes   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
-| characteristicValue | ArrayBuffer                              | Yes   | Yes   | Binary value of the characteristic.                              |
-| descriptors         | Array&lt;[BLEDescriptor](#bledescriptordeprecated)&gt; | Yes   | Yes   | List of descriptors of the characteristic.                             |
+| serviceUuid         | string                                   | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| characteristicUuid  | string                                   | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
+| characteristicValue | ArrayBuffer                              | No   | No   | Binary value of the characteristic.                              |
+| descriptors         | Array&lt;[BLEDescriptor](#bledescriptordeprecated)&gt; | No   | No   | List of descriptors of the characteristic.                             |
 
 
 ## BLEDescriptor<sup>(deprecated)</sup>
@@ -3350,12 +3356,12 @@ Defines the descriptor API parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Type       | Readable  | Writable  | Description                                      |
+| Name                | Type       | Read-Only  | Optional  | Description                                      |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid        | string      | Yes   | Yes   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
-| characteristicUuid | string      | Yes   | Yes   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
-| descriptorUuid     | string      | Yes   | Yes   | UUID of the descriptor, for example, **00002902-0000-1000-8000-00805f9b34fb**.|
-| descriptorValue    | ArrayBuffer | Yes   | Yes   | Binary value of the descriptor.                             |
+| serviceUuid        | string      | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| characteristicUuid | string      | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
+| descriptorUuid     | string      | No   | No   | UUID of the descriptor, for example, **00002902-0000-1000-8000-00805f9b34fb**.|
+| descriptorValue    | ArrayBuffer | No   | No   | Binary value of the descriptor.                             |
 
 
 ## NotifyCharacteristic<sup>(deprecated)</sup>
@@ -3367,12 +3373,12 @@ Defines the parameters in the notifications sent when the server characteristic 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                 | Type       | Readable  | Writable  | Description                                      |
+| Name                 | Type       | Read-Only  | Optional  | Description                                      |
 | ------------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string      | Yes   | Yes   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
-| characteristicUuid  | string      | Yes   | Yes   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
-| characteristicValue | ArrayBuffer | Yes   | Yes   | Binary value of the characteristic.                              |
-| confirm             | boolean     | Yes   | Yes   | Whether the notification needs to be confirmed by the remote end. For a notification, set it to **true**. In this case, the remote end must confirm the receipt of the notification. For an indication, set it to **false**. In this case, the remote end does not need to confirm the receipt of the notification.|
+| serviceUuid         | string      | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| characteristicUuid  | string      | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
+| characteristicValue | ArrayBuffer | No   | No   | Binary value of the characteristic.                              |
+| confirm             | boolean     | No   | No   | Whether the notification needs to be confirmed by the remote end. For a notification, set it to **true**. In this case, the remote end must confirm the receipt of the notification. For an indication, set it to **false**. In this case, the remote end does not need to confirm the receipt of the notification.|
 
 
 ## CharacteristicReadReq<sup>(deprecated)</sup>
@@ -3384,13 +3390,13 @@ Defines the parameters of the **CharacteristicReadReq** event received by the se
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Type  | Readable  | Writable  | Description                                      |
+| Name                | Type  | Read-Only  | Optional  | Description                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | Yes   | No   | Address of the remote device that sends the **CharacteristicReadReq** event, for example, XX:XX:XX:XX:XX:XX.|
-| transId            | number | Yes   | No   | Transmission ID of the read request. The response returned by the server must use the same transmission ID.      |
-| offset             | number | Yes   | No   | Position from which the characteristic value is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
-| characteristicUuid | string | Yes   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
-| serviceUuid        | string | Yes   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| deviceId           | string | No   | No   | Address of the remote device that sends the **CharacteristicReadReq** event, for example, XX:XX:XX:XX:XX:XX.|
+| transId            | number | No   | No   | Transmission ID of the read request. The response returned by the server must use the same transmission ID.      |
+| offset             | number | No   | No   | Position from which the characteristic value is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
+| characteristicUuid | string | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
+| serviceUuid        | string | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
 
 
 ## CharacteristicWriteReq<sup>(deprecated)</sup>
@@ -3402,16 +3408,16 @@ Defines the parameters of the **CharacteristicWriteReq** event received by the s
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Type  | Readable  | Writable  | Description                                      |
+| Name                | Type  | Read-Only  | Optional  | Description                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | Yes   | No   | Address of the remote device that sends the **CharacteristicWriteReq** event, for example, XX:XX:XX:XX:XX:XX.|
-| transId            | number | Yes   | No   | Transmission ID of the write request. The response returned by the server must use the same transmission ID.      |
-| offset             | number | Yes   | No   | Start position for writing the characteristic value. For example, **k** means to write from the kth byte. The response returned by the server must use the same offset.|
-| isPrep             | boolean | Yes   | No   | Whether the write request is executed immediately. The value **true** means to execute the write request immediately.|
-| needRsp            | boolean | Yes   | No   | Whether to send a response to the GATT client. The value **true** means to send a response.|
-| value              | ArrayBuffer | Yes   | No   | Binary value of the descriptor to write.|
-| characteristicUuid | string | Yes   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
-| serviceUuid        | string | Yes   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| deviceId           | string | No   | No   | Address of the remote device that sends the **CharacteristicWriteReq** event, for example, XX:XX:XX:XX:XX:XX.|
+| transId            | number | No   | No   | Transmission ID of the write request. The response returned by the server must use the same transmission ID.      |
+| offset             | number | No   | No   | Start position for writing the characteristic value. For example, **k** means to write from the kth byte. The response returned by the server must use the same offset.|
+| isPrep             | boolean | No   | No   | Whether the write request is executed immediately. The value **true** means to execute the write request immediately.|
+| needRsp            | boolean | No   | No   | Whether to send a response to the GATT client. The value **true** means to send a response.|
+| value              | ArrayBuffer | No   | No   | Binary value of the descriptor to write.|
+| characteristicUuid | string | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
+| serviceUuid        | string | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
 
 
 ## DescriptorReadReq<sup>(deprecated)</sup>
@@ -3423,14 +3429,14 @@ Defines the parameters of the **DescriptorReadReq** event received by the server
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Type  | Readable  | Writable  | Description                                      |
+| Name                | Type  | Read-Only  | Optional  | Description                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | Yes   | No   | Address of the remote device that sends a **DescriptorReadReq** event, for example, XX:XX:XX:XX:XX:XX.|
-| transId            | number | Yes   | No   | Transmission ID of the read request. The response returned by the server must use the same transmission ID.      |
-| offset             | number | Yes   | No   | Position from which the descriptor is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
-| descriptorUuid     | string | Yes   | No   | UUID of the descriptor, for example, **00002902-0000-1000-8000-00805f9b34fb**.|
-| characteristicUuid | string | Yes   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
-| serviceUuid        | string | Yes   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| deviceId           | string | No   | No   | Address of the remote device that sends a **DescriptorReadReq** event, for example, XX:XX:XX:XX:XX:XX.|
+| transId            | number | No   | No   | Transmission ID of the read request. The response returned by the server must use the same transmission ID.      |
+| offset             | number | No   | No   | Position from which the descriptor is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
+| descriptorUuid     | string | No   | No   | UUID of the descriptor, for example, **00002902-0000-1000-8000-00805f9b34fb**.|
+| characteristicUuid | string | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
+| serviceUuid        | string | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
 
 
 ## DescriptorWriteReq<sup>(deprecated)</sup>
@@ -3442,17 +3448,17 @@ Defines the parameters of the **DescriptorWriteReq** event received by the serve
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Type       | Readable  | Writable  | Description                                      |
+| Name                | Type       | Read-Only  | Optional  | Description                                      |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| deviceId           | string      | Yes   | No   | Address of the remote device that sends a **DescriptorWriteReq** event, for example, XX:XX:XX:XX:XX:XX.|
-| transId            | number      | Yes   | No   | Transmission ID of the write request. The response returned by the server must use the same transmission ID.      |
-| offset             | number      | Yes   | No   | Start position for writing the descriptor. For example, **k** means to write from the kth byte. The response returned by the server must use the same offset.|
-| isPrep             | boolean     | Yes   | No   | Whether the write request is executed immediately.                            |
-| needRsp            | boolean     | Yes   | No   | Whether to send a response to the GATT client.                      |
-| value              | ArrayBuffer | Yes   | No   | Binary value of the descriptor to write.                          |
-| descriptorUuid     | string      | Yes   | No   | UUID of the descriptor, for example, **00002902-0000-1000-8000-00805f9b34fb**.|
-| characteristicUuid | string      | Yes   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
-| serviceUuid        | string      | Yes   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| deviceId           | string      | No   | No   | Address of the remote device that sends a **DescriptorWriteReq** event, for example, XX:XX:XX:XX:XX:XX.|
+| transId            | number      | No   | No   | Transmission ID of the write request. The response returned by the server must use the same transmission ID.      |
+| offset             | number      | No   | No   | Start position for writing the descriptor. For example, **k** means to write from the kth byte. The response returned by the server must use the same offset.|
+| isPrep             | boolean     | No   | No   | Whether the write request is executed immediately.                            |
+| needRsp            | boolean     | No   | No   | Whether to send a response to the GATT client.                      |
+| value              | ArrayBuffer | No   | No   | Binary value of the descriptor to write.                          |
+| descriptorUuid     | string      | No   | No   | UUID of the descriptor, for example, **00002902-0000-1000-8000-00805f9b34fb**.|
+| characteristicUuid | string      | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
+| serviceUuid        | string      | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
 
 
 ## ServerResponse<sup>(deprecated)</sup>
@@ -3464,13 +3470,13 @@ Defines the parameters of the server's response to the GATT client's read/write 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type       | Readable  | Writable  | Description                                    |
+| Name      | Type       | Read-Only  | Optional  | Description                                    |
 | -------- | ----------- | ---- | ---- | -------------------------------------- |
-| deviceId | string      | Yes   | No   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.      |
-| transId  | number      | Yes   | No   | Transmission ID of the request. The value must be the same as the ID carried in the read/write request received.       |
-| status   | number      | Yes   | No   | Response state. Set this parameter to **0**, which indicates a normal response.                  |
-| offset   | number      | Yes   | No   | Start read/write position. The value must be the same as the offset carried in the read/write request.|
-| value    | ArrayBuffer | Yes   | No   | Binary data in the response.                         |
+| deviceId | string      | No   | No   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.      |
+| transId  | number      | No   | No   | Transmission ID of the request. The value must be the same as the ID carried in the read/write request received.       |
+| status   | number      | No   | No   | Response state. Set this parameter to **0**, which indicates a normal response.                  |
+| offset   | number      | No   | No   | Start read/write position. The value must be the same as the offset carried in the read/write request.|
+| value    | ArrayBuffer | No   | No   | Binary data in the response.                         |
 
 
 ## BLEConnectChangedState<sup>(deprecated)</sup>
@@ -3482,10 +3488,10 @@ Defines the parameters of **BLEConnectChangedState**.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name    | Type                                         | Readable| Writable| Description                                         |
+| Name    | Type                                         | Read-Only| Optional| Description                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | --------------------------------------------- |
-| deviceId | string                                            | Yes  | No  | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | Yes  | Yes  | BLE connection state.                      |
+| deviceId | string                                            | No  | No  | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | No  | No  | BLE connection state.                      |
 
 
 ## ProfileConnectionState<sup>(deprecated)</sup>
@@ -3514,11 +3520,11 @@ Defines the scan filter parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                                    | Type   | Readable| Writable| Description                                                        |
+| Name                                    | Type   | Read-Only| Optional| Description                                                        |
 | ---------------------------------------- | ----------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | Yes  | Yes  | Address of the BLE device to filter, for example, XX:XX:XX:XX:XX:XX.          |
-| name                                     | string      | Yes  | Yes  | Name of the BLE device to filter.                                       |
-| serviceUuid                              | string      | Yes  | Yes  | Service UUID of the device to filter, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
+| deviceId                                 | string      | No  | Yes  | Address of the BLE device to filter, for example, XX:XX:XX:XX:XX:XX.          |
+| name                                     | string      | No  | Yes  | Name of the BLE device to filter.                                       |
+| serviceUuid                              | string      | No  | Yes  | Service UUID of the device to filter, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
 
 
 ## ScanOptions<sup>(deprecated)</sup>
@@ -3530,16 +3536,16 @@ Defines the scan configuration parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name       | Type                   | Readable  | Writable  | Description                                    |
+| Name       | Type                   | Read-Only  | Optional  | Description                                    |
 | --------- | ----------------------- | ---- | ---- | -------------------------------------- |
-| interval  | number                  | Yes   | Yes   | Delay in reporting the scan result. The default value is **0**.                   |
-| dutyMode  | [ScanDuty](#scandutydeprecated)   | Yes   | Yes   | Scan duty. The default value is SCAN_MODE_LOW_POWER.       |
-| matchMode | [MatchMode](#matchmodedeprecated) | Yes   | Yes   | Hardware filtering match mode. The default value is **MATCH_MODE_AGGRESSIVE**.|
+| interval  | number                  | No   | Yes   | Delay in reporting the scan result. The default value is **0**.                   |
+| dutyMode  | [ScanDuty](#scandutydeprecated)   | No   | Yes   | Scan duty. The default value is SCAN_MODE_LOW_POWER.       |
+| matchMode | [MatchMode](#matchmodedeprecated) | No   | Yes   | Hardware filtering match mode. The default value is **MATCH_MODE_AGGRESSIVE**.|
 
 
 ## ScanDuty<sup>(deprecated)</sup>
 
-Enumerates the scan duty options.
+Enumerates the scan modes.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. Use [bluetoothManager.ScanDuty](js-apis-bluetoothManager.md#scandutydeprecated) instead.
@@ -3577,11 +3583,11 @@ Defines the scan result.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type       | Readable  | Writable  | Description                                |
+| Name      | Type       | Read-Only  | Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | Yes   | No   | Address of the scanned device, for example, XX:XX:XX:XX:XX:XX.|
-| rssi     | number      | Yes   | No   | RSSI of the device.                   |
-| data     | ArrayBuffer | Yes   | No   | Advertisement packets sent by the device.                   |
+| deviceId | string      | No   | No   | Address of the scanned device, for example, XX:XX:XX:XX:XX:XX.|
+| rssi     | number      | No   | No   | RSSI of the device.                   |
+| data     | ArrayBuffer | No   | No   | Advertisement packets sent by the device.                   |
 
 
 ## BluetoothState<sup>(deprecated)</sup>
@@ -3613,11 +3619,11 @@ Defines the BLE advertising parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name         | Type   | Readable  | Writable  | Description                                      |
+| Name         | Type   | Read-Only  | Optional  | Description                                      |
 | ----------- | ------- | ---- | ---- | ---------------------------------------- |
-| interval    | number  | Yes   | Yes   | Interval for BLE advertising. The minimum value is **32** slots (20 ms). The maximum value is **16384** slots. The default value is **1600** slots (1s).|
-| txPower     | number  | Yes   | Yes   | Transmit power, in dBm. The value range is -127 to 1. The default value is **-7**.  |
-| connectable | boolean | Yes   | Yes   | Whether the advertisement is connectable. The default value is **true**.                  |
+| interval    | number  | No   | Yes   | Interval for BLE advertising. The minimum value is **32** slots (20 ms). The maximum value is **16384** slots. The default value is **1600** slots (1s).|
+| txPower     | number  | No   | Yes   | Transmit power, in dBm. The value range is -127 to 1. The default value is **-7**.  |
+| connectable | boolean | No   | Yes   | Whether the advertisement is connectable. The default value is **true**.                  |
 
 
 ## AdvertiseData<sup>(deprecated)</sup>
@@ -3629,11 +3635,11 @@ Defines the content of a BLE advertisement packet.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name             | Type                                    | Readable  | Writable  | Description                         |
+| Name             | Type                                    | Read-Only  | Optional  | Description                         |
 | --------------- | ---------------------------------------- | ---- | ---- | --------------------------- |
-| serviceUuids    | Array&lt;string&gt;                      | Yes   | Yes   | List of service UUIDs to broadcast.|
-| manufactureData | Array&lt;[ManufactureData](#manufacturedatadeprecated)&gt; | Yes   | Yes   | List of manufacturers to broadcast.          |
-| serviceData     | Array&lt;[ServiceData](#servicedatadeprecated)&gt; | Yes   | Yes   | List of service data to broadcast.              |
+| serviceUuids    | Array&lt;string&gt;                      | No   | No   | List of service UUIDs to broadcast.|
+| manufactureData | Array&lt;[ManufactureData](#manufacturedatadeprecated)&gt; | No   | No   | List of manufacturers to broadcast.          |
+| serviceData     | Array&lt;[ServiceData](#servicedatadeprecated)&gt; | No   | No   | List of service data to broadcast.              |
 
 
 ## ManufactureData<sup>(deprecated)</sup>
@@ -3645,10 +3651,10 @@ Defines the content of a BLE advertisement packet.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name              | Type               | Readable  | Writable  | Description                |
+| Name              | Type               | Read-Only  | Optional  | Description                |
 | ---------------- | ------------------- | ---- | ---- | ------------------ |
-| manufactureId    | number  | Yes   | Yes   | Manufacturer ID allocated by the Bluetooth SIG.|
-| manufactureValue | ArrayBuffer         | Yes   | Yes   | Manufacturer data.    |
+| manufactureId    | number  | No   | No   | Manufacturer ID allocated by the Bluetooth SIG.|
+| manufactureValue | ArrayBuffer         | No   | No   | Manufacturer data.    |
 
 
 ## ServiceData<sup>(deprecated)</sup>
@@ -3660,10 +3666,10 @@ Defines the service data contained in an advertisement packet.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name          | Type       | Readable  | Writable  | Description        |
+| Name          | Type       | Read-Only  | Optional  | Description        |
 | ------------ | ----------- | ---- | ---- | ---------- |
-| serviceUuid  | string      | Yes   | Yes   | Service UUID.|
-| serviceValue | ArrayBuffer | Yes   | Yes   | Service data.   |
+| serviceUuid  | string      | No   | No   | Service UUID.|
+| serviceValue | ArrayBuffer | No   | No   | Service data.   |
 
 
 ## PinRequiredParam<sup>(deprecated)</sup>
@@ -3675,10 +3681,10 @@ Defines the pairing request parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Readable  | Writable  | Description         |
+| Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | Yes   | No   | ID of the device to pair.|
-| pinCode  | string | Yes   | No   | Key for the device pairing.  |
+| deviceId | string | No   | No   | ID of the device to pair.|
+| pinCode  | string | No   | No   | Key for the device pairing.  |
 
 
 ## BondStateParam<sup>(deprecated)</sup>
@@ -3690,10 +3696,10 @@ Defines the pairing state parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Readable  | Writable  | Description         |
+| Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | Yes   | No   | ID of the device to pair.|
-| state    | BondState   | Yes   | No   | State of the device.|
+| deviceId | string      | No   | No   | ID of the device to pair.|
+| state    | BondState   | No   | No   | State of the device.|
 
 
 ## StateChangeParam<sup>(deprecated)</sup>
@@ -3705,10 +3711,10 @@ Defines the profile state change parameters.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name    | Type                                         | Readable| Writable| Description                           |
+| Name    | Type                                         | Read-Only| Optional| Description                           |
 | -------- | ------------------------------------------------- | ---- | ---- | ------------------------------- |
-| deviceId | string                                            | Yes  | No  | Address of a Bluetooth device.             |
-| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | Yes  | No  | Profile connection state of the device.|
+| deviceId | string                                            | No  | No  | Address of a Bluetooth device.             |
+| state    | [ProfileConnectionState](#profileconnectionstatedeprecated) | No  | No  | Profile connection state of the device.|
 
 
 ## DeviceClass<sup>(deprecated)</sup>
@@ -3720,11 +3726,11 @@ Defines the class of a Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name             | Type                               | Readable  | Writable  | Description              |
+| Name             | Type                               | Read-Only  | Optional  | Description              |
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
-| majorClass      | [MajorClass](#majorclassdeprecated)           | Yes   | No   | Major classes of Bluetooth devices.  |
-| majorMinorClass | [MajorMinorClass](#majorminorclassdeprecated) | Yes   | No   | Major and minor classes of Bluetooth devices.|
-| classOfDevice   | number                              | Yes   | No   | Class of the device.         |
+| majorClass      | [MajorClass](#majorclassdeprecated)           | No   | No   | Major classes of Bluetooth devices.  |
+| majorMinorClass | [MajorMinorClass](#majorminorclassdeprecated) | No   | No   | Major and minor classes of Bluetooth devices.|
+| classOfDevice   | number                              | No   | No   | Class of the device.         |
 
 
 

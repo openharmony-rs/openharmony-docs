@@ -130,7 +130,7 @@ getTitle(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -160,7 +160,7 @@ setTitle(title: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
@@ -193,7 +193,7 @@ getFileName(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |---------| -------------------- |
@@ -224,7 +224,7 @@ setFileName(name: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
@@ -257,7 +257,7 @@ getUri(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |---------| -------------------- |
@@ -287,7 +287,7 @@ getCustomizedType(): ToneCustomizedType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -317,7 +317,7 @@ setCategory(category: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
@@ -350,7 +350,7 @@ getCategory(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -381,7 +381,7 @@ setMediaType(type: MediaType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
@@ -413,7 +413,7 @@ getMediaType(): MediaType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -457,7 +457,7 @@ createCustomizedToneAttrs(): ToneAttrs
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -545,7 +545,7 @@ getUri(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -575,7 +575,7 @@ getTitle(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -605,7 +605,7 @@ getFileName(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -634,7 +634,7 @@ getGentleUri(): string | null
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -664,7 +664,7 @@ getGentleTitle(): string | null
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -694,7 +694,7 @@ getGentleFileName(): string | null
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -1034,7 +1034,7 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1086,7 +1086,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1137,7 +1137,7 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise&lt;Ringtone
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1190,7 +1190,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1242,7 +1242,7 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise&lt;string&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1293,7 +1293,7 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise&lt;Syst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1345,7 +1345,7 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise&lt;To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1396,7 +1396,7 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise&lt;ToneAt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1447,7 +1447,7 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1498,7 +1498,7 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise&lt;To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1548,7 +1548,7 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise&lt;ToneAttrs&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1596,6 +1596,17 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise&lt;void&gt;
 | ------------------- |----------------------|
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+
+| 错误码ID | 错误信息              |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
+| 20700001 | Tone type mismatch, e.g. tone of input uri is not an alarm tone. |
+
 **示例：**
 
 ```ts
@@ -1635,6 +1646,16 @@ getAlarmToneUri(context: BaseContext): Promise&lt;string&gt;
 | 类型                    | 说明                    |
 |-----------------------|-----------------------|
 | Promise&lt;string&gt; | Promise对象，返回系统当前闹铃uri。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+
+| 错误码ID | 错误信息              |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
 
 **示例：**
 
@@ -1677,7 +1698,7 @@ getAlarmToneAttrList(context: BaseContext): Promise&lt;ToneAttrsArray&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1727,7 +1748,7 @@ openAlarmTone(context: BaseContext, uri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1778,7 +1799,7 @@ close(fd: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1832,7 +1853,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -1902,7 +1923,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -1971,7 +1992,7 @@ removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2024,7 +2045,7 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2077,7 +2098,7 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2134,7 +2155,7 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2185,7 +2206,7 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2238,13 +2259,13 @@ openToneHaptics(context: BaseContext, hapticsUri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 5400102 | Operation not allowed. For example, the input URI is not one for haptics. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2290,7 +2311,7 @@ getCurrentRingtoneAttribute(type: RingtoneType): Promise&lt;ToneAttrs&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2336,7 +2357,7 @@ openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2386,7 +2407,7 @@ removeCustomizedToneList(uriList: Array\<string>): Promise\<Array\<[string, Syst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2413,7 +2434,7 @@ systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: sys
 
 ## RingtonePlayer<sup>10+</sup>
 
-type RingtonePlayer = _RingtonePlayer;
+type RingtonePlayer = _RingtonePlayer
 
 系统铃音播放器对象。
 
@@ -2423,11 +2444,11 @@ type RingtonePlayer = _RingtonePlayer;
 
 | 类型              |说明     |
 |-----------------|-------|
-| _RingtonePlayer | 系统铃音播放器。 |
+| [_RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) | 系统铃音播放器。 |
 
 ## SystemTonePlayer<sup>11+</sup>
 
-type SystemTonePlayer = _SystemTonePlayer;
+type SystemTonePlayer = _SystemTonePlayer
 
 系统提示音播放器对象。
 
@@ -2437,11 +2458,11 @@ type SystemTonePlayer = _SystemTonePlayer;
 
 | 类型              | 说明        |
 |-----------------|-----------|
-| _SystemTonePlayer | 系统提示音播放器。 |
+| [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | 系统提示音播放器。 |
 
 ## RingtoneOptions<sup>10+</sup>
 
-type RingtoneOptions = _RingtoneOptions;
+type RingtoneOptions = _RingtoneOptions
 
 系统铃音播放器配置项。
 
@@ -2451,11 +2472,11 @@ type RingtoneOptions = _RingtoneOptions;
 
 | 类型              | 说明          |
 |-----------------|-------------|
-| _RingtoneOptions | 系统铃音播放器配置项。 |
+| [_RingtoneOptions](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneoptions) | 系统铃音播放器配置项。 |
 
 ## SystemToneOptions<sup>11+</sup>
 
-type SystemToneOptions = _SystemToneOptions;
+type SystemToneOptions = _SystemToneOptions
 
 系统提示音播放器配置项。
 
@@ -2465,7 +2486,7 @@ type SystemToneOptions = _SystemToneOptions;
 
 | 类型              | 说明            |
 |-----------------|---------------|
-| _SystemToneOptions | 系统提示音音播放器配置项。 |
+| [_SystemToneOptions](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneoptions) | 系统提示音播放器配置项。 |
 
 
 

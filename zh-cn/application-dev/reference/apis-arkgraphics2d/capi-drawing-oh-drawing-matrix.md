@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Matrix OH_Drawing_Matrix
+```
+
 ## 概述
 
 定义一个矩阵，用于描述坐标变换。

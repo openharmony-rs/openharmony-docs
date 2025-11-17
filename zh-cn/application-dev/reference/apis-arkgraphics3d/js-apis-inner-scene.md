@@ -353,7 +353,8 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| renderingPipeline | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否   | 是   | 选择初始渲染管线类型，默认为轻量级前向渲染管线类型。 |
+| msaa<sup>22+</sup> | boolean | 否 | 是 | 相机是否使能MSAA，true表示使能MSAA，false表示不使能MSAA。默认值为false。 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否   | 是   | 选择初始渲染管线类型，默认为轻量级前向渲染管线类型。 |
 
 ## EffectParameters<sup>21+</sup>
 

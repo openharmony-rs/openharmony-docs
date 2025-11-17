@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -57,11 +57,11 @@ Enumerates the types of native API collections.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_NATIVE_NODE | API related to UI components. For details, see the struct definition in <arkui/native_node.h>.|
-| ARKUI_NATIVE_DIALOG | API related to dialog boxes. For details, see the [struct](capi-native-dialog-h.md#structs) definition in **native_dialog.h**.|
-| ARKUI_NATIVE_GESTURE | API related to gestures. For details, see the [struct](capi-native-gesture-h.md#structs) definition in **native_gesture.h**.|
-| ARKUI_NATIVE_ANIMATE | API related to animations. For details, see the [struct](capi-native-animate-h.md#structs) definition in **native_animate.h**.|
-| ARKUI_MULTI_THREAD_NATIVE_NODE | API related to multi-threaded UI components. For details, see the struct definition in <arkui/native_node.h>.|
+| ARKUI_NATIVE_NODE | API related to UI components. For details, see the [struct](./capi-native-node-h.md#structs) definition in [native_node.h](./capi-native-node-h.md).|
+| ARKUI_NATIVE_DIALOG | API related to dialog boxes. For details, see the [struct](capi-native-dialog-h.md#structs) definition in [native_dialog.h](./capi-native-dialog-h.md).|
+| ARKUI_NATIVE_GESTURE | API related to gestures. For details, see the [struct](capi-native-gesture-h.md#structs) definition in [native_gesture.h](./capi-native-gesture-h.md).|
+| ARKUI_NATIVE_ANIMATE | API related to animations. For details, see the [struct](capi-native-animate-h.md#structs) definition in[native_animate.h](./capi-native-animate-h.md).|
+| ARKUI_MULTI_THREAD_NATIVE_NODE | API related to multi-threaded UI components. For details, see the [struct](./capi-native-node-h.md#structs) definition in [native_node.h](./capi-native-node-h.md).|
 
 
 ## Function Description
@@ -85,7 +85,7 @@ Initializes the C-API environment and obtains the native module API collection o
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind) type | Type of the native API collection provided by ArkUI, for example, **ARKUI_NATIVE_NODE** or **ARKUI_NATIVE_GESTURE**.|
-| const char* structName | Name of a native struct, obtained by querying the struct definitions in the corresponding header file, for example, **ArkUI_NativeNodeAPI_1** in <arkui/native_node.h>.|
+| const char* structName | Name of a native struct, obtained by querying the struct definitions in the corresponding header file, for example, **ArkUI_NativeNodeAPI_1** in [native_node.h](./capi-native-node-h.md).|
 
 **Return value**
 
@@ -108,6 +108,6 @@ do {                                                                            
 **Description**
 
 
-Obtains the corresponding struct pointer based on the struct type.
+Obtains the corresponding struct pointer based on the struct type. This API takes parameters of **nativeAPIVariantKind** (an enumeration of type [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)), **structType** (of type const char*), **structPtr** (of type structType\*). It calls [OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname) to obtain a native API pointer, casts it to structType*, and assigns the result to **structPtr**.
 
 **Since**: 12

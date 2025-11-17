@@ -54,15 +54,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
+import { media } from '@kit.MediaKit';
 
-public getFileFd(): number {
-    let filesDir = '/data/storage/el2/base/haps';
-    let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    return file.fd;
-}
+// Initialize avScreenCaptureRecorder.
+let avScreenCaptureRecorder!: media.AVScreenCaptureRecorder;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in createAVScreenCaptureRecorder');
+  } else {
+    console.error('Failed to createAVScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// Create a file.
+let filesDir = '/data/storage/el2/base/haps';
+let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 
 let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
-    fd: this.getFileFd(), // Before passing in an FD to this parameter, the file (generally an MP4 file) must be created by the caller and granted with the write permissions.
+    fd: file.fd, // Before passing in an FD to this parameter, the file (generally an MP4 file) must be created by the caller and granted with the write permissions.
     frameWidth: 640,
     frameHeight: 480
     // Add other parameters.
@@ -158,7 +170,7 @@ For example, if a user enters a password in this application during screen captu
 
 | Name| Type   | Mandatory| Description                                                     |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| windowIDs | Array\<number> | Yes  | IDs of windows that require privacy exemption, including the main window IDs and subwindow IDs. For details about how to obtain window properties, see [Window API Reference](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).|
+| windowIDs | Array\<number> | Yes  | IDs of windows that require privacy exemption, including the main window IDs and subwindow IDs. For details about how to obtain window properties, see [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).|
 
 **Return value**
 
@@ -226,6 +238,132 @@ avScreenCaptureRecorder.setMicEnabled(true).then(() => {
     console.info('Succeeded in setMicEnabled avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
     console.error(`Failed to setMicEnabled avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## setPickerMode<sup>22+</sup>
+
+setPickerMode(pickerMode: PickerMode): Promise\<void>
+
+Sets the display mode of the picker. The setting takes effect the next time the picker is displayed. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                     |
+| ------ | ------- | ---- | --------------------------------------------------------- |
+| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | Yes  | Picker mode.<br>It defines the content type displayed in the picker. The options are as follows:<br>- **SCREEN_ONLY**: Displays only a list of screens.<br>- **WINDOW_ONLY**: Displays only a list of windows.<br>- **SCREEN_AND_WINDOW**: Displays both screens and windows. It is the default value.|
+
+**Return value**
+
+| Type          | Description                                   |
+| -------------- | --------------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
+    console.info('Succeeded in setPickerMode');
+}).catch((err: BusinessError) => {
+    console.error(`Failed to setPickerMode, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## excludePickerWindows<sup>22+</sup>
+
+excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
+
+Sets the list of windows to be hidden in the picker. The setting takes effect the next time the picker is displayed. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                     |
+| ------ | ------- | ---- | --------------------------------------------------------- |
+| excludedWindows | Array\<number> | Yes  | List of windows to be hidden in the picker. For details about how to obtain window properties, see [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).|
+
+**Return value**
+
+| Type          | Description                                   |
+| -------------- | --------------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let excludedWindows: Array<number> = [101, 102, 103];
+
+avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
+    console.info('Succeeded in excludePickerWindows');
+}).catch((err: BusinessError) => {
+    console.error(`Failed to excludePickerWindows, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## presentPicker<sup>22+</sup>
+
+presentPicker(): Promise\<void>
+
+Displays the Picker once more after the screen capture starts, allowing for dynamic updates to the recording source, such as changing the window or screen being recorded. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - The ongoing capture process remains uninterrupted while updating the recording source.
+> - Following the dynamic update of the recording source through the Picker, the capture proceeds with the newly selected source.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value**
+
+| Type          | Description                             |
+| -------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avScreenCaptureRecorder.presentPicker().then(() => {
+    console.info('Succeeded in presentPicker avScreenCaptureRecorder');
+}).catch((err: BusinessError) => {
+    console.error('Failed to presentPicker avScreenCaptureRecorder, error: ' + err.message);
 });
 ```
 

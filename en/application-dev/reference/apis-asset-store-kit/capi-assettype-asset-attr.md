@@ -1,5 +1,12 @@
 # Asset_Attr
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Overview
 
 Defines an asset attribute, which consists of a tag and a value in the form of a key-value (KV) pair.

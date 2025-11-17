@@ -1,18 +1,29 @@
 # Notification Kit (User Notification Service)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @cheerful_ricky-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 - ArkTS APIs
   - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)
+  - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription)](js-apis-notificationExtensionSubscription.md)
   - [@ohos.notificationManager (NotificationManager) (System API)](js-apis-notificationManager-sys.md)
   - [@ohos.notificationSubscribe (NotificationSubscribe) (System API)](js-apis-notificationSubscribe-sys.md)
+  - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription) (System API)](js-apis-notificationExtensionSubscription-sys.md)
   - Notification
     - [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)
     - [NotificationCommonDef](js-apis-inner-notification-notificationCommonDef.md)
     - [NotificationContent](js-apis-inner-notification-notificationContent.md)
+    - [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md)
     - [NotificationFlags](js-apis-inner-notification-notificationFlags.md)
+    - [NotificationInfo](js-apis-inner-notification-notificationInfo.md)
     - [NotificationRequest](js-apis-inner-notification-notificationRequest.md)
     - [NotificationSlot](js-apis-inner-notification-notificationSlot.md)
     - [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)
     - [NotificationUserInput](js-apis-inner-notification-notificationUserInput.md)
+    - [NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md)
     <!--Del-->
     - [NotificationContent (System API)](js-apis-inner-notification-notificationContent-sys.md)
     - [NotificationFlags (System API)](js-apis-inner-notification-notificationFlags-sys.md)

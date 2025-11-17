@@ -431,9 +431,9 @@ OH_AVFormat_Destroy(format);
 
 ### Checking the Codec Profile and Level Supported
 
-The codec standard contains multiple encoding tools, which are applicable to different encoding scenarios. Codec standards include multiple encoding tools, which are applicable to different encoding scenarios. For specific scenarios, the codec standard uses the codec profile to specify the enabled status of these encoding tools. For example, for H.264, there are baseline, main, and high profiles. For details, see [OH_AVCProfile](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcprofile-1).
+The codec standard contains multiple encoding tools, which are applicable to different encoding scenarios. Codec standards include multiple encoding tools, which are applicable to different encoding scenarios. For specific scenarios, the codec standard uses the codec profile to specify the enabled status of these encoding tools. For example, for H.264, there are baseline, main, and high profiles. For details, see [OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile).
 
-Codec levels define the processing capability and storage space required by the codec. For example, for H.264, there are 20 levels ranging from 1 to 6.2. For details, see [OH_AVCLevel](../../reference/apis-avcodec-kit/_codec_base.md#oh_avclevel-1).
+Codec levels define the processing capability and storage space required by the codec. For example, for H.264, there are 20 levels ranging from 1 to 6.2. For details, see [OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel).
 
 | API    | Description                        |
 | -------- | ---------------------------- |

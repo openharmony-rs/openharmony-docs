@@ -85,56 +85,72 @@
   > **说明：**
   >
   > key可以是uri也可以是简单字符串，subscriberId默认值为当前formId，实际取值都依赖于数据发布方的定义。
-  ```ts
-  import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
-  import { Want } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG: string = 'ProcessDataFormAbility';
-  const DOMAIN_NUMBER: number = 0xFF00;
-  
-  export default class ProcessDataFormAbility extends FormExtensionAbility {
-    onAddForm(want: Want): formBindingData.FormBindingData {
-      let formData: Record<string, Object> = {};
-      let proxies: formBindingData.ProxyData[] = [
-        {
-          key: 'datashareproxy://com.samples.widgetupdatebyproxy/weather',
-          subscriberId: '11'
-        }
-      ];
-      let formBinding = formBindingData.createFormBindingData(formData);
-      formBinding.proxies = proxies;
-      hilog.info(DOMAIN_NUMBER, TAG, 'onAddForm');
-      return formBinding;
+
+    <!-- @[process_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/processdataentryability/ProcessDataFormAbility.ts) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/processdataentryability/ProcessDataFormAbility.ts
+    import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+    import { Want } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const TAG: string = 'ProcessDataFormAbility';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    export default class ProcessDataFormAbility extends FormExtensionAbility {
+      onAddForm(want: Want): formBindingData.FormBindingData {
+        let formData: Record<string, Object> = {};
+        let proxies: formBindingData.ProxyData[] = [
+          {
+            key: 'datashareproxy://com.samples.widgetupdatebyproxy/weather',
+            subscriberId: '11'
+          }
+        ];
+        let formBinding = formBindingData.createFormBindingData(formData);
+        formBinding.proxies = proxies;
+        hilog.info(DOMAIN_NUMBER, TAG, 'onAddForm');
+        return formBinding;
+      }
+    
+      onAcquireFormState(want: Want): formInfo.FormState {
+        // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+        return formInfo.FormState.READY;
+      }
     }
-  }
-  ```
+    ```
   
 - 在[卡片页面文件](arkts-ui-widget-creation.md)中，通过LocalStorage变量获取订阅到的数据，LocalStorage绑定了一个字符串，以key:value的键值对格式来刷新卡片订阅数据，其中key必须与卡片提供方订阅的key保持一致。示例中，通过'city'获取订阅的数据，并在Text组件显示。
-  ```ts
-  let storageProcess = new LocalStorage();
-  
-  @Entry(storageProcess)
-  @Component
-  struct WidgetProcessDataCard {
-    @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr = $r('app.string.loading');
-  
-    build() {
-      Column() {
+
+    <!-- @[widget_process_data_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetprocessdata/pages/WidgetProcessDataCard.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/widgetprocessdata/pages/WidgetProcessDataCard.ets
+    let storageProcess = new LocalStorage();
+    
+    @Entry(storageProcess)
+    @Component
+    struct WidgetProcessDataCard {
+      // $r('app.string.loading')需要替换为开发者所需的资源文件
+      @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr = 
+        $r('app.string.loading');
+    
+      build() {
         Column() {
-          Text(this.city)
-            .fontColor('#FFFFFF')
-            .opacity(0.9)
-            .fontSize(14)
-            .margin({ top: '8%', left: '10%' })
-        }.width('100%')
-        .alignItems(HorizontalAlign.Start)
-      }.width('100%').height('100%')
-      .backgroundImage($r('app.media.CardEvent'))
-      .backgroundImageSize(ImageSize.Cover)
+          Column() {
+            Text(this.city)
+              .fontColor('#FFFFFF')
+              .opacity(0.9)
+              .fontSize(14)
+              .margin({ top: '8%', left: '10%' })
+          }.width('100%')
+          .alignItems(HorizontalAlign.Start)
+        }.width('100%').height('100%')
+        // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+        .backgroundImage($r('app.media.CardEvent'))
+        .backgroundImageSize(ImageSize.Cover)
+      }
     }
-  }
-  ```
+    ```
 
 ## 卡片提供方开发步骤（持久化数据）
 - 配置form_config.json文件中的`dataProxyEnabled`字段为`true`，以启用卡片代理刷新功能。
@@ -170,70 +186,85 @@
   >
   > - key的取值是uri，依赖于数据发布方定义。
   > - subscriberId可自定义，addTemplate中的subscriberId参数与proxies.subscriberId保持一致即可。
-  ```ts
-  import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
-  import { Want } from '@kit.AbilityKit';
-  import { dataShare } from '@kit.ArkData';
 
-  export default class PersistentDataFormAbility extends FormExtensionAbility {
-    onAddForm(want: Want): formBindingData.FormBindingData {
-      let subscriberId = '111';
-      let template: dataShare.Template = {
-        predicates: {
-          'list': `select type from TBL00 where cityId = ${subscriberId}`
-        },
-        scheduler: ''
-      };
-      dataShare.createDataShareHelper(this.context, 'datashareproxy://com.samples.widgetupdatebyproxy', {
-        isProxy: true
-      }).then((data) => {
-        let dataShareHelper = data;
-        dataShareHelper.addTemplate('datashareproxy://com.samples.widgetupdatebyproxy/test', subscriberId, template);
-      });
-      let formData: Record<string, Object> = {};
-      let proxies: formBindingData.ProxyData[] = [
-        {
-          key: 'datashareproxy://com.samples.widgetupdatebyproxy/test',
-          subscriberId: subscriberId
-        }
-      ];
-
-      let formBinding: formBindingData.FormBindingData = {
-        data: JSON.stringify(formData),
-        proxies: proxies
-      };
-      return formBinding;
+    <!-- @[persistent_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts
+    import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+    import { Want } from '@kit.AbilityKit';
+    import { dataShare } from '@kit.ArkData';
+    
+    export default class PersistentDataFormAbility extends FormExtensionAbility {
+      onAddForm(want: Want): formBindingData.FormBindingData {
+        let dataShareHelper;
+        let subscriberId = '111';
+        let template = {
+          predicates: {
+            'list': `select type from TBL00 where cityId = ${subscriberId}`
+          },
+          scheduler: ''
+        };
+        dataShare.createDataShareHelper(this.context, 'datashareproxy://com.samples.widgetupdatebyproxy', {
+          isProxy: true
+        }).then((data) => {
+          dataShareHelper = data;
+          dataShareHelper.addTemplate('datashareproxy://com.samples.widgetupdatebyproxy/test', subscriberId, template);
+        });
+        let formData = {};
+        let proxies = [
+          {
+            key: 'datashareproxy://com.samples.widgetupdatebyproxy/test',
+            subscriberId: subscriberId
+          }
+        ];
+    
+        let formBinding = {
+          data: JSON.stringify(formData),
+          proxies: proxies
+        };
+        return formBinding;
+      }
+    
+      onAcquireFormState(want: Want): formInfo.FormState {
+        // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+        return formInfo.FormState.READY;
+      }
     }
-  }
-  ```
+    ```
 
 - 在[卡片页面文件](arkts-ui-widget-creation.md)中，通过LocalStorage变量获取订阅到的数据，LocalStorage绑定了一个字符串，以key:value的键值对格式来刷新卡片订阅数据，其中key必须与卡片提供方订阅的key保持一致。示例中，通过'list'获取订阅的数据，并把第一个元素的值显示在Text组件上。
-  ```ts
-  let storagePersis = new LocalStorage();
-  
-  @Entry(storagePersis)
-  @Component
-  struct WidgetPersistentDataCard {
-    readonly FULL_WIDTH_PERCENT: string = '100%';
-    readonly FULL_HEIGHT_PERCENT: string = '100%';
-    @LocalStorageProp('list') list: Record<string, string>[] = [{ 'type': 'a' }];
-  
-    build() {
-      Column() {
+
+    <!-- @[widget_persistent_data_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetpersistentdata/pages/WidgetPersistentDataCard.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/widgetpersistentdata/pages/WidgetPersistentDataCard.ets
+    let storagePersis = new LocalStorage();
+    
+    @Entry(storagePersis)
+    @Component
+    struct WidgetPersistentDataCard {
+      readonly FULL_WIDTH_PERCENT: string = '100%';
+      readonly FULL_HEIGHT_PERCENT: string = '100%';
+      @LocalStorageProp('list') list: Record<string, string>[] = [{ 'type': 'a' }];
+    
+      build() {
         Column() {
-          Text((this.list[0]['type']))
-            .fontColor('#FFFFFF')
-            .opacity(0.9)
-            .fontSize(14)
-            .margin({ top: '8%', left: '10%' })
-        }.width('100%')
-        .alignItems(HorizontalAlign.Start)
-      }.width(this.FULL_WIDTH_PERCENT).height(this.FULL_HEIGHT_PERCENT)
-      .backgroundImage($r('app.media.CardEvent'))
-      .backgroundImageSize(ImageSize.Cover)
+          Column() {
+            Text((this.list[0]['type']))
+              .fontColor('#FFFFFF')
+              .opacity(0.9)
+              .fontSize(14)
+              .margin({ top: '8%', left: '10%' })
+          }.width('100%')
+          .alignItems(HorizontalAlign.Start)
+        }.width(this.FULL_WIDTH_PERCENT).height(this.FULL_HEIGHT_PERCENT)
+        // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+        .backgroundImage($r('app.media.CardEvent'))
+        .backgroundImageSize(ImageSize.Cover)
+      }
     }
-  }
-  ```
+    ```
 <!--Del-->
 ## 相关实例
 

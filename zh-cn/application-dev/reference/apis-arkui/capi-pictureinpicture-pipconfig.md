@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef void* PictureInPicture_PipConfig
+```
+
 ## 概述
 
 画中画参数配置器。

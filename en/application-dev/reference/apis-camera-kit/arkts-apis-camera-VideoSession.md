@@ -374,7 +374,8 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 Sets the priority level for video recording quality.
 
 > **NOTE**
-> The default value is **HIGH_QUALITY**. Switching to **POWER_BALANCE** will compromise video recording quality to achieve lower power usage. The extent of power conservation achieved varies depending on the platform.
+> - The default value is **HIGH_QUALITY**. Switching to **POWER_BALANCE** will compromise video recording quality to achieve lower power usage. The extent of power conservation achieved varies depending on the platform.
+> - It is recommended that this API be called between [commitConfig](arkts-apis-camera-Session.md#commitconfig11) and [start](arkts-apis-camera-Session.md#start11-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 

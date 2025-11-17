@@ -105,7 +105,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 3. 打印日志：
 
    ```c++
-   OH_LOG_INFO(LOG_APP, "Failed to visit %{private}s, reason:%{public}d.", url, errno);
+   OH_LOG_INFO(LOG_APP, "Failed to visit path.");
    // 设置应用日志最低打印级别，设置完成后，低于Warn级别的日志将无法打印
    OH_LOG_SetMinLogLevel(LOG_WARN);
    OH_LOG_INFO(LOG_APP, "this is an info level log");
@@ -120,7 +120,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 
 <!--RP2-->
    ```txt
-   01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     Failed to visit <private>, reason:11.
+   01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     Failed to visit path.
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an error level log
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     this is an another info level log
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an another error level log

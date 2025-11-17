@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_RecordCmdUtils OH_Drawing_RecordCmdUtils
+```
+
 ## 概述
 
 定义指令录制工具，用于生成录制指令。

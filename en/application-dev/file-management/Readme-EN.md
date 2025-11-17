@@ -3,7 +3,7 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @zhuangzhuang; @gsl_1234-->
+<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
@@ -16,14 +16,14 @@
     - [Accessing Application Files (C/C++)](native-fileio-guidelines.md)
     - [Obtaining Application and File System Space Statistics](app-fs-space-statistics.md)
   <!--Del-->
-  - [Pushing Files to an Application Sandbox Directory](send-file-to-app-sandbox.md)
+  - [Pushing Files to an Application Sandbox Directory (for System Applications Only)](send-file-to-app-sandbox-sys.md)
   <!--DelEnd-->
   - [Sharing an Application File](share-app-file.md)
   - Application Data Backup and Restore<!--app-file-backup-restore-->
     - [Application Data Backup and Restore Overview](app-file-backup-overview.md)
     - [Accessing Backup and Restore](app-file-backup-extension.md)
     <!--Del-->
-    - [Triggering Backup and Restore (for System Applications Only)](app-file-backup.md)
+    - [Triggering Backup and Restore (for System Applications Only)](app-file-backup-sys.md)
     <!--DelEnd-->
 - User Files<!--user-files-->
   - [User File Overview](user-file-overview.md)
@@ -37,8 +37,8 @@
     - [Persisting Temporary Permissions (C/C++)](native-fileshare-guidelines.md)
   - [Obtaining and Accessing a User Directory](request-dir-permission.md)
   <!--Del-->
-  - [Developing a FileManager Application (for System Applications Only)](dev-user-file-manager.md)
-  - [Managing External Storage Devices (for System Applications Only)](manage-external-storage.md)
+  - [Developing a File Manager Application (for System Applications Only)](dev-user-file-manager-sys.md)
+  - [Managing External Storage Devices (for System Applications Only)](manage-external-storage-sys.md)
   <!--DelEnd-->
 - Distributed File System<!--distributed-fs-->
   - [Distributed File System Overview](distributed-fs-overview.md)

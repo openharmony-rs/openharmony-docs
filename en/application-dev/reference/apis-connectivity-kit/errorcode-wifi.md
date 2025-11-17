@@ -1,5 +1,11 @@
 # Wi-Fi Error Codes
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -64,6 +70,61 @@ The Wi-Fi function is disabled.
 
 Enable the Wi-Fi function.
 
+## 2501005 No User Response to the Connection Request
+
+**Error Message**
+
+The user does not respond.
+
+**Description**
+
+When an application connects to a candidate network, the application prompts the user whether to trust and establish the connection. The user does not respond to the connection request.
+
+**Possible Causes**
+
+1. The user swipes up to close the dialog box.
+2. The user does not click **OK** or **Cancel** within 10 seconds.
+
+**Solution**
+
+The user needs to agree to the request for connecting to the candidate network.
+
+## 2501006 Connection Request Rejected
+
+**Error Message**
+
+The user refused the action.
+
+**Description**
+
+When an application connects to a candidate network, the application prompts the user whether to trust and establish the connection. The user cancels the connection request.
+
+**Possible Causes**
+
+The user clicks **Cancel** to reject the connection.
+
+**Solution**
+
+The user needs to agree to the request for connecting to the candidate network.
+
+## 2501007 Parameter Verification Failed
+
+**Error Message**
+
+Parameter validation failed.
+
+**Description**
+
+An error occurs during parameter verification.
+
+**Possible Causes**
+
+The parameter value range is incorrect.
+
+**Solution**
+
+Rectify the fault according to the parameter restrictions of the API.
+
 ## 2601000 Hotspot Module Error
 
 **Error Message**
@@ -76,7 +137,7 @@ An error occurs when the Wi-Fi service performs a hotspot-related operation.
 
 **Possible Causes**
 
-1. Communication between the Wi-Fi service and the hotspot failed.
+1. Communication between the Wi-Fi service and the STA failed.
 2. The Wi-Fi chip communication is abnormal.
 3. An unknown error has occurred.
 
@@ -97,7 +158,7 @@ An error occurs when the Wi-Fi service performs a hotspot-related operation.
 
 **Possible Causes**
 
-1. Communication between the Wi-Fi service and the hotspot failed.
+1. Communication between the Wi-Fi service and the STA failed.
 2. The Wi-Fi chip communication is abnormal.
 3. An unknown error has occurred.
 
@@ -135,15 +196,15 @@ Operation failed because the service is being closed.
 
 **Description**
 
-The operation for opening the Wi-Fi service failed because the service is being closed.
+The operation for opening the service failed because the service is being closed.
 
 **Possible Causes**
 
-The Wi-Fi service is being closed.
+The service is being closed.
 
 **Solution**
 
-Open the Wi-Fi service again later.
+Open the service again later.
 
 ## 2501004 Failed to Close the Service
 
@@ -153,12 +214,12 @@ Operation failed because the service is being opened.
 
 **Description**
 
-The operation for closing the Wi-Fi service failed because the service is being opened.
+The operation for closing the service failed because the service is being opened.
 
 **Possible Causes**
 
-The Wi-Fi service is being opened.
+The service is being opened.
 
 **Solution**
 
-Close the Wi-Fi service again later.
+Close the service again later.

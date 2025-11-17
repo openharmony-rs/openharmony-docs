@@ -34,6 +34,7 @@ Defines the APIs and structs related to the uniform data structs.
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)       | OH_UdsPixelMap    | Defines a struct for the unified data of the pixel map type.      |
 | [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) | OH_UdsArrayBuffer | Defines a struct for the unified data of the ArrayBuffer type.   |
 | [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) | OH_UdsContentForm | Defines a struct for the unified data of the content card type.      |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | Defines a struct for the unified data of the dictionary type.|
 
 ### Functions
 
@@ -106,6 +107,27 @@ Defines the APIs and structs related to the uniform data structs.
 | [int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* appIcon, unsigned int len)](#oh_udscontentform_setappicon) | Sets the application icon data for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.|
 | [int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)](#oh_udscontentform_setappname) | Sets the application name for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.|
 | [int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)](#oh_udscontentform_setlinkuri) | Sets the hyperlink for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) instance.|
+| [int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)](#oh_udsplaintext_getdetails) | Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.|
+| [int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* details)](#oh_udsplaintext_setdetails) | Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.|
+| [int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)](#oh_udshyperlink_getdetails) | Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.|
+| [int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* details)](#oh_udshyperlink_setdetails) | Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.|
+| [int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)](#oh_udshtml_getdetails) | Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.|
+| [int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)](#oh_udshtml_setdetails) | Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.|
+| [int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)](#oh_udsappitem_getdetails) | Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) object.|
+| [int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)](#oh_udsappitem_setdetails) | Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.|
+| [int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)](#oh_udsfileuri_getdetails) | Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.|
+| [int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)](#oh_udsfileuri_setdetails) | Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.|
+| [int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)](#oh_udspixelmap_getdetails) | Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.|
+| [int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)](#oh_udspixelmap_setdetails) | Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.|
+| [OH_UdsDetails* OH_UdsDetails_Create()](#oh_udsdetails_create) | Creates an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance and a pointer to it.<br>If this pointer is no longer required, use [OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy) to destroy it. Otherwise, memory leaks may occur.|
+| [void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)](#oh_udsdetails_destroy) | Destroys an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| [bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_haskey) | Checks whether the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance contains the specified key.|
+| [int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_remove) | Deletes the specified KV pair from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| [int OH_UdsDetails_Clear(OH_UdsDetails* pThis)](#oh_udsdetails_clear) | Clears all data from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| [int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)](#oh_udsdetails_setvalue) | Adds a KV pair to an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| [const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_getvalue) | Obtains the value of a specified key from an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys) | Obtains the result set of all keys from an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+
 
 ## Function Description
 
@@ -1713,3 +1735,492 @@ Sets the hyperlink for an [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) in
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
 | int  | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+
+### OH_UdsPlainText_GetDetails()
+
+```
+int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)
+```
+
+**Description**
+
+Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)* pThis | Pointer to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.|
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsPlainText_SetDetails()
+
+```
+int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* details)
+```
+
+**Description**
+
+Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)* pThis | Pointer to the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) instance.|
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsHyperlink_GetDetails()
+
+```
+int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)
+```
+
+**Description**
+
+Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)* pThis | Pointer to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.|
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsHyperlink_SetDetails()
+
+```
+int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* details)
+```
+
+**Description**
+
+Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)* pThis | Pointer to the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) instance.|
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsHtml_GetDetails()
+
+```
+int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)
+```
+
+**Description**
+
+Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | Pointer to the [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.|
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsHtml_SetDetails()
+
+```
+int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)
+```
+
+**Description**
+
+Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | Pointer to the [OH_UdsHtml](capi-udmf-oh-udshtml.md) instance.|
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsAppItem_GetDetails()
+
+```
+int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)
+```
+
+**Description**
+
+Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) object.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | Pointer to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.|
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsAppItem_SetDetails()
+
+```
+int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)
+```
+
+**Description**
+
+Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | Pointer to the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) instance.|
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsFileUri_GetDetails()
+
+```
+int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)
+```
+
+**Description**
+
+Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | Pointer to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.|
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsFileUri_SetDetails()
+
+```
+int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)
+```
+
+**Description**
+
+Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | Pointer to the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) instance.|
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsPixelMap_GetDetails()
+
+```
+int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)
+```
+
+**Description**
+
+Obtains the pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance from an [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | Pointer to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.|
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsPixelMap_SetDetails()
+
+```
+int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)
+```
+
+**Description**
+
+Sets the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) parameter for an [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | Pointer to the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) instance.|
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, which cannot be null.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsDetails_Create()
+
+```
+OH_UdsDetails* OH_UdsDetails_Create()
+```
+
+**Description**
+
+Creates an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance and a pointer to it.
+
+If this pointer is no longer required, use [OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy) to destroy it. Otherwise, memory leaks may occur.
+
+**Since**: 22
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_UdsDetails*](capi-udmf-oh-udsdetails.md) | Returns a pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance if the operation is successful; returns **nullptr** otherwise.|
+
+### OH_UdsDetails_Destroy()
+
+```
+void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)
+```
+
+**Description**
+
+Destroys an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+
+### OH_UdsDetails_HasKey()
+
+```
+bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)
+```
+
+**Description**
+
+Checks whether the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance contains the specified key.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| const char* key | Key in a KV pair of the dictionary type.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | Returns a check result. The value **false** indicates that the specified key does not exist, and **true** indicates the opposite.|
+
+### OH_UdsDetails_Remove()
+
+```
+int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)
+```
+
+**Description**
+
+Deletes the specified KV pair from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| const char* key | Key in a KV pair of the dictionary type.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsDetails_Clear()
+
+```
+int OH_UdsDetails_Clear(OH_UdsDetails* pThis)
+```
+
+**Description**
+
+Clears all data from the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsDetails_SetValue()
+
+```
+int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)
+```
+
+**Description**
+
+Adds a KV pair to an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| const char* key | Key in a KV pair of the dictionary type.|
+| const char* value | Value in a KV pair of the dictionary type.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Error codes. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
+
+### OH_UdsDetails_GetValue()
+
+```
+const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)
+```
+
+**Description**
+
+Obtains the value of a specified key from an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| const char* key | Key in a KV pair of the dictionary type.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| const char* | Returns a pointer to the value of the dictionary type if the input parameters are valid; returns **nullptr** otherwise.|
+
+### OH_UdsDetails_GetAllKeys()
+
+```
+char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)
+```
+
+**Description**
+
+Obtains the result set of all keys from an [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | Pointer to the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance.|
+| unsigned int* count | Pointer to the length of the result set.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| char** | Returns a double pointer to the result set if the operation is successful; returns **nullptr** otherwise.<br>When [OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy) is used to destroy the [OH_UdsDetails](capi-udmf-oh-udsdetails.md) instance, the return value is also released.|

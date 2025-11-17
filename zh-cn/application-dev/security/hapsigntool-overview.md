@@ -25,7 +25,7 @@
 
  - CSR：
 
-   CSR（Certificate Signing Request）证书签发请求是生成证书的前提，他包括证书的公钥、证书主题和私钥签名，在申请证书之前，需要先基于密钥对生成CSR，然后提交给CA签发证书。
+   CSR（Certificate Signing Request），证书签名请求文件，包括证书的公钥、证书主题和私钥签名，在申请证书之前，需要先基于密钥对生成CSR，然后提交给CA签发证书。
 
  - 证书：
 
@@ -53,6 +53,6 @@
 
 ## 约束与限制
 
- - 应用包签名工具基于Java与C++语言开发，Java需要Java8以上Java环境运行；C++需要openharmony标准系统并使用C++17及以上的编译环境运行。
+ - 应用包签名工具分为Java版本和C++版本，Java版本基于Java8以上环境开发；C++版本基于OpenHarmony标准系统和C++17及以上的环境开发。
 
  - 一键签名等脚本文件（仅JAVA版本支持）基于Python语言开发，使用需配置环境python3.5及以上。

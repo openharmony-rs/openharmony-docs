@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Image OH_Drawing_Image
+```
+
 ## 概述
 
 定义一个用于描述绘制二维像素数组的图片。

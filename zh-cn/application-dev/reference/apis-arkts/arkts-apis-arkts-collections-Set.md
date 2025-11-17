@@ -127,7 +127,7 @@ console.info(newSet.has('b').toString()); // 预期输出： true
 ## entries
 entries(): IterableIterator<[T, T]>
 
-返回一个Set迭代器对象。
+返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -137,7 +137,7 @@ entries(): IterableIterator<[T, T]>
 
 | 类型                           | 说明                    |
 | ------------------------------ | ----------------------- |
-| IterableIterator&lt;[T, T]&gt; | 返回一个Set迭代器对象。 |
+| IterableIterator&lt;[T, T]&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。 |
 
 **错误码：**
 
@@ -163,7 +163,7 @@ console.info(iterator.next().value);
 ## keys
 keys(): IterableIterator\<T>
 
-返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。
+返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -173,7 +173,7 @@ keys(): IterableIterator\<T>
 
 | 类型                      | 说明                    |
 | ------------------------- | ----------------------- |
-| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象。 |
+| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。 |
 
 **错误码：**
 
@@ -209,7 +209,7 @@ values(): IterableIterator\<T>
 
 | 类型                      | 说明                    |
 | ------------------------- | ----------------------- |
-| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象。 |
+| IterableIterator&lt;T&gt; | 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。 |
 
 **错误码：**
 

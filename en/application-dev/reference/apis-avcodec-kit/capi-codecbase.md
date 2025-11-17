@@ -39,7 +39,14 @@ The table below lists the media codec formats. The type is a constant string.
 | OH_AVCODEC_MIMETYPE_AUDIO_VIVID | MIME type of the Audio Vivid audio decoder. <!--Del-->(This specification is not available yet.)<!--DelEnd-->     |
 | OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB | MIME type of the AMR-NB audio decoder.                          |
 | OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | MIME type of the AMR-WB audio decoder.                          |
-| OH_AVCODEC_MIMETYPE_AUDIO_APE |MIME type of the APE audio decoder.                        |
+| OH_AVCODEC_MIMETYPE_AUDIO_APE | MIME type of the APE audio decoder.                        |
+| OH_AVCODEC_MIMETYPE_AUDIO_ALAC | MIME type of the Apple Lossless Audio Codec (ALAC) audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_AC3 | MIME type of the AC3 audio decoder.                        |
+| OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | MIME type of the Windows Media Audio (WMA) V1 audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | MIME type of the WMA V2 audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | MIME type of the WMA Pro audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM | MIME type of the GSM audio decoder.                        |
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | MIME type of the GSM MS audio decoder.               |
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | MIME type of the VVC (H.266) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | MIME type of the HEVC (H.265) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | MIME type of the AVC (H.264) video codec.                    |
@@ -57,7 +64,7 @@ The table below lists the media codec formats. The type is a constant string.
 
 The tables below list the key-value pairs used to describe media data. The key type is a constant string, and the value type can be int32_t, int64_t, float, double, char *, or uint8_t *.
 
-The[OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query parameters.
+The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query parameters.
 
 ### Key-Value Pairs Dedicated for Capability Query
 
@@ -115,7 +122,7 @@ The[OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query par
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER         | Duration (in milliseconds) for which the last frame will be resubmitted repeatedly, if no new frame is available after the previous frame is submitted to the encoder. The value type is int32_t. This key is used only in the configuration phase of video encoding in surface mode.|
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT         | Maximum number of times the encoder can repeat encoding the previous frame when no new frame is available. The value type is int32_t. This key takes effect only when **OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER** is available and is used only in the configuration phase.|
 | OH_MD_KEY_VIDEO_DECODER_OUTPUT_COLOR_SPACE   | Output color space of the video decoder. The value type is int32_t. The supported value is **OH_COLORSPACE_BT709_LIMIT**.|
-| OH_MD_KEY_ROTATION                    | Rotation angle of the surface. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is optional and is used only for video decoding in surface mode This key is optional.|
+| OH_MD_KEY_ROTATION                    | Rotation angle of the surface, with a clockwise direction. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0. This key is optional and is used only for video decoding in surface mode This key is optional.|
 | OH_MD_KEY_SCALING_MODE            | Video scaling mode. The value type is int32_t. For details, see [OH_ScalingMode](capi-native-avcodec-base-h.md#oh_scalingmode). This key is optional and is used only for video decoding in surface mode. You are advised to set the scaling mode by calling [OH_NativeWindow_NativeWindowSetScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowsetscalingmodev2). (It is deprecated from API version 14.)|
 | OH_MD_KEY_VIDEO_CROP_TOP       | Top coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
 | OH_MD_KEY_VIDEO_CROP_BOTTOM        | Bottom coordinate (y) of the cropped rectangle. The value type is int32_t. This key is optional and is used only for video decoding.|
@@ -144,6 +151,7 @@ The[OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query par
 | OH_MD_KEY_SETUP_HEADER            | Vorbis setup header. The value type is uint8_t\*. This key applies only to Vorbis decoders. This key is optional.|
 | OH_MD_KEY_AUDIO_OBJECT_NUMBER | Number of audio objects. The value type is int32_t. This key is used only for Audio Vivid decoding. This key is optional.           |
 | OH_MD_KEY_AUDIO_VIVID_METADATA | Audio Vivid metadata. The value type is uint8_t\*. This key is used only for Audio Vivid decoding. This key is optional.    |
+| OH_MD_KEY_BLOCK_ALIGN | Size of the audio data block, in bytes. The value type is int32_t. This key is supported since API version 22 and must be configured only for WMAV1, WMAV2, and WMA PRO decoding.|
 
 ### Key-Value Pairs Dedicated for Multiplexing and Demultiplexing
 
@@ -174,5 +182,3 @@ The[OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query par
 | OH_MD_KEY_REFERENCE_TRACK_IDS          | Reference relationship between media file tracks. The value type is int32_t\*.|
 | OH_MD_KEY_TRACK_REFERENCE_TYPE         | Auxiliary track type of a media file. The value type is string.|
 | OH_MD_KEY_TRACK_DESCRIPTION         | Auxiliary track description of a media file. The value type is string.|
-
-<!--no_check-->

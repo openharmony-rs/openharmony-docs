@@ -1,10 +1,16 @@
-# Global Menus Independent of UI Components (openMenu)
+# Global Menu Independent of UI Components (openMenu)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Armstrong15-->
+<!--Designer: @zhanghaibo0-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The [Menu](arkts-popup-and-menu-components-menu.md) component is a great option for creating menus, but it relies on a bound UI component to work. Since API version 18, however, the global API [openMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#openmenu18) offers a more flexible solution. This API can be used directly or encapsulated in scenarios where no bound UI components are available, making it ideal for use cases such as event callbacks or when integrating with external systems.
+The [Menu](arkts-popup-and-menu-components-menu.md) component is a great option for creating menus, but it relies on a bound UI component to work. Since API version 18, however, the global API [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18) offers a more flexible solution. This API can be used directly or encapsulated in scenarios where no bound UI components are available, making it ideal for use cases such as event callbacks or when integrating with external systems.
 
 ## Displaying a Menu
 
-To display a menu, call the [openMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#openmenu18) API. Here's a basic example:
+To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18). The following is a basic example:
    
    ```ts
    promptAction.openMenu(contentNode, { id: targetId }, {
@@ -14,7 +20,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/js-apis-arkui-UIC
        console.info('openMenu success');
      })
      .catch((err: BusinessError) => {
-       console.info('openMenu error: ' + err.code + ' ' + err.message);
+       console.error('openMenu error: ' + err.code + ' ' + err.message);
      })
    ```
 
@@ -26,7 +32,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/js-apis-arkui-UIC
    private contentNode: ComponentContent<Object> = new ComponentContent(uiContext, wrapBuilder(buildText), this.message);
    ```
    
-   If your **wrapBuilder** includes other components (such as [Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md#popup) or [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md#chip)), the [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
+   If your **wrapBuilder** includes other components (such as [Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md) or [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)), the [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
    
    ```ts
    @Builder
@@ -57,7 +63,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/js-apis-arkui-UIC
        buttons: [{
          text: 'confirm',
          action: () => {
-           console.info('confirm button click')
+           console.info('confirm button click');
          },
          fontSize: 15,
          fontColor: Color.Black,
@@ -65,7 +71,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/js-apis-arkui-UIC
          {
            text: 'cancel',
            action: () => {
-             console.info('cancel button click')
+             console.info('cancel button click');
            },
            fontSize: 15,
            fontColor: Color.Black
@@ -79,7 +85,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/js-apis-arkui-UIC
 
 ### Providing Bound Component Information
    
-   When calling **openMenu**, you must provide the [TargetInfo](../reference/apis-arkui/js-apis-arkui-UIContext.md#targetinfo18) of the bound component. Without a valid target, the menu won't display.
+   When calling **openMenu**, you must provide the [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18) of the bound component. Without a valid target, the menu won't display.
    
    ```ts
    let frameNode: FrameNode | null = this.ctx.getFrameNodeByUniqueId(this.getUniqueId());
@@ -96,7 +102,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/js-apis-arkui-UIC
 
 ## Updating the Menu Style
 
-To update the menu style, use the [updateMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#updatemenu18) API. You can update the style fully or incrementally. However, certain properties, including **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, and **aboutToDisappear**, cannot be updated.
+To update the menu style, use the [updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18) API. You can update the style fully or incrementally. However, the following properties cannot be updated: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.
    
    ```ts
    promptAction.updateMenu(contentNode, {
@@ -106,27 +112,27 @@ To update the menu style, use the [updateMenu](../reference/apis-arkui/js-apis-a
        console.info('updateMenu success');
      })
      .catch((err: BusinessError) => {
-       console.info('updateMenu error: ' + err.code + ' ' + err.message);
+       console.error('updateMenu error: ' + err.code + ' ' + err.message);
      })
    ```
 
 ## Closing the Menu
 
-To close the menu, call the [closeMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#closemenu18) API.
+To close the menu, call the [closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18) API.
    
    ```ts
    promptAction.closeMenu(contentNode)
      .then(() => {
-       console.info('openMenu success');
+       console.info('closeMenu success');
      })
     .catch((err: BusinessError) => {
-      console.info('openMenu error: ' + err.code + ' ' + err.message);
+      console.error('closeMenu error: ' + err.code + ' ' + err.message);
     })
    ```
 
 > **NOTE**
 >
-> The [updateMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#updatemenu18) and [closeMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#closemenu18) APIs rely on the content to identify the menu. Therefore, you must maintain the content instance throughout the menu's lifecycle.
+> The [updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18) and [closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18) APIs rely on the content to identify the menu. Therefore, you must maintain the content instance throughout the menu's lifecycle.
 
 ## Using the Global Menu in HAR Packages
 

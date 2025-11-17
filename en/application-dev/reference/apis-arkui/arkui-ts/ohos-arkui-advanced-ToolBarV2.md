@@ -1,4 +1,10 @@
 # ToolBarV2
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @HelloCrease-->
 
 The **Toolbar** component is designed to present a set of action options related to the current screen, displayed at the bottom of the screen. It can display up to five child components. If there are six or more child components, the first four are shown directly, and the additional ones are grouped under a **More** item on the rightmost side of the toolbar.<br>
 This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage toolbar data and states with greater flexibility, leading to faster UI updates.<br>
@@ -6,8 +12,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 > **NOTE**
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
-> 
-> - This component is not supported on wearables.
+>
 
 ## Modules to Import
 
@@ -32,11 +37,13 @@ Creates a toolbar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name                  | Type                                                              | Mandatory| Decorator              | Description                                                          |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
 | toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | Yes | @Param<br>@Require | Toolbar list.                                                      |
-| activatedIndex       | number                                                           | No | @Param              | Index of the active item.<br>Default value: **-1**, indicating that no toolbar item is activated<br>Value range: [-1, 4]     |
-| dividerModifier<sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md) | No | @Param              | Modifier for the toolbar header divider, which can be used to customize the divider's height, color, and other attributes.<br>This parameter does not take effect by default.                        |
+| activatedIndex       | number                                                           | No | @Param              | Index of the active item.<br></div>Default value: **-1**, indicating that no toolbar item is activated<br>Value range: [-1, 4]     |
+| dividerModifier<sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No | @Param              | Modifier for the toolbar header divider, which can be used to customize the divider's height, color, and other attributes.<br>This parameter does not take effect by default.                        |
 | toolBarModifier<sup> | [ToolBarV2Modifier](#toolbarv2modifier)                          | No | @Param              | Modifier for the toolbar, which can be used to set the toolbar's height, background color, padding (which only takes effect when there are fewer than five toolbar items), and whether to display the pressed state.<br>This parameter does not take effect by default.|
 
 ## ToolBarV2Item
@@ -48,17 +55,19 @@ Defines an item in the toolbar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 ### Properties
 
-| Name                          | Type                                             | Mandatory| Decorator | Description                                                                                                                                                                                                       |
-| ---------------------------- | ----------------------------------------------- | -- | :----- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | Yes | @Trace | Text of the toolbar item.                                                                                                                                                                                                |
-| action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | @Trace | Click event of the toolbar item.<br><br>By default, there is no click event.                                                                                                                                                                                 |
-| icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | @Trace | Icon of the toolbar item.<br><br>By default, there is no icon.                                                                                                                                                                                   |
-| state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | @Trace | State of the toolbar item.<br>Default value: **ENABLE**<br>                                                                                                                                                                          |
-| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | No | @Trace | Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br><br>Default value: value of **content**            |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | @Trace | Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**             |
-| accessibilityLevel  | string                                          | No | @Trace | Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br><br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>|
+| Name                          | Type                                             | Read-Only| Optional| Description                                                                                                                                                                                                                 |
+| ---------------------------- | ----------------------------------------------- | -- | -- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | No | No| Text of the toolbar item.<br>Decorator type: @Trace|                                                                                                                                                                                                           |
+| action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Yes | Click event of the toolbar item.<br></div>By default, there is no click event.<br>Decorator type: @Trace                                                                                                                                                                                     |
+| icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Yes| Icon of the toolbar item.<br></div>By default, there is no icon.<br>Decorator type: @Trace                                                                                                                                                                                       |
+| state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes| State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>Decorator type: @Trace                                                                                                                                                                          |
+| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | No | Yes| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br></div>Default value: value of **content**<br>Decorator type: @Trace                                          |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes|  Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>Decorator type: @Trace                       |
+| accessibilityLevel  | string                                          | No | Yes| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br><br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>Decorator type: @Trace|
 
 ### constructor
 
@@ -70,7 +79,11 @@ A constructor used to create a **ToolBarV2Item** instance.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                                           | Mandatory| Description      |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name      | Type                                           | Mandatory| Description      |
 | :------ |:----------------------------------------------| :- | :------- |
 | options | [ToolBarV2ItemOptions](#toolbarv2itemoptions) | Yes | Configuration options of the toolbar item.|
 
@@ -82,15 +95,17 @@ Defines the options for initializing a **ToolBarV2Item** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                      | Type                                             | Mandatory| Description                                                                                                                                                                                                            |
-|:-------------------------| :---------------------------------------------- | :- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content                  | [ToolBarV2ItemText](#toolbarv2itemtext)         | Yes | Text of the toolbar item.                                                                                                                                                                                                     |
-| action                   | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Click event of the toolbar item.<br>By default, there is no click event.                                                                                                                                                                                      |
-| icon                     | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Icon of the toolbar item.<br>By default, there is no icon.                                                                                                                                                                                       |
-| state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | State of the toolbar item.<br>Default value: **ENABLE**                                                                                                                                                                               |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)          | No | Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of **content**                                    |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**                  |
-| accessibilityLevel       | string                                          | No | Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"** |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name                      | Type                                             | Read-Only| Optional| Description                                                                                                                                                                                                                 |
+|:-------------------------| :---------------------------------------------- |:---|:---|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| content                  | [ToolBarV2ItemText](#toolbarv2itemtext)         | No | No | Text of the toolbar item.                                                                                                                                                                                                          |
+| action                   | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Yes | Click event of the toolbar item.<br>By default, there is no click event.                                                                                                                                                                                           |
+| icon                     | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Yes | Icon of the toolbar item.<br>By default, there is no icon.                                                                                                                                                                                            |
+| state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes | State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>                                                                                                                                                                 |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)          | No | Yes | Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of **content**<br>                                         |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes | Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**                       |
+| accessibilityLevel       | string                                          | No | Yes | Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br><br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>|
 
 ## ToolBarV2ItemAction
 
@@ -101,6 +116,8 @@ Defines the callback for the click event of a toolbar item.
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -118,13 +135,15 @@ Defines the text of a toolbar item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 ### Properties
 
-| Name                 | Type                                                         | Mandatory| Decorator | Description                                                      |
-|:--------------------|:------------------------------------------------------------| :- | :----- |:---------------------------------------------------------|
-| text                | [ResourceStr](ts-types.md#resourcestr)                      | Yes | @Trace | Text of the toolbar item.                                               |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | @Trace | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | @Trace | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')** |
+| Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
+|:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
+| text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.<br>Decorator type: @Trace                                               |
+| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.<br>Decorator type: @Trace      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br></div>Default value: **$r('sys.color.font_emphasize')**.<br>Decorator type: @Trace|
 
 ### constructor
 
@@ -136,7 +155,11 @@ A constructor used to create a **ToolBarV2ItemText** instance.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                                                   | Mandatory| Description        |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description        |
 | :------ |:------------------------------------------------------| :- | :--------- |
 | options | [ToolBarV2ItemTextOptions](#toolbarv2itemtextoptions) | Yes | Configuration options of the text content.|
 
@@ -148,11 +171,13 @@ Defines the options for initializing a **ToolBarV2ItemText** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                 | Type                                                         | Mandatory| Description                                                      |
-| :------------------ |:------------------------------------------------------------| :- |:---------------------------------------------------------|
-| text                | [ResourceStr](ts-types.md#resourcestr)                      | Yes | Text of the toolbar item.                                               |
-| color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
+| :------------------ |:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
+| text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.                                               |
+| color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**.|
 
 ## ToolBarV2ItemImage
 
@@ -164,13 +189,15 @@ Defines the icon content of a toolbar item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 ### Properties
 
-| Name                | Type                                                         | Mandatory| Decorator | Description                                                      |
-|:-------------------|:------------------------------------------------------------| :- | :----- |:---------------------------------------------------------|
-| src                | [ResourceStr](ts-types.md#resourcestr)                      | Yes | @Trace | Resource path of the icon.                                               |
-| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | @Trace | Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**      |
-| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | @Trace | Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**|
+| Name                | Type                                                         | Read-Only| Optional| Description                                                      |
+|:-------------------|:------------------------------------------------------------|:---|:---| :---------------------------------------------------------|
+| src                | [ResourceStr](ts-types.md#resourcestr)                      | No | No|  Icon of the toolbar item.<br>Decorator type: @Trace                                               |
+| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes|  Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.<br>Decorator type: @Trace      |
+| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes| Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.<br>Decorator type: @Trace|
 
 ### constructor
 
@@ -182,7 +209,11 @@ A constructor used to create a **ToolBarV2ItemImage** instance.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                                                   | Mandatory| Description        |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description        |
 | :------ | :------------------------------------------------------ | :- | :--------- |
 | options | [ToolBarV2ItemImageOptions](#toolbarv2itemimageoptions) | Yes | Configuration options for the icon content of the toolbar item.|
 
@@ -194,11 +225,13 @@ Defines the options for initializing a **ToolBarV2ItemImage** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                 | Type                                                         | Mandatory| Description                                                      |
-|:--------------------|:------------------------------------------------------------| :- |:---------------------------------------------------------|
-| src                 | [ResourceStr](ts-types.md#resourcestr)                      | Yes | Resource path of the icon.                                               |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
+|:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
+| src                 | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Icon of the toolbar item.                                               |
+| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.|
 
 ## ToolBarV2ItemIconType
 
@@ -210,10 +243,12 @@ Defines the union type for the icon content of a toolbar item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Type                  | Description           |
-| :------------------- | :------------ |
-| ToolBarV2ItemImage   | Type for defining a common icon.    |
-| ToolBarV2SymbolGlyph | Type for defining a symbol icon.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Type                                           | Description           |
+|:----------------------------------------------| :------------ |
+| [ToolBarV2ItemImage](#toolbarv2itemimage)     | Type for defining a common icon.    |
+| [ToolBarV2SymbolGlyph](#toolbarv2symbolglyph) | Type for defining a symbol icon.|
 
 ## ToolBarV2Modifier
 
@@ -222,6 +257,8 @@ Provides APIs for setting the height (**height**), background color (**backgroun
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 ### backgroundColor
 
@@ -233,11 +270,14 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name            | Type                                                         | Mandatory| Description                                                               |
 | --------------- |-------------------------------------------------------------| -- | ----------------------------------------------------------------- |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes | Toolbar background color<br>Default value: **\$r('sys.color.ohos\_id\_color\_toolbar\_bg')**|
+
 **Return value**
 
 | Type                                     | Description                                     |
@@ -254,11 +294,13 @@ Sets the left and right padding of the toolbar. By overriding this API, you can 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name    | Type                                                           | Mandatory| Description                                                                 |
 | ------- |---------------------------------------------------------------| -- | ------------------------------------------------------------------- |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br><br>By default, the padding is 24 vp when there are fewer than five items and 0 when there are five or more items.|
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br></div>By default, the padding is 24 vp when there are fewer than five items and 0 when there are five or more items.|
 
 **Return value**
 
@@ -274,6 +316,8 @@ Sets the height of the toolbar. By overriding this API, you can implement custom
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -297,6 +341,8 @@ Sets whether to display the pressed state effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name        | Type     | Mandatory| Description                                                    |
@@ -317,6 +363,8 @@ Enumerates the states of the toolbar item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name      | Value| Description             |
 | -------- | - | --------------- |
 | ENABLE   | 1 | The toolbar item is enabled. |
@@ -325,7 +373,7 @@ Enumerates the states of the toolbar item.
 
 ## ToolBarV2SymbolGlyph
 
-Defines the configuration options of the symbol icon.
+Defines the icon symbol options.
 
 **Decorator type**: @ObservedV2
 
@@ -333,12 +381,14 @@ Defines the configuration options of the symbol icon.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 ### Properties
 
-| Name       | Type                                                                  | Mandatory| Decorator | Description                                                                                  |
-| :-------- | :------------------------------------------------------------------- | :- | :----- | :----------------------------------------------------------------------------------- |
-| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | Yes | @Trace | Icon symbol of the toolbar item in normal state.  |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No | @Trace | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**|
+| Name       | Type                                                                  | Read-Only| Optional| Description                                                                                  |
+| :-------- | :------------------------------------------------------------------- |:---|:---|  :----------------------------------------------------------------------------------- |
+| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | No | Icon symbol of the toolbar item in normal state.<br>Decorator type: @Trace  |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**<br>Decorator type: @Trace|
 
 ### constructor
 
@@ -349,6 +399,10 @@ A constructor used to create a **ToolBarV2SymbolGlyph** object.
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
 
 | Name    | Type                                                       | Mandatory| Description         |
 | :------ | :---------------------------------------------------------- | :- | :---------- |
@@ -362,10 +416,12 @@ Defines the options for initializing a **ToolBarV2SymbolGlyph** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                                                  | Mandatory| Description                                                                                  |
-| --------- | -------------------------------------------------------------------- | -- | ------------------------------------------------------------------------------------ |
-| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | Yes | Icon symbol of the toolbar item in normal state.  |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name       | Type                                                                  | Read-Only| Optional| Description                                                                                  |
+| --------- | -------------------------------------------------------------------- | -- | -- | ------------------------------------------------------------------------------------ |
+| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No | Icon symbol of the toolbar item in normal state.  |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**|
 
 ## Example
 

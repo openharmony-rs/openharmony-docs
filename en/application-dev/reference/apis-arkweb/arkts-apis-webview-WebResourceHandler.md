@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebResourceHandler** object, which can return custom response headers and response bodies to the **Web** component.
 
@@ -38,7 +38,7 @@ Sends a response header to the intercepted request.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
@@ -65,7 +65,7 @@ Sends a response body to the intercepted request.
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
@@ -112,7 +112,7 @@ Notifies the ArkWeb kernel that this request fails. Before calling this API, cal
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                             |
 | -------- | ------------------------------------- |
@@ -199,7 +199,8 @@ struct WebComponent {
                 // Call didFail(WebNetErrorList.ERR_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
                 resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
               } catch (error) {
-              	// If error.code is 17100101 and the error is not handled, the **didFail** method is also successfully called.
+              	// When error.code is 17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)
+                // and the code value of didFail(code: WebNetErrorList, completeIfNoResponse: boolean) is not null, the API is still called.
                 console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               return true;

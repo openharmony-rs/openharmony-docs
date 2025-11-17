@@ -10,20 +10,23 @@
 
 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) -->
+
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
 
 ## 通过不同的方式加载PDF文档
 
 在下面的示例中，Web组件创建时指定默认加载的网络PDF文档`https://www.example.com/test.pdf`。使用时需替换为真实可访问地址。
 
-```ts
-// xxx.ets
+<!-- @[web_module_create_load_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PreviewPDF.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -33,13 +36,13 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ 
-      	src: 
-      	"https://www.example.com/test.pdf", 					// 方式一 加载网络PDF文档
-      	// this.getUIContext().getHostContext()!.filesDir + "/test.pdf", // 方式二 加载本地应用沙箱内PDF文档
-      	// "resource://rawfile/test.pdf", 						// 方式三 本地PDF文档 (格式一)
-      	// $rawfile('test.pdf'), 								// 方式三 本地PDF文档 (格式二)
-      	controller: this.controller 
+      Web({
+        src:
+        'https://www.example.com/test.pdf',                     // 方式一 加载网络PDF文档
+          // this.getUIContext().getHostContext()!.filesDir + '/test.pdf', // 方式二 加载本地应用沙箱内PDF文档
+          // 'resource://rawfile/test.pdf',                         // 方式三 本地PDF文档 (格式一)
+          // $rawfile('test.pdf'),                                 // 方式三 本地PDF文档 (格式二)
+          controller: this.controller
       })
         .domStorageAccess(true)
     }

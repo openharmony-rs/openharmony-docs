@@ -16,7 +16,7 @@ A focus axis event is an event triggered by interacting with a game controller t
 
 onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
-Triggered when any operation is performed with the game controller's directional pad or joystick on the bound component.
+Binds a focus axis event callback to the component. Triggered when any operation is performed with the game controller's directional pad or joystick on the bound component.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -26,7 +26,7 @@ Triggered when any operation is performed with the game controller's directional
 
 | Name| Type                         | Mandatory| Description              |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | [FocusAxisEvent](#focusaxisevent) | Yes  | **FocusAxisEvent** object.|
+| event  | Callback\<[FocusAxisEvent](#focusaxisevent)> | Yes  | Focus axis event callback.|
 
 **Return value**
 
@@ -36,16 +36,16 @@ Triggered when any operation is performed with the game controller's directional
 
 ## FocusAxisEvent
 
-Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
+Describes the focus axis event object. Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                   | Type                                      | Description                |
-| ------------------------------------- | ---------------------------------------- | --------------------------- |
-| axisMap                               | Map<[AxisModel](ts-appendix-enums.md#axismodel15), number>     | Axis value table of the focus axis event.         |
-| stopPropagation                       | Callback\<void>                           | Stops a key event from bubbling upwards or downwards.           |
+| Name                                     | Type                 | Read-Only   |  Optional  |         Description                |
+| ------------------------------------- | ---------------------------------------     | ------------- | ------------- | ------------------------- |
+| axisMap                               | Map<[AxisModel](ts-appendix-enums.md#axismodel15), number>      |  No   |  No    | Axis value table of the focus axis event.         |
+| stopPropagation                       | Callback\<void>                      |     No        |  No    |Blocks [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.           |
 
 ## Example
 

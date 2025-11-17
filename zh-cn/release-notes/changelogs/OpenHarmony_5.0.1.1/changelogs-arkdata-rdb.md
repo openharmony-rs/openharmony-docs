@@ -27,7 +27,7 @@ API 9
 
 **变更的接口/组件**
 
-[@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中如下接口：
+[@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts)中如下接口：
 
 1. function getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<RdbStore\>): void;
 

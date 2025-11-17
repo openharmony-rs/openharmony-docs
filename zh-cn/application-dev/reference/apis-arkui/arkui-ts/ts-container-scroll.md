@@ -5,7 +5,7 @@
 <!--Owner: @shengu_lancer; @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
 
@@ -100,7 +100,7 @@ scrollBarColor(color: Color | number | string)
 
 scrollBarColor(color: Color | number | string | Resource)
 
-设置滚动条的颜色。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -507,7 +507,7 @@ onScrollEdge(event: OnScrollEdgeCallback)
 | ------ | --------------------------------- | ---- | ------------------ |
 | event   | [OnScrollEdgeCallback](#onscrolledgecallback18) | 是   | 滚动到的边缘位置。<br/>当Scroll设置为水平方向滚动时，上报[Edge.Center](ts-appendix-enums.md#edge)表示水平方向起始位置，上报[Edge.Baseline](ts-appendix-enums.md#edge)表示水平方向末尾位置。由于[Edge.Center](ts-appendix-enums.md#edge)和[Edge.Baseline](ts-appendix-enums.md#edge)枚举值已经废弃，推荐使用[onReachStart](ts-container-scrollable-common.md#onreachstart11)、[onReachEnd](ts-container-scrollable-common.md#onreachend11)事件监听是否滚动到边界。 |
 
-### onScrollEnd<sup>(deprecated) </sup>
+### onScrollEnd<sup>(deprecated)</sup>
 
 onScrollEnd(event: () => void)
 
@@ -889,6 +889,15 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 > 1.仅支持ArcList、Grid、List、WaterFlow组件。
 >
 > 2.在LazyForEach、ForEach、Repeat刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+>
+> 3.从API version 11开始，在List中支持[contentStartOffset](ts-container-list.md#contentstartoffset11)和[contentEndOffset](ts-container-list.md#contentendoffset11)。从API version 22开始，在Grid和Waterflow组件中支持设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)。
+>
+> - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
+> 
+> - 当滚动容器组件设置contentEndOffset时，如果ScrollAlign设置为END，滚动结束时，指定item尾部会与滚动容器组件contentEndOffset处对齐。
+> 
+> - 当滚动容器组件设置contentStartOffset或contentEndOffset时，如果ScrollAlign设置为AUTO，且指定item完全处于显示区内，不做调整；否则依照滚动距离最短的原则，将指定item首部与滚动组件contentStartOffset处对齐，或指定item尾部与滚动组件contentEndOffset处对齐，使指定item完全显示。
+> 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1037,9 +1046,11 @@ contentSize(): SizeResult
 >
 >  Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
 >
->  当Scroll组件为自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
+>  当Scroll组件设置scrollable为ScrollDirection.FREE自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
 >
->  当Scroll组件设置为不可滚动、Grid组件固定行列模板导致不可滚动时，获取到的内容总大小为0。
+>  当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
+>
+>  当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时即为不可滚动场景，此时获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1816,7 +1827,7 @@ struct StickyNestedScroll {
 
 ### 示例11（自由滚动和缩放）
 
-该示例实现了Scroll组件自由滚动和缩放效果。
+从API version 20开始，该示例实现了Scroll组件自由滚动和缩放效果。
 ```ts
 @Entry
 @Component
@@ -1871,11 +1882,15 @@ struct ScrollExample1 {
     Column() {
       Text('设置scroller控制器和ForEach')
       Row() {
+        // 点击按钮来调用contentSize函数获取内容尺寸
         Button('GetContentSize')
           .onClick(() => {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
             this.contentWidth = this.scroller.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
             this.contentHeight = this.scroller.contentSize().height;
           })
+        // 将获取到的内容尺寸信息通过文本进行呈现
         Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
           .fontColor(Color.Red)
           .height(50)

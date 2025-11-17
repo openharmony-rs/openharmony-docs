@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_ProgressObserver
+```
+
 ## 概述
 
 端云同步进度观察者。

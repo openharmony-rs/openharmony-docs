@@ -220,7 +220,7 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表 |
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -362,7 +362,7 @@ getPreviewRotation(displayRotation: number): ImageRotation
 
 |      类型      | 说明        |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取预览旋转角度。 |
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取预览旋转角度。若接口调用失败，返回undefined。 |
 
 **错误码：**
 

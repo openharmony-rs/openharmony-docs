@@ -61,15 +61,16 @@ Before the management, you must call [createAudioRenderer(options: AudioRenderer
   ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEffectMode) => {
-    if (err) {
-      console.error(`Failed to get params, code is ${err.code}, message is ${err.message}`);
-      return;    
-    } else {
-      console.info(`getAudioEffectMode: ${effectMode}`);
-    }
-  });
+  if (audioRenderer != undefined) {
+    (audioRenderer as audio.AudioRenderer).getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEffectMode) => {
+      if (err) {
+        console.error(`Failed to get params, code is ${err.code}, message is ${err.message}`);
+        return;    
+      } else {
+        console.info(`getAudioEffectMode: ${effectMode}`);
+      }
+    });
+  }
   ```
 
 ### Setting an Audio Effect Mode for the Playback Instance
@@ -79,15 +80,16 @@ Disable the system audio effect.
   ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_NONE, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
-      return;
-    } else {
-      console.info('Callback invoked to indicate a successful audio effect mode setting.');
-    }
-  });
+  if (audioRenderer != undefined) {
+    (audioRenderer as audio.AudioRenderer).setAudioEffectMode(audio.AudioEffectMode.EFFECT_NONE, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
+        return;
+      } else {
+        console.info('Callback invoked to indicate a successful audio effect mode setting.');
+      }
+    });
+  }
   ```
 
 Enable the default system audio effect.
@@ -95,15 +97,16 @@ Enable the default system audio effect.
   ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
-      return;
-    } else {
-      console.info('Callback invoked to indicate a successful audio effect mode setting.');
-    }
-  });
+  if (audioRenderer != undefined) {
+    (audioRenderer as audio.AudioRenderer).setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
+        return;
+      } else {
+        console.info('Callback invoked to indicate a successful audio effect mode setting.');
+      }
+    });
+  }
   ```
 
 ## Obtaining the Global Audio Effect Mode

@@ -47,7 +47,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
 2. 应用内播放对应的媒体资源时，同步设置媒体元数据信息。
 
-   要设置元数据，要使用OH_AVMetadataBuilder构造具体的数据，最后生成一个 OH_AVMetadata。生成OH_AVMetadata后，使用OH_AVMetadata的各个功能接口进行资源的设置。
+   要设置元数据，需使用OH_AVMetadataBuilder构造具体的数据，生成一个OH_AVMetadata。生成OH_AVMetadata后，使用OH_AVMetadata的各个功能接口进行资源的设置。
  
    使用OH_AVMetadataBuilder构造元数据示例：
  

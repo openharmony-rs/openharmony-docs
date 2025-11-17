@@ -151,7 +151,7 @@ Describes the event received by the application when the volume is changed.
 
 | Name      | Type                               | Read-Only| Optional| Description                                       |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | No| No| Audio stream type.                                   |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | No| No| Audio volume type.                                   |
 | volume     | number                              | No| No|Volume to set. The value range can be obtained by calling **getMinVolume** and **getMaxVolume**. |
 | updateUi   | boolean                             | No| No|  Whether to show the volume change in UI. **true** to show, **false** otherwise.            |
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | No| Yes| Audio volume mode. The default value is **SYSTEM_GLOBAL**.|

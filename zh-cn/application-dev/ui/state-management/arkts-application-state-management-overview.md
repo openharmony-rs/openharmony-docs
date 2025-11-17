@@ -6,9 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-
-上一个章节中介绍的装饰器仅能在页面内，即一个组件树上共享状态变量。如果开发者要实现应用级的，或者多个页面的状态数据共享，就需要用到应用级别的状态管理的概念。ArkTS根据不同特性，提供了多种应用状态管理的能力：
-
+在管理组件拥有的状态章节中介绍的装饰器仅能在页面内，即一个组件树上共享状态变量。如果开发者要实现应用级的，或者多个页面的状态数据共享，就需要用到应用级别的状态管理的概念。ArkTS根据不同特性，提供了多种应用状态管理的能力：
 
 - [LocalStorage](arkts-localstorage.md)：页面级UI状态存储，通常用于[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)内、页面间的状态共享。
 

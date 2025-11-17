@@ -8,7 +8,7 @@ The small-system graphics modules run in OpenHarmony as a framework. Therefore, 
 4. Initialize the font engine.
 5. Interconnect to screen flush.
 
-For details, see [OpenHarmony Small-System Graphics Simulator Adaptation Implementation](https://gitee.com/openharmony/arkui_ui_lite/tree/master/tools/qt/simulator).
+For details, see [OpenHarmony Small-System Graphics Simulator Adaptation Implementation](https://gitcode.com/openharmony/arkui_ui_lite/tree/master/tools/qt/simulator).
 
 ### Initializing the Graphics Engine
 Initialize UI tasks, rendering modules, animation modules, and default styles.
@@ -21,7 +21,7 @@ GraphicStartUp::Init();
 
 Set the screen size, connect to basic component rendering, obtain the graphics rendering buffer, and refresh the graphics rendering data to the screen for display.
 
-During display layer adaptation, note that the classes to inherit and implement vary according to hardware rendering and software rendering. The **BaseGfxEngine** class in [gfx_engine_manager.h](https://gitee.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/gfx_engine_manager.h) is a pure virtual implementation. It defines only functions and does not contain any implementation. It can be used as the parent class of hardware rendering. The **SoftEngine** class in [soft_engine.h](https://gitee.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/soft_engine.h) inherits from **BaseGfxEngine** and implements the functions of **BaseGfxEngine** at the software layer. It can be used as the parent class of software rendering.
+During display layer adaptation, note that the classes to inherit and implement vary according to hardware rendering and software rendering. The **BaseGfxEngine** class in [gfx_engine_manager.h](https://gitcode.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/gfx_engine_manager.h) is a pure virtual implementation. It defines only functions and does not contain any implementation. It can be used as the parent class of hardware rendering. The **SoftEngine** class in [soft_engine.h](https://gitcode.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/soft_engine.h) inherits from **BaseGfxEngine** and implements the functions of **BaseGfxEngine** at the software layer. It can be used as the parent class of software rendering.
 
 The **BaseGfxEngine** class has three types of functions:
 

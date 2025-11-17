@@ -88,7 +88,7 @@
 | mediaType     | string                  | 否   | 是   | 播放列表媒体类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaSize     | number                  | 否   | 是   | 播放列表媒体的大小。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | albumTitle     | string                  | 否   | 是   | 播放列表媒体专辑标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| albumCoverUri     | string                  | 否   | 是   | 播放列表媒体专辑标题URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| albumCoverUri     | string                  | 否   | 是   | 播放列表媒体专辑封面URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | lyricContent     | string                  | 否   | 是   | 播放列表媒体歌词内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | lyricUri     | string                  | 否   | 是   | 播放列表媒体歌词URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | artist     | string                  | 否   | 是   | 播放列表媒体专辑作者。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -216,10 +216,10 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-| 名称      | 类型                                              | 必填 | 说明           |
-| --------- | ------------------------------------------------- | ---- | -------------- |
-| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 是   | 命令。每种命令对应的参数不同，具体的对应关系可查阅[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)里的详细介绍。       |
-| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) &#124; string &#124; number | 否   | 命令对应的参数。 |
+| 名称      | 类型                                              | 只读| 可选 | 说明           |
+| --------- | ------------------------------------------------- | ---- | ---- | -------------- |
+| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 否 | 否   | 命令（不同命令对应不同参数）。     |
+| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number | 否 | 是   | 命令对应的参数。 |
 
 ## AVCastPickerOptions<sup>14+</sup>
 

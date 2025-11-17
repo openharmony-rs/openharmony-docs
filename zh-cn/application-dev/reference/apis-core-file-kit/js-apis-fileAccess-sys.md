@@ -1872,7 +1872,7 @@ try {
 
 copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback&lt;Array&lt;CopyResult&gt;&gt;) : void
 
-复制文件或目录，使用 callback 异步回调。
+复制文件或目录，含有同名文件时可以选择是否强制覆盖原文件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1886,7 +1886,7 @@ copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | 是   | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。  |
 | destUri   | string                                           | 是   | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。         |
-| force     | boolean                                          | 是   | 含有同名文件时是否强制覆盖文件。force 为 true 时强制覆盖文件；force 为空或 false 时不强制覆盖文件。 |
+| force     | boolean                                          | 是   | 含有同名文件时是否强制覆盖原文件。force 为 true 时强制覆盖原文件；force 为空或 false 时不覆盖原文件。 |
 | callback  | AsyncCallback&lt;Array&lt;[CopyResult](#copyresult10)&gt;&gt; | 是   | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
 
 **示例：**

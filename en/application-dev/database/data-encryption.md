@@ -21,61 +21,104 @@ When a KV store is created, the **encrypt** parameter in **options** specifies w
 
 For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata/js-apis-distributedKVStore.md).
 
-```ts
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { distributedKVStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+   ```ts
+   // Import modules.
+   // Create a KvStoreInterface.ets file in the pages directory.
+   import { distributedKVStore } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   // Logger implements the print feature after Hilog is encapsulated.
+   import Logger from '../common/Logger';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let kvManager: distributedKVStore.KVManager | undefined = undefined;
-    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-    let context = this.context;
-    const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-      context: context,
-      bundleName: 'com.example.datamanagertest',
-    }
-    try {
-      kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-      console.info('Succeeded in creating KVManager.');
-    } catch (e) {
-      let error = e as BusinessError;
-      console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-    }
-    if (kvManager !== undefined) {
-      try {
-        const options: distributedKVStore.Options = {
-          createIfMissing: true,
-          // Whether to encrypt the KV store.
-          encrypt: true,
-          backup: false,
-          autoSync: false,
-          kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-          securityLevel: distributedKVStore.SecurityLevel.S3
-        };
-        kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err, store: distributedKVStore.SingleKVStore) => {
-          if (err) {
-            console.error(`Fail to get KVStore. Code:${err.code},message:${err.message}`);
-            return;
-          }
-          console.info('Succeeded in getting KVStore.');
-          kvStore = store;
-          if (kvStore !== undefined) {
-            // Perform subsequent operations.
-            //...
-          }
-        });
-      } catch (e) {
-        let error = e as BusinessError;
-        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-      }
-    }
-  }
-}
-```
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   const context = EntryAbility.getContext();
+
+   // The code of all the following APIs is implemented in KvInterface.
+   export class KvInterface {
+   }
+   ```
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public CreateKvManager = (() => {
+     Logger.info('CreateKvManager start');
+     if (typeof (kvManager) === 'undefined') {
+       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+         bundleName: appId,
+         context: context
+       };
+       try {
+         // Create a KVManager instance.
+         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+         Logger.info('Succeeded in creating KVManager.');
+       } catch (err) {
+         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+       }
+     } else {
+       Logger.info ('KVManager has created');
+     }
+   })
+   ```
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public GetKvStore = (() => {
+     Logger.info('GetKvStore start');
+     if (kvManager === undefined) {
+       Logger.info('KvManager not initialized');
+       return;
+     }
+     try {
+       let child1 = new distributedKVStore.FieldNode('id');
+       child1.type = distributedKVStore.ValueType.INTEGER;
+       child1.nullable = false;
+       child1.default = '1';
+       let child2 = new distributedKVStore.FieldNode('name');
+       child2.type = distributedKVStore.ValueType.STRING;
+       child2.nullable = false;
+       child2.default = 'zhangsan';
+   
+       let schema = new distributedKVStore.Schema();
+       schema.root.appendChild(child1);
+       schema.root.appendChild(child2);
+       schema.indexes = ['$.id', '$.name'];
+       // The value 0 indicates the compatible mode, and 1 indicates the strict mode.
+       schema.mode = 1;
+       // Set the number of bytes to be skipped during the value check. The value range is [0, 4M-2].
+       schema.skip = 0;
+   
+       const options: distributedKVStore.Options = {
+         createIfMissing: true,
+         // Whether to encrypt the KV store.
+         encrypt: true,
+         backup: false,
+         autoSync: false,
+         // If kvStoreType is left empty, a device KV store is created by default.
+         kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+         // kvStoreType is distributedKVStore.KVStoreType.DEVICE_COLLABORATION for a device KV store.
+         schema: schema,
+         // If the schema is not defined, you can leave it empty. For details about how to define the schema, see the example above.
+         securityLevel: distributedKVStore.SecurityLevel.S3
+       };
+       kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeId, options,
+         (err, store: distributedKVStore.SingleKVStore) => {
+           if (err) {
+             Logger.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
+             return;
+           }
+           Logger.info('Succeeded in getting KVStore.');
+           kvStore = store;
+           // Before performing related data operations, obtain a KV store instance.
+         });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
+   ```
 
 ## Encrypting an RDB Store 
 

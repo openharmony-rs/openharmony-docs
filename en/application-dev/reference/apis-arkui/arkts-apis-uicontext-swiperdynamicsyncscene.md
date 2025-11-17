@@ -1,10 +1,16 @@
 # Class (SwiperDynamicSyncScene)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 Provides frame rate configuration APIs for the **Swiper** component.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
@@ -48,7 +54,10 @@ struct Frame {
         .backgroundColor(Color.Blue)
         .autoPlay(true)
         .onAppear(()=>{
-          this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+          let scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+          if (scenes) {
+            this.scenes = scenes;
+          }
         })
       }
 

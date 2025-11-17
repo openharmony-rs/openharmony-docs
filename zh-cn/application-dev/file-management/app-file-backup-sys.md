@@ -36,27 +36,34 @@
 
 调用[backup.getLocalCapabilities()](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#backupgetlocalcapabilities)获取能力文件。
 
-```ts
-import { fileIo as fs, backup } from '@kit.CoreFileKit';
+<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+
+``` TypeScript
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { backup } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// ···
 
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-async function getLocalCapabilities(context: common.UIAbilityContext): Promise<void> {
- try {
-   let filesDir = context.filesDir;
-   let fileData = await backup.getLocalCapabilities();
-   console.info('getLocalCapabilities success');
-   let fpath = filesDir + '/localCapabilities.json';
-   fs.copyFileSync(fileData.fd, fpath);
-   fs.closeSync(fileData.fd);
- } catch (error) {
-   let err: BusinessError = error as BusinessError;
-   console.error(`getLocalCapabilities failed with err, code is ${err.code}, message is ${err.message}`);
- }
+// 请在组件内获取context，确保getContext(this)返回结果为UIAbilityContext
+let context = getContext(this) as common.UIAbilityContext;
+let filesDir = context.filesDir;
+
+// 获取能力文件
+export async function getLocalCapabilities(): Promise<void> {
+  try {
+    let fileData = await backup.getLocalCapabilities();
+    console.info('getLocalCapabilities success');
+    let fpath = filesDir + '/localCapabilities.json';
+    fs.copyFileSync(fileData.fd, fpath);
+    // ···
+    fs.closeSync(fileData.fd);
+  } catch (error) {
+    console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
+  }
 }
 ```
+
 
 **返回的能力文件内容示例：**
 
@@ -98,17 +105,26 @@ async function getLocalCapabilities(context: common.UIAbilityContext): Promise<v
 
 **示例**
 
-  ```ts
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  
+  ``` TypeScript
+  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { backup } from '@kit.CoreFileKit';
   import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let appFileDir: string = '';
-  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  appFileDir = context.filesDir;
+  // ···
+  
+  // 请在组件内获取context，确保getContext(this)返回结果为UIAbilityContext
+  let context = getContext(this) as common.UIAbilityContext;
+  let filesDir = context.filesDir;
+  
+  // ···
+  
+  // 应用备份数据
   // 创建SessionBackup类的实例用于备份数据
-  let g_session: backup.SessionBackup;
-  function createSessionBackup(fileDir: string): backup.SessionBackup {
+  let gSession: backup.SessionBackup;
+  
+  function createSessionBackup(): backup.SessionBackup {
     let generalCallbacks: backup.GeneralCallbacks = {
       // onFileReady为服务回调给应用侧数据完成的通知，建议开发者在该接口内不要进行过多的耗时实现，可以通过异步线程实现file.fd数据的处理
       onFileReady: (err: BusinessError, file: backup.File) => {
@@ -116,26 +132,27 @@ async function getLocalCapabilities(context: common.UIAbilityContext): Promise<v
           console.error(`onFileReady err, code is ${err.code}, message is ${err.message}`);
         }
         try {
-          let bundlePath = appFileDir + '/' + file.bundleName;
+          let bundlePath = filesDir + '/' + file.bundleName;
           if (!fs.accessSync(bundlePath)) {
             fs.mkdirSync(bundlePath);
           }
-          // 此处执行copyFileSync会多一次内存拷贝，开发者可以直接使用onFileReady的file.fd来进行数据出来，处理完成后close即可，这样会减少内存消耗
+          // 此处执行copyFileSync会多一次内存拷贝，开发者可以直接使用onFileReady的file.fd来进行数据处理，处理完成后close即可，这样会减少内存消耗
           fs.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
           fs.closeSync(file.fd);
           console.info('onFileReady success');
-        } catch (e) {
-          console.error('onFileReady failed with err: ' + e);
+        } catch (error) {
+          let err: BusinessError = error as BusinessError;
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
         }
       },
-      onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleBegin: (err: BusinessError<string | void>, bundleName: string) => {
         if (err) {
           console.error(`onBundleBegin err, code is ${err.code}, message is ${err.message}`);
         } else {
           console.info('onBundleBegin bundleName: ' + bundleName);
         }
       },
-      onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleEnd: (err: BusinessError<string | void>, bundleName: string) => {
         if (err) {
           console.error(`onBundleEnd err, code is ${err.code}, message is ${err.message}`);
         } else {
@@ -156,26 +173,28 @@ async function getLocalCapabilities(context: common.UIAbilityContext): Promise<v
         console.info('onResultReport  bundleName: ' + bundleName);
         console.info('onResultReport  result: ' + result);
       },
-      onProcess:(bundleName: string, process: string) => { 
-        console.info('onPross bundleName: ' + JSON.stringify(bundleName));
-        console.info('onPross result: ' + JSON.stringify(process));
+      onProcess: (bundleName: string, process: string) => {
+        console.info('onProcess bundleName: ' + bundleName);
+        console.info('onProcess result: ' + process);
       }
     }
     let sessionBackup = new backup.SessionBackup(generalCallbacks);
     return sessionBackup;
   }
-
-  async function sessionBackup (fileDir: string): Promise<void> {
-    g_session = createSessionBackup(fileDir);
+  
+  // ···
+  export async function sessionBackup(): Promise<void> {
+    gSession = createSessionBackup();
     // 此处可根据backup.getLocalCapabilities()提供的能力文件，选择需要备份的应用
     // 也可直接根据应用包名称进行备份
     const backupApps: string[] = [
-      "com.example.hiworld",
+      'com.samples.filebackupextension',
     ]
-    await g_session.appendBundles(backupApps);
+    await gSession.appendBundles(backupApps);
     console.info('appendBundles success');
   }
   ```
+
 
 ## 应用恢复数据
 
@@ -187,24 +206,39 @@ async function getLocalCapabilities(context: common.UIAbilityContext): Promise<v
 
 **示例**
 
-  ```ts
-  import { backup, fileIo as fs } from '@kit.CoreFileKit';
-  import { BusinessError } from '@ohos.base';
+  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  
+  ``` TypeScript
+  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { backup } from '@kit.CoreFileKit';
+  import { common } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // ···
+  
+  // 请在组件内获取context，确保getContext(this)返回结果为UIAbilityContext
+  let context = getContext(this) as common.UIAbilityContext;
+  let filesDir = context.filesDir;
+  
+  // ···
+  // 应用数据恢复
   // 创建SessionRestore类的实例用于恢复数据
-  let g_session: backup.SessionRestore;
+  let gSessionRestore: backup.SessionRestore;
   let initMap = new Map<string, number>();
-  let testFileNum = 123; // 123: 初始化文件个数
-  let testBundleName = 'com.example.myapplication'; // 测试包名
+  let testFileNum = 2; // 初始化文件个数
+  let testBundleName = 'com.samples.filebackupextension'; // 测试包名
   initMap.set(testBundleName, testFileNum);
   let countMap = new Map<string, number>();
   countMap.set(testBundleName, 0); // 初始化计数
+  
   async function publishFile(file: backup.File): Promise<void> {
+    console.info('start publishFile');
     let fileMeta: backup.FileMeta = {
       bundleName: file.bundleName,
       uri: ''
     }
-    await g_session.publishFile(fileMeta);
+    await gSessionRestore.publishFile(fileMeta);
   }
+  
   function createSessionRestore(): backup.SessionRestore {
     let generalCallbacks: backup.GeneralCallbacks = {
       onFileReady: (err: BusinessError, file: backup.File) => {
@@ -212,27 +246,29 @@ async function getLocalCapabilities(context: common.UIAbilityContext): Promise<v
           console.error(`onFileReady err, code is ${err.code}, message is ${err.message}`);
         }
         // 此处开发者请根据实际场景待恢复文件存放位置进行调整 bundlePath
-        let bundlePath: string = '';
+        let bundlePath: string = `${filesDir}/${file.bundleName}/`;
         if (!fs.accessSync(bundlePath)) {
-          console.info('onFileReady bundlePath err : ' + bundlePath);
+          console.error('onFileReady bundlePath err : ' + bundlePath);
         }
-        fs.copyFileSync(bundlePath, file.fd);
+        console.info('fd : ' + file.fd);
+        let targetPath = `${bundlePath}${file.uri}`;
+        fs.copyFileSync(targetPath, file.fd);
         fs.closeSync(file.fd);
+        let currentCount = countMap.get(file.bundleName) || 0; // 如果没有找到对应的计数，则默认返回 0
+        countMap.set(file.bundleName, ++currentCount);
         // 恢复数据传输完成后，会通知服务端文件准备就绪
-        let cnt = countMap.get(file.bundleName) || 0;
-        countMap.set(file.bundleName, cnt + 1);
         if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // 每个包的所有文件收到后触发publishFile
           publishFile(file);
         }
         console.info('onFileReady success');
       },
-      onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleBegin: (err: BusinessError<string | void>, bundleName: string) => {
         if (err) {
           console.error(`onBundleBegin failed with err, code is ${err.code}, message is ${err.message}`);
         }
         console.info('onBundleBegin success');
       },
-      onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleEnd: (err: BusinessError<string | void>, bundleName: string) => {
         if (err) {
           console.error(`onBundleEnd failed with err, code is ${err.code}, message is ${err.message}`);
         }
@@ -251,7 +287,7 @@ async function getLocalCapabilities(context: common.UIAbilityContext): Promise<v
         console.info('onResultReport  bundleName: ' + bundleName);
         console.info('onResultReport  result: ' + result);
       },
-      onProcess:(bundleName: string, process: string) => { 
+      onProcess: (bundleName: string, process: string) => {
         console.info('onProcess bundleName: ' + bundleName);
         console.info('onProcess result: ' + process);
       }
@@ -259,26 +295,27 @@ async function getLocalCapabilities(context: common.UIAbilityContext): Promise<v
     let sessionRestore = new backup.SessionRestore(generalCallbacks);
     return sessionRestore;
   }
-
-  async function restore01 (): Promise<void> {
-    g_session = createSessionRestore();
+  
+  export async function sessionRestore(): Promise<void> {
+    gSessionRestore = createSessionRestore();
     const restoreApps: string[] = [
-      "com.example.hiworld",
-    ]
+      'com.samples.filebackupextension'
+    ];
     // 能力文件的获取方式可以根据开发者实际场景进行调整。此处仅为请求示例
     // 开发者也可以根据能力文件内容的结构示例，自行构造能力文件内容
-    let fileData = await backup.getLocalCapabilities();
-    await g_session.appendBundles(fileData.fd, restoreApps);
+    let fileDat = await backup.getLocalCapabilities();
+    await gSessionRestore.appendBundles(fileDat.fd, restoreApps);
     console.info('appendBundles success');
     // 添加需要恢复的应用成功后，请根据需要恢复的应用名称，调用getFileHandle接口获取待恢复应用数文件的文件句柄
     // 应用待恢复数据文件数请依据实际备份文件个数为准，此处仅为请求示例
     let handle: backup.FileMeta = {
       bundleName: restoreApps[0],
-      uri: "manage.json"
-    }
-    await g_session.getFileHandle(handle);
-    handle.uri = "1.tar";
-    await g_session.getFileHandle(handle);
+      uri: 'manage.json'
+    };
+    await gSessionRestore.getFileHandle(handle);
+    handle.uri = 'part.0.tar';
+    await gSessionRestore.getFileHandle(handle);
     console.info('getFileHandle success');
   }
   ```
+

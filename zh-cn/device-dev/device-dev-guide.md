@@ -1,11 +1,11 @@
 # 导读<a name="ZH-CN_TOPIC_0000001152533331"></a>
 
--   [系统类型](#section767218232110)
--   [文档导读](#section19810171681218)
+-   [系统类型](#系统类型)
+-   [文档导读](#文档导读)
 
 为了方便开发者正确获取内容，本导读基于OpenHarmony学习路径同时结合开发者具体业务对相关资料、资源进行了分类。
 
-## 系统类型<a name="section767218232110"></a>
+## 系统类型
 
 在正式学习OpenHarmony开发前，开发者需要先了解系统类型，方便后续根据自身业务匹配对应的系统及对应文档资源。
 
@@ -28,13 +28,13 @@ OpenHarmony是一款面向全场景的开源分布式操作系统，采用组件
 
 OpenHarmony也提供了一系列可选的系统组件，方便设备开发者按需配置，以支撑其特色功能的扩展或定制开发。系统将这些可选的系统组件组合为一系列描述为特性或功能的系统能力，以方便设备开发者理解和选择。
 
-## 文档导读<a name="section19810171681218"></a>
+## 文档导读
 
 **表 1**  轻量和小型系统开发指导（参考内存<128MiB）
 
 | 学习路径        | 开发者业务                                                   | 相关文档                                                     |
 | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 了解OpenHarmony | 整体认知OpenHarmony                                          | -&nbsp;[OpenHarmony概述](https://gitee.com/openharmony)<br/>-&nbsp;[术语](../glossary.md) |
+| 了解OpenHarmony | 整体认知OpenHarmony                                          | -&nbsp;[OpenHarmony概述](https://gitcode.com/openharmony)<br/>-&nbsp;[术语](../glossary.md) |
 | 获取开发资源    | 准备开发前相关资源                                           | -&nbsp;[获取源码](get-code/sourcecode-acquire.md)<br/>-&nbsp;[获取工具](get-code/gettools-acquire.md) |
 | 快速入门        | 快速熟悉OpenHarmony环境搭建、编译、烧录、调测、运行          | -&nbsp;[快速入门](quick-start/Readme-CN.md) |
 | 基础能力使用    | 使用OpenHarmony提供的基础能力                                | -&nbsp;[轻量系统内核开发指南](kernel/kernel-mini-overview.md)<br/>-&nbsp;[小型系统内核开发指南](kernel/kernel-small-overview.md)<br/>-&nbsp;[驱动开发指南](driver/driver-overview-foundation.md)<br/>-&nbsp;[子系统开发指南](subsystems/subsys-build-all.md)<br/>-&nbsp;[安全指南](security/security-guidelines-overall.md)<br/>-&nbsp;[隐私保护](security/security-privacy-protection.md) |
@@ -46,11 +46,11 @@ OpenHarmony也提供了一系列可选的系统组件，方便设备开发者按
 **表 2**  标准系统开发指导（参考内存≥128MiB）
 | 学习路径 | 开发者业务 | 相关文档 |
 | -------- | -------- | -------- |
-| 了解OpenHarmony | 整体认知OpenHarmony | -&nbsp;[OpenHarmony概述](https://gitee.com/openharmony)<br/>-&nbsp;[术语](../glossary.md) |
+| 了解OpenHarmony | 整体认知OpenHarmony | -&nbsp;[OpenHarmony概述](https://gitcode.com/openharmony)<br/>-&nbsp;[术语](../glossary.md) |
 | 获取开发资源 | 准备开发前相关资源 | -&nbsp;[获取源码](get-code/sourcecode-acquire.md)<br/>-&nbsp;[获取工具](get-code/gettools-acquire.md) |
 | 快速入门 | 快速熟悉OpenHarmony环境搭建、编译、烧录、调测、运行 | -&nbsp;[快速入门](quick-start/Readme-CN.md)|
 | 基础能力使用 | 使用OpenHarmony提供的基础能力 | -&nbsp;[内核开发指南](kernel/kernel-standard-overview.md)<br/>-&nbsp;[驱动开发指南](driver/driver-overview-foundation.md)<br/>-&nbsp;[子系统开发指南](subsystems/subsys-build-all.md)<br/>-&nbsp;[安全指南](security/security-guidelines-overall.md)<br/>-&nbsp;[隐私保护](security/security-privacy-protection.md) |
 | 进阶开发 | 结合系统能力开发智能设备 | -&nbsp;[时钟应用开发指导](guide/device-clock-guide.md)<br/>-&nbsp;[平台驱动开发示例](guide/device-driver-demo.md)<br/>-&nbsp;[外设驱动开发示例](guide/device-outerdriver-demo.md) |
-| 移植适配 | -&nbsp;针对特定芯片做移植适配 <br/>-&nbsp;快速移植OpenHarmony&nbsp;Linux内核的方法| -&nbsp;[标准系统芯片移植指导](porting/standard-system-porting-guide.md)<br/>-&nbsp;[一种快速移植OpenHarmony&nbsp;Linux内核的方法](porting/porting-linux-kernel.md)  <br/>-&nbsp;[标准系统方案之瑞芯微RK3568移植案例](porting/porting-dayu200-on_standard-demo.md) <br/>-&nbsp;[标准系统方案之瑞芯微RK3566移植案例](https://gitee.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)|
+| 移植适配 | -&nbsp;针对特定芯片做移植适配 <br/>-&nbsp;快速移植OpenHarmony&nbsp;Linux内核的方法| -&nbsp;[标准系统芯片移植指导](porting/standard-system-porting-guide.md)<br/>-&nbsp;[一种快速移植OpenHarmony&nbsp;Linux内核的方法](porting/porting-linux-kernel.md)  <br/>-&nbsp;[标准系统方案之瑞芯微RK3568移植案例](porting/porting-dayu200-on_standard-demo.md) <br/>-&nbsp;[标准系统方案之瑞芯微RK3566移植案例](https://gitcode.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)|
 | 贡献组件 | 为OpenHarmony贡献功能组件 | -&nbsp;[HPM&nbsp;Part&nbsp;介绍](hpm-part/hpm-part-about.md)<br/>-&nbsp;[HPM&nbsp;Part&nbsp;开发指导](hpm-part/hpm-part-development.md)<br/>-&nbsp;[HPM&nbsp;Part&nbsp;参考](hpm-part/hpm-part-reference.md) |
 | 参考 | 为开发者提供常见的问题解答和HDI接口参考   | -&nbsp;[常见问题](faqs/faqs-overview.md)<br/>-&nbsp;[HDI接口参考](reference/hdi-apis/Readme-CN.md)        |

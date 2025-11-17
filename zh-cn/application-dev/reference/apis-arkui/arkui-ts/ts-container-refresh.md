@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
  可以进行页面下拉操作并显示刷新动效的容器组件。 
 
@@ -172,6 +172,10 @@ onRefreshing(callback: () => void)
 onOffsetChange(callback: Callback\<number>)
 
 下拉距离发生变化时触发回调。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -684,7 +688,7 @@ struct ListRefreshLoad {
 
 ### 示例7（设置最大下拉距离）
 
-通过[maxPullDownDistance](#maxpulldowndistance20)属性设置最大下拉距离。
+从API version 20开始，通过[maxPullDownDistance](#maxpulldowndistance20)属性设置最大下拉距离。
 
 ```ts
 // xxx.ets

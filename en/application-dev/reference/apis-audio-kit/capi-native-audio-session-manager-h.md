@@ -70,9 +70,9 @@ You can call the functions to create an audio session manager, activate or deact
 | [OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audiosessionmanager_getavailabledevices) | - | Obtains the available audio devices. |
 | [OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)](#oh_audiosessionmanager_registeravailabledeviceschangecallback) | - | Registers a callback to listen for available device change events.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)](#oh_audiosessionmanager_unregisteravailabledeviceschangecallback) | - | Unregisters the callback used to listen for available device change events.|
-| [OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiosessionmanager_selectmediainputdevice) | - | Selects a media input device. This function is not suitable for call recording, meaning it does not apply to situations where [SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is **SOURCE_TYPE_VOICE_CMMUNICATION**.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the one selected.<br> Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiosessionmanager_selectmediainputdevice) | - | Selects a media input device. This function is not suitable for call recording, meaning it does not apply to situations where [SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is **SOURCE_TYPE_VOICE_COMMUNICATION**.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the one selected.<br> Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)](#oh_audiosessionmanager_getselectedmediainputdevice) | - | Obtains the media input device set by calling [OH_AudioSessionManager_SelectMediaInputDevice](#oh_audiosessionmanager_selectmediainputdevice).|
-| [OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)](#oh_audiosessionmanager_setbluetoothandnearlinkpreferredrecordcategory) | - | Sets the device preference classification of an application when Bluetooth or SparkLink is used for recording. Sets the preferred device category for recording with Bluetooth or NearLink. Applications can set this category before connecting to Bluetooth or NearLink, and the system prioritizes using Bluetooth or NearLink for recording when the device is connected.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the set preferred device.<br> Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)](#oh_audiosessionmanager_setbluetoothandnearlinkpreferredrecordcategory) | - | Sets the preferred device category for recording with Bluetooth or NearLink. Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the set preferred device.<br> Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)](#oh_audiosessionmanager_getbluetoothandnearlinkpreferredrecordcategory) | - | Obtains the preferred device category for recording with Bluetooth or NearLink.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) | - | Registers a callback to listen for input device changes of an audio session manager.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_unregistercurrentinputdevicechangecallback) | - | Unregisters the callback used to listen for input device changes of an audio session manager.|
@@ -210,7 +210,7 @@ Defines a function pointer to the callback used to listen for audio session stat
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | Pointer to the [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event.|
+| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | Pointer to the event indicating that the audio session state changes.|
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
@@ -229,7 +229,7 @@ Defines a pointer to the callback that returns the changed audio device descript
 | Name| Description|
 | -- | -- |
 | [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) type | Device connection status, which can be connected or disconnected.|
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | Pointer to the audio device descriptors in the array. If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices) to release it.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | Pointer to the audio device descriptors in the array.<br> If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices) to release it.|
 
 ### OH_AudioSession_CurrentInputDeviceChangedCallback()
 
@@ -247,7 +247,7 @@ Defines a function pointer to the callback used to listen for the current input 
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *devices | Pointer to the audio device descriptors in the array. If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices) to release it.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *devices | Pointer to the audio device descriptors in the array.<br> If the pointer is no longer needed, use [OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices) to release it.|
 | [OH_AudioStream_DeviceChangeReason](capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) changeReason | Reason for the device change.|
 
 ### OH_AudioSession_CurrentOutputDeviceChangedCallback()
@@ -286,7 +286,7 @@ Defines a function pointer to the callback used to listen for audio session deac
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | Pointer to OH_AudioSession_Deactivated_Event, which indicates that an audio session is deactivated.|
+| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | Pointer to the event indicating that an audio session is deactivated.|
 
 ### OH_AudioManager_GetAudioSessionManager()
 
@@ -404,7 +404,7 @@ Registers a callback to listen for audio session deactivation events.
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | OH_AudioSessionDeactivatedCallback, a callback used to receive the audio session deactivation event.|
+| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | Callback used to receive the audio session deactivation event.|
 
 **Returns**
 
@@ -429,7 +429,7 @@ Unregisters the callback used to listen for audio session deactivation events.
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | OH_AudioSessionDeactivatedCallback, a callback used to receive the audio session deactivation event.|
+| [OH_AudioSession_DeactivatedCallback](#oh_audiosession_deactivatedcallback) callback | Callback used to receive the audio session deactivation event.|
 
 **Returns**
 
@@ -454,7 +454,7 @@ Sets an audio session scene.
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_Scene](#oh_audiosession_scene) scene | Audio session scene.|
+| [OH_AudioSession_Scene](#oh_audiosession_scene) scene | Pointer to an [OH_AudioSession_Scene](#oh_audiosession_scene).|
 
 **Returns**
 
@@ -521,11 +521,12 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 **Description**
 
 Sets the default audio output device.
+
 > **NOTE**
 >
 > This function applies to the following scenarios:
 >
-> - When [OH_AudioSession_Scene](#oh_audiosession_scene) is set to **VoIP**, the setting takes effect immediately after the AudioSession is activated. For non-VoIP scenarios, the setting does not take effect upon AudioSession activation. Instead, the setting applies when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) for playback is voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
+> - When [OH_AudioSession_Scene](#oh_audiosession_scene) is set to **VoIP**, the setting takes effect immediately after the AudioSession is activated. For non-VoIP scenarios, the setting does not take effect upon AudioSession activation. Instead, the setting applies when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) for playback is a voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
 > - This function can be called at any time after an [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application is started, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
 > - This function has a lower priority than [AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker). If you have already switched the audio device using AVCastPicker, using this function to switch devices again does not take effect.
 
@@ -731,7 +732,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSess
 
 Selects a media input device.
 
-This function is not suitable for call recording, meaning it does not apply to situations where [SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is **SOURCE_TYPE_VOICE_CMMUNICATION**.
+This function is not suitable for call recording, meaning it does not apply to situations where [SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is **SOURCE_TYPE_VOICE_COMMUNICATION**.
 
 When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the one selected.
 

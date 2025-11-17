@@ -8,7 +8,7 @@
 <!--Adviser: @huipeizi-->
 
 
-##  ArkTS 应用运行时出现模块化加载相关的异常报错提示，可能导致报错原因以及解决方法
+##  ArkTS 应用运行时出现模块化加载相关的异常报错提示，可能的报错原因以及解决方法
 ### "Cannot find dynamic-import module 'xxxx'"
 
 报错表示当前加载的模块未被编译到当前应用包内

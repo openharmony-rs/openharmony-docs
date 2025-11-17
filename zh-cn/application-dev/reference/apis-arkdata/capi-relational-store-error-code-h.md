@@ -112,4 +112,4 @@ enum OH_Rdb_ErrCode
 | RDB_E_DATA_TYPE_NULL = (E_BASE + 63)                         | 表示存储数据为空。<br>**起始版本：** 18                     |
 | RDB_E_TYPE_MISMATCH = (E_BASE + 64)                          | 表示数据类型不匹配。<br>**起始版本：** 18                   |
 | RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)                      | 表示SQLite错误码：SQLite约束。<br>**起始版本：** 18         |
-
+| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | 表示订阅数量超过限制。<br>**起始版本：** 22 |

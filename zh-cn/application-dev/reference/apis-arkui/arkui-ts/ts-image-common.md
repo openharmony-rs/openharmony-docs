@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -48,8 +48,8 @@ type PixelMap = PixelMap
 | 名称     | 值    | 说明           |
 | -------- | ----- | -------- |
 | SUBJECT | 0  | 主体识别功能。 |
-| TEXT | -  | 文字识别功能。 |
-| OBJECT_LOOKUP | -  | 对象查找功能。 |
+| TEXT | 1  | 文字识别功能。 |
+| OBJECT_LOOKUP | 2  | 对象查找功能。 |
 
 ## ImageAIOptions<sup>12+</sup>
 
@@ -104,42 +104,17 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 | ------ | ----------------------- |
 | [ImageAnalyzerType[]](#imageanalyzertype12) | 对应组件支持的分析类型。 |
 
-## ContentTransitionEffect<sup>21+</sup>
+## ContentTransitionEffect<sup>21+</sup>对象说明
 
 定义内容切换时的过渡效果。
 
-**原子化服务 API：** 从 API version 21开始，该接口支持在原子化服务中使用。
+### 属性
+
+**原子化服务API：** 从 API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### IDENTITY<sup>21+</sup>
-
-static get IDENTITY(): ContentTransitionEffect
-
-内容切换时无过渡动画效果。
-
-**原子化服务 API：** 从 API version 21开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型                                       | 说明                                            |
-| ------------------------------------------ | ----------------------------------------------- |
-| [ContentTransitionEffect](#contenttransitioneffect21)   | 定义内容切换时的过渡效果。  |
-
-### OPACITY<sup>21+</sup>
-
-static get OPACITY(): ContentTransitionEffect
-
-内容切换时采用淡入淡出过渡动画。
-
-**原子化服务 API：** 从 API version 21开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型                                       | 说明                                            |
-| ------------------------------------------ | ----------------------------------------------- |
-| [ContentTransitionEffect](#contenttransitioneffect21)   | 定义内容切换时的过渡效果。  |
+| 名称 | 类型 | 只读 | 可选 |说明 |
+| -------- | ---------- | -------- | -------- | -------- | 
+| IDENTITY | [ContentTransitionEffect](#contenttransitioneffect21对象说明) | 是 | 否 | 内容切换时无过渡动画效果。 |
+| OPACITY | [ContentTransitionEffect](#contenttransitioneffect21对象说明) | 是 | 否 | 内容切换时采用淡入淡出过渡动画。 |

@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_DistributedConfig
+```
+
 ## 概述
 
 记录表的分布式配置信息。

@@ -1,4 +1,4 @@
-# Supporting Touchpad Input Events
+# Handling Touchpad Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiangtao92-->

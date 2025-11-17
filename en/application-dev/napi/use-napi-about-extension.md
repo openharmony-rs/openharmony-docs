@@ -106,7 +106,7 @@ export const add: (a: number, b: number) => number;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 hilog.info(0x0000, 'testTag', 'Test Node-API 2 + 3 = %{public}d', testNapi.add(2, 3));
@@ -165,7 +165,7 @@ export const createObjectWithProperties: (data: string) => Object;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = testNapi.createObjectWithProperties('createObject');
@@ -218,7 +218,7 @@ export const createObjectWithNameProperties: (data: string) => string | { name: 
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = testNapi.createObjectWithNameProperties('ls');
@@ -275,11 +275,11 @@ export const runScriptPath: () => boolean;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 try {
-  // Return true is the script is executed successfully; return false otherwise.
+  // Return true if the script is executed successfully; return false otherwise.
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_run_script_path: %{public}s', testNapi.runScriptPath());
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_run_script_path errorMessage: %{public}s', error.message);
@@ -568,7 +568,7 @@ ArkTS code:
 ```ts
 // index.ets
 import testNapi from 'libentry.so';
-import taskpool from '@ohos.taskpool';
+import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
 function getAddress() {
@@ -634,7 +634,7 @@ test01();
 
 **NOTE**
 
-Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. Object A needs to be serialized and deserialized when passed cross threads. In thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A.
+Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 
@@ -737,7 +737,7 @@ export const aboutSerialize: (obj: Object) => number;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 class Obj {
   numKey:number = 0;
@@ -814,7 +814,7 @@ export const isSendable: <T>(a: T) => boolean;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = testNapi.isSendable('createObject');
@@ -916,7 +916,7 @@ export class SendableClass {
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = new testNapi.SendableClass();
@@ -957,7 +957,7 @@ export const getSendableObject: () => { x: true };
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = testNapi.getSendableObject();
@@ -993,7 +993,7 @@ export const getSendableArray: () => [];
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = testNapi.getSendableArray();
@@ -1027,7 +1027,7 @@ export const getSendableArrayWithLength: () => [];
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 let value = testNapi.getSendableArrayWithLength();
@@ -1069,7 +1069,7 @@ export const getSendableArrayBuffer: () => void;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 testNapi.getSendableArrayBuffer();
@@ -1114,7 +1114,7 @@ export const getSendableTypedArray: () => void;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 testNapi.getSendableTypedArray();
@@ -1158,7 +1158,7 @@ export const wrapSendable: () => void;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 testNapi.wrapSendable();
@@ -1202,7 +1202,7 @@ export const wrapSendableWithSize: () => void;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 testNapi.wrapSendableWithSize();
@@ -1250,7 +1250,7 @@ export const unwrapSendable: () => void;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 testNapi.unwrapSendable();
@@ -1298,7 +1298,7 @@ export const removeWrapSendable: () => void;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 testNapi.removeWrapSendable();
@@ -1365,7 +1365,7 @@ export const testNapiWrapEnhance: () => void;
 ArkTS code:
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 testNapi.testNapiWrapEnhance();
@@ -1385,3 +1385,48 @@ testNapi.testNapiWrapEnhance();
 **napi_create_ark_context, napi_switch_ark_context, and napi_destroy_ark_context**
 
 [Creating, Switching, and Destroying a Context in a Thread Using Node-API Extension APIs](use-napi-about-context.md)
+
+## Accessing ArkTS String Memory Data Using the Pointer of Node-API
+
+### Available APIs
+
+| API                                          | Description                                        |
+| ---------------------------------------------- | -------------------------------------------- |
+| napi_get_buffer_string_utf16_in_critical_scope | Obtains the memory data buffer of an ArkTS string encoded in UTF-16.|
+
+### Example
+
+**napi_get_buffer_string_utf16_in_critical_scope**
+
+[Creating and Destroying a Critical Scope and Accessing String Content Using Node-API Extension APIs](use-napi-about-critical.md)
+
+## Implementing a Critical Scope Through Node-API
+
+### Available APIs
+
+| API                     | Description            |
+| ------------------------- | ---------------- |
+| napi_open_critical_scope  | Opens a critical scope.|
+| napi_close_critical_scope | Closes a critical scope.|
+
+### Example
+
+**napi_open_critical_scope, napi_close_critical_scope**
+
+[Creating and Destroying a Critical Scope and Accessing String Content Using Node-API Extension APIs](use-napi-about-critical.md)
+
+## Creating Lightweight Strong Reference Objects Using Node-API
+
+### Available APIs
+
+| API                           | Description                                 |
+| ------------------------------- | ------------------------------------- |
+| napi_create_strong_reference    | Creates a strong reference to an ArkTS object.            |
+| napi_delete_strong_reference    | Deletes a strong reference.                           |
+| napi_get_strong_reference_value | Obtains the ArkTS object value associated with a strong reference object.|
+
+### Example
+
+**napi_create_strong_reference, napi_delete_strong_reference, napi_get_value_strong_reference**
+
+[Creating a Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-strong-reference.md)

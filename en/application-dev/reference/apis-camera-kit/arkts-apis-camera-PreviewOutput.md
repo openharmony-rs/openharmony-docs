@@ -220,7 +220,7 @@ Obtains the supported frame rates.
 
 |      Type     |     Description    |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates.|
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -362,7 +362,7 @@ Obtains the preview rotation degree.
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Preview rotation degree.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Preview rotation degree. If the API call fails, undefined is returned.|
 
 **Error codes**
 

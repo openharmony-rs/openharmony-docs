@@ -1,10 +1,16 @@
 # Hover Event
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 A hover event is triggered when the cursor slides over a component or when a stylus hovers and moves over the screen.
 
 >  **NOTE**
 >
->  - The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >  - Currently, only an external mouse device, stylus, or touchpad can be used to trigger a hover event.
 
 ## onHover
@@ -21,8 +27,7 @@ Triggered when the mouse pointer or stylus enters or leaves the component.
 
 | Name             | Type                               | Mandatory| Description                                                        |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| isHover             | boolean                             | Yes  | Whether the mouse pointer or stylus is hovering over the component. The value **true** means that the mouse pointer or stylus enters the component, and **false** means that the mouse pointer or stylus leaves the component.|
-| event<sup>11+</sup> | [HoverEvent](#hoverevent10) | Yes  | Event bubbling.                                      |
+| event  | (isHover: boolean, event: [HoverEvent](#hoverevent10)) => void  | Yes  | Callback for mouse or stylus hover status.<br>**event**: event bubbling control and coordinates of the hover position; available since API version 11.<br>**isHover**: whether the mouse pointer or stylus is hovering over the component. **true**: The mouse pointer or stylus has entered the component. **false**: The mouse pointer or stylus has left the component.|
 
 **Return value**
 
@@ -44,7 +49,7 @@ Triggered when a stylus hovers over the component.
 
 | Name             | Type                               | Mandatory| Description                                                        |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | [HoverEvent](#hoverevent10) | Yes  |Event bubbling property and the position coordinates of the stylus.                                     |
+| event | Callback<[HoverEvent](#hoverevent10)> | Yes  |Callback that controls event bubbling blocking and obtains the stylus hover position coordinates.        |
 
 **Return value**
 
@@ -60,13 +65,15 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 | Name| Type| Read Only| Optional| Description|
 | --------------- | ---------- | ----- | ----- | -------------------- |
-| x<sup>15+</sup> |number|No|Yes|X coordinate of the stylus's position relative to the upper left corner of the component being touched.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| y<sup>15+</sup> |number|No|Yes|Y coordinate of the stylus's position relative to the upper left corner of the component being touched.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| windowX<sup>15+</sup> |number|No|Yes|X coordinate of the stylus's position relative to the upper left corner of the application window.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| windowY<sup>15+</sup> |number|No|Yes|Y coordinate of the stylus's position relative to the upper left corner of the application window.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| displayX<sup>15+</sup> |number|No|Yes|X coordinate of the stylus's position relative to the upper left corner of the display.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| displayY<sup>15+</sup> |number|No|Yes|Y coordinate of the stylus's position relative to the upper left corner of the display.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| stopPropagation | () => void |No|No| Stops the event from bubbling upwards or downwards.<br> **Atomic service API**: This API can be used in atomic services since API version 10.|
+| x<sup>15+</sup> |number|No|Yes|X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| y<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| windowX<sup>15+</sup> |number|No|Yes|X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| windowY<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| displayX<sup>15+</sup> |number|No|Yes|X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application screen.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| displayY<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application screen.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| stopPropagation | () => void |No|No| Stops the event from bubbling upwards or downwards.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| globalDisplayX<sup>20+</sup> | number |No|Yes| X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number |No|Yes| XY-coordinate of the mouse cursor or stylus position relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## Example
 
@@ -84,7 +91,7 @@ struct HoverEventExample {
 
   build() {
     Column({ space: 20 }) {
-      Button(this.hoverText)
+      Button(this.hoverText, { type: ButtonType.Capsule })
         .width(180).height(80)
         .backgroundColor(this.color)
         .onHover((isHover: boolean, event: HoverEvent) => {
@@ -131,7 +138,7 @@ struct OnHoverMoveEventExample {
 
   build() {
     Column({ space: 20 }) {
-      Button('onHoverMove')
+      Button('onHoverMove', { type: ButtonType.Capsule })
         .width(180).height(80)
         .onHoverMove((event: HoverEvent) => {
           this.hoverMoveText = 'onHoverMove:\nXY = (' + event.x + ', ' + event.y + ')' + 

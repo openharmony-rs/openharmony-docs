@@ -26,145 +26,241 @@ You can use **backup()** to back up a KV store, use **restore()** to restore a K
 
    (3) Create a **kvStore** instance.
 
-
    ```ts
-   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
+   // Import modules.
+   // Create a KvStoreInterface.ets file in the pages directory.
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   // Logger implements the print feature after Hilog is encapsulated.
+   import Logger from '../common/Logger';
 
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-       let kvManager: distributedKVStore.KVManager;
-       let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-       let context = this.context;
-       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         context: context,
-         bundleName: 'com.example.datamanagertest'
-       }
-       try {
-         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         console.info('Succeeded in creating KVManager.');
-         try {
-           const options: distributedKVStore.Options = {
-             createIfMissing: true,
-             encrypt: true,
-             backup: false,
-             autoSync: false,
-             kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-             securityLevel: distributedKVStore.SecurityLevel.S3
-           };
-           kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err, store: distributedKVStore.SingleKVStore) => {
-             if (err) {
-               console.error(`Failed to get KVStore. Code:${err.code},message:${err.message}`);
-               return;
-             }
-             console.info('Succeeded in getting KVStore.');
-             kvStore = store;
-             if (kvStore !== undefined) {
-               // Perform subsequent operations.
-               // ...
-             }
-           });
-         } catch (e) {
-           let error = e as BusinessError;
-           console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-         }
-       } catch (e) {
-         let error = e as BusinessError;
-         console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-       }
-     }
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   const context = EntryAbility.getContext();
+
+   // The code of all the following APIs is implemented in KvInterface.
+   export class KvInterface {
    }
+   ```
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public CreateKvManager = (() => {
+     Logger.info('CreateKvManager start');
+     if (typeof (kvManager) === 'undefined') {
+       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+         bundleName: appId,
+         context: context
+       };
+       try {
+         // Create a KVManager instance.
+         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+         Logger.info('Succeeded in creating KVManager.');
+       } catch (err) {
+         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+       }
+     } else {
+       Logger.info ('KVManager has created');
+     }
+   })
+   ```
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public GetKvStore = (() => {
+     Logger.info('GetKvStore start');
+     if (kvManager === undefined) {
+       Logger.info('KvManager not initialized');
+       return;
+     }
+     try {
+       let child1 = new distributedKVStore.FieldNode('id');
+       child1.type = distributedKVStore.ValueType.INTEGER;
+       child1.nullable = false;
+       child1.default = '1';
+       let child2 = new distributedKVStore.FieldNode('name');
+       child2.type = distributedKVStore.ValueType.STRING;
+       child2.nullable = false;
+       child2.default = 'zhangsan';
+   
+       let schema = new distributedKVStore.Schema();
+       schema.root.appendChild(child1);
+       schema.root.appendChild(child2);
+       schema.indexes = ['$.id', '$.name'];
+       // The value 0 indicates the compatible mode, and 1 indicates the strict mode.
+       schema.mode = 1;
+       // Set the number of bytes to be skipped during the value check. The value range is [0, 4M-2].
+       schema.skip = 0;
+   
+       const options: distributedKVStore.Options = {
+         createIfMissing: true,
+         // Whether to encrypt the KV store.
+         encrypt: true,
+         backup: false,
+         autoSync: false,
+         // If kvStoreType is left empty, a device KV store is created by default.
+         kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+         // kvStoreType is distributedKVStore.KVStoreType.DEVICE_COLLABORATION for a device KV store.
+         schema: schema,
+         // If the schema is not defined, you can leave it empty. For details about how to define the schema, see the example above.
+         securityLevel: distributedKVStore.SecurityLevel.S3
+       };
+       kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeId, options,
+         (err, store: distributedKVStore.SingleKVStore) => {
+           if (err) {
+             Logger.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
+             return;
+           }
+           Logger.info('Succeeded in getting KVStore.');
+           kvStore = store;
+           // Before performing related data operations, obtain a KV store instance.
+         });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 2. Call **put()** to insert data to the KV store.
-     
-   ```ts
-   const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-   const VALUE_TEST_STRING_ELEMENT = 'value_test_string';
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Fail to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Put = (() => {
+     Logger.info('Put start');
+     if (kvStore === undefined) {
+       Logger.info('Put: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     // If schema is not defined, pass in other values that meet the requirements.
+     const VALUE_TEST_STRING_ELEMENT = '{"id":0, "name":"lisi"}';
+     try {
+       kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
+         if (err !== undefined) {
+           Logger.error(`Failed to put data. Code:${err.code},message:${err.message}`);
+           return;
+         }
+         Logger.info('Succeeded in putting data.');
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 3. Call **backup()** to back up the KV store.
-     
-   ```ts
-   let backupFile = 'BK001';
-   try {
-     kvStore.backup(backupFile, (err) => {
-       if (err) {
-         console.error(`Fail to backup data.code:${err.code},message:${err.message}`);
-       } else {
-         console.info('Succeeded in backing up data.');
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Backup = (() => {
+     Logger.info('Backup start');
+     if (kvStore === undefined) {
+       Logger.info('Backup: kvStore not initialized');
+       return;
+     }
+     let backupFile = 'BK001';
+     try {
+       kvStore.backup(backupFile, (err) => {
+         if (err) {
+           Logger.error(`Fail to backup data.code:${err.code},message:${err.message}`);
+         } else {
+           Logger.info('Succeeded in backing up data.');
+         }
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 4. Call **delete()** to delete data to simulate unexpected deletion or data tampering.
-     
-   ```ts
-   try {
-     kvStore.delete(KEY_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Fail to delete data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in deleting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Delete = (() => {
+     Logger.info('DeleteData start');
+     if (kvStore === undefined) {
+       Logger.info('DeleteData: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     try {
+       kvStore.delete(KEY_TEST_STRING_ELEMENT, (err) => {
+         if (err !== undefined) {
+           Logger.error(`Failed to delete data. Code:${err.code},message:${err.message}`);
+           return;
+         }
+         Logger.info('Succeeded in deleting data.');
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 5. Call **restore()** to restore the KV store.
-     
-   ```ts
-   try {
-     kvStore.restore(backupFile, (err) => {
-       if (err) {
-         console.error(`Fail to restore data. Code:${err.code},message:${err.message}`);
-       } else {
-         console.info('Succeeded in restoring data.');
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Restore = (() => {
+     Logger.info('Restore start');
+     if (kvStore === undefined) {
+       Logger.info('Restore: kvStore not initialized');
+       return;
+     }
+     let backupFile = 'BK001';
+     try {
+       kvStore.restore(backupFile, (err) => {
+         if (err) {
+           Logger.error(`Fail to restore data. Code:${err.code},message:${err.message}`);
+         } else {
+           Logger.info('Succeeded in restoring data.');
+         }
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 6. Call **deleteBackup()** to delete the backup file to release storage space.
-     
-   ```ts
-   let files = [backupFile];
-   try {
-     kvStore.deleteBackup(files).then((data) => {
-       console.info(`Succeed in deleting Backup. Data:filename is ${data[0]},result is ${data[1]}.`);
-     }).catch((err: BusinessError) => {
-       console.error(`Fail to delete Backup. Code:${err.code},message:${err.message}`);
-     })
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+
+   <!-- @[kv_store9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public DeleteBackup = (() => {
+     Logger.info('DeleteBackup start');
+     if (kvStore === undefined) {
+       Logger.info('DeleteBackup: kvStore not initialized');
+       return;
+     }
+     let backupFile = 'BK001';
+     let files = [backupFile];
+     try {
+       kvStore.deleteBackup(files, (err: BusinessError, data: [string, number][]) => {
+         if (err) {
+           Logger.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
+         } else {
+           Logger.info(`Succeed in deleting Backup.data=${data}`);
+         }
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+     }
+   })
    ```
 
 ## Backing Up an RDB Store
@@ -305,7 +401,7 @@ You can use **backup()** to [perform manual backup](#manual-backup) and use **re
 
 The following example contains only the code snippet for the restore process. The complete code must also contain the code for backing up data and rebuilding an RDB store.
 
-1. Throws an error code to indicate a database exception.
+1. An error code is thrown to indicate a database exception.
 
    ```ts
    let predicates = new relationalStore.RdbPredicates("EMPLOYEE");

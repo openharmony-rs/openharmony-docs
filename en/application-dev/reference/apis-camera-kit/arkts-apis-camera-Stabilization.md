@@ -40,7 +40,7 @@ Obtains the video stabilization mode in use.
 
 | Type       | Description         |
 | ---------- |-------------|
-| [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)    | Video stabilization mode obtained.|
+| [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)    | Video stabilization mode obtained. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -72,7 +72,7 @@ function getActiveVideoStabilizationMode(videoSession: camera.VideoSession): cam
 
 setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
-Sets a video stabilization mode. Before the setting, call [isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11) to check whether the target video stabilization mode is supported.
+Sets a video stabilization mode. Before the setting, call [isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11) to check whether the target video stabilization mode is supported. It is recommended that you set the video stabilization mode between [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) and [Start](arkts-apis-camera-Session.md#start11-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 

@@ -66,18 +66,20 @@ AppStartup supports startup tasks in automatic or manual mode. By default, autom
 
    The following is an example of the **module.json5** file:
 
-   ```json
-   {
-     "module": {
-       "name": "entry",
-       "type": "entry",
-       // ...
-       "appStartup": "$profile:startup_config," // AppStartup configuration file
-       // ...
-     }
-   }
-   ```
+    <!-- @[startup_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/module.json5) -->
 
+    ``` JSON5
+    {
+      "module": {
+        "name": "entry",
+        "type": "entry",
+        // ···
+        "appStartup": "$profile:startup_config," // AppStartup configuration file
+        // ···
+      }
+    }
+    ```
+   
 ### Defining Startup Parameter Configuration
 
 In the **startup_config.json** file, add the configuration for the startup parameters.
@@ -275,7 +277,7 @@ It is assumed that AppStartup has six .so file preloading tasks. The dependencie
 | dependencies | Array holding the .so file names of other preloading tasks on which this task depends.| Object array| Optional, defaults to an empty array|
 | excludeFromAutoStart | Whether to exclude automatic mode. For details, see [Changing Startup Mode](#changing-startup-mode).<br>- **true**: manual mode.<br>- **false**: automatic mode.<br>**NOTE**<br> This field must be set to **true** for the HSP and HAR.| Boolean| Optional, defaults to **false**|
 | runOnThread | Thread where preloading is performed.<br>- **taskPool**: executed in an asynchronous thread.<br>**NOTE**<br> Preloading of .so files can be executed only in TaskPool threads.| String| Mandatory|
-| matchRules | Used to filter the .so file preloading tasks that should be initiated in automatic mode to expedite the application launch process. It is ideal for scenarios where you need to quickly pull up a particular page, such as transitions triggered by home screen widgets, notifications, or intent calls, to provide a seamless one-step experience for accessing functional services. For details, see [Adding Task Matching Rules](#adding-task-matching-rules).<br>**NOTE**<br>- This field is supported since API version 20 and can be configured only in HAPs.<br>- The priority of this field is higher than that of **excludeFromAutoStart**. If none of the .so file preloading tasks match, the tasks are processed according to their **excludeFromAutoStart** settings.| Object| Optional|
+| matchRules | Used to filter the .so file preloading tasks that should be initiated in automatic mode to expedite the application launch process. It is ideal for scenarios where you need to quickly pull up a particular page, such as transitions triggered by home screen widgets, notifications, or intent calls, to provide a seamless one-step experience for accessing functional services. For details, see [Adding Task Matching Rules](#adding-task-matching-rules).<br>**NOTE**<br>- This field is supported since API version 20 and can be configured only in HAPs.<br>- This field takes precedence over **excludeFromAutoStart**. If none of the .so file preloading tasks match, the tasks are processed according to their **excludeFromAutoStart** settings.| Object| Optional|
 
 ## Setting Startup Parameters
 
@@ -284,7 +286,9 @@ In the startup parameter file (**ets/startup/StartupConfig.ets** in this example
 - [StartupConfig](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md): sets the task timeout interval and AppStartup listener.
 - [StartupListener](../reference/apis-ability-kit/js-apis-app-appstartup-startupListener.md): listens for the execution result of the startup task.
 
-```ts
+<!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
+
+``` TypeScript
 import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -295,7 +299,8 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     let onCompletedCallback = (error: BusinessError<void>) => {
       hilog.info(0x0000, 'testTag', `onCompletedCallback`);
       if (error) {
-        hilog.error(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code, error.message);
+        hilog.error(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
+          error.message);
       } else {
         hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
       }
@@ -309,9 +314,9 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     };
     return config;
   }
+// ···
 }
 ```
-
 
 ## Adding a Startup Task for Each Component to Be Initialized
 
@@ -327,7 +332,9 @@ The following uses the **StartupTask_001.ets** file in [startup_config.json](#de
 > 
 > **StartupTask** follows the [Sendable protocol](../arkts-utils/arkts-sendable.md#sendable-protocol). Therefore, the Sendable annotation must be added when this API is inherited.
 
-```ts
+<!-- @[startup_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupTask_001.ets) -->
+
+``` TypeScript
 import { StartupTask, common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -411,36 +418,41 @@ export default class StartupTask_001 extends StartupTask {
 
         The following are examples of **module.json5** for **hsp1**, **hsp2**, and **har1**:
 
-        ```json
+        <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5) -->
+
+        ``` JSON5
         {
           "module": {
             "name": "hsp1",
             "type": "shared",
-            // ...
+            // ···
             "appStartup": "$profile:startup_config," // AppStartup configuration file
-            // ...
+            // ···
           }
         }
         ```
-        ```json
+        <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5) -->
+
+        ``` JSON5
         {
           "module": {
             "name": "hsp2",
             "type": "shared",
-            // ...
+            // ···
             "appStartup": "$profile:startup_config," // AppStartup configuration file
-            // ...
+            // ···
           }
         }
         ```
-        ```json
+        <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
+
+        ``` JSON5
         {
           "module": {
             "name": "har1",
             "type": "har",
-            // ...
+            // ···
             "appStartup": "$profile:startup_config," // AppStartup configuration file
-            // ...
           }
         }
         ```
@@ -457,10 +469,14 @@ AppStartup provides two modes for executing startup tasks: automatic and manual.
 
 The following uses the **onCreate** lifecycle of the UIAbility as an example to describe how to manually trigger a startup task. The sample code is as follows:
 
-```ts
+
+<!-- @[startup_entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -481,21 +497,23 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // ...
+// ···
 }
 ```
 
 You can also call the API to trigger the manual mode after a page is loaded. The sample code is as follows:
 
-```ts
+<!-- @[startup_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { startupManager } from '@kit.AbilityKit';
 
 @Entry
 @Component
 struct Index {
-  @State message: string = "Manual Mode";
-  @State startParams1: Array<string> = ["StartupTask_006"];
-  @State startParams2: Array<string> = ["libentry_006"];
+  @State message: ResourceStr = $r('app.string.manual_mode'); // $r('app.string.manual_mode') is a custom resource.
+  @State startParams1: Array<string> = ['StartupTask_006'];
+  @State startParams2: Array<string> = ['libentry_006'];
 
   build() {
     RelativeContainer() {
@@ -504,16 +522,16 @@ struct Index {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          if (!startupManager.isStartupTaskInitialized("StartupTask_006") ) { // Check whether the startup task finishes execution.
-            startupManager.run(this.startParams1)
+          if (!startupManager.isStartupTaskInitialized('StartupTask_006')) { // Check whether the startup task finishes execution.
+            startupManager.run(this.startParams1);
           }
-          if (!startupManager.isStartupTaskInitialized("libentry_006") ) {
-            startupManager.run(this.startParams2)
+          if (!startupManager.isStartupTaskInitialized('libentry_006')) {
+            startupManager.run(this.startParams2);
           }
         })
         .alignRules({
-          center: {anchor: '__container__', align: VerticalAlign.Center},
-          middle: {anchor: '__container__', align: HorizontalAlign.Center}
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
     }
     .height('100%')
@@ -592,25 +610,23 @@ Suppose you want to automatically execute StartupTask_006 and .so file preloadin
 
   1. Modify the **MyStartupConfigEntry.ets** file in [Setting Startup Parameters](#setting-startup-parameters) and add [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20).
 
-      ```ts
-      import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
-      import { hilog } from '@kit.PerformanceAnalysisKit';
-      import { BusinessError } from '@kit.BasicServicesKit';
+     <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
-      export default class MyStartupConfigEntry extends StartupConfigEntry {
-
-        // onConfig ...
-
-        onRequestCustomMatchRule(want: Want): string {
-          if (want?.parameters?.fromType == 'card') {
-            return 'ruleCard';
-          }
-          return '';
-        }
-
-      }
-      ```
-
+     ``` TypeScript
+     import { StartupConfigEntry, Want } from '@kit.AbilityKit';
+     // ···
+     
+     export default class MyStartupConfigEntry extends StartupConfigEntry {
+     // ···
+       onRequestCustomMatchRule(want: Want): string {
+         if (want?.parameters?.fromType == 'card') {
+           return 'ruleCard';
+         }
+         return '';
+       }
+     
+     }
+     ```
   2. Modify the **startup_config.json** file in [Defining Startup Task Configuration](#defining-startup-task-configuration) to add **matchRules** for StartupTask_006. The .so file preloading task does not support the **customization** field and is handled according to the **excludeFromAutoStart** configuration.
 
       ```json

@@ -1,41 +1,31 @@
-# Page and Custom Component Lifecycle
+# Custom Component Lifecycle
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926; @huyisuo-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-
-Before we dive into the page and custom component lifecycle, it would be helpful to learn the relationship between custom components and pages.
-
-
-- Custom component: \@Component decorated UI unit, which can combine multiple built-in components for component reusability and invoke component lifecycle callbacks.
-
-- Page: UI page of an application. A page can consist of one or more custom components. A custom component decorated with @Entry is used as the default entry component of the page. Exactly one component can be decorated with \@Entry in a single source file. Only components decorated by \@Entry can call the lifecycle callbacks of a page.
-
-
-The following lifecycle callbacks are provided for a page, that is, a custom component decorated with \@Entry:
-
-
-- [onPageShow](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow): Invoked each time the page is displayed, for example, during page redirection or when the application is switched to the foreground.
-
-- [onPageHide](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpagehide): Invoked each time the page is hidden, for example, during page redirection or when the application is switched to the background.
-
-- [onBackPress](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress): Invoked when the user clicks the **Back** button.
-
-
-The following lifecycle callbacks are provided for a custom component decorated with \@Component:
+The lifecycle of a custom component is decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](arkts-new-componentV2.md). The following lifecycle APIs are provided:
 
 
 - [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear): Invoked when the custom component is about to appear. Specifically, it is invoked after a new instance of the custom component is created and before its **build** function is executed.
 
-- [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12): This API is called back after **build()** of the component is executed. In this phase, you can report tracking data without affecting the actual UI functions. Do not change state variables or use functions (such as **animateTo**) in **onDidBuild**. Otherwise, unstable UI performance may result.
+- [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12): This API is called back after the build function triggered by the first rendering of the component is executed. This API is not called back when the component is re-rendered. You can report tracing data and implement other functions that do not affect the actual UI in this phase. Do not change state variables or use functions (such as **animateTo**) in **onDidBuild**. Otherwise, unstable UI performance may result.
 
-- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear): Invoked when the custom component is about to be destroyed. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running.
+- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear): Invoked when the custom component is about to be destroyed. Do not change state variables in the aboutToDisappear function. Modifying the @Link variable may lead to unstable application behavior.
+
+> **NOTE**
+>
+> For details about the page lifecycle and related content, see [Page Routing](../arkts-routing.md#lifecycle).
+
+The following figure shows the lifecycle of a custom component.
 
 
-The following figure shows the lifecycle of a component (page) decorated with \@Entry.
+![custom-component-lifecycle-demo1](figures/custom-component-lifecycle-demo1.png)
 
 
-![en-us_image_0000001502372786](figures/en-us_image_0000001502372786.png)
-
-
-Based on the preceding figure, let's look into the creation, re-rendering, and deletion of a custom component.
+The following describes how to create, re-render, and delete a custom component.
 
 
 ## Custom Component Creation and Rendering
@@ -44,78 +34,55 @@ Based on the preceding figure, let's look into the creation, re-rendering, and d
 
 2. Initialization of custom component member variables: The member variables are initialized with locally defined defaults or component constructor parameters. The initialization happens in the document order, which is the order in which the member variables are defined.
 
-3. If defined, the component's **aboutToAppear** callback is invoked.
+3. If aboutToAppear is defined, this method is executed before the build method is executed.
 
 4. On initial render, the **build** function of the built-in component is executed for rendering. If the child component is a custom component, the rendering creates an instance of the child component. During initial render, the framework records the mapping between state variables and components. When a state variable changes, the framework drives the related components to update.
 
-5. If defined, the component's **onDidBuild** callback is invoked.
-
+5. If onDidBuild is defined, this method is executed after the build method is executed.
 
 ## Custom Component Re-rendering
 
-Re-rending of a custom component is triggered when its state variable is changed by an event handle (for example, when the click event is triggered) or by an update to the associated attribute in LocalStorage or AppStorage.
+When a state variable changes due to an event (such as a tap) or a property in LocalStorage or AppStorage changes and the value of the bound state variable changes:
 
+1. The framework detects the change and starts re-rendering.
 
-1. The framework observes the state variable change and marks the component for re-rendering.
-
-2. Using the mapping tables – created in step 4 of the [custom component creation and rendering process](#custom-component-creation-and-rendering), the framework knows which UI components are managed by the state variable and which update functions are used for these UI components. With this knowledge, the framework executes only the update functions of these UI components.
-
+2. Based on the mapping between state variables and components recorded by the framework, only the components associated with the changed state variables are refreshed to implement minimum update.
 
 ## Custom Component Deletion
 
-A custom component is deleted when the branch of the **if** statement or the number of arrays in **ForEach** changes.
+For example, if the branch of the if component changes or the number of arrays in the ForEach loop rendering changes, the component is removed.
 
+1. Before the component is deleted, the **aboutToDisappear** callback is invoked to mark the component for deletion. The node deletion mechanism of ArkUI is as follows: The backend node is directly removed from the component tree, the backend node is destroyed, and the frontend node is de-referenced. When the frontend node has no reference, the Ark VM garbage collection is performed.
 
-1. Before the component is deleted, the **aboutToDisappear** callback is invoked to mark the component for deletion. The component deletion mechanism of ArkUI is as follows:<br>(1) The backend component is directly removed from the component tree and destroyed.<br>(2) The reference to the destroyed component is released from the frontend components.<br>(3) The JS Engine garbage collects the destroyed component.
+2. The custom component and its variables are deleted. If the component has synchronous variables (such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), and [@StorageLink](arkts-appstorage.md#storagelink)), the registration is canceled on the [synchronization source](arkts-state-management-overview.md#basic-concepts).
 
-2. The custom component and all its variables are deleted. Any variables linked to this component, such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), or [@StorageLink](arkts-appstorage.md#storagelink) decorated variables, are unregistered from their [synchronization sources](arkts-state-management-overview.md#basic-concepts).
+You are not advised to use async await in aboutToDisappear. If asynchronous operations (such as Promise or callback methods) are used in this lifecycle, the custom component will be retained in the Promise closure until the callback method is executed. This will prevent the custom component from being garbage collected.
 
+## Nested Custom Components
 
-Use of **async await** is not recommended inside the **aboutToDisappear** callback. In case of an asynchronous operation (a promise or a callback) being started from the **aboutToDisappear** callback, the custom component will remain in the Promise closure until the function is executed, which prevents the component from being garbage collected.
-
-
-The following example shows when the lifecycle callbacks are invoked:
+The following example details the call sequence of the custom component lifecycle when custom components are nested:
 
 ```ts
 // Index.ets
-import { router } from '@kit.ArkUI';
-
 @Entry
 @Component
-struct MyComponent {
+struct Parent {
   @State showChild: boolean = true;
-  @State btnColor: string = "#FF007DFF";
-
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
-  onPageShow() {
-    console.info('Index onPageShow');
-  }
-
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
-  onPageHide() {
-    console.info('Index onPageHide');
-  }
-
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
-  onBackPress() {
-    console.info('Index onBackPress');
-    this.btnColor = "#FFEE0606";
-    return true // The value true means that the page executes its own return logic, and false means that the default return logic is used.
-  }
+  @State btnColor: string = '#FF007DFF';
 
   // Component lifecycle
   aboutToAppear() {
-    console.info('MyComponent aboutToAppear');
+    console.info('Parent aboutToAppear');
   }
 
   // Component lifecycle
   onDidBuild() {
-    console.info('MyComponent onDidBuild');
+    console.info('Parent onDidBuild');
   }
 
   // Component lifecycle
   aboutToDisappear() {
-    console.info('MyComponent aboutToDisappear');
+    console.info('Parent aboutToDisappear');
   }
 
   build() {
@@ -128,13 +95,9 @@ struct MyComponent {
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
-        // When this.showChild is false, delete the Child child component and invoke Child aboutToDisappear.
-        this.showChild = false;
-      })
-      // Push to Page and execute onPageHide.
-      Button('push to next page')
-        .onClick(() => {
-          router.pushUrl({ url: 'pages/Page' });
+          // When this.showChild is false, delete the Child child component and invoke Child aboutToDisappear.
+          // this.showChild is set to true. The Child component is added, and Child aboutToAppear is executed.
+          this.showChild = !this.showChild;
         })
     }
   }
@@ -143,19 +106,20 @@ struct MyComponent {
 @Component
 struct Child {
   @State title: string = 'Hello World';
+
   // Component lifecycle
   aboutToDisappear() {
-    console.info('[lifeCycle] Child aboutToDisappear');
+    console.info('Child aboutToDisappear');
   }
 
   // Component lifecycle
   onDidBuild() {
-    console.info('[lifeCycle] Child onDidBuild');
+    console.info('Child onDidBuild');
   }
 
   // Component lifecycle
   aboutToAppear() {
-    console.info('[lifeCycle] Child aboutToAppear');
+    console.info('Child aboutToAppear');
   }
 
   build() {
@@ -168,139 +132,43 @@ struct Child {
   }
 }
 ```
-```ts
-// Page.ets
-@Entry
-@Component
-struct Page {
-  @State textColor: Color = Color.Black;
-  @State num: number = 0;
 
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
-  onPageShow() {
-    this.num = 5;
-  }
+In the preceding example, the Index page contains two custom components: Parent and Child. The Parent and Child components declare their own lifecycle functions (aboutToAppear, onDidBuild, and aboutToDisappear).
 
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
-  onPageHide() {
-    console.log("Page onPageHide");
-  }
-
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
-  onBackPress() { // If the value is not set, false is used.
-    this.textColor = Color.Grey;
-    this.num = 0;
-  }
-
-  // Component lifecycle
-  aboutToAppear() {
-    this.textColor = Color.Blue;
-  }
-
-  build() {
-    Column() {
-      Text (`num: ${this.num}`)
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-        .fontColor(this.textColor)
-        .margin(20)
-        .onClick(() => {
-          this.num += 5;
-        })
-    }
-    .width('100%')
-  }
-}
-```
-
-In the preceding example, the **Index** page contains two custom components. One is **MyComponent** decorated with \@Entry, which is also the entry component (root node) of the page. The other is **Child**, which is a child component of **MyComponent**. Only components decorated by \@Entry can call the page lifecycle callbacks. Therefore, the lifecycle callbacks of the **Index** page – **onPageShow**, **onPageHide**, and **onBackPress**, are declared in **MyComponent**. In **MyComponent** and its child components, component lifecycle callbacks – **aboutToAppear**, **onDidBuild**, and **aboutToDisappear** – are also declared.
-
-
-- The initialization process of application cold start is as follows: **MyComponent aboutToAppear** -> **MyComponent build** -> **MyComponent onDidBuild** -> **Child aboutToAppear** -> **Child build** -> **Child onDidBuild** -> **Index onPageShow**
-
-- When **delete Child** is clicked, the value of **this.showChild** linked to **if** changes to **false**. As a result, the **Child** component is deleted, and the **Child aboutToDisappear** callback is invoked.
-
-
-- When **push to next page** is clicked, the **router.pushUrl** API is called to jump to the next page. As a result, the **Index** page is hidden, and the **Index onPageHide** callback is invoked. As the called API is **router.pushUrl**, which results in the Index page being hidden, but not destroyed, only the **onPageHide** callback is invoked. After a new page is displayed, the process of initializing the lifecycle of the new page is executed.
-
-- If **router.replaceUrl** is called, the current index page is destroyed. As mentioned above, the component destruction is to detach the subtree from the component tree. Therefore, the executed lifecycle process is changed to the initialization lifecycle process of the new page and then execute **Index onPageHide** -> **MyComponent aboutToDisappear** -> **Child aboutToDisappear**.
-
-- When the **Back** button is clicked, the **Index onBackPress** callback is invoked, and the current **Index** page is destroyed.
-
-- When the application is minimized or switched to the background, the **Index onPageHide** callback is invoked. As the current **Index** page is not destroyed, **aboutToDisappear** of the component is not executed. When the application returns to the foreground, the **Index onPageShow** callback is invoked.
-
-
-- When the application exits, the following callbacks are executed in order: **Index onPageHide** -> **MyComponent aboutToDisappear** -> **Child aboutToDisappear**.
-
-## Custom Component's Listening for Page Changes
-
-You can use the listener API in [Observer](../../reference/apis-arkui/js-apis-arkui-observer.md#observeronrouterpageupdate11) to listen for page changes in custom components.
+- The initialization process of cold start is as follows: Parent aboutToAppear --&gt; Parent build --&gt; Parent onDidBuild --&gt; Child aboutToAppear --&gt; Child build --&gt; Child onDidBuild. This demonstrates the lazy expansion feature of custom components. That is, the aboutToAppear function of the Child component is executed only after the onDidBuild function of the Parent component is executed. The log output is as follows:
 
 ```ts
-// Index.ets
-import { uiObserver, router, UIObserver } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  listener: (info: uiObserver.RouterPageInfo) => void = (info: uiObserver.RouterPageInfo) => {
-    let routerInfo: uiObserver.RouterPageInfo | undefined = this.queryRouterPageInfo();
-    if (info.pageId == routerInfo?.pageId) {
-      if (info.state == uiObserver.RouterPageState.ON_PAGE_SHOW) {
-        console.log(`Index onPageShow`);
-      } else if (info.state == uiObserver.RouterPageState.ON_PAGE_HIDE) {
-        console.log(`Index onPageHide`);
-      }
-    }
-  }
-  aboutToAppear(): void {
-    let uiObserver: UIObserver = this.getUIContext().getUIObserver();
-    uiObserver.on('routerPageUpdate', this.listener);
-  }
-  aboutToDisappear(): void {
-    let uiObserver: UIObserver = this.getUIContext().getUIObserver();
-    uiObserver.off('routerPageUpdate', this.listener);
-  }
-  build() {
-    Column() {
-      Text(`this page is ${this.queryRouterPageInfo()?.pageId}`)
-        .fontSize(25)
-      Button("push self")
-        .onClick(() => {
-          router.pushUrl({
-            url: 'pages/Index'
-          })
-        })
-      Column() {
-        SubComponent()
-      }
-    }
-  }
-}
-@Component
-struct SubComponent {
-  listener: (info: uiObserver.RouterPageInfo) => void = (info: uiObserver.RouterPageInfo) => {
-    let routerInfo: uiObserver.RouterPageInfo | undefined = this.queryRouterPageInfo();
-    if (info.pageId == routerInfo?.pageId) {
-      if (info.state == uiObserver.RouterPageState.ON_PAGE_SHOW) {
-        console.log(`SubComponent onPageShow`);
-      } else if (info.state == uiObserver.RouterPageState.ON_PAGE_HIDE) {
-        console.log(`SubComponent onPageHide`);
-      }
-    }
-  }
-  aboutToAppear(): void {
-    let uiObserver: UIObserver = this.getUIContext().getUIObserver();
-    uiObserver.on('routerPageUpdate', this.listener);
-  }
-  aboutToDisappear(): void {
-    let uiObserver: UIObserver = this.getUIContext().getUIObserver();
-    uiObserver.off('routerPageUpdate', this.listener);
-  }
-  build() {
-    Column() {
-      Text(`SubComponent`)
-    }
-  }
-}
+Parent aboutToAppear
+Parent onDidBuild
+Child aboutToAppear
+Child onDidBuild
 ```
+
+- Click the button to change showChild to false, delete the Child component, and execute the aboutToDisappear method of the Child component.
+
+- If you exit the application, the following lifecycle functions are triggered: Parent aboutToDisappear --&gt; Child aboutToDisappear. This demonstrates that custom components are deleted from the parent to the child. The log output is as follows:
+
+```ts
+Parent aboutToDisappear
+Child aboutToDisappear
+```
+
+- Minimize the application or switch to another application. The Index page is not destroyed, so the aboutToDisappear function of the component is not executed.
+
+- If the default value of showChild is false, the initialization process of cold start is as follows: Parent aboutToAppear --&gt; Parent build --&gt; Parent onDidBuild. The log output is as follows:
+
+```ts
+Parent aboutToAppear
+Parent onDidBuild
+```
+- If the default value of showChild is false, the application exits directly. In this case, only the Parent aboutToDisappear method is executed.
+
+- If the default value of showChild is false, click the button to change the value of showChild to true and add the child component. The adding process is as follows: Child aboutToAppear --&gt; Child build --&gt; Child onDidBuild. The log output information is as follows:
+
+```ts
+Child aboutToAppear
+Child onDidBuild
+```
+When showchild is set to the default value true, the lifecycle flowchart of the example is as follows.
+
+![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)

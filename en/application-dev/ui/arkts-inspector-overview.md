@@ -1,8 +1,16 @@
 # Inspecting Page Layouts
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
-You can use the Inspector to examine page layouts. Its bidirectional positioning feature helps quickly locate components, modify attributes, and debug components in DevEco Studio, thereby improving development efficiency.
+You can use the Inspector tool in DevEco Studio to inspect page layouts. Its bidirectional positioning feature enables quick component location, attribute modification, and component debugging, significantly improving development efficiency.
 
-ArkUI obtains information about all components in the currently displayed page, including the parent-child structure of the component tree, size, position, styles, attributes, and states. After obtaining the component tree information, it generates and displays it as an Inspector component tree. For details about the usage in DevEco Studio, see [Using ArkUI Inspector](ui-inspector-profiler.md#using-arkui-inspector).
+ArkUI obtains comprehensive information about all components on the currently displayed page, including the component tree's parent-child hierarchy, size, position, styles, attributes, and states. After collecting this component tree data, the Inspector generates and displays it as a visual component tree. For details about how to use DevEco Studio, see [Inspector Debugging Capability](ui-inspector-profiler.md#inspector-debugging-capability).
+
+Inspector also provides C APIs for registering and unregistering listeners for UI component layout or drawing display events. For more details, see [Listening for Component Layout and Drawing Events](ndk-inspector-component-observer.md).
 
 ## Constraints
 
@@ -18,13 +26,18 @@ ArkUI provides the @ohos.arkui.UIContext (UIContext) extension capability. Use [
 
 The following example demonstrates the basic usage of **getFilteredInspectorTree** and **getFilteredInspectorTreeById**.
 
-```ts
+<!-- @[uiContextTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage.ets) --> 
+
+``` TypeScript
 import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @Component
 struct ComponentPage {
   loopConsole(inspectorStr: string, i: string) {
-    console.log(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
+    hilog.info(0x0000, `InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`,
+      'InsTree');
     if (JSON.parse(inspectorStr).$children) {
       i += '-';
       for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
@@ -35,35 +48,35 @@ struct ComponentPage {
 
   build() {
     Column() {
-      Text("Hello World")
+      Text('Hello World')
         .fontSize(20)
-        .id("TEXT")
+        .id('TEXT')
       Button('content').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
-        console.log(`InsTree : ${inspectorStr}`);
+        hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
         this.loopConsole(inspectorStr, '-');
       })
       Button('isLayoutInspector').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
-        console.log(`InsTree : ${inspectorStr}`);
+        hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
         this.loopConsole(inspectorStr, '-');
       })
       Button('getFilteredInspectorTreeById').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         try {
-          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["id", "src"]);
-          console.info(`result1: ${inspectorStr}`);
+          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['id', 'src']);
+          hilog.info(0x0000,`result1: ${inspectorStr}`, 'result1');
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          console.info(`result2: ${inspectorStr}`);
-          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["src"]);
+          hilog.info(0x0000,`result2: ${inspectorStr}`, 'result2');
+          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['src']);
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          console.info(`result3: ${inspectorStr}`);
-        } catch(e) {
-          console.info(`getFilteredInspectorTreeById error: ${e}`);
+          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result13');
+        } catch (e) {
+          hilog.error(0x0000, `getFilteredInspectorTreeById error: ${e}`, 'error');
         }
       })
 
@@ -72,6 +85,7 @@ struct ComponentPage {
     .height('100%')
   }
 }
+
 ```
 
 ## Using Layout Callbacks
@@ -80,8 +94,10 @@ The [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-ar
 
 The following example demonstrates the basic usage of layout callbacks.
 
-```ts
-import { inspector } from '@kit.ArkUI'
+<!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
+
+``` TypeScript
+import { inspector } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -90,7 +106,8 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          Image($r('app.media.app_icon'))
+          // Replace the image with a locally available image file.
+          Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
             .border({ width: 1 })
@@ -100,28 +117,28 @@ struct ImageExample {
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
 
   aboutToAppear() {
-    let onLayoutComplete:()=>void=():void=>{
+    let onLayoutComplete: () => void = (): void => {
       // Add functionality to be implemented.
-    }
-    let onDrawComplete:()=>void=():void=>{
+    };
+    let onDrawComplete: () => void = (): void => {
       // Add functionality to be implemented.
-    }
-    let onDrawChildrenComplete:()=>void=():void=>{
+    };
+    let onDrawChildrenComplete: () => void = (): void => {
       // Add functionality to be implemented.
-    }
-    let FuncLayout = onLayoutComplete // Bind to the current JS object.
-    let FuncDraw = onDrawComplete // Bind to the current JS object.
-    let FuncDrawChildren = onDrawChildrenComplete // Bind to the current JS object.
-    let OffFuncLayout = onLayoutComplete // Bind to the current JS object.
-    let OffFuncDraw = onDrawComplete // Bind to the current JS object.
-    let OffFuncDrawChildren = onDrawChildrenComplete // Bind to the current JS object.
+    };
+    let funcLayout = onLayoutComplete; // Bind to the current JS object.
+    let funcDraw = onDrawComplete; // Bind to the current JS object.
+    let funcDrawChildren = onDrawChildrenComplete; // Bind to the current JS object.
+    let offFuncLayout = onLayoutComplete; // Bind to the current JS object.
+    let offFuncDraw = onDrawComplete; // Bind to the current JS object.
+    let offFuncDrawChildren = onDrawChildrenComplete; // Bind to the current JS object.
 
-    this.listener.on('layout', FuncLayout)
-    this.listener.on('draw', FuncDraw)
-    this.listener.on('drawChildren', FuncDrawChildren)
+    this.listener.on('layout', funcLayout);
+    this.listener.on('draw', funcDraw);
+    this.listener.on('drawChildren', funcDrawChildren);
 
     // Unregister callbacks through the handle. You should decide when to call these APIs.
     // this.listener.off('layout', OffFuncLayout)
@@ -140,33 +157,35 @@ The following APIs provide extended capabilities for component identification at
 
 The following example demonstrates the basic usage of **getInspectorByKey**, **getInspectorTree**, and **sendEventByKey**.
 
-```ts
+<!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
+
+``` TypeScript
 @Entry
 @Component
 struct ComponentPage {
   build() {
     Column() {
-      Text("Hello World")
+      Text('Hello World')
         .fontSize(20)
-        .id("TEXT")
+        .id('TEXT')
         .onClick(() => {
-          console.info(`Text is clicked`);
+          hilog.info(0x0000,`Text is clicked`, 'isClicked');
         })
       Button('getInspectorByKey').onClick(() => {
-        let result = getInspectorByKey("TEXT");
-        console.info(`result is ${result}`);
+        let result = getInspectorByKey('TEXT');
+        hilog.info(0x0000,`result is ${result}`, 'result');
       })
       Button('getInspectorTree').onClick(() => {
         let result = getInspectorTree();
-        console.info(`result is ${JSON.stringify(result)}`);
+        hilog.info(0x0000,`result is ${JSON.stringify(result)}`, 'result');
       })
       Button('sendEventByKey').onClick(() => {
-        sendEventByKey("TEXT", 10, "");
+        sendEventByKey('TEXT', 10, '');
       })
     }
     .width('100%')
     .height('100%')
   }
 }
+
 ```
-<!--no_check-->

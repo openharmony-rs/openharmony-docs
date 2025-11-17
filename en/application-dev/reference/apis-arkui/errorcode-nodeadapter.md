@@ -18,15 +18,15 @@ The lazy loading adapter is not bound to the component.
 
 **Description**
 
-This error code is reported when the NodeAdapter requires a listener to be added.
+This error code is reported when the NodeAdapter is not set for the component.
 
 **Possible Causes**
 
-The NodeAdapter has not been bound to a DataChangeListener.
+No NodeAdapter is set for the component.
 
 **Solution**
 
-Set a listener for the NodeAdapter.
+Set a NodeAdapter for the component.
 
 ## 106105 Adapter Already Exists
 
@@ -86,7 +86,7 @@ Make sure the index parameter does not exceed the length limit of the input arra
 
 **Error Message**
 
-The data does not exist.
+The data does not exist in the component event.
 
 **Description**
 
@@ -104,7 +104,7 @@ Verify that the target data exists in the current event.
 
 **Error Message**
 
-The event has not return value.
+The component event does not support return values.
 
 **Description**
 
@@ -118,7 +118,7 @@ The component event does not support return values.
 
 Check whether the current event supports return values.
 
-## 106110 Event Type Not Supported
+## 106110 Unsupported Event Type
 
 **Error Message**
 
@@ -126,12 +126,12 @@ The event type is not supported.
 
 **Description**
 
-This error code is reported when an incorrect event type is passed during common event registration.
+This error code is reported when an invalid event type is detected during common event registration.
 
 **Possible Causes**
 
-The provided event type parameter is incorrect and not among the supported event types.
+The passed event type is not among the supported event types.
 
 **Solution**
 
-Check the specific value of the event type parameter passed to the function.
+Verify the specific value of the event type parameter.

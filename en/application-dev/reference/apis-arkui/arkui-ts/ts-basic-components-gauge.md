@@ -1,4 +1,10 @@
 # Gauge
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **Gauge** component represents a gauge that displays data in a circular format.
 
@@ -35,21 +41,23 @@ Creates a gauge.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [GaugeOptions](#gaugeoptions14)| Yes| Settings of the gauge.|
+| options |  [GaugeOptions](#gaugeoptions18)| Yes| Settings of the gauge.|
 
-## GaugeOptions<sup>14+</sup>
+## GaugeOptions<sup>18+</sup>
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 14.
+Provides gauge options.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| value<sup>8+</sup> | number | Yes| Current value of the gauge, that is, the position to which the indicator points in the gauge. It is used as the initial value of the gauge when it is created.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>If the value is not within the range defined by the **min** and **max** parameters, the value of **min** is used.|
-| min<sup>8+</sup> | number | No| Minimum value of the current data segment.<br>Default value: **0**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| max<sup>8+</sup> | number | No| Maximum value of the current data segment.<br>Default value: **100**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>If the value of **max** is less than that of **min**, the default values **0** and **100** are used.<br>The values of **max** and **min** can be negative numbers.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| value<sup>8+</sup> | number | No| No| Current value of the gauge, that is, the position to which the indicator points in the gauge. It is used as the initial value of the gauge when it is created.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>If the value is not within the range defined by the **min** and **max** parameters, the value of **min** is used.|
+| min<sup>8+</sup> | number | No| Yes| Minimum value of the current data segment.<br>Default value: **0**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| max<sup>8+</sup> | number | No| Yes| Maximum value of the current data segment.<br>Default value: **100**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**NOTE**<br>If the value of **max** is less than that of **min**, the default values **0** and **100** are used.<br>The values of **max** and **min** can be negative numbers.|
 
 ## Attributes
 
@@ -135,7 +143,7 @@ A ring of the gradient type contains a maximum of nine color segments. If there 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| colors | [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \| Array&lt;[[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \, number]&gt; | Yes  | Colors of the gauge. You can set colors for individual segments.<br>Default value in API version 9: **Color.Black**<br>Default value in API version 11:<br>If no color is provided or the array is empty, the ring color will be a gradient consisting of the following colors: 0xFF64BB5C, 0xFFF7CE00, and 0xFFE84026.<br>If a color value is provided but invalid, the ring will be in the color of 0xFFE84026.<br>Colors with a weight of 0 are not displayed in the ring. If all weights are 0, the ring is not displayed.|
+| colors | [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \| Array&lt;[[ResourceColor<sup>10+</sup>](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \, number]&gt; | Yes  | Colors of the gauge. You can set colors for individual segments.<br>Default value in API version 9: **Color.Black**<br>Default value in API version 11:<br>If no color is provided or the array is empty, the ring color will be a gradient consisting of the following colors: 0xFF64BB5C, 0xFFF7CE00, and 0xFFE84026.<br>If a color value is provided but invalid, the ring will be in the color of 0xFFE84026.<br>Colors with a weight of 0 are not displayed in the ring. If all weights are 0, the ring is not displayed.|
 
 ### strokeWidth
 
@@ -219,7 +227,7 @@ Sets whether to enable privacy mode.
 
 | Name| Type                                                     | Mandatory| Description                                                 |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>] | Yes  | Whether to enable privacy mode. In privacy mode, the gauge indicator points to **0**, the maximum and minimum values are masked, and the scale range is displayed in gray or the background color.<br>**NOTE**<br>If this parameter is set to **null**, privacy mode is disabled.<br>[Enabling privacy mode requires widget framework support.](./ts-universal-attributes-obscured.md) |
+| isPrivacySensitiveMode  | Optional\<boolean\> | Yes  | Whether to enable privacy mode. In privacy mode, the gauge indicator points to **0**, the maximum and minimum values are masked, and the scale range is displayed in gray or the background color. The value **true** means to enable privacy mode, and **false** means the opposite.<br>**NOTE**<br>If this parameter is set to **null**, privacy mode is disabled.<!--Del--><br>For widgets, this property must be used with [FormComponent](./ts-basic-components-formcomponent-sys.md) and the [obscured](./ts-universal-attributes-obscured.md) attribute to display privacy masking effects.<!--DelEnd--> |
 
 ### contentModifier<sup>12+</sup>
 
@@ -239,40 +247,42 @@ Creates a content modifier.
 
 ## GaugeShadowOptions<sup>11+</sup>
 
-Inherits from [MultiShadowOptions](ts-types.md#multishadowoptions10) and has all attributes of **MultiShadowOptions**.
+Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowoptions) and has all attributes of **MultiShadowOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 ## GaugeIndicatorOptions<sup>11+</sup>
 
+Provides gauge indicator options.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type| Mandatory| Description|
-| ------------- | ------- | ---- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| Image path of the icon.<br>**NOTE**<br>If this parameter is not set, the default triangle style indicator is used.<br>Icons in SVG format are supported. If icons in other formats are used, the default triangle style indicator is used.|
-| space | [Dimension](ts-types.md#dimension10) | No| Distance between the indicator and the outer edge of the ring. The value cannot be in percentage.<br>Default value: **8**<br>Unit: vp<br>**NOTE**<br> For the default triangle style indicator, the distance is the amount of space between the triangle and the outer edge of the ring.<br> If this parameter is set to a value less than 0, the default value will be used.<br>If this parameter is set to a value greater than the ring radius, the default value will be used.|
+| Name         | Type| Read-Only| Optional| Description|
+| ------------- | ------- | ---- | -------- | -------- |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Image path of the icon.<br>**NOTE**<br>If this parameter is not set, the default style is used, which is a triangle pointer.<br>Icons in SVG format are supported. If icons in other formats are used, the default triangle style indicator is used.|
+| space | [Dimension](ts-types.md#dimension10) | No| Yes| Distance between the indicator and the outer edge of the ring. The value cannot be in percentage.<br>Default value: **8**<br>Unit: vp<br>**NOTE**<br> For the default triangle style indicator, the distance is the amount of space between the triangle and the outer edge of the ring.<br> If this parameter is set to a value less than 0, the default value will be used.<br>If this parameter is set to a value greater than the ring radius, the default value will be used.|
 
 ## GaugeConfiguration<sup>12+</sup>
 
-You need a custom class to implement the **ContentModifier** API.
+You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Mandatory| Description             |
-| ------ | ------ | ----| ---------------- |
-| value | number | Yes| Current value.|
-| min | number | Yes| Minimum value of the current data segment.|
-| max | number | Yes| Maximum value of the current data segment.|
+| Name         | Type| Read-Only| Optional| Description|
+| ------------- | ------- | ---- | -------- | -------- |
+| value | number | No| No| Current value.|
+| min | number | No| No| Minimum value of the current data segment.|
+| max | number | No| No| Maximum value of the current data segment.|
 
 
 ## Example
 ### Example 1: Implementing a Multi-color Gauge
 
-This example demonstrates how to implement a multi-color gauge using the **colors** attribute.
+This example demonstrates how to implement a multi-color gauge using the [colors](#colors) attribute.
 
 ```ts
 @Entry
@@ -308,7 +318,6 @@ struct Gauge1 {
             .maxFontSize("16.0fp")
             .minFontSize("10.0vp")
             .fontColor($r('sys.color.ohos_id_color_text_secondary'))
-            .fontColor($r('sys.color.ohos_id_color_text_secondary'))
             .fontWeight(FontWeight.Regular)
             .width('67.4%')
             .height('9.5%')
@@ -341,7 +350,7 @@ struct Gauge1 {
 
 ### Example 2: Implementing a Single-Color Gauge
 
-This example demonstrates how to implement a single-color gauge using the **colors** attribute.
+This example demonstrates how to implement a single-color gauge using the [colors](#colors) attribute.
 
 ```ts
 @Entry
@@ -384,7 +393,7 @@ struct Gauge2 {
 
 ### Example 3: Configuring a Custom Description Area
 
-This example illustrates how to configure a custom description area using the **description** attribute.
+This example illustrates how to configure a custom description area using the [description](#description11) attribute.
 
 ```ts
 @Entry
@@ -540,7 +549,7 @@ struct Gauge5 {
 
 ### Example 6: Setting the Indicator
 
-This example illustrates how to set the indicator of the gauge using the **indicator** attribute.
+This example illustrates how to set the indicator of the gauge using the [indicator](#indicator11) attribute.
 
 ```ts
 @Entry
@@ -587,7 +596,7 @@ struct Gauge6 {
 
 ### Example 7: Setting the Start and End Angles
 
-This example demonstrates how to set the start and end angles of the gauge using the **startAngle** and **endAngle** attributes.
+This example demonstrates how to set the start and end angles of the gauge using the [startAngle](#startangle) and [endAngle](#endangle) attributes.
 
 ```ts
 @Entry
@@ -628,7 +637,7 @@ struct Gauge7 {
 
 ### Example 8: Setting the Custom Content Area
 
-This example shows how to customize the content area of the gauge using the **contentModifier** attribute.
+This example shows how to customize the content area of the gauge using the [contentModifier](#contentmodifier12) attribute.
 
 ```ts
 // xxx.ets
@@ -711,7 +720,7 @@ struct refreshExample {
 
 ### Example 9: Securing Sensitive Information
 
-This example illustrates how to secure sensitive information using the **privacySensitive** attribute. Note that the display requires widget framework support.
+This example illustrates how to secure sensitive information using the [privacySensitive](#privacysensitive12) attribute. Note that the display requires widget framework support.
 
 ```ts
 @Entry
@@ -721,30 +730,16 @@ struct GaugeExample {
     Scroll() {
       Column({ space: 15 }) {
         Row() {
-          Gauge({ value: 50, min: 1, max: 100 }) {
-            Column() {
-              Text('60')
-                .maxFontSize("180sp")
-                .minFontSize("160.0vp")
-                .fontWeight(FontWeight.Medium)
-                .fontColor("#ff182431")
-                .width('40%')
-                .height('30%')
-                .textAlign(TextAlign.Center)
-                .margin({ top: '22.2%' })
-                .textOverflow({ overflow: TextOverflow.Ellipsis })
-                .maxLines(1)
-            }.width('100%').height('100%')
-          }
-          .startAngle(225)
-          .endAngle(135)
-          .colors(Color.Red)
-          .width('80%')
-          .height('80%')
-          .strokeWidth(18)
-          .trackShadow({ radius: 7, offsetX: 7, offsetY: 7 })
-          .padding(18)
-          .privacySensitive(true)
+          Gauge({ value: 60, min: 20, max: 100 })
+            .startAngle(225)
+            .endAngle(135)
+            .colors(Color.Red)
+            .width('80%')
+            .height('80%')
+            .strokeWidth(18)
+            .trackShadow({ radius: 7, offsetX: 7, offsetY: 7 })
+            .padding(18)
+            .privacySensitive(true)
         }
       }
     }
@@ -755,7 +750,7 @@ struct GaugeExample {
 
 ### Example 10: Implementing a Custom Indicator
 
-This example demonstrates how to implement a custom indicator using **indicator**. You can import an SVG image to replace the default indicator.
+This example demonstrates how to implement a custom indicator using [indicator](#indicator11). You can import an SVG image to replace the default indicator.
 
 ```ts
 @Entry
@@ -764,6 +759,7 @@ struct Gauge2 {
   build() {
     Column() {
       Gauge({ value: 50, min: 1, max: 100 })
+        // Replace $r('app.media.indicator') with the image resource file you use.
         .indicator({ space: 10, icon: $r('app.media.indicator') })
         .startAngle(210)
         .endAngle(150)

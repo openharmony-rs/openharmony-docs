@@ -1,7 +1,11 @@
 # drawing_text_blob.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 ## 概述
-
 文件中定义了与文字相关的功能函数。
 
 **引用文件：** <native_drawing/drawing_text_blob.h>

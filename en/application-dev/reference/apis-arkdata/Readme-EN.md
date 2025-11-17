@@ -49,7 +49,7 @@
     - [@ohos.data.rdb (RDB)](js-apis-data-rdb.md)
     - [@ohos.data.storage (Lightweight Data Storage)](js-apis-data-storage.md)
     - [@system.storage (Data Storage)](js-apis-system-storage.md)
-    - data/rdb
+    - data/rdb<!--data-rdb-->
       - [resultSet (Result Set)](js-apis-data-resultset.md) 
 - ArkTS Components<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (Content Card)](js-apis-data-UdmfComponents.md)
@@ -127,6 +127,7 @@
     - [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)
     - [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)
     - [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)
+    - [OH_UdsDetails](capi-udmf-oh-udsdetails.md)
     - [OH_Utd](capi-udmf-oh-utd.md)
 - Error Codes<!--arkdata-arkts-errcode-->
   - [RDB Error Codes](errorcode-data-rdb.md)

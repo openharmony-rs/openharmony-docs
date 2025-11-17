@@ -40,7 +40,6 @@ Describes the normal text notification.
 | text           | string |  No |  No | Notification content. It cannot be empty or exceed 3072 bytes. Excess content will be truncated.        |
 | additionalText | string |  No |  Yes | Additional information of the notification. It cannot exceed 3072 bytes. Excess content will be truncated.  |
 | lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No |  Yes | Picture of a notification displayed on the lock screen. Currently, only the live view notification is supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
-| structuredText<sup>21+</sup> | Map<string, string> |  No |  Yes | Structured notification. Currently, only service reminder messages can be displayed in structured format in the notification center. (The size of key or value cannot exceed 512 bytes; otherwise, the excess part will be truncated. Only a maximum of three pairs of structured data are supported.)  |
 
 ## NotificationLongTextContent
 

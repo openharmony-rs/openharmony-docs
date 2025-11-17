@@ -57,42 +57,51 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 
 1. Import the **http**, **BusinessError**, and **common** modules.
 
-    ```ts
-    import { http } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { common } from '@kit.AbilityKit';
-    ```
-  
+<!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+```
+
 2. Create an **HttpRequest** object.
 
     Call **createHttp()** to create an **HttpRequest** object.
 
-    ```ts
+ <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Each httpRequest corresponds to an HTTP request task and cannot be reused.
     let httpRequest = http.createHttp();
-    ```
+```
 
 3. Subscribe to the HTTP response header events.
 
     Call **httpRequest.on()** to subscribe to HTTP response header events. This API returns a response earlier than the request. You can subscribe to HTTP response header events based on service requirements.
 
-    ```ts
+<!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
     // This API is used to listen for HTTP Response Header events, which is returned earlier than the result of the HTTP request. It is up to you whether to listen for HTTP response header events.
     // on('headerReceive', AsyncCallback) will be replaced by on('headersReceive', Callback) in API version 8.
     httpRequest.on('headersReceive', (header) => {
-      console.info('header: ' + JSON.stringify(header));
+      console.info(`header: ${JSON.stringify(header)}`);
     });
-    ```
+```
+
 
 4. Initiate an HTTP request, and parse the server response event.
 
     Call **request()** to initiate a network request. You need to pass in the URL and optional parameters of the HTTP request. Parse the returned result based on service requirements.
 
-    ```ts
+<!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
     httpRequest.request(
       // Customize EXAMPLE_URL in extraData on your own. It is up to you whether to add parameters to the URL.
-      "EXAMPLE_URL",
+      'EXAMPLE_URL',
       {
         method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET. The GET method is used to retrieve data from the server while the POST method is used to submit data such as forms and files to the server.
         // You can add header fields based on service requirements.
@@ -100,7 +109,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
           'Content-Type': 'application/json'
         },
         // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
-        extraData: "data to send",
+        extraData: 'data to send',
         expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
         usingCache: true, // Optional. The default value is true.
         priority: 1, // Optional. The default value is 1.
@@ -113,34 +122,36 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
           certPath: '/path/to/client.pem', // The client certificate is not used by default. This field is supported since API version 11.
           keyPath: '/path/to/client.key', // If the certificate contains key information, an empty string is passed. This field is supported since API version 11.
           certType: http.CertType.PEM, // Certificate type, optional. A certificate in the PEM format is used by default. This field is supported since API version 11.
-          keyPassword: "passwordToKey" // Password of the key file, optional. It is supported since API version 11.
+          keyPassword: 'passwordToKey' // Password of the key file, optional. It is supported since API version 11.
         },
-        multiFormDataList: [ // Optional. This field is valid only when 'content-Type' in the header is set to 'multipart/form-data'. It is supported since API version 11. This field is used to upload binary data to the server. You can set the field based on the data type to be uploaded.
+        // Optional. This field is valid only when content-Type in the header is multipart/form-data. It is supported since API version 11.
+        // This field is used to upload binary data to the server. You can set the field based on the data type to be uploaded.
+        multiFormDataList: [
           {
-            name: "Part1", // Data name. This field is supported since API version 11.
+            name: 'Part1', // Data name. This field is supported since API version 11.
             contentType: 'text/plain', // Data type. This field is supported since API version 11. The data to upload must be a common text file.
             data: 'Example data', // Data content, optional. This field is supported since API version 11.
             remoteFileName: 'example.txt' // Optional. This field is supported since API version 11.
           }, {
-            name: "Part2", // Data name. This field is supported since API version 11.
-            contentType: 'text/plain', // Data type. This field is supported since API version 11. The data to upload must be a common text file.
-            // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.txt
-            filePath: `${context.filesDir}/fileName.txt`, // File path, optional. This field is supported since API version 11.
-            remoteFileName: 'fileName.txt' // Optional. This field is supported since API version 11.
+          name: 'Part2', // Data name. This field is supported since API version 11.
+          contentType: 'text/plain', // Data type. This field is supported since API version 11. The data to upload must be a common text file.
+          // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.txt
+          filePath: `${context.filesDir}/fileName.txt`, // File path, optional. This field is supported since API version 11.
+          remoteFileName: 'fileName.txt' // Optional. This field is supported since API version 11.
           }, {
-            name: "Part3", // Data name. This field is supported since API version 11.
+            name: 'Part3', // Data name. This field is supported since API version 11.
             contentType: 'image/png', // Data type. This field is supported since API version 11. The data to be uploaded must be a PNG image.
             // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.png
             filePath: `${context.filesDir}/fileName.png`, // File path, optional. This field is supported since API version 11.
             remoteFileName: 'fileName.png' // Optional. This field is supported since API version 11.
           }, {
-            name: "Part4", // Data name. This field is supported since API version 11.
+            name: 'Part4', // Data name. This field is supported since API version 11.
             contentType: 'audio/mpeg', // Data type. This field is supported since API version 11. The data to be uploaded must be an MPEG audio file.
             // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mpeg.
             filePath: `${context.filesDir}/fileName.mpeg`, // File path, optional. This field is supported since API version 11.
             remoteFileName: 'fileName.mpeg' // Optional. This field is supported since API version 11.
           }, {
-            name: "Part5", // Data name. This field is supported since API version 11.
+            name: 'Part5', // Data name. This field is supported since API version 11.
             contentType: 'video/mp4', // Data type. This field is supported since API version 11. The data to be uploaded must be an MP4 video file.
             // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mp4.
             filePath: `${context.filesDir}/fileName.mp4`, // File path, optional. This field is supported since API version 11
@@ -148,25 +159,28 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
           }
         ]
       }, (err: BusinessError, data: http.HttpResponse) => {
-        if (!err) {
-          // data.result carries the HTTP response. Parse the response based on service requirements.
-          console.info('Result:' + JSON.stringify(data.result));
-          console.info('code:' + JSON.stringify(data.responseCode));
-          // data.header carries the HTTP response header. Parse the content based on service requirements.
-          console.info('header:' + JSON.stringify(data.header));
-          console.info('cookies:' + JSON.stringify(data.cookies)); // 8+
-          // Call destroy() to destroy the httpRequest object when it is no longer needed.
-          httpRequest.destroy();
-        } else {
-          console.error('error:' + JSON.stringify(err));
-          // Unsubscribe from HTTP Response Header events.
-          httpRequest.off('headersReceive');
-          // Call destroy() to destroy the httpRequest object when it is no longer needed.
-          httpRequest.destroy();
-        }
+      if (!err) {
+		// ···
+        // data.result carries the HTTP response. Parse the response based on service requirements.
+        console.info(`Result: ${JSON.stringify(data.result)}`);
+        console.info(`code: ${JSON.stringify(data.responseCode)}`);
+        // data.header carries the HTTP response header. Parse the content based on service requirements.
+        console.info(`header: ${JSON.stringify(data.header)}`);
+        console.info(`cookies: ${JSON.stringify(data.cookies)}`);
+        // Call destroy() to destroy the httpRequest object when it is no longer needed.
+        httpRequest.destroy();
+      } else {
+		// ···
+        console.error(`error: ${JSON.stringify(err)}`);
+        // Unsubscribe from HTTP Response Header events.
+        httpRequest.off('headersReceive');
+        // Call the destroy() method to release resources after HttpRequest is complete.
+        httpRequest.destroy();
       }
+    }
     );
-    ```
+```
+
 
 5. Unsubscribe from HTTP response header events.
 
@@ -176,7 +190,6 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     // Unsubscribe from HTTP response header events when the callback information is no longer needed. For details about how to use the API, see the sample code in step 4.
     httpRequest.off('headersReceive');
     ```
-
 6. Call **destroy()** to destroy the **httpRequest** object when it is no longer needed.
 
     Call **httpRequest.destroy()** to release resources after the request is processed.
@@ -185,7 +198,6 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     // Call destroy to destroy the httpRequest when it is no longer needed. For details about how to use the API, see the sample code in step 4.
     httpRequest.destroy();
     ```
-
 ## Initiating an HTTP Streaming Request
 
 HTTP streaming refers to the process where, when handling an HTTP response, only a small chunk of the response content is processed at a time, rather than loading the entire response into memory all at once. This is particularly useful for scenarios such as processing large files and real-time data streams, among others.
@@ -194,104 +206,120 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 
 1. Import the **http**, **BusinessError**, and **common** modules.
 
-    ```ts
-    import { http } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { common } from '@kit.AbilityKit';
-    ```
+  <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+```
 
 2. Create an **HttpRequest** object for HTTP streaming.
 
     Call **createHttp()** to create an **HttpRequest** object.
 
-    <!--code_no_check-->
-    ```ts
+ <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
     // Each httpRequest corresponds to an HTTP request task and cannot be reused.
     let httpRequest = http.createHttp();
-    ```
+```
 
 3. Subscribe to HTTP streaming response events on demand.
 
 	The server response is returned via the **dataReceive** callback. You can subscribe to this callback to obtain the server response. You can also subscribe to other streaming response events as needed.
-    ```ts
-	// Subscribe to events indicating receiving of HTTP streaming responses.
+  
+<!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    // Subscribe to events indicating receiving of HTTP streaming responses.
     let res = new ArrayBuffer(0);
+	// ···
+    // Register an observer for events indicating receiving of HTTP streaming responses.
     httpRequest.on('dataReceive', (data: ArrayBuffer) => {
       const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
       const resView = new Uint8Array(newRes);
       resView.set(new Uint8Array(res));
       resView.set(new Uint8Array(data), res.byteLength);
       res = newRes;
-      console.info('res length: ' + res.byteLength);
+      console.info(`res length: ${res.byteLength}`);
     });
-    
+
     // Subscribe to events indicating completion of receiving HTTP streaming responses.
     httpRequest.on('dataEnd', () => {
-      console.info('No more data in response, data receive end');
+      console.info(`No more data in response, data receive end`);
     });
-    
+
     // Subscribe to events indicating progress of receiving HTTP streaming responses. When downloading data from the server, you can obtain the data download progress through this callback.
     httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
-      console.info("dataReceiveProgress receiveSize:" + data.receiveSize + ", totalSize:" + data.totalSize);
+      console.info('dataReceiveProgress receiveSize:' + data.receiveSize + ', totalSize:' + data.totalSize);
     });
 
     // Subscribe to events indicating progress of sending HTTP streaming responses. When uploading data from the server, you can obtain the data upload progress through this callback.
     httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
-      console.info("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
+      console.info('dataSendProgress receiveSize:' + data.sendSize + ', totalSize:' + data.totalSize);
     });
-    ```
+```
 
 4. Initiate an HTTP streaming request to obtain server data.
 
-    ```ts
+<!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
     let streamInfo: http.HttpRequestOptions = {
       method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET. The GET method is used to retrieve data from the server while the POST method is used to submit data such as forms and files to the server.
       // You can add header fields based on service requirements.
-   	  header: {
+      header: {
         'Content-Type': 'application/json'
-   	  },
-   	  // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
-      extraData: "data to send",
-      expectDataType: http.HttpDataType.STRING,// Optional. This parameter specifies the type of the return data.
-      usingCache: true, // Optional. The default value is true.
+      },
+      // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
+      extraData: 'data to send', // Request body
+      expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
+      usingCache: true,  // Optional. The default value is true.
       priority: 1, // Optional. The default value is 1.
       connectTimeout: 60000 // Optional. The default value is 60000, in ms.
       readTimeout: 60000, // Optional. The default value is 60000, in ms. If a large amount of data needs to be transmitted, you are advised to set this parameter to a larger value to ensure normal data transmission.
-      usingProtocol: http.HttpProtocol.HTTP1_1, // Optional. The default protocol type is automatically specified by the system.
-    }
+      usingProtocol: http.HttpProtocol.HTTP1_1 // Optional. The default protocol type is automatically specified by the system.
+    };
 
-   // Customize EXAMPLE_URL in extraData on your own. It is up to you whether to add parameters to the URL.
-   httpRequest.requestInStream("EXAMPLE_URL", streamInfo).then((data: number) => {
-      console.info("requestInStream OK!");
-      console.info('ResponseCode :' + JSON.stringify(data));
-      // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
-      this.destroyRequest(httpRequest);
-    }).catch((err: Error) => {
-      console.error("requestInStream ERROR : err = " + JSON.stringify(err));
-      // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
-      this.destroyRequest(httpRequest); 
-   });
-    ```
+    // Customize EXAMPLE_URL in extraData on your own. It is up to you whether to add parameters to the URL.
+    httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
+      .then((data: number) => {
+		// ···
+        console.info(`requestInStream OK!`);
+        console.info(`ResponseCode : ${JSON.stringify(data)}`);
+        // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
+        this.destroyRequest(httpRequest);
+		// ···
+      }).catch((err: Error) => {
+		// ···
+        console.error(`requestInStream ERROR : err = ${JSON.stringify(err)}`);
+        // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
+        this.destroyRequest(httpRequest);
+      })
+```
+
 
 5. Unsubscribe from the HTTP streaming response events subscribed in step 3, and call **destroy()** to destroy the **httpRequest** object.
 
     Call the **off()** API of the **httpRequest** object to unsubscribe from the events subscribed in step 3. When the request is complete, call **destroy()** to destroy the **httpRequest** object. For details about how to use this API, see the sample code in step 4.
 
-    ```ts
-    public destroyRequest(httpRequest: http.HttpRequest) {
-      // Unsubscribe from the events indicating receiving of HTTP streaming responses.
-      httpRequest.off('dataReceive');
-      // Unsubscribe from the events indicating progress of sending HTTP streaming responses.
-      httpRequest.off('dataSendProgress');
-      // Unsubscribe from the events indicating progress of receiving HTTP streaming responses.
-      httpRequest.off('dataReceiveProgress');
-      // Unsubscribe from the events indicating completion of receiving HTTP streaming responses.
-      httpRequest.off('dataEnd');
-      // Call destroy() to destroy the httpRequest object when it is no longer needed.
-      httpRequest.destroy();
-    }
-    
-    ```
+<!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  public destroyRequest(httpRequest: http.HttpRequest) {
+    // Unsubscribe from the events indicating receiving of HTTP streaming responses.
+    httpRequest.off('dataReceive');
+    // Unsubscribe from the events indicating progress of sending HTTP streaming responses.
+    httpRequest.off('dataSendProgress');
+    // Unsubscribe from the events indicating progress of receiving HTTP streaming responses.
+    httpRequest.off('dataReceiveProgress');
+    // Unsubscribe from the events indicating completion of receiving HTTP streaming responses.
+    httpRequest.off('dataEnd');
+    // Call destroy() to destroy the httpRequest object when it is no longer needed.
+    httpRequest.destroy();
+  }
+```
 
 ## Configuring Certificate Verification
 
@@ -418,11 +446,11 @@ The following is an example configuration for overall and host name–based HTTP
         ],
         "cleartextTrafficPermitted": false
       }
-    ]
-  }
-  "component-config": {
-    "Network Kit": true,
-    "ArkWeb": true
+    ],
+    "component-config": {
+    	"Network Kit": true,
+    	"ArkWeb": true
+    }
   }
 }
 ```
@@ -488,3 +516,4 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
+

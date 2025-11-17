@@ -1,7 +1,12 @@
 # Native DisplaySoloist Development (C/C++)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
-To develop a native service that controls the frame rate in an independent thread, you use **DisplaySoloist** to implement the services, such as gaming and self-drawing UI framework interconnection.
-
+If you want to implement native services such as frame rate control in an independent thread, you can use DisplaySoloist. The scenarios include game and UI framework connection.
 A **DisplaySoloist** instance can exclusively occupy a thread or share a thread with others.
 
 ## Available APIs
@@ -11,12 +16,14 @@ A **DisplaySoloist** instance can exclusively occupy a thread or share a thread 
 | OH_DisplaySoloist* OH_DisplaySoloist_Create (bool useExclusiveThread) | Creates an **OH_DisplaySoloist** instance.                      |
 | OH_DisplaySoloist_Destroy (OH_DisplaySoloist * displaySoloist) | Destroys an **OH_DisplaySoloist** instance.                      |
 | OH_DisplaySoloist_Start (OH_DisplaySoloist * displaySoloist, OH_DisplaySoloist_FrameCallback callback, void * data ) | Sets a callback function for each frame. The callback function is triggered each time a VSync signal arrives.  |
-| OH_DisplaySoloist_Stop (OH_DisplaySoloist * displaySoloist)  | Stops requesting the next VSync signal and triggering the callback function. |
+| OH_DisplaySoloist_Stop (OH_DisplaySoloist * displaySoloist)  | Stops requesting the next VSync signal and triggering the callback function.|
 | OH_DisplaySoloist_SetExpectedFrameRateRange (OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range) | Sets the expected frame rate range.                                   |
+
+For details, see [NativeDisplaySoloist](../reference/apis-arkgraphics2d/capi-nativedisplaysoloist.md).
 
 ## How to Develop
 
-In this example, a graphic is drawn using the native Drawing module. Specifically, an expected frame rate is set through the asynchronous thread, and the graphic is drawn based on the frame rate and displayed on the native window. For details about graphics drawing, see [Using Drawing to Draw and Display Graphics (C/C++)](drawing-guidelines.md).
+   In this example, a graphic is drawn using the native Drawing module. Specifically, an expected frame rate is set through the asynchronous thread, and the graphic is drawn based on the frame rate and displayed on the native window. For details about graphics drawing, see [Using Drawing to Draw and Display Graphics (C/C++)](graphic-drawing-overview.md).
 
 ### Adding Dependencies
 
@@ -33,6 +40,7 @@ libnative_display_soloist.so
 ```
 
 **Including Header Files**
+
 ```c++
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #include "napi/native_api.h"
@@ -49,6 +57,8 @@ libnative_display_soloist.so
 #include <stdint.h>
 #include <sys/mman.h>
 ```
+
+### How to Develop
 
 1. Define an ArkTS API file and name it **XComponentContext.ts**, which is used to connect to the native layer.
    ```ts
@@ -73,14 +83,14 @@ libnative_display_soloist.so
      build() {
        Column() {
          Row() {
-           XComponent({ id: 'xcomponentId30', type: 'surface', libraryname: 'entry' })
+           XComponent({ id: 'xcomponentId30', type: XComponentType.SURFACE, libraryname: 'entry' })
              .onLoad((xComponentContext) => {
                this.xComponentContext1 = xComponentContext as XComponentContext;
              }).width('640px')
          }.height('40%')
    
          Row() {
-           XComponent({ id: 'xcomponentId120', type: 'surface', libraryname: 'entry' })
+           XComponent({ id: 'xcomponentId120', type: XComponentType.SURFACE, libraryname: 'entry' })
              .onLoad((xComponentContext) => {
                this.xComponentContext2 = xComponentContext as XComponentContext;
              }).width('640px') // Multiple of 64
@@ -198,7 +208,7 @@ libnative_display_soloist.so
    }
    ```
 
-5. Call the **DisplaySoloist** APIs to configure the frame rate and register the callback function for each frame.
+   Call the **DisplaySoloist** APIs to configure the frame rate and register the callback function for each frame. If the input parameter useExclusiveThread is set to true when OH_DisplaySoloist_Create is called to create a DisplaySoloist instance, OH_DisplaySoloist_FrameCallback is executed in exclusive thread mode. Otherwise, OH_DisplaySoloist_FrameCallback is executed in shared thread mode.
 
    > **NOTE**
    >
@@ -299,7 +309,7 @@ libnative_display_soloist.so
    }
    ```
 
-6. Register and deregister the callback function for each frame at the TS layer, and destroy the OH_DisplaySoloist instance.
+5. Register and deregister the callback function for each frame at the TS layer, and destroy the OH_DisplaySoloist instance.
 
    ```c++
    // When you leave the page, unregister the callback function and destroy the OH_DisplaySoloist instance.
@@ -351,3 +361,10 @@ libnative_display_soloist.so
    }
    ```
 
+<!--RP1-->
+## Samples
+
+The following sample is provided to help you better understand how to develop the frame rate feature:
+
+- [DisplaySoloist Hierarchical Control (API 14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySoloist)
+<!--RP1End-->

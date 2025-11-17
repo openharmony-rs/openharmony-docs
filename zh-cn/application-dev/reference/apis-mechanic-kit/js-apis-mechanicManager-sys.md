@@ -561,6 +561,51 @@ let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotation
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
 
+## mechanicManager.searchTarget<sup>21+<sup>
+searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
+
+旋转机械体一周搜索目标。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| target | [TargetType](#targettype21) | 是 | 目标人脸信息。 |
+| params | [SearchParams](#searchparams21) | 是 | 搜索方向。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise\<[SearchResult](#searchresult21)> | Promise对象，返回搜索的结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+| 33300004 | Camera not opened. |
+
+**示例：**
+
+```ts
+let targetInfo : mechanicManager.TargetInfo = {
+	targetType: mechanicManager.TargetType.HUMAN_FACE};
+let searchParams : mechanicManager.SearchParams= {
+	direction:mechanicManager.SearchDirection.DEFAULT}
+mechanicManager.searchTarget(targetInfo, 
+	searchParams, (searchResult).then(searchResult)=>{
+    	console.info(`'result:' ${searchResult}`);
+    });
+```
 ## RotationAngles
 
 相对当前位置的旋转角度。
@@ -692,3 +737,68 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
+
+## TargetType<sup>21+<sup>
+
+目标人脸信息的枚举。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| HUMAN_FACE | int | 0 | 目标人脸信息。 |
+
+
+  ## SearchDirection<sup>21+<sup>
+
+系统默认的搜索方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| DEFAULT | int | 0 | 系统默认方向  |
+  | LEFTWARD | int | 1 | 左向，即顺时针方向。 |
+  | RIGHTWARD | int | 2 | 右向，即逆时针方向。 |
+  
+ ## TargetInfo<sup>21+<sup>
+
+搜索目标的相关信息。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
+  
+  
+ 
+## SearchParams<sup>21+<sup>
+
+指定搜索的方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| direction | [SearchDirection](#searchdirection21) | 否 | 否 | 搜索的方向。 |
+
+  ## SearchResult<sup>21+<sup>
+
+显示搜索命令的执行结果。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetCount | number | 否 | 否 | 搜索到的目标数量。 |

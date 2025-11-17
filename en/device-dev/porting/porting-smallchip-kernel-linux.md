@@ -8,12 +8,12 @@ Linux kernel porting involves basic kernel compilation, building, and verificati
 
 ### Basic Information
 
-The current Linux kernel baseline evolves based on the Linux LTS version 5.10 and incorporates the CVE and bugfix patches. For details, see the [kernel_linux code repository](https://gitee.com/openharmony/kernel_linux_5.10). The code path for the **repo** project is **kernel/linux-5.10**.
+The current Linux kernel baseline evolves based on the Linux LTS version 5.10 and incorporates the CVE and bugfix patches. For details, see the [kernel_linux code repository](https://gitcode.com/openharmony/kernel_linux_5.10). The code path for the **repo** project is **kernel/linux-5.10**.
 
 
 ### Bootloader
 
-You can use the Bootloader provided by the chipset vendor or open-source U-Boot to load the kernel image. For example, you can use [U-Boot](https://gitee.com/openharmony/third_party_u-boot) for the Hi3516D V300 development board.
+You can use the Bootloader provided by the chipset vendor or open-source U-Boot to load the kernel image. For example, you can use [U-Boot](https://gitcode.com/openharmony/third_party_u-boot) for the Hi3516D V300 development board.
 
 
 ## Adaptation, Building, Burning, and Startup

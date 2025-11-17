@@ -221,7 +221,8 @@ Registers a listener for system environment changes. This API uses an asynchrono
 
 > **NOTE**
 >
-> You can also use [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to listen for system environment changes. Unlike [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) of **Ability**, this API offers greater flexibility. It can be used both within application components and pages. However, the environment variables that can be subscribed to are different from those of [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate). For example, this API cannot be used to subscribe to direction, screen density, and display ID changes. For details, see the description of each environment variable in [Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration).
+> - You can also use [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to listen for system environment changes. Unlike [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) of **Ability**, this API offers greater flexibility. It can be used both within application components and pages. However, the environment variables that can be subscribed to are different from those of [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate). For example, this API cannot be used to subscribe to direction, screen density, and display ID changes. For details, see the description of each environment variable in [Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration).
+> - There are certain restrictions when this API is triggered. For example, if you set the application language by calling [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system does not trigger the callback for the current API even if the system language changes. For details, see [When to Use](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -826,9 +827,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -866,9 +870,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -947,6 +954,7 @@ import { common, Want } from '@kit.AbilityKit';
 @Component
 struct Index {
   @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
 
   build() {
     RelativeContainer() {
@@ -963,10 +971,9 @@ struct Index {
             bundleName: 'com.example.myapplication',
             abilityName: 'EntryAbility'
           };
-          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
-          if (appcontext) {
+          if (this.context) {
             try {
-              appcontext.restartApp(want);
+              this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }

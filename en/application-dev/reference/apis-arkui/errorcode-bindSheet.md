@@ -1,4 +1,10 @@
 # Sheet Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -89,7 +95,7 @@ This error code is reported when the node corresponding to the specified **targe
 
 **Possible Causes**
 
-The node corresponding to the specified **targetId** is not yet part of the component tree.
+The node with the specified **targetId** is not mounted in the component tree.
 
 **Solution**
 

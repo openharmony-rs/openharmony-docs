@@ -6,6 +6,12 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+## A
+
+### APP 
+
+To release an application to AppGallery, the bundle must be packaged into an .app file, that is, an Application Package (App Pack).
+
 ## E
 
 ### ExtensionAbility 
@@ -58,7 +64,7 @@ Application model available since API version 9. It provides two types of applic
 
 ### UIAbility
 
-A component in the stage model used to provide UI capabilities for user interaction.
+A component in the stage model used to provide UI capabilities for user interaction. If **entities** under the **skills** tag of a UIAbility contains **"entity.system.home"** and **actions** contains **"ohos.want.action.home"**, the UIAbility is also called the entry UIAbility.
 
 <!--Del-->
 ## X

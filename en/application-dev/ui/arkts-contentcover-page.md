@@ -1,4 +1,10 @@
 # Binding a Full-Modal Page (bindContentCover)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A full-modal page, implemented using [bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover), is a full-screen modal interaction page that completely covers the underlying parent view. It is ideal for scenarios such as viewing large images or full-screen documents.
 
@@ -30,17 +36,17 @@ import { curves } from '@kit.ArkUI';
 
 interface PersonList {
   name: string,
-  cardnum: string
+  cardNum: string
 }
 
 @Entry
 @Component
 struct BindContentCoverDemo {
   private personList: Array<PersonList> = [
-    { name: 'Wang **', cardnum: '1234***********789' },
-    { name: 'Song *', cardnum: '2345***********789' },
-    { name: 'Xu **', cardnum: '3456***********789' },
-    { name: 'Tang *', cardnum: '4567***********789' }
+    { name: 'Wang **', cardNum: '1234***********789' },
+    { name: 'Song *', cardNum: '2345***********789' },
+    { name: 'Xu **', cardNum: '3456***********789' },
+    { name: 'Tang *', cardNum: '4567***********789' }
   ];
   // Define the state variable to control the semi-modal visibility.
   @State isSheetShow: boolean = false;
@@ -95,7 +101,7 @@ struct BindContentCoverDemo {
               Text(item.name)
                 .fontColor(0x333333)
                 .fontSize(18)
-              Text(item.cardnum)
+              Text(item.cardNum)
                 .fontColor(0x666666)
                 .fontSize(14)
             }
@@ -204,7 +210,7 @@ struct BindContentCoverDemo {
       .borderRadius(10)
       .backgroundColor(Color.White)
       .onClick(()=>{
-        this.isSheetShow = !this.isSheetShow
+        this.isSheetShow = !this.isSheetShow;
       })
       // Step 1: Define the semi-modal transition effect.
       .bindSheet($$this.isSheetShow, this.MySheetBuilder(), {

@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Print_PrintAttributes
+```
+
 ## 概述
 
 打印属性结构体。

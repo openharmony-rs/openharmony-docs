@@ -8,11 +8,17 @@
 
 当开发者使用相同的计算逻辑重复绑定在UI上时，为了防止重复计算，可以使用\@Computed计算属性。计算属性中的依赖的状态变量变化时，只会计算一次。这解决了UI多次重用该属性导致的重复计算和性能问题。如下面例子。
 
-```ts
+<!-- @[computed_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
+
+``` TypeScript
 @Computed
 get sum() {
   return this.count1 + this.count2 + this.count3;
 }
+```
+<!-- @[computed_property_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
+
+``` TypeScript
 Text(`${this.count1 + this.count2 + this.count3}`) // 计算this.count1 + this.count2 + this.count3
 Text(`${this.count1 + this.count2 + this.count3}`) // 重复计算this.count1 + this.count2 + this.count3
 Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计算
@@ -67,71 +73,71 @@ get varName(): T {
   ```
 - \@Computed装饰的方法只有在初始化，或者其被计算的状态变量改变时，才会发生重新计算。不建议开发者在\@Computed装饰的getter方法中做除获取数据外其余的逻辑操作，如下面例子。
 
-```ts
-@Entry
-@ComponentV2
-struct Page {
-  @Local firstName: string = 'Hua';
-  @Local lastName: string = 'Li';
-  @Local showFullNameRequestCount: number = 0;
-  private fullNameRequestCount: number = 0;
-
-  @Computed
-  get fullName() {
-    console.info('fullName');
-    // 不推荐在@Computed的计算中做赋值逻辑，因为@Computed本质是一个getter访问器，用来节约重复计算
-    // 在这个例子中，fullNameRequestCount仅代表@Computed计算次数，不能代表fullName被访问的次数
-    this.fullNameRequestCount++;
-    return this.firstName + ' ' + this.lastName;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.fullName}`) // 获取一次fullName
-      Text(`${this.fullName}`) // 获取一次fullName，累计获取两次fullName，但是fullName不会重新计算，读取缓存值
-
-      // 点击Button，获取fullNameRequestCount次数
-      Text(`count ${this.showFullNameRequestCount}`)
-      Button('get fullName').onClick(() => {
-        this.showFullNameRequestCount = this.fullNameRequestCount;
-      })
+  ```ts
+  @Entry
+  @ComponentV2
+  struct Page {
+    @Local firstName: string = 'Hua';
+    @Local lastName: string = 'Li';
+    @Local showFullNameRequestCount: number = 0;
+    private fullNameRequestCount: number = 0;
+  
+    @Computed
+    get fullName() {
+      console.info('fullName');
+      // 不推荐在@Computed的计算中做赋值逻辑，因为@Computed本质是一个getter访问器，用来节约重复计算
+      // 在这个例子中，fullNameRequestCount仅代表@Computed计算次数，不能代表fullName被访问的次数
+      this.fullNameRequestCount++;
+      return this.firstName + ' ' + this.lastName;
+    }
+  
+    build() {
+      Column() {
+        Text(`${this.fullName}`) // 获取一次fullName
+        Text(`${this.fullName}`) // 获取一次fullName，累计获取两次fullName，但是fullName不会重新计算，读取缓存值
+  
+        // 点击Button，获取fullNameRequestCount次数
+        Text(`count ${this.showFullNameRequestCount}`)
+        Button('get fullName').onClick(() => {
+          this.showFullNameRequestCount = this.fullNameRequestCount;
+        })
+      }
     }
   }
-}
-```
+  ```
 
 - 在\@Computed装饰的getter方法中，不能改变参与计算的属性，以防止重复执行计算属性导致的appfreeze。
  在下面例子中，计算`fullName1`时触发了`this.lastName`的改变，`this.lastName`的改变，触发`fullName2`的计算，在`fullName2`的计算中，改变了`this.firstName`，再次触发`fullName1`的重新计算，从而导致循环计算，最终引起appfreeze。
 
-```ts
-@Entry
-@ComponentV2
-struct Page {
-  @Local firstName: string = 'Hua';
-  @Local lastName: string = 'Li';
-
-  @Computed
-  get fullName1() {
-    console.info('fullName1');
-    this.lastName += 'a'; // 错误，不能改变参与计算的属性
-    return this.firstName + ' ' + this.lastName;
-  }
-
-  @Computed
-  get fullName2() {
-    console.info('fullName2');
-    this.firstName += 'a'; // 错误，不能改变参与计算的属性
-    return this.firstName + ' ' + this.lastName;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.fullName1}`)
-      Text(`${this.fullName2}`)
+  ```ts
+  @Entry
+  @ComponentV2
+  struct Page {
+    @Local firstName: string = 'Hua';
+    @Local lastName: string = 'Li';
+  
+    @Computed
+    get fullName1() {
+      console.info('fullName1');
+      this.lastName += 'a'; // 错误，不能改变参与计算的属性
+      return this.firstName + ' ' + this.lastName;
+    }
+  
+    @Computed
+    get fullName2() {
+      console.info('fullName2');
+      this.firstName += 'a'; // 错误，不能改变参与计算的属性
+      return this.firstName + ' ' + this.lastName;
+    }
+  
+    build() {
+      Column() {
+        Text(`${this.fullName1}`)
+        Text(`${this.fullName2}`)
+      }
     }
   }
-}
-```
+  ```
 
 - \@Computed不能和双向绑定!!连用，\@Computed装饰的是getter访问器，不会被子组件同步，也不能被赋值。开发者自己实现的计算属性的setter不生效，且产生编译时报错。
 
@@ -201,38 +207,48 @@ struct Page {
 - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
 - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
-```ts
-@Entry
-@ComponentV2
-struct Index {
-  @Local firstName: string = 'Li';
-  @Local lastName: string = 'Hua';
-  age: number = 20; // 无法触发Computed
-
-  @Computed
-  get fullName() {
-    console.info('---------Computed----------');
-    return this.firstName + ' ' + this.lastName + this.age;
-  }
-
-  build() {
-    Column() {
-      Text(this.lastName + ' ' + this.firstName)
-      Text(this.lastName + ' ' + this.firstName)
-      Divider()
-      Text(this.fullName)
-      Text(this.fullName)
-      Button('changed lastName').onClick(() => {
-        this.lastName += 'a';
-      })
-
-      Button('changed age').onClick(() => {
-        this.age++;  // 无法触发Computed
-      })
+  <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_Textcomponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'Textcomponent_';
+  
+  @Entry
+  @ComponentV2
+  struct CustomComponentUse {
+    @Local firstName: string = 'Li';
+    @Local lastName: string = 'Hua';
+    age: number = 20; // 无法触发Computed
+  
+    @Computed
+    get fullName() {
+      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
+      return this.firstName + ' ' + this.lastName + this.age;
+    }
+  
+    build() {
+      Column() {
+        Text(this.lastName + ' ' + this.firstName)
+        Text(this.lastName + ' ' + this.firstName)
+        Divider()
+        Text(this.fullName)
+        Text(this.fullName)
+        Button('changed lastName')
+          .onClick(() => {
+            this.lastName += 'a';
+          })
+  
+        Button('changed age')
+          .onClick(() => {
+            this.age++;  // 无法触发Computed
+          })
+      }
     }
   }
-}
-```
+  ```
 
 计算属性本身会带来性能开销，在实际应用开发中需要注意：
 - 对于简单的计算逻辑，可以不使用计算属性。
@@ -241,159 +257,178 @@ struct Index {
 2. 在\@ObservedV2装饰的类中使用计算属性。
 - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-```ts
-@ObservedV2
-class Name {
-  @Trace firstName: string = 'Hua';
-  @Trace lastName: string = 'Li';
-
-  @Computed
-  get fullName() {
-    console.info('---------Computed----------');
-    return this.firstName + ' ' + this.lastName;
-  }
-}
-
-const name: Name = new Name();
-
-@Entry
-@ComponentV2
-struct Index {
-  name1: Name = name;
-
-  build() {
-    Column() {
-      Text(this.name1.fullName)
-      Text(this.name1.fullName)
-      Button('changed lastName').onClick(() => {
-        this.name1.lastName += 'a';
-      })
+  <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_Textcomponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'Textcomponent_';
+  
+  @ObservedV2
+  class Name {
+    @Trace public firstName: string = 'Hua';
+    @Trace public lastName: string = 'Li';
+  
+    @Computed
+    get fullName() {
+      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
+      return this.firstName + ' ' + this.lastName;
     }
   }
-}
-```
+  
+  const name: Name = new Name();
+  
+  @Entry
+  @ComponentV2
+  struct ObservedV2ClassUser {
+    name1: Name = name;
+  
+    build() {
+      Column() {
+        Text(this.name1.fullName)
+        Text(this.name1.fullName)
+        Button('changed lastName').onClick(() => {
+          this.name1.lastName += 'a';
+        })
+      }
+    }
+  }
+  ```
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 如何使用计算属性求解fahrenheit和kelvin。示例如下：
 - 点击“-”，celsius-- -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 
-```ts
-@Entry
-@ComponentV2
-struct MyView {
-  @Local celsius: number = 20;
-
-  @Computed
-  get fahrenheit(): number {
-    return this.celsius * 9 / 5 + 32; // C -> F
-  }
-
-  @Computed
-  get kelvin(): number {
-    return (this.fahrenheit - 32) * 5 / 9 + 273.15; // F -> K
-  }
-
-  @Monitor('kelvin')
-  onKelvinMonitor(mon: IMonitor) {
-    console.log('kelvin changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
-  }
-
-  build() {
-    Column({ space: 20 }) {
-      Row({ space: 20 }) {
-        Button('-')
-          .onClick(() => {
-            this.celsius--;
-          })
-
-        Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(40)
-
-        Button('+')
-          .onClick(() => {
-            this.celsius++;
-          })
-      }
-
-      Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(40)
-      Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(40)
+  <!-- @[Computing_Property_Resolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_Textcomponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'Textcomponent_';
+  
+  @Entry
+  @ComponentV2
+  struct ComputedPropertyResolution {
+    @Local celsius: number = 20;
+  
+    @Computed
+    get fahrenheit(): number {
+      return this.celsius * 9 / 5 + 32; // C -> F
     }
-    .width('100%')
+  
+    @Computed
+    get kelvin(): number {
+      return (this.fahrenheit - 32) * 5 / 9 + 273.15; // F -> K
+    }
+  
+    @Monitor('kelvin')
+    onKelvinMonitor(mon: IMonitor) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'kelvin changed from' + mon.value()?.before + ' to ' + mon.value()?.now);
+    }
+  
+    build() {
+      Column({ space: 20 }) {
+        Row({ space: 20 }) {
+          Button('-')
+            .onClick(() => {
+              this.celsius--;
+            })
+  
+          Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(40)
+  
+          Button('+')
+            .onClick(() => {
+              this.celsius++;
+            })
+        }
+  
+        Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(40)
+        Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(40)
+      }
+      .width('100%')
+    }
   }
-}
-```
+  ```
+
 ### \@Computed装饰的属性可以初始化\@Param
 下面的例子使用\@Computed初始化\@Param。
 - 点击`Button('-')`和`Button('+')`改变商品数量，`quantity`是被\@Trace装饰的，其改变时可以被观察到的。
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-```ts
-@ObservedV2
-class Article {
-  @Trace quantity: number = 0;
-  unitPrice: number = 0;
-
-  constructor(quantity: number, unitPrice: number) {
-    this.quantity = quantity;
-    this.unitPrice = unitPrice;
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
-
-  @Computed
-  get total(): number {
-    return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
-  }
-
-  @Computed
-  get qualifiesForDiscount(): boolean {
-    return this.total >= 100;
-  }
-
-  build() {
-    Column() {
-      Text(`Shopping List: `)
-        .fontSize(30)
-      ForEach(this.shoppingBasket, (item: Article) => {
-        Row() {
-          Text(`unitPrice: ${item.unitPrice}`)
-          Button('-')
-            .onClick(() => {
-              if (item.quantity > 0) {
-                item.quantity--;
-              }
-            })
-          Text(`quantity: ${item.quantity}`)
-          Button('+')
-            .onClick(() => {
-              item.quantity++;
-            })
-        }
-
-        Divider()
-      })
-      Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
-    }.alignItems(HorizontalAlign.Start)
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Param total: number = 0;
-  @Param qualifiesForDiscount: boolean = false;
-
-  build() {
-    Row() {
-      Text(`Total: ${this.total} `)
-        .fontSize(30)
-      Text(`Discount: ${this.qualifiesForDiscount} `)
-        .fontSize(30)
+  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->
+  
+  ``` TypeScript
+  @ObservedV2
+  class Article {
+    @Trace public quantity: number = 0;
+    public unitPrice: number = 0;
+  
+    constructor(quantity: number, unitPrice: number) {
+      this.quantity = quantity;
+      this.unitPrice = unitPrice;
     }
   }
-}
-```
+  
+  @Entry
+  @ComponentV2
+  struct ComputingInitParam {
+    @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
+  
+    @Computed
+    get total(): number {
+      return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
+    }
+  
+    @Computed
+    get qualifiesForDiscount(): boolean {
+      return this.total >= 100;
+    }
+  
+    build() {
+      Column() {
+        Text(`Shopping List: `)
+          .fontSize(30)
+        ForEach(this.shoppingBasket, (item: Article) => {
+          Row() {
+            Text(`unitPrice: ${item.unitPrice}`)
+            Button('-')
+              .onClick(() => {
+                if (item.quantity > 0) {
+                  item.quantity--;
+                }
+              })
+            Text(`quantity: ${item.quantity}`)
+            Button('+')
+              .onClick(() => {
+                item.quantity++;
+              })
+          }
+  
+          Divider()
+        })
+        Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
+      }.alignItems(HorizontalAlign.Start)
+    }
+  }
+  
+  @ComponentV2
+  struct Child {
+    @Param total: number = 0;
+    @Param qualifiesForDiscount: boolean = false;
+  
+    build() {
+      Row() {
+        Text(`Total: ${this.total} `)
+          .fontSize(30)
+        Text(`Discount: ${this.qualifiesForDiscount} `)
+          .fontSize(30)
+      }
+    }
+  }
+  ```

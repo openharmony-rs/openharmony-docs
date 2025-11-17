@@ -5,7 +5,11 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_ListItemSwipeActionOption ArkUI_ListItemSwipeActionOption
+```
 
 ## 概述
 

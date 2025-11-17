@@ -112,7 +112,7 @@ PKCS #7 is a standard syntax for storing signed or encrypted data. The extension
             isDetached : true
           };
           cmsGenerator.doFinal(content, optionsFinal).then(result => {
-            console.log('testPkcs7SignByPromise doFinal success, resullt = %s', result);
+            console.info('testPkcs7SignByPromise doFinal success, result = %s', result);
           }).catch((error: BusinessError) => {
             console.error('testPkcs7SignByPromise failed, errCode: ' + error.code + ', errMsg: ' + error.message);
           });

@@ -14,11 +14,11 @@
   - [Accessing AVSession](avsession-access-scene.md)
   - [Background Playback](avsession-background-scene.md)
   <!--Del-->
-  - [AVSession Controller (for System Applications Only)](using-avsession-controller.md)
+  - [AVSession Controller (for System Applications Only)](using-avsession-controller-sys.md)
   <!--DelEnd-->
 - Distributed AVSession<!--distributed-avsession-->
   <!--Del-->
-  - [Distributed AVSession Overview (for System Applications Only)](distributed-avsession-overview.md)
-  - [Using Distributed AVSession (for System Applications Only)](using-distributed-avsession.md)
+  - [Distributed AVSession Overview (for System Applications Only)](distributed-avsession-overview-sys.md)
+  - [Using Distributed AVSession (for System Applications Only)](using-distributed-avsession-sys.md)
   <!--DelEnd-->
   - [Using the Call Device Switching Component](using-switch-call-devices.md)

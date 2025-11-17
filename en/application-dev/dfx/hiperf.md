@@ -10,7 +10,7 @@
 hiperf is a command line tool that integrates multiple performance analysis capabilities, enabling you to identify system bottlenecks, locate software hotspots, optimize code efficiency, and collect and analyze runtime performance data.
 
 
-You can preferentially use a graphical frontend tool such as [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-time) or [SmartPerf](https://gitee.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md) to collect the call stack of a function, obtain the execution time of the function at each layer in the call stack, and view the call chain information in a swimlane diagram for performance analysis. To specify the event, sampling period, collection duration, and number of CPU cores, you can use HiPerf. The **perf.data** file can be opened using SmartPerf and displayed in a flame graph.
+You can preferentially use a graphical frontend tool such as [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-time) or [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md) to collect the call stack of a function, obtain the execution time of the function at each layer in the call stack, and view the call chain information in a swimlane diagram for performance analysis. To specify the event, sampling period, collection duration, and number of CPU cores, you can use HiPerf. The **perf.data** file can be opened using SmartPerf and displayed in a flame graph.
 
 
 This topic describes how to use hiperf to perform performance analysis.
@@ -36,7 +36,7 @@ $ hiperf --help
 | -------- | -------- |
 | --hilog | Records logs generated during program running to HiLog.| 
 | --logpath | Sets the save path of log files. You can set the output file path to **/data/local/tmp/** and customize the file name.| 
-| --logtag | Enables logs of a specified funtionality.| 
+| --logtag | Enables logs of a specified functionality.| 
 | --debug | Records **debug** logs.| 
 | --verbose | Records **verbose** logs.| 
 | --much | Records **much** logs.| 
@@ -90,39 +90,39 @@ See 'hiperf help [command]' for more information on a specific command.
 1. Sample the process **1234** for 10 seconds. Set the stack unwinding mode to **fp**, sampling frequency to **1000** times per second, event types to **hw-cpu-cycles** and **hw-instructions**, and save the sampling file to **/data/local/tmp/perf.data**.
 
 
-```shell
-$ hiperf record -p 1234 -s fp -f 1000 -d 10 -e hw-cpu-cycles,hw-instructions -o /data/local/tmp/perf.data
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Timeout exit (total 10335 ms)
-Process and Saving data...
-Hiperf is not running as root mode. Do not need load kernel syms
-[ hiperf record: Captured 3.014 MB perf data. ]
-[ Sample records: 1293, Non sample records: 855 ]
-[ Sample lost: 0, Non sample lost: 0 ]
-```
+    ```shell
+    $ hiperf record -p 1234 -s fp -f 1000 -d 10 -e hw-cpu-cycles,hw-instructions -o /data/local/tmp/perf.data
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Timeout exit (total 10335 ms)
+    Process and Saving data...
+    Hiperf is not running as root mode. Do not need load kernel syms
+    [ hiperf record: Captured 3.014 MB perf data. ]
+    [ Sample records: 1293, Non sample records: 855 ]
+    [ Sample lost: 0, Non sample lost: 0 ]
+    ```
 
 
-The collected data is saved as a **perf.data** file in binary format, which contains the sampling data, process information, symbol table, and function calls required for performance analysis. You can use the flame graph script to convert the sampling data into a flame graph to identify system performance bottlenecks, locate software hotspots, and optimize code efficiency.
+    The collected data is saved as a **perf.data** file in binary format, which contains the sampling data, process information, symbol table, and function calls required for performance analysis. You can use the flame graph script to convert the sampling data into a flame graph to identify system performance bottlenecks, locate software hotspots, and optimize code efficiency.
 
 
 2. Sample the application **com.example.insight_test_stage**. Set the sampling duration to **10s**, stack unwinding mode to **dwarf** (debug information table), sampling period to **1000**, event types to **hw-cpu-cycles** and **hw-instructions**, and use the default save path.
 
 
-```shell
-$ hiperf record --app com.example.insight_test_stage -d 10 -s dwarf --period 1000 -e hw-cpu-cycles,hw-instructions
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Timeout exit (total 10000 ms)
-Process and Saving data...
-Hiperf is not running as root mode. Do not need load kernel syms
-[ hiperf record: Captured 0.296 MB perf data. ]
-[ Sample records: 0, Non sample records: 2640 ]
-[ Sample lost: 0, Non sample lost: 0 ]
-```
+    ```shell
+    $ hiperf record --app com.example.insight_test_stage -d 10 -s dwarf --period 1000 -e hw-cpu-cycles,hw-instructions
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Timeout exit (total 10000 ms)
+    Process and Saving data...
+    Hiperf is not running as root mode. Do not need load kernel syms
+    [ hiperf record: Captured 0.296 MB perf data. ]
+    [ Sample records: 0, Non sample records: 2640 ]
+    [ Sample lost: 0, Non sample lost: 0 ]
+    ```
 
 
-The collected data is saved to the default path **/data/local/tmp/perf.data**.
+    The collected data is saved to the default path **/data/local/tmp/perf.data**.
 
 
 ### Collecting Performance Statistics
@@ -131,70 +131,70 @@ The collected data is saved to the default path **/data/local/tmp/perf.data**.
 1. Count the **1745** and **1910** processes for 10 seconds.
 
 
-```
-$ hiperf stat -d 10 -p 1745,1910
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Timeout exit (total 10000 ms)
-                    count  name                           | comment                          | coverage
-                  148,450  hw-branch-instructions         | 26.404 M/sec                     | (100%)
-                   49,833  hw-branch-misses               | 33.568878 miss rate              | (100%)
-                8,986,523  hw-cpu-cycles                  | 1.598409 GHz                     | (100%)
-                1,283,596  hw-instructions                | 7.001053 cycles per instruction  | (100%)
-                       63  sw-context-switches            | 11.206 K/sec                     | (100%)
-                        0  sw-page-faults                 | 0.000 /sec                       | (100%)
-                5,622,169  sw-task-clock                  | 0.000562 cpus used               | (100%)
-```
+    ```
+    $ hiperf stat -d 10 -p 1745,1910
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Timeout exit (total 10000 ms)
+                        count  name                           | comment                          | coverage
+                      148,450  hw-branch-instructions         | 26.404 M/sec                     | (100%)
+                      49,833  hw-branch-misses               | 33.568878 miss rate              | (100%)
+                    8,986,523  hw-cpu-cycles                  | 1.598409 GHz                     | (100%)
+                    1,283,596  hw-instructions                | 7.001053 cycles per instruction  | (100%)
+                          63  sw-context-switches            | 11.206 K/sec                     | (100%)
+                            0  sw-page-faults                 | 0.000 /sec                       | (100%)
+                    5,622,169  sw-task-clock                  | 0.000562 cpus used               | (100%)
+    ```
 
 
 2. Count processes **1745** and **1910** for **10** seconds, with event types set to **hw-cpu-cycles**, **hw-instructions**, and **sw-task-clock**, and a print interval of **3000** ms.
 
 
-```
-$ hiperf stat -d 10 -p 1745,1910 -e hw-cpu-cycles,hw-instructions,sw-task-clock -i 3000
-Profiling duration is 10.000 seconds.
-Start Profiling...
-Report at 3000 ms (6999 ms left):
-                    count  name                           | comment                          | coverage
-                2,534,675  hw-cpu-cycles                  | 1.717114 GHz                     | (100%)
-                  324,279  hw-instructions                | 7.816340 cycles per instruction  | (100%)
-                1,476,125  sw-task-clock                  | 0.000492 cpus used               | (100%)
-Report at 6000 ms (3999 ms left):
-                    count  name                           | comment                          | coverage
-                5,112,570  hw-cpu-cycles                  | 1.724259 GHz                     | (100%)
-                  648,303  hw-instructions                | 7.886081 cycles per instruction  | (100%)
-                2,965,083  sw-task-clock                  | 0.000494 cpus used               | (100%)
-Report at 9000 ms (999 ms left):
-                    count  name                           | comment                          | coverage
-                7,870,422  hw-cpu-cycles                  | 1.724897 GHz                     | (100%)
-                  994,407  hw-instructions                | 7.914689 cycles per instruction  | (100%)
-                4,562,835  sw-task-clock                  | 0.000507 cpus used               | (100%)
-Timeout exit (total 10000 ms)
-```
+    ```
+    $ hiperf stat -d 10 -p 1745,1910 -e hw-cpu-cycles,hw-instructions,sw-task-clock -i 3000
+    Profiling duration is 10.000 seconds.
+    Start Profiling...
+    Report at 3000 ms (6999 ms left):
+                        count  name                           | comment                          | coverage
+                    2,534,675  hw-cpu-cycles                  | 1.717114 GHz                     | (100%)
+                      324,279  hw-instructions                | 7.816340 cycles per instruction  | (100%)
+                    1,476,125  sw-task-clock                  | 0.000492 cpus used               | (100%)
+    Report at 6000 ms (3999 ms left):
+                        count  name                           | comment                          | coverage
+                    5,112,570  hw-cpu-cycles                  | 1.724259 GHz                     | (100%)
+                      648,303  hw-instructions                | 7.886081 cycles per instruction  | (100%)
+                    2,965,083  sw-task-clock                  | 0.000494 cpus used               | (100%)
+    Report at 9000 ms (999 ms left):
+                        count  name                           | comment                          | coverage
+                    7,870,422  hw-cpu-cycles                  | 1.724897 GHz                     | (100%)
+                      994,407  hw-instructions                | 7.914689 cycles per instruction  | (100%)
+                    4,562,835  sw-task-clock                  | 0.000507 cpus used               | (100%)
+    Timeout exit (total 10000 ms)
+    ```
 
 
-3. Count the process **1910**, with the counting duration set to **3** seconds and the event types to **hw-cpu-cycles** and **hw-instructions**, and print detailed information.
+3. Count the process **1910** for **3** seconds, with the event types to **hw-cpu-cycles** and **hw-instructions**, and print detailed information.
 
 
-```
-$ hiperf stat -d 3 -p 1910 -e hw-cpu-cycles,hw-instructions --verbose
-Profiling duration is 3.000 seconds.
-Start Profiling...
-Timeout exit (total 3000 ms)
-hw-cpu-cycles id:1342(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:255740
-hw-cpu-cycles id:1343(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
-hw-cpu-cycles id:1344(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
-hw-cpu-cycles id:1345(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:331425
-...
-hw-instructions id:1375(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:36485
-hw-instructions id:1376(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
-hw-instructions id:1377(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
-hw-instructions id:1378(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:47816
-...
-                    count  name                           | comment                          | coverage
-                  669,850  hw-cpu-cycles                  |                                  | (100%)
-                   94,903  hw-instructions                | 7.058259 cycles per instruction  | (100%)
-```
+    ```
+    $ hiperf stat -d 3 -p 1910 -e hw-cpu-cycles,hw-instructions --verbose
+    Profiling duration is 3.000 seconds.
+    Start Profiling...
+    Timeout exit (total 3000 ms)
+    hw-cpu-cycles id:1342(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:255740
+    hw-cpu-cycles id:1343(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
+    hw-cpu-cycles id:1344(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
+    hw-cpu-cycles id:1345(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:331425
+    ...
+    hw-instructions id:1375(c-1:p1910) timeEnabled:133583 timeRunning:133583 value:36485
+    hw-instructions id:1376(c-1:p1988) timeEnabled:0 timeRunning:0 value:0
+    hw-instructions id:1377(c-1:p1989) timeEnabled:0 timeRunning:0 value:0
+    hw-instructions id:1378(c-1:p1990) timeEnabled:187833 timeRunning:187833 value:47816
+    ...
+                        count  name                           | comment                          | coverage
+                      669,850  hw-cpu-cycles                  |                                  | (100%)
+                      94,903  hw-instructions                | 7.058259 cycles per instruction  | (100%)
+    ```
 
 
 ## Debug-Type Applications
@@ -264,7 +264,7 @@ Supported events for hardware:
 
 ## record
 
-Collects the performance data of a specified process or application, including the CPU cycle, number of instructions, and function calls, and saves the sampling data to a specified file (**/data/local/tmp/perf.data** by default).
+Collects the performance data of a specified process or application, including the CPU cycle, number of instructions, and function calls, and saves the sampling data to a specified file.
 
 **Parameters of the record command**
 
@@ -275,7 +275,7 @@ Collects the performance data of a specified process or application, including t
 | -c | Sets the ID of the CPU to collect its data.| 
 | --cpu-limit | Sets the maximum CPU usage during collection. The value ranges from 1 to 100. The default value is 25.| 
 | -d | Sets the collection duration, in seconds. This parameter cannot be used together with **--control**.| 
-| -f | Sets the collection frequency. The default value is **4000** times per second. This parameter cannot be used together with **--period**.| 
+| -f | Sets the collection frequency. The default value is 4000 times per second. This parameter cannot be used together with **--period**.| 
 | --period | Sets the event collection period, that is, the number of events for each collection. This parameter cannot be used together with **-f**.| 
 | -e | Sets the event to collect. Multiple event types are supported; separate them with commas. You can run the **list** command to obtain the supported event types.| 
 | -g | Specifies the event groups to collect, which are separated by commas (,).| 
@@ -299,7 +299,7 @@ Collects the performance data of a specified process or application, including t
 | --app | Sets the application names to collect. Use commas (,) to separate them. The application must already be running. If it has not started, the command waits up to 20s and then exits automatically. This parameter cannot be used together with **-a**.| 
 | --chkms | Sets the query interval, in milliseconds. The value ranges from 1 to 200. The default value is **10**.| 
 | --data-limit | Sets the limit of the output data size. When this limit is reached, the collection stops. By default, there is no limit.| 
-| -o | Sets the output file path. You can set the output file path to **/data/local/tmp/** and customize the file name.| 
+| -o | Sets the output file path. For the default path, run the **hiperf record -h/--help** command to view the description of the **-o** parameter. You can customize the file name.| 
 | -z | Outputs the data in a .gz file.| 
 | --restart | Collects performance metrics about application startup. If the process is not started within 30 seconds, the collection stops.| 
 | --verbose | Outputs a more detailed report.| 
@@ -354,7 +354,7 @@ Monitors the specified application and periodically prints the values of perform
 | --verbose | Outputs detailed information.| 
 | --dumpoptions | Displays details about all options in the list.| 
 | --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>**NOTE**: This parameter is supported since API version 20.| 
-| -o | Sets the output file path. You can set the output file path to **/data/local/tmp/** and customize the file name. This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>**NOTE**: This parameter is supported since API version 20.| 
+| -o | Sets the output file path. For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter. You can customize the file name. This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>**NOTE**: This parameter is supported since API version 20.| 
 | -a | Collects the device performance data.|
 
 **Example**

@@ -1,4 +1,10 @@
 # Types
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -24,7 +30,7 @@ Defines a type that can be used for component attributes and method parameters t
 
 type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void
 
-Defines a callback for click events in ArkTS.
+Defines the callback type for listening for click events in **UIObserver**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -34,7 +40,7 @@ Defines a callback for click events in ArkTS.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| event | [ClickEvent](../apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent)| Yes| Information about the click event that triggers the callback.|
+| event | [ClickEvent](../apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent) | Yes| Information about the click event that triggers the callback.|
 | node | [FrameNode](js-apis-arkui-frameNode.md) | No| Component bound to the click event.|
 
 ## PanListenerCallback<sup>19+</sup>
@@ -51,15 +57,15 @@ Defines a callback for pan gesture events.
 
 | Name | Type             | Mandatory| Description                               |
 | ------- | ----------------- | ---- | --------------------------------- |
-| event   | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-settings.md#gestureevent)     | Yes  | Information about the gesture event that triggers the callback.  |
-| current | [GestureRecognizer](arkui-ts/ts-gesture-blocking-enhancement.md#gesturerecognizer) | Yes  | Information about the gesture recognizer that detects the event. |
+| event   | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent)      | Yes  | Information about the gesture event that triggers the callback.  |
+| current | [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12) | Yes  | Information about the gesture recognizer that detects the event. |
 | node    | [FrameNode](js-apis-arkui-frameNode.md)         | No  | Component bound to the gesture event.|
 
 ## GestureEventListenerCallback<sup>12+</sup>
 
 type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => void
 
-Defines a callback for gesture events in ArkTS.
+Defines the callback type for gesture event listeners in **UIObserver**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -69,7 +75,7 @@ Defines a callback for gesture events in ArkTS.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| event | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-settings.md#gestureevent)| Yes| Information about the gesture event that triggers the callback.|
+| event | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent) | Yes| Information about the gesture event that triggers the callback.|
 | node | [FrameNode](js-apis-arkui-frameNode.md) | No| Component bound to the gesture event.|
 
 ## NodeIdentity<sup>20+</sup>

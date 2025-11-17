@@ -13,7 +13,7 @@ AVScreenCapture支持应用完成场景化的自定义配置，具体配置可�
 
 ### 蜂窝通话设置
 
-从API 20开始支持蜂窝通话设置。
+从API version 20开始支持蜂窝通话设置。
 
 使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置蜂窝通话时是否保持录屏。
 
@@ -25,7 +25,7 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ### 设置B帧编码
 
-从API 20开始支持设置B帧编码。
+从API version 20开始支持设置B帧编码。
 
 使用[OH_AVScreenCapture_StrategyForBFramesEncoding](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforbframesencoding)设置是否使用B帧编码，用于减小录制文件的大小。
 
@@ -37,7 +37,7 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ### 设置屏幕捕获Picker
 
-从API 20开始支持设置屏幕捕获Picker。
+从API version 20开始支持设置屏幕捕获Picker。
 
 使用[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置是否弹出屏幕捕获Picker。
 
@@ -49,7 +49,7 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ## 设置旋转适配
 
-从API 20开始支持设置旋转适配。
+从API version 20开始支持设置旋转适配。
 
 使用[OH_AVScreenCapture_StrategyForCanvasFollowRotation](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation)，可设置录屏时是否自动跟随屏幕旋转。
 
@@ -79,7 +79,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 
 ## 隐私设置
 
-从API 20开始，支持使用[OH_AVScreenCapture_StrategyForPrivacyMaskMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforprivacymaskmode)设置屏幕录制隐私窗口屏蔽模式。
+从API version 20开始，支持使用[OH_AVScreenCapture_StrategyForPrivacyMaskMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforprivacymaskmode)设置屏幕录制隐私窗口屏蔽模式。
 
 
 ```c++
@@ -90,7 +90,7 @@ OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-在API 12时，支持使用[OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode)设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
+在API version 12时，支持使用[OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode)设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
 
 ```c++
 std::vector<int> windowIdsSkipPrivacy = {};
@@ -100,7 +100,7 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, &windowIdsSkipPrivacy[0],
 
 ## 设置捕获区域
 
-从API 20开始支持设置捕获区域。
+从API version 20开始支持设置捕获区域。
 
 可以根据需要设置区域坐标和大小，使用[OH_AVScreenCapture_SetCaptureArea](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)设置想要捕获的区域，如下方创建了一个从（0，0）为起点的长100px，宽100px的矩形区域。此接口在录屏开始前后都可以设置。
 
@@ -116,7 +116,7 @@ OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 
 ## 设置捕获光标
 
-从API 15开始支持设置捕获光标。
+从API version 15开始支持设置捕获光标。
 
 使用[OH_AVScreenCapture_ShowCursor](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_showcursor)设置光标显示开关，开始录屏前后均可调用。
 
@@ -126,7 +126,7 @@ OH_AVScreenCapture_ShowCursor(capture, false);
 
 ## 设置最大帧率
 
-从API 14开始支持设置最大帧率。
+从API version 14开始支持设置最大帧率。
 
 使用[OH_AVScreenCapture_SetMaxVideoFrameRate](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmaxvideoframerate)设置录屏时的最大帧率，需在录屏启动后被调用。
 

@@ -5136,3 +5136,17 @@ Allows a system application to invoke the data identification and anonymization 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
 **Since**: 21
+
+## ohos.permission.CAPTURE_SCREEN_ALL
+
+Allows an application to capture screenshots, including privacy windows.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 13

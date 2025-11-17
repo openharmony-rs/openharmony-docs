@@ -37,7 +37,7 @@ The feature updates for the mini system and small system are as follows:
 
 
 ```shell
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -46,7 +46,7 @@ repo forall -c 'git lfs pull'
 
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -64,7 +64,7 @@ repo forall -c 'git lfs pull'
 | Hi3518 solution (binary) | 2.2 | [Download](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_aries-2.2-Beta2.tar.gz) | [Download](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_aries-2.2-Beta2.tar.gz.sha256) |
 | Hi3516 solution-LiteOS (binary) | 2.2 | [Download](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus-2.2-Beta2.tar.gz) | [Download](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus-2.2-Beta2.tar.gz.sha256) |
 | Hi3516 solution-Linux (binary) | 2.2 | [Download](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus_linux-2.2-Beta2.tar.gz) | [Download](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus_linux-2.2-Beta2.tar.gz.sha256) |
-| Release Notes | 2.2 | [Download](https://gitee.com/openharmony/docs/blob/master/en/release-notes/OpenHarmony-v2.2-beta2.md) | - |
+| Release Notes | 2.2 | [Download](https://gitcode.com/openharmony/docs/blob/master/en/release-notes/OpenHarmony-v2.2-beta2.md) | - |
 
 ## What's New
 
@@ -109,22 +109,22 @@ For details, see:
 
 | Issue No.                                                    | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I3I31W](https://gitee.com/openharmony/kernel_liteos_a/issues/I3I31W) | **ActsNFSTest.bin** causes a kernel crash.                   |
-| [I3D49E](https://gitee.com/openharmony/docs/issues/I3D49E)   | The U-Boot path is incorrect.                                |
-| [I3D71U](https://gitee.com/openharmony-retired/drivers_adapter_khdf_liteos/issues/I3D71U) | Driver subsystem] During repeated system reset, there is a high possibility that the system is suspended after successful **hmac_main_init** startup. |
+| [I3I31W](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3I31W) | **ActsNFSTest.bin** causes a kernel crash.                   |
+| [I3D49E](https://gitcode.com/openharmony/docs/issues/I3D49E)   | The U-Boot path is incorrect.                                |
+| [I3D71U](https://gitcode.com/openharmony-retired/drivers_adapter_khdf_liteos/issues/I3D71U) | Driver subsystem] During repeated system reset, there is a high possibility that the system is suspended after successful **hmac_main_init** startup. |
 | I3DGZW                                                       | [Application Framework subsystem] After the Hi3516 development board enters screen saver mode, a blue screen is displayed upon a tap on the touchscreen. |
-| [I3DHIL](https://gitee.com/openharmony/community/issues/I3DHIL) | [System] The remaining space of the Hi3518 development board is insufficient, causing a failure in executing a large number of ACTS test cases. |
+| [I3DHIL](https://gitcode.com/openharmony/community/issues/I3DHIL) | [System] The remaining space of the Hi3518 development board is insufficient, causing a failure in executing a large number of ACTS test cases. |
 | I3DU36                                                       | [Application Framework subsystem] The query command **ipcamera bm** does not take effect. |
-| [I3EALU](https://gitee.com/openharmony/multimedia_camera_lite/issues/I3EALU) | [Multimedia subsystem] During the execution of the **cameraActs** test case, the camera configuration file cannot be found and the initialization fails. |
-| [I3EGUX](https://gitee.com/openharmony/release-management/issues/I3EGUX) | [Reliability] When the KIdle process crashes once during repeated system reset, the system is suspended and cannot be started. |
-| [I3EH4E](https://gitee.com/openharmony/community/issues/I3EH4E) | [Pipeline] There is a high probability that the system does not respond after the **uname** and **reset** commands are executed. |
-| [I3EQJA](https://gitee.com/openharmony/kernel_liteos_a/issues/I3EQJA) | [File system] The **cat /proc/mounts** command does not take effect. |
-| [I3EQRC](https://gitee.com/openharmony/kernel_liteos_a/issues/I3EQRC) | The system crashes when three concurrent test processes are run during disk file mapping delay testing. |
-| [I3HVL0](https://gitee.com/openharmony/docs/issues/I3HVL0)   | The Hi3861 development board compilation fails and the error message "[OHOS ERROR] Fatal error: invalid -march= option:rv32imac" is displayed. |
-| [I3TS1Y](https://gitee.com/openharmony/kernel_liteos_a/issues/I3TS1Y) | File-specific Vnode resources are exhausted in stress testing. |
-| [I3TXT8](https://gitee.com/openharmony/startup_init_lite/issues/I3TXT8) | Orphan processes cannot be reclaimed, and TCB resources are exhausted in stress testing. |
-| [I3UWXI](https://gitee.com/openharmony/applications_sample_wifi_iot/issues/I3UWXI) | The **libwap.so** file is prone to the following vulnerability: CVE-2021-30004, CVSS: 5.3, released on 2021-04-02. |
-| [I3SWY2](https://gitee.com/openharmony/kernel_liteos_a/issues/I3SWY2) | There is a high probability that the KProcess is suspended.  |
-| [I3YJRO](https://gitee.com/openharmony/kernel_liteos_m/issues/I3YJRO) | The compilation of configurable LiteOS-A kernel modules fails. |
-| [I3YNWM](https://gitee.com/openharmony/kernel_liteos_a/issues/I3YNWM) | The enhanced file system maintenance and test feature is defective. |
-| [I3VEOG](https://gitee.com/openharmony/kernel_liteos_a/issues/I3VEOG) | The **bin** directory does not contain the **mksh** and **toybox** commands, leading to a failure to test the **toybox** command set. |
+| [I3EALU](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I3EALU) | [Multimedia subsystem] During the execution of the **cameraActs** test case, the camera configuration file cannot be found and the initialization fails. |
+| [I3EGUX](https://gitcode.com/openharmony/release-management/issues/I3EGUX) | [Reliability] When the KIdle process crashes once during repeated system reset, the system is suspended and cannot be started. |
+| [I3EH4E](https://gitcode.com/openharmony/community/issues/I3EH4E) | [Pipeline] There is a high probability that the system does not respond after the **uname** and **reset** commands are executed. |
+| [I3EQJA](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3EQJA) | [File system] The **cat /proc/mounts** command does not take effect. |
+| [I3EQRC](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3EQRC) | The system crashes when three concurrent test processes are run during disk file mapping delay testing. |
+| [I3HVL0](https://gitcode.com/openharmony/docs/issues/I3HVL0)   | The Hi3861 development board compilation fails and the error message "[OHOS ERROR] Fatal error: invalid -march= option:rv32imac" is displayed. |
+| [I3TS1Y](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3TS1Y) | File-specific Vnode resources are exhausted in stress testing. |
+| [I3TXT8](https://gitcode.com/openharmony/startup_init_lite/issues/I3TXT8) | Orphan processes cannot be reclaimed, and TCB resources are exhausted in stress testing. |
+| [I3UWXI](https://gitcode.com/openharmony/applications_sample_wifi_iot/issues/I3UWXI) | The **libwap.so** file is prone to the following vulnerability: CVE-2021-30004, CVSS: 5.3, released on 2021-04-02. |
+| [I3SWY2](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3SWY2) | There is a high probability that the KProcess is suspended.  |
+| [I3YJRO](https://gitcode.com/openharmony/kernel_liteos_m/issues/I3YJRO) | The compilation of configurable LiteOS-A kernel modules fails. |
+| [I3YNWM](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3YNWM) | The enhanced file system maintenance and test feature is defective. |
+| [I3VEOG](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3VEOG) | The **bin** directory does not contain the **mksh** and **toybox** commands, leading to a failure to test the **toybox** command set. |

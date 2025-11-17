@@ -25,7 +25,7 @@ Perform the following steps when using the APIs with the [USBDevicePipe](#usbdev
  
 **Before use**:
 
-1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the list of USB devices.
+1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
 
 2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the temporary device access permission.
 
@@ -46,6 +46,8 @@ Obtains the list of USB devices connected to the host.
 > If the USB service is running properly but no device is connected, an empty list is returned, which indicates that the call is successful but no USB device is connected.
 >
 > This API returns **undefined** in the following scenarios: the USB host mode is not enabled, the USB service is not correctly initialized, the USB service fails to be connected (for example, the developer mode is disabled), the permission is insufficient, or other system errors occur. Note that you should perform an empty check for the return value.
+>
+> Third-party applications are not allowed to obtain the device serial number from the **serial** field unless they request permission using **requestRight** and then initiate a control transfer to obtain it.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -57,7 +59,7 @@ Obtains the list of USB devices connected to the host.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -67,7 +69,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-console.log(`devicesList = ${devicesList}`);
+console.info(`devicesList = ${devicesList}`);
 /*
 The following is a simple example of the data structure for devicesList:
 [
@@ -128,7 +130,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 Connects to the USB device based on the device information returned by **getDevices()**. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
 
 1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
-2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the permission to use the device.
+2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the device access permission.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -146,7 +148,7 @@ Connects to the USB device based on the device information returned by **getDevi
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -159,14 +161,14 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 usbManager.requestRight(device.name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-console.log(`devicepipe = ${devicepipe}`);
+console.info(`devicepipe = ${devicepipe}`);
 ```
 
 ## usbManager.hasRight
@@ -193,7 +195,7 @@ Checks whether the user, for example, the application or system, has the device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -205,14 +207,14 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 usbManager.requestRight(device.name);
 let right: boolean = usbManager.hasRight(device.name);
-console.log(`${right}`);
+console.info(`${right}`);
 ```
 
 ## usbManager.requestRight
@@ -237,7 +239,7 @@ Requests the temporary device access permission for the application. This API us
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -250,12 +252,12 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
   return;
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 usbManager.requestRight(device.name).then(ret => {
-  console.log(`requestRight = ${ret}`);
+  console.info(`requestRight = ${ret}`);
 });
 ```
 
@@ -281,7 +283,7 @@ Removes the device access permission for the application. System applications ar
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -293,13 +295,13 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 let device: usbManager.USBDevice = devicesList[0];
 if (usbManager.removeRight(device.name)) {
-  console.log(`Succeed in removing right`);
+  console.info(`Succeed in removing right`);
 }
 ```
 
@@ -328,11 +330,11 @@ Claims a USB device interface.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the **claim** interface is called successfully; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the **claim** interface is called successfully; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -344,7 +346,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -353,7 +355,7 @@ usbManager.requestRight(device.name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
 let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-console.log(`claimInterface = ${ret}`);
+console.info(`claimInterface = ${ret}`);
 ```
 
 ## usbManager.releaseInterface
@@ -379,11 +381,11 @@ Releases the claimed communication interface.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB interface is successfully released; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080381: Invalid interface operation.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the USB interface is successfully released; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -395,7 +397,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -405,7 +407,7 @@ let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
 let ret: number = usbManager.claimInterface(devicepipe, interfaces);
 ret = usbManager.releaseInterface(devicepipe, interfaces);
-console.log(`releaseInterface = ${ret}`);
+console.info(`releaseInterface = ${ret}`);
 ```
 
 ## usbManager.setConfiguration
@@ -427,11 +429,11 @@ Sets the device configuration.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB configuration is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.<br>- -17: I/O failure.|
+| number | Returns **0** if the USB configuration is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.<br>- -17: I/O failure.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -443,7 +445,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -452,7 +454,7 @@ usbManager.requestRight(device.name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let config: usbManager.USBConfiguration = device.configs[0];
 let ret: number= usbManager.setConfiguration(devicepipe, config);
-console.log(`setConfiguration = ${ret}`);
+console.info(`setConfiguration = ${ret}`);
 ```
 
 ## usbManager.setInterface
@@ -480,11 +482,11 @@ Sets a USB interface.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB interface is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the USB interface is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -496,7 +498,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -506,14 +508,14 @@ let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
 let ret: number = usbManager.claimInterface(devicepipe, interfaces);
 ret = usbManager.setInterface(devicepipe, interfaces);
-console.log(`setInterface = ${ret}`);
+console.info(`setInterface = ${ret}`);
 ```
 
 ## usbManager.getRawDescriptor
 
 getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
-Obtains the raw USB descriptor. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
+Obtains a raw USB descriptor. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -527,11 +529,11 @@ Obtains the raw USB descriptor. If the USB service is abnormal, **undefined** ma
 
 | Type| Description|
 | -------- | -------- |
-| Uint8Array | Returns the raw USB descriptor if the operation is successful; returns **undefined** otherwise.|
+| Uint8Array | Returns a raw USB descriptor if the operation is successful; returns **undefined** otherwise.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -543,7 +545,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -556,7 +558,7 @@ let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
 
 getFileDescriptor(pipe: USBDevicePipe): number
 
-Obtains the file descriptor.
+Obtains a file descriptor.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -570,11 +572,11 @@ Obtains the file descriptor.
 
 | Type    | Description                  |
 | ------ | -------------------- |
-| number | Returns the file descriptor corresponding to the device if this API is successfully called; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns a file descriptor of the USB device if the operation is successful; returns a negative number otherwise.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -586,23 +588,23 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 let ret: number = usbManager.getFileDescriptor(devicepipe);
-console.log(`getFileDescriptor = ${ret}`);
+console.info(`getFileDescriptor = ${ret}`);
 let closeRet: number = usbManager.closePipe(devicepipe);
-console.log(`closePipe = ${closeRet}`);
+console.info(`closePipe = ${closeRet}`);
 ```
 
 ## usbManager.controlTransfer<sup>(deprecated)</sup>
 
 controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
 
-Performs control transfer.
+Performs control transfer. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -622,11 +624,11 @@ Performs control transfer.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -655,14 +657,14 @@ let param: PARA = {
 
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-console.log(`controlTransfer = ${ret}`);
+console.info(`controlTransfer = ${ret}`);
 })
 ```
 
@@ -670,7 +672,7 @@ console.log(`controlTransfer = ${ret}`);
 
 usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
 
-Performs control transfer.
+Performs control transfer. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -686,11 +688,11 @@ Performs control transfer.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -721,14 +723,14 @@ let param: PARA = {
 
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
-console.log(`usbControlTransfer = ${ret}`);
+console.info(`usbControlTransfer = ${ret}`);
 })
 ```
 
@@ -736,13 +738,13 @@ console.log(`usbControlTransfer = ${ret}`);
 
 bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
 
-Performs bulk transfer.
+Performs bulk transfer. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > The total amount of data (including **pipe**, **endpoint**, **buffer**, and **timeout**) transferred in bulk must be less than 200 KB.
 >
-> Before calling this API, the call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
+> Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -759,11 +761,11 @@ Performs bulk transfer.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080385: This API is not initialized.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080492: An error occurs when the service data packet is written.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.<br>- -3: The parameter is invalid.<br>- -202: The device is not found.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -782,7 +784,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
@@ -797,7 +799,7 @@ for (let i = 0; i < device.configs[0].interfaces.length; i++) {
     let ret: number = usbManager.claimInterface(devicepipe, interfaces);
     let buffer =  new Uint8Array(128);
     usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
-      console.log(`bulkTransfer = ${ret}`);
+      console.info(`bulkTransfer = ${ret}`);
     });
   }
 }
@@ -825,7 +827,7 @@ Requests a USB data transfer.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -849,7 +851,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 let device: usbManager.USBDevice = devicesList[0];
@@ -907,7 +909,7 @@ Cancels an asynchronous USB data transfer request.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -930,7 +932,7 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 // Call usbManager.claimInterface to claim a USB interface. After that, call usbManager.bulkTransfer to start bulk transfer.
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 let device: usbManager.USBDevice = devicesList[0];
@@ -989,11 +991,11 @@ Closes a USB device pipe.
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 63: The data exceeds the expected maximum volume.<br>- 88080393: An error occurs when the API data packet is read.<br>- 88080482: An invalid value or parameter occurs during the service.<br>- 88080484: No permission.<br>- 88080493: An error occurs when the service data packet is read.<br>- 88080497: An error occurs when the internal logic of the service is executed.<br>- -1: The underlying interface fails to be called.|
+| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 22: The service is abnormal.|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1005,14 +1007,14 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 let ret: number = usbManager.closePipe(devicepipe);
-console.log(`closePipe = ${ret}`);
+console.info(`closePipe = ${ret}`);
 ```
 
 ## usbManager.hasAccessoryRight<sup>14+</sup>
@@ -1029,7 +1031,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Return value**
 
@@ -1039,7 +1041,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1066,7 +1068,7 @@ try {
 
 requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
-Requests the permission to access a USB accessory for a specified application.
+Requests the permission to access a USB accessory for a specified application. This API uses a promise to return the result.
 
 You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to obtain the accessory list and use [USBAccessory](#usbaccessory14) as a parameter.
 
@@ -1076,7 +1078,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Return value**
 
@@ -1086,7 +1088,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1123,11 +1125,11 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1167,7 +1169,7 @@ Obtains the list of USB accessories connected to the host.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1200,7 +1202,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory.|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Return value**
 
@@ -1210,7 +1212,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1254,11 +1256,11 @@ You need to call [usbManager.openAccessory](#usbmanageropenaccessory14) to obtai
 
 | Name         | Type              | Mandatory| Description                                  |
 | --------------- | ------------------ | ---- | -------------------------------------- |
-| accessoryHandle | [USBAccessoryHandle](#usbaccessoryhandle14) | Yes  | USB accessory handle.  |
+| accessoryHandle | [USBAccessoryHandle](#usbaccessoryhandle14) | Yes  | USB accessory handle, which is obtained through [openAccessory](#usbmanageropenaccessory14).|
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1307,7 +1309,7 @@ Resets a USB peripheral.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1349,16 +1351,16 @@ Represents the USB endpoint from which data is sent or received. You can obtain 
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name           | Type                                       | Mandatory           |Description           |
-| ------------- | ------------------------------------------- | ------------- |------------- |
-| address       | number                                      | Yes|Endpoint address.        |
-| attributes    | number                                      | Yes|Endpoint attributes.        |
-| interval      | number                                      | Yes|Endpoint interval.        |
-| maxPacketSize | number                                      | Yes|Maximum size of data packets on the endpoint.   |
-| direction     | [USBRequestDirection](#usbrequestdirection) | Yes|Endpoint direction.       |
-| number        | number                                      | Yes|Endpoint number.         |
-| type          | number                                      | Yes|Endpoint type. For details, see [UsbEndpointTransferType](#usbendpointtransfertype18).        |
-| interfaceId   | number                                      | Yes|Unique ID of the interface to which the endpoint belongs.|
+| Name           | Type                                       | Read-Only | Optional |Description           |
+| ------------- | ------------------------------------------- | ---- | ---- |------------- |
+| address       | number                                      | No  | No|Endpoint address.        |
+| attributes    | number                                      | No  | No|Endpoint attributes.        |
+| interval      | number                                      | No  | No|Endpoint interval.        |
+| maxPacketSize | number                                      | No  | No|Maximum size of data packets on the endpoint.   |
+| direction     | [USBRequestDirection](#usbrequestdirection) | No  | Yes|Endpoint direction.       |
+| number        | number                                      | No  | Yes|Endpoint number.         |
+| type          | number                                      | No  | Yes|Endpoint type. For details, see [UsbEndpointTransferType](#usbendpointtransfertype18).        |
+| interfaceId   | number                                      | No  | Yes|Unique ID of the interface to which the endpoint belongs.|
 
 ## USBInterface
 
@@ -1366,15 +1368,15 @@ Represents a USB interface. One [USBConfiguration](#usbconfiguration) object can
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name              | Type                                    | Mandatory           |Description                   |
-| ---------------- | ---------------------------------------- | ------------- |--------------------- |
-| id               | number                                   | Yes|Unique ID of the USB interface.             |
-| protocol         | number                                   | Yes|Interface protocol.               |
-| clazz            | number                                   | Yes|Device type.                |
-| subClass         | number                                   | Yes|Device subclass.                |
-| alternateSetting | number                                   | Yes|Settings for alternating between descriptors of the same USB interface. The value size indicates the number of optional modes. The value 0 indicates that no optional mode is supported.|
-| name             | string                                   | Yes|Interface name.                |
-| endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | Yes|Endpoints that belong to the USB interface.          |
+| Name              | Type                                    | Read-Only | Optional           |Description                   |
+| ---------------- | ---------------------------------------- | ---- | ------------- |--------------------- |
+| id               | number                                   | No| No|Unique ID of the USB interface.             |
+| protocol         | number                                   | No| No|Interface protocol.               |
+| clazz            | number                                   | No| No|Device type.                |
+| subClass         | number                                   | No| No|Device subclass.                |
+| alternateSetting | number                                   | No| No|Settings for alternating between descriptors of the same USB interface. The value size indicates the number of optional modes. The value 0 indicates that no optional mode is supported.|
+| name             | string                                   | No| No|Interface name.                |
+| endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | No| No|Endpoints that belong to the USB interface.          |
 
 ## USBConfiguration
 
@@ -1382,15 +1384,15 @@ Represents the USB configuration. One [USBDevice](#usbdevice) can contain multip
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name            | Type                                            | Mandatory |Description             |
-| -------------- | ------------------------------------------------ | --------------- |--------------- |
-| id             | number                                           | Yes|Unique ID of the USB configuration.       |
-| attributes     | number                                           | Yes|Configuration attributes.         |
-| maxPower       | number                                           | Yes|Maximum power consumption, in mA.   |
-| name           | string                                           | Yes|Configuration name, which can be left empty.    |
-| isRemoteWakeup | boolean                                          | Yes|Support for remote wakeup.|
-| isSelfPowered  | boolean                                          | Yes| Support for independent power supplies.|
-| interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | Yes|Supported interface attributes.     |
+| Name            | Type                                            | Read-Only | Optional |Description             |
+| -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
+| id             | number                                           | No| No|Unique ID of the USB configuration.       |
+| attributes     | number                                           | No| No|Configuration attributes.         |
+| maxPower       | number                                           | No| No|Maximum power consumption, in mA.   |
+| name           | string                                           | No| No|Configuration name, which can be left empty.    |
+| isRemoteWakeup | boolean                                          | No| No|Support for remote wakeup.|
+| isSelfPowered  | boolean                                          | No| No| Support for independent power supplies.|
+| interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | No| No|Supported interface attributes.     |
 
 ## USBDevice
 
@@ -1398,21 +1400,21 @@ Represents the USB device information.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name              | Type                                | Mandatory        |Description        |
-| ---------------- | ------------------------------------ | ---------- |---------- |
-| busNum           | number                               | Yes|Bus address.     |
-| devAddress       | number                               | Yes|Device address.     |
-| serial           | string                               | Yes|Sequence number.      |
-| name             | string                               | Yes|Device name.     |
-| manufacturerName | string                               | Yes| Device manufacturer.     |
-| productName      | string                               | Yes|Product name.     |
-| version          | string                               | Yes|Version number.       |
-| vendorId         | number                               | Yes|Vendor ID.     |
-| productId        | number                               | Yes|Product ID.     |
-| clazz            | number                               | Yes|Device class.      |
-| subClass         | number                               | Yes|Device subclass.     |
-| protocol         | number                               | Yes|Device protocol code.    |
-| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | Yes|Device configuration descriptor information.|
+| Name              | Type                                | Read-Only | Optional        |Description        |
+| ---------------- | ------------------------------------ | ---- | ---------- |---------- |
+| busNum           | number                               | No| Yes|Bus address.     |
+| devAddress       | number                               | No| Yes|Device address.     |
+| serial           | string                               | No| Yes|Sequence number.      |
+| name             | string                               | No| Yes|Device name.     |
+| manufacturerName | string                               | No| Yes| Device manufacturer.     |
+| productName      | string                               | No| Yes|Product name.     |
+| version          | string                               | No| Yes|Version number.       |
+| vendorId         | number                               | No| Yes|Vendor ID.     |
+| productId        | number                               | No| Yes|Product ID.     |
+| clazz            | number                               | No| Yes|Device class.      |
+| subClass         | number                               | No| Yes|Device subclass.     |
+| protocol         | number                               | No| Yes|Device protocol code.    |
+| configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | No| Yes|Device configuration descriptor information.|
 
 ## USBDevicePipe
 
@@ -1420,10 +1422,10 @@ Represents a USB device pipe, which is used to determine a USB device.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name        | Type  | Mandatory   |Description   |
-| ---------- | ------ | ----- |----- |
-| busNum     | number |Yes| Bus address.|
-| devAddress | number |Yes| Device address.|
+| Name        | Type  | Read-Only | Optional   |Description   |
+| ---------- | ------ | ---- | ----- |----- |
+| busNum     | number | No|No| Bus address.|
+| devAddress | number | No|No| Device address.|
 
 ## USBControlParams<sup>(deprecated)</sup>
 
@@ -1435,14 +1437,14 @@ Represents control transfer parameters.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name     | Type                                           | Mandatory              |Description              |
-| ------- | ----------------------------------------------- | ---------------- |---------------- |
-| request | number                                          | Yes  |Request type.           |
-| target  | [USBRequestTargetType](#usbrequesttargettype)   | Yes  |Request target type.         |
-| reqType | [USBControlRequestType](#usbcontrolrequesttype) | Yes  |Control request type.         |
-| value   | number                                          | Yes  |Request parameter.           |
-| index   | number                                          | Yes  |Index of the request parameter.|
-| data    | Uint8Array                                      | Yes  |Buffer for writing or reading data.    |
+| Name     | Type                                           | Read-Only | Optional              |Description              |
+| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
+| request | number                                          | No| No  |Request type.           |
+| target  | [USBRequestTargetType](#usbrequesttargettype)   | No| No  |Request target type.         |
+| reqType | [USBControlRequestType](#usbcontrolrequesttype) | No| No  |Control request type.         |
+| value   | number                                          | No| No  |Request parameter.           |
+| index   | number                                          | No| No  |Index of the request parameter.|
+| data    | Uint8Array                                      | No| No  |Buffer for writing or reading data.    |
 
 ## USBDeviceRequestParams<sup>12+</sup>
 
@@ -1450,14 +1452,14 @@ Represents control transfer parameters.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name     | Type                                           | Mandatory              |Description              |
-| ------- | ----------------------------------------------- | ---------------- |---------------- |
-| bmRequestType | number                                    | Yes  |Control request type.           |
-| bRequest  | number                                        | Yes  |Request type.         |
-| wValue | number                                           | Yes  |Request parameter.         |
-| wIndex   | number                                         | Yes  |Index of the request parameter.           |
-| wLength   | number                                        | Yes  |Length of the requested data.|
-| data    | Uint8Array                                      | Yes  |Buffer for writing or reading data.    |
+| Name     | Type                                           | Read-Only| Optional              |Description              |
+| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
+| bmRequestType | number                                    | No| No  |Control request type.           |
+| bRequest  | number                                        | No| No  |Request type.         |
+| wValue | number                                           | No| No  |Request parameter.         |
+| wIndex   | number                                         | No| No  |Index of the request parameter.           |
+| wLength   | number                                        | No| No  |Length of the requested data.|
+| data    | Uint8Array                                      | No| No  |Buffer for writing or reading data.    |
 
 ## USBRequestTargetType
 
@@ -1501,13 +1503,13 @@ Describes the USB accessory information.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name        | Type  | Mandatory| Description            |
-| ------------ | ------ | ---- | ---------------- |
-| manufacturer | string | Yes  | Manufacturer of an accessory.|
-| product      | string | Yes  | Product type of an accessory.|
-| description  | string | Yes  | Description of an accessory.    |
-| version      | string | Yes  | Version of an accessory.    |
-| serialNumber | string | Yes  | SN of an accessory.    |
+| Name        | Type  | Read-Only| Optional| Description            |
+| ------------ | ------ | ---- | ---- | ---------------- |
+| manufacturer | string | No| No  | Manufacturer of an accessory.|
+| product      | string | No| No  | Product type of an accessory.|
+| description  | string | No| No  | Description of an accessory.    |
+| version      | string | No| No  | Version of an accessory.    |
+| serialNumber | string | No| No  | SN of an accessory.    |
 
 ## USBAccessoryHandle<sup>14+</sup>
 
@@ -1515,9 +1517,9 @@ Describes the USB accessory handle.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name       | Type  | Mandatory| Description                                     |
-| ----------- | ------ | ---- | ----------------------------------------- |
-| accessoryFd | number | Yes  | Accessory file descriptor. A valid **accessoryFd** is a positive integer.|
+| Name       | Type  | Read-Only| Optional| Description                                     |
+| ----------- | ------ | ---- | ---- | ----------------------------------------- |
+| accessoryFd | number | No| No  | Accessory file descriptor. A valid **accessoryFd** is a positive integer.|
 
 ## UsbDataTransferParams<sup>18+</sup>
 
@@ -1525,18 +1527,18 @@ As a USB data transfer interface, it is required for a client to initiate a tran
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name        | Type  | Mandatory   |Description   |
-| ---------- | ------ | ----- |----- |
-| devPipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
-| flags | [UsbTransferFlags](#usbtransferflags18) |Yes| USB transfer flag.|
-| endpoint | number | Yes| Endpoint address, which is a positive integer.|
-| type | [UsbEndpointTransferType](#usbendpointtransfertype18) |Yes| Transfer type.|
-| timeout | number | Yes| Timeout duration, in ms.|
-| length | number |Yes| Length of the data buffer, in bytes. The value must be a non-negative number (expected length).|
-| callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> |Yes| Information returned by the callback.|
-| userData | Uint8Array | Yes| User data.|
-| buffer | Uint8Array | Yes| Buffer, which is used to store data for read or write requests.|
-| isoPacketCount | number | Yes| Number of data packets during real-time transfer, used only for I/Os with real-time transfer endpoints. The value must be a non-negative number.|
+| Name        | Type  | Read-Only | Optional   |Description   |
+| ---------- | ------ | ---- | ----- |----- |
+| devPipe | [USBDevicePipe](#usbdevicepipe) | No| No| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
+| flags | [UsbTransferFlags](#usbtransferflags18) | No|No| USB transfer flag.|
+| endpoint | number | No| No| Endpoint address, which is a positive integer.|
+| type | [UsbEndpointTransferType](#usbendpointtransfertype18) | No|No| Transfer type.|
+| timeout | number | No| No| Timeout duration, in ms.|
+| length | number | No|No| Length of the data buffer, in bytes. The value must be a non-negative number (expected length).|
+| callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | No|No| Information returned by the callback.|
+| userData | Uint8Array | No| No| User data.|
+| buffer | Uint8Array | No| No| Buffer, which is used to store data for read or write requests.|
+| isoPacketCount | number | No| No| Number of data packets during real-time transfer, used only for I/Os with real-time transfer endpoints. The value must be a non-negative number.|
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1569,11 +1571,11 @@ Transfers USB data packets in an asynchronous manner.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name       | Type| Mandatory  | Description   |
-| ---------- | ------ | ----- | ------ |
-| actualLength | number |  Yes|Actual length of the read or written data, in bytes.|
-| status | [UsbTransferStatus](#usbtransferstatus18) | Yes|Status after reading or writing is complete.|
-| isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | Yes|Packet information transferred in real time.|
+| Name       | Type| Read-Only| Optional  | Description   |
+| ---------- | ------ | ---- | ----- | ------ |
+| actualLength | number | No|  No|Actual length of the read or written data, in bytes.|
+| status | [UsbTransferStatus](#usbtransferstatus18) | No| No|Status after reading or writing is complete.|
+| isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | No| No|Packet information transferred in real time.|
 
 ## UsbTransferStatus<sup>18+</sup>
 
@@ -1597,8 +1599,8 @@ Describes packet information returned in real time by the transfer callback.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name        | Type| Mandatory| Description   |
-| ---------- | ------ | ----- | ------ |
-| length | number | Yes|Expected length of the read or written data, in bytes.|
-| actualLength | number| Yes|Actual length of the read or written data, in bytes.|
-| status | [UsbTransferStatus](#usbtransferstatus18) | Yes|Status returned by callback.|
+| Name        | Type| Read-Only | Optional| Description   |
+| ---------- | ------ | ----| ----- | ------ |
+| length | number | No| No|Expected length of the read or written data, in bytes.|
+| actualLength | number|No| No|Actual length of the read or written data, in bytes.|
+| status | [UsbTransferStatus](#usbtransferstatus18) | No| No|Status returned by callback.|

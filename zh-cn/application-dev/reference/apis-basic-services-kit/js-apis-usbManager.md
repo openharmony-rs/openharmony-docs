@@ -69,7 +69,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-console.log(`devicesList = ${devicesList}`);
+console.info(`devicesList = ${devicesList}`);
 /*
 devicesList 返回的数据结构,此处提供一个简单的示例，如下
 [
@@ -159,16 +159,18 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function connectDevice() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-console.log(`devicepipe = ${devicepipe}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  console.info(`devicepipe = ${devicepipe}`);
+}
 ```
 
 ## usbManager.hasRight
@@ -205,16 +207,19 @@ hasRight(deviceName: string): boolean
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function hasRight(): boolean {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return false;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let right: boolean = usbManager.hasRight(device.name);
-console.log(`${right}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let right: boolean = usbManager.hasRight(device.name);
+  console.info(`${right}`);
+  return right;
+}
 ```
 
 ## usbManager.requestRight
@@ -249,16 +254,18 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  return;
-  console.log(`device list is empty`);
-}
+function requestRight() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name).then(ret => {
-  console.log(`requestRight = ${ret}`);
-});
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name).then(ret => {
+    console.info(`requestRight = ${ret}`);
+  });
+}
 ```
 
 ## usbManager.removeRight
@@ -293,15 +300,19 @@ removeRight(deviceName: string): boolean
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function removeRight(): boolean {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return false;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-if (usbManager.removeRight(device.name)) {
-  console.log(`Succeed in removing right`);
+  let device: usbManager.USBDevice = devicesList[0];
+  if (usbManager.removeRight(device.name)) {
+    console.info(`Succeed in removing right`);
+    return true;
+  }
+  return false;
 }
 ```
 
@@ -330,7 +341,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。|
+| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -344,18 +355,20 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function claimInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-console.log(`claimInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
+  console.info(`claimInterface = ${ret}`);
+}
 ```
 
 ## usbManager.releaseInterface
@@ -381,7 +394,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080381：无效的接口操作。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。|
+| number | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -395,19 +408,21 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function releaseInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-ret = usbManager.releaseInterface(devicepipe, interfaces);
-console.log(`releaseInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+}
 ```
 
 ## usbManager.setConfiguration
@@ -429,7 +444,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -17：I/O失败。|
+| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -443,18 +458,20 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function setConfiguration() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let config: usbManager.USBConfiguration = device.configs[0];
-let ret: number= usbManager.setConfiguration(devicepipe, config);
-console.log(`setConfiguration = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let config: usbManager.USBConfiguration = device.configs[0];
+  let ret: number= usbManager.setConfiguration(devicepipe, config);
+  console.info(`setConfiguration = ${ret}`);
+}
 ```
 
 ## usbManager.setInterface
@@ -482,7 +499,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。|
+| number | 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常 。|
 
 **错误码：**
 
@@ -496,19 +513,21 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function setInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-ret = usbManager.setInterface(devicepipe, interfaces);
-console.log(`setInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  ret = usbManager.setInterface(devicepipe, interfaces);
+  console.info(`setInterface = ${ret}`);
+}
 ```
 
 ## usbManager.getRawDescriptor
@@ -543,15 +562,17 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function getRawDescriptor() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+}
 ```
 
 ## usbManager.getFileDescriptor
@@ -572,7 +593,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符；失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。|
+| number | 返回设备对应的文件描述符，失败返回负数。|
 
 **错误码：**
 
@@ -586,18 +607,20 @@ getFileDescriptor(pipe: USBDevicePipe): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function getFileDescriptor() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: number = usbManager.getFileDescriptor(devicepipe);
-console.log(`getFileDescriptor = ${ret}`);
-let closeRet: number = usbManager.closePipe(devicepipe);
-console.log(`closePipe = ${closeRet}`);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: number = usbManager.getFileDescriptor(devicepipe);
+  console.info(`getFileDescriptor = ${ret}`);
+  let closeRet: number = usbManager.closePipe(devicepipe);
+  console.info(`closePipe = ${closeRet}`);
+}
 ```
 
 ## usbManager.controlTransfer<sup>(deprecated)</sup>
@@ -624,7 +647,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -657,14 +680,14 @@ let param: PARA = {
 
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 
 usbManager.requestRight(devicesList[0].name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
 usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-console.log(`controlTransfer = ${ret}`);
+console.info(`controlTransfer = ${ret}`);
 })
 ```
 
@@ -688,7 +711,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -721,17 +744,19 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
-console.log(`usbControlTransfer = ${ret}`);
-})
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`usbControlTransfer = ${ret}`);
+  })
+}
 ```
 
 ## usbManager.bulkTransfer
@@ -761,7 +786,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080385：接口未初始化。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080492：写入服务数据包过程发生错误。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。<br>- -3：参数无效。<br>- -202：设备未找到。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -782,25 +807,27 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function bulkTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
 
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-for (let i = 0; i < device.configs[0].interfaces.length; i++) {
-  if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
-    let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
-    let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
-    let ret: number = usbManager.claimInterface(devicepipe, interfaces);
-    let buffer =  new Uint8Array(128);
-    usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
-      console.log(`bulkTransfer = ${ret}`);
-    });
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  for (let i = 0; i < device.configs[0].interfaces.length; i++) {
+    if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
+      let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
+      let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+      let buffer =  new Uint8Array(128);
+      usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
+        console.info(`bulkTransfer = ${ret}`);
+      });
+    }
   }
 }
 ```
@@ -851,7 +878,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 let device: usbManager.USBDevice = devicesList[0];
@@ -932,7 +959,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
+  console.info(`device list is empty`);
   return;
 }
 let device: usbManager.USBDevice = devicesList[0];
@@ -991,7 +1018,7 @@ closePipe(pipe: USBDevicePipe): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 63：数据量超过预期的最大值。<br>- 88080393：读取接口数据包过程发生错误。<br>- 88080482：服务过程中遇到无效值或参数。<br>- 88080484：没有权限。<br>- 88080493：读取服务数据包过程发生错误。<br>- 88080497：服务内部逻辑执行发生错误。<br>- -1：调用底层接口失败。 |
+| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 22：服务异常。 |
 
 **错误码：**
 
@@ -1005,16 +1032,18 @@ closePipe(pipe: USBDevicePipe): number
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.log(`device list is empty`);
-  return;
-}
+function closePipe() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-let ret: number = usbManager.closePipe(devicepipe);
-console.log(`closePipe = ${ret}`);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  let ret: number = usbManager.closePipe(devicepipe);
+  console.info(`closePipe = ${ret}`);
+}
 ```
 
 ## usbManager.hasAccessoryRight<sup>14+</sup>
@@ -1323,19 +1352,21 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.error(`device list is empty`);
-  return;
-}
+function resetUsbDevice() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.error(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-try {
-  let ret: boolean = usbManager.resetUsbDevice(devicepipe);
-  console.info(`resetUsbDevice  = ${ret}`);
-} catch (err) {
-  console.error(`resetUsbDevice failed: ` + err);
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  try {
+    let ret: boolean = usbManager.resetUsbDevice(devicepipe);
+    console.info(`resetUsbDevice  = ${ret}`);
+  } catch (err) {
+    console.error(`resetUsbDevice failed: ` + err);
+  }
 }
 ```
 

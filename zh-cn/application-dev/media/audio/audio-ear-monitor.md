@@ -54,7 +54,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ### 定义公共缓存和录制、播放函数
 
 ```cpp
-// 创建一块公共缓存BUFFER，用于及时写入录制录制和读取播放数据
+// 创建一块公共缓存buffer，用于写入录制数据和读取播放数据。
 
 // 自定义读入录制数据函数。
     int32_t MyOnReadData(
@@ -63,7 +63,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
         void* buffer,
         int32_t length)
     {
-        // 从buffer中取出length长度的录音数据，放在创建好的公共缓存BUFFER中，用于供renderer进行读取
+        // 从buffer中取出length长度的录音数据，放在创建好的公共缓存buffer中，用于供renderer进行读取。
         return 0;
     }
 
@@ -74,7 +74,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
         void* buffer,
         int32_t length)
     {
-        // 从公共缓存BUFFER中读取数据，并按length长度写入buffer。
+        // 从公共缓存buffer中读取数据，并按length长度写入buffer。
         return 0;
     }
 ```

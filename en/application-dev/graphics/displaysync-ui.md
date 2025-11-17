@@ -1,10 +1,16 @@
 # Requesting Frame Rates for UI Components
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 If you want to draw and update a UI component at an independent frame rate, you can call the APIs provided by the DisplaySync module. For details, see [@ohos.graphics.displaySync (Variable Frame Rate)](../reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md).
 
 ## How to Develop
 
-This section describes how to use different frame rates to change the font size of the **Text** component. This operation simulates the effect of different frame rates on the UI components.
+This section describes how to use different frame rates to change the font size of the **\<Text>** component. This operation simulates the effect of different frame rates on the UI components.
 
 1. Import the DisplaySync module.
 
@@ -24,7 +30,7 @@ This section describes how to use different frame rates to change the font size 
    }
    ```
 
-3. Define two **Text** components.
+3. Define two **\<Text>** components.
 
    ```ts
    @State drawFirstSize: number = 25;
@@ -104,7 +110,7 @@ This section describes how to use different frame rates to change the font size 
 
    > **NOTE**
    >
-   > After **start()** is called, the **stop()** API must be performed and the **DisplaySync** instance must be set to null in the **aboutToDisappear** function to avoid memory leakage.
+   > After start() is called, the stop() API must be performed and the DisplaySync instance must be set to null in the aboutToDisappear function to avoid memory leakage.
    ```ts
    aboutToDisappear() {
      if (this.backDisplaySyncSlow) {
@@ -294,3 +300,9 @@ struct Index {
   }
 }
 ```
+
+<!--RP1-->
+## Samples
+
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySync)
+<!--RP1End-->

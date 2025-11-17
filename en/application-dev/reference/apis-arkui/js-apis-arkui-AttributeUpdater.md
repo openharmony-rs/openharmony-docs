@@ -199,22 +199,15 @@ struct updaterDemo2 {
 ```
 ![attributeUpdater2](figures/attribute-updater2.gif)
 
-### updateConstructorParams
-updateConstructorParams: C
-
-Represents construction parameters used for updating component attributes.  
-
-**C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component.
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
-
-| Type            | Description                                                        |
-| -------------------- | ------------------------------------------------------------ |
-| C   |**C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| Modifies component constructor parameters. **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. |
 
 **Example**
 

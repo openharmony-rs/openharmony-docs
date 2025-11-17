@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```
+typedef struct OH_CryptoEcPoint OH_CryptoEcPoint
+```
+
 ## 概述
 
 定义EC点结构体。

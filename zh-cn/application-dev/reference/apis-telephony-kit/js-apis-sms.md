@@ -451,19 +451,19 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-|         名称             |                  类型                   | 必填 | 说明                                                         |
-| ------------------------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| hasReplyPath             | boolean                                 |  是  | 收到的短信是否包含“TP-Reply-Path”，默认为false。<br/>-true：是<br/>-false：否<br/>“TP-Reply-Path”：设备根据发送SMS消息的短消息中心进行回复。  |
-| isReplaceMessage         | boolean                                 |  是  | 收到的短信是否为“替换短信”，默认为false。<br/>-true：是<br/>-false：否<br/>“替换短信”有关详细信息，参见 [“3GPP TS 23.040 9.2.3.9”](https://www.3gpp.org/ftp/specs/archive/23_series/23.040)。 |
-| isSmsStatusReportMessage | boolean                                 |  是  | 当前消息是否为“短信状态报告”，默认为false。<br/>-true：是<br/>-false：否<br/>“短信状态报告”是一种特定格式的短信，被用来从Service Center到Mobile Station传送状态报告。|
-| messageClass             | [ShortMessageClass](#shortmessageclass) |  是  | 短信类型。                                                   |
-| pdu                      | Array&lt;number&gt;                     |  是  | SMS消息中的协议数据单元 (PDU)。                            |
-| protocolId               | number                                  |  是  | 发送短信时使用的协议标识。                                   |
-| scAddress                | string                                  |  是  | 短消息服务中心(SMSC)地址。                                 |
-| scTimestamp              | number                                  |  是  | SMSC时间戳。                                                 |
-| status                   | number                                  |  是  | SMS-STATUS-REPORT消息中的短信状态指示短信服务中心(SMSC)发送的短信状态。 |
-| visibleMessageBody       | string                                  |  是  | 短信正文。                                                   |
-| visibleRawAddress        | string                                  |  是  | 发送者地址。                                                 |
+|         名称             |                  类型                   | 只读  | 可选 | 说明                                                         |
+| ------------------------ | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| hasReplyPath             | boolean                                 |  否  |  否  | 收到的短信是否包含“TP-Reply-Path”，默认为false。<br/>-true：是<br/>-false：否<br/>“TP-Reply-Path”：设备根据发送SMS消息的短消息中心进行回复。  |
+| isReplaceMessage         | boolean                                 |  否  |  否  | 收到的短信是否为“替换短信”，默认为false。<br/>-true：是<br/>-false：否<br/>“替换短信”有关详细信息，参见 [“3GPP TS 23.040 9.2.3.9”](https://www.3gpp.org/ftp/specs/archive/23_series/23.040)。 |
+| isSmsStatusReportMessage | boolean                                 |  否  |  否  | 当前消息是否为“短信状态报告”，默认为false。<br/>-true：是<br/>-false：否<br/>“短信状态报告”是一种特定格式的短信，被用来从Service Center到Mobile Station传送状态报告。|
+| messageClass             | [ShortMessageClass](#shortmessageclass) |  否  |  否  | 短信类型。                                                   |
+| pdu                      | Array&lt;number&gt;                     |  否  |  否  | SMS消息中的协议数据单元 (PDU)。                            |
+| protocolId               | number                                  |  否  |  否  | 发送短信时使用的协议标识。                                   |
+| scAddress                | string                                  |  否  |  否  | 短消息服务中心(SMSC)地址。                                 |
+| scTimestamp              | number                                  |  否  |  否  | SMSC时间戳。                                                 |
+| status                   | number                                  |  否  |  否  | SMS-STATUS-REPORT消息中的短信状态指示短信服务中心(SMSC)发送的短信状态。 |
+| visibleMessageBody       | string                                  |  否  |  否  | 短信正文。                                                   |
+| visibleRawAddress        | string                                  |  否  |  否  | 发送者地址。                                                 |
 
 
 ## ShortMessageClass
@@ -487,15 +487,15 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-|       名称       | 类型                                                         | 必填 | 说明                                                         |
-| ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId           | number                                                       | 是   | 用于发送短信的SIM卡槽ID：<br/>- 0：卡槽1。<br/>- 1：卡槽2。      |
-| destinationHost  | string                                                       | 是   | 短信的发送地址。                                             |
-| content          | string \| Array&lt;number&gt;                                | 是   | 如果内容是字符串，则这是一条文本短信。如果内容是字节数组，则这是一条数据短信。 |
-| serviceCenter    | string                                                       | 否   | 短信中心地址。默认使用SIM卡中的短信中心地址。                |
-| destinationPort  | number                                                       | 否   | 如果发送数据消息，destinationPort 是必需的。否则是可选的。   |
-| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; | 否   | 短信发送结果回调，返回短信发送的结果，参考[ISendShortMessageCallback](#isendshortmessagecallback)。发送数据短信时，此项必填。|
-| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; | 否   | 短信送达结果回调，返回短信递送报告，参考[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)。发送数据短信时，此项必填。|
+|       名称       | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| slotId           | number                                                       |  否  |  否  | 用于发送短信的SIM卡槽ID：<br/>- 0：卡槽1。<br/>- 1：卡槽2。      |
+| destinationHost  | string                                                       |  否  |  否  | 短信的发送地址。                                             |
+| content          | string \| Array&lt;number&gt;                                |  否  |  否  | 如果内容是字符串，则这是一条文本短信。如果内容是字节数组，则这是一条数据短信。 |
+| serviceCenter    | string                                                       |  否  |  是  | 短信中心地址。默认使用SIM卡中的短信中心地址。                |
+| destinationPort  | number                                                       |  否  |  是  | 如果发送数据消息，destinationPort 是必需的。否则是可选的。   |
+| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; |  否  |  是  | 短信发送结果回调，返回短信发送的结果，参考[ISendShortMessageCallback](#isendshortmessagecallback)。发送数据短信时，此项必填。|
+| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; |  否  |  是  | 短信送达结果回调，返回短信递送报告，参考[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)。发送数据短信时，此项必填。|
 
 
 
@@ -505,11 +505,11 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-|   名称     | 类型                            | 必填 |                                               说明                                         |
-| ---------- | ------------------------------- | ---- | ----------------------------------------------------------------------------------------- |
-| isLastPart | boolean                         | 是   | 指定这是否是长短信的最后一部分。默认为false。<br/>-true：是<br/>-false：否<br/> |
-| result     | [SendSmsResult](#sendsmsresult) | 是   | 短信发送结果。                                                                             |
-| url        | string                          | 是   | 存储发送短信的URI。                                                                        |
+|   名称     | 类型                            | 只读 | 可选 |                                               说明                                         |
+| ---------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------- |
+| isLastPart | boolean                         | 否   | 否   | 指定这是否是长短信的最后一部分。默认为false。<br/>-true：是<br/>-false：否<br/> |
+| result     | [SendSmsResult](#sendsmsresult) | 否   | 否   | 短信发送结果。                                                                             |
+| url        | string                          | 否   | 否   | 存储发送短信的URI。                                                                        |
 
 
 ## IDeliveryShortMessageCallback
@@ -518,9 +518,9 @@ promise.then((data: number) => {
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
-| 名称 | 类型                | 必填 | 说明           |
-| ---- | ------------------- | ---- | -------------- |
-| pdu  | Array&lt;number&gt; | 是   | 短信送达报告。 |
+| 名称 | 类型                | 只读 | 可选 | 说明           |
+| ---- | ------------------- | ---- | ---- | -------------- |
+| pdu  | Array&lt;number&gt; | 否   | 否   | 短信送达报告。 |
 
 
 ## SendSmsResult

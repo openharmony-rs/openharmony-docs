@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides the focus management functionality for you to effectively manage the focus and defocus of the **Web** component. In addition, you can use the W3C standards-compliant API on the HTML5 side to manage the focus and defocus of the only interactive element on the Web page.
 
@@ -77,11 +77,15 @@ Passive focus traversal occurs in the following scenarios:
 1. Use the **requestFocus** API to allow the **Web** component to proactively obtain the focus.
 2. The **onFocus** and **onBlur** APIs are usually used in pairs to listen for the focus changes of the component.
 
-```ts
-// xxx.ets
+<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_WebFocusManagement]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'WebFocusManagement_';
 @Entry
 @Component
 struct WebComponent {
@@ -98,7 +102,7 @@ struct WebComponent {
             try {
               this.controller.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           });
         Button('web2 requestFocus')
@@ -106,7 +110,7 @@ struct WebComponent {
             try {
               this.controller2.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           });
       }
@@ -120,7 +124,7 @@ struct WebComponent {
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor)
-        .height("45%")
+        .height('45%')
 
       Web({ src: 'www.example.com', controller: this.controller2 })
         .onFocus(() => {
@@ -132,7 +136,7 @@ struct WebComponent {
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor2)
-        .height("45%")
+        .height('45%')
     }
   }
 }
@@ -163,10 +167,11 @@ onblur = (event) => {};
 In a document or dialog box, only one element can have the **autofocus** attribute. If you apply this attribute to multiple elements, the first element will be focused.
 
 **Example**
-```ts
-// xxx.ets
+
+<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -175,13 +180,14 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("test.html"), controller: this.controller })
+      Web({ src: $rawfile('test.html'), controller: this.controller })
     }
   }
 }
 ```
 
-```js
+HTML file to be loaded:
+```html
 // test.html
 <!DOCTYPE html>
 <html>

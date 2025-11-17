@@ -1,4 +1,10 @@
 # Supporting Accessibility
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhanghangkai10241-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -16,8 +22,11 @@ The **accessibilityGroup** attribute sets whether to enable accessibility groupi
 
 Here is an example using the **Column** component to enable accessibility grouping:
 
-```ts
+<!-- @[accessibility_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) --> 
+
+``` TypeScript
 Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
 ```
@@ -36,11 +45,14 @@ The **accessibilityLevel** attribute indicates the accessibility level of a comp
 
 Here is an example using the **Column** component to set its accessibility level to **"yes"**:
 
-```ts
+<!-- @[accessibility_level_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
 Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
-.accessibilityLevel("yes")
+  .accessibilityLevel('yes')
 ```
 
 ## Setting the Accessibility Text
@@ -51,12 +63,16 @@ This attribute supports strings or resource references.
 
 Here is an example using the **Column** component to set its accessibility text to **"Group"**:
 
-```ts
+<!-- @[accessibility_text_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
 Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
-.accessibilityLevel("yes")
-.accessibilityText("Group")
+  .accessibilityLevel('yes')
+  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
 ```
 
 ## Setting Accessibility Description
@@ -65,38 +81,46 @@ The **accessibilityDescription** attribute provides a more detailed description 
 
 Here is an example using the **Column** component to set its accessibility description:
 
-```ts
+<!-- @[accessibility_description_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
 Column() {
+  Text('HelloWorld')
 }
 .accessibilityGroup(true)
-.accessibilityLevel("yes")
-.accessibilityText("Group")
-.accessibilityDescription("The Column component can be selected, and the announced content is 'Group'")
+  .accessibilityLevel('yes')
+  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+  // Replace 'app.string.UniversalAttributesAccessibility_text8' with the text resource file you use.
+  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
 ```
 
 ## Setting Accessibility Virtual Nodes
 
 The **accessibilityVirtualNode** attribute adds virtual accessibility nodes to self-drawn components. Assistive tools read information from these nodes instead of the actual displayed content.
 
-```ts
+<!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct VirtualNodeExample {
   @Builder customAccessibilityNode() {
-    Text("Text 2")
+    // Replace 'app.string.UniversalAttributesAccessibility_text6' with the text resource file you use.
+    Text($r('app.string.UniversalAttributesAccessibility_text6'))
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
   }
-
   build() {
     Column() {
-      Text("Text 1")
+      // Replace 'app.string.UniversalAttributesAccessibility_text5' with the text resource file you use.
+      Text($r('app.string.UniversalAttributesAccessibility_text5'))
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
     }
     .accessibilityGroup(true)
-    .accessibilityLevel("yes")
-    .accessibilityVirtualNode(this.customAccessibilityNode)
+      .accessibilityLevel('yes')
+      .accessibilityVirtualNode(this.customAccessibilityNode)
   }
 }
 ```
@@ -117,14 +141,19 @@ The **accessibilityChecked** attribute indicates whether a component is checked 
 
 Here is an example using the **Column** component to set it as checked when multi-select is supported:
 
-```ts
+<!-- @[accessibility_checked_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
 Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
-.accessibilityLevel("yes")
-.accessibilityText("Group")
-.accessibilityDescription("The Column component can be selected, and the announced content is 'Group'")
-.accessibilityChecked(true)
+  .accessibilityLevel('yes')
+  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+  // Replace 'app.string.UniversalAttributesAccessibility_text8' with the text resource file you use.
+  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilityChecked(true)
 ```
 
 ### Setting Selection State for Single-Select Scenarios
@@ -139,14 +168,19 @@ The **accessibilitySelected** attribute indicates whether a component is selecte
 
 Here is an example using the **Column** component to let the system determine its selection state when single-select is supported:
 
-```ts
+<!-- @[accessibility_selected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
 Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
 }
 .accessibilityGroup(true)
-.accessibilityLevel("yes")
-.accessibilityText("Group")
-.accessibilityDescription("The Column component can be selected, and the announced content is 'Group'")
-.accessibilitySelected(undefined)
+  .accessibilityLevel('yes')
+  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+  // Replace 'app.string.UniversalAttributesAccessibility_text8' with the text resource file you use.
+  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilitySelected(undefined)
 ```
 
 ### Key Differences Between accessibilityChecked and accessibilitySelected
@@ -180,39 +214,48 @@ This example demonstrates how to use **accessibilityText** and **accessibilityDe
 
 If a component has both text and accessibility text attributes, only the accessibility text is announced when the component is selected.
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
-  @Builder customAccessibilityNode() {
+``` TypeScript
+@Component
+export struct AccessibilityText {
+  @Builder
+  customAccessibilityNode() {
     Column() {
       Text(`virtual node`)
     }
     .width(10)
-    .height(10)
+      .height(10)
   }
 
   build() {
-    Row() {
-      Column() {
-        Text("Text 1")
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text("Text 2")
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+    // ···
+      Row() {
+        // ···
+        Column() {
+          // Replace $r('app.media.UniversalAttributesAccessibility_text5') with the text resource file you use.
+          Text($r('app.string.UniversalAttributesAccessibility_text5'))
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          // Replace $r('app.media.UniversalAttributesAccessibility_text6') with the text resource file you use.
+          Text($r('app.string.UniversalAttributesAccessibility_text6'))
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+        .width('100%')
+          .accessibilityGroup(true)
+          .accessibilityLevel('yes')
+          // Replace $r('app.media.UniversalAttributesAccessibility_text7') with the text resource file you use.
+          .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+          // Replace $r('app.media.UniversalAttributesAccessibility_text8') with the text resource file you use.
+          .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+          .accessibilityVirtualNode(this.customAccessibilityNode)
+          .accessibilityChecked(true)
+          .accessibilitySelected(undefined)
       }
-      .width('100%')
-      .accessibilityGroup(true)
-      .accessibilityLevel("yes")
-      .accessibilityText("Group")
-      .accessibilityDescription("The Column component can be selected, and the announced content is 'Group'")
-      .accessibilityVirtualNode(this.customAccessibilityNode)
-      .accessibilityChecked(true)
-      .accessibilitySelected(undefined)
+      .height('100%')
     }
-    .height('100%')
+    // ···
   }
 }
 ```

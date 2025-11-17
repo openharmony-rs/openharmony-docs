@@ -24,45 +24,7 @@
 
 - State：状态，指驱动UI更新的数据。通过触发组件的事件方法，改变状态数据。状态数据的改变，引起UI的重新渲染。
 
-在阅读状态管理文档前，开发者需要了解UI范式基本语法。建议提前阅读[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)和[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
-
-## 基本概念
-
-- 状态变量：被状态装饰器装饰的变量，状态变量值的改变会引起UI的渲染更新。示例：@State num: number = 1，其中，@State是状态装饰器，num是状态变量。
-
-- 常规变量：没有被状态装饰器装饰的变量，通常应用于辅助计算。它的改变永远不会引起UI的刷新。下面的示例中increaseBy变量为常规变量。
-
-- 数据源/同步源：状态变量的原始来源，可以同步给不同的状态数据。通常为父组件传给子组件的数据。下面的示例中数据源为count: 1。
-
-- 命名参数机制：父组件通过指定参数传递给子组件的状态变量，为父子传递同步参数的主要手段。示例：CompA({ aProp: this.aProp })。
-
-- 从父组件初始化：父组件使用命名参数机制，将指定参数传递给子组件。子组件初始化的默认值在有父组件传值的情况下，会被覆盖。示例：
-
-  ```ts
-  @Component
-  struct MyComponent {
-    @State count: number = 0;
-    increaseBy: number = 1;
-
-    build() {
-    }
-  }
-
-  @Entry
-  @Component
-  struct Parent {
-    build() {
-      Column() {
-        // 从父组件初始化，覆盖本地定义的默认值
-        MyComponent({ count: 1, increaseBy: 2 })
-      }
-    }
-  }
-  ```
-
-- 初始化子组件：父组件中状态变量可以传递给子组件，初始化子组件对应的状态变量。示例同上。
-
-- 本地初始化：在变量声明的时候赋值，作为变量的默认值。示例：\@State count: number = 0。
+在阅读状态管理文档前，开发者需要了解UI范式基本语法。建议提前阅读[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)、[状态管理术语](./arkts-state-management-glossary.md)和[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
 
 >**说明：**
 >

@@ -1,13 +1,17 @@
 # Video
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **Video** component is used to play a video and control its playback.
 
 >  **NOTE**
 >
->  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
->
->  The **Video** component provides only simple video playback features. For complex video playback control scenarios, consider using the [AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md) APIs in conjunction with the [XComponent](ts-basic-components-xcomponent.md) component.
->
+>  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.<br>
+>  The **Video** component provides only simple video playback features. For complex video playback control scenarios, consider using the [AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md) APIs in conjunction with the [XComponent](ts-basic-components-xcomponent.md) component.<br>
 >  When using **expandSafeArea** to extend into safe areas, the **Video** component's content display area does not support expansion.
 
 ## Required Permissions
@@ -44,11 +48,11 @@ Defines the options of the **Video** component.
 
 | Name             | Type                                                    | Mandatory| Description                                                    |
 | ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| src                 | string \| [Resource](ts-types.md#resource)                            | No  | Video source, which can be either a local or a network video.<br>The Resource type allows cross-package and cross-module access to resource files and is commonly used for accessing local videos.<br>- Only resources in the rawfile folder are supported, which means that you can reference video files only with **$rawfile**.<br>The string type is used for loading local videos and, more frequently, network videos.<br>- Network video URLs are supported.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>**NOTE**<br>The supported video formats are MP4, MKV, and TS.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| currentProgressRate | number \| string \| [PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**.<br>For the string type, numeric string values, for example **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| previewUri          | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource)  | No  | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load online images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the **rawfile** folder are supported, which means that you can reference video files with **\\$rawfile**.<br>- You can use **\\$r** to reference images in system or application resources.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
+| src                 | string \| [Resource](ts-types.md#resource)                            | No  | Video source, which can be either a local or a network video.<br>The Resource type allows cross-package and cross-module access to resource files and is commonly used for accessing local videos.<br>- Only resources in the rawfile folder are supported, which means that you can reference video files only with **$rawfile**.<br>The string type is used for loading local videos and, more frequently, network videos.<br>- Network video URLs are supported.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**NOTE**<br>The supported video formats are MP4, MKV, and TS.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| currentProgressRate | number \| string \| [PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**.<br>For the string type, numeric string values, for example **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| previewUri          | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource)  | No  | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load online images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the rawfile folder are supported, which means that you can reference image files with **$rawfile**.<br>- \$r can be used to reference images in system resources or application resources.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
 | controller          | [VideoController](#videocontroller)                          | No  | Video controller to control the video playback status.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
-| imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions) | No  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18) | No  | Display options for the first frame of the video.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## PlaybackSpeed<sup>8+</sup>
@@ -75,7 +79,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 muted(value: boolean)
 
-Sets whether to mute the video.
+Sets whether to mute the video. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -95,7 +99,8 @@ Sets whether to mute the video.
 
 autoPlay(value: boolean)
 
-Specifies whether to enable autoplay.
+Sets whether to enable autoplay. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -111,7 +116,8 @@ Specifies whether to enable autoplay.
 
 controls(value: boolean)
 
-Specifies whether to display the video playback control bar.
+Sets whether to display the video playback control bar. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -125,13 +131,14 @@ Specifies whether to display the video playback control bar.
 
 > **NOTE**
 >
-> The **Video** component comes with a built-in controller that cannot be customized. If you require different functionality, you can hide the default controller and implement your own custom controller.  
+> The **Video** component comes with a built-in controller that cannot be customized. If you require different functionality, you can hide the default controller and implement your own custom controller. For details, see <!--RP1-->[Video Playback](https://gitcode.com/harmonyos_samples/video-play)<!--RP1End-->.
 
 ### objectFit
 
 objectFit(value: ImageFit)
 
-Sets the fill mode for the video content.
+Sets the fill mode for the video content. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -147,7 +154,8 @@ Sets the fill mode for the video content.
 
 loop(value: boolean)
 
-Specifies whether to repeat the video.
+Sets whether to repeat the video.. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -180,7 +188,6 @@ Note that if this attribute and the [overlay](ts-universal-attributes-overlay.md
 > **NOTE**
 >
 > This feature is available only when the custom control bar is used (that is, when the [controls](#controls) attribute is set to **false**).
->
 > This feature depends on device capabilities.
 
 ### analyzerConfig<sup>12+</sup>
@@ -193,21 +200,25 @@ Sets the AI image analysis types, including subject recognition, text recognitio
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig) | Yes| AI image analysis types.|
+| config | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | Yes| AI image analysis types.|
 
 ### enableShortcutKey<sup>15+</sup>
 
 enableShortcutKey(enabled: boolean)
 
-Sets whether the component responds to keyboard shortcuts when it has focus.
+Sets whether the component responds to keyboard shortcuts when it has focus. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 Currently, the component can respond to the following keys when it is in focus: spacebar for playing or pausing the video, up or down arrow key for adjusting the video volume, and left or right arrow key for fast forwarding or rewinding the video.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
 
 | Name | Type   | Mandatory| Description                                  |
 | ------- | ------- | ---- | -------------------------------------- |
@@ -279,24 +290,23 @@ Triggered when video playback fails. Dynamic property modification using [attrib
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup> | Yes  | Callback invoked when video playback fails. The [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) parameter is used to receive error information.|
-
-For details about the following error codes, see [Video Component Error Codes](../errorcode-video.md). For details about other error codes, see [Media Error Codes](../../apis-media-kit/errorcode-media.md).
-
-|Error Code|Error Message|
-|--|--|
-|103601 |Failed to create the media player.|
-|103602 |Not a valid source.|
+| event  | [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup> | Yes  | Callback invoked when video playback fails. The callback function of the [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) type input parameter is used to receive exception information. For details about the error codes returned by the callback, see [Video Component Error Codes](../errorcode-video.md) and [Media Error Codes](../../apis-media-kit/errorcode-media.md).|
 
 ### onStop<sup>12+</sup>
 
 onStop(event: Callback&lt;void&gt;)
 
-Triggered when video playback is stopped (after **stop()** is called). Dynamic property modification using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
+Triggered when the video playback is stopped (after **stop()** is called). Dynamic property modification using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                      |
+| -------- | ------ | ---- | -------------------------- |
+| event | Callback\<void> | Yes  | Callback invoked when video playback is stopped.|
 
 ### onPrepared
 
@@ -392,7 +402,7 @@ Describes whether the video is in full-screen playback mode.
 
 | Name      | Type   | Read Only| Optional| Description                        |
 | ----------- | ------- | ---- | ----  | ---------------------------- |
-| fullscreen<sup>10+</sup>  | boolean | No| No | Callback that indicates whether the video playback is in full-screen mode.<br>**true**: The video playback is in full-screen mode.<br>**false**: The video playback is not in full-screen mode.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| fullscreen<sup>10+</sup>  | boolean | No| No | Callback that indicates whether the video playback is in full-screen mode.<br>**true**: The video playback is in full-screen mode.<br>**false**: The video playback is not in full-screen mode.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 
 ## PreparedInfo<sup>18+</sup>
 
@@ -430,13 +440,12 @@ Describes the current progress of video playback.
 
 Defines display options for the first frame of the video.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Type   | Read Only| Optional| Description                        |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
-| showFirstFrame   | boolean | No| Yes| Whether to enable first frame display, showing the first frame of the video as a preview.<br>**true**: Enable first frame display.<br>**false**: Disable first frame display.<br>Default value: **false**.     |
+| showFirstFrame   | boolean | No| Yes| Whether the first frame display is enabled for the current video. If first frame display is enabled, the previewUri field in the [VideoOptions](#videooptions) does not take effect.<br>**true**: Enable first frame display.<br>**false**: Disable first frame display.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | No| Yes| Transition effect when the preview image of the current video changes. This field does not take effect if showFirstFrame is set to true (that is, the first frame display is enabled) or previewUri of the valid [VideoOptions](#videooptions) object is not set.<br>Default value: **ContentTransitionEffect.IDENTITY**.<br>If this parameter is set to undefined or null, the value is ContentTransitionEffect.IDENTITY.<br>**Atomic service API**: This API can be used in atomic services since API version 21.     |
 
 ## VideoController
 
@@ -449,7 +458,7 @@ Defines a **VideoController** object to control one or more **Video** components
 ### Objects to Import
 
 ```ts
-let controller: VideoController = new VideoController()
+let controller: VideoController = new VideoController();
 ```
 
 ### constructor
@@ -520,7 +529,7 @@ Sets the video playback position.
 
 | Name  | Type  | Mandatory  | Description          |
 | ----- | ------ | ---- | -------------- |
-| value | number | Yes   | Video playback position.<br>Value range: [0, [duration](ts-media-components-video.md#preparedinfo18)], in seconds<br>Since API version 8, seek mode configuration is supported. For details, see [setCurrentTime<sup>8+</sup>](#setcurrenttime8).|
+| value | number | Yes   | Video playback position.<br>Value range: [0, [duration](ts-media-components-video.md#preparedinfo18)]<br>Unit: second<br>Since API version 8, seek mode configuration is supported. For details, see [setCurrentTime<sup>8+</sup>](#setcurrenttime8).|
 
 ### requestFullscreen
 
@@ -566,7 +575,7 @@ Sets the video playback position with the specified seek mode.
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | -------- | ---- | -------------- |
-| value    | number   | Yes   |  Video playback position, in seconds.|
+| value    | number   | Yes   | Video playback position.<br>Value range: [0, [duration](ts-media-components-video.md#preparedinfo18)]<br>Unit: second|
 | seekMode | [SeekMode](#seekmode8) | Yes   | Seek mode.         |
 
 ## SeekMode<sup>8+</sup>
@@ -588,13 +597,14 @@ Enumerates video seek modes.
 
 ### Example 1: Implementing Basic Video Playback Features
 
-This example covers the basic features of video playback, including how to manage the control bar, use preview images, handle autoplay, adjust the playback speed, respond to keyboard shortcuts, and operate the controller for playback control. Additionally, it demonstrates how to implement first frame display and the callbacks for various playback states.
+This example covers the basic features of video playback, including how to manage the control bar, use preview images, handle autoplay, adjust the playback speed, respond to keyboard shortcuts (since API version 15, [enableShortcutKey](#enableshortcutkey15) can be used for enabling keyboard shortcut response), and operate the controller for playback control. Additionally, it demonstrates how to implement first frame display (since API version 18, [posterOptions](#posteroptions18) can be used for setting first frame display options) and the callbacks for various playback states.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct VideoCreateComponent {
+  // Replace $rawfile('video1.mp4') and $r('app.media.poster1') with the resource files you use.
   @State videoSrc: Resource = $rawfile('video1.mp4');
   @State previewUri: Resource = $r('app.media.poster1');
   @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
@@ -611,7 +621,7 @@ struct VideoCreateComponent {
         previewUri: this.previewUri, // Set the preview image.
         currentProgressRate: this.curRate, // Set the playback speed.
         controller: this.controller,
-        posterOptions: { showFirstFrame: this.showFirstFrame } // Disable first frame display.
+        posterOptions: { showFirstFrame: this.showFirstFrame, contentTransitionEffect: ContentTransitionEffect.OPACITY } // Disable the first frame display and set the preview image fade-in and fade-out animation.
       })
         .width('100%')
         .height(600)
@@ -619,85 +629,86 @@ struct VideoCreateComponent {
         .controls(this.showControls)
         .enableShortcutKey(this.isShortcutKeyEnabled)
         .onStart(() => {
-          console.info('onStart')
+          console.info('onStart');
         })
         .onPause(() => {
-          console.info('onPause')
+          console.info('onPause');
         })
         .onFinish(() => {
-          console.info('onFinish')
+          console.info('onFinish');
         })
         .onError(() => {
-          console.info('onError')
+          console.info('onError');
         })
         .onStop(() => {
-          console.info('onStop')
+          console.info('onStop');
         })
         .onPrepared((e?: DurationObject) => {
           if (e != undefined) {
-            console.info('onPrepared is ' + e.duration)
+            console.info('onPrepared is ' + e.duration);
           }
         })
         .onSeeking((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onSeeking is ' + e.time)
+            console.info('onSeeking is ' + e.time);
           }
         })
         .onSeeked((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onSeeked is ' + e.time)
+            console.info('onSeeked is ' + e.time);
           }
         })
         .onUpdate((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onUpdate is ' + e.time)
+            console.info('onUpdate is ' + e.time);
           }
         })
         .onFullscreenChange((e?: FullscreenObject) => {
           if (e != undefined) {
-            console.info('onFullscreenChange is ' + e.fullscreen)
+            console.info('onFullscreenChange is ' + e.fullscreen);
           }
         })
 
       Row() {
+        // Replace $rawfile('video2.mp4') and $r('app.media.poster2') with the resource files you use.
         Button('src').onClick(() => {
-          this.videoSrc = $rawfile('video2.mp4') // Switch the video source.
+          this.videoSrc = $rawfile('video2.mp4'); // Switch the video source.
         }).margin(5)
         Button('previewUri').onClick(() => {
-          this.previewUri = $r('app.media.poster2') // Switch the preview image.
+          this.previewUri = $r('app.media.poster2'); // Switch the preview image.
         }).margin(5)
         Button('controls').onClick(() => {
-          this.showControls = !this.showControls // Specify whether to show the control bar.
+          this.showControls = !this.showControls; // Specify whether to show the control bar.
         }).margin(5)
       }
 
       Row() {
         Button('start').onClick(() => {
-          this.controller.start() // Start playback.
+          this.controller.start(); // Start playback.
         }).margin(2)
         Button('pause').onClick(() => {
-          this.controller.pause() // Pause playback.
+          this.controller.pause(); // Pause playback.
         }).margin(2)
         Button('stop').onClick(() => {
-          this.controller.stop() // Stop playback.
+          this.controller.stop(); // Stop playback.
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset () // Reset the AVPlayer instance.
+          this.controller.reset(); // Reset the AVPlayer instance.
         }).margin(2)
         Button('setTime').onClick(() => {
-          this.controller.setCurrentTime(10, SeekMode.Accurate) // Seek to the 10s position of the video.
+          this.controller.setCurrentTime(10, SeekMode.Accurate); // Seek to the 10s position of the video.
         }).margin(2)
       }
 
       Row() {
         Button('rate 0.75').onClick(() => {
-          this.curRate = PlaybackSpeed.Speed_Forward_0_75_X // Play the video at the 0.75x speed.
+          this.curRate = PlaybackSpeed.Speed_Forward_0_75_X; // Play the video at the 0.75x speed.
         }).margin(5)
         Button('rate 1').onClick(() => {
-          this.curRate = PlaybackSpeed.Speed_Forward_1_00_X // Play the video at the 1x speed.
+          this.curRate = PlaybackSpeed.Speed_Forward_1_00_X; // Play the video at the 1x speed.
         }).margin(5)
         Button('rate 2').onClick(() => {
-          this.curRate = PlaybackSpeed.Speed_Forward_2_00_X // Play the video at the 2x speed.
+          this.curRate = PlaybackSpeed.Speed_Forward_2_00_X; // Play the video at the 2x speed.
         }).margin(5)
       }
     }
@@ -726,6 +737,7 @@ This example shows how to use the **enableAnalyzer** attribute to enable AI imag
 @Entry
 @Component
 struct ImageAnalyzerExample {
+  // Replace $rawfile('video1.mp4') and $r('app.media.poster1') with the resource files you use.
   @State videoSrc: Resource = $rawfile('video1.mp4');
   @State previewUri: Resource = $r('app.media.poster1');
   controller: VideoController = new VideoController();
@@ -752,21 +764,21 @@ struct ImageAnalyzerExample {
         .enableAnalyzer(true)
         .analyzerConfig(this.config)
         .onStart(() => {
-          console.info('onStart')
+          console.info('onStart');
         })
         .onPause(() => {
-          console.info('onPause')
+          console.info('onPause');
         })
 
       Row() {
         Button('start').onClick(() => {
-          this.controller.start() // Start playback.
+          this.controller.start(); // Start playback.
         }).margin(5)
         Button('pause').onClick(() => {
-          this.controller.pause() // Pause playback.
+          this.controller.pause(); // Pause playback.
         }).margin(5)
         Button('getTypes').onClick(() => {
-            this.aiController.getImageAnalyzerSupportTypes()
+            this.aiController.getImageAnalyzerSupportTypes();
         }).margin(5)
       }
     }
@@ -785,6 +797,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 @Entry
 @Component
 struct Index {
+  // Replace $rawfile('video1.mp4') with the image resource file you use.
   @State videoSrc: Resource | string = $rawfile('video1.mp4');
   private controller: VideoController = new VideoController();
 
@@ -822,9 +835,9 @@ This example shows how to set the video fill mode using the **objectFit** attrib
 @Entry
 @Component
 struct VideoObject {
+  // Replace $rawfile('rabbit.mp4') and $r('app.media.tree') with the resource files you use.
   @State videoSrc: Resource = $rawfile('rabbit.mp4');
   @State previewUri: Resource = $r('app.media.tree');
-  @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
   @State showControls: boolean = true;
   controller: VideoController = new VideoController();
 
@@ -834,39 +847,36 @@ struct VideoObject {
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
-        currentProgressRate: this.curRate,
         controller: this.controller
       })
         .width(350)
         .height(230)
         .controls(this.showControls)
-        .objectFit(ImageFit.Contain)// Set the video fill mode to ImageFit.Contain.
+        .objectFit(ImageFit.Contain) // Set the video fill mode to ImageFit.Contain.
         .margin(5)
 
       Text("ImageFit.Fill").fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
-        currentProgressRate: this.curRate,
         controller: this.controller
       })
         .width(350)
         .height(230)
         .controls(this.showControls)
-        .objectFit(ImageFit.Fill)// Set the video fill mode to ImageFit.Fill.
+        .objectFit(ImageFit.Fill) // Set the video fill mode to ImageFit.Fill.
         .margin(5)
 
       Text("ImageFit.START").fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
-        currentProgressRate: this.curRate,
         controller: this.controller
       })
         .width(350)
         .height(230)
         .controls(this.showControls)
-        .objectFit(ImageFit.START)// Set the video fill mode to ImageFit.START.
+        .objectFit(ImageFit.START) // Set the video fill mode to ImageFit.START.
         .margin(5)
     }.width('100%').alignItems(HorizontalAlign.Center)
   }
@@ -876,7 +886,7 @@ struct VideoObject {
 
 ### Example 5: Handling Errors with onError
 
-The following example uses an invalid video resource path to demonstrate how the **Video** component can obtain error codes through the **onError** event.
+This example uses an invalid video resource path to demonstrate how the **Video** component can obtain error codes through the [onError](#onerror) event, available since API version 20.
 
 ```ts
 // xxx.ets
@@ -884,7 +894,6 @@ The following example uses an invalid video resource path to demonstrate how the
 @Component
 struct VideoErrorComponent {
   @State videoSrc: string = "video.mp4"; // Enter an invalid video resource path.
-  @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
   @State showFirstFrame: boolean = false;
@@ -895,7 +904,6 @@ struct VideoErrorComponent {
     Column() {
       Video({
         src: this.videoSrc,
-        currentProgressRate: this.curRate,
         controller: this.controller,
       })
         .width(200)
@@ -929,49 +937,49 @@ The following example demonstrates how to use **attributeModifier** to dynamical
 class MyVideoModifier implements AttributeModifier<VideoAttribute> {
   applyNormalAttribute(instance: VideoAttribute): void {
     // Enable the AI image analyzer, which can be triggered by a long press.
-    instance.enableAnalyzer(true)
+    instance.enableAnalyzer(true);
     let config: ImageAnalyzerConfig = {
       types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT]
     }
-    instance.analyzerConfig(config)
+    instance.analyzerConfig(config);
     instance.onStart(() => {
-      console.info('video: onStart')
+      console.info('video: onStart');
     })
     instance.onPause(() => {
-      console.info('video: onPause')
+      console.info('video: onPause');
     })
     instance.onFinish(() => {
-      console.info('video: onFinish')
+      console.info('video: onFinish');
     })
     instance.onError((err) => {
-      console.error('video: onError is code = ' + err.code + ', message = ' + err.message)
+      console.error('video: onError is code = ' + err.code + ', message = ' + err.message);
     })
     instance.onStop(() => {
-      console.info('video: onStop')
+      console.info('video: onStop');
     })
     instance.onPrepared((e?: DurationObject) => {
       if (e != undefined) {
-        console.info('video: onPrepared is ' + e.duration)
+        console.info('video: onPrepared is ' + e.duration);
       }
     })
     instance.onSeeking((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onSeeking is ' + e.time)
+        console.info('video: onSeeking is ' + e.time);
       }
     })
     instance.onSeeked((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onSeeked is ' + e.time)
+        console.info('video: onSeeked is ' + e.time);
       }
     })
     instance.onUpdate((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onUpdate is ' + e.time)
+        console.info('video: onUpdate is ' + e.time);
       }
     })
     instance.onFullscreenChange((e?: FullscreenObject) => {
       if (e != undefined) {
-        console.info('video: onFullscreenChange is ' + e.fullscreen)
+        console.info('video: onFullscreenChange is ' + e.fullscreen);
       }
     })
   }
@@ -980,6 +988,7 @@ class MyVideoModifier implements AttributeModifier<VideoAttribute> {
 @Entry
 @Component
 struct VideoModifierDemo {
+  // Replace $rawfile('video.mp4') with the image resource file you use.
   @State videoSrc: Resource = $rawfile('video.mp4');
   @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
   @State isAutoPlay: boolean = false;
@@ -1001,25 +1010,25 @@ struct VideoModifierDemo {
         .attributeModifier(this.modifier)
       Row() {
         Button('start').onClick(() => {
-          this.controller.start() // Start playback.
+          this.controller.start(); // Start playback.
         }).margin(2)
         Button('pause').onClick(() => {
-          this.controller.pause() // Pause playback.
+          this.controller.pause(); // Pause playback.
         }).margin(2)
         Button('stop').onClick(() => {
-          this.controller.stop() // Stop playback.
+          this.controller.stop(); // Stop playback.
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset () // Reset the AVPlayer instance.
+          this.controller.reset(); // Reset the AVPlayer instance.
         }).margin(2)
       }
 
       Row() {
         Button('Fullscreen').onClick(() => {
-          this.controller.requestFullscreen(true) // Enable full-screen mode.
+          this.controller.requestFullscreen(true); // Enable full-screen mode.
         }).margin(2)
         Button('showControls').onClick(() => {
-          this.showControls = !this.showControls // Specify whether to show the control bar.
+          this.showControls = !this.showControls; // Specify whether to show the control bar.
         }).margin(2)
       }
     }
@@ -1040,4 +1049,3 @@ interface FullscreenObject {
 ```
 
 ![](figures/videoModifier.png)
-<!--no_check-->

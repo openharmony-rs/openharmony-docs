@@ -906,7 +906,7 @@ updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessErr
 
 pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseDownloadOptions): Promise\<void>
 
-恢复下载新版本。使用Promise异步回调。
+暂停下载新版本。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Update.UpdateService
 

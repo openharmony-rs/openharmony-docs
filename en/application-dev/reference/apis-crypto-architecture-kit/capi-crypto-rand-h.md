@@ -1,5 +1,4 @@
 # crypto_rand.h
-
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @zxz--3-->
@@ -37,6 +36,7 @@ Defines APIs for a random number generator.
 | [OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)](#oh_cryptorand_generaterandom) | Generates random numbers.|
 | [const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)](#oh_cryptorand_getalgoname) | Obtains the algorithm name of a random number generator instance.|
 | [OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)](#oh_cryptorand_setseed) | Sets the seed of a random number generator.|
+| [OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)](#oh_cryptorand_enablehardwareentropy) | Enables the hardware entropy source.|
 | [void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)](#oh_cryptorand_destroy) | Destroys a random number generator instance.|
 
 ## Function Description
@@ -52,7 +52,6 @@ OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 Creates a random number generator.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -77,7 +76,6 @@ OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Cryp
 Generates random numbers.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -105,7 +103,6 @@ Obtains the algorithm name of a random number generator instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -130,13 +127,36 @@ Sets the seed of a random number generator.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoRand](capi-cryptorandapi-oh-cryptorand.md) *ctx | Random number generator instance.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *seed | Seed data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>         **CRYPTO_NOT_SUPPORTED**: The operation is not supported.<br>         **CRYPTO_MEMORY_ERROR**: A memory error occurs.<br>         **CRYPTO_PARAMETER_CHECK_FAILED**: The parameter check failed.<br>         **CRYPTO_OPERTION_ERROR**: Failed to call an API of a third-party algorithm library.|
+
+### OH_CryptoRand_EnableHardwareEntropy()
+
+```
+OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
+```
+
+**Description**
+
+Enables the hardware entropy source.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_CryptoRand](capi-cryptorandapi-oh-cryptorand.md) *ctx | Random number generator instance.|
 
 **Returns**
 
@@ -155,7 +175,6 @@ void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)
 Destroys a random number generator instance.
 
 **Since**: 20
-
 
 **Parameters**
 

@@ -8,7 +8,7 @@ Public API
 
 **Reason for Change**
 
-To meet security compliance requirements, the **bundleManager.verifyAbc** and **bundleManager.deleteAbc** APIs in [@ohos.bundle.bundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) are changed to system APIs.
+To meet security compliance requirements, the **bundleManager.verifyAbc** and **bundleManager.deleteAbc** APIs in [@ohos.bundle.bundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) are changed to system APIs.
 
 **Change Impact**
 
@@ -33,7 +33,7 @@ OpenHarmony SDK 5.0.0.44
 
 **Key API/Component Changes**
 
-The following APIs in [@ohos.bundle.bundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts):
+The following APIs in [@ohos.bundle.bundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts):
 
 1. function verifyAbc(abcPaths: Array\<string\>, deleteOriginalFiles: boolean, callback: AsyncCallback\<void\>): void;
 

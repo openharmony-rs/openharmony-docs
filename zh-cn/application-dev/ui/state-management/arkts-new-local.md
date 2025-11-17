@@ -34,17 +34,21 @@
 
 状态管理V1使用[\@State装饰器](arkts-state.md)定义组件中的基础状态变量，该状态变量常用来作为组件内部状态，在组件内使用。但由于\@State装饰器又能够从外部初始化，因此无法确保\@State装饰变量的初始值一定为组件内部定义的值。
 
-```ts
+<!-- @[Local_V1_State_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalV1StateDecorator.ets) -->
+
+``` TypeScript
 class ComponentInfo {
-  name: string;
-  count: number;
-  message: string;
+  public name: string;
+  public count: number;
+  public message: string;
+
   constructor(name: string, count: number, message: string) {
     this.name = name;
     this.count = count;
     this.message = message;
   }
 }
+
 @Component
 struct Child {
   @State componentInfo: ComponentInfo = new ComponentInfo('Child', 1, 'Hello World'); // 父组件传递的componentInfo会覆盖初始值
@@ -55,12 +59,13 @@ struct Child {
     }
   }
 }
+
 @Entry
 @Component
 struct Index {
   build() {
     Column() {
-      Child({componentInfo: new ComponentInfo('Unknown', 0, 'Error')})
+      Child({ componentInfo: new ComponentInfo('Unknown', 0, 'Error') })
     }
   }
 }
@@ -89,25 +94,29 @@ struct Index {
 
 - 当装饰的变量类型为boolean、string、number时，可以观察到对变量赋值的变化。
 
-  ```ts
+  <!-- @[Local_Observe_Changes_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesType.ets) -->
+  
+  ``` TypeScript
   @Entry
   @ComponentV2
   struct Index {
+    // 点击的次数
     @Local count: number = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`${this.count}`)
         Text(`${this.message}`)
         Text(`${this.flag}`)
         Button('change Local')
-          .onClick(()=>{
+          .onClick(() => {
             // 当@Local装饰简单类型时，能够观测到对变量的赋值
             this.count++;
             this.message += ' World';
             this.flag = !this.flag;
-        })
+          })
       }
     }
   }
@@ -115,25 +124,32 @@ struct Index {
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。注意，API version 19之前，\@Local无法和[\@Observed](./arkts-observed-and-objectlink.md)装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见[状态管理V1V2混用文档](../state-management/arkts-v1-v2-mixusage.md)。
 
-    ```ts
+    <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
+    
+    ``` TypeScript
     class RawObject {
-      name: string;
+      public name: string;
+    
       constructor(name: string) {
         this.name = name;
       }
     }
+    
     @ObservedV2
     class ObservedObject {
-      @Trace name: string;
+      @Trace public name: string;
+    
       constructor(name: string) {
         this.name = name;
       }
     }
+    
     @Entry
     @ComponentV2
     struct Index {
       @Local rawObject: RawObject = new RawObject('rawObject');
       @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+    
       build() {
         Column() {
           Text(`${this.rawObject.name}`)
@@ -143,14 +159,14 @@ struct Index {
               // 对类对象整体的修改均能观察到
               this.rawObject = new RawObject('new rawObject');
               this.observedObject = new ObservedObject('new observedObject');
-          })
+            })
           Button('change name')
             .onClick(() => {
               // @Local不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
               this.rawObject.name = 'new rawObject name';
               // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
               this.observedObject.name = 'new observedObject name';
-          })
+            })
         }
       }
     }
@@ -158,12 +174,14 @@ struct Index {
 
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
-    ```ts
+    <!-- @[Local_Observe_Changes_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesArray.ets) -->
+    
+    ``` TypeScript
     @Entry
     @ComponentV2
     struct Index {
-      @Local numArr: number[] = [1,2,3,4,5];  // 使用@Local装饰一维数组变量
-      @Local dimensionTwo: number[][] = [[1,2,3],[4,5,6]]; // 使用@Local装饰二维数组变量
+      @Local numArr: number[] = [1, 2, 3, 4, 5]; // 使用@Local装饰一维数组变量
+      @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]]; // 使用@Local装饰二维数组变量
     
       build() {
         Column() {
@@ -181,40 +199,47 @@ struct Index {
             })
           Button('change whole array') // 按钮2：替换整个数组
             .onClick(() => {
-              this.numArr = [5,4,3,2,1];
-              this.dimensionTwo = [[7,8,9],[0,1,2]];
+              this.numArr = [5, 4, 3, 2, 1];
+              this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
             })
         }
       }
     }
     ```
-    
+  
 - 当装饰的变量是嵌套类或对象数组时，\@Local无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
 
-  ```ts
+  <!-- @[Local_Observe_Changes_DeepObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDeepObject.ets) -->
+  
+  ``` TypeScript
   @ObservedV2
   class Region {
-    @Trace x: number;
-    @Trace y: number;
+    @Trace public x: number;
+    @Trace public y: number;
+  
     constructor(x: number, y: number) {
       this.x = x;
       this.y = y;
     }
   }
+  
   @ObservedV2
   class Info {
-    @Trace region: Region;
-    @Trace name: string;
+    @Trace public region: Region;
+    @Trace public name: string;
+  
     constructor(name: string, x: number, y: number) {
       this.name = name;
       this.region = new Region(x, y);
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local infoArr: Info[] = [new Info('Ocean', 28, 120), new Info('Mountain', 26, 20)];
     @Local originInfo: Info = new Info('Origin', 0, 0);
+  
     build() {
       Column() {
         ForEach(this.infoArr, (info: Info) => {
@@ -224,9 +249,10 @@ struct Index {
           }
         })
         Row() {
-            Text(`Origin name: ${this.originInfo.name}`)
-            Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
+          Text(`Origin name: ${this.originInfo.name}`)
+          Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
         }
+  
         Button('change infoArr item')
           .onClick(() => {
             // 由于属性name被@Trace装饰，所以能够观察到
@@ -312,21 +338,26 @@ struct Index {
 
 被\@ObservedV2与\@Trace装饰的类对象实例，具有深度观测对象属性的能力。但当对对象整体赋值时，UI却无法刷新。使用\@Local装饰对象，可以达到观测对象本身变化的效果。
 
-```ts
+<!-- @[Local_Use_Case_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseObject.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Info {
-  @Trace name: string;
-  @Trace age: number;
+  @Trace public name: string;
+  @Trace public age: number;
+
   constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   info: Info = new Info('Tom', 25);
   @Local localInfo: Info = new Info('Tom', 25);
+
   build() {
     Column() {
       Text(`info: ${this.info.name}-${this.info.age}`) // Text1
@@ -335,7 +366,7 @@ struct Index {
         .onClick(() => {
           this.info = new Info('Lucy', 18); // Text1不会刷新
           this.localInfo = new Info('Lucy', 18); // Text2会刷新
-      })
+        })
     }
   }
 }
@@ -345,11 +376,13 @@ struct Index {
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-```ts
+<!-- @[Local_Use_Case_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseArray.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
-  @Local count: number[] = [1,2,3];
+  @Local count: number[] = [1, 2, 3];
 
   build() {
     Row() {
@@ -359,7 +392,7 @@ struct Index {
           Divider()
         })
         Button('init array').onClick(() => {
-          this.count = [9,8,7];
+          this.count = [9, 8, 7];
         })
         Button('push').onClick(() => {
           this.count.push(0);
@@ -384,7 +417,9 @@ struct Index {
 
 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`更新Date的属性。
 
-```ts
+<!-- @[Local_Use_Case_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseDate.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct DatePickerExample {
@@ -425,7 +460,9 @@ struct DatePickerExample {
 
 当装饰的对象是Map时，可以观察到对Map整体的赋值，同时可以通过调用Map的接口`set`, `clear`, `delete`更新Map中的数据。
 
-```ts
+<!-- @[Local_Use_Case_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseMap.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct MapSample {
@@ -466,7 +503,9 @@ struct MapSample {
 
 当装饰的对象是Set时，可以观察到对Set整体的赋值，同时可以通过调用Set的接口`add`, `clear`, `delete`更新Set中的数据。
 
-```ts
+<!-- @[Local_Use_Case_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseSet.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct SetSample {
@@ -503,7 +542,9 @@ struct SetSample {
 
 \@Local支持null、undefined以及联合类型。在下面的示例中，count类型为number | undefined，点击改变count的类型，UI会随之刷新。
 
-```ts
+<!-- @[Local_Use_Case_Join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseJoin.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -519,7 +560,7 @@ struct Index {
       Button('change to number') // 按钮2：将count更新为数字10
         .onClick(() => {
           this.count = 10;
-      })
+        })
     }
   }
 }
@@ -529,7 +570,11 @@ struct Index {
 
 ### 复杂类型常量重复赋值给状态变量触发刷新
 
-```ts
+<!-- @[Local_Question_Spark_Update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionSparkUpdate.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @ComponentV2
 struct Index {
@@ -538,7 +583,7 @@ struct Index {
 
   @Monitor('dataObjFromList')
   onStrChange(monitor: IMonitor) {
-    console.info('dataObjFromList has changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObjFromList has changed');
   }
 
   build() {
@@ -558,8 +603,13 @@ struct Index {
 
 使用UIUtils.getTarget()方法示例。
 
-```ts
+<!-- @[Local_Question_UIUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionUIUtils.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Entry
 @ComponentV2
@@ -569,7 +619,7 @@ struct Index {
 
   @Monitor('dataObjFromList')
   onStrChange(monitor: IMonitor) {
-    console.info('dataObjFromList has changed');
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObjFromList has changed');
   }
 
   build() {
@@ -589,7 +639,9 @@ struct Index {
 
 在下面的场景中，[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)暂不支持直接在状态管理V2中使用。
 
-```ts
+<!-- @[Local_Question_V2_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV2animateTo.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -631,26 +683,28 @@ struct Index {
 
 可以通过下面的方法暂时获得预期的显示效果。
 
-```ts
+<!-- @[Local_Question_Expected_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
   @Local w: number = 50; // 宽度
   @Local h: number = 50; // 高度
   @Local message: string = 'Hello';
-  
+
   build() {
     Column() {
       Button('change size')
         .margin(20)
         .onClick(() => {
           // 在执行动画前，存在额外的修改
-          this.w = 100;
-          this.h = 100;
-          this.message = 'Hello World';
-          animateToImmediately({
-            duration: 0
-          }, () => {
+          UIUtils.applySync(() => {
+            this.w = 100;
+            this.h = 100;
+            this.message = 'Hello World';
           })
           this.getUIContext().animateTo({
             duration: 1000

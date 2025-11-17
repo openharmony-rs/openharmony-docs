@@ -11,7 +11,7 @@
 
 - 在申请目标权限前，建议开发者先阅读[应用权限管控概述-权限组和子权限](app-permission-mgmt-overview.md#权限组和子权限)，了解相关概念，再合理申请对应的权限组。
 
-- 应用请求权限时，同一权限组内的权限将在一个弹窗内请求用户授权。用户同意授权后，权限组内的权限将被统一授权。但地理位置、通讯录、通话记录、电话、信息、日历权限组除外。
+- 应用请求权限时，同一权限组内的权限将在一个弹窗内请求用户授权。用户同意授权后，权限组内的权限将被统一授权。但位置信息、通讯录、<!--Del-->通话记录、电话、信息、<!--DelEnd-->日历权限组除外。
 
   以位置信息权限组和相机权限组为例说明。
 
@@ -49,11 +49,9 @@
  
 - [ohos.permission.WRITE_CALENDAR](permissions-for-all-user.md#ohospermissionwrite_calendar)
  
-<!--Del-->
-- [ohos.permission.READ_WHOLE_CALENDAR](permissions-for-system-apps-user.md#ohospermissionread_whole_calendar)
+- [ohos.permission.READ_WHOLE_CALENDAR](restricted-permissions.md#ohospermissionread_whole_calendar)
 
-- [ohos.permission.WRITE_WHOLE_CALENDAR](permissions-for-system-apps-user.md#ohospermissionwrite_whole_calendar)
-<!--DelEnd-->
+- [ohos.permission.WRITE_WHOLE_CALENDAR](restricted-permissions.md#ohospermissionwrite_whole_calendar)
 
 <!--RP1-->
 ## 健身运动
@@ -72,8 +70,6 @@
 - [ohos.permission.READ_IMAGEVIDEO](restricted-permissions.md#ohospermissionread_imagevideo)
 
 - [ohos.permission.MEDIA_LOCATION](permissions-for-all-user.md#ohospermissionmedia_location)
-
-- [ohos.permission.SHORT_TERM_WRITE_IMAGEVIDEO](restricted-permissions.md#ohospermissionshort_term_write_imagevideo)
 
 ## 音乐和音频
 

@@ -135,7 +135,7 @@ Table Name: Audios
 mediatool delete <resource-uri>
 ```
 
-该命令能够彻底删除`<resource-uri>`指定uri的媒体库资源。被删除的资源无法恢复，请谨慎执行。
+该命令能够删除`<resource-uri>`指定uri的媒体库资源。被删除的资源无法恢复，请谨慎执行。
 
 媒体库资源uri的获取可参考[媒体库uri介绍/获取方式](#媒体库uri介绍获取方式)。
 
@@ -314,7 +314,7 @@ uri
 
 ### 媒体库uri介绍/获取方式
 
-uri是媒体库资产的唯一标识符，每个uri都对应一个媒体资产。mediatool使用uri来判断需要操作的媒体资产对象。
+uri是媒体库资产的唯一标识符。mediatool使用uri来判断需要操作的媒体资产对象。
 
 可使用以下方式获取uri：
 
@@ -334,7 +334,7 @@ uri样例：`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`。
 
 ## hdc命令
 
-从API version 20开始，支持通过hdc命令可以访问媒体库文件路径。包含：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录。\<uid\>为当前用户的id。
+从API version 21开始，支持通过hdc命令可以访问媒体库文件路径。包含：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录。\<uid\>为当前用户的id。
 
 ### 媒体库文件查询
 
@@ -387,7 +387,7 @@ FileTransfer finish, Size:xxx, File...
 
 ### 媒体库文件导入
 
-支持导入文件及目录，但不支持创建目录。当目录名称相同时会将内容合并（保留所有不重名的文件）；当文件名称相同时会覆盖目标文件。
+支持导入媒体文件（图片、视频等）及目录，但不支持创建目录。当目录名称相同时会将内容合并（保留所有不重名的文件）；当文件名称相同时会覆盖目标文件。
 
 ```shell
 hdc file send SOURCE DEST

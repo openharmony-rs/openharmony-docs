@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct {...} Scan_ScannerDevice
+```
+
 ## 概述
 
 表示扫描仪设备信息

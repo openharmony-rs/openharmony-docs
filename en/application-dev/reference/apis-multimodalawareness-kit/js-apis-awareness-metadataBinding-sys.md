@@ -33,14 +33,14 @@ Encodes metadata into an image.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| srcImage     | [PixelMap](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-image-pixelmap)                        | Yes  | Source image.|
+| srcImage     | [PixelMap](https://developer.huawei.com/consumer/en/doc/harmonyos-references/arkts-apis-image-pixelmap)                        | Yes  | Source image.|
 | metadata     | string                             | Yes  | Metadata to be encoded.|
 
 **Return value**
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;image.PixelMap&gt; | Promise used to return the image with encoded metadata.|
+  | Promise&lt;image.PixelMap&gt; | Promise object, which is used to return the image with encoded metadata.|
 
 **Error codes** 
 
@@ -82,13 +82,13 @@ Decodes the information carried in the image.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| encodedImage     | [PixelMap](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-image-pixelmap)                           | Yes  | Image with metadata encoded.|
+| encodedImage     | [PixelMap](https://developer.huawei.com/consumer/en/doc/harmonyos-references/arkts-apis-image-pixelmap)                           | Yes  | Image with metadata encoded.|
 
 **Return value**
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise used to return the result. used to return the encoded metadata of the image.|
+  | Promise&lt;string&gt; | Promise object, which is used to return the encoded metadata of the image.|
 
 **Error codes** 
 

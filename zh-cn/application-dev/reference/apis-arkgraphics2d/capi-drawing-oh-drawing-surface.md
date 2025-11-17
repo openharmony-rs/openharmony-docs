@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Surface OH_Drawing_Surface
+```
+
 ## 概述
 
 定义surface，用于管理画布绘制的内容。

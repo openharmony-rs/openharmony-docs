@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-## Introduction
+## Overview
 
 A virtual private network (VPN) is a dedicated network established on a public network. Unlike a traditional private network, a VPN does not require an end-to-end physical link between any two nodes. It is built over a network platform (for example, Internet) provided by a public network service provider. User data is transmitted over the logical link.
 
@@ -51,7 +51,7 @@ To enable your application to support the VPN functionality, you need to create 
 
 > **NOTE**
 >
-> If the DevEco Studio tool displays a message indicating unrecognizable **"type": "vpn"**, you need to manually add **vpn** to the **type** enums corresponding to **extensionAbilities** in the **toolchains\modulecheck\module.json** file of the SDK and clear the build cache.
+> If the DevEco Studio tool displays a message indicating unrecognizable **"type": "vpn"**, you need to manually add **vpn** to the **type** enums corresponding to **extensionAbilities** in the **toolchains\modulecheck\module.json** file of the SDK, clear the build cache, and restart DevEco Studio.
 
 Next, you need to configure, start, and stop the VPN in the created **VpnExtensionAbility**.
 

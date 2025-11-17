@@ -4,7 +4,11 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_CustomSpanDrawInfo ArkUI_CustomSpanDrawInfo
+```
 
 ## 概述
 

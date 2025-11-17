@@ -55,6 +55,8 @@
       - [Loading a Module Using Node-API](use-napi-load-module-with-info.md)
       - [Passing a Task with the Specified Priority to an ArkTS Thread from an Asynchronous Thread Using Node-API](use-call-threadsafe-function-with-priority.md)
       - [Creating, Switching, and Destroying a Context in a Thread Using Node-API Extension APIs](use-napi-about-context.md)
+      - [Creating a Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-strong-reference.md)
+      - [Creating and Destroying a Critical Scope and Accessing String Content Using Node-API Extension APIs](use-napi-about-critical.md)
       - [Analyzing Exceptions and Crashes Triggered by Using Node-API](use-napi-about-crash.md)
       - [Calling an ArkTS Method with Return Value of a Promise Using Node-API](use-napi-method-promise.md)
     - Node-API FAQs<!--napi-questions-->
@@ -78,7 +80,7 @@
       - [Working with Arrays Using JSVM-API](use-jsvm-about-array.md)
       - [Working with ArrayBuffer Using JSVM-API](use-jsvm-about-arraybuffer.md)
       - [Working with BigInt Using JSVM-API](use-jsvm-about-bigint.md)
-      - [Working with Class Using JSVM-API](use-jsvm-about-class.md)
+      - [Working with Classes Using JSVM-API](use-jsvm-about-class.md)
       - [Working with Date Using JSVM-API](use-jsvm-about-date.md)
       - [Performing Debug Operations Using JSVM-API](use-jsvm-about-debug-option.md)
       - [Working with Objects Using JSVM-API](use-jsvm-about-object.md)
@@ -99,7 +101,7 @@
       - [Working with Proxy Using JSVM-API](use-jsvm-about-proxy.md)
       - [Working with Well-Known Symbols Using JSVM-API](use-jsvm-about-well-known-symbols.md)
       - [Working with Wrapper Objects Using JSVM-API](use-jsvm-about-wrapper-object.md)
-      - [Creating Basic Data Types Using JSVM-API](use-jsvm-basic-data-types.md)
+      - [Creating and Obtaining Values Using JSVM-API](use-jsvm-basic-data-types.md)
     - Typical JSVM-API Use Cases<!--jsvm-scenarios-->
       - [JSVM-API Debugging](jsvm-debugger-cpuprofiler-heapsnapshot.md)
       - [Working with Trace Using JSVM-API](use-jsvm-about-trace.md)

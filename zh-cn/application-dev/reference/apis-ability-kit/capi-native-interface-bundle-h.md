@@ -197,6 +197,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, O
 
 **需要权限：** ohos.permission.GET_ABILITY_INFO
 
+**设备行为差异：** 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回201错误码。
+
 **参数：**
 
 | 参数项 | 描述 |

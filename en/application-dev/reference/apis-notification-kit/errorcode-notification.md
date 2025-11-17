@@ -390,3 +390,57 @@ Device connection error.
 **Solution**
 
 Make sure that devices (for example, mobile phone and the watch) are properly connected.
+
+## 1600022 Invalid Bundle Information
+
+**Error Message**
+
+The specified bundle is invalid.
+
+**Description**
+
+This error code is reported when the bundle information is invalid.
+
+**Possible Causes**
+
+The specified bundle name does not exist.
+
+**Solution**
+
+Check whether the bundle information is correct.
+
+## 1600023 NotificationSubscriberExtensionAbility Not Implemented
+
+**Error Message**
+
+The application does not implement the NotificationSubscriberExtensionAbility.
+
+**Description**
+
+This error code is reported when the application does not implement the NotificationSubscriberExtensionAbility.
+
+**Possible Causes**
+
+The [NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md) is not set or is incorrectly set for the application.
+
+**Solution**
+
+Create a NotificationSubscriberExtensionAbility for the application. For details about how to configure the extension ability, see [NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md) in [ExtensionAbility Component](../../application-models/extensionability-overview.md).
+
+## 1600024 Custom Ringtones Not Configured
+
+**Error Message**
+
+The specified bundle has no custom ringtone information.
+
+**Description**
+
+This error code is reported when the custom ringtones are not configured for the specified application.
+
+**Possible Causes**
+
+Custom ringtones are not configured for the specified application.
+
+**Solution**
+
+Check whether custom ringtones are configured for the specified application.

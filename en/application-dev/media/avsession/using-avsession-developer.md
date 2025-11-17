@@ -20,17 +20,17 @@ The table below lists the key APIs used by the provider. The APIs use either a c
 
 For details, see [AVSession Management](../../reference/apis-avsession-kit/arkts-apis-avsession.md).
 
-| API| Description| 
+| API| Description|
 | -------- | -------- |
-| createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback&lt;AVSession&gt;): void<sup>10+<sup> | Creates an AVSession.<br>Only one AVSession can be created for a UIAbility.| 
-| setAVMetadata(data: AVMetadata, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sets AVSession metadata.| 
-| setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sets the AVSession playback state.| 
-| setLaunchAbility(ability: WantAgent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Starts a UIAbility.| 
-| getController(callback: AsyncCallback&lt;AVSessionController&gt;): void<sup>10+<sup> | Obtains the controller of the AVSession.| 
+| createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback&lt;AVSession&gt;): void<sup>10+<sup> | Creates an AVSession.<br>Only one AVSession can be created for a UIAbility.|
+| setAVMetadata(data: AVMetadata, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sets AVSession metadata.|
+| setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sets the AVSession playback state.|
+| setLaunchAbility(ability: WantAgent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Starts a UIAbility.|
+| getController(callback: AsyncCallback&lt;AVSessionController&gt;): void<sup>10+<sup> | Obtains the controller of the AVSession.|
 | getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+<sup> | Obtains the output device information.|
-| activate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Activates the AVSession.| 
+| activate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Activates the AVSession.|
 | deactivate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Deactivates this session.|
-| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Destroys the AVSession.| 
+| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Destroys the AVSession.|
 | setAVQueueItems(items: Array&lt;AVQueueItem&gt;, callback: AsyncCallback&lt;void&gt;): void <sup>10+<sup> | Sets a playlist.|
 | setAVQueueTitle(title: string, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sets a name for the playlist.|
 | dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Dispatches a custom session event.|
@@ -48,14 +48,16 @@ To enable an audio and video application to access the AVSession service as a pr
    > The sample code below demonstrates only the API call for creating an AVSession object. When actually using it, the application must ensure that the AVSession object remains throughout the application's background playback activities. This prevents the system from reclaiming or releasing it, which could lead to playback being controlled by the system.
 
       ```ts
-      import { avSession as AVSessionManager } from '@kit.AVSessionKit';  
+      import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+
       @Entry
       @Component
       struct Index {
-          @State message: string = 'hello world';  
-          build() {
+        @State message: string = 'hello world';
+
+        build() {
           Column() {
-              Text(this.message)
+            Text(this.message)
               .onClick(async () => {
                 try {
                   // Start to create and activate an AVSession object.
@@ -74,7 +76,7 @@ To enable an audio and video application to access the AVSession service as a pr
           }
           .width('100%')
           .height('100%')
-          }
+        }
       }
       ```
 
@@ -83,7 +85,7 @@ To enable an audio and video application to access the AVSession service as a pr
    - AVPlaybackState
 
    The controller will call an API in the **AVSessionController** class to obtain the information and display or process the information.
-
+   
       ```ts
       import { avSession as AVSessionManager } from '@kit.AVSessionKit';
       import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,7 +173,9 @@ To enable an audio and video application to access the AVSession service as a pr
       }
       ```
 
+
 3. Set the UIAbility to be started by the controller. The UIAbility configured here is started when a user operates the UI of the controller, for example, clicking a widget in Media Controller.
+
    The UIAbility is set through the **WantAgent** API. For details, see [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md).
 
       ```ts
@@ -213,12 +217,13 @@ To enable an audio and video application to access the AVSession service as a pr
       }
       }
       ```
-
+   
 4. Set a custom session event. The controller performs an operation after receiving the event.
 
    > **NOTE**
    > 
    > The data set through **dispatchSessionEvent** is not saved in the AVSession object or AVSession service.
+
     ```ts
     import { avSession as AVSessionManager } from '@kit.AVSessionKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -285,7 +290,7 @@ To enable an audio and video application to access the AVSession service as a pr
       }
     }
     ```
-
+   
 6. Listen for playback control commands or events delivered by the controller, for example, Media Controller.
 
    Both fixed playback control commands and advanced playback control events can be listened for.
@@ -298,6 +303,7 @@ To enable an audio and video application to access the AVSession service as a pr
 
    Fixed playback control commands on the session side include basic operation commands such as play, pause, previous, and next. For details, see [AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10).
 
+   
     ```ts
     import { avSession as AVSessionManager } from '@kit.AVSessionKit';
     
@@ -436,7 +442,7 @@ To enable an audio and video application to access the AVSession service as a pr
     ```
 
 7. Obtain an AVSessionController object for this AVSession object for interaction.
-
+   
       ```ts
       import { avSession as AVSessionManager } from '@kit.AVSessionKit';
       
@@ -520,7 +526,7 @@ To enable an audio and video application to access the AVSession service as a pr
       ```
 
    The code snippet below is used for destroying the AVSession object:
-
+   
       ```ts
       import { avSession as AVSessionManager } from '@kit.AVSessionKit';
       

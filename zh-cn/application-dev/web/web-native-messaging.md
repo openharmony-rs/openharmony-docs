@@ -166,7 +166,7 @@ function connectToNativeHost() {
 }
 //接收到来自native程序的消息时触发
 async function onNativeMessage(message) {
-  console.log('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); //示例中的pong
+  console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); //示例中的pong
 }
 //断开连接时触发
 function onDisconnected() {
@@ -184,7 +184,7 @@ function sendNativeMessage() {
     {message: nativeMessage},
     function(response) {
       // 收到一次应用回复的信息后断开链接
-      console.log("sendNativeMessage收到原生应用程序响应:", JSON.stringify(response));
+      console.info("sendNativeMessage收到原生应用程序响应:", JSON.stringify(response));
     }
   )
 }
@@ -399,9 +399,9 @@ function sendNativeMessage() {
 
         let options : ConnectionCallback = new ConnectionCallback;
         let connectId = webNativeMessagingExtensionManager.connectNative(abilityContext, wantInfo, options);
-        console.log(`innerWebNativeMessageManager  connectionId : ${connectId}` );
+        console.info(`innerWebNativeMessageManager  connectionId : ${connectId}` );
       } catch (error) {
-        console.log(`inner callback error Message: ${JSON.stringify(error)}`);
+        console.info(`inner callback error Message: ${JSON.stringify(error)}`);
       }
     }
   ```
@@ -411,7 +411,7 @@ function sendNativeMessage() {
     import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
     function disconnencNative(connectId: number) : void {
-      console.log(`NativeMessageDisconnect start connectionId is ${connectId}`);
+      console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
       webNativeMessagingExtensionManager.disconnectNative(connectId);
     }
   ```

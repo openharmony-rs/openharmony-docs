@@ -21,7 +21,7 @@ Applications can directly use the uniform data structs in certain scenarios. For
 
 For details about the APIs, see [uds.h](../reference/apis-arkdata/capi-uds-h.md).
 
-| API                                                                                   | Description                                         |
+| API                                                                                   | Description                                         | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
 | OH_UdmfData* OH_UdmfData_Create()                                                       | Creates an **OH_UdmfData** instance and a pointer to it.|
 | OH_UdmfRecord* OH_UdmfRecord_Create()                                                   | Creates an **OH_UdmfRecord** instance and a pointer to it.|
@@ -48,8 +48,9 @@ libudmf.so, libhilog_ndk.z.so
 ```
 
 ## Including Header Files
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
-```c
+``` C++
 #include <database/udmf/uds.h>
 #include <database/udmf/udmf.h>
 #include <database/udmf/udmf_meta.h>
@@ -66,7 +67,9 @@ libudmf.so, libhilog_ndk.z.so
 3. Obtain data.
 4. Destroy all the pointers created.
 
-```c
+<!-- @[use_plaintext_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // 1. Create a pointer to an PlainText object.
 OH_UdmfRecord *plainTextRecord = OH_UdmfRecord_Create();
 OH_UdsPlainText *plainText = OH_UdsPlainText_Create();
@@ -77,9 +80,9 @@ OH_UdsPlainText_SetContent(plainText, content);
 OH_UdmfRecord_AddPlainText(plainTextRecord, plainText);
 
 // 3. Obtain PlainText data.
-OH_UdsPlainText* plainText2 = OH_UdsPlainText_Create();
+OH_UdsPlainText *plainText2 = OH_UdsPlainText_Create();
 OH_UdmfRecord_GetPlainText(plainTextRecord, plainText2);
-const char* content2 = OH_UdsPlainText_GetContent(plainText2);
+const char *content2 = OH_UdsPlainText_GetContent(plainText2);
 
 OH_LOG_INFO(LOG_APP, "content = %{public}s.", content2);
 // 4. Destroy all the pointers created.
@@ -96,20 +99,22 @@ OH_UdsPlainText_Destroy(plainText2);
 4. Obtain the **fileUri** data.
 5. Destroy all the pointers created.
 
-```c
+<!-- @[use_fileUri_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // 1. Create a struct for the fileUri data.
-const char* uri = "https://xxx/xx/xx.jpg";
-OH_UdsFileUri* fileUri = OH_UdsFileUri_Create();
+const char *uri = "https://xxx/xx/xx.jpg";
+OH_UdsFileUri *fileUri = OH_UdsFileUri_Create();
 // 2. Set the URL and description for the fileUri.
 OH_UdsFileUri_SetFileUri(fileUri, uri);
 OH_UdsFileUri_SetFileType(fileUri, UDMF_META_IMAGE);
 // 3. Create an OH_UdmfRecord object and set fileUri data to it.
-OH_UdmfRecord* record = OH_UdmfRecord_Create();
+OH_UdmfRecord *record = OH_UdmfRecord_Create();
 OH_UdmfRecord_AddFileUri(record, fileUri);
 // 4. Obtain the fileUri data.
-OH_UdsFileUri* fileUri1 = OH_UdsFileUri_Create();
+OH_UdsFileUri *fileUri1 = OH_UdsFileUri_Create();
 OH_UdmfRecord_GetFileUri(record, fileUri1);
-const char* fileUriStr = OH_UdsFileUri_GetFileUri(fileUri1);
+const char *fileUriStr = OH_UdsFileUri_GetFileUri(fileUri1);
 OH_LOG_INFO(LOG_APP, "fileUri1 = %{public}s.", fileUriStr);
 // 5. Destroy all the pointers created.
 OH_UdsFileUri_Destroy(fileUri);

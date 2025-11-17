@@ -6,12 +6,12 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
-The **InputMethodExtensionAbility** module provides APIs for developing input methods and managing their lifecycles.
+The **InputMethodExtensionAbility** module provides APIs for developing input methods and managing the lifecycle of input method extensions.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module can be used only in the stage model.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -54,6 +54,7 @@ Called when the **InputMethodExtensionAbility** is started to implement initiali
 ```ts
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
+
 class InputMethodExt extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
     console.info('onCreate, want:' + want.abilityName);
@@ -73,6 +74,7 @@ Called when this **InputMethodExtensionAbility** is destroyed to clear resources
 
 ```ts
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
+
 class InputMethodExt extends InputMethodExtensionAbility {
   onDestroy(): void {
     console.info('onDestroy');

@@ -11,8 +11,6 @@ WebNativeMessagingExtensionAbility为开发者提供Web原生消息通信的能�
 > **说明:**
 >
 > 本模块首批接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -58,7 +56,7 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onConnectNative(info: ConnectionInfo): void {
     console.info('Web Native connection established!');
-    console.info(`Connnection ID: ${info.connectionId}`);
+    console.info(`Connection ID: ${info.connectionId}`);
     console.info(`Caller bundle: ${info.bundleName}`);
     // 在此处处理连接建立后的业务逻辑
   }
@@ -89,7 +87,7 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onDisconnectNative(info: ConnectionInfo): void {
     console.info('Web Native connection closed!');
-    console.info(`Connnection ID: ${info.connectionId}`);
+    console.info(`Connection ID: ${info.connectionId}`);
     // 在此处处理连接断开后的清理工作
   }
 }

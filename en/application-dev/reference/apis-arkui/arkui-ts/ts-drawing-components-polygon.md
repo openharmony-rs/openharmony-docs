@@ -1,10 +1,18 @@
 # Polygon
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **Polygon** component is used to draw a polygon.
 
 >  **NOTE**
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+>  This component supports dynamic constructor parameter updates using the [updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#properties) API of the [AttributeUpdater](../js-apis-arkui-AttributeUpdater.md) class since API version 20.
 
 
 ## Child Components
@@ -26,10 +34,15 @@ Polygon(options?: PolygonOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18) | No| Options for drawing a polygon.|
+| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18) | No| Options for drawing a polygon.<br>The **undefined** and **null** values are treated as invalid.|
 
 ## PolygonOptions<sup>18+</sup>
+
 Describes the options for drawing a polygon.
+
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -37,10 +50,10 @@ Describes the options for drawing a polygon.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| width | string \| number | No| Width. The value must be greater than or equal to 0.<br>Default value: **0**.<br>Default unit: vp.<br>An invalid value is handled as the default value.|
-| height | string \| number | No| Height. The value must be greater than or equal to 0.<br>Default value: **0**.<br>Default unit: vp.<br>Invalid values are treated as the default value.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width. The value must be greater than or equal to 0.<br>Default value: **0**.<br>Default unit: vp.<br>If the value is undefined, null, NaN, or Infinity, the default value is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height. The value must be greater than or equal to 0.<br>Default value: **0**.<br>Default unit: vp.<br>If the value is undefined, null, NaN, or Infinity, the default value is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -48,9 +61,9 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 ### points
 
-points(value: Array&lt;Point&gt;)
+points(value: Array&lt;any&gt;)
 
-Sets the vertex coordinates of the polygon. Invalid values are treated as the default value.
+Sets the vertex coordinates of the polygon. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -62,13 +75,13 @@ Sets the vertex coordinates of the polygon. Invalid values are treated as the de
 
 | Name| Type                                                        | Mandatory| Description                                 |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------- |
-| value  | Array&lt;[Point](ts-drawing-components-polyline.md#point)&gt; | Yes  | Vertex coordinates of the polygon.<br>Default value: **[]**.<br>Default unit: vp.|
+| value  | Array&lt;any&gt; | Yes  | Vertex coordinates of the polygon. A two-dimensional array is passed. Each subarray indicates the [x, y] coordinates of a vertex.<br>Default value: an empty array []<br>Default unit: vp.<br>The abnormal values undefined and null are processed based on the default values.|
 
 ### fill
 
 fill(value: ResourceColor)
 
-Sets the color of the fill area. Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
+Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -80,13 +93,13 @@ Sets the color of the fill area. Invalid values are treated as the default value
 
 | Name| Type                                      | Mandatory| Description                                  |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**.<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
 
 ### fillOpacity
 
 fillOpacity(value: number | string | Resource)
 
-Opacity of the fill area. The value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.
+Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -98,13 +111,13 @@ Opacity of the fill area. The value range is [0.0, 1.0]. A value less than 0.0 i
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>Default value: **1**.|
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range of the number format is [0.0, 1.0]. If the specified value is less than 0.0, the value is 0.0. If the specified value is greater than 1.0, the value is 1.0. Other abnormal values are processed as 1.0.<br>The string format supports the string format of the number format. The value range is the same as that of the number format.<br>The Resource format supports character strings in system resources or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
 
 ### stroke
 
 stroke(value: ResourceColor)
 
-Sets the stroke color. If this attribute is not set, the component does not have any stroke. If the value is invalid, no stroke will be drawn.
+Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this parameter is not set, the stroke opacity is 0 by default, that is, there is no border.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -116,13 +129,13 @@ Sets the stroke color. If this attribute is not set, the component does not have
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Abnormal values undefined and null are processed based on the default value, and NaN and Infinity are processed based on Color.Black.|
 
 ### strokeDashArray
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-Stroke dashes. The value must be greater than or equal to 0. Invalid values are treated as the default value.
+Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Value range: ≥ 0. Invalid values are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -134,13 +147,13 @@ Stroke dashes. The value must be greater than or equal to 0. Invalid values are 
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: **[]**.<br>Default unit: vp.|
+| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are treated as the default value.|
 
 ### strokeDashOffset
 
 strokeDashOffset(value: number | string)
 
-Sets the offset of the start point for drawing the stroke. Invalid values are treated as the default value.
+Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -152,13 +165,13 @@ Sets the offset of the start point for drawing the stroke. Invalid values are tr
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**.<br>Default unit: vp.|
+| value  | number \| string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**.<br>Default unit: vp.<br>Abnormal values undefined and null are processed based on the default values. NaN and Infinity will cause strokeDashArray to become invalid.|
 
 ### strokeLineCap
 
 strokeLineCap(value: LineCapStyle)
 
-Sets the cap style of the stroke.
+Sets the offset of the end point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -170,13 +183,13 @@ Sets the cap style of the stroke.
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**.|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**.<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
 
 ### strokeLineJoin
 
 strokeLineJoin(value: LineJoinStyle)
 
-Sets the join style of the stroke.
+Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -188,13 +201,13 @@ Sets the join style of the stroke.
 
 | Name| Type                                               | Mandatory| Description                                              |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**.|
+| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**.<br>The abnormal values undefined, null, NaN, and Infinity are processed based on the default values.|
 
 ### strokeMiterLimit
 
 strokeMiterLimit(value: number | string)
 
-Sets the limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join. The miter length indicates the distance from the outer tip to the inner corner of the miter. This attribute works only when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
+Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The miter length indicates the distance from the outer tip to the inner corner of the miter. This attribute works only when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
 
 The value must be greater than or equal to 1.0. If the value is in the [0, 1) range, the value **1.0** will be used. In other cases, the default value will be used.
 
@@ -208,13 +221,13 @@ The value must be greater than or equal to 1.0. If the value is in the [0, 1) ra
 
 | Name| Type                      | Mandatory| Description                                          |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**.|
+| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**.<br>The abnormal values undefined, null, and NaN are processed based on the default values. Infinity causes the stroke failure.|
 
 ### strokeOpacity
 
 strokeOpacity(value: number | string | Resource)
 
-Stroke opacity. The value range is [0.0, 1.0]. A value less than 0.0 evaluates to the value **0.0**. A value greater than 1.0 evaluates to the value **1.0**. Any other value evaluates to the value **1.0**.
+Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range of this attribute is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -226,13 +239,13 @@ Stroke opacity. The value range is [0.0, 1.0]. A value less than 0.0 evaluates t
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: **1**.|
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: opacity set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
 strokeWidth(value: Length)
 
-Sets the stroke width. If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
+Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -244,13 +257,13 @@ Sets the stroke width. If this attribute is of the string type, percentage value
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**.<br>Default unit: vp.<br>Invalid values are treated as the default value.|
+| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**.<br>Default unit: vp.<br>For abnormal values undefined, null, and NaN, the default value is used. For Infinity, the value 0 is used.|
 
 ### antiAlias
 
 antiAlias(value: boolean)
 
-Specifies whether anti-aliasing is enabled.
+Sets whether to enable anti-aliasing. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -262,20 +275,11 @@ Specifies whether anti-aliasing is enabled.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled.<br>**false**: Anti-aliasing is disabled.<br>Default value: **true**.|
-
-## Point
-
-Describes the coordinates of a point.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-| Name     | Type            | Description                                                        |
-| --------- | -------------------- | ------------------------------------------------------------ |
-| Point | [number, number] | Coordinates of a point. The first parameter is the x-coordinate, and the second parameter is the y-coordinate (relative coordinate).|
-
+| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled.<br>**false**: Anti-aliasing is disabled.<br>Default value: **true**.<br>The abnormal values undefined and null are processed based on the default values.|
 
 ## Example
+
+### Example 1: Drawing Rectangles
 
 This example demonstrates how to use **points**, **fill**, **fillOpacity**, and **stroke** to draw polygons with specific coordinates, fill colors, opacity, and stroke colors.
 
@@ -311,3 +315,77 @@ struct PolygonExample {
 ```
 
 ![en-us_image_0000001174582856](figures/en-us_image_0000001174582856.png)
+
+### Example 2 (Using Different Parameter Types for Width and Height to Draw a Polygon)
+
+The width and height attributes use different length types to draw a polygon.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct PolygonTypeExample {
+  build() {
+    Column({ space: 10 }) {
+      // Draw a triangle in a 100 x 100 rectangle. The start point is (0, 0), the end point is (100, 0), and the passing point is (50, 100).
+      Polygon ({ width: '100', height: '100' })// Use the string type.
+        .points([[0, 0], [50, 100], [100, 0]])
+      // Draw a quadrilateral in a 100 x 100 rectangle. The start point is (0, 0), the end point is (100, 0), and the passing points are (0, 100) and (100, 100).
+      Polygon ({ width: 100, height: 100 })// Use the number type.
+        .points([[0, 0], [0, 100], [100, 100], [100, 0]])
+        .fillOpacity(0)
+        .strokeWidth(5)
+        .stroke(Color.Blue)
+      // Draw a pentagon in a 100 x 100 rectangle. The start point is (50, 0), the end point is (100, 50), and the passing points are (0, 50), (20, 100), and (80, 100).
+      Polygon({ width: $r('app.string.PolygonWidth'), height: $r('app.string.PolygonHeight') })// The resource type is used, which needs to be customized.
+        .points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
+        .fillOpacity(0.6)
+    }.width('100%').margin({ top: 10 })
+  }
+}
+```
+
+![polygonDemo2](figures/polygonDemo2.png)
+
+### Example 3 (Using attributeModifier to Dynamically Set the Attributes of the Polygon Component)
+
+This example shows how to use **attributeModifier** to dynamically set the various attributes of the **Polygon** component, such as **points**, **fill**, **stroke**, and **antiAlias**.
+
+```ts
+// xxx.ets
+class MyPolygonModifier implements AttributeModifier<PolygonAttribute> {
+  applyNormalAttribute(instance: PolygonAttribute): void {
+    // Triangle with vertices at (0, 0), (50, 100), and (100, 0). Fill color: #707070, fill opacity: 0.5, stroke color: #2787D9, stroke dash array: [20], offset left by 15, line cap style: round, line join style: miter, miter limit: 5, stroke opacity: 0.5, stroke width: 10, anti-aliasing enabled
+    instance.points([[0, 0], [50, 100], [100, 0]])
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct PolygonModifierDemo {
+  @State modifier: MyPolygonModifier = new MyPolygonModifier()
+
+  build() {
+    Column() {
+      Polygon()
+        .width(100)
+        .height(100)
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+![](figures/polygonModifier.png)

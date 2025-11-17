@@ -1,5 +1,12 @@
 # @ohos.security.asset (Asset Store Service) (System API)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 The asset store service (ASSET) provides secure storage and management of sensitive data less than 1024 bytes in size, including passwords, app tokens, and other critical data (such as bank card numbers).
 
 > **NOTE**
@@ -17,9 +24,11 @@ import { asset } from '@kit.AssetStoreKit';
 
 addAsUser(userId: number, attributes: AssetMap): Promise\<void>
 
-Adds an asset to the specified user space. This API uses a promise to return the result.
+Adds one asset in the specified user space. This API uses a promise to return the result.
 
 To set [IS_PERSISTENT](js-apis-asset.md#tag), the application must have the ohos.permission.STORE_PERSISTENT_DATA permission.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -66,7 +75,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -79,23 +87,18 @@ attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
 attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
 attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-try {
-  asset.addAsUser(userId, attr).then(() => {
-    console.info(`Asset added to user space successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to add Asset to user space. Code is ${err.code}, message is ${err.message}`);
-  })
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to add Asset to user space. Code is ${err.code}, message is ${err.message}`);
-}
+asset.addAsUser(userId, attr).then(() => {
+  console.info(`Succeeded in adding Asset to user space.`);
+});
 ```
 
 ## asset.removeAsUser
 
 removeAsUser(userId: number, query: AssetMap): Promise\<void>
 
-Removes one or more assets from the specified user space. This API uses a promise to return the result.
+Removes one or more assets in the specified user space. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -139,7 +142,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -149,23 +151,18 @@ function stringToArray(str: string): Uint8Array {
 let userId: number = 100;
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  asset.removeAsUser(userId, query).then(() => {
-    console.info(`Asset removed from user space successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to remove Asset from user space. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to remove Asset from user space. Code is ${err.code}, message is ${err.message}`);
-}
+asset.removeAsUser(userId, query).then(() => {
+  console.info(`Succeeded in removing Asset from user space.`);
+});
 ```
 
 ## asset.updateAsUser
 
 updateAsUser(userId: number, query: AssetMap, attributesToUpdate: AssetMap): Promise\<void>
 
-Updates an asset in the specified user space. This API uses a promise to return the result.
+Updates one asset in the specified user space. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -212,7 +209,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -224,16 +220,9 @@ let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 let attrsToUpdate: asset.AssetMap = new Map();
 attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-try {
-  asset.updateAsUser(userId, query, attrsToUpdate).then(() => {
-    console.info(`Asset updated in user space successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to update Asset in user space. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to update Asset in user space. Code is ${err.code}, message is ${err.message}`);
-}
+asset.updateAsUser(userId, query, attrsToUpdate).then(() => {
+  console.info(`Succeeded in updating Asset in user space.`);
+});
 ```
 
 ## asset.preQueryAsUser
@@ -241,6 +230,8 @@ try {
 preQueryAsUser(userId: number, query: AssetMap): Promise\<Uint8Array>
 
 Performs preprocessing for the asset query in the specified user space. This API is used when user authentication is required for the access to an asset. After the user authentication is successful, call [asset.queryAsUser](#assetqueryasuser) and [asset.postQueryAsUser](#assetpostqueryasuser). This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -287,7 +278,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -297,16 +287,9 @@ function stringToArray(str: string): Uint8Array {
 let userId: number = 100;
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  asset.preQueryAsUser(userId, query).then((challenge: Uint8Array) => {
-    console.info(`Succeeded in pre-querying Asset from user space.`);
-  }).catch ((err: BusinessError) => {
-    console.error(`Failed to pre-query Asset from user space. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to pre-query Asset from user space. Code is ${err.code}, message is ${err.message}`);
-}
+asset.preQueryAsUser(userId, query).then((challenge: Uint8Array) => {
+  console.info(`Succeeded in pre-querying Asset from user space.`);
+});
 ```
 
 ## asset.queryAsUser
@@ -314,6 +297,8 @@ try {
 queryAsUser(userId: number, query: AssetMap): Promise\<Array\<AssetMap>>
 
 Queries one or more assets in the specified user space. If user authentication is required for the access to the asset, call [asset.preQueryAsUser](#assetprequeryasuser) before this API and call [asset.postQueryAsUser](#assetpostqueryasuser) after this API. For details about the development procedure, see [Querying an Asset with User Authentication](../../security/AssetStoreKit/asset-js-query-auth.md). This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -360,7 +345,6 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
   let textEncoder = new util.TextEncoder();
@@ -370,27 +354,23 @@ function stringToArray(str: string): Uint8Array {
 let userId: number = 100;
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-try {
-  asset.queryAsUser(userId, query).then((res: Array<asset.AssetMap>) => {
-    for (let i = 0; i < res.length; i++) {
-      // parse the attribute.
-      let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
-    }
-    console.info(`Succeeded in querying Asset from user space.`);
-  }).catch ((err: BusinessError) => {
-    console.error(`Failed to query Asset from user space. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to query Asset from user space. Code is ${err.code}, message is ${err.message}`);
-}
+asset.queryAsUser(userId, query).then((res: Array<asset.AssetMap>) => {
+  for (let i = 0; i < res.length; i++) {
+    // Parse the attributes.
+    let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+    console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
+  }
+  console.info(`Succeeded in querying Asset from user space.`);
+});
 ```
 
 ## asset.postQueryAsUser
 
 postQueryAsUser(userId: number, handle: AssetMap): Promise\<void>
 
-Performs postprocessing for the asset query in the specified user space. This API is used when user authentication is required for the access to an asset. This API must be used with [asset.preQueryAsUser](#assetprequeryasuser) together. This API uses a promise to return the result.
+Performs postprocessing for the asset query in the specified user space. This API is used when user authentication is required for the access to an asset. It must be used with [asset.preQueryAsUser](#assetprequeryasuser). This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -429,20 +409,12 @@ For details about the error codes, see [Asset Store Service Error Codes](errorco
 
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 100;
 let handle: asset.AssetMap = new Map();
 // The new Uint8Array(32) is only an example. Pass in the challenge value returned by asset.preQueryAsUser.
 handle.set(asset.Tag.AUTH_CHALLENGE, new Uint8Array(32));
-try {
-  asset.postQueryAsUser(userId, handle).then(() => {
-    console.info(`Succeeded in post-querying Asset from user space.`);
-  }).catch ((err: BusinessError) => {
-    console.error(`Failed to post-query Asset from user space. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to post-query Asset from user space. Code is ${err.code}, message is ${err.message}`);
-}
+asset.postQueryAsUser(userId, handle).then(() => {
+  console.info(`Succeeded in post-querying Asset from user space.`);
+});
 ```

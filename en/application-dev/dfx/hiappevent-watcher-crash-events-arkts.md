@@ -2,8 +2,8 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
-<!--Designer: @Maplestory-->
-<!--Tester: @yufeifei-->
+<!--Designer: @Maplestory91-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -42,7 +42,7 @@ The following describes how to subscribe to the crash event triggered by a butto
    ```ts
     // Build custom parameters for the crash event.
     let params: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100,
+      "test_data": 100, // test_data is the custom data. You can customize the params parameter as required.
     };
     // Set custom parameters for the crash event.
     hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -66,7 +66,7 @@ The following describes how to subscribe to the crash event triggered by a butto
     });
    ```
 
-3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add the system event subscription to **onCreate()**. The sample code is as follows:
+3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
    ```ts
     let watcher: hiAppEvent.Watcher = {
@@ -108,6 +108,10 @@ The following describes how to subscribe to the crash event triggered by a butto
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
             // Obtain the log information about the crash event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
+            // Obtain the life time of the faulty process when the crash event occurs.
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
+            // Obtain the memory information about the crash event.
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
             // Obtain the crash log file about the crash event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
@@ -165,6 +169,8 @@ Depending on whether an application proactively captures crash events, callbacks
 
 If the application does not proactively capture the crash exception, the application will exit after the system handles the crash. When the application restarts, HiAppEvent reports the crash event to the registered watcher to complete the callback.
 
+If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
+
 **Application proactively captures crash events**
 
 If an application proactively captures the crash event, a callback is triggered before the application exits. The following are examples:
@@ -193,6 +199,8 @@ HiAppEvent eventInfo.params.uid=20010043
 HiAppEvent eventInfo.params.uuid=b1e953ba0022c112e4502e28e8b3ad6d95cf3c87bae74068038f03b38ce7f66a
 HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON","name":"SyntaxError","stack":"at anonymous (entry/src/main/ets/pages/Index.ets:55:34)"}
 HiAppEvent eventInfo.params.hilog.size=90
+HiAppEvent eventInfo.params.process_life_time=1
+HiAppEvent eventInfo.params.memory={"rss":150748,"sys_avail_mem":5387264,"sys_free_mem":218902,"sys_total_mem":11679236}
 HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1711440614112_2043.log"]
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.test_data=100

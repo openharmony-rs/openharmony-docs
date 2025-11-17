@@ -219,8 +219,8 @@ Enumerates the media content types.
 
 | Enum| Description|
 | -- | -- |
-| MEDIA_LIBRARY_COMPRESSED = 1 | Compressed media content.|
-| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | Image object.|
+| MEDIA_LIBRARY_COMPRESSED = 1 | Compressed media content, which is the image encoded in JPEG format.|
+| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | Picture object media content. For details, see [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md).|
 
 
 ## Function Description

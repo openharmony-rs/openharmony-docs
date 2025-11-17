@@ -106,7 +106,7 @@ factorial(n3)  //  1
 factorial(n4)  //  9.33262154439441e+157 
 ```
 
-The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the bigint type to ensure the precision as required.
+The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the BigInt type to ensure the precision as required.
 
 ```typescript
 
@@ -233,7 +233,7 @@ class Frog { sleep () {}; leap () {} }
 type Animal = Cat | Dog | Frog;
 
 function foo(animal: Animal) {
-  if (animal instanceof Frog) {
+  if (animal instanceof Frog) {  // Check whether animal is of the Frog type.
     animal.leap(); // animal is of type Frog here.
   }
   animal.sleep(); // Any animal can sleep.
@@ -245,10 +245,29 @@ function foo(animal: Animal) {
 Type Aliases provides names for anonymous types (such as array, function, object literal or union type) or alternative names for existing types.
 
 ```typescript
+// Two-dimensional array type.
 type Matrix = number[][];
+const gameBoard: Matrix = [
+  [1, 0],
+  [0, 1]
+];
+
+// Function type.
 type Handler = (s: string, no: number) => string;
-type Predicate <T> = (x: T) => boolean;
+const repeatString: Handler = (str, times) => {
+  return str.repeat(times);
+};
+console.info(repeatString("abc", 3)); // "abcabcabc"
+
+// Generic function type.
+type Predicate<T> = (x: T) => boolean;
+const isEven: Predicate<number> = (num) => num % 2 === 0;
+
+// Object type that can be null.
 type NullableObject = Object | null;
+class cat {}
+let animalData: NullableObject = new cat();
+let emptyData: NullableObject = null;
 ```
 
 ### Operators
@@ -318,6 +337,32 @@ Binary operators are as follows:
 | `a && b`   | Logical AND|
 | `a || b` | Logical OR|
 | `! a`      | Logical NOT|
+
+**instanceof operator**
+
+The **instanceof** operator is used to check whether an object is an instance of a specified class or its child class at runtime.
+
+Example:
+
+```typescript
+obj instanceof className
+```
+
+The type of the return value is Boolean.
+If **obj** is an instance of the **className** class or its child class, the return value is **true**. Otherwise, the return value is **false**.
+
+Example:
+
+```typescript
+class Person {}
+const person = new Person();
+if ((person instanceof Person)) console.info("true") // true
+
+class Animal {}
+class Bird extends Animal {}
+const bird = new Bird();
+if (bird instanceof Animal)  console.info("true") // true
+```
 
 ### Statements
 
@@ -897,7 +942,7 @@ The following code (invalid in ArkTS) is error-prone:
 class Person {
   name: string; // undefined
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -919,7 +964,7 @@ In ArkTS, you should write code as follows:
 class Person {
   name: string = '';
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -941,7 +986,7 @@ The following shows how our code behaves if the field **name** can be **undefine
 class Person {
   name?: string; // The field may be undefined.
 
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
 
@@ -966,7 +1011,7 @@ jack.getName()?.length; // Successful compilation and no runtime error.
 
 **getter and setter**
 
-**setter** and **getter** can be used to provide controlled access to object properties.
+**setter** and **getter** can be used to provide controlled access to class properties.
 
 In the following example, a **setter** is used to forbid setting invalid values of the **_age** property:
 
@@ -1252,7 +1297,7 @@ class Base {
 class Derived extends Base {
   foo() {
     this.x = 'a'; // Access the protected member.
-    this.y = 'b'; // Compile-time error: 'y' is not visible, because it is private.
+    this.y = 'b'; // Compile-time error: 'y' is not visible because it is private.
   }
 }
 ```
@@ -1315,7 +1360,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-The **K** type can be either string or number (excluding bigint), while **V** can be any type.
+The **K** type can be either string or number (excluding BigInt), while **V** can be any type.
 
 ```typescript
 interface PersonInfo {
@@ -1969,7 +2014,7 @@ The following types can be used for annotation fields:
 >**NOTE**
 >
 > - If other types are used for annotation fields, a compile-time error occurs.
-> - The bigint type is not supported for annotation field.
+> - The BigInt type is not supported for annotation fields.
 
 The default value of an annotation field must be specified using a constant expression.<br>The following types of constant expressions are used:
 * Numeric literal
@@ -2016,7 +2061,7 @@ class Position { // Compile-time error: The name of an annotation cannot be the 
 }
 
 @interface ClassAuthor { // Compile-time error: The name of an annotation cannot be the same as that of another entity visible in the scope where the annotation is defined.
-  data: sting;
+  data: string;
 }
 ```
 Annotations are not types. If annotations are used as types, a compile-time error is reported. For example, type aliases are used for annotations.
@@ -2163,8 +2208,7 @@ console.info("hello");
 import { Anno } from './a';
 import * as ns from './a';
 
-@MyAnno
-@ns.ClassAuthor // Only the annotation of ns is referenced, which does not execute console.info of a.ets.
+// Only the Anno module is imported, which does not execute console.info of a.ets.
 class X {
   // ...
 }
@@ -2212,53 +2256,53 @@ class C {
 **.d.ets files automatically generated by a compiler**<br>
 When a compiler automatically generates .d.ets files based on ETS code, the following situations may occur:
 1. When the annotation definition is exported, the annotation definition in the source code is retained in the .d.ets file.
-```typescript
-// a.ets
-export @interface ClassAuthor {}
+   ```typescript
+   // a.ets
+   export @interface ClassAuthor {}
 
-@interface MethodAnno { // Not exported
-  data: number;
-}
+   @interface MethodAnno { // Not exported
+     data: number;
+   }
 
-// Declaration file generated by the a.d.ets compiler
-export declare @interface ClassAuthor {}
-```
+   // Declaration file generated by the a.d.ets compiler
+   export declare @interface ClassAuthor {}
+   ```
 2. If all the following conditions are met, the annotation instance of the entity in the source code is retained in the .d.ets file.<br>
-    2.1 The annotation definition (including imported annotation) is exported.<br>
-    2.2 If the entity is a class, the class is exported.<br>
-    2.3 If the entity is a method, the class is exported, and the method is not private.
-```typescript
-// a.ets
-import { ClassAuthor } from './author';
+  2.1 The annotation definition (including imported annotation) is exported.<br>
+  2.2 If the entity is a class, the class is exported.<br>
+  2.3 If the entity is a method, the class is exported, and the method is not private.
+   ```typescript
+   // a.ets
+   import { ClassAuthor } from './author';
 
-export @interface MethodAnno {
-  data: number = 0;
-}
+   export @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-class MyClass {
-  @MethodAnno({data: 123})
-  foo() {}
+   @ClassAuthor
+   class MyClass {
+     @MethodAnno({data: 123})
+     foo() {}
 
-  @MethodAnno({data: 456})
-  private bar() {}
-}
+     @MethodAnno({data: 456})
+     private bar() {}
+   }
 
-// Declaration file generated by the a.d.ets compiler
-import {ClassAuthor} from "./author";
+   // Declaration file generated by the a.d.ets compiler
+   import {ClassAuthor} from "./author";
 
-export declare @interface MethodAnno {
-  data: number = 0;
-}
+   export declare @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-export declare class MyClass {
-  @MethodAnno({data: 123})
-  foo(): void;
+   @ClassAuthor
+   export declare class MyClass {
+     @MethodAnno({data: 123})
+     foo(): void;
 
-  bar; // Annotations are not retained for private methods.
-}
-```
+     bar; // Annotations are not retained for private methods.
+   }
+   ```
 
 **.d.ets file generated by the developer**<br>
 The annotation information in the .d.ets file generated by you is not automatically applied to the implemented source code.<br>

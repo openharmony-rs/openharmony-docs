@@ -18,7 +18,7 @@ HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需
 
 1. 修改HAP模块下的[module.json5](./module-configuration-file.md)文件，具体操作如下：
     - 将type标签值改为har，删除mainElement、deliveryWithInstall、installationFree和pages标签。
-    - 由于HAR模块不支持ExtensionAbility，需要删除extensionAbilities标签，并将关联的ExtensionAbility组件删除或迁移到其他HAP模块中。
+    - 由于API version 17及之前版本HAR不支持创建任何ExtensionAbility，从API version 18开始HAR仅支持创建[两种ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)，因此在API version 18及之后版本但未配置为支持的两种ExtensionAbility、或在API version 17及之前版本，需要删除extensionAbilities标签，并将关联的ExtensionAbility组件删除或迁移到其他HAP模块中。
     - 由于HAR模块在API version 13及以下不支持UIAbility，因此在API version 13及以前的版本，需要删除abilities标签，并将关联的UIAbility组件删除或迁移到其他HAP模块中。
 
     <!-- @[hap_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/src/main/module.json5) -->

@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 A non-linear data structure.
 
@@ -87,6 +87,42 @@ const mySet1: collections.Set<number|SharedClass> = new collections.Set<number|S
 let obj = new Object();
 const mySet2: collections.Set<number|SharedClass> = new collections.Set<number|Object>([1, obj]);
 ```
+## constructor
+
+constructor(iterable: Iterable\<T>)
+
+A constructor used to create an ArkTS set.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description                             |
+| ------ | ---- | ---- | ------------------------------- |
+| iterable | Iterable\<T> | Yes| Object used to construct an ArkTS set.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+
+| ID| Error Message                                               |
+| -------- | ------------------------------------------------------- |
+| 401      | Parameter error.                                        |
+| 10200012 | The ArkTS Set's constructor cannot be directly invoked. |
+
+**Example**
+
+```ts
+const mapper = new Map([
+  ['1', 'a'],
+  ['2', 'b'],
+]);
+let newSet = new collections.Set<string>(mapper.values());
+console.info(newSet.has('a').toString()); // Expected output: true
+console.info(newSet.has('b').toString()); // Expected output: true
+```
 
 ## entries
 entries(): IterableIterator<[T, T]>
@@ -101,7 +137,7 @@ Returns a set iterator object that contains the key-value pair of each element i
 
 | Type                          | Description                   |
 | ------------------------------ | ----------------------- |
-| IterableIterator&lt;[T, T]&gt; | Set iterator object.|
+| IterableIterator&lt;[T, T]&gt; | Returns a set iterator object that contains the key-value pair of each element in this ArkTS set.|
 
 **Error codes**
 
@@ -137,7 +173,7 @@ Returns a set iterator object that contains the key of each element in this ArkT
 
 | Type                     | Description                   |
 | ------------------------- | ----------------------- |
-| IterableIterator&lt;T&gt; | Set iterator object.|
+| IterableIterator&lt;T&gt; | Returns a set iterator object that contains the key of each element in this ArkTS set.|
 
 **Error codes**
 
@@ -173,7 +209,7 @@ Returns a set iterator object that contains the value of each element in this Ar
 
 | Type                     | Description                   |
 | ------------------------- | ----------------------- |
-| IterableIterator&lt;T&gt; | Set iterator object.|
+| IterableIterator&lt;T&gt; | Returns a set iterator object that contains the value of each element in this ArkTS set.|
 
 **Error codes**
 

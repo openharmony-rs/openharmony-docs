@@ -297,7 +297,7 @@ Seeks to the specified time for all the selected tracks based on a seek mode.
 | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) *demuxer | Pointer to an OH_AVDemuxer instance.|
 | int64_t millisecond | Time to seek to, in milliseconds. The timestamp is relative to the start position of the file.|
-| [OH_AVSeekMode](_codec_base.md#oh_avseekmode) mode | Seek mode.|
+| [OH_AVSeekMode](capi-native-avcodec-base-h.md#oh_avseekmode) mode | Seek mode.|
 
 **Returns**
 

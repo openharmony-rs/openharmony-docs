@@ -35,34 +35,40 @@
 ## 状态管理V1版本接受外部传入的装饰器的局限性
 状态管理V1存在多种可接受外部传入的装饰器，常用的有[\@State](arkts-state.md)、[\@Prop](arkts-prop.md)、[\@Link](arkts-link.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)。这些装饰器使用有限制且不易区分，不当使用会导致性能问题。
 
-```ts
+<!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) -->
+
+``` TypeScript
 @Observed
 class Region {
-  x: number;
-  y: number;
+  public x: number;
+  public y: number;
+
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 }
+
 @Observed
 class Info {
-  region: Region;
+  public region: Region;
+
   constructor(x: number, y: number) {
     this.region = new Region(x, y);
   }
 }
+
 @Entry
 @Component
 struct Index {
   @State info: Info = new Info(0, 0);
-  
+
   build() {
     Column() {
       Button('change Info')
         .onClick(() => {
           this.info = new Info(100, 100);
-      })
+        })
       Child({
         region: this.info.region,
         regionProp: this.info.region,
@@ -73,6 +79,7 @@ struct Index {
     }
   }
 }
+
 @Component
 struct Child {
   @ObjectLink region: Region;
@@ -80,6 +87,7 @@ struct Child {
   @Prop infoProp: Info;
   @Link infoLink: Info;
   @State infoState: Info = new Info(1, 1);
+
   build() {
     Column() {
       Text(`ObjectLink region: ${this.region.x}-${this.region.y}`)
@@ -114,26 +122,29 @@ struct Child {
 使用\@Param装饰的变量具有被观测变化的能力。当装饰的变量发生变化时，会触发该变量绑定的UI组件刷新。
 
 - 当装饰的变量类型为boolean、string、number类型时，可观察数据源同步变化。
-
-  ```ts
+  <!-- @[Param_Observe_Change_Variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets) -->
+  
+  ``` TypeScript
   @Entry
   @ComponentV2
   struct Index {
+    // 点击的次数
     @Local count: number = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`Local ${this.count}`)
         Text(`Local ${this.message}`)
         Text(`Local ${this.flag}`)
         Button('change Local')
-          .onClick(()=>{
+          .onClick(() => {
             // 对数据源的更改会同步给子组件
             this.count++;
             this.message += ' World';
             this.flag = !this.flag;
-        })
+          })
         Child({
           count: this.count,
           message: this.message,
@@ -142,11 +153,13 @@ struct Child {
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param count: number;
     @Require @Param message: string;
     @Require @Param flag: boolean;
+  
     build() {
       Column() {
         Text(`Param ${this.count}`)
@@ -158,26 +171,32 @@ struct Child {
   ```
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。
-
-  ```ts
+  <!-- @[Param_Observe_Change_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeClass.ets) -->
+  
+  ``` TypeScript
   class RawObject {
-    name: string;
+    public name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @ObservedV2
   class ObservedObject {
-    @Trace name: string;
+    @Trace public name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local rawObject: RawObject = new RawObject('rawObject');
     @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
@@ -187,14 +206,14 @@ struct Child {
             // 对类对象整体的修改均能观察到
             this.rawObject = new RawObject('new rawObject');
             this.observedObject = new ObservedObject('new observedObject');
-        })
+          })
         Button('change name')
           .onClick(() => {
             // @Local与@Param均不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
             this.rawObject.name = 'new rawObject name';
             // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
             this.observedObject.name = 'new observedObject name';
-        })
+          })
         Child({
           rawObject: this.rawObject,
           observedObject: this.observedObject
@@ -202,10 +221,12 @@ struct Child {
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param rawObject: RawObject;
     @Require @Param observedObject: ObservedObject;
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
@@ -216,14 +237,15 @@ struct Child {
   ```
 
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
-
-  ```ts
+  <!-- @[Param_Observe_Change_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets) -->
+  
+  ``` TypeScript
   @Entry
   @ComponentV2
   struct Index {
-    @Local numArr: number[] = [1,2,3,4,5];
-    @Local dimensionTwo: number[][] = [[1,2,3],[4,5,6]];
-    
+    @Local numArr: number[] = [1, 2, 3, 4, 5];
+    @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]];
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
@@ -240,8 +262,8 @@ struct Child {
           })
         Button('change whole array')
           .onClick(() => {
-            this.numArr = [5,4,3,2,1];
-            this.dimensionTwo = [[7,8,9],[0,1,2]];
+            this.numArr = [5, 4, 3, 2, 1];
+            this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
           })
         Child({
           numArr: this.numArr,
@@ -250,11 +272,12 @@ struct Child {
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param numArr: number[];
     @Require @Param dimensionTwo: number[][];
-    
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
@@ -268,31 +291,37 @@ struct Child {
   ```
 
 - 当装饰的变量是嵌套类或对象数组时，\@Param无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
-
-  ```ts
+  <!-- @[Param_Observe_Change_Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeNestedClass.ets) -->
+  
+  ``` TypeScript
   @ObservedV2
   class Region {
-    @Trace x: number;
-    @Trace y: number;
+    @Trace public x: number;
+    @Trace public y: number;
+  
     constructor(x: number, y: number) {
       this.x = x;
       this.y = y;
     }
   }
+  
   @ObservedV2
   class Info {
-    @Trace region: Region;
-    @Trace name: string;
+    @Trace public region: Region;
+    @Trace public name: string;
+  
     constructor(name: string, x: number, y: number) {
       this.name = name;
       this.region = new Region(x, y);
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local infoArr: Info[] = [new Info('Ocean', 28, 120), new Info('Mountain', 26, 20)];
     @Local originInfo: Info = new Info('Origin', 0, 0);
+  
     build() {
       Column() {
         ForEach(this.infoArr, (info: Info) => {
@@ -305,6 +334,7 @@ struct Child {
           Text(`Origin name: ${this.originInfo.name}`)
           Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
         }
+  
         Button('change infoArr item')
           .onClick(() => {
             // 由于属性name被@Trace装饰，所以能够观察到
@@ -328,6 +358,7 @@ struct Child {
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Param infoArr: Info[] = [];
@@ -362,7 +393,6 @@ struct Child {
 ## 限制条件
 
 \@Param装饰器存在以下使用限制：
-
 - \@Param装饰器只能在[\@ComponentV2](arkts-new-componentV2.md)装饰器的自定义组件中使用。
 
   ```ts
@@ -382,7 +412,7 @@ struct Child {
 
 - \@Param装饰的变量表示组件外部输入，需要初始化。支持使用本地初始值或外部传入值进行初始化。当存在外部传入值时，优先使用外部传入值。不允许既不使用本地初始值，也不使用外部传入值。
 
-  ```ts
+  ```ts	
   @ComponentV2
   struct ChildComponent {
     @Param param1: string = 'Initialize local';
@@ -413,7 +443,6 @@ struct Child {
   ```
 
 - 使用`@Param`装饰的变量在子组件中无法被直接修改。但是，如果装饰的变量是对象类型，在子组件中可以修改对象的属性。
-
   ```ts
   @ObservedV2
   class Info {
@@ -465,31 +494,38 @@ struct Child {
 
 \@Param能够接受父组件\@Local或\@Param传递的数据并与之变化同步。
 
-```ts
+<!-- @[Param_Use_Scene_Parent_To_Child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneParentToChild.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Region {
-  @Trace x: number;
-  @Trace y: number;
+  @Trace public x: number;
+  @Trace public y: number;
+
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 }
+
 @ObservedV2
 class Info {
-  @Trace name: string;
-  @Trace age: number;
-  @Trace region: Region;
+  @Trace public name: string;
+  @Trace public age: number;
+  @Trace public region: Region;
+
   constructor(name: string, age: number, x: number, y: number) {
     this.name = name;
     this.age = age;
     this.region = new Region(x, y);
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
+
   build() {
     Column() {
       ForEach(this.infoList, (info: Info) => {
@@ -504,9 +540,11 @@ struct Index {
     }
   }
 }
+
 @ComponentV2
 struct MiddleComponent {
   @Require @Param info: Info;
+
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
@@ -515,9 +553,11 @@ struct MiddleComponent {
     }
   }
 }
+
 @ComponentV2
 struct SubComponent {
   @Require @Param region: Region;
+
   build() {
     Column() {
       Text(`region: ${this.region.x}-${this.region.y}`)
@@ -529,7 +569,9 @@ struct SubComponent {
 ### 装饰Array类型变量
 \@Param装饰Array类型变量，可以观察到数据源对Array整体的赋值，以及调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`带来的变化。
 
-```ts
+<!-- @[Param_Use_Scene_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneArray.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Require @Param count: number[];
@@ -544,17 +586,18 @@ struct Child {
     .width('100%')
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
-  @Local count: number[] = [1,2,3];
+  @Local count: number[] = [1, 2, 3];
 
   build() {
     Row() {
       Column() {
         Child({ count: this.count })
         Button('init array').onClick(() => {
-          this.count = [9,8,7];
+          this.count = [9, 8, 7];
         })
         Button('push').onClick(() => {
           this.count.push(0);
@@ -573,13 +616,13 @@ struct Index {
 }
 ```
 
-
-
 ### 装饰Date类型变量
 
 \@Param装饰Date类型变量，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-```ts
+<!-- @[Param_Use_Scene_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneDate.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct DateComponent {
   @Param selectedDate: Date = new Date('2024-01-01');
@@ -632,7 +675,9 @@ struct Index {
 
 \@Param装饰Map类型变量，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-```ts
+<!-- @[Param_Use_Scene_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneMap.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param value: Map<number, string> = new Map();
@@ -647,6 +692,7 @@ struct Child {
     }
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -683,7 +729,9 @@ struct Index {
 
 \@Param装饰Set类型变量，可以观察到数据源对Set整体的赋值，以及调用Set的接口`add`, `clear`, `delete`带来的变化。
 
-```ts
+<!-- @[Param_Use_Scene_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneSet.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param message: Set<number> = new Set();
@@ -698,6 +746,7 @@ struct Child {
     .width('100%')
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -731,10 +780,13 @@ struct Index {
 
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | undefined，点击改变count的类型时，UI会自动刷新。
 
-```ts
+<!-- @[Param_Use_Scene_Unite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneUnite.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
+  // 点击的数量，用于传给子组件，值可为undefined
   @Local count: number | undefined = 0;
 
   build() {
@@ -750,6 +802,7 @@ struct Index {
 
 @ComponentV2
 struct MyComponent {
+  // 点击的数量，用于接收父组件传入的值，值可为undefined
   @Param count: number | undefined = 0;
 
   build() {

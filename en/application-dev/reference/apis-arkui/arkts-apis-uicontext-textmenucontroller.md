@@ -1,10 +1,16 @@
 # Class (TextMenuController)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 Provides the capability to control text menus.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 16.
 >
@@ -74,25 +80,25 @@ Disables all system service menu items in the text selection menu.
 
 > **NOTE**
 > 
-> This API takes effect globally for the entire application process after being called.
+> - This API takes effect globally for the entire application process after being called.
 >
-> This API can be used in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md).
+> - This API can be used in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md).
 >
-> After this API is called, the [editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12) API of text components will be affected. The parameter list of its [onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12) callback will not include the disabled menu options.
+> - After this API is called, the [editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12) API of text components will be affected. The parameter list of its [onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12) callback will not include the disabled menu options.
 >
-> Components involving text selection menus include the following: [Text](./arkui-ts/ts-basic-components-text.md), [TextArea](./arkui-ts/ts-basic-components-textarea.md), [TextInput](./arkui-ts/ts-basic-components-textinput.md), [Search](./arkui-ts/ts-basic-components-search.md), [RichEditor](./arkui-ts/ts-basic-components-richeditor.md), and [Web](../apis-arkweb/arkts-basic-components-web.md).
+> - Components involving text selection menus include the following: [Text](./arkui-ts/ts-basic-components-text.md), [TextArea](./arkui-ts/ts-basic-components-textarea.md), [TextInput](./arkui-ts/ts-basic-components-textinput.md), [Search](./arkui-ts/ts-basic-components-search.md), [RichEditor](./arkui-ts/ts-basic-components-richeditor.md), and [Web](../apis-arkweb/arkts-basic-components-web.md).
 >
-> System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12).
+> - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12).
 >
-> When both **disableSystemServiceMenuItems** and **disableMenuItems** are set, the earlier-set **disableSystemServiceMenuItems** takes precedence.
+> - When both **disableSystemServiceMenuItems** and **disableMenuItems** are set, the earlier-set **disableSystemServiceMenuItems** takes precedence.
 >
-> This API takes effect globally, and multiple calls are subject to the last call.
+> - This API takes effect globally, and multiple calls are subject to the last call.
 >
-> Disabled menus can be restored in the following ways:
+> - Disabled menus can be restored in the following ways:
 >
-> - If only **disableSystemServiceMenuItems(true)** is used to disable menus, set it to **false** to restore.
-> - If only **disableMenuItems** is used to disable menus, set it to an empty array to restore.
-> - If both **disableSystemServiceMenuItems** and **disableMenuItems** are used, set the former to **false** and the latter to an empty array to restore.
+>   - If only **disableSystemServiceMenuItems(true)** is used to disable menus, set it to **false** to restore.
+>   - If only **disableMenuItems** is used to disable menus, set it to an empty array to restore.
+>   - If both **disableSystemServiceMenuItems** and **disableMenuItems** are used, set the former to **false** and the latter to an empty array to restore.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -155,25 +161,25 @@ Disables specified system service menu items in the text selection menu.
 
 > **NOTE**
 > 
-> This API takes effect globally for the entire application process after being called.
+> - This API takes effect globally for the entire application process after being called.
 >
-> This API can be used in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md).
+> - This API can be used in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md).
 >
-> After this API is called, the [editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12) API of text components will be affected. The parameter list of its [onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12) callback will not include the disabled menu options.
+> - After this API is called, the [editMenuOptions](./arkui-ts/ts-basic-components-text.md#editmenuoptions12) API of text components will be affected. The parameter list of its [onCreateMenu](./arkui-ts/ts-text-common.md#oncreatemenu12) callback will not include the disabled menu options.
 >
-> Components involving text selection menus include the following: [Text](./arkui-ts/ts-basic-components-text.md), [TextArea](./arkui-ts/ts-basic-components-textarea.md), [TextInput](./arkui-ts/ts-basic-components-textinput.md), [Search](./arkui-ts/ts-basic-components-search.md), [RichEditor](./arkui-ts/ts-basic-components-richeditor.md), and [Web](../apis-arkweb/arkts-basic-components-web.md).
+> - Components involving text selection menus include the following: [Text](./arkui-ts/ts-basic-components-text.md), [TextArea](./arkui-ts/ts-basic-components-textarea.md), [TextInput](./arkui-ts/ts-basic-components-textinput.md), [Search](./arkui-ts/ts-basic-components-search.md), [RichEditor](./arkui-ts/ts-basic-components-richeditor.md), and [Web](../apis-arkweb/arkts-basic-components-web.md).
 >
-> System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12).
+> - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12).
 >
-> When both **disableSystemServiceMenuItems** and **disableMenuItems** are set, the earlier-set **disableSystemServiceMenuItems** takes precedence.
+> - When both **disableSystemServiceMenuItems** and **disableMenuItems** are set, the earlier-set **disableSystemServiceMenuItems** takes precedence.
 >
-> This API takes effect globally, and multiple calls are subject to the last call.
+> - This API takes effect globally, and multiple calls are subject to the last call.
 >
-> Disabled menus can be restored in the following ways:
+> - Disabled menus can be restored in the following ways:
 >
-> - If only **disableSystemServiceMenuItems(true)** is used to disable menus, set it to **false** to restore.
-> - If only **disableMenuItems** is used to disable menus, set it to an empty array to restore.
-> - If both **disableSystemServiceMenuItems** and **disableMenuItems** are used, set the former to **false** and the latter to an empty array to restore.
+>   - If only **disableSystemServiceMenuItems(true)** is used to disable menus, set it to **false** to restore.
+>   - If only **disableMenuItems** is used to disable menus, set it to an empty array to restore.
+>   - If both **disableSystemServiceMenuItems** and **disableMenuItems** are used, set the former to **false** and the latter to an empty array to restore.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

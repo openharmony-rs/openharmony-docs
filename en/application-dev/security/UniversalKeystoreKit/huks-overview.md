@@ -20,8 +20,10 @@ The HUKS module consists of the following:
 - HUKS service layer: implements key session management and storage management.
 
 - HUKS core layer: implements core functionalities, including cryptographic operations, encryption and decryption, and key access control.
+
   > **NOTE**
-  > The HUKS core layer must run in a secure environment, such as the [TEE](huks-concepts.md) or secure chipset of a system or device. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.
+  >
+  > The HUKS core layer must run in a secure environment, such as the [TEE](huks-concepts.md) of a system or device. <!--Del-->The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
 ![en_image_0000001736030930](figures/huks_architecture.png)
 

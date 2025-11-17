@@ -60,16 +60,20 @@ The following sample code is a demo that illustrates how to develop both the cli
 
     > Write following sample code in the **entry/src/main/ets/pages/Index.ets** file.
 
-    ```ts
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { deviceManager } from '@kit.DriverDevelopmentKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { rpc } from '@kit.IPCKit';
+    <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
 
-    const REQUEST_CODE: number = 99; // Custom communication code, which is for reference only.
-    const productId: number = 4258; // Declare the product ID of the connected USB device.
-    const vendorId: number = 4817; // Declare the vendor ID of the connected USB device.
-    ```
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
+
+const REQUEST_CODE: number = 99; // Custom communication code, which is for reference only.
+const productId: number = 4258; // Declare the product ID of the connected USB device.
+const vendorId: number = 4817; // Declare the vendor ID of the connected USB device.
+const DOMAIN = 0x0000;
+```
+
 
 3. Define the **message** variable and remote object variable for communication with the driver.
 
@@ -77,146 +81,125 @@ The following sample code is a demo that illustrates how to develop both the cli
 
     > The following APIs are defined in **struct Index{}**.
 
-    ```ts
-    @State message: string = 'Hello';
-    private remote: rpc.IRemoteObject | null = null;
-    ```
+    <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  @State message: string = 'Hello';
+  private remote: rpc.IRemoteObject | null = null;
+```
+
 
 4. Define the **queryDevices** API, and use it to obtain the device ID of the peripheral.
 
-    ```ts
-    private async queryTargetDeviceId(): Promise<number> {
+    <!-- @[driver_ui_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  private async queryTargetDeviceId(): Promise<number> {
     try {
-      const devices: Array<deviceManager.Device> = deviceManager.queryDevices(deviceManager.BusType.USB);
+      const devices: deviceManager.Device[] = deviceManager.queryDevices(deviceManager.BusType.USB);
       const index = devices.findIndex((item: deviceManager.Device) => {
         let usbDevice = item as deviceManager.USBDevice;
         // If the product ID and vendor ID of the peripheral are unknown, you can view the information about the connected USB device in the log.
-        hilog.info(0, 'testTag', `usbDevice.productId = ${usbDevice.productId}, usbDevice.vendorId = ${usbDevice.vendorId}`);
+        hilog.info(DOMAIN, 'testTag', `usbDevice.productId = ${usbDevice.productId}, usbDevice.vendorId = ${usbDevice.vendorId}`);
         return usbDevice.productId === productId && usbDevice.vendorId === vendorId;
       });
+      hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
       if (index < 0) {
-        hilog.error(0, 'testTag', 'can not find device');
+        hilog.error(DOMAIN, 'testTag', 'can not find device');
         return -1;
       }
       return devices[index].deviceId;
     } catch (error) {
-      hilog.error(0, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
+      hilog.error(DOMAIN, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
     }
     return -1;
-    }
-    ```
+  }
+```
 
-5. Define the **bindDriverWithDeviceId** API, and use it to obtain the remote driver object.
 
-    ```ts
-    private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
+5. Define the **bindDriverWithDeviceId** API, and use it to obtain the remote object.
+
+    <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
     try {
-      let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
+      let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDeviceDriver(deviceId,
         (err: BusinessError, id: number) => {
-        hilog.info(0, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
-      });
+          hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
+        });
       return remoteDeviceDriver.remote;
     } catch (error) {
-      hilog.error(0, 'testTag', `bindDriverWithDeviceId failed, err: ${JSON.stringify(error)}`);
+      hilog.error(DOMAIN, 'testTag', `bindDriverWithDeviceId failed, err: ${JSON.stringify(error)}`);
     }
-      return null;
+    return null;
+  }
+```
+
+
+6. Defines the **sendMessageRequest** API, and use it to perform IPC with the remote object.
+
+    <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  private async communicateWithRemote(): Promise<void> {
+    const deviceId: number = await this.queryTargetDeviceId();
+    hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId, deviceId=${deviceId}`);
+    if (deviceId < 0) {
+      hilog.error(DOMAIN, 'testTag', 'can not find target device');
+      return;
     }
-    ```
-
-6. Defines the **sendMessageRequest** API, and use it to perform IPC with the remote driver object.
-
-    ```ts
-    private async communicateWithRemote(): Promise<void> {
-      const deviceId: number = await this.queryTargetDeviceId();
-      if (deviceId < 0) {
-        hilog.error(0, 'testTag', 'can not find target device');
-        return;
-      }
-      this.remote = await this.getDriverRemote(deviceId);
-      if (this.remote === null) {
-        hilog.error(0, 'testTag', `getDriverRemote failed`);
-        return;
-      }
-
-      let option = new rpc.MessageOption();
-      let data = new rpc.MessageSequence();
-      let reply = new rpc.MessageSequence();
-
-      // Send "Hello" to the driver.
-      data.writeString(this.message); 
-
-      try {
-        await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
-        // Obtain the "Hello world" information returned by the driver.
-        this.message = reply.readString();
-        hilog.info(0, 'testTag', `sendMessageRequest, message: ${this.message}`);
-      } catch (error) {
-        hilog.error(0, 'testTag', `sendMessageRequest failed, err: ${JSON.stringify(error)}`);
-      }
+    this.remote = await this.getDriverRemote(deviceId);
+    if (this.remote === null) {
+      hilog.error(DOMAIN, 'testTag', `getDriverRemote failed`);
+      return;
     }
-    ```
+
+    let option = new rpc.MessageOption();
+    let data = new rpc.MessageSequence();
+    let reply = new rpc.MessageSequence();
+
+    // Send "Hello" to the driver.
+    hilog.info(DOMAIN, 'testTag', `communicateWithRemote, message=${this.message}`);
+    data.writeString(this.message);
+
+    try {
+      await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
+      // Obtain the "Hello world" information returned by the driver.
+      this.message = reply.readString();
+      hilog.info(DOMAIN, 'testTag', `sendMessageRequest, message: ${this.message}`);
+    } catch (error) {
+      hilog.error(DOMAIN, 'testTag', `sendMessageRequest failed, err: ${JSON.stringify(error)}`);
+    }
+  }
+```
+
 
 7. Render the UI. For details about UI development, see [UI Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-development).
 
-    ```ts
-    build() {
-      Row() {
-        Column() {
-          Text (this.message) // "Hello" is displayed.
-            .fontSize(60)
-            .fontWeight(FontWeight.Bold)
-            .onClick (() => { // Click Hello to communicate with the remote driver object. The message "Hello World" is displayed.
-              this.communicateWithRemote();
-            })
-        }
-        .width('100%')
+    <!-- @[driver_ui_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize($r('app.float.page_text_font_size'))
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            // Click Hello to communicate with the remote object. The message "Hello World" is displayed.
+            this.communicateWithRemote();
+          })
       }
-      .height('100%')
+      .width('100%')
     }
-    ```
+    .height('100%')
+  }
+```
+
 
 8. Develop peripheral drivers by following instructions in [UI-free Driver Development](driverextensionability.md).
 
-<!--Del-->
-System applications can query detailed information about peripherals and drivers to implement management. The development procedure is as follows:
-
-1. Import the related kits.
-
-    ```ts
-     import { deviceManager } from '@kit.DriverDevelopmentKit';
-     import { BusinessError } from '@kit.BasicServicesKit';
-    ```
-
-2. Obtain the list of detailed information about peripherals.
-
-    ```ts 
-    try {
-       // For example, deviceId is 12345678. You can use queryDevices() to obtain the deviceId.
-       let deviceInfos : Array<deviceManager.DeviceInfo> = deviceManager.queryDeviceInfo(12345678);
-       for (let item of deviceInfos) {
-          console.info(`Device id is ${item.deviceId}`)
-       }
-     } catch (error) {
-       let err: BusinessError = error as BusinessError;
-       console.error(`Failed to query device info. Code is ${err.code}, message is ${err.message}`);
-     }
-    ```
-
-3. Obtains the list of detailed information about peripheral drivers.
-
-    ```ts
-    try {
-       // In this example, driver-12345 is the driver UID. During application development, you can use queryDeviceInfo to query the driver UID and use it as the input parameter.
-       let driverInfos : Array<deviceManager.DriverInfo> = deviceManager.queryDriverInfo("driver-12345");
-       for (let item of driverInfos) {
-          console.info(`driver name is ${item.driverName}`)
-       }
-    } catch (error) {
-       let err: BusinessError = error as BusinessError;
-       console.error(`Failed to query driver info. Code is ${err.code}, message is ${err.message}`);
-    }
-    ```
-<!--DelEnd-->
 <!--RP1-->
 ## Application Signing
 

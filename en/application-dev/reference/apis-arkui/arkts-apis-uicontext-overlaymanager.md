@@ -1,10 +1,16 @@
 # Class (OverlayManager)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 Provides the capability to draw overlays.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
@@ -237,7 +243,7 @@ struct Index {
 
 removeComponentContent(content: ComponentContent): void
 
-Removes a specified **ComponentContent** node from the **OverlayManager**.
+Removes a specified node from the **OverlayManager**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

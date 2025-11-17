@@ -58,7 +58,8 @@ libohpreferences.so
 
 ## 引用头文件
 
-```c
+<!--@[preferences_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 #include <database/preferences/oh_preferences.h>
 #include <database/preferences/oh_preferences_err_code.h>
 #include <database/preferences/oh_preferences_option.h>
@@ -69,46 +70,8 @@ libohpreferences.so
 下列实例展示如何通过Preferences实现对键值数据的修改与持久化。
 1. 创建Preferences配置选项（PreferencesOption）对象并设置配置选项成员（名称、应用组ID、包名、存储模式）。使用完毕后，调用OH_PreferencesOption_Destroy销毁配置选项实例。
 2. 调用OH_Preferences_Open打开一个Preferences实例，该实例使用完后需要调用OH_Preferences_Close关闭。
-3. 调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅，订阅回调函数为DataChangeObserverCallback。
-4. 设置Preferences实例中的键值数据。
-5. 获取Preferences实例中的键值数据。
-6. 调用OH_Preferences_Close关闭Preferences实例，关闭后需要将实例指针置空。
-
-```c
-// 数据变更回调函数
-void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count) {
-    for (uint32_t i = 0; i < count; i++) {
-        // 获取索引i对应的PreferenceValue
-        const OH_PreferencesValue *pValue = OH_PreferencesPair_GetPreferencesValue(pairs, i);
-        // 获取PreferencesValue的数据类型
-        Preference_ValueType type = OH_PreferencesValue_GetValueType(pValue);
-        int ret = PREFERENCES_OK;
-        if (type == PREFERENCE_TYPE_INT) {
-            int intValue = 0;
-            ret = OH_PreferencesValue_GetInt(pValue, &intValue);
-            if (ret == PREFERENCES_OK) {
-                // 业务逻辑
-            }
-        } else if (type == PREFERENCE_TYPE_BOOL) {
-            bool boolValue = true;
-            ret = OH_PreferencesValue_GetBool(pValue, &boolValue);
-            if (ret == PREFERENCES_OK) {
-                // 业务逻辑
-            }
-        } else if (type == PREFERENCE_TYPE_STRING) {
-            char *stringValue = nullptr;
-            uint32_t valueLen = 0;
-            ret = OH_PreferencesValue_GetString(pValue, &stringValue, &valueLen);
-            if (ret == PREFERENCES_OK) {
-                // 业务逻辑
-                OH_Preferences_FreeString(stringValue);
-            }
-        } else {
-            // 无效类型
-        }
-    }
-}
-
+<!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 // 1. 创建Preferences配置选项。
 OH_PreferencesOption *option = OH_PreferencesOption_Create();
 if (option == nullptr) {
@@ -163,7 +126,50 @@ option = nullptr;
 if (preference == nullptr || errCode != PREFERENCES_OK) {
     // 错误处理
 }
+```
+3. 调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅，订阅回调函数为DataChangeObserverCallback。
+<!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 
+``` C++
+// 数据变更回调函数
+void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count)
+{
+    for (uint32_t i = 0; i < count; i++) {
+        // 获取索引i对应的PreferenceValue
+        const OH_PreferencesValue *pValue = OH_PreferencesPair_GetPreferencesValue(pairs, i);
+        // 获取PreferencesValue的数据类型
+        Preference_ValueType type = OH_PreferencesValue_GetValueType(pValue);
+        int ret = PREFERENCES_OK;
+        if (type == PREFERENCE_TYPE_INT) {
+            int intValue = 0;
+            ret = OH_PreferencesValue_GetInt(pValue, &intValue);
+            if (ret == PREFERENCES_OK) {
+                // 业务逻辑
+            }
+        } else if (type == PREFERENCE_TYPE_BOOL) {
+            bool boolValue = true;
+            ret = OH_PreferencesValue_GetBool(pValue, &boolValue);
+            if (ret == PREFERENCES_OK) {
+                // 业务逻辑
+            }
+        } else if (type == PREFERENCE_TYPE_STRING) {
+            char *stringValue = nullptr;
+            uint32_t valueLen = 0;
+            ret = OH_PreferencesValue_GetString(pValue, &stringValue, &valueLen);
+            if (ret == PREFERENCES_OK) {
+                // 业务逻辑
+                OH_Preferences_FreeString(stringValue);
+            }
+        } else {
+            // 无效类型
+        }
+    }
+}
+```
+4. 设置Preferences实例中的键值数据。
+5. 获取Preferences实例中的键值数据。
+<!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 // 3. 对key_int、key_bool和key_string注册数据变更订阅。
 const char *keys[] = {"key_int", "key_bool", "key_string"};
 ret = OH_Preferences_RegisterDataObserver(preference, nullptr, DataChangeObserverCallback, keys, 3);
@@ -183,7 +189,8 @@ if (ret != PREFERENCES_OK) {
     (void)OH_Preferences_Close(preference);
     // 错误处理
 }
-ret = OH_Preferences_SetString(preference, keys[2], "string value");
+int32_t stringIndex = 2;
+ret = OH_Preferences_SetString(preference, keys[stringIndex], "string value");
 if (ret != PREFERENCES_OK) {
     (void)OH_Preferences_Close(preference);
     // 错误处理
@@ -204,14 +211,17 @@ if (ret == PREFERENCES_OK) {
 
 char *stringValue = nullptr;
 uint32_t valueLen = 0;
-ret = OH_Preferences_GetString(preference, keys[2], &stringValue, &valueLen);
+ret = OH_Preferences_GetString(preference, keys[stringIndex], &stringValue, &valueLen);
 if (ret == PREFERENCES_OK) {
     // 业务逻辑
     // 使用完OH_Preferences_GetString接口后，需要对字符串进行释放。
     OH_Preferences_FreeString(stringValue);
     stringValue = nullptr;
 }
-
+```
+6. 调用OH_Preferences_Close关闭Preferences实例，关闭后需要将实例指针置空。
+<!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+``` C++
 // 6. 使用完Preferences实例后需要关闭实例，关闭后需要将指针置空。
 (void)OH_Preferences_Close(preference);
 preference = nullptr;

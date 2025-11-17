@@ -1,7 +1,7 @@
 # PanGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -30,7 +30,7 @@ The table below describes the scenarios that can trigger a pan gesture:
 
 PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions)
 
-Sets the pan gesture event.
+Creates a pan gesture. Inherits from [GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -46,7 +46,7 @@ Sets the pan gesture event.
 
 PanGesture(options?: PanGestureHandlerOptions)
 
-Sets the pan gesture event. Compared with [PanGesture](#pangesture-1), this API adds the **isFingerCountLimited** and **distanceMap** parameters to **options**, which control whether to enforce the exact number of fingers touching the screen and specify the minimum pan distance required to trigger the gesture for different input sources, respectively.
+Creates a pan gesture. Compared with [PanGesture](#pangesture-1), this API adds the **isFingerCountLimited** and **distanceMap** parameters to **options**, which control whether to enforce the exact number of fingers touching the screen and specify the minimum pan distance required to trigger the gesture for different input sources, respectively.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -56,7 +56,7 @@ Sets the pan gesture event. Compared with [PanGesture](#pangesture-1), this API 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options   | [PanGestureHandlerOptions](./ts-uigestureevent.md#pangesturehandleroptions)   | No  | Parameters of the pan gesture handler.|
+| options   | [PanGestureHandlerOptions](./ts-gesturehandler.md#pangesturehandleroptions)   | No  | Parameters of the swipe gesture handler.|
 
 ## PanDirection
 
@@ -82,9 +82,9 @@ Enumerates the pan directions. Unlike **SwipeDirection**, **PanDirection** has n
 
 ### constructor
 
-PanGestureOptions(value?: { fingers?: number, direction?: PanDirection, distance?: number })
+constructor(value?: { fingers?: number; direction?: PanDirection; distance?: number })
 
-The attributes of the pan gesture recognizer can be dynamically modified using the **PanGestureOptions** API. This avoids modifying attributes through state variables, which will cause a UI re-render.
+Creates a pan gesture configuration object. The **PanGestureOptions** API enables dynamic updates to pan gesture properties without requiring state variable modifications that would trigger UI re-renders.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -94,25 +94,7 @@ The attributes of the pan gesture recognizer can be dynamically modified using t
 
 | Name| Type| Mandatory| Description|
 | --------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| fingers   | number                                | No  | Minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**.|
-| direction | [PanDirection](#pandirection) | No  | Pan direction. The enumerated value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.|
-| distance  | number                                | No  | Minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.|
-
-### constructor<sup>20+</sup>
-
-constructor(value?: PanGestureHandlerOptions)
-
-The attributes of the pan gesture recognizer can be dynamically modified using the **PanGestureOptions** API. This avoids modifying attributes through state variables, which will cause a UI re-render.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| --------- | ---------------------- | ---- | -------------------------------- |
-| value   | [PanGestureHandlerOptions](./ts-uigestureevent.md#pangesturehandleroptions)   | No  | Parameters of the pan gesture handler.|
+| value   | { fingers?: number; direction?: [PanDirection](#pandirection); distance?: number } | No  | Pan gesture configuration.<br>**fingers**: minimum number of fingers required. The value ranges from 1 to 10.<br>Default value: **1**.<br>**direction**: pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.<br>**distance**: minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.|
 
 ### setDirection
 
@@ -128,29 +110,13 @@ Sets the pan direction.
 
 | Name| Type                                      | Mandatory| Description                     |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  [PanDirection](#pandirection) | Yes  | Pan direction. The enumerated value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.|
-
-### setDirection<sup>20+</sup>
-
-setDirection(value: PanDirection): void
-
-Sets the pan direction.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description                        |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  [PanDirection](#pandirection) | Yes  | Pan direction. The enumerated value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.|
+| value  |  [PanDirection](#pandirection) | Yes  | Pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.|
 
 ### setDistance
 
 setDistance(value: number)
 
-Sets the minimum pan distance to trigger the gesture, in vp. To avoid performance degradation due to excessive response delays or accidental releases, avoid excessively large values. For best practices, see [Reducing the Pan Distance for Gesture Recognition](https://developer.huawei.com/consumer/en/doc/best-practices-V5/bpta-application-latency-optimization-cases-V5#section1116134115286).
+Sets the minimum pan distance to trigger the gesture, in vp. To avoid performance degradation due to excessive response delays or accidental releases, avoid excessively large values. For best practices, see [Reducing the Pan Distance for Gesture Recognition](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -159,22 +125,6 @@ Sets the minimum pan distance to trigger the gesture, in vp. To avoid performanc
 **Parameters**
 
 | Name| Type                                      | Mandatory| Description                       |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | Yes  | Minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.|
-
-### setDistance<sup>20+</sup>
-
-setDistance(value: number): void
-
-Sets the minimum pan distance to trigger the gesture, in vp. To avoid performance degradation due to excessive response delays or accidental releases, avoid excessively large values. For best practices, see [Reducing the Pan Distance for Gesture Recognition](https://developer.huawei.com/consumer/en/doc/best-practices-V5/bpta-application-latency-optimization-cases-V5#section1116134115286).
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description                      |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | value  |  number | Yes  | Minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>To avoid slow response and lagging during scrolling, set a reasonable pan distance.|
 
@@ -193,23 +143,6 @@ Sets the minimum number of fingers to trigger the gesture.
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | value  |  number | Yes  | Minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**.|
-
-### setFingers<sup>20+</sup>
-
-setFingers(value: number): void
-
-Sets the minimum number of fingers to trigger the gesture.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description                        |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | Yes  | Minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**.|
-
 
 ### getDirection<sup>12+</sup>
 
@@ -250,13 +183,13 @@ Obtains the minimum pan distance to trigger the gesture.
 
 >  **NOTE**
 >
->  In **fingerList** of [GestureEvent](ts-gesture-settings.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
+>  In **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
 
 ### onActionStart
 
 onActionStart(event: (event: GestureEvent) => void)
 
-Invoked when a pan gesture is recognized.
+Registers the callback for successful pan gesture recognition.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -266,13 +199,13 @@ Invoked when a pan gesture is recognized.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the gesture event.|
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for successful pan gesture recognition.|
 
 ### onActionUpdate
 
 onActionUpdate(event: (event: GestureEvent) => void)
 
-Invoked when the pan gesture status is updated. If **fingerList** contains multiple fingers, this callback updates the location information of only one finger each time.
+Registers the callback for pan gesture updates. If **fingerList** contains multiple fingers, this callback updates the location information of only one finger each time.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -282,13 +215,13 @@ Invoked when the pan gesture status is updated. If **fingerList** contains multi
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the gesture event.|
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for pan gesture updates.|
 
 ### onActionEnd
 
 onActionEnd(event: (event: GestureEvent) => void)
 
-Invoked when the finger used for a pan gesture is lifted.
+Registers the callback for pan gesture completion. This callback is triggered when all fingers are lifted after successful pan gesture recognition.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -298,13 +231,13 @@ Invoked when the finger used for a pan gesture is lifted.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the gesture event.|
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for pan gesture completion.|
 
 ### onActionCancel
 
 onActionCancel(event: () => void)
 
-Invoked when a tap cancellation event is received after a pan gesture is recognized. No gesture event information is returned.
+Registers the callback for pan gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful pan gesture recognition. No gesture event information is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -314,13 +247,13 @@ Invoked when a tap cancellation event is received after a pan gesture is recogni
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  () => void | Yes  | Callback for the gesture event.|
+| event  |  () => void | Yes  | Callback for pan gesture cancellation.|
 
 ### onActionCancel<sup>18+</sup>
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Invoked when a tap cancellation event is received after a pan gesture is recognized. Gesture event information is returned.
+Registers the callback for pan gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful pan gesture recognition. Gesture event information is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -330,16 +263,7 @@ Invoked when a tap cancellation event is received after a pan gesture is recogni
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  Callback\<[GestureEvent](ts-gesture-settings.md#gestureevent)> | Yes  | Callback for the gesture event.|
-
-## Attributes
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type   | Read-Only| Optional| Description                    |
-| ----  | ------ | ---- | ---- | ----------------------- |
-| tag<sup>11+</sup>   | string  | No| No| Tag for the pan gesture. It is used to distinguish the gesture during custom gesture judgment.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| allowedTypes<sup>14+</sup> | Array\<[SourceTool](ts-gesture-settings.md#sourcetool9)>  | No| No| Allowed event input types for the pan gesture.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| event  |  Callback\<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes  | Callback for pan gesture cancellation.|
 
 ## Example
 

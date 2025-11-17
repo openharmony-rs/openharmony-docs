@@ -23,7 +23,7 @@ import {runningLock} from '@kit.BasicServicesKit';
 
 isSupported(type: RunningLockType): boolean
 
-查询系统是否支持该类型的锁。
+**方法介绍：** 查询系统是否支持该类型的锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -62,7 +62,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-创建RunningLock锁。
+**方法介绍：** 创建RunningLock锁。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-创建RunningLock锁。
+**方法介绍：** 创建RunningLock锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -149,7 +149,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
-查询系统是否支持该类型的锁。使用callback异步回调。
+**方法介绍：** 查询系统是否支持该类型的锁。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -178,7 +178,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
-查询系统是否支持该类型的锁。使用Promise异步回调。
+**方法介绍：** 查询系统是否支持该类型的锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -212,7 +212,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
-创建RunningLock锁。
+**方法介绍：** 创建RunningLock锁。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -244,7 +244,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
-创建RunningLock锁。
+**方法介绍：** 创建RunningLock锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -283,7 +283,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 hold(timeout: number): void
 
-锁定和持有RunningLock。
+**方法介绍：** 锁定和持有RunningLock。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -339,7 +339,7 @@ class RunningLockTest {
 
 unhold(): void
 
-释放RunningLock锁。
+**方法介绍：** 释放RunningLock锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -389,7 +389,7 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-查询当前RunningLock是持有状态还是释放状态。
+**方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -432,7 +432,7 @@ lock(timeout: number): void
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[RunningLock.hold](#hold9)替代。
 
-锁定和持有RunningLock。
+**方法介绍：** 锁定和持有RunningLock。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -463,7 +463,7 @@ unlock(): void
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[RunningLock.unhold](#unhold9)替代。
 
-释放RunningLock锁。
+**方法介绍：** 释放RunningLock锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -488,7 +488,7 @@ isUsed(): boolean
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[RunningLock.isHolding](#isholding9)替代。
 
-查询当前RunningLock是持有状态还是释放状态。
+**方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 

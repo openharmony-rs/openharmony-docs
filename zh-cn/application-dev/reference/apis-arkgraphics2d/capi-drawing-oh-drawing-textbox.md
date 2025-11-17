@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_TextBox OH_Drawing_TextBox
+```
+
 ## 概述
 
 用于接收文本框的矩形大小、方向和数量大小。

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对应用全局UI状态变量存储的能力，开发者可以使用AppStorageV2存储应用全局UI状态变量数据。
+为了增强状态管理框架对应用全局UI状态变量的共享能力，开发者可以使用AppStorageV2存储应用全局UI的状态变量数据。
 
 AppStorageV2是提供状态变量在应用级全局共享的能力，开发者可以通过connect绑定同一个key，进行跨ability的数据共享。
 
@@ -70,13 +70,15 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被@Trace装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码：
 
-```ts
+<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->    
+
+``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 class Message {
-  @Trace userID: number;
-  userName: string;
+  @Trace public userID: number;
+  public userName: string;
 
   constructor(userID?: number, userName?: string) {
     this.userID = userID ?? 1;
@@ -161,25 +163,28 @@ struct Child {
 ### 在两个页面之间存储数据
 
 数据页面
-```ts
+<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->    
+
+``` TypeScript
 // 数据中心
 // Sample.ets
 @ObservedV2
 export class Sample {
-  @Trace p1: number = 0;
-  p2: number = 10;
+  @Trace public p1: number = 0;
+  public p2: number = 10;
 }
 ```
 
 页面1
-```ts
-// Page1.ets
+<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->    
+
+``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
-import { Sample } from '../Sample';
+import { Sample } from './Sample';
 
 @Entry
 @ComponentV2
-struct Page1 {
+struct PageOne {
   // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
   @Local prop: Sample = AppStorageV2.connect(Sample, () => new Sample())!;
   pageStack: NavPathStack = new NavPathStack();
@@ -187,30 +192,30 @@ struct Page1 {
   build() {
     Navigation(this.pageStack) {
       Column() {
-        Button('Go to page2')
+        Button('Go to pageTwo')
           .onClick(() => {
-            this.pageStack.pushPathByName('Page2', null);
+            this.pageStack.pushPathByName('PageTwo', null);
           })
 
-        Button('Page1 connect the key Sample')
+        Button('PageOne connect the key Sample')
           .onClick(() => {
             // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
             this.prop = AppStorageV2.connect(Sample, 'Sample', () => new Sample())!;
           })
 
-        Button('Page1 remove the key Sample')
+        Button('PageOne remove the key Sample')
           .onClick(() => {
             // 从AppStorageV2中删除后，prop将不会再与key为Sample的值关联
             AppStorageV2.remove(Sample);
           })
 
-        Text(`Page1 add 1 to prop.p1: ${this.prop.p1}`)
+        Text(`PageOne add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
           .onClick(() => {
             this.prop.p1++;
           })
 
-        Text(`Page1 add 1 to prop.p2: ${this.prop.p2}`)
+        Text(`PageOne add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
           .onClick(() => {
             // 页面不刷新，但是p2的值改变了
@@ -227,18 +232,19 @@ struct Page1 {
 ```
 
 页面2
-```ts
-// Page2.ets
+<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->    
+
+``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
-import { Sample } from '../Sample';
+import { Sample } from './Sample';
 
 @Builder
-export function Page2Builder() {
-  Page2()
+export function PageTwoBuilder() {
+  PageTwo()
 }
-
+@Entry
 @ComponentV2
-struct Page2 {
+struct PageTwo {
   // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
   @Local prop: Sample = AppStorageV2.connect(Sample, () => new Sample())!;
   pathStack: NavPathStack = new NavPathStack();
@@ -246,19 +252,19 @@ struct Page2 {
   build() {
     NavDestination() {
       Column() {
-        Button('Page2 connect the key Sample1')
+        Button('PageTwo connect the key Sample1')
           .onClick(() => {
             // 在AppStorageV2中创建一个key为Sample1的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
             this.prop = AppStorageV2.connect(Sample, 'Sample1', () => new Sample())!;
           })
 
-        Text(`Page2 add 1 to prop.p1: ${this.prop.p1}`)
+        Text(`PageTwo add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
           .onClick(() => {
             this.prop.p1++;
           })
 
-        Text(`Page2 add 1 to prop.p2: ${this.prop.p2}`)
+        Text(`PageTwo add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
           .onClick(() => {
             // 页面不刷新，但是p2的值改变了；只有重新初始化才会改变
@@ -276,14 +282,16 @@ struct Page2 {
   }
 }
 ```
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageTwo页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+
 ```json
 {
   "routerMap": [
     {
-      "name": "Page2",
-      "pageSourceFile": "src/main/ets/pages/Page2.ets",
-      "buildFunction": "Page2Builder",
+      "name": "PageTwo",
+      "pageSourceFile": "src/main/ets/pages/PageTwo.ets",
+      "buildFunction": "PageTwoBuilder",
       "data": {
         "description" : "AppStorageV2 example"
       }

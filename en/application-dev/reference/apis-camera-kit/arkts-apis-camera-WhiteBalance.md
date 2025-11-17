@@ -77,7 +77,7 @@ Obtains the white balance mode in use.
 
 | Type                                     | Description                         |
 |-----------------------------------------| ----------------------------- |
-| [WhiteBalanceMode](arkts-apis-camera-e.md#whitebalancemode20) | White balance mode in use.|
+| [WhiteBalanceMode](arkts-apis-camera-e.md#whitebalancemode20) | White balance mode in use. If the API call fails, undefined is returned.|
 
 **Error codes**
 

@@ -186,11 +186,12 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 参数
 
 - `attr`：`ffrt_task_attr_t`对象指针。
-- `delay_us`：调度时延，单位为微秒。
+- `delay_us`：调度延迟，单位为微秒。
 
 描述
 
-- 设置任务的调度时延，任务会在时延间隔之后才调度执行。不设置的情况下，默认时延为零。
+- 设置任务的调度延迟，任务会在延迟间隔之后才调度执行。不设置的情况下，默认延迟为零。
+- 设置任务的调度延迟后，任务的输入输出依赖关系不再生效。
 
 **ffrt_task_attr_get_delay**
 
@@ -204,11 +205,11 @@ FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr);
 
 返回值
 
-- 调度时延。
+- 调度延迟。
 
 描述
 
-- 获取设置的调度时延。
+- 获取设置的调度延迟。
 
 **ffrt_task_attr_set_queue_priority**
 
@@ -2114,8 +2115,8 @@ FFRT_C_API int ffrt_usleep(uint64_t usec);
 
 **描述**
 
+- 该接口支持在FFRT任务内部调用，也支持在FFRT任务外部调用。
 - FFRT提供的类似C11 sleep和Linux usleep的性能实现。
-- 该接口只能在FFRT任务内部调用，在FFRT任务外部调用存在未定义的行为。
 - 该接口睡眠精度为微秒。
 - 该功能能够避免传统的`sleep`睡眠时陷入内核的问题，在使用得当的条件下将会有更好的性能。
 
@@ -2145,8 +2146,8 @@ FFRT_C_API void ffrt_yield();
 
 **描述**
 
+- 该接口支持在FFRT任务内部调用，也支持在FFRT任务外部调用。
 - 当前任务主动让出CPU执行资源，允许其他可执行的任务运行，如果没有其他可执行的任务，`yield`无效。
-- 该接口只能在 FFRT任务内部调用，在FFRT任务外部调用存在未定义的行为。
 - 此函数的确切行为取决于实现，特别是使用中的FFRT调度程序的机制和系统状态。
 
 **样例**

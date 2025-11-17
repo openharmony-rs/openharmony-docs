@@ -68,7 +68,7 @@ The distributed database supports cross-device and cross-application sharing. Th
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
   
    ```
    git config --global user.name "yourname"
@@ -79,7 +79,7 @@ The distributed database supports cross-device and cross-application sharing. Th
 4. Run the following commands to install the **repo** tool:
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -92,14 +92,14 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta3 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -110,14 +110,14 @@ Use the **repo** tool to download the source code over HTTPS.
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Beta3 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta3 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -181,7 +181,7 @@ For details about the API changes, see the following:
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ### Samples
@@ -190,15 +190,15 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Subsystem| Name| Introduction| Programming Language|
 | -------- | -------- | -------- | -------- |
-| ArkUI development framework| [HealthyDiet](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/HealthyDiet)| This sample app helps you keep food records and view food information. After you add food records, including the food type, weight, and meal time, the app can calculate nutrition data (calories, proteins, fats, and carbon water) for the meals and display the data in a bar chart.| ArkTS |
-| ArkUI development framework| [MusicAlbum](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/MusicAlbum)| This sample shows the home page of a music album app. The adaptive layout and responsive layout are used to ensure that the app can be properly displayed on devices irrespective of screen sizes.| ArkTS |
-| Ability framework and file management subsystem| [CustomShare](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/CustomShare) | Using this sample app, you can share texts, links, and images with third-party applications and display them in these applications.| ArkTS |
-| Ability framework| [GalleryForm](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/FormExtAbility) | This sample demonstrates the display of **Gallery** images in a widget and periodic update of the widget.| ArkTS |
-| ArkUI development framework| [AppMarket](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AppMarket) | This sample shows the home page of an application market, which contains the tab bar, banner, featured apps, and featured games.| ArkTS |
-| ArkUI development framework| [Weather](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Weather) | This sample demonstrates one-time development for multi-device deployment by showing how to develop a weather app and deploy it across different devices. The demo app includes the following: home page, **Manage City** page, **Add City** page, and **Update Time** page.| ArkTS |
-| Multimedia subsystem| [MediaCollections](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | This sample shows the capabilities of online streaming, audio and video playback control, and volume adjustment.| ArkTS |
+| ArkUI development framework| [HealthyDiet](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/HealthyDiet)| This sample app helps you keep food records and view food information. After you add food records, including the food type, weight, and meal time, the app can calculate nutrition data (calories, proteins, fats, and carbon water) for the meals and display the data in a bar chart.| ArkTS |
+| ArkUI development framework| [MusicAlbum](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/MusicAlbum)| This sample shows the home page of a music album app. The adaptive layout and responsive layout are used to ensure that the app can be properly displayed on devices irrespective of screen sizes.| ArkTS |
+| Ability framework and file management subsystem| [CustomShare](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/CustomShare) | Using this sample app, you can share texts, links, and images with third-party applications and display them in these applications.| ArkTS |
+| Ability framework| [GalleryForm](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/FormExtAbility) | This sample demonstrates the display of **Gallery** images in a widget and periodic update of the widget.| ArkTS |
+| ArkUI development framework| [AppMarket](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AppMarket) | This sample shows the home page of an application market, which contains the tab bar, banner, featured apps, and featured games.| ArkTS |
+| ArkUI development framework| [Weather](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Weather) | This sample demonstrates one-time development for multi-device deployment by showing how to develop a weather app and deploy it across different devices. The demo app includes the following: home page, **Manage City** page, **Add City** page, and **Update Time** page.| ArkTS |
+| Multimedia subsystem| [MediaCollections](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | This sample shows the capabilities of online streaming, audio and video playback control, and volume adjustment.| ArkTS |
 
-For more information, visit [Samples](https://gitee.com/openharmony/applications_app_samples).
+For more information, visit [Samples](https://gitcode.com/openharmony/applications_app_samples).
 
 
 ## Resolved Issues
