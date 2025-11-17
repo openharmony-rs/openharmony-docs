@@ -54,6 +54,6 @@
     - [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md)
     - [Adaptation Cases](arkts-more-cases.md)
   - [ArkTS Performant Programming Practices](arkts-high-performance-programming.md)
-  - Migration from Other Languages to ArkTS
+  - Migration from Other Languages to ArkTS<!--arkts-for-other-languages-->
     - [Migrating from Java to ArkTS](getting-started-with-arkts-for-java-programmers.md)
     - [Migrating from Swift to ArkTS](getting-started-with-arkts-for-swift-programmers.md)

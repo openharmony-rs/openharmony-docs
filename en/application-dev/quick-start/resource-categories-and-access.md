@@ -116,16 +116,16 @@ The content of the **color.json** file is as follows:
 The standard hexadecimal color value consists of eight hexadecimal digits. The first two digits indicate the opacity and the last six digits indicate the color value.
 ```json
 {
-    "color": [
-        {
-            "name": "color_hello",
-            "value": "#ffff0000"
-        },
-        {
-            "name": "color_world",
-            "value": "#ff0000ff"
-        }
-    ]
+  "color": [
+    {
+      "name": "color_hello",
+      "value": "#ffff0000"
+    },
+    {
+      "name": "color_world",
+      "value": "#ff0000ff"
+    }
+  ]
 }
 ```
 
@@ -133,16 +133,16 @@ The content of the **float.json** file is as follows:
 
 ```json
 {
-    "float": [
-        {
-            "name": "font_hello",
-            "value": "28.0fp"
-        },
-	    {
-            "name": "font_world",
-            "value": "20.0fp"
-        }
-    ]
+  "float": [
+    {
+      "name": "font_hello",
+      "value": "28.0fp"
+    },
+    {
+      "name": "font_world",
+      "value": "20.0fp"
+    }
+  ]
 }
 ```
 
@@ -150,24 +150,24 @@ The content of the **string.json** file is as follows:
 
 ```json
 {
-    "string": [
-        {
-            "name": "string_hello",
-            "value": "Hello"
-        },
-	    {
-            "name": "string_world",
-            "value": "World"
-        },
-	    {
-            "name": "message_arrive",
-            "value": "We will arrive at %1$s."
-        },
-        {
-            "name": "message_notification",
-            "value": "Hello, %1$s!,You have %2$d new messages."
-        }
-    ]
+  "string": [
+    {
+      "name": "string_hello",
+      "value": "Hello"
+    },
+    {
+      "name": "string_world",
+      "value": "World"
+    },
+    {
+      "name": "message_arrive",
+      "value": "We will arrive at %1$s."
+    },
+    {
+      "name": "message_notification",
+      "value": "Hello, %1$s!,You have %2$d new messages."
+    }
+  ]
 }
 ```
 
@@ -175,21 +175,21 @@ The content of the **plural.json** file is as follows:
 
 ```json
 {
-    "plural": [
+  "plural": [
+    {
+      "name": "eat_apple",
+      "value": [
         {
-            "name": "eat_apple",
-            "value": [
-                {
-                    "quantity": "one",
-                    "value": "%d apple"
-                },
-                {
-                    "quantity": "other",
-                    "value": "%d apples"
-                }
-            ]
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
 
@@ -286,7 +286,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 ### HAP Resources
 
- - Access resources through `$r()` or `$rawfile()`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
+ - Access resources through `$r` or `$rawfile`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
 
    > **NOTE**
    >
@@ -294,15 +294,20 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
   [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows:
 
-  ```ts
-    // Access through $r('app.type.name').
-    Text($r('app.string.string_hello'))
+  <!-- @[app_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+
+  ``` TypeScript
+  // Access the resource through $r('app.type.name').
+  // The resource name is an example. Replace it with the actual resource.
+  Text($r('app.string.string_hello'))
+    .id('app_resource')
     .fontColor($r('app.color.color_emphasize'))
     .fontSize($r('app.float.text_size_headline1'))
     .fontFamily($r('app.string.font_family_medium'))
     .backgroundColor($r('app.color.color_palette_aux1'))
-
-    Image($r('app.media.app_icon'))
+  
+  // The resource name is an example. Replace it with the actual resource.
+  Image($r('app.media.app_icon'))
     .border({
       color: $r('app.color.color_palette_aux1'),
       radius: $r('app.float.corner_radius_button'), width: 2
@@ -311,16 +316,19 @@ The following shows the **attr** attribute configured in **string**. The **strin
       top: $r('app.float.elements_margin_horizontal_m'),
       bottom: $r('app.float.elements_margin_horizontal_l')
     })
-    .height(200)
-    .width(300)
-
-    // For a string in string.json whose name is "message_notification", its value is "Hello, %1$s!,You have %2$d new messages."
-    // Replace the placeholders %1$s and %2$d with 'LiHua' and 2, respectively. Access the resource as follows:
-    Text($r('app.string.message_notification', 'LiHua', 2))
-    // For a string in plural.json whose name is "eat_apple", its value of the singular form is "%d apple" and that of the plural form is "%d apples".
-    // You can access the plural.json resources. The first parameter determines whether a string is displayed in the singular or plural form. The value 1 indicates the singular form, and a value greater than 1 indicates the plural form.
-    // The resource has one placeholder %d, which should be replaced with 2. You can access the resource in the following way:
-    Text($r('app.plural.eat_apple', 2, 2))
+    .height(100)
+    .width(100)
+  
+  // For a string in string.json whose name is "message_notification", its value is "Hello, %1$s!,You have %2$d new messages."
+  // Replace the placeholders %1$s and %2$d with 'LiHua' and 2, respectively. Access the resource as follows:
+  // The resource name is an example. Replace it with the actual resource.
+  Text($r('app.string.message_notification', 'LiHua', 2)).id('app_string_resource')
+  
+  // For a string in plural.json whose name is "eat_apple", its value of the singular form is "%d apple" and that of the plural form is "%d apples".
+  // You can access the plural.json resources. The first parameter determines whether a string is displayed in the singular or plural form. The value 1 indicates the singular form, and a value greater than 1 indicates the plural form.
+  // The resource has one placeholder %d, which should be replaced with 2. You can access the resource in the following way:
+  // The resource name is an example. Replace it with the actual resource.
+  Text($r('app.plural.eat_apple', 2, 2)).id('app_plural_resource')
   ```
 
 - After obtaining a **ResourceManager** object through the application context, call APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access different resources. Example:<br>Call **getContext().resourceManager.getStringByNameSync('test')** to obtain string resources.<br>Call **getContext().resourceManager.getRawFd('rawfilepath')** to obtain the descriptor information of the HAP where the raw file is located, and then use **{fd, offset, length}** to access the raw file.
@@ -345,36 +353,52 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
   2. Obtain resources using variables or the literal **[*Module name*].*type*.*name***, where ***module name*** indicates the name of the HSP module, ***type*** indicates the resource type, and ***name*** indicates the resource name. The following is an example:
 
-   ```ts
-    @Entry
-    @Component
-    struct Index {
-      text: string = '[hsp].string.test_string';
-      fontSize: string = '[hsp].float.font_size';
-      fontColor: string = '[hsp].color.font_color';
-      image: string = '[hsp].media.string';
-      rawfile: string = '[hsp].icon.png';
+   <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Second.ets) -->
   
-      build() {
-        Row() {
-          // Use the literal [module name].type.name to obtain resources.
-          Text($r('[hsp].string.test_string'))
-            .fontSize($r('[hsp].float.font_size'))
-            .fontColor($r('[hsp].color.font_color'))  
-          Image($rawfile('[hsp].icon.png'))
-
-          // Use variables to obtain resources.
-          Text($r(this.text))
-            .fontSize($r(this.fontSize))
-            .fontColor($r(this.fontColor))
-  
-          Image($r(this.image))
-  
-          Image($rawfile(this.rawfile))
-        }
-      }
-    }
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Second {
+     // [library] is an example module name. Replace it with the actual module name.
+     // The resource name is an example. Replace it with the actual resource.
+     text: string = '[library].string.test_string';
+     fontSize: string = '[library].float.font_size';
+     fontColor: string = '[library].color.font_color';
+     image: string = '[library].media.image';
+     rawfile: string = '[library].icon.png';
+   
+     build() {
+       Column() {
+         // Use the literal [module name].type.name to obtain resources.
+         // The resource name is an example. Replace it with the actual resource.
+         Text($r('[library].string.test_string'))
+           .id('hsp_resource_one')
+           .fontSize($r('[library].float.font_size'))
+           .fontColor($r('[library].color.font_color'))
+         Image($rawfile('[library].icon.png'))
+           .height(100)
+           .width(100)
+   
+         // Use variables to obtain resources.
+         Text($r(this.text))
+           .id('hsp_resource_two')
+           .fontSize($r(this.fontSize))
+           .fontColor($r(this.fontColor))
+   
+         Image($r(this.image))
+           .height(100)
+           .width(100)
+   
+         Image($rawfile(this.rawfile))
+           .height(100)
+           .width(100)
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
    ```
+
   > **NOTE**
   >
   > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, `$rawfile('[hsp].oneDir/twoDir/icon.png')`. When `$r` or `$rawfile` is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
@@ -396,7 +420,9 @@ To access system resources, use the `$r('sys.type.name')` format, where **sys** 
 >
 > - Currently, the default system font used on the UI is HarmonyOS Sans, and the supported character range follows the standards in [Information technology—Chinese coded character set GB18030-2022](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3). If the characters cannot be displayed in HarmonyOS Sans, the system uses another font with the highest priority to display the characters. For details about the priority of the system fonts, see the **system/etc/fontconfig.json** configuration file on the device.
 
-```ts
+<!-- @[system_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 Text('Hello')
   .fontColor($r('sys.color.ohos_id_color_emphasize'))
   .fontSize($r('sys.float.ohos_id_text_size_headline1'))
@@ -412,8 +438,8 @@ Image($r('sys.media.ohos_app_icon'))
     top: $r('sys.float.ohos_id_elements_margin_horizontal_m'),
     bottom: $r('sys.float.ohos_id_elements_margin_horizontal_l')
   })
-  .height(200)
-  .width(300)
+  .height(100)
+  .width(100)
 ```
 
 ## Matching Resources
@@ -495,23 +521,46 @@ The following example demonstrates how to obtain the specified resources for lan
 
 In **Index.ets**, add code to obtain the resources of the three languages and display them in the text box. The current system language is Chinese. The following is sample code in **entry/src/main/ets/pages/Index.ets**:
 
-```ts
-import { common } from '@kit.AbilityKit';
+<!-- @[config_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
-  @State englishString: string = "";
-  @State germanString: string = "";
+  @State englishString: string = '';
+  @State japaneseString: string = '';
+
+  build() {
+    Column() {
+    // ...
+      Text(this.getString())
+        .id('config_resource_one')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Text(this.englishString)
+        .id('config_resource_two')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Text(this.japaneseString)
+        .id('config_resource_three')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    // ...
+    }
+    .height('100%')
+    .width('100%')
+  }
 
   getString(): string {
     let resMgr = this.getUIContext().getHostContext()?.resourceManager;
     if (!resMgr) {
-      return "";
+      return '';
     }
-    let currentLanguageString: string = "";
+    let currentLanguageString: string = '';
     try {
+      // The resource name is an example. Replace it with the actual resource.
       let resId = $r('app.string.greetings').id;
 
       // Obtain resources that match the current system configuration, including the color mode and resolution, for the current system language.
@@ -519,38 +568,21 @@ struct Index {
 
       // Obtain resources that match the current system configuration, including the color mode and resolution, for the English language.
       let overrideConfig = resMgr.getOverrideConfiguration();
-      overrideConfig.locale = "en_US"; // Set the language to English and locale to en_US.
+      overrideConfig.locale = 'en_US'; // Set the language to English and locale to en_US.
       let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
       this.englishString = overrideResMgr.getStringSync(resId);
 
       // Obtain resources that match the current system configuration, including the color mode and resolution, for the Japanese language.
-      overrideConfig.locale = "ja_JP"; // Set the language to Japanese and locale to ja_JP.
-      overrideResMgr.updateOverrideConfiguration(overrideConfig); // Equivalent to resMgr.updateOverrideConfiguration(overrideConfig).
-      this.germanString = overrideResMgr.getStringSync(resId);
+      overrideConfig.locale = 'ja_JP'; // Set the language to Japanese and locale to ja_JP.
+      // Equivalent to resMgr.updateOverrideConfiguration(overrideConfig)
+      overrideResMgr.updateOverrideConfiguration(overrideConfig);
+      this.japaneseString = overrideResMgr.getStringSync(resId);
     } catch (err) {
       const code = (err as BusinessError).code;
       const message = (err as BusinessError).message;
       console.error(`get override resource failed, error code: ${code}, error msg: ${message}`);
     }
     return currentLanguageString;
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.getString())
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text(this.englishString)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text(this.germanString)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
   }
 }
 ```
@@ -648,4 +680,5 @@ If the **module.json5** file of a module contains the **targetModuleName** and *
 
 <!--Del-->
 <!--DelEnd-->
-<!--no_check-->
+
+ <!--no_check--> 
