@@ -1822,7 +1822,7 @@ Obtains the asset analysis progress. This API uses a promise to return the resul
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. |
+| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. The default value is null.<br>This parameter is mandatory in API versions 12 to 21 and optional from API version 22 onwards.|
 
 **Return value**
 
@@ -1995,7 +1995,7 @@ Starts asset analysis.
 
 | Name   | Type               | Mandatory| Description                                                        |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type      | [AnalysisType](#analysistype11) | Yes  | Smart analysis type.                                    |
+| type      | [AnalysisType](#analysistype11) | Yes  | Smart analysis type. Only **ANALYSIS_SEARCH_INDEX** is supported.                                    |
 | assetUris | Array&lt;string&gt; | No  | Array of asset URIs.<br>- If this parameter is specified, only the given assets are analyzed.<br>- If this parameter is left blank, full analysis is performed.|
 
 **Return value**
@@ -6496,10 +6496,10 @@ enum linkType {
   LINK_EXIST = 2
 }
 
-async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType) {
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
-        photoAccessHelper.getPhotoAccessHelper(getContext());
+        photoAccessHelper.getPhotoAccessHelper(context);
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
       assetChangeRequest.setHasAppLink(hasAppLink);
@@ -6544,10 +6544,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 
-async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string) {
+async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
-        photoAccessHelper.getPhotoAccessHelper(getContext());
+        photoAccessHelper.getPhotoAccessHelper(context);
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
       assetChangeRequest.setAppLinkInfo(appLinkInfo);
