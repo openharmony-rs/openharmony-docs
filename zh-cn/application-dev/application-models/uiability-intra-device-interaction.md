@@ -677,46 +677,39 @@ export default class ColdStartAbility extends UIAbility {
 
 示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-<!-- @[FuncAbility_Window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-
-``` TypeScript
-import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
+```ts
+import { AbilityConstant, common, Want, StartOptions } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[MainPage]';
+const TAG: string = '[Page_UIAbilityComponentsInteractive]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct MainPage {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+struct Page_UIAbilityComponentsInteractive {
   build() {
     Column() {
-      List({ initialIndex: 0, space: 8 }) {
-
-        // ···
-
+      //...
+      List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            // ···
+            //...
           }
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
             let want: Want = {
               deviceId: '', // deviceId为空表示本设备
-              bundleName: 'com.samples.uiabilityinteraction',
+              bundleName: 'com.samples.stagemodelabilitydevelop',
               moduleName: 'entry', // moduleName非必选
-              abilityName: 'HotStartAbility',
+              abilityName: 'FuncAbilityB',
               parameters: {
                 // 自定义信息
-                // app.string.index_return_info资源文件中的value值为'来自EntryAbility Index页面'
-                info: $r('app.string.index_return_info')
+                info: '来自EntryAbility Index页面'
               }
             };
             let options: StartOptions = {
-              windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING,
+              windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING
             };
             // context为调用方UIAbility的UIAbilityContext
             context.startAbility(want, options).then(() => {
@@ -726,10 +719,11 @@ struct MainPage {
             });
           })
         }
+        //...
       }
-    // ···
+      //...
     }
-    // ···
+    //...
   }
 }
 ```
@@ -815,9 +809,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 2. 导入UIAbility模块。
 
-   <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
-   
-   ``` TypeScript
+   ```ts
    import { UIAbility } from '@kit.AbilityKit';
    ```
 
@@ -825,15 +817,12 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
    调用端及被调用端发送接收的数据格式需协商一致，如下示例约定数据由number和string组成。
 
 
-    <!-- @[MyParcelable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
-
-    ``` TypeScript
+    ```ts
     import { rpc } from '@kit.IPCKit';
-    // ···
 
     class MyParcelable {
-      public num: number = 0;
-      public str: string = '';
+      num: number = 0;
+      str: string = '';
 
       constructor(num: number, string: string) {
         this.num = num;
@@ -864,9 +853,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
    被调用端[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)的监听函数注册时机，取决于应用开发者。注册监听之前的数据不会被处理，取消监听之后的数据不会被处理。如下示例在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)注册'MSG_SEND_METHOD'监听，在[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)取消监听，收到序列化数据后作相应处理并返回，应用开发者根据实际需要做相应处理。具体示例代码如下：
 
 
-    <!-- @[CalleeAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
-
-    ``` TypeScript
+    ```ts
     import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { rpc } from '@kit.IPCKit';
@@ -876,8 +863,8 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
     const TAG: string = '[CalleeAbility]';
 
     class MyParcelable {
-      public num: number = 0;
-      public str: string = '';
+      num: number = 0;
+      str: string = '';
 
       constructor(num: number, string: string) {
         this.num = num;
@@ -917,7 +904,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
     }
 
     export default class CalleeAbility extends UIAbility {
-      private caller: Caller | undefined;
+      caller: Caller | undefined;
 
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -956,9 +943,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 1. 导入[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)模块。
 
-    <!-- @[UIAbility_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
-    
-    ``` TypeScript
+    ```ts
     import { UIAbility } from '@kit.AbilityKit';
     ```
 
@@ -966,19 +951,18 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
    [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)属性实现了[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)方法，用于获取指定通用组件的Caller通信接口。如下示例通过this.context获取UIAbility实例的context属性，使用startAbilityByCall拉起[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端并获取Caller通信接口，注册Caller的[onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease)监听。应用开发者根据实际需要做相应处理。
 
-    <!-- @[startAbilityByCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartUIAbilityByCaller/entry/src/main/ets/pages/Index.ets) -->
 
-    ``` TypeScript
+    ```ts
     import { common, Want, Caller } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    const TAG: string = '[Index]';
+    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
     const DOMAIN_NUMBER: number = 0xFF00;
 
     @Entry
     @Component
-    struct Index {
+    struct Page_UIAbilityComponentsInteractive {
       caller: Caller | undefined = undefined;
 
       // 注册caller的release监听
@@ -998,15 +982,17 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
       build() {
         Column() {
+          // ...
           List({ initialIndex: 0 }) {
+            // ...
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
                 let want: Want = {
-                  bundleName: 'com.samples.uiabilityinteraction',
+                  bundleName: 'com.samples.stagemodelabilityinteraction',
                   abilityName: 'CalleeAbility',
                   parameters: {
                     // 自定义信息
@@ -1030,7 +1016,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
                     } catch (releaseErr) {
                       let code = (releaseErr as BusinessError).code;
                       let msg = (releaseErr as BusinessError).message;
-                      hilog.error(DOMAIN_NUMBER, TAG, `Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
+                      console.error(`Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
                     }
                   }
                 }).catch((err: BusinessError) => {
@@ -1038,14 +1024,14 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
                 });
               })
             }
+            // ...
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
-    
 <!--DelEnd-->
 
 ## 相关实例
