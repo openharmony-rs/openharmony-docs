@@ -29,7 +29,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 |--------|--------|
 | -h/help |  Displays the help information of the aa tool.|
 | start |  Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.|
-| stop-service |  Stops a ServiceAbility.|
+| stop-service | Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.|
 | dump<sup>(deprecated)</sup> |  Prints information about an application component.|
 | force-stop |  Forcibly stops a process based on the bundle name.|
 | test |  Starts the test framework based on the carried parameters.|
@@ -192,7 +192,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
 ## stop-service
 
-Stops a ServiceAbility.
+Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.
 
 ```bash
 aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName>]
@@ -209,7 +209,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
 
   **Return value**
 
-  Returns "stop service ability successfully." if the ServiceAbility is stopped; returns "error: failed to stop service ability." otherwise.
+  "stop service ability successfully." is returned if the ServiceAbility or ExtensionAbility is stopped; "error: failed to stop service ability." is returned otherwise.
 
   **Error codes**
 
@@ -327,6 +327,10 @@ Starts the test framework based on the carried parameters.
 ```bash
 aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-class>] [-s level <test-level>] [-s size <test-size>] [-s testType <test-testType>] [-s timeout <test-timeout>] [-s <any-key> <any-value>] [-w <wait-time>] -s unittest <testRunner>
 ```
+
+> **NOTE**
+> 
+> For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Parameters in the aa test Commands](../application-test/unittest-guidelines.md#running-test-scripts-in-the-cli) <!--RP2End-->.
 
   **Parameters**
   | Name| Description|
