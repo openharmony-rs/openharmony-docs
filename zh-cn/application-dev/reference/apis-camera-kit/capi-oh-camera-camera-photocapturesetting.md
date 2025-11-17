@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Camera_PhotoCaptureSetting
+typedef struct Camera_PhotoCaptureSetting {...} Camera_PhotoCaptureSetting
 ```
 
 ## 概述
