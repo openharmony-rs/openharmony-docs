@@ -37,12 +37,12 @@ NDK提供了自定义绘制节点的能力，通过以下接口，开发者可�
     };
     A *a = new A;
     a->node = customNode;
-    // ···
+    // ...
     nodeAPI->registerNodeCustomEvent(customNode, ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW, 1, a);
     // 事件回调函数的编写
     nodeAPI->registerNodeCustomEventReceiver([](ArkUI_NodeCustomEvent *event) {
         // 事件回调函数逻辑
-        // ···
+        // ...
     });
     ```
     
@@ -67,18 +67,18 @@ NDK提供了自定义绘制节点的能力，通过以下接口，开发者可�
     // 转换为OH_Drawing_Canvas指针进行绘制。
     OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
     // 绘制逻辑。
-    int32_t width = SIZE_1000;
-    int32_t height = SIZE_1000;
+    int32_t width = SIZE_1000;  // SIZE_1000 = 1000
+    int32_t height = SIZE_1000; // SIZE_1000 = 1000
     auto path = OH_Drawing_PathCreate();
-    OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+    OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);                   // SIZE_4 = 4
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
     OH_Drawing_PathClose(path);
     auto pen = OH_Drawing_PenCreate();
-    OH_Drawing_PenSetWidth(pen, SIZE_10);
-    OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_R1, RGBA_G1, RGBA_B1, RGBA_A1));
+    OH_Drawing_PenSetWidth(pen, SIZE_10); // SIZE_10=10
+    OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
     OH_Drawing_CanvasAttachPen(canvas, pen);
     OH_Drawing_CanvasDrawPath(canvas, path);
     ```
@@ -103,10 +103,6 @@ NDK提供了自定义绘制节点的能力，通过以下接口，开发者可�
 #define SIZE_720 720
 #define SIZE_1000 1000
 #define COLOR_YELLOW 0xFFFFFF00
-#define RGBA_R1 0xFF
-#define RGBA_G1 0xFF
-#define RGBA_B1 0x00
-#define RGBA_A1 0x00
 
 ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
 {
@@ -152,19 +148,19 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
             auto *canvas1 = OH_ArkUI_DrawContext_GetCanvas(drawContext);
             // 转换为OH_Drawing_Canvas指针进行绘制。
             OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
-            // ···
-            int32_t width = SIZE_1000;
-            int32_t height = SIZE_1000;
+            // ...
+            int32_t width = SIZE_1000;  // SIZE_1000 = 1000
+            int32_t height = SIZE_1000; // SIZE_1000 = 1000
             auto path = OH_Drawing_PathCreate();
-            OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+            OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);                   // SIZE_4 = 4
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
             OH_Drawing_PathClose(path);
             auto pen = OH_Drawing_PenCreate();
-            OH_Drawing_PenSetWidth(pen, SIZE_10);
-            OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_R1, RGBA_G1, RGBA_B1, RGBA_A1));
+            OH_Drawing_PenSetWidth(pen, SIZE_10); // SIZE_10=10
+            OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
             OH_Drawing_CanvasAttachPen(canvas, pen);
             OH_Drawing_CanvasDrawPath(canvas, path);
         }
@@ -345,9 +341,13 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
     
     // 全局环境变量声明
     static napi_env g_env = nullptr;
-    // ···
+    // ...
     namespace NativeModule {
-    // ···
+    // ...
+    #define SIZE_150 150
+    // ...
+        return nullptr;
+    }
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -358,20 +358,20 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
         // 获取NodeContent
         ArkUI_NodeContentHandle contentHandle;
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+    
         // 创建自定义容器和自定义绘制组件。
         auto node = std::make_shared<ArkUICustomContainerNode>();
-        // 浅灰色
-        node->SetBackgroundColor(0xFFD5D5D5);
+        node->SetBackgroundColor(0xFFD5D5D5); // 浅灰色
         auto customNode = std::make_shared<ArkUICustomNode>();
-        // 深灰色
-        customNode->SetBackgroundColor(0xFF707070);
+        customNode->SetBackgroundColor(0xFF707070); // 深灰色
         customNode->SetWidth(SIZE_150);
         customNode->SetHeight(SIZE_150);
         node->AddChild(customNode);
+    
         // 保持Native侧对象到管理类中，维护生命周期。
-        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+        NativeEntry::GetInstance()->SetRootNode(node);
         g_env = env;
-            // ···
         return nullptr;
     }
     
