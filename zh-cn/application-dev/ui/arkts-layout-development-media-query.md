@@ -62,7 +62,7 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
 
 ## 媒体查询条件
 
-媒体查询条件由媒体类型、逻辑操作符、媒体特征组成，其中媒体类型可省略，逻辑操作符用于连接不同媒体类型与媒体特征，其中，媒体特征要使用“()”包裹且可以有多个。
+媒体查询条件由媒体类型、逻辑操作符、媒体特征组成，其中媒体类型可省略，逻辑操作符用于连接不同媒体类型与媒体特征，媒体特征要使用()包裹且可以有多个。
 
 
 ### 语法规则
@@ -97,7 +97,7 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
 
 ### 媒体逻辑操作（media-logic-operations）
 
-媒体逻辑操作符：and、or、not、only用于构成复杂媒体查询，也可以通过comma（, ）将其组合起来，详细解释说明如下表。
+媒体逻辑操作符包括and、or、not、only，用于构成复杂媒体查询，也可以通过逗号,将其组合，详细解释说明如下表。
 
   **表1** 媒体逻辑操作符
 
