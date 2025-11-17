@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.camera (相机管理)](arkts-apis-camera.md)。
 
@@ -19,28 +20,32 @@ import { camera } from '@kit.CameraKit';
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称                     | 值        | 说明         |
-| ----------------------- | --------- | ------------ |
-| PORTRAIT_PHOTO       | 3      | 人像拍照模式。**系统接口：** 此接口为系统接口。            |
-| NIGHT_PHOTO        | 4      | 夜景拍照模式。**系统接口：** 此接口为系统接口。             |
-| PROFESSIONAL_PHOTO<sup>12+</sup>        | 5      | 专业拍照模式。**系统接口：** 此接口为系统接口。             |
-| PROFESSIONAL_VIDEO<sup>12+</sup>        | 6      | 专业录像模式。**系统接口：** 此接口为系统接口。             |
-| SLOW_MOTION_VIDEO<sup>12+</sup>        | 7   | 慢动作模式。**系统接口：** 此接口为系统接口。  |
-| MACRO_PHOTO<sup>12+</sup>        | 8   | 微距拍照模式。**系统接口：** 此接口为系统接口。  |
-| MACRO_VIDEO<sup>12+</sup>        | 9   | 微距录像模式。**系统接口：** 此接口为系统接口。  |
-| LIGHT_PAINTING_PHOTO<sup>12+</sup>        | 10   | 光绘摄影模式。**系统接口：** 此接口为系统接口。  |
-| HIGH_RESOLUTION_PHOTO<sup>12+</sup>        | 11     | 高像素拍照模式。 **系统接口：** 此接口为系统接口。          |
-| QUICK_SHOT_PHOTO<sup>12+</sup>        | 13   | 闪拍模式。**系统接口：** 此接口为系统接口。  |
-| APERTURE_VIDEO<sup>12+</sup>        | 14   | 大光圈录像模式。**系统接口：** 此接口为系统接口。  |
-| PANORAMA_PHOTO<sup>12+</sup>        | 15     | 全景拍照模式。 **系统接口：** 此接口为系统接口。          |
-| TIME_LAPSE_PHOTO<sup>12+</sup>        | 16     | 延时摄影模式。 **系统接口：** 此接口为系统接口。          |
-| FLUORESCENCE_PHOTO<sup>13+</sup>        | 17   | 荧光图片模式。**系统接口：** 此接口为系统接口。  |
+| 名称                                | 值   | 说明                                                         |
+| ----------------------------------- | ---- | ------------------------------------------------------------ |
+| PORTRAIT_PHOTO                      | 3    | 人像拍照模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| NIGHT_PHOTO                         | 4    | 夜景拍照模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| PROFESSIONAL_PHOTO<sup>12+</sup>    | 5    | 专业拍照模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| PROFESSIONAL_VIDEO<sup>12+</sup>    | 6    | 专业录像模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| SLOW_MOTION_VIDEO<sup>12+</sup>     | 7    | 慢动作模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| MACRO_PHOTO<sup>12+</sup>           | 8    | 微距拍照模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| MACRO_VIDEO<sup>12+</sup>           | 9    | 微距录像模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| LIGHT_PAINTING_PHOTO<sup>12+</sup>  | 10   | 光绘摄影模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| HIGH_RESOLUTION_PHOTO<sup>12+</sup> | 11   | 高像素拍照模式。 **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| QUICK_SHOT_PHOTO<sup>12+</sup>      | 13   | 闪拍模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| APERTURE_VIDEO<sup>12+</sup>        | 14   | 大光圈录像模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| PANORAMA_PHOTO<sup>12+</sup>        | 15   | 全景拍照模式。 **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| TIME_LAPSE_PHOTO<sup>12+</sup>      | 16   | 延时摄影模式。 **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| FLUORESCENCE_PHOTO<sup>13+</sup>    | 17   | 荧光图片模式。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## SlowMotionStatus<sup>12+</sup>
 
 枚举，慢动作状态。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值   | 说明            |
 |----------------|-----|---------------|
@@ -58,6 +63,10 @@ lcd闪光灯信息项。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称      | 类型                          | 只读 | 可选  | 说明         |
 | -------- | ----------------------------- |---- |-----| ------------- |
 | isLcdFlashNeeded   | boolean | 是  | 否   | 是否需要lcd闪光灯，true为需要，false为不需要。      |
@@ -71,6 +80,10 @@ lcd闪光灯信息项。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型                            | 只读  | 可选       | 说明 |
 | ------ | ----------------------------- |-----| ---------- | ---------- |
 | raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| NA  | 是   | raw图。 |
@@ -82,6 +95,10 @@ lcd闪光灯信息项。
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 值   | 说明      |
 | ----------------------------- |-----|---------|
@@ -95,6 +112,10 @@ lcd闪光灯信息项。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                           | 值   | 说明      |
 | ----------------------------- |-----|---------|
 | PRIVACY<sup>12+</sup>          | 1   | 隐私类型。 |
@@ -106,6 +127,10 @@ lcd闪光灯信息项。
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 值   | 说明      |
 | ----------------------------- |-----|---------|
@@ -127,6 +152,10 @@ createDepthDataOutput(profile: DepthProfile): DepthDataOutput
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -179,6 +208,10 @@ isCameraMuteSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型        | 说明                          |
@@ -213,7 +246,11 @@ muteCamera(mute: boolean): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -241,6 +278,10 @@ muteCameraPersistent(mute: boolean, type: PolicyType): void
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **参数：**
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 参数名      | 类型                          | 必填  | 说明                                         |
 | -------- |-----------------------------| ---- |--------------------------------------------|
@@ -274,7 +315,13 @@ on(type: 'cameraMute', callback: AsyncCallback\<boolean\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraMute](#oncameraMute22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -302,6 +349,46 @@ function registerCameraMute(cameraManager: camera.CameraManager): void {
 }
 ```
 
+### onCameraMute<sup>22+</sup>
+
+onCameraMute(callback: AsyncCallback\<boolean\>): void
+
+禁用回调，通过注册回调函数获取相机禁用状态变化。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("cameraMute")](#oncameramute)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数，用于获取禁用状态变化信息，返回true为开启状态，返回false为禁用状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, curMuted: boolean | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`cameraMute status: ${curMuted}`);
+}
+
+function registerCameraMute(cameraManager: camera.CameraManager): void {
+  cameraManager.onCameraMute(callback);
+}
+```
+
 ### off('cameraMute')
 
 off(type: 'cameraMute', callback?: AsyncCallback\<boolean\>): void
@@ -310,14 +397,20 @@ off(type: 'cameraMute', callback?: AsyncCallback\<boolean\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCameraMute](#offcameraMute22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名     | 类型             | 必填 | 说明                                                      |
 | -------- | --------------- | ---- |---------------------------------------------------------|
 | type     | string          | 是   | 监听事件，固定为'cameraMute'，系统相机开关，cameraManager对象获取成功后可监听。 |
-| callback | AsyncCallback\<boolean> | 否   | 回调函数，可选参数，返回true为开启状态，返回false为禁用状态，有就是匹配on('cameraMute') callback（callback对象不可是匿名函数）。                  |
+| callback | AsyncCallback\<boolean> | 否   | 回调函数，可选参数，返回true为开启状态，返回false为禁用状态，若回调函数有参数则匹配on('cameraMute') callback（callback对象不可是匿名函数）。                  |
 
 **示例：**
 
@@ -333,6 +426,36 @@ function unregisterCameraMute(cameraManager: camera.CameraManager): void {
 }
 ```
 
+### offCameraMute<sup>22+</sup>
+
+offCameraMute(callback?: AsyncCallback\<boolean\>): void
+
+禁用回调，通过注销注册回调函数获取相机禁用状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("cameraMute")](#offcameramute)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean> | 否   | 回调函数，可选参数，返回true为开启状态，返回false为禁用状态，若回调函数有参数则匹配on('cameraMute') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterCameraMute(cameraManager: camera.CameraManager): void {
+  cameraManager.offCameraMute();
+}
+```
+
 ### isPrelaunchSupported
 
 isPrelaunchSupported(camera: CameraDevice): boolean
@@ -342,6 +465,10 @@ isPrelaunchSupported(camera: CameraDevice): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -396,6 +523,10 @@ setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型             | 必填 | 说明       |
@@ -446,6 +577,10 @@ prelaunch(): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
@@ -480,6 +615,10 @@ createDeferredPreviewOutput(profile?: Profile): PreviewOutput
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -524,6 +663,10 @@ preSwitchCamera(cameraId: string): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型             | 必填 | 说明       |
@@ -564,6 +707,10 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
 | isCameraOccluded                 | boolean              |  是  | 否 |遮挡状态，true为遮挡状态，false为不遮挡状态。        |
@@ -576,6 +723,10 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
 | depthProfiles                 | Array\<[DepthProfile](#depthprofile13)\>              |  是  | 否 | 支持的深度流配置信息集合。        |
@@ -587,6 +738,10 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
@@ -605,7 +760,13 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDet
 
 监听CameraInput的遮挡事件，通过注册回调函数获取结果。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraOcclusionDetection](#oncameraocclusiondetection22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -632,13 +793,57 @@ function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void
 }
 ```
 
+### onCameraOcclusionDetection<sup>22+</sup>
+
+onCameraOcclusionDetection(callback: AsyncCallback\<CameraOcclusionDetectionResult\>): void
+
+监听CameraInput的遮挡事件，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("cameraOcclusionDetection")](#oncameraocclusiondetection12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 是   | 回调函数，用于获取返回的遮挡状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, CameraOcclusionDetectionResult: camera.CameraOcclusionDetectionResult |undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error('cameraOcclusionDetection with errorCode = ' + err!.code);
+    return;
+  }
+  console.info(`isCameraOccluded : ${CameraOcclusionDetectionResult!.isCameraOccluded}`);
+}
+
+function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+  cameraInput.onCameraOcclusionDetection(callback);
+}
+```
+
 ### off('cameraOcclusionDetection')<sup>12+</sup>
 
 off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
 
 注销CameraInput遮挡监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCameraOcclusionDetection](#offcameraocclusiondetection22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -665,6 +870,34 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 }
 ```
 
+### offCameraOcclusionDetection<sup>22+</sup>
+
+off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
+
+注销CameraInput遮挡监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("cameraOcclusionDetection")](#offcameraocclusiondetection12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 否   | 回调函数，可选参数，有就是匹配on('cameraOcclusionDetection') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+  cameraInput.offCameraOcclusionDetection();
+}
+```
+
 ## DepthDataAccuracy<sup>13+</sup>
 
 深度数据的精度。
@@ -672,6 +905,10 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
@@ -686,6 +923,10 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
 | depthDataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | 是  |  否  | 深度数据的精度，分为相对精度和绝对精度。 |
@@ -697,6 +938,10 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
@@ -714,6 +959,10 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
 | format | [CameraFormat](#cameraformat)   | 是 |  否  | 深度图的格式。 |
@@ -730,6 +979,10 @@ release(): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -753,6 +1006,10 @@ start(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -770,6 +1027,8 @@ start(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -778,6 +1037,21 @@ function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
     console.info('Promise returned to indicate that start method execution success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to depth data output start, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.start().then(() => {
+    console.info('Promise returned to indicate that start method execution success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to depth data output start, error code: ${err.code}.`);
   });
 }
 ```
@@ -792,6 +1066,10 @@ stop(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -799,6 +1077,8 @@ stop(): Promise\<void\>
 | Promise\<void\> | 无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -808,6 +1088,21 @@ function stopDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
     console.info('Promise returned to indicate that stop method execution success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to depth data output stop, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.stop().then(() => {
+    console.info('Promise returned to indicate that stop method execution success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to depth data output stop, error code: ${err.code}.`);
   });
 }
 ```
@@ -824,7 +1119,13 @@ on(type: 'depthDataAvailable', callback: AsyncCallback\<DepthData\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDepthDataAvailable](#ondepthdataavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -850,6 +1151,49 @@ function registerDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): vo
 }
 ```
 
+### onDepthDataAvailable<sup>22+</sup>
+
+onDepthDataAvailable(callback: AsyncCallback\<DepthData\>): void
+
+注册监听深度数据上报。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("depthDataAvailable")](#ondepthdataavailable13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                             |
+| -------- | ------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[DepthData](#depthdata13)\> | 是   | 回调函数，用于监听深度信息上报。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, depthData: camera.DepthData | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+}
+
+function registerDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.onDepthDataAvailable(callback);
+}
+```
+
 ### off('depthDataAvailable')<sup>13+</sup>
 
 off(type: 'depthDataAvailable', callback?: AsyncCallback\<DepthData\>): void
@@ -858,7 +1202,13 @@ off(type: 'depthDataAvailable', callback?: AsyncCallback\<DepthData\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDepthDataAvailable](#offdepthdataavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -884,6 +1234,36 @@ function unRegisterDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): 
 }
 ```
 
+### offDepthDataAvailable<sup>22+</sup>
+
+offDepthDataAvailable(callback?: AsyncCallback\<DepthData\>): void
+
+注销监听深度信息上报。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("depthDataAvailable")](#offdepthdataavailable13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                         |
+| -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[DepthData](#depthdata13)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unRegisterDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.offDepthDataAvailable();
+}
+```
+
 ### on('error')<sup>13+</sup>
 
 on(type: 'error', callback: ErrorCallback): void
@@ -896,7 +1276,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -919,6 +1305,46 @@ function registerDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): 
 }
 ```
 
+### onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听深度信息输出的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(depthDataOutputError: BusinessError): void {
+  console.error(`Depth data output error code: ${depthDataOutputError.code}`);
+}
+
+function registerDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.onError(callback);
+}
+```
+
 ### off('error')<sup>13+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -927,7 +1353,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -944,6 +1376,36 @@ function unregisterDepthDataOutputError(depthDataOutput: camera.DepthDataOutput)
 }
 ```
 
+### offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听深度信息输出的错误事件。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {
+  depthDataOutput.offError();
+}
+```
+
 ## DepthFusionQuery<sup>14+</sup>
 
 深度融合查询类。
@@ -957,6 +1419,10 @@ isDepthFusionSupported(): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -990,13 +1456,19 @@ function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void
 ```
 ### getDepthFusionThreshold<sup>14+</sup>
 
-getDepthFusionThreshold(): Array\<number\>
+ArkTS-Dyn: getDepthFusionThreshold(): Array\<number\>
+
+ArkTS-Sta: getDepthFusionThreshold(): Array\<double\>
 
 获取深度融合阈值，通过返回值获取结果。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1014,6 +1486,9 @@ getDepthFusionThreshold(): Array\<number\>
 | 7400103         | Session not config, only throw in session usage.      |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1027,6 +1502,23 @@ function getDepthFusionThreshold(DepthFusionQuery: camera.DepthFusionQuery): voi
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getDepthFusionThreshold(DepthFusionQuery: camera.DepthFusionQuery): void {
+  try {
+    let threshold: Array<double> = DepthFusionQuery.getDepthFusionThreshold();
+    console.info('Promise returned to indicate that getDepthFusionThreshold method execution success.');
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to depth fusion query  getDepthFusionThreshold, error code: ${err.code}.`);
+  }
+}
+```
+
 ## DepthFusion<sup>14+</sup>
 
 深度融合类。继承[DepthFusionQuery](js-apis-camera-sys.md#depthfusionquery14)。
@@ -1040,6 +1532,10 @@ isDepthFusionEnabled(): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1080,6 +1576,10 @@ enableDepthFusion(enabled: boolean): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1124,12 +1624,12 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-|            名称                 | 类型                                               |     只读    |     必填     | 说明       |
-| ------------------------------- |--------------------------------------------------| ----------- | ------------ | ---------- |
-| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      否     |       是      | 相机信息。         |
-| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      否     |       否      | 预保存参数类型。    |
-| activeTime<sup>11+</sup>        | number                                           |      否     |       否      | 激活时间，单位min。 |
-| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      否     |       否      | 设置参数内容。      |
+| 名称                           | 类型                                                | 只读 | 必填 | 说明                                                         |
+| ------------------------------ | --------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| cameraDevice                   | [CameraDevice](arkts-apis-camera-i.md#cameradevice) | 否   | 是   | 相机信息。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| restoreParamType<sup>11+</sup> | [RestoreParamType](#restoreparamtype11)             | 否   | 否   | 预保存参数类型。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| activeTime<sup>11+</sup>       | number                                              | 否   | 否   | 激活时间，单位min。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| settingParam<sup>11+</sup>     | [SettingParam](#settingparam11)                     | 否   | 否   | 设置参数内容。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## RestoreParamType<sup>11+</sup>
 
@@ -1138,6 +1638,10 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值    | 说明     |
 | ----------------| ----  | ---------|
@@ -1153,11 +1657,15 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称             | 类型   |   只读    | 可选  | 说明                                                                                                |
-| --------------- | ------ | --------- |-----|---------------------------------------------------------------------------------------------------|
-| skinSmoothLevel | number |  否       | 否   | 美颜类型光滑信息，从[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)获取支持的光滑范围，例如1表示1级光滑。        |
-| faceSlender     | number |  否       | 否   | 美颜类型瘦脸信息，从[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)获取支持的瘦脸范围，例如1表示1级瘦脸。        |
-| skinTone        | number |  否       | 否   | 美颜类型肤色信息，从[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)获取支持的肤色范围，例如0xBF986C表示一个颜色。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称            | 类型                                | 只读 | 可选 | 说明                                                         |
+| --------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| skinSmoothLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 美颜类型光滑信息，从[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)获取支持的光滑范围，例如1表示1级光滑。 |
+| faceSlender     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 美颜类型瘦脸信息，从[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)获取支持的瘦脸范围，例如1表示1级瘦脸。 |
+| skinTone        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 美颜类型肤色信息，从[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)获取支持的肤色范围，例如0xBF986C表示一个颜色。 |
 
 ## PreviewOutput
 
@@ -1172,6 +1680,10 @@ addDeferredSurface(surfaceId: string): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1189,6 +1701,8 @@ addDeferredSurface(surfaceId: string): void
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1209,6 +1723,27 @@ async function preview(context: common.BaseContext, cameraDevice: camera.CameraD
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, previewSurfaceId: string): Promise<void> {
+  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
+  const cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraDevice);
+  const previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
+  const photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  const session: camera.Session  = cameraManager.createSession<camera.PhotoSession>(camera.SceneMode.NORMAL_PHOTO)
+  session.beginConfig();
+  session.addInput(cameraInput);
+  session.addOutput(previewOutput);
+  session.addOutput(photoOutput);
+  await session.commitConfig();
+  await session.start();
+  previewOutput.addDeferredSurface(previewSurfaceId);
+}
+```
+
 ### isSketchSupported<sup>11+</sup>
 
 isSketchSupported(): boolean
@@ -1218,6 +1753,10 @@ isSketchSupported(): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1253,7 +1792,9 @@ function isSketchSupported(previewOutput: camera.PreviewOutput): boolean {
 
 ### getSketchRatio<sup>11+</sup>
 
-getSketchRatio(): number
+ArkTS-Dyn: getSketchRatio(): number
+
+ArkTS-Sta: getSketchRatio(): double
 
 获取当前状态下启动画中画的Zoom倍率。
 
@@ -1261,11 +1802,15 @@ getSketchRatio(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| 类型            | 说明                     |
-| -------------- | ----------------------- |
-| number | 当前状态下启动画中画的Zoom倍率。不支持画中画的情况下，该接口返回-1。 |
+| 类型                                   | 说明                                                         |
+| -------------------------------------- | ------------------------------------------------------------ |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 当前状态下启动画中画的Zoom倍率。不支持画中画的情况下，该接口返回-1。 |
 
 **错误码：**
 
@@ -1278,9 +1823,20 @@ getSketchRatio(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function getSketchRatio(previewOutput: camera.PreviewOutput): number {
   let sketchRatio: number = previewOutput.getSketchRatio();
+  return sketchRatio;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function getSketchRatio(previewOutput: camera.PreviewOutput): double {
+  let sketchRatio: double = previewOutput.getSketchRatio();
   return sketchRatio;
 }
 ```
@@ -1294,6 +1850,10 @@ enableSketch(enabled: boolean): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1342,6 +1902,10 @@ attachSketchSurface(surfaceId: string): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
@@ -1388,7 +1952,13 @@ on(type: 'sketchStatusChanged', callback: AsyncCallback\<SketchStatusData\>): vo
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSketchStatusChanged](#onsketchstatuschanged22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1415,11 +1985,59 @@ function callback(error: BusinessError, data: camera.SketchStatusData): void {
     console.error(`Callback Error, errorCode: ${error.code}`);
     return;
   }
-  console.info(`sketch errorCode is ${error.code}, data is ${JSON.stringify(data)}`);
+  console.error(`sketch errorCode is ${error.code}, data is ${JSON.stringify(data)}`);
 }
 
 function registerSketchStatusChanged(previewOutput: camera.PreviewOutput): void {
   previewOutput.on('sketchStatusChanged', callback);
+}
+```
+
+### onSketchStatusChanged<sup>22+</sup>
+
+onSketchStatusChanged(callback: AsyncCallback\<SketchStatusData\>): void
+
+监听画中画状态信息改变，通过注册回调函数获取SketchStatusData。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("sketchStatusChanged")](#onsketchstatuschanged11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                     | 必填 | 说明                                     |
+| -------- | -------------------------------------------------------- | ---- | ---------------------------------------- |
+| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | 是   | 使用callback的方式获取SketchStatusData。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(error: BusinessError | null, data: camera.SketchStatusData | undefined): void {
+  if (error !== undefined && error!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${error!.code}`);
+    return;
+  }
+  console.error(`sketch errorCode is ${error!.code}, data is ${JSON.stringify(data)}`);
+}
+
+function registerSketchStatusChanged(previewOutput: camera.PreviewOutput): void {
+  previewOutput.onSketchStatusChanged(callback);
 }
 ```
 
@@ -1431,7 +2049,13 @@ off(type: 'sketchStatusChanged', callback?: AsyncCallback\<SketchStatusData\>): 
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSketchStatusChanged](#offsketchstatuschanged22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1456,6 +2080,44 @@ function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): voi
 }
 ```
 
+### offSketchStatusChanged<sup>22+</sup>
+
+offSketchStatusChanged(callback?: AsyncCallback\<SketchStatusData\>): void
+
+注销监听画中画状态信息改变。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("sketchStatusChanged")](#offsketchstatuschanged11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                     | 必填 | 说明                                                         |
+| -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | 否   | 回调函数，可选，有就是匹配on('sketchStatusChanged') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): void {
+  previewOutput.offSketchStatusChanged();
+}
+```
+
 ## DeferredDeliveryImageType<sup>11+</sup>
 
 枚举，分段式能力类型。即将拍照/录像分为两个阶段，一阶段以较快速度输出图片/视频提供给用户，二阶段完成优化处理，重新输出高质量图片/视频。
@@ -1463,6 +2125,10 @@ function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): voi
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称    | 值   | 说明         |
 | ------- | ---- | ------------ |
@@ -1484,6 +2150,10 @@ getThumbnail(): Promise<image.PixelMap>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -1500,12 +2170,26 @@ getThumbnail(): Promise<image.PixelMap>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { image } from '@kit.ImageKit';
 
 function getThumbnail(proxyObj: camera.DeferredPhotoProxy): void {
   proxyObj.getThumbnail().then((thumbnail: image.PixelMap) => {
     AppStorage.setOrCreate('proxyThumbnail', thumbnail);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+
+function getThumbnail(proxyObj: camera.DeferredPhotoProxy): void {
+    proxyObj.getThumbnail().then((thumbnail: image.PixelMap) => {
+    // 对thumbnail的处理
   });
 }
 ```
@@ -1519,6 +2203,10 @@ release(): Promise\<void\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1556,6 +2244,10 @@ burstCapture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                                        | 必填 | 说明     |
@@ -1581,6 +2273,8 @@ burstCapture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1604,6 +2298,32 @@ function burstCapture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function burstCapture(photoOutput: camera.PhotoOutput): void {
+  let captureLocation: camera.Location = {
+    latitude: 0,
+    longitude: 0,
+    altitude: 0
+  }
+  let settings: camera.PhotoCaptureSetting = {
+    quality: camera.QualityLevel.QUALITY_LEVEL_LOW,
+    rotation: camera.ImageRotation.ROTATION_0,
+    location: captureLocation,
+    mirror: false
+  }
+  photoOutput.burstCapture(settings).then(() => {
+    console.info('Promise returned to indicate that photo burstCapture request success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to photo output burstCapture, error code: ${err.code}.`);
+  });
+}
+```
+
 ### confirmCapture<sup>11+</sup>
 
 confirmCapture()
@@ -1614,7 +2334,11 @@ confirmCapture()
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS版本：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **错误码：**
 
@@ -1650,6 +2374,10 @@ isDeferredImageDeliverySupported(type: DeferredDeliveryImageType): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1694,6 +2422,10 @@ isDeferredImageDeliveryEnabled(type: DeferredDeliveryImageType): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型               | 必填 | 说明                 |
@@ -1737,6 +2469,10 @@ deferImageDelivery(type: DeferredDeliveryImageType): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型               | 必填 | 说明                 |
@@ -1771,6 +2507,10 @@ isAutoHighQualityPhotoSupported(): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1808,6 +2548,10 @@ enableAutoHighQualityPhoto(enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型               | 必填 | 说明                 |
@@ -1843,7 +2587,13 @@ on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback\<DeferredPhotoPr
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDeferredPhotoProxyAvailable](#ondeferredphotoproxyavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1881,6 +2631,57 @@ function registerPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Phot
 }
 ```
 
+### onDeferredPhotoProxyAvailable<sup>22+</sup>
+
+onDeferredPhotoProxyAvailable(callback: AsyncCallback\<DeferredPhotoProxy\>): void
+
+注册监听缩略图上报。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("deferredPhotoProxyAvailable")](#ondeferredphotoproxyavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                             |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
+| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | 是   | 回调函数，用于获取相关信息。用于监听缩略图上报。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError | null, proxyObj: camera.DeferredPhotoProxy | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  proxyObj!.getThumbnail().then((thumbnail: image.PixelMap) => {
+    // 对thumbnail的处理
+  });
+}
+
+function registerPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onDeferredPhotoProxyAvailable(callback);
+}
+```
+
 ### off('deferredPhotoProxyAvailable')<sup>11+</sup>
 
 off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback\<DeferredPhotoProxy\>): void
@@ -1889,7 +2690,13 @@ off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback\<DeferredPhoto
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDeferredPhotoProxyAvailable](#offdeferredphotoproxyavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1923,6 +2730,44 @@ function unRegisterPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Ph
 }
 ```
 
+### offDeferredPhotoProxyAvailable<sup>22+</sup>
+
+offDeferredPhotoProxyAvailable(callback?: AsyncCallback\<DeferredPhotoProxy\>): void
+
+取消已注册的延迟照片代理可用事件回调订阅。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("deferredPhotoProxyAvailable")](#offdeferredphotoproxyavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | 否   | 回调函数，可选，有就是匹配on('deferredPhotoProxyAvailable') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unRegisterPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offDeferredPhotoProxyAvailable();
+}
+```
+
 ### isQuickThumbnailSupported
 
 isQuickThumbnailSupported(): boolean
@@ -1934,6 +2779,10 @@ isQuickThumbnailSupported(): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1952,6 +2801,8 @@ isQuickThumbnailSupported(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -1960,6 +2811,30 @@ async function isQuickThumbnailSupported(context: common.BaseContext, mode: came
   let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
   // 创建CaptureSession实例。
   let session: camera.Session = cameraManager.createSession(mode);
+  // 开始配置会话。
+  session.beginConfig();
+  // 把CameraInput加入到会话。
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
+  await cameraInput.open();
+  session.addInput(cameraInput);
+  // 把photoOutput加入到会话。
+  let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  session.addOutput(photoOutput);
+  let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
+  return isSupported;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+async function isQuickThumbnailSupported(context: common.BaseContext, photoProfile: camera.Profile): Promise<boolean> {
+  let cameraManager: camera.CameraManager = camera.getCameraManager(context);
+  let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+  // 创建CaptureSession实例。
+  let session: camera.Session = cameraManager.createSession<camera.PhotoSession>(camera.SceneMode.NORMAL_PHOTO)
   // 开始配置会话。
   session.beginConfig();
   // 把CameraInput加入到会话。
@@ -1986,6 +2861,10 @@ enableQuickThumbnail(enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                                 |
@@ -2004,6 +2883,8 @@ enableQuickThumbnail(enabled: boolean): void
 | 7400201                |  Camera service fatal error.        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -2037,6 +2918,52 @@ async function enableQuickThumbnail(context: common.BaseContext, mode: camera.Sc
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError | null, pixelMap: image.PixelMap | undefined): void {
+  if (err! || pixelMap === undefined) {
+    console.error('photoOutput on thumbnail failed');
+    return;
+  }
+  // 显示或保存pixelMap。
+  // do something.
+}
+
+async function registerQuickThumbnail(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<void> {
+  let cameraManager: camera.CameraManager = camera.getCameraManager(context);
+  let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+  // 创建CaptureSession实例。
+  let session: camera.Session = cameraManager.createSession<camera.Session>(mode);
+  // 开始配置会话。
+  session.beginConfig();
+  // 把CameraInput加入到会话。
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
+  await cameraInput.open();
+  session.addInput(cameraInput);
+  // 把PhotoOutPut加入到会话。
+  let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  session.addOutput(photoOutput);
+  let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
+  if (!isSupported) {
+    console.info('Quick Thumbnail is not supported to be turned on.');
+    return;
+  }
+  try {
+    photoOutput.enableQuickThumbnail(true);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The enableQuickThumbnail call failed. error code: ${err.code}`);
+  }
+
+  photoOutput.onQuickThumbnail(callback);
+}
+```
+
 ### on('quickThumbnail')
 
 on(type: 'quickThumbnail', callback: AsyncCallback\<image.PixelMap>): void
@@ -2047,7 +2974,13 @@ on(type: 'quickThumbnail', callback: AsyncCallback\<image.PixelMap>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onQuickThumbnail](#onquickthumbnail22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2102,6 +3035,76 @@ async function registerQuickThumbnail(context: common.BaseContext, mode: camera.
 }
 ```
 
+### onQuickThumbnail<sup>22+</sup>
+
+onQuickThumbnail(callback: AsyncCallback\<image.PixelMap>): void
+
+监听快速缩略图输出事件。使用callback异步回调。
+
+在enableQuickThumbnail(true)使能快速缩略图之后监听生效。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("quickThumbnail")](#onquickthumbnail)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明               |
+| -------- | ------------------------------------------------------------ | ---- | ------------------ |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 回调返回PixelMap。 |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError | null, pixelMap: image.PixelMap | undefined): void {
+  if (err! || pixelMap === undefined) {
+    console.error('photoOutput on thumbnail failed');
+    return;
+  }
+  // 显示或保存pixelMap。
+  // do something.
+}
+
+async function registerQuickThumbnail(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<void> {
+  let cameraManager: camera.CameraManager = camera.getCameraManager(context);
+  let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+  // 创建CaptureSession实例。
+  let session: camera.Session = cameraManager.createSession<camera.Session>(mode);
+  // 开始配置会话。
+  session.beginConfig();
+  // 把CameraInput加入到会话。
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
+  await cameraInput.open();
+  session.addInput(cameraInput);
+  // 把PhotoOutPut加入到会话。
+  let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  session.addOutput(photoOutput);
+  let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
+  if (!isSupported) {
+    console.info('Quick Thumbnail is not supported to be turned on.');
+    return;
+  }
+  try {
+    photoOutput.enableQuickThumbnail(true);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The enableQuickThumbnail call failed. error code: ${err.code}`);
+  }
+
+  photoOutput.onQuickThumbnail(callback);
+}
+```
+
 ### off('quickThumbnail')
 
 off(type: 'quickThumbnail', callback?: AsyncCallback\<image.PixelMap>): void
@@ -2110,7 +3113,13 @@ off(type: 'quickThumbnail', callback?: AsyncCallback\<image.PixelMap>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offQuickThumbnail](#offquickthumbnail22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2127,6 +3136,36 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+### offQuickThumbnail<sup>22+</sup>
+
+offQuickThumbnail(callback?: AsyncCallback\<image.PixelMap>): void
+
+注销监听快速缩略图输出事件。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("quickThumbnail")](#offquickthumbnail)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 否   | 回调函数，可选，有就是匹配on('quickThumbnail') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offQuickThumbnail();
+}
+```
+
 ## MetadataOutput
 
 metadata流。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
@@ -2138,6 +3177,10 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 新增需要上报的检测对象类型。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2180,6 +3223,10 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
@@ -2219,6 +3266,10 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                       | 值   | 说明              |
 | -------------------------- | ---- | ----------------- |
 | HUMAN_BODY<sup>13+</sup>                 | 1    | 用于检测人体的metadata类型。 |
@@ -2233,6 +3284,10 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                       | 值   | 说明              |
 | -------------------------- | ---- | ----------------- |
 | NEUTRAL                 | 0    | 平静。 |
@@ -2246,6 +3301,10 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称         | 类型                                        | 只读 | 可选 |说明                |
 | -----------  | ------------------------------------------- | ---- | ---- | ----------------- |
 | objectId<sup>13+</sup>     | number                                      |  是  |  否  | metadataObject Id序号。|
@@ -2256,6 +3315,10 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 相机检测到的人脸元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                    | 类型                              | 只读 | 可选 |说明                |
 | ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
@@ -2273,11 +3336,19 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 ## MetadataCatFaceObject<sup>13+</sup>
 
 相机检测到的猫脸元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                    | 类型                              | 只读 | 可选 |说明                |
 | ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
@@ -2290,11 +3361,19 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 ## MetadataDogFaceObject<sup>13+</sup>
 
 相机检测到的狗脸元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                    | 类型                              | 只读 | 可选 |说明                |
 | ---------------------- | --------------------------------- | ---- | ---- | --------------------- |
@@ -2307,17 +3386,29 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 ## MetadataSalientDetectionObject<sup>13+</sup>
 
 相机检测到的显著性元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 ## MetadataBarcodeObject<sup>14+</sup>
 
 相机检测到的二维码元数据信息，继承自[MetadataObject](#metadataobject)，[CameraInput](#camerainput)相机信息中的数据来源，通过metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable)接口获取。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 ## PortraitEffect
 
@@ -2327,14 +3418,14 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称             | 值    | 说明     |
-| ----------------| ----  | ---------|
-| OFF             | 0      | 关闭。    |
-| CIRCLES         | 1      | 圆形。    |
-| HEART<sup>11+</sup>           | 2      | 心形。    |
-| ROTATED<sup>11+</sup>         | 3      | 旋焦。    |
-| STUDIO<sup>11+</sup>          | 4      | 影棚光。  |
-| THEATER<sup>11+</sup>         | 5      | 剧场光。  |
+| 名称                  | 值   | 说明                                                         |
+| --------------------- | ---- | ------------------------------------------------------------ |
+| OFF                   | 0    | 关闭。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| CIRCLES               | 1    | 圆形。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| HEART<sup>11+</sup>   | 2    | 心形。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| ROTATED<sup>11+</sup> | 3    | 旋焦。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| STUDIO<sup>11+</sup>  | 4    | 影棚光。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| THEATER<sup>11+</sup> | 5    | 剧场光。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## BeautyQuery<sup>12+</sup>
 
@@ -2349,6 +3440,10 @@ getSupportedBeautyTypes(): Array\<BeautyType\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2376,7 +3471,9 @@ function getSupportedBeautyTypes(portraitPhotoSession: camera.PortraitPhotoSessi
 
 ### getSupportedBeautyRange<sup>11+</sup>
 
-getSupportedBeautyRange(type: BeautyType): Array\<number\>
+ArkTS-Dyn：getSupportedBeautyRange(type: BeautyType): Array\<number\>
+
+ArkTS-Sta：getSupportedBeautyRange(type: BeautyType): Array\<int\>
 
 获取指定美颜效果的范围值。在不同设备返回的美颜强度有所不同，下表仅做示例。
 
@@ -2391,6 +3488,10 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                    | 必填 | 说明       |
@@ -2399,9 +3500,9 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
 **返回值：**
 
-| 类型        | 说明                          |
-| ---------- | ----------------------------- |
-|  Array\<number\>     | 当前美颜类型所支持的美颜强度。 |
+| 类型                                                  | 说明                           |
+| ----------------------------------------------------- | ------------------------------ |
+| ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<int\> | 当前美颜类型所支持的美颜强度。 |
 
 **错误码：**
 
@@ -2414,6 +3515,8 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSession): Array<number> {
   let beautyTypes: Array<camera.BeautyType> = portraitPhotoSession.getSupportedBeautyTypes();
@@ -2425,6 +3528,19 @@ function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSessi
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSession): Array<int> {
+  let beautyTypes: Array<camera.BeautyType> = portraitPhotoSession.getSupportedBeautyTypes();
+  if (beautyTypes === undefined || beautyTypes.length <= 0) {
+    return [];
+  }
+  let beautyLevels: Array<int> = portraitPhotoSession.getSupportedBeautyRange(beautyTypes[0]);
+  return beautyLevels;
+}
+```
+
 ## BeautyType
 
 美颜类型。
@@ -2432,6 +3548,10 @@ function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSessi
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值    | 说明     |
 | ----------------| ----  | ---------|
@@ -2446,7 +3566,9 @@ function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSessi
 
 ### getSupportedExposureRange<sup>11+</sup>
 
-getSupportedExposureRange(): Array\<number\>
+ArkTS-Dyn: getSupportedExposureRange(): Array\<number\>
+
+ArkTS-Sta: getSupportedExposureRange(): Array\<int\>
 
 获取当前支持的手动曝光时长，单位ms。
 
@@ -2454,11 +3576,15 @@ getSupportedExposureRange(): Array\<number\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| 类型                | 说明                                                  |
-| ----------          | -----------------------------                         |
-|  Array\<number\>| 返回当前支持的手动曝光时长，单位ms。                             |
+| 类型                                                  | 说明                                 |
+| ----------------------------------------------------- | ------------------------------------ |
+| ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<int\> | 返回当前支持的手动曝光时长，单位ms。 |
 
 **错误码：**
 
@@ -2472,9 +3598,20 @@ getSupportedExposureRange(): Array\<number\>
 
  **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function getSupportedExposureRange(nightPhotoSession: camera.NightPhotoSession): Array<number> {
   let exposureRange: Array<number> = nightPhotoSession.getSupportedExposureRange();
+  return exposureRange;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function getSupportedExposureRange(nightPhotoSession: camera.NightPhotoSession): Array<int> {
+  let exposureRange: Array<int> = nightPhotoSession.getSupportedExposureRange();
   return exposureRange;
 }
 ```
@@ -2487,7 +3624,9 @@ ManualExposure extends [ManualExposureQuery](#manualexposurequery12)
 
 ### getExposure<sup>11+</sup>
 
-getExposure(): number
+ArkTS-Dyn: getExposure(): number
+
+ArkTS-Sta: getExposure(): int
 
 查询当前已设置的手动曝光时长，单位为ms。
 
@@ -2495,10 +3634,15 @@ getExposure(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
-| 参数名      | 类型                                              | 必填 | 说明                    |
-| -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | 是   | 手动曝光时长，单位为ms。  |
+
+| 参数名 | 类型                                | 必填 | 说明                     |
+| ------ | ----------------------------------- | ---- | ------------------------ |
+| value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 手动曝光时长，单位为ms。 |
 
 **错误码：**
  
@@ -2512,6 +3656,8 @@ getExposure(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function getExposure(nightPhotoSession: camera.NightPhotoSession): number | undefined {
   let exposureRange: Array<number> = nightPhotoSession.getSupportedExposureRange();
@@ -2523,9 +3669,24 @@ function getExposure(nightPhotoSession: camera.NightPhotoSession): number | unde
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+function getExposure(nightPhotoSession: camera.NightPhotoSession): int | undefined {
+  let exposureRange: Array<int> = nightPhotoSession.getSupportedExposureRange();
+  if (exposureRange === undefined || exposureRange.length <= 0) {
+    return undefined;
+  }
+  let exposure: int = nightPhotoSession.getExposure();
+  return exposure;
+}
+```
+
 ### setExposure<sup>11+</sup>
 
-setExposure(exposure: number): void
+ArkTS-Dyn: setExposure(exposure: number): void
+
+ArkTS-Sta: setExposure(exposure: int): void
 
 设置手动曝光时长。[getSupportedExposureRange](#getsupportedexposurerange11)获取得到支持的手动曝光时长列表选取用户所需的时长下发，单位ms。
 
@@ -2533,11 +3694,15 @@ setExposure(exposure: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名      | 类型                    | 必填 | 说明                                                                      |
-| -------- | --------------------------| ---- |-------------------------------------------------------------------------|
-| value    | number                    | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
+| 参数名 | 类型                                | 必填 | 说明                                                         |
+| ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
 
  **错误码：**
 
@@ -2547,9 +3712,25 @@ setExposure(exposure: number): void
 | 7400102                |  Operation not allowed.   |
 | 7400103                |  Session not config.      |
 
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
   let exposureRange: Array<number> = nightPhotoSession.getSupportedExposureRange();
+  if (exposureRange === undefined || exposureRange.length <= 0) {
+    return;
+  }
+  nightPhotoSession.setExposure(exposureRange[0]);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
+  let exposureRange: Array<int> = nightPhotoSession.getSupportedExposureRange();
   if (exposureRange === undefined || exposureRange.length <= 0) {
     return;
   }
@@ -2562,6 +3743,10 @@ function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
 枚举，脚架状态枚举。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 值   | 说明                                  |
 |----------|-----|-------------------------------------|
@@ -2577,17 +3762,21 @@ function setExposure(nightPhotoSession: camera.NightPhotoSession): void {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称                            | 值   | 说明                        |
-|-------------------------------|-----|---------------------------|
-| MOON_CAPTURE_BOOST            | 0   | 月亮场景。**系统接口：** 此接口为系统接口。  |
-| TRIPOD_DETECTION<sup>13+</sup> | 1   | 使用脚架拍摄的场景。**系统接口：** 此接口为系统接口。  |
-| LOW_LIGHT_BOOST<sup>13+</sup> | 2   | 长曝光场景。**系统接口：** 此接口为系统接口。 |
+| 名称                           | 值   | 说明                                                         |
+| ------------------------------ | ---- | ------------------------------------------------------------ |
+| MOON_CAPTURE_BOOST             | 0    | 月亮场景。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| TRIPOD_DETECTION<sup>13+</sup> | 1    | 使用脚架拍摄的场景。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| LOW_LIGHT_BOOST<sup>13+</sup>  | 2    | 长曝光场景。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## SceneFeatureDetectionResult<sup>12+</sup>
 
 场景检测结果信息。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 类型        |   只读   |   必填   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
@@ -2601,6 +3790,10 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](#scenefeaturedetecti
 脚架检测信息。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 类型                              |   只读   |   必填   | 说明      |
 | -------- |---------------------------------| -------- | -------- |---------|
@@ -2619,6 +3812,10 @@ isSceneFeatureSupported(type: SceneFeatureType): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2660,6 +3857,10 @@ enableSceneFeature(type: SceneFeatureType, enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                        | 必填  | 说明                          |
@@ -2677,6 +3878,8 @@ enableSceneFeature(type: SceneFeatureType, enabled: boolean): void
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2707,6 +3910,39 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
 }
 ```
 
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput): void {
+  photoSession.beginConfig();
+  photoSession.addInput(cameraInput);
+  photoSession.addOutput(previewOutput);
+  photoSession.commitConfig();
+
+  photoSession.onFeatureDetection(camera.SceneFeatureType.MOON_CAPTURE_BOOST,
+    (err: BusinessError | null, statusObject: camera.SceneFeatureDetectionResult | undefined) => {
+      if (err !== undefined && err!.code !== 0) {
+        console.error(`Callback Error, errorCode: ${err!.code}`);
+        return;
+      }
+      console.info(
+        `on featureDetectionStatus featureType:${statusObject!.featureType} detected:${statusObject!.detected}`);
+      if (statusObject!.featureType === camera.SceneFeatureType.MOON_CAPTURE_BOOST) {
+        try {
+          photoSession.enableSceneFeature(statusObject!.featureType, statusObject!.detected);
+        } catch (error) {
+          let err = error as BusinessError;
+          console.error(`The enableSceneFeature call failed. error code: ${err.code}`);
+        }
+      }
+    });
+}
+```
+
 ## ZoomPointInfo<sup>12+</sup>
 
 等效焦距信息。
@@ -2714,6 +3950,10 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 类型        |   只读   | 可选  | 说明       |
 | -------- | ---------- | -------- |-----| ---------- |
@@ -2733,6 +3973,10 @@ getZoomPointInfos(): Array\<ZoomPointInfo\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2784,6 +4028,10 @@ prepareZoom(): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
@@ -2819,6 +4067,10 @@ unprepareZoom(): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **错误码：**
 
 以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
@@ -2852,10 +4104,14 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称     | 类型           | 只读 | 必填 | 说明         |
-| -------- | ------------- |---- | ---- | -------------|
-| min      | number        | 是  |  N/A  | 获取的可变焦距范围的最小值  |
-| max      | number        | 是  |  N/A  | 获取的可变焦距范围的最大值。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型                                   | 只读 | 必填 | 说明                         |
+| ---- | -------------------------------------- | ---- | ---- | ---------------------------- |
+| min  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | N/A  | 获取的可变焦距范围的最小值   |
+| max  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | N/A  | 获取的可变焦距范围的最大值。 |
 
 ## Beauty<sup>11+</sup>
 
@@ -2865,7 +4121,9 @@ Beauty extends [BeautyQuery](#beautyquery12)
 
 ### setBeauty<sup>11+</sup>
 
-setBeauty(type: BeautyType, value: number): void
+ArkTS-Dyn: setBeauty(type: BeautyType, value: number): void
+
+ArkTS-Sta: setBeauty(type: BeautyType, value: int): void
 
 设置美颜类型以及对应的美颜强度。将通过[getSupportedBeautyTypes](#getsupportedbeautytypes11)获取得到的[BeautyType](#beautytype)都关闭，表明当前美颜关闭；若有一种美颜类型未关闭，表明当前美颜打开。
 
@@ -2873,12 +4131,16 @@ setBeauty(type: BeautyType, value: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名      | 类型                    | 必填 | 说明                                                                |
-| -------- | --------------------------| ---- |-------------------------------------------------------------------|
-| type     | [BeautyType](#beautytype) | 是   | 美颜类型。                                                             |
-| value    | number                    | 是   | 美颜强度，通过[getSupportedBeautyRange](#getsupportedbeautyrange11)接口获取。 |
+| 参数名 | 类型                                | 必填 | 说明                                                         |
+| ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| type   | [BeautyType](#beautytype)           | 是   | 美颜类型。                                                   |
+| value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 美颜强度，通过[getSupportedBeautyRange](#getsupportedbeautyrange11)接口获取。 |
 
 **错误码：**
 
@@ -2890,6 +4152,8 @@ setBeauty(type: BeautyType, value: number): void
 | 7400103                |  Session not config.                                   |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 function setBeauty(portraitPhotoSession: camera.PortraitPhotoSession): void {
@@ -2905,15 +4169,37 @@ function setBeauty(portraitPhotoSession: camera.PortraitPhotoSession): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+function setBeauty(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  let beautyTypes: Array<camera.BeautyType> = portraitPhotoSession.getSupportedBeautyTypes();
+  if (beautyTypes === undefined || beautyTypes.length <= 0) {
+    return;
+  }
+  let beautyLevels: Array<int> = portraitPhotoSession.getSupportedBeautyRange(beautyTypes[0]);
+  if (beautyLevels === undefined || beautyLevels.length <= 0) {
+    return;
+  }
+  portraitPhotoSession.setBeauty(beautyTypes[0], beautyLevels[0]);
+}
+```
+
 ### getBeauty<sup>11+</sup>
 
-getBeauty(type: BeautyType): number
+ArkTS-Dyn: getBeauty(type: BeautyType): number
+
+ArkTS-Sta: getBeauty(type: BeautyType): int
 
 查询当前已设置的美颜效果对应的美颜强度。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2922,9 +4208,10 @@ getBeauty(type: BeautyType): number
 | type     | [BeautyType](#beautytype) | 是   | 美颜类型。   |
 
 **返回值：**
-| 参数名      | 类型                                              | 必填 | 说明                    |
-| -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | 是   | 美颜强度。  |
+
+| 参数名 | 类型                                | 必填 | 说明       |
+| ------ | ----------------------------------- | ---- | ---------- |
+| value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 美颜强度。 |
 
 **错误码：**
 
@@ -2936,6 +4223,8 @@ getBeauty(type: BeautyType): number
 | 7400103                |  Session not config.                                   |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 function getBeauty(portraitPhotoSession: camera.PortraitPhotoSession): number {
@@ -2954,6 +4243,25 @@ function getBeauty(portraitPhotoSession: camera.PortraitPhotoSession): number {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+function getBeauty(portraitPhotoSession: camera.PortraitPhotoSession): int {
+  const invalidValue: int = -1;
+  let beautyTypes = portraitPhotoSession.getSupportedBeautyTypes();
+  if (beautyTypes === undefined || beautyTypes.length <= 0) {
+    return invalidValue;
+  }
+  let beautyLevels: Array<int> = portraitPhotoSession.getSupportedBeautyRange(beautyTypes[0]);
+  if (beautyLevels === undefined || beautyLevels.length <= 0) {
+    return invalidValue;
+  }
+  portraitPhotoSession.setBeauty(beautyTypes[0], beautyLevels[0]);
+  let beautyLevel: int = portraitPhotoSession.getBeauty(beautyTypes[0]);
+  return beautyLevel;
+}
+```
+
 ## ColorEffectQuery<sup>12+</sup>
 
 提供了一个查询设备支持的颜色效果类型的方法。
@@ -2967,6 +4275,10 @@ getSupportedColorEffects(): Array\<ColorEffectType\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3008,6 +4320,10 @@ setColorEffect(type: ColorEffectType): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名         | 类型                                                            | 必填 | 说明                      |
@@ -3041,6 +4357,10 @@ getColorEffect(): ColorEffectType
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                             | 说明                           |
@@ -3073,12 +4393,12 @@ function getColorEffect(session: camera.PhotoSessionForSys): camera.ColorEffectT
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称                  | 值   | 说明       |
-| --------------------- | ---- | --------- |
-| NORMAL                | 0    | 常规的色彩效果。  |
-| BRIGHT                | 1    | 明艳的色彩效果。  |
-| SOFT                  | 2    | 柔和的色彩效果。  |
-| BLACK_WHITE<sup>12+</sup>    | 3    | 黑白色彩效果。  |
+| 名称                      | 值   | 说明                                                         |
+| ------------------------- | ---- | ------------------------------------------------------------ |
+| NORMAL                    | 0    | 常规的色彩效果。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| BRIGHT                    | 1    | 明艳的色彩效果。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| SOFT                      | 2    | 柔和的色彩效果。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| BLACK_WHITE<sup>12+</sup> | 3    | 黑白色彩效果。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## Portrait<sup>11+</sup>
 
@@ -3093,6 +4413,10 @@ getSupportedPortraitEffects(): Array\<PortraitEffect\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3127,6 +4451,10 @@ setPortraitEffect(effect: PortraitEffect): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3171,6 +4499,10 @@ getPortraitEffect(): PortraitEffect
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                             | 说明                           |
@@ -3203,6 +4535,10 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 类型                       |  只读 | 可选  | 说明               |
 | ---------- | ------------------------- | ----- |-----| ----------------- |
 | zoomRange  | [ZoomRange](#zoomrange11) | 否    | 否   | 特定物理光圈的变焦范围。  |
@@ -3214,7 +4550,9 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 
 ### getSupportedVirtualApertures<sup>11+</sup>
 
-getSupportedVirtualApertures(): Array\<number\>
+ArkTS-Dyn: getSupportedVirtualApertures(): Array\<number\>
+
+ArkTS-Sta: getSupportedVirtualApertures(): Array\<double\>
 
 获取支持的虚拟光圈列表。
 
@@ -3222,11 +4560,15 @@ getSupportedVirtualApertures(): Array\<number\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| 类型                                             | 说明                           |
-| ----------------------------------------------- | ---------------------------- |
-| Array\<number\> | 支持的虚拟光圈列表。               |
+| 类型                                                     | 说明                 |
+| -------------------------------------------------------- | -------------------- |
+| ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\> | 支持的虚拟光圈列表。 |
 
 **错误码：**
 
@@ -3238,6 +4580,8 @@ getSupportedVirtualApertures(): Array\<number\>
 | 202             |  Not System Application.                         |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Array<number> {
@@ -3246,9 +4590,20 @@ function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Arr
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Array<double> {
+  let virtualApertures: Array<double> = session.getSupportedVirtualApertures();
+  return virtualApertures;
+}
+```
+
 ### getVirtualAperture<sup>11+</sup>
 
-getVirtualAperture(): number
+ArkTS-Dyn: getVirtualAperture(): number
+
+ArkTS-Sta: getVirtualAperture(): double
 
 获取当前设置的虚拟光圈值。
 
@@ -3256,11 +4611,15 @@ getVirtualAperture(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| 类型                                             | 说明                           |
-| ----------------------------------------------- | ---------------------------- |
-| number               | 当前设置的虚拟光圈值。                |
+| 类型                                   | 说明                   |
+| -------------------------------------- | ---------------------- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 当前设置的虚拟光圈值。 |
 
 **错误码：**
 
@@ -3273,6 +4632,8 @@ getVirtualAperture(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function getVirtualAperture(session: camera.PortraitPhotoSession): number {
   let virtualAperture: number = session.getVirtualAperture();
@@ -3280,9 +4641,20 @@ function getVirtualAperture(session: camera.PortraitPhotoSession): number {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+function getVirtualAperture(session: camera.PortraitPhotoSession): double {
+  let virtualAperture: double = session.getVirtualAperture();
+  return virtualAperture;
+}
+```
+
 ### setVirtualAperture<sup>11+</sup>
 
-setVirtualAperture(aperture: number): void
+ArkTS-Dyn: setVirtualAperture(aperture: number): void
+
+ArkTS-Sta: setVirtualAperture(aperture: double): void
 
 设置虚拟光圈。可以线通过[getSupportedVirtualApertures](#getsupportedvirtualapertures11)获取当前设备所支持的虚拟光圈列表。
 
@@ -3290,11 +4662,15 @@ setVirtualAperture(aperture: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名         | 类型                    | 必填 | 说明                      |
-| ------------ |------------------------- | -- | -------------------------- |
-| aperture       | number                 | 是 | 虚拟光圈值，通过[getSupportedVirtualApertures](#getsupportedvirtualapertures11)接口获取。   |
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| aperture | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 虚拟光圈值，通过[getSupportedVirtualApertures](#getsupportedvirtualapertures11)接口获取。 |
 
 **错误码：**
 
@@ -3307,8 +4683,18 @@ setVirtualAperture(aperture: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function setVirtualAperture(session: camera.PortraitPhotoSession, virtualAperture: number): void {
+  session.setVirtualAperture(virtualAperture);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function setVirtualAperture(session: camera.PortraitPhotoSession, virtualAperture: double): void {
   session.setVirtualAperture(virtualAperture);
 }
 ```
@@ -3322,6 +4708,10 @@ getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3349,7 +4739,9 @@ function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Ar
 
 ### getPhysicalAperture<sup>11+</sup>
 
-getPhysicalAperture(): number
+ArkTS-Dyn: getPhysicalAperture(): number
+
+ArkTS-Sta: getPhysicalAperture(): double
 
 获取当前设置的物理光圈值。
 
@@ -3357,11 +4749,15 @@ getPhysicalAperture(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| 类型                 | 说明                           |
-| -------------------- | ---------------------------- |
-| number               | 当前设置的物理光圈值。           |
+| 类型                                   | 说明                   |
+| -------------------------------------- | ---------------------- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 当前设置的物理光圈值。 |
 
 **错误码：**
 
@@ -3374,6 +4770,8 @@ getPhysicalAperture(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function getPhysicalAperture(session: camera.PortraitPhotoSession): number {
   let physicalAperture: number = session.getPhysicalAperture();
@@ -3381,9 +4779,20 @@ function getPhysicalAperture(session: camera.PortraitPhotoSession): number {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+function getPhysicalAperture(session: camera.PortraitPhotoSession): double {
+  let physicalAperture: double = session.getPhysicalAperture();
+  return physicalAperture;
+}
+```
+
 ### setPhysicalAperture<sup>11+</sup>
 
-setPhysicalAperture(aperture: number): void
+ArkTS-Dyn: setPhysicalAperture(aperture: number): void
+
+ArkTS-Sta: setPhysicalAperture(aperture: double): void
 
 设置物理光圈。可以线通过[getSupportedPhysicalApertures](#getsupportedphysicalapertures11)获取当前设备所支持的物理光圈列表。
 
@@ -3391,11 +4800,15 @@ setPhysicalAperture(aperture: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名         | 类型                    | 必填 | 说明                      |
-| ------------ |------------------------- | -- | -------------------------- |
-| aperture       | number                 | 是 | 物理光圈值，通过[getSupportedPhysicalApertures](#getsupportedphysicalapertures11)接口获取。   |
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| aperture | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 物理光圈值，通过[getSupportedPhysicalApertures](#getsupportedphysicalapertures11)接口获取。 |
 
 **错误码：**
 
@@ -3408,8 +4821,18 @@ setPhysicalAperture(aperture: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function setPhysicalAperture(session: camera.PortraitPhotoSession, physicalAperture: number): void {
+  session.setPhysicalAperture(physicalAperture);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function setPhysicalAperture(session: camera.PortraitPhotoSession, physicalAperture: double): void {
   session.setPhysicalAperture(physicalAperture);
 }
 ```
@@ -3432,7 +4855,11 @@ getSupportedBeautyTypes(): Array\<BeautyType>
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -3475,7 +4902,11 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3521,7 +4952,11 @@ setBeauty(type: BeautyType, value: number): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3566,6 +5001,12 @@ getBeauty(type: BeautyType): number
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3615,6 +5056,10 @@ PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, S
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 ## PhotoSession<sup>11+</sup>
 
 PhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorManagement
@@ -3629,7 +5074,13 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMacroStatusChanged](#onmacrostatuschanged22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3664,6 +5115,54 @@ function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
 }
 ```
 
+### onMacroStatusChanged<sup>22+</sup>
+
+onMacroStatusChanged(callback: AsyncCallback\<boolean\>): void
+
+监听相机微距状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("macroStatusChanged")](#onmacrostatuschanged11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                         |
+| -------- | ------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean\> | 是   | 回调函数，用于获取当前微距状态，返回true为开启状态，返回false为禁用状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, macroStatus: boolean | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Macro state: ${macroStatus}`);
+}
+
+function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
+  photoSession.onMacroStatusChanged(callback);
+}
+```
+
 ### off('macroStatusChanged')<sup>11+</sup>
 
 off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
@@ -3672,7 +5171,13 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMacroStatusChanged](#offnacrostatuschanged22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3697,6 +5202,44 @@ function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
 }
 ```
 
+### offMacroStatusChanged<sup>22+</sup>
+
+offMacroStatusChanged(callback?: AsyncCallback\<boolean\>): void
+
+注销监听相机微距状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("macroStatusChanged")](#offmacrostatuschanged11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                         |
+| -------- | ------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true为开启状态，返回false为禁用状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
+  photoSession.offMacroStatusChanged();
+}
+```
+
 ### on('featureDetection')<sup>12+</sup>
 
 on(type: 'featureDetection', featureType: SceneFeatureType, callback: AsyncCallback\<SceneFeatureDetectionResult\>): void
@@ -3705,7 +5248,13 @@ on(type: 'featureDetection', featureType: SceneFeatureType, callback: AsyncCallb
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFeatureDetection](#onfeaturedetection22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3742,6 +5291,55 @@ function registerFeatureDetectionStatus(photoSession: camera.PhotoSession, featu
 }
 ```
 
+### onFeatureDetection<sup>22+</sup>
+
+onFeatureDetection(callback: AsyncCallback\<SceneFeatureDetectionResult\>): void
+
+监听相机特性检测状态变化。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("featureDetection")](#onfeaturedetection12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                     |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
+| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | 是   | 回调函数，用于获取当前监听的特性的状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, result: camera.SceneFeatureDetectionResult | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`feature type: ${result!.featureType}`);
+  console.info(`feature status: ${result!.detected}`);
+}
+
+function registerFeatureDetectionStatus(photoSession: camera.PhotoSession, featureType: camera.SceneFeatureType): void {
+  photoSession.onFeatureDetection(featureType, callback);
+}
+```
+
 ### off('featureDetection')<sup>12+</sup>
 
 off(type: 'featureDetection', featureType: SceneFeatureType, callback?: AsyncCallback\<SceneFeatureDetectionResult\>): void
@@ -3750,7 +5348,13 @@ off(type: 'featureDetection', featureType: SceneFeatureType, callback?: AsyncCal
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFeatureDetection](#offfeaturedetection22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3776,6 +5380,44 @@ function unregisterFeatureDetectionStatus(photoSession: camera.PhotoSession, fea
 }
 ```
 
+### offFeatureDetection<sup>22+</sup>
+
+off(featureType: SceneFeatureType, callback?: AsyncCallback\<SceneFeatureDetectionResult\>): void
+
+注销监听相机特性检测状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("featureDetection")](#offfeaturedetection12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | 否   | 回调函数，可选，有就是匹配on('featureDetection') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterFeatureDetectionStatus(photoSession: camera.PhotoSession, featureType: camera.SceneFeatureType): void {
+  photoSession.offFeatureDetection(featureType);
+}
+```
+
 ### on('lcdFlashStatus')<sup>13+</sup>
 
 on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
@@ -3784,7 +5426,13 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onLcdFlashStatus](#onlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -3820,6 +5468,55 @@ function registerLcdFlashStatus(photoSession: camera.PhotoSession): void {
 }
 ```
 
+### onLcdFlashStatus<sup>22+</sup>
+
+onLcdFlashStatus(callback: AsyncCallback\<LcdFlashStatus\>): void
+
+监听LCD闪光灯状态变化。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("lcdFlashStatus")](#onlcdflashstatus13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                  |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------- |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 是   | 回调函数，用于获取当前lcd flash状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, lcdFlashStatus: camera.LcdFlashStatus | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`isLcdFlashNeeded: ${lcdFlashStatus!.isLcdFlashNeeded}`);
+  console.info(`lcdCompensation: ${lcdFlashStatus!.lcdCompensation}`);
+}
+
+function registerLcdFlashStatus(photoSession: camera.PhotoSession): void {
+  photoSession.onLcdFlashStatus(callback);
+}
+```
+
 ### off('lcdFlashStatus')<sup>13+</sup>
 
 off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
@@ -3828,7 +5525,13 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offLcdFlashStatus](#offlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -3853,11 +5556,53 @@ function unregisterLcdFlashStatus(photoSession: camera.PhotoSession): void {
 }
 ```
 
+### offLcdFlashStatus<sup>22+</sup>
+
+offLcdFlashStatus(callback?: AsyncCallback\<LcdFlashStatus\>): void
+
+注销监听LCD闪光灯状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("lcdFlashStatus")](#offlcdflashstatus13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterLcdFlashStatus(photoSession: camera.PhotoSession): void {
+  photoSession.offLcdFlashStatus(callback);
+}
+```
+
 ## FocusTrackingMode<sup>15+</sup>
 
 枚举，对焦追踪模式。
 
 **系统能力**： SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值   | 说明   |
 | ---- | ---- | ------ |
@@ -3868,6 +5613,10 @@ function unregisterLcdFlashStatus(photoSession: camera.PhotoSession): void {
 相机对焦追踪信息，通过VideoSessionForSys.[on('focusTrackingInfoAvailable')](#onfocustrackinginfoavailable15)接口获取。
 
 **系统能力**： SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 类型                                      | 只读 | 可选 | 说明       |
 | -------------- | ----------------------------------------- | ---- | ---- | ---------- |
@@ -3881,6 +5630,10 @@ function unregisterLcdFlashStatus(photoSession: camera.PhotoSession): void {
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 值   | 说明    |
 |--------------| ---- |-------|
@@ -3897,6 +5650,10 @@ VideoSessionForSys extends VideoSession, Beauty, ColorEffect, ColorManagement, A
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 ## VideoSession<sup>11+</sup>
 
 VideoSession extends Session, Flash, AutoExposure, Focus, Zoom, Stabilization, ColorManagement
@@ -3911,7 +5668,13 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMacroStatusChanged](#onmacrostatuschanged22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3946,6 +5709,54 @@ function registerMacroStatusChanged(videoSession: camera.VideoSession): void {
 }
 ```
 
+### onMacroStatusChanged<sup>22+</sup>
+
+onMacroStatusChanged(callback: AsyncCallback\<boolean\>): void
+
+监听相机微距状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("macroStatusChanged")](#onmacrostatuschanged11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                         |
+| -------- | ------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean\> | 是   | 回调函数，用于获取当前微距状态，返回true是开启状态，返回false是禁用状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, macroStatus: boolean | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Macro state: ${macroStatus}`);
+}
+
+function registerMacroStatusChanged(videoSession: camera.VideoSession): void {
+  videoSession.onMacroStatusChanged(callback);
+}
+```
+
 ### off('macroStatusChanged')<sup>11+</sup>
 
 off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
@@ -3954,7 +5765,13 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMacroStatusChanged](#offmacrostatuschanged22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3979,6 +5796,44 @@ function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
 }
 ```
 
+### offMacroStatusChanged<sup>22+</sup>
+
+offMacroStatusChanged(callback?: AsyncCallback\<boolean\>): void
+
+注销监听相机微距状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("macroStatusChanged")](#offmacrostatuschanged11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                         |
+| -------- | ------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true是开启状态，返回false是禁用状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
+  videoSession.offMacroStatusChanged();
+}
+```
+
 ### on('lcdFlashStatus')<sup>13+</sup>
 
 on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
@@ -3987,7 +5842,13 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onLcdFlashStatus](#onlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -4023,6 +5884,55 @@ function registerLcdFlashStatus(videoSession: camera.VideoSession): void {
 }
 ```
 
+### onLcdFlashStatus<sup>22+</sup>
+
+onLcdFlashStatus(callback: AsyncCallback\<LcdFlashStatus\>): void
+
+监听LCD闪光灯状态变化。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("lcdFlashStatus")](#onlcdFlashStatus13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                  |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------- |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 是   | 回调函数，用于获取当前lcd flash状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, lcdFlashStatus: camera.LcdFlashStatus | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`isLcdFlashNeeded: ${lcdFlashStatus!.isLcdFlashNeeded}`);
+  console.info(`lcdCompensation: ${lcdFlashStatus!.lcdCompensation}`);
+}
+
+function registerLcdFlashStatus(videoSession: camera.VideoSession): void {
+  videoSession.onLcdFlashStatus(callback);
+}
+```
+
 ### off('lcdFlashStatus')<sup>13+</sup>
 
 off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
@@ -4031,7 +5941,13 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offLcdFlashStatus](#offlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -4056,6 +5972,44 @@ function unregisterLcdFlashStatus(videoSession: camera.VideoSession): void {
 }
 ```
 
+### offLcdFlashStatus<sup>22+</sup>
+
+offLcdFlashStatus(callback?: AsyncCallback\<LcdFlashStatus\>): void
+
+注销监听LCD闪光灯状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("lcdFlashStatus")](#offlcdFlashStatus13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterLcdFlashStatus(videoSession: camera.VideoSession): void {
+  videoSession.offLcdFlashStatus();
+}
+```
+
 ### on('focusTrackingInfoAvailable')<sup>15+</sup>
 
 on(type: 'focusTrackingInfoAvailable', callback: Callback\<FocusTrackingInfo\>): void
@@ -4064,7 +6018,13 @@ on(type: 'focusTrackingInfoAvailable', callback: Callback\<FocusTrackingInfo\>):
 
 **系统接口**： 此接口为系统接口。
 
-**系统能力**： SystemCapability.Multimedia.Camera.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusTrackingInfoAvailable](#onfocustrackinginfoavailable22)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数**：
 
@@ -4097,6 +6057,52 @@ function registerFocusTrakingInfoChanged(session: camera.VideoSessionForSys): vo
 }
 ```
 
+### onFocusTrackingInfoAvailable<sup>22+</sup>
+
+onFocusTrackingInfoAvailable(callback: Callback\<FocusTrackingInfo\>): void
+
+监听相机对焦跟踪信息，通过注册回调函数获取结果。使用callback方式返回结果。
+
+**系统接口**： 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusTrackingInfoAvailable")](#onfocustrackinginfoavailable15)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数**：
+
+| 参数名   | 类型                                                  | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
+| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\> | 是   | 回调函数，用于获取当前对焦跟踪信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例**：
+
+```ts
+function callback(focusTrackingInfo: camera.FocusTrackingInfo): void {
+  console.info(`Focus tracking mode: ${focusTrackingInfo.trackingMode}`);
+  console.info(`Focus tracking Region: topLeftX ${focusTrackingInfo.trackingRegion.topLeftX}
+                                       topLeftY ${focusTrackingInfo.trackingRegion.topLeftY}
+                                       width ${focusTrackingInfo.trackingRegion.width}
+                                       height ${focusTrackingInfo.trackingRegion.height}`);
+}
+
+function registerFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+  session.onFocusTrackingInfoAvailable(callback);
+}
+```
+
 ### off('focusTrackingInfoAvailable')<sup>15+</sup>
 
 off(type: 'focusTrackingInfoAvailable', callback?: Callback\<FocusTrackingInfo\>): void
@@ -4105,7 +6111,13 @@ off(type: 'focusTrackingInfoAvailable', callback?: Callback\<FocusTrackingInfo\>
 
 **系统接口**： 此接口为系统接口。
 
-**系统能力**： SystemCapability.Multimedia.Camera.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusTrackingInfoAvailable](#offfocustrackinginfoavailable22)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数**：
 
@@ -4130,6 +6142,44 @@ function unregisterFocusTrakingInfoChanged(session: camera.VideoSessionForSys): 
 }
 ```
 
+### offFocusTrackingInfoAvailable<sup>22+</sup>
+
+offFocusTrackingInfoAvailable(callback?: Callback\<FocusTrackingInfo\>): void
+
+注销监听相机对焦跟踪信息。
+
+**系统接口**： 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusTrackingInfoAvailable")](#offfocustrackinginfoavailable15)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数**：
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\> | 否   | 回调函数，可选，有就是匹配on('focusTrackingInfoAvailable') callback（callback对象不可是匿名函数）。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例**：
+
+```ts
+function unregisterFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+  session.offFocusTrackingInfoAvailable();
+}
+```
+
 ### on('lightStatusChange')<sup>18+</sup>
 
 on(type: 'lightStatusChange', callback: AsyncCallback\<LightStatus\>): void
@@ -4138,7 +6188,13 @@ on(type: 'lightStatusChange', callback: AsyncCallback\<LightStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onLightStatusChange](#onlightstatuschange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数**：
 
@@ -4179,6 +6235,60 @@ function handleLightStatusOn(mSession: camera.VideoSessionForSys): void {
 }
 ```
 
+### onLightStatusChange<sup>22+</sup>
+
+onLightStatusChange(callback: AsyncCallback\<LightStatus\>): void
+
+监听相机获取光线状态。使用Callback方式返回结果。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("lightStatusChange")](#onlightstatuschange18)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数**：
+
+| 参数名   | 类型                                           | 必填 | 说明                                 |
+| -------- | ---------------------------------------------- | ---- | ------------------------------------ |
+| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | 是   | 回调函数，用于获取当前光线状态信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例**：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function handleLightStatusCallback(err: BusinessError | null, lightStatus: camera.LightStatus | undefined) : void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`lightStatus: ${lightStatus}`);
+}
+
+function handleLightStatusOn(mSession: camera.VideoSessionForSys): void {
+  console.info('handleLightStatusOn');
+  try {
+    mSession.onLightStatusChange(handleLightStatusCallback);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`handleLightStatusOn err:${err}`);
+  }
+}
+```
+
 ### off('lightStatusChange')<sup>18+</sup>
 
 off(type: 'lightStatusChange', callback?: AsyncCallback\<LightStatus\>): void
@@ -4187,7 +6297,13 @@ off(type: 'lightStatusChange', callback?: AsyncCallback\<LightStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offLightStatusChange](#offlightstatuschange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数**：
 
@@ -4228,6 +6344,60 @@ function handleLightStatusOff(mSession: camera.VideoSessionForSys): void {
 }
 ```
 
+### offLightStatusChange<sup>22+</sup>
+
+offLightStatusChange(callback?: AsyncCallback\<LightStatus\>): void
+
+注销监听相机获取光线状态。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("lightStatusChange")](#offlightstatuschange18)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数**：
+
+| 参数名   | 类型                                           | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | 否   | 回调函数，可选，有就是匹配on('lightStatusChange') callback（callback对象不可是匿名函数）。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例**：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function LightStatusCallback(err: BusinessError | null, lightStatus: camera.LightStatus | undefined) : void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`lightStatus: ${lightStatus}`);
+}
+
+function handleLightStatusOff(mSession: camera.VideoSessionForSys): void {
+  console.info('handleLightStatusOff');
+  try {
+    mSession.onLightStatusChange(LightStatusCallback);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`handleLightStatusOff err:${err}`);
+  }
+}
+```
+
 ## PortraitPhotoSession<sup>11+</sup>
 
 PortraitPhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, Beauty, ColorEffect, ColorManagement, Portrait, Aperture
@@ -4242,7 +6412,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4265,6 +6441,42 @@ function registerSessionError(portraitPhotoSession: camera.PortraitPhotoSession)
 }
 ```
 
+### onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听人像拍照会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Portrait photo session error code: ${err.code}`);
+}
+
+function registerSessionError(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.onError(callback);
+}
+```
+
 ### off('error')<sup>11+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -4273,7 +6485,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4290,6 +6508,36 @@ function unregisterSessionError(portraitPhotoSession: camera.PortraitPhotoSessio
 }
 ```
 
+### offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听人像拍照会话的错误事件，通过注册回调函数获取结果。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterSessionError(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.offError();
+}
+```
+
 ### on('focusStateChange')<sup>11+</sup>
 
 on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
@@ -4298,7 +6546,13 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4325,6 +6579,46 @@ function registerFocusStateChange(portraitPhotoSession: camera.PortraitPhotoSess
 }
 ```
 
+### onFocusStateChange<sup>22+</sup>
+
+onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
+
+监听相机对焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 是   | 回调函数，用于获取当前对焦状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, focusState: camera.FocusState | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.onFocusStateChange(callback);
+}
+```
+
 ### off('focusStateChange')<sup>11+</sup>
 
 off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
@@ -4333,7 +6627,13 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4350,6 +6650,36 @@ function unregisterFocusStateChange(portraitPhotoSession: camera.PortraitPhotoSe
 }
 ```
 
+### offFocusStateChange<sup>22+</sup>
+
+offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
+
+注销监听相机对焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterFocusStateChange(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.offFocusStateChange();
+}
+```
+
 ### on('smoothZoomInfoAvailable')<sup>11+</sup>
 
 on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): void
@@ -4358,7 +6688,13 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSmoothZoomInfoAvailable](#onsmoothzoominfoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4385,6 +6721,46 @@ function registerSmoothZoomInfo(portraitPhotoSession: camera.PortraitPhotoSessio
 }
 ```
 
+### onSmoothZoomInfoAvailable<sup>22+</sup>
+
+onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
+
+监听相机平滑变焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：**该接口仅适用于ArkTS-Syn。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("smoothZoomInfoAvailable")](#onsmoothzoominfoavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Syn起始版本：**22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                 |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 是   | 回调函数，用于获取当前平滑变焦状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, smoothZoomInfo: camera.SmoothZoomInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo!.duration}`);
+}
+
+function registerSmoothZoomInfo(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.onSmoothZoomInfoAvailable(callback);
+}
+```
+
 ### off('smoothZoomInfoAvailable')<sup>11+</sup>
 
 off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>): void
@@ -4393,7 +6769,13 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSmoothZoomInfoAvailable](#offsmoothzoominfoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4410,6 +6792,36 @@ function unregisterSmoothZoomInfo(portraitPhotoSession: camera.PortraitPhotoSess
 }
 ```
 
+### offSmoothZoomInfoAvailable<sup>22+</sup>
+
+offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
+
+注销监听相机平滑变焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("smoothZoomInfoAvailable")](#offsmoothzoominfoavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterSmoothZoomInfo(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.offSmoothZoomInfoAvailable();
+}
+```
+
 ### on('lcdFlashStatus')<sup>13+</sup>
 
 on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
@@ -4418,7 +6830,13 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onLcdFlashStatus](#onlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -4454,6 +6872,55 @@ function registerLcdFlashStatus(portraitPhotoSession: camera.PortraitPhotoSessio
 }
 ```
 
+### onLcdFlashStatus<sup>22+</sup>
+
+onLcdFlashStatus(callback: AsyncCallback\<LcdFlashStatus\>): void
+
+监听LCD闪光灯状态变化。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("lcdFlashStatus")](#onlcdflashstatus13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                  |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------- |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 是   | 回调函数，用于获取当前lcd flash状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, lcdFlashStatus: camera.LcdFlashStatus | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`isLcdFlashNeeded: ${lcdFlashStatus!.isLcdFlashNeeded}`);
+  console.info(`lcdCompensation: ${lcdFlashStatus!.lcdCompensation}`);
+}
+
+function registerLcdFlashStatus(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.onLcdFlashStatus(callback);
+}
+```
+
 ### off('lcdFlashStatus')<sup>13+</sup>
 
 off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
@@ -4462,7 +6929,13 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offLcdFlashStatus](#offlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -4487,6 +6960,44 @@ function unregisterLcdFlashStatus(portraitPhotoSession: camera.PortraitPhotoSess
 }
 ```
 
+### offLcdFlashStatus<sup>22+</sup>
+
+offLcdFlashStatus(callback?: AsyncCallback\<LcdFlashStatus\>): void
+
+注销监听LCD闪光灯状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("lcdFlashStatus")](#offlcdflashstatus13)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterLcdFlashStatus(portraitPhotoSession: camera.PortraitPhotoSession): void {
+  portraitPhotoSession.offLcdFlashStatus();
+}
+```
+
 ## NightPhotoSession<sup>11+</sup>
 
 NightPhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect, ColorManagement, ManualExposure
@@ -4501,7 +7012,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4524,6 +7041,42 @@ function registerSessionError(nightPhotoSession: camera.NightPhotoSession): void
 }
 ```
 
+### onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听夜景拍照会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Night photo session error code: ${err.code}`);
+}
+
+function registerSessionError(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.onError(callback);
+}
+```
+
 ### off('error')<sup>11+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -4532,7 +7085,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4549,6 +7108,36 @@ function unregisterSessionError(nightPhotoSession: camera.NightPhotoSession): vo
 }
 ```
 
+### offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听夜景拍照会话的错误事件，通过注册回调函数获取结果。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterSessionError(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.offError();
+}
+```
+
 ### on('focusStateChange')<sup>11+</sup>
 
 on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
@@ -4557,7 +7146,13 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4584,6 +7179,46 @@ function registerFocusStateChange(nightPhotoSession: camera.NightPhotoSession): 
 }
 ```
 
+### onFocusStateChange<sup>22+</sup>
+
+onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
+
+监听相机对焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 是   | 回调函数，用于获取当前对焦状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, focusState: camera.FocusState | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.onFocusStateChange(callback);
+}
+```
+
 ### off('focusStateChange')<sup>11+</sup>
 
 off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
@@ -4592,7 +7227,13 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4609,6 +7250,36 @@ function unregisterFocusStateChange(nightPhotoSession: camera.NightPhotoSession)
 }
 ```
 
+### offFocusStateChange<sup>22+</sup>
+
+offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
+
+注销监听相机对焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterFocusStateChange(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.offFocusStateChange();
+}
+```
+
 ### on('smoothZoomInfoAvailable')<sup>11+</sup>
 
 on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): void
@@ -4617,7 +7288,13 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSmoothZoomInfoAvailable](#onsmoothzoominfoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4644,6 +7321,46 @@ function registerSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): vo
 }
 ```
 
+### onSmoothZoomInfoAvailable<sup>22+</sup>
+
+onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
+
+监听相机平滑变焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("smoothZoomInfoAvailable")](#onsmoothzoominfoavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                 |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 是   | 回调函数，用于获取当前平滑变焦状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, smoothZoomInfo: camera.SmoothZoomInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo!.duration}`);
+}
+
+function registerSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.onSmoothZoomInfoAvailable(callback);
+}
+```
+
 ### off('smoothZoomInfoAvailable')<sup>11+</sup>
 
 off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>): void
@@ -4652,7 +7369,13 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSmoothZoomInfoAvailable](#offsmoothzoominfoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4669,6 +7392,36 @@ function unregisterSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): 
 }
 ```
 
+### offSmoothZoomInfoAvailable<sup>22+</sup>
+
+offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
+
+注销监听相机平滑变焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("smoothZoomInfoAvailable")](#offsmoothzoominfoavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterSmoothZoomInfo(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.offSmoothZoomInfoAvailable();
+}
+```
+
 ### on('lcdFlashStatus')<sup>12+</sup>
 
 on(type: 'lcdFlashStatus', callback: AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>): void
@@ -4677,7 +7430,13 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<[LcdFlashStatus](#lcdflashst
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onLcdFlashStatus](#onlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4712,6 +7471,54 @@ function registerLcdFlashStatus(nightPhotoSession: camera.NightPhotoSession): vo
 }
 ```
 
+### onLcdFlashStatus<sup>22+</sup>
+
+onLcdFlashStatus(callback: AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>): void
+
+监听lcd flash状态，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("lcdFlashStatus")](#onlcdflashstatus12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                  |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------- |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 是   | 回调函数，用于获取当前lcd flash状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, lcdFlashStatus: camera.LcdFlashStatus | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`lcdFlashStatus: ${lcdFlashStatus}`);
+}
+
+function registerLcdFlashStatus(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.onLcdFlashStatus(callback);
+}
+```
+
 ### off('lcdFlashStatus')<sup>12+</sup>
 
 off(type: 'lcdFlashStatus', callback?: AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>): void
@@ -4720,7 +7527,13 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<[LcdFlashStatus](#lcdflash
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offLcdFlashStatus](#offlcdflashstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4745,6 +7558,44 @@ function unregisterLcdFlashStatus(nightPhotoSession: camera.NightPhotoSession): 
 }
 ```
 
+### offLcdFlashStatus<sup>22+</sup>
+
+offLcdFlashStatus(callback?: AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>): void
+
+注销lcd flash状态，通过注册回调函数获取结果。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("lcdFlashStatus")](#offlcdflashstatus12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterLcdFlashStatus(nightPhotoSession: camera.NightPhotoSession): void {
+  nightPhotoSession.offLcdFlashStatus();
+}
+```
+
 ## HighResolutionPhotoSession<sup>12+</sup>
 
 HighResolutionPhotoSession extends Session, AutoExposure, Focus
@@ -4759,7 +7610,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4789,6 +7646,51 @@ function registerSessionError(highResolutionPhotoSession: camera.HighResolutionP
   highResolutionPhotoSession.on('error', callback);
 }
 ```
+
+### onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听高像素拍照会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`High resolution photo session error code: ${err.code}`);
+}
+
+function registerSessionError(highResolutionPhotoSession: camera.HighResolutionPhotoSession): void {
+  highResolutionPhotoSession.onError(callback);
+}
+```
+
 ### off('error')<sup>12+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -4797,7 +7699,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4822,6 +7730,45 @@ function unregisterSessionError(highResolutionPhotoSession: camera.HighResolutio
 }
 ```
 
+### offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听高像素拍照会话的错误事件，通过注册回调函数获取结果。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。   |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterSessionError(highResolutionPhotoSession: camera.HighResolutionPhotoSession): void {
+  highResolutionPhotoSession.offError();
+}
+```
+
 ### on('focusStateChange')<sup>12+</sup>
 
 on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
@@ -4830,7 +7777,13 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4865,6 +7818,54 @@ function registerFocusStateChange(highResolutionPhotoSession: camera.HighResolut
 }
 ```
 
+### onFocusStateChange<sup>22+</sup>
+
+onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
+
+监听相机对焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 是   | 回调函数，用于获取当前对焦状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, focusState: camera.FocusState | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(highResolutionPhotoSession: camera.HighResolutionPhotoSession): void {
+  highResolutionPhotoSession.onFocusStateChange(callback);
+}
+```
+
 ### off('focusStateChange')<sup>12+</sup>
 
 off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
@@ -4873,7 +7874,13 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **错误码：**
 
@@ -4898,6 +7905,44 @@ function unregisterFocusStateChange(highResolutionPhotoSession: camera.HighResol
 }
 ```
 
+### offFocusStateChange<sup>22+</sup>
+
+offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
+
+注销监听相机对焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterFocusStateChange(highResolutionPhotoSession: camera.HighResolutionPhotoSession): void {
+  highResolutionPhotoSession.offFocusStateChange();
+}
+```
+
 ## SketchStatusData<sup>11+</sup>
 
 画中画状态返回数据。
@@ -4905,6 +7950,10 @@ function unregisterFocusStateChange(highResolutionPhotoSession: camera.HighResol
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型      | 只读 | 必填 | 说明        |
 | ------------- | -------- | ---- | ---- | ---------- |
@@ -4927,7 +7976,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4958,6 +8013,50 @@ function registerSessionError(slowMotionVideoSession: camera.SlowMotionVideoSess
 }
 ```
 
+### onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听慢动作录像模式会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Portrait photo session error code: ${err.code}`);
+}
+
+function registerSessionError(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.onError(callback);
+}
+```
+
 ### off('error')<sup>12+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -4966,7 +8065,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4991,6 +8096,44 @@ function unregisterSessionError(slowMotionVideoSession: camera.SlowMotionVideoSe
 }
 ```
 
+### offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销慢动作录像模式会话的错误事件，通过注册回调函数获取结果。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterSessionError(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.offError();
+}
+```
+
 ### on('focusStateChange')<sup>12+</sup>
 
 on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
@@ -4999,7 +8142,13 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5034,6 +8183,54 @@ function registerFocusStateChange(slowMotionVideoSession: camera.SlowMotionVideo
 }
 ```
 
+### onFocusStateChange<sup>22+</sup>
+
+onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
+
+监听相机对焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 是   | 回调函数，用于获取当前对焦状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, focusState: camera.FocusState | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.onFocusStateChange(callback);
+}
+```
+
 ### off('focusStateChange')<sup>12+</sup>
 
 off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
@@ -5042,7 +8239,13 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5067,6 +8270,44 @@ function unregisterFocusStateChange(slowMotionVideoSession: camera.SlowMotionVid
 }
 ```
 
+### offFocusStateChange<sup>22+</sup>
+
+offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
+
+注销监听相机对焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterFocusStateChange(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.offFocusStateChange();
+}
+```
+
 ### on('smoothZoomInfoAvailable')<sup>12+</sup>
 
 on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): void
@@ -5075,7 +8316,13 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSmoothZoomInfoAvailable](#onsmoothzoominfoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5110,6 +8357,54 @@ function registerSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideoSe
 }
 ```
 
+### onSmoothZoomInfoAvailable<sup>22+</sup>
+
+onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
+
+监听相机平滑变焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("smoothZoomInfoAvailable")](#onsmoothzoominfoavailable12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                 |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 是   | 回调函数，用于获取当前平滑变焦状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, smoothZoomInfo: camera.SmoothZoomInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`The duration of smooth zoom: ${smoothZoomInfo!.duration}`);
+}
+
+function registerSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.onSmoothZoomInfoAvailable(callback);
+}
+```
+
 ### off('smoothZoomInfoAvailable')<sup>12+</sup>
 
 off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>): void
@@ -5118,7 +8413,13 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSmoothZoomInfoAvailable](#offsmoothzoominfoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5143,6 +8444,44 @@ function unregisterSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideo
 }
 ```
 
+### offSmoothZoomInfoAvailable<sup>22+</sup>
+
+offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
+
+注销监听相机平滑变焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("smoothZoomInfoAvailable")](#offsmoothzoominfoavailable12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.offSmoothZoomInfoAvailable();
+}
+```
+
 ### on('slowMotionStatus')<sup>12+</sup>
 
 on(type: 'slowMotionStatus', callback: AsyncCallback\<SlowMotionStatus\>): void
@@ -5151,7 +8490,13 @@ on(type: 'slowMotionStatus', callback: AsyncCallback\<SlowMotionStatus\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSlowMotionStatus](#onslowmotionstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5186,6 +8531,54 @@ function registerSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVideo
 }
 ```
 
+### onSlowMotionStatus<sup>22+</sup>
+
+onSlowMotionStatus(callback: AsyncCallback\<SlowMotionStatus\>): void
+
+监听慢动作状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("slowMotionStatus")](#onslowmotionstatus12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                     | 必填 | 说明                                                         |
+| -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | 是   | 回调函数，用于获取当前慢动作状态。当慢动作状态发生变动时，此回调函数也会被执行。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, slowMotionStatus: camera.SlowMotionStatus | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`The slow motion status: ${slowMotionStatus}`);
+}
+
+function registerSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.onSlowMotionStatus(callback);
+}
+```
+
 ### off('slowMotionStatus')<sup>12+</sup>
 
 off(type: 'slowMotionStatus', callback?: AsyncCallback\<SlowMotionStatus\>): void
@@ -5194,7 +8587,13 @@ off(type: 'slowMotionStatus', callback?: AsyncCallback\<SlowMotionStatus\>): voi
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSlowMotionStatus](#offslowmotionstatus22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5218,6 +8617,45 @@ function unregisterSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVid
   slowMotionVideoSession.off('slowMotionStatus');
 }
 ```
+
+### offSlowMotionStatus<sup>22+</sup>
+
+offSlowMotionStatus(callback?: AsyncCallback\<SlowMotionStatus\>): void
+
+注销慢动作状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("slowMotionStatus")](#offslowmotionstatus12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                     | 必填 | 说明                                                         |
+| -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | 否   | 回调函数，可选，有就是匹配on('slowMotionStatus') callback（callback对象不可是匿名函数）。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Not System Application. |
+
+**示例：**
+
+```ts
+function unregisterSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
+  slowMotionVideoSession.offSlowMotionStatus();
+}
+```
+
 ### isSlowMotionDetectionSupported<sup>12+</sup>
 
 isSlowMotionDetectionSupported(): boolean
@@ -5230,6 +8668,10 @@ isSlowMotionDetectionSupported(): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -5277,6 +8719,10 @@ setSlowMotionDetectionArea(area: Rect): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                            | 必填 | 说明                          |
@@ -5321,7 +8767,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5344,6 +8796,42 @@ function registerSessionError(panoramaPhotoSession: camera.PanoramaPhotoSession)
 }
 ```
 
+### onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听全景拍照会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Panorama photo session error code: ${err.code}`);
+}
+
+function registerSessionError(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.onError(callback);
+}
+```
+
 ### off('error')<sup>12+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -5352,7 +8840,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5369,6 +8863,36 @@ function unregisterSessionError(panoramaPhotoSession: camera.PanoramaPhotoSessio
 }
 ```
 
+### offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听全景拍照会话的错误事件，通过注册回调函数获取结果。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterSessionError(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.offError();
+}
+```
+
 ### on('focusStateChange')<sup>12+</sup>
 
 on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
@@ -5377,7 +8901,13 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5404,6 +8934,46 @@ function registerFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSess
 }
 ```
 
+### onFocusStateChange<sup>22+</sup>
+
+onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
+
+监听相机对焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 是   | 回调函数，用于获取当前对焦状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, focusState: camera.FocusState | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.onFocusStateChange(callback);
+}
+```
+
 ### off('focusStateChange')<sup>12+</sup>
 
 off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
@@ -5412,7 +8982,13 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5429,6 +9005,36 @@ function unregisterFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSe
 }
 ```
 
+### offFocusStateChange<sup>22+</sup>
+
+offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
+
+注销监听相机对焦的状态变化。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+
+**示例：**
+
+```ts
+function unregisterFocusStateChange(panoramaPhotoSession: camera.PanoramaPhotoSession): void {
+  panoramaPhotoSession.offFocusStateChange();
+}
+```
+
 ## IsoInfo<sup>12+</sup>
 
 ISO参数信息。
@@ -5437,9 +9043,13 @@ ISO参数信息。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称 | 类型    | 只读 | 可选 | 说明           |
-| ---- | ------- | ---- |--| -------------- |
-| iso  | number  | 是   | 是 | ISO值。        |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型                                | 只读 | 可选 | 说明    |
+| ---- | ----------------------------------- | ---- | ---- | ------- |
+| iso  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | ISO值。 |
 
 ---
 
@@ -5451,9 +9061,13 @@ ISO参数信息。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称              | 类型    | 只读 | 可选  | 说明               |
-| ----------------- | ------- | ---- |-----| ------------------ |
-| exposureTime | number  | 是   | 是   | 曝光时间值，单位为毫秒。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称         | 类型                                 | 只读 | 可选 | 说明                     |
+| ------------ | ------------------------------------ | ---- | ---- | ------------------------ |
+| exposureTime | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 是   | 曝光时间值，单位为毫秒。 |
 
 ---
 
@@ -5465,9 +9079,13 @@ ISO参数信息。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称      | 类型    | 只读 | 可选  | 说明       |
-| --------- | ------- | ---- |-----| ---------- |
-| aperture  | number  | 是   | 是   | 光圈值。   |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称     | 类型                                   | 只读 | 可选 | 说明     |
+| -------- | -------------------------------------- | ---- | ---- | -------- |
+| aperture | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 光圈值。 |
 
 ---
 
@@ -5479,9 +9097,13 @@ ISO参数信息。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称        | 类型    | 只读 | 可选  | 说明       |
-| ----------- | ------- | ---- |-----| ---------- |
-| lumination  | number  | 是   | 是   | 范围[0,1],光照值归一化数值|
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称       | 类型                                   | 只读 | 可选 | 说明                       |
+| ---------- | -------------------------------------- | ---- | ---- | -------------------------- |
+| lumination | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 范围[0,1],光照值归一化数值 |
 
 ## CameraFormat
 
@@ -5489,10 +9111,11 @@ ISO参数信息。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称                     | 值        | 说明         |
-| ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG<sup>12+</sup>  | 4         | DNG格式的RAW图片。**系统接口：** 此接口为系统接口。         |
-| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup>  | 5         | DNG格式的增强RAW图片，JPG和RAW图片封装在同一个文件中，最高支持16bit的RAW数据。**系统接口：** 此接口为系统接口。         |
+| 名称                                  | 值   | 说明                                                         |
+| ------------------------------------- | ---- | ------------------------------------------------------------ |
+| CAMERA_FORMAT_DNG<sup>12+</sup>       | 4    | DNG格式的RAW图片。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> | 5    | DNG格式的增强RAW图片，JPG和RAW图片封装在同一个文件中，最高支持16bit的RAW数据。**系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 22 |
+
 ## ExposureMeteringMode<sup>12+</sup>
 
 枚举，测光模式。
@@ -5500,6 +9123,10 @@ ISO参数信息。
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 值   | 说明         |
 | ----------------------------- | ---- | ----------- |
@@ -5520,6 +9147,10 @@ isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5578,6 +9209,10 @@ getExposureMeteringMode(): ExposureMeteringMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型        | 说明                          |
@@ -5620,6 +9255,10 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
