@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Camera_Rect
+typedef struct Camera_Rect {...} Camera_Rect
 ```
 
 ## 概述
