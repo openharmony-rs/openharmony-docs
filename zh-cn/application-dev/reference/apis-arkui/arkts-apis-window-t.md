@@ -80,11 +80,15 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 旋转事件通知通用回调函数。
 
-开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void。
+开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型在ArkTS-Dyn下为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void，在ArkTS-Sta下为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|undefined。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -96,4 +100,4 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
-| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void类型的返回值。 |
+| U | <br>ArkTS-Dyn: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void类型的返回值。<br>ArkTS-Sta: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|undefined类型的返回值。 |
