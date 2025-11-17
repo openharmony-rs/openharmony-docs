@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Camera_MetadataObject
+typedef struct Camera_MetadataObject {...} Camera_MetadataObject
 ```
 
 ## 概述
