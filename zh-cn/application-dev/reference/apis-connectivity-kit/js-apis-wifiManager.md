@@ -558,7 +558,7 @@ WLAN配置信息。
 可扩展身份验证协议配置信息。
 
 - WifiEapConfig是一个用于配置WLAN网络EAP认证的类型。
-- 通常用于需要EAP认证的WLAN网络连接，如企业级网络。
+- 用于需要EAP认证的WLAN网络连接，如企业级网络。
 - 包含EAP认证方式、第二阶段认证方式、身份信息、密码、证书等配置项。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
