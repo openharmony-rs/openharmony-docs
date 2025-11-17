@@ -8413,4 +8413,4 @@ async function example() {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格 |
+| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格。|
