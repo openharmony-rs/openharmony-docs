@@ -458,8 +458,22 @@ Enumerates the device types.
 
 | Name                        | Value    | Description                             |
 |----------------------------| ------ |---------------------------------|
+| ACCESSORY<sup>19+</sup> | 26 | Auxiliary device (for example, microphone on a remote control).|
 | BLUETOOTH_SPP<sup>22+</sup> | 33 | Bluetooth device connected using the Serial Port Profile (SPP).|
 | NEARLINK_PORT<sup>22+</sup> | 34 | NearLink device connected using the PORT.                    |
+
+## PolicyType<sup>12+</sup>
+
+Enumerates the types of mute policies.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+| Name                        | Value    | Description                             |
+|----------------------------| ------ |---------------------------------|
+| EDM | 0 | Mute policy issued by the device-manager.|
+| PRIVACY | 1 | Mute policy issued by the security and privacy module.| 
 
 ## AudioCapturerOptions<sup>8+</sup>
 
@@ -794,7 +808,7 @@ Sets the type of volume that the volume keys should control.
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of volume to control.|
+| volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of audio volume to control.|
 | duration |number | Yes  | Duration that the volume keys will control this type of volume if no volume key events occur. When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds. If the duration is set to **-1**, the setting is canceled.|
 
 **Error codes**
@@ -1214,7 +1228,7 @@ Subscribes to the active volume type change event. This API uses an asynchronous
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                 | Yes  | Event type. The event **'activeVolumeTypeChange'** is triggered when the active volume type changes.|
-| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | Yes  | Callback used to return the changed active volume type.|
+| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | Yes  | Callback used to return the changed active audio volume type.|
 
 **Error codes**
 
@@ -1248,7 +1262,7 @@ Unsubscribes from the active volume type change event. This API uses an asynchro
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                 | Yes  | Event type. The event **'activeVolumeTypeChange'** is triggered when the active volume type changes.|
-| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | No  | Callback used to return the changed active volume type.|
+| callback | Callback\<[AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)> | No  | Callback used to return the changed active audio volume type.|
 
 **Error codes**
 
@@ -1297,7 +1311,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -1333,7 +1347,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
 
 **Return value**
@@ -1368,7 +1382,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                  |
 | ---------- | ----------------------------------- | ---- |--------------------------------------|
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                              |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                              |
 | volume     | number                              | Yes  | Volume. The volume range can be obtained by calling [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) and [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated).|
 | flags      | number                              | Yes  | Whether to display the system volume bar. The value **0** means not to display the system volume bar, and **1** means the opposite.|
 
@@ -1395,6 +1409,46 @@ audioVolumeGroupManager.setVolumeWithFlag(audio.AudioVolumeType.MEDIA, 10, 1).th
 });
 ```
 
+### getActiveVolumeTypeSync<sup>13+</sup>
+
+getActiveVolumeTypeSync(uid: number): AudioVolumeType
+
+Obtains the active audio volume type of a specified application. If **uid** is set to **0**, the active audio volume type of all applications is retrieved.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name    | Type                               | Mandatory| Description                                  |
+| ---------- | ----------------------------------- | ---- |--------------------------------------|
+| uid      | number                              | Yes  | Application ID.|
+
+**Return value**
+
+| Type               | Description                         |
+| ------------------- | ----------------------------- |
+| [AudioVolumeType](#audiovolumetype) | Audio volume type.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters unspecified. 2.Incorrect parameter types. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+let uid: number = 20010041; // Application ID.
+
+let value = audioVolumeGroupManager.getActiveVolumeTypeSync(uid);
+```
+
 ### mute<sup>9+</sup>
 
 mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -1413,7 +1467,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                         |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -1449,7 +1503,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                 |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                         |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                         |
 | mute       | boolean                             | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
 
 **Return value**
@@ -1578,6 +1632,83 @@ audioVolumeGroupManager.setMicMute(true).then(() => {
 });
 ```
 
+### setMicMutePersistent<sup>12+</sup>
+
+setMicMutePersistent(mute: boolean, type: PolicyType): Promise&lt;void&gt;
+
+Mutes or unmutes the microphone permanently. This API uses a promise to return the result.
+
+**Required permission**: ohos.permission.MICROPHONE_CONTROL
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                         |
+| ------ | ------- | ---- | --------------------------------------------- |
+| mute   | boolean | Yes  | Mute status to set. **true** to mute, **false** otherwise.|
+| type   | [PolicyType](#policytype12) | Yes  | Type of the mute policy.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201     | Permission denied.                          |
+| 202     | Not system App.                             |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters missing. 2.Incorrect parameter types. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+audioVolumeGroupManager.setMicMutePersistent(true, audio.PolicyType.PRIVACY).then(() => {
+  console.info('Succeeded in setting mic mute.');
+});
+```
+
+### isPersistentMicMute<sup>12+</sup>
+
+isPersistentMicMute(): boolean
+
+Checks whether the microphone is muted permanently. This API returns the result synchronously.
+
+**Required permission**: ohos.permission.MICROPHONE_CONTROL
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| boolean | Check result for whether the microphone is muted. **true** if muted, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201     | Permission denied.                          |
+| 202     | Not system App.                             |
+
+**Example**
+
+```ts
+let value: boolean = audioVolumeGroupManager.isPersistentMicMute();
+```
+
 ### adjustVolumeByStep<sup>10+</sup>
 
 adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void&gt;): void
@@ -1691,7 +1822,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                      |
 | callback   | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -1737,7 +1868,7 @@ This permission is required only for muting or unmuting the ringer when **volume
 
 | Name    | Type                               | Mandatory| Description                                                    |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio stream type.                                            |
+| volumeType | [AudioVolumeType](#audiovolumetype) | Yes  | Audio volume type.                                            |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | Yes  | Volume adjustment type.                                            |
 
 **Return value**
