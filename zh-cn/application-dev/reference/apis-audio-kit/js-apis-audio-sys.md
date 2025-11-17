@@ -2544,6 +2544,8 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
+从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -2611,6 +2613,8 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
+从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -2677,6 +2681,8 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 解除属于特定用途的所有输出设备的排除。成功调用此函数后，音频将会重新选择输出设备。
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
+从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
 
 **系统接口：** 该接口为系统接口。
 
