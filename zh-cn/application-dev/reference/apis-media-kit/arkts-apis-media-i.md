@@ -261,7 +261,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。当前版本AVRecorder不支持该属性的设置。|
 
-### AVMetadata.tracks支持的MediaDescriptionKey说明
+### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
 AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)的范围如下：
 
