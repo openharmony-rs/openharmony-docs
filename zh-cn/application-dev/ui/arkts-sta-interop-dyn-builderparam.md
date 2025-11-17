@@ -70,7 +70,7 @@ export struct CustomContainer { // 导出ArkTS-Dyn自定义组件
 export { CustomContainer } from './src/main/ets/components/MainPage'; // 导出自定义组件
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5

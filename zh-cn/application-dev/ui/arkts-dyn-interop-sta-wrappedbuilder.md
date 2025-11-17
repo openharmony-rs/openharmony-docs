@@ -55,6 +55,7 @@ project/
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
+// 定义Person类，作为对象字面量的类型
 export class Person {
   name: string = '';
   age: number = 0;
@@ -64,21 +65,21 @@ export class Person {
 ```TypeScript
 // dynamic_module/index.ets
 
-export { Person } from './src/main/ets/components/MainPage';
+export { Person } from './src/main/ets/components/MainPage'; // 导出Person类
 ```
 
-- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出WrappedBuilder对象。且在`oh-package.json5`文件中配置子模块依赖。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出WrappedBuilder对象。且在`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static'
 
 // static_module/src/main/ets/components/MainPage.ets
 import { Builder, WrappedBuilder, wrapBuilder, Text, Column } from '@ohos.arkui.component';
-import { Person } from 'dynamic_module';
+import { Person } from 'dynamic_module'; // 引入ArkTS-Dyn子模块的Person类
 
 @Builder
-function personInfo(person: Person) {
-  Column(){
+function personInfo(person: Person) { // 按引用传递参数，对象字面量包含状态变量时，其变化会触发UI刷新
+  Column() {
     Text(`Name: ${person.name}`)
     Text(`Age: ${person.age}`)
   }
@@ -91,7 +92,7 @@ export const globalBuilder: WrappedBuilder<@Builder (person: Person) => void> = 
 'use static'
 
 // static_module/index.ets
-export { globalBuilder } from './src/main/ets/components/MainPage';
+export { globalBuilder } from './src/main/ets/components/MainPage'; // 导出WrappedBuilder对象
 ```
 
 ```json
@@ -106,23 +107,26 @@ export { globalBuilder } from './src/main/ets/components/MainPage';
 
 ```TypeScript
 // entry/src/main/ets/pages/Index.ets
-import { globalBuilder } from 'static_module';
+import { globalBuilder } from 'static_module'; // 引入WrappedBuilder对象
 
 @Entry
 @Component
 struct Parent {
   @State name: string = 'Kevin';
   @State age: number = 20;
+
   build() {
     Column() {
       // 传入对象字面量，状态变量的改变引起@Builder的UI刷新
       globalBuilder.builder({name: this.name, age: this.age})
       Button('changeName')
         .onClick(() => {
+          // 修改name状态变量，触发UI刷新
           this.name += 'a';
         })
       Button('changeAge')
         .onClick(() => {
+          // 修改age状态变量，触发UI刷新
           this.age += 1;
         })
     }
@@ -226,6 +230,7 @@ struct Parent {
 ## 常见问题
 
 ### 声明文件编译报错
+
 由于[ArkTS-Sta wrapBuilder](./state-management/arkts-v1.2-wrapBuilder.md#接口说明)与[ArkTS-Dyn wrapBuilder](./state-management/arkts-wrapBuilder.md#接口说明)的接口规格不一致，在部分复杂的WrappedBuilder场景下，编译时生成的ArkTS-Dyn声明文件可能报错，需要开发者手动修改声明文件报错位置后增量编译，以符合ArkTS-Dyn WrappedBuilder的语法规格。
 
 以上文[按值传递参数](#按值传递参数)示例为例，定义WrappedBuilder的ArkTS-Sta源文件为`library/src/main/ets/components/MainPage.ets`，对应生成的ArkTS-Dyn声明文件位于`library/build/default/intermediates/declgen/default/declgenV1/library/src/main/ets/components/MainPage.d.ets`。正确的声明文件示例如下。

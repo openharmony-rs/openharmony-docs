@@ -11,7 +11,7 @@
 
 ```TypeScript
 // entry/src/main/ets/pages/Index.ets
-import { MainPage } from 'static_module'; // 从静态模块中导入
+import { MainPage } from 'static_module'; // 从ArkTS-Sta模块中导入
 
 @Entry
 @Component
@@ -34,18 +34,23 @@ struct Index {
 ```
 
 ```TypeScript
+'use static'
+
 // static_module/src/main/ets/components/MainPage.ets
+import { Text, Component } from '@ohos.arkui.component';
+
 @Component
-export struct MainPage { // 从静态模块中导出
+export struct MainPage { // 从ArkTS-Sta模块中导出
+  message: string = '';
 
   build() {
-    Text('Hello World!')
-      .fontSize(50)
+    Text(this.message)
+      .fontSize(30)
   }
 }
 ```
 
-- ArkTS-Dyn中不支持通过@Reusable/@ReusableV2装饰器复用ArkTS-Sta自定义组件。
+- ArkTS-Dyn中不支持通过[@Reusable](state-management/arkts-reusable.md)/[@ReusableV2](state-management/arkts-new-reusableV2.md)装饰器复用ArkTS-Sta自定义组件。
 
 
 ## 使用场景
@@ -112,7 +117,7 @@ export struct ChildComponentV2 {
 'use static'
 
 // static_module/Index.ets
-export { ChildComponentV1，ChildComponentV2 } from './src/main/ets/components/MainPage';
+export { ChildComponentV1, ChildComponentV2 } from './src/main/ets/components/MainPage';
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。

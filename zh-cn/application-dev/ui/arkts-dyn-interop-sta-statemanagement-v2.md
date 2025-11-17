@@ -51,7 +51,7 @@ project/
 
 示例如下：
 
-- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static'
@@ -94,10 +94,10 @@ export struct MainPage {
 'use static'
 
 // static_module/index.ets
-export { MainPage } from from './src/main/ets/components/MainPage';
+export { MainPage } from './src/main/ets/components/MainPage';
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5

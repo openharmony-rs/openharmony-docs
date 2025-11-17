@@ -50,7 +50,7 @@ project/
 
 示例如下：
 
-- 在ArkTS-Sta子模块的`static_module/src/main/ets/components/MainPage.ets`文件中进行数据构建。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录进行数据构建。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static'
@@ -80,7 +80,7 @@ export class MessageModel { // 定义MessageModel数据类
 export { MessageModel } from './src/main/ets/components/MainPage'; // 导出MessageModel数据类
 ```
 
-- 在子模块的`dynamic_module/oh-package.json5`文件中配置子模块依赖。
+- 在子模块的`dynamic_module/oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // dynamic_module/oh-package.json5
@@ -243,12 +243,12 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 
 @ObservedV2
 class PersistenceModel {
-  @Trace p1: number = 1;
-  @Trace p2: number = 2;
+  @Trace year: number = 1;
+  @Trace day: number = 2;
 
-  constructor(p1?: number, p2?: number) {
-    this.p1 = p1 ?? 10001;
-    this.p2 = p2 ?? 10002;
+  constructor(year?: number, day?: number) {
+    this.year = year ?? 1;
+    this.day = day ?? 2;
   }
 }
 

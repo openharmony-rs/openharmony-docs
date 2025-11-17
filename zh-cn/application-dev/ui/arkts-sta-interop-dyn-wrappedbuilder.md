@@ -70,7 +70,7 @@ export const globalBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
 export { globalBuilder } from './src/main/ets/components/MainPage'; // 导出WrappedBuilder对象
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5
