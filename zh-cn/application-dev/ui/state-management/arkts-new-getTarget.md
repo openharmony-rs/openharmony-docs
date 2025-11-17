@@ -89,7 +89,7 @@
 
 状态管理V1有两种场景会给对象增加代理：
 
-【1】\@Observed装饰的类实例。在创建\@Observed装饰的类实例时，会给该实例添加代理。该过程发生在new对象的过程中，没有经过new操作符创建的对象是不被代理的。
+【1】\@Observed装饰的类实例。在创建\@Observed装饰的类实例时，会给该实例添加代理。该过程发生在new对象的过程中，以下示例中，没有被\@Observed装饰的类是不被代理的。
 <!-- @[nonObservedClass_outOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetAgent.ets) -->
 
 ``` TypeScript
