@@ -104,7 +104,7 @@
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
-   <!-- [workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ```ts
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
@@ -173,7 +173,7 @@
    ```
 
 3. 取消延迟任务。
-   <!-- [stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
 
    ```ts
    // 创建workinfo
