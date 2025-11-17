@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} PreviewOutput_Callbacks
+typedef struct PreviewOutput_Callbacks {...} PreviewOutput_Callbacks
 ```
 
 ## 概述
