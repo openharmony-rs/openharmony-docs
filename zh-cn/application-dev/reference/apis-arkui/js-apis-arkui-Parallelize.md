@@ -68,7 +68,7 @@ struct Index {
 
   build() {
     Column() {
-      // ParallelOption参数传入undefined，默认开启并行创建。并行创建Row组件和Image组件。
+      // options参数类型为undefined，默认开启并行创建。并行创建Row组件和Image组件。
       ParallelizeUI(undefined) {
         Row() {
           Image($r('app.media.startIcon'))
