@@ -35,7 +35,7 @@ The packaging tool verifies the validity of the attributes in the **module.json*
 ## Constraints
 
 - The packing tool must run in Java 8 or later.
-- Parameters and parameter values must be in pairs. For example, in the HAP packing command **--resources-path \<path>**, **--resources-path** is the command parameter and **path** is the parameter value. The two parameters must be used together.
+- Parameters and parameter values must be in pairs. For example, in the HAP packing command <b class="+ topic/ph hi-d/b " id="b11910162317201">--resources-path \<path></b>, <b class="+ topic/ph hi-d/b " id="b18184127152015">--resources-path</b> is the command parameter and <b class="+ topic/ph hi-d/b " id="b316819352201">path</b> is the parameter value. The two parameters must be used together.
 
 ## HAP Packing Command
 
@@ -143,7 +143,7 @@ You can use the JAR package of the packing tool to generate an APP file for an a
 >
 > - The **module.json** file is the build product of DevEco Studio. For the mapping between the fields in the **module.json** file and the items in the configuration file, see [Table 1 Mapping between attributes of the module.json file and items of the configuration file](packing-tool.md).
 
-**Compression rules during APP packing:** During APP packing, the HAP and HSP files in release mode are compressed, and the HAP and HSP files in debug mode are not compressed.
+**Compression rules**: During APP file packing, the HAP and HSP files in release mode are compressed, while those in debug mode are not.
 
 > **NOTE**
 > 
@@ -169,7 +169,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --pack-res-path    | No    | NA          | Path of the **pack.res** file.                                |
 | --force            | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.                          |
 | --encrypt-path     | No    | NA          | The file name must be **encrypt.json**.                          |
-| --pac-json-path     | No    | NA          | Path of the **pac.json** file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
+| --pac-json-path     | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                      |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 | --replace-pack-info    | No    | true or false         | Whether to use the **pack.info** file specified by the **--pack-info-path** parameter to replace the **pack.info** file in the HAP and HSP files during APP packing. The value **true** means to replace, and **false** means the opposite. The default value is **true**.<br>This parameter is supported since API version 22.|
@@ -215,7 +215,7 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --out-path | Yes    | NA | Path of the target file. The file name extension must be .app.|
 | --force    | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.                                                                 |
 | --encrypt-path | No    | Path of **encrypt.json**| The file name must be **encrypt.json**.                                                                 |
-| --pac-json-path | No    | NA          | Path of the **pac.json** file. The file name must be **pac.json**.<br>If this parameter is not set, the app product does not contain the **pac.json** file.<br>The **pac.json** file in the APP file specified by **--app-list** is not packed into the final app.<br>This parameter is supported since API version 20.|
+| --pac-json-path | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>If this parameter is not set, the app product does not contain the **pac.json** file.<br>The **pac.json** file in the APP file specified by **--app-list** is not packed into the final app.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                      |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 
@@ -223,7 +223,11 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 
 ## HQF Packing Command
 
-If you find detects in the application and want to rectify the defects quickly, you can use HQF files. You can use the JAR package of the packing tool to generate an HQF file for an application by passing in packing options and file paths.
+The HQF file is used for [incremental debugging](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-incremental-debugging). You can use the JAR package of the packing tool to generate an HQF file for an application by passing in packing options and file paths.
+
+> **NOTE**
+>
+> - The HQF file cannot be released to the app market and is used only for incremental debugging.
 
 Packing command example:
 
@@ -327,7 +331,7 @@ java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp 
 | ----------------------------- | ---------- | -------------------------------------------------- | ------------------------------------------------------------ |
 | --mode                        | Yes        | generalNormalize                                   | Command type.                              |
 | --input-list                  | Yes        | Path of the HAP or HSP files                                    | 1. Path of the HAP or HSP files. The file name extension must be .hap or .hsp. Use commas (,) to separate the paths of multiple HAP or HSP files.<br>2. The value can also be the directory (folder) where the HAP and HSP files are stored. If this is the case, all HAP and HSP files in the directory (folder) are read.|
-| --bundle-name                 | No        | Bundle name                                              | New bundle name, to which the passed-in bundle name will be changed. The value cannot be empty. For details about the definition and specifications of this field, see the **bundleName** field in [app.json5](../quick-start/app-configuration-file.md#tags-in-the-configuration-file).|
+| --bundle-name                 | No        | Bundle name                                              | New bundle name, to which the passed-in bundle name will be changed. The value cannot be empty. For details about the definition and specifications of this field, see the <b class="+ topic/ph hi-d/b " id="b14907122752517">bundleName</b> field in [app.json5](../quick-start/app-configuration-file.md#tags-in-the-configuration-file).|
 | --version-code                | No        | Internal version number                                            | New version number, to which the passed-in version number will be changed. The value is an integer ranging from 0 to 2147483647. The value cannot be empty. For details about the definition and specifications of this field, see the **versionCode** field in [app.json5](../quick-start/app-configuration-file.md#tags-in-the-configuration-file).|
 | --version-name                | No        | Version name                                          | Version name. The version name of the input package will be changed to this version name. The value cannot be empty. For details about the definition and specifications of this field, see the **versionName** field in [app.json5](../quick-start/app-configuration-file.md#tags-in-the-configuration-file).|
 | --min-compatible-version-code | No        | Earliest compatible version number                          | New earliest compatible version number, to which the passed-in earliest compatible version number will be changed. The value is an integer ranging from 0 to 2147483647 and cannot be empty. For details about the definition and specifications of this field, see the **minCompatibleVersionCode** field in [app.json5](../quick-start/app-configuration-file.md#tags-in-the-configuration-file).|
@@ -407,7 +411,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | --pack-res-path    | No    | NA         | Path of the **pack.res** file.                  |
 | --force            | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.          |
 | --encrypt-path     | No    | NA         | The file name must be **encrypt.json**.          |
-| --pac-json-path     | No    | NA          | Path of the **pac.json** file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
+| --pac-json-path     | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                     |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 
@@ -691,7 +695,7 @@ Check deduplicateHar field failed.
 
 **Description**
 
-The **deduplicateHar** attribute (whether to deduplicate HARs) in the **module.json** file fails to be verified during HSP/HAP packing.
+Failed to verify the [deduplicateHar](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215) property during HSP/HAP packaging.
 
 **Possible Causes**
 
