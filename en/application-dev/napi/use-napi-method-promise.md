@@ -12,12 +12,13 @@ You can call the ArkTS APIs, which return a promise, in the created ArkTS runtim
 ## Calling an ArkTS Method Asynchronously
 Use C++ to call the ArkTS method that returns a promise through the Node-API.
 
-Handle the promise object: Bind the promise object to a C++ callback to process the result returned asynchronously.
+ 
+Bind the [Promise](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-promise) object to a C++ callback to process the result returned asynchronously.
 
 Convert the data type: In the callback, convert the JavaScript (JS) result to the data that can be used by C++.
 
 ### Sample Code
-- Register the module.
+- Module registration
     ```c++
     #include "hilog/log.h"
     #include "napi/native_api.h"
@@ -108,7 +109,7 @@ Convert the data type: In the callback, convert the JavaScript (JS) result to th
     }
     ```
 
-- Declare APIs.
+- API declaration
     ```ts
     // index.d.ts
     export const callArkTSAsync: (func: Function) => object;

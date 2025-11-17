@@ -217,7 +217,7 @@ node_api_get_module_file_name | No|
 |napi_get_uv_event_loop | napi_invalid_arg |
 
 ### Sample Code
-- Register the module.
+- Module registration
     ```c++
     // napi_init.cpp
     #include "napi/native_api.h"
