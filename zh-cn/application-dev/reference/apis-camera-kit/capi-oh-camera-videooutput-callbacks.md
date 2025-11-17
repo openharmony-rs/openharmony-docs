@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} VideoOutput_Callbacks
+typedef struct VideoOutput_Callbacks {...} VideoOutput_Callbacks
 ```
 
 ## 概述
