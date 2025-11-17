@@ -31,26 +31,27 @@
 1. 在EntryAbility中，通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动UIAbility，[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
     <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-
+    
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
     struct MainPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+    
       build() {
         Column() {
           List({ initialIndex: 0, space: 8 }) {
+    
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 // context为Ability对象的成员，在非Ability对象内部调用需要
@@ -63,7 +64,7 @@
                   parameters: {
                     // 自定义信息
                     // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
-                   info: $r('app.string.main_page_return_info')
+                    info: $r('app.string.main_page_return_info')
                   },
                 };
                 // context为调用方UIAbility的UIAbilityContext
@@ -74,11 +75,12 @@
                 });
               })
             }
-            // ···
+    
+            // ...
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -136,9 +138,9 @@
                 }
               });
             })
-            // ···
+            // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -175,11 +177,11 @@
         Column() {
           List({ initialIndex: 0, space: 8 }) {
     
-            // ···
+            // ...
     
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -213,11 +215,11 @@
               })
             }
     
-            // ···
+            // ...
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -239,12 +241,12 @@
     
       build() {
         Column() {
-        // ···
+          // ...
     
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -257,7 +259,7 @@
                     abilityName: 'FuncAbilityA',
                     parameters: {
                       // app.string.ability_return_info资源文件中的value值为'来自FuncAbility Index页面'
-                      info: $r('app.string.ability_return_info')
+                      info: context.resourceManager.getStringSync($r('app.string.ability_return_info').id)
                     },
                   },
                 };
@@ -270,9 +272,9 @@
               })
             }
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -298,11 +300,11 @@
         Column() {
           List({ initialIndex: 0, space: 8 }) {
     
-            // ···
+            // ...
     
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -336,11 +338,11 @@
               })
             }
     
-            // ···
+            // ...
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -384,11 +386,11 @@ struct MainPage {
     Column() {
       List({ initialIndex: 0, space: 8 }) {
 
-        // ···
+        // ...
 
         ListItem() {
           Row() {
-            // ···
+            // ...
           }
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -410,11 +412,11 @@ struct MainPage {
           })
         }
 
-        // ···
+        // ...
       }
-    // ···
+      // ...
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -640,9 +642,9 @@ export default class ColdStartAbility extends UIAbility {
         ``` JSON5
         {
           "module": {
-            // ···
+            // ...
             "routerMap": "$profile:router_map",
-            // ···
+            // ...
           }
         }
         ```
