@@ -59,14 +59,13 @@
 1. 引用头文件。
    
    <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-#include <database/pasteboard/oh_pasteboard.h>
-#include <database/udmf/udmf.h>
-#include <database/udmf/uds.h>
-// [End pasteboard_native2]
-#include <database/udmf/udmf_meta.h>
-```
+   
+   ``` C++
+   #include <database/pasteboard/oh_pasteboard.h>
+   #include <database/udmf/udmf.h>
+   #include <database/udmf/uds.h>
+   #include <database/udmf/udmf_meta.h>
+   ```
 
 
 2. 定义`OH_UdmfRecordProvider`的数据提供函数和实例注销回调函数。
