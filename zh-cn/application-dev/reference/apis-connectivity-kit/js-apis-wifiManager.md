@@ -441,7 +441,7 @@ WLAN热点信息。
 
 Wi-Fi 设备地址（MAC/bssid）类型。
 
-- DeviceAddressType是一个用于表示Wi-Fi设备地址（MAC地址或BSSID）的类型，通常用于标识Wi-Fi设备或接入点的唯一地址。
+- DeviceAddressType是一个用于表示Wi-Fi设备地址（MAC地址或BSSID）的类型，是标识Wi-Fi设备或接入点的唯一地址。
 - 在Wi-Fi相关操作中，如连接指定的Wi-Fi网络、获取设备信息等，需要使用DeviceAddressType类型的参数。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
