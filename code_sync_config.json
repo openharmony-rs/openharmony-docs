@@ -11487,6 +11487,21 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"circle_example_one",
+						"start_line":16
+					},
+					{
+						"end_line":45,
+						"name":"circle_example_two",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
