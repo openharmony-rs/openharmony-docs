@@ -85,8 +85,7 @@ import { Computed } from '@ohos.arkui.stateManagement';
    }
    ```
 
-- 在\@Computed装饰的getter方法中，不能改变参与计算的属性，以防止重复执行计算属性导致的appfreeze。
- 在下面例子中，计算`fullName1`时触发了`this.lastName`的改变，`this.lastName`的改变，触发`fullName2`的计算，在`fullName2`的计算中，改变了`this.firstName`，再次触发`fullName1`的重新计算，从而导致循环计算，最终引起appfreeze。
+- 在\@Computed装饰的getter方法中，不能改变状态变量的值，以防止重复执行计算属性导致的appfreeze。
 
    ```ts
    'use static'
@@ -99,18 +98,19 @@ import { Computed } from '@ohos.arkui.stateManagement';
    struct Page {
      @Local firstName: string = 'Hua';
      @Local lastName: string = 'Li';
-   
+     @Local age: number = 20;
+
      @Computed
      get fullName1(): string {
        console.info(`fullName1`);
-       this.lastName += 'a'; // 错误，不能改变参与计算的属性
+       this.lastName += 'a'; // 错误，不能改变状态变量的值。
        return this.firstName + ' ' + this.lastName;
      }
    
      @Computed
      get fullName2(): string {
        console.info(`fullName2`);
-       this.firstName += 'a'; // 错误，不能改变参与计算的属性
+       this.age += 1; // 错误，不能改变状态变量的值。
        return this.firstName + ' ' + this.lastName;
      }
    
