@@ -51,7 +51,7 @@ void (*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)
 | 参数项                                | 描述 |
 |------------------------------------| -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| void* window                       | 表示NativeWindow句柄。 |
+| void* window                       | 表示NativeWindow句柄。<br/>通过XComponent生命周期获取的NativeWindow本身由系统侧持有了一次引用计数，并会在OnSurfaceDestroyed回调触发之后将引用计数减一，引用计数归零后NativeWindow将被释放。 |
 
 ### OnSurfaceChanged()
 
