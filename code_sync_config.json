@@ -6091,6 +6091,11 @@
 						"end_line":59,
 						"name":"contentslot_two",
 						"start_line":16
+					},
+					{
+						"end_line":58,
+						"name":"contentslot_one",
+						"start_line":17
 					}
 				]
 			}
