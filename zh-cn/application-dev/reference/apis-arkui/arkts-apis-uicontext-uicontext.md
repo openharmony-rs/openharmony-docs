@@ -2268,6 +2268,55 @@ struct Index {
   }
 }
 ```
+## getWindowId<sup>23+</sup>
+
+getWindowId(): number | undefiend
+
+获取当前应用实例所属的窗口ID。
+
+> **说明：**
+>
+>  若UIContext位于主应用程序进程中的[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)内，则返回主应用程序的顶层窗口ID。
+>
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型   | 说明                                         |
+| ------ | -------------------------------------------- |
+|  number \| undefined |  当前应用实例所属的窗口ID。若窗口不存在，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowId = this.getUIContext().getWindowId();
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getWindowWidthBreakpoint<sup>13+</sup>
 
