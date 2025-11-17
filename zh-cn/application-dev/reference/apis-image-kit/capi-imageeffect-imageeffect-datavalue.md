@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} ImageEffect_DataValue
+typedef union ImageEffect_DataValue {...} ImageEffect_DataValue
 ```
 
 ## 概述
