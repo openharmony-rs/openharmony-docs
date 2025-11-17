@@ -20,9 +20,9 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate uevent customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate uevent customization.
 
-1. Modify the `battery_config.json` file in the battery service configuration folder of the [HDI layer](https://gitee.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile) and the [service layer](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile). The uevent configuration is as follows:
+1. Modify the `battery_config.json` file in the battery service configuration folder of the [HDI layer](https://gitcode.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile) and the [service layer](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile). The uevent configuration is as follows:
 
     ```json
     {
@@ -68,7 +68,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
 ### Debugging and Verification
 
-1. Change the uevent receiving code (https://gitee.com/openharmony/drivers_peripheral/blob/master/battery/interfaces/hdi_service/src/battery_thread.cpp) to forcibly receive the uevent event BATTERY_UNDER_VOLTAGE=1 in the configuration file.
+1. Change the uevent receiving code (https://gitcode.com/openharmony/drivers_peripheral/blob/master/battery/interfaces/hdi_service/src/battery_thread.cpp) to forcibly receive the uevent event BATTERY_UNDER_VOLTAGE=1 in the configuration file.
    ```c++
     void BatteryThread::UeventCallback(void* service)
     {
@@ -104,7 +104,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 4. Check whether the device is powered off when it receives a uevent indicating that the battery voltage is less than 1.
     
 ## Reference
-During development, you can refer to the [default uevent configuration](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/), as shown below:
+During development, you can refer to the [default uevent configuration](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/), as shown below:
 
 The default configuration is as follows:
 

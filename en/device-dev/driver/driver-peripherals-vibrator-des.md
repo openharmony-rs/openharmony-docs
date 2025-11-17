@@ -65,7 +65,7 @@ The vibrator driver model supports static HCS and dynamic parameter configuratio
 
 **Table 1** APIs of the vibrator driver model
 
-**NOTE**<br>The following APIs are C interfaces. For details about the interface declaration, see [/drivers/peripheral/vibrator/interfaces/include](https://gitee.com/openharmony/drivers_peripheral/tree/master/vibrator/interfaces/include).
+**NOTE**<br>The following APIs are C interfaces. For details about the interface declaration, see [/drivers/peripheral/vibrator/interfaces/include](https://gitcode.com/openharmony/drivers_peripheral/tree/master/vibrator/interfaces/include).
 
 | API                                 | Description                                          |
 | -------------------------------------- | ------------------------------------------------ |
