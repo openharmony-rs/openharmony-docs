@@ -91,17 +91,17 @@ static void PasteboardFinalizeImpl2(void* context)
 4. 订阅剪贴板变化。
 
    <!-- @[pasteboard_native4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 1. 创建一个剪贴板实例
-    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-    // 2. 创建一个剪贴板数据变更观察者实例
-    OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
-    // 3. 将两个回调函数设置到观察者实例
-    OH_PasteboardObserver_SetData(observer, (void*)pasteboard, PasteboardNotifyImpl2, PasteboardFinalizeImpl2);
-    // 4. 设置对剪贴板本端数据变化的订阅
-    OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
-```
+   
+   ``` C++
+   // 1. 创建一个剪贴板实例
+   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   // 2. 创建一个剪贴板数据变更观察者实例
+   OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
+   // 3. 将两个回调函数设置到观察者实例
+   OH_PasteboardObserver_SetData(observer, (void*)pasteboard, PasteboardNotifyImpl2, PasteboardFinalizeImpl2);
+   // 4. 设置对剪贴板本端数据变化的订阅
+   OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
+   ```
 
 
 5. 向剪贴板写入数据。
