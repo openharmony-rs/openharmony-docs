@@ -404,7 +404,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column() {
         Image(this.pixelMap)
-          .backgroundColor(Color.Blue)
+          .backgroundColor('#86C5E3')
           .width(150)
           .height(150)
           .onClick(() => {
