@@ -237,7 +237,9 @@ try {
 
 ## systemDateTime.setTimezone
 
-setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统时区，使用callback异步回调。
 
@@ -246,6 +248,10 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 **系统能力：** SystemCapability.MiscServices.Time
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -266,6 +272,7 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -282,10 +289,28 @@ try {
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+impoer { BusinessError } from '@ohos.base';
+
+try {
+  systemDateTime.setTimezone('Asia/Jakarta', (error: BusinessError | null) => {
+    if (error) {
+      console.error(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+      return;
+    }
+    console.error(`Succeeded in setting timezone.`);
+  });
+} catch(error: BusinessError) {
+  console.error(`setTimezone error: ${error.message}, code: ${error.code}`);
+}
+```
 
 ## systemDateTime.setTimezone
 
-setTimezone(timezone: string): Promise&lt;void&gt;
+ArkTs-Dyn: setTimezone(timezone: string): Promise&lt;void&gt;
+
+ArkTS-Sta: setTimezone(timezone: string): Promise&lt;void&gt;
 
 设置系统时区，使用Promise异步回调。
 
@@ -294,6 +319,10 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.MiscServices.Time
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -319,6 +348,7 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTs-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -334,15 +364,39 @@ try {
 }
 ```
 
+ArkTs-Sta示例：
+```ts
+impoer { BusinessError } from '@ohos.base';
+
+try {
+  await systemDateTime.setTimezone('Europe/Moscow');
+  systemDateTime.getTimezone((error: BusinessError | null, data: String | undefined) => {
+    if (error) {
+      console.error(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+      reutrn;
+    }
+    console.error(`Succeeded in getting timezone : ${data}`);
+  });
+} catch(error: BusinessError) {
+  console.error(`setTimezone error: ${error.message}, code: ${error.code}`);
+}
+```
+
 ## systemDateTime.updateNtpTime<sup>14+</sup>
 
-updateNtpTime(): Promise&lt;void&gt;
+ArkTs-Dyn: updateNtpTime(): Promise&lt;void&gt;
+
+ArkTS-Sta: updateNtpTime(): Promise&lt;void&gt;
 
 使用异步方式从NTP服务器更新NTP时间。该方法一小时内只会从NTP服务器更新一次NTP时间。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 14
+
+**ArkTS-Sta起始版本:** 22
 
 **返回值：**
 
@@ -361,6 +415,7 @@ updateNtpTime(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -375,10 +430,26 @@ try {
   console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+  systemDateTime.updateNtpTime().then(() => {
+    console.info(`Succeeded in update ntp time.`);
+  }).catch((error) => {
+    console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(error: BusinessError) {
+  console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
+}
+```
 
 ## systemDateTime.getNtpTime<sup>14+</sup>
 
-getNtpTime(): number
+ArkTs-Dyn: getNtpTime(): number
+
+ArkTS-Sta: getNtpTime(): long
 
 使用同步方式获取基于上次更新的NTP时间所计算出的真实时间。
 
@@ -386,11 +457,15 @@ getNtpTime(): number
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 14
+
+**ArkTS-Sta起始版本:** 22
+
 **返回值**：
 
 | 类型   | 说明                             |
 | ------ |--------------------------------|
-| number | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
 
 **错误码：**
 
@@ -403,6 +478,7 @@ getNtpTime(): number
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -410,6 +486,16 @@ try {
   let time = systemDateTime.getNtpTime();
 } catch(e) {
   let error = e as BusinessError;
+  console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+  let time: long = systemDateTime.getNtpTime();
+} catch(error: BusinessError) {
   console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
 }
 ```
