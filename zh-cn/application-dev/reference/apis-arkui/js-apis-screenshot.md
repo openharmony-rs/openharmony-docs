@@ -10,6 +10,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -67,6 +69,10 @@ pick(): Promise&lt;PickInfo&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
@@ -86,6 +92,8 @@ pick(): Promise&lt;PickInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -103,6 +111,26 @@ try {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = screenshot.pick();
+  promise.then((pickInfo: screenshot.PickInfo) => {
+    console.info('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
+    console.info('pick Rect: ' + pickInfo.pickRect);
+    pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
+  }).catch((err: Error) => {
+    console.error(`Failed to pick. Code: ' + Code: ${err?.code}, message: ${err?.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to pick Code: ' + Code: ${error.code}, message: ${error.message}`);
+};
+```
+
 ## screenshot.capture<sup>14+</sup>
 
 capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
@@ -113,6 +141,10 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 在API version 21之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
@@ -143,6 +175,8 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -161,3 +195,27 @@ try {
 } catch (exception) {
   console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
 };
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+let captureOption: screenshot.CaptureOption = {
+  "displayId": 0
+};
+try {
+  let promise = screenshot.capture(captureOption);
+  promise.then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    pixelMap.release(); // PixelMap使用完后及时释放内存
+  }).catch((err: Error) => {
+    console.error(`Failed to save screenshot. Code: ${err?.code}, message: ${err?.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to save screenshot. Code: ${error.code}, message: ${error.message}`);
+};
+```

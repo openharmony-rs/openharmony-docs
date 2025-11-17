@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 本模块接口为系统接口。
@@ -30,6 +32,10 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                   |
@@ -45,7 +51,9 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 1400001 | Invalid display or screen. |
 
-**示例：**
+示例：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -64,6 +72,26 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | undefined = undefined;
+screen.getAllScreens((err: BusinessError | null, data: Array<screen.Screen> | undefined) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to get all screens. Code:${err?.code}, message is ${err?.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+  let length: int = data?.length ?? 0;
+  if (length > 0) {
+    screenClass = data![0];
+  }
+});
+```
+
 ## screen.getAllScreens
 
 getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
@@ -73,6 +101,10 @@ getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：** 
 
@@ -91,6 +123,8 @@ getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -103,6 +137,23 @@ promise.then((data: Array<screen.Screen>) => {
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get all screens. Code: ${err.code}, message : ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+promise.then((data: Array<screen.Screen>) => {
+  if(data.length > 0){
+  	screenClass = data[0];
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+  console.error(`Failed to get all screens. Code: ${err?.code}, message : ${err?.message}`);
 });
 ```
 
@@ -179,7 +230,9 @@ screen.off('connect');
 
 ## screen.makeMirror
 
-makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;, callback: AsyncCallback&lt;long&gt;): void
 
 将屏幕设置为镜像模式，使用callback异步回调。
 
@@ -187,13 +240,17 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncC
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                        | 必填 | 说明                 |
 | ------------ | --------------------------- | ---- |--------------------|
-| mainScreen   | number                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
-| callback     | AsyncCallback&lt;number&gt; | 是   | 回调函数。返回镜像屏幕的群组id，其中id为整数。  |
+| mainScreen   | ArkTs-Dyn: number <br> ArkTs-Sta: long                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
+| callback     | ArkTs-Dyn: AsyncCallback&lt;number&gt; <br> ArkTs-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。返回镜像屏幕的群组id，其中id为整数。  |
 
 **错误码：**
 
@@ -206,6 +263,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncC
 | 1400001 | Invalid display or screen. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -222,9 +281,28 @@ screen.makeMirror(mainScreenId, mirrorScreenIds, (err: BusinessError, data: numb
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mainScreenId: long = 0;
+let mirrorScreenIds: Array<long> = [1, 2, 3];
+screen.makeMirror(mainScreenId, mirrorScreenIds, (err: BusinessError | null, data: long | undefined) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to set screen mirroring. Code:${err?.code}, message is ${err?.message}`);
+    return;
+  }
+  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
+});
+```
+
 ## screen.makeMirror
 
-makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;number&gt;
+ArkTS-Dyn: makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;number&gt;
+
+ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;): Promise&lt;long&gt;
 
 将屏幕设置为镜像模式，使用Promise异步回调。
 
@@ -232,18 +310,22 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;numb
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | number              | 是   | 主屏幕ID，该参数仅支持整数输入。  |
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合。其中ID应为整数。 |
+| mainScreen   | ArkTs-Dyn: number <br> ArkTs-Sta: long              | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为整数。 |
 
 **返回值：**
 
 | 类型                  | 说明                              |
 | --------------------- |---------------------------------|
-| Promise&lt;number&gt; | Promise对象。返回镜像屏幕的群组id，其中id为整数。 |
+| ArkTs-Dyn: Promise&lt;number&gt; <br> ArkTs-Sta: Promise&lt;long&gt; | Promise对象。返回镜像屏幕的群组id，其中id为整数。 |
 
 **错误码：**
 
@@ -257,6 +339,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;numb
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -269,9 +353,25 @@ screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mainScreenId: long = 0;
+let mirrorScreenIds: Array<long> = [1, 2, 3];
+screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: long) => {
+  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
+}).catch((err: Error) => {
+  console.error(`Failed to set screen mirroring. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ## screen.stopMirror<sup>10+</sup>
 
-stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: stopMirror(mirrorScreen:Array&lt;long&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 停止屏幕的镜像模式，使用callback异步回调。
 
@@ -279,11 +379,15 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -297,6 +401,8 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 | 1400001 | Invalid display or screen. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -312,9 +418,27 @@ screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mirrorScreenIds: Array<long> = [1, 2, 3];
+screen.stopMirror(mirrorScreenIds, (err: BusinessError | null) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to stop mirror screens. Code:${err?.code}, message is ${err?.message}`);
+    return;
+  }
+  console.info('Succeeded in stopping mirror screens.');
+});
+```
+
 ## screen.stopMirror<sup>10+</sup>
 
-stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
+ArkTS-Dyn: stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
+
+ArkTS-Sta: stopMirror(mirrorScreen:Array&lt;long&gt;): Promise&lt;void&gt;
 
 停止屏幕的镜像模式，使用Promise异步回调。
 
@@ -322,11 +446,15 @@ stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------------ | ------------------- | --- |--------------------|
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
 
 **返回值：**
 
@@ -346,6 +474,8 @@ stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -357,9 +487,22 @@ screen.stopMirror(mirrorScreenIds).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let mirrorScreenIds: Array<long> = [1, 2, 3];
+screen.stopMirror(mirrorScreenIds).then(() => {
+  console.info('Succeeded in stopping mirror screens.');
+}).catch((err: Error) => {
+  console.error(`Failed to stop mirror screens.Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ## screen.makeUnique<sup>18+</sup>
 
-makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn: makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta: makeUnique(uniqueScreen: Array&lt;long&gt;): Promise&lt;Array&lt;long&gt;&gt;
 
 将屏幕设置为异源模式，使用Promise异步回调。
 
@@ -367,17 +510,21 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| uniqueScreen  | Array&lt;number&gt; | 是   | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
+| uniqueScreen  | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象。返回异源屏幕的displayId集合，其中id为大于0的整数。|
+| ArkTs-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br> ArkTs-Sta: Promise&lt;Array&lt;long&gt;&gt; | Promise对象。返回异源屏幕的displayId集合，其中id为大于0的整数。|
 
 **错误码：**
 
@@ -393,6 +540,8 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -403,6 +552,21 @@ screen.makeUnique(uniqueScreenIds).then((data: Array<number>) => {
   console.error(`Failed to make unique screens. Code:${err.code}, message is ${err.message}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uniqueScreenIds: Array<long> = [1001, 1002, 1003];
+screen.makeUnique(uniqueScreenIds).then((data: Array<long>) => {
+  console.info('Succeeded in making unique screens.');
+}).catch((err: BusinessError) => {
+  let error = exception as BusinessError;
+  console.error(`Failed to make unique screens. Code:${error.code}, message is ${error.message}`);
+});
+```
+
 
 ## screen.createVirtualScreen
 
@@ -415,6 +579,10 @@ createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback&lt;Scre
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **需要权限**：ohos.permission.CAPTURE_SCREEN
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -435,6 +603,8 @@ createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback&lt;Scre
 | 1400001 | Invalid display or screen. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -466,6 +636,26 @@ screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => 
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let option : screen.VirtualScreenOption = { 
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+screen.createVirtualScreen(option, (err: BusinessError | null, data) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+    return;
+  }
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+});
+```
+
 ## screen.createVirtualScreen
 
 createVirtualScreen(options:VirtualScreenOption): Promise&lt;Screen&gt;
@@ -477,6 +667,10 @@ createVirtualScreen(options:VirtualScreenOption): Promise&lt;Screen&gt;
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **需要权限**：ohos.permission.CAPTURE_SCREEN
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -503,6 +697,8 @@ createVirtualScreen(options:VirtualScreenOption): Promise&lt;Screen&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -526,14 +722,36 @@ let option : VirtualScreenOption = {
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   screenClass = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+}).catch((err: Error) => {
   console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let screenClass: screen.Screen | null = null;
+
+let option : screen.VirtualScreenOption = { 
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  screenClass = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
 });
 ```
 
 ## screen.destroyVirtualScreen
 
-destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: destroyVirtualScreen(screenId:long, callback: AsyncCallback&lt;void&gt;): void
 
 销毁虚拟屏幕，使用callback异步回调。
 
@@ -541,11 +759,15 @@ destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId | number                    | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
+| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long             | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当销毁虚拟屏幕成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -559,6 +781,8 @@ destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
 | 1400002 | Unauthorized operation. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -574,9 +798,27 @@ screen.destroyVirtualScreen(screenId, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: long = 1;
+screen.destroyVirtualScreen(screenId, (err: BusinessError | null) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to destroy the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+    return;
+  }
+  console.info('Succeeded in destroying the virtual screen.');
+});
+```
+
 ## screen.destroyVirtualScreen
 
-destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
+ArkTS-Dyn: destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
+
+ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 销毁虚拟屏幕，使用Promise异步回调。
 
@@ -584,11 +826,15 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明       |
 | -------- | ------ | ---- | ---------- |
-| screenId | number | 是   | 屏幕的id，该参数仅支持整数输入。 |
+| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -608,6 +854,8 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -619,9 +867,24 @@ screen.destroyVirtualScreen(screenId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: long = 1;
+screen.destroyVirtualScreen(screenId).then(() => {
+  console.info('Succeeded in destroying the virtual screen.');
+}).catch((err: Error) => {
+  console.error(`Failed to destroy the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ## screen.setVirtualScreenSurface
 
-setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置虚拟屏幕的surface，使用callback异步回调。
 
@@ -631,11 +894,15 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 
 **需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId  | number                    | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
+| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
 | surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义。                                                |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
@@ -652,6 +919,8 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -667,9 +936,28 @@ screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: long = 1;
+let surfaceId: string = '2048';
+screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError | null) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to set the surface for the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+    return;
+  }
+  console.info('Succeeded in setting the surface for the virtual screen.');
+});
+```
+
 ## screen.setVirtualScreenSurface
 
-setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
+ArkTS-Dyn: setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
+
+ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt;void&gt;
 
 设置虚拟屏幕的surface，使用Promise异步回调。
 
@@ -679,11 +967,15 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | number | 是   | 屏幕的id，该参数仅支持整数输入。    |
+| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。    |
 | surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义。 |
 
 **返回值：**
@@ -705,6 +997,8 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -717,9 +1011,25 @@ screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: long = 1;
+let surfaceId: string = '2048';
+screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+  console.info('Succeeded in setting the surface for the virtual screen.');
+}).catch((err: Error) => {
+  console.error(`Failed to set the surface for the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ## screen.setScreenPrivacyMaskImage<sup>19+</sup>
 
-setScreenPrivacyMaskImage(screenId:number, image?: image.PixelMap): Promise&lt;void&gt;
+ArkTS-Dyn: setScreenPrivacyMaskImage(screenId:number, image?: image.PixelMap): Promise&lt;void&gt;
+
+ArkTS-Sta: setScreenPrivacyMaskImage(screenId:long, image?: image.PixelMap): Promise&lt;void&gt;
 
 设置屏幕的隐私蒙版图片，使用Promise异步回调。
 
@@ -727,11 +1037,15 @@ setScreenPrivacyMaskImage(screenId:number, image?: image.PixelMap): Promise&lt;v
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | number | 是   | 屏幕的id，该参数仅支持正整数输入。    |
+| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持正整数输入。    |
 | image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 屏幕的隐私蒙版图片，不传入则使用默认隐私蒙版图片。 |
 
 **返回值：**
@@ -754,6 +1068,8 @@ setScreenPrivacyMaskImage(screenId:number, image?: image.PixelMap): Promise&lt;v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -773,6 +1089,27 @@ image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
 })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+  console.info('Succeeded in creating pixelmap.');
+  let screenId: long = 1;
+  screen.setScreenPrivacyMaskImage(screenId, pixelMap).then(() => {
+    console.info('Succeeded in setting the privacy mask image for the screen.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the privacy mask image for the screen. Code:${err?.code}, message is ${err?.message}`);
+  });
+}).catch((error: Error) => {
+  console.error(`Failed to create pixelmap. code is ${error?.code}, message is ${error?.message}`);
+})
+```
+
 ## screen.isScreenRotationLocked
 
 isScreenRotationLocked(): Promise&lt;boolean&gt;
@@ -782,6 +1119,10 @@ isScreenRotationLocked(): Promise&lt;boolean&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -799,6 +1140,8 @@ isScreenRotationLocked(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -806,6 +1149,18 @@ screen.isScreenRotationLocked().then((isLocked: boolean) => {
   console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screen.isScreenRotationLocked().then((isLocked: boolean) => {
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
+}).catch((err: Error) => {
+  console.error(`Failed to get the screen rotation lock status. Code:${err?.code}, message is ${err?.message}`);
 });
 ```
 
@@ -818,6 +1173,10 @@ isScreenRotationLocked(callback: AsyncCallback&lt;boolean&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -835,6 +1194,8 @@ isScreenRotationLocked(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -842,6 +1203,21 @@ screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screen.isScreenRotationLocked((err: BusinessError | null, isLocked: boolean | undefined) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to get the screen rotation lock status. Code:${err?.code}, message is ${err?.message}`);
     return;
   }
   console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
@@ -857,6 +1233,10 @@ setScreenRotationLocked(isLocked: boolean): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 仅在支持跟随sensor旋转的设备中生效，其他设备调用不生效不报错。
 
@@ -883,6 +1263,8 @@ setScreenRotationLocked(isLocked: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -891,6 +1273,19 @@ screen.setScreenRotationLocked(isLocked).then(() => {
   console.info('Succeeded in unlocking auto rotate');
 }).catch((err: BusinessError) => {
   console.error(`Failed to unlock auto rotate. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isLocked: boolean = false;
+screen.setScreenRotationLocked(isLocked).then(() => {
+  console.info('Succeeded in unlocking auto rotate');
+}).catch((err: Error) => {
+  console.error(`Failed to unlock auto rotate. Code:${err?.code}, message is ${err?.message}`);
 });
 ```
 
@@ -903,6 +1298,10 @@ setScreenRotationLocked(isLocked: boolean, callback: AsyncCallback&lt;void&gt;):
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 仅在支持跟随sensor旋转的设备中生效，其他设备调用不生效不报错。
 
@@ -924,6 +1323,8 @@ setScreenRotationLocked(isLocked: boolean, callback: AsyncCallback&lt;void&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -938,9 +1339,27 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isLocked: boolean = false;
+screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to unlock auto rotate. Code:${err?.code}, message is ${err?.message}`);
+    return;
+  }
+  console.info('Succeeded in unlocking auto rotate.');
+});
+```
+
 ## screen.setMultiScreenMode<sup>13+</sup>
 
-setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
+ArkTS-Dyn: setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
+
+ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
 
 设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。
 
@@ -948,12 +1367,16 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | number           | 是  | 主屏的id，该参数应为正整数。 |
-| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为正整数。|
+| primaryScreenId   | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 主屏的id，该参数应为正整数。 |
+| secondaryScreenId | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 扩展屏幕的id，该参数应为正整数。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**
@@ -974,6 +1397,8 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -987,6 +1412,21 @@ screen.setMultiScreenMode(primaryScreenId, secondaryScreenId, screenMode).then((
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let primaryScreenId: long = 0;
+let secondaryScreenId: long = 12;
+let screenMode: screen.MultiScreenMode = screen.MultiScreenMode.SCREEN_MIRROR;
+screen.setMultiScreenMode(primaryScreenId, secondaryScreenId, screenMode).then(() => {
+  console.info('Succeeded in setting multi screen mode. Data: ');
+}).catch((err: Error) => {
+  console.error(`Failed to set multi screen mode. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ## screen.setMultiScreenRelativePosition<sup>13+</sup>
 
 setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, secondaryScreenOptions: MultiScreenPositionOptions): Promise&lt;void&gt;
@@ -996,6 +1436,10 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1022,6 +1466,8 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1044,9 +1490,33 @@ screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions)
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let mainScreenOptions: screen.MultiScreenPositionOptions = {
+  id : 0,
+  startX : 0,
+  startY : 0
+};
+
+let secondaryScreenOptions: screen.MultiScreenPositionOptions = {
+  id : 12,
+  startX : 1000,
+  startY : 1000
+};
+
+screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions).then(() => {
+  console.info('Succeeded in setting multi screen relative position.');
+}).catch((err: Error) => {
+  console.error(`Failed to set multi screen relative position. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ## screen.makeMirrorWithRegion<sup>19+</sup>
 
-makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainScreenRegion:Rect): Promise&lt;number&gt;
+ArkTS-Dyn: makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainScreenRegion:Rect): Promise&lt;number&gt;
+
+ArkTS-Sta: makeMirrorWithRegion(mainScreen:long, mirrorScreen:Array&lt;long&gt;, mainScreenRegion:Rect): Promise&lt;long&gt;
 
 将屏幕的某一矩形区域设置为镜像模式，使用Promise异步回调。调用该接口后，不建议再进行屏幕的旋转/折叠，否则可能导致镜像内容异常。
 
@@ -1054,12 +1524,16 @@ makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainSc
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | number              | 是   | 主屏幕ID，该参数仅支持正整数输入。  |
-| mirrorScreen | Array&lt;number&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。  |
+| mainScreen   | ArkTs-Dyn: number <br> ArkTs-Sta: long              | 是   | 主屏幕ID，该参数仅支持正整数输入。  |
+| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。  |
 | mainScreenRegion | [Rect](#rect19) | 是   | 主屏创建镜像的矩形区域。         |
 
 **返回值：**
@@ -1079,6 +1553,8 @@ makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainSc
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1097,6 +1573,26 @@ screen.makeMirrorWithRegion(mainScreenId, mirrorScreenIds, mainScreenRegion).the
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mainScreenId: long = 0;
+let mirrorScreenIds: Array<long> = [1, 2, 3];
+let mainScreenRegion: screen.Rect = {
+  left : 0,
+  top : 0,
+  width : 1920,
+  height : 1080
+};
+screen.makeMirrorWithRegion(mainScreenId, mirrorScreenIds, mainScreenRegion).then((data: long) => {
+  console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
+}).catch((err: Error) => {
+  console.error(`Failed to set screen area mirroring. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ## screen.makeExpand<sup>(deprecated)</sup>
 
 makeExpand(options:Array&lt;ExpandOption&gt;, callback: AsyncCallback&lt;number&gt;): void
@@ -1107,9 +1603,13 @@ makeExpand(options:Array&lt;ExpandOption&gt;, callback: AsyncCallback&lt;number&
 > 
 > 从API version 9开始支持，从API version 20开始废弃。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1163,9 +1663,13 @@ makeExpand(options:Array&lt;ExpandOption&gt;): Promise&lt;number&gt;
 > 
 > 从API version 9开始支持，从API version 20开始废弃。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1220,7 +1724,11 @@ stopExpand(expandScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 > 
 > 从API version 10开始支持，从API version 20开始废弃。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1267,7 +1775,11 @@ stopExpand(expandScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 > 
 > 从API version 10开始支持，从API version 20开始废弃。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1397,6 +1909,10 @@ setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                        | 必填 | 说明                                                         |
@@ -1415,6 +1931,8 @@ setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): v
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1451,6 +1969,35 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let option : screen.VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  screenClass.setOrientation(screen.Orientation.VERTICAL, (err: BusinessError | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set the vertical orientation. Code:${err?.code}, message is ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the vertical orientation.');
+  });
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ### setOrientation
 
 setOrientation(orientation: Orientation): Promise&lt;void&gt;
@@ -1460,6 +2007,10 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1484,6 +2035,8 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1518,9 +2071,38 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let option : screen.VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL);
+  promise.then(() => {
+    console.info('Succeeded in setting the vertical orientation.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the vertical orientation. Code:${err?.code}, message is ${err?.message}`);
+  });
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ### setScreenActiveMode
 
-setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setScreenActiveMode(modeIndex: long, callback: AsyncCallback&lt;void&gt;): void
 
 设置屏幕当前显示模式，使用callback异步回调。
 
@@ -1528,11 +2110,15 @@ setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): voi
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| modeIndex | number                    | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中[ScreenModeInfo](#screenmodeinfo)属性的模式id。 |
+| modeIndex | ArkTs-Dyn: number <br> ArkTs-Sta: long      | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中[ScreenModeInfo](#screenmodeinfo)属性的模式id。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置屏幕当前显示模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1546,6 +2132,8 @@ setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): voi
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1583,9 +2171,42 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let option : screen.VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  let modeIndex: long = 0;
+  screenClass.setScreenActiveMode(modeIndex, (err: BusinessError | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set screen active mode 0. Code:${err?.code}, message is ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the screen active mode 0.');
+  });
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ### setScreenActiveMode
 
-setScreenActiveMode(modeIndex: number): Promise&lt;void&gt;
+ArkTS-Dyn: setScreenActiveMode(modeIndex: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setScreenActiveMode(modeIndex: long): Promise&lt;void&gt;
+
 
 设置屏幕当前显示模式，使用Promise异步回调。
 
@@ -1593,11 +2214,15 @@ setScreenActiveMode(modeIndex: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明       |
 | --------- | ------ | ---- | ---------- |
-| modeIndex | number | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。 |
+| modeIndex | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -1616,6 +2241,8 @@ setScreenActiveMode(modeIndex: number): Promise&lt;void&gt;
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1651,9 +2278,39 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let option : screen.VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  let modeIndex: number = 0;
+  let promise: Promise<void> = screenClass.setScreenActiveMode(modeIndex);
+  promise.then(() => {
+    console.info('Succeeded in setting screen active mode 0.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set screen active mode 0.Code:${err?.code}, message is ${err?.message}`);
+  });
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ### setDensityDpi
 
-setDensityDpi(densityDpi: number, callback: AsyncCallback&lt;void&gt;): void;
+ArkTS-Dyn: setDensityDpi(densityDpi: number, callback: AsyncCallback&lt;void&gt;): void;
+
+ArkTS-Sta: setDensityDpi(densityDpi: double, callback: AsyncCallback&lt;void&gt;): void;
 
 设置屏幕的像素密度，使用callback异步回调。
 
@@ -1661,11 +2318,15 @@ setDensityDpi(densityDpi: number, callback: AsyncCallback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                      | 必填 | 说明                                       |
 | ---------- | ------------------------- | ---- |------------------------------------------|
-| densityDpi | number                    | 是   | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。       |
+| densityDpi | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。       |
 | callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置屏幕的像素密度成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1679,6 +2340,8 @@ setDensityDpi(densityDpi: number, callback: AsyncCallback&lt;void&gt;): void;
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1716,9 +2379,42 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let densityDpi: double = 320;
+
+let option : screen.VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  screenClass.setDensityDpi(densityDpi, (err: BusinessError | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set the pixel density of the screen to 320. Code:${err?.code}, message is ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the density dpi.');
+  });
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ### setDensityDpi
 
-setDensityDpi(densityDpi: number): Promise&lt;void&gt;
+ArkTS-Dyn: setDensityDpi(densityDpi: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setDensityDpi(densityDpi: double): Promise&lt;void&gt;
 
 设置屏幕的像素密度，使用Promise异步回调。
 
@@ -1726,11 +2422,15 @@ setDensityDpi(densityDpi: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                 |
 | ---------- | ------ | ---- |------------------------------------|
-| densityDpi | number | 是   | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。 |
+| densityDpi | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 像素密度。支持的输入范围为[80, 640]，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -1748,7 +2448,7 @@ setDensityDpi(densityDpi: number): Promise&lt;void&gt;
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 1400003 | This display manager service works abnormally. |
 
-**示例：**
+**ArkTS-Dyn: 示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1780,6 +2480,34 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
   });
 }).catch((err: BusinessError) => {
   console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+**ArkTS-Sta: 示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let densityDpi: double = 320;
+
+let option : screen.VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  let promise: Promise<void> = screenClass.setDensityDpi(densityDpi);
+  promise.then(() => {
+    console.info('Succeeded in setting the pixel density of the screen to 320.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the pixel density of the screen to 320. Code:${err?.code}, message is ${err?.message}`);
+  });
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code}, message is ${err?.message}`);
 });
 ```
 

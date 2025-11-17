@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -254,7 +256,9 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 ## display.getDisplayByIdSync<sup>12+</sup>
 
-getDisplayByIdSync(displayId: number): Display
+ArkTS-Dyn: getDisplayByIdSync(displayId: number): Display
+
+ArkTS-Sta: getDisplayByIdSync(displayId: long): Display
 
 根据displayId获取对应的Display对象。
 
@@ -262,11 +266,15 @@ getDisplayByIdSync(displayId: number): Display
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | number                    | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
+| displayId     | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过[WindowProperties](arkts-apis-window-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
 
 **返回值：**
 
@@ -285,6 +293,8 @@ getDisplayByIdSync(displayId: number): Display
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -299,6 +309,23 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+
+try {
+  // 可以通过WindowProperties的displayId属性获取到准确的displayId作为入参
+  let displayId = 0; 
+  let displayClass = display.getDisplayByIdSync(displayId);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get display. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## display.getBrightnessInfo<sup>22+</sup>
 
 getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
@@ -309,11 +336,15 @@ getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId     | number             | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。|
+| displayId     | ArkTs-Dyn: number <br> ArkTs-Sta: long             | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。|
 
 **返回值：**
 
@@ -333,6 +364,8 @@ getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts 
 import { display } from '@kit.ArkUI';
 
@@ -340,6 +373,20 @@ try {
   let brightNessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
 } catch (error) {
+  console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+try {
+  let brightNessInfo = display.getBrightnessInfo(0);
+  console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
+} catch (exception) {
+  let error = exception as BusinessError;
   console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -353,6 +400,10 @@ getAllDisplayPhysicalResolution(): Promise&lt;Array&lt;DisplayPhysicalResolution
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -370,12 +421,14 @@ getAllDisplayPhysicalResolution(): Promise&lt;Array&lt;DisplayPhysicalResolution
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 
 let promise = display.getAllDisplayPhysicalResolution();
-promise.then((resolutionObjects) => {
+promise.then((resolutionObjects: Array<display.DisplayPhysicalResolution>) => {
   console.info('Obtaining physical resolution length: ' + resolutionObjects.length);
   for (let i = 0; i < resolutionObjects.length; i++) {
      console.info(`resolutionObjects[${i}].foldDisplayMode: ${resolutionObjects[i].foldDisplayMode}`);
@@ -384,6 +437,25 @@ promise.then((resolutionObjects) => {
   }
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain physical resolution. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let promise = display.getAllDisplayPhysicalResolution();
+promise.then((resolutionObjects: Array<display.DisplayPhysicalResolution>) => {
+  console.info('Obtaining physical resolution length: ' + resolutionObjects.length);
+  for (let i = 0; i < resolutionObjects.length; i++) {
+     console.info(`resolutionObjects[${i}].foldDisplayMode: ${resolutionObjects[i].foldDisplayMode}`);
+     console.info(`resolutionObjects[${i}].physicalWidth: ${resolutionObjects[i].physicalWidth}`); 
+     console.info(`resolutionObjects[${i}].physicalHeight: ${resolutionObjects[i].physicalHeight}`); 
+  }
+}).catch((err: Error) => {
+  console.error(`Failed to obtain physical resolution. Code: ${err?.code}, message: ${err?.message}`);
 });
 ```
 
@@ -396,6 +468,10 @@ getDefaultDisplaySync(): Display
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -413,6 +489,8 @@ getDefaultDisplaySync(): Display
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -424,6 +502,21 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+try {
+  let displayClass = display.getDefaultDisplaySync();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get default display. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
 ## display.getPrimaryDisplaySync<sup>14+</sup>
 
 getPrimaryDisplaySync(): Display
@@ -433,6 +526,10 @@ getPrimaryDisplaySync(): Display
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -458,6 +555,7 @@ let displayClass: display.Display | null = null;
 displayClass = display.getPrimaryDisplaySync();
 ```
 
+
 ## display.getAllDisplays<sup>9+</sup>
 
 getAllDisplays(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
@@ -467,6 +565,10 @@ getAllDisplays(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -484,6 +586,8 @@ getAllDisplays(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
@@ -500,6 +604,21 @@ display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+display.getAllDisplays((err: BusinessError | null, data: Array<display.Display> | undefined) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to obtain all the display objects. Code: ${err?.code}, message: ${err?.message}`);
+    return;
+  }
+  console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
+});
+```
+
 ## display.getAllDisplays<sup>9+</sup>
 
 getAllDisplays(): Promise&lt;Array&lt;Display&gt;&gt;
@@ -509,6 +628,10 @@ getAllDisplays(): Promise&lt;Array&lt;Display&gt;&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -526,6 +649,8 @@ getAllDisplays(): Promise&lt;Array&lt;Display&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
@@ -537,6 +662,22 @@ promise.then((data: Array<display.Display>) => {
   console.info(`Succeeded in obtaining all the display objects. Data:  ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let displayClass: Array<display.Display> =[];
+let promise: Promise<Array<display.Display>> = display.getAllDisplays();
+promise.then((data: Array<display.Display>) => {
+  displayClass = data;
+  console.info(`Succeeded in obtaining all the display objects. Data:  ${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+  console.error(`Failed to obtain all the display objects. Code: ${err?.code}, message: ${err?.message}`);
 });
 ```
 
@@ -625,6 +766,10 @@ isFoldable(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -657,6 +802,10 @@ getFoldStatus(): FoldStatus
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -688,6 +837,10 @@ getFoldDisplayMode(): FoldDisplayMode
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 该接口在2in1设备、非折叠设备中返回0，在其他设备中可正常调用。
 
@@ -722,6 +875,10 @@ getCurrentFoldCreaseRegion(): FoldCreaseRegion
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 该接口在折叠设备中可正常调用，在其他设备中返回undefined。
 
@@ -1078,6 +1235,10 @@ isCaptured(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1192,13 +1353,19 @@ display.off('foldDisplayModeChange', callback);
 
 ## display.createVirtualScreen<sup>16+</sup>
 
-createVirtualScreen(config:VirtualScreenConfig): Promise&lt;number&gt;
+ArkTS-Dyn: createVirtualScreen(config:VirtualScreenConfig): Promise&lt;number&gt;
+
+ArkTS-Sta: createVirtualScreen(config:VirtualScreenConfig): Promise&lt;long&gt;
 
 创建虚拟屏幕，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1210,7 +1377,7 @@ createVirtualScreen(config:VirtualScreenConfig): Promise&lt;number&gt;
 
 | 类型                             | 说明                                  |
 | -------------------------------- | ------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回创建的虚拟屏幕的ScreenId。 |
+| ArkTs-Dyn: Promise&lt;number&gt; <br> ArkTs-Sta: Promise&lt;long&gt; | Promise对象。返回创建的虚拟屏幕的ScreenId。 |
 
 **错误码：**
 
@@ -1224,6 +1391,8 @@ createVirtualScreen(config:VirtualScreenConfig): Promise&lt;number&gt;
 | 1400001 | Invalid display or screen. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1251,9 +1420,31 @@ display.createVirtualScreen(config).then((screenId: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let config : display.VirtualScreenConfig = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: ''
+};
+
+display.createVirtualScreen(config).then((screenId: long) => {
+  console.info(`Succeeded in creating the virtual screen.ScreenId : ${screenId}`);
+}).catch((err: Error) => {
+  console.error(`Failed to create the virtual screen. Code:${err?.code},message is ${err?.message}`);
+});
+```
+
 ## display.destroyVirtualScreen<sup>16+</sup>
 
-destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
+ArkTS-Dyn: destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
+
+ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 销毁虚拟屏幕，使用Promise异步回调。
 
@@ -1261,11 +1452,15 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明       |
 | -------- | ------ | ---- | ---------- |
-| screenId | number | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
+| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -1287,6 +1482,8 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1298,9 +1495,23 @@ display.destroyVirtualScreen(screenId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+
+let screenId: long = 1;
+display.destroyVirtualScreen(screenId).then(() => {
+  console.info('Succeeded in destroying the virtual screen.');
+}).catch((err: Error) => {
+  console.error(`Failed to destroy the virtual screen.Code:${err?.code},message is ${err?.message}`);
+});
+```
+
 ## display.setVirtualScreenSurface<sup>16+</sup>
 
-setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
+ArkTS-Dyn: setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
+
+ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt;void&gt;
 
 设置虚拟屏幕的surfaceId，使用Promise异步回调。
 
@@ -1308,11 +1519,15 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | number | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。    |
+| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。    |
 | surfaceId | string | 是   | 代表虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 
 **返回值：**
@@ -1335,6 +1550,8 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1347,9 +1564,25 @@ display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: long = 1;
+let surfaceId: string = '2048';
+display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+  console.info('Succeeded in setting the surface for the virtual screen.');
+}).catch((err: Error) => {
+  console.error(`Failed to set the surface for the virtual screen. Code:${err?.code},message is ${err?.message}`);
+});
+```
+
 ## display.makeUnique<sup>16+</sup>
 
-makeUnique(screenId:number): Promise&lt;void&gt;
+ArkTS-Dyn: makeUnique(screenId:number): Promise&lt;void&gt;
+
+ArkTS-Sta: makeUnique(screenId:long): Promise&lt;void&gt;
 
 将屏幕设置为异源模式，使用Promise异步回调。
 
@@ -1357,11 +1590,15 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | number | 是   | 要设置成异源模式的屏幕ID。其中id应为大于0的整数，否则返回401错误码。 |
+| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 要设置成异源模式的屏幕ID。其中id应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
@@ -1383,6 +1620,8 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1391,6 +1630,17 @@ display.makeUnique(screenId).then(() => {
   console.info('Succeeded in making unique screens.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to make unique screens. Code:${err.code},message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let screenId: long = 0;
+display.makeUnique(screenId).then(() => {
+  console.info('Succeeded in making unique screens.');
+}).catch((err: Error) => {
+  console.error(`Failed to make unique screens. Code:${err?.code},message is ${err?.message}`);
 });
 ```
 
@@ -1403,6 +1653,10 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1428,6 +1682,8 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -1447,9 +1703,33 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+let relativePosition: display.RelativePosition = {
+  displayId: 0,
+  position: {
+    x: 100,
+    y: 200
+  }
+};
+
+try {
+  let position: display.Position = display.convertRelativeToGlobalCoordinate(relativePosition);
+  console.info(`The global coordinate is ${position.x}, ${position.y}`)
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to convert the relative coordinate to the global coordinate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## display.convertGlobalToRelativeCoordinate<sup>20+</sup>
 
-convertGlobalToRelativeCoordinate(position: Position, displayId?: number): RelativePosition
+ArkTS-Dyn: convertGlobalToRelativeCoordinate(position: Position, displayId?: number): RelativePosition
+
+ArkTS-Sta: convertGlobalToRelativeCoordinate(position: Position, displayId?: long): RelativePosition
 
 将主屏左上角为原点的全局坐标转换成displayId指定屏幕左上角为原点的相对坐标。若未传入displayId，默认转换为全局坐标所在屏幕的相对坐标系。若全局坐标不在任何屏幕上，默认转换成主屏的相对坐标。
 
@@ -1457,12 +1737,16 @@ convertGlobalToRelativeCoordinate(position: Position, displayId?: number): Relat
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | position  | [Position](#position20) | 是 | 需要转化为相对坐标的全局坐标。 |
-| displayId | number | 否 | 相对坐标系原点所在的屏幕ID，传递该参数表示以指定屏幕左上角为原点转换相对坐标。不指定则不传参，默认转换成全局坐标所在屏幕的相对坐标，若全局坐标不在任何屏幕上，则默认转换成主屏的相对坐标。 |
+| displayId | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否 | 相对坐标系原点所在的屏幕ID，传递该参数表示以指定屏幕左上角为原点转换相对坐标。不指定则不传参，默认转换成全局坐标所在屏幕的相对坐标，若全局坐标不在任何屏幕上，则默认转换成主屏的相对坐标。 |
 
 **返回值：**
 
@@ -1482,6 +1766,8 @@ convertGlobalToRelativeCoordinate(position: Position, displayId?: number): Relat
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -1498,6 +1784,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { display } from '@kit.ArkUI';
+
+let position: display.Position = {
+    x: 100,
+    y: 200
+};
+
+try {
+  let relPos: display.RelativePosition = display.convertGlobalToRelativeCoordinate(position, 0);
+  console.info(`The relative coordinate is ${relPos.displayId}, ${relPos.position.x}, ${relPos.position.y}`)
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to convert the global coordinate to the relative coordinate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## display.getDefaultDisplay<sup>(deprecated)</sup>
 
 getDefaultDisplay(callback: AsyncCallback&lt;Display&gt;): void
@@ -1508,7 +1812,11 @@ getDefaultDisplay(callback: AsyncCallback&lt;Display&gt;): void
 > 
 > 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1543,7 +1851,11 @@ getDefaultDisplay(): Promise&lt;Display&gt;
 > 
 > 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -1576,7 +1888,11 @@ getAllDisplay(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 > 
 > 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9)。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1673,6 +1989,10 @@ getCutoutInfo(callback: AsyncCallback&lt;CutoutInfo&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                        | 必填 | 说明                                                         |
@@ -1689,6 +2009,8 @@ getCutoutInfo(callback: AsyncCallback&lt;CutoutInfo&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1704,6 +2026,20 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
   console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+
+displayClass.getCutoutInfo().then((data: display.CutoutInfo) => {
+  console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+  console.error(`Failed to get cutoutInfo. Code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 ### getCutoutInfo<sup>9+</sup>
 getCutoutInfo(): Promise&lt;CutoutInfo&gt;
 
@@ -1712,6 +2048,10 @@ getCutoutInfo(): Promise&lt;CutoutInfo&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1729,6 +2069,8 @@ getCutoutInfo(): Promise&lt;CutoutInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1742,6 +2084,21 @@ promise.then((data: display.CutoutInfo) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+let promise: Promise<display.CutoutInfo> = displayClass.getCutoutInfo();
+promise.then((data: display.CutoutInfo) => {
+  console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+  console.error(`Failed to obtain all the display objects. Code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 ### getAvailableArea<sup>12+</sup>
 getAvailableArea(): Promise&lt;Rect&gt;
 
@@ -1750,6 +2107,10 @@ getAvailableArea(): Promise&lt;Rect&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[Display属性](#属性)中的width、height属性获取当前设备屏幕的可用区域。
 
@@ -1770,6 +2131,8 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
@@ -1785,6 +2148,27 @@ try {
   })
 } catch (exception) {
   console.error(`Failed to obtain the default display object. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  let promise = displayClass.getAvailableArea();
+  promise.then((data: display.Rect) => {
+    console.info(`Succeeded get the available area in this display. data: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    console.error(`Failed to get the available area in this display. Code: ${err?.code}, message: ${err?.message}`);
+  })
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to obtain the default display object. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1888,6 +2272,10 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -1905,6 +2293,8 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -1915,5 +2305,21 @@ try {
   console.info(`Succeeded in getting the live crease region. Data: ${JSON.stringify(data)}`);
 } catch (exception) {
   console.error(`Failed to get the live crease region. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  let data: display.FoldCreaseRegion = displayClass.getLiveCreaseRegion();
+  console.info(`Succeeded in getting the live crease region. Data: ${JSON.stringify(data)}`);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get the live crease region. Code: ${error.code}, message: ${error.message}`);
 }
 ```
