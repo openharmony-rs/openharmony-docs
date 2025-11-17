@@ -28,7 +28,7 @@ In addition to the preceding classes, you can also use **AVPlayer** and **SoundP
 
 ## Development Precautions for Background Playback
 
-If you want the application to continue playing in the background, you must develop the audio playback functionality and choose either [accessing AVSession](../avsession/avsession-access-scene.md) or [requesting a continuous task](../../task-management/continuous-task.md) based on your service scenario. The specific rules are as follows:
+If you want the application to continue playing in the background (including the scenario where the screen is off), you must develop the audio playback functionality and choose either [accessing AVSession](../avsession/avsession-access-scene.md) or [requesting a continuous task](../../task-management/continuous-task.md) based on your service scenario. The specific rules are as follows:
 
 - When an application needs to play media types (stream types **STREAM_USAGE_MUSIC**, **STREAM_USAGE_MOVIE**, and **STREAM_USAGE_AUDIOBOOK**) and game types (stream type **STREAM_USAGE_GAME**) in the background, it must access AVSession and request continuous tasks.
 

@@ -978,9 +978,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 audioCapturer.on('audioCapturerChange', (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
-  console.info(`audioCapturerChange id: ${capturerChangeInfo[0].id}`);
-  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo[0].deviceRole}`);
-  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo[0].deviceType}`);
+  console.info(`Succeeded in using on function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
 });
 ```
 
@@ -1016,9 +1014,7 @@ audioCapturer.off('audioCapturerChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let audioCapturerChangeCallback = (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
-  console.info(`audioCapturerChange id: ${capturerChangeInfo[0].id}`);
-  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo[0].deviceRole}`);
-  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo[0].deviceType}`);
+  console.info(`Succeeded in using on or off function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
 };
 
 audioCapturer.on('audioCapturerChange', audioCapturerChangeCallback);
@@ -1262,9 +1258,8 @@ let bufferSize: number = 0;
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let path = context.cacheDir;
-// Ensure that the resource exists in the path.
 let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let readDataCallback = (buffer: ArrayBuffer) => {
   let options: Options = {
     offset: bufferSize,
