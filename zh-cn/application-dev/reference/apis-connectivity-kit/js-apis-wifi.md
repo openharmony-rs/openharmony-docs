@@ -299,8 +299,6 @@ removeUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 移除不可信网络配置，使用Promise异步回调。
 
-- 
-
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -355,11 +353,7 @@ try {
 
 removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&gt;): void
 
-移除不可信网络配置。
-
-- 该接口通过 callback 异步回调返回结果。
-- 仅能移除当前应用通过 addUntrustedConfig 添加的不可信配置，无法操作由其他应用或系统默认添加的配置。
-- 若配置不存在、已被移除或不是“不可信”类型，则回调返回 false，表示操作失败或无影响。
+移除不可信网络配置，使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -410,8 +404,6 @@ try {
 getSignalLevel(rssi: number, band: number): number
 
 查询WLAN信号强度。
-
-- 根据给定的 RSSI 值和频段信息，计算并返回当前 WIFI 信号的等级强度，用于直观评估连接质量。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -716,11 +708,6 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 获取P2P连接信息。使用callback异步回调。
 
-- 该接口用于获取设备当前的Wi-Fi P2P连接状态和相关信息。
-- 当设备成功建立P2P连接后，可以通过此接口获取连接的详细信息。
-- 返回的WifiP2pLinkedInfo对象包含P2P连接的设备信息、网络信息等。
-- 如果设备当前没有P2P连接，返回的信息中相关字段可能为空或默认值。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -754,9 +741,6 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 获取P2P当前组信息。使用Promise异步回调。
 
-- 当设备作为P2P Group Owner或P2P Client加入某个P2P组时，可以通过此接口获取该组的详细信息。
-- 返回的WifiP2pGroupInfo对象包含P2P组的配置信息、设备信息等。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -773,9 +757,6 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
 获取P2P当前组信息。使用callback异步回调。
-
-- 当设备作为P2P Group Owner或P2P Client加入某个P2P组时，可以通过此接口获取该组的详细信息。
-- 返回的WifiP2pGroupInfo对象包含P2P组的配置信息、设备信息等。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
 
@@ -1238,10 +1219,6 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 注册WLAN连接状态改变事件。
 
-- 该接口用于注册WLAN连接状态改变事件的监听器。
-- 当设备的WLAN连接状态发生变化时（例如连接成功、断开连接等），系统会触发该事件，并通过回调函数通知应用。
-- 回调函数接收一个number类型的参数，表示当前的连接状态。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1266,10 +1243,6 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 取消注册WLAN连接状态改变事件。
-
-- 该接口用于取消注册WLAN连接状态改变事件的监听器。
-- 如果之前通过wifi.on('wifiConnectionChange')注册了事件监听器，可以通过此接口取消注册，避免不必要的回调。
-- 可以选择取消指定的回调函数，或者取消所有回调函数。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1303,10 +1276,6 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 注册扫描状态改变事件。
 
-- 该接口用于注册WLAN扫描状态改变事件的监听器。
-- 当设备的WLAN扫描状态发生变化时（例如开始扫描、扫描完成等），系统会触发该事件，并通过回调函数通知应用。
-- 回调函数接收一个number类型的参数，表示当前的扫描状态。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1331,10 +1300,6 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册扫描状态改变事件。
-
-- 该接口用于取消注册WLAN扫描状态改变事件的监听器。
-- 如果之前通过wifi.on('wifiScanStateChange')注册了事件监听器，可以通过此接口取消注册，避免不必要的回调。
-- 可以选择取消指定的回调函数，或者取消所有回调函数。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
