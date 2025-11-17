@@ -25,7 +25,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
 
-查询防火墙状态。
+查询防火墙状态。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_NET_FIREWALL
 
@@ -75,7 +75,7 @@ netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolic
 
 updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
-更新防火墙规则。
+更新防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -152,7 +152,7 @@ netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
 
 removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
 
-删除防火墙规则。
+删除防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -202,7 +202,7 @@ netFirewall.removeNetFirewallRule(100, 1).then(() => {
 
 getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<FirewallRulePage>
 
-按userId获取防火墙规则，需要指定分页查询参数。
+按userId获取防火墙规则，需要指定分页查询参数。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_NET_FIREWALL
 
@@ -257,7 +257,7 @@ netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.Firewa
 
 getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
-通过userId和ruleId获取指定的防火墙规则。
+通过userId和ruleId获取指定的防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_NET_FIREWALL
 
@@ -307,7 +307,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-设置防火墙状态。
+设置防火墙状态。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -361,7 +361,7 @@ netFirewall.setNetFirewallPolicy(100, policy).then(() => {
 
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
-添加防火墙规则。
+添加防火墙规则。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
