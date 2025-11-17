@@ -41,7 +41,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 >
 >2、数据存储路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。
 >
->3、因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同module的拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
+>3、因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同的module拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
 
 - globalConnect：创建或获取存储的数据。
 - remove：删除指定key的存储数据。删除PersistenceV2中不存在的key会报警告。
