@@ -149,72 +149,72 @@ void SyncCallback(int errorCode)
 5. 从剪贴板获取延迟复制数据。
    
    <!-- @[pasteboard_timelapse_Record5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-void ProcessRecordType(OH_UdmfRecord* record, const char* recordType)
-{
-    OH_UdsPlainText* udsText = nullptr;
-    OH_UdsHtml* udsHtml = nullptr;
-    if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
-        // 创建纯文本类型的Uds对象
-        udsText = OH_UdsPlainText_Create();
-        if (udsText != nullptr) {
-            // 从record中获取纯文本类型的Uds对象
-            OH_UdmfRecord_GetPlainText(record, udsText);
-            // 从Uds对象中获取内容
-            const char* content = OH_UdsPlainText_GetContent(udsText);
-        } else if (strcmp(recordType, UDMF_META_HTML) == 0) {
-            // 创建HTML类型的Uds对象
-            udsHtml = OH_UdsHtml_Create();
-            if (udsHtml != nullptr) {
-                // 从record中获取HTML类型的Uds对象
-                OH_UdmfRecord_GetHtml(record, udsHtml);
-                // 从Uds对象中获取内容
-                const char* content = OH_UdsHtml_GetContent(udsHtml);
-            }
-        }
-    }
-}
-void ProcessRecord(OH_UdmfRecord* record)
-{
-    // 13. 查询OH_UdmfRecord中的数据类型。
-    unsigned typeCount = 0;
-    char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
-
-    // 14. 遍历数据类型。
-    for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
-        const char* recordType = recordTypes[typeIndex];
-        ProcessRecordType(record, recordType);
-    }
-}
-// ···
-    // 9. 记录当前的剪贴板数据变化次数。
-    uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-
-    // 10. 从剪贴板获取OH_UdmfData。
-    int status = -1;
-    bool hasPermission = OH_AT_CheckSelfPermission("ohos.permission.READ_PASTEBOARD");
-    if (!hasPermission) {
-        OH_LOG_ERROR(LOG_APP, "No Permission READ_PASTEBOARD");
-    };
-    OH_UdmfData* getData = OH_Pasteboard_GetData(pasteboard, &status);
-    if (getData == nullptr) {
-        // 处理错误情况，清理资源
-        OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard, status: %d\n", status);
-    }
-
-    // 11. 获取OH_UdmfData中的所有OH_UdmfRecord。
-    unsigned int recordCount = 0;
-    OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
-    OH_UdsPlainText* udsText = nullptr;
-    OH_UdsHtml* udsHtml = nullptr;
-
-    // 12. 遍历OH_UdmfRecord。
-    for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
-        OH_UdmfRecord* record = getRecords[recordIndex];
-        ProcessRecord(record);
-    }
-```
+   
+   ``` C++
+   void ProcessRecordType(OH_UdmfRecord* record, const char* recordType)
+   {
+       OH_UdsPlainText* udsText = nullptr;
+       OH_UdsHtml* udsHtml = nullptr;
+       if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
+           // 创建纯文本类型的Uds对象
+           udsText = OH_UdsPlainText_Create();
+           if (udsText != nullptr) {
+               // 从record中获取纯文本类型的Uds对象
+               OH_UdmfRecord_GetPlainText(record, udsText);
+               // 从Uds对象中获取内容
+               const char* content = OH_UdsPlainText_GetContent(udsText);
+           } else if (strcmp(recordType, UDMF_META_HTML) == 0) {
+               // 创建HTML类型的Uds对象
+               udsHtml = OH_UdsHtml_Create();
+               if (udsHtml != nullptr) {
+                   // 从record中获取HTML类型的Uds对象
+                   OH_UdmfRecord_GetHtml(record, udsHtml);
+                   // 从Uds对象中获取内容
+                   const char* content = OH_UdsHtml_GetContent(udsHtml);
+               }
+           }
+       }
+   }
+   void ProcessRecord(OH_UdmfRecord* record)
+   {
+       // 13. 查询OH_UdmfRecord中的数据类型。
+       unsigned typeCount = 0;
+       char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
+   
+       // 14. 遍历数据类型。
+       for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
+           const char* recordType = recordTypes[typeIndex];
+           ProcessRecordType(record, recordType);
+       }
+   }
+   // ...
+       // 9. 记录当前的剪贴板数据变化次数。
+       uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+   
+       // 10. 从剪贴板获取OH_UdmfData。
+       int status = -1;
+       bool hasPermission = OH_AT_CheckSelfPermission("ohos.permission.READ_PASTEBOARD");
+       if (!hasPermission) {
+           OH_LOG_ERROR(LOG_APP, "No Permission READ_PASTEBOARD");
+       };
+       OH_UdmfData* getData = OH_Pasteboard_GetData(pasteboard, &status);
+       if (getData == nullptr) {
+           // 处理错误情况，清理资源
+           OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard, status: %d\n", status);
+       }
+   
+       // 11. 获取OH_UdmfData中的所有OH_UdmfRecord。
+       unsigned int recordCount = 0;
+       OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
+       OH_UdsPlainText* udsText = nullptr;
+       OH_UdsHtml* udsHtml = nullptr;
+   
+       // 12. 遍历OH_UdmfRecord。
+       for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
+           OH_UdmfRecord* record = getRecords[recordIndex];
+           ProcessRecord(record);
+       }
+   ```
 
 
 6. 应用退出时，如果剪贴板内的数据没有变化，则通知剪贴板获取全量数据，等待回调完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
