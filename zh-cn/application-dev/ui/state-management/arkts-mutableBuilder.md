@@ -255,7 +255,7 @@ struct Index {
  mutableBuilder对应的@Builder函数中可使用[MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)进行包裹来观察状态变量的变化，同时可通过[@Monitor](./arkts-new-monitor.md)或[addMonitor](./arkts-new-addMonitor-clearMonitor.md)监听mutableBuilder中@Builder的变化。
 
 ```ts
-import { UIUtils, Binding, MutableBinding} from '@kit.ArkUI';
+import { UIUtils, MutableBinding } from '@kit.ArkUI';
 
 @Builder
 function textBuilder(p: MutableBinding<string>) {
