@@ -1,12 +1,5 @@
 # buffer_common.h
 
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
-<!--Designer: @conan13234-->
-<!--Tester: @nobuggers-->
-<!--Adviser: @ge-yafang-->
-
 ## Overview
 
 This file declares the common types used in the NativeBuffer module.<br>Since API version 12, certain type definitions have been relocated from **native_buffer.h** to this header file for a more cohesive presentation. These types were available prior to API version 12 and can be used seamlessly across all versions.
@@ -38,7 +31,7 @@ This file declares the common types used in the NativeBuffer module.<br>Since AP
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | Defines an enum for the color spaces of an **OH_NativeBuffer** instance. It is relocated from **native_buffer.h** to this header file for a more cohesive presentation.|
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | Defines an enum for the **OH_NativeBuffer** image standards.|
-| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | Defines an enum for the keys that specify the HDR metadata of an **OH_NativeBuffer** instance.|
+| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | Defines an enum for the key values of **OH_NativeBuffer** HDR metadata types.|
 
 ## Enum Description
 
@@ -120,7 +113,7 @@ enum OH_NativeBuffer_MetadataKey
 
 **Description**
 
-Defines an enum for the keys that specify the HDR metadata of an **OH_NativeBuffer** instance.
+Defines an enum for the key values of **OH_NativeBuffer** HDR metadata types.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 

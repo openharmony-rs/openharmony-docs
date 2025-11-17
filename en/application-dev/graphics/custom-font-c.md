@@ -111,7 +111,7 @@ The following table lists the APIs for registering and using custom fonts. For d
    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
    ```
 
-7. To release a custom font, call OH_Drawing_UnregisterFont.
+8. To release a custom font, call OH_Drawing_UnregisterFont.
 
    ```c++
    // Release the custom font.
