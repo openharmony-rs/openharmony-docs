@@ -126,9 +126,15 @@ on(type: 'privateModeChange', callback: Callback&lt;boolean&gt;): void
 
 开启屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onPrivateModeChange](#displayonprivatemodechange22)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -161,15 +167,67 @@ try {
 }
 ```
 
+## display.onPrivateModeChange<sup>22+</sup>
+
+onPrivateModeChange(callback: Callback&lt;boolean&gt;): void
+
+开启屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('privateModeChange')](#displayonprivatemodechange10)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<boolean> = (data: boolean) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+try {
+  display.onPrivateModeChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Code: ${error.code} , message : ${error.message}`);
+}
+```
+
 ## display.off('privateModeChange')<sup>10+</sup>
 
 off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offPrivateModeChange](#displayoffprivatemodechange22)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -194,6 +252,47 @@ try {
   display.off("privateModeChange");
 } catch (exception) {
   console.error(`Failed to unregister callback. Code: ${exception.code} , message : ${exception.message}`);
+}
+```
+
+## display.offPrivateModeChange<sup>22+</sup>
+
+offPrivateModeChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('privateModeChange')](#displayoffprivatemodechange10)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 否   | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+try {
+  display.offPrivateModeChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Code: ${error.code} , message : ${error.message}`);
 }
 ```
 

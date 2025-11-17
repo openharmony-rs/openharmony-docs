@@ -744,9 +744,15 @@ on(type: 'add'|'remove'|'change', callback: Callback&lt;number&gt;): void
 
 开启显示设备变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onAdd](#displayonadd22)，[display.onRemove](#displayonremove22)，[display.onChange](#displayonchange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -775,15 +781,117 @@ let callback: Callback<number> = (data: number) => {
 display.on("add", callback);
 ```
 
+## display.onAdd<sup>22+</sup>
+
+onAdd(callback: Callback&lt;long&gt;): void
+
+开启增加显示设备变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add'|'remove'|'change')](#displayonaddremovechange)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                                                                                              |
+| -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;long&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。                                                                     |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<long> = (data: long) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+
+display.onAdd(callback);
+```
+
+## display.onRemove<sup>22+</sup>
+
+onRemove(callback: Callback&lt;long&gt;): void
+
+开启移除显示设备变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add'|'remove'|'change')](#displayonaddremovechange)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                                                                                              |
+| -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;long&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。                                                                     ||
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<long> = (data: long) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+
+display.onRemove(callback);
+```
+
+## display.onChange<sup>22+</sup>
+
+onChange(callback: Callback&lt;long&gt;): void
+
+开启改变显示设备变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add'|'remove'|'change')](#displayonaddremovechange)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                                                                                              |
+| -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;long&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。                                                                     |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<long> = (data: long) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+
+display.onChange(callback);
+```
+
 ## display.off('add'|'remove'|'change')
 
 off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 
 关闭显示设备变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offAdd](#displayoffadd22)，[display.offRemove](#displayoffremove22)，[display.offChange](#displayoffchange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -812,6 +920,108 @@ let callback: Callback<number> = (data: number) => {
 };
 // 关闭传入的callback监听
 display.off('remove', callback);
+```
+
+## display.offAdd<sup>22+</sup>
+
+offAdd(callback?: Callback&lt;long&gt;): void
+
+关闭增加显示设备变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add'|'remove'|'change')](#displayoffaddremovechange)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                                                                                              |
+| -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;long&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前增加显示设备变化的所有回调函数。        |
+
+**示例：**
+
+```ts
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.offAdd();
+
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`)
+};
+// 关闭传入的callback监听
+display.offAdd(callback);
+```
+
+## display.offRemove<sup>22+</sup>
+
+offRemove(callback?: Callback&lt;long&gt;): void
+
+关闭移除显示设备变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add'|'remove'|'change')](#displayoffaddremovechange)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                                                                                              |
+| -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;long&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前移除显示设备变化的所有回调函数。        |
+
+**示例：**
+
+```ts
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.offRemove();
+
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`)
+};
+// 关闭传入的callback监听
+display.offRemove(callback);
+```
+
+## display.offChange<sup>22+</sup>
+
+offChange(callback?: Callback&lt;long&gt;): void
+
+关闭改变显示设备变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add'|'remove'|'change')](#displayoffaddremovechange)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                                                                                              |
+| -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;long&gt; | 否 | 需要取消注册的回调函数。返回监听到的屏幕ID，该参数为整数。若无此参数，则取消注册当前改变显示设备变化的所有回调函数。        |
+
+**示例：**
+
+```ts
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.offChange();
+
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in unregistering the callback for display Change. Data: ${data}`)
+};
+// 关闭传入的callback监听
+display.offChange(callback);
 ```
 
 ## display.isFoldable<sup>10+</sup>
@@ -974,9 +1184,15 @@ on(type: 'foldStatusChange', callback: Callback&lt;FoldStatus&gt;): void
 
 若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.on('foldDisplayModeChange')](#displayonfolddisplaymodechange10)。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldStatusChange](#displayonfoldstatuschange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1009,15 +1225,70 @@ let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
 display.on('foldStatusChange', callback);
 ```
 
+## display.onFoldStatusChange<sup>22+</sup>
+
+onFoldStatusChange(callback: Callback&lt;FoldStatus&gt;): void
+
+开启折叠设备折叠状态变化的监听。
+
+本接口监听设备物理折叠状态的变化，如果要监听屏幕显示模式的变化，需要使用[display.onFoldDisplayModeChange()](#displayonfolddisplaymodechange22)接口。
+
+两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
+
+若需监听当前显示内容是显示在折叠设备的内屏还是外屏，请使用[display.onFoldDisplayModeChange()](#displayonfolddisplaymodechange22)。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('foldStatusChange')](#displayonfoldstatuschange10)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 是   | 回调函数。表示折叠设备折叠状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+/**
+ * 注册监听的callback参数要采用对象传递.
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+*/
+let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+display.onFoldStatusChange(callback);
+```
+
 ## display.off('foldStatusChange')<sup>10+</sup>
 
 off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 
 关闭折叠设备折叠状态变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldStatusChange](#displayofffoldstatuschange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1049,15 +1320,63 @@ let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
 display.off('foldStatusChange', callback);
 ```
 
+## display.offFoldStatusChange<sup>22+</sup>
+
+offFoldStatusChange(callback?: Callback&lt;FoldStatus&gt;): void
+
+关闭折叠设备折叠状态变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('foldStatusChange')](#displayofffoldstatuschange10)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;[FoldStatus](#foldstatus10)&gt; | 否   | 需要取消注册的回调函数。表示折叠设备折叠状态。若无此参数，则取消注册折叠状态变化监听的所有回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.offFoldStatusChange();
+
+let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+  console.info(`unregistering FoldStatus changes callback. Data: ${data}`);
+};
+// 关闭传入的callback监听
+display.offFoldStatusChange(callback);
+```
+
 ## display.on('brightnessInfoChange')<sup>22+</sup>
 
 on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onBrightnessInfoChange](#displayonbrightnessinfochange22-1)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -1089,15 +1408,68 @@ try {
 }
 ```
 
+## display.onBrightnessInfoChange<sup>22+</sup>
+
+onBrightnessInfoChange(callback: BrightnessCallback&lt;long, BrightnessInfo>): void
+
+开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('brightnessInfoChange')](#displayonbrightnessinfochange22)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;long， [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**示例：**
+
+```ts
+let callback: display.BrightnessCallback<long, display.BrightnessInfo> = (id: long, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.onBrightnessInfoChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+}
+```
+
 ## display.off('brightnessInfoChange')<sup>22+</sup>
 
 off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 关闭所有屏幕亮度信息状态变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offBrightnessInfoChange](#displayoffbrightnessinfochange22-1)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -1129,15 +1501,67 @@ try {
 }
 ```
 
+## display.offBrightnessInfoChange<sup>22+</sup>
+
+offBrightnessInfoChange(callback?: BrightnessCallback&lt;long, BrightnessInfo>): void
+
+关闭所有屏幕亮度信息状态变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('brightnessInfoChange')](#displayoffbrightnessinfochange22)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;long, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。表示brightnessInfo状态发生改变。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。参数1为dispalyId，参数2为屏幕亮度信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**示例：**
+
+```ts
+let callback: display.BrightnessCallback<long, display.BrightnessInfo> = (id: long, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.offBrightnessInfoChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+}
+```
+
 ## display.on('foldAngleChange')<sup>12+</sup>
 
 on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
 
 开启折叠设备折叠角度变化的监听。如果是双折轴设备，则有两个角度值；在充电口朝下的状态下，从右到左分别是折轴一和折轴二。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldAngleChange](#displayonfoldanglechange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1166,15 +1590,60 @@ let callback: Callback<Array<number>> = (angles: Array<number>) => {
 display.on('foldAngleChange', callback);
 ```
 
+## display.onFoldAngleChange<sup>22+</sup>
+
+onFoldAngleChange(callback: Callback&lt;Array&lt;double&gt;&gt;): void
+
+开启折叠设备折叠角度变化的监听。如果是双折轴设备，则有两个角度值；在充电口朝下的状态下，从右到左分别是折轴一和折轴二。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('foldAngleChange')](#displayonfoldanglechange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                      | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;Array&lt;double&gt;&gt; | 是 | 回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。如果是双折轴设备，则数组返回两个角度值，第一个值是折轴一的折叠角度值，第二个值是折轴二的折叠角度值。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<Array<double>> = (angles: Array<double>) => {
+  console.info('Listening fold angles length: ' + angles.length);
+};
+display.onFoldAngleChange(callback);
+```
+
 ## display.off('foldAngleChange')<sup>12+</sup>
 
 off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): void
 
 关闭折叠设备折叠角度变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldAngleChange](#displayofffoldanglechange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1206,15 +1675,63 @@ let callback: Callback<Array<number>> = (angles: Array<number>) => {
 display.off('foldAngleChange', callback);
 ```
 
+## display.offFoldAngleChange<sup>22+</sup>
+
+offFoldAngleChange(callback?: Callback&lt;Array&lt;double&gt;&gt;): void
+
+关闭折叠设备折叠角度变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('foldAngleChange')](#displayofffoldanglechange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;Array&lt;double&gt;&gt; | 否  | 需要取消注册的回调函数。表示折叠设备屏幕折叠角度值（0度~180度）。若无此参数，则取消注册折叠角度变化监听的所有回调函数。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.offFoldAngleChange();
+
+let callback: Callback<Array<double>> = (angles: Array<double>) => {
+  console.info('Listening fold angles length: ' + angles.length);
+};
+// 关闭传入的callback监听
+display.offFoldAngleChange(callback);
+```
+
 ## display.on('captureStatusChange')<sup>12+</sup>
 
 on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
 开启设备的屏幕显示信息是否被获取的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onCaptureStatusChange](#displayoncapturestatuschange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1243,15 +1760,60 @@ let callback: Callback<boolean> = (captureStatus: boolean) => {
 display.on('captureStatusChange', callback);
 ```
 
+## display.onCaptureStatusChange<sup>22+</sup>
+
+onCaptureStatusChange(callback: Callback&lt;boolean&gt;): void
+
+开启设备的屏幕显示信息是否被获取的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('captureStatusChange')](#displayoncapturestatuschange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<boolean> = (captureStatus: boolean) => {
+  console.info('Listening capture status: ' + captureStatus);
+};
+display.onCaptureStatusChange(callback);
+```
+
 ## display.off('captureStatusChange')<sup>12+</sup>
 
 off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭设备的屏幕显示信息是否被获取的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offCaptureStatusChange](#displayoffcapturestatuschange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1281,6 +1843,48 @@ let callback: Callback<boolean> = (captureStatus: boolean) => {
 };
 // 关闭传入的callback监听
 display.off('captureStatusChange', callback);
+```
+
+## display.offCaptureStatusChange<sup>22+</sup>
+
+offCaptureStatusChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭设备的屏幕显示信息是否被获取的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('captureStatusChange')](#displayoffcapturestatuschange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.offCaptureStatusChange();
+
+let callback: Callback<boolean> = (captureStatus: boolean) => {
+  console.info('Listening capture status: ' + captureStatus);
+};
+// 关闭传入的callback监听
+display.offCaptureStatusChange(callback);
 ```
 
 ## display.isCaptured<sup>12+</sup>
@@ -1329,9 +1933,15 @@ on(type: 'foldDisplayModeChange', callback: Callback&lt;FoldDisplayMode&gt;): vo
 
 两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onFoldDisplayModeChange](#displayonfolddisplaymodechange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
 
 **设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
 
@@ -1366,15 +1976,70 @@ let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode
 display.on('foldDisplayModeChange', callback);
 ```
 
+## display.onFoldDisplayModeChange<sup>22+</sup>
+
+onFoldDisplayModeChange(callback: Callback&lt;FoldDisplayMode&gt;): void
+
+开启折叠设备屏幕显示模式变化的监听。
+
+本接口监听设备屏幕显示模式的变化，如果要监听设备物理折叠状态的变化，需要使用[display.onFoldStatusChange](#displayonfoldstatuschange22)接口。
+
+两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('foldDisplayModeChange')](#displayonfolddisplaymodechange10)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 是   | 回调函数。表示折叠设备屏幕显示模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+/**
+ * 注册监听的callback参数要采用对象传递.
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+*/
+let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+  console.info(`Listening enabled. Data: ${data}`);
+}; 
+display.onFoldDisplayModeChange(callback);
+```
+
 ## display.off('foldDisplayModeChange')<sup>10+</sup>
 
 off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): void
 
 关闭折叠设备屏幕显示模式变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offFoldDisplayModeChange](#displayofffolddisplaymodechange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
 
 **设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
 
@@ -1406,6 +2071,50 @@ let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode
 };
 // 关闭传入的callback监听
 display.off('foldDisplayModeChange', callback);
+```
+
+## display.offFoldDisplayModeChange<sup>22+</sup>
+
+offFoldDisplayModeChange(callback?: Callback&lt;FoldDisplayMode&gt;): void
+
+关闭折叠设备屏幕显示模式变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('foldDisplayModeChange')](#displayofffolddisplaymodechange10)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;[FoldDisplayMode](#folddisplaymode10)&gt; | 否   | 需要取消注册的回调函数。表示折叠设备屏幕显示模式。若无此参数，则取消注册屏幕显示模式变化监听的所有回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.offFoldDisplayModeChange();
+
+let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+  console.info(`unregistering FoldDisplayMode changes callback. Data: ${data}`);
+};
+// 关闭传入的callback监听
+display.offFoldDisplayModeChange(callback);
 ```
 
 ## display.createVirtualScreen<sup>16+</sup>
@@ -2234,9 +2943,15 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 开启当前设备屏幕的可用区域监听。当前设备屏幕有可用区域变化时，触发回调函数，返回可用区域。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvailableAreaChange](#onavailableareachange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
@@ -2275,15 +2990,70 @@ try {
 }
 ```
 
+### onAvailableAreaChange<sup>22+</sup>
+onAvailableAreaChange(callback: Callback&lt;Rect&gt;): void
+
+开启当前设备屏幕的可用区域监听。当前设备屏幕有可用区域变化时，触发回调函数，返回可用区域。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('availableAreaChange')](#onavailableareachange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;[Rect](#rect9)&gt; | 是   | 回调函数。返回改变后的可用区域。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let callback: Callback<display.Rect> = (data: display.Rect) => {
+  console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
+};
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  displayClass.onAvailableAreaChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### off('availableAreaChange')<sup>12+</sup>
 
 off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 关闭当前设备屏幕可用区域变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvailableAreaChange](#offavailableareachange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
@@ -2319,6 +3089,56 @@ try {
   displayClass.off("availableAreaChange", callback);
 } catch (exception) {
   console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+### offAvailableAreaChange<sup>22+</sup>
+
+offAvailableAreaChange(callback?: Callback&lt;Rect&gt;): void
+
+关闭当前设备屏幕可用区域变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('availableAreaChange')](#offavailableareachange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;[Rect](#rect9)&gt; | 否   | 需要取消注册的回调函数。返回改变后的可用区域。若无此参数，则取消注册屏幕可用区域变化监听的所有回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let callback: Callback<display.Rect> = (data: display.Rect) => {
+  console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
+};
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  displayClass.offAvailableAreaChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 

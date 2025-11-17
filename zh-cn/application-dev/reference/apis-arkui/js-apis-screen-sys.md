@@ -163,9 +163,15 @@ on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&
 
 开启屏幕状态变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[screen.onConnect](#screenonconnect22)，[screen.onDisconnect](#screenondisconnect22)，[screen.onChange](#screenonchange22)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -192,15 +198,138 @@ let callback: Callback<number> = (data: number) => {
 screen.on('connect', callback);
 ```
 
+## screen.onConnect<sup>22+</sup>
+
+onConnect(callback: Callback&lt;long&gt;): void
+
+开启屏幕连接事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect-disconnect-change)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                   | 必填 | 说明                                                        |
+| --------- | ---------------------- | ---- | ----------------------------------------------------------- |
+| callback  | Callback&lt;long&gt; | 是   | 回调函数。返回屏幕的id，该参数为整数。                                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in registering the callback for screen connect. Data: ${data}`)
+};
+screen.onConnect(callback);
+```
+
+## screen.onDisconnect<sup>22+</sup>
+
+onDisconnect(callback: Callback&lt;long&gt;): void
+
+开启屏幕断连事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect-disconnect-change)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                   | 必填 | 说明                                                        |
+| --------- | ---------------------- | ---- | ----------------------------------------------------------- |
+| callback  | Callback&lt;long&gt; | 是   | 回调函数。返回屏幕的id，该参数为整数。                                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in registering the callback for screen disconnect. Data: ${data}`)
+};
+screen.onDisconnect(callback);
+```
+
+## screen.onChange<sup>22+</sup>
+
+onChange(callback: Callback&lt;long&gt;): void
+
+开启屏幕状态改变事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect-disconnect-change)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                   | 必填 | 说明                                                        |
+| --------- | ---------------------- | ---- | ----------------------------------------------------------- |
+| callback  | Callback&lt;long&gt; | 是   | 回调函数。返回屏幕的id，该参数为整数。                                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in registering the callback for screen disconnect. Data: ${data}`)
+};
+screen.onChange(callback);
+```
+
 ## screen.off('connect' | 'disconnect' | 'change')
 
 off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback&lt;number&gt;): void
 
 关闭屏幕状态变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[screen.offConnect](#screenoffconnect22)，[screen.offDisconnect](#screenoffdisconnect22)，[screen.offChange](#screenoffchange22)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -226,6 +355,126 @@ let callback: Callback<number> = (data: number) => {
 };
 screen.off('connect', callback);
 screen.off('connect');
+```
+
+## screen.offConnect<sup>22+</sup>
+
+offConnect(callback?: Callback&lt;long&gt;): void
+
+关闭屏幕连接变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect-disconnect-change)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                   | 必填 | 说明                                                         |
+| --------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback&lt;long&gt; | 否   | 回调函数。返回屏幕的id，该参数为整数。若无此参数，则取消注册屏幕连接变化监听的所有回调函数。       |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in unregistering the callback for screen changes. Data: ${data}`)
+};
+screen.offConnect(callback);
+screen.offConnect();
+```
+
+## screen.offDisconnect<sup>22+</sup>
+
+offDisconnect(callback?: Callback&lt;long&gt;): void
+
+关闭屏幕断连变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect-disconnect-change)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                   | 必填 | 说明                                                         |
+| --------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback&lt;long&gt; | 否   | 回调函数。返回屏幕的id，该参数为整数。若无此参数，则取消注册屏幕断连变化监听的所有回调函数。              |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in unregistering the callback for screen changes. Data: ${data}`)
+};
+screen.offDisconnect(callback);
+screen.offDisconnect();
+```
+
+## screen.offChange<sup>22+</sup>
+
+offChange(callback?: Callback&lt;long&gt;): void
+
+关闭屏幕状态改变事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect-disconnect-change)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                   | 必填 | 说明                                                         |
+| --------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback&lt;long&gt; | 否   | 回调函数。返回屏幕的id，该参数为整数。若无此参数，则取消注册屏幕状态改变事件监听的所有回调函数。             |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+let callback: Callback<long> = (data: long) => {
+  console.info(`Succeeded in unregistering the callback for screen changes. Data: ${data}`)
+};
+screen.offChange(callback);
+screen.offChange();
 ```
 
 ## screen.makeMirror
