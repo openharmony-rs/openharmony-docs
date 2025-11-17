@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct Image_String {...} Image_String/Image_MimeType
+struct Image_String {...}
 ```
 
 ## 概述
