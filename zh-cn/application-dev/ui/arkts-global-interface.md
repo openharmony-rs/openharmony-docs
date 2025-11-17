@@ -658,7 +658,7 @@ struct CalendarPickerDialogPage {
 
 ### 像素单位转换接口替换为UIContext接口
 
-因为不同的UI实例可以有不同的转换系数，[像素单位转换](../reference/apis-arkui/arkui-ts/ts-pixel-units.md#像素单位转换)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
+因为不同的UI实例可以有不同的转换系数，[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
 
 | 像素单位转换接口调用时机                                     | 接口行为                                                     | 可能与预期不一致的场景                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
