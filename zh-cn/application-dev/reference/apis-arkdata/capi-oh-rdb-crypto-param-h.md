@@ -67,6 +67,7 @@ enum Rdb_EncryptionAlgo
 | ------------------- | ----------------------------------- |
 | RDB_AES_256_GCM = 0 | 表示数据库使用RDB_AES_256_GCM加密。 |
 | RDB_AES_256_CBC     | 表示数据库使用RDB_AES_256_CBC加密。 |
+| RDB_PLAIN_TEXT | 表示数据库不加密。<br>**起始版本：** 22 |
 
 ### Rdb_HmacAlgo
 
