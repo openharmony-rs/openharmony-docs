@@ -1,6 +1,12 @@
 # Building an NDK Project with Prebuilt Libraries
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
-In an NDK project, you can use the CMake syntax to import and use prebuilt libraries. When prebuilt libraries are referenced, both those in the module's **libs** directory and those declared in the **CMakeList.txt** build script are packaged.
+In an NDK project, you can use the CMake syntax to import and use prebuilt libraries. When prebuilt libraries are referenced, both those in the module's **libs** directory and those declared in the **CMakeLists.txt** build script are packaged.
 
 ## Constraints for Using Prebuilt Libraries
 
@@ -31,7 +37,7 @@ Add **include_directories** in the module's **CMakeLists.txt** build script.
 
 ```cmake
 include_directories(
-    ...
+    # ...
     ${CMAKE_CURRENT_SOURCE_DIR}/third_party/FFmpeg/include
 )
 ```
