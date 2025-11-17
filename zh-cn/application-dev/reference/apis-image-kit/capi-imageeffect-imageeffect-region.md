@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} ImageEffect_Region
+typedef struct ImageEffect_Region {...} ImageEffect_Region
 ```
 
 ## 概述
