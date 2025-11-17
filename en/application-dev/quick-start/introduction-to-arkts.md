@@ -106,7 +106,7 @@ factorial(n3)  //  1
 factorial(n4)  //  9.33262154439441e+157 
 ```
 
-The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the Bigint type to ensure the precision as required.
+The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the BigInt type to ensure the precision as required.
 
 ```typescript
 
@@ -245,10 +245,29 @@ function foo(animal: Animal) {
 Type Aliases provides names for anonymous types (such as array, function, object literal or union type) or alternative names for existing types.
 
 ```typescript
+// Two-dimensional array type.
 type Matrix = number[][];
+const gameBoard: Matrix = [
+  [1, 0],
+  [0, 1]
+];
+
+// Function type.
 type Handler = (s: string, no: number) => string;
-type Predicate <T> = (x: T) => boolean;
+const repeatString: Handler = (str, times) => {
+  return str.repeat(times);
+};
+console.info(repeatString("abc", 3)); // "abcabcabc"
+
+// Generic function type.
+type Predicate<T> = (x: T) => boolean;
+const isEven: Predicate<number> = (num) => num % 2 === 0;
+
+// Object type that can be null.
 type NullableObject = Object | null;
+class cat {}
+let animalData: NullableObject = new cat();
+let emptyData: NullableObject = null;
 ```
 
 ### Operators
@@ -318,6 +337,32 @@ Binary operators are as follows:
 | `a && b`   | Logical AND|
 | `a || b` | Logical OR|
 | `! a`      | Logical NOT|
+
+**instanceof operator**
+
+The **instanceof** operator is used to check whether an object is an instance of a specified class or its child class at runtime.
+
+Example:
+
+```typescript
+obj instanceof className
+```
+
+The type of the return value is Boolean.
+If **obj** is an instance of the **className** class or its child class, the return value is **true**. Otherwise, the return value is **false**.
+
+Example:
+
+```typescript
+class Person {}
+const person = new Person();
+if ((person instanceof Person)) console.info("true") // true
+
+class Animal {}
+class Bird extends Animal {}
+const bird = new Bird();
+if (bird instanceof Animal)  console.info("true") // true
+```
 
 ### Statements
 
@@ -1315,7 +1360,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-The **K** type can be either string or number (excluding Bigint), while **V** can be any type.
+The **K** type can be either string or number (excluding BigInt), while **V** can be any type.
 
 ```typescript
 interface PersonInfo {
@@ -1969,7 +2014,7 @@ The following types can be used for annotation fields:
 >**NOTE**
 >
 > - If other types are used for annotation fields, a compile-time error occurs.
-> - The Bigint type is not supported for annotation fields.
+> - The BigInt type is not supported for annotation fields.
 
 The default value of an annotation field must be specified using a constant expression.<br>The following types of constant expressions are used:
 * Numeric literal
@@ -2163,8 +2208,7 @@ console.info("hello");
 import { Anno } from './a';
 import * as ns from './a';
 
-@MyAnno
-@ns.ClassAuthor // Only the annotation of ns is referenced, which does not execute console.info of a.ets.
+// Only the Anno module is imported, which does not execute console.info of a.ets.
 class X {
   // ...
 }
