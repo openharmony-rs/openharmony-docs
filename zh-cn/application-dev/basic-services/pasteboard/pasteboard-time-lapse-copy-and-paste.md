@@ -237,13 +237,13 @@ void SyncCallback(int errorCode)
 7. 使用完毕后需要及时释放相关对象的内存。
    
    <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-    OH_UdsPlainText_Destroy(udsText);
-    OH_UdsHtml_Destroy(udsHtml);
-    OH_UdmfData_Destroy(getData);
-    OH_Pasteboard_Destroy(pasteboard);
-```
+   
+   ``` C++
+   OH_UdsPlainText_Destroy(udsText);
+   OH_UdsHtml_Destroy(udsHtml);
+   OH_UdmfData_Destroy(getData);
+   OH_Pasteboard_Destroy(pasteboard);
+   ```
 
 
 
