@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} CaptureSession_Callbacks
+typedef struct CaptureSession_Callbacks {...} CaptureSession_Callbacks
 ```
 
 ## 概述
