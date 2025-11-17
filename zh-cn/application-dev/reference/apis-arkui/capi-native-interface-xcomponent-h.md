@@ -1088,7 +1088,7 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。 |
+| bool* isNumLockOn | 表示用于接收NumLock（小键盘锁定）键状态的bool类型变量的地址。true表示小键盘锁定，false表示小键盘解锁。 |
 
 **返回：**
 
@@ -1115,7 +1115,7 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。 |
+| bool* isCapsLockOn | 表示用于接收CapsLock（大写锁定）键状态的bool类型变量的地址。true表示大写处于锁定，false表示大写处于解锁。 |
 
 **返回：**
 
@@ -1142,7 +1142,7 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | 表示指向按键事件的指针。 |
-| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。 |
+| bool* isScrollLockOn | 表示用于接收ScrollLock（滚动锁定）键状态的bool类型变量的地址。true表示滚动处于锁定，false表示滚动处于解锁。 |
 
 **返回：**
 
@@ -1528,7 +1528,7 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXCompone
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
-| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。 |
+| bool (\*callback)(OH_NativeXComponent* component, void* window) | 表示指向按键事件回调的指针。- window: 表示NativeWindow句柄。当回调返回值为true时，该事件将不会继续分发；当回调返回值为false时，该事件将按照事件处理流程继续分发。 |
 
 **返回：**
 
@@ -1890,7 +1890,7 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。autoInitialize默认值是true。 |
+| bool autoInitialize | 表示XComponent组件是否需要自动初始化Surface。如果autoInitialize值是true，OnSurfaceCreated回调会在挂树时被触发，OnSurfaceDestroyed回调会在下树时被触发。false表示组件不需要自动初始化Surface。<br>autoInitialize默认值是true。 |
 
 **返回：**
 
@@ -1969,7 +1969,7 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 表示指向XComponent组件实例的指针。 |
-| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。 |
+| bool* isInitialized | 表示XComponent组件是否已经初始化Surface。true表示组件已初始化Surface，false表示组件未初始化Surface。 |
 
 **返回：**
 
