@@ -1,4 +1,10 @@
 # OH_AVSamplesBuffer
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ```
 typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer
