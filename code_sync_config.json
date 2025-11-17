@@ -25792,22 +25792,22 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets",
 				"functions":[
 					{
-						"end_line":255,
+						"end_line":213,
 						"name":"FuncAbilityA",
 						"start_line":16
 					},
 					{
-						"end_line":254,
+						"end_line":212,
 						"name":"FuncAbilityA_Result",
 						"start_line":17
 					},
 					{
-						"end_line":253,
+						"end_line":211,
 						"name":"FuncAbilityA_For_Result",
 						"start_line":18
 					},
 					{
-						"end_line":252,
+						"end_line":210,
 						"name":"FuncAbility_Cold",
 						"start_line":19
 					},
@@ -25892,7 +25892,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":175,
+						"end_line":134,
 						"name":"routerMap",
 						"start_line":16
 					}
