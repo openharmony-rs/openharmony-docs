@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
+struct ImagePacker_Opts_ {...}
 ```
 
 ## 概述
