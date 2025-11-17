@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} ImageEffect_Any
+typedef struct ImageEffect_Any {...} ImageEffect_Any
 ```
 
 ## 概述
