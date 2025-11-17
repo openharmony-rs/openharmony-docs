@@ -45,7 +45,9 @@ Use **napi_open_callback_scope** to create a scope for the callback, and then us
 
 CPP code:
 
-```cpp
+<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 
 static constexpr int INT_ARG_2 = 2; // Input parameter index.
@@ -103,29 +105,50 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
+
+
 
 API declaration:
 
-```ts
-// index.d.ts
+index.d.ts
+<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const asynchronousWork: (object: Object, obj: Object, fun: Function, num: number) => number | undefined;
 ```
-<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+
 
 ArkTS code:
 
-```ts
+Modules to import:
+
+<!-- @[ark_napi_async_open_close_callback_scope_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import process from '@ohos.process';
+import { process } from '@kit.ArkTS';
+```
+
+Test code:
+
+<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API asynchronousWork: %{public}d', testNapi.asynchronousWork({}, process.ProcessManager, (num: number)=>{return num;}, 123));
+  hilog.info(0x0000, 'testTag', 'Test Node-API asynchronousWork: %{public}d',
+    testNapi.asynchronousWork({}, process.ProcessManager, (num: number) => {
+      return num;
+    }, 123));
+  // ···
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API asynchronousWork error: %{public}s', error.message);
+  // ···
 }
 ```
-<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

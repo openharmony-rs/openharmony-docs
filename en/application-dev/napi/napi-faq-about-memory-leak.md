@@ -132,7 +132,7 @@ static void TsfnCallJs(napi_env env, napi_value func, void *context, void *data)
     MyTsfnContext *ctx = reinterpret_cast<MyTsfnContext *>(context);
     char *str = reinterpret_cast<char *>(data);
     OH_LOG_INFO(LOG_APP, "tsfn is called, data is: \"%{public}s\"", str);
-    // The service logic is omitted here.
+    // The service logic is omitted, which should include the logic for releasing resources that you create.
 };
 };
 

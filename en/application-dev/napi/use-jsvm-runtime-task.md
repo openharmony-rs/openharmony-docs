@@ -8,7 +8,7 @@
 
 ## When to Use
 
-Use **createJsCore** to create a JavaScript virtual machine (JSVM), which a runtime environment for executing JS code. The **createJsCore** returns a core ID, which uniquely identifies a VM. <br>Use **evaluateJS** to run JS code in the VM of the specified core ID and define a promise in the JS code and run the function asynchronously. <br>Use **releaseJsCore** to destroy a JSVM.
+Use **createJsCore** to create a JavaScript virtual machine (JSVM), which is a runtime environment for executing JS code. The **createJsCore** returns a core ID, which uniquely identifies a VM.<br> Use **evaluateJS** to run JS code in the VM of the specified core ID and define a promise in the JS code and run the function asynchronously.<br> Use **releaseJsCore** to destroy a JSVM.
 
 ## Example
 
@@ -44,8 +44,8 @@ public:
 };
 static map<int, deque<Task *>> g_taskQueueMap;
 
-// Customize Consoleinfo.
-static JSVM_Value Consoleinfo(JSVM_Env env, JSVM_CallbackInfo info) {
+// Customize the ConsoleInfo method.
+static JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info) {
     size_t argc = 1;
     JSVM_Value args[1];
     char log[256] = "";
@@ -178,7 +178,7 @@ static int CreateJsCore(uint32_t *result) {
     for (int i = 0; i < 4; i++) {
         g_callBackStructMap[ENVTAG_NUMBER][i].data = nullptr;
     }
-    g_callBackStructMap[ENVTAG_NUMBER][0].callback = Consoleinfo;
+    g_callBackStructMap[ENVTAG_NUMBER][0].callback = ConsoleInfo;
     g_callBackStructMap[ENVTAG_NUMBER][1].callback = Add;
     g_callBackStructMap[ENVTAG_NUMBER][2].callback = AssertEqual;
     g_callBackStructMap[ENVTAG_NUMBER][3].callback = CreatePromise;

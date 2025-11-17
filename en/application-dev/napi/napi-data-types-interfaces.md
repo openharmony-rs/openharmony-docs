@@ -128,7 +128,7 @@ Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS object
 
 - It is used by **napi_escape_handle** to escape ArkTS/JS objects to a parent scope so that the objects are valid for the lifetime of the outer scope.
 
-**napi_ref **
+**napi_ref**
 
 Reference to **napi_value**, which allows you to manage the lifecycle of ArkTS/JS values.
 
@@ -152,6 +152,18 @@ typedef struct {
 **napi_async_cleanup_hook_handle**
 
 A mechanism used in Node-API to manage the lifecycle of asynchronous resources. It allows you to register a cleanup hook, which is called only when the lifecycle of the current **napi_env** ends. It ensures that some asynchronous resources are properly released before the environment is destroyed, thereby avoiding resource leaks. In addition, in the Node-API implementation, if the structure is not released, the destruction of the entire **napi_env** is delayed. In OpenHarmony, the behavior of this API is almost the same as that of the cleanup hook related to the env lifecycle, except that it allows the same context data to be repeatedly registered.
+
+**napi_critical_scope (Extended Capability)**
+
+A mechanism used in Node-API to create the execution environment of critical APIs. It is created by **napi_open_critical_scope** and closed by **napi_close_critical_scope**.
+
+Critical API: An API that needs to be executed within the critical scope. Specifically, the API name contains the keyword **critical**.
+
+**napi_strong_ref (Extended Capability)**
+
+Reference to **napi_value**, which allows you to manage the lifecycle of ArkTS objects.
+
+Note: Compared with **napi_ref**, **napi_strong_ref** is more efficient in creation but supports limited functionalities (for example, strong and weak reference conversion is not supported).
 
 ### Callback Types
 
@@ -546,6 +558,12 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 |napi_create_ark_context| Creates a context.|
 |napi_switch_ark_context| Switches to the specified runtime context environment.|
 |napi_destroy_ark_context| Destroys the context created by **napi_create_ark_context**.|
+| napi_open_critical_scope | Opens a critical scope.|
+| napi_close_critical_scope | Closes a critical scope.|
+| napi_get_buffer_string_utf16_in_critical_scope | Obtains the UTF-16 encoding memory buffer data of an ArkTS string.|
+| napi_create_strong_reference | Creates a strong reference to an ArkTS object.|
+| napi_delete_strong_reference | Deletes a strong reference.|
+| napi_get_strong_reference_value | Obtains the ArkTS object value associated with a strong reference object.|
 
 **napi_queue_async_work_with_qos**
 
@@ -780,6 +798,45 @@ napi_status napi_switch_ark_context(napi_env env);
 **napi_destroy_ark_context**
 ```c
 napi_status napi_destroy_ark_context(napi_env env);
+```
+
+**napi_open_critical_scope**
+
+```c
+napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
+```
+
+**napi_close_critical_scope**
+
+```c
+napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
+```
+
+**napi_close_critical_scope**
+
+```c
+napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
+                                                           napi_value value,
+                                                           const char16_t** buffer,
+                                                           size_t* length);
+```
+
+**napi_create_strong_reference**
+
+```c
+napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_strong_ref* result);
+```
+
+**napi_delete_strong_reference**
+
+```c
+napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
+```
+
+**napi_get_strong_reference_value**
+
+```c
+napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
 ```
 
 ### Other Utilities
