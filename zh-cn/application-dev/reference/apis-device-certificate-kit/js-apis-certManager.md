@@ -1618,7 +1618,11 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise<CMResult>;
 
 表示获取USB凭据详细信息。
 
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 

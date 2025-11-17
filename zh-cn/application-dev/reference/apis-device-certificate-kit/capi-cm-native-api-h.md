@@ -46,6 +46,10 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 
 获取特定USB证书凭据详细信息列表。
 
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+
 **起始版本：** 22
 
 
@@ -73,6 +77,8 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 
 获取指定应用私有证书凭据详细信息。
 
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
 **起始版本：** 22
 
 
@@ -98,6 +104,8 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 **描述**
 
 获取指定用户的公共证书凭据详细信息。
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **起始版本：** 22
 

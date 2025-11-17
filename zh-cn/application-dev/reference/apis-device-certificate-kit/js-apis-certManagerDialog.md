@@ -456,6 +456,8 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
+**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
@@ -463,7 +465,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
-| context | [AuthorizeRequest](#AuthorizeRequest22) | 是  | 表示授权请求信息。 |
+| authorizeRequest | [AuthorizeRequest](#AuthorizeRequest22) | 是  | 表示授权请求信息。 |
 
 **返回值**：
 
@@ -521,6 +523,8 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
