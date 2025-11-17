@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} CameraManager_Callbacks
+typedef struct CameraManager_Callbacks {...} CameraManager_Callbacks
 ```
 
 ## 概述
