@@ -42,7 +42,7 @@ abstract class Content {
 
 ### ArkTS侧代码实现
 
-<!-- [contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import nativeNode from 'libentry.so'; // 开发者自己实现的so
@@ -52,19 +52,19 @@ import { NodeContent } from '@kit.ArkUI';
 @Component
 struct Parent {
   private nodeContent: Content = new NodeContent();
-  // ···
+  // ...
 
   aboutToAppear() {
     // 通过C-API创建节点，并添加到管理器nodeContent上
     nativeNode.createNativeNode(this.nodeContent);
-    // ···
+    // ...
   }
 
   build() {
     Column() {
       // 显示nodeContent管理器里存放的Native侧的组件
       ContentSlot(this.nodeContent);
-    // ···
+      // ...
     }
   }
 }
