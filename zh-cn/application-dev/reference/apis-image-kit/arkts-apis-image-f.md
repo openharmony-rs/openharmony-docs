@@ -19,9 +19,9 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -104,9 +104,9 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -254,9 +254,9 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<Pi
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -322,9 +322,9 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: As
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -382,7 +382,7 @@ createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, 
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 20
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -706,9 +706,9 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -752,9 +752,9 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -842,7 +842,7 @@ createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: A
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 20
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1118,7 +1118,7 @@ createImageSource(uri: string): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 6
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1155,7 +1155,7 @@ createImageSource(uri: string): ImageSource | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1200,7 +1200,7 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-ArkTS-Dyn: createImageSource(uri: string, options: SourceOptions): ImageSource
+createImageSource(uri: string, options: SourceOptions): ImageSource
 
 通过传入的uri创建ImageSource实例。
 
@@ -1212,7 +1212,7 @@ ArkTS-Dyn: createImageSource(uri: string, options: SourceOptions): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 6
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1251,7 +1251,7 @@ createImageSource(uri: string, options: SourceOptions): ImageSource | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1308,7 +1308,7 @@ createImageSource(fd: number): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1347,7 +1347,7 @@ createImageSource(fd: int): ImageSource | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1406,7 +1406,7 @@ createImageSource(fd: number, options: SourceOptions): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1447,7 +1447,7 @@ createImageSource(fd: int, options: SourceOptions): ImageSource | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1508,7 +1508,7 @@ createImageSource(buf: ArrayBuffer): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1530,6 +1530,7 @@ const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffe
 const imageSourceApi: image.ImageSource = image.createImageSource(buf);
 ```
 
+## image.createImageSource<sup>22+</sup>
 createImageSource(buf: ArrayBuffer): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
@@ -1538,7 +1539,7 @@ createImageSource(buf: ArrayBuffer): ImageSource | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1587,7 +1588,7 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1620,7 +1621,7 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource | undef
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1671,7 +1672,7 @@ createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOp
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1715,7 +1716,7 @@ createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOp
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1781,7 +1782,7 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1840,7 +1841,7 @@ createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1891,7 +1892,7 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1946,7 +1947,7 @@ createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource 
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1997,7 +1998,7 @@ getImageSourceSupportedFormats(): string[]
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**ArkTS-Dyn版本：** 20
+**ArkTS-Dyn起始版本：** 20
 
 **返回值：**
 
@@ -2025,9 +2026,9 @@ createImagePacker(): ImagePacker
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 6
+**ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2081,9 +2082,9 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2178,7 +2179,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**ArkTS-Dyn版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2223,7 +2224,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiv
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2261,9 +2262,9 @@ ArkTS-Sta: createImageCreator(size: Size, format: ImageFormat, capacity: int): I
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
-**ArkTS-Dyn版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

@@ -244,7 +244,6 @@ function GetGainmapPixelmapFunc(picture: image.Picture): void {
     } else {
       console.info(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap success!');
     }
-    console.info(0x00000, 'GetGainmapPixelmapFunc', 'getGainmapPixelmap success!');
   } catch (err) {
     console.error(0x00000, 'GetGainmapPixelmapFunc', 'GetGainmapPixelmapFunc failed: ' + err);
   }

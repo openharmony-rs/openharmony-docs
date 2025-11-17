@@ -17,9 +17,9 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 6
+**ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型           | 只读 | 可选 | 说明                       |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
@@ -35,9 +35,9 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -56,7 +56,7 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
 | 62980172 | Failed to encode icc. |
@@ -130,9 +130,9 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -157,7 +157,7 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
 | 62980172 | Failed to encode icc. |
@@ -223,9 +223,9 @@ packing(picture: Picture, options: PackingOption): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -320,9 +320,9 @@ packToDataFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, options: Pack
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -415,9 +415,9 @@ ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 6
+**ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -473,9 +473,9 @@ ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 
-**ArkTS-Dyn版本：** 6
+**ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -522,9 +522,9 @@ ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption, call
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -544,7 +544,7 @@ ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption, call
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid input parameter. |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
@@ -624,9 +624,9 @@ ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption): Pro
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -726,9 +726,9 @@ ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption,  callba
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -748,7 +748,7 @@ ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption,  callba
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.              |
 | 62980101 | The image data is abnormal. |
 | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid input parameter. |
 | 62980119 | Failed to encode the image. |
 | 62980120 | Add pixelmap out of range. |
@@ -835,9 +835,9 @@ ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption): Promis
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -939,9 +939,9 @@ ArkTS-Sta: packToFile(picture: Picture, fd: int, options: PackingOption): Promis
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1048,9 +1048,9 @@ ArkTS-Sta: packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn版本：** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1313,7 +1313,7 @@ packing(source: PixelMap, option: PackingOption): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 

@@ -22,9 +22,9 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -129,7 +129,7 @@ readPixelsToBuffer(): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
 **返回值：**
 
@@ -175,7 +175,7 @@ readPixelsToBuffer(): Promise\<ArrayBuffer | undefined>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -240,13 +240,13 @@ getType(): AuxiliaryPictureType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
 **返回值：**
 
 | 类型                                            | 说明                         |
 | ----------------------------------------------- | ---------------------------- |
-| [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) | 操作成功，返回辅助图的类型。 |
+| [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) | 返回辅助图的类型。 |
 
 **示例：**
 
@@ -273,13 +273,13 @@ getType(): AuxiliaryPictureType | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
 | 类型                                            | 说明                         |
 | ----------------------------------------------- | ---------------------------- |
-| [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) \| undefined | 操作成功，返回辅助图的类型。 |
+| [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) \| undefined | 返回辅助图的类型。 |
 
 **示例：**
 
@@ -336,9 +336,9 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -464,7 +464,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -517,7 +517,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -595,11 +595,11 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
 获取有关此辅助图的图像信息。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dya。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
 **返回值：**
 
@@ -635,7 +635,7 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -701,9 +701,9 @@ setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -804,9 +804,9 @@ release():void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn版本：** 13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 

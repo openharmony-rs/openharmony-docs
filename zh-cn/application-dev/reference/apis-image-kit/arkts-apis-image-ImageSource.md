@@ -45,7 +45,7 @@ ArkTS-Dyn: getImageInfo(index: number, callback: AsyncCallback\<ImageInfo>): voi
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| index    |  number | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
+| index    |  number | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：[0, 帧数-1]。 |
 | callback |  AsyncCallback<[ImageInfo](arkts-apis-image-i.md#imageinfo)> | 是   | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
 **示例：**
@@ -78,7 +78,7 @@ getImageInfo(index: int, callback: AsyncCallback\<ImageInfo | undefined>): void
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| index    | int | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
+| index    | int | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：[0, 帧数-1]。 |
 | callback | AsyncCallback<[ImageInfo](arkts-apis-image-i.md#imageinfo) \| undefined> | 是   | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
 **示例：**
@@ -197,7 +197,7 @@ getImageInfo(index?: int): Promise\<ImageInfo>
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
+| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：[0, 帧数-1]。 |
 
 **返回值：**
 
@@ -234,7 +234,7 @@ getImageInfo(index?: int): Promise\<ImageInfo | undefined>
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0，帧数-1]。 |
+| index | int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：[0, 帧数-1]。 |
 
 **返回值：**
 
@@ -273,7 +273,7 @@ getImageInfoSync(index?: number): ImageInfo
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
+| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：[0, 帧数-1]。 |
 
 **返回值：**
 
@@ -319,7 +319,7 @@ getImageInfoSync(index?: int): ImageInfo | undefined
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index |  int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：\[0,帧数-1]。 |
+| index |  int | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N-1张图片。单帧图片场景中取值只能为0，动图等多帧图片场景中取值范围为：[0, 帧数-1]。 |
 
 **返回值：**
 
@@ -1196,7 +1196,7 @@ createPixelMapSync(options?: DecodingOptions): PixelMap
 
 | 参数名   | 类型                                  | 必填 | 说明                       |
 | -------- | ------------------------------------- | ---- | -------------------------- |
-| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 否   | 解码参数。                 |
+| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 否   | 解码参数。 |
 
 **返回值：**
 
@@ -1252,7 +1252,7 @@ createPixelMapSync(options?: DecodingOptions): PixelMap | undefined
 
 | 参数名   | 类型                                  | 必填 | 说明                       |
 | -------- | ------------------------------------- | ---- | -------------------------- |
-| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 否   | 解码参数。                 |
+| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 否   | 解码参数。 |
 
 **返回值：**
 
@@ -1295,7 +1295,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 
 | 参数名   | 类型                                  | 必填 | 说明                       |
 | -------- | ------------------------------------- | ---- | -------------------------- |
-| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 否   | 解码参数。                 |
+| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 否   | 解码参数。 |
 
 **返回值：**
 
@@ -1551,7 +1551,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 | 参数名        | 类型                                 | 必填 | 说明                     |
 | ------------- | ------------------------------------ | ---- | ------------------------ |
-| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
+| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。 |
 | allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
 
 **返回值：**
@@ -1622,7 +1622,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 | 参数名        | 类型                                 | 必填 | 说明                     |
 | ------------- | ------------------------------------ | ---- | ------------------------ |
-| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
+| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。 |
 | allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
 
 **返回值：**
@@ -1684,14 +1684,14 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 | 参数名        | 类型                                 | 必填 | 说明                     |
 | ------------- | ------------------------------------ | ---- | ------------------------ |
-| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
+| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。 |
 | allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
 
 **返回值：**
 
 | 类型                   | 说明                   |
 | ---------------------- | ---------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 用于同步返回创建结果。 |
 
 **错误码：**
 
@@ -1753,7 +1753,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 | 参数名        | 类型                                 | 必填 | 说明                     |
 | ------------- | ------------------------------------ | ---- | ------------------------ |
-| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
+| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。 |
 | allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
 
 **返回值：**
