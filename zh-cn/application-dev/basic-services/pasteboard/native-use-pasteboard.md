@@ -107,36 +107,36 @@ static void PasteboardFinalizeImpl2(void* context)
 5. 向剪贴板写入数据。
 
    <!-- @[pasteboard_native5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 1. 创建一个剪贴板实例
-    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-    if (pasteboard == nullptr) {
-        OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
-    };
-    // 2. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加文本类型数据
-    OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
-    OH_UdsPlainText_SetContent(udsPlainText, text);
-    OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-    OH_UdsHtml_SetContent(udsHtml, "hello world");
-    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-    OH_UdmfRecord_AddPlainText(record, udsPlainText);
-    OH_UdmfRecord_AddHtml(record, udsHtml);
-
-    // 3. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord
-    OH_UdmfData* data = OH_UdmfData_Create();
-    OH_UdmfData_AddRecord(data, record);
-
-    // 4. 将数据写入剪贴板
-    OH_Pasteboard_SetData(pasteboard, data);
-
-    // 5. 使用完销毁指针
-    OH_UdsPlainText_Destroy(udsPlainText);
-    OH_UdsHtml_Destroy(udsHtml);
-    OH_UdmfRecord_Destroy(record);
-    OH_UdmfData_Destroy(data);
-    OH_Pasteboard_Destroy(pasteboard);
-```
+   
+   ``` C++
+   // 1. 创建一个剪贴板实例
+   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   if (pasteboard == nullptr) {
+       OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
+   };
+   // 2. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加文本类型数据
+   OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
+   OH_UdsPlainText_SetContent(udsPlainText, text);
+   OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
+   OH_UdsHtml_SetContent(udsHtml, "hello world");
+   OH_UdmfRecord* record = OH_UdmfRecord_Create();
+   OH_UdmfRecord_AddPlainText(record, udsPlainText);
+   OH_UdmfRecord_AddHtml(record, udsHtml);
+   
+   // 3. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord
+   OH_UdmfData* data = OH_UdmfData_Create();
+   OH_UdmfData_AddRecord(data, record);
+   
+   // 4. 将数据写入剪贴板
+   OH_Pasteboard_SetData(pasteboard, data);
+   
+   // 5. 使用完销毁指针
+   OH_UdsPlainText_Destroy(udsPlainText);
+   OH_UdsHtml_Destroy(udsHtml);
+   OH_UdmfRecord_Destroy(record);
+   OH_UdmfData_Destroy(data);
+   OH_Pasteboard_Destroy(pasteboard);
+   ```
 
 
 6. 从剪贴板读取数据。
