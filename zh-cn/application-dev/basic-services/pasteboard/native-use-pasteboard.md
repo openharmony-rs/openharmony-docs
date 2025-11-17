@@ -72,7 +72,7 @@
 
 3. 定义剪贴板变化监听的回调函数。
 
-   <!-- @[pasteboard_native3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[pasteboard_native3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
 // 定义剪贴板数据内容变更时的通知回调函数
