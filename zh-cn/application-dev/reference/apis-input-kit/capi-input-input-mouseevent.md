@@ -21,5 +21,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#OH_Input_CreateMouseEvent) | 创建鼠标事件对象。 |
-| [OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#OH_Input_DestroyMouseEvent) | 销毁鼠标事件对象。 |
+| [OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#oh_input_createmouseevent) | 创建鼠标事件对象。 |
+| [OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#oh_input_destroymouseevent) | 销毁鼠标事件对象。 |

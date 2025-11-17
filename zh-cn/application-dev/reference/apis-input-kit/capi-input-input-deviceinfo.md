@@ -21,5 +21,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateDeviceInfo](capi-oh-input-manager-h.md#OH_Input_CreateDeviceInfo) | 创建输入设备信息的对象。 |
-| [OH_Input_DestroyDeviceInfo](capi-oh-input-manager-h.md#OH_Input_DestroyDeviceInfo) | 销毁输入设备信息的对象。 |
+| [OH_Input_CreateDeviceInfo](capi-oh-input-manager-h.md#oh_input_createdeviceinfo) | 创建输入设备信息的对象。 |
+| [OH_Input_DestroyDeviceInfo](capi-oh-input-manager-h.md#oh_input_destroydeviceinfo) | 销毁输入设备信息的对象。 |

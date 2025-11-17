@@ -21,5 +21,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateHotkey](capi-oh-input-manager-h.md#OH_Input_CreateHotkey) | 创建快捷键对象的实例。 |
-| [OH_Input_DestroyHotkey](capi-oh-input-manager-h.md#OH_Input_DestroyHotkey) | 销毁快捷键对象的实例。 |
+| [OH_Input_CreateHotkey](capi-oh-input-manager-h.md#oh_input_createhotkey) | 创建快捷键对象的实例。 |
+| [OH_Input_DestroyHotkey](capi-oh-input-manager-h.md#oh_input_destroyhotkey) | 销毁快捷键对象的实例。 |

@@ -21,5 +21,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateTouchEvent](capi-oh-input-manager-h.md#OH_Input_CreateTouchEvent) | 创建触屏输入事件对象。 |
-| [OH_Input_DestroyTouchEvent](capi-oh-input-manager-h.md#OH_Input_DestroyTouchEvent) | 销毁触屏输入事件对象。 |
+| [OH_Input_CreateTouchEvent](capi-oh-input-manager-h.md#oh_input_createtouchevent) | 创建触屏输入事件对象。 |
+| [OH_Input_DestroyTouchEvent](capi-oh-input-manager-h.md#oh_input_destroytouchevent) | 销毁触屏输入事件对象。 |

@@ -21,5 +21,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#OH_Input_CreateAxisEvent) | 创建轴事件对象实例。 |
-| [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#OH_Input_DestroyAxisEvent) | 销毁轴事件对象实例。 |
+| [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) | 创建轴事件对象实例。 |
+| [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent) | 销毁轴事件对象实例。 |

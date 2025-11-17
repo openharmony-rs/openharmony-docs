@@ -21,5 +21,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateKeyState](capi-oh-input-manager-h.md#OH_Input_CreateKeyState) | 创建按键状态的枚举对象。 |
-| [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#OH_Input_DestroyKeyState) | 销毁按键状态的枚举对象。 |
+| [OH_Input_CreateKeyState](capi-oh-input-manager-h.md#oh_input_createkeystate) | 创建按键状态的枚举对象。 |
+| [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#oh_input_destroykeystate) | 销毁按键状态的枚举对象。 |
