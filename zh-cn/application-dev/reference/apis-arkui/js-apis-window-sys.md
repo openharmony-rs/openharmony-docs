@@ -3108,7 +3108,7 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| enable   | boolean                   | 是   | 设置子窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
+| enable   | boolean                   | 是   | 设置主窗口点击抬升功能是否使能，true表示使能，false表示禁止。 |
 
 **返回值：**
 
@@ -3136,16 +3136,17 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  // ...
-  windowStage.getMainWindow().then((window) => {
-    let raiseEnabled: boolean = false;
-    let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
-    promise.then(() => {
-      console.info('Succeeded in disabling the raise-by-click function.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      let raiseEnabled: boolean = false;
+      let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+      promise.then(() => {
+        console.info('Succeeded in disabling the raise-by-click function.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+      });
     });
-  });
+  }
 }
 ```
 
