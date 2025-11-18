@@ -654,3 +654,17 @@
 | napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_invalid_arg | 入参native_object为nullptr | 确保入参正确 |
 | napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_object_expected | 入参js_object不是js Object类型 | 确保入参正确 |
 | napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的js异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 | napi_invalid_arg | 入参value为nullptr | 确保入参正确 |
+| napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 | napi_invalid_arg | 入参env不是main context | 确保入参正确 |
+| napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 | napi_object_expected | 入参value不是sendable的 | 确保入参正确 |
+| napi_delete_strong_sendable_reference | 删除Sendable强引用。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_delete_strong_sendable_reference | 删除Sendable强引用。 | napi_invalid_arg | 入参ref为nullptr | 确保入参正确 |
+| napi_delete_strong_sendable_reference | 删除Sendable强引用。 | napi_invalid_arg | 入参env不是main context | 确保入参正确 |
+| napi_delete_strong_sendable_reference | 删除Sendable强引用。 | napi_generic_failure | 从napi_sendable_ref中获取的napi_value不是sendable的 | 确保入参正确 |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_invalid_arg | 入参ref为nullptr | 确保入参正确 |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_invalid_arg | 入参env不是main context | 确保入参正确 |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 | napi_generic_failure | 从napi_sendable_ref中获取的napi_value不是sendable的 | 确保入参正确 |
