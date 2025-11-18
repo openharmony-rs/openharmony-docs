@@ -61,6 +61,7 @@
 | [uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)](#oh_nativearkweb_setblanklessloadingcachecapacity) | - | 设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。 |
 | [void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)](#oh_nativearkweb_setactivewebengineversion) | - | 设置ArkWeb内核版本。若系统不支持指定版本，则设置无效。该接口为全局静态方法，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。 |
 | [ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()](#oh_nativearkweb_getactivewebengineversion) | - | 获取当前使用的ArkWeb内核版本。 |
+| [void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)](#oh_nativearkweb_lazyinitializewebengineincookiemanager) | - | 在初始化CookieManager时，设置是否延迟Web内核初始化。 |
 
 ## 枚举类型说明
 
@@ -573,3 +574,21 @@ ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()
 | 类型 | 说明 |
 | -- | -- |
 | ArkWebEngineVersion | 返回由[ArkWebEngineVersion](#arkwebengineversion)枚举所定义的当前使用的ArkWeb内核版本。 |
+
+### OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager
+
+```
+void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
+```
+
+**描述：**
+
+在初始化CookieManager时，设置是否延迟Web内核初始化。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项                                                 | 描述 |
+|-----------------------------------------------------| -- |
+| bool lazy  | 是否延迟Web内核初始化，true：延迟，false：不延迟。<br>默认值：false。。 |
