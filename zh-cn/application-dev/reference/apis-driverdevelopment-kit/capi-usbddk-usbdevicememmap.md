@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} UsbDeviceMemMap
+typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
 ```
 
 ## 概述

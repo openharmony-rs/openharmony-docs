@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @foryourself-->
 ```
-typedef struct {...} FileShare_PolicyErrorResult
+typedef struct FileShare_PolicyErrorResult {...} FileShare_PolicyErrorResult
 ```
 
 ## 概述

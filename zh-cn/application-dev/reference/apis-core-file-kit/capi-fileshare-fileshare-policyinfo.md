@@ -7,7 +7,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} FileShare_PolicyInfo
+typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
 ```
 
 ## 概述

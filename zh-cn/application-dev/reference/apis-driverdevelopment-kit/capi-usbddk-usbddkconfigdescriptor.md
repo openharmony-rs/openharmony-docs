@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} UsbDdkConfigDescriptor
+typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
 ```
 
 ## 概述

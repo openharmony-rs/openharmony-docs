@@ -7,7 +7,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} CloudDisk_FailedList
+typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
 ```
 
 ## 概述

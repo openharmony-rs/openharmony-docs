@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Hid_RelAxesArray
+typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 ```
 
 ## 概述

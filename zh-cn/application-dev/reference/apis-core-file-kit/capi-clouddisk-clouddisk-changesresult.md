@@ -7,7 +7,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} CloudDisk_ChangesResult
+typedef struct CloudDisk_ChangesResult {...} CloudDisk_ChangesResult
 ```
 
 ## 概述

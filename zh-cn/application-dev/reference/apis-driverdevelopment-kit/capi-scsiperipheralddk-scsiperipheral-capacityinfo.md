@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} ScsiPeripheral_CapacityInfo
+typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
 ```
 
 ## 概述

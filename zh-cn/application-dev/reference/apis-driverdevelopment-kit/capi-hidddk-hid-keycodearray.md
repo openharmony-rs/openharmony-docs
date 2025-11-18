@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Hid_KeyCodeArray
+typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 ```
 
 ## 概述

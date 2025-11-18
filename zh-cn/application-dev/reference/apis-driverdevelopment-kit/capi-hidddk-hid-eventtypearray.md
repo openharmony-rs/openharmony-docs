@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Hid_EventTypeArray
+typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 ```
 
 ## 概述
