@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} DRM_MediaKeyRequestInfo
+typedef struct DRM_MediaKeyRequestInfo {...} DRM_MediaKeyRequestInfo
 ```
 
 ## 概述

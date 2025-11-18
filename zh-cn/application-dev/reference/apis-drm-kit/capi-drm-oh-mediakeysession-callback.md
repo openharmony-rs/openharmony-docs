@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} OH_MediaKeySession_Callback
+typedef struct OH_MediaKeySession_Callback {...} OH_MediaKeySession_Callback
 ```
 
 ## 概述

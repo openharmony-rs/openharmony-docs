@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} DRM_KeysInfo
+typedef struct DRM_KeysInfo {...} DRM_KeysInfo
 ```
 
 ## 概述

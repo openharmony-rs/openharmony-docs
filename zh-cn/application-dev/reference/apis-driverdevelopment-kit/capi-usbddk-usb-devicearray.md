@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Usb_DeviceArray
+typedef struct Usb_DeviceArray {...} Usb_DeviceArray
 ```
 
 ## 概述

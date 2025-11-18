@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} DDK_Ashmem
+typedef struct DDK_Ashmem {...} DDK_Ashmem
 ```
 
 ## 概述

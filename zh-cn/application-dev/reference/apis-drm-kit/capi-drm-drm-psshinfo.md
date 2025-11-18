@@ -6,8 +6,8 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-``
-typedef struct {...} DRM_PsshInfo
+```
+typedef struct DRM_PsshInfo {...} DRM_PsshInfo
 ```
 
 ## 概述

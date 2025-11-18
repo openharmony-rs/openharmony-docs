@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} ScsiPeripheral_IORequest
+typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 ```
 
 ## 概述

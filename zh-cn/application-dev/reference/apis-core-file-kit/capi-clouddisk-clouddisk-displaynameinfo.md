@@ -7,7 +7,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} CloudDisk_DisplayNameInfo
+typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
 ```
 
 ## 概述

@@ -7,7 +7,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} CloudDisk_SyncFolder
+typedef struct CloudDisk_SyncFolder {...} CloudDisk_SyncFolder
 ```
 
 ## 概述

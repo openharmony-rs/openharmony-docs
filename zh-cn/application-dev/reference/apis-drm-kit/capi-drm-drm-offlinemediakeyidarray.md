@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} DRM_OfflineMediakeyIdArray
+typedef struct DRM_OfflineMediakeyIdArray {...} DRM_OfflineMediakeyIdArray
 ```
 
 ## 概述

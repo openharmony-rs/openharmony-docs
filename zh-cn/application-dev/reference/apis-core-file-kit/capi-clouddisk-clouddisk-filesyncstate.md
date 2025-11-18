@@ -7,7 +7,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} CloudDisk_FileSyncState
+typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
 ```
 
 ## 概述

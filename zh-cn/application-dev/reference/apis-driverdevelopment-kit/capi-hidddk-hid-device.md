@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} Hid_Device
+typedef struct Hid_Device {...} Hid_Device
 ```
 
 ## 概述

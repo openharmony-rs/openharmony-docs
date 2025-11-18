@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} UsbDdkInterface
+typedef struct UsbDdkInterface {...} UsbDdkInterface
 ```
 
 ## 概述
