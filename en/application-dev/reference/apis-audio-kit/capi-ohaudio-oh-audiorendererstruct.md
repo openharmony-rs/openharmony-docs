@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioRendererStruct OH_AudioRenderer
+```
+
 ## Overview
 
 The struct describes an audio renderer, which is used to render audio data.

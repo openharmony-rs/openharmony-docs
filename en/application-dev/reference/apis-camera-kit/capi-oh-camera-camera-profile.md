@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_Profile {...} Camera_Profile
+```
+
 ## Overview
 
 The struct describes the profile of a camera stream.

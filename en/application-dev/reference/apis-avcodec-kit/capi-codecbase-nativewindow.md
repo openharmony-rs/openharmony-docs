@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## Overview
 
 The struct describes a native object for the graphics interface.

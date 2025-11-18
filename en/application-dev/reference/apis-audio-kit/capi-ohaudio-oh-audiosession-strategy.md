@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioSession_Strategy {...} OH_AudioSession_Strategy
+```
+
 ## Overview
 
 The struct describes an audio session strategy.

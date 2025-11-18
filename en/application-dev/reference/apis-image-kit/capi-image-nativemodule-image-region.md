@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct Image_Region {...}
+```
+
 ## Overview
 
 The struct describes the region of an image to decode.

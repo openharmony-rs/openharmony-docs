@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_CaptureStartInfo {...} Camera_CaptureStartInfo
+```
+
 ## Overview
 
 The struct describes the capture start information.

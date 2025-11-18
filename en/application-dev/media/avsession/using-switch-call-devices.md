@@ -34,7 +34,7 @@ Currently, the system provides the default style and custom style for the **AVCa
                 try {
                   let context = this.getUIContext().getHostContext() as Context;
                 // Create an AVSession of the voice_call type.
-                let session: AVSessionManager.AVSession = await AVSessionManager.createAVSession(context, 'voiptest', 'voice_call');
+                let session: avSession.AVSession = await avSession.createAVSession(context, 'voiptest', 'voice_call');
                 } catch (err) {
                   console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
                 }

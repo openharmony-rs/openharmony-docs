@@ -6,6 +6,10 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVMetadataStruct OH_AVMetadata
+```
+
 ## Overview
 
 The struct describes the session metadata, which is an AVMetadata instance set for a media asset.
