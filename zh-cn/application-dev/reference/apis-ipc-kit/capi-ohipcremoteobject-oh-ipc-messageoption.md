@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ``
-struct OH_IPC_MessageOption {...}
+typedef struct {...} OH_IPC_MessageOption
 ```
 
 ## 概述

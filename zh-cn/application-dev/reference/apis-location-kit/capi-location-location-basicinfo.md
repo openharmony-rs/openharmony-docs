@@ -7,7 +7,7 @@
 <!--Adviser: @RayShih-->
 
 ```
-typedef struct {...} Location_BasicInfo
+typedef struct Location_BasicInfo {...} Location_BasicInfo
 ```
 
 ## 概述

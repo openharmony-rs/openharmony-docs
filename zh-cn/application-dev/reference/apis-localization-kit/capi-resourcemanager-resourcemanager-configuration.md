@@ -8,7 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-typedef struct {...} ResourceManager_Configuration
+typedef struct ResourceManager_Configuration {...} ResourceManager_Configuration
 ```
 
 ## 概述
