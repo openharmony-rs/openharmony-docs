@@ -15821,6 +15821,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"ComponentV2_page_componentV2",
+						"start_line":20
+					}
+				]
 			}
 		]
 	},
@@ -21229,13 +21239,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets",
-				"functions":[
-					{
-						"end_line":44,
-						"name":"ComponentV2_page_componentV2",
-						"start_line":20
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
