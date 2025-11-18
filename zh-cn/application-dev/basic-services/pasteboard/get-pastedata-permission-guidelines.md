@@ -62,8 +62,6 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 ## 示例代码
 
-<!-- @[pasteboard_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets) -->
-
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
