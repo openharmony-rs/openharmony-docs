@@ -969,6 +969,85 @@ Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-we
 
 <!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  clearSelection() {
+    try {
+      this.controller.runJavaScript(
+        'clearSelection()',
+        (error, result) => {
+          if (error) {
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: $  {(error as BusinessError).message}`);
+            return;
+          }
+          if (result) {
+            console.info(`The clearSelection() return value is: ${result}`);
+          }
+        });
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  @Builder
+  TextMenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Copy', })
+        .onClick(() => {
+          try {
+            this.controller.runJavaScript(
+              'copySelectedText()',
+              (error, result) => {
+                if (error) {
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},    Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                if (result) {
+                  console.info(`The copySelectedText() return value is: ${result}`);
+                }
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+          this.clearSelection()
+        }).backgroundColor(Color.Pink)
+    }
+  }
+  build() {
+    Column() {
+      Web({ src: $rawfile('bindSelectionMenuText.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .zoomAccess(true)
+        .bindSelectionMenu(WebElementType.TEXT, this.TextMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {},
+            menuType: MenuType.SELECTION_MENU,
+          })
+    }
+  }
+  onBackPress(): boolean | void {
+    if (this.controller.accessStep(-1)) {
+      this.controller.backward();
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+```
+
 <!---->
 
 ```html
