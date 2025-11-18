@@ -70,6 +70,33 @@
 
 2. 定义`OH_UdmfRecordProvider`的数据提供函数和实例注销回调函数。
    <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 1. 获取数据时触发的提供剪贴板数据的回调函数。
+   void* GetDataCallback(void* context, const char* type)
+   {
+       // 纯文本类型
+       if (memcmp(type, UDMF_META_PLAIN_TEXT, sizeof(UDMF_META_PLAIN_TEXT) - 1) == 0) {
+           // 创建纯文本类型的Uds对象。
+           OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
+           // 设置纯文本内容。
+           OH_UdsPlainText_SetContent(udsText, "hello world");
+           return udsText;
+       } else if (strcmp(type, UDMF_META_HTML) == 0) {
+           // 创建HTML类型的Uds对象。
+           OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
+           // 设置HTML内容。
+           OH_UdsHtml_SetContent(udsHtml, "<div>hello world</div>");
+           return udsHtml;
+       }
+       return nullptr;
+   }
+   // 2. OH_UdmfRecordProvider销毁时触发的回调函数。
+   void ProviderFinalizeCallback(void* context)
+   {
+       OH_LOG_INFO(LOG_APP, "OH_UdmfRecordProvider finalize.");
+   }
+   ```
    <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
