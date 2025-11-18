@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -70,7 +70,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       if (error) {
         console.error(`FormExtensionContext startAbility, error:${JSON.stringify(error)}`);
       } else {
-        console.log('FormExtensionContext startAbility success');
+        console.info('FormExtensionContext startAbility success');
       }
     });
   }
@@ -121,7 +121,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行startAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -194,7 +194,7 @@ let commRemote: rpc.IRemoteObject | null = null;
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // 当触发卡片message事件时，执行connectServiceExtensionAbility
-    console.log(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
+    console.info(`FormExtensionAbility onFormEvent, formId:${formId}, message:${message}`);
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.formstartability',
@@ -206,10 +206,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
         commRemote = remote; // remote 用于与ServiceExtensionAbility进行通信
-        console.log('----------- onConnect -----------');
+        console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.log('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------')
       },
       onFailed(code) {
         console.error('----------- onFailed -----------')
@@ -277,7 +277,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
           return;
         }
         // 执行正常业务
-        console.log('disconnectServiceExtensionAbility succeed');
+        console.info('disconnectServiceExtensionAbility succeed');
       });
     } catch (paramError) {
       commRemote = null;
@@ -339,7 +339,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         .then(() => {
           commRemote = null;
           // 执行正常业务
-          console.log('disconnectServiceExtensionAbility succeed');
+          console.info('disconnectServiceExtensionAbility succeed');
         })
         .catch((error: BusinessError) => {
           commRemote = null;
