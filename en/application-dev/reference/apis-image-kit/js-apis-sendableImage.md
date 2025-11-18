@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for image processing based on sendable objects. You can use the APIs to create a PixelMap object with specified properties or read pixels of an image (or even in a region of an image).
 
