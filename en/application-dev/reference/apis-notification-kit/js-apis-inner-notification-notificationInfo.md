@@ -19,10 +19,9 @@ The **NotificationInfo** module describes the content shared with third-party we
 | Name| Type| Read-Only| Optional| Description| 
 | -------- | -------- | -------- | -------- | -------- |
 | hashCode | string | Yes| No| Unique identifier of the notification.|
-| notificationSlotType | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype)| Yes| No| Slot type of the notification. The default value is **OTHER**.|
+| notificationSlotType | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype)| Yes| No| Notification slot type. The default value is **OTHER_TYPES**.|
 | content | [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md) | Yes| No| Notification content.|
 | bundleName | string | Yes| No| Name of the bundle that creates the notification.|
 | appName | string | Yes| Yes| Name of the application that creates the notification.|
 | deliveryTime | number | Yes| Yes| Timestamp (in milliseconds) when the notification is published.|
-| deliveryTime | long | Yes| Yes| Timestamp when the notification is published.|
 | groupName | string | Yes| Yes| Notification group name, which is left empty by default.|

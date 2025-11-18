@@ -37,7 +37,7 @@ Enumerates accessibility event types.
 | TYPE_SELECT                              | 4    | Event of selecting a component.               |
 | TYPE_HOVER_ENTER                         | 5    | Event indicating the mouse pointer enters a component.             |
 | TYPE_HOVER_EXIT                          | 6    | Event indicating the mouse pointer exits a component.             |
-| TYPE_FOCUS                               | 7    | Event of the component gaining focus.             |
+| TYPE_FOCUS                               | 7    | Event indicating that the component gains a focus.             |
 | TYPE_TEXT_UPDATE                         | 8    | Event indicating that the component text has been updated.            |
 | TYPE_TEXT_SELECTION_UPDATE               | 9    | Event indicating that the selected text has been updated. |
 | TYPE_SCROLL                              | 10   | Event of scrolling the view.               |
@@ -52,7 +52,7 @@ Enumerates accessibility event types.
 | TYPE_WINDOW_BOUNDS                       | 19   | Event indicating that the window boundary changes.             |
 | TYPE_WINDOW_ACTIVE                       | 20   | Event indicating that the window activity state changes.            |
 | TYPE_WINDOW_FOCUS                        | 21   | Event indicating that the window focus changes.           |
-| TYPE_WINDOW_PROPERTY                     | 22   | Event indicating that the window properties change, such as transparency, size, and so on.|
+| TYPE_WINDOW_PROPERTY                     | 22   | Event indicating that the window properties change, such as opacity, size, and so on.|
 | TYPE_WINDOW_LAYER                        | 23   | Event indicating that the window layer changes.             |
 | TYPE_TOUCH_BEGIN                         | 24   | Event indicating that a touch begins.           |
 | TYPE_TOUCH_END                           | 25   | Event indicating that a touch ends.           |
@@ -102,14 +102,16 @@ Enumerates accessibility event types.
 
 ## AccessibilityAction
 
-Actions that can be executed on accessibility nodes, which are UI components, such as buttons, text boxes, and so on.
+Enumerates executable actions for accessibility node elements.
+
+Accessibility node elements are UI components that support accessibility actions, such as buttons, text boxes, and so on.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Name                        | Value   | Description                      |
 | -------------------------- | ---- | ------------------------ |
-| ACCESSIBILITY_FOCUS        | 0    | Gaining the accessibility focus.              |
-| CLEAR_ACCESSIBILLITY_FOCUS | 1    | Clearing the accessibility focus.              |
+| ACCESSIBILITY_FOCUS        | 0    | Gaining an accessibility focus.              |
+| CLEAR_ACCESSIBILITY_FOCUS | 1    | Clearing an accessibility focus.              |
 | FOCUS                      | 2    | Gaining the focus for a component.               |
 | CLEAR_FOCUS                | 3    | Clearing the focus for a component.               |
 | CLICK                      | 4    | Clicking a component.                 |

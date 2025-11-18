@@ -5206,7 +5206,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## notificationManager.setRingtoneInfoByBundle<sup>22+</sup>
+## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
 
 setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
 
@@ -5223,7 +5223,7 @@ Sets the custom ringtone information for an application. This API uses a promise
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
-| ringtoneInfo | [RingtoneInfo](#ringtoneinfo22) | Yes  | Custom ringtone information.|
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | Yes  | Custom ringtone information.|
 
 **Return value**
 
@@ -5265,18 +5265,18 @@ export default class EntryAbility extends UIAbility {
         ringtoneUri: "ringtoneUri",
       }
       notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
-        hilog.info(0x0000, 'testTag', 'setRingtoneInfoByBundle ,bundle:' + JSON.stringify(bundle) + 'ringtoneInfoJSON' + JSON.stringify(ringtoneInfo));
+        console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON: ' ${JSON.stringify(ringtoneInfo)}`);
       }).catch((err: BusinessError) => {
-        console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+         console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
       });
     } catch (err) {
-      console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
 ```
 
-## notificationManager.getRingtoneInfoByBundle<sup>22+</sup>
+## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
 
 getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
@@ -5298,7 +5298,7 @@ Obtains the custom ringtone information of an application. This API uses a promi
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<[RingtoneInfo](#ringtoneinfo22)\> | Promise used to return the result.|
+| Promise\<[RingtoneInfo](#ringtoneinfo21)\> | Promise used to return the result.|
 
 **Error codes**
 
@@ -5325,17 +5325,254 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
       notificationManager.getRingtoneInfoByBundle(bundle)
         .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
-          hilog.info(0x0000, 'testTag', 'getRingtoneInfoByBundle success: ' + this.ringtoneInfo);
+          console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
         }).catch((err: BusinessError) => {
-          console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+        console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
       });
     } catch (err) {
-      console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
+```
+
+## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
+
+setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<void\>
+
+Batch sets whether to display badges for specified applications. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| badges   | Map<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>| Yes  | List containing bundle names and badge display statuses.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. | 
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let badges = new Map<notificationManager.BundleOption, boolean>();
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName',
+};
+badges.set(bundle, true);
+
+notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
+    hilog.info(0x0000, 'testTag', 'setBadgeDisplayStatusByBundles success.');
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getBadgeDisplayStatusByBundles<sup>21+</sup>
+
+getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
+
+Batch obtains the display statuses of application badges. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes  | Bundles whose badge display statuses are to be obtained.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise used to return the bundles and the badge display statuses obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
+    data.forEach((value, key) => {
+        hilog.info(0x0000, 'testTag', `Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+    });
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `getBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setReminderInfoByBundles<sup>21+</sup>
+
+setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Promise\<void\>
+
+Batch sets reminders for specified applications. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| reminderInfos | Array<[NotificationReminderInfo](#notificationreminderinfo21)> | Yes| Reminders to be set.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
+    {
+        bundle: bundle,
+        reminderFlags: 59,
+        silentReminderEnabled: false
+    }
+];
+notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
+    hilog.info(0x0000, 'testTag', 'setReminderInfoByBundles success.');
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getReminderInfoByBundles<sup>21+</sup>
+
+getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<NotificationReminderInfo\>\>
+
+Batch obtains reminders of specified applications. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes | Bundles whose reminders are to be obtained.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise<Array<[NotificationReminderInfo](#notificationreminderinfo21)>> | Promise used to return the application reminders obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
+    hilog.info(0x0000, 'testTag', `Reminder data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `getReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## DoNotDisturbDate
@@ -5530,7 +5767,7 @@ Describes the bundle information of an application that enables cross-device col
 | uid          | number | No| No| UID of the application.         |
 | enable       | boolean| No| Yes| Whether the application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.     |
 
-## RingtoneType<sup>22+</sup>
+## RingtoneType<sup>21+</sup>
 
 Enumerates the custom ringtone types.
 
@@ -5545,7 +5782,7 @@ Enumerates the custom ringtone types.
 | RINGTONE_TYPE_ONLINE  | 2   | Online ringtone.           |
 | RINGTONE_TYPE_NONE   | 3   | Non-custom ringtone.                |
 
-## RingtoneInfo<sup>22+</sup>
+## RingtoneInfo<sup>21+</sup>
 
 Describes the custom ringtone information.
 
@@ -5555,7 +5792,21 @@ Describes the custom ringtone information.
 
 | Name   | Type    | Read-Only| Optional| Description                    |
 | ------- | ------- | ---- | ---- | ----------------------- |
-| ringtoneType | [ringtoneType](#ringtonetype22)  |  No | No  | Type of the ringtone.|
+| ringtoneType | [ringtoneType](#ringtonetype21)  |  No | No  | Type of the ringtone.|
 | ringtoneTitle | string  |  No | Yes  | Title of the ringtone. |
 | ringtoneFileName | string  |  No | Yes  | File name of the ringtone. |
 | ringtoneUri | string  |  No | Yes  | URI of the ringtone. |
+
+## NotificationReminderInfo<sup>21+</sup>
+
+Describes the information about the application reminder.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name     | Type   | Read-Only| Optional| Description          |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No| Bundle information of the application.|
+| reminderFlags | long | No| No| Reminder flag.|
+| silentReminderEnabled | boolean | No| No| Whether the silent reminder is enabled. The value **true** indicates that the silent reminder is enabled, and the value **false** indicates the opposite.|
