@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 ```
-typedef struct {...} Http_PerformanceTiming
+typedef struct Http_PerformanceTiming {...} Http_PerformanceTiming
 ```
 
 ## 概述

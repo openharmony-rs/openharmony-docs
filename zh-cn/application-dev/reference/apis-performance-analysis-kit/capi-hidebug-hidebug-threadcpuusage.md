@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} HiDebug_ThreadCpuUsage
+typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
 ```
 
 ## 概述

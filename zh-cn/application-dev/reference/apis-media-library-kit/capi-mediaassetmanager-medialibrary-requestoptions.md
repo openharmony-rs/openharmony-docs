@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-typedef struct {...} MediaLibrary_RequestOptions
+typedef struct MediaLibrary_RequestOptions {...} MediaLibrary_RequestOptions
 ```
 
 ## 概述

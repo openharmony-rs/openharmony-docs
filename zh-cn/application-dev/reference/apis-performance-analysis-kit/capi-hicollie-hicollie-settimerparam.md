@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} HiCollie_SetTimerParam
+typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 ```
 
 ## 概述

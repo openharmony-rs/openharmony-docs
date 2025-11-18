@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 ```
-typedef struct {...} Http_RequestOptions
+typedef struct Http_RequestOptions {...} Http_RequestOptions
 ```
 
 ## 概述

@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetStack_Certificates
+typedef struct NetStack_Certificates {...} NetStack_Certificates
 ```
 
 ## 概述

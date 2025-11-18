@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_Route
+typedef struct NetConn_Route {...} NetConn_Route
 ```
 
 ## 概述

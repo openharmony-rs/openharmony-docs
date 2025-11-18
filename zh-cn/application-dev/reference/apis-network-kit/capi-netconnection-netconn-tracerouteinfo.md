@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_TraceRouteInfo
+typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
 ```
 
 ## 概述

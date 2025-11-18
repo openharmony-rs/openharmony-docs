@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_NetHandleList
+typedef struct NetConn_NetHandleList {...} NetConn_NetHandleList
 ```
 
 ## 概述
