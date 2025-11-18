@@ -1175,7 +1175,7 @@ struct Detail {
 
 <!-- @[Router_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets) -->
 
-```ts
+``` TypeScript
 @ObservedV2
 export class RouterModel {
   @Trace public id: number = -1;
@@ -1211,12 +1211,11 @@ struct RouterIndex {
     }
   }
 }
-
 ```
 
 <!-- @[Child_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets) -->
 
-```ts
+``` TypeScript
 import { RouterModel } from './RouterIndex';
 import { plainToInstance } from 'class-transformer'; // 导入三方库
 
@@ -1234,7 +1233,6 @@ struct Detail {
     }
   }
 }
-
 ```
 
 ![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)
