@@ -141,7 +141,7 @@
    **设备当前应用**申请和取消长时任务示例代码如下：
 
    <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
      // 长时任务id
@@ -149,33 +149,134 @@
      // 长时任务取消原因
      console.info('OnContinuousTaskCancel callback reason ' + info.reason);
    }
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
-
+   
+     @State isSwitching: boolean = false;
+     // 播放或暂停
+     onPlayClick(): void {
+       if (this.isSwitching) {
+         console.info(`onPlayClick ignored, isSwitching`);
+         return
+       }
+       console.info(`onPlayClick isPlaying= ${PlayerModel.isPlaying}`);
+       if (PlayerModel.isPlaying) {
+         PlayerModel.pauseMusic();
+         // cancel continuous task
+         this.stopContinuousTask();
+         PlayerModel.isPlaying = false;
+       } else {
+         PlayerModel.preLoad(PlayerModel.playerIndex, () => {
+           PlayerModel.playMusic(-1, true, this.context as common.UIAbilityContext);
+           // start continuous task
+           PlayerModel.isPlaying = true;
+           if (!this.checkHaveAuidioPlaybackTask()) {
+             this.startContinuousTask();
+           }
+         })
+       }
+     }
+   
+     // 上一首
+     onPreviousClick(): void {
+       if (this.isSwitching) {
+         console.info(`onPreviousClick ignored, isSwitching`);
+         return;
+       }
+       console.info(`onPreviousClick`);
+       PlayerModel.playerIndex--;
+       if (PlayerModel.playerIndex < 0 && PlayerModel.playlist.audioFiles.length >= 1) {
+         PlayerModel.playerIndex = PlayerModel.playlist.audioFiles.length - 1;
+       }
+       this.isSwitching = true;
+       PlayerModel.preLoad(PlayerModel.playerIndex, () => {
+         PlayerModel.playMusic(0, true, this.context as common.UIAbilityContext);
+         this.isSwitching = false;
+         PlayerModel.isPlaying = true;
+         if (!this.checkHaveAuidioPlaybackTask()) {
+           this.startContinuousTask();
+         }
+       })
+     }
+   
+     // 下一首
+     onNextClick(): void {
+       if (this.isSwitching) {
+         console.info(`onNextClick ignored, isSwitching`);
+         return;
+       }
+       console.info(`onNextClick`);
+       PlayerModel.playerIndex++;
+       if (PlayerModel.playerIndex >= PlayerModel.playlist.audioFiles.length) {
+         PlayerModel.playerIndex = 0;
+       }
+       this.isSwitching = true;
+       PlayerModel.preLoad(PlayerModel.playerIndex, () => {
+         PlayerModel.playMusic(0, true, this.context as common.UIAbilityContext);
+         this.isSwitching = false;
+         PlayerModel.isPlaying = true;
+         if (!this.checkHaveAuidioPlaybackTask()) {
+           this.startContinuousTask();
+         }
+       })
+     }
+   
+     // 查询当前UIability是否已经申请过特定类型的长时任务
+     checkHaveAuidioPlaybackTask(): boolean {
+       try {
+         backgroundTaskManager.getAllContinuousTasks(this.context, false).
+         then((info: backgroundTaskManager.ContinuousTaskInfo[]) => {
+           console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(info));
+           let index: number = 0;
+           for (index = 0; index < info.length; index++) {
+             if (info[index].backgroundModes.indexOf('audioPlayback') != 0) {
+               return true;
+             } else {
+               console.info(`current have audioplyback continuous task.`);
+             }
+           }
+           return false;
+         }).catch((error: BusinessError) => {
+           console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+           return false;
+         });
+       } catch (error) {
+         console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         return false;
+       }
+       return false;
+     }
+   
+     aboutToAppear() {
+       PlayerModel.getPlaylist(() => {
+         console.info(`on playlist generated`);
+       })
+     }
+   
      OnContinuousTaskCancel() {
        try {
-          backgroundTaskManager.on('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
+         backgroundTaskManager.on('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      OffContinuousTaskCancel() {
        try {
-          // callback参数不传，则取消所有已注册的回调
-          backgroundTaskManager.off('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
+         // callback参数不传，则取消所有已注册的回调
+         backgroundTaskManager.off('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 申请长时任务.then()写法
      startContinuousTask() {
        let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -199,7 +300,7 @@
          //   [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
          // }
        };
-
+   
        try {
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
          // 在原子化服务中，使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
@@ -207,12 +308,13 @@
            try {
              let list: string[] = ['audioPlayback'];
              // let list: string[] = ['bluetoothInteraction']; 长时任务类型包含bluetoothInteraction，CAR_KEY子类型合法
-             // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
              backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).
                then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-               console.info("Operation startBackgroundRunning succeeded");
+               console.info('Operation startBackgroundRunning succeeded');
                // 此处执行具体的长时任务逻辑，如播音等。
-               // 系统会对业务场景的真实性进行检测，如果没有实际执行对应的业务，系统可能会取消对应的长时任务并挂起应用。
+               if (!PlayerModel.isPlaying) {
+                 this.onPlayClick();
+               }
              }).catch((error: BusinessError) => {
                console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
              });
@@ -224,16 +326,19 @@
          console.error(`Failed to Operation getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 取消长时任务.then()写法
      stopContinuousTask() {
-        backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-          console.info(`Succeeded in operationing stopBackgroundRunning.`);
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
-        });
+       backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+         console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         if (PlayerModel.isPlaying) {
+           this.onPlayClick();
+         }
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+       });
      }
-
+   
      build() {
        Row() {
          Column() {
@@ -249,6 +354,7 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('applyContinuousTask')
            .onClick(() => {
              // 通过按钮申请长时任务
              this.startContinuousTask();
@@ -262,13 +368,14 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('resetContinuousTask')
            .onClick(() => {
              // 此处结束具体的长时任务的执行
    
              // 通过按钮取消长时任务
              this.stopContinuousTask();
            })
-
+   
            Button() {
              Text('注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
            }
@@ -281,9 +388,36 @@
              // 通过按钮注册长时任务取消回调
              this.OnContinuousTaskCancel();
            })
-
+   
            Button() {
              Text('取消注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(350)
+           .height(40)
+           .onClick(() => {
+             // 通过按钮取消注册长时任务取消回调
+             this.OffContinuousTaskCancel();
+           })
+           Text('播音业务功能')
+             .fontSize(40)
+             .fontWeight(FontWeight.Bold)
+           Button() {
+             Text('播放/暂停音乐').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .id('playAndPause')
+           .onClick(() => {
+             this.onPlayClick();
+           })
+           Button() {
+             Text('上一首').fontSize(25).fontWeight(FontWeight.Bold)
            }
            .type(ButtonType.Capsule)
            .margin({ top: 10 })
@@ -291,15 +425,24 @@
            .width(250)
            .height(40)
            .onClick(() => {
-             // 通过按钮取消注册长时任务取消回调
-             this.OffContinuousTaskCancel();
+             this.onPreviousClick();
+           })
+           Button() {
+             Text('下一首').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .onClick(() => {
+             this.onNextClick();
            })
          }
          .width('100%')
        }
        .height('100%')
      }
-   }
    ```
 
 5. 申请和取消长时任务async/await写法。
@@ -307,15 +450,116 @@
    **设备当前应用**申请和取消长时任务async/await写法示例代码如下：
 
    <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component
-   struct Index {
+   struct IndexAsyncAndAwait {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
-
+   
+     @State isSwitching: boolean = false;
+     // 播放或暂停
+     onPlayClick(): void {
+       if (this.isSwitching) {
+         console.info(`onPlayClick ignored, isSwitching`);
+         return;
+       }
+       console.info(`onPlayClick isPlaying= ${PlayerModel.isPlaying}`);
+       if (PlayerModel.isPlaying) {
+         PlayerModel.pauseMusic();
+         // cancel continuous task
+         this.stopContinuousTask();
+         PlayerModel.isPlaying = false;
+       } else {
+         PlayerModel.preLoad(PlayerModel.playerIndex, () => {
+           PlayerModel.playMusic(-1, true, this.context as common.UIAbilityContext);
+           // start continuous task
+           PlayerModel.isPlaying = true;
+           if (!this.checkHaveAuidioPlaybackTask()) {
+             this.startContinuousTask();
+           }
+         })
+       }
+     }
+   
+     // 上一首
+     onPreviousClick(): void {
+       if (this.isSwitching) {
+         console.info(`onPreviousClick ignored, isSwitching`);
+         return;
+       }
+       console.info(`onPreviousClick`);
+       PlayerModel.playerIndex--;
+       if (PlayerModel.playerIndex < 0 && PlayerModel.playlist.audioFiles.length >= 1) {
+         PlayerModel.playerIndex = PlayerModel.playlist.audioFiles.length - 1;
+       }
+       this.isSwitching = true;
+       PlayerModel.preLoad(PlayerModel.playerIndex, () => {
+         PlayerModel.playMusic(0, true, this.context as common.UIAbilityContext);
+         this.isSwitching = false;
+         PlayerModel.isPlaying = true;
+         if (!this.checkHaveAuidioPlaybackTask()) {
+           this.startContinuousTask();
+         }
+       })
+     }
+   
+     // 下一首
+     onNextClick(): void {
+       if (this.isSwitching) {
+         console.info(`onNextClick ignored, isSwitching`);
+         return;
+       }
+       console.info(`onNextClick`);
+       PlayerModel.playerIndex++;
+       if (PlayerModel.playerIndex >= PlayerModel.playlist.audioFiles.length) {
+         PlayerModel.playerIndex = 0;
+       }
+       this.isSwitching = true;
+       PlayerModel.preLoad(PlayerModel.playerIndex, () => {
+         PlayerModel.playMusic(0, true, this.context as common.UIAbilityContext);
+         this.isSwitching = false;
+         PlayerModel.isPlaying = true;
+         if (!this.checkHaveAuidioPlaybackTask()) {
+           this.startContinuousTask();
+         }
+       })
+     }
+   
+     // 查询当前UIability是否已经申请过特定类型的长时任务
+     checkHaveAuidioPlaybackTask(): boolean {
+       try {
+         backgroundTaskManager.getAllContinuousTasks(this.context, false).
+         then((info: backgroundTaskManager.ContinuousTaskInfo[]) => {
+           console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(info));
+           let index: number = 0;
+           for (index = 0; index < info.length; index++) {
+             if (info[index].backgroundModes.indexOf('audioPlayback') != 0) {
+               return true;
+             } else {
+               console.info(`current have audioplyback continuous task.`);
+             }
+           }
+           return false;
+         }).catch((error: BusinessError) => {
+           console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+           return false;
+         });
+       } catch (error) {
+         console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         return false;
+       }
+       return false;
+     }
+   
+     aboutToAppear() {
+       PlayerModel.getPlaylist(() => {
+         console.info(`on playlist generated`);
+       })
+     }
+   
      // 申请长时任务async/await写法
      async startContinuousTask() {
        let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -339,7 +583,7 @@
          //   [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
          // }
        };
-
+   
        try {
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
          // 在原子化服务中，使用const wantAgentObj: object = await wantAgent.getWantAgent(wantAgentInfo);替换下面一行代码
@@ -352,6 +596,9 @@
              await backgroundTaskManager.startBackgroundRunning(this.context as Context, list, wantAgentObj);
            console.info(`Operation startBackgroundRunning succeeded, notificationId: ${res.notificationId}`);
            // 此处执行具体的长时任务逻辑，如播音等。
+           if (!PlayerModel.isPlaying) {
+             this.onPlayClick();
+           }
          } catch (error) {
            console.error(`Failed to Operation startBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
          }
@@ -359,17 +606,20 @@
          console.error(`Failed to Operation getWantAgent. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 取消长时任务async/await写法
      async stopContinuousTask() {
        try {
          await backgroundTaskManager.stopBackgroundRunning(this.context);
          console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         if (PlayerModel.isPlaying) {
+           this.onPlayClick();
+         }
        } catch (error) {
          console.error(`Failed to operation stopBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`)
        }
      }
-
+   
      build() {
        Row() {
          Column() {
@@ -377,7 +627,7 @@
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
    
-          Button() {
+           Button() {
              Text('申请长时任务').fontSize(25).fontWeight(FontWeight.Bold)
            }
            .type(ButtonType.Capsule)
@@ -385,6 +635,7 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('applyContinuousTask')
            .onClick(() => {
              // 通过按钮申请长时任务
              this.startContinuousTask();
@@ -398,30 +649,67 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('resetContinuousTask')
            .onClick(() => {
              // 此处结束具体的长时任务的执行
-
+   
              // 通过按钮取消长时任务
              this.stopContinuousTask();
+           })
+           Text('播音业务功能')
+             .fontSize(40)
+             .fontWeight(FontWeight.Bold)
+           Button() {
+             Text('播放/暂停音乐').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .id('playAndPause')
+           .onClick(() => {
+             this.onPlayClick();
+           })
+           Button() {
+             Text('上一首').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .onClick(() => {
+             this.onPreviousClick();
+           })
+           Button() {
+             Text('下一首').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .onClick(() => {
+             this.onNextClick();
            })
          }
          .width('100%')
        }
        .height('100%')
      }
-   }
    ```
    <!--Del-->
 
    **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[Call调用开发指南（同设备）](../application-models/uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)和[Call调用开发指南（跨设备）](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
-
+   
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
- 
+   
    let mContext: Context;
-
+   
    function startContinuousTask() {
      let wantAgentInfo : wantAgent.WantAgentInfo = {
        // 点击通知后，将要执行的动作列表
@@ -438,7 +726,7 @@
        // 点击通知后，动作执行属性
        actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
      };
-
+   
      // 通过wantAgent模块的getWantAgent方法获取WantAgent对象
      // 在原子化服务中，使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
@@ -450,7 +738,7 @@
        });
      });
    }
-
+   
    function stopContinuousTask() {
      backgroundTaskManager.stopBackgroundRunning(mContext).then(() => {
        console.info(`Succeeded in operationing stopBackgroundRunning.`);
@@ -458,29 +746,29 @@
        console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
      });
    }
-
+   
    class MyParcelable implements rpc.Parcelable {
      private num: number = 0;
      private str: string = '';
-
+   
      constructor(num: number, str: string) {
        this.num = num;
        this.str = str;
      }
-
+   
      marshalling(messageSequence: rpc.MessageSequence) {
        messageSequence.writeInt(this.num);
        messageSequence.writeString(this.str);
        return true;
      }
-
+   
      unmarshalling(messageSequence: rpc.MessageSequence) {
        this.num = messageSequence.readInt();
        this.str = messageSequence.readString();
        return true;
      }
    }
-
+   
    function sendMsgCallback(data: rpc.MessageSequence) {
      console.info('BgTaskAbility funcCallBack is called ' + data);
      let receivedData: MyParcelable = new MyParcelable(0, '');
@@ -496,27 +784,27 @@
      }
      return new MyParcelable(10, 'Callee test');
    }
-
+   
    export default class BgTaskAbility extends UIAbility {
      // Ability创建
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       console.info("[Demo] BgTaskAbility onCreate");
+       console.info('[Demo] BgTaskAbility onCreate');
        try {
-         this.callee.on(MSG_SEND_METHOD, sendMsgCallback)
+         this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
        } catch (error) {
          console.error(`${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
        }
        mContext = this.context;
      }
-     
+   
      // Ability销毁
      onDestroy() {
        console.info('[Demo] BgTaskAbility onDestroy');
      }
-
+   
      onWindowStageCreate(windowStage: window.WindowStage) {
        console.info('[Demo] BgTaskAbility onWindowStageCreate');
-
+   
        windowStage.loadContent('pages/Index', (error, data) => {
          if (error.code) {
            console.error(`load content failed with error ${JSON.stringify(error)}`);
@@ -525,15 +813,15 @@
          console.info(`load content succeed with data ${JSON.stringify(data)}`);
        });
      }
-
+   
      onWindowStageDestroy() {
        console.info('[Demo] BgTaskAbility onWindowStageDestroy');
      }
-      
+   
      onForeground() {
        console.info('[Demo] BgTaskAbility onForeground');
      }
-
+   
      onBackground() {
        console.info('[Demo] BgTaskAbility onBackground');
      }
