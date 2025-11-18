@@ -933,7 +933,7 @@ The app does not support the creation of an appClone instance.
 没有配置分身模式，或者多开模式配置为其他模式。
 
 **处理步骤**<br/>
-1. 检查更新应用是否支持分身。
+1. 检查更新应用是否支持分身。<!--DelEnd-->
 
 ## 17700070 指定的快捷方式id不合法
 
@@ -949,6 +949,7 @@ The specified shortcut id is illegal.
 **处理步骤**<br/>
 1. 检查包名或者快捷方式id是否正确。
 
+<!--Del-->
 ## 17700071 不允许企业应用安装
 **错误信息**<br/>
 It is not allowed to install the enterprise bundle.
