@@ -256,7 +256,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
         return sessionId;
       }
  
-      const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
       options.needSendData = true;
       options.needSendStream = true;
       options.needReceiveStream = false;
