@@ -399,23 +399,36 @@
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
-    - 自定义组件装饰器
-      - @Component
-      - @ComponentV2
-      - @Entry
-    - 组件扩展装饰器
-      - @AnimatableExtend
-      - @Builder
-      - @BuilderParam
-      - @CustomLayout（ArkTS-ST）
-      - @Extend（ArkTS-DT）
-      - @LocalBuilder（ArkTS-DT）
-      - @Require
-      - @Reusable
-      - @ReusableV2
-      - @Styles（ArkTS-DT）
-      - [applyStyles：定义组件重用样式（ArkTS-Sta）](arkui-ts/ts-universal-applyStyles.md)
-      - [wrapBuilder：封装全局@Builder (ArkTS-Sta)](arkui-ts/ts-universal-wrapBuilder-static.md)
+    - 动态ArkTS自定义组件
+      - 自定义组件装饰器
+        - @Component
+        - @ComponentV2
+        - [@Entry](arkui-ts/ts-universal-entry.md)
+      - 组件扩展装饰器
+        - [@AnimatableExtend装饰器：定义可动画属性](arkui-ts/ts-universal-animatable-extend.md)
+        - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-dynamic.md)
+        - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-dynamic.md)
+        - @Extend
+        - [@LocalBuilder装饰器：维持组件关系](arkui-ts/ts-universal-localbuilder.md)
+        - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-dynamic.md)
+        - @Reusable
+        - @ReusableV2
+        - @Styles
+        - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-dynamic.md)
+    - 静态ArkTS自定义组件
+      - 自定义组件装饰器
+        - @Component
+        - @ComponentV2
+        - @Entry
+      - 组件扩展装饰器
+        - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-static.md)
+        - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-static.md)
+        - @CustomLayout
+        - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-static.md)
+        - @Reusable
+        - @ReusableV2
+        - [applyStyles：定义组件重用样式](arkui-ts/ts-universal-applyStyles.md)
+        - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-static.md)
   - 互操作
     - [compatibleComponent (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
     - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)
