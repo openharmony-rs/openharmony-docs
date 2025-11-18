@@ -291,7 +291,9 @@ export struct SupportAvoidCentralAxisMenuExample {
       .height('100%')
       .width('100%')
     }
-    // ···
+    // ...
+  }
+}
 ```
 
 ## 控制子窗菜单的事件透传
