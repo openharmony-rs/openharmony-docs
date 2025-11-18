@@ -14131,7 +14131,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
