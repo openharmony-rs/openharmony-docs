@@ -1465,3 +1465,19 @@ testNapi.testNapiWrapEnhance();
 **napi_create_strong_reference、napi_delete_strong_reference、napi_get_value_strong_reference**
 
 [使用扩展的Node-API接口创建、销毁和使用强引用对象](use-napi-about-strong-reference.md)
+
+## napi支持创建Sendable的强引用
+
+### 接口描述
+
+| 接口                                     | 描述                                       |
+| ---------------------------------------- | ------------------------------------------ |
+| napi_create_strong_sendable_reference    | 创建指向Sendable ArkTS对象的Sendable强引用。 |
+| napi_delete_strong_sendable_reference    | 删除Sendable强引用。                        |
+| napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。   |
+
+### 使用示例
+
+**napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference、napi_get_strong_sendable_reference_value**
+
+[使用扩展的Node-API接口创建、销毁和使用Sendable强引用](use-napi-about-sendable-reference.md)
