@@ -8,7 +8,7 @@
 
 为了实现对\@ComponentV2装饰的自定义组件中变量变化的观测，开发者可以使用\@Local装饰器装饰变量。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-new-componentV2.md)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。
 
 >**说明：**
 >
@@ -287,7 +287,7 @@ struct Index {
 
 \@Local装饰器存在以下使用限制：
 
-- \@Local装饰器只能在[\@ComponentV2](arkts-new-componentV2.md)装饰的自定义组件中使用。
+- \@Local装饰器只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中使用。
 
   ```ts
   @ComponentV2

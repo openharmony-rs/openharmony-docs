@@ -1,4 +1,4 @@
-# \@ReusableV2装饰器：组件复用
+# \@ReusableV2装饰器：V2组件复用
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-new-componentV2.md)装饰的自定义组件，达成组件复用的效果。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
 
 在阅读本文前，建议提前阅读：[\@Reusable装饰器：组件复用](./arkts-reusable.md)。
 
