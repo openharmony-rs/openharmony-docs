@@ -603,6 +603,22 @@ Image组件创建后，不支持动态修改该属性的值。
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | enable | boolean | 是   | 控制是否开启SVG标签解析能力增强功能。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
+### contentTransition<sup>21+</sup>
+
+contentTransition(transition: ContentTransitionEffect)
+
+图片内容发生变化时，触发过渡动效。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
+
 ## ImageContent<sup>12+</sup>
 
 指定图像内容。
@@ -2291,3 +2307,35 @@ struct Index {
 ```
 
 ![sandBox](figures/svg2.PNG)
+
+### 示例27（使用contentTransition属性实现图片淡入淡出切换效果）
+
+从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Column() {
+        Image(this.imageResource)
+          .width(200)
+          .height(200)
+          // 启用淡入淡出过渡效果。
+          .contentTransition(ContentTransitionEffect.OPACITY)
+          .onClick(() => {
+            // $r('app.media.cloud1')需要替换为开发者所需的图像资源文件。
+            this.imageResource = $r('app.media.cloud1')
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![sandBox](figures/trans.gif)
