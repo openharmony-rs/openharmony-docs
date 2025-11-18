@@ -2821,7 +2821,7 @@ sms.encodeMms(mmsInformation).then((data: Array<int>) => {
 | contentType      | string                               | 否   |   否  |  指示MMS消息发送请求的内容类型。     |
 | version          | [MmsVersionType](#mmsversiontype8)   | 否   |   否  |  指示MMS消息发送请求的版本。        |
 | to               | Array<[MmsAddress](#mmsaddress8)\>   | 否   |   是  |  指示MMS消息发送请求的目的地址。       |
-| date             | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 否   |   是  |  指示MMS消息发送请求的日期。        |
+| date             | ArkTS-Dyn: number <br/>ArkTS-Sta: long  | 否   |   是  |  指示MMS消息发送请求的日期。        |
 | cc               | Array<[MmsAddress](#mmsaddress8)\>   | 否   |   是  |  指示MMS消息发送请求的抄送地址。        |
 | bcc              | Array<[MmsAddress](#mmsaddress8)\>   | 否   |   是  |  指示MMS消息发送请求的暗抄送地址。       |
 | subject          | string                               | 否   |   是  |  指示MMS消息发送请求的主题。         |
@@ -2910,7 +2910,7 @@ sms.encodeMms(mmsInformation).then((data: Array<int>) => {
 | -------------- | ------------------------------------ | ---- | ----- | -------- |
 | transactionId  | string                               | 否   |   否  | 指示MMS消息检索配置的事务ID。   |
 | messageId      | string                               | 否   |   否  | 指示MMS消息检索配置的消息ID。   |
-| date           | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 否   |   否  | 指示MMS消息检索配置的日期。     |
+| date           | ArkTS-Dyn: number <br/>ArkTS-Sta: long  | 否   |   否  | 指示MMS消息检索配置的日期。     |
 | contentType    | string                               | 否   |   否  | 指示MMS消息检索配置的内容类型。 |
 | to             | Array<[MmsAddress](#mmsaddress8)\>   | 否   |   否  | 指示MMS消息检索配置的目的地地址。   |
 | version        | [MmsVersionType](#mmsversiontype8)   | 否   |   否  | 指示MMS消息检索配置的版本。     |
@@ -2941,7 +2941,7 @@ sms.encodeMms(mmsInformation).then((data: Array<int>) => {
 | messageId  | string                             | 否   |   否  | 指示原始MMS消息读取状态的消息ID。   |
 | to         | Array<[MmsAddress](#mmsaddress8)\> | 否   |   否  | 指示原始MMS消息读取状态的目的地地址。   |
 | from       | [MmsAddress](#mmsaddress8)         | 否   |   否  | 指示原始MMS消息读取状态的来源。     |
-| date       | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   |   否  | 指示原始MMS消息读取状态的日期。     |
+| date       | ArkTS-Dyn: number <br/>ArkTS-Sta: long| 否   |   否  | 指示原始MMS消息读取状态的日期。     |
 | readStatus | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   |   否  | 指示原始MMS消息读取状态的阅读状态。 |
 
 ## MmsReadRecInd<sup>8+</sup>
@@ -2963,7 +2963,7 @@ sms.encodeMms(mmsInformation).then((data: Array<int>) => {
 | to         | Array<[MmsAddress](#mmsaddress8)\> | 否   |   否  | 指示MMS消息阅读状态的目的地地址。   |
 | from       | [MmsAddress](#mmsaddress8)         | 否   |   否  | 指示MMS消息阅读状态的来源。     |
 | readStatus | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   |   否  | 指示MMS消息阅读状态的阅读状态。 |
-| date       | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   |   是  | 指示MMS消息阅读状态的日期。     |
+| date       | ArkTS-Dyn: number <br/>ArkTS-Sta: long| 否   |   是  | 指示MMS消息阅读状态的日期。     |
 
 ## MmsAttachment<sup>8+</sup>
 
@@ -3280,7 +3280,7 @@ SIM卡短消息。
 |    名称   | 类型                               | 只读 |  可选 | 说明   |
 | --------- | ---------------------------------- | ---- | ----- | ------ |
 | messageId | string                             | 否   |   否  | 指示MMS消息传送指示的消息ID。 |
-| date      | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   |   否  | 指示MMS消息传送指示的日期。   |
+| date      | ArkTS-Dyn: number <br/>ArkTS-Sta: long| 否   |   否  | 指示MMS消息传送指示的日期。   |
 | to        | Array<[MmsAddress](#mmsaddress8)\> | 否   |   否  | 指示MMS消息传送指示的目的地地址。 |
 | status    | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   |   否  | 指示MMS消息传送指示的状态。   |
 | version   | [MmsVersionType](#mmsversiontype8) | 否   |   否  | 指示MMS消息传送指示的版本。   |
