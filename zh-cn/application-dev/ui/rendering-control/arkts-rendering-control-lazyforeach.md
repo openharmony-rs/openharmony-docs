@@ -2158,7 +2158,7 @@ struct ScreenFlickeringInList {
 
 ### 组件复用渲染异常
 
-`@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-new-componentV2.md)混用会导致组件渲染异常。
+`@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/

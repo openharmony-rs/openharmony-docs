@@ -10,7 +10,7 @@
 
 >**说明：**
 >
-> 从API version 22开始，\@Env支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-new-componentV2.md)中使用。
+> 从API version 22开始，\@Env支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
 >
 > 从API version 22开始，该装饰器支持在原子化服务中使用。
 

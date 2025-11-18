@@ -40,7 +40,7 @@
 
 ## 限制条件
 
-- \@Event只能用在[\@ComponentV2](arkts-new-componentV2.md)装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
+- \@Event只能用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
 
   ```ts
   @ComponentV2

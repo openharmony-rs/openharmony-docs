@@ -25,7 +25,7 @@ Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计�
 Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计算
 ```
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-new-componentV2.md)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
 
 >**说明：**
 >
