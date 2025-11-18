@@ -2275,7 +2275,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。
+设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2837,7 +2837,7 @@ try {
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
-通知卡片管控状态更新。
+通知卡片管控状态更新。使用Promise异步回调。
 
 卡片管控状态是指，应用使能了应用锁管控，对应应用的卡片也会跟随使能应用锁管控，此时卡片页面会使用加锁的蒙板样式遮罩卡片。在管控状态下，操作和使用卡片需要输入加锁时设置的密码。
 
@@ -2897,7 +2897,7 @@ try {
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-订阅互动卡片动效请求事件。
+订阅互动卡片动效请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -2937,7 +2937,7 @@ try {
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-取消订阅互动卡片动效请求事件。
+取消订阅互动卡片动效请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -2977,7 +2977,7 @@ try {
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3017,7 +3017,7 @@ try {
 
 off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeSceneAnimationState&gt;): void
 
-取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3057,7 +3057,7 @@ try {
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
-订阅卡片位置尺寸查询请求事件。
+订阅卡片位置尺寸查询请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3102,7 +3102,7 @@ try {
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
-取消订阅卡片位置尺寸查询请求事件。
+取消订阅卡片位置尺寸查询请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
