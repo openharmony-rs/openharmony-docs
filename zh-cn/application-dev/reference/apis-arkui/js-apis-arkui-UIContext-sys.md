@@ -4,11 +4,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.UIContext (UIContext)](js-apis-arkui-UIContext.md)。
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.UIContext (UIContext)](js-apis-arkui-UIContext.md)。
 
 ## UIContext
 
@@ -16,7 +18,9 @@
 
 ### setDynamicDimming<sup>12+<sup>
 
-setDynamicDimming(id: string, value: number): void
+ArkTS-Dyn: setDynamicDimming(id: string, value: number): void
+
+ArkTS-Sta: setDynamicDimming(id: string, value: int): void
 
 通过该方法设置组件的压暗程度。
 
@@ -27,12 +31,16 @@ setDynamicDimming(id: string, value: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
 | id | string | 是 | 组件id。 |
-| value | number | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
+| value | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
 
 **示例：**
 
@@ -256,7 +264,9 @@ struct Index {
 
 ### freezeUINode<sup>18+</sup>
 
-freezeUINode(uniqueId: number, isFrozen: boolean): void
+ArkTS-Dyn: freezeUINode(uniqueId: number, isFrozen: boolean): void
+
+ArkTS-Sta: freezeUINode(uniqueId: long, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
@@ -264,11 +274,15 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
-| uniqueId | number | 是 | 组件的uniqueId。|
+| uniqueId | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是 | 组件的uniqueId。|
 | isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
 
 **错误码：**
