@@ -438,6 +438,7 @@ globalConnect虽然是应用级别的路径，但是可以设置不同的加密�
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { contextConstant } from '@kit.AbilityKit';
 
 const DOMAIN = 0x0000;
 
@@ -463,10 +464,10 @@ export class Sample {
 @ComponentV2
 struct Page1 {
   @Local refresh: number = 0;
-  // 使用key:global1连接，传入加密等级为EL1
+  // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
-    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample() })!;
-  // 使用key:global2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
+    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
+  // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
@@ -519,6 +520,7 @@ struct Page1 {
 // 模块2
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { contextConstant } from '@kit.AbilityKit';
 
 const DOMAIN = 0x0000;
 // 接受序列化失败的回调
@@ -545,7 +547,7 @@ struct Page1 {
   @Local a: number = 0;
   // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
-    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample() })!;
+    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
   // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
 
@@ -627,8 +629,8 @@ struct Page1 {
         .fontColor(Color.Red)
 
       /**************************** save接口 **************************/
-      // 非状态变量需要借助状态变量refresh才能刷新
-      Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
@@ -709,7 +711,7 @@ struct Page1 {
         .fontColor(Color.Red)
 
       /**************************** save接口 **************************/
-      // 非状态变量需要借助状态变量refresh才能刷新
+      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // 未被@Trace保存的对象无法自动存储，需要调用save存储
