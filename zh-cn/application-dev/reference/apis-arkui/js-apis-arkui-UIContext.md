@@ -482,7 +482,7 @@ getSharedLocalStorage(): LocalStorage | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

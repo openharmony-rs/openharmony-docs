@@ -10,7 +10,7 @@
 >
 > 从API version 12开始对\@State/\@Provide/\@Param/普通变量(无状态装饰器修饰的变量)进行校验。
 >
-> 从API version 20开始，开发者可以在ArkTS-Sta中使用\@Require的装饰器。
+> 从API version 22开始，开发者可以在ArkTS-Sta中使用\@Require的装饰器。
 
 ## 概述
 
