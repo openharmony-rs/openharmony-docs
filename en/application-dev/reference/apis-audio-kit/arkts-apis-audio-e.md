@@ -12,7 +12,7 @@
 
 ## AudioVolumeType
 
-Enumerates the audio stream types.
+Enumerates the audio volume types.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -276,7 +276,7 @@ Enumerates the audio channel layouts of audio files.
 
 ## StreamUsage
 
-Enumerates the audio stream usage types.
+Enumerates the types of audio streams played.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -412,7 +412,7 @@ Enumerates whether an audio stream can be recorded by other applications.
 
 | Name                | Value  | Description                            |
 | -------------------- | ---- | -------------------------------- |
-| PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorded by other applications.|
+| PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorde by other applications.|
 | PRIVACY_TYPE_PRIVATE | 1    | The audio stream cannot be recorded by other applications.|
 
 ## ChannelBlendMode<sup>11+</sup>
@@ -478,7 +478,7 @@ Enumerates the blocked statuses of audio devices.
 
 ## SourceType<sup>8+</sup>
 
-Enumerates the audio source types.
+Enumerates the types of audio streams captured.
 
 | Name                                        |  Value    | Description                  |
 | :------------------------------------------- | :----- | :--------------------- |
