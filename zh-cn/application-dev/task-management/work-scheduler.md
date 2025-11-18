@@ -154,20 +154,21 @@
 
 2. 申请延迟任务。
    <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
-
-   ```ts
-   // 创建workinfo
+   
+   ``` TypeScript
    let workInfo: workScheduler.WorkInfo = {
      workId: 1,
-     networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
+     networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY,
      bundleName: 'ohos.samples.workschedulerextensionability',
      abilityName: 'WorkSchedulerAbility',
+     // ...
    }
    
    try {
      workScheduler.startWork(workInfo);
      console.info(`startWork success`);
-   } catch (error) {
+   }
+   catch (error) {
      console.error(`startWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
    }
    ```
