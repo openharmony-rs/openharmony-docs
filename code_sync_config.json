@@ -19221,7 +19221,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ScopeFocus.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":65,
 						"name":"dynamic_focus_scope",
 						"start_line":16
 					}
