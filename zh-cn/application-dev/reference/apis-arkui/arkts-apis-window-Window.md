@@ -13643,7 +13643,8 @@ ArkTS-Sta示例：
 try {
   let cornerRadius: double = windowClass.getWindowCornerRadius();
 } catch (exception) {
-  console.error(`Failed to get corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to get corner radius. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
