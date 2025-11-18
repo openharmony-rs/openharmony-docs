@@ -372,30 +372,24 @@ addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManage
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct ShortcutExample {
-  build() {
-    Column({ space: 20 }) {
-      Row({ space: 20 }) {
-        Button('getall').onClick(() => {
-          try {
-            shortcutManager.getAllDesktopShortcutInfo(100)
-              .then((data: shortcutManager.ShortcutInfo[]) => {
-                console.info("Shortcut data is " + JSON.stringify(data));
-              }).catch((err: BusinessError) => {
-              console.error(`getAllDesktopShortcutInfo errData is errCode:${err.code}  message:${err.message}`);
-            });
-          } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getAllDesktopShortcutInfo error is errCode:${code}  message:${message}`);
-          }
-        })
-      }
-    }
-  }
+const bundleName = "com.example.dynamic";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2, }
+]
+
+try {
+  await shortcutManager.addDynamicShortcutInfos(arrShortcutInfo, 100)
+    .then(() => {
+      console.info('addDynamicShortcutInfos success');
+    }).catch((err: BusinessError) => {
+      console.error(`addDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
+    });
+} catch (err) {
+  console.error(`addDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
 }
+
 ```
 
 ## shortcutManager.deleteDynamicShortcutInfos<sup>23+</sup>
@@ -450,28 +444,17 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?:
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct ShortcutExample {
-  build() {
-    Column({ space: 20 }) {
-      Row({ space: 20 }) {
-        Button('getall').onClick(() => {
-          try {
-            shortcutManager.getAllDesktopShortcutInfo(100)
-              .then((data: shortcutManager.ShortcutInfo[]) => {
-                console.info("Shortcut data is " + JSON.stringify(data));
-              }).catch((err: BusinessError) => {
-              console.error(`getAllDesktopShortcutInfo errData is errCode:${err.code}  message:${err.message}`);
-            });
-          } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getAllDesktopShortcutInfo error is errCode:${code}  message:${message}`);
-          }
-        })
-      }
-    }
-  }
+const bundleName = "com.example.dynamic";
+
+try {
+  await shortcutManager.deleteDynamicShortcutInfos(bundleName, 0, 100, ["1", "2"])
+    .then(() => {
+      console.info('deleteDynamicShortcutInfos success');
+    }).catch((err: BusinessError) => {
+      console.error(`deleteDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
+    });
+} catch (err) {
+  console.error(`deleteDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
 }
+
 ```
