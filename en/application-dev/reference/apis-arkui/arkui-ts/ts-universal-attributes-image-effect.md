@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Image effects include blur, shadow, spherical effect, and much more.
 
@@ -200,7 +200,7 @@ Applies a brightness effect to the component.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Brightness of the component. The value **1** indicates no effects. When the value is less than 1, the brightness decreases. When the value is less than or equal to 0, the brightness is completely black. When the value is greater than 1, the brightness increases. The larger the value, the higher the brightness. When the brightness is greater than or equal to 2, the brightness becomes completely white.<br>Default value: **1.0**<br>Value range: [0, +∞)<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| value  | number | Yes  | Brightness effect of the component. **1**: No brightness adjustment. Less than 1.0: decreases brightness. 0 or less: Complete black. Greater than 1: increases brightness. 2 or greater: complete white.<br>Default value: **1.0**<br>Value range: [0, +∞)<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 
 **Return value**
 
@@ -224,7 +224,7 @@ Applies a brightness effect to the component. Compared with [brightness](#bright
 
 | Name    | Type             | Mandatory| Description                                                        |
 | ---------- | ----------------- | ---- | ------------------------------------------------------------ |
-| brightness | Optional\<number> | Yes  | Brightness of the component. The value **1** indicates no effects. When the value is less than 1, the brightness decreases. When the value is less than or equal to 0, the brightness is completely black. When the value is greater than 1, the brightness increases. The larger the value, the higher the brightness. When the brightness is greater than or equal to 2, the brightness becomes completely white.<br>Default value: **1.0**<br>Value range: [0, +∞)<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>If **brightness** is **undefined**, the brightness level is reset to **1**.|
+| brightness | Optional\<number> | Yes  | Brightness effect of the component. **1**: no brightness adjustment. Less than 1.0: decreases brightness. 0 or less: Complete black. Greater than 1: increases brightness. 2 or greater: complete white.<br>Default value: **1.0**<br>Value range: [0, +∞)<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>If **brightness** is **undefined**, the brightness level is reset to **1**.|
 
 **Return value**
 
@@ -344,7 +344,7 @@ Inverts the image.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number \| [InvertOptions](#invertoptions11)<sup>11+</sup> | Yes  | How the image is inverted.<br>If the value is of the number type, it indicates the inversion ratio. If the value is **1**, the image is completely inverted. If the value is **0**, the image remains unchanged. The unit is percentage.<br>Value range: [0, 1].<br>A value less than 0 evaluates to the value **0**. A value larger than 1 is treated as **1**.<br>If the value is of the InvertOptions type, the grayscale value of the background color is compared with the threshold range. If the grayscale value is greater than the upper bound of the threshold range, the **high** value is used. If the grayscale value is less than the lower bound of the threshold range, the **low** value is used. If the grayscale value is within the threshold range, the background color changes linearly from high to low.|
+| value  | number \| [InvertOptions](#invertoptions11)<sup>11+</sup> | Yes  | How the image is inverted.<br>If the value is of the number type, it indicates the inversion ratio. If the value is **1**, the image is completely inverted. If the value is **0**, the image remains unchanged. The unit is percentage.<br>Value range: [0, 1].<br>A value less than 0 evaluates to the value **0**. A value larger than 1 is treated as **1**.<br>If the value is of the InvertOptions type, the grayscale value of the background color is compared with the threshold range. If the grayscale value is greater than the upper bound of the threshold range, the **high** value is used. If the grayscale value is less than the lower bound of the threshold range, the **low** value is used. If the grayscale value is within the threshold range, the background color changes linearly from high to low.<br>**NOTE**<br>The number and InvertOptions parameter types produce different inversion effects. When you switch parameter types, previous effects persist and both effects coexist. Use consistent parameter types for predictable results.|
 
 **Return value**
 
@@ -368,7 +368,7 @@ Inverts the image. Compared with [invert](#invert), this API supports the **unde
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | Optional\<number \| [InvertOptions](#invertoptions11)<sup>11+</sup>> | Yes  | How the image is inverted.<br>If the value is of the number type, it indicates the inversion ratio. If the value is **1**, the image is completely inverted. If the value is **0**, the image remains unchanged. The unit is percentage.<br>Value range: [0, 1].<br>A value less than 0 evaluates to the value **0**. A value larger than 1 is treated as **1**.<br>If the value is of the InvertOptions type, the grayscale value of the background color is compared with the threshold range. If the grayscale value is greater than the upper bound of the threshold range, the **high** value is used. If the grayscale value is less than the lower bound of the threshold range, the **low** value is used. If the grayscale value is within the threshold range, the background color changes linearly from high to low.<br>If **options** is **undefined**, the component reverts to its original effect.|
+| options | Optional\<number \| [InvertOptions](#invertoptions11)<sup>11+</sup>> | Yes  | How the image is inverted.<br>If the value is of the number type, it indicates the inversion ratio. If the value is **1**, the image is completely inverted. If the value is **0**, the image remains unchanged. The unit is percentage.<br>Value range: [0, 1].<br>A value less than 0 evaluates to the value **0**. A value larger than 1 is treated as **1**.<br>If the value is of the InvertOptions type, the grayscale value of the background color is compared with the threshold range. If the grayscale value is greater than the upper bound of the threshold range, the **high** value is used. If the grayscale value is less than the lower bound of the threshold range, the **low** value is used. If the grayscale value is within the threshold range, the background color changes linearly from high to low.<br>If **options** is **undefined**, the component reverts to its original effect.<br>**NOTE**<br>The number and InvertOptions parameter types produce different inversion effects. When you switch parameter types, previous effects persist and both effects coexist. Use consistent parameter types for predictable results.|
 
 **Return value**
 
@@ -488,7 +488,7 @@ Applies a color blend effect to the component.
 
 | Name| Type                                                        | Mandatory| Description                                          |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
-| value  | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource) | Yes  | Color to blend with the component. The value can be a string, for example, '0x000000' or 'rgba(0,0,0,1)'.|
+| value  | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource) | Yes  | Color to blend with the component. The value can be a string, for example, **'0x000000'** or **'rgba(0,0,0,1)'**.|
 
 **Return value**
 
@@ -512,7 +512,7 @@ Applies a color blend effect to the component. Compared with [colorBlend](#color
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | Optional\<[Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)> | Yes  | Color to blend with the component. The value can be a string, for example, '0x000000' or 'rgba(0,0,0,1)'.<br>If **color** is **undefined**, the component reverts to its original effect with no color blending.|
+| color  | Optional\<[Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)> | Yes  | Color to blend with the component. The value can be a string, for example, **'0x000000'** or **'rgba(0,0,0,1)'**.<br>If **color** is **undefined**, the component reverts to its original effect with no color blending.|
 
 **Return value**
 
@@ -582,7 +582,7 @@ Sets whether the component and its child components are rendered off the screen 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the component and its child components are rendered off the screen as a whole before being blended with its parent. If the opacity of the component is not 1, the drawing effect may vary depending on the value.<br>Default value: **false**<br> The value **true** means the component and its child components are rendered off the screen as a whole, and **false** means the opposite.|
+| value  | boolean | Yes  | Whether the component and its child components are rendered off the screen as a whole before being blended with its parent. If the opacity of the component is not 1, the drawing effect may vary depending on the value.<br>Default value: **false**<br> The value **true** means the component and its child components are rendered off the screen as a whole, and **false** means the opposite.<br>  |
 
 **Return value**
 
@@ -594,7 +594,7 @@ Sets whether the component and its child components are rendered off the screen 
 
 renderGroup(isGroup: Optional\<boolean>): T
 
-Sets whether the component and its child components are rendered off the screen as a whole before being blended with its parent. Compared to [renderGroup<sup>10+</sup>](#rendergroup10), the **isGroup** parameter supports the **undefined** type.
+Sets whether the component and its child components are rendered off the screen as a whole before being blended with its parent. Compared with [renderGroup<sup>10+</sup>](#rendergroup10), this API supports the **undefined** type for the **isGroup** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -606,7 +606,7 @@ Sets whether the component and its child components are rendered off the screen 
 
 | Name | Type              | Mandatory| Description                                                        |
 | ------- | ------------------ | ---- | ------------------------------------------------------------ |
-| isGroup | Optional\<boolean> | Yes  | Whether the component and its child components are rendered off the screen as a whole before being blended with its parent. If the opacity of the component is not 1, the drawing effect may vary depending on the value.<br>Default value: **false**<br>If **isGroup** is **undefined**, the component reverts to its original effect of not enabling offscreen rendering as a whole before blending with the parent component.|
+| isGroup | Optional\<boolean> | Yes  | Whether the component and its child components are rendered off the screen as a whole before being blended with its parent. If the opacity of the component is not 1, the drawing effect may vary depending on the value.<br>Default value: **false**<br> The value **true** means the component and its child components are rendered off the screen as a whole, and **false** means the opposite.<br>  <br>If **isGroup** is **undefined**, the component reverts to its original effect of not enabling offscreen rendering as a whole before blending with the parent component.|
 
 **Return value**
 
@@ -683,7 +683,7 @@ Defines how to apply the specified blend mode to the content of a view.
 
 useShadowBatching(value: boolean): T
 
-Sets whether to draw shadows of child nodes in the component at the same layer, so that the shadows of elements at the same layer overlap.
+Sets whether to render child node shadows at the same layer, enabling shadow overlap within the same layer.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -695,7 +695,7 @@ Sets whether to draw shadows of child nodes in the component at the same layer, 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to draw shadows of child nodes in the component at the same layer, so that the shadows of elements at the same layer overlap.<br>Default value: **false**<br>**NOTE**<br>1. When this feature is disabled (default), if the shadow radius of a child node is large, the shadows of the child nodes may overlap. This overlap issue does not occur when the feature is enabled.<br>2. Avoid nesting **useShadowBatching**. When used in nested mode, **useShadowBatching** takes effect for the current child node only and cannot be recursively used.|
+| value  | boolean | Yes  | Whether to render child node shadows at the same layer.<br>Default value: **false**.<br> **true**: Child node shadows are rendered at the same layer without overlapping.<br> **false**: Child node shadows are rendered separately, with later shadows overlapping earlier ones.<br>**NOTE**<br>1. This feature is disabled by default. When child nodes have large shadow radius and overlapping areas, later-rendered shadows cover earlier ones. Enabling this feature renders all child shadows simultaneously without overlap.<br>2. Avoid nested **useShadowBatching** usage. In nested scenarios, the setting only applies to immediate children and is not inherited recursively.|
 
 **Return value**
 
@@ -707,7 +707,7 @@ Sets whether to draw shadows of child nodes in the component at the same layer, 
 
 useShadowBatching(use: Optional\<boolean>): T
 
-Sets whether to draw shadows of child nodes in the component at the same layer, so that the shadows of elements at the same layer overlap. Compared to [useShadowBatching<sup>11+</sup>](#useshadowbatching11), the **use** parameter supports the **undefined** type.
+Sets whether to render child node shadows at the same layer, enabling shadow overlap within the same layer. Compared with [useShadowBatching<sup>11+</sup>](#useshadowbatching11), this API supports the **undefined** type for the **use** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -719,7 +719,7 @@ Sets whether to draw shadows of child nodes in the component at the same layer, 
 
 | Name| Type              | Mandatory| Description                                                        |
 | ------ | ------------------ | ---- | ------------------------------------------------------------ |
-| use    | Optional\<boolean> | Yes  | Whether to draw shadows of child nodes in the component at the same layer, so that the shadows of elements at the same layer overlap.<br>Default value: **false**<br>**NOTE**<br>1. When this feature is disabled (default), if the shadow radius of a child node is large, the shadows of the child nodes may overlap. This overlap issue does not occur when the feature is enabled.<br>2. Avoid nesting **useShadowBatching**. When used in nested mode, **useShadowBatching** takes effect for the current child node only and cannot be recursively used.<br>If **use** is **undefined**, the component reverts to its original effect of not using shadow overlapping.|
+| use    | Optional\<boolean> | Yes  | Whether to render child node shadows at the same layer.<br>Default value: **false**.<br> **true**: Child node shadows are rendered at the same layer without overlapping.<br> **false**: Child node shadows are rendered separately, with later shadows overlapping earlier ones.<br>**NOTE**<br>1. This feature is disabled by default. When child nodes have large shadow radius and overlapping areas, later-rendered shadows cover earlier ones. Enabling this feature renders all child shadows simultaneously without overlap.<br>2. Avoid nesting **useShadowBatching**. When used in nested mode, **useShadowBatching** takes effect for the current child node only and cannot be recursively used.<br>If **use** is **undefined**, the component reverts to its original effect of not using shadow overlapping.|
 
 **Return value**
 
@@ -913,7 +913,7 @@ Provides the shadow attributes, including the blur radius, color, and offset alo
 | Name     | Type                                      | Read-Only| Optional  | Description                                      |
 | ------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | radius  | number \| [Resource](ts-types.md#resource) | No| No   | Blur radius of the shadow.<br>Value range: [0, +∞)<br>Unit: px<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **radius** is of the Resource type, its value must be of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| type<sup>10+</sup> | [ShadowType](#shadowtype10) |      No| Yes   | Shadow type.<br>Default value: **COLOR**<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| type<sup>10+</sup> | [ShadowType](#shadowtype10)  |      No| Yes   | Shadow type.<br>Default value: **COLOR**<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy<sup>11+</sup> ](ts-appendix-enums.md#coloringstrategy10) | No | Yes | Color of the shadow.<br>The default color is black.<br>**NOTE**<br>Since API version 11, this API supports **ColoringStrategy**, which cannot be used with ArkTS widgets or the [textShadow](ts-basic-components-text.md#textshadow10) attribute.<br>With **ColoringStrategy**, the average color or primary color can be obtained, and the obtained color is applied to the shadow drawing area.<br>The **'average'** string can be used to trigger the mode for obtaining the average color, and the **'primary'** string for obtaining the primary color.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | offsetX | number \| [Resource](ts-types.md#resource) | No | Yes | Offset of the shadow along the x-axis.<br>Default value: **0**<br>Unit: px<br>**NOTE**<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **offsetX** is of the Resource type, its value must be of the number type.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | offsetY | number \| [Resource](ts-types.md#resource) | No| Yes  | Offset of the shadow along the y-axis.<br>Default value: **0**<br>Unit: px<br>**NOTE**<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **offsetY** is of the Resource type, its value must be of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
@@ -972,7 +972,7 @@ Provides the shadow attributes, including the blur radius, color, and offset alo
 | HARD_LIGHT      | 21 |  The MULTIPLY or SCREEN mode is used, depending on the source pixels.                 |
 | SOFT_LIGHT      | 22 |  The LIGHTEN or DARKEN mode is used, depending on the source pixels.                                                            |
 | DIFFERENCE      | 23 |  rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one.                     |
-| EXCLUSION       | 24 |  rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast.         |
+| EXCLUSION       | 24 |  rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to **DIFFERENCE**, but with less contrast.         |
 | MULTIPLY        | 25 |  r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel.                          |
 | HUE             | 26 |  The resultant image is created with the luminance and saturation of the source image and the hue of the target image.                                  |
 | SATURATION      | 27 |  The resultant image is created with the luminance and hue of the target image and the saturation of the source image.                               |
@@ -1002,7 +1002,7 @@ Defines a gradient blur stop.
 
 | Type     | Description                                                      |
 | ------------- | ---------------------------------------------------------- |
-| [ number, number ]        |   The first number indicates the score. The value 1 indicates opaque, and the value 0 indicates completely transparent.<br>Value range: [0, 1].<br>The second number indicates the stop position. The value 1 indicates the end position of the area, and the value 0 indicates the start position of the area.<br> Value range: [0, 1].    |
+| [ number, number ]        |   The first number indicates the opacity value. The value **1** indicates fully opaque, and **0** indicates fully transparent.<br>Value range: [0, 1].<br>The second number indicates the position in gradient . The value **1** indicates the end position, and **0** indicates the start position.<br> Value range: [0, 1].    |
 
 ## InvertOptions<sup>11+</sup>
 
@@ -1036,13 +1036,17 @@ Defines the background image options.
 | Name           |  Type                                          | Read-Only | Optional | Description                                                    |
 | -------------- | ------------------------------------------------| ----- | ----- | --------------------------------------------------------|
 | syncLoad       | boolean                                         | No   | Yes   | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>Default value: **false**. **true**: Load the image synchronously. **false**: Load the image asynchronously.     |
-| repeat         | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | No   | Yes   | Repeat pattern of the background image. The default value is ImageRepeat.NoRepeat.                    |
+| repeat         | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | No   | Yes   | Repeat pattern of the background image. Default value: **ImageRepeat.NoRepeat**.                    |
 
 ## freeze<sup>12+</sup>
 
 freeze(value: boolean): T
 
 Sets whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1066,6 +1070,10 @@ freeze(freeze: Optional\<boolean>): T
 
 Sets whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes. Compared to [freeze](#freeze12), the **freeze** parameter supports the **undefined** type.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -1074,7 +1082,7 @@ Sets whether to freeze the component. When frozen, the component and its childre
 
 | Name| Type              | Mandatory| Description                                                        |
 | ------ | ------------------ | ---- | ------------------------------------------------------------ |
-| freeze | Optional\<boolean> | Yes  | Whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes. If the opacity of the component is not 1, the drawing effect may vary depending on the value.<br>Default value: **false**<br> **true**: Freeze the component.<br>**false**: Do not freeze the component.<br>If **freeze** is set to **undefined**, the previous value is retained.|
+| freeze | Optional\<boolean> | Yes  | Whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes. If the opacity of the component is not 1, the drawing effect may vary depending on the value.<br>Default value: **false**<br> **true**: Freeze the component. **false**: Do not freeze the component.<br>If **freeze** is set to **undefined**, the previous value is retained.|
 
 **Return value**
 

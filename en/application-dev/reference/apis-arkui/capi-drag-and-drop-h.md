@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -19,6 +19,8 @@ Declares the APIs of **NativeDrag**.
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Sample**: <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->
 
 ## Summary
 
@@ -38,11 +40,11 @@ Declares the APIs of **NativeDrag**.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_DragResult](#arkui_dragresult) | ArkUI_DragResult | Defines an enum for drag results, which are set by the data receiver and transferred by the system to the drag source so that the drag source is aware of the data processing result of the receiver.|
-| [ArkUI_DropOperation](#arkui_dropoperation) | ArkUI_DropOperation | Defines an enum for data processing modes used when data is dropped, which affects the display of the badge.|
-| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus | Defines an enum for interaction states prior to a drop and drop operation.|
-| [ArkUI_DragPreviewScaleMode](#arkui_dragpreviewscalemode) | ArkUI_DragPreviewScaleMode | Defines an enum for drag preview scale modes.|
-| [ArkUI_DragStatus](#arkui_dragstatus) | ArkUI_DragStatus | Enumerates dragging states.|
+| [ArkUI_DragResult](#arkui_dragresult) | ArkUI_DragResult | Enumerates drag results, which are set by the data receiver and transferred by the system to the drag source so that the drag source is aware of the data processing result of the receiver.|
+| [ArkUI_DropOperation](#arkui_dropoperation) | ArkUI_DropOperation | Enumerates data processing modes used when data is dropped, which affects the display of the badge.|
+| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus | Enumerates interaction states prior to a drop and drop operation.|
+| [ArkUI_DragPreviewScaleMode](#arkui_dragpreviewscalemode) | ArkUI_DragPreviewScaleMode | Enumerates drag preview scale modes.|
+| [ArkUI_DragStatus](#arkui_dragstatus) | ArkUI_DragStatus | Enumerates drag operation states.|
 
 ### Functions
 
@@ -95,7 +97,7 @@ Declares the APIs of **NativeDrag**.
 | [ArkUI_DragAction* OH_ArkUI_CreateDragActionWithContext(ArkUI_ContextHandle uiContext)](#oh_arkui_createdragactionwithcontext) | Creates a drag action object for the specified UI instance.|
 | [void OH_ArkUI_DragAction_Dispose(ArkUI_DragAction* dragAction)](#oh_arkui_dragaction_dispose) | Disposes of an **ArkUI_DragAction** object.|
 | [int32_t OH_ArkUI_DragAction_SetPointerId(ArkUI_DragAction* dragAction, int32_t pointer)](#oh_arkui_dragaction_setpointerid) | Sets the pointer ID. If only one finger is operating on the screen, the pointer ID is 0. In general cases, you can set the pointer ID to 0.|
-| [int32_t OH_ArkUI_DragAction_SetPixelMaps(ArkUI_DragAction* dragAction, OH_PixelmapNative* pixelmapArray[], int32_t size)](#oh_arkui_dragaction_setpixelmaps) | Sets the drag previews for a drag action.|
+| [int32_t OH_ArkUI_DragAction_SetPixelMaps(ArkUI_DragAction* dragAction, OH_PixelmapNative* pixelmapArray[], int32_t size)](#oh_arkui_dragaction_setpixelmaps) | Sets the drag previews for a drag action. Only pixel map objects are supported.|
 | [int32_t OH_ArkUI_DragAction_SetTouchPointX(ArkUI_DragAction* dragAction, float x)](#oh_arkui_dragaction_settouchpointx) | Sets the touch point relative to the upper left corner of the first drag preview (pixel map).|
 | [int32_t OH_ArkUI_DragAction_SetTouchPointY(ArkUI_DragAction* dragAction, float y)](#oh_arkui_dragaction_settouchpointy) | Sets the touch point relative to the upper left corner of the first drag preview (pixel map).|
 | [int32_t OH_ArkUI_DragAction_SetData(ArkUI_DragAction* dragAction, OH_UdmfData* data)](#oh_arkui_dragaction_setdata) | Sets the drag data.|
@@ -127,7 +129,7 @@ enum ArkUI_DragResult
 **Description**
 
 
-Defines an enum for drag results, which are set by the data receiver and transferred by the system to the drag source so that the drag source is aware of the data processing result of the receiver.
+Enumerates drag results, which are set by the data receiver and transferred by the system to the drag source so that the drag source is aware of the data processing result of the receiver.
 
 **Since**: 12
 
@@ -146,7 +148,7 @@ enum ArkUI_DropOperation
 **Description**
 
 
-Defines an enum for data processing modes used when data is dropped, which affects the display of the badge.
+Enumerates data processing modes used when data is dropped, which affects the display of the badge.
 
 **Since**: 12
 
@@ -164,7 +166,7 @@ enum ArkUI_PreDragStatus
 **Description**
 
 
-Defines an enum for interaction states prior to a drop and drop operation.
+Enumerates interaction states prior to a drop and drop operation.
 
 **Since**: 12
 
@@ -188,7 +190,7 @@ enum ArkUI_DragPreviewScaleMode
 **Description**
 
 
-Defines an enum for drag preview scale modes.
+Enumerates drag preview scale modes.
 
 **Since**: 12
 
@@ -206,15 +208,15 @@ enum ArkUI_DragStatus
 **Description**
 
 
-Enumerates dragging states.
+Enumerates drag operation states.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
-| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown.|
-| ARKUI_DRAG_STATUS_STARTED | Started.|
-| ARKUI_DRAG_STATUS_ENDED | Ended.|
+| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown drag state.|
+| ARKUI_DRAG_STATUS_STARTED | The drag operation has started.|
+| ARKUI_DRAG_STATUS_ENDED | The drag operation has ended.|
 
 
 ## Function Description
@@ -910,7 +912,7 @@ Cancels the ongoing data synchronization.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns **ARKUI_ERROR_CODE_OPERATION_FAILED** if no data synchronization task is in progress.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_DisableDropDataPrefetchOnNode()
 
@@ -1463,7 +1465,7 @@ int32_t OH_ArkUI_DragAction_SetPixelMaps(ArkUI_DragAction* dragAction, OH_Pixelm
 **Description**
 
 
-Sets the drag previews for a drag action.
+Sets the drag previews for a drag action. Only pixel map objects are supported.
 
 **Since**: 12
 
