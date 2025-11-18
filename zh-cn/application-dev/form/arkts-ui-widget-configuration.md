@@ -94,7 +94,7 @@
    |enableBlurBackground|表示卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|布尔类型|可缺省，缺省值为false。|
    |renderingMode|表示卡片的渲染模式，取值范围如下：<br/>-&nbsp;autoColor：自动模式，呈现效果可以根据卡片使用方确定最终是全彩模式还是单色模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到桌面或锁屏上。<br/>-&nbsp;fullColor：全彩模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片不允许被卡片使用方修改，卡片配置了该模式就可以添加到桌面上。<br/>-&nbsp;singleColor：单色模式，通过透明度和模糊区分元素，不使用任何色相<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到锁屏上。<br/>**说明：**<br/>从API version 15开始，支持该字段。	|字符串|可缺省，缺省值为“fullColor”。|
    |multiScheduledUpdateTime|表示卡片的多定点刷新的时刻，作为单点刷新的一个附加参数，采用24小时制，精确到分钟，多个时间用英文逗号分隔，最多写24个时间。<br/>**说明：**<br/>从API version 18开始，支持该字段。multiScheduledUpdateTime需要配合scheduledUpdateTime使用。|字符串|可缺省，缺省时不进行多定点刷新。|
-   |conditionUpdate|表示卡片的支持的条件刷新（仅对系统应用的ArkTS卡片生效）。取值范围如下：<br/>-&nbsp;network：表示支持网络刷新。|字符串|可缺省，缺省值为空字符串。|
+   |conditionUpdate|表示卡片的支持的条件刷新（仅对系统应用的ArkTS卡片生效）。取值范围如下：<br/>-&nbsp;network：表示支持网络刷新。从API version 18开始，支持该字段。|字符串|可缺省，缺省值为空字符串。|
    |[funInteractionParams](#funinteractionparams标签)| 趣味交互类型互动卡片扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
    |[sceneAnimationParams](#sceneanimationparams标签)| [场景动效类型互动卡片](./arkts-ui-liveform-sceneanimation-overview.md)扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
    | resizable | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
