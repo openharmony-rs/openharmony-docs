@@ -33,7 +33,7 @@ ArkTS-Sta: getEnabled(index: int): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -77,7 +77,7 @@ ArkTS-Sta: setEnabled(index: int, enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -113,7 +113,7 @@ function layerMask(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -134,7 +134,7 @@ append(item: T): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -171,7 +171,7 @@ insertAfter(item: T, sibling: T | null): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -209,7 +209,7 @@ remove(item: T): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -248,7 +248,7 @@ ArkTS-Sta: get(index: int): T | null
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -288,7 +288,7 @@ clear(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 ```ts
@@ -322,7 +322,7 @@ ArkTS-Sta: count(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 | 类型 | 说明 |
@@ -358,7 +358,7 @@ function count(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -381,7 +381,7 @@ getNodeByPath(path: string): Node | null
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -416,8 +416,8 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| mesh | [Mesh](js-apis-inner-scene-resources.md#mesh) | 是 | 否 | 网格属性。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
-| morpher<sup>20+</sup> | [Morpher](js-apis-inner-scene-resources.md#morpher20) | 是 | 是 | 可选的形变器，用于为几何体添加基于顶点的形变或动画效果。若未设置，则该几何体不支持形变功能。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20 |
+| mesh | [Mesh](js-apis-inner-scene-resources.md#mesh) | 是 | 否 | 网格属性。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| morpher<sup>20+</sup> | [Morpher](js-apis-inner-scene-resources.md#morpher20) | 是 | 是 | 可选的形变器，用于为几何体添加基于顶点的形变或动画效果。若未设置，则该几何体不支持形变功能。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 
 ## LightType
 光源类型枚举。
@@ -426,7 +426,7 @@ function getNode(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -440,7 +440,7 @@ function getNode(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -473,7 +473,7 @@ function getNode(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## Camera
 相机类型，Camera继承自[Node](#node)。
@@ -484,12 +484,12 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fov | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 视场，取值在0到π弧度之间。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
-| nearPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 近平面，取值大于0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
-| farPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 远平面，取值大于nearPlane。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
-| enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
-| postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
-| clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| fov | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 视场，取值在0到π弧度之间。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| nearPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 近平面，取值大于0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| farPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 远平面，取值大于nearPlane。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | msaa<sup>22+</sup> | boolean | 否 | 是 | 控制MSAA是否使能。true表示使能MSAA，false表示不使能MSAA。若未设置，默认为false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
 | renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线。若未设置，默认使用轻量级前向渲染管线。（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。）<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 22 |
 
@@ -502,7 +502,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
