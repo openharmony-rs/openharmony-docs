@@ -17,9 +17,9 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 | 名称| 类型 | 说明 |
 | --- | --- | --- |
 | aboutToAppear  | () =>  void | 菜单显示动效前的事件回调。 |
-| onAppear | () =>  void | 菜单弹出时的事件回调。 |
+| onAppear | () =>  void | 菜单弹出后的事件回调。 |
 | aboutToDisappear | () =>  void | 菜单退出动效前的事件回调。 |
-| onDisappear  | () =>  void | 菜单消失时的事件回调。 |
+| onDisappear  | () =>  void | 菜单消失后的事件回调。 |
 
 
 
