@@ -4971,10 +4971,10 @@ setTarget(target: RenderTarget): Promise&lt;void&gt;
 > - 将渲染目标更改为非[PLAYBACK](#rendertarget22)的模式后：
 >   - 该音频渲染器的音频路由与中断策略将无法使用[AudioSessionManager](arkts-apis-audio-AudioSessionManager.md)相关接口。
 >   - 该音频渲染器的device type为[SYSTEM_PRIVATE](arkts-apis-audio-e.md#devicetype)。
->   - 调用[Start](arkts-apis-audio-AudioRenderer.md#start8)且audio scene不为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
->   - 调用[getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8)或[getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
->   - 调用[getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
->   - 调用[setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)时，将返回错误码[6800103](errorcode-audio.md#6800103-状态不支持)。
+>   - 调用[Start](arkts-apis-audio-AudioRenderer.md#start8)且audio scene不为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8)或[getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
+>   - 调用[setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)时，将返回错误码[6800301](errorcode-audio.md#6800301-系统处理异常)。
 
 **需要权限：** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
 
@@ -5007,6 +5007,7 @@ setTarget(target: RenderTarget): Promise&lt;void&gt;
 | 6800101 | Parameter verification failed. |
 | 6800103 | Operation not permit at running and release state. |
 | 6800104 | Current renderer is not supported to set target. |
+| 6800301 | Audio client call audio service error, System error. |
 
 **示例：**
 
