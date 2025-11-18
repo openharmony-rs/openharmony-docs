@@ -178,7 +178,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 获取图片中给定索引处图像的指定属性键的值。用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -236,7 +236,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 批量获取图片中的指定属性键的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -287,7 +287,7 @@ getImagePropertySync(key:PropertyKey): string
 
 >**说明：**
 >
-> 该方法仅支持JPEG、PNG、HEIF和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。
+> 该方法仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。
 >
 > exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。
 
@@ -338,7 +338,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -395,7 +395,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 批量通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -1441,7 +1441,7 @@ getImageProperty(key:string, options?: GetImagePropertyOptions): Promise\<string
 
 获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -1483,7 +1483,7 @@ getImageProperty(key:string, callback: AsyncCallback\<string>): void
 
 获取图片中给定索引处图像的指定属性键的值。使用callback异步回调。
 
-该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -1520,7 +1520,7 @@ getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCa
 
 获取图片指定属性键的值。使用callback异步回调。
 
-该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -1559,7 +1559,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
@@ -1606,7 +1606,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 
 通过指定的键修改图片属性的值。使用callback异步回调。
 
-仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>22+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
+仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
 > **说明：**
 >
