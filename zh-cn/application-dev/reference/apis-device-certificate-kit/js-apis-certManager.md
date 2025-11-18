@@ -1614,7 +1614,7 @@ try {
 ```
 ## certificateManager.getUkeyCertificate<sup>22+</sup>
 
-getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise<CMResult>;
+getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>;
 
 表示获取USB凭据详细信息。
 
