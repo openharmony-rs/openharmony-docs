@@ -279,7 +279,7 @@ onError(callback: Callback[\<ErrorInformation\>](#errorinformation18对象说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
 
@@ -300,7 +300,7 @@ ArkTS-Sta: onRouter(callback: Callback[\<RouterCallbackInfo\>](#routercallbackin
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
 
@@ -340,7 +340,7 @@ onLoad(callback: VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
 
