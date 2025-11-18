@@ -5059,7 +5059,7 @@ Checks whether a device enables cross-device notification. This API uses a promi
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** means that the cross-device notifications are supported, and **false** means the opposite.  |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.  |
 
 **Error codes**
 

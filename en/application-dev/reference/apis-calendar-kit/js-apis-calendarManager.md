@@ -599,7 +599,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-Edits an event on the event creation page, with no event ID specified in **Event**. This API uses a promise to return the result. Events created using this API cannot be queried or modified by third-party applications, but only by the system calendar.
+Edits an event on the event creation page, with no event ID specified in **Event**. This API uses a promise to return the result. Events created using this API can be obtained and modified by the system calendar. Third-party applications can obtain and modify the events after they requested the READ_WHOLE_CALENDAR permission and the WRITE_WHOLE_CALENDAR permission, respectively.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1210,7 +1210,7 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 Obtains all events in the current calendar. This API uses an asynchronous callback to return the result.
 
-Default fields for filtering: **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**.
+For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime**. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1323,7 +1323,7 @@ If no input parameter is specified, all events under the specified calendar acco
 | Name     | Type                       | Mandatory| Description      |
 | ----------- | --------------------------- | ---- | ---------- |
 | eventFilter | [EventFilter](#eventfilter) | No  | Filter criteria.|
-| eventKey    | (keyof [Event](#event))[]   | No  | Filter field. If this parameter is left empty, the default fields for filtering are **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**.|
+| eventKey    | (keyof [Event](#event))[]   | No  | Filter field. For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime** if this parameter is left empty. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier** if this parameter is left empty.|
 
 **Return value**
 
