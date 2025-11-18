@@ -8,7 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```
-typedef struct {...} Input_InterceptorEventCallback
+typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
 ```
 
 ## 概述
