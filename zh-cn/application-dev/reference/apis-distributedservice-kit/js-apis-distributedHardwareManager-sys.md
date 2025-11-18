@@ -60,6 +60,10 @@ pauseDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
 
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**: 20
+
 **系统能力**：SystemCapability.DistributedHardware.DistributedHardwareFWK
 
 **参数：**
@@ -113,6 +117,10 @@ resumeDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 恢复被控端分布式硬件业务。使用promise异步回调。
 
 **需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
+
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**: 20
 
 **系统能力**：SystemCapability.DistributedHardware.DistributedHardwareFWK
 
@@ -169,6 +177,10 @@ stopDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 停止被控端分布式硬件业务。使用promise异步回调。
 
 **需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
+
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**: 20
 
 **系统能力**：SystemCapability.DistributedHardware.DistributedHardwareFWK
 
