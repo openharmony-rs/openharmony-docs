@@ -24,7 +24,7 @@ The target is not a custom component instance or V2 class instance.
 
 目标对象不满足以下情况：
 - [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的class(至少有一个[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)装饰的变量)。
-- [\@ComponentV2](../../ui/state-management/arkts-new-componentV2.md)装饰的自定义组件的实例。
+- [\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)装饰的自定义组件的实例。
 
 **处理步骤**
 
