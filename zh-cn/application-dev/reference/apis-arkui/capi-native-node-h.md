@@ -3210,7 +3210,7 @@ int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInR
 
 **描述：**
 
-获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
+获取节点是否处于渲染状态，如果一个节点的对应[RenderNode](./js-apis-arkui-renderNode.md)在渲染树上，则处于渲染状态。
 
 **起始版本：** 23
 

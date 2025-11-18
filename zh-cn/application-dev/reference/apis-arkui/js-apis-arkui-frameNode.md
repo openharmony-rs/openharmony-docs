@@ -2532,6 +2532,7 @@ struct ConvertPositionTestOnly {
 **示例：**
 
 ```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -2540,7 +2541,7 @@ struct Index {
   @State @Watch('change') isShow: boolean = true;
   data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
 
-  // 监听状态变化后打印节点是否处于渲染状态
+  // 监听状态变化后打印是否处于渲染状态
   change() {
     let buttonNode = this.getUIContext().getFrameNodeById("testButton");
     if (buttonNode == null) {
@@ -2548,9 +2549,9 @@ struct Index {
     }
     let isOnRenderTree = buttonNode!.isInRenderState();
     if (isOnRenderTree) {
-      console.log('is on render tree')
+      hilog.info(1,'frameNode', 'is on render tree');
     } else {
-      console.log('is not no render tree')
+      hilog.info(1,'frameNode', 'is not no render tree');
     }
   }
 
@@ -2563,7 +2564,7 @@ struct Index {
         .margin({ top: 20 })
       Button('test button')
         .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
-        .margin({ top: 20 }).id('testButton')
+        .margin(20).id('testButton')
 
       List() {
         ForEach(this.data, (item: string, index: number) => {
@@ -2579,13 +2580,13 @@ struct Index {
         let textNode8 = this.getUIContext().getFrameNodeById("hello8");
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
-          console.log('is hello8 on RenderTree:' + isOnRenderTree);
+          hilog.info(1,'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
           isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
-          console.log('is hello1 on RenderTree:' + isOnRenderTree);
+          hilog.info(1,'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
     }
