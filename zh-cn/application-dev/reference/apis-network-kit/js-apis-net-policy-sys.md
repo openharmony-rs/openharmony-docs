@@ -2339,4 +2339,4 @@ try {
 
 | 名称       | 类型                                                         | 只读 |可选|说明                 |
 | --------- | -----------------------------------------------------------  | ---- | ---|---------------- |
-| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | 否   |是 |数据类型为键值对。      |
+| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | 否   |否 |数据类型为键值对。      |
