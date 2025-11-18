@@ -27,7 +27,7 @@ type ResourceStr = string | Resource
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 类型 | 说明 |
 | ---- | ---- |
@@ -41,7 +41,7 @@ type ResourceStr = string | Resource
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -79,7 +79,7 @@ function createShaderPromise(): Promise<Shader> {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -117,7 +117,7 @@ function createNodePromise() : Promise<Node> {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -132,7 +132,7 @@ function createNodePromise() : Promise<Node> {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -151,7 +151,7 @@ createShader(params: SceneResourceParameters): Promise\<Shader>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -190,7 +190,7 @@ createImage(params: SceneResourceParameters): Promise\<Image>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -230,7 +230,7 @@ createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promi
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -322,7 +322,7 @@ createSampler(params:SceneResourceParameters): Promise\<Sampler>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -362,7 +362,7 @@ createScene(uri?: ResourceStr): Promise\<Scene>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -419,7 +419,7 @@ createCamera(params: SceneNodeParameters): Promise\<Camera>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -510,7 +510,7 @@ createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -554,7 +554,7 @@ createNode(params: SceneNodeParameters): Promise\<Node>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -598,7 +598,7 @@ createMaterial(params: SceneResourceParameters, materialType: MaterialType): Pro
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -642,7 +642,7 @@ createEnvironment(params: SceneResourceParameters): Promise\<Environment>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -686,7 +686,7 @@ createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise\<Geometr
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -732,7 +732,7 @@ function createGeometryPromise() : Promise<Geometry> {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -751,7 +751,7 @@ getRenderResourceFactory() : RenderResourceFactory
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 | 类型 | 说明 |
@@ -782,7 +782,7 @@ loadPlugin(name: string): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -817,7 +817,7 @@ registerResourcePath(protocol: string, uri: string): boolean
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -862,7 +862,7 @@ function registerResourcePath(): void {
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -877,7 +877,7 @@ function registerResourcePath(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -894,7 +894,7 @@ static load(uri?: ResourceStr): Promise\<Scene>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -926,7 +926,7 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -964,7 +964,7 @@ getResourceFactory(): SceneResourceFactory
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 | 类型 | 说明 |
@@ -996,7 +996,7 @@ destroy(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 ```ts
@@ -1023,7 +1023,7 @@ importNode(name: string, node: Node, parent: Node | null): Node
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1069,7 +1069,7 @@ importScene(name: string, scene: Scene, parent: Node | null): Node
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1109,7 +1109,7 @@ renderFrame(params?: RenderParameters): boolean
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1147,7 +1147,7 @@ createComponent(node: Node, name: string): Promise\<SceneComponent>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1192,7 +1192,7 @@ getComponent(node: Node, name: string): SceneComponent | null
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1237,7 +1237,7 @@ static getDefaultRenderContext(): RenderContext | null
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 | 类型 | 说明 |
