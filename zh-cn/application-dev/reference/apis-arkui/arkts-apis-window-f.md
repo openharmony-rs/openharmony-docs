@@ -225,6 +225,10 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -243,6 +247,8 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 | 1300006 | This window context is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -285,6 +291,52 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
+      if (err?.code) {
+        console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+      windowStage.createSubWindow('TestSubWindow').then((subWindow) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to load content for sub window. Cause code: ${err.code}, message: ${err.message}`);
+          }
+          subWindow.showWindow().then(() => {
+            try {
+              window.getLastWindow(this.context, (err: BusinessError<window.Window> | null, topWindow: window.Window | null) => {
+                const errCode = err?.code;
+                if (errCode) {
+                  console.error(`Failed to obtain the top window. Cause code: ${err?.code}, message: ${err?.message}`);
+                  return;
+                }
+                if (topWindow) {
+                  console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
+                }
+              });
+            } catch (exception) {
+              let err = exception as BusinessError;
+              console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          });
+        });
+      });
+    });
+  }
+  //...
+}
+```
+
 ## window.getLastWindow<sup>9+</sup>
 
 getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
@@ -296,6 +348,10 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -321,6 +377,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -362,6 +419,50 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
+      if (err?.code) {
+        console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+      windowStage.createSubWindow('TestSubWindow').then((subWindow) => {
+        let storage: LocalStorage = new LocalStorage();
+        subWindow.loadContent('pages/Index', storage, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to load content for sub window. Cause code: ${err.code}, message: ${err.message}`);
+          }
+          subWindow.showWindow().then(() => {
+            try {
+              window.getLastWindow(this.context).then((topWindow: window.Window) => {
+                windowClass = topWindow;
+                console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
+              }).catch((err: BusinessError) => {
+                console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+              });
+            } catch (exception) {
+              let err = exception as BusinessError;
+              console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
+            }
+          });
+        });
+      });
+    });
+  }
+  //...
+}
+```
+
 ## window.shiftAppWindowFocus<sup>11+</sup>
 shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
@@ -377,6 +478,10 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -405,6 +510,7 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -465,6 +571,73 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to shift app focus. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // ...
+    console.info('onWindowStageCreate');
+    let mainWindow: window.Window | undefined = undefined;
+    let subWindow: window.Window | undefined = undefined;
+    let mainWindowId: number = -1;
+    let subWindowId: number = -1;
+
+    try {
+      windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
+        if (err?.code) {
+          console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
+        }
+        // 获取应用主窗及ID
+        windowStage.getMainWindow().then((data: window.Window | null) => {
+          if (data == null) {
+            console.error('Failed to obtain the main window. Cause: The data is empty');
+            return;
+          }
+          mainWindow = data;
+          mainWindowId = mainWindow.getWindowProperties().id;
+          console.info('Succeeded in obtaining the main window');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+
+        // 创建或获取子窗及ID，此时子窗口获焦
+        windowStage.createSubWindow('testSubWindow').then((data: window.Window | null) => {
+          if (data == null) {
+            console.error('Failed to obtain the sub window. Cause: The data is empty');
+            return;
+          }
+          subWindow = data;
+          subWindowId = subWindow.getWindowProperties().id;
+          subWindow.resize(500, 500);
+          subWindow.setUIContent('pages/Index');
+          subWindow.showWindow();
+
+          // 监听Window状态，确保已经就绪
+          subWindow.on("windowEvent", (windowEvent: window.WindowEventType) => {
+            if (windowEvent == window.WindowEventType.WINDOW_ACTIVE) {
+              // 切换焦点
+              window.shiftAppWindowFocus(subWindowId, mainWindowId).then(() => {
+                console.info('Succeeded in shifting app window focus');
+              }).catch((err: BusinessError) => {
+                console.error(`Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
+              });
+            }
+          });
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to shift app focus. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
