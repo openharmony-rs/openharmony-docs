@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_ProbeResultInfo
+typedef struct NetConn_ProbeResultInfo {...} NetConn_ProbeResultInfo
 ```
 
 ## 概述

@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-typedef struct {...} OH_NN_Memory
+typedef struct OH_NN_Memory {...} OH_NN_Memory
 ```
 
 ## 概述

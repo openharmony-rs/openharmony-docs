@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetStack_CertificatePinning
+typedef struct NetStack_CertificatePinning {...} NetStack_CertificatePinning
 ```
 
 ## 概述

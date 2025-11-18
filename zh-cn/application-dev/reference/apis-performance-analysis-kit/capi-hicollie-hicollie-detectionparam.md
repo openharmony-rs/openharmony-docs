@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} HiCollie_DetectionParam
+typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
 ```
 
 ## 概述

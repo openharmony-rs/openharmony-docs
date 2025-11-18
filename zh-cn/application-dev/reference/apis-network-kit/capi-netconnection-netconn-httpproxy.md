@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_HttpProxy
+typedef struct NetConn_HttpProxy {...} NetConn_HttpProxy
 ```
 
 ## 概述

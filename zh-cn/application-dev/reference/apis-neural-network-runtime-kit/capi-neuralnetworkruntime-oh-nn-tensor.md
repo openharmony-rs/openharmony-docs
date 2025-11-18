@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-typedef struct {...} OH_NN_Tensor
+typedef struct OH_NN_Tensor {...} OH_NN_Tensor
 ```
 
 ## 概述

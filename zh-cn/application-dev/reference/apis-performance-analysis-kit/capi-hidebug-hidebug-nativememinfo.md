@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} HiDebug_NativeMemInfo
+typedef struct HiDebug_NativeMemInfo {...} HiDebug_NativeMemInfo
 ```
 
 ## 概述

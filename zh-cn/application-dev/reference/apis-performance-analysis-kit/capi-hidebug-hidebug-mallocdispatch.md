@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```
-typedef struct {...} HiDebug_MallocDispatch
+typedef struct HiDebug_MallocDispatch {...} HiDebug_MallocDispatch
 ```
 
 ## 概述

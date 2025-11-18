@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-typedef struct {...} OH_NN_UInt32Array
+typedef struct OH_NN_UInt32Array {...} OH_NN_UInt32Array
 ```
 
 ## 概述

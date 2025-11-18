@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 ```
-typedef struct {...} Http_HeaderEntry
+typedef struct Http_HeaderEntry {...} Http_HeaderEntry
 ```
 
 ## 概述

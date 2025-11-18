@@ -8,7 +8,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-struct OH_AI_ShapeInfo {...}
+typedef struct OH_AI_ShapeInfo {...} OH_AI_ShapeInfo
 ```
 
 ## 概述

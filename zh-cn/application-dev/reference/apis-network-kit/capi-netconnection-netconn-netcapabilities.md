@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_NetCapabilities
+typedef struct NetConn_NetCapabilities {...} NetConn_NetCapabilities
 ```
 
 ## 概述

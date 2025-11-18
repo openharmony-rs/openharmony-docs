@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 ```
-typedef struct {...} Http_ClientCert
+typedef struct Http_ClientCert {...} Http_ClientCert
 ```
 
 ## 概述

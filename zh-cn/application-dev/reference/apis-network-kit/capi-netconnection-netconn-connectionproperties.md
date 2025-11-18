@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_ConnectionProperties
+typedef struct NetConn_ConnectionProperties {...} NetConn_ConnectionProperties
 ```
 
 ## 概述

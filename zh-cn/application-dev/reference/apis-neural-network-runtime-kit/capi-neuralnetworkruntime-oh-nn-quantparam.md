@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-typedef struct {...} OH_NN_QuantParam
+typedef struct OH_NN_QuantParam {...} OH_NN_QuantParam
 ```
 
 ## 概述

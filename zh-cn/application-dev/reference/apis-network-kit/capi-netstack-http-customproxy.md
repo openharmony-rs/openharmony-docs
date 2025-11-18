@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 ```
-typedef struct {...} Http_CustomProxy
+typedef struct Http_CustomProxy {...} Http_CustomProxy
 ```
 
 ## 概述

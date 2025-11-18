@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ```
-typedef struct {...} NetConn_NetConnCallback
+typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
 ```
 
 ## 概述
