@@ -418,7 +418,7 @@
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
 
    ``` TypeScript
-   const MSG_SEND_METHOD: string = 'CallSendMsg'
+   const MSG_SEND_METHOD: string = 'CallSendMsg';
  
    let mContext: Context;
 
