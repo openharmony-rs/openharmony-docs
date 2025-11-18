@@ -275,7 +275,7 @@ mixedMode(mixedMode: MixedMode)
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.None。  |
+| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。  |
 
 **示例：**
 
@@ -853,7 +853,7 @@ blockNetwork(block: boolean)
 
 | 参数名   | 类型    | 必填   | 说明                |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为true。 |
+| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为false。 |
 
 **示例：**
 
