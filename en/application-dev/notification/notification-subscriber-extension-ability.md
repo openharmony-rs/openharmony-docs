@@ -9,11 +9,11 @@
 
 ### Functionality Overview
 
-[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) allows third-party applications to receive system notifications and sync them to wearables, achieving notification collaboration between smartphones and third-party wearables. [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) will be destroyed if no notification is released within a certain period of time.
+[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) allows third-party applications to receive system notifications and sync them with wearables, enabling notification collaboration between smartphones and third-party wearables. [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) will be destroyed if no notification is published within a certain period of time.
 
 ### Prerequisites
 - The user has connected the wearable to the smartphone through the corresponding application.
-- In the semi-modal dialog box started by the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API of the wearable application, the user has allowed the wearable to receive notifications from the smartphone and display the obtained notifications.
+- In the semi-modal dialog box started by the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API of the wearable application, the user has turned on the **Allow access to notifications on this device** button and allowed the wearable to access notifications from specified applications on the smartphone.
 ### When to Use
 <!--Del-->
 - Ecosystem requirement: Support third-party wearables to receive system notifications.
