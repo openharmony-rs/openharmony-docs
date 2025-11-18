@@ -163,7 +163,7 @@ isBackgroundAllowed(): Promise\<boolean>
 
 | 类型              | 说明                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| Promise\<boolean> | 以 Promise 形式返回设定结果。 返回 true 代表后台策略为允许，失败返回错误码错误信息。 |
+| Promise\<boolean> |  Promise 对象。 返回 true 表示后台策略为允许，返回false表示后台策略不允许。 |
 
 **错误码：**
 
@@ -739,7 +739,7 @@ isUidNetAllowed(uid: number, isMetered: boolean): Promise\<boolean>
 
 | 类型              | 说明                          |
 | ----------------- | ----------------------------- |
-| Promise\<boolean> | 以 Promise 形式返回设定结果。 |
+| Promise\<boolean> | Promise 对象。 返回 true 表示这个uid可以访问计量或非计量网络，返回false表示这个uid不可以访问计量或非计量网络。 |
 
 **错误码：**
 
