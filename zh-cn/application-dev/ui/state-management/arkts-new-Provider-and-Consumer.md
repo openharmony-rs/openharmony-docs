@@ -102,7 +102,8 @@ struct Parent {
   @Provider('alias') str: string = 'hello';
 }
 
-@ComponentV2 struct Child {
+@ComponentV2 
+struct Child {
   // 定义aliasName为 'alias'，找到@Provider并获得值'hello'
   @Consumer('alias') str: string = 'world';
 }
