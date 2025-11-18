@@ -26517,6 +26517,16 @@
 						"end_line":289,
 						"name":"pasteboard_timelapse_Record6",
 						"start_line":278
+					},
+					{
+						"end_line":27,
+						"name":"pasteboard_timelapse_Record1",
+						"start_line":21
+					},
+					{
+						"end_line":277,
+						"name":"pasteboard_timelapse_Record5",
+						"start_line":208
 					}
 				]
 			},
@@ -27382,6 +27392,21 @@
 						"end_line":142,
 						"name":"pasteboard_native6",
 						"start_line":102
+					},
+					{
+						"end_line":25,
+						"name":"pasteboard_native2",
+						"start_line":19
+					},
+					{
+						"end_line":55,
+						"name":"pasteboard_native4",
+						"start_line":46
+					},
+					{
+						"end_line":95,
+						"name":"pasteboard_native5",
+						"start_line":67
 					}
 				]
 			}
