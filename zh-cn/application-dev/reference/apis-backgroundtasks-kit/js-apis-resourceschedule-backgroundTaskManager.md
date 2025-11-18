@@ -764,7 +764,7 @@ export default class EntryAbility extends UIAbility {
 
 getAllContinuousTasks(context: Context): Promise&lt;ContinuousTaskInfo[]&gt;
 
-获取所有长时任务信息，如长时任务Id、长时任务类型等，使用Promise异步回调。
+获取所有长时任务信息，如长时任务ID、长时任务类型等，使用Promise异步回调。
 
 **需要权限**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -820,7 +820,7 @@ export default class EntryAbility extends UIAbility {
 
 getAllContinuousTasks(context: Context, includeSuspended: boolean): Promise&lt;ContinuousTaskInfo[]&gt;
 
-获取所有长时任务信息，如长时任务Id、长时任务类型等。可选择是否获取暂停的长时任务信息，使用Promise异步回调。
+获取所有长时任务信息，如长时任务ID、长时任务类型等。可选择是否获取暂停的长时任务信息，使用Promise异步回调。
 
 **需要权限**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1321,7 +1321,7 @@ export default class EntryAbility extends UIAbility {
 | [backgroundModes](#backgroundmode) | string[] | 否    | 否    | 长时任务类型。               |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | 否    | 否    | 长时任务子类型。              |
 | notificationId | number   | 否    | 否    | 通知 Id。                |
-| continuousTaskId | number   | 否    | 否    | 长时任务Id。              |
+| continuousTaskId | number   | 否    | 否    | 长时任务ID。              |
 | abilityId | number   | 否    | 否    | UIAbility Id。         |
 | wantAgentBundleName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的包名。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。        |
 | wantAgentAbilityName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的ability名称。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。 |
