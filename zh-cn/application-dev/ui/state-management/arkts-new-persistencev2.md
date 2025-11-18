@@ -573,7 +573,7 @@ struct Page1 {
 当开发者对newModule使用不同启动方式会有以下现象：
 
 *   开发者直接启动newModule，分别修改globalConnect1和connect2绑定的变量，例如将childId都改成5。
-* 应用退出并清空后台，启动模块entry，通过跳转按键启动newModule，会发现globalConnect1值为5，而connect2值为1未修改。
+* 应用退出并清空后台，启动模块entry，通过跳转按键启动newModule，会发现globalConnect1值为5，而connect2值为0未修改。
 * globalConnect为应用级别存储，对于一个key，整个应用在对应加密分区只有一份存储路径；connect为module级别的存储路径，会因为module的启动方式不同而在各自的加密分区对应不同的存储路径。
 
 ## 使用建议
