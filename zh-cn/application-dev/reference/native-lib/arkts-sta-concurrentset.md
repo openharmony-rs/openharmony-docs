@@ -4,7 +4,7 @@ ConcurrentSet\<T>是一个多线程并发安全的集合类，支持并发读取
 
 > **说明：**
 >
-> ArkTS版本：该标准库接口仅适用于ArkTS1.2。
+> 本模块仅适用于ArkTS-Sta。
 
 ## 属性
 
@@ -397,6 +397,6 @@ toString(): String
 
 ```typescript
 let array = new Array<number>(0.0, 1.0, 2.0, 3.0, 4.0);
-let concurrentSet: ConcurrentSet<number> = new ConcurrentSet<number>(array);
+let concurrentSet: containers.ConcurrentSet<number> = new containers.ConcurrentSet<number>(array);
 let val = concurrentSet.toString(); // 'ConcurrentSet[0,1,2,3,4]'
 ```
