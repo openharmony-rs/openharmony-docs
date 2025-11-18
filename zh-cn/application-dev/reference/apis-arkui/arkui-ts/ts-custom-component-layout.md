@@ -44,7 +44,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 ## onPlaceChildren<sup>10+</sup>
 
-onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions):void
+onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions): void
 
 ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节点自身的尺寸范围通过onPlaceChildren传递给该自定义组件。不允许在onPlaceChildren函数中改变状态变量。
 
@@ -93,7 +93,7 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 ### layout
 
-layout(position: Position) : void
+layout(position: Position): void
 
 调用此方法对子组件的位置信息进行限制。
 
@@ -109,7 +109,7 @@ layout(position: Position) : void
 
 ### getMargin<sup>12+</sup>
 
-getMargin() : DirectionalEdgesT\<number>
+getMargin(): DirectionalEdgesT\<number>
 
 调用此方法获取子组件的margin信息。
 
@@ -125,7 +125,7 @@ getMargin() : DirectionalEdgesT\<number>
 
  ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number>
+getPadding(): DirectionalEdgesT\<number>
 
  调用此方法获取子组件的padding信息。
 
@@ -141,7 +141,7 @@ getPadding() : DirectionalEdgesT\<number>
 
 ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number>
+getBorderWidth(): DirectionalEdgesT\<number>
 
 调用此方法获取子组件的borderWidth信息。
 
@@ -198,7 +198,7 @@ getBorderWidth() : DirectionalEdgesT\<number>
 
  ### getMargin<sup>12+</sup>
 
- getMargin() : DirectionalEdgesT\<number\>
+ getMargin(): DirectionalEdgesT\<number\>
 
  获取子组件的margin信息。
 
@@ -214,7 +214,7 @@ getBorderWidth() : DirectionalEdgesT\<number>
 
 ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number\>
+getPadding(): DirectionalEdgesT\<number\>
 
 获取子组件的padding信息。
 
@@ -230,7 +230,7 @@ getPadding() : DirectionalEdgesT\<number\>
 
  ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number\>
+getBorderWidth(): DirectionalEdgesT\<number\>
 
 获取子组件的borderWidth信息。
 
