@@ -553,7 +553,7 @@ orientation(orientation: ImageRotateOrientation)
 
 设置图像内容的显示方向。
 
-不支持设置[alt](#alt)占位图。
+orientation该属性不对[alt](#alt)占位图生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
