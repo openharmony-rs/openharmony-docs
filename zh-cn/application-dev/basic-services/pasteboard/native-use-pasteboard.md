@@ -60,129 +60,128 @@
 
 2. 引用头文件。
 
-    <!-- @[pasteboard_native2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include <cstdio>
-// [Start pasteboard_timelapse_Record1]
-#include <database/pasteboard/oh_pasteboard.h>
-#include <database/udmf/udmf.h>
-#include <database/udmf/uds.h>
-```
+   <!-- @[pasteboard_native2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include <cstdio>
+   #include <database/pasteboard/oh_pasteboard.h>
+   #include <database/udmf/udmf.h>
+   #include <database/udmf/uds.h>
+   ```
 
 
 3. 定义剪贴板变化监听的回调函数。
 
     <!-- @[pasteboard_native3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-// 定义剪贴板数据内容变更时的通知回调函数
-static void PasteboardNotifyImpl2(void* context, Pasteboard_NotifyType type)
-{
-    OH_LOG_INFO(LOG_APP, "Pasteboard_NotifyType, type: %d", type);
-}
-// 定义剪贴板数据变更观察者对象销毁时的通知回调函数
-static void PasteboardFinalizeImpl2(void* context)
-{
-    OH_LOG_INFO(LOG_APP, "callback: Pasteboard_Finalize");
-}
-```
+    
+    ``` C++
+    // 定义剪贴板数据内容变更时的通知回调函数
+    static void PasteboardNotifyImpl2(void* context, Pasteboard_NotifyType type)
+    {
+        OH_LOG_INFO(LOG_APP, "Pasteboard_NotifyType, type: %d", type);
+    }
+    // 定义剪贴板数据变更观察者对象销毁时的通知回调函数
+    static void PasteboardFinalizeImpl2(void* context)
+    {
+        OH_LOG_INFO(LOG_APP, "callback: Pasteboard_Finalize");
+    }
+    ```
 
 
 4. 订阅剪贴板变化。
 
-    <!-- @[pasteboard_native4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 1. 创建一个剪贴板实例
-    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-    // 2. 创建一个剪贴板数据变更观察者实例
-    OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
-    // 3. 将两个回调函数设置到观察者实例
-    OH_PasteboardObserver_SetData(observer, (void*)pasteboard, PasteboardNotifyImpl2, PasteboardFinalizeImpl2);
-    // 4. 设置对剪贴板本端数据变化的订阅
-    OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
-```
+   <!-- @[pasteboard_native4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 1. 创建一个剪贴板实例
+   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   // 2. 创建一个剪贴板数据变更观察者实例
+   OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
+   // 3. 将两个回调函数设置到观察者实例
+   OH_PasteboardObserver_SetData(observer, (void*)pasteboard, PasteboardNotifyImpl2, PasteboardFinalizeImpl2);
+   // 4. 设置对剪贴板本端数据变化的订阅
+   OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
+   ```
 
 
 5. 向剪贴板写入数据。
 
-    <!-- @[pasteboard_native5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-    // 1. 创建一个剪贴板实例
-    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-    if (pasteboard == nullptr) {
-        OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
-    };
-    // 2. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加文本类型数据
-    OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
-    OH_UdsPlainText_SetContent(udsPlainText, text);
-    OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-    OH_UdsHtml_SetContent(udsHtml, "hello world");
-    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-    OH_UdmfRecord_AddPlainText(record, udsPlainText);
-    OH_UdmfRecord_AddHtml(record, udsHtml);
-
-    // 3. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord
-    OH_UdmfData* data = OH_UdmfData_Create();
-    OH_UdmfData_AddRecord(data, record);
-
-    // 4. 将数据写入剪贴板
-    OH_Pasteboard_SetData(pasteboard, data);
-
-    // 5. 使用完销毁指针
-    OH_UdsPlainText_Destroy(udsPlainText);
-    OH_UdsHtml_Destroy(udsHtml);
-    OH_UdmfRecord_Destroy(record);
-    OH_UdmfData_Destroy(data);
-    OH_Pasteboard_Destroy(pasteboard);
-```
+   <!-- @[pasteboard_native5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 1. 创建一个剪贴板实例
+   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   if (pasteboard == nullptr) {
+       OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
+   };
+   // 2. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加文本类型数据
+   OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
+   OH_UdsPlainText_SetContent(udsPlainText, text);
+   OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
+   OH_UdsHtml_SetContent(udsHtml, "hello world");
+   OH_UdmfRecord* record = OH_UdmfRecord_Create();
+   OH_UdmfRecord_AddPlainText(record, udsPlainText);
+   OH_UdmfRecord_AddHtml(record, udsHtml);
+   
+   // 3. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord
+   OH_UdmfData* data = OH_UdmfData_Create();
+   OH_UdmfData_AddRecord(data, record);
+   
+   // 4. 将数据写入剪贴板
+   OH_Pasteboard_SetData(pasteboard, data);
+   
+   // 5. 使用完销毁指针
+   OH_UdsPlainText_Destroy(udsPlainText);
+   OH_UdsHtml_Destroy(udsHtml);
+   OH_UdmfRecord_Destroy(record);
+   OH_UdmfData_Destroy(data);
+   OH_Pasteboard_Destroy(pasteboard);
+   ```
 
 
 6. 从剪贴板读取数据。
 
-    <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
-    
-    ``` C++
-    // 1. 创建一个剪贴板实例
-    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-    if (pasteboard == nullptr) {
-        OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
-    };
-    // 2. 判断剪贴板中是否有文本类型数据
-    bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, "text/plain");
-    if (hasPlainTextData) {
-        // 3. 从剪贴板中获取统一类型数据OH_UdmfData
-        int ret = 0;
-        OH_UdmfData* udmfData = OH_Pasteboard_GetData(pasteboard, &ret);
-        if (udmfData == nullptr) {
-            OH_LOG_INFO(LOG_APP, "Failed to get data from pasteboard.");
-        };
-        // 4. 从OH_UdmfData中获取第一个数据记录
-        OH_UdmfRecord* record = OH_UdmfData_GetRecord(udmfData, 0);
-        if (record == nullptr) {
-            OH_LOG_INFO(LOG_APP, "Failed to get record from udmfData.");
-        };
-        // 5. 从数据记录中获取文本数据内容
-        OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
-        if (plainText == nullptr) {
-            OH_LOG_INFO(LOG_APP, "Failed to create plain text object.");
-        };
-        OH_UdmfRecord_GetPlainText(record, plainText);
-        const char* content = OH_UdsPlainText_GetContent(plainText);
-        if (content == nullptr) {
-            OH_LOG_INFO(LOG_APP, "Failed to get content from plain text.");
-        }
-        napi_value result;
-        napi_create_string_utf8(env, content, strlen(content), &result);
-        // 6. 使用完销毁指针
-        OH_UdsPlainText_Destroy(plainText);
-        OH_UdmfRecord_Destroy(record);
-        return result;
-    } else {
-        OH_LOG_INFO(LOG_APP, "No plain text data in pasteboard.");
-    }
-    OH_Pasteboard_Destroy(pasteboard);
-    ```
+   <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   // 1. 创建一个剪贴板实例
+   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   if (pasteboard == nullptr) {
+       OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
+   };
+   // 2. 判断剪贴板中是否有文本类型数据
+   bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, "text/plain");
+   if (hasPlainTextData) {
+       // 3. 从剪贴板中获取统一类型数据OH_UdmfData
+       int ret = 0;
+       OH_UdmfData* udmfData = OH_Pasteboard_GetData(pasteboard, &ret);
+       if (udmfData == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to get data from pasteboard.");
+       };
+       // 4. 从OH_UdmfData中获取第一个数据记录
+       OH_UdmfRecord* record = OH_UdmfData_GetRecord(udmfData, 0);
+       if (record == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to get record from udmfData.");
+       };
+       // 5. 从数据记录中获取文本数据内容
+       OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
+       if (plainText == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to create plain text object.");
+       };
+       OH_UdmfRecord_GetPlainText(record, plainText);
+       const char* content = OH_UdsPlainText_GetContent(plainText);
+       if (content == nullptr) {
+           OH_LOG_INFO(LOG_APP, "Failed to get content from plain text.");
+       }
+       napi_value result;
+       napi_create_string_utf8(env, content, strlen(content), &result);
+       // 6. 使用完销毁指针
+       OH_UdsPlainText_Destroy(plainText);
+       OH_UdmfRecord_Destroy(record);
+       return result;
+   } else {
+       OH_LOG_INFO(LOG_APP, "No plain text data in pasteboard.");
+   }
+   OH_Pasteboard_Destroy(pasteboard);
+   ```
 
