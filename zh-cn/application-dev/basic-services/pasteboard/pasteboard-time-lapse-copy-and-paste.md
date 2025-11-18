@@ -129,6 +129,14 @@ void ProviderFinalizeCallback(void* context)
 
 3. 定义`OH_Pasteboard_SyncDelayedDataAsync`的回调函数。
    <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 3. 定义应用退出时调用延迟同步接口触发的回调函数。
+   void SyncCallback(int errorCode)
+   {
+       // 继续退出
+   }
+   ```
    <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
