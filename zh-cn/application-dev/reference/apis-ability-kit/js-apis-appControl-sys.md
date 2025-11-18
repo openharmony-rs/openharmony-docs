@@ -569,6 +569,50 @@ try {
 }
 ```
 
+## appControl.getAllDisposedRules<sup>23+</sup>
+
+getAllDisposedRules(): Array\<DisposedRuleConfiguration>
+
+获取当前用户下已设置的所有拦截规则。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**返回值：**
+
+| 类型                                                      | 说明                   |
+| --------------------------------------------------------- | ---------------------- |
+|Array\<[DisposedRuleConfiguration](#disposedruleconfiguration20)> | 应用已设置的拦截规则。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied. A non-system application is not allowed to call a system API. |
+| 801      | Capability not supported.                                    |
+
+**示例：**
+
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+try {
+  let data = appControl.getAllDisposedRules();
+  console.info('getAllDisposedRules successfully. Data: ' + JSON.stringify(data));
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getAllDisposedRules failed ' + message);
+}
+```
+
 ## appControl.setDisposedRule<sup>11+</sup>
 
 setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
