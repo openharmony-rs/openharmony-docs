@@ -271,7 +271,7 @@ onAcquired(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12对�
 
 ### onError<sup>18+</sup>
 
-onError(callback: Callback\<ErrorInformation\>)
+onError(callback: Callback[\<ErrorInformation\>](#errorinformation18对象说明))
 
 卡片加载错误触发的回调。
 
