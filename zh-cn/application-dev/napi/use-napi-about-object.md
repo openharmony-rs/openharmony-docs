@@ -471,6 +471,8 @@ try {
 
 使用类型标签type_tag来标记ArkTS对象，后续可以更精确地识别ArkTS对象。
 
+ArkTS版本中，napi_type_tag_object接口没有使用private symbol，导致type_tag有被改写的风险，开发者应避免在关键安全场景中使用该接口。
+
 ### napi_check_object_type_tag
 
 验证一个ArkTS对象是否带有特定类型标签。
