@@ -26,8 +26,8 @@
 
 | 名称            |类型| 说明                       |
 | ----------------- | ------ | ---------------------------- |
-| onDidAppear    | () => void  | 弹出框弹出时的事件回调。    |
-| onDidDisappear |() => void  | 弹出框消失时的事件回调。    |
+| onDidAppear    | () => void  | 弹出框弹出后的事件回调。    |
+| onDidDisappear |() => void  | 弹出框消失后的事件回调。    |
 | onWillAppear    | () => void | 弹出框显示动效前的事件回调。 |
 | onWillDisappear | () => void | 弹出框退出动效前的事件回调。 |
 
