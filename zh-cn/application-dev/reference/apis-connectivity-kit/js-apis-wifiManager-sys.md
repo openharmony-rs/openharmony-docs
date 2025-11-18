@@ -761,7 +761,7 @@ try {
 
 ## DisconnectedReason <sup>10+</sup>
 
-表示wifi断开原因的枚举。
+表示Wi-Fi断开原因的枚举，用于诊断网络连接问题和优化连接策略。
 
 **系统接口：** 此接口为系统接口。
 
@@ -777,9 +777,9 @@ try {
 
 startPortalCertification(): void
 
-**系统接口：** 此接口为系统接口。
+启动Portal认证流程，用于处理需要Web页面认证的公共Wi-Fi网络（如酒店、机场、咖啡厅等场所的网络）。
 
-启动portal认证。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -813,9 +813,9 @@ try {
 
 enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDeviceConfig): void
 
-**系统接口：** 此接口为系统接口。
-
 设置是否使能hiLink。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -968,7 +968,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-热点是否支持双频。
+检查当前设备的Wi-Fi热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1050,7 +1050,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-设置热点配置信息。
+设置Wi-Fi热点的配置信息，用于修改热点的SSID、密码、安全类型等参数。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1118,7 +1118,7 @@ try {
 
 getHotspotConfig(): HotspotConfig
 
-获取热点配置信息。
+获取当前Wi-Fi热点的配置信息，包括SSID、安全设置、频段等参数。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1159,7 +1159,7 @@ try {
 
 getStations(): &nbsp;Array&lt;StationInfo&gt;
 
-获取连接的设备。
+获取当前连接到本设备热点的所有设备信息列表。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1202,7 +1202,7 @@ try {
 
 ## StationInfo<sup>9+</sup>
 
-接入的设备信息。
+接入的设备信息。接入的设备信息。包含连接到Wi-Fi网络的设备详细信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1314,7 +1314,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-获取热点的阻止列表。
+获取当前Wi-Fi热点的阻止设备列表。该接口返回被热点拒绝连接或已拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1357,7 +1357,9 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-删除永久组。
+删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的Wi-Fi网络配置信息，使其不再自动连接。
+
+- 根据网络ID删除已保存的Wi-Fi配置,移除自动连接记录，防止设备自动重连,清除敏感的网络配置信息（如密码）。
 
 **系统接口：** 此接口为系统接口。
 

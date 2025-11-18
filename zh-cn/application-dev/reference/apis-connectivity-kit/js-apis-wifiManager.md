@@ -162,7 +162,12 @@ scan(): void
 
 startScan(): void
 
-启动WLAN扫描。应用程序在前台运行时，两分钟内最多可扫描四次。在后台运行时，三十分钟内最多可扫描一次。
+启动WLAN扫描。
+
+- 应用程序在前台运行时，两分钟内最多可扫描四次。
+- 在后台运行时，三十分钟内最多可扫描一次。
+- 需要先检查WiFi是否已启用，可通过wifi.isWifiActive()方法确认。
+- 通过on('wifiScanStateChange')订阅扫描状态变更事件，监听扫描完成通知。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -644,6 +649,10 @@ WAPI认证方式的枚举。
 
 表示热点支持的最高wifi类别。
 
+- 枚举类型：用于标识Wi-Fi热点支持的最高Wi-Fi标准版本。
+- 版本支持：从API级别12开始支持。
+- 用途：帮助识别和区分不同Wi-Fi技术标准的热点。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 值 | 说明 |
@@ -719,6 +728,11 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 添加候选网络配置，使用callback异步回调。
 
+- 将指定的Wi-Fi设备配置添加为候选网络，系统会在适当时候尝试连接。
+- 参数部分config: WifiDeviceConfig类型，包含要添加的Wi-Fi网络配置信息。callback: 异步回调函数，返回操作结果。
+- API级别9及以上支持。
+- 添加的候选配置不会立即触发连接，而是由系统根据策略决定连接时机。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -766,6 +780,11 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 移除候选网络配置，使用Promise异步回调。
+
+- 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
+- 只能移除通过addCandidateConfig添加的候选配置，移除后该候选网络将不再被系统自动连接。
+- 如果网络正在使用中，建议先断开连接再移除配置。
+- 提供两种重载形式：Promise和Callback方式
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -818,7 +837,12 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): void
 
-移除候选网络配置，使用callback异步回调。
+移除指定的候选网络配置，使用callback异步回调。
+
+- 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
+- 只能移除通过addCandidateConfig添加的候选配置，移除后该候选网络将不再被系统自动连接。
+- 如果网络正在使用中，建议先断开连接再移除配置。
+- 提供两种重载形式：Promise和Callback方式
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -1006,7 +1030,11 @@ connectToCandidateConfig(networkId: number): void
 
 connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
-应用使用该接口连接到自己添加的候选网络时，会提示用户是否信任并建立连接，使用Promise异步回调用户响应结果。
+该接口用于应用连接到自己添加的候选网络，并在连接时提示用户进行信任确认。此操作采用Promise异步回调机制，返回用户响应结果。
+
+- 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise机制异步返回用户响应结果，确保操作的非阻塞性。
+- 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
+- 该接口适用于需要用户主动参与的网络连接场景，以增强安全性。
 
 > **说明：**
 > 调用[wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig9)连接候选网络时，不会返回用户响应结果。
