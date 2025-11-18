@@ -784,7 +784,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 - 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
 - 只能移除通过addCandidateConfig添加的候选配置，移除后该候选网络将不再被系统自动连接。
 - 如果网络正在使用中，建议先断开连接再移除配置。
-- 提供两种重载形式：Promise和Callback方式
+- 提供两种重载形式：Promise和Callback方式。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -842,7 +842,7 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
 - 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
 - 只能移除通过addCandidateConfig添加的候选配置，移除后该候选网络将不再被系统自动连接。
 - 如果网络正在使用中，建议先断开连接再移除配置。
-- 提供两种重载形式：Promise和Callback方式
+- 提供两种重载形式：Promise和Callback方式。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
