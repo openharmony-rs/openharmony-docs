@@ -17,7 +17,7 @@ In counting mode, perf collects only the number of event occurrences and duratio
 
 ## Available APIs
 
-The Perf module of the OpenHarmony LiteOS-A kernel provides the following APIs. For details, see the [API reference](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h).
+The Perf module of the OpenHarmony LiteOS-A kernel provides the following APIs. For details, see the [API reference](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h).
 
   **Table 1** APIs of the perf module
 
@@ -28,7 +28,7 @@ The Perf module of the OpenHarmony LiteOS-A kernel provides the following APIs. 
 | Reading sampling data| **LOS_PerfDataRead**: reads the sampling data. |
 | Registering a hook for the sampling data buffer| **LOS_PerfNotifyHookReg**: registers the hook to be called when the buffer waterline is reached.<br>**LOS_PerfFlushHookReg**: registers the hook for flushing the cache in the buffer. |
 
-**PerfConfigAttr** is the structure of the perf sampling event. For details, see [kernel\include\los_perf.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h).
+**PerfConfigAttr** is the structure of the perf sampling event. For details, see [kernel\include\los_perf.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_perf.h).
 
 The sampling data buffer is a circular buffer, and only the region that has been read in the buffer can be overwritten.
 
