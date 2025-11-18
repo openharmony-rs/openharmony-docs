@@ -1,12 +1,10 @@
 # native_avcodec_base.h
-
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-
 
 ## Overview
 
@@ -70,7 +68,7 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef void (\*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)](#oh_avcodeconerror) | OH_AVCodecOnError | Defines the pointer to the function that is called to report error information when an error occurs during the running of an OH_AVCodec instance.|
-| [typedef void (\*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)](#oh_avcodeconstreamchanged) | OH_AVCodecOnStreamChanged | Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> From API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.|
+| [typedef void (\*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)](#oh_avcodeconstreamchanged) | OH_AVCodecOnStreamChanged | Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> Starting from API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.|
 | [typedef void (\*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)](#oh_avcodeconneedinputdata) | OH_AVCodecOnNeedInputData | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data. (It is deprecated from API version 11.)|
 | [typedef void (\*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)](#oh_avcodeconnewoutputdata) | OH_AVCodecOnNewOutputData | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data. Note that the lifecycle of the pointer to the OH_AVCodecBufferAttr instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called. (It is deprecated from API version 11.)|
 | [typedef void (\*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)](#oh_avcodeconneedinputbuffer) | OH_AVCodecOnNeedInputBuffer | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data.|
@@ -836,7 +834,7 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 **Description**
 
-Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> From API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.
+Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> Starting from API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
