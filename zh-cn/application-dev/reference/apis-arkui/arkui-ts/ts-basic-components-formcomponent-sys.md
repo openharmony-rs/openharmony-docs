@@ -291,7 +291,7 @@ onError(callback: Callback[\<ErrorInformation\>](#errorinformation18对象说明
 
 ### onRouter<sup>18+</sup>
 
-ArkTS-Dyn: onRouter(callback: Callback\<object\>)
+ArkTS-Dyn: onRouter(callback: Callback\<object\>) <br>
 ArkTS-Sta: onRouter(callback: Callback[\<RouterCallbackInfo\>](#routercallbackinfo22对象说明))
 
 卡片点击回调。
