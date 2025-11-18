@@ -435,7 +435,7 @@ getAppPreloadType(): AppPreloadType
 **示例：**
 
 ```ts
-import { AbilityStage, application } from "@kit.AbilityKit";
+import { AbilityStage, application } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage{
   onCreate(): void {
