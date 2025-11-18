@@ -142,7 +142,7 @@
 
    <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
+   ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
      // 长时任务id
      console.info('OnContinuousTaskCancel callback id ' + info.id);
@@ -308,7 +308,7 @@
 
    <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
 
-   ```ts
+   ``` TypeScript
    @Entry
    @Component
    struct Index {
@@ -417,7 +417,7 @@
    
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
 
-   ```ts
+   ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg'
  
    let mContext: Context;
