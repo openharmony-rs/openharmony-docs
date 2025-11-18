@@ -1845,6 +1845,10 @@ hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -1864,6 +1868,8 @@ hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1871,6 +1877,21 @@ windowClass.hideWithAnimation((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in hiding the window with animation.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.hideWithAnimation((err: BusinessError<void> | null) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to hide the window with animation. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in hiding the window with animation.');
@@ -1887,6 +1908,10 @@ hideWithAnimation(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -1906,6 +1931,8 @@ hideWithAnimation(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1913,6 +1940,17 @@ let promise = windowClass.hideWithAnimation();
 promise.then(() => {
   console.info('Succeeded in hiding the window with animation.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = windowClass.hideWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in hiding the window with animation.');
+}).catch((err: Error) => {
   console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1926,6 +1964,10 @@ showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1946,6 +1988,8 @@ showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1953,6 +1997,21 @@ windowClass.showWithAnimation((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in showing the window with animation.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.showWithAnimation((err: BusinessError<void> | null) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to show the window with animation. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in showing the window with animation.');
@@ -1968,6 +2027,10 @@ showWithAnimation(): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1988,6 +2051,8 @@ showWithAnimation(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1995,6 +2060,17 @@ let promise = windowClass.showWithAnimation();
 promise.then(() => {
   console.info('Succeeded in showing the window with animation.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = windowClass.showWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in showing the window with animation.');
+}).catch((err: Error) => {
   console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
