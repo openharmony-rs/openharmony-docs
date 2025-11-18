@@ -58,6 +58,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | --------| ---- | ------------|
 | USER                | 0    | 用户相册。   |
 | SYSTEM              | 1024 | 系统预置相册。 |
+| SOURCE<sup>22+</sup>| 2048 | 由应用创建的相册。 |
 
 ## AlbumSubtype
 
@@ -71,6 +72,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | FAVORITE        | 1025       | 收藏夹。 |
 | VIDEO  | 1026       | 视频相册。|
 | IMAGE<sup>12+</sup>               | 1031       | 图片相册。|
+| SOURCE\_GENERIC<sup>22+</sup>     | 2049       | 来源相册。|
 | ANY    | 2147483647 | 任意相册。|
 
 ## PositionType<sup>16+</sup>
@@ -129,6 +131,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | 相册uri。                                                   |
 | ALBUM_NAME    | 'album_name'          | 相册名字。                                                   |
+| ALBUM_LPATH<sup>22+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
 
 ## ResourceType<sup>11+</sup>
 
