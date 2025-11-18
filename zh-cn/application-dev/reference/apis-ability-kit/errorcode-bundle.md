@@ -935,7 +935,7 @@ The app does not support the creation of an appClone instance.
 
 **处理步骤**<br/>
 1. 检查应用是否配置了分身模式。详见[创建应用分身](../../quick-start/app-clone.md)。
-2. 检查企业设备是否设置了不支持创建分身的企业安全策略，可以通过打开设备->设置>系统->应用分身，查看应用是否支持创建分身。
+2. 检查企业设备是否设置了不支持创建分身的企业安全策略，可以通过打开设备->设置>系统->应用分身，查看应用是否支持创建分身。<!--DelEnd-->
 
 ## 17700070 指定的快捷方式id不合法
 
@@ -951,6 +951,7 @@ The specified shortcut id is illegal.
 **处理步骤**<br/>
 1. 检查包名或者快捷方式id是否正确。
 
+<!--Del-->
 ## 17700071 不允许企业应用安装
 **错误信息**<br/>
 It is not allowed to install the enterprise bundle.
