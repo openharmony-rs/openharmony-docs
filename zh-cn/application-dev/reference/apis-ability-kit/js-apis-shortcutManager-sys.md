@@ -256,13 +256,13 @@ struct ShortcutExample {
 
 ## shortcutManager.addDynamicShortcutInfos<sup>23+</sup>
 
-addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>, userId: int): Promise<void>
+addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>, userId: int): Promise\<void>
 
-给指定用户添加动态快捷方式。
+添加指定用户的动态快捷方式。
 
-添加当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS
+添加当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS。
 
-添加其他用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+添加非当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
 
 **需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
@@ -327,13 +327,13 @@ try {
 
 ## shortcutManager.deleteDynamicShortcutInfos<sup>23+</sup>
 
-deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?: Array<string>): Promise<void>
+deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?: Array<string>): Promise\<void>
 
-给指定用户删除动态快捷方式。
+删除指定用户的动态快捷方式。
 
-删除当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS
+删除当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS。
 
-删除其他用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+删除非当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
 
 **需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
