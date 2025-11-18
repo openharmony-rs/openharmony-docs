@@ -65,7 +65,7 @@ startVpnExtensionAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型                                | 必填 | 说明               |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 指示要启动的信息。<br> **说明：** 从API version 22 开始，支持在VPN首次启动时传递want中的parameters字段。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 指示要启动的信息。<br> **说明：** 从API version 22开始，支持在VPN首次启动时传递want中的parameters字段。 |
 
 **返回值：**
 
