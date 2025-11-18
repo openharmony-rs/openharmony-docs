@@ -3134,17 +3134,20 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.getMainWindow().then((window: window.Window) => {
-      let raiseEnabled: boolean = false;
-      let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
-      promise.then(() => {
-        console.info('Succeeded in disabling the raise-by-click function.');
-      }).catch((err: BusinessError) => {
+      try {
+        let raiseEnabled: boolean = false;
+        let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+        promise.then(() => {
+          console.info('Succeeded in disabling the raise-by-click function.');
+        })
+      } catch(err) {
         console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
-      });
+      };
     });
   }
 }
