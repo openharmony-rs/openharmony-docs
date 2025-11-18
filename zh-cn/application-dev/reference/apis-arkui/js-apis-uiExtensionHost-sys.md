@@ -306,7 +306,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ### createSubWindowWithOptions<sup>12+</sup>
 
-createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions): Promise&lt;window.Window&gt;
+createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions, isHideFollowUIExt: boolean): Promise&lt;window.Window&gt;
 
 创建该UIExtensionHostWindowProxy实例下的子窗口，使用Promise异步回调。
 
@@ -322,6 +322,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------ | ------ | ---- | -------------- |
 | name   | string | 是   | 子窗口的名字。 |
 | subWindowOptions | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是 | 子窗口参数。 |
+| isHideFollowUIExt<sup>22+</sup> | boolean | 否   | 子窗是否在组件（EmbeddedComponent或UIExtensionComponent）隐藏时，进行退后台，true表示组件（EmbeddedComponent或UIExtensionComponent）隐藏时，子窗退后台，默认值为false |
 
 **返回值：**
 
