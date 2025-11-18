@@ -33,6 +33,8 @@ import { Sensor } from '@kit.SensorServiceKit';
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
 
 **参数**：
@@ -71,6 +73,8 @@ unsubscribeAccelerometer(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
 
 **示例**：
@@ -86,6 +90,8 @@ Sensor.unsubscribeAccelerometer();
 订阅罗盘数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -120,6 +126,8 @@ unsubscribeCompass(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **示例**：
 
 ```ts
@@ -133,6 +141,8 @@ Sensor.unsubscribeCompass();
 订阅距离感应数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -167,6 +177,8 @@ unsubscribeProximity(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **示例**：
 
 ```ts
@@ -180,6 +192,8 @@ Sensor.unsubscribeProximity();
 订阅环境光线感应数据变化。再次调用时，会覆盖前一次调用效果，即仅最后一次调用生效。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -214,6 +228,8 @@ unsubscribeLight(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **示例**：
 
 ```ts
@@ -227,6 +243,8 @@ Sensor.unsubscribeLight();
 订阅计步传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -263,6 +281,8 @@ unsubscribeStepCounter(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
 **示例**：
@@ -279,6 +299,8 @@ subscribeBarometer(options: SubscribeBarometerOptions): void
 订阅气压计传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -314,6 +336,8 @@ unsubscribeBarometer(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **示例**：
 
 ```ts
@@ -328,6 +352,8 @@ Sensor.unsubscribeBarometer();
 订阅心率传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.READ_HEALTH_DATA
 
@@ -365,6 +391,8 @@ unsubscribeHeartRate(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **需要权限**：ohos.permission.READ_HEALTH_DATA
 
 **示例**：
@@ -380,6 +408,8 @@ Sensor.unsubscribeHeartRate();
 订阅设备佩戴状态。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -414,6 +444,8 @@ unsubscribeOnBodyState(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **示例**：
 
 ```ts
@@ -427,6 +459,8 @@ Sensor.unsubscribeOnBodyState();
 获取设备佩戴状态。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -459,6 +493,8 @@ Sensor.getOnBodyState(getOnBodyStateOptions);
 针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -496,6 +532,8 @@ unsubscribeDeviceOrientation(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
+
 **示例**：
 
 ```ts
@@ -511,6 +549,8 @@ Sensor.unsubscribeDeviceOrientation();
 针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
 
@@ -549,6 +589,8 @@ unsubscribeGyroscope(): void
 取消订阅陀螺仪传感器数据。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+设备行为差异：该接口在TV中无效果，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
 
