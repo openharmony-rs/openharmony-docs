@@ -438,7 +438,7 @@ getAppPreloadType(): AppPreloadType
 import { AbilityStage, application } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage{
-  onCreate(): void {
+  onCreate() {
     let appPreloadType = application.getAppPreloadType();
   }
 }
