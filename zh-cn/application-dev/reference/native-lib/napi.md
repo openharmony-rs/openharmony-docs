@@ -1651,8 +1651,8 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
-- [in] ref：被删除的引用。
-- [out] result：被引用的Sendable ArkTS对象。
+- [in] ref：Sendable强引用。
+- [out] result：从入参`ref`中获取的Sendable ArkTS对象。
 
 **返回：**
 
