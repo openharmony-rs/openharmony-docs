@@ -65,7 +65,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         }
 
       }).then(data => {
-        console.log(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
+        console.info(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
       });
     } catch (e) {
       console.error(TAG, `startSecondPage failed:${e}`)
