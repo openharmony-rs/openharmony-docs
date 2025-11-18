@@ -136,7 +136,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 - [\@Trace](arkts-new-observedV2-and-trace.md)：\@Trace装饰器装饰被\@ObservedV2装饰的class中的属性，被装饰的属性具有深度观测的能力。
 
-- [\@ComponentV2](arkts-new-componentV2.md)：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
+- [\@ComponentV2](arkts-create-custom-components.md#componentv2)：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
 
 - [\@Local](arkts-new-local.md)：\@Local装饰的变量为组件内部状态，无法从外部初始化。
 
