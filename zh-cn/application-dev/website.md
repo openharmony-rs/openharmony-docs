@@ -2053,6 +2053,7 @@
           - [使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](napi/use-napi-about-critical.md)
           - [使用Node-API接口产生的异常日志/崩溃分析](napi/use-napi-about-crash.md)
           - [使用Node-API调用返回值为promise的ArkTS方法](napi/use-napi-method-promise.md)
+          - [使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用](napi/use-napi-about-sendable-reference.md)
         - Node-API常见问题汇总<!--napi-questions-->
           - [Node-API常见问题](napi/use-napi-faqs.md)
           - [稳定性相关问题汇总](napi/napi-faq-about-stability.md)

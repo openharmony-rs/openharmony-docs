@@ -721,6 +721,9 @@ libace_napi.z.so
 |FUNC|napi_create_ark_context|创建一个新的运行时上下文环境。|20|
 |FUNC|napi_switch_ark_context|切换到指定的运行时上下文环境。|20|
 |FUNC|napi_destroy_ark_context|销毁通过接口napi_create_ark_context创建的一个上下文环境。|20|
+|FUNC|napi_create_strong_sendable_reference|创建指向Sendable ArkTS对象的Sendable强引用。|22|
+|FUNC|napi_delete_strong_sendable_reference|删除Sendable强引用。|22|
+|FUNC|napi_get_strong_sendable_reference_value|根据Sendable强引用获取其关联的ArkTS对象值。|22|
 
 > 说明：
 >
@@ -1551,5 +1554,73 @@ typedef void (*napi_finalize)(napi_env env,
 **返回：**
 
 - void：此回调函数无返回值。
+
+### napi_create_strong_sendable_reference
+
+```cpp
+napi_status napi_create_strong_sendable_reference(napi_env env,
+                                                  napi_value value,
+                                                  napi_sendable_ref* result);
+```
+
+**描述：**
+
+创建指向Sendable ArkTS对象的Sendable强引用。使用该接口需要注意以下几点：
+1. 只能为[Sendable对象](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)创建`napi_sendable_ref`。
+2. `napi_sendable_ref`可跨ArkTS线程使用，在多线程操作时，调用者需自己保证释放时机，防止出现释放后使用的问题。
+3. 同一进程内，同时存活的`napi_sendable_ref`最大数量为51200个。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+- [in] value：被引用的Sendable ArkTS对象。
+- [out] result：创建出的Sendable强引用。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_delete_strong_sendable_reference
+
+```cpp
+napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_ref ref);
+```
+
+**描述：**
+
+删除Sendable强引用。使用该接口需要注意以下几点：
+1. 不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`作为本接口入参。`napi_delete_strong_sendable_reference`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+- [in] ref：被删除的引用。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_strong_sendable_reference_value
+
+```cpp
+napi_status napi_get_strong_sendable_reference_value(napi_env env,
+                                                     napi_sendable_ref ref,
+                                                     napi_value* result);
+```
+
+**描述：**
+
+根据Sendable强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
+1. 不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`作为本接口入参。`napi_get_strong_sendable_reference_value`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+- [in] ref：被删除的引用。
+- [out] result：被引用的Sendable ArkTS对象。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
 
 <!--no_check-->
