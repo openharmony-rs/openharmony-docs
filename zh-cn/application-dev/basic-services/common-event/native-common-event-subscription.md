@@ -90,6 +90,27 @@
    创建订阅者时需传入公共事件的回调函数[CommonEvent_ReceiveCallback](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#commonevent_receivecallback)。待事件发布时，订阅者会接收到回调数据[CommonEvent_RcvData](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#结构体)。
 
    <!-- @[event_subscriber_on_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   
+   ``` C++
+   // 公共事件回调函数
+   void OnReceive(const CommonEvent_RcvData *data)
+   {
+       // 获取回调公共事件名称
+       const char *event = OH_CommonEvent_GetEventFromRcvData(data);
+   
+       // 获取回调公共事件结果代码
+       int code = OH_CommonEvent_GetCodeFromRcvData(data);
+   
+       // 获取回调公共事件自定义结果数据
+       const char *retData = OH_CommonEvent_GetDataStrFromRcvData(data);
+   
+       // 获取回调公共事件包名称
+       const char *bundle = OH_CommonEvent_GetBundleNameFromRcvData(data);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST",
+                    "event: %{public}s, code: %{public}d, data: %{public}s, bundle: %{public}s", event, code, retData,
+                    bundle);
+   }
+   ```
 
 
    通过[CommonEvent_Parameters](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#变量)传入key来获取附加信息内容。
