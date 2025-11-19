@@ -992,9 +992,9 @@ static napi_value GetSendableObject(napi_env env, napi_callback_info info) {
 接口声明
 
 <!-- @[napi_create_sendable_object_with_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const getSendableObject: () => { x: true };
+
+``` TypeScript
+export const getSendableObject: () => { x: true }; // Sendable相关 napi_create_sendable_object_with_properties
 ```
 
 
