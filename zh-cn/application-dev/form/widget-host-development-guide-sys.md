@@ -61,13 +61,13 @@ formHost提供一系列的卡片使用方接口，来操作卡片的更新、删
 
 ## 卡片使用方示例
 <!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
-//Index.ets
 import { HashMap, HashSet } from '@kit.ArkTS';
 import { formHost, formInfo, formObserver } from '@kit.FormKit';
 import { bundleMonitor } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = 'FormHost';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -115,6 +115,7 @@ struct formHostSample {
     descriptionId: 0,
     type: formInfo.FormType.eTS,
     jsComponentName: '',
+    // ...
     isDefault: false,
     updateEnabled: false,
     formVisibleNotify: true,
