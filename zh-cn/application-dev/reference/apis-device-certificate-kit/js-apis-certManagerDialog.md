@@ -471,7 +471,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 
 | 类型               | 说明                                   |
 |------------------|--------------------------------------|
-| Promise\<[CertReference](#certReference22)> | Promise对象。表示返回授权证书引用的结果。 |
+| Promise\<[CertReference](#certreference22)> | Promise对象。表示返回授权证书引用的结果。 |
 
 **错误码：**
 
