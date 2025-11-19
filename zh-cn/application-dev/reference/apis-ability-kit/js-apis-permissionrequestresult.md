@@ -33,15 +33,13 @@
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 <!--code_no_check-->
 ```ts
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import { BusinessError } from '@ohos.base';
-import common from '@ohos.app.ability.common';
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager = abilityAccessCtrl.createAtManager();
 try {
   let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   atManager.requestPermissionsFromUser(context, ["ohos.permission.CAMERA"]).then((data) => {
-      console.info(`data: ${data}`);
       console.info("data permissions:" + data.permissions);
       console.info("data authResults:" + data.authResults);
       console.info("data dialogShownResults:" + data.dialogShownResults);
