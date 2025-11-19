@@ -847,9 +847,9 @@ static napi_value IsSendable(napi_env env, napi_callback_info info)
 接口声明
 
 <!-- @[napi_is_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const isSendable: <T>(a: T) => boolean;
+
+``` TypeScript
+export const isSendable: <T>(a: T) => boolean; // Sendable相关 napi_is_sendable
 ```
 
 
