@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines the inertial scroll axis event.
+Defines the coasting axis event.
 
 When the user performs a two-finger swipe on the touchpad, the system constructs a swipe event based on the finger lift speed, following a specific attenuation curve. You can listen for this event to handle the flick effect immediately after processing regular axis events.
 

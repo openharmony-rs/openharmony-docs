@@ -1,4 +1,10 @@
 # ArkUI_ExpectedFrameRateRange
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -16,6 +22,6 @@ Defines the expected frame rate range of the animation.
 
 | Name| Description|
 | -- | -- |
-| uint32_t min | Expected minimum frame rate.|
-| uint32_t max | Expected maximum frame rate.|
-| uint32_t expected | Expected optimal frame rate.|
+| uint32_t min | Expected minimum frame rate, in fps.|
+| uint32_t max | Expected maximum frame rate, in fps.|
+| uint32_t expected | Expected optimal frame rate, in fps.|

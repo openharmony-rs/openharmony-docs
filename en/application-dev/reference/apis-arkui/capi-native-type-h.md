@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -60,7 +60,7 @@ Defines the common types for the native module.
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines a struct for active child node information.|
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines cross-language configuration options.|
 | [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares Want objects.|
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the** EmbeddedComponentOption** struct for the **EmbeddedComponent** component.|
+| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the **EmbeddedComponentOption** struct for the **EmbeddedComponent** component.|
 | [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines a struct for the component accessibility state.|
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | ArkUI_AccessibilityValue | Defines a struct for the component accessibility value.|
 | [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | Defines a struct for the system font style event.|
@@ -76,8 +76,7 @@ Defines the common types for the native module.
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Returns the created instance of visible area change event parameters.|
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|Provides position parameters relative to the boundaries of the container's content area.|
-|[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines the pixel rounding policy structure of a component.|
-|[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
+|[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines a struct for the component pixel rounding policy.|
 
 ### Enums
 
@@ -145,8 +144,8 @@ Defines the common types for the native module.
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | Enumerates the alignment mode of the image with the text.                   |
 | [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | Enumerates the image filling effects.ImageSpanAlignment    |
 | [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | Enumerates the image interpolation effects.                        |
-| [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | Defines the image dynamic range mode (for example, SDR/HDR), which is used to control the brightness and color display range of the image.|
-| [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | Defines the image rotation direction.                        |
+| [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.|
+| [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | Enumerates image rotation directions.                        |
 | [ArkUI_BlendMode](#arkui_blendmode)                                 | ArkUI_BlendMode                 | Enumerates the blend modes.                         |
 | [ArkUI_Direction](#arkui_direction)                                 | ArkUI_Direction                 | Enumerates the modes in which components are laid out along the main axis of the container.              |
 | [ArkUI_ItemAlignment](#arkui_itemalignment)                         | ArkUI_ItemAlignment             | Enumerates the modes in which components are laid out along the cross axis of the container.            |
@@ -196,10 +195,10 @@ Defines the common types for the native module.
 | [ArkUI_RouterPageState](#arkui_routerpagestate)                     | ArkUI_RouterPageState           | Enumerates the states of a page during routing.                |
 | [ArkUI_UIState](#arkui_uistate)                                     | ArkUI_UIState                   | Enumerates the UI states of a component, used for handling state-specific styles.              |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode)                         | ArkUI_FocusWrapMode             | Enumerates the focus wrap mode of components.                        |
-| [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | Defines the direction of a rectangle edge.                        |
-| [ArkUI_CornerDirection](#arkui_cornerdirection)                     | ArkUI_CornerDirection           | Defines the angle direction.                        |
-| [ArkUI_LayoutPolicy](#arkui_layoutpolicy)                         | ArkUI_LayoutPolicy             | Defines the layout policy.                        |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | Defines the policy for rounding off pixels.|
+| [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | Enumerates rectangle edge directions.                        |
+| [ArkUI_CornerDirection](#arkui_cornerdirection)                     | ArkUI_CornerDirection           | Enumerates corner directions.                        |
+| [ArkUI_LayoutPolicy](#arkui_layoutpolicy)                         | ArkUI_LayoutPolicy             | Enumerates layout policies.                        |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | Enumerates pixel rounding calculation policies.|
 
 ### Functions
 
@@ -370,8 +369,8 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_getedgeeffect) | Obtains the edge effect used when the boundary of the scrolling area is reached.|
 | [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption* option, void (\*callback)(float offset))](#oh_arkui_listitemswipeactionoption_setonoffsetchange) | Sets the callback invoked when the scroll offset changes.|
 | [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData (ArkUI_ListItemSwipeActionOption* option, void* userData, void (\*callback)(float offset, void* userData))](#oh_arkui_listitemswipeactionoption_setonoffsetchangewithuserdata) | Sets the callback invoked when the scroll offset changes.|
-| [int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)](#oh_arkui_listitemswipeaction_expand) |  Expands the menu of a specified list item.|
-| [int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)](#oh_arkui_listitemswipeaction_collapse) |  Collapses the menu of a specified list item.|
+| [int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)](#oh_arkui_listitemswipeaction_expand) |  Expands the swipe action menu for the specified list item.|
+| [int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)](#oh_arkui_listitemswipeaction_collapse) |  Collapses the swipe action menu for the specified list item.|
 | [ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)](#oh_arkui_accessibilitystate_create) | Creates an accessibility state.|
 | [void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_dispose) | Disposes of the pointer to an accessibility state.|
 | [void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)](#oh_arkui_accessibilitystate_setdisabled) | Sets whether an accessibility state is disabled.|
@@ -447,7 +446,7 @@ Defines the common types for the native module.
 | [bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getscaneffectenabled) | Obtains the enabled status of the scan effect.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokewidth) | Obtains the stroke width of the progress indicator.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokeradius) | Obtains the corner radius of the progress indicator.|
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | Creates a snapshot option. The snapshot option must be destroyed by calling [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when the return value is no longer used.|
+| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.|
 | [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | Destroys a snapshot options object.|
 | [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | Sets the scale property in the snapshot options.|
 | [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | Creates an instance of the cross-language configuration option.|
@@ -483,17 +482,16 @@ Defines the common types for the native module.
 |[int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getbottom)|Obtains the downward direction value of the PositionEdges attribute object.|
 |[void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setright)|Sets the right direction value of the PositionEdges attribute object.|
 |[int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getright)|Obtains the right direction value of the PositionEdges attribute object.|
-|[ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()](#oh_arkui_pixelroundpolicy_create)|Creates a PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)](#oh_arkui_pixelroundpolicy_dispose)|Releases the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_settop)|Sets the upper direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_gettop)|Obtains the top direction value of the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setstart)|Sets the front direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getstart)|Obtains the front direction value of the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setbottom)|Sets the bottom direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getbottom)|Obtains the bottom direction value of the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setend)|Sets the tail direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend)|Obtains the end direction of the PixelRoundPolicy attribute object.|
-|[ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create)|Creates a ContentTransitionEffect attribute object.|
+|[ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()](#oh_arkui_pixelroundpolicy_create)|Creates a **PixelRoundPolicy** attribute object.|
+|[void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)](#oh_arkui_pixelroundpolicy_dispose)|Disposes the **PixelRoundPolicy** attribute object.|
+|[void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_settop)|Sets the top edge pixel rounding policy for the **PixelRoundPolicy** object.|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_gettop)|Obtains the top edge pixel rounding policy from the **PixelRoundPolicy** object.|
+|[void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setstart)|Sets the start edge pixel rounding policy for the **PixelRoundPolicy** object.|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getstart)|Obtains the start edge pixel rounding policy from the **PixelRoundPolicy** object. |
+|[void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setbottom)|Sets the bottom edge pixel rounding policy for the **PixelRoundPolicy** object.|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getbottom)|Obtains the bottom edge pixel rounding policy from the **PixelRoundPolicy** object.|
+|[void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setend)|Sets the end edge pixel rounding policy for the **PixelRoundPolicy** object.|
+|[int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend)|Obtains the end edge pixel rounding policy from the **PixelRoundPolicy** object.|
 
 ## Enum Description
 
@@ -640,7 +638,7 @@ enum ArkUI_TextContentAlign
 **Description**
 
 
-Defines the enumerated values of the vertical alignment style of a text content area.
+Enumerates vertical alignment styles in the text content area.
 
 **Since**: 21
 
@@ -1060,7 +1058,7 @@ enum ArkUI_Axis
 **Description**
 
 
-Enumerates the scroll directions.
+Enumerates scroll directions and [List](./arkui-ts/ts-container-list.md) component arrangement directions.
 
 **Since**: 12
 
@@ -1755,7 +1753,7 @@ Enumerates the image filling effects.ImageSpanAlignment
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START | Not resized, the image is aligned with the start edge at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM | Not resized, the image is horizontally centered at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END | Not resized, the image is aligned with the end edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_MATRIX | Keeps the original image size. This function must be used together with NODE_IMAGE_IMAGE_MATRIX.|
+| ARKUI_OBJECT_FIT_NONE_MATRIX | The image maintains its original size. Must be used with **NODE_IMAGE_IMAGE_MATRIX**.|
 
 ### ArkUI_ImageInterpolation
 
@@ -1786,15 +1784,15 @@ enum ArkUI_DynamicRangeMode
 **Description**
 
 
-Defines the dynamic range mode (SDR/HDR) of an image, which is used to control the display range of the image brightness and color.
+Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), which indicates the range of the minimum and maximum brightness values displayed in an image. The larger the range, the closer the image brightness is to the real environment. In a very bright environment, overexposure (all white) does not occur. In a very dark environment, the effect of overdarkness (all black) does not occur.|
-| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | Limited high dynamic range, which contains richer brightness and color than SDR but is not complete HDR. It is generally used in scenarios where SDR compatibility is required.|
-| ARKUI_DYNAMIC_RANGE_MODE_STANDARD | Standard dynamic range (SDR), which indicates a limited brightness range, usually 0–100 nits (brightness unit). The contrast between bright and dark parts is small. Dark parts tend to be blurred into black, and bright parts tend to be overexposed into white.|
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
+| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
+| ARKUI_DYNAMIC_RANGE_MODE_STANDARD | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed to white.|
 
 ### ArkUI_ImageRotateOrientation
 
@@ -1805,21 +1803,21 @@ enum ArkUI_ImageRotateOrientation
 **Description**
 
 
-Defines the image rotation direction.
+Enumerates image rotation directions.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ORIENTATION_AUTO = 0 | Reads the EXIF metadata carried by an image as the display direction, and supports rotation and mirroring.|
-| ARKUI_ORIENTATION_UP | By default, the image is displayed based on the pixel data without any processing.|
-| ARKUI_ORIENTATION_RIGHT | Rotates the image clockwise by 90 degrees and then displays it.|
-| ARKUI_ORIENTATION_DOWN  | Rotates the image clockwise by 180 degrees and then displays it.|
-| ARKUI_ORIENTATION_LEFT | Rotates the current image by 270 degrees clockwise and displays it.|
-| ARKUI_ORIENTATION_UP_MIRRORED | Flips the current image horizontally and displays it.|
-| ARKUI_ORIENTATION_RIGHT_MIRRORED  | Flips the current image horizontally and rotates it by 90 degrees clockwise and displays it.|
-| ARKUI_ORIENTATION_DOWN_MIRRORED | Flips the current image vertically and displays it.|
-| ARKUI_ORIENTATION_LEFT_MIRRORED | Flips the current image horizontally and rotates it by 270 degrees clockwise and displays it.|
+| ARKUI_ORIENTATION_AUTO = 0 | Use EXIF metadata for display orientation, with support for rotation and mirroring.|
+| ARKUI_ORIENTATION_UP | Display original pixel data without transformation.|
+| ARKUI_ORIENTATION_RIGHT | Display the image after rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN  | Display the image after rotating it 180 degrees clockwise.|
+| ARKUI_ORIENTATION_LEFT | Display the image after rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP_MIRRORED | Display the image after flipping it horizontally.|
+| ARKUI_ORIENTATION_RIGHT_MIRRORED  | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN_MIRRORED | Display the image after flipping it vertically.|
+| ARKUI_ORIENTATION_LEFT_MIRRORED | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
 
 ### ArkUI_BlendMode
 
@@ -1854,7 +1852,7 @@ Enumerates the blend modes.
 | ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication.|
 | ARKUI_BLEND_MODE_OVERLAY | The MULTIPLY or SCREEN mode is used based on the target pixels.|
 | ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used.|
-| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver: Compares the pixels in the source image and destination image, and selects the brighter pixel as the final blending result.|
+| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver: The darker of the pixels (source and target) is used.|
 | ARKUI_BLEND_MODE_COLOR_DODGE | The colors of the target pixels are lightened to reflect the source pixels.|
 | ARKUI_BLEND_MODE_COLOR_BURN | The colors of the target pixels are darkened to reflect the source pixels.|
 | ARKUI_BLEND_MODE_HARD_LIGHT | The MULTIPLY or SCREEN mode is used, depending on the source pixels.|
@@ -2546,14 +2544,14 @@ enum ArkUI_ListItemSwipeActionDirection
 
 **Description**
 
-Defines the direction in which the menu of ListItem is displayed.
+Enumerates the swipe action menu display directions for **ListItem** components.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | When the list is vertical, the value indicates the left side of ListItem in LTR mode and the right side of ListItem in RTL mode. When the list is horizontal, the value indicates the top side of ListItem.|
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | When the list is vertical, the value indicates the right side of ListItem in LTR mode and the left side of ListItem in RTL mode. When the list is horizontal, the value indicates the bottom side of ListItem.|
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | For vertical lists: left side in LTR mode, right side in RTL mode. For horizontal lists: top side.|
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | For vertical lists: right side in LTR mode, left side in RTL mode. For horizontal lists: bottom side.|
 
 ### ArkUI_AnimationStatus
 
@@ -2618,9 +2616,9 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  The **XComponent** is in an invalid or unsupported state. For details about the error codes, see [XComponent Error Codes](../apis-arkui/errorcode-xcomponent.md).<br>**Since**: 19|
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | The component does not support specific attributes or events. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
 | ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE = 106103 | The specific operation is not allowed on the node created by ArkTS. For details about the error codes, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md).|
-| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | The adapter for lazy loading is not bound to the component.|
-| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | The adapter already exists.|
-| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | Failed to add the adapter because the corresponding node already has a subnode.|
+| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | The adapter for lazy loading is not bound to the component. For details about the error code, see [106104 Adapter Not Bound](../apis-arkui/errorcode-nodeadapter.md#106104-adapter-not-bound).|
+| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | The adapter already exists. For details about the error code, see [106105 Adapter Already Exists](../apis-arkui/errorcode-nodeadapter.md#106105-adapter-already-exists).|
+| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | Failed to add the adapter because the corresponding node already has a subnode. For details about the error code, see [106106 Child Node Exists](../apis-arkui/errorcode-nodeadapter.md#106106-child-node-exists).|
 | ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | The parameter length in the parameter event exceeds the limit. For details about the error code, see [106107 Index Out of Range](../apis-arkui/errorcode-nodeadapter.md#106107-index-out-of-range).|
 | ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | The data does not exist in the component event. For details about the error code, see [106108 Data Not Found](../apis-arkui/errorcode-nodeadapter.md#106108-data-not-found).|
 | ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | The component event does not support return values. For details about the error code, see [106109 Return Value Not Supported](../apis-arkui/errorcode-nodeadapter.md#106109-return-value-not-supported).|
@@ -2630,6 +2628,7 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | Invalid buffer size.<br>For details about the error code, see [Router Error Codes](../apis-arkui/errorcode-router.md#106202-invalid-buffer-size).|
 | ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  The passed node is not mounted to the component tree. For details about the error codes, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 16|
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  Operations on the provided node are not supported on non-UI threads. For details about the error code, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md#106204-operations-on-the-provided-node-not-supported-on-non-ui-threads).<br>**Since**: 21|
+| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  The input parameter for the color inversion capability is incorrect. For details about the error code, see [Color Inversion Error Codes](../apis-arkui/errorcode-force-dark.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  The current node is not a custom node. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  The current node already has child nodes. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
@@ -2897,24 +2896,6 @@ Enumerates the focus wrap mode of components.
 | ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | Default mode, where focus does not wrap when arrow keys are used.|
 | ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | Auto mode, where focus wraps automatically when arrow keys are used.|
 
-### ArkUI_ScrollSnapAnimationSpeed
-
-```
-enum ArkUI_ScrollSnapAnimationSpeed
-```
-
-**Description**
-
-
-Speed of the list limit scrolling animation.
-
-**Since**: 20
-
-| Value| Description|
-| -- | -- |
-| ARKUI_SCROLL_SNAP_ANIMATION_NORMAL = 0 | Normal speed of the limit scrolling animation.|
-| ARKUI_SCROLL_SNAP_ANIMATION_SLOW = 1 | Slow speed of the limit scrolling animation.|
-
 ### ArkUI_EdgeDirection
 
 ```
@@ -2924,7 +2905,7 @@ enum ArkUI_EdgeDirection
 **Description**
 
 
-Defines the direction of a rectangle.
+Enumerates rectangle edge directions.
 
 **Since**: 20
 
@@ -2945,7 +2926,7 @@ enum ArkUI_CornerDirection
 **Description**
 
 
-Defines the angle direction.
+Enumerates corner directions.
 
 **Since**: 20
 
@@ -2965,15 +2946,15 @@ enum ArkUI_LayoutPolicy
 
 **Description**
 
-Defines the layout policy.
+Enumerates layout policies.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_LAYOUTPOLICY_MATCHPARENT = 0 | The component adapts to the layout of the parent component.|
-| ARKUI_LAYOUTPOLICY_WRAPCONTENT | The component adapts to the child component (content), and the size of the component is restricted by the size of the content area of the parent component.|
-| ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE | The component adapts to the child component (content), and the size of the component is not restricted by the size of the content area of the parent component.|
+| ARKUI_LAYOUTPOLICY_MATCHPARENT = 0 | The component size matches parent container dimensions.|
+| ARKUI_LAYOUTPOLICY_WRAPCONTENT | The component size wraps its content, constrained by parent container bounds.|
+| ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE | The component size wraps its content, unconstrained by parent container bounds.|
 
 ### ArkUI_PixelRoundCalcPolicy
 
@@ -2983,15 +2964,15 @@ enum ArkUI_PixelRoundCalcPolicy
 
 **Description**
 
-Defines the enumeration of the pixel rounding calculation policy.
+Enumerates pixel rounding calculation policies.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_PIXELROUNDCALCPOLICY_NOFORCE = 0 | Non-rounding calculation.|
-| ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | Rounding up calculation.|
-| ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | Rounding down calculation.|
+| ARKUI_PIXELROUNDCALCPOLICY_NOFORCE = 0 | No forced rounding calculation.|
+| ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | Round-up calculation.|
+| ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | Round-down calculation.|
 
 ## Function Description
 
@@ -3032,7 +3013,7 @@ Performs a deep copy of a size constraint.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
 
 **Returns**
 
@@ -3084,7 +3065,7 @@ Obtains the maximum width for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
 
 **Returns**
 
@@ -3110,7 +3091,7 @@ Obtains the minimum width for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
 
 **Returns**
 
@@ -3136,7 +3117,7 @@ Obtains the maximum height for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
 
 **Returns**
 
@@ -3162,7 +3143,7 @@ Obtains the minimum height for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
 
 **Returns**
 
@@ -3188,7 +3169,7 @@ Obtains the width percentage reference for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
 
 **Returns**
 
@@ -3214,7 +3195,7 @@ Obtains the height percentage reference for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
 
 **Returns**
 
@@ -3976,7 +3957,7 @@ float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline
 **Description**
 
 
-Obtains the distance between a guide line and the left or top of the container.
+Obtains the distance between the guideline and the left or top of the container.
 
 **Since**: 12
 
@@ -3992,7 +3973,7 @@ Obtains the distance between a guide line and the left or top of the container.
 
 | Type| Description|
 | -- | -- |
-| float | Distance between the guide line and the left or top of the container. The unit is vp.|
+| float | Distance between the guideline and the left or top of the container. The unit is vp.|
 
 ### OH_ArkUI_GuidelineOption_GetPositionEnd()
 
@@ -4003,7 +3984,7 @@ float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, 
 **Description**
 
 
-Obtains the distance between a guideline and the right or bottom of the container.
+Obtains the distance between the guideline and the right or bottom of the container.
 
 **Since**: 12
 
@@ -5448,7 +5429,7 @@ Sets the maximum number of dots for the dot-style navigation indicator.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator.|
-| int32_t maxDisplayCount | Maximum number of navigation dots that can be displayed. The value range is [6, 9].|
+| int32_t maxDisplayCount | Maximum number of navigation points. Value range: [6, 9].|
 
 **Returns**
 
@@ -5480,7 +5461,7 @@ Obtains the maximum number of dots for the dot-style navigation indicator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Maximum number of navigation dots that can be displayed. The value range is [6, 9].|
+| int32_t | Maximum number of navigation points. Value range: [6, 9].|
 
 ### OH_ArkUI_SwiperDigitIndicator_Create()
 
@@ -6864,7 +6845,7 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 
 **Description**
 
-Expands the menu of a specified ListItem.
+Expands the swipe action menu for the specified list item.
 
 **Since**: 21
 
@@ -6872,18 +6853,18 @@ Expands the menu of a specified ListItem.
 
 | Name| Description|
 | -- | -- |
-| node | ListItem node object.|
+| node | **ListItem** node object.|
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Expansion direction of the menu of a specified ListItem.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) The node object type is incorrect.<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) The node passed is not mounted to the component tree.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) The node object type is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) if the passed node is not mounted to the component tree when the API is called.|
 
 > **NOTE**
 >
-> - If the NODE_LIST_CACHED_COUNT attribute of the List component is set to display preloaded ListItem, the ListItem that has been preloaded outside the List display area can be expanded. Otherwise, the node outside the List display area cannot be expanded.
+> - If the **List** component's **NODE_LIST_CACHED_COUNT** attribute is configured to preload **ListItem** child components, swipe action menus can be expanded for preloaded **ListItem** child components outside the visible area. Otherwise, child components outside the visible area cannot be expanded.
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 
@@ -6893,7 +6874,7 @@ int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)
 
 **Description**
 
-Collapses the menu of a specified ListItem.
+Collapses the swipe action menu for the specified list item.
 
 **Since**: 21
 
@@ -6901,13 +6882,13 @@ Collapses the menu of a specified ListItem.
 
 | Name| Description|
 | -- | -- |
-| node | ListItem node object.|
+| node | **ListItem** node object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) The node object type is incorrect.<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) The node passed is not mounted to the component tree.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) The node object type is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) if the passed node is not mounted to the component tree when the API is called.|
 
 ### OH_ArkUI_AccessibilityState_Create()
 
@@ -8663,7 +8644,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 **Description**
 
 
-Creates a snapshot option. The snapshot option must be destroyed by calling [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when it is no longer used.
+Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.
 
 **Since**: 15
 
@@ -8892,7 +8873,7 @@ Sets the expected update interval for visible area changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | Pointer to the instance of visible area change event parameters.|
-| int32_t value | Expected update interval, in ms. Default value: **1000**.|
+| int32_t value | Returns the expected update interval, in ms.  Default value: **1000**.|
 
 **Returns**
 
@@ -8952,7 +8933,7 @@ Obtains the expected update interval for visible area changes.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Expected update interval, in ms. Default value: **1000**.|
+| int32_t | Returns the expected update interval, in ms.  Default value: **1000**.|
 
 ### OH_ArkUI_TextPickerRangeContentArray_Create()
 
@@ -9192,7 +9173,7 @@ Sets the **onError** callback for the **EmbeddedComponent** component. This call
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** option object.|
-| void (\*callback)(int32_t code, const char* name, const char* message) | Callback function defined by the developer.<br>- code: result code returned when the API fails to be called. For details about error codes, see [UIExtension Error Codes](errorcode-uiextension.md).<br>- name: name returned when the API fails to be called.<br>- message: details returned when the API fails to be called.|
+| void (\*callback)(int32_t code, const char* name, const char* message) | User-defined callback function.<br>- **code**: error code returned when the API call fails. For details about error codes, see [UIExtension Error Codes](errorcode-uiextension.md).<br>- **name**: error name returned when the API call fails.<br>- **message**: detailed error message returned when the API call fails.|
 
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
@@ -9214,7 +9195,7 @@ Sets the **onTerminated** callback for the **EmbeddedComponent** component. This
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** option object.|
-| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | Callback function defined by the developer.<br>- code: result code returned when the EmbeddedUIExtensionAbility is exited. If the ability is exited by calling terminateSelfWithResult, the result code is the value set for the ability. If the ability is exited by calling terminateSelf, the result code is the default value 0.<br>- want: data returned when the EmbeddedUIExtensionAbility is exited.  |
+| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | Callback function defined by the developer.<br>- **code**: result code returned when the EmbeddedUIExtensionAbility exits. If the ability exits through **terminateSelfWithResult**, this value matches the code set for the ability. If the ability exits through **terminateSelf**, the default value is **0**.<br>- **want**: data returned when the EmbeddedUIExtensionAbility exits.  |
 
 ### OH_ArkUI_PositionEdges_Create()
 
@@ -9232,7 +9213,7 @@ Creates a PositionEdges object.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the **PositionEdges** object.|
 
 
 ### OH_ArkUI_PositionEdges_Copy()
@@ -9251,13 +9232,13 @@ Copies the PositionEdges object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the new PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the new **PositionEdges** object.|
 
 ### OH_ArkUI_PositionEdges_Dispose()
 
@@ -9275,7 +9256,7 @@ Destroys the PositionEdges object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 
 ### OH_ArkUI_PositionEdges_SetTop()
 
@@ -9293,7 +9274,7 @@ Sets the up direction of the PositionEdges object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 |float value|Value of the PositionEdges object in the up direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetTop()
@@ -9312,7 +9293,7 @@ Obtains the value of the PositionEdges object in the up direction.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 |float* value|Value of the PositionEdges object in the up direction, in vp.|
 
 **Returns**
@@ -9337,7 +9318,7 @@ Sets the value of the PositionEdges object in the left direction.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 |float value|Value of the PositionEdges object in the left direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetLeft()
@@ -9356,8 +9337,8 @@ Obtains the left value of the PositionEdges attribute object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float* value|Value of the PositionEdges object in the left direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float* value|Value of the PositionEdges object in the up direction, in vp.|
 
 **Returns**
 
@@ -9382,7 +9363,7 @@ Sets the bottom value of the PositionEdges attribute object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 |float value|Value of the PositionEdges object in the bottom direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetBottom()
@@ -9401,8 +9382,8 @@ Obtains the bottom value of the PositionEdges attribute object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float* value|Value of the PositionEdges attribute in the right direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float* value|Value of the PositionEdges object in the up direction, in vp.|
 
 **Returns**
 
@@ -9426,7 +9407,7 @@ Sets the right direction value of the PositionEdges attribute.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 |float value|Value of the PositionEdges attribute in the right direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetRight()
@@ -9445,8 +9426,8 @@ Obtains the right direction value of the PositionEdges attribute.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float* value|Value of the PositionEdges attribute in the right direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float* value|Value of the PositionEdges object in the up direction, in vp.|
 
 **Returns**
 
@@ -9462,7 +9443,7 @@ ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 
 **Description**
 
-Creates a PixelRoundPolicy attribute object.
+Creates a **PixelRoundPolicy** attribute object.
 
 **Since**: 21
 
@@ -9470,7 +9451,7 @@ Creates a PixelRoundPolicy attribute object.
 
 | Type                                                        | Description                            |
 | ------------------------------------------------------------ | -------------------------------- |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* | Pointer to the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* | Pointer to the **PixelRoundPolicy** object.|
 
 ### OH_ArkUI_PixelRoundPolicy_Dispose()
 
@@ -9488,7 +9469,7 @@ Releases a PixelRoundPolicy attribute object.
 
 | Name                                                      | Description                                    |
 | ------------------------------------------------------------ | ---------------------------------------- |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object to be released.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the target **PixelRoundPolicy** object.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetTop()
 
@@ -9498,7 +9479,7 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 
 **Description**
 
-Sets the upper direction value of a PixelRoundPolicy attribute object.
+Sets the top edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9506,8 +9487,8 @@ Sets the upper direction value of a PixelRoundPolicy attribute object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetTop()
 
@@ -9517,7 +9498,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 **Description**
 
-Obtains the top direction value of the PixelRoundPolicy object.
+Obtains the top edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9525,14 +9506,14 @@ Obtains the top direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) The function parameter is invalid.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -9542,7 +9523,7 @@ void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_Pi
 
 **Description**
 
-Sets the front direction value of the PixelRoundPolicy object.
+Sets the start edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9550,8 +9531,8 @@ Sets the front direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetStart()
 
@@ -9561,7 +9542,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 **Description**
 
-Obtains the lower direction value of the PixelRoundPolicy object.
+Obtains the start edge pixel rounding policy from the **PixelRoundPolicy** object. 
 
 **Since**: 21
 
@@ -9569,14 +9550,14 @@ Obtains the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) Invalid function parameter.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -9586,7 +9567,7 @@ void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 **Description**
 
-Sets the lower direction value of the PixelRoundPolicy object.
+Sets the bottom edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9594,8 +9575,8 @@ Sets the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetBottom()
 
@@ -9605,7 +9586,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 **Description**
 
-Obtains the lower direction value of the PixelRoundPolicy object.
+Obtains the bottom edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9613,14 +9594,14 @@ Obtains the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) Invalid function parameter.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -9630,7 +9611,7 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 
 **Description**
 
-Sets the lower direction value of the PixelRoundPolicy object.
+Sets the end edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9638,8 +9619,8 @@ Sets the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetEnd()
 
@@ -9649,7 +9630,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 **Description**
 
-Obtains the tail direction value of the PixelRoundPolicy object.
+Obtains the end edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9657,36 +9638,11 @@ Obtains the tail direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) The function parameter is invalid.|
-
-### OH_ArkUI_ContentTransitionEffect_Create()
-
-```
-ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)
-```
-
-**Description**
-
-Creates a ContentTransitionEffect object.
-
-**Since**: 21
-
-**Parameters**
-
-| Name| Description                          |
-| -- |------------------------------|
-| int32_t | Transition mode of the specified animation. The value 0 indicates no transition animation, and the value 1 indicates a fade-in and fade-out transition animation.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)* | Pointer to the ContentTransitionEffect object.|
-<!--no_check-->
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|

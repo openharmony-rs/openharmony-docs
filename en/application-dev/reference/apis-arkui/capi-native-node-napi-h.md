@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -19,6 +19,8 @@ Declares the functions used to convert FrameNodes on the ArkTS side into NodeHan
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Sample**: <!--RP1-->[native_node_napi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeNodeNapi/native_node_napi)<!--RP1End-->
 
 ## Summary
 
@@ -440,8 +442,7 @@ Obtains the index of the page where the specified node is located in the page st
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>
-Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if the node or index specified is invalid.<br>Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if the node or index specified is invalid.<br>Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
 
 ### OH_ArkUI_GetRouterPageName()
 
@@ -651,9 +652,9 @@ Registers a callback function that will be executed after the next frame renderi
 
 | Name| Description|
 | -- | -- |
-| uiContext | **UIContext** object used to bind the instance.|
-|  void* userData | Custom event parameter, which is passed in the callback when the event is triggered.|
-| callback | Custom callback function.|
+| ArkUI_ContextHandle uiContext | **UIContext** object used to bind the instance.|
+|  void* userData | Custom event parameter, which is passed in the callback when the custom callback is triggered.|
+| callback | Custom callback function, which is executed when the remaining time until the next frame event exceeds 1 ms.|
 | uint64_t nanoTimeLeft | Remaining idle time before the next VSync signal.|
 |  uint32_t frameCount | Frame number.|
 
@@ -661,4 +662,4 @@ Registers a callback function that will be executed after the next frame renderi
 
 | Type| Description|
 | -- | -- |
-| int32_t (ArkUI_ContextHandle uiContext, void* userData,void (*callback) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) if the **uiContext** object is invalid.<br>         Returns [ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-native-type-h.md#arkui_errorcode) if the callback function is invalid.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) if the **uiContext** object is invalid.<br>         Returns [ARKUI_ERROR_CODE_CALLBACK_INVALID](capi-native-type-h.md#arkui_errorcode) if the callback function is invalid.|

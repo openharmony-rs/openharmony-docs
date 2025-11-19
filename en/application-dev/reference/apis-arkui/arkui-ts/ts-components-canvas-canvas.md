@@ -174,7 +174,7 @@ class MyCanvasModifier implements AttributeModifier<CanvasAttribute> {
       let image = new ImageBitmap("image.png")
       this.context.drawImage(image, 0, 0, 200, 200)
     })
-    // Enable the AI image analyzer, which can be triggered by a long press after the start button is tapped..
+    // Enable the AI image analyzer, which can be triggered by a long press after the start button is tapped.
     instance.enableAnalyzer(true)
   }
 }
