@@ -24,8 +24,7 @@
 2. 在entry/src/main/ets/notificationsubscriberextability创建NotificationSubscriberExtAbility.ets，其内容如下。
 ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-  import extensionSubscription from '@ohos.notificationExtensionSubscription';
+  import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 
   const DOMAIN = 0x0000;
   const TAG = 'NotificationSubscriberExtAbility';
@@ -35,7 +34,7 @@
       hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
     }
 
-    onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+    onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
       hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
     }
 
