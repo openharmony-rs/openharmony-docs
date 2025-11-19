@@ -15181,7 +15181,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":97,
 						"name":"parent_component",
 						"start_line":19
 					}
