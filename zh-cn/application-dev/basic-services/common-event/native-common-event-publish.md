@@ -177,6 +177,15 @@
    - 通过[OH_CommonEvent_PublishWithInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_publishwithinfo)发布携带信息的公共事件。
 
      <!-- @[event_publisher_publish_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+     
+     ``` C++
+     void PublishWithInfo(const char *event, CommonEvent_PublishInfo *info)
+     {
+         // 创建时带入公共事件属性对象
+         int32_t ret = OH_CommonEvent_PublishWithInfo(event, info);
+         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_PublishWithInfo ret <%{public}d>.", ret);
+     }
+     ```
     
 
 5. 销毁公共事件对象。
