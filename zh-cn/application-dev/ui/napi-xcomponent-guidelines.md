@@ -2326,7 +2326,7 @@ Native侧
 
 6. 释放相关资源。
 
-    (1) EGLCore类下创建Release()方法，释放初始化环境时申请的资源，包含窗口display、渲染区域surface、环境上下文context等。
+    EGLCore类下创建Release()方法，释放初始化环境时申请的资源，包含窗口display、渲染区域surface、环境上下文context等。
 
     ```c++
     void EGLCore::Release() {
