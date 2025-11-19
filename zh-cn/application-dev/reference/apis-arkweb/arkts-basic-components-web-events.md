@@ -3338,7 +3338,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
-  import { Web, Column, Component, Entry, OnGeolocationShowEvent } from '@kit.ArkUI';
+  import { Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnGeolocationShowEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -3365,7 +3365,7 @@ ArkTS-Sta示例：
                 cancel: () => {
                   event.geolocation.invoke(event.origin, false, true);
                 }
-              })
+              } as AlertDialogParamWithButtons)
             }
           })
       }
