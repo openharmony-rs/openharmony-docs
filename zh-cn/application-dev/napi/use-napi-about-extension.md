@@ -1032,9 +1032,9 @@ static napi_value GetSendableArray(napi_env env, napi_callback_info info)
 接口声明
 
 <!-- @[napi_create_sendable_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const getSendableArray: () => [];
+
+``` TypeScript
+export const getSendableArray: () => []; // Sendable相关 napi_create_sendable_array
 ```
 
 
