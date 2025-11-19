@@ -86,18 +86,18 @@
 
      通过[OH_CommonEvent_AbortCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_abortcommonevent)与[OH_CommonEvent_FinishCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)配合使用，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
-   <!-- @[event_subscriber_abort_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     <!-- @[event_subscriber_abort_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
 
 
    - 取消当前有序公共事件的中止状态。
 
      通过[OH_CommonEvent_ClearAbortCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent)与[OH_CommonEvent_FinishCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)配合使用，可以取消当前有序公共事件的中止状态，使该公共事件继续向下一个订阅者传递。
 
-   <!-- @[event_subscriber_clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     <!-- @[event_subscriber_clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
     
 
    - 修改有序公共事件的内容。
 
      通过[OH_CommonEvent_SetCodeToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setcodetosubscriber)与[OH_CommonEvent_SetDataToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setdatatosubscriber)设置有序公共事件的代码和数据。
 
-   <!-- @[event_subscriber_set_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     <!-- @[event_subscriber_set_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
