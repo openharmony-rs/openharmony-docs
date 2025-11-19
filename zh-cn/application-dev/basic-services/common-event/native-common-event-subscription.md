@@ -145,6 +145,21 @@
    通过[OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)创建订阅者，传入订阅者信息[CommonEvent_SubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#结构体)和步骤4公共事件回调函数OnReceive。
 
    <!-- @[event_subscriber_create_and_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   
+   ``` C++
+   // 创建订阅者
+   CommonEvent_Subscriber *CreateSubscriber(CommonEvent_SubscribeInfo *info)
+   {
+       return OH_CommonEvent_CreateSubscriber(info, OnReceive);
+   }
+   
+   // 销毁订阅者
+   void DestroySubscriber(CommonEvent_Subscriber *Subscriber)
+   {
+       OH_CommonEvent_DestroySubscriber(Subscriber);
+       Subscriber = nullptr;
+   }
+   ```
 
 
 5. 订阅事件。
