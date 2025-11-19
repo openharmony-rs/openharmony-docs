@@ -224,7 +224,7 @@
 | maxHeight | number | 否   | 是   | 窗口的最大高度。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大高度。  |
 | minWidth  | number | 否   | 是   | 窗口的最小宽度。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小宽度。  |
 | minHeight | number | 否   | 是   | 窗口的最小高度。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小高度。  |
-| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 是 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
+| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
 
 ## TitleButtonRect<sup>11+</sup>
 
