@@ -5,6 +5,11 @@
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
 <!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct ImageEffect_Any {...} ImageEffect_Any
+```
+
 ## Overview
 
 The struct describes the image effect parameters.

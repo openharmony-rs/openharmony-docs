@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_CaptureEndInfo {...} Camera_CaptureEndInfo
+```
+
 ## Overview
 
 The struct describes the capture end information.

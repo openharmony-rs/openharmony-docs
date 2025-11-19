@@ -1,4 +1,5 @@
-# Image_Size
+# Image_Scale
+
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -7,14 +8,14 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```
-struct Image_Size {...}
+typedef struct {...} Image_Scale
 ```
 
 ## Overview
 
-The struct describes the image size.
+The struct describes the image scale factor.
 
-**Since**: 12
+**Since**: 22
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
 
@@ -26,5 +27,5 @@ The struct describes the image size.
 
 | Name| Description|
 | -- | -- |
-| uint32_t width | Image width, in px.|
-| uint32_t height | Image height, in px.|
+| float x | Scale factor of the width. It must not be **0**.|
+| float y | Scale factor of the height. It must not be **0**.|

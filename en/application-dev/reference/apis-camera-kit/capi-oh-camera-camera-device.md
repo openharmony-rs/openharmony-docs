@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_Device {...} Camera_Device
+```
+
 ## Overview
 
 The struct describes the camera device.

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_ImagePackerNative OH_ImagePackerNative
+```
+
 ## Overview
 
 The struct describes the image packer, which is used to perform operations related to an image packer.
