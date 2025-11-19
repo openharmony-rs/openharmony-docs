@@ -219,6 +219,32 @@
      通过[OH_CommonEvent_ClearAbortCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent)与[OH_CommonEvent_FinishCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)配合使用，可以取消当前有序公共事件的中止状态，使该公共事件继续向下一个订阅者传递。
 
      <!-- @[event_subscriber_clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     
+     ``` C++
+     void ClearAbortCommonEvent(CommonEvent_Subscriber *subscriber)
+     {
+         // 判断是否为有序公共事件
+         if (!OH_CommonEvent_IsOrderedCommonEvent(subscriber)) {
+             OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "Not ordered common event.");
+             return;
+         }
+         // 中止有序事件
+         if (!OH_CommonEvent_AbortCommonEvent(subscriber)) {
+             OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "Abort common event failed.");
+             return;
+         }
+         // 取消中止有序事件
+         if (OH_CommonEvent_ClearAbortCommonEvent(subscriber)) {
+             if (OH_CommonEvent_FinishCommonEvent(subscriber)) {
+                 // 获取当前有序公共事件是否处于中止状态
+                 OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "Clear abort common event success, Get abort <%{public}d>.",
+                              OH_CommonEvent_GetAbortCommonEvent(subscriber));
+             }
+         } else {
+             OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "Clear abort common event failed.");
+         }
+     }
+     ```
     
 
    - 修改有序公共事件的内容。
