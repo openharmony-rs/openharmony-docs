@@ -26666,6 +26666,31 @@
 						"end_line":42,
 						"name":"napi_coerce_to_native_binding_object_api",
 						"start_line":31
+					},
+					{
+						"end_line":46,
+						"name":"napi_serialize_deserialize_delete_serialization_data_api",
+						"start_line":44
+					},
+					{
+						"end_line":50,
+						"name":"napi_is_sendable_api",
+						"start_line":48
+					},
+					{
+						"end_line":60,
+						"name":"napi_define_sendable_class_api",
+						"start_line":52
+					},
+					{
+						"end_line":64,
+						"name":"napi_create_sendable_object_with_properties_api",
+						"start_line":62
+					},
+					{
+						"end_line":68,
+						"name":"napi_create_sendable_array_api",
+						"start_line":66
 					}
 				]
 			},
@@ -26691,6 +26716,36 @@
 						"end_line":172,
 						"name":"ark_node_api_module_run_script_path",
 						"start_line":157
+					},
+					{
+						"end_line":85,
+						"name":"ark_napi_serialize_deserialize_delete_serialization_data_class",
+						"start_line":81
+					},
+					{
+						"end_line":182,
+						"name":"ark_napi_serialize_deserialize_delete_serialization_data",
+						"start_line":178
+					},
+					{
+						"end_line":189,
+						"name":"ark_napi_is_sendable",
+						"start_line":185
+					},
+					{
+						"end_line":196,
+						"name":"ark_napi_define_sendable_class",
+						"start_line":192
+					},
+					{
+						"end_line":204,
+						"name":"ark_napi_create_sendable_object_with_properties",
+						"start_line":199
+					},
+					{
+						"end_line":212,
+						"name":"ark_napi_create_sendable_array",
+						"start_line":207
 					}
 				]
 			},
@@ -26716,6 +26771,26 @@
 						"end_line":316,
 						"name":"napi_serialize_deserialize_delete_serialization_data",
 						"start_line":280
+					},
+					{
+						"end_line":330,
+						"name":"napi_is_sendable",
+						"start_line":317
+					},
+					{
+						"end_line":388,
+						"name":"napi_create_sendable_object_with_properties",
+						"start_line":375
+					},
+					{
+						"end_line":397,
+						"name":"napi_create_sendable_array",
+						"start_line":389
+					},
+					{
+						"end_line":406,
+						"name":"napi_create_sendable_array_with_length",
+						"start_line":398
 					}
 				]
 			}
