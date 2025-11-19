@@ -24,15 +24,11 @@ ClientAuthenticationHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## confirm<sup>(deprecated)</sup>
+## confirm<sup>9+</sup>
 
 confirm(priKeyFile : string, certChainFile : string): void
 
 通知Web组件使用指定的私钥和客户端证书链。
-
-> **说明：**
->
-> 从API version 9开始支持，从API version 22开始废弃。建议使用[confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10)<sup>10+</sup>替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -73,6 +69,21 @@ confirm(authUri : string): void
 | SSL_SIGN_ECDSA_SECP256R1_SHA256 | 256 | 
 | SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 | 
 | SSL_SIGN_ECDSA_SECP521R1_SHA512 | 521 | 
+
+## confirm<sup>22+</sup>
+
+confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| string): void
+
+通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。   
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名     | 类型   | 必填   | 说明    |
+| ------- | ------ | ---- | ------- |
+| identity | string | 是    | 用于识别凭据的唯一标识值。 |
+| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | 是 | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭据类型；类型为string时，表示证书链文件路径。 |
 
 ## cancel<sup>9+</sup>
 
