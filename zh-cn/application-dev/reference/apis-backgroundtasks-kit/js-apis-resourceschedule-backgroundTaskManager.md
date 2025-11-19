@@ -769,7 +769,7 @@ export default class EntryAbility extends UIAbility {
 
 getAllContinuousTasks(context: Context): Promise&lt;ContinuousTaskInfo[]&gt;
 
-获取所有长时任务信息，如长时任务Id、长时任务类型等，使用Promise异步回调。
+获取所有长时任务信息，如长时任务ID、长时任务类型等，使用Promise异步回调。
 
 **需要权限**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -825,7 +825,7 @@ export default class EntryAbility extends UIAbility {
 
 getAllContinuousTasks(context: Context, includeSuspended: boolean): Promise&lt;ContinuousTaskInfo[]&gt;
 
-获取所有长时任务信息，如长时任务Id、长时任务类型等。可选择是否获取暂停的长时任务信息，使用Promise异步回调。
+获取所有长时任务信息，如长时任务ID、长时任务类型等。可选择是否获取暂停的长时任务信息，使用Promise异步回调。
 
 **需要权限**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1189,7 +1189,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回长时任务通知信息，包括长时任务Id等。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回长时任务通知信息，包括长时任务ID等。 |
 
 **错误码**：
 
@@ -1283,13 +1283,13 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
-| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息, 包括待更新的长时任务Id等。 |
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息, 包括待更新的长时任务ID等。 |
 
 **返回值**：
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回更新后的长时任务通知信息，包括长时任务Id等。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回更新后的长时任务通知信息，包括长时任务ID等。 |
 
 **错误码**：
 
@@ -1314,7 +1314,7 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   notificationId: number = 0; // 保存通知id
-  continuousTaskId: number | undefined = -1; //长时任务Id
+  continuousTaskId: number | undefined = -1; //长时任务ID
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // 添加需要被拉起应用的bundleName和abilityName, 请开发者替换为实际的bundleName和abilityName
@@ -1344,7 +1344,7 @@ export default class EntryAbility extends UIAbility {
           continuousTaskRequest.backgroundTaskSubmodes = subModeList;
           continuousTaskRequest.wantAgent = wantAgentObj;
           continuousTaskRequest.combinedTaskNotification = false;
-          continuousTaskRequest.continuousTaskId = this.continuousTaskId; //对于更新接口，长时任务Id必须要传且为存在的id，否则更新失败
+          continuousTaskRequest.continuousTaskId = this.continuousTaskId; //对于更新接口，长时任务ID必须要传且为存在的ID，否则更新失败
           backgroundTaskManager.updateBackgroundRunning(this.context, continuousTaskRequest).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
             console.info("Operation updateBackgroundRunning succeeded");
             this.notificationId = res.notificationId;
@@ -1375,7 +1375,7 @@ stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;vo
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
-| continuousTaskId   | number | 是    | 长时任务Id。</br>**说明 :** 可以通过[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)接口的返回值获取当前申请的长时任务id，或者通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口获取所有长时任务信息。  |
+| continuousTaskId   | number | 是    | 长时任务ID。</br>**说明 :** 可以通过[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)接口的返回值获取当前申请的长时任务ID，或者通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口获取所有长时任务信息。  |
 
 **返回值**：
 
@@ -1576,7 +1576,7 @@ export default class EntryAbility extends UIAbility {
 | [backgroundModes](#backgroundmode) | string[] | 否    | 否    | 长时任务类型。               |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | 否    | 否    | 长时任务子类型。              |
 | notificationId | number   | 否    | 否    | 通知 Id。                |
-| continuousTaskId | number   | 否    | 否    | 长时任务Id。              |
+| continuousTaskId | number   | 否    | 否    | 长时任务ID。              |
 | abilityId | number   | 否    | 否    | UIAbility Id。         |
 | wantAgentBundleName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的包名。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。        |
 | wantAgentAbilityName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的ability名称。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。 |
@@ -1603,7 +1603,7 @@ export default class EntryAbility extends UIAbility {
 | backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。 <br/>**说明：** 主类型与子类型必须匹配。|
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
 | combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
-| continuousTaskId | number   | 否    | 是    | 长时任务Id，默认值为-1。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的Id。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的Id。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
+| continuousTaskId | number   | 否    | 是    | 长时任务ID，默认值为-1。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
 
 ### isModeSupported<sup>21+</sup>
 
