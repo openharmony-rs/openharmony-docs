@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AVScreenCaptureConfig
+typedef struct OH_AVScreenCaptureConfig {...} OH_AVScreenCaptureConfig
 ```
 
 ## 概述

@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} AVPlayerCallback
+typedef struct AVPlayerCallback {...} AVPlayerCallback
 ```
 
 ## 概述

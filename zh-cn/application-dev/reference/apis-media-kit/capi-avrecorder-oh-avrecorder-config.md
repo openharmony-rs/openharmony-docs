@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AVRecorder_Config
+typedef struct OH_AVRecorder_Config {...} OH_AVRecorder_Config
 ```
 
 ## 概述

@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_VideoEncInfo
+typedef struct OH_VideoEncInfo {...} OH_VideoEncInfo
 ```
 
 ## 概述
