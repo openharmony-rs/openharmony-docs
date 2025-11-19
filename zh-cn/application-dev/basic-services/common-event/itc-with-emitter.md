@@ -60,7 +60,6 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
      emitter.on(event, callback);
      ```
 
-
    <!-- @[emitter_once](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitterentry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -68,7 +67,6 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
    // 注意：once订阅只接收一次事件，on订阅则一直接收直到取消订阅为止。
    emitter.once(event, callback);
    ```
-
 
 3. 发送事件。
 
