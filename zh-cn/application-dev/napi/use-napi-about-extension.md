@@ -959,7 +959,9 @@ export class SendableClass {
 ArkTS侧示例代码
 
 <!-- @[ark_napi_define_sendable_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->      
-```ts
+
+``` TypeScript
+// Sendable相关 napi_define_sendable_class
 let value = new testNapi.SendableClass();
 hilog.info(0x0000, 'testTag', 'Node-API napi_define_sendable_class: %{public}s', value.str);
 ```
