@@ -295,7 +295,7 @@ struct ListExample {
           .onMouse((event: MouseEvent) => {
             // 判断是否按下鼠标左键
             if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
-              // 判断之前是否已经时选中状态
+              // 判断之前是否已经是选中状态
               let isSelected: boolean = this.isItemSelected(index)
               // 判断修饰键状态
               let isCtrlPressing: boolean = false
