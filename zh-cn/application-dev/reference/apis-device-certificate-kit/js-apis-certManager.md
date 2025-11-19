@@ -118,7 +118,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | certNum          | number         | 否  | 否  | 表示凭据中包含的证书个数。 |
 | keyNum          | number   | 否  | 否  | 表示凭据中包含的密钥个数。 |
 | credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。 |
-| certPurpose          | [CertificatePurpose](#certificatePurpose22)   | 否  | 是  | 表示凭据的用途。 |
+| certPurpose          | [CertificatePurpose](##certificatepurpose22)   | 否  | 是  | 表示凭据的用途。 |
 
 ## CredentialAbstract
 
@@ -257,7 +257,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| certPurpose          | [CertificatePurpose](#certificatePurpose22)         | 否   | 是  | 表示凭据用途。 |
+| certPurpose          | [CertificatePurpose](#certificatepurpose22)         | 否   | 是  | 表示凭据用途。 |
 
 ## certificateManager.installPrivateCertificate
 
