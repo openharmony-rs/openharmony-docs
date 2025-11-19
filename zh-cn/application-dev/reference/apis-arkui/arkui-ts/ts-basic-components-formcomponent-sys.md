@@ -308,7 +308,7 @@ ArkTS-Sta: onRouter(callback: Callback\<RouterCallbackInfo\>)
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 |------| - | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: Callback\<object\> <br> ArkTS-Sta: Callback<[RouterCallbackInfo](#routercallbackinfo22对象说明)>  | 是   | ArkTS-Dyn: 获得[routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 <br> ArkTS-Sta: 获得[RouterCallbackInfo](#routercallbackinfo22对象说明)对象|
+| callback | ArkTS-Dyn: Callback\<object\> <br> ArkTS-Sta: Callback<[RouterCallbackInfo](#routercallbackinfo22对象说明)>  | 是   | ArkTS-Dyn: 获得[routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 <br> ArkTS-Sta: 获得RouterCallbackInfo对象|
 
 ### onUninstall
 
