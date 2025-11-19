@@ -1629,7 +1629,7 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>;
 | 参数名   | 类型                                      | 必填 | 说明                             |
 | -------- | ----------------------------------------- | ---- | -------------------------------- |
 | keyUri | string | 是   | 表示USB凭据的唯一标识符，长度限制256字节以内。 |
-| ukeyInfo | [UkeyInfo](#ukeyInfo22)  | 是   | 表示USB凭据的属性信息。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB凭据的属性信息。 |
 
 **返回值**：
 

@@ -129,7 +129,7 @@ USB证书凭据授权请求信息。
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | 否   | 否   | 表示证书类型的列表。 |
-| certPurpose | [certificateManager.CertificatePurpose](./js-apis-certManager.md#certificatePurpose22)    | 否   | 是   | 表示证书用途。 |
+| certPurpose | [certificateManager.CertificatePurpose](./js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。 |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
@@ -465,13 +465,13 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
-| authorizeRequest | [AuthorizeRequest](#AuthorizeRequest22) | 是  | 表示授权请求信息。 |
+| authorizeRequest | [AuthorizeRequest](#authorizerequest22) | 是  | 表示授权请求信息。 |
 
 **返回值**：
 
 | 类型               | 说明                                   |
 |------------------|--------------------------------------|
-| Promise\<[CertReference](#CertReference22)> | Promise对象。表示返回授权证书引用的结果。 |
+| Promise\<[CertReference](#certReference22)> | Promise对象。表示返回授权证书引用的结果。 |
 
 **错误码：**
 
@@ -533,7 +533,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
-| context | [UkeyAuthRequest](#ukeyAuthRequest22) | 是  | 表示USB凭据授权请求信息。 |
+| context | [UkeyAuthRequest](#ukeyauthrequest22) | 是  | 表示USB凭据授权请求信息。 |
 
 **返回值**：
 
