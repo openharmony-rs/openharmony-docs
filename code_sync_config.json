@@ -10662,7 +10662,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets",
 				"functions":[
 					{
-						"end_line":137,
+						"end_line":134,
 						"name":"display_page",
 						"start_line":16
 					}
