@@ -7,7 +7,7 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct NNRTDeviceDesc NNRTDeviceDesc
 ```
 

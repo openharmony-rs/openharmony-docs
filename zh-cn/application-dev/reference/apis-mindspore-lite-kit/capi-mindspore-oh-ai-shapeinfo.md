@@ -7,7 +7,7 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_AI_ShapeInfo {...} OH_AI_ShapeInfo
 ```
 

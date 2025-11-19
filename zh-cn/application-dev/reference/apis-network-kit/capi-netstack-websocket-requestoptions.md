@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-```
+```c
 struct WebSocket_RequestOptions {...}
 ```
 
