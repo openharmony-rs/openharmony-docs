@@ -1056,8 +1056,11 @@ hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array: %{public}s',
 cpp部分代码
 
 <!-- @[napi_create_sendable_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->       
-```cpp
-static napi_value GetSendableArrayWithLength(napi_env env, napi_callback_info info) {
+
+``` C++
+// Sendable相关 napi_create_sendable_array_with_length
+static napi_value GetSendableArrayWithLength(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_create_sendable_array_with_length(env, 1, &result);
     return result;
