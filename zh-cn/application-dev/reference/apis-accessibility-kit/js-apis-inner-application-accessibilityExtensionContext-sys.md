@@ -120,7 +120,7 @@ import {
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import Want from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
