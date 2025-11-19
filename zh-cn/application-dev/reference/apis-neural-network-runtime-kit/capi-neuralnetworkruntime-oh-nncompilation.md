@@ -6,7 +6,7 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_NNCompilation OH_NNCompilation
 ```
 

@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-```
+```c
 typedef struct HiAppEvent_Config HiAppEvent_Config
 ```
 

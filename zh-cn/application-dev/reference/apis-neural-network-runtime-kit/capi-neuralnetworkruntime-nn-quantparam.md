@@ -6,7 +6,7 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct NN_QuantParam NN_QuantParam
 ```
 

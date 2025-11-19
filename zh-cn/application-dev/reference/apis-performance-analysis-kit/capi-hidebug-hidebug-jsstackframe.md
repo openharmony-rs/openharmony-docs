@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-```
+```c
 typedef struct HiDebug_JsStackFrame {...} HiDebug_JsStackFrame
 ```
 
