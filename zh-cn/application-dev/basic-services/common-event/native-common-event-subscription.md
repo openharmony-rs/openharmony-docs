@@ -167,6 +167,15 @@
    通过[OH_CommonEvent_Subscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe)订阅事件。
 
    <!-- @[event_subscriber_subscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   
+   ``` C++
+   void Subscribe(CommonEvent_Subscriber *subscriber)
+   {
+       // 通过传入订阅者来订阅事件
+       int32_t ret = OH_CommonEvent_Subscribe(subscriber);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_Subscribe ret <%{public}d>.", ret);
+   }
+   ```
 
 
 6. （可选）当订阅的事件为有序公共事件时，可以选择进一步处理有序公共事件。
