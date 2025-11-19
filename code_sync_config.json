@@ -12269,7 +12269,7 @@
 					{
 						"end_line":68,
 						"name":"Nested_Class",
-						"start_line":20
+						"start_line":15
 					}
 				]
 			},
@@ -12279,7 +12279,7 @@
 					{
 						"end_line":91,
 						"name":"Inheritance_Class",
-						"start_line":20
+						"start_line":15
 					}
 				]
 			},
