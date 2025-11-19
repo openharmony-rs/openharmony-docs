@@ -856,7 +856,9 @@ export const isSendable: <T>(a: T) => boolean; // Sendable相关 napi_is_sendabl
 ArkTS侧示例代码
 
 <!-- @[ark_napi_is_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+
+``` TypeScript
+// Sendable相关 napi_is_sendable
 let value = testNapi.isSendable('createObject');
 hilog.info(0x0000, 'testTag', 'Node-API napi_is_sendable: %{public}s', JSON.stringify(value));
 ```
