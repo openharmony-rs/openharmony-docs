@@ -73,19 +73,19 @@
 3. 定义剪贴板变化监听的回调函数。
 
     <!-- @[pasteboard_native3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-// 定义剪贴板数据内容变更时的通知回调函数
-static void PasteboardNotifyImpl2(void* context, Pasteboard_NotifyType type)
-{
-    OH_LOG_INFO(LOG_APP, "Pasteboard_NotifyType, type: %d", type);
-}
-// 定义剪贴板数据变更观察者对象销毁时的通知回调函数
-static void PasteboardFinalizeImpl2(void* context)
-{
-    OH_LOG_INFO(LOG_APP, "callback: Pasteboard_Finalize");
-}
-```
+    
+    ``` C++
+    // 定义剪贴板数据内容变更时的通知回调函数
+    static void PasteboardNotifyImpl2(void* context, Pasteboard_NotifyType type)
+    {
+        OH_LOG_INFO(LOG_APP, "Pasteboard_NotifyType, type: %d", type);
+    }
+    // 定义剪贴板数据变更观察者对象销毁时的通知回调函数
+    static void PasteboardFinalizeImpl2(void* context)
+    {
+        OH_LOG_INFO(LOG_APP, "callback: Pasteboard_Finalize");
+    }
+    ```
 
 
 4. 订阅剪贴板变化。
