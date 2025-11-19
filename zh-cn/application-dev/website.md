@@ -3591,6 +3591,7 @@
           - [ArkUI_SnapshotOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-snapshotoptions.md)
           - [ArkUI_TextPickerRangeContentArray](reference/apis-arkui/capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)
           - [ArkUI_TextCascadePickerRangeContentArray](reference/apis-arkui/capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)
+          - [ArkUI_SelectionOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-selectionoptions.md)
           - [ArkUI_VisibleAreaEventOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)
           - [ArkUI_PositionEdges](reference/apis-arkui/capi-arkui-nativemodule-arkui-positionedges.md)
           - [ArkUI_PixelRoundPolicy](reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
