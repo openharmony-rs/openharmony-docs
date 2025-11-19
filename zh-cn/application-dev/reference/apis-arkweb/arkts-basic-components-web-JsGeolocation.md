@@ -18,6 +18,10 @@ JsGeolocation的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 ## invoke
 
 invoke(origin: string, allow: boolean, retain: boolean): void
@@ -25,6 +29,10 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 设置网页地理位置权限状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

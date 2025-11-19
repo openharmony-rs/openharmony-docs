@@ -771,11 +771,17 @@ ArkTS-Sta示例：
 
 ## geolocationAccess
 
-geolocationAccess(geolocationAccess: boolean)
+ArkTS-Dyn: geolocationAccess(geolocationAccess: boolean)
+
+ArkTS-Sta: geolocationAccess(geolocationAccess: boolean | undefined): this
 
 设置是否开启获取地理位置权限。具体使用方式参考[管理位置权限](../../web/web-geolocation-permission.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -785,8 +791,28 @@ geolocationAccess(geolocationAccess: boolean)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .geolocationAccess(true)
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Column, Component, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
   @Entry

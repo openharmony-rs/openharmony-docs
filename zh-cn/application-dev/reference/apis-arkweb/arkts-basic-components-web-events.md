@@ -3279,11 +3279,17 @@ ArkTS-Sta示例：
 
 ## onGeolocationShow
 
-onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
+ArkTS-Dyn: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
+
+ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined): this
 
 通知用户收到地理位置信息获取请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3293,6 +3299,7 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3301,6 +3308,43 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .geolocationAccess(true)
+          .onGeolocationShow((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                confirm: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.geolocation.invoke(event.origin, true, true);
+                  }
+                },
+                cancel: () => {
+                  event.geolocation.invoke(event.origin, false, true);
+                }
+              })
+            }
+          })
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, OnGeolocationShowEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
     uiContext: UIContext = this.getUIContext();
 
     build() {
@@ -3354,11 +3398,17 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 ## onGeolocationHide
 
-onGeolocationHide(callback: () => void)
+ArkTS-Dyn: onGeolocationHide(callback: () => void)
+
+ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
 
 通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3368,6 +3418,7 @@ onGeolocationHide(callback: () => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3376,6 +3427,28 @@ onGeolocationHide(callback: () => void)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .geolocationAccess(true)
+          .onGeolocationHide(() => {
+            console.info("onGeolocationHide...");
+          })
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
