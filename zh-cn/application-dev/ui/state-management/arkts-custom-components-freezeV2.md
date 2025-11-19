@@ -197,7 +197,7 @@ struct FreezeChild {
 
 需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组件中的[onActive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)和[onInactive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17)不同。
 
-<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->
+<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->    
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -340,7 +340,7 @@ struct PageThreeStack {
 @ComponentV2({ freezeWhenInactive: true })
 struct NavigationContentMsgStack {
   @Param message: number = 0;
-  @Param index: number = PAGE_ONE_INDEX;
+  @Param index: number = 0;
 
   @Monitor('message') info() {
     hilog.info(DOMAIN, 'testTag', `freeze-test NavigationContent message callback ${this.message}`);
