@@ -1,6 +1,6 @@
 # OH_AVSamplesBuffer
 
-```
+```c
 typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer
 ```
 

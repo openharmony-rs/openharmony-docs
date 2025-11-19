@@ -1,6 +1,6 @@
 # OH_LowPowerVideoSinkCallback
 
-```
+```c
 typedef struct OH_LowPowerVideoSinkCallback OH_LowPowerVideoSinkCallback
 ```
 

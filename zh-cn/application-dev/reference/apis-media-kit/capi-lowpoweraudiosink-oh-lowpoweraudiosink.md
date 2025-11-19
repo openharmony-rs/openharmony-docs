@@ -1,6 +1,6 @@
 # OH_LowPowerAudioSink
 
-```
+```c
 typedef struct OH_LowPowerAudioSink OH_LowPowerAudioSink
 ```
 

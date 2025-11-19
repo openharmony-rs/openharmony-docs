@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
 ```
 

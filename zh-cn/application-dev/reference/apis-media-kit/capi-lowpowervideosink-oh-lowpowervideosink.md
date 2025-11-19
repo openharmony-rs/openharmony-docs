@@ -1,6 +1,6 @@
 # OH_LowPowerVideoSink
 
-```
+```c
 typedef struct OH_LowPowerVideoSink OH_LowPowerVideoSink
 ```
 

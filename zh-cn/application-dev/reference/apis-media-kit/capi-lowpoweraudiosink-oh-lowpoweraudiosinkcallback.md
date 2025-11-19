@@ -1,6 +1,6 @@
 # OH_LowPowerAudioSinkCallback
 
-```
+```c
 typedef struct OH_LowPowerAudioSinkCallback OH_LowPowerAudioSinkCallback
 ```
 
