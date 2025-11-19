@@ -3,7 +3,7 @@
 
 ## Overview
 
-The file declares the enums used for audio encoding and decoding.
+The file declares the enums used for audio codec channel layouts.
 
 **Library**: libnative_media_codecbase.so
 

@@ -183,7 +183,7 @@ Key-value pairs dedicated for multiplexing and demultiplexing:
 
 | Name| Description| 
 | -------- | -------- |
-| [avcodec_audio_channel_layout.h](avcodec__audio__channel__layout_8h.md) | Declares the enums used for audio encoding and decoding.| 
+| [avcodec_audio_channel_layout.h](avcodec__audio__channel__layout_8h.md) | Declares the enums used for audio codec channel layouts.| 
 | [native_avcodec_base.h](native__avcodec__base_8h.md) | Declares the native APIs used for basic audio and video multiplexing, demultiplexing, encoding, and decoding.| 
 
 
