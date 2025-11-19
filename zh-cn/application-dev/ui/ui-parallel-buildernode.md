@@ -261,10 +261,22 @@
 
 
 ## BuilderNode并行化DFX定位指导与性能调优
-参考[使用SmartPerf-Host分析应用性能](../performance/performance-optimization-using-smartperf-host.md)文档，抓取Trace以对比并行创建与非并行创建组件时的性能。同时，也可以通过Trace观察BuilderNode是否在子线程中构建和更新。
+参考[使用SmartPerf-Host分析应用性能](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md)文档，抓取Trace以对比并行创建与非并行创建组件时的性能。同时，也可以通过Trace观察BuilderNode是否在子线程中构建和更新。
 
-- 如何确认并行创建已开启：使用SmartPerf-Host抓取Trace，通过Trace可以观察到BuilderNode在子线程中构建。如图所示，子线程12058中存在`Do parallel task`的trace，这表明BuilderNode的构建是在子线程中进行的。
- ![buildernode_dotask](figures/buildernode_dotask.png)
+- 如何确认并行创建已开启：使用SmartPerf-Host抓取Trace，通过Trace可以观察到BuilderNode在子线程中构建。如图所示，子线程10297中存在`parallelize build`的trace，这表明BuilderNode的构建是在子线程中进行的。
 
-- 如何确认开启并行更新：使用SmartPerf-Host抓取Trace，通过Trace观察BuilderNode在子线程更新。如图所示，子线程12058中存在`update use Parallel`的trace，说明BuilderNode的在子线程中更新。
+  ![buildernode_dotask](figures/parallel_build.png)
+
+- 如何确认开启并行更新：使用SmartPerf-Host抓取Trace，通过Trace观察BuilderNode在子线程更新。如图所示，子线程12058中存在`update use Parallel`的Trace，说明BuilderNode的在子线程中更新。
+
   ![buildernode_dotask](figures/buildernode_update.png)
+
+
+<!--Del-->
+## 相关实例
+
+[如何使用BuilderNode并行化更新节点树？(API 20)](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_20250702/zh-cn/application-dev/faqs/faqs-arkui-component.md#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8buildernode%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%9B%B4%E6%96%B0%E8%8A%82%E7%82%B9%E6%A0%91api-20)
+
+[BuilderNode并行化构建节点树](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS1.2/BuilderNodeParallelSample/README.md)
+
+<!--DelEnd-->
