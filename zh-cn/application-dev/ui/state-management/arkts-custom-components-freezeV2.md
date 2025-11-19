@@ -340,7 +340,7 @@ struct PageThreeStack {
 @ComponentV2({ freezeWhenInactive: true })
 struct NavigationContentMsgStack {
   @Param message: number = 0;
-  @Param index: number = PAGE_ONE_INDEX;
+  @Param index: number = 0;
 
   @Monitor('message') info() {
     hilog.info(DOMAIN, 'testTag', `freeze-test NavigationContent message callback ${this.message}`);
