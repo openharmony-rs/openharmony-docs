@@ -31,6 +31,15 @@
 1. 引用头文件。
 
    <!-- @[event_subscriber_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.h) -->
+   
+   ``` C
+   #include <cstdint>
+   #include <cstdio>
+   #include <cwchar>
+   #include <cstring>
+   #include "hilog/log.h"
+   #include "BasicServicesKit/oh_commonevent.h"
+   ```
 
 
 2. 在CMake脚本中添加动态链接库。
