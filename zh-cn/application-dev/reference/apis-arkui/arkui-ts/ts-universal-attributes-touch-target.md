@@ -114,7 +114,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
   >  **说明：**
   >
-  > - 当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
+  > - 当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)为true时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
   >  
   > - x和y的计算结果为正值时，分别代表向右偏移和向下偏移；当计算结果为负值时，分别代表向左偏移和向上偏移。
   >
@@ -228,7 +228,7 @@ struct TouchTargetExample {
 
       // 热区一的大小为整个按钮，且右移一个按钮宽度，点击button2左边按钮大小区域，点击事件生效
       // 热区二的大小为整个按钮，且下移一个按钮高度，鼠标点击button2下方按钮大小区域，点击事件生效
-      Text("one button size right of button2," + "\none button size below button2")
+      Text("one button size right of button2," + "\n one button size below button2")
       Button("button2")
         .responseRegionList([{
           x: LengthMetrics.PERCENT(1),
