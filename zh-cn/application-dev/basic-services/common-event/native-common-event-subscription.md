@@ -116,6 +116,30 @@
    通过[CommonEvent_Parameters](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#变量)传入key来获取附加信息内容。
 
    <!-- @[event_subscriber_get_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   
+   ``` C++
+   void GetParameters(const CommonEvent_RcvData *data)
+   {
+       // 获取回调公共事件附件信息
+       bool exists = false;
+       const CommonEvent_Parameters *parameters = OH_CommonEvent_GetParametersFromRcvData(data);
+   
+       // 检查公共事件附加信息中是否包含某个键值对信息
+       exists = OH_CommonEvent_HasKeyInParameters(parameters, "intKey");
+       // 获取公共事件附加信息中int数据信息
+       int intValue = OH_CommonEvent_GetIntFromParameters(parameters, "intKey", 10);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "exists = %{public}d, intValue = %{public}d", exists, intValue);
+   
+       // 补充说明：除int类型外，还支持获取以下多种类型的公共事件附加信息，调用对应鸿蒙API即可：
+       // - 基础数据类型：bool（OH_CommonEvent_GetBoolFromParameters）、long（OH_CommonEvent_GetLongFromParameters）、
+       //   double（OH_CommonEvent_GetDoubleFromParameters）、char（OH_CommonEvent_GetCharFromParameters）
+       // -
+       // 数组数据类型：int数组（OH_CommonEvent_GetIntArrayFromParameters）、long数组（OH_CommonEvent_GetLongArrayFromParameters）、
+       //   double数组（OH_CommonEvent_GetDoubleArrayFromParameters）、char数组（OH_CommonEvent_GetCharArrayFromParameters）、
+       //   bool数组（OH_CommonEvent_GetBoolArrayFromParameters）
+       // 所有类型均支持通过OH_CommonEvent_HasKeyInParameters先校验键是否存在，避免获取失败
+   }
+   ```
 
 
    通过[OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)创建订阅者，传入订阅者信息[CommonEvent_SubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#结构体)和步骤4公共事件回调函数OnReceive。
