@@ -13,67 +13,80 @@
 
 ### 视频解码
 
-当前支持的解码能力如下：
-
-| 视频硬解类型       | 视频软解类型   |
+| 视频解码类型       | 视频解码格式的MIME类型   |
 | --------------------- | ---------------- |
-| AVC(H.264)、HEVC(H.265)<!--RP14--><!--RP14End--> | MPEG2、MPEG4、H.263、AVC(H.264)<!--RP12--><!--RP12End--> |
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| HEVC(H.266) | [OH_AVCODEC_MIMETYPE_VIDEO_VVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) | 
 
-通过MimeType创建解码器时，系统会优先创建硬件解码器实例。如果系统平台不支持或者硬件解码器资源不足时，系统会创建软件解码器实例。
-当前系统支持的软件解码器格式包括：
-- MPEG2(OH_AVCODEC_MIMETYPE_VIDEO_MPEG2)
-- MPEG4(OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2)
-- H.263(OH_AVCODEC_MIMETYPE_VIDEO_H263)
-- H.264(OH_AVCODEC_MIMETYPE_VIDEO_AVC)
-<!--RP13--><!--RP13End-->
+通过MIME类型创建解码器，如果系统支持硬件解码，系统会创优先建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统会创建软件解码器实例，当系统无对应解码能力，会创建失败。
 
-系统提供的硬件解码能力和平台硬件能力强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统硬件解码的能力和能力规格。
+系统提供的解码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统支持的软硬件解码能力和能力规格。
 例如可以通过<!--RP15-->OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC<!--RP15End-->来查询系统支持的<!--RP16-->H.264、H.265的硬件解码能力。<!--RP16End-->
 
 具体开发指导请参考[视频解码](video-decoding.md)。
 
 ### 视频编码
 
-当前支持的编码能力如下：
+| 视频编码类型       | 视频编码格式的MIME类型    |
+| --------------------- | ---------------- |
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 
-| 视频编码类型                 |
-| ---------------------------- |
-| HEVC(H.265)、 AVC(H.264) |
+通过MIME创建编码器，当系统无对应编码能力，会创建失败。
 
-目前仅支持硬件编码，基于MimeType创建编码器时，支持配置为H.264(OH_AVCODEC_MIMETYPE_VIDEO_AVC)和H.265(OH_AVCODEC_MIMETYPE_VIDEO_HEVC)。
-
-每一种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
+系统支持情况和每一种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
 
 具体开发指导请参考[视频编码](video-encoding.md)。
 
-
 ### 音频解码
 
-当前支持的解码能力：
+| 音频解码类型         | 音频解码格式的MIME类型     |
+| --------------------- | ---------------- |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Vorbis | [OH_AVCODEC_MIMETYPE_AUDIO_VORBIS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AMR(amrnb) | [OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AMR(amrwb) | [OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| APE | [OH_AVCODEC_MIMETYPE_AUDIO_APE](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| G711a(API20) | [OH_AVCODEC_MIMETYPE_AUDIO_G711A](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| ALAC | [OH_AVCODEC_MIMETYPE_AUDIO_ALAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AC3 | [OH_AVCODEC_MIMETYPE_AUDIO_AC3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMA(V1) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMA(V2) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMA(PRO) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| GSM | [OH_AVCODEC_MIMETYPE_AUDIO_GSM](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| GSM_MS | [OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 
-AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE<!--RP1--><!--RP1End-->。
+通过MIME创建解码器，当系统无对应解码能力，会创建失败。
 
-从API version 20开始支持：G711a。
-
-从API version 22开始支持：ALAC、AC3、WMA(V1、V2、PRO)、GSM、GSM_MS。
+系统提供的解码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统支持的解码能力和能力规格。
 
 具体开发指导请参考[音频解码](audio-decoding.md)。
 
-
 ### 音频编码
 
-当前支持的编码能力：
+| 音频编码类型         | 音频编码格式的MIME类型     |
+| --------------------- | ---------------- |
+| AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 
-<!--RP3-->AAC、Flac、MPEG(MP3)、G711mu<!--RP3End-->。
+通过MIME创建编码器，当系统无对应编码能力，会创建失败。
+
+系统提供的编码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统支持的编码能力和能力规格。
 
 具体开发指导请参考[音频编码](audio-encoding.md)。
-
 
 ## 媒体数据封装与解析
 
 ### 媒体数据解析
-
-支持的解封装格式如下：
 
 | 媒体格式  | 封装格式                      | 轨道格式                      |
 | -------- | :----------------------------| :----------------------------|
@@ -104,10 +117,7 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 
 具体开发指导请参考[媒体数据解析](audio-video-demuxer.md)。
 
-
 ### 媒体数据封装
-
-当前支持的封装能力如下：
 
 | 封装格式 | 视频编解码类型        | 音频编解码类型   | 封面类型       |
 | -------- | --------------------- | ---------------- | -------------- |
