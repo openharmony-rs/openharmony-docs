@@ -13,6 +13,8 @@
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 目前调用WebStorage下的方法，都需要先加载Web组件。
+>
+> - 本Class下的接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
 
 ## 导入模块
 
@@ -122,7 +124,7 @@ struct WebComponent {
 
 static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
-以回调方式异步获取当前使用Web SQL数据库的所有源的信息。
+以回调方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -187,7 +189,7 @@ struct WebComponent {
 
 static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
-以Promise方式异步获取当前使用Web SQL数据库的所有源的信息。
+以Promise方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -252,7 +254,7 @@ struct WebComponent {
 
 static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
-使用callback回调异步获取指定源的Web SQL数据库的存储配额，配额以字节为单位。
+使用callback回调异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -315,7 +317,7 @@ struct WebComponent {
 
 static getOriginQuota(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库的存储配额，配额以字节为单位。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -383,7 +385,7 @@ struct WebComponent {
 
 static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
-以回调方式异步获取指定源的Web SQL数据库的存储量，存储量以字节为单位。
+以回调方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -446,7 +448,7 @@ struct WebComponent {
 
 static getOriginUsage(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库的存储量，存储量以字节为单位。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -512,7 +514,7 @@ struct WebComponent {
 
 static deleteAllData(incognito?: boolean): void
 
-清除Web SQL数据库当前使用的所有存储。
+清除被JavaScript存储API使用的所有存储数据，这包括Web SQL数据库和HTML5支持的Web存储API。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
