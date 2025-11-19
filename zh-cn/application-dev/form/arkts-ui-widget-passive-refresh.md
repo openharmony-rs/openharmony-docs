@@ -59,7 +59,7 @@
   
   export default class UpdateByTimeFormAbility extends FormExtensionAbility {
     onAddForm(want: Want): formBindingData.FormBindingData {
-      // Called to return a FormBindingData object.
+      // 卡片使用方创建卡片时触发，返回卡片数据绑定类
       let formData = {};
       return formBindingData.createFormBindingData(formData);
     }
