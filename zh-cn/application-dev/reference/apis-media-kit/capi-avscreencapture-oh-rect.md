@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_Rect
+typedef struct OH_Rect {...} OH_Rect
 ```
 
 ## 概述
