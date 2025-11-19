@@ -59,7 +59,7 @@ project/
 'use static'
 
 // static_module/src/main/ets/components/MainPage.ets
-export class Person {
+export class Person { // ArkTS-Sta侧的对象字面量类型
   name: string = '';
   age: number = 0;
 }
@@ -69,17 +69,17 @@ export class Person {
 'use static'
 
 // static_module/index.ets
-export { Person } from './src/main/ets/components/MainPage';
+export { Person } from './src/main/ets/components/MainPage'; // 导出ArkTS-Sta Person类
 ```
 
-- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义构建函数。且在`oh-package.json5`文件中配置子模块依赖。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义构建函数。且在`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 import { Person } from 'static_module';
 
 @Builder
-export function personInfo(person: Person) {
+export function personInfo(person: Person) { // 按引用传递参数
   Column(){
     Text(`Name: ${person.name}`)
     Text(`Age: ${person.age}`)
@@ -123,10 +123,12 @@ struct Parent {
       personInfo({ name: this.name, age: this.age })
       Button('changeName')
         .onClick(() => {
+          // 变化状态变量name，触发@Builder内部UI刷新
           this.name += 'a';
         })
       Button('changeAge')
         .onClick(() => {
+          // 变化状态变量age，触发@Builder内部UI刷新
           this.age += 1;
         })
     }
@@ -223,4 +225,4 @@ struct MainPage {
 
 ### 按回调函数传递参数
 
-不支持通过`UIUtils.makeBinding()`函数、`Binding`类、`MutableBinding`类实现@Builder函数中状态变量的刷新。
+不支持通过[`UIUtils.makeBinding()`函数、`Binding`类、`MutableBinding`类](./state-management/arkts-builder.md#@Builder支持状态变量刷新)实现@Builder函数中状态变量的刷新。

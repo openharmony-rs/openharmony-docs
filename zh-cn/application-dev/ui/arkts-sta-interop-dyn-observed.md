@@ -44,7 +44,7 @@ project/
 
 示例如下：
 
-- 创建ArkTS-Dyn子模块`dynamic_module`，在`src/main/ets/components/MainPage.ets`目录创建并导出动态@Observed装饰的数据。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`src/main/ets/components`目录创建并导出动态@Observed装饰的数据。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
@@ -64,7 +64,7 @@ export class MyClassA { // 定义动态@Observed装饰的类并导出
 export { MyClassA } from './src/main/ets/components/MainPage'; // 导出动态@Observed装饰的类
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。
+- 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5
@@ -113,7 +113,7 @@ export struct Index { // ArkTS-Sta组件
                 data.name = 'state: Hello';
                 this.state = data;
               })
-            // 多线程中为动态@Observed装饰的数据中的成员赋值
+            // 多线程中为动态@Observed装饰的数据中的成员赋值，会运行异常
             Button('Multithreading')
               .layoutWeight(1)
               .onClick((event: ClickEvent)=> {

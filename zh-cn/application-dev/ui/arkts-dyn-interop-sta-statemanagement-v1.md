@@ -51,9 +51,7 @@ project/
 
 示例如下：
 
-- 创建ArkTS-Sta子模块`static_module`，并导出ArkTS-Sta自定义组件`Child`。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
-
-- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件`Child`。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件`Child`。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static'
@@ -155,7 +153,7 @@ struct ParentComp {
         stateMessage: this.message,
         linkMessage: this.message,
         propMessage: this.message,
-        provideMessage: this.message,
+        provideMessage: this.message
       })
     }
     .width('100%')

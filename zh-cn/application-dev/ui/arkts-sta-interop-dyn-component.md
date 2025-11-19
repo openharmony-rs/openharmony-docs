@@ -14,23 +14,23 @@
 ```TypeScript
 'use static'
 
-// entry/src/main/ets/pages/ParentComponent.ets
+// entry/src/main/ets/pages/Index.ets
 import { Entry, Component, Column, Stack } from '@ohos.arkui.component';
-import { HelloComponent } from 'dynamic_module'; // 从ArkTS-Sta中导入
+import { MainPage } from 'dynamic_module'; // 从ArkTS-Dyn模块中导入
 
 @Entry
 @Component
-struct ParentComponent {
+struct Index {
 
   build() {
     Column() {
       // 不支持对ArkTS-Dyn自定义组件设置通用样式，如下代码将产生编译报错
-      HelloComponent({ message: 'Hello World!' })
+      MainPage({ message: 'Hello World!' })
         .width(100)
 
       // 可以通过嵌套一个ArkTS-Sta Stack组件，将通用样式设置在Stack组件上
       Stack() {
-        HelloComponent({ message: 'Hello World!' })
+        MainPage({ message: 'Hello World!' })
       }
       .width(100)
     }
@@ -39,18 +39,19 @@ struct ParentComponent {
 ```
 
 ```TypeScript
-// dynamic_module/src/main/ets/components/HelloComponent.ets
+// dynamic_module/src/main/ets/components/MainPage.ets
 @Component
-export struct HelloComponent { // 从ArkTS-Dyn中导出
+export struct MainPage { // 从ArkTS-Dyn模块中导出
+  message: string = '';
 
   build() {
-    Text('Hello World!')
-      .fontSize(50)
+    Text(this.message)
+      .fontSize(30)
   }
 }
 ```
 
-- ArkTS-Sta中不支持通过@Reusable/@ReusableV2注解复用ArkTS-Dyn自定义组件。
+- ArkTS-Sta中不支持通过[@Reusable](state-management/arkts-reusable.md)/[@ReusableV2](state-management/arkts-new-reusableV2.md)装饰器复用ArkTS-Dyn自定义组件。
 
 
 ## 使用场景

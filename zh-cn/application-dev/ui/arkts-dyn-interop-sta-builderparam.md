@@ -100,7 +100,7 @@ export struct Child {
 export { Person, Child } from './src/main/ets/components/MainPage';
 ```
 
-- 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta的自定义组件，传递\@Builder。且在`oh-package.json5`文件中配置子模块依赖。
+- 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta的自定义组件，传递\@Builder。且在`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // entry/src/main/ets/pages/Index.ets

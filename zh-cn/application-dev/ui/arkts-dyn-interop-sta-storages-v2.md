@@ -42,7 +42,8 @@ project/
 ```
 
 示例如下：
-- 在ArkTS-Sta模块的`static_module/src/main/ets/component/MainPage.ets`文件中进行数据模型声明并初始化一个key为`MessageStatic`的`MessageModel`对象。
+
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录进行数据模型声明并初始化一个key为`MessageStatic`的`MessageModel`对象。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static'
@@ -85,7 +86,7 @@ export struct MainPage {
 export { MainPage, MessageModel } from './src/main/ets/components/MainPage';
 ```
 
-- 在主模块的`entry/oh-package.json5`文件中配置子模块依赖。
+- 在主模块的`entry/oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5
@@ -302,10 +303,8 @@ export { connectInStatic, saveInStatic, removeInStatic } from './src/main/ets/co
 - 在ArkTS-Dyn模块的`entry/src/main/ets/pages/Index.ets`文件中调用ArkTS-Sta模块的自定义接口。
 
 ```TypeScript
-'use static'
-
 // entry/src/main/ets/pages/Index.ets
-import { PersistenceV2 } from '@ohos.arkui.stateManagement';
+
 import { connectInStatic, saveInStatic, removeInStatic } from 'static_module';
 
 @Entry

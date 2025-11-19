@@ -50,8 +50,9 @@ project/
 - 创建ArkTS-Sta子模块`static_module`，并导出ArkTS-Sta自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
-// static_module/index.ets
+'use static'
 
+// static_module/index.ets
 export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-Sta自定义组件
 ```
 
@@ -81,6 +82,8 @@ export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-St
 import { Component, Column, Button } from '@ohos.arkui.component';
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
+let gPropA: number = 1;
+
 @Component
 export struct MainPage { // 定义ArkTS-Sta自定义组件
   build() {
@@ -88,7 +91,7 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
       Button('change AppStorage')
         .onClick(() => {
           // 通过接口修改ArkTS-Dyn的AppStorage并同步更新ArkTS-Dyn组件
-          AppStorage.setOrCreate('PropA', 4);
+          AppStorage.setOrCreate('PropA', ++gPropA);
         })
     }
   }
@@ -167,12 +170,12 @@ export struct MainPage {
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'static_module'; // 导入ArkTS-Sta自定义组件
 
+// ArkTS-Dyn使用AppStorage，初始化key 'LinkA'
+AppStorage.setOrCreate<string>('LinkA', '333');
+
 @Entry
 @Component
 struct Index {
-  // ArkTS-Dyn使用AppStorage，初始化key 'LinkA'
-  linkAFlag: boolean = AppStorage.setOrCreate<string>('LinkA', '333');
-
   @StorageLink('LinkA') appLink: string = 'dynamicA';
   @StorageProp('LinkA') appProp: string = 'dynamicA';
 
@@ -333,12 +336,12 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'static_module';
 
+// ArkTS-Dyn使用PersistentStorage，初始化key 'LinkA'
+PersistentStorage.persistProp('LinkA', 'hello');
+
 @Entry
 @Component
 struct Index {
-  // ArkTS-Dyn使用PersistentStorage，初始化key 'LinkA'
-  persistFlag: boolean = PersistentStorage.persistProp('LinkA', 'hello');
-
   // ArkTS-Dyn使用PersistentStorage
   @StorageLink('LinkA') persistLink: string = 'staticB';
   @StorageProp('LinkA') persistProp: string = 'staticB';
@@ -419,11 +422,12 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
 // entry/src/main/ets/pages/Index.ets
 import { MainPage } from 'static_module'; // 导入ArkTS-Sta自定义组件
 
+// ArkTS-Dyn使用Environment，获取fontScale
+Environment.envProp<number>('fontScale', 2.0);
+
 @Entry
 @Component
 struct Index { // 定义ArkTS-Dyn主组件
-  // ArkTS-Dyn使用Environment，获取fontScale
-  fontScaleFlag: boolean = Environment.envProp<number>('fontScale', 2.0);
   @StorageLink('fontScale') fontScaleLink: number = 3.0;
   @StorageProp('fontScale') fontScaleProp: number = 3.0;
 

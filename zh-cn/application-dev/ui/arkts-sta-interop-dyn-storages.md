@@ -342,6 +342,8 @@ struct Index {
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
+let gPropA: number = 0;
+
 @Component
 export struct MainPage {
   build() {
@@ -349,7 +351,7 @@ export struct MainPage {
       Button('change AppStorage')
         .onClick(() => {
           // 通过接口修改ArkTS-Sta的AppStorage并同步更新ArkTS-Sta组件
-          AppStorage.setOrCreate('PropA', 4);
+          AppStorage.setOrCreate('PropA', ++gPropA);
         })
     }
   }

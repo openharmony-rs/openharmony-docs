@@ -44,7 +44,7 @@ project/
 
 示例如下：
 
-- 创建ArkTS-Sta子模块`static_module`，在`src/main/ets/components/MainPage.ets`目录创建并导出静态@Observed装饰的数据。
+- 创建ArkTS-Sta子模块`static_module`，在`src/main/ets/components`目录创建并导出静态@Observed装饰的数据。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 'use static'
@@ -68,7 +68,7 @@ export class MyClassA { // 定义静态@Observed装饰的类并导出
 export { MyClassA } from './src/main/ets/components/MainPage'; // 导出静态@Observed装饰的类
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。
+- 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5
@@ -123,5 +123,57 @@ export struct Index {
     }
     .height('100%')
   }
+}
+```
+
+
+## 常见问题
+
+### 声明文件编译报错
+
+由于ArkTS-Sta上下文中会将@Track装饰的属性自动转换出getter和setter方法，需要删除。详见[互操作声明文件规范](./arkts-ui-interop-declaration-spec.md)。
+
+`entry/src/main/ets/components/MainPage.ets`文件中@Track的示例如下：
+
+```TypeScript
+'use static'
+
+// static_module/src/main/ets/components/MainPage.ets
+import { Observed, Track } from '@ohos.arkui.stateManagement';
+
+@Observed
+export class MyClassA { // 定义静态@Observed装饰的类并导出
+  @Track name: string = 'text: x';
+  message: string = 'text: x';
+}
+```
+
+位于`static_module/build/default/intermediates/declgen/default/declgenV1/static_module/src/main/ets/components/MainPage.d.ets`的声明文件，修改前如下：
+
+```TypeScript
+import type { Record } from '../../../../../static.Record';
+
+@Observed
+export declare class MyClassA {
+  @Track
+  public get name(): string;
+  @Track
+  public set name(value: string);
+  public get message(): string;
+  public set message(value: string);
+  constructor(); 
+}
+```
+
+应按如下格式修改：
+
+```TypeScript
+import type { Record } from '../../../../../static.Record';
+
+@Observed
+export declare class MyClassA {
+  @Track
+  name: string;
+  message: string;
 }
 ```
