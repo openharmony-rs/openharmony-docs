@@ -7218,7 +7218,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowLimits(): WindowLimits
 
-获取当前应用窗口的尺寸限制（单位：物理像素px）。
+获取当前应用窗口的尺寸限制，单位为物理像素px。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7253,9 +7253,9 @@ try {
 
 getWindowLimitsVP(): WindowLimits
 
-获取当前应用窗口的尺寸限制（单位：虚拟像素vp）。
+获取当前应用窗口的尺寸限制，单位为虚拟像素vp。
 
-对系统窗口和全局悬浮窗，默认窗口宽高的系统限制最小值为1px，通过此接口获取到的1vp，是计算取整后的值。
+对于系统窗口和全局悬浮窗，默认窗口宽高的系统限制最小值为1px，通过此接口获取到的1vp，是计算取整后的值。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

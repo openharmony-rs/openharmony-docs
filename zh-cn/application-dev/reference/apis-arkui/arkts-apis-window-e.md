@@ -133,12 +133,14 @@
 
 像素单位枚举。
 
+物理像素单位和虚拟像素单位换算可使用[px2vp](./arkts-apis-uicontext-uicontext.md#px2vp12)和[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称    | 值   | 说明   |
 | ------- | ---- | ----- |
-| PX | 0  | 物理像素单位。  |
-| VP | 1  | 虚拟像素单位。  |
+| PX | 0  | 物理像素单位（px）。  |
+| VP | 1  | 虚拟像素单位（vp）。  |
 
 ## MaximizePresentation<sup>12+</sup>
 
