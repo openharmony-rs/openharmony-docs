@@ -2303,21 +2303,28 @@ struct WebComponent {
 
 ## onSslErrorEventReceive<sup>9+</sup>
 
-onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
+ArkTS-Dyn: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
+
+ArkTS-Sta: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\> | undefined): this
 
 通知用户加载资源时发生SSL错误，只支持主资源。
 如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnSslErrorEventReceiveEvent](./arkts-basic-components-web-i.md#onsslerroreventreceiveevent12)\> | 是 | 当网页收到SSL错误时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnSslErrorEventReceiveEvent](./arkts-basic-components-web-i.md#onsslerroreventreceiveevent12)\><br/>ArkTS-Sta: Callback\<[OnSslErrorEventReceiveEvent](./arkts-basic-components-web-i.md#onsslerroreventreceiveevent12)\> \|  undefined | 是 | 当网页收到SSL错误时触发。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2400,22 +2407,112 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnSslErrorEventReceiveEvent } from '@kit.ArkUI';
+import { cert } from '@kit.DeviceCertificateKit';
+
+function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
+  if (!(certChainData instanceof Array)) {
+    console.info('failed, cert chain data type is not array');
+    return;
+  }
+
+  for (let i = 0; i < certChainData.length; i++) {
+    let encodeBlobData: cert.EncodingBlob = {
+      data: certChainData[i] as Uint8Array,
+      encodingFormat: cert.EncodingFormat.FORMAT_DER
+    } as cert.EncodingBlob
+    cert.createX509Cert(encodeBlobData, (error, x509Cert) => {
+      if (error) {
+        console.error('Index : ' + i + ',createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      } else {
+        console.info('createX509Cert success');
+        console.info(ParseX509CertInfo(x509Cert as cert.X509Cert));
+      }
+    });
+  }
+  return;
+}
+
+function Uint8ArrayToString(dataArray: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i]);
+  }
+  return dataString;
+}
+
+function ParseX509CertInfo(x509Cert: cert.X509Cert) {
+  let res: string = 'getCertificate success, '
+    + 'issuer name = '
+    + Uint8ArrayToString(x509Cert.getIssuerName().data) + ', subject name = '
+    + Uint8ArrayToString(x509Cert.getSubjectName().data) + ', valid start = '
+    + x509Cert.getNotBeforeTime()
+    + ', valid end = ' + x509Cert.getNotAfterTime();
+  return res;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Web({ src: 'https://example.com/', controller: this.controller })
+        .onSslErrorEventReceive((event: OnSslErrorEventReceiveEvent):void => {
+          LogCertInfo(event.certChainData as Array<Uint8Array>);
+          this.uiContext.showAlertDialog({
+            title: 'onSslErrorEventReceive',
+            message: 'text',
+            primaryButton: {
+              value: 'confirm',
+              action: () => {
+                event.handler.handleConfirm();
+              }
+            },
+            secondaryButton: {
+              value: 'cancel',
+              action: () => {
+                event.handler.handleCancel();
+              }
+            },
+            cancel: () => {
+              event.handler.handleCancel();
+            }
+          } as AlertDialogParamWithButtons);
+        })
+    }
+  }
+}
+```
+
 ## onSslErrorEvent<sup>12+</sup>
 
-onSslErrorEvent(callback: OnSslErrorEventCallback)
+ArkTS-Dyn: onSslErrorEvent(callback: OnSslErrorEventCallback)
+
+ArkTS-Sta: onSslErrorEvent(callback: OnSslErrorEventCallback | undefined): this
 
 通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用[isMainFrame](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)字段进行区分。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12)| 是 | 通知用户加载资源时发生SSL错误。 |
+| callback | ArkTS-Dyn: [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12) <br/>ArkTS-Sta: [OnSslErrorEventCallback](./arkts-basic-components-web-t.md#onsslerroreventcallback12) \|  undefined| 是 | 通知用户加载资源时发生SSL错误。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2504,6 +2601,97 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, SslErrorEvent } from '@kit.ArkUI';
+import { cert } from '@kit.DeviceCertificateKit';
+
+function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
+  if (!(certChainData instanceof Array)) {
+    console.info('failed, cert chain data type is not array');
+    return;
+  }
+
+  for (let i = 0; i < certChainData.length; i++) {
+    let encodeBlobData: cert.EncodingBlob = {
+      data: certChainData[i] as Uint8Array,
+      encodingFormat: cert.EncodingFormat.FORMAT_DER
+    }
+    cert.createX509Cert(encodeBlobData, (error, x509Cert) => {
+      if (error) {
+        console.error('Index : ' + i + ',createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      } else {
+        console.info('createX509Cert success');
+        console.info(ParseX509CertInfo(x509Cert as cert.X509Cert));
+      }
+    });
+  }
+  return;
+}
+
+function Uint8ArrayToString(dataArray: Uint8Array) {
+  let dataString = '';
+  for (let i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i]);
+  }
+  return dataString;
+}
+
+function ParseX509CertInfo(x509Cert: cert.X509Cert) {
+  let res: string = 'getCertificate success, '
+    + 'issuer name = '
+    + Uint8ArrayToString(x509Cert.getIssuerName().data) + ', subject name = '
+    + Uint8ArrayToString(x509Cert.getSubjectName().data) + ', valid start = '
+    + x509Cert.getNotBeforeTime()
+    + ', valid end = ' + x509Cert.getNotAfterTime();
+  return res;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onSslErrorEvent((event: SslErrorEvent) => {
+          console.info("onSslErrorEvent url: " + event.url);
+          console.info("onSslErrorEvent error: " + event.error);
+          console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
+          console.info("onSslErrorEvent referrer: " + event.referrer);
+          console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+          console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
+          LogCertInfo(event.certChainData  as Array<Uint8Array>);
+          this.uiContext.showAlertDialog({
+            title: 'onSslErrorEvent',
+            message: 'text',
+            primaryButton: {
+              value: 'confirm',
+              action: () => {
+                event.handler.handleConfirm();
+              }
+            },
+            secondaryButton: {
+              value: 'cancel',
+              action: () => {
+                // true表示停止加载页面，停留在当前页面，使用false表示继续加载页面，并展示错误页面
+                event.handler.handleCancel(true);
+              }
+            },
+            cancel: () => {
+              event.handler.handleCancel();
+            }
+          } as AlertDialogParamWithButtons)
+        })
+    }
+  }
+}
+```
 
 ## onClientAuthenticationRequest<sup>9+</sup>
 
@@ -5209,20 +5397,27 @@ ArkTS-Sta示例：
 
 ## onSafeBrowsingCheckResult<sup>11+</sup>
 
-onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
+ArkTS-Dyn: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
+
+ArkTS-Sta: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback | undefined): this
 
 收到网站安全风险检查结果时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+| callback  | ArkTS-Dyn: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) <br/>ArkTS-Sta: [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) \|  undefined| 是 | 收到网站安全风险检查结果时触发的回调。|
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -5256,6 +5451,38 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
     }
   }
   ```
+ArkTS-Sta示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { Button, Web, Column, Component, Entry, State, AppStorage } from '@kit.ArkUI';
+
+export enum ThreatType {
+  UNKNOWN = -1,
+  THREAT_ILLEGAL = 0,
+  THREAT_FRAUD = 1,
+  THREAT_RISK = 2,
+  THREAT_WARNING = 3,
+}
+
+export class OnSafeBrowsingCheckResultCallback {
+  threatType: ThreatType = ThreatType.UNKNOWN;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'http://example.com', controller: this.controller })
+        .onSafeBrowsingCheckResult((callback) => {
+          console.info("onSafeBrowsingCheckResult: " + callback);
+        })
+    }
+  }
+}
+```
 
 ## onSafeBrowsingCheckFinish<sup>21+</sup>
 
@@ -6226,12 +6453,10 @@ ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefin
     Column() {
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .onViewportFitChanged((data:ViewportFit):void => {
-          let jsonData = JSON.stringify(data);
-          let viewportFit: ViewportFit = JSON.parse(jsonData).viewportFit;
-          console.info("jsonData:",jsonData)
-          if (viewportFit === ViewportFit.COVER) {
+          console.info("data:",data)
+          if (data === ViewportFit.COVER) {
             // index.html网页支持沉浸式布局，可调用expandSafeArea调整web控件布局视口覆盖避让区域(状态栏或导航条)。
-          } else if (viewportFit === ViewportFit.CONTAINS) {
+          } else if (data === ViewportFit.CONTAINS) {
             // index.html网页不支持沉浸式布局，可调用expandSafeArea调整web控件布局视口为安全区域。
           } else {
             // 默认值，可不作处理。

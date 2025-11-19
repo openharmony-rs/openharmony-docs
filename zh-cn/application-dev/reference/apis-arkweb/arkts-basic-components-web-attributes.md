@@ -3928,18 +3928,24 @@ ArkTS-Sta示例：
 
 ## onAdsBlocked<sup>12+</sup>
 
-onAdsBlocked(callback: OnAdsBlockedCallback)
+ArkTS-Dyn: onAdsBlocked(callback: OnAdsBlockedCallback)
+
+ArkTS-Sta: onAdsBlocked(callback: OnAdsBlockedCallback | undefined): this
 
 
 一个页面发生广告过滤后，通过此回调接口通知过滤的详细信息。由于页面可能随时发生变化并不断产生网络请求，为了减少通知频次、降低对页面加载过程的影响，仅在页面加载完成时进行首次通知，此后发生的过滤将间隔1秒钟上报，无广告过滤则无通知。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       |[OnAdsBlockedCallback](./arkts-basic-components-web-t.md#onadsblockedcallback12)| 是 | 广告过滤的回调。 |
+| callback       |ArkTS-Dyn: [OnAdsBlockedCallback](./arkts-basic-components-web-t.md#onadsblockedcallback12)<br/>ArkTS-Sta: [OnAdsBlockedCallback](./arkts-basic-components-web-t.md#onadsblockedcallback12) \|  undefined| 是 | 广告过滤的回调。 |
 
 **示例：**
 
@@ -3969,6 +3975,33 @@ ArkTS-Dyn示例：
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Column, Component, Web, AdsBlockedDetails, State } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  @State totalAdsBlockCounts: number = 0;
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onAdsBlocked((details: AdsBlockedDetails) => {
+          if (details) {
+            console.info(' Blocked ' + details.adsBlocked.length + ' in ' + details.url);
+            let adList: Array<string> = Array.from(details.adsBlocked);
+            this.totalAdsBlockCounts += adList.length;
+            console.info('Total blocked counts :' + this.totalAdsBlockCounts);
+          }
+        })
+    }
+  }
+}
+```
 
 ## keyboardAvoidMode<sup>12+</sup>
 
