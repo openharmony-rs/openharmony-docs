@@ -6,7 +6,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescriptor
 ```
 
