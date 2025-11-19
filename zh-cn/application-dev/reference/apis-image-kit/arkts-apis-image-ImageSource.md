@@ -138,6 +138,10 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
 
 getImageInfoSync(index?: number): ImageInfo
 
+> **注意：**
+>
+> 该方法为同步方法，在主线程中调用会阻塞主线程，会有稳定性问题，因此该接口不适合在主线程调用。
+
 获取指定序号的图片信息，使用同步形式返回图片信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
@@ -282,6 +286,10 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
 ## getImagePropertySync<sup>20+</sup>
 
 getImagePropertySync(key:PropertyKey): string
+
+> **注意：**
+>
+> 该方法为同步方法，在主线程中调用会阻塞主线程，会有稳定性问题，因此该接口不适合在主线程调用。
 
 获取图片exif指定属性键的值，使用同步形式返回结果。
 
@@ -803,6 +811,10 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 
 createPixelMapSync(options?: DecodingOptions): PixelMap
 
+> **注意：**
+>
+> 该方法为同步方法，在主线程中调用会阻塞主线程，会有稳定性问题，因此该接口不适合在主线程调用。
+
 通过图片解码参数同步创建PixelMap对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
@@ -1097,6 +1109,10 @@ async function CreatePixelMapUsingAllocator(context : Context) {
 ## createPixelMapUsingAllocatorSync<sup>15+</sup>
 
 createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
+
+> **注意：**
+>
+> 该方法为同步方法，在主线程中调用会阻塞主线程，会有稳定性问题，因此该接口不适合在主线程调用。
 
 根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
