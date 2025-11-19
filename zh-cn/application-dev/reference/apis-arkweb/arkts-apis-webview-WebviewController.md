@@ -5865,6 +5865,10 @@ enableAdsBlock(enable: boolean): void
 
 启用广告过滤功能。
 
+> **说明：**
+>
+> - 广告过滤功能需要release包，使用debug包不生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
