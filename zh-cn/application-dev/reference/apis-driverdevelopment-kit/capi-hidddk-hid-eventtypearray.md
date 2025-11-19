@@ -6,7 +6,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 ```
 

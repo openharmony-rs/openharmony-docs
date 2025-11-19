@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
-```
+```c
 typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
 ```
 

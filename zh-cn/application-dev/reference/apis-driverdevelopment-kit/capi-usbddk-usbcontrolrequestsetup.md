@@ -6,7 +6,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct UsbControlRequestSetup {...} __attribute__((aligned(8))) UsbControlRequestSetup
 ```
 

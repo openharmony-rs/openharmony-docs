@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
-```
+```c
 typedef struct CloudDisk_ChangesResult {...} CloudDisk_ChangesResult
 ```
 
