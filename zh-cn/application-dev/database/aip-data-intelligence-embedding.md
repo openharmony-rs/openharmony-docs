@@ -64,6 +64,7 @@
    ```ts
    import { intelligence } from '@kit.ArkData';
    ```
+  <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 2. 获取文本嵌入模型。
    调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
@@ -87,6 +88,9 @@
        console.error("Failed to get TextModel and code is " + err.code);
      })
    ```
+  <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 3. 加载文本嵌入模型。
    调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
@@ -100,6 +104,7 @@
        console.error("Failed to load Model and code is " + err.code);
      })
    ```
+  <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
    调用splitText方法，获取文本的分块结果。示例代码如下所示：
@@ -119,6 +124,7 @@
        console.error("Failed to split Text and code is " + err.code);
      })
    ```
+  <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
    调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
@@ -144,6 +150,7 @@
        console.error("Failed to get Embedding and code is " + err.code);
      })
    ```
+  <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 6. 释放文本嵌入模型。
    调用releaseModel方法，释放文本嵌入模型。示例代码如下所示：
@@ -157,6 +164,7 @@
        console.error("Failed to release Model and code is " + err.code);
      })
    ```
+  <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 ## 图像向量化开发步骤
 
@@ -165,11 +173,14 @@
    ```ts
    import { intelligence } from '@kit.ArkData';
    ```
+  <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 2. 获取图像嵌入模型。
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
    ```ts
+   import { BusinessError } from '@kit.BasicServicesKit';
+
    let imageConfig:intelligence.ModelConfig = {
      version:intelligence.ModelVersion.BASIC_MODEL,
      isNpuAvailable:false,
@@ -186,6 +197,9 @@
        console.error("Failed to get ImageModel and code is " + err.code);
      })
    ```
+  <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 3. 加载图像嵌入模型。
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
@@ -199,6 +213,7 @@
         console.error("Failed to load Model and code is " + err.code);
      })
    ```
+  <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 4. 获取给定图像的嵌入向量。
    调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
@@ -213,6 +228,7 @@
         console.error("Failed to get Embedding and code is " + err.code);
       })
     ```
+  <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 5. 释放图像嵌入模型。
    调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
@@ -226,3 +242,4 @@
         console.error("Failed to release Model and code is " + err.code);
       })
     ```
+  <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
