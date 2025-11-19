@@ -19,10 +19,6 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-## 权限列表
-
-无权限要求。
-
 ## emitter.on
 
 on(event: InnerEvent, callback: Callback\<EventData\>): void
