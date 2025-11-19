@@ -162,36 +162,42 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 ### Matrix4Result
 
-type Matrix4Result = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
+ArkTS-Dyn: type Matrix4Result = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
+
+ArkTS-Sta: type Matrix4Result = [double,double,double,double,double,double,double,double,double,double,double,double,double,double,double,double]
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型 | 说明                               |
 | --------| -----------------------------------|
-| [number,number,number,number,<br />number,number,number,number,<br />number,number,number,number,<br />number,number,number,number] | 取值范围为长度为16（4\*4）的number数组，&nbsp;详情见四阶矩阵说明。<br/>单位: px  |
+| ArkTS-Dyn: [number,number,number,number,<br />number,number,number,number,<br />number,number,number,number,<br />number,number,number,number]<br/>ArkTS-Sta: [double,double,double,double,<br />double,double,double,double,<br />double,double,double,double,<br />double,double,double,double] | 取值范围为长度为16（4\*4）的number数组，&nbsp;详情见四阶矩阵说明。<br/>单位: px  |
 
 **四阶矩阵说明：**
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| m00    | number | 是   | x轴缩放值，单位矩阵默认为1。         |
-| m01    | number | 是   | 第2个值，xyz轴旋转会影响这个值。     |
-| m02    | number | 是   | 第3个值，xyz轴旋转会影响这个值。     |
-| m03    | number | 是   | 无实际意义。                         |
-| m10    | number | 是   | 第5个值，xyz轴旋转会影响这个值。     |
-| m11    | number | 是   | y轴缩放值，单位矩阵默认为1。         |
-| m12    | number | 是   | 第7个值，xyz轴旋转会影响这个值。     |
-| m13    | number | 是   | 无实际意义。                         |
-| m20    | number | 是   | 第9个值，xyz轴旋转会影响这个值。     |
-| m21    | number | 是   | 第10个值，xyz轴旋转会影响这个值。    |
-| m22    | number | 是   | z轴缩放值，单位矩阵默认为1。         |
-| m23    | number | 是   | 无实际意义。                         |
-| m30    | number | 是   | x轴平移值，单位px，单位矩阵默认为0。 |
-| m31    | number | 是   | y轴平移值，单位px，单位矩阵默认为0。 |
-| m32    | number | 是   | z轴平移值，单位px，单位矩阵默认为0。 |
-| m33    | number | 是   | 齐次坐标下生效，产生透视投影效果。   |
+| m00    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴缩放值，单位矩阵默认为1。         |
+| m01    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第2个值，xyz轴旋转会影响这个值。     |
+| m02    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第3个值，xyz轴旋转会影响这个值。     |
+| m03    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 无实际意义。                         |
+| m10    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第5个值，xyz轴旋转会影响这个值。     |
+| m11    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴缩放值，单位矩阵默认为1。         |
+| m12    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第7个值，xyz轴旋转会影响这个值。     |
+| m13    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 无实际意义。                         |
+| m20    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第9个值，xyz轴旋转会影响这个值。     |
+| m21    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 第10个值，xyz轴旋转会影响这个值。    |
+| m22    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | z轴缩放值，单位矩阵默认为1。         |
+| m23    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 无实际意义。                         |
+| m30    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴平移值，单位px，单位矩阵默认为0。 |
+| m31    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴平移值，单位px，单位矩阵默认为0。 |
+| m32    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | z轴平移值，单位px，单位矩阵默认为0。 |
+| m33    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 齐次坐标下生效，产生透视投影效果。   |
 
 **示例：**
 

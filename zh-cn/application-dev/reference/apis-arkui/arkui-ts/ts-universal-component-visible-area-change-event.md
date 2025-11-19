@@ -12,7 +12,7 @@
 
 ArkTS-Dyn: onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
 
-ArkTS-Sta: onVisibleAreaChange(ratios: Array<double> | undefined, event: VisibleAreaChangeCallback | undefined): this
+ArkTS-Sta: onVisibleAreaChange(ratios: Array&lt;double&gt; | undefined, event: VisibleAreaChangeCallback | undefined): this
 
 组件可见区域变化时触发该回调。
 
