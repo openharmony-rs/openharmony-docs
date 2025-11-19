@@ -252,3 +252,28 @@
      通过[OH_CommonEvent_SetCodeToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setcodetosubscriber)与[OH_CommonEvent_SetDataToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setdatatosubscriber)设置有序公共事件的代码和数据。
 
      <!-- @[event_subscriber_set_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     
+     ``` C++
+     void SetToSubscriber(CommonEvent_Subscriber *subscriber, const int32_t code, const char *data)
+     {
+         // 设置有序公共事件的代码
+         if (!OH_CommonEvent_SetCodeToSubscriber(subscriber, code)) {
+             OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_SetCodeToSubscriber failed.");
+             return;
+         }
+         // 设置有序公共事件的数据
+         size_t dataLength = strlen(data);
+         if (!OH_CommonEvent_SetDataToSubscriber(subscriber, data, dataLength)) {
+             OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_SetDataToSubscriber failed.");
+             return;
+         }
+     }
+     
+     void GetFromSubscriber(CommonEvent_Subscriber *subscriber)
+     {
+         // 获取有序公共事件的数据和代码
+         const char *data = OH_CommonEvent_GetDataFromSubscriber(subscriber);
+         int32_t code = OH_CommonEvent_GetCodeFromSubscriber(subscriber);
+         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "Subscriber data <%{public}s>, code <%{public}d>.", data, code);
+     }
+     ```
