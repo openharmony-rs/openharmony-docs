@@ -944,15 +944,15 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 接口声明
 
 <!-- @[napi_define_sendable_class_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
+
+``` TypeScript
 @Sendable
 export class SendableClass {
   static staticStr: string;
   static staticFunc(): string;
   str: string;
   func(): string;
-}
+} // Sendable相关 napi_define_sendable_class
 ```
 
 
