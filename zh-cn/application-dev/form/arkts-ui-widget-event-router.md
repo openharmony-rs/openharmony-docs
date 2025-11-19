@@ -174,7 +174,12 @@
               .fontSize(24)
               .fontWeight(FontWeight.Bold)
               .textAlign(TextAlign.Start)
-              .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+              .margin({
+                top: 12,
+                bottom: 11,
+                right: 24,
+                left: 24
+              })
           }
           .width('100%')
           .height(56)
@@ -192,7 +197,12 @@
             // $r('app.color.text_color')需要替换为开发者所需的资源文件
             .fontColor($r('app.color.text_color'))
             .opacity(0.4)
-            .margin({ top: 8, bottom: 317, right: 152, left: 152 })
+            .margin({
+              top: 8,
+              bottom: 317,
+              right: 152,
+              left: 152
+            })
         }
         .width('100%')
         .height('100%')
@@ -215,7 +225,12 @@
               .fontSize(24)
               .fontWeight(FontWeight.Bold)
               .textAlign(TextAlign.Start)
-              .margin({ top: 12, bottom: 11, right: 24, left: 24 })
+              .margin({
+                top: 12,
+                bottom: 11,
+                right: 24,
+                left: 24
+              })
           }
           .width('100%')
           .height(56)
@@ -233,7 +248,12 @@
             // $r('app.color.text_color')需要替换为开发者所需的资源文件
             .fontColor($r('app.color.text_color'))
             .opacity(0.4)
-            .margin({ top: 8, bottom: 317, right: 152, left: 152 })
+            .margin({
+              top: 8,
+              bottom: 317,
+              right: 152,
+              left: 152
+            })
         }
         .width('100%')
         .height('100%')
