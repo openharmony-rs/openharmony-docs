@@ -20,6 +20,10 @@ WebResourceRequest的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 ## getRequestHeader
 
 getRequestHeader(): Array\<Header\>
