@@ -6383,7 +6383,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":74,
 						"name":"napi_async_open_close_callback_scope",
 						"start_line":16
 					}
