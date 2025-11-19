@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
+```
+
 ## 概述
 
 定义跟踪路由信息。

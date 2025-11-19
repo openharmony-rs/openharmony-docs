@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
+```
+
 ## 概述
 
 网络状态监听回调集合。
