@@ -6,7 +6,7 @@
 <!--Tester: @panny060-->
 <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef struct { ... } OH_QoS_GewuCreateSessionResult
 ```
 

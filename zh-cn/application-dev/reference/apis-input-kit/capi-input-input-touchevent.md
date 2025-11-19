@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct Input_TouchEvent Input_TouchEvent
 ```
 
