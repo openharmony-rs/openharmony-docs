@@ -27500,5 +27500,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/task-management/work-scheduler.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"workSchedulerExtension",
+						"start_line":28
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets",
+				"functions":[
+					{
+						"end_line":149,
+						"name":"startWork",
+						"start_line":124
+					},
+					{
+						"end_line":160,
+						"name":"stopWork",
+						"start_line":125
+					}
+				]
+			}
+		]
 	}
 ]
