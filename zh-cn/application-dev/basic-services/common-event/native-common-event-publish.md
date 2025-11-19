@@ -30,6 +30,26 @@
 1. 引用头文件。
 
    <!-- @[event_publisher_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.h) -->
+   
+   ``` C
+   #include <cstdint>
+   #include <cstdio>
+   #include <cwchar>
+   #include <cstring>
+   #include "hilog/log.h"
+   #include "BasicServicesKit/oh_commonevent.h"
+   
+   const long PARAM_LONG_VALUE1 = 2147483646;
+   const long PARAM_LONG_VALUE2 = 2147483645;
+   const long PARAM_LONG_VALUE3 = 555;
+   const double PARAM_DOUBLE_VALUE1 = 11.22;
+   const double PARAM_DOUBLE_VALUE2 = 33.44;
+   const double PARAM_DOUBLE_VALUE3 = 55.66;
+   const int PARAM_INT_VALUE1 = 10;
+   const int PARAM_INT_VALUE2 = 123;
+   const int PARAM_INT_VALUE3 = 234;
+   const int PARAM_INT_VALUE4 = 567;
+   ```
 
 2. 在CMake脚本中添加动态链接库。
 
