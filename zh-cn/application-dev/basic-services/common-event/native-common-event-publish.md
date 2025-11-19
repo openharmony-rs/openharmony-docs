@@ -193,3 +193,15 @@
    如果后续无需使用已创建的公共事件对象来发布公共事件，需要先通过[OH_CommonEvent_DestroyParameters](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroyparameters)销毁`CommonEvent_Parameters`对象，然后再通过[OH_CommonEvent_DestroyPublishInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroypublishinfo)销毁公共事件对象。
    
    <!-- @[event_publisher_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+   
+   ``` C++
+   void DestroyPublishInfo(CommonEvent_Parameters *param, CommonEvent_PublishInfo *info)
+   {
+       // 先销毁Parameters
+       OH_CommonEvent_DestroyParameters(param);
+       param = nullptr;
+       // 销毁PublishInfo
+       OH_CommonEvent_DestroyPublishInfo(info);
+       info = nullptr;
+   }
+   ```
