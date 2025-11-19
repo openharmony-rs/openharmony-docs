@@ -972,7 +972,7 @@ try {
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
-| EXTENSION | 1    | 服务扩展能力类型。仅支持service类型的[ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities标签)。|
+| EXTENSION | 1    | 服务扩展能力类型。仅支持service类型的[ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities标签)。<br/>被拉起的ExtensionAbility通过want中bundleName、moduleName、abilityName字段共同确定。 |
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 
