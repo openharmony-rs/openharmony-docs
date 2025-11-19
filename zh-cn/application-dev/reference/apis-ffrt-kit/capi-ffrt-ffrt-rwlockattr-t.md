@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 
-```
+```c
 typedef struct {...} ffrt_rwlockattr_t
 ```
 

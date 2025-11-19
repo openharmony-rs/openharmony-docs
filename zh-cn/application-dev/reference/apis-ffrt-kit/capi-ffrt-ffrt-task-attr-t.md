@@ -7,7 +7,7 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
-```
+```c
 typedef struct {...} ffrt_task_attr_t
 ```
 

@@ -6,7 +6,7 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
-```
+```c
 typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
 ```
 

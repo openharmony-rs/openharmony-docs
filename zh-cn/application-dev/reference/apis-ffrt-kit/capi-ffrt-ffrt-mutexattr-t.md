@@ -7,7 +7,7 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
-```
+```c
 typedef struct {...} ffrt_mutexattr_t
 ```
 
