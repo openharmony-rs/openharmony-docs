@@ -6,7 +6,7 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct NN_Tensor NN_Tensor
 ```
 

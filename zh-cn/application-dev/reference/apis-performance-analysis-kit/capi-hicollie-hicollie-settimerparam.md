@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-```
+```c
 typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 ```
 
