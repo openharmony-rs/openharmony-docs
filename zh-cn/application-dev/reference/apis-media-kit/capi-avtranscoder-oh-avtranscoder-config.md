@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AVTranscoder_Config OH_AVTranscoder_Config
 ```
 

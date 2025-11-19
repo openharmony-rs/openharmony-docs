@@ -6,7 +6,7 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AVScreenCapture_ContentFilter OH_AVScreenCapture_ContentFilter
 ```
 
