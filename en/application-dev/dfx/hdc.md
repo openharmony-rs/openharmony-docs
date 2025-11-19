@@ -74,7 +74,7 @@ hdc supports both USB and wireless connections. You can enable or disable debugg
   3. Add the **PATH** information to the end of the file.
 
       ```shell
-      PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
+      export PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
       ```
 
       Replace **{DevEco Studio}** with the absolute path of the DevEco Studio installation directory, for example, **/home/DevEco-Studio**.
@@ -639,9 +639,9 @@ hdc install [-r|-s|-cwd path] src
 
 | Name| Description|
 | -------- | -------- |
-| src | Installation package name.|
-| -r | Replaces the existing application (.hap).|
-| -s | Install a shared package (.hsp).|
+| src | Used to specify the path of the application installation package. You can install [HAP](../quick-start/hap-package.md) and inter-application [HSP](../quick-start/in-app-hsp.md). Since API version 22, [APP](../quick-start/application-package-glossary.md#app) can be installed.|
+| -r | Used to replace an existing application.|
+| -s | Used to specify the path where the inter-application HSP is to be installed. This parameter is mandatory for installing the inter-application HSP and optional in other scenarios.|
 | -cwd path | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, if the application is **test.hap** and the directory is **/data**, the actual application file installation path is **/data/test.hap**. If **-cwd "/user/"** is used, the actual application file installation path is **/user/test.hap**.|
 
 **Return value**
@@ -656,6 +656,14 @@ hdc install [-r|-s|-cwd path] src
 ```shell
 # For example, install **example.hap**.
 $ hdc install E:\example.hap
+AppMod finish
+
+# For example, install **example.app**.
+$ hdc install E:\example.app
+AppMod finish
+
+# For example, install **example.hsp**.
+$ hdc install -s E:\example.hsp
 AppMod finish
 ```
 

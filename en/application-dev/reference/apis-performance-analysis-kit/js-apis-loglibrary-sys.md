@@ -28,9 +28,9 @@ Defines a **LogEntry** object.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | Yes| No| Log file name. |
-| mtime | number | Yes| No | Time of the last modification to the file. The value is the number of seconds elapsed since 00:00:00 on January 1, 1970.|
-| size | number | Yes| No | File size, in bytes.|
+| name | string | No| No| Log file name. |
+| mtime | number | No| No | Time of the last modification to the file. The value is the number of seconds elapsed since 00:00:00 on January 1, 1970.|
+| size | number | No| No | File size, in bytes.|
 
 ## logLibrary.list
 
