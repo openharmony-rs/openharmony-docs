@@ -128,7 +128,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    
    ``` C
    #include <native_drawing/drawing_bitmap.h>
-   // ···
+   // ...
    #include <native_drawing/drawing_canvas.h>
    ```
 
