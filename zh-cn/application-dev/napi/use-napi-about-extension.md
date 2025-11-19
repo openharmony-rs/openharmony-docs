@@ -1041,9 +1041,12 @@ export const getSendableArray: () => []; // Sendable相关 napi_create_sendable_
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_sendable_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+
+``` TypeScript
+// Sendable相关 napi_create_sendable_array
 let value = testNapi.getSendableArray();
-hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array: %{public}s', JSON.stringify(value));
+hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array: %{public}s',
+  JSON.stringify(value));
 ```
 
 
