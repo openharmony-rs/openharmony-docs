@@ -103,8 +103,8 @@ No Available certificate for authorization
 
 **可能原因**
 
-没有可用的授权证书
+没有可用的授权证书。
 
 **处理步骤**
 
-安装有效证书凭据
+安装有效证书凭据。

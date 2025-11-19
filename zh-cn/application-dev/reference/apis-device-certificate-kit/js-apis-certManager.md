@@ -118,7 +118,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | certNum          | number         | 否  | 否  | 表示凭据中包含的证书个数。 |
 | keyNum          | number   | 否  | 否  | 表示凭据中包含的密钥个数。 |
 | credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。 |
-| certPurpose          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。 |
+| certPurpose          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT（签名用途）。 |
 
 ## CredentialAbstract
 
@@ -176,7 +176,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。 |
 | CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。   |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 175000010 | 表示访问USB凭据服务失败。   |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。   |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。   |
 
 ## CertType<sup>18+</sup>
@@ -238,13 +238,13 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 ## CertificatePurpose<sup>22+</sup>
 
-表示凭据的用途。
+表示凭据用途的枚举。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
 | 名称         | 值   | 说明                                       |
 | ------------ | ---- | ------------------------------------------ |
-| PURPOSE_DEFAULT  | 0    | 表示凭据默认用途。               |
+| PURPOSE_DEFAULT  | 0    | 表示凭据默认用途（签名用途）。               |
 | PURPOSE_ALL  | 1    | 表示凭据所有用途，用于查询凭据功能。           |
 | PURPOSE_SIGN  | 2    | 表示凭据签名用途。             |
 | PURPOSE_ENCRYPT  | 3    | 表示凭据加密用途。             |
@@ -255,9 +255,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-| 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
-| -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| certPurpose          | [CertificatePurpose](#certificatepurpose22)         | 否   | 是  | 表示凭据用途。 |
+| 名称           | 类型  | 只读 | 可选 | 说明  |
+| -------------- | ---- | ---- | ---- | ---- |
+| certPurpose  | [CertificatePurpose](#certificatepurpose22)  | 否   | 是  | 表示凭据用途。 |
 
 ## certificateManager.installPrivateCertificate
 
@@ -1614,9 +1614,9 @@ try {
 ```
 ## certificateManager.getUkeyCertificate<sup>22+</sup>
 
-getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>;
+getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-表示获取USB凭据详细信息。
+表示获取USB凭据详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1635,11 +1635,11 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>;
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取USB凭据详细信息的结果，返回值[CMResult](#cmresult)对象中的credentialDetailList属性。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象。返回获取到的USB凭据详情的结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID    | 错误信息      |
 |----------| ------------- |
