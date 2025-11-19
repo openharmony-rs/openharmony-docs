@@ -927,12 +927,12 @@ systemBarEffect(): T
 
 | 名称                | 值 | 说明     |
 | ----------------- | ---- | ------ |
-| OUTER_DEFAULT_XS  | - | 超小阴影。  |
-| OUTER_DEFAULT_SM  | - | 小阴影。   |
-| OUTER_DEFAULT_MD  | - | 中阴影。   |
-| OUTER_DEFAULT_LG  | - | 大阴影。   |
-| OUTER_FLOATING_SM | - | 浮动小阴影。 |
-| OUTER_FLOATING_MD | - | 浮动中阴影。 |
+| OUTER_DEFAULT_XS  | 0 | 超小阴影。  |
+| OUTER_DEFAULT_SM  | 1 | 小阴影。   |
+| OUTER_DEFAULT_MD  | 2 | 中阴影。   |
+| OUTER_DEFAULT_LG  | 3 | 大阴影。   |
+| OUTER_FLOATING_SM | 4 | 浮动小阴影。 |
+| OUTER_FLOATING_MD | 5 | 浮动中阴影。 |
 
 ## BlendMode<sup>11+</sup>枚举说明
 
