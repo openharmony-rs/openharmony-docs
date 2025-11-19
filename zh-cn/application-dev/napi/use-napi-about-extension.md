@@ -772,12 +772,11 @@ export const aboutSerialize: (obj: {numKey:number}) => number | undefined; // �
 ArkTS侧示例代码
 
 <!-- @[ark_napi_serialize_deserialize_delete_serialization_data_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+
+``` TypeScript
 class Obj {
-  numKey:number = 0;
+  numKey: number = 0;
 }
-let obj: Obj = { numKey: 500 };
-hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.aboutSerialize(obj));
 ```
 <!-- @[ark_napi_serialize_deserialize_delete_serialization_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
