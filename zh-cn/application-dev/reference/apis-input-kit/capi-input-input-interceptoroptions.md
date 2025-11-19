@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_InterceptorOptions Input_InterceptorOptions
+```
+
 ## 概述
 
 事件拦截选项。
