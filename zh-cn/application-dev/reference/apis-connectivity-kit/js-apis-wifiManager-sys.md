@@ -1050,7 +1050,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-设置Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接sta数量等。
+设置Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1118,7 +1118,7 @@ try {
 
 getHotspotConfig(): HotspotConfig
 
-获取Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接sta数量等。
+获取Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1359,7 +1359,7 @@ deletePersistentGroup(netId: number): void
 
 删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的Wi-Fi网络配置信息，使其不再自动连接。
 
-- 根据网络id删除之前与p2p设备建立的永久组信息，后续与该p2p设备进行p2p连接时需要重新进行p2p协商。
+- 根据网络ID删除之前与P2P设备建立的永久组信息，后续与该P2P设备进行P2P连接时需要重新进行P2P协商。
 
 **系统接口：** 此接口为系统接口。
 

@@ -166,8 +166,8 @@ startScan(): void
 
 - 应用程序在前台运行时，两分钟内最多可扫描四次。
 - 在后台运行时，三十分钟内最多可扫描一次。
-- 需要先检查WiFi是否已启用，可通过wifi.isWifiActive()方法确认。
-- 可以通过on('wifiScanStateChange')订阅扫描状态变更事件，监听扫描完成通知。
+- 需要先检查Wi-Fi是否已启用，可通过wifiManager.isWifiActive()方法确认。
+- 通过on('wifiScanStateChange')订阅扫描状态变更事件，监听扫描完成通知。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -444,7 +444,7 @@ WLAN热点信息。
 
 ## DeviceAddressType<sup>10+</sup>
 
-Wi-Fi 设备地址（MAC/bssid）类型。
+Wi-Fi 设备地址（MAC/BSSID）类型。
 
 - DeviceAddressType是一个用于表示Wi-Fi设备地址（MAC地址或BSSID）的类型，是标识Wi-Fi设备或接入点的唯一地址。
 - 在Wi-Fi相关操作中，如连接指定的Wi-Fi网络、获取设备信息等，需要使用DeviceAddressType类型的参数。
@@ -647,7 +647,7 @@ WAPI认证方式的枚举。
 
 ## WifiCategory<sup>12+</sup>
 
-表示热点支持的最高wifi类别。
+表示热点支持的最高Wi-Fi类别。
 
 - 枚举类型：用于标识Wi-Fi热点支持的最高Wi-Fi标准版本。
 - 版本支持：从API级别12开始支持。
@@ -1030,9 +1030,9 @@ connectToCandidateConfig(networkId: number): void
 
 connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
-该接口用于应用连接到自己添加的候选网络，并在连接时提示用户进行信任确认。此操作采用Promise异步回调机制，返回用户响应结果。
+该接口用于应用连接到用户添加的候选网络，并在连接时提示用户进行信任确认。使用Promise异步回调用户响应结果。
 
-- 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise异步返回用户响应结果。
+- 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise机制异步返回用户响应结果，确保操作的非阻塞性。
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
 - 该接口适用于需要用户主动参与的网络连接场景，以增强安全性。
 
