@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
 ```
 
