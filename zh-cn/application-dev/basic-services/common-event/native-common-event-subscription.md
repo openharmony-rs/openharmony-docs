@@ -57,6 +57,32 @@
    通过[OH_CommonEvent_CreateSubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)创建订阅者信息。
 
    <!-- @[event_subscriber_create_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   
+   ``` C++
+   CommonEvent_SubscribeInfo *CreateSubscribeInfo(const char *events[], int32_t eventsNum, const char *permission,
+                                                  const char *bundleName)
+   {
+       int32_t ret = -1;
+       // 创建订阅者信息
+       CommonEvent_SubscribeInfo *info = OH_CommonEvent_CreateSubscribeInfo(events, eventsNum);
+   
+       // 设置发布者权限
+       ret = OH_CommonEvent_SetPublisherPermission(info, permission);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherPermission ret <%{public}d>.", ret);
+   
+       // 设置发布者包名称
+       ret = OH_CommonEvent_SetPublisherBundleName(info, bundleName);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherBundleName ret <%{public}d>.", ret);
+       return info;
+   }
+   
+   // 销毁订阅者信息
+   void DestroySubscribeInfo(CommonEvent_SubscribeInfo *info)
+   {
+       OH_CommonEvent_DestroySubscribeInfo(info);
+       info = nullptr;
+   }
+   ```
 
 
 4. 创建订阅者。
