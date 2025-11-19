@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct ImagePacker_Opts_ {...}
+```
+
 ## 概述
 
 定义图像编码选项信息。
