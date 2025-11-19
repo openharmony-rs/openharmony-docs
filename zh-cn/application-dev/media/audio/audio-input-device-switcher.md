@@ -59,14 +59,14 @@ audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DE
 
 // 监听当前输入设备变化事件，当选择输入设备成功后会触发该回调。
 let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
-  console.info(`Succeeded in using on or off function, CurrentInputDeviceChangedEvent: ${currentInputDeviceChangedEvent}`);
+  console.info(`Succeeded in using on or off function, CurrentInputDeviceChangedEvent: ${currentInputDeviceChangedEvent}.`);
 };
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 try {
   // 获取当前可选的音频输入设备列表。
   let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
-  console.info('Succeeded in getting available devices, AudioDeviceDescriptors: ${data}.');
+  console.info(`Succeeded in getting available devices, AudioDeviceDescriptors: ${data}.`);
 
   // 当前可选音频输入设备列表不为空时，可进行选择。
   if (data[0]) {

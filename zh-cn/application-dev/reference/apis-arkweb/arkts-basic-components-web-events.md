@@ -1812,6 +1812,112 @@ struct Index {
     }
     ```
 
+## onVerifyPin<sup>22+</sup>
+onVerifyPin(callback: OnVerifyPinCallback)
+
+通知用户进行PIN码认证。使用callback异步回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) | 是 | 当需要用户进行PIN码认证时触发的回调。  |
+
+  **示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import certMgrDialog from '@ohos.security.certManagerDialog';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  controller: WebviewController = new webview.WebviewController();
+  uiContext : UIContext = this.getUIContext();
+  context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear(): void {
+    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE)
+  }
+
+  build() {
+    Column() {
+      Button('加载需要客户端SSL证书的网站')
+        .onClick(() => {
+          this.controller.loadUrl("https://client.badssl.com")
+        })
+      Web({
+        src: "https://www.bing.com/",
+        controller: this.controller,
+      }).domStorageAccess(true)
+        .fileAccess(true)
+        .onPageBegin(event => {
+          console.info("extensions onpagebegin url " + event.url);
+        })
+        .onClientAuthenticationRequest((event) => {
+          // 收到客户端证书请求事件
+          console.log(`onClientAuthenticationRequest`);
+          try {
+            let certTypes: Array<certMgrDialog.CertificateType> = [
+              certMgrDialog.CertificateType.CREDENTIAL_UKEY
+            ];
+            // 调用证书管理，打开证书选择框
+            certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
+              .then((data: certMgrDialog.CertIndex) => {
+                console.info(`openAuthorizeDialog request cred auth success`)
+                // 通知web选择的为ukey证书
+                event.handler.confirm(data.index, CredentialType.CREDENTIAL_UKEY);
+              }).catch((err: BusinessError) => {
+              console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
+            })
+          } catch (e) {
+            console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
+          }
+          return true;
+        })
+        .onVerifyPin((event) => {
+          // 收到PIN码认证请求事件
+          console.log(`onVerifyPin`);
+          // 调用证书管理，打开PIN码输入框
+          certMgrDialog.openUkeyAuthDialog(this.context, {ukeyCertIndex: event.identity})
+            .then(() => {
+              // 通知webPIN码认证成功
+              console.log(`onVerifyPin success`);
+              event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
+            }).catch((err: BusinessError) => {
+            // 通知webPIN码认证失败
+            console.log(`onVerifyPin fail`);
+            event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
+          })
+        })
+        .onSslErrorEventReceive(e => {
+          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+        })
+        .onErrorReceive((event) => {
+          if (event) {
+            this.getUIContext().getPromptAction().showToast({
+              message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
+              alignment: Alignment.Center
+            })
+            console.info('getErrorInfo:' + event.error.getErrorInfo());
+            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.info('url:' + event.request.getRequestUrl());
+          }
+        })
+        .onTitleReceive(event  => {
+          console.info("title received " + event.title);
+        })
+
+    }
+  }
+}
+```
+
 ## onPermissionRequest<sup>9+</sup>
 
 onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
@@ -3357,18 +3463,6 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
-  export enum ThreatType {
-    UNKNOWN = -1,
-    THREAT_ILLEGAL = 0,
-    THREAT_FRAUD = 1,
-    THREAT_RISK = 2,
-    THREAT_WARNING = 3,
-  }
-
-  export class OnSafeBrowsingCheckResultCallback {
-    threatType: ThreatType = ThreatType.UNKNOWN;
-  }
-
   @Entry
   @Component
   struct WebComponent {
@@ -3380,7 +3474,7 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
           .onSafeBrowsingCheckResult((callback) => {
             let jsonData = JSON.stringify(callback);
             let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
-            console.info("onSafeBrowsingCheckResult: [threatType]= " + json.threatType);
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
           })
       }
     }
@@ -3407,20 +3501,6 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
-  export enum ThreatType {
-    UNKNOWN = -1,
-    THREAT_ILLEGAL = 0,
-    THREAT_FRAUD = 1,
-    THREAT_RISK = 2,
-    THREAT_WARNING = 3,
-    THREAT_NONE = 4,
-    THREAT_UNPROCESSED = 5,
-  }
-
-  export class OnSafeBrowsingCheckResultCallback {
-    threatType: ThreatType = ThreatType.UNKNOWN;
-  }
-
   @Entry
   @Component
   struct WebComponent {
@@ -3432,7 +3512,7 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
           .onSafeBrowsingCheckFinish((callback) => {
             let jsonData = JSON.stringify(callback);
             let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
-            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json.threatType);
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
           })
       }
     }

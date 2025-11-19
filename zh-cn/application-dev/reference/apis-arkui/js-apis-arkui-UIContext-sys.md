@@ -460,6 +460,34 @@ struct IMEGradient {
 }
 ```
 
+### clearResourceCache<sup>12+</sup>
+
+clearResourceCache(): void
+
+清除跨模块（[HSP](../../quick-start/in-app-hsp.md)包）访问资源时生成的资源对象缓存。清除缓存后，下次访问该模块资源的加载时间会增加。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MyStateSample {
+  build() {
+    Column() {
+      Button("clearResourceCache")
+        .onClick((event: ClickEvent) => {
+          this.getUIContext().clearResourceCache()
+        })
+        .width('100%')
+    }
+  }
+}
+```
+
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。

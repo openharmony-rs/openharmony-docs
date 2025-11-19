@@ -128,8 +128,8 @@
 | [void OH_Input_CancelInjection()](#oh_input_cancelinjection) | - | 取消事件注入并撤销授权。 |
 | [Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)](#oh_input_requestinjection) | - | 当前应用申请注入权限，包括申请注入按键事件[OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent)、注入触屏输入事件[OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent)、注入鼠标事件[OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent)等注入操作的权限。 |
 | [Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)](#oh_input_queryauthorizedstatus) | - | 查询当前应用注入的权限状态。 |
-| [Input_AxisEvent* OH_Input_CreateAxisEvent(void)](#oh_input_createaxisevent) | - | 创建轴事件对象实例。 |
-| [Input_Result OH_Input_DestroyAxisEvent(Input_AxisEvent** axisEvent)](#oh_input_destroyaxisevent) | - | 销毁轴事件对象实例。 |
+| [Input_AxisEvent* OH_Input_CreateAxisEvent(void)](#oh_input_createaxisevent) | - | 创建轴事件对象。 |
+| [Input_Result OH_Input_DestroyAxisEvent(Input_AxisEvent** axisEvent)](#oh_input_destroyaxisevent) | - | 销毁轴事件对象。 |
 | [Input_Result OH_Input_SetAxisEventAction(Input_AxisEvent* axisEvent, InputEvent_AxisAction action)](#oh_input_setaxiseventaction) | - | 设置轴事件的动作。 |
 | [Input_Result OH_Input_GetAxisEventAction(const Input_AxisEvent* axisEvent, InputEvent_AxisAction *action)](#oh_input_getaxiseventaction) | - | 获取轴事件的动作。 |
 | [Input_Result OH_Input_SetAxisEventDisplayX(Input_AxisEvent* axisEvent, float displayX)](#oh_input_setaxiseventdisplayx) | - | 设置轴事件以指定屏幕左上角为原点的相对坐标系的X坐标。 |
@@ -163,8 +163,8 @@
 | [Input_Result OH_Input_RemoveKeyEventInterceptor(void)](#oh_input_removekeyeventinterceptor) | - | 移除按键事件拦截。 |
 | [Input_Result OH_Input_RemoveInputEventInterceptor(void)](#oh_input_removeinputeventinterceptor) | - | 移除输入事件拦截，包括鼠标、触屏和轴事件。 |
 | [Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)](#oh_input_getintervalsincelastinput) | - | 获取距离上次系统输入事件的时间间隔。 |
-| [Input_Hotkey *OH_Input_CreateHotkey(void)](#oh_input_createhotkey) | - | 创建快捷键对象的实例。 |
-| [void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)](#oh_input_destroyhotkey) | - | 销毁快捷键对象的实例。 |
+| [Input_Hotkey *OH_Input_CreateHotkey(void)](#oh_input_createhotkey) | - | 创建快捷键对象。 |
+| [void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)](#oh_input_destroyhotkey) | - | 销毁快捷键对象。 |
 | [void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)](#oh_input_setprekeys) | - | 设置修饰键。 |
 | [Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, int32_t *preKeyCount)](#oh_input_getprekeys) | - | 获取修饰键。 |
 | [void OH_Input_SetFinalKey(Input_Hotkey* hotkey, int32_t finalKey)](#oh_input_setfinalkey) | - | 设置被修饰键。 |
@@ -2039,7 +2039,7 @@ Input_AxisEvent* OH_Input_CreateAxisEvent(void)
 
 **描述**
 
-创建轴事件对象实例。
+创建轴事件对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2059,7 +2059,7 @@ Input_Result OH_Input_DestroyAxisEvent(Input_AxisEvent** axisEvent)
 
 **描述**
 
-销毁轴事件对象实例。
+销毁轴事件对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3017,7 +3017,7 @@ Input_Hotkey *OH_Input_CreateHotkey(void)
 
 **描述**
 
-创建快捷键对象的实例。
+创建快捷键对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3037,7 +3037,7 @@ void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)
 
 **描述**
 
-销毁快捷键对象的实例。
+销毁快捷键对象。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 

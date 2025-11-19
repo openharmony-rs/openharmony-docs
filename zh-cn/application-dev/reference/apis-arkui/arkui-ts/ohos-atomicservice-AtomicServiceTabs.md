@@ -30,7 +30,7 @@ import { AtomicServiceTabs, TabBarOptions, TabBarPosition, OnContentWillChangeCa
 ## AtomicServiceTabs
 
 ```
-AtomicServiceTabs ({
+AtomicServiceTabs({
    tabContents?: [ TabContentBuilder?,
                     TabContentBuilder?,
                   TabContentBuilder?,
