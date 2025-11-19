@@ -763,9 +763,9 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
 接口声明
 
 <!-- @[napi_serialize_deserialize_delete_serialization_data_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const aboutSerialize: (obj: {numKey:number}) => number | undefined;
+
+``` TypeScript
+export const aboutSerialize: (obj: {numKey:number}) => number | undefined; // 序列化和反序列化
 ```
 
 
