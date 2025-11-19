@@ -3354,21 +3354,24 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
   ```ts
   // xxx.ets
-import { webview } from '@kit.ArkWeb';
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  import { webview } from '@kit.ArkWeb';
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .onSafeBrowsingCheckResult((callback) => {
-          let jsonData = JSON.stringify(callback);
-          let json: ThreatType = JSON.parse(jsonData).threatType;
-          console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
-        })
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSafeBrowsingCheckResult((callback) => {
+            let jsonData = JSON.stringify(callback);
+            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
+          })
+      }
     }
   }
-}
   ```
 
 ## onSafeBrowsingCheckFinish<sup>21+</sup>
@@ -3389,21 +3392,24 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
   ```ts
   // xxx.ets
-import { webview } from '@kit.ArkWeb';
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  import { webview } from '@kit.ArkWeb';
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .onSafeBrowsingCheckFinish((callback) => {
-          let jsonData = JSON.stringify(callback);
-          let json: ThreatType = JSON.parse(jsonData).threatType;
-          console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
-        })
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSafeBrowsingCheckFinish((callback) => {
+            let jsonData = JSON.stringify(callback);
+            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
+          })
+      }
     }
   }
-}
   ```
 
 ## onNativeEmbedLifecycleChange<sup>11+</sup>
