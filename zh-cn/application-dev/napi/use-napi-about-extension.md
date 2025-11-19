@@ -780,6 +780,12 @@ class Obj {
 ```
 <!-- @[ark_napi_serialize_deserialize_delete_serialization_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// 序列化和反序列化
+let obj: Obj = { numKey: 500 };
+hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.aboutSerialize(obj));
+```
+
 ## 根据任务指定的优先级和入队方式进行处理异步线程向ArkTS线程投递的任务
 
 ### 接口描述
