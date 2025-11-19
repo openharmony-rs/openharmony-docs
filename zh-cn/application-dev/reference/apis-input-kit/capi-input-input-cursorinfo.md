@@ -17,8 +17,6 @@
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 
-**所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
-
 **相关接口：**
 
 | 名称 | 描述 |
