@@ -167,7 +167,7 @@ startScan(): void
 - 应用程序在前台运行时，两分钟内最多可扫描四次。
 - 在后台运行时，三十分钟内最多可扫描一次。
 - 需要先检查WiFi是否已启用，可通过wifi.isWifiActive()方法确认。
-- 通过on('wifiScanStateChange')订阅扫描状态变更事件，监听扫描完成通知。
+- 可以通过on('wifiScanStateChange')订阅扫描状态变更事件，监听扫描完成通知。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
