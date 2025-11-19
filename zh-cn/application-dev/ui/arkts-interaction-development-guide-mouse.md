@@ -18,7 +18,7 @@
 
 ## 处理鼠标移动
 
-鼠标事件通过onMouse接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
+鼠标事件通过[onMouse](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
 
 ### onMouse
 
@@ -201,7 +201,7 @@ struct OnHover {
 
 ## 处理鼠标按键
 
-当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过MouseEvent访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过**getModifierKeyState**接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
+当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过[**getModifierKeyState**](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12)接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
@@ -334,6 +334,7 @@ struct ListExample {
 }
 ```
 
+![ChangeMouse](figures/ChangeMouse.gif)
 
 ## 处理滚轮
 
