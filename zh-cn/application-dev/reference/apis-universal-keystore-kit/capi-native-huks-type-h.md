@@ -441,6 +441,11 @@ enum OH_Huks_TagType
 | OH_HUKS_TAG_TYPE_BOOL = 4 << 28 | 该Tag的数据类型为bool类型。 |
 | OH_HUKS_TAG_TYPE_BYTES = 5 << 28 | 该Tag的数据类型为[OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md)类型。 |
 
+**参考：**
+
+[OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md)
+
+
 ### OH_Huks_UserAuthType
 
 ```
@@ -513,6 +518,11 @@ enum OH_Huks_ChallengeType
 | OH_HUKS_CHALLENGE_TYPE_NORMAL = 0 | challenge为普通类型，默认32字节。 |
 | OH_HUKS_CHALLENGE_TYPE_CUSTOM = 1 | challenge为用户自定义类型。支持使用多个密钥仅一次认证，challenge长度8字节有效。 |
 | OH_HUKS_CHALLENGE_TYPE_NONE = 2 | 免challenge类型。 |
+
+**参考：**
+
+[OH_Huks_ChallengePosition](#oh_huks_challengeposition)
+
 
 ### OH_Huks_UserAuthMode
 
@@ -639,6 +649,7 @@ enum OH_Huks_Tag
 | OH_HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO = OH_HUKS_TAG_TYPE_BYTES \| 514 | 密钥认证时的安全凭据。 |
 | OH_HUKS_TAG_ATTESTATION_ID_VERSION_INFO = OH_HUKS_TAG_TYPE_BYTES \| 515 | 密钥认证时的版本号。 |
 | OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | 是否覆写同名密钥。<br>**起始版本：** 20 |
+| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | CCM模式下指定的AEAD长度。<br>**起始版本：** 22 |
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | 是否是密钥别名。 |
 | OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | 密钥存储方式的标签，类型可在枚举 [OH_Huks_KeyStorageType](#oh_huks_keystoragetype)选择。 |
 | OH_HUKS_TAG_IS_ALLOWED_WRAP = OH_HUKS_TAG_TYPE_BOOL \| 1003 | 是否允许密钥封装。 |

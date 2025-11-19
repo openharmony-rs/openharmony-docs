@@ -14,7 +14,7 @@
 
 ## 场景介绍
 
-应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用[HttpRequest.request](../reference/apis-network-kit/js-apis-http.md#request)，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输[HttpRequest.requestInstream](../reference/apis-network-kit/js-apis-http.md#requestinstream10)。
+应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用[HttpRequest.request](../reference/apis-network-kit/js-apis-http.md#request)，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输[HttpRequest.requestInstream](../reference/apis-network-kit/js-apis-http.md#requestinstream10)。从API version 22开始，若是需要在"HTTP请求-响应"生命周期中的关键节点插入自定义逻辑，可以使用[HTTP拦截器](#http拦截器)。
 
 <!--RP1-->
 
@@ -266,37 +266,37 @@ import { common } from '@kit.AbilityKit';
 <!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-    let streamInfo: http.HttpRequestOptions = {
-      method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于向服务器获取数据，而POST方法用于向服务器上传数据。
-      // 开发者根据自身业务需要添加header字段。
-      header: {
-        'Content-Type': 'application/json'
-      },
-      // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
-      extraData: 'data to send', // 请求体内容
-      expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
-      usingCache: true,  // 可选，默认为true。
-      priority: 1, // 可选，默认为1。
-      connectTimeout: 60000, // 可选，默认为60000ms。
-      readTimeout: 60000, // 可选，默认为60000ms。若传输的数据较大，需要较长的时间，建议增大该参数以保证数据传输正常终止。
-      usingProtocol: http.HttpProtocol.HTTP1_1 // 可选，协议类型默认值由系统自动指定。
-    };
+let streamInfo: http.HttpRequestOptions = {
+  method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于向服务器获取数据，而POST方法用于向服务器上传数据。
+  // 开发者根据自身业务需要添加header字段。
+  header: {
+    'Content-Type': 'application/json'
+  },
+  // 当使用POST请求时此字段用于传递请求体内容，具体格式与服务端协商确定。
+  extraData: 'data to send', // 请求体内容
+  expectDataType: http.HttpDataType.STRING, // 可选，指定返回数据的类型。
+  usingCache: true,  // 可选，默认为true。
+  priority: 1, // 可选，默认为1。
+  connectTimeout: 60000, // 可选，默认为60000ms。
+  readTimeout: 60000, // 可选，默认为60000ms。若传输的数据较大，需要较长的时间，建议增大该参数以保证数据传输正常终止。
+  usingProtocol: http.HttpProtocol.HTTP1_1 // 可选，协议类型默认值由系统自动指定。
+};
 
-    // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定。
-    httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
-      .then((data: number) => {
-		// ···
-        console.info(`requestInStream OK!`);
-        console.info(`ResponseCode : ${JSON.stringify(data)}`);
-        // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
-        this.destroyRequest(httpRequest);
-		// ···
-      }).catch((err: Error) => {
-		// ···
-        console.error(`requestInStream ERROR : err = ${JSON.stringify(err)}`);
-        // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
-        this.destroyRequest(httpRequest);
-      })
+// 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定。
+httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
+  .then((data: number) => {
+    // ···
+    hilog.info(0x0000, 'testTag', `requestInStream OK!`);
+    hilog.info(0x0000, 'testTag', `ResponseCode : ${JSON.stringify(data)}`);
+    // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
+    this.destroyRequest(httpRequest);
+    // ···
+  }).catch((err: Error) => {
+    // ···
+    hilog.error(0x0000, 'testTag', `requestInStream ERROR : err = ${JSON.stringify(err)}`);
+    // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
+    this.destroyRequest(httpRequest);
+  })
 ```
 
 
@@ -428,33 +428,6 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 }
 ```
 
-整体或者按域名的明文HTTP是否允许的配置示例如下：
-
-```
-{
-  "network-security-config": {
-    "base-config": {
-      "cleartextTrafficPermitted": true
-    },
-    "domain-config": [
-      {
-        "domains": [
-          {
-            "include-subdomains": true,
-            "name": "example.com"
-          }
-        ],
-        "cleartextTrafficPermitted": false
-      }
-    ],
-    "component-config": {
-    	"Network Kit": true,
-    	"ArkWeb": true
-    }
-  }
-}
-```
-
 证书锁定的配置例子如下:
 
 ```
@@ -501,7 +474,6 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |pin                        | array           |证书公钥哈希。可以包含任意个item。item必须包含1个digest-algorithm，item必须包含1个digest。|
 |digest-algorithm           | string          |指示用于生成哈希的摘要算法。目前只支持`sha256`。                                    |
 |digest                     | string          |指示公钥哈希。 |
-|cleartextTrafficPermitted  | boolean          |明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
 
 ### 配置不信任用户安装的CA证书
 
@@ -516,7 +488,267 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
   "trust-current-user-ca" : false // 配置是否信任当前用户安装的CA证书，默认为true
 }
 ```
+### 明文HTTP访问权限配置说明
 
+该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+> **说明：**
+>
+> 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
+
+
+```
+// src/main/resources/base/profile/network_config.json
+{
+  "network-security-config": {
+    "base-config": {
+      "cleartextTrafficPermitted": true // 可选，自API 20开始支持该属性。
+    },
+    "domain-config": [
+      {
+        "domains": [
+          {
+            "include-subdomains": true,
+            "name": "example.com"
+          }
+        ],
+        "cleartextTrafficPermitted": false // 可选，自API 20开始支持该属性。
+      }
+    ],
+    "component-config": {
+    	"Network Kit": true, // 可选，自API 20开始支持该属性。
+    	"ArkWeb": false // 可选，自API 20开始支持该属性。
+    }
+  }
+}
+```
+
+**各个字段含义:**
+
+| 字段                      | 类型            | 必填 | 说明                                   |
+| --------------------------| --------------- |--------- |-------------------------------------- |
+|base-config                     | array          | 否| 指示应用程序范围的明文配置。优先级最低。 |
+|cleartextTrafficPermitted  | boolean          |否 | 明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
+|domain-config                     | array          | 否|  指示每个域的明文配置。可以包含任意个item。每个item必须包含1个domains。若相同域存在规则冲突时，以匹配到的第一条为准。优先级次于component-config。 |
+|include-subdomains         | boolean         | 否| 指示规则是否适用于子域。true表示规则适用于子域，false表示规则不适用于子域，默认为false。 |
+|name         | string         | 否| 配置主域名。 |
+|component-config                    | array          |  否| 指示每个组件的明文配置。优先级最高。|
+|Network Kit                 | boolean          |否| 用于配置Network Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为true。 |
+|ArkWeb                    | boolean          |否| 用于配置ArkWeb组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
+
+## HTTP拦截器
+
+从API version 22开始，HTTP拦截器模块提供了一种强大且可定制的机制，允许开发者在"HTTP请求-响应"生命周期中的关键节点插入自定义逻辑。通过拦截器，开发者可以无需修改核心网络代码即可实现修改请求头/体、缓存策略、重定向处理、网络监控、响应预处理等全局功能。
+
+### 拦截点说明
+
+| 拦截点名称                        | 位置说明                                                     | 拦截点interceptorHandle接口的出参和入参                                                   |
+| :-------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 初始请求拦截点（INITIAL_REQUEST）   | 初始请求组装完成后，这是第一个拦截点，适合用于添加全局参数、签名、加密请求体。 | 当出参为ture时，此时入参中的request值为原始值，可以修改，response值为空值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为空值，可以修改。 |
+| 网络连接拦截点（CONNECT_NETWORK） | 在网络连接建立之前，例如TCP/TLS连接。适合进行网络链路相关的操作，如记录网络连接开始时间。 | 当出参为ture时，此时入参中的request值为原始值，可以修改，response值为空值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为空值，可以修改。 |
+| 缓存拦截点（CACHE_CHECKED）       | 缓存检查逻辑命中缓存之后，已确认存在可用缓存。适用于查看缓存值或者修改查询到的缓存结果。 | 当出参为ture时，此时入参中的request值为原始值，修改无效，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
+| 重定向拦截点（REDIRECTION）       | 收到重定向响应并准备发送新请求之前。允许修改重定向的目标URL或请求信息。 | 当出参为ture时，此时入参中的request值为原始值，可以修改URL，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
+| 最终响应拦截点（FINAL_RESPONSE）    | 获得最终响应之后。最后一个拦截点，适合对响应进行统一解密、解析、日志记录、错误处理。 | 当出参为ture时，此时入参中的request值为原始值，修改无效，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
+
+**顺序执行**：拦截器严格按照INITIAL_REQUEST->CACHE_CHECKED->NETWORK_CONNECT->(REDIRECTION)->FINAL_RESPONSE的顺序被触发调用。（括号中表示如果请求涉及重定向，则会走重定向拦截器）
+
+**重定向循环**：这是流程中最关键的一个循环。当REDIRECTION拦截器被触发后，流程会跳回到NETWORK_CONNECT阶段，重新开始一个新的“请求周期”，直到不再发生重定向为止。这确保了重定向后的新请求也能被所有必要的拦截器（如认证头添加、日志记录等）正确处理。
+
+**缓存拦截**：CACHE_CHECKED是一个决策点。如果缓存存在且有效，请求会在此处经过CACHE_CHECKED处理后，直接跳转到FINAL_RESPONSE阶段返回缓存数据，从而避免不必要的网络操作。
+
+### HTTP拦截器开发步骤
+
+1.  导入HTTP请求拦截器所需模块。
+
+<!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
+
+```typescript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+2.  调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
+
+ <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 创建http请求
+let httpRequest: http.HttpRequest = http.createHttp();
+```
+
+3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
+
+<!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 创建拦截器链
+let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
+```
+
+4.  创建拦截器类实现http.HttpInterceptor接口。
+
+<!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+enum InterceptorType {
+  INITIAL_REQUEST = 'INITIAL_REQUEST',
+  REDIRECTION = 'REDIRECTION',
+  CACHE_CHECKED = 'READ_CACHE',
+  NETWORK_CONNECT = 'CONNECT_NETWORK',
+  FINAL_RESPONSE = 'FINAL_RESPONSE'
+}
+
+class InitialHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 命中拦截器后对请求报文与请求响应操作
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_INITIAL_URL;
+    reqContext.header = { 'content-type': 'text/plain' };
+    reqContext.body = { 'context': 'INITIAL_REQUEST' };
+
+    rspContext.result = 'INITIAL_REQUEST';
+    rspContext.responseCode = 200;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+
+class NetworkHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 命中拦截器后对请求报文与请求响应操作
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_URL;
+    reqContext.header = { 'content-type': 'text/xml' };
+    reqContext.body = { 'context': 'NETWORK_CONNECT' };
+
+    rspContext.result = 'NETWORK_CONNECT';
+    rspContext.responseCode = 300;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+
+class FinalHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 命中拦截器后对请求报文与请求响应操作
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_Final_URL;
+    reqContext.header = { 'content-type': 'text/html' };
+    reqContext.body = { 'context': 'FINAL_RESPONSE' };
+
+    rspContext.result = 'FINAL_RESPONSE';
+    rspContext.responseCode = 200;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+```
+
+5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
+
+<!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
+chain.addChain([
+  new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
+  new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
+  new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+]);
+```
+
+6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
+
+<!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 将当前配置好的拦截器链附加到httpRequest中
+chain.apply(httpRequest);
+```
+
+7.  创建请求可选项。
+
+<!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 创建请求可选项
+let options: http.HttpRequestOptions = {
+  method: http.RequestMethod.POST,
+  header: { 'content-type': 'text/html' } as Record<string, string>,
+  extraData: { 'context': 'BODY' } as Record<string, string>,
+};
+```
+
+8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
+
+<!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 发起请求
+httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
+  if (err) {
+    hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+    // ···
+  } else {
+    hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
+    // ···
+  }
+// ···
+});
+```
+
+9.  调用destroy()方法销毁http请求。
+
+<!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 销毁请求
+httpRequest.destroy();
+```
+
+## 
 ## 相关实例
 
 针对HTTP数据请求，有以下相关实例可供参考：
@@ -526,3 +758,5 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 * [Http（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http)
 
 * [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
+
+* [HTTP_interceptor_case(网络请求拦截器)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case)

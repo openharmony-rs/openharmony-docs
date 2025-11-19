@@ -43,6 +43,7 @@
   - [@ohos.data.dataShareResultSet (数据共享结果集)(系统接口)](js-apis-data-DataShareResultSet-sys.md)
   - [@ohos.data.distributedKVStore (分布式键值数据库)(系统接口)](js-apis-distributedKVStore-sys.md)
   - [@ohos.data.relationalStore (关系型数据库)(系统接口)](js-apis-data-relationalStore-sys.md)
+  - [@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)(系统接口)](js-apis-data-uniformTypeDescriptor-sys.md)
   <!--DelEnd-->
   - 已停止维护的接口<!--arkdata-arkts-dep-->
     - [@ohos.data.distributedData (分布式数据管理)](js-apis-distributed-data.md)

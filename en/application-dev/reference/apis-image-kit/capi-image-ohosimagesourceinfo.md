@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct OhosImageSourceInfo {...}
+```
+
 ## Overview
 
 The struct describes the image source information, which is obtained by calling [OH_ImageSource_GetImageInfo](capi-image-source-mdk-h.md#oh_imagesource_getimageinfo).

@@ -30,7 +30,7 @@ OpenHarmony SDK 5.0.0.36
 
 | Interface File                                                                                                              |
 |--------------------------------------------------------------------------------------------------------------------|
-| [ohos.net.webSocket.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.webSocket.d.ts) |
+| [ohos.net.webSocket.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.webSocket.d.ts) |
 
 **Adaptation Guide**
 

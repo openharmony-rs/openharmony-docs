@@ -26,8 +26,8 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
 | -----  | ---- |
 | 'audio' | 音频 |
 | 'video' | 视频 |
-| 'voice_call'<sup>11+<sup> | 音频通话。 |
-| 'video_call'<sup>12+<sup> | 视频通话。 |
+| 'voice_call'<sup>11+</sup> | 音频通话。 |
+| 'video_call'<sup>12+</sup> | 视频通话。 |
 
 ## AVCastControlCommandType<sup>10+</sup>
 

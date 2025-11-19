@@ -1,4 +1,4 @@
-# Color Inversion Capability Error Codes
+# Color Inversion Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @lushi871202-->

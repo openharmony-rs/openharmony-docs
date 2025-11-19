@@ -30,7 +30,7 @@ Enumerates the processes states.
 | -------------------- | --- | --------------------------------- |
 | STATE_CREATE    | 0   |    The process is created.      |
 | STATE_FOREGROUND          | 1   |    The process is running in the foreground.     |
-| STATE_ACTIVE  | 2   |     The process is active.  |
+| STATE_ACTIVE  | 2   |     At least one window in the process has focus.  |
 | STATE_BACKGROUND        | 3   |    The process is running in the background.          |
 | STATE_DESTROY        | 4   |    The process is destroyed.        |
 

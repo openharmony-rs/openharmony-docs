@@ -420,7 +420,7 @@ let types = unifiedData.getTypes();
 | -------- | -------- | -------- | -------- | -------- |
 | summary   | Record<string, number> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 |
 | totalSize | number | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。 |
-| overview<sup>22+</sup>   | Record<string, number> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。 |
+| overview<sup>22+</sup>   | Record<string, number> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。 |
 
 **示例：**
 
@@ -874,7 +874,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-纯文本类型数据，是[Text](#text)的子类，用于描述纯文本类数据。
+[Text](#text)的子类，用于描述纯文本类数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -895,7 +895,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-超链接类型数据，是[Text](#text)的子类，用于描述超链接类型数据。
+[Text](#text)的子类，用于描述超链接类型数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -4,7 +4,7 @@
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
-<!--Tester: @gcw_KuLfPSbe-->
+<!--Tester: @gcw_KuLfPSbe;@lipengpeng97-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -40,6 +40,7 @@ When any of the preceding faults occurs in an application, the application is ki
 The following figure shows the detection principle.
 
 **Figure 1**
+
 ![thread_block](figures/thread_block.png)
 
 ### APP_INPUT_BLOCK User Input Response Timeout
@@ -51,11 +52,12 @@ The following figure shows the detection principle.
 The following figure shows the detection principle.
 
 **Figure 2**
+
 ![app_input_block](figures/app_input_block.png)
 
 ### Lifecycle Switching Timeout
 
-**Description**: Lifecycle switching timeouts include [ability lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [page lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
+**Description**: Lifecycle switching timeouts include [UIAbility lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [PageAbility lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
 
 This fault occurs during lifecycle switching and affects Ability switching and PageAbility switching of the application.
 
@@ -84,11 +86,11 @@ DevEco Studio collects process crash logs from **/data/log/faultlog/faultlogger/
 
 **Method 2: HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-crash-events.md#fields) field of the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-freeze-events.md#event-fields) field of the event.
 
 **Method 3: hdc**
 
-Enable the developer option and run the **hdc file recv /data/log/faultlog/faultlogger D:\** command to export fault logs to the local device. The fault log file name is in the format of **appfreeze-process name-process UID-millisecond-level timestamp.log**.
+Enable **Developer options** and run the `hdc file recv /data/log/faultlog/faultlogger D:\` command to export fault logs to the local device. The fault log file name is in the format of **appfreeze-process name-process UID-millisecond-level timestamp.log**.
 
 ## Log Specifications
 
@@ -113,9 +115,13 @@ PreInstalled:No
 Foreground:Yes
 Pid:13680
 Uid:20020177
+Process life time:18s
+Process Memory(kB):163819(Rss)
+Device Memory(kB):Total 11679272, Free 3697424, Available 5814272
 Reason:THREAD_BLOCK_6S
 appfreeze: com.samples.freezedebug THREAD_BLOCK_6S at 20250628140837
 DisplayPowerInfo:powerState:UNKNOWN
+HitraceIdInfo: hitrace_id: a92ab27238f409a, span_id: 1cd61c9, parent_span_id: 3072e, trace_flag: 0
 Page switch history:
   14:08:30:327 /ets/pages/Index:Appfreeze
   14:08:28:986 /ets/pages/Index
@@ -131,11 +137,13 @@ PID:13680
 UID:20020177
 PACKAGE_NAME:com.samples.freezedebug
 PROCESS_NAME:com.samples.freezedebug
-NOTE: Current fault may be caused by system issue, you may ignore it and analysis other faults.
+NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.
 ***
 ```
 
-Since API version 21, when a system resource alarm is generated (for example, the available memory is less than 500 MB or the shell temperature exceeds 46°C), a **NOTE** line is displayed. When this line is displayed, you can ignore the application freeze fault. In earlier API versions, this line is not displayed regardless of the system resource status.
+Since API version 20, the **NOTE** line is displayed when a device resource alarm is generated (for example, the device memory is low or thermal throttling is enabled). When this line is displayed, you can ignore the application freeze fault. In earlier API versions, this line is not displayed regardless of the system resource status.
+
+Since API version 20, the [HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid) information is added to the log when the **THREAD_BLOCK_6S** fault occurs. Provided by HiTraceChain, the **HitraceId** uniquely identifies each service process call chain. You can use it to view the HiLog logs of the faulty process during the fault period, and analyze the logs to check the application execution status.
 
 All the three types of AppFreeze events include the following information.
 
@@ -144,7 +152,10 @@ All the three types of AppFreeze events include the following information.
 | Reason | Reason why the application freezes, corresponding to the application freeze detection capability.|
 | PID | PID of the faulty process.|
 | PACKAGE_NAME | Application process package name.|
-|[Page switch history](./cppcrash-guidelines.md#faults-with-page-switching-history)| Since API version 21, the maintenance and debugging process records the application switching history. After an application fault occurs, the generated fault file contains the page switching history. If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed.|
+|[Page switch history](./cppcrash-guidelines.md#faults-with-page-switching-history)| Since API version 20, the maintenance and debugging process records the application switching history. After an application fault occurs, the generated fault file contains the page switching history. If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed.|
+| Process life time | Lifetime of the faulty process, in seconds.<br>Note: This field is supported since API version 22.|
+| Process Memory(kB) | Memory usage of the faulty process.<br>Note: This field is supported since API version 22.|
+| Device Memory(kB) | Device memory status.<br>Note: This field is supported since API version 22.|
 
 ### General Information in the Log Body
 
@@ -160,7 +171,7 @@ PACKAGE_NAME = com.samples.freezedebug
 PROCESS_NAME = com.samples.freezedebug
 eventLog_action = ffrt,t,GpuStack,cmd:m,hot
 eventLog_interval = 10
-MSG = 
+MSG =
 Fault time:2025/06/28-14:08:34
 App main thread is not response!
 Main handler dump start time: 2025-06-28 14:08:34.067
@@ -200,7 +211,7 @@ All the three types of AppFreeze events include the following information.
 | PROCESS_NAME | Application process name.|
 | MSG | Time when the fault occurs and **EventHandler** information.|
 | task name | Task name in the task queue.|
-| trigger time | Task execution time|
+| trigger time | Task execution time.|
 | completeTime time | Time when the task is complete. (If no information is displayed, the task is not complete.)|
 
 ### Stack Information
@@ -240,8 +251,17 @@ Tid:13680, Name:les.freezedebug
 #28 pc 00000000000a9804 /system/lib/ld-musl-aarch64.so.1(libc_start_main_stage2+84)(f1a940981720250b920ee26d2d76af5b)
 ```
 
+In most cases, you can use the stack information of **THREAD_BLOCK_6S**, **LIFECYCLE_TIMEOUT**, and **APP_INPUT_BLOCK** to locate the abnormal code.
+
+In other cases (for example, in the instant stack), the stack information cannot be obtained immediately due to the busy main thread. As a result, the abnormal code segment cannot be captured in a timely manner, and the stack top information is not as expected.
+
+To solve this problem, enhanced AppFreeze logs can be obtained since API version 21. For details, see [Implementation Principles](#implementation-principles).
+
 > **NOTE**
-> When the system is heavily loaded (for example, high CPU load), the function name and **build-id** information may be lost if the call stack is obtained in low-overhead mode. If the user stack fails to be obtained, **build-id** is empty. As a result, the freeze stack contains only the SO-level stack.
+>
+> When the system is heavily loaded (for example, high CPU load), the function name information may be lost if the call stack is obtained in low-overhead mode.
+>
+> Since API version 21, when the message "Failed to dump normal stacktrace" is displayed, the system uses the lightweight frame pointer backtracing mode. Stack backtracing may be interrupted in libraries that do not enable the frame pointer (when the **-fomit-frame-pointer** option is used during GCC compilation, the compilation product does not enable the frame pointer). In addition, the number of stack layers of a single thread may not exceed 50 due to lightweight restrictions.
 
 ### Peer Information (Information About the Process That Communicates with the Faulty Process)
 
@@ -323,9 +343,9 @@ Total: 22.45%; User Space: 13.64%; Kernel Space: 8.81%; iowait: 0.33%; irq: 0.07
 Details of Processes:
     PID   Total Usage      User Space    Kernel Space    Page Fault Minor    Page Fault Major    Name
     13680      8.86%           8.31%          0.55%            4711                6637            com.samples.freezedebug
-    644        2.55%           1.40%          1.15%          210104                7391            hiview         
-    600        0.89%           0.78%          0.10%           60192                 514            hilogd         
-    1685       0.53%           0.31%          0.22%          879838               59636            foundation     
+    644        2.55%           1.40%          1.15%          210104                7391            hiview
+    600        0.89%           0.78%          0.10%           60192                 514            hilogd
+    1685       0.53%           0.31%          0.22%          879838               59636            foundation
 ```
 
 | | |
@@ -353,7 +373,7 @@ The preceding shows the system memory information. **ReclaimAvailBuffer** indica
 
 ## Log Differences
 
-1. Lifecycle timeout event.
+Lifecycle timeout event.
 
 ```
 DOMAIN:AAFWK
@@ -437,3 +457,164 @@ The following describes the MSG information with two complete lifecycle switchov
 | -| | The foreground lifecycle ends after both the window callback and **onForeground** are complete. |
 
 You can analyze other log information by referring to [Log Specifications](#log-specifications). Note that the main thread is suspended during lifecycle switching in most cases. You can compare the stack and BinderCatcher information in the two event logs.
+
+## Enhanced AppFreeze Logs
+
+Since API version 21, enhanced AppFreeze logs can be obtained. In these logs, the running loads of the device and main thread are collected, and multiple call stacks of the main thread are captured to help you accurately analyze the cause. Compared with the original logs, the enhanced AppFreeze logs address the following issues:
+
+1. It is difficult to locate the main thread hotspot during the fault.
+
+2. The resource layer analysis on the busy or blocked main thread is unavailable.
+
+### Implementation Principles
+
+The process of generating enhanced AppFreeze logs is as follows:
+
+1. When the **THREAD_BLOCK_3S** or **LIFECYCLE_HALF_TIMEOUT** event occurs during the running of an application process, the main thread call stack is captured to record the current CPU information.
+
+2. When the **THREAD_BLOCK_6S**, **LIFECYCLE_TIMEOUT**, or **APP_INPUT_BLOCK** event occurs during the running of an application process, the main thread call stack capturing is stopped, and the CPU information within the period is calculated. Generally, the stack logs are captured 1 to 10 times.
+
+   > **NOTE**
+   >
+   > The sampling stack of the application freeze event conflicts with that of [MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md). If the number of sampling stacks is set through the **setEventConfig** API of **MAIN_THREAD_JANK**, the number of sampling stacks of the application freeze event is the same as that configured for the application.
+   >
+   > **APP_INPUT_BLOCK** faults have enhanced logs only when **THREAD_BLOCK_3S** or **LIFECYCLE_HALF_TIMEOUT** occurs first.
+
+### Obtaining Logs
+
+You can obtain the path of the enhanced AppFreeze logs using any of the following methods:
+
+**Method 1: HiAppEvent APIs**
+
+Configure the following environment variables in the **AppScope/app.json5** file:
+
+   ```text
+   "appEnvironments": [
+     {
+       "name": "DFX_APPFREEZE_LOG_OPTIONS",
+       "value": "mainthread_sampling:enable"
+     }
+   ]
+   ```
+
+Use the fault subscription APIs provided by HiAppEvent to listen for the application freeze event and obtain the file content. For details, see [Application Freeze Event Overview](hiappevent-watcher-freeze-events.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md).
+
+You can read the fault file and enhanced log file generated by the application freeze event using the [external_log](hiappevent-watcher-freeze-events.md#event-fields) field. The name format of the enhanced log file is the same as that of the fault file.
+
+**external_log** is a string array whose first element is the path to the fault file and whose second element is the path to the enhanced log file.
+
+**Method 2: hdc**
+
+Enable **Developer options** and run the `hdc file recv /data/log/faultlog/freeze_ext D:\` command to export fault logs to the local device. The fault log file name is in the format of **freeze-cpuinfo-ext-process name-process UID-millisecond-level timestamp**.
+
+### Log Specifications
+
+The enhanced log header contains the following fields.
+|Field|Description|Initial API Version|
+|---|---|---|
+| TimeStamp | Log generation time.| 21 |
+| Module name | Name of the faulty module.| 21 |
+
+The following table lists the fields of the total CPU time consumption information in enhanced logs.
+|Field|Description|Initial API Version|
+|---|---|---|
+| ProcessCpuTime | Process running time in a statistical period.| 21 |
+| DeviceRuntime | Running time of all CPUs on the device in a statistical period.| 21 |
+| Tid | Thread ID.| 21 |
+| StartTime | Start time for statistics.| 21 |
+| EndTime | End time for statistics.| 21 |
+| StaticsDuration | Duration of statistics.| 21 |
+| CpuTime | Running time of the main thread in a statistical period.| 21 |
+| SyncWaitTime | Waiting time of the main thread.| 21 |
+| OptimalCpuTime | Running time of the main thread with the optimal load in a statistical period (using the maximum computing power of the maximum number of cores).| 21 |
+| SupplyAvailableTime | Time that can be optimized by scheduling. If the value is small, the main thread is busy. In this case, you need to optimize the main thread tasks.| 21 |
+
+The following table lists the stack information fields in enhanced logs.
+|Field|Description|Initial API Version|
+|---|---|---|
+| SnapshotTime | Time when the main thread stack is captured.| 21 |
+| ThreadInfos Tid | Thread ID.| 21 |
+| Name | Thread name.| 21 |
+| Stack | Main thread call stack.| 21 |
+| SubmitterStacktrace | Task submitter call stack.| 21 | 
+
+### Enhanced Log Specifications
+
+The following describes the common enhanced AppFreeze log specifications:
+
+```text
+Generated by HiviewDFX @OpenHarmony
+===============================================================
+TimeStamp: 2021-01-01 20:06:01.175  <- Log generation time.
+Module name: com.example.freeze   <- Module name.
+
+#Basic Concepts   <- CPU time comment.
+T1:  StaticsDuration, EndTime - StartTime.
+T2:  CpuTime              --Time that spend on CPU.
+T3:  SyncWaitTime         --SleepingTime + Runnable Time, etc.
+T4:  OptimalCpuTime       --run the thread at the max Core's max cpu capacity.
+T5:  SupplyAvailableTime  --T2 - T3. Time can be optimized by scheduling.
+Equation:  T1 = T2 + T3. T2 = T4 = T5.
+|-----------------------------------StaticsDuration-----------------------------------|.
+|-------------------------CpuTime----------------------|--------SyncWaitTime----------|.
+|----OptimalCpuTime----|------SupplyAvailableTime------|--------SyncWaitTime----------|.
+
+#Basic Statistical Information  <- Basic CPU statistics.
+ProcessCpuTime: 0 ms  <- Running time of the process in a statistical period.
+DeviceRuntime: 0 ms  <- Running time of all CPUs in a statistical period.
+Tid: 2320  <- ID of the faulty main thread.
+StartTime: 2021-01-01 20:05:58:177  <- Start time for statistics.
+EndTime: 2021-01-01 20:06:01:172  <- End time for statistics.
+StaticsDuration: 2995 ms  <- Duration of statistics.
+CpuTime: 0 ms  <- Running time of the main thread in the statistical period.
+SyncWaitTime: 2995 ms  <- Waiting time of the main thread.
+OptimalCpuTime: 0 ms  <- Running time of the main thread with the optimal load in a statistical period (using the maximum computing power of the maximum number of cores).
+SupplyAvailableTime: 0 ms  <- Time that can be optimized by scheduling.
+
+#CpuFreq Usage (usage >=1%)  <- If the usage of a single CPU frequency is greater than or equal to 1%, the frequency and its usage are listed.
+start time: 2021-01-01 20:06:00:888  <- Start time for calculating the CPU usage.
+cpu0 Usage 23.5%, 1430MHZ 21.04%  <- Total usage of cpu0, and usage of a single frequency (1430 MHZ) of cpu0.
+cpu1 Usage 23.5%, 1430MHZ 21.04%
+cpu2 Usage 23.5%, 1430MHZ 21.04%
+cpu3 Usage 23.5%, 1430MHZ 21.04%
+.......
+end time: 2021-01-01 20:06:00:888  <- End time for calculating the CPU usage.
+#ThreadInfos Tid: 2204, Name: com.example.freeze  <- Faulty thread ID, and thread name.
+SnapshotTime: 2021-01-01-20-05-58.292875  <- Time when the main thread is captured.
+#00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72) <- Main thread call stack
+#01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
+#02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
+#03 pc 0000000000007e2c /data/storage/el1/bundle/libs/arm64/libsample.so(WaitSomeTime()+76)(8b74cdc906ea6b2eba95d891bc91c72a)
+#04 pc 0000000000009b2c /data/storage/el1/bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#05 pc 00000000000a0500 /system/lib64/platformsdk/libruntime.z.so(c2f75213ee12fdf08da323fe546923ff)
+#06 pc 0000000000017b04 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(366b4d7f2eba693ad06f14469b08943b)
+#07 pc 0000000000016f38 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(366b4d7f2eba693ad06f14469b08943b)
+#08 pc 000000000003e160 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(OHOS::AppExecFwk::EventRunner::Run()+396)(366b4d7f2eba693ad06f14469b08943b)
+.......
+========SubmitterStacktrace======== <- Task submitter call stack (up to 16 layers).
+#00 pc 0000000000013108 /system/lib64/platformsdk/libuv.so(uv_queue_work+292)(366b4d7f2eba693ad06f14469b08943b)
+#01 pc 0000000000008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#02 pc 000000000005ae00 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)
+#03 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 0000000000448dd4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
+#05 at anonymous (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+#06 pc 00000000001e5c8c /system/lib64/platformsdk/libark_jsruntime.so(ce0b05d90b9fae02e7abf8e9f1e5a0f3)
+.......
+
+SnapshotTime: 2021-01-01-20-05-58.549685
+#00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72)
+#01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
+#02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
+#03 pc 0000000000007e2c /data/storage/el1/bundle/libs/arm64/libsample.so(WaitSomeTime()+76)(8b74cdc906ea6b2eba95d891bc91c72a)
+#04 pc 0000000000009b2c /data/storage/el1/bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#05 pc 00000000000a0500 /system/lib64/platformsdk/libruntime.z.so(c2f75213ee12fdf08da323fe546923ff)
+.......
+========SubmitterStacktrace========
+#00 pc 0000000000013108 /system/lib64/platformsdk/libuv.so(uv_queue_work+292)(366b4d7f2eba693ad06f14469b08943b)
+#01 pc 0000000000008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#02 pc 000000000005ae00 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)
+#03 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 0000000000448dd4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
+#05 at anonymous (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+.......
+```

@@ -25,14 +25,20 @@ Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需
 
 以下为Router页面的示例。
 
-```ts
+<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 import { router } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
+  @State router: string = 'Examples of Router, Navigation, and NavPathStack';
 
   build() {
     Row() {
@@ -46,15 +52,16 @@ struct Index {
           .margin(20)
           .onClick(() => {
             this.getUIContext().getRouter().pushUrl({
-              url: 'pages/pageOne' // 目标url
+              url: 'pages/routerToNavigation/router/PageOne' // 目标url
             }, router.RouterMode.Standard, (err) => {
               if (err) {
-                console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+                hilog.error(DOMAIN, TAG, 'page ON_SHOWN:' + `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
                 return;
               }
-              console.info('Invoke pushUrl succeeded.');
+              hilog.info( DOMAIN, TAG, 'Invoke pushUrl succeeded.');
             })
           })
+        // ···
       }
       .width('100%')
     }
@@ -63,8 +70,9 @@ struct Index {
 }
 ```
 
-```ts
-// pageOne.ets
+<!-- @[router_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/PageOne.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct pageOne {
@@ -95,11 +103,13 @@ struct pageOne {
 
 以下为Navigation导航页的示例。
 
-```ts
+<!-- @[nav_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 @Entry
 @Component
-struct Index {
+struct Index1 {
   pathStack: NavPathStack = new NavPathStack();
 
   build() {
@@ -110,25 +120,26 @@ struct Index {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.pushPathByName('pageOne', null);
+            this.pathStack.pushPathByName('navigation_pageOne', null);
           })
       }.width('100%').height('100%')
     }
-    .title("Navigation")
+    .title('Navigation')
     .mode(NavigationMode.Stack)
   }
 }
 ```
 以下为Navigation子页的示例。
 
-```ts
-// PageOne.ets
+<!-- @[nav_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/PageOne.ets) -->
 
+``` TypeScript
 @Builder
 export function PageOneBuilder() {
   PageOne();
 }
 
+@Entry
 @Component
 export struct PageOne {
   pathStack: NavPathStack = new NavPathStack();
@@ -136,7 +147,8 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        Button('回到首页', { stateEffect: true, type: ButtonType.Capsule })
+        // $r('app.string.routerToNavigation_nav_text1_backHome')需要替换为开发者所需的资源文件
+        Button($r('app.string.routerToNavigation_nav_text1_backHome'), { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
@@ -175,15 +187,17 @@ export struct PageOne {
 
 Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](../reference/apis-arkui/arkts-apis-uicontext-router.md)对象。
 
-```ts
+<!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->
+
+``` TypeScript
 // push page
-router.pushUrl({ url:"pages/pageOne", params: null });
+this.getUIContext().getRouter().pushUrl({ url:'pages/pageOne', params: null });
 
 // pop page
-this.getUIContext().getRouter().back({ url: "pages/pageOne" });
+this.getUIContext().getRouter().back({ url: 'pages/pageOne' });
 
 // replace page
-router.replaceUrl({ url: "pages/pageOne" });
+this.getUIContext().getRouter().replaceUrl({ url: 'pages/pageOne' });
 
 // clear all page
 this.getUIContext().getRouter().clear();
@@ -197,7 +211,9 @@ let pageState = this.getUIContext().getRouter().getState();
 
 Navigation通过导航控制器对象[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法来操作页面，需要创建一个栈对象并传入Navigation中。
 
-```ts
+<!-- @[nav_stack_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
@@ -208,12 +224,15 @@ struct Index {
     Navigation(this.pathStack) {
       // ...
     }.width('100%').height('100%')
-    .title("Navigation")
+    .title('Navigation， Navigation')
     .mode(NavigationMode.Stack)
   }
 }
+```
+<!-- @[nav_stack_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/PathStack.ets) -->
 
-
+``` TypeScript
+this.pathStack.pop();
 // push page
 this.pathStack.pushPath({ name: 'pageOne' });
 
@@ -232,7 +251,7 @@ this.pathStack.clear();
 let size: number = this.pathStack.size();
 
 // 删除栈中name为PageOne的所有页面
-this.pathStack.removeByName("pageOne");
+this.pathStack.removeByName('pageOne');
 
 // 删除指定索引的页面
 this.pathStack.removeByIndexes([1, 3, 5]);
@@ -244,10 +263,10 @@ this.pathStack.getAllPathName();
 this.pathStack.getParamByIndex(1);
 
 // 获取PageOne页面的参数
-this.pathStack.getParamByName("pageOne");
+this.pathStack.getParamByName('pageOne');
 
 // 获取PageOne页面的索引集合
-this.pathStack.getIndexByName("pageOne");
+this.pathStack.getIndexByName('pageOne');
 // ...
 ```
 
@@ -255,19 +274,21 @@ Router作为全局通用模块，可以在任意页面中调用，Navigation作�
 
 **方式一**：通过`@Provide`和`@Consume`传递给子页面（有耦合，不推荐）。
 
-```ts
+<!-- @[router_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router1.ets) -->
+
+``` TypeScript
 // Navigation根容器
 @Entry
 @Component
 struct Index {
   // Navigation创建一个Provide修饰的NavPathStack
- @Provide('pathStack') pathStack: NavPathStack = new NavPathStack();
+  @Provide('pathStack') pathStack: NavPathStack = new NavPathStack();
 
   build() {
     Navigation(this.pathStack) {
-        // ...
+      // ...
     }
-    .title("Navigation")
+    .title('Method 1: Navigation')
     .mode(NavigationMode.Stack)
   }
 }
@@ -282,14 +303,17 @@ export struct PageOne {
     NavDestination() {
       // ...
     }
-    .title("PageOne")
+    .title('PageOne')
   }
 }
 ```
 
 **方式二**：子页面通过`OnReady`回调获取。
 
-```ts
+<!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
+
+``` TypeScript
+@Entry
 @Component
 export struct PageOne {
   pathStack: NavPathStack = new NavPathStack();
@@ -297,7 +321,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       // ...
-    }.title('PageOne')
+    }.title('Method 2: PageOne')
     .onReady((context: NavDestinationContext) => {
       this.pathStack = context.pathStack;
     })
@@ -307,7 +331,9 @@ export struct PageOne {
 
 **方式三**： 通过全局的`AppStorage`接口设置获取。
 
-```ts
+<!-- @[router_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router3.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
@@ -315,13 +341,13 @@ struct Index {
 
   // 全局设置一个NavPathStack
   aboutToAppear(): void {
-     AppStorage.setOrCreate("PathStack", this.pathStack);
-   }
+    AppStorage.setOrCreate('PathStack', this.pathStack);
+  }
 
   build() {
     Navigation(this.pathStack) {
       // ...
-    }.title("Navigation")
+    }.title('Method 3: AppStorage')
     .mode(NavigationMode.Stack)
   }
 }
@@ -330,21 +356,24 @@ struct Index {
 @Component
 export struct PageOne {
   // 子页面中获取全局的NavPathStack
-  pathStack: NavPathStack = AppStorage.get("PathStack") as NavPathStack;
+  pathStack: NavPathStack = AppStorage.get('PathStack') as NavPathStack;
 
   build() {
     NavDestination() {
       // ...
     }
-    .title("PageOne")
+    .title('PageOne')
   }
 }
 ```
 
 **方式四**：通过自定义组件查询接口获取，参考[queryNavigationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavigationinfo12)。
 
-```ts
+<!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) -->
+
+``` TypeScript
 // 子页面中的自定义组件
+@Entry
 @Component
 struct CustomNode {
   pathStack: NavPathStack = new NavPathStack();
@@ -352,12 +381,14 @@ struct CustomNode {
   aboutToAppear() {
     // query navigation info
     let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
-    this.pathStack = navigationInfo.pathStack;
+    if (navigationInfo !=  undefined) {
+      this.pathStack = navigationInfo.pathStack ;
+    }
   }
 
   build() {
     Row() {
-      Button('跳转到PageTwo')
+      Button('Method 4: queryNavigationInfo')
         .onClick(() => {
           this.pathStack.pushPath({ name: 'pageTwo' });
         })
@@ -380,20 +411,22 @@ struct CustomNode {
 
 Router页面[生命周期](arkts-routing.md#生命周期)为`@Entry`页面中的通用方法，主要有如下四个生命周期：
 
-```ts
+<!-- @[life_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Comm.ets) -->
+
+``` TypeScript
 // 页面创建后挂树的回调
 aboutToAppear(): void {
 }
 
-// 页面销毁前下树的回调  
+// 页面销毁前下树的回调
 aboutToDisappear(): void {
 }
 
-// 页面显示时的回调  
+// 页面显示时的回调
 onPageShow(): void {
 }
 
-// 页面隐藏时的回调  
+// 页面隐藏时的回调
 onPageHide(): void {
 }
 ```
@@ -405,7 +438,10 @@ onPageHide(): void {
 Navigation作为路由容器，其生命周期承载在NavDestination组件上，以组件事件的形式开放。
 具体生命周期描述请参考Navigation[页面生命周期](arkts-navigation-navigation.md#页面生命周期)。
 
-```ts
+<!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Index.ets) -->
+
+``` TypeScript
+@Entry
 @Component
 struct PageOne {
   aboutToDisappear() {
@@ -459,7 +495,9 @@ Router可以通过命名路由的方式实现跨包跳转。
 
 1. 在想要跳转到的共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)页面里，给@Entry修饰的自定义组件[EntryOptions](../ui/state-management/arkts-create-custom-components.md#entry)命名。
 
-   ```ts
+   <!-- @[router_hsp11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp11.ets) -->
+   
+   ``` TypeScript
    // library/src/main/ets/pages/Index.ets
    // library为新建共享包自定义的名字
    @Entry({ routeName: 'myPage' })
@@ -481,10 +519,14 @@ Router可以通过命名路由的方式实现跨包跳转。
 
 2. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
 
-   ```ts
-   import { router } from '@kit.ArkUI';
+   <!-- @[router_hsp12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets) -->
+   
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import('library/src/main/ets/pages/Index');  // 引入共享包中的命名路由页面
+   import('library/src/main/ets/pages/routerToNavigation/router/Index');  // 引入共享包中的命名路由页面
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0xF811;
+   const TAG = '[Sample_ArkTSRouter]';
    
    @Entry
    @Component
@@ -510,7 +552,7 @@ Router可以通过命名路由的方式实现跨包跳转。
              } catch (err) {
                let message = (err as BusinessError).message
                let code = (err as BusinessError).code
-               console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
+               hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
              }
            })
        }
@@ -524,12 +566,14 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 1. 从HSP（HAR）中完成自定义组件（需要跳转的目标页面）开发，将自定义组件申明为export。
 
-   ```ts
+   <!-- @[router_hsp21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp21.ets) -->
+   
+   ``` TypeScript
    @Component
    export struct PageInHSP {
      build() {
        NavDestination() {
-           // ...
+         // ...
        }
      }
    }
@@ -537,39 +581,43 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 2. 在HSP（HAR）的Index.ets中导出组件。
 
-   ```ts
-   export { PageInHSP } from "./src/main/ets/pages/PageInHSP"
+   <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
+   
+   ``` TypeScript
+   export { PageInHSP } from './src/main/ets/pages/PageInHSP'
    ```
 
 3. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
 
-   ```
+   <!-- @[router_hsp23](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp23.ets) -->
+   
+   ``` TypeScript
    // 1.导入跨包的路由页面
    import { PageInHSP } from 'library/src/main/ets/pages/PageInHSP'
    
    @Entry
    @Component
    struct mainPage {
-    pageStack: NavPathStack = new NavPathStack();
+     pageStack: NavPathStack = new NavPathStack();
    
-    @Builder pageMap(name: string) {
-      if (name === 'PageInHSP') {
-   	    // 2.定义路由映射表
-   	    PageInHSP();
-      }
-    }
-
-    build() {
-      Navigation(this.pageStack) {
-        Button("Push HSP Page")
-          .onClick(() => {
-            // 3.跳转到Hsp中的页面
-            this.pageStack.pushPath({ name: "PageInHSP" });
-          })
-      }
-      .mode(NavigationMode.Stack)
-      .navDestination(this.pageMap)
-    }
+     @Builder pageMap(name: string) {
+       if (name === 'PageInHSP') {
+         // 2.定义路由映射表
+         PageInHSP();
+       }
+     }
+   
+     build() {
+       Navigation(this.pageStack) {
+         Button('Push HSP Page')
+           .onClick(() => {
+             // 3.跳转到Hsp中的页面
+             this.pageStack.pushPath({ name: 'PageInHSP' });
+           })
+       }
+       .mode(NavigationMode.Stack)
+       .navDestination(this.pageMap)
+     }
    }
    ```
 
@@ -616,11 +664,16 @@ Navigation作为路由组件，默认支持跨包跳转。
 Router可以通过observer实现注册监听，接口定义请参考Router无感监听[observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
 
 
-```ts
-import { uiObserver } from '@kit.ArkUI';
+<!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
+
+``` TypeScript
+import { UIContext, uiObserver } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 function callbackFunc(info: uiObserver.RouterPageInfo) {
-    console.info("RouterPageInfo is : " + JSON.stringify(info));
+  hilog.info(DOMAIN, TAG,'RouterPageInfo is : ' + JSON.stringify(info));
 }
 
 // used in ability context.
@@ -634,12 +687,16 @@ uiObserver.on('routerPageUpdate', this.getUIContext(), callbackFunc);
 
 Navigation同样可以通过在observer中实现注册监听。
 
-```ts
+<!-- @[observer_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Index.ets) -->
+
+``` TypeScript
 // EntryAbility.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIObserver, window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
-
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -653,11 +710,11 @@ export default class EntryAbility extends UIAbility {
       // 获取UIObserver实例。
       let uiObserver : UIObserver = uiContext.getUIObserver();
       // 注册DevNavigation的状态监听.
-      uiObserver.on("navDestinationUpdate",(info) => {
+      uiObserver.on('navDestinationUpdate',(info) => {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
         if (info.state == 0) {
           // NavDestination组件显示时操作
-          console.info('page ON_SHOWN:' + info.name.toString());
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
         }
       })
     })
@@ -680,7 +737,9 @@ Router可以通过[queryRouterPageInfo](../reference/apis-arkui/arkui-ts/ts-cust
 | state                | RouterPageState             | 是   | routerPage页面的状态。           |
 | pageId<sup>12+</sup> | string                      | 是   | routerPage页面的唯一标识。       |
 
-```ts
+<!-- @[observer_pageinfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/PageInfo.ets) -->
+
+``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
 
 // 页面内的自定义组件
@@ -707,8 +766,13 @@ Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkui
 | param<sup>12+<sup>            | Object              | 否   | NavDestination组件的参数。                   |
 | navDestinationId<sup>12+<sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
 
-```ts
+<!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
+
+``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 @Component
 export struct NavDestinationExample {
@@ -725,7 +789,7 @@ struct MyComponent {
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
   }
 
   build() {
@@ -733,6 +797,7 @@ struct MyComponent {
   }
 }
 ```
+
 
 ## 路由拦截
 

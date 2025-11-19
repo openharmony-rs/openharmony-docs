@@ -32,4 +32,4 @@
 
 后台使用音频资源时需要申请长时任务，不需要使用音频资源时需要及时释放长时任务和音频资源。
 长时任务使用指导：
-https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/task-management/continuous-task.md
+https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/task-management/continuous-task.md

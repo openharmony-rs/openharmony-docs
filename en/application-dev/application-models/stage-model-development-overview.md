@@ -57,7 +57,7 @@ The Demo.app application mainly implements the following features:
 
 **Runtime phase**: When the application is installed and running on the device, the system uses a set of application process and thread management mechanisms to ensure orderly operation. <!--Del-->Additionally, a mission management mechanism is provided to manage mission creation, destruction, and foreground/background switching.<!--DelEnd-->
 
-- Process model: UIAbility components run in the main process by default, whereas FormExtensionAbility components run in separate processes. UIAbility and FormExtensionAbility components are process-isolated from each other.
+- Process model: In this example, UIAbility components run in the main process by default, whereas FormExtensionAbility components run in separate processes. UIAbility and FormExtensionAbility components are process-isolated from each other. For details, see [Process Model](process-model-stage.md).
 
 - Thread model: The stage model provides mechanisms such as Worker and TaskPool to support multithreaded development scenarios. If the application has complex, time-consuming logic to handle, it can create Worker threads to offload the processing.
 

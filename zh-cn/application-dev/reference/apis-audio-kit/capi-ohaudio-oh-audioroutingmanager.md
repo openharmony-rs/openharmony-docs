@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioRoutingManager OH_AudioRoutingManager
+```
+
 ## 概述
 
 声明音频路由管理器，用于路由和设备相关功能的音频路由管理器的句柄。

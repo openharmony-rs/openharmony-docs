@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct  {...} OH_Rdb_Config
+```
+
 ## 概述
 
 管理关系数据库配置。

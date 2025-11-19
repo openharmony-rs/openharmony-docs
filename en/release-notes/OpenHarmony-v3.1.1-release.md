@@ -50,7 +50,7 @@ The Contacts application allows third-party applications to invoke the system ca
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    
    ```
    git config --global user.name "yourname"
@@ -61,7 +61,7 @@ The Contacts application allows third-party applications to invoke the system ca
 4. Run the following commands to install the **repo** tool:
    
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -74,7 +74,7 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.1-Release --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.1-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -85,7 +85,7 @@ Use the **repo** tool to download the source code over HTTPS.
 
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.1-Release --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.1-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -142,7 +142,7 @@ This version does not involve API updates.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 ## Resolved Issues
 
@@ -150,9 +150,9 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.                                                    | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I4UUFR](https://gitee.com/openharmony/third_party_e2fsprogs/issues/I4UUFR) | Local image compilation and build may fail for the Hi3516 development board. |
+| [I4UUFR](https://gitcode.com/openharmony/third_party_e2fsprogs/issues/I4UUFR) | Local image compilation and build may fail for the Hi3516 development board. |
 | I4WDD3                                                       | [RK3568] A recorded video cannot be viewed.                  |
-| [I50EBB](https://gitee.com/openharmony/docs/issues/I50EBB)   | [Hi3516 burning] Images of the Hi3516 development board on a standard-system device cannot be burnt by using DevEco Device Tool. |
+| [I50EBB](https://gitcode.com/openharmony/docs/issues/I50EBB)   | [Hi3516 burning] Images of the Hi3516 development board on a standard-system device cannot be burnt by using DevEco Device Tool. |
 
 
 ## Known Issues
@@ -161,6 +161,6 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.                                                       | Description                                                  | Impact                                             | To Be Resolved By|
 | ------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------- | ------------ |
-| [I4Z3G9](https://gitee.com/openharmony/graphic_graphic_2d/issues/I4Z3G9) | [RK3568] Screen flickering occurs when the secondary window is opened in the immersive primary window.| Developer experience is affected.                                 | 2022-06-15   |
-| [I58GFY](https://gitee.com/openharmony/communication_wifi/issues/I58GFY) | [RK3568] On the 2.4 GHz and 5 GHz frequency bands, connections fail in WPA+TKIP/AES encryption mode.      | The TP-Link AX50 router cannot connect to the Wi-Fi network.         | 2022-06-30   |
-| [I59P32](https://gitee.com/openharmony/distributedhardware_device_manager/issues/I59P32) | [RK3568] After the trust period of a device expires, PIN authentication cannot be performed.             | This issue occurs when the timer waiting for the PIN code input times out. It can be resolved by restarting the device.| 2022-06-15   |
+| [I4Z3G9](https://gitcode.com/openharmony/graphic_graphic_2d/issues/I4Z3G9) | [RK3568] Screen flickering occurs when the secondary window is opened in the immersive primary window.| Developer experience is affected.                                 | 2022-06-15   |
+| [I58GFY](https://gitcode.com/openharmony/communication_wifi/issues/I58GFY) | [RK3568] On the 2.4 GHz and 5 GHz frequency bands, connections fail in WPA+TKIP/AES encryption mode.      | The TP-Link AX50 router cannot connect to the Wi-Fi network.         | 2022-06-30   |
+| [I59P32](https://gitcode.com/openharmony/distributedhardware_device_manager/issues/I59P32) | [RK3568] After the trust period of a device expires, PIN authentication cannot be performed.             | This issue occurs when the timer waiting for the PIN code input times out. It can be resolved by restarting the device.| 2022-06-15   |

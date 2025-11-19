@@ -112,7 +112,7 @@ struct Index {
             console.info("jsbObj is error");
         }
     })
-</script>>
+</script>
 </body>
 </html>
 ```
@@ -142,7 +142,7 @@ struct Index {
             console.info("jsbObj is error");
         }
     });
-</script>>
+</script>
 </body>
 </html>
 ```

@@ -74,7 +74,7 @@ deviceControl.resetFactory(wantTemp, (err) => {
     console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.log('Succeeded in resetting factory');
+  console.info('Succeeded in resetting factory');
 })
 ```
 

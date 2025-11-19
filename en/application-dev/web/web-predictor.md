@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 When the web page loads slowly, you can use the capabilities of pre-connection, preloading, and prefetching POST requests to accelerate the access to the web page.
 For details about how to optimize the web page loading performance, see [Performance Optimization for Web Page Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section128761465256).
@@ -43,9 +43,7 @@ struct WebComponent {
 }
 ```
 
-You can also use [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel in advance, and then call
-[prepareForPageLoad()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10) after the kernel is initialized. This method is applicable to preparsing and preconnecting of the home page.
- 
+You can also call [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel in advance. After the kernel is initialized, call [prepareForPageLoad()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10) to preparse or preconnect to the page to be loaded. This approach is suitable for preparsing and preconnecting to the home page.
 
   In the following example, the web kernel is initialized in advance and the home page is preconnected in **onCreate** of the UIAbility.
 
@@ -56,12 +54,12 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
+    console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
     // Replace 'https://www.example.com' with the actual URL to be accessed.
     webview.WebviewController.prepareForPageLoad("https://www.example.com/", true, 2);
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
@@ -182,7 +180,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
+    console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
     // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit.
     webview.WebviewController.prefetchResource(
@@ -197,12 +195,12 @@ export default class EntryAbility extends UIAbility {
       },],
       "KeyX", 500);
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
 
-## Precompiling for the Compilation Cache
+## Precompiling to Generate Compilation Caches
 
 You can use [precompileJavaScript()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#precompilejavascript12) to generate the compilation cache of the script file before page loading.
 

@@ -349,6 +349,9 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 | REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. You must declare the ohos.permission.INTERNET permission.|
 | REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.|
 | REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.|
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. If this capability is enabled, the system continues to check the revocation status of the intermediate certificate if the OCSP or CRL check of the leaf certificate fails. It is disabled by default.|
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this capability is enabled, the system checks the revocation status of the leaf certificate based on the local CRL. It is disabled by default.|
+
 
 ## ValidationPolicyType<sup>12+</sup>
 
@@ -475,17 +478,76 @@ Represents the configuration for parsing .p12 files.
 | needsCert    | boolean                                           | No  | Yes  |Whether to obtain the certificate. The default value is **true**. **true**: yes; **false**: no.|
 | needsOtherCerts  | boolean                                       | No  | Yes  |Whether to obtain other certificates. The default value is **false**. **true**: yes; **false**: no.|
 
-## CmsContentType<sup>18+</sup>
+## PbesEncryptionAlgorithm<sup>21+</sup>
 
-Enumerates the Cryptographic Message Syntax (CMS) message types.
+Enumerates password-based encryption scheme (PBES) algorithms.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name      | Value  | Description         |
+| ----------| -------- | ---------------|
+| AES_128_CBC | 0 | AES-128-CBC.|
+| AES_192_CBC | 1 | AES-192-CBC.|
+| AES_256_CBC | 2 | AES-256-CBC.|
+
+## PbesParams<sup>21+</sup>
+
+Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name        | Type                                             |    Read-Only  | Optional| Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
+| saltLen      | number                                            | No  | Yes  |Length of the salt value. The default value is **16**, and the minimum value is **8**.|
+| iterations | number                                          | No  | Yes  |Number of iterations. The default value is **2048**.                      |
+| encryptionAlgorithm    | [PbesEncryptionAlgorithm](#pbesencryptionalgorithm21)                 | No  | Yes  |PBES algorithm type. The default value is **AES_256_CBC**.       |
+
+## Pkcs12MacDigestAlgorithm<sup>21+</sup>
+
+Enumerates the PKCS #12 MAC digest algorithms.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| SIGNED_DATA | 0 | Signature data.|
+| SHA256 | 0 | SHA-256.|
+| SHA384 | 1 | SHA-384.|
+| SHA512 | 2 | SHA-512.|
+
+## Pkcs12CreationConfig<sup>21+</sup>
+
+Represents the configuration for creating .p12 files.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name        | Type                                             |    Read-Only  | Optional| Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
+| password     | string                                            | No  | No  |Password of the .p12 file. The minimum length is 4.            |
+| keyEncParams | [PbesParams](#pbesparams21)                       | No  | Yes  |Algorithm parameters for encrypting the private key.                      |
+| encryptCert  | boolean                                           | No  | Yes  |Whether to encrypt the certificate. The default value is **true**. **true** means to encrypt the certificate; **false** otherwise.|
+| certEncParams | [PbesParams](#pbesparams21)                      | No  | Yes  |Algorithm parameters for encrypting the certificate.|
+| macSaltLen   | number                                            | No  | Yes  |Length of the salt value of the P12 MAC. The minimum value is **8**, and the default value is **16**.|
+| macIterations | number                                           | No  | Yes  |Number of P12 MAC iterations. The default value is **2048**.|
+| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | No  | Yes  |Enumerates the P12 MAC digest algorithms. The default value is **SHA256**.|
+
+## CmsContentType<sup>18+</sup>
+
+Enumerates the Cryptographic Message Syntax (CMS) message types.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name                                 | Value  | Description                         |
+| --------------------------------------| -------- | -----------------------------|
+| SIGNED_DATA | 0 | Signature data.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | Encapsulated data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## CmsContentDataFormat<sup>18+</sup>
 
@@ -513,6 +575,63 @@ Enumerates the CMS signature formats.
 | PEM  | 0   | PEM.     |
 | DER  | 1   | DER.     |
 
+## CmsRsaSignaturePadding<sup>22+</sup>
+
+Enumerates the RSA CMS signature padding modes.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name              | Value| Description               |
+|--------------------|----|---------------------|
+| PKCS1_PADDING      | 0  | PKCS #1 padding mode.    |
+| PKCS1_PSS_PADDING  | 1  | PKCS #1 PSS padding mode.|
+
+## CmsKeyAgreeRecipientDigestAlgorithm<sup>22+</sup>
+
+Enumerates the digest algorithms of the CMS KeyAgree type.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name              | Value| Description               |
+|--------------------|----|---------------------|
+| SHA256      | 0  | SHA-256.    |
+| SHA384      | 1  | SHA-384.    |
+| SHA512      | 2  | SHA-512.    |
+
+## CmsRecipientEncryptionAlgorithm<sup>22+</sup>
+
+Enumerates the symmetric algorithms of the CMS recipient.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name              | Value| Description               |
+|--------------------|----|---------------------|
+| AES_128_CBC      | 0  | AES_128_CBC.    |
+| AES_192_CBC      | 1  | AES_192_CBC.    |
+| AES_256_CBC      | 2  | AES_256_CBC.    |
+| AES_128_GCM      | 3  | AES_128_GCM.    |
+| AES_192_GCM      | 4  | AES_192_GCM.    |
+| AES_256_GCM      | 5  | AES_256_GCM.    |
+
+## CmsCertType<sup>22+</sup>
+
+Enumerates certificate types obtained from CMS.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name              | Value| Description               |
+|--------------------|----|---------------------|
+| SIGNER_CERTS      | 0  | Signer certificates.    |
+| ALL_CERTS         | 1  | All certificates.    |
+
 ## PrivateKeyInfo<sup>18+</sup>
 
 Represents the private key information.
@@ -530,16 +649,55 @@ Represents the private key information.
 
 Represents the configuration of the CMS signer.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.Security.Cert
 
 | Name        | Type                                                 |  Read-Only |  Optional |Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.                |
-| addCert               | boolean            | No  | Yes |Whether to add a certificate. The default value is **true**. **true**: yes; **false**: no.                            |
-| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. The default value is **true**. **true**: yes; **false**: no.          |
-| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the SMIME capability to the CMS object. The default value is **true**. **true**: yes; **false**: no.           |
+| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.               |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | No | Yes |Padding mode for an RSA signature. The default value is **PKCS1_PADDING**.<br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.<br> **Note**: This parameter is valid only when the private key type of the signature is RSA.<br> **Atomic service API**: This API can be used in atomic services since API version 22.            |
+| addCert               | boolean            | No  | Yes |Whether to add a certificate. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.                           |
+| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.          |
+| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the SMIME capability to the CMS object. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.           |
+
+## CmsKeyTransRecipientInfo<sup>22+</sup>
+
+Represents KeyTrans recipient information encapsulated in CMS data.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name                 | Type                         | Read-Only| Optional|Description         |
+| --------------------- | ----------------------------- | ---- | ---- |------------- |
+| cert     | [X509Cert](#x509cert)              | No  | No  |RSA certificate.  |
+
+## CmsKeyAgreeRecipientInfo<sup>22+</sup>
+
+Represents KeyAgree recipient information encapsulated in CMS data.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name                 | Type                         | Read-Only| Optional|Description            |
+| --------------------- | ----------------------------- | ---- | ---- |--------------- |
+| cert     | [X509Cert](#x509cert)               | No  | No  |EC certificate.  |
+| digestAlgorithm             | [CmsKeyAgreeRecipientDigestAlgorithm](#cmskeyagreerecipientdigestalgorithm22)                          | No  |Yes  | KDF digest algorithm. The default value is **SHA256**.        |
+
+## CmsRecipientInfo<sup>22+</sup>
+
+Represents recipient information encapsulated in CMS data.
+
+**Note**: At least one recipient needs to be set.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name                 | Type                         | Read-Only| Optional|Description                                                  |
+| --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
+| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | No  | Yes  |KeyTrans recipient information.  |
+| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | No  |Yes  | keyAgree recipient information.        |
 
 ## CmsGeneratorOptions<sup>18+</sup>
 
@@ -554,6 +712,36 @@ Represents the configuration for generating the CMS signing result.
 | contentDataFormat     | [CmsContentDataFormat](#cmscontentdataformat18)               | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 | outFormat             | [CmsFormat](#cmsformat18)                          | No  |Yes  | Format of the CMS data generated. The default value is **DER**.        |
 | isDetached     | boolean                            | No  |Yes  | Whether the final CMS data does not contain the raw data. The default value is **false**. **true**: raw data is contained; **false**: raw data is not contained.        |
+
+## CmsVerificationConfig<sup>22+</sup>
+
+Represents CMS verification configuration.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name                 | Type                         | Read-Only| Optional|Description                                                  |
+| --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
+| trustCerts        |Array\<[X509Cert](#x509cert)>                        | No  | No  |Trust certificate.  |
+| signerCerts       |Array\<[X509Cert](#x509cert)>                        | No  | Yes  |Signing certificate. This parameter is left empty by default.        |
+| contentData       |Uint8Array                                           | No  | Yes  |Content data. If the detached mode is used, you need to specify the plaintext data. This parameter can be left empty in attached mode.  |
+| contentDataFormat | [CmsContentDataFormat](#cmscontentdataformat18)     | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
+
+## CmsEnvelopedDecryptionConfig<sup>22+</sup>
+
+Represents CMS decapsulation configuration.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+| Name                    | Type                         | Read-Only| Optional|Description                                                  |
+| -----------------------  | ----------------------------- | ---- | ---- |------------------------------------------------------ |
+| keyInfo                  |[PrivateKeyInfo](#privatekeyinfo18)             | No  | Yes  |Private key parameter. This parameter is left empty by default.  |
+| cert                     |[X509Cert](#x509cert)                           | No  | Yes  |Public key certificate. This parameter is left empty by default. |
+| encryptedContentData     |Uint8Array                                       | No  | Yes  |Encrypted content data. If the CMS does not contain content data, you can specify the data. This parameter is left empty by default.  |
+| contentDataFormat        |[CmsContentDataFormat](#cmscontentdataformat18)  | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 
 ## cert.createX509Cert
 
@@ -2018,13 +2206,28 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // Certificate binary data, which needs to match your case.
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
+  'MIIEETCCAs6gAwIBAgIUKRqK4hH6D1p3NSuChKOwHnIVx74wOAYJKoZIhvcNAQEK\n' +
+  'MCugDTALBglghkgBZQMEAgGhGjAYBgkqhkiG9w0BAQgwCwYJYIZIAWUDBAIBMG0x\n' +
+  'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDAR0ZXN0MQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MRMwEQYJKoZI\n' +
+  'hvcNAQkBFgR0ZXN0MB4XDTI1MTAzMDAxNDAzMVoXDTI2MTAzMDAxNDAzMVowbTEL\n' +
+  'MAkGA1UEBhMCRU4xDTALBgNVBAgMBHRlc3QxDTALBgNVBAcMBHhpYW4xDTALBgNV\n' +
+  'BAoMBHRlc3QxDTALBgNVBAsMBHRlc3QxDTALBgNVBAMMBHRlc3QxEzARBgkqhkiG\n' +
+  '9w0BCQEWBHRlc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDaHZMj\n' +
+  'UCQm53hgVYQq+kbmgKOH4e+vrsoAeOaX8KEgCbJfwLVpF7lj3Ld2c52X31JxziJx\n' +
+  'D6rmGIk0Tp13/rNA/AZrmhbO/+PKKQiWQJpUbNI4A4scxELn9emLk8B3x76k8KGh\n' +
+  'E7Re0XgKxfbZXU4AOZ0+9sXAZrSOPc8hYEfpwkGl09EojRuqQ4uSzjN3ikasfkZx\n' +
+  'xM4twRPXiumC34+ep8Z1uxZy6MUClT2plNM8fAdfUwRY0lnKh2RjAJcK1lQBlPlW\n' +
+  'Qc7S0/ifFXxgh+sBt+4dq+pphm5R/i6MIMWZ0JUg6tUlh1iY3nLVMVz0Z+LT7JUS\n' +
+  '5ILjwwybwhtatFh5AgMBAAGjUzBRMB0GA1UdDgQWBBQM3AOhyH6sHP7CJAB/Z5Xy\n' +
+  '4VQxJzAfBgNVHSMEGDAWgBQM3AOhyH6sHP7CJAB/Z5Xy4VQxJzAPBgNVHRMBAf8E\n' +
+  'BTADAQH/MDgGCSqGSIb3DQEBCjAroA0wCwYJYIZIAWUDBAIBoRowGAYJKoZIhvcN\n' +
+  'AQEIMAsGCWCGSAFlAwQCAQOCAQEAXhXExMyEnkBs9c6syxL4H98b9VtatezhKsMY\n' +
+  'c4vTxw5D5IoN+SM+YS6wNKN1fh0fO8nZm7kHmB/KyxtdKja5cwGfhqwsY2NHOkK7\n' +
+  'X5jWkbS0hbGPjj0UZkYRfC63d76lEPqz/bvf5Lgsv+W/J3ZFFBCV4tiBVr1ubpEy\n' +
+  '/n+C1r2NMxOKfGOEdE8tPa5LiR85/MYFaaAvzHVX4irXsQmzXPJMaMWt2DJAAze3\n' +
+  'ro0L1Hcd3VKyh5fYowA6nCDpNkKtQnVG/102SOM8HBH7wMSMHpsDzZbTuWRNJ35J\n' +
+  'ach83y13Yx4Td+DVsZgNjl/7yeA+XdusunygAnqHqx2brCTaNw==\n' +
   '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
@@ -2090,14 +2293,24 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // Certificate binary data, which needs to match your case.
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDIjCCAgqgAwIBAgIUUb7sok900ODOxkyE1FzstJbKCSQwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAxNTQ0NFoX\n' +
+    'DTI2MTAzMDAxNTQ0NFowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv3+V/0Nl4rytCHNcb7PMpRbsxvOX\n' +
+    '8zxwfb+5McmJ8ZZj59My3oqF7YgFM1VgZjjwaz8HljXvoaxrUJWQEu6AYjIa5ywN\n' +
+    'duySyyNNgfbqiwUOVdUICh3WsEjvvxK+8f55L3xU0LybZxyEf0+31pc15SzCvTvv\n' +
+    'E0OC8n3bYr2Nn0mvwtMHIl0Dr6AZbP10B/KKk68oX9UYOlsp4y0GTEXVDt/9bScx\n' +
+    'PV2WvaKPWcrQoJVz1ys2RtyUgcwPiWugQdx54xHG6zIAMYptKxDaHgsOEtUR4J1p\n' +
+    'xP1Ih7fY2wFZkeyRZG05ivYVqSHzHQV9Z42i+KjzfJUsMQt9TosuSsDi1wIDAQAB\n' +
+    'o2AwXjAdBgNVHQ4EFgQUKF6T271JCNpwjwyCSzTSN66T95EwHwYDVR0jBBgwFoAU\n' +
+    'KF6T271JCNpwjwyCSzTSN66T95EwDwYDVR0TAQH/BAUwAwEB/zALBgNVHQ8EBAMC\n' +
+    'BaAwDQYJKoZIhvcNAQELBQADggEBACa9A6d/cdFb7h8EMmjs0l+3aIAI10EskgRT\n' +
+    '+WHZ8zi+Q94/WEsOJW8CXIquJ2SxjXvl/A4UgrnfQyN+4kgEg7hLyuugg1QTk0so\n' +
+    'Kj6tlG82Oxr/gjzxf3MMFhkzLpi2nUYu66HnskzAfI1XLuLz995qY0hCj9r2gUiX\n' +
+    '6GR0H4p9pO5h9Fx7pbyosr2sn/JZbo9j6fWSuuvqoedjEuIb8aRmB6kbUkjhh/Iz\n' +
+    '5htY+aYZz0pRSm2F93WLy6HBhPNdAmWOCpNXrynsRXDgCPKqeIasba8MBjXTsqvI\n' +
+    'mgbc4MCLhLciWi34u9NpkAGbkwYVLE6URw/o373mD9fqe214Jdw=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2163,14 +2376,25 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // Certificate binary data, which needs to match your case.
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDNDCCAhygAwIBAgIUJBLt/gmdgnDAq21wWU4R7rzgE5cwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyMzMxOVoX\n' +
+    'DTI2MTAzMDAyMzMxOVowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0p3wb2jK23w+mihsah0w4wRaJ1TC\n' +
+    'YC20ODjSHyyCL75XfR6n87DdXvb15a71hkD/1cdgDRxIO91hNu04Ru4MFL0CqgTM\n' +
+    'ERSwZZGVo9DzJSG5q22FgbIFPi+XpTPtKk7mOCggPsfIrV1G0OH9zTREWoZ2/fJD\n' +
+    'Pj0MiaPlYtS4Jolu0qDnRZjgP8yVdaV4Upvni1PNX60rZfhf5YC4yvkMmpnyoUOZ\n' +
+    'IS3I/QucXZaiwXAO4ziHjYXtlp2aeUnrWSoRs3sFrsIVGB9x0ZYjwCwiih9TqaBK\n' +
+    'SY1CKSQE5xjVP1uY5JwJ6A5N648J3JjGosYEsXT+WieJ4SGHafGa2DGd2wIDAQAB\n' +
+    'o3IwcDAdBgNVHQ4EFgQUDyuOK1aix/tBR3QViD7TYdrDUQEwHwYDVR0jBBgwFoAU\n' +
+    'DyuOK1aix/tBR3QViD7TYdrDUQEwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHSUEFjAU\n' +
+    'BggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAC0A7HqO/OL0\n' +
+    'Ve8HTUqM31hFxXYiqDum/gPiegXDA+9ixEP2Fjz8vmhe75FX5XOvCk0+FWRayoVw\n' +
+    'lc7TD7SfV/oHRZVY58H8+Qxe5Rf4xQfOBNpG81uz73gfq3zIbzfJXxWlUpnBs6Tf\n' +
+    'P44NZboLpgaA0eMI7NwZJyomZ98qOK3PmxBL9qATmDep2GM6VlOuapYh2fo8wFhY\n' +
+    'DSp2EmcbIN9F+RPNrP+BvM/x2ZBtBoSFLh8jQ+GnP6g26DL57JBuBemt00BuYLOg\n' +
+    'fF00YBUgwK9tIFfI5IAfrwEF8Y49XIzpXrHuMZZXbuESzQMBsAZAYqIgi2p5dAon\n' +
+    'gdg3C4I6QRY=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2297,14 +2521,25 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // Certificate binary data, which needs to match your case.
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIDRjCCAi6gAwIBAgIUU3RfsnV6Ur2a514YvAygbMvcjaowDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyNDIyM1oX\n' +
+    'DTI2MTAzMDAyNDIyM1owGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5yQDXUKnsNTPkqwVzCjtaE+Q8Tla\n' +
+    'Qod6tb0fo044DLrYFvly6W10sqfvqZpuEfUuyzh/cs7279SoP8FYjnrykcE3yxqu\n' +
+    '3N6vNn6iXm3CQnjlqBVB7ChTcoXv8GEwHNXcjNTaX3FZQW62WAYLLER4I9/ZwE/N\n' +
+    'iqf+rJu5O2eRzZ4AFappCLquFSp6Yw5yyhenhNFd026dBf58ggpUs0H9DThxS3N3\n' +
+    'GFUs6JDiOJpxjbv+p7ns9MsryqewB8i5TCJjMJkcCg+2YyKFKYDv3mC4eoV71MU0\n' +
+    'DVoy7sBhs1naTV7joM+wGSOLcW3ee6K9qCp8zXmqN1tRJOYxm/JkVvi5oQIDAQAB\n' +
+    'o4GDMIGAMB0GA1UdDgQWBBTXIqHf66clGd8UhAr2SJSaukwphDAfBgNVHSMEGDAW\n' +
+    'gBTXIqHf66clGd8UhAr2SJSaukwphDAPBgNVHRMBAf8EBTADAQH/MC0GA1UdEQQm\n' +
+    'MCSCC2V4YW1wbGUuY29tgg93d3cuZXhhbXBsZS5jb22HBH8AAAEwDQYJKoZIhvcN\n' +
+    'AQELBQADggEBABI/bnHX9xqw/3RfvEqXp/ocmI0Dm7XwQZ6MS9XlTgYVp9rPYFbz\n' +
+    'eS79q47nV1SMKc6LDeLoDcHT04aYGsKrA0O/9VVFhb50S1JBoa3HrEe0Q5WD4k48\n' +
+    'GUJE2CaaO+MG3P9ZF4P3qxvPZ1PLoHr2B2YkaIMapjlNDUyTGLyWwPEuJSraBiXj\n' +
+    'hnl1C9D5Y7ss8zuh4zzJl8MtU36kk19BbBglZVE0H7KDGGhqqvEbIFBNZmqy2vb3\n' +
+    '7xSbXJL0/SQV+nr2Qvv8DU4XZJliJKVJHr3GkrqXRSFVVZ0ADNpEdLxFT0IF1X/T\n' +
+    'JiAZrIdZPozWsjUVtQ4KVMJj+D7canRVuCg=\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -2374,14 +2609,23 @@ function stringToUint8Array(str: string): Uint8Array {
 
 // Certificate binary data, which needs to match your case.
 let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
+    'MIIC9zCCAd+gAwIBAgIUS3GIfzu10vWzw2RSLbxTxxMfz/wwDQYJKoZIhvcNAQEL\n' +
+    'BQAwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMB4XDTI1MTAzMDAyNDkzNFoX\n' +
+    'DTI2MTAzMDAyNDkzNFowGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290IENBMIIBIjAN\n' +
+    'BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvKGnKn9NZoFOzdffrCIE01dTCiIo\n' +
+    'XPweKanLs49ZaxpEJ48OCP4vs8qmedsW1pUMpe7kQQyRINZ5tvXyFbiBS1u4clN/\n' +
+    'nU+E8rhNMa+2LA2YOUH/fC1ikussXq+acqjEqRbM900QdkmPzJX3NcloGYwdVfAe\n' +
+    '3ENEXHaXvj1qrf6pF5mbdelnlp1TrjpnXT4sSQaKbFjZrNl+zTT4xbIxTHR0cB8S\n' +
+    'oOVc3jI57rtP6x0FcLWzE/LX1E8eUkCIHEapPjqsGzLNtJTJI8z9QLinFIRmjdSI\n' +
+    '0xS8Qj/QitrOswzjHie2fgaz1LZx76CZGExC5f6f3Em5hJx6rjYysmEZBQIDAQAB\n' +
+    'ozUwMzAxBgNVHRIEKjAogRJpc3N1ZXJAZXhhbXBsZS5jb22CEmlzc3Vlci5leGFt\n' +
+    'cGxlLmNvbTANBgkqhkiG9w0BAQsFAAOCAQEAI5UjPssP3VzV2m47ke2nytAsTt9Y\n' +
+    'DNYKhqM4qZVVaIj5BRmca1jJXnWAgV4uUbad92E7R8askfSuJkBVtLJD5kSMTQrK\n' +
+    '5vYPbZ/WSRKthSbMotcynz/vWjBh4XY7bmiZC71ZNBCq9ybWRNzv61D9N1CJOlr6\n' +
+    'W+1zCYq9dFDYf1nJ60qvkYHmzX3o0a1LHdiTHHvUZIIFXkJ50+NDIbruh8j8Lijk\n' +
+    'Eed63QMcrSfLuIIAgoPoWo8WK2+AmA3k3EoTRvci5Ck+HDlLULBhyCrp+QUvn6OR\n' +
+    'B7ZBoW+U/OIpNTI4rvsn3rcdkZAVcwRI0vV04IDB52jRzUArSi+08ggCiQ==\n' +
+    '-----END CERTIFICATE-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
@@ -10653,6 +10897,577 @@ function doTestParsePkcs12() {
 }
 ```
 
+## cert.parsePkcs12<sup>21+</sup>
+
+parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
+
+Parses a PKCS #12 file. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description                      |
+| -------- | -------------------- | ---- | -------------------------- |
+| data | Uint8Array | Yes| PKCS #12 file to parse, in DER format.|
+| password | string | Yes| PKCS #12 password.|
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| Promise\<[Pkcs12Data](#pkcs12data18)> | Promise used to return the certificate, private key, and other certificates parsed from the PKCS #12 file. The private key in the returned **Pkcs12Data** is encoded in PEM format.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message                                         |
+| -------- | ------------------------------------------------- |
+| 19020001 | memory malloc failed.                                     |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
+| 19030001 | crypto operation error.                           |
+| 19030008 | maybe wrong password.            |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+async function doTestParsePkcs12() {
+  try {
+    let p12_cert = new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
+      0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
+      0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
+      0x06, 0xa0, 0x82, 0x03, 0xa8, 0x30, 0x82, 0x03, 0xa4, 0x02, 0x01, 0x00, 0x30, 0x82, 0x03, 0x9d,
+      0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0x30, 0x1c, 0x06, 0x0a, 0x2a,
+      0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x06, 0x30, 0x0e, 0x04, 0x08, 0x7c, 0xd8, 0x60,
+      0x3a, 0x07, 0xfb, 0x87, 0x8b, 0x02, 0x02, 0x08, 0x00, 0x80, 0x82, 0x03, 0x70, 0x4d, 0x64, 0xbe,
+      0x82, 0xc2, 0x59, 0x58, 0x65, 0xf0, 0x37, 0x46, 0x4f, 0x6b, 0xfa, 0x43, 0x2e, 0x9d, 0xd9, 0x4f,
+      0xd3, 0x54, 0x71, 0x69, 0x6e, 0x03, 0xf8, 0xb8, 0xf9, 0x05, 0xa2, 0x70, 0xa8, 0x70, 0xfb, 0xe6,
+      0xda, 0x73, 0xdb, 0x4e, 0xdf, 0x72, 0xcd, 0xb6, 0x88, 0x81, 0xec, 0x3f, 0x8d, 0x7b, 0xdc, 0xa6,
+      0x62, 0xd3, 0xd1, 0xdc, 0xef, 0xb9, 0x76, 0xb5, 0xd3, 0xb3, 0xfb, 0x61, 0x50, 0xeb, 0x22, 0x9b,
+      0x72, 0x20, 0xb4, 0xe9, 0x7c, 0x5e, 0xaf, 0xa9, 0xb6, 0x40, 0x69, 0x70, 0xea, 0x79, 0x02, 0x1d,
+      0x66, 0x71, 0x62, 0x39, 0x31, 0xd3, 0x31, 0xb1, 0x6f, 0x2a, 0x2d, 0x13, 0x59, 0xe9, 0xb7, 0x98,
+      0xbe, 0x67, 0xfa, 0x5d, 0x6f, 0x8f, 0x7a, 0x43, 0x10, 0x5a, 0x3f, 0x13, 0xda, 0xb0, 0x94, 0x08,
+      0x82, 0xf4, 0x39, 0x1d, 0x42, 0x26, 0x4a, 0xbe, 0x13, 0xe9, 0x89, 0x55, 0x52, 0xa4, 0x16, 0x3d,
+      0x50, 0x83, 0x5c, 0xb9, 0x00, 0x5e, 0x03, 0x35, 0x65, 0x13, 0x1f, 0xd8, 0xf8, 0xeb, 0x28, 0xe5,
+      0x00, 0x09, 0x9a, 0x62, 0x65, 0xab, 0x28, 0x21, 0x2e, 0x55, 0x11, 0x77, 0x7e, 0x64, 0xae, 0x12,
+      0xc1, 0x5e, 0x85, 0xf2, 0xe7, 0xf7, 0x2b, 0x51, 0x46, 0xa6, 0xf8, 0x55, 0x2c, 0xc4, 0x0a, 0x80,
+      0x6a, 0xc2, 0xa8, 0xba, 0x94, 0xf8, 0xee, 0x18, 0xf7, 0x32, 0x50, 0x53, 0xcc, 0x1e, 0x53, 0x85,
+      0xeb, 0x0d, 0x1e, 0xec, 0xe2, 0xbb, 0xc2, 0xf3, 0xf7, 0x80, 0xfd, 0x81, 0x63, 0x8f, 0x87, 0x98,
+      0x09, 0x47, 0x72, 0xee, 0x2d, 0x5a, 0x18, 0x89, 0x6b, 0x95, 0xef, 0x52, 0xde, 0x4d, 0xf5, 0x48,
+      0x2a, 0x38, 0x6f, 0x4b, 0x98, 0x3c, 0x6d, 0x41, 0xdd, 0x1b, 0xfd, 0x65, 0x1b, 0x87, 0x8a, 0xcf,
+      0xec, 0x47, 0xe3, 0x7a, 0xa0, 0x56, 0xd9, 0x36, 0x36, 0xcb, 0x17, 0xaa, 0x1b, 0x24, 0x79, 0x96,
+      0xc6, 0x60, 0xd4, 0xe4, 0xa8, 0x59, 0x35, 0x5e, 0x4e, 0x00, 0xbf, 0x9a, 0xf5, 0x5c, 0x2a, 0xd7,
+      0xd7, 0x92, 0x98, 0x79, 0xad, 0x13, 0xda, 0xea, 0xde, 0xcd, 0x65, 0x81, 0x26, 0xbd, 0x55, 0x0f,
+      0xa4, 0x73, 0x54, 0x7b, 0x2f, 0x55, 0x2a, 0x2f, 0xb9, 0x2d, 0x6e, 0x04, 0xc8, 0x37, 0x5e, 0x93,
+      0x09, 0xa7, 0x7f, 0xb1, 0x6b, 0x4a, 0x9f, 0xea, 0x59, 0x19, 0x57, 0xd0, 0xc1, 0xa1, 0x6b, 0xaf,
+      0x27, 0x2b, 0xac, 0x81, 0xec, 0xcd, 0x2e, 0xa2, 0xa6, 0x08, 0x01, 0xfc, 0xa1, 0xbc, 0xc9, 0xdc,
+      0x97, 0xb9, 0x48, 0xa8, 0x65, 0x5d, 0x63, 0xdb, 0x5c, 0x7e, 0x55, 0xe7, 0x47, 0xf2, 0x74, 0x17,
+      0x67, 0xfe, 0x56, 0x20, 0x54, 0x65, 0x11, 0xdf, 0xec, 0x75, 0x70, 0x49, 0x59, 0xd1, 0xea, 0x6b,
+      0x8f, 0x39, 0xec, 0x5d, 0x81, 0x82, 0x9a, 0xec, 0xce, 0x6c, 0x0c, 0x32, 0x14, 0xbd, 0xef, 0xac,
+      0xae, 0x04, 0xd0, 0x75, 0x62, 0xf5, 0x82, 0x16, 0xd1, 0xa8, 0xfb, 0x22, 0x2a, 0xc2, 0xe7, 0x7a,
+      0x75, 0x08, 0x59, 0x99, 0x34, 0x3d, 0xd9, 0xd7, 0x66, 0xb8, 0xcd, 0xaa, 0xf4, 0x48, 0xcc, 0x21,
+      0x25, 0x83, 0xae, 0xad, 0x55, 0x0e, 0xff, 0x44, 0xf3, 0xcc, 0xd1, 0x89, 0x72, 0x0f, 0x9f, 0xe3,
+      0xe5, 0xc7, 0xd4, 0x53, 0x94, 0xd6, 0xfb, 0x35, 0xd5, 0xd8, 0x2f, 0xa7, 0x4b, 0xf9, 0x50, 0x15,
+      0x1e, 0x35, 0xfc, 0x3d, 0xca, 0xad, 0xb6, 0x49, 0x16, 0xee, 0xff, 0xd7, 0x8a, 0xcc, 0xf0, 0x96,
+      0x11, 0x97, 0x22, 0xf3, 0xf7, 0x7c, 0x7a, 0x50, 0x49, 0x12, 0x68, 0x6e, 0x0e, 0x62, 0x32, 0xc7,
+      0xe9, 0xc3, 0xa0, 0x1b, 0xfe, 0x29, 0x8c, 0x46, 0xc2, 0x7e, 0xe1, 0xea, 0xc3, 0xcb, 0x30, 0xaf,
+      0xe4, 0x60, 0xe5, 0xa5, 0xa5, 0xb8, 0xf4, 0x16, 0xfa, 0x19, 0xd0, 0x1c, 0x14, 0xce, 0xf9, 0xa8,
+      0x0b, 0x3f, 0x87, 0x89, 0xd3, 0xed, 0x9e, 0x16, 0x14, 0xbb, 0xd3, 0x64, 0xeb, 0x00, 0xe7, 0x48,
+      0x1f, 0xd4, 0x47, 0xbc, 0xa9, 0x6f, 0x03, 0xe0, 0x0e, 0xaf, 0xb9, 0xad, 0x05, 0xa0, 0x1d, 0xee,
+      0x0a, 0xcd, 0x0f, 0xd0, 0xb8, 0xf1, 0x35, 0x80, 0xa7, 0x72, 0xcd, 0x36, 0x8e, 0xce, 0x72, 0xf9,
+      0x9f, 0xd5, 0x29, 0xae, 0x02, 0xb7, 0xbe, 0x65, 0xff, 0x38, 0x45, 0xf8, 0x8d, 0x87, 0x2f, 0xf8,
+      0xdd, 0xc1, 0x72, 0x17, 0x2b, 0xdd, 0x3e, 0xfe, 0x01, 0xa0, 0x59, 0xb3, 0x19, 0x92, 0xf0, 0x59,
+      0xf5, 0x06, 0x77, 0x8b, 0x1a, 0x41, 0x1d, 0x8b, 0x80, 0x74, 0x95, 0x8b, 0x30, 0x03, 0x18, 0xdd,
+      0x1e, 0x1b, 0x21, 0x36, 0xdf, 0xde, 0xc3, 0xa2, 0x68, 0xe0, 0x3d, 0x94, 0x37, 0x6b, 0x48, 0xb2,
+      0xb9, 0x41, 0x53, 0xd6, 0x65, 0xef, 0x7a, 0x3d, 0xdc, 0x09, 0x17, 0x66, 0xb4, 0x05, 0x58, 0x8a,
+      0x5d, 0x2f, 0x40, 0x4a, 0x91, 0x8a, 0xa5, 0xb7, 0x29, 0xfb, 0x37, 0x81, 0x71, 0x77, 0x50, 0x8d,
+      0x34, 0x80, 0x7e, 0xab, 0xb9, 0xc8, 0xdc, 0xb7, 0x2c, 0x7e, 0xbc, 0xad, 0x7c, 0x14, 0x5c, 0xf6,
+      0x90, 0x88, 0x0e, 0x0d, 0x50, 0x7a, 0x4e, 0xa6, 0x85, 0xe4, 0x2a, 0xe7, 0x67, 0x21, 0x53, 0xbb,
+      0x73, 0xd5, 0x30, 0x78, 0xbd, 0x08, 0x2b, 0x42, 0x44, 0x3e, 0x5d, 0x2b, 0x2f, 0x09, 0x8e, 0x82,
+      0xc3, 0x5b, 0x9e, 0xd8, 0x20, 0xc6, 0xb7, 0x42, 0xe5, 0xb3, 0x60, 0x0b, 0x9b, 0x01, 0x76, 0x26,
+      0xf7, 0xc1, 0xf7, 0xe1, 0xd1, 0x46, 0xf7, 0x9c, 0x21, 0xfd, 0x66, 0xb7, 0x14, 0x1d, 0x89, 0xb5,
+      0xd3, 0xa1, 0x4e, 0x57, 0x97, 0xe7, 0xe4, 0x63, 0x96, 0xe2, 0x6f, 0x10, 0x6a, 0xb7, 0x8e, 0x83,
+      0x64, 0x22, 0x10, 0x02, 0x27, 0x87, 0x6d, 0xb6, 0x11, 0x51, 0xe9, 0xe6, 0x68, 0x1a, 0xc8, 0xd3,
+      0x6b, 0x23, 0x33, 0x68, 0x66, 0xab, 0x4d, 0xf9, 0x92, 0x11, 0x67, 0x9d, 0x24, 0xee, 0x18, 0xa8,
+      0x3c, 0x5a, 0xfe, 0x79, 0x76, 0x99, 0xeb, 0x9f, 0x19, 0x9d, 0x74, 0xee, 0x13, 0xd9, 0xb1, 0x7b,
+      0x4e, 0xcf, 0x30, 0x05, 0xdb, 0x5a, 0x3e, 0x00, 0x7e, 0x0a, 0xed, 0x6f, 0xaf, 0x0d, 0x1b, 0xf3,
+      0x61, 0x24, 0x06, 0xe7, 0xf2, 0x57, 0x72, 0xf8, 0x61, 0x4d, 0x5f, 0x00, 0x78, 0x1f, 0x4d, 0xc7,
+      0x28, 0x5e, 0xc4, 0x9b, 0xed, 0xac, 0x4f, 0x16, 0xaf, 0x81, 0x85, 0x33, 0x16, 0xbd, 0x6a, 0xb9,
+      0xb2, 0x8e, 0x25, 0xbc, 0xaf, 0xfd, 0xea, 0xb7, 0x20, 0x32, 0x15, 0x62, 0x77, 0x52, 0xa1, 0xf2,
+      0xd0, 0x9d, 0x12, 0x4c, 0x85, 0x71, 0x08, 0x03, 0xa7, 0x94, 0x34, 0xb4, 0x96, 0x30, 0x82, 0x05,
+      0x41, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x05, 0x32,
+      0x04, 0x82, 0x05, 0x2e, 0x30, 0x82, 0x05, 0x2a, 0x30, 0x82, 0x05, 0x26, 0x06, 0x0b, 0x2a, 0x86,
+      0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x0a, 0x01, 0x02, 0xa0, 0x82, 0x04, 0xee, 0x30, 0x82, 0x04,
+      0xea, 0x30, 0x1c, 0x06, 0x0a, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x0c, 0x01, 0x03, 0x30,
+      0x0e, 0x04, 0x08, 0x30, 0xee, 0xbd, 0x7c, 0xcb, 0xb5, 0xa5, 0x1b, 0x02, 0x02, 0x08, 0x00, 0x04,
+      0x82, 0x04, 0xc8, 0x1e, 0xd0, 0x7f, 0x7e, 0x86, 0x1c, 0x6f, 0x0e, 0xac, 0x6c, 0xe3, 0x35, 0xcb,
+      0xff, 0xe4, 0x84, 0x88, 0x97, 0x45, 0xf3, 0x48, 0xa9, 0x98, 0xeb, 0x74, 0x91, 0x53, 0x07, 0x7a,
+      0xe4, 0x78, 0x89, 0x13, 0xe7, 0xce, 0xa3, 0xc5, 0xab, 0x2c, 0x16, 0xe5, 0x02, 0x64, 0xc6, 0xb5,
+      0x11, 0x36, 0x69, 0x0b, 0x5f, 0x7e, 0x95, 0x27, 0x59, 0x9a, 0xac, 0x98, 0x12, 0x76, 0x39, 0x31,
+      0xaa, 0x4f, 0x22, 0x55, 0x21, 0x71, 0x20, 0xeb, 0x4e, 0x5e, 0x2d, 0xd8, 0xab, 0xd9, 0x64, 0x38,
+      0x13, 0x9a, 0x14, 0x48, 0x7f, 0x48, 0x05, 0xec, 0x49, 0x55, 0x80, 0x49, 0xaf, 0x4e, 0x29, 0xdf,
+      0x4a, 0xfb, 0xa1, 0x20, 0x2f, 0x98, 0x35, 0xf7, 0x8f, 0xb9, 0x41, 0x8b, 0x00, 0x14, 0x23, 0x9a,
+      0x43, 0xfe, 0x55, 0xfc, 0xe5, 0x57, 0x19, 0xa9, 0x74, 0x44, 0x1f, 0xdd, 0xc3, 0xc8, 0x9f, 0xfa,
+      0x9f, 0x67, 0x93, 0xed, 0x79, 0x11, 0xe1, 0x4e, 0xed, 0xd6, 0x20, 0x82, 0xc8, 0x85, 0xdf, 0x4e,
+      0xa0, 0xcd, 0xd8, 0x36, 0x37, 0x4f, 0x67, 0x9d, 0x84, 0x44, 0x14, 0xce, 0xc0, 0xc9, 0xa6, 0xbd,
+      0x73, 0x06, 0x27, 0xb7, 0x16, 0x97, 0x8c, 0x61, 0xd9, 0x63, 0xb2, 0x56, 0x8d, 0x28, 0x9e, 0x2e,
+      0xcf, 0xa3, 0xfe, 0x8d, 0xaa, 0xef, 0x69, 0x32, 0x7b, 0x32, 0xbe, 0xd5, 0x62, 0x2c, 0x2e, 0x7f,
+      0x72, 0xdb, 0x3c, 0x4b, 0xe4, 0x76, 0xa3, 0xa9, 0xa1, 0x67, 0x84, 0x86, 0xea, 0x14, 0x15, 0x6c,
+      0x74, 0xd2, 0xac, 0x0e, 0xe2, 0x54, 0x54, 0xd4, 0x31, 0xa3, 0x88, 0x66, 0x89, 0x31, 0x7b, 0xf7,
+      0x3c, 0x92, 0xce, 0x3e, 0x86, 0xfb, 0x57, 0xc8, 0x65, 0xae, 0x85, 0x6d, 0x48, 0xf6, 0xe6, 0x37,
+      0xeb, 0x77, 0xcf, 0x06, 0xd6, 0x9e, 0x54, 0xb4, 0xd8, 0x9a, 0x5f, 0xdd, 0xc5, 0xa5, 0x05, 0xa0,
+      0x4b, 0xd1, 0x54, 0xab, 0x4f, 0xd0, 0x3e, 0x6b, 0x8f, 0x03, 0x66, 0xd4, 0xe2, 0x90, 0xea, 0x2d,
+      0x9b, 0x6a, 0x2b, 0xc4, 0x7b, 0x9d, 0xf1, 0xb5, 0x22, 0xdf, 0x86, 0xc2, 0xfd, 0x13, 0x0a, 0x69,
+      0x29, 0x59, 0xe9, 0x45, 0xcd, 0xdf, 0xcd, 0xa5, 0x71, 0x7e, 0x70, 0xc3, 0x60, 0x9e, 0x47, 0x5d,
+      0xd4, 0x6c, 0xcc, 0x15, 0x51, 0x23, 0x5b, 0x4e, 0xee, 0x72, 0x80, 0x49, 0xd6, 0xac, 0x89, 0x16,
+      0x65, 0xf4, 0x95, 0x57, 0x19, 0x13, 0xab, 0x9c, 0x08, 0xe8, 0xdf, 0x0a, 0xe2, 0x39, 0xfc, 0xff,
+      0x42, 0x02, 0xac, 0xaf, 0xf1, 0xb6, 0x56, 0xef, 0x75, 0x60, 0x2f, 0xc2, 0x5d, 0xef, 0xf5, 0x79,
+      0xb5, 0x46, 0xa0, 0xb5, 0x03, 0x67, 0xef, 0x78, 0x3d, 0x49, 0xd0, 0xc5, 0x0e, 0xff, 0x42, 0x72,
+      0x02, 0x86, 0x99, 0x93, 0xaa, 0xa3, 0x9e, 0x2c, 0xc7, 0xec, 0xa2, 0xdf, 0x25, 0x4e, 0x28, 0x81,
+      0x82, 0x3e, 0x29, 0xd3, 0x37, 0xfd, 0x32, 0xf4, 0x85, 0x46, 0x42, 0xb9, 0x94, 0x44, 0x8a, 0xbf,
+      0xd9, 0x14, 0xcb, 0xb6, 0xd3, 0xc5, 0xe7, 0x6b, 0x28, 0x70, 0xc3, 0x9c, 0xc2, 0x93, 0x9d, 0x2f,
+      0xab, 0xd6, 0xb2, 0x19, 0x28, 0x9a, 0xda, 0x0d, 0x90, 0x5b, 0xba, 0x64, 0x6f, 0xcc, 0x11, 0xef,
+      0x6c, 0x88, 0x18, 0x4f, 0x86, 0x6e, 0xed, 0xcf, 0xde, 0x0d, 0xec, 0xe2, 0x12, 0xc3, 0x89, 0x0a,
+      0x3f, 0xbb, 0x3d, 0x8c, 0x8f, 0xa9, 0x40, 0xe6, 0xf8, 0xd1, 0x1a, 0x9a, 0x7e, 0x8a, 0xd7, 0x7b,
+      0x56, 0xf4, 0x5d, 0x80, 0x64, 0xd5, 0x88, 0x86, 0x85, 0x18, 0x30, 0x5d, 0x64, 0x04, 0xb3, 0xc2,
+      0xc7, 0x80, 0xda, 0x3e, 0xc4, 0xd6, 0xf6, 0xc4, 0x95, 0x56, 0xd5, 0xad, 0x82, 0x86, 0xcc, 0x1a,
+      0x05, 0x69, 0x06, 0x08, 0x5b, 0x19, 0xea, 0x10, 0xc5, 0xcd, 0x67, 0x93, 0xab, 0x0f, 0xe3, 0xba,
+      0xb0, 0x0d, 0xac, 0x99, 0x0d, 0x35, 0x6f, 0xe5, 0x41, 0xb2, 0x7c, 0x87, 0x91, 0x6c, 0xe2, 0x75,
+      0x9b, 0x64, 0x62, 0x06, 0x2a, 0x8b, 0xd9, 0x4d, 0x23, 0xcd, 0x2b, 0xef, 0xf5, 0x61, 0x82, 0x8e,
+      0x3f, 0xf6, 0x2b, 0xe1, 0x6f, 0xcf, 0xbd, 0xaa, 0x07, 0x97, 0x49, 0x4e, 0x02, 0x9d, 0xa5, 0x9e,
+      0xc5, 0xd7, 0x8b, 0xd3, 0xe1, 0xd9, 0x35, 0x96, 0x9d, 0x1f, 0xa2, 0xf6, 0x91, 0xee, 0xd1, 0x3b,
+      0xa8, 0xfe, 0x4d, 0xeb, 0xf9, 0xfc, 0xe4, 0xab, 0x60, 0xb7, 0x86, 0x9d, 0x2a, 0x35, 0xb0, 0x00,
+      0xd4, 0x3c, 0x2a, 0x7e, 0x6d, 0x65, 0x5f, 0xf3, 0x7c, 0x23, 0x57, 0x52, 0x2a, 0x8c, 0x5b, 0x36,
+      0x74, 0xb7, 0x61, 0x49, 0xf0, 0xdf, 0xcf, 0x8a, 0x28, 0xc5, 0x8d, 0xbc, 0x20, 0xcc, 0xac, 0x86,
+      0x20, 0xd8, 0x2d, 0x86, 0x99, 0xf5, 0xf0, 0xdb, 0xed, 0x8d, 0xf9, 0xd7, 0x4e, 0xa8, 0xde, 0x84,
+      0x35, 0x50, 0xc1, 0x7c, 0xbd, 0xdf, 0xc2, 0x24, 0x1a, 0x49, 0x24, 0x9a, 0x37, 0x93, 0xca, 0x2d,
+      0x73, 0x47, 0x8f, 0x83, 0xed, 0x4d, 0xca, 0xf8, 0xf0, 0xd3, 0x9b, 0xe0, 0x4b, 0x3b, 0xf1, 0x86,
+      0xeb, 0x78, 0x7b, 0x42, 0xa1, 0xb9, 0x36, 0x15, 0xde, 0x63, 0xab, 0x8b, 0x8b, 0x5d, 0xa2, 0x92,
+      0x10, 0x95, 0xdf, 0xda, 0xd7, 0xba, 0xa0, 0x26, 0xb9, 0xdc, 0x83, 0xeb, 0xdc, 0xd2, 0x1f, 0xf1,
+      0xb1, 0x8d, 0x21, 0x51, 0x71, 0x59, 0x0e, 0xe8, 0x7e, 0xf1, 0x53, 0x08, 0x98, 0x79, 0x05, 0x3b,
+      0x22, 0xf1, 0xda, 0x07, 0x0d, 0xf7, 0x89, 0x5e, 0xc4, 0x62, 0x8c, 0xf9, 0x19, 0xc8, 0xbc, 0xa4,
+      0x0c, 0x6f, 0x41, 0x34, 0x56, 0x22, 0x6b, 0xe6, 0xee, 0x7c, 0x4a, 0xd9, 0x26, 0x8c, 0x56, 0x12,
+      0xf3, 0x03, 0x12, 0x1c, 0x5b, 0x8d, 0x64, 0x5c, 0x1c, 0xb6, 0x0f, 0x93, 0xaf, 0xb1, 0x67, 0x6f,
+      0x13, 0xdd, 0xe3, 0xcf, 0x0e, 0xe6, 0x06, 0xf3, 0xb2, 0xbc, 0x99, 0xf5, 0xb0, 0xd7, 0xe9, 0x7e,
+      0xb0, 0x6a, 0xb9, 0xb5, 0xda, 0xcf, 0x88, 0xf1, 0xc5, 0x58, 0x54, 0x05, 0x5c, 0x9d, 0x79, 0xc2,
+      0xcd, 0xbb, 0xc6, 0xf2, 0x69, 0xa9, 0xe3, 0x4e, 0x05, 0x0d, 0x02, 0xb6, 0x4d, 0x8e, 0x7d, 0x60,
+      0x8e, 0xda, 0x4d, 0x28, 0xd2, 0xec, 0x8a, 0x11, 0xe3, 0xe7, 0x17, 0x20, 0x07, 0x7b, 0xfc, 0x9b,
+      0x4e, 0xf7, 0x79, 0xf5, 0x0a, 0x6e, 0xd1, 0x1e, 0x7b, 0x83, 0x66, 0x5e, 0x1b, 0x9d, 0x36, 0x32,
+      0x89, 0xf6, 0x72, 0xa5, 0x58, 0x54, 0x42, 0xba, 0x90, 0xf3, 0xbb, 0x05, 0x46, 0xa4, 0x91, 0x1c,
+      0xdb, 0xab, 0xf3, 0x68, 0x56, 0x7a, 0xd3, 0xff, 0x3f, 0x9f, 0xc5, 0x4a, 0x47, 0xbd, 0x89, 0x46,
+      0xf6, 0x94, 0x3a, 0x94, 0xd4, 0x30, 0xd3, 0xae, 0x0d, 0x99, 0x95, 0xf7, 0x75, 0xfe, 0x14, 0x10,
+      0x9e, 0xed, 0x21, 0x0f, 0x0d, 0x54, 0x7d, 0x54, 0xc5, 0x80, 0x21, 0x4d, 0xf2, 0xaf, 0x67, 0xaf,
+      0x8a, 0x76, 0x9e, 0x34, 0x32, 0x74, 0x89, 0x2a, 0x32, 0xf9, 0x48, 0x20, 0x90, 0xe6, 0x4a, 0xa3,
+      0x7f, 0xf2, 0x2a, 0x51, 0x22, 0x93, 0xe5, 0xdd, 0x59, 0xb3, 0x83, 0xa8, 0x47, 0xf5, 0x6b, 0x38,
+      0x24, 0xc2, 0xac, 0x2d, 0x03, 0xda, 0xb1, 0x17, 0x19, 0xe0, 0x38, 0x2c, 0xb3, 0xa6, 0x4c, 0x8e,
+      0xae, 0x63, 0xa7, 0xae, 0x96, 0xb1, 0x07, 0x8c, 0x8f, 0x6a, 0x08, 0x32, 0x15, 0x1f, 0x33, 0x97,
+      0x21, 0x3b, 0x51, 0x70, 0xc5, 0x1f, 0xa6, 0xa3, 0x8a, 0xd0, 0x8f, 0x0b, 0xda, 0x64, 0xab, 0xbe,
+      0xee, 0x4b, 0x14, 0xfd, 0x32, 0x87, 0x9e, 0xa7, 0x19, 0x75, 0xc9, 0xaa, 0xd3, 0xed, 0xa7, 0xa0,
+      0x01, 0xe7, 0xa0, 0xe5, 0x28, 0xdd, 0x3b, 0x7c, 0x49, 0xe4, 0x24, 0x7d, 0x92, 0x86, 0x25, 0x03,
+      0xb3, 0x66, 0x04, 0xf3, 0xa1, 0x40, 0x11, 0x35, 0x3a, 0x1d, 0xbf, 0x1c, 0x02, 0x83, 0x3d, 0x37,
+      0x51, 0x88, 0xa3, 0x2b, 0x10, 0x8c, 0x8e, 0x10, 0xdd, 0xdc, 0xef, 0xa4, 0xe9, 0x14, 0x77, 0xb6,
+      0x8e, 0x75, 0xb6, 0x8e, 0xea, 0xaa, 0x57, 0x16, 0x1f, 0xb0, 0x0c, 0xbc, 0x44, 0xed, 0x92, 0x94,
+      0x9a, 0xb4, 0xf3, 0x31, 0x64, 0x02, 0x5c, 0xa1, 0x51, 0x63, 0x39, 0x42, 0x74, 0x7a, 0x1d, 0xf2,
+      0xf5, 0x92, 0x50, 0xf1, 0x5a, 0x8a, 0xde, 0xb3, 0x4e, 0xf1, 0x6e, 0x67, 0xd9, 0x5b, 0x00, 0xa7,
+      0xd1, 0x90, 0x58, 0x36, 0xc4, 0x15, 0x80, 0xbb, 0xa5, 0xbb, 0x98, 0xc0, 0x8a, 0x9b, 0x17, 0x35,
+      0x36, 0x3b, 0x62, 0x0f, 0x29, 0xcd, 0xe9, 0x04, 0x0e, 0x9d, 0xca, 0x43, 0x04, 0xdf, 0x17, 0x49,
+      0xbf, 0xb6, 0x7a, 0x7a, 0x3c, 0xdb, 0x0d, 0x6d, 0xd5, 0x89, 0xb9, 0x69, 0x94, 0xd8, 0xb2, 0xd6,
+      0x38, 0x8a, 0xcc, 0x78, 0x44, 0x40, 0x63, 0x9f, 0x1e, 0x0e, 0x40, 0x33, 0x51, 0xd3, 0x65, 0xf8,
+      0xf1, 0x42, 0x06, 0x75, 0x84, 0xe7, 0xb1, 0xe9, 0xd6, 0xa4, 0x5e, 0x7f, 0xb0, 0x48, 0x6f, 0x80,
+      0x92, 0xf8, 0xfc, 0x2a, 0xdb, 0x18, 0x97, 0xe5, 0xe7, 0xc7, 0x46, 0xb6, 0x59, 0x8c, 0x3a, 0x09,
+      0x91, 0xc1, 0x49, 0x55, 0xf9, 0xf3, 0x87, 0x19, 0xdc, 0x72, 0x56, 0xd3, 0x20, 0x5e, 0xc5, 0x3d,
+      0xfb, 0x19, 0xea, 0x6a, 0xdf, 0x09, 0xb2, 0x8f, 0xb6, 0xdd, 0x26, 0x31, 0x25, 0x30, 0x23, 0x06,
+      0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x09, 0x15, 0x31, 0x16, 0x04, 0x14, 0x3b, 0xd2,
+      0xb3, 0x51, 0x4c, 0x57, 0xd0, 0xca, 0x34, 0xa4, 0xf0, 0x06, 0xdd, 0xe9, 0x76, 0x08, 0xdb, 0x7b,
+      0x3a, 0xb0, 0x30, 0x31, 0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02, 0x1a, 0x05,
+      0x00, 0x04, 0x14, 0x8e, 0x7f, 0x87, 0x67, 0x78, 0x64, 0x93, 0x36, 0x35, 0xe5, 0x93, 0x9d, 0xac,
+      0x61, 0x09, 0x4f, 0xdc, 0x95, 0xd7, 0x4f, 0x04, 0x08, 0x23, 0xc2, 0xc0, 0xc6, 0x8d, 0x5f, 0x70,
+      0x7e, 0x02, 0x02, 0x08, 0x00]);
+
+    let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12_cert, "123456");
+    console.info("parsePKCS12 succeed.");
+    if (p12.privateKey) {
+      console.info("privateKey:" + p12.privateKey.toString());
+    }
+    if (p12.cert) {
+      console.info("cert:" + p12.cert.toString());
+    }
+    if (p12.otherCerts && Array.isArray(p12.otherCerts)) {
+      console.info("otherCerts counts:", p12.otherCerts.length);
+      p12.otherCerts.forEach((cert, idx) => {
+        console.info(`otherCerts[${idx}]:\n${cert.toString()}`);
+      });
+    } else {
+      console.info("otherCerts is empty or not an array.");
+    }
+  } catch (err) {
+    console.error(`parsePKCS12 failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+## cert.createPkcs12<sup>21+</sup>
+
+createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Array>
+
+Creates PKCS #12 data. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description                      |
+| -------- | -------------------- | ---- | -------------------------- |
+| data | [Pkcs12Data](#pkcs12data18) | Yes| PKCS #12 data object to be packed.|
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the PKCS #12 file.|
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> | Promise used to return the result. PKCS #12 file created, in DER format.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message                                         |
+| -------- | ------------------------------------------------- |
+| 19020001 | memory malloc failed.                                     |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
+| 19030001 | crypto operation error.                           |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let priKey = '-----BEGIN PRIVATE KEY-----\n' +
+  'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
+  'RuRAWjXEvsfD20ekCYyeJvnnSrHwnKodbF8VWFSv4sqYzMnxObpDLyQw0Uu08tbn\n' +
+  'EQvxv0lOwnWkZR+Oc3M9Ow1uhDkm3eFbY5858mAmtY7Sqzhd0LS9k8Q57FRqOrQm\n' +
+  '7ngHb0O+yjCIn/zmjyEuw51/cPDTM4h3P3di9nhbIg+UOMfkDbuSKRD7UvVV/JZi\n' +
+  'BklF5ZrjFYgzYnWKv7N7XkYMGkaOx8+tue24eK06SapQWDLRnRPCVePV6xtoCmbN\n' +
+  'A3ib/Uvr0qvRwPDCzGGOW9JvQdrI6Z/GD9nt5hqHB15iJVNxkDQtugv14qeDsFPS\n' +
+  'IU8CtkCbAgMBAAECggEBAKbMmMlJhLCM5r+ZDJE/j55ujRLe6XwC1xP2keEeTdK9\n' +
+  '18aKLGR41BPsSH8JfAxh0m75lSvLjoVLRSQPUOZIfjXqUF/2hzzug5F2W8xKVovH\n' +
+  'o1uqHlp71nVZPrJK7Q9H7TH/SyP4uxK6UvkKzt0j34WLHgeqV3t8qCMhB34zIAWG\n' +
+  'BcAuKJNRZGvMvjK99OSOh0SyvGQ5Yb5vyj1/znx3gM4z4deYXxDSyCO0m5I16jmM\n' +
+  'gBEUG0UDUp8Xr2xs/EkhhWYRT1bkDlYZ9IuCbH/vB1YJJFdaO2tDivDUF6IObvNt\n' +
+  'GaVuLlA/rSOJmJFBetrm7n+O2vNJxvoQmBYDKm3+qYkCgYEA9p5C1ZY5XfwwOcqi\n' +
+  'KQ+Asd2NWLG2blhsII5wB8uPhFapjV0S9xTabScUD35AfxHgctafpZeQk4x5niRP\n' +
+  'BHq7hpitaDdYs6A/jhZ7fdVYKb1KRTDt1LXmcg0qVmi/ANNvjhqjvyZM+pEj8yxM\n' +
+  'aOl4isbBfUbzSsEbda3LcHi6+w8CgYEAxMYtkl3gbXJcgbAEdW+nMMQGoFDLkgyu\n' +
+  'n0ZYuRRrWLnnUzZUyqNBwQUaZpwxHaAqi0OAEGSRSZBKRHz9IA2iP9YzcaJ0WtpB\n' +
+  'CPqwBZjrCaVEpHldo2pIdujysXgiXRUiE+VR9ViDmftoVbdL6kttGS08jBBDVIV/\n' +
+  'uQgC/q29UbUCgYAJHirMaMRwNB24VUSPjhItAUrzh4Z+J+i/f2Sm9SC2PNoB7vn/\n' +
+  'hpbYyEQWmo1Z5VhOBp9aaPMgcWYhsaf2O29pd4WZv8oYwgj3gN9J9LRQvr3bNwbk\n' +
+  'AWGmv9Pb4/2D001hjJyXOZxI+0q/99hPXKpnPxfyQMhH8EHKpQVLgDsxgwKBgEiH\n' +
+  '+DJUci5Fkj2ngO08u7bo+rxLK85o6FEDYB7QnQT2eYMdqsGKzej1FZcvCZeu+x+c\n' +
+  'QO9J8pfYHNgD7lXLULwRG6NOS29VtdU2en2FsVU72wJ5Tf+3ZICYOyUZcCk5afdF\n' +
+  'dyFlgBTZK8s0pkH1jYBTQVcrg3X7Q2oTvu7bYcZlAoGAUwQI11mMR8oqfgWMoI/1\n' +
+  'smOoq9qSMlutuWBjoPkbtJEGHEXAvjW1kgdBlPjUCwn6j+oIDLYu8DbfQRdiFQeP\n' +
+  'rVCbbgOgayVpr+8Tv2DqB370GwBpOpuq0yiiN+c39Y0u03Yfve3icyl8+lN1t4h6\n' +
+  'a20rj9HG4sb8tUIHPBv0dgY=\n' +
+  '-----END PRIVATE KEY-----\n';
+
+let othercert = '-----BEGIN CERTIFICATE-----\n' +
+  'MIIDZTCCAk0CFAoqA7Irtoo7/3+sfOHy0s91pKkiMA0GCSqGSIb3DQEBCwUAMG8x\n' +
+  'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
+  'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
+  'hkiG9w0BCQEWBHhpYW4wHhcNMjUwODE0MTE1NDM0WhcNMjYwODE0MTE1NDM0WjBv\n' +
+  'MQswCQYDVQQGEwJFTjENMAsGA1UECAwEVEVTVDENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR4aWFuMQ0wCwYDVQQDDAR4aWFuMRMwEQYJ\n' +
+  'KoZIhvcNAQkBFgR4aWFuMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA\n' +
+  'wk4aByV5nOw+zIh/1agaN7rQyk+NFuXlYSwINrONRZt8zePSxhxz6gMq0XAb8ld0\n' +
+  'DFC5onGQEI4ED8iP3v7C7yHqIAybTmIy22RWWk8c6h9S40Azp/YHujTTRs2XMe9G\n' +
+  'A/iKed9DwLclbv6+m+WPmIvgFFAJlebtFI6X0E/zBxs/TknR8tJ2uk2G/CGCBlo5\n' +
+  'bbSz5RIPfEmz93rR7prMxQLOsvfdNewNlhe82jxMKfzGEPXYXUj+Xwp8ep+aaUTr\n' +
+  'Kb6Thvx7+uOBxgMM1crREepTKJM/4bsOpb2yIXXcOqclUPAZBvtzIjgs/DdKtCZo\n' +
+  '0Jzr3gUbDJeE2xd+DcADxQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQA5RyDOMYJV\n' +
+  'AsdBUihPvnnakKfAY9CYN9I1tR0b9DaboeL+bONeIKzXyFdDrAj6eZLKZLUblFlH\n' +
+  'BZnbP4lNwfYjmNgp4j7cqSIFVwd2Y+6T29pK6T6XYRsFGOaSp7wFzXplfbP8Ou1b\n' +
+  'o2zTZWWWHbiExuXot4RfQkgH3Zhk5zjJGWvaOksvEhJUaufkWAXbRY2KHmH64dDB\n' +
+  'Bgp50CPObTuc2a+5PAi7W5nj1se2OqKvepoeYLl8pfF/GFRqrvcII9kCm0oyMqBx\n' +
+  '25R7aCNtSnENZnvRBspdYcX8zu6fR1qf0JmpLqLw5pPxJ2Puvq7g+33GWJ3Gq45f\n' +
+  'ZcLXS+9LpW3a\n' +
+  '-----END CERTIFICATE-----\n';
+
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIIDZzCCAk8CFCwQ5cxuFI+fsf/2fkG4gy8UT1gmMA0GCSqGSIb3DQEBCwUAMG8x\n' +
+  'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
+  'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
+  'hkiG9w0BCQEWBHhpYW4wHhcNMjUwODE0MTE1NTQ1WhcNMjYwODE0MTE1NTQ1WjBx\n' +
+  'MQswCQYDVQQGEwJHVDEPMA0GA1UECAwGaHVhd2VpMQ0wCwYDVQQHDAR4aWFuMQ8w\n' +
+  'DQYDVQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzAR\n' +
+  'BgkqhkiG9w0BCQEWBHhpYW4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\n' +
+  'AQC9kBV6Cqd3vSi5RuRAWjXEvsfD20ekCYyeJvnnSrHwnKodbF8VWFSv4sqYzMnx\n' +
+  'ObpDLyQw0Uu08tbnEQvxv0lOwnWkZR+Oc3M9Ow1uhDkm3eFbY5858mAmtY7Sqzhd\n' +
+  '0LS9k8Q57FRqOrQm7ngHb0O+yjCIn/zmjyEuw51/cPDTM4h3P3di9nhbIg+UOMfk\n' +
+  'DbuSKRD7UvVV/JZiBklF5ZrjFYgzYnWKv7N7XkYMGkaOx8+tue24eK06SapQWDLR\n' +
+  'nRPCVePV6xtoCmbNA3ib/Uvr0qvRwPDCzGGOW9JvQdrI6Z/GD9nt5hqHB15iJVNx\n' +
+  'kDQtugv14qeDsFPSIU8CtkCbAgMBAAEwDQYJKoZIhvcNAQELBQADggEBALuqlvql\n' +
+  'q/5SVghmtdzVNlsif9JofSgJhmww3r8HblZ7zD7ALfR6JcxxbBJYdBIn6mf2eNx/\n' +
+  'kTzwYs94D12PhyAP63AcDxS/4Sh7QhmnNIx2SGi/rbFdPm8cmkaFfwr5gQP+ouNB\n' +
+  '1e7vVyNpSjr4F8YcfjOHPofoCdWaOaBPrM760h711y/BTVMjuYkdzn0D1bHZIBc+\n' +
+  'tljIMWXKsTwR6wCIpnFRJbEATTBwV843Q071d62jYueLgdS2wT39Syqb3ao3aHAS\n' +
+  'ZI8k9GgNNKD4qBAZUbQVCs6diTBbeUMaqJ2N+tcQfmGfnNZK+/olEF6Ue/H0LZzY\n' +
+  'nZSOvPxc0c2O34k=\n' +
+  '-----END CERTIFICATE-----\n';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(certData: string): Promise<cert.X509Cert> {
+  // Certificate binary data, which needs to match your case.
+  let encodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(certData),
+    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (err) {
+    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+  return x509Cert;
+}
+
+async function doTestCreatePkcs12() {
+  const caCert = await createX509Cert(othercert);
+  const x509Cert = await createX509Cert(certData);
+
+  let data : cert.Pkcs12Data = {
+    privateKey : priKey,
+    cert : x509Cert,
+    otherCerts : [caCert]
+  }
+
+  let keyParam : cert.PbesParams = {
+    saltLen : 16,
+    iterations : 2048,
+    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_192_CBC
+  }
+
+  let certParam : cert.PbesParams = {
+    saltLen : 16,
+    iterations : 2048,
+    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_256_CBC
+  }
+
+  let config : cert.Pkcs12CreationConfig = {
+    password : "123456",
+    keyEncParams : keyParam,
+    encryptCert : true,
+    certEncParams : certParam,
+    macSaltLen : 16,
+    macIterations : 2048,
+    macDigestAlgorithm : cert.Pkcs12MacDigestAlgorithm.SHA384
+  }
+  try {
+    let p12 = await cert.createPkcs12(data, config);
+    console.info("createPkcs12 succeed p12 = " + p12);
+  } catch (err) {
+    console.error(`createPkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+## cert.createPkcs12<sup>21+</sup>
+
+createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
+
+Creates PKCS #12 data. This API uses a promise to return the result synchronously.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description                      |
+| -------- | -------------------- | ---- | -------------------------- |
+| data | [Pkcs12Data](#pkcs12data18) | Yes| P12 data object to be packed.|
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the P12 file.|
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| Uint8Array | P12 file created, in DER format.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message                                         |
+| -------- | ------------------------------------------------- |
+| 19020001 | memory malloc failed.                                     |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
+| 19030001 | crypto operation error.                           |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let priKey = '-----BEGIN PRIVATE KEY-----\n' +
+  'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
+  'RuRAWjXEvsfD20ekCYyeJvnnSrHwnKodbF8VWFSv4sqYzMnxObpDLyQw0Uu08tbn\n' +
+  'EQvxv0lOwnWkZR+Oc3M9Ow1uhDkm3eFbY5858mAmtY7Sqzhd0LS9k8Q57FRqOrQm\n' +
+  '7ngHb0O+yjCIn/zmjyEuw51/cPDTM4h3P3di9nhbIg+UOMfkDbuSKRD7UvVV/JZi\n' +
+  'BklF5ZrjFYgzYnWKv7N7XkYMGkaOx8+tue24eK06SapQWDLRnRPCVePV6xtoCmbN\n' +
+  'A3ib/Uvr0qvRwPDCzGGOW9JvQdrI6Z/GD9nt5hqHB15iJVNxkDQtugv14qeDsFPS\n' +
+  'IU8CtkCbAgMBAAECggEBAKbMmMlJhLCM5r+ZDJE/j55ujRLe6XwC1xP2keEeTdK9\n' +
+  '18aKLGR41BPsSH8JfAxh0m75lSvLjoVLRSQPUOZIfjXqUF/2hzzug5F2W8xKVovH\n' +
+  'o1uqHlp71nVZPrJK7Q9H7TH/SyP4uxK6UvkKzt0j34WLHgeqV3t8qCMhB34zIAWG\n' +
+  'BcAuKJNRZGvMvjK99OSOh0SyvGQ5Yb5vyj1/znx3gM4z4deYXxDSyCO0m5I16jmM\n' +
+  'gBEUG0UDUp8Xr2xs/EkhhWYRT1bkDlYZ9IuCbH/vB1YJJFdaO2tDivDUF6IObvNt\n' +
+  'GaVuLlA/rSOJmJFBetrm7n+O2vNJxvoQmBYDKm3+qYkCgYEA9p5C1ZY5XfwwOcqi\n' +
+  'KQ+Asd2NWLG2blhsII5wB8uPhFapjV0S9xTabScUD35AfxHgctafpZeQk4x5niRP\n' +
+  'BHq7hpitaDdYs6A/jhZ7fdVYKb1KRTDt1LXmcg0qVmi/ANNvjhqjvyZM+pEj8yxM\n' +
+  'aOl4isbBfUbzSsEbda3LcHi6+w8CgYEAxMYtkl3gbXJcgbAEdW+nMMQGoFDLkgyu\n' +
+  'n0ZYuRRrWLnnUzZUyqNBwQUaZpwxHaAqi0OAEGSRSZBKRHz9IA2iP9YzcaJ0WtpB\n' +
+  'CPqwBZjrCaVEpHldo2pIdujysXgiXRUiE+VR9ViDmftoVbdL6kttGS08jBBDVIV/\n' +
+  'uQgC/q29UbUCgYAJHirMaMRwNB24VUSPjhItAUrzh4Z+J+i/f2Sm9SC2PNoB7vn/\n' +
+  'hpbYyEQWmo1Z5VhOBp9aaPMgcWYhsaf2O29pd4WZv8oYwgj3gN9J9LRQvr3bNwbk\n' +
+  'AWGmv9Pb4/2D001hjJyXOZxI+0q/99hPXKpnPxfyQMhH8EHKpQVLgDsxgwKBgEiH\n' +
+  '+DJUci5Fkj2ngO08u7bo+rxLK85o6FEDYB7QnQT2eYMdqsGKzej1FZcvCZeu+x+c\n' +
+  'QO9J8pfYHNgD7lXLULwRG6NOS29VtdU2en2FsVU72wJ5Tf+3ZICYOyUZcCk5afdF\n' +
+  'dyFlgBTZK8s0pkH1jYBTQVcrg3X7Q2oTvu7bYcZlAoGAUwQI11mMR8oqfgWMoI/1\n' +
+  'smOoq9qSMlutuWBjoPkbtJEGHEXAvjW1kgdBlPjUCwn6j+oIDLYu8DbfQRdiFQeP\n' +
+  'rVCbbgOgayVpr+8Tv2DqB370GwBpOpuq0yiiN+c39Y0u03Yfve3icyl8+lN1t4h6\n' +
+  'a20rj9HG4sb8tUIHPBv0dgY=\n' +
+  '-----END PRIVATE KEY-----\n';
+
+let othercert = '-----BEGIN CERTIFICATE-----\n' +
+  'MIIDZTCCAk0CFAoqA7Irtoo7/3+sfOHy0s91pKkiMA0GCSqGSIb3DQEBCwUAMG8x\n' +
+  'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
+  'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
+  'hkiG9w0BCQEWBHhpYW4wHhcNMjUwODE0MTE1NDM0WhcNMjYwODE0MTE1NDM0WjBv\n' +
+  'MQswCQYDVQQGEwJFTjENMAsGA1UECAwEVEVTVDENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR4aWFuMQ0wCwYDVQQDDAR4aWFuMRMwEQYJ\n' +
+  'KoZIhvcNAQkBFgR4aWFuMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA\n' +
+  'wk4aByV5nOw+zIh/1agaN7rQyk+NFuXlYSwINrONRZt8zePSxhxz6gMq0XAb8ld0\n' +
+  'DFC5onGQEI4ED8iP3v7C7yHqIAybTmIy22RWWk8c6h9S40Azp/YHujTTRs2XMe9G\n' +
+  'A/iKed9DwLclbv6+m+WPmIvgFFAJlebtFI6X0E/zBxs/TknR8tJ2uk2G/CGCBlo5\n' +
+  'bbSz5RIPfEmz93rR7prMxQLOsvfdNewNlhe82jxMKfzGEPXYXUj+Xwp8ep+aaUTr\n' +
+  'Kb6Thvx7+uOBxgMM1crREepTKJM/4bsOpb2yIXXcOqclUPAZBvtzIjgs/DdKtCZo\n' +
+  '0Jzr3gUbDJeE2xd+DcADxQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQA5RyDOMYJV\n' +
+  'AsdBUihPvnnakKfAY9CYN9I1tR0b9DaboeL+bONeIKzXyFdDrAj6eZLKZLUblFlH\n' +
+  'BZnbP4lNwfYjmNgp4j7cqSIFVwd2Y+6T29pK6T6XYRsFGOaSp7wFzXplfbP8Ou1b\n' +
+  'o2zTZWWWHbiExuXot4RfQkgH3Zhk5zjJGWvaOksvEhJUaufkWAXbRY2KHmH64dDB\n' +
+  'Bgp50CPObTuc2a+5PAi7W5nj1se2OqKvepoeYLl8pfF/GFRqrvcII9kCm0oyMqBx\n' +
+  '25R7aCNtSnENZnvRBspdYcX8zu6fR1qf0JmpLqLw5pPxJ2Puvq7g+33GWJ3Gq45f\n' +
+  'ZcLXS+9LpW3a\n' +
+  '-----END CERTIFICATE-----\n';
+
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIIDZzCCAk8CFCwQ5cxuFI+fsf/2fkG4gy8UT1gmMA0GCSqGSIb3DQEBCwUAMG8x\n' +
+  'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
+  'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
+  'hkiG9w0BCQEWBHhpYW4wHhcNMjUwODE0MTE1NTQ1WhcNMjYwODE0MTE1NTQ1WjBx\n' +
+  'MQswCQYDVQQGEwJHVDEPMA0GA1UECAwGaHVhd2VpMQ0wCwYDVQQHDAR4aWFuMQ8w\n' +
+  'DQYDVQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzAR\n' +
+  'BgkqhkiG9w0BCQEWBHhpYW4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\n' +
+  'AQC9kBV6Cqd3vSi5RuRAWjXEvsfD20ekCYyeJvnnSrHwnKodbF8VWFSv4sqYzMnx\n' +
+  'ObpDLyQw0Uu08tbnEQvxv0lOwnWkZR+Oc3M9Ow1uhDkm3eFbY5858mAmtY7Sqzhd\n' +
+  '0LS9k8Q57FRqOrQm7ngHb0O+yjCIn/zmjyEuw51/cPDTM4h3P3di9nhbIg+UOMfk\n' +
+  'DbuSKRD7UvVV/JZiBklF5ZrjFYgzYnWKv7N7XkYMGkaOx8+tue24eK06SapQWDLR\n' +
+  'nRPCVePV6xtoCmbNA3ib/Uvr0qvRwPDCzGGOW9JvQdrI6Z/GD9nt5hqHB15iJVNx\n' +
+  'kDQtugv14qeDsFPSIU8CtkCbAgMBAAEwDQYJKoZIhvcNAQELBQADggEBALuqlvql\n' +
+  'q/5SVghmtdzVNlsif9JofSgJhmww3r8HblZ7zD7ALfR6JcxxbBJYdBIn6mf2eNx/\n' +
+  'kTzwYs94D12PhyAP63AcDxS/4Sh7QhmnNIx2SGi/rbFdPm8cmkaFfwr5gQP+ouNB\n' +
+  '1e7vVyNpSjr4F8YcfjOHPofoCdWaOaBPrM760h711y/BTVMjuYkdzn0D1bHZIBc+\n' +
+  'tljIMWXKsTwR6wCIpnFRJbEATTBwV843Q071d62jYueLgdS2wT39Syqb3ao3aHAS\n' +
+  'ZI8k9GgNNKD4qBAZUbQVCs6diTBbeUMaqJ2N+tcQfmGfnNZK+/olEF6Ue/H0LZzY\n' +
+  'nZSOvPxc0c2O34k=\n' +
+  '-----END CERTIFICATE-----\n';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(certData: string): Promise<cert.X509Cert> {
+  // Certificate binary data, which needs to match your case.
+  let encodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(certData),
+    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (err) {
+    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+  return x509Cert;
+}
+
+async function doTestCreatePkcs12Sync() {
+  const caCert = await createX509Cert(othercert);
+  const x509Cert = await createX509Cert(certData);
+
+  let data : cert.Pkcs12Data = {
+    privateKey : priKey,
+    cert : x509Cert,
+    otherCerts : [caCert]
+  }
+
+  let keyParam : cert.PbesParams = {
+    saltLen : 16,
+    iterations : 2048,
+    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_192_CBC
+  }
+
+  let certParam : cert.PbesParams = {
+    saltLen : 16,
+    iterations : 2048,
+    encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_256_CBC
+  }
+
+  let config : cert.Pkcs12CreationConfig = {
+    password : "123456",
+    keyEncParams : keyParam,
+    encryptCert : true,
+    certEncParams : certParam,
+    macSaltLen : 16,
+    macIterations : 2048,
+    macDigestAlgorithm : cert.Pkcs12MacDigestAlgorithm.SHA384
+  }
+  try {
+    let p12 = cert.createPkcs12Sync(data, config);
+    console.info("createPkcs12Sync succeed p12 = " + p12);
+  } catch (err) {
+    console.error(`createPkcs12Sync failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ## cert.createTrustAnchorsWithKeyStore<sup>12+</sup>
 
 createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array\<[X509TrustAnchor](#x509trustanchor11)>>
@@ -11923,7 +12738,11 @@ Provides APIs for generating the messages in CMS format.
 
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
-Adds signer information.
+Adds signer information to the CMS whose content type is **SIGNED_DATA**.
+	
+> **NOTE**
+>
+> OpenSSL does not support signature verification for self-signed certificates. Therefore, self-signed certificates cannot be used as signers.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -12039,7 +12858,9 @@ function testAddSigner() {
 
 addCert(cert: X509Cert): void
 
-Adds a certificate, for example, the issuer certificate of a signing certificate.
+Adds a CMS certificate of the **SIGNED_DATA** content type, for example, the issuer certificate of a signing certificate.
+
+If the **addSigner** API is not called and only the certificate is added, the generated CMS signature data contains only the certificate.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -12119,11 +12940,177 @@ function testAddCert() {
 }
 ```
 
+### setRecipientEncryptionAlgorithm<sup>22+</sup>
+
+setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
+
+Sets the encryption algorithm for the CMS whose content type is **ENVELOPED_DATA**.
+
+This method should be called immediately after the **CmsGenerator** of the **ENVELOPED_DATA** type is created. If this method is not called, AES_256_GCM is used as the encryption algorithm by default.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name| Type     | Mandatory| Description                    |
+| ------ | --------- | ---- | ------------------------ |
+| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | Yes  | Encryption algorithm used by the CMS to encapsulate data.     |
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+function testSetRecipientEncryptionAlgorithm() {
+  try {
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+    let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_128_CBC;
+    cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
+    console.info(`setRecipientEncryptionAlgorithm success.`);
+  } catch (err) {
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+### addRecipientInfo<sup>22+</sup>
+
+addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
+
+Adds recipient information to a CMS with the content type of **ENVELOPED_DATA**. This API uses a promise to return the result.
+
+At least one recipient needs to be set.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name| Type     | Mandatory| Description                    |
+| ------ | --------- | ---- | ------------------------ |
+| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | Yes  | Recipient information.     |
+
+**Return value**
+
+| Type          | Description       |
+| -------------- | ----------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
+  'MQ8wDQYDVQQIDAZodWF3ZWkxDTALBgNVBAcMBHhpYW4xDzANBgNVBAoMBmh1YXdl\n' +
+  'aTENMAsGA1UECwwEdGVzdDENMAsGA1UEAwwEYW5uZTEbMBkGCSqGSIb3DQEJARYM\n' +
+  'dGVzdEAxMjMuY29tMB4XDTI0MTEyNzAzMjQ1MFoXDTM0MTEyNTAzMjQ1MFoweTEL\n' +
+  'MAkGA1UEBhMCY2gxDzANBgNVBAgMBmh1YXdlaTENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDARhbm5lMRswGQYJ\n' +
+  'KoZIhvcNAQkBFgx0ZXN0QDEyMy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\n' +
+  'AARzg16D6tsNHZa7w0tLHFprXg5kUQgXv/vv3KIM21hY+WDYMz1OST4tmTeQWQF8\n' +
+  'kARtjjbHBxtOPufWxMfxf51Wo1MwUTAdBgNVHQ4EFgQUU/P31GCBwyrj3yXkoNaX\n' +
+  'xvPp8uIwHwYDVR0jBBgwFoAUU/P31GCBwyrj3yXkoNaXxvPp8uIwDwYDVR0TAQH/\n' +
+  'BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA/wCfbTorAWEEZcgd0CgfXI+EzXu2\n' +
+  'Y88BmDD5LFlj3N0CIQDB34h77Li0CSpYpS4+7Mug237zbkFjHR3Q4/VWOT1G1A==\n' +
+  '-----END CERTIFICATE-----\n';
+
+let rsaCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICXjCCAcegAwIBAgIGAXKnJjrAMA0GCSqGSIb3DQEBCwUAMEgxCzAJBgNVBAYT\n' +
+  'AkNOMQwwCgYDVQQIDANzaGExDTALBgNVBAcMBHhpYW4xDTALBgNVBAoMBHRlc3Qx\n' +
+  'DTALBgNVBAMMBHRlc3QwHhcNMjQxMTIyMDkwNTIyWhcNMzQxMTIwMDkwNTIyWjBI\n' +
+  'MQswCQYDVQQGEwJDTjEMMAoGA1UECAwDc2hhMQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB\n' +
+  'iQKBgQC6nCZTM16Rk2c4P/hwfVm++jqe6GCA/PXXGe4YL218q1dTKMHBGEw8kXi0\n' +
+  'XLDcyyC2yUn8ywN2QSyly6ke9EE6PGfZywStLp4g2PTTWB04sS3aXT2y+fToiTXQ\n' +
+  '3AxfFYRpB+EgSdSCkJs6jKXVwbzu54kEtQTfs8UdBQ9nVKaJLwIDAQABo1MwUTAd\n' +
+  'BgNVHQ4EFgQU6QXnt1smb2HRSO/2zuRQnz/SDxowHwYDVR0jBBgwFoAU6QXnt1sm\n' +
+  'b2HRSO/2zuRQnz/SDxowDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOB\n' +
+  'gQBPR/+5xzFG1XlTdgwWVvqVxvhGUkbMTGW0IviJ+jbKsi57vnVsOtFzEA6y+bYx\n' +
+  'xG/kEOcwLtzeVHOQA+ZU5SVcc+qc0dfFiWjL2PSAG4bpqSTjujpuUk+g8ugixbG1\n' +
+  'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
+  '-----END CERTIFICATE-----\n';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function testAddRecipientInfo() {
+  let ecccertEncodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(eccCertData),
+    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let rsacertEncodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(rsaCertData),
+    // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+  try {
+    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
+    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+
+    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
+      cert : eccx509Certcert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+    };
+    let rsaCert : cert.CmsKeyTransRecipientInfo = {
+      cert : rsax509Certcert,
+    };
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyTransInfo : rsaCert,
+      keyAgreeInfo : eccCert,
+    };
+    await cmsGenerator.addRecipientInfo(recipientInfo);
+    console.info(`addRecipientInfo success.`);
+  } catch (err) {
+    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ### doFinal<sup>18+</sup>
 
 doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>
 
-Generates the CMS data, for example, the CMS signature data.
+Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -12256,7 +13243,7 @@ async function testDoFinalByPromise() {
 
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 
-Generates the CMS data, for example, the CMS signature data. This API returns the result synchronously.
+Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -12379,5 +13366,1134 @@ function testDoFinalSync() {
         }
     }
   });
+}
+```
+
+### getEncryptedContentData<sup>22+</sup>
+
+getEncryptedContentData(): Promise\<Uint8Array>
+
+Obtains the encrypted content data of the CMS whose content type is **ENVELOPED_DATA**. This API uses a promise to return the result.
+
+Obtains the encrypted content data if the **CmsGenerator** of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> |Promise used to return the encrypted data.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
+  'MQ8wDQYDVQQIDAZodWF3ZWkxDTALBgNVBAcMBHhpYW4xDzANBgNVBAoMBmh1YXdl\n' +
+  'aTENMAsGA1UECwwEdGVzdDENMAsGA1UEAwwEYW5uZTEbMBkGCSqGSIb3DQEJARYM\n' +
+  'dGVzdEAxMjMuY29tMB4XDTI0MTEyNzAzMjQ1MFoXDTM0MTEyNTAzMjQ1MFoweTEL\n' +
+  'MAkGA1UEBhMCY2gxDzANBgNVBAgMBmh1YXdlaTENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDARhbm5lMRswGQYJ\n' +
+  'KoZIhvcNAQkBFgx0ZXN0QDEyMy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\n' +
+  'AARzg16D6tsNHZa7w0tLHFprXg5kUQgXv/vv3KIM21hY+WDYMz1OST4tmTeQWQF8\n' +
+  'kARtjjbHBxtOPufWxMfxf51Wo1MwUTAdBgNVHQ4EFgQUU/P31GCBwyrj3yXkoNaX\n' +
+  'xvPp8uIwHwYDVR0jBBgwFoAUU/P31GCBwyrj3yXkoNaXxvPp8uIwDwYDVR0TAQH/\n' +
+  'BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA/wCfbTorAWEEZcgd0CgfXI+EzXu2\n' +
+  'Y88BmDD5LFlj3N0CIQDB34h77Li0CSpYpS4+7Mug237zbkFjHR3Q4/VWOT1G1A==\n' +
+  '-----END CERTIFICATE-----\n';
+
+let rsaCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICXjCCAcegAwIBAgIGAXKnJjrAMA0GCSqGSIb3DQEBCwUAMEgxCzAJBgNVBAYT\n' +
+  'AkNOMQwwCgYDVQQIDANzaGExDTALBgNVBAcMBHhpYW4xDTALBgNVBAoMBHRlc3Qx\n' +
+  'DTALBgNVBAMMBHRlc3QwHhcNMjQxMTIyMDkwNTIyWhcNMzQxMTIwMDkwNTIyWjBI\n' +
+  'MQswCQYDVQQGEwJDTjEMMAoGA1UECAwDc2hhMQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB\n' +
+  'iQKBgQC6nCZTM16Rk2c4P/hwfVm++jqe6GCA/PXXGe4YL218q1dTKMHBGEw8kXi0\n' +
+  'XLDcyyC2yUn8ywN2QSyly6ke9EE6PGfZywStLp4g2PTTWB04sS3aXT2y+fToiTXQ\n' +
+  '3AxfFYRpB+EgSdSCkJs6jKXVwbzu54kEtQTfs8UdBQ9nVKaJLwIDAQABo1MwUTAd\n' +
+  'BgNVHQ4EFgQU6QXnt1smb2HRSO/2zuRQnz/SDxowHwYDVR0jBBgwFoAU6QXnt1sm\n' +
+  'b2HRSO/2zuRQnz/SDxowDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOB\n' +
+  'gQBPR/+5xzFG1XlTdgwWVvqVxvhGUkbMTGW0IviJ+jbKsi57vnVsOtFzEA6y+bYx\n' +
+  'xG/kEOcwLtzeVHOQA+ZU5SVcc+qc0dfFiWjL2PSAG4bpqSTjujpuUk+g8ugixbG1\n' +
+  'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
+  '-----END CERTIFICATE-----\n';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function testGetEncryptedContentData() {
+  try {
+    let ecccertEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(eccCertData),
+      // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+
+    let rsacertEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(rsaCertData),
+      // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+
+    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
+    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+    let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_256_GCM;
+    cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
+    console.info(`setRecipientEncryptionAlgorithm success.`);
+    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
+      cert : eccx509Certcert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+    };
+    let rsaCert : cert.CmsKeyTransRecipientInfo = {
+      cert : rsax509Certcert,
+    };
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyTransInfo : rsaCert,
+      keyAgreeInfo : eccCert,
+    };
+    await cmsGenerator.addRecipientInfo(recipientInfo);
+    console.info(`addRecipientInfo success.`);
+    let content = new Uint8Array([1,2,3,4]);
+    let optionsFinal: cert.CmsGeneratorOptions = {
+      contentDataFormat : cert.CmsContentDataFormat.BINARY,
+      outFormat : cert.CmsFormat.PEM,
+      isDetached : true
+    };
+    let cms = await cmsGenerator.doFinal(content, optionsFinal);
+    console.info(`doFinal success, cms = %s`, cms);
+    let data = await cmsGenerator.getEncryptedContentData();
+    console.info(`getEncryptedContentData success, data = %s`, data);
+  } catch (err) {
+    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+## cert.createCmsParser<sup>22+</sup>
+
+createCmsParser(): CmsParser
+
+Creates a **CmsParser** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Return value**
+
+| Type                           | Description            |
+| ------------------------------- | ---------------- |
+| [CmsParser](#cmsparser22) | CmsParser object.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**Example**
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+    // Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  };
+  return new Uint8Array(arr);
+  }
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+  return x509Cert;
+  }
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+## CmsParser<sup>22+</sup>
+Verifies and decapsulates signed and encapsulated messages in CMS format.
+
+> **NOTE**
+>
+> PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, envelope data,
+> signature and envelope data, message digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+
+### setRawData<sup>22+</sup>
+
+setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
+
+Converts data in CMS format into CMS objects. This API uses a promise to return the result.
+	
+> **NOTE**
+>
+> CMS data in PEM and DER formats is supported. **string** corresponds to the PEM format, and **Uint8Array** corresponds to the DER format.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description          |
+| ------------ | ------ | ---- | -------------- |
+| data |  Uint8Array \| string | Yes| CMS data content.|
+| cmsFormat | [CmsFormat](#cmsformat18) | Yes| Input CMS format.|
+
+**Return value**
+
+| Type          | Description       |
+| -------------- | ----------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+  }
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### getContentType<sup>22+</sup>
+
+getContentType(): CmsContentType
+
+Obtains the CMS data type. Currently, signature data and decapsulated data can be obtained.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| [CmsContentType](#cmscontenttype18) |CMS data type.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+    // Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  };
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    let contentType: cert.CmsContentType = verify.getContentType();
+    console.info("contentType is " + contentType);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### verifySignedData<sup>22+</sup>
+
+verifySignedData(config: CmsVerificationConfig): Promise\<void>
+
+Verifies the CMS of the **Signed_DATA** content type. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description          |
+| ------------ | ------ | ---- | -------------- |
+| config |  [CmsVerificationConfig](#cmsverificationconfig22) | Yes| CMS signature verification configuration.|
+
+**Return value**
+
+| Type          | Description       |
+| -------------- | ----------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
+| 19030001 | crypto operation error. |
+| 19030003 | the certificate has not taken effect. |
+| 19030004 | the certificate has expired. |
+| 19030005 | failed to obtain the certificate issuer. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+    // Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  };
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### getContentData<sup>22+</sup>
+
+getContentData(): Promise\<Uint8Array>
+
+Obtains the plaintext data from CMS data of the signature type. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> |Promise used to return the original CMS data.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+    let contentData = await verify.getContentData();
+    console.info("verifySignedData success, contentData is "+ contentData);
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### getCerts<sup>22+</sup>
+
+getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
+
+Obtains the certificate from CMS data of the signature type by passing enumerated values. The signer certificate or all certificates can be obtained. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description          |
+| ------------ | ------ | ---- | -------------- |
+| type |  [CmsCertType](#cmscerttype22) | Yes| Obtains the certificate type from CMS.|
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| Promise<Array\<[X509Cert](#x509cert)>> |Promise used to return a certificate set.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | <br>1. The type of the cmsFormat is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ECC_256_PUB_ENTRY_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICejCCAiCgAwIBAgIUGE371/LcCW79mzMm6UiJdyC4khcwCgYIKoZIzj0EAwIw\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTAeFw0yNTA5MjgxMDU0MDVa\n" +
+  "Fw0zNTA5MjYxMDU0MDVaMHUxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5n\n" +
+  "MRAwDgYDVQQHDAdCZWlqaW5nMRswGQYDVQQKDBJFQ0RTQSBFeGFtcGxlIENvcnAx\n" +
+  "CzAJBgNVBAsMAklUMRgwFgYDVQQDDA93d3cuZXhhbXBsZS5jb20wWTATBgcqhkjO\n" +
+  "PQIBBggqhkjOPQMBBwNCAAQNKO5YXAsmdm/ShEU5VyQlQSdnV6hNQIofHhQ/GyeK\n" +
+  "1W7t3KnMie4cv/wnA4Qmor2KeBBXUFUnYJqqWOHsivIuo4GEMIGBMAkGA1UdEwQC\n" +
+  "MAAwCwYDVR0PBAQDAgK0MCcGA1UdEQQgMB6CD3d3dy5leGFtcGxlLmNvbYILZXhh\n" +
+  "bXBsZS5jb20wHQYDVR0OBBYEFD7RUSUimy0SWShmPIus91tDS0u9MB8GA1UdIwQY\n" +
+  "MBaAFFjgVG0DwmSwxzJWELNvxGtm3mxUMAoGCCqGSM49BAMCA0gAMEUCIQCTw7sx\n" +
+  "X0tt1xiNvIQ9LD4bECzdgzIuBaU97GgYDusIUgIgTkc0wYZ3EUg0COHPly4cVsTj\n" +
+  "1Cyy/+qufhBUJw5om7E=\n"                                             +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_INTER_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICTDCCAfGgAwIBAgIUc1x0keEiLIcS1oKtSpeEiPoaepkwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTM0OVoXDTMwMDkyNzEwNTM0OVow\n" +
+  "fjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxHjAcBgNVBAoMFUVDRFNBIEludGVybWVkaWF0ZSBDQTELMAkGA1UECwwCSVQx\n" +
+  "HjAcBgNVBAMMFUVDRFNBIEludGVybWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqG\n" +
+  "SM49AwEHA0IABGoCqpHBV/glJeezsp693/hhflYOKpHvaNszVBLkTurkqrbhbaMo\n" +
+  "hw1oO2Zro54rhZ8tom2UAGn1rzNmRVBCxTajXTBbMAwGA1UdEwQFMAMBAf8wCwYD\n" +
+  "VR0PBAQDAgEGMB0GA1UdDgQWBBRY4FRtA8JksMcyVhCzb8RrZt5sVDAfBgNVHSME\n" +
+  "GDAWgBTmNm24RfPnLf1HMNCocS90CGalJjAKBggqhkjOPQQDAgNJADBGAiEAstMv\n" +
+  "puHi/dgAlvycicL3VQ5iITvUSG2fo286LYc01CQCIQCyw4+94ovyRtaT/WWoZh3u\n" +
+  "ia4tt478nYeQgMChg+xtSw==\n" +
+  "-----END CERTIFICATE-----";
+
+let ECC_256_PUB_ROOT_CERT: string =
+  "-----BEGIN CERTIFICATE-----\n" +
+  "MIICUzCCAfqgAwIBAgIUPma0DkC+ck+t/3eykmsKsy5D0egwCgYIKoZIzj0EAwIw\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMB4XDTI1MDkyODEwNTMyN1oXDTM1MDkyNjEwNTMyN1ow\n" +
+  "bjELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n" +
+  "bmcxFjAUBgNVBAoMDUVDRFNBIFJvb3QgQ0ExCzAJBgNVBAsMAklUMRYwFAYDVQQD\n" +
+  "DA1FQ0RTQSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA3KYWepl\n" +
+  "wjHe/Htx2cAhrjaZpWPJOUyL6siUFRayVebaqOQejuUPypbj+u4ZHodsviUe12E1\n" +
+  "50Q+R9Uayes+WKN2MHQwHQYDVR0OBBYEFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMB8G\n" +
+  "A1UdIwQYMBaAFOY2bbhF8+ct/Ucw0KhxL3QIZqUmMAsGA1UdDwQEAwIBBjAJBgNV\n" +
+  "HREEAjAAMAkGA1UdEgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNH\n" +
+  "ADBEAiAjo+sFDtGVhyc+NqdwxhepqSXOjRI5As6TSz3OYTvERwIgayLgfBn2uABH\n" +
+  "wYQI60CEJkDF9Pn2fxsGuNEyyn0ks28=\n" +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRI_ENTRY_KEY: string =
+  "-----BEGIN EC PRIVATE KEY-----\n"                                   +
+  "MHcCAQEEII8+yfaMTjUyWtjIopGgNxHUMPKhAYTnIVYbiTOVB4x5oAoGCCqGSM49\n" +
+  "AwEHoUQDQgAEDSjuWFwLJnZv0oRFOVckJUEnZ1eoTUCKHx4UPxsnitVu7dypzInu\n" +
+  "HL/8JwOEJqK9ingQV1BVJ2Caqljh7IryLg==\n"                             +
+  "-----END EC PRIVATE KEY-----";
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsVerifyTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEntry: cert.X509Cert = await createX509Cert(ECC_256_PUB_ENTRY_CERT);
+    let x509CertInter: cert.X509Cert = await createX509Cert(ECC_256_PUB_INTER_CERT);
+    let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
+    let signerConfig: cert.CmsSignerConfig = {
+      mdName: "SHA256",
+    };
+    let keyInfo: cert.PrivateKeyInfo = {
+      key: ECC_256_PRI_ENTRY_KEY
+    };
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.addSigner(x509CertEntry, keyInfo, signerConfig);
+    let signData = cms.doFinalSync(plainText, option);
+    let config: cert.CmsVerificationConfig = {
+      trustCerts: [x509CertRoot, x509CertInter],
+    };
+    let verify: cert.CmsParser = cert.createCmsParser();
+    await verify.setRawData(signData, cert.CmsFormat.PEM);
+    await verify.verifySignedData(config);
+    console.info("verifySignedData success");
+    let signerCerts: cert.X509Cert[] = await verify.getCerts(cert.CmsCertType.SIGNER_CERTS);
+    console.info("getCerts success, cert num is " + signerCerts.length);
+    await verify.getContentData();
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
+}
+```
+
+### decryptEnvelopedData<sup>22+</sup>
+
+decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
+
+Verifies the CMS of the **Enveloped_DATA** content type. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description          |
+| ------------ | ------ | ---- | -------------- |
+| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | Yes| CMS decapsulation configuration content.|
+
+**Return value**
+
+| Type                             | Description                |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> |Promise used to return the decapsulation result.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let ECC_256_PUBKEY: string =
+  "-----BEGIN CERTIFICATE-----\n"                                      +
+  "MIICGDCCAb6gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMFcxCzAJBgNVBAYTAkNO\n" +
+  "MQ8wDQYDVQQIDAbpmZXopb8xDzANBgNVBAcMBuilv+WuiTEPMA0GA1UECgwG5rWL\n" +
+  "6K+VMRUwEwYDVQQDDAzkuK3mlofmtYvor5UwHhcNMjUwOTE2MDY0MTMwWhcNMzUw\n" +
+  "OTE0MDY0MTMwWjBXMQswCQYDVQQGEwJDTjEPMA0GA1UECAwG6ZmV6KW/MQ8wDQYD\n" +
+  "VQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEVMBMGA1UEAwwM5Lit5paH5rWL\n" +
+  "6K+VMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB06h4SzOryi3d7PW9yN2wACC\n" +
+  "VxlduBQjVLWZlDKhFKkdZjve8mUyytSSbBj/rrzR2XmzUzofuNkUbAtje3DDJqN2\n" +
+  "MHQwHQYDVR0OBBYEFNtUldgBESf31bwTnYtApIctaSdtMB8GA1UdIwQYMBaAFNtU\n" +
+  "ldgBESf31bwTnYtApIctaSdtMAsGA1UdDwQEAwIBBjAJBgNVHREEAjAAMAkGA1Ud\n" +
+  "EgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBFAiEAzxzaG2vR\n" +
+  "zUnFFL3X3lRQ0IOJrb6cvkSZuaFd4bW2lgUCIHW6QGGnECDFMbDNz7Og9kjkt+3k\n" +
+  "FmEJWqEMYudBH3Ul\n"                                                 +
+  "-----END CERTIFICATE-----";
+let ECC_256_PRIVATE: string =
+  "-----BEGIN PRIVATE KEY-----\n"                                      +
+  "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOYwEyIw3ZNIAL4xO\n" +
+  "pP6eVcQYcrL2sfnt6vB0z9tKmMmhRANCAAQHTqHhLM6vKLd3s9b3I3bAAIJXGV24\n" +
+  "FCNUtZmUMqEUqR1mO97yZTLK1JJsGP+uvNHZebNTOh+42RRsC2N7cMMm\n"         +
+  "-----END PRIVATE KEY-----";
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+      arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(inStream),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+
+  return x509Cert;
+}
+
+async function testCmsDecryptTest() {
+  try {
+    let plainText: Uint8Array = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07]);
+    let x509CertEc: cert.X509Cert = await createX509Cert(ECC_256_PUBKEY);
+    let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.ENVELOPED_DATA);
+    let option: cert.CmsGeneratorOptions = {
+      outFormat: cert.CmsFormat.PEM
+    };
+    cms.setRecipientEncryptionAlgorithm(cert.CmsRecipientEncryptionAlgorithm.AES_128_GCM);
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyAgreeInfo: {
+          cert: x509CertEc,
+          digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
+      }
+    };
+    await cms.addRecipientInfo(recipientInfo);
+    console.info("add recipient success:" + recipientInfo.keyAgreeInfo?.digestAlgorithm);
+    let envelopeData = await cms.doFinal(plainText, option);
+    console.info("doFinal success:" + envelopeData);
+    let cipherText = await cms.getEncryptedContentData();
+    console.info("cipherText success:" + cipherText);
+    let config: cert.CmsEnvelopedDecryptionConfig = {
+      keyInfo: {
+          key: ECC_256_PRIVATE
+      },
+    };
+    let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
+    await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
+    let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
+    console.info("[XTS] Decrypt success:" + decPlainText);
+    console.info("decryptEnvelopedData success");
+  } catch (error) {
+    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+  }
 }
 ```

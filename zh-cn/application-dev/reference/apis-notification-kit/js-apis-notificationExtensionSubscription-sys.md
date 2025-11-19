@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态、获取通知信息。
+本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态。
 
 > **说明：**
 >
@@ -18,6 +18,7 @@
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## notificationExtensionSubscription.getAllSubscriptionBundles
@@ -52,11 +53,8 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
-  console.info('getAllSubscriptionBundles successfully. Data: ' + JSON.stringify(data));
+  console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
 });
@@ -78,7 +76,7 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 
 **返回值：**
 
@@ -101,9 +99,6 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
   // 应改为开发者需要查询的目标应用信息
@@ -116,7 +111,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
     console.info('GrantedState false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedState fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -136,7 +131,7 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)，否则返回1600022错误码|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码|
 | enable   | boolean | 是   | 表示是否启用通知扩展订阅，true表示已启用，false表示未启用。 |
 
 **返回值：**
@@ -160,16 +155,13 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
   // 应改为开发者需要查询的目标应用信息
   bundle: 'com.example.testnotification',
 };
-notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then((data) => {
-  console.info('setUserGrantedState successfully. Data: ' + JSON.stringify(data));
+notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
+  console.info(`setUserGrantedState successfully.`);
 }).catch((err: BusinessError) => {
   console.error(`setUserGrantedState fail: ${JSON.stringify(err)}`);
 });
@@ -191,7 +183,7 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现NotificationSubscriberExtensionAbility，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要查询的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 
 **返回值：**
 
@@ -214,16 +206,13 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
   // 应改为开发者需要查询的目标应用信息
   bundle: 'com.example.testnotification',
 };
 notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data) => {
-  console.info('getUserGrantedEnabledBundles successfully. Data: ' + JSON.stringify(data));
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
@@ -245,9 +234,9 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现NotificationSubscriberExtensionAbility，否则返回1600022错误码。|
+| targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。该参数需要有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 | enabledBundles    | [BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 被授权的应用信息列表。 |
-| enabled    | boolean       | 是   | 表示是否启用，true表示已启用，false表示未启用。 |
+| enabled    | boolean       | 是   | 表示是否启用，true表示启用，false表示未启用。 |
 
 **返回值：**
 
@@ -270,9 +259,6 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
   {
     // 应改为开发者需要设置的目标应用信息
@@ -280,12 +266,12 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
   };
 let enabledBundles: notificationExtensionSubscription.BundleOption[] = [
   // 应改为开发者需要授权的实际应用
-  {bundle: 'com.example.xxx',uid:11111111},
-  {bundle: 'com.example.xxxx',uid:11111111},
-  {bundle: 'com.example.xxxxx'},
+  { bundle: 'com.example.xxx', uid: 11111111 },
+  { bundle: 'com.example.xxxx', uid: 11111111 },
+  { bundle: 'com.example.xxxxx' },
 ];
-notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enabledBundles, true).then((data) => {
-  console.info('setUserGrantedBundleState successfully. Data: ' + JSON.stringify(data));
+notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enabledBundles, true).then(() => {
+  console.info(`setUserGrantedBundleState successfully.`);
 }).catch((err: BusinessError) => {
   console.error(`setUserGrantedBundleState fail: ${JSON.stringify(err)}`);
 });

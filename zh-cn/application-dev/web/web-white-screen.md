@@ -66,14 +66,10 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 * 修改[UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)后再观察页面是否恢复正常。
 
     <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_WebWriteScreenIssue]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'WebWriteScreenIssue_';
     
     @Entry
     @Component
@@ -85,12 +81,12 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
         Column() {
           Web({ src: 'www.example.com', controller: this.controller })
             .onControllerAttached(() => {
-              hilog.info(DOMAIN, TAG, BUNDLE, 'onControllerAttached');
+              console.info('onControllerAttached');
               try {
                 let userAgent = this.controller.getUserAgent() + this.customUserAgent;
                 this.controller.setCustomUserAgent(userAgent);
               } catch (error) {
-                hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
             })
         }
@@ -230,10 +226,6 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_WebWriteScreenIssue]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'WebWriteScreenIssue_';
     
     @Entry
     @Component
@@ -253,7 +245,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
                 ])
                 this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html')
               } catch (error) {
-                hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
               }
             })
             .javaScriptAccess(true)

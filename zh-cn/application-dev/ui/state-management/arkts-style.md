@@ -65,7 +65,7 @@ struct FancyUse {
 
 - \@Styles方法不能有参数，编译期会报错，表明@Styles方法不支持参数。
 
-```ts
+``` TypeScript
 // 错误写法： @Styles不支持参数，编译期报错
 @Styles
 function globalFancy (value: number) {
@@ -86,7 +86,7 @@ function globalFancy () {
 
 - 不支持在\@Styles方法内使用逻辑组件，逻辑组件内的属性不生效。
 
-```ts
+``` TypeScript
 // 错误写法
 @Styles
 function backgroundColorStyle() {

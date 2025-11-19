@@ -49,7 +49,8 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    documentSelectOptions.multiAuthMode = false;
    // Whether to pass the URIs for batch authorization. (Only files are supported and folders are not supported.) This parameter does not take effect when multiAuthMode is set to false. This parameter can be used on smartphones but does not take effect on other devices.
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
-   // Whether to enable the aggregation view mode to launch the file management application. The value DEFAULT means that this parameter does not take effect and the aggregation view mode is disabled. Values other than DEFAULT indicate that other parameters do not take effect. This parameter can be used on smartphones but does not take effect on other devices.
+   // Whether to enable the aggregation view mode to launch the file management application. The value DEFAULT means that this parameter does not take effect and the aggregation view mode is disabled. Values other than DEFAULT indicate that other parameters do not take effect. For API version 22 and later versions, only the fileSuffixFilters parameter takes effect when this parameter is set to a value other than DEFAULT.
+   // This parameter can be used on phones but has no effect on other devices.
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    // Whether to support encryption (only files are supported). The default value is false. If this parameter is set to true, files can be encrypted on the Picker page. Note that this parameter is supported since API version 19.
    documentSelectOptions.isEncryptionSupported = false;
@@ -57,20 +58,21 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) instance, and call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) to start the FilePicker application page for the user to select documents.
 
-   ```ts
-   let uris: string[] = [];
-   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-   // Create a DocumentViewPicker instance.
-   const documentViewPicker = new picker.DocumentViewPicker(context);
-   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
-     // After the files are selected, a result set containing the file URIs is returned.
-     uris = documentSelectResult;
-     console.info('documentViewPicker.select to file succeed and uris are:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const documentViewPicker = new picker.DocumentViewPicker(context);
+      documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
+        uris = documentSelectResult;
+        Logger.info('documentViewPicker.select to file succeed and uris are:' + uris);
+		// ···
+      }).catch((err: BusinessError) => {
+        Logger.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+      });
+```
+
 
    > **NOTE**
    >
@@ -123,19 +125,19 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 
 3. Create an [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) instance, and call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5) to start the AudioPicker application page for the user to select audio clips.
 
-   ```ts
-   let uris: string[] = [];
-   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-   const audioViewPicker = new picker.AudioViewPicker(context);
-   audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-     // After the files are selected, a result set containing the URIs of the audio files selected is returned.
-     uris = audioSelectResult;
-     console.info('audioViewPicker.select to file succeed and uri is:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const audioViewPicker = new picker.AudioViewPicker(context);
+      audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+        // After the files are selected, a result set containing the URIs of the audio files selected is returned.
+        uris = audioSelectResult;
+        console.info('audioViewPicker.select to file succeed and uri is:' + uris);
+```
+
 
    > **NOTE**
    >

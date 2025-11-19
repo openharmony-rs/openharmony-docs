@@ -74,7 +74,7 @@ SEI信息内容，描述SEI信息的负载类型和数据。
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string] | Object | 否  | 否  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
+| [key: string] | Object | 否  | 是  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
 
 **示例：**
 
@@ -116,7 +116,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string]| Object | 否  | 否  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
+| [key: string]| Object | 否  | 是  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
 
 ## AVRecorderConfig<sup>9+</sup>
 
@@ -262,7 +262,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。当前版本AVRecorder不支持该属性的设置。|
 
-### AVMetadata.tracks支持的MediaDescriptionKey说明
+### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
 AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)的范围如下：
 
@@ -276,11 +276,11 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 | MD_KEY_FRAME_RATE | 'frame_rate' | 视频 |
 | MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | 音频 |
 | MD_KEY_AUD_SAMPLE_RATE | 'sample_rate' | 音频 |
-| MD_KEY_HDR_TYPE | 'hdr_type' | 视频 |
-| MD_KEY_ORIGINAL_WIDTH | 'original_width' | 视频 |
-| MD_KEY_ORIGINAL_HEIGHT | 'original_height' | 视频 |
-| MD_KEY_BITRATE | 'bitrate' | 音频 |
-| MD_KEY_AUD_SAMPLE_DEPTH | 'sample_depth' | 音频 |
+| MD_KEY_HDR_TYPE<sup>12+</sup> | 'hdr_type' | 视频 |
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup> | 'original_width' | 视频 |
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup> | 'original_height' | 视频 |
+| MD_KEY_BITRATE | 'bitrate' | 音频、视频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | 音频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
 
 ## PixelMapParams<sup>12+</sup>
 
@@ -386,7 +386,7 @@ async function setupPlayer() {
 | preferredHdr | boolean | 否   | 是   | 表示播放策略是否为hdr。true表示是，false表示不是，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | enableSuperResolution<sup>18+</sup> | boolean | 否   | 是   | 表示是否使能超分功能。true表示使能超分，false表示不使能超分，默认为false。<br>若不使能超分，则后续不能调用超分相关接口。若使能超分，则超分功能默认开启，默认目标分辨率为1920x1080，单位为像素。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | showFirstFrameOnPrepare<sup>17+</sup> | boolean | 否   | 是   | 播放策略true是Prepare之后显示视频起播首帧，false是Prepare之后不显示视频起播首帧，默认不显示。<br>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 |
-| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>API 12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。API 20起，增加支持MediaType.MEDIA_TYPE_VID。 |
+| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>API version 12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。API version 20起，增加支持MediaType.MEDIA_TYPE_VID。 |
 | preferredAudioLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选音轨语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | preferredSubtitleLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选字幕语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | preferredBufferDurationForPlaying<sup>18+</sup> | number | 否   | 是   | 播放策略首选起播缓冲水线。当起播缓冲时间超过该值，开始播放。单位为秒（s），取值范围[0, 20]。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |

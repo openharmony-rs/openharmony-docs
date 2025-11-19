@@ -16,6 +16,20 @@
 
 **全局接口：** ArkUI提供的一系列全局接口，这些接口在调用时无需显式指定UI实例或组件。它们会根据调用发生时所在的UI上下文，自动作用于相应的UI实例。
 
+**调用作用域：** 调用作用域是确保UI实例在异步任务执行过程中维持正确上下文关联的核心机制。该机制通过建立明确的上下文标识体系，保证异步操作能够准确关联到其归属的UI实例。其工作机制分为下面四步：
+
+- 标识注册：UI实例初始化时自动生成唯一标识符。
+
+- 上下文绑定：UI实例发起的任务自动携带实例标识。
+
+- 作用域保护：在异步边界（包括NAPI调用、Promise回调、Worker通信等）维持标识传递。
+
+- 上下文恢复：异步任务执行时恢复其关联的UI实例标识。
+
+**图1** 调用作用域原理图
+
+![calling_scope](figures/calling_scope.png)
+
 ## UI上下文不明确
 
 UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指认UI实例的问题。
@@ -25,7 +39,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 为了保证全局接口的相关功能正常，开发者应当使用UIContext的接口替换全局接口。
 
-**图1** 多实例关系图
+**图2** 多实例关系图
 
 ![multi-instance](figures/multi-instance.png)
 
@@ -65,7 +79,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 ## 常见UIContext接口替换全局接口的场景
 
-以下UIContext接口替换全局接口示例以[像素单位转换](../reference/apis-arkui/arkui-ts/ts-pixel-units.md#像素单位转换)接口为例。
+以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。
 
 ### 通过自定义组件获取UIContext
 
@@ -106,7 +120,10 @@ struct Index {
 ```
 
 使用UIContext接口替换：
-```ts
+
+<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) --> 
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -179,7 +196,83 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 使用UIContext接口替换：
-```ts
+
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { ContextUtils } from '../Common/ContextUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+import { PixelUtils } from '../Common/UIContext';
+import { PixelUtil } from '../Common/Utils';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+// ···
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    let localStorage = new LocalStorage();
+    localStorage.setOrCreate('message', 'Message from Storage')
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
+    let window = windowStage.getMainWindowSync();
+    // 注册主窗的回调。
+    WindowUIContextUtils.registerWindowCallback(window);
+    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    windowStage.loadContent('pages/Index', localStorage, (err) => {
+      // 需要在loadContent完成后获取UIContext。
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      // 需要在回调中调用。
+      try {
+        let uiContext = window.getUIContext();
+        PixelUtils.setUIContext(uiContext);
+        // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
+        WindowUIContextUtils.setActiveUIContext(uiContext)
+        if (!uiContext) {
+          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+          return;
+        }
+        let pxValue = uiContext.vp2px(20);
+        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
+      }
+      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
+    });
+  }
+
+// ···
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    // 在窗口销毁时需要移除失效的UIContext
+    PixelUtil.removeUIContext();
+  }
+
+// ···
+}
+
+```
+### 通过静态方法获取UIContext对象
+从API version 23开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext23)获取UIContext对象。
+
+>**说明：**
+> - 优先通过自定义组件或者窗口对象获取UIContext，通过这两种方式获取不受调用作用域的影响，且获取到的是可预期的UIContext实例。
+> - 使用该方案替换全局接口可以保证在同一个调用点保持与原先全局接口行为一致，但是不能保证能够作用到期望的UI实例上。
+
+下面举例说明在不同时机使用静态方法替换全局接口的方法。
+
+使用全局接口：
+<!--deprecated_code_no_check-->
+
+``` TypeScript
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -191,38 +284,163 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    let window = windowStage.getMainWindowSync();
-    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    // 在loadContent前调用，此时无UI实例，vp2px会根据屏幕默认像素密度返回计算结果。
+    let pxValue = vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
-      // 需要在回调中调用。
-      try {
-        let uiContext = window.getUIContext();
-        if (!uiContext) {
-          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
-          return;
-        }
-        let pxValue = uiContext.vp2px(20);
-        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
-      } catch(e) {
-        hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
-      }
+      // 在loadContent异步回调中调用，此时有UI实例，但上下文不明确，此时会根据主窗的像素密度返回计算结果。
+      let pxValue = vp2px(20);
+      hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
     });
     // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
-  }
-
-  onWindowStageDestroy(): void {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-    // 在窗口销毁时需要移除失效的UIContext
-    PixelUtils.removeUIContext();
+    pxValue = vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
   }
 
   // ...
 }
 ```
+
+<!--deprecated_code_no_check-->
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text('Calculate 20vp to px')
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          // 在有UI实例且上下文明确时调用，此时会根据此时UI上下文对应的实例的像素密度返回计算结果。
+          let pxValue = vp2px(20);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+使用静态方法替换：
+
+<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+
+``` TypeScript
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window, UIContext } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    // 在loadContent前调用，此时无UI实例，vp2px会根据屏幕默认像素密度返回计算结果。
+    let resolvedUIContext = UIContext.resolveUIContext();
+    let pxValue = resolvedUIContext.vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      // 在loadContent异步回调中调用，此时有UI实例，但上下文不明确，此时会根据主窗的像素密度返回计算结果。
+      let resolvedUIContext = UIContext.resolveUIContext();
+      let pxValue = resolvedUIContext.vp2px(20);
+      hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+    });
+    // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+    pxValue = vp2px(20);
+    hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+  }
+
+  // ...
+}
+```
+
+<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text('Calculate 20vp to px')
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          // 在有UI实例且上下文明确时调用，此时会根据此时UI上下文对应的实例的像素密度返回计算结果。
+          let resolvedUIContext = UIContext.resolveUIContext();
+          let pxValue = resolvedUIContext.vp2px(20);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext23)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
+
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
+
+``` TypeScript
+function GetUIContextByAtomicInterface(): UIContext {
+  let callingScopeUIContext = UIContext.getCallingScopeUIContext();
+  if (callingScopeUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
+    return callingScopeUIContext;
+  }
+  let allContexts = UIContext.getAllUIContexts();
+  let length = allContexts.length;
+  if (length === 1) {
+    hilog.info(0x00, 'testTag', `Get UIContext of unique UI instance.`)
+    return allContexts[0];
+  }
+  let lastFocusedUIContext = UIContext.getLastFocusedUIContext();
+  if (lastFocusedUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last focused instance.`)
+    return lastFocusedUIContext;
+  }
+  let lastForegroundUIContext = UIContext.getLastForegroundUIContext();
+  if (lastForegroundUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last foregrounded instance.`)
+    return lastForegroundUIContext;
+  }
+  if (length !== 0) {
+    hilog.info(0x00, 'testTag', `Get UIContext with maximum instanceId.`)
+    return allContexts[length - 1];
+  }
+  hilog.info(0x00, 'testTag', `Get UIContext of undefined calling scope.`)
+  return new UIContext();
+}
+```
+
+如果开发者希望自定义UIContext的获取策略，或者需要排除上述默认规则中的某些判断条件，建议直接使用上述代码中涉及的基础查询接口进行组合替换，以实现更符合业务场景的上下文获取逻辑。
 
 ### 在封装的接口中获取UI上下文
 
@@ -253,24 +471,28 @@ class PixelUtils {
 ```
 
 使用UIContext接口替换：
-```ts
+
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->
+
+``` TypeScript
 // common/Utils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 
-export class PixelUtils {
-  static uiContext : UIContext | undefined;
-  static setUIContext(uiContext : UIContext): void {
-    PixelUtils.uiContext = uiContext;
+export class PixelUtil {
+  static uiContext: UIContext | undefined;
+
+  static setUIContext(uiContext: UIContext): void {
+    PixelUtil.uiContext = uiContext;
   }
 
   static removeUIContext(): void {
-    PixelUtils.uiContext = undefined;
+    PixelUtil.uiContext = undefined;
   }
 
   static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
-    let _uiContext = uiContext??PixelUtils.uiContext;
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
@@ -279,7 +501,7 @@ export class PixelUtils {
   }
 
   static fp2px(fpValue: number, uiContext?: UIContext): number | undefined {
-    let _uiContext = uiContext??PixelUtils.uiContext;
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
@@ -288,7 +510,7 @@ export class PixelUtils {
   }
 
   lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
-    let _uiContext = uiContext??PixelUtils.uiContext;
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
@@ -297,22 +519,32 @@ export class PixelUtils {
   }
 }
 ```
-```ts
-// entryability/EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import { PixelUtils } from '../common/Utils';
+import { ContextUtils } from '../Common/ContextUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+import { PixelUtils } from '../Common/UIContext';
+import { PixelUtil } from '../Common/Utils';
 
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-  // ...
-
+// ···
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    let localStorage = new LocalStorage();
+    localStorage.setOrCreate('message', 'Message from Storage')
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
     let window = windowStage.getMainWindowSync();
-    windowStage.loadContent('pages/Index', (err) => {
+    // 注册主窗的回调。
+    WindowUIContextUtils.registerWindowCallback(window);
+    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    windowStage.loadContent('pages/Index', localStorage, (err) => {
+      // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
@@ -321,25 +553,43 @@ export default class EntryAbility extends UIAbility {
       try {
         let uiContext = window.getUIContext();
         PixelUtils.setUIContext(uiContext);
-      } catch(e) {
+        // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
+        WindowUIContextUtils.setActiveUIContext(uiContext)
+        if (!uiContext) {
+          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+          return;
+        }
+        let pxValue = uiContext.vp2px(20);
+        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+      } catch (e) {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
+      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
+// ···
+
   onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-    // 在窗口销毁时需要移除失效的UIContext。
-    PixelUtils.removeUIContext();
+    // 在窗口销毁时需要移除失效的UIContext
+    PixelUtil.removeUIContext();
   }
-  // ...
+
+// ···
 }
+
 ```
 
 使用替换的封装接口时，建议在能够获取UIContext的场景下传入UIContext参数。
-```ts
+
+<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { PixelUtils } from '../common/Utils';
+import { PixelUtil } from '../Common/Utils';
 
 const DOMAIN = 0x0000;
 
@@ -348,14 +598,14 @@ const DOMAIN = 0x0000;
 struct Index {
   build() {
     RelativeContainer() {
-      Text('Caculate 20vp to px')
+      Text('Calculate 20vp to px')
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          let pxValue = PixelUtils.vp2px(20, this.getUIContext());
+          let pxValue = PixelUtil.vp2px(20, this.getUIContext());
           hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
         })
     }
@@ -364,8 +614,12 @@ struct Index {
   }
 }
 ```
+
 无法获取UIContext时，可考虑直接调用。
-```ts
+
+<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 let pxValue = PixelUtils.vp2px(20);
 hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 ```
@@ -380,7 +634,10 @@ hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 > 2. 创建窗口时需要调用registerWindowCallback注册回调。
 
 使用UIContext接口替换：
-```ts
+
+<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
+
+``` TypeScript
 // common/WindowUtils.ets
 import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -388,16 +645,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 
 export class WindowUIContextUtils {
-  static activeUIContext : UIContext | undefined;
+  public static activeUIContext: UIContext | undefined;
 
-  static registerWindowCallback(windowClass: window.Window) : void {
+  static registerWindowCallback(windowClass: window.Window): void {
     try {
       windowClass.on('windowEvent', (event: window.WindowEventType) => {
         if (event === window.WindowEventType.WINDOW_ACTIVE) {
           try {
             let uiContext = windowClass.getUIContext();
             WindowUIContextUtils.activeUIContext = uiContext;
-          } catch(exception) {
+          } catch (exception) {
             hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${exception}`);
           }
         }
@@ -411,12 +668,12 @@ export class WindowUIContextUtils {
     windowClass.off('windowEvent');
   }
 
-  static setActiveUIContext(uiContext: UIContext) : void {
+  static setActiveUIContext(uiContext: UIContext): void {
     WindowUIContextUtils.activeUIContext = uiContext;
   }
 
   static vp2px(vpValue: number, uiContext?: UIContext): number {
-    let _uiContext = uiContext??WindowUIContextUtils.activeUIContext;
+    let _uiContext = uiContext ?? WindowUIContextUtils.activeUIContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       let displayClass = display.getDefaultDisplaySync();
       let density = displayClass.densityPixels;
@@ -427,36 +684,53 @@ export class WindowUIContextUtils {
   }
 }
 ```
-```ts
-// entryability/EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import { WindowUIContextUtils } from '../common/WindowUtils';
+import { ContextUtils } from '../Common/ContextUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+import { PixelUtils } from '../Common/UIContext';
+import { PixelUtil } from '../Common/Utils';
 
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-  // ...
-
+// ···
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    let localStorage = new LocalStorage();
+    localStorage.setOrCreate('message', 'Message from Storage')
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
     let window = windowStage.getMainWindowSync();
     // 注册主窗的回调。
     WindowUIContextUtils.registerWindowCallback(window);
-    windowStage.loadContent('pages/WindowTestPage', (err) => {
+    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    windowStage.loadContent('pages/Index', localStorage, (err) => {
       // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
+        PixelUtils.setUIContext(uiContext);
         // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
         WindowUIContextUtils.setActiveUIContext(uiContext)
-      } catch(exception) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to getUIContext in loadContent. Cause: %{public}s', JSON.stringify(exception));
+        if (!uiContext) {
+          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+          return;
+        }
+        let pxValue = uiContext.vp2px(20);
+        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
+      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
@@ -467,29 +741,32 @@ export default class EntryAbility extends UIAbility {
     WindowUIContextUtils.unregisterWindowCallback(window);
   }
 
-  // ...
+// ···
 }
+
 ```
-```ts
+<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
+
+``` TypeScript
 // pages/WindowTestPage.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { WindowUIContextUtils } from '../common/WindowUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
 
 const DOMAIN = 0x0000;
 
 @Entry
 @Component
 struct Index {
-  private subWindow : window.Window | undefined;
+  private subWindow: window.Window | undefined;
 
   build() {
     Column() {
       Text('Create SubWindow')
         .onClick(() => {
           let config: window.Configuration = {
-            name: "test",
+            name: 'test',
             windowType: window.WindowType.TYPE_DIALOG,
             ctx: this.getUIContext().getHostContext()
           };
@@ -508,7 +785,7 @@ struct Index {
                   windowClass.resize(500, 1000);
                   windowClass.showWindow();
                 });
-              } catch(exception) {
+              } catch (exception) {
                 hilog.error(DOMAIN, 'testTag', `Failed to setUIContent. Cause : ${exception}`);
               }
             });
@@ -537,7 +814,9 @@ struct Index {
 
 使用UIContext接口替换：
 
-```ts
+<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct CalendarPickerDialogPage {
@@ -568,15 +847,13 @@ struct CalendarPickerDialogPage {
 }
 ```
 
-
-
 ## 特殊全局接口替换示例
 
 部分全局接口在替换为UIContext接口时，需要考虑一些特殊的调用场景。
 
 ### 像素单位转换接口替换为UIContext接口
 
-因为不同的UI实例可以有不同的转换系数，[像素单位转换](../reference/apis-arkui/arkui-ts/ts-pixel-units.md#像素单位转换)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
+因为不同的UI实例可以有不同的转换系数，[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
 
 | 像素单位转换接口调用时机                                     | 接口行为                                                     | 可能与预期不一致的场景                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -608,24 +885,24 @@ export class PixelUtils {
 ```
 
 使用UIContext接口替换：
-```ts
+
+<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { display } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
 export class PixelUtils {
-  static uiContext : UIContext | undefined;
-  static setUIContext(uiContext : UIContext) : void {
+  public static uiContext: UIContext | undefined;
+
+  static setUIContext(uiContext: UIContext): void {
     PixelUtils.uiContext = uiContext;
   }
 
-  static removeUIContext(): void {
-    PixelUtils.uiContext = undefined;
-  }
-
- static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
-   let _uiContext = uiContext??PixelUtils.uiContext;
+  static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       let displayClass = display.getDefaultDisplaySync();
       let density = displayClass.densityPixels;
@@ -635,7 +912,7 @@ export class PixelUtils {
   }
 
   static fp2px(fpValue: number, uiContext?: UIContext): number | undefined {
-    let _uiContext = uiContext??PixelUtils.uiContext;
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
@@ -644,7 +921,7 @@ export class PixelUtils {
   }
 
   lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
-    let _uiContext = uiContext??PixelUtils.uiContext;
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
       hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
       return undefined;
@@ -707,17 +984,14 @@ struct GetContextPage {
 
 使用UIContext接口替换：
 
-```ts
-// common/ContextUtils.ets
+<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
+
+``` TypeScript
 export class ContextUtils {
-  static context: Context | undefined;
+  public static context: Context | undefined;
 
   static setContext(context: Context): void {
     ContextUtils.context = context;
-  }
-
-  static removeContext(): void {
-    ContextUtils.context = undefined;
   }
 
   static getContext(uiContext?: UIContext): Context | undefined {
@@ -732,40 +1006,48 @@ export class ContextUtils {
 
 接口的默认返回值设置为Ability的成员属性context。
 
-```ts
-// entryAbility/EntryAbility.ets
+<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { ContextUtils } from '../common/ContextUtils';
+import { window } from '@kit.ArkUI';
+import { ContextUtils } from '../Common/ContextUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+import { PixelUtils } from '../Common/UIContext';
+import { PixelUtil } from '../Common/Utils';
 
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+    // ···
     ContextUtils.setContext(this.context);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'setContext success');
+    // ···
   }
 
   onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
-    ContextUtils.removeContext();
   }
-
-  // ...
+// ···
 }
+
 ```
 
 在UI界面中，建议传入UIContext，以保证符合预期或直接调用getHostContext。
 
-```ts
-import { ContextUtils } from '../common/ContextUtils';
+<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
+
+``` TypeScript
+import { ContextUtils } from '../Common/ContextUtils';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const DOMAIN = 0x0000;
+const DOMAIN = 0xF811;
 
 @Entry
 @Component
-struct ContextPage {
+struct Index {
   build() {
     Column() {
       Text('getContext')
@@ -782,12 +1064,12 @@ struct ContextPage {
 
 无UI场景直接返回窗口创建时设置的默认返回值。
 
-```ts
+<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 let context = ContextUtils.getContext();
 hilog.info(DOMAIN, 'testTag', `The context is ${context}`);
 ```
-
-
 
 ### LocalStorage替换为UIContext的接口
 
@@ -828,9 +1110,11 @@ struct LocalStoragePage {
 
 使用UIContext接口替换：
 
-```ts
+<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
+
+``` TypeScript
 // pages/LocalStoragePage
-@Entry({useSharedStorage: true})
+@Entry({ useSharedStorage: true })
 @Component
 struct LocalStoragePage {
   @LocalStorageLink('message') message: string = 'Hello World';
@@ -848,7 +1132,8 @@ struct LocalStoragePage {
           let uiContext = this.getUIContext();
           let storage = uiContext.getSharedLocalStorage();
           if (storage) {
-            storage.setOrCreate('message', 'onClick is called.')
+            storage.setOrCreate('message', 'onClick is called.');
+            this.message = 'LocalStoragePageHelloWorld';
           }
         })
     }
@@ -860,29 +1145,56 @@ struct LocalStoragePage {
 
 使用共享的LocalStorage对象需要在loadContent时传入LocalStorage，详细可参考[LocalStorage：页面级UI状态存储](./state-management/arkts-localstorage.md)。
 
-```ts
-import { AbilityConstant, UIAbility } from '@kit.AbilityKit';
+<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { ContextUtils } from '../Common/ContextUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+import { PixelUtils } from '../Common/UIContext';
+import { PixelUtil } from '../Common/Utils';
 
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-  // ...
-
+// ···
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
-    windowStage.loadContent('pages/LocalStoragePage', localStorage, (err) => {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
+    let window = windowStage.getMainWindowSync();
+    // 注册主窗的回调。
+    WindowUIContextUtils.registerWindowCallback(window);
+    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    windowStage.loadContent('pages/Index', localStorage, (err) => {
+      // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      // 需要在回调中调用。
+      try {
+        let uiContext = window.getUIContext();
+        PixelUtils.setUIContext(uiContext);
+        // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
+        WindowUIContextUtils.setActiveUIContext(uiContext)
+        if (!uiContext) {
+          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+          return;
+        }
+        let pxValue = uiContext.vp2px(20);
+        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
+      }
+      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
-  // ...
+// ···
 }
 ```

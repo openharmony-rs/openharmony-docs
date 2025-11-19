@@ -342,6 +342,17 @@ Web组件的销毁模式，当Web组件销毁时，销毁模式会影响Web内�
 | NORMAL_MODE | 0 | 普通模式，由系统决定Web组件资源的销毁时机。 |
 | FAST_MODE   | 1 | 快速模式，当Web组件触发销毁时，立即销毁相关的内部资源。 |
 
+## ScrollbarMode<sup>23+</sup>
+
+Web页面场景下，全局滚动条模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | 非常驻滚动条。 |
+| FORCE_DISPLAY_SCROLLBAR    | 1 | 常驻滚动条。 |
+
 ## WebBlanklessErrorCode<sup>20+</sup>
 
 无白屏加载的异常错误码。

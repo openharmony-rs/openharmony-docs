@@ -97,7 +97,7 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -312,7 +312,7 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -456,7 +456,7 @@ struct Index {
 
 setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
-设置输入设备的开关状态。以触摸屏为例：关闭时，点击触摸屏设备不响应；开启时，可正常操作触摸屏。
+设置输入设备的开关状态。以触摸屏为例：关闭时，点击触摸屏设备不响应；开启时，可正常操作触摸屏。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -470,6 +470,12 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 | -------- | ------- | ---- | ------------------------- |
 | deviceId | number  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。              |
 | enabled  | boolean | 是   | 输入设备的开关状态，取值为true表示开启输入设备，取值为false表示关闭输入设备。 |
+
+**返回值**：
+
+| 类型                  | 说明               |
+| ------------------- | ---------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 

@@ -13,11 +13,11 @@ The HiAppEvent module can be used to subscribe to application events and system 
 
 ### Application Events
 
-Application events are defined by developers. For example, a button click event. The fields contained in the event parameter object **params** of an application event are customized using the **write()** API. You can determine the field meanings as required.
+Application events are defined by developers. For example, a button click event. The fields contained in the **params** object of an application event come from the application. You can customize the fields through the [write](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventwrite-1) API. You can determine the field meanings as required.
 
 ### System Events
 
-System events occur during application running, such as performance, power consumption, and stability issues. The fields contained in the event parameter object **params** of a system event are defined by the system service. In addition, the crash event and application freeze event of system events allow you to add custom parameters to **params** through the **setEventParam()** API.
+System events occur during application running, such as performance, power consumption, and stability issues. The fields contained in the **params** object of system events are defined by the system services. In addition, you can add custom parameters to the **params** object for crash events and application freeze events through the [setEventParam](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventparam12) API.
 
 For details about the supported system events, detection principles, and fields in **params**, see the related topics.
 
@@ -40,7 +40,7 @@ For details about the supported system events, detection principles, and fields 
 
 ## Event Subscription Methods
 
-HiAppEvent provides the **addWatcher()** API for subscribing to system events in any of the following methods:
+HiAppEvent provides the [addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) API for subscribing to system events. The following subscription methods are supported:
 
 Method 1: Set **triggerCondition** to implement the **onTrigger()** callback. When the callback conditions are met, the system automatically triggers the callback.
 
@@ -52,4 +52,4 @@ Method 2: If the **triggerCondition** parameter is not set, use the **holder** o
 
 Method 3: Implement the **onReceive()** callback, which is triggered in real time when the subscribed event occurs.
 
-For details about ArkTS APIs, see [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher). For details about C/C++ APIs, see [OH_HiAppEvent_AddWatcher()](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_addwatcher).
+For details about event subscription using ArkTS APIs, see [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher). The C/C++ event subscription APIs support only method 1 and method 3. For details, see [Subscribing to an Event](hiappevent-watcher-app-events-ndk.md#step-2-subscribing-to-an-event).

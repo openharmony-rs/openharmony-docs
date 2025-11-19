@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ Defines methods for the web controller.
 
 | Type    | Description      |
 | ------ | ---------- |
-| [WebviewController](./arkts-apis-webview-WebviewController.md)  | A **WebviewController** used to control the behavior of the **Web** component. A **WebviewController** object can control only one **Web** component. Methods (except static methods) on the **WebviewController** can be called only after the **Web** component is bound to the **WebviewController**.|
+| [WebviewController](./arkts-apis-webview-WebviewController.md)  | Used to control the behavior of the **Web** component. A **WebviewController** object can control only one **Web** component. Methods (except static methods) on the **WebviewController** can be called only after the **Web** component is bound to the **WebviewController**.|
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 
@@ -272,3 +272,39 @@ Defines a callback triggered when a same-layer tag is clicked using the mouse or
 **Example**
 
 For details about the sample code, see [onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20).
+
+## OnNativeEmbedObjectParamChangeCallback<sup>21+<sup>
+
+type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void
+
+Defines a callback triggered when the **param** element embedded in the same-layer rendered **object** tag is added, modified, or deleted.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|--------|------|------|------|
+| event | [NativeEmbedParamDataInfo](./arkts-basic-components-web-i.md#nativeembedparamdatainfo21) | Yes| Detailed information about the changes of the **param** element embedded in the **object** tag.|
+
+**Example**
+
+For details about the sample code, see [onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21).
+
+## OnDetectBlankScreenCallback<sup>22+<sup>
+
+type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
+
+Defines a callback triggered when a blank screen is detected.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|--------|------|------|------|
+| event | [BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22) | Yes| Detailed information when a blank screen is detected.|
+
+**Example**
+
+For details about the sample code, see [onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22).

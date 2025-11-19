@@ -20,7 +20,7 @@ wukong是系统自带的一种命令行工具，支持Ability的随机事件注�
 wukong部件架构图以及部件内子模块职责如下所述。  
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
-- 命令行解析：支持命令行获取参数并解析命令行参数。
+- 命令行解析：支持命令行获取参数并解析。
 - 运行环境管理：根据命令行初始化wukong整体运行环境。
 - 系统接口管理：检查并获取指定的mgr，注册controller和dfx的faultlog的回调函数。
 - 随机事件生成：通过random函数生成指定种子数的随机序列，生成事件。
@@ -50,7 +50,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
 
 | 命令           | 说明                                           |
 | -------------- | ---------------------------------------------- |
-| version | 获取wukong版本信息。                             |
+| -v/--version | 获取wukong版本信息。                             |
 | help    | 获取wukong帮助信息。                             |
 | appinfo | 查询支持拉起应用bundleName和对应的mainAbility名。 |
 | special | wukong专项测试。                                   |

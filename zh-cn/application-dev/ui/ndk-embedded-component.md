@@ -24,48 +24,59 @@ ArkUI在Native侧提供的能力是ArkTS的子集，某些能力不会在Native�
 
 本示例展示EmbeddedComponent组件NDK的基础使用方式，ability相关使用请参考[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)。示例应用的bundleName为"com.example.embeddeddemo"，同一应用下被拉起的EmbeddedUIExtensionAbility为"ExampleEmbeddedAbility"。本示例仅支持在具有多进程权限的设备上运行，例如PC/2in1。
 
-  ```c
+<!-- @[embeddedComponentCTest_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/cpp/embedded/embedded.cpp) -->
+
+``` C++
 #include <arkui/native_node.h>
 #include <arkui/native_type.h>
 #include <AbilityKit/ability_base/want.h> //引用元能力want头文件
-//创建节点
-ArkUI_NodeHandle embeddedNode = nodeAPI->createNode(ARKUI_NODE_EMBEDDED_COMPONENT);
 
-// 设置属性
-AbilityBase_Element Element = {.bundleName = "com.example.embeddeddemo", .abilityName = "EmbeddedUIExtensionAbility", .moduleName = ""};// 由元能力提供接口
-AbilityBase_Want* want = OH_AbilityBase_CreateWant(Element); // 由元能力提供接口
-ArkUI_AttributeItem itemobjwant = {.object = want};
-nodeAPI->setAttribute(embeddedNode, NODE_EMBEDDED_COMPONENT_WANT, &itemobjwant);
+// 注册事件
+void onError(int32_t code, const char *name, const char *message) {}
+void onTerminated(int32_t code, AbilityBase_Want *want) {}
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+#define SIZE_300 300
+#define SIZE_401 401
+#define SIZE_480 480
+// ···
+    // 创建节点
+    ArkUI_NodeHandle embeddedNode = nodeAPI->createNode(ARKUI_NODE_EMBEDDED_COMPONENT);
+    // 设置属性
+    AbilityBase_Element Element = {.bundleName = "com.example.uiextensionandaccessibility",
+                                   .abilityName = "ExampleEmbeddedAbility",
+                                   .moduleName = "entry"};       // 由元能力提供接口
+    AbilityBase_Want *want = OH_AbilityBase_CreateWant(Element); // 由元能力提供接口
+    if (want == nullptr) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AbilityBase_Want", "~PluginManager");
+    }
+    ArkUI_AttributeItem itemobjwant = {.object = want};
+    nodeAPI->setAttribute(embeddedNode, NODE_EMBEDDED_COMPONENT_WANT, &itemobjwant);
 
-//注册事件
-void onError(int32_t code, const char* name, const char* message) {}
-void onTerminated(int32_t code, AbilityBase_Want* want) {}
+    auto embeddedNode_option = OH_ArkUI_EmbeddedComponentOption_Create();
+    auto onErrorCallback = onError;
+    auto onTerminatedCallback = onTerminated;
+    OH_ArkUI_EmbeddedComponentOption_SetOnError(embeddedNode_option, onErrorCallback);
+    OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(embeddedNode_option, onTerminatedCallback);
 
-auto embeddedNode_option = OH_ArkUI_EmbeddedComponentOption_Create();
-auto onErrorCallback = onError;
-auto onTerminatedCallback = onTerminated;
-OH_ArkUI_EmbeddedComponentOption_SetOnError(embeddedNode_option, onErrorCallback);
-OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(embeddedNode_option, onTerminatedCallback);
-    
-ArkUI_AttributeItem itemobjembeddedNode = {.object = embeddedNode_option};
-nodeAPI->setAttribute(embeddedNode, NODE_EMBEDDED_COMPONENT_OPTION, &itemobjembeddedNode);
+    ArkUI_AttributeItem itemobjembeddedNode = {.object = embeddedNode_option};
+    nodeAPI->setAttribute(embeddedNode, NODE_EMBEDDED_COMPONENT_OPTION, &itemobjembeddedNode);
 
-//设置基本属性，如宽高
-ArkUI_NumberValue value[] = {480};
-ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-value[0].f32 = 300;
-nodeAPI->setAttribute(embeddedNode, NODE_WIDTH, &item);
-nodeAPI->setAttribute(embeddedNode, NODE_HEIGHT, &item);
+    // 设置基本属性，如宽高
+    ArkUI_NumberValue value[] = {SIZE_480};
+    ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    value[0].f32 = SIZE_300;
+    nodeAPI->setAttribute(embeddedNode, NODE_WIDTH, &item);
+    nodeAPI->setAttribute(embeddedNode, NODE_HEIGHT, &item);
 
-// 创建Column
-ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-nodeAPI->setAttribute(column, NODE_WIDTH, &item);
-ArkUI_NumberValue column_bc[] = {{.u32 = 0xFFF00BB}};
-ArkUI_AttributeItem column_item = {column_bc, 1};
-nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &column_item);
-ArkUI_AttributeItem column_id = {.string = "Column_CAPI"};
-nodeAPI->setAttribute(column, NODE_ID, &column_id);
+    // 创建Column
+    ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    nodeAPI->setAttribute(column, NODE_WIDTH, &item);
+    ArkUI_NumberValue column_bc[] = {{.u32 = 0xFFF00BB}};
+    ArkUI_AttributeItem column_item = {column_bc, 1};
+    nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &column_item);
+    ArkUI_AttributeItem column_id = {.string = "Column_CAPI"};
+    nodeAPI->setAttribute(column, NODE_ID, &column_id);
 
-//上树
-nodeAPI->addChild(column, embeddedNode);
-  ```
+    // 上树
+    nodeAPI->addChild(column, embeddedNode);
+```

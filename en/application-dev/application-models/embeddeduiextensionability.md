@@ -52,28 +52,30 @@ To implement a provider, create an [EmbeddedUIExtensionAbility](../reference/api
 
 3. Open the **EmbeddedUIExtAbility.ets** file and import its dependencies. Customize a class that inherits from **EmbeddedUIExtensionAbility** and implement the lifecycle callbacks **onCreate**, **onSessionCreate**, and **onSessionDestroy**, **onForeground**, **onBackground**, and **onDestroy**.
 
-    ```ts
+    <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
+    
+    ``` TypeScript
     import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-
-    const TAG: string = '[ExampleEmbeddedAbility]';
-
-    export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
+    
+    const TAG: string = '[EmbeddedUIExtAbility]';
+    
+    export default class EmbeddedUIExtAbility extends EmbeddedUIExtensionAbility {
       onCreate() {
         console.info(TAG, `onCreate`);
       }
-
+    
       onForeground() {
         console.info(TAG, `onForeground`);
       }
-
+    
       onBackground() {
         console.info(TAG, `onBackground`);
       }
-
+    
       onDestroy() {
         console.info(TAG, `onDestroy`);
       }
-
+    
       onSessionCreate(want: Want, session: UIExtensionContentSession) {
         console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
         let param: Record<string, UIExtensionContentSession> = {
@@ -82,16 +84,19 @@ To implement a provider, create an [EmbeddedUIExtensionAbility](../reference/api
         let storage: LocalStorage = new LocalStorage(param);
         session.loadContent('pages/extension', storage);
       }
-
+    
       onSessionDestroy(session: UIExtensionContentSession) {
         console.info(TAG, `onSessionDestroy`);
       }
     }
     ```
 
+
 4. Write the entry page file **pages/extension.ets**, which will be loaded in **onSessionCreate** of the EmbeddedUIExtensionAbility.
 
-    ```ts
+    <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/Extension.ets) -->
+
+    ``` TypeScript
     import { UIExtensionContentSession } from '@kit.AbilityKit';
 
     @Entry()
@@ -110,7 +115,7 @@ To implement a provider, create an [EmbeddedUIExtensionAbility](../reference/api
             this.session?.terminateSelfWithResult({
               resultCode: 1,
               want: {
-                bundleName: 'com.example.embeddeddemo',
+                bundleName: 'com.samples.embeddeduiextensionability',
                 abilityName: 'ExampleEmbeddedAbility'
               }});
           })
@@ -121,17 +126,21 @@ To implement a provider, create an [EmbeddedUIExtensionAbility](../reference/api
 
 5. Register the EmbeddedUIExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **embeddedUI** and **srcEntry** to the code path of the EmbeddedUIExtensionAbility.
 
-    ```json
+    <!-- @[embeddedModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/module.json5) -->
+
+    ``` JSON5
     {
       "module": {
+        // ···
         "extensionAbilities": [
+        // ···
           {
             "name": "EmbeddedUIExtAbility",
-            "icon": "$media:icon",
+            "icon": "$media:startIcon",
             "description": "EmbeddedUIExtAbility",
             "type": "embeddedUI",
-            "srcEntry": "./ets/EmbeddedUIExtAbility/EmbeddedUIExtAbility.ets"
-          },
+            "srcEntry": "./ets/embeddeduiextability/EmbeddedUIExtAbility.ets"
+          }
         ]
       }
     }
@@ -147,21 +156,24 @@ You can load the [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-a
 
 If both fields are configured, **ohos.extension.processMode.hostSpecified** takes precedence, meaning that the EmbeddedUIExtensionAbility runs in the specified process.
 For example, add the following content to the home page file **pages/Index.ets**:
-```ts
+
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/BasicClass.ets) -->
+
+``` TypeScript
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  @State message: string = 'Message: '
+struct BasicClass {
+  @State message: string = 'Message: ';
   private want: Want = {
-    bundleName: 'com.example.embeddeddemo',
+    bundleName: 'com.samples.embeddeduiextensionability',
     abilityName: 'EmbeddedUIExtAbility',
     parameters: {
       'ohos.extension.processMode.hostInstance': 'true'
     }
-  }
+  };
 
   build() {
     Row() {

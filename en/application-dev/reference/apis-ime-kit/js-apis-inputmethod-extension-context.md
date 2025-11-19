@@ -10,8 +10,8 @@ The **InputMethodExtensionContext** module, inherited from **ExtensionContext**,
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module can be used only in the stage model.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -120,7 +120,7 @@ Starts an ability. This API uses a promise to return the result.
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information related to the extension ability to start, including the ability name and bundle name.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information, including the ability name and bundle name of the target application.|
 
 **Return value**
 

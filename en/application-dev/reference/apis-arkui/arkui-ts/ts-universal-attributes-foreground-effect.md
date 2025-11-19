@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can apply different visual effects to foreground subjects.
 
@@ -43,7 +43,7 @@ Describes the foreground effect.
 
 | Name       |   Type        |   Read-Only|   Optional|  Description                       |
 | ----         |  ----         |   ---- |   ---- | --------------------------  |
-| radius       | number        |   No  |   No  |   Blur radius.<br>Value range: [0, +∞).<br>Default value: **0**.<br> This parameter takes effect only within the component scope. When it is used with other APIs, the effect beyond the component scope does not apply.    |
+| radius       | number        |   No  |   No  |   Blur radius. Value range: [0, +∞). Default value: **0**.<br> This parameter takes effect only within the component scope. When it is used with other APIs, the effect beyond the component scope does not apply.    |
 
 ## Example
 

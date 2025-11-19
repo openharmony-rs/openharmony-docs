@@ -42,38 +42,46 @@
 
 为了能够模拟滚动，以及监听组件滚动的具体offset，需要为List（此处以列表为例）组件添加滚动控制器以及滚动监听。
 
-```ts
+<!-- @[scroll_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
+
+``` TypeScript
 // src/main/ets/view/ScrollSnapshot.ets
 @Component
 export struct ScrollSnapshot {
   private scroller: Scroller = new Scroller();
-  private listComponentWidth: number = 0;
-  private listComponentHeight: number = 0;
+  private listComponentWidth: number = 0; // 组件宽度，默认值为0
+  private listComponentHeight: number = 0; // 组件高度，默认值为0
   // list组件的当前偏移量
   private curYOffset: number = 0;
   // 每次滚动距离
   private scrollHeight: number = 0;
 
-
-  // ...
+// ···
   build() {
-    // ...
-    Stack() {
-      // ...
-      // 1.1 绑定滚动控制器，并通过`.id`配置组件唯一标识。
-      List({
-        scroller: this.scroller
-      })// ...
-        .id(LIST_ID)
+    // ···
+        Stack() {
+        // ···
+          // 1.1 绑定滚动控制器，并通过`.id`配置组件唯一标识。
+          List({ space: 12, scroller: this.scroller }) {
+              LazyForEach(this.dataSource, (item: number) => {
+              ListItem() {
+                NewsItem({ index: item })
+              }
+            }, (item: number) => item.toString())
+          }
+        // ···
+          .id(LIST_ID)
           // 1.2 通过回调获取滚动偏移量。
-        .onDidScroll(() => {
-          this.curYOffset = this.scroller.currentOffset().yOffset;
-        })
-        .onAreaChange((oldValue, newValue) => {
-          // 1.3 获取组件的宽高。
-          this.listComponentWidth = newValue.width as number;
-          this.listComponentHeight = newValue.height as number;
-        })
+          .onDidScroll(() => {
+            this.curYOffset = this.scroller.currentOffset().yOffset;
+          })
+          .onAreaChange((oldValue, newValue) => {
+            // 1.3 获取组件的宽高。
+            this.listComponentWidth = newValue.width as number;
+            this.listComponentHeight = newValue.height as number;
+            this.scrollHeight = this.listComponentHeight;
+          })
+        // ···
     }
   }
 }
@@ -83,18 +91,22 @@ export struct ScrollSnapshot {
 
 通过实现一个递归方法滚动循环截图，并在滚动过程配合一些动效实现。
 
-```ts
-  /**
-   * 递归滚动截图，直到滚动到底，最后合并所有截图
-   */
-  async scrollSnapAndMerge() {
+<!-- @[scroll_snapand_merge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
+
+``` TypeScript
+/**
+ * 归滚动截图，直到滚动到底，最后合并所有截图
+ */
+async scrollSnapAndMerge() {
+  try {
     // 记录滚动偏移
     this.scrollYOffsets.push(this.curYOffset - this.yOffsetBefore);
     // 调用组件截图接口，获取list组件的截图
     const pixelMap = await this.getUIContext().getComponentSnapshot().get(LIST_ID);
     // 获取位图像素字节，并保存在数组中
     let area: image.PositionArea =
-      await this.getSnapshotArea(pixelMap, this.scrollYOffsets, this.listComponentWidth, this.listComponentHeight)
+      await ImageUtils.getSnapshotArea(pixelMap, this.scrollYOffsets, this.listComponentWidth,
+        this.listComponentHeight)
     this.areaArray.push(area);
 
     // 判断是否滚动到底以及用户是否已经强制停止
@@ -106,11 +118,19 @@ export struct ScrollSnapshot {
     } else {
       // 当滚动到底时，调用`mergeImage`将所有保存的位图数据进行拼接，返回长截图位图对象
       this.mergedImage =
-        await this.mergeImage(this.areaArray, this.scrollYOffsets[this.scrollYOffsets.length - 1],
+        await ImageUtils.mergeImage(this.areaArray, this.scrollYOffsets[this.scrollYOffsets.length - 1],
           this.listComponentWidth, this.listComponentHeight);
     }
+  } catch (err) {
+    let error = err as BusinessError;
+    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error mesage: ${error.message}`);
   }
+}
+```
 
+<!-- @[scroll_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/CommonUtils.ets) -->
+
+``` TypeScript
 // src/main/ets/common/CommonUtils.ets
 static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: number): void {
   scroller.scrollTo({
@@ -129,21 +149,22 @@ static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: numbe
 
 使用image.createPixelMapSync()方法创建长截图longPixelMap，并遍历之前保存的图像片段数据（this.areaArray），构建image.PositionArea对象area，然后调用longPixelMap.writePixelsSync(area)方法将这些片段逐个写入到正确的位置，从而拼接成一个完整的长截图。
 
-```ts
-async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth: number,
+<!-- @[merge_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/ImageUtils.ets) -->
+
+``` TypeScript
+static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth: number,
   listHeight: number): Promise<PixelMap> {
   // 创建一个长截图位图对象
   let opts: image.InitializationOptions = {
     editable: true,
     pixelFormat: 4,
     size: {
-      width: this.getUIContext().vp2px(listWidth),
-      height: this.getUIContext().vp2px(lastOffsetY + listHeight)
+      width: uiContext?.vp2px(listWidth) || 0,
+      height: uiContext?.vp2px(lastOffsetY + listHeight) || 0
     }
   };
   let longPixelMap = image.createPixelMapSync(opts);
   let imgPosition: number = 0;
-
 
   for (let i = 0; i < areaArray.length; i++) {
     let readArea = areaArray[i];
@@ -161,7 +182,12 @@ async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth
       }
     }
     imgPosition += readArea.region.size.height;
-    longPixelMap.writePixelsSync(area);
+    try {
+      longPixelMap.writePixelsSync(area);
+    } catch (err) {
+      let error = err as BusinessError;
+      Logger.error(TAG, `writePixelsSync err, code: ${error.code}, mesage: ${error.message}`);
+    }
   }
   return longPixelMap;
 }
@@ -171,40 +197,53 @@ async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth
 
 使用安全控件SaveButton实现截图保存到相册。
 
-```ts
+<!-- @[save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+
+``` TypeScript
 // src/main/ets/view/SnapshotPreview.ets
 SaveButton({
   icon: SaveIconStyle.FULL_FILLED,
   text: SaveDescription.SAVE_IMAGE,
   buttonType: ButtonType.Capsule
 })
+  // ···
   .onClick((event, result) => {
     this.saveSnapshot(result);
   })
+```
 
+<!-- @[save_snapshot1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+
+``` TypeScript
 async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
-  if (result === SaveButtonOnClickResult.SUCCESS) {
-    const helper = photoAccessHelper.getPhotoAccessHelper(this.context);
-    const uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
-    const file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-    const imagePackerApi: image.ImagePacker = image.createImagePacker();
-    const packOpts: image.PackingOption = {
-      format: 'image/png',
-      quality: 100,
-    };
-    imagePackerApi.packing(this.mergedImage, packOpts).then((data) => {
-      fileIo.writeSync(file.fd, data);
-      fileIo.closeSync(file.fd);
-      Logger.info(TAG, `Succeeded in packToFile`);
-      promptAction.showToast({
-        message: $r('app.string.save_album_success'),
-        duration: 1800
-      })
-    }).catch((error: BusinessError) => {
-      Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
-    });
+  try {
+    if (result === SaveButtonOnClickResult.SUCCESS) {
+      const helper = photoAccessHelper.getPhotoAccessHelper(this.context);
+      const uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
+      const file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+      const imagePackerApi: image.ImagePacker = image.createImagePacker();
+      const packOpts: image.PackingOption = {
+        format: 'image/png',
+        quality: 100,
+      };
+      imagePackerApi.packToData(this.mergedImage, packOpts).then((data) => {
+        fileIo.writeSync(file.fd, data);
+        fileIo.closeSync(file.fd);
+        Logger.info(TAG, `Succeeded in packToFile`);
+        this.getUIContext().getPromptAction().showToast({
+          // $r('app.string.save_album_success')需要替换为开发者所需的资源文件
+          message: $r('app.string.save_album_success'),
+          duration: 1800
+        })
+      }).catch((error: BusinessError) => {
+        Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
+      });
+    }
+  // ···
+  } catch (err) {
+    let error = err as BusinessError;
+    Logger.error(TAG, `saveSnapshot err, errCode: ${error.code}, error mesage: ${error.message}`);
   }
-  // ...
 }
 ```
 
@@ -212,30 +251,34 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
 
 当位图对象不再使用时，应及时将其赋值为空，例如：`this.mergedImage = undefined;`。
 
-```ts
-  closeSnapPopup(): void {
-    // 关闭弹窗
-    this.isShowPreview = false;
-    // 释放位图对象
-    this.mergedImage = undefined;
-    // 重置相关参数
-    this.snapPopupWidth = 100;
-    this.snapPopupHeight = 200;
-    this.snapPopupPosition =
-      PopupUtils.calcPopupCenter(this.screenWidth, this.screenHeight, this.snapPopupWidth, this.snapPopupHeight);
-    this.isLargePreview = false;
-  }
+<!-- @[close_and_clean_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+
+``` TypeScript
+closeSnapPopup(): void {
+  // 关闭弹窗
+  this.isShowPreview = false;
+  // 释放位图对象
+  this.mergedImage = undefined;
+  // 重置相关参数
+  this.snapPopupWidth = 100;
+  this.snapPopupHeight = 200;
+  this.snapPopupPosition =
+    PopupUtils.calcPopupCenter(this.screenWidth, this.screenHeight, this.snapPopupWidth, this.snapPopupHeight);
+  this.isLargePreview = false;
+}
 ```
 
 ### 封装全局截图接口
 如前文所述，截图接口必须在UI上下文明确的位置使用。然而，应用有时希望对不同模块封装统一的全局截图方法。例如，在下述示例中，awardBuilder构建的组件是固定结构的。GlobalStaticSnapshot提供了一个getAwardSnapshot全局方法，能够满足不同模块的需求，对同一固定模式的组件进行截图，从而实现全局截图接口的封装。本示例从API version 18开始支持。
 
-```ts
+<!-- @[global_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/GlobalScreenshot.ets) -->
+
+``` TypeScript
 import { image } from '@kit.ImageKit';
 import { ComponentContent } from '@kit.ArkUI';
 
 export class Params {
-  text: string | undefined | null = "";
+  public text: string | undefined | null = '';
 
   constructor(text: string | undefined | null) {
     this.text = text;
@@ -258,16 +301,16 @@ export class GlobalStaticSnapshot {
   /**
    * 一个可以获取固定对象截图的静态方法
    */
-  static getAwardSnapshot(uiContext: UIContext, textParam: Params): image.PixelMap | undefined {
+  static async getAwardSnapshot(uiContext: UIContext, textParam: Params): Promise<image.PixelMap | undefined> {
     let resultPixmap: image.PixelMap | undefined = undefined
     let contentNode = new ComponentContent(uiContext, wrapBuilder(awardBuilder), textParam);
-    uiContext.getComponentSnapshot()
+    await uiContext.getComponentSnapshot()
       .createFromComponent(contentNode, 320, true, { scale: 1, waitUntilRenderFinished: true })
       .then((pixmap: image.PixelMap) => {
-        resultPixmap = pixmap
+        resultPixmap = pixmap;
       })
       .catch((err: Error) => {
-        console.error("error: " + err)
+        console.error('error: ' + err);
       })
     return resultPixmap;
   }

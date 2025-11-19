@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
+```
+
 ## Overview
 
 The struct describes the camera's concurrency information.

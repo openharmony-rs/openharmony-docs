@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **notificationExtensionSubscription** module provides notification management capabilities for opening the settings page, subscribing to and unsubscribing from notifications, obtaining and setting the notification authorization status, and obtaining notification information.
+The **notificationExtensionSubscription** module provides notification management capabilities for opening the settings page, subscribing to/unsubscribing from notifications, and obtaining/setting the notification authorization status.
 
 > **NOTE**
 >
@@ -15,13 +15,15 @@ The **notificationExtensionSubscription** module provides notification managemen
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## notificationExtensionSubscription.openSubscriptionSettings
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-Opens the page for setting notification extension subscription in a semi-modal dialog box. On this page, users can set the notification enabling status and mode. This API uses a promise to return the result.
+Opens the Settings screen (displayed in a semi-modal dialog box) for subscribing notification extension after the [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is implemented. Users can set the notification enabling status and mode on this screen. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -53,22 +55,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import notificationExtensionSubscription from '@ohos.notificationExtensionSubscription'
 import { common } from '@kit.AbilityKit';
 
+const DOMAIN = 0x0000;
+
 try {
-  await notificationExtensionSubscription.openSubscriptionSettings(getContext(this) as common.UIAbilityContext);
-  } catch (error) {
-    console.error("xxxxx failed to call openSubscriptionSettings")
-    }
-    console.log("xxxxx userGranted result");
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
+    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+}
 ```
 
 ## notificationExtensionSubscription.subscribe
 
 subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
-Subscribes to notifications after connecting to a Bluetooth address. This API uses a promise to return the result.
+Subscribes to notifications after the Bluetooth address is connected and the [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is implemented. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -78,7 +86,7 @@ Subscribes to notifications after connecting to a Bluetooth address. This API us
 
 | Name    | Type                                       | Mandatory| Description                                       |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------- |
-| info  | [NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | Yes  | List of subscribed notifications (in array).|
+| info  | [NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md) | Yes  | List of subscribed notifications (in array).|
 
 **Return value**
 
@@ -100,9 +108,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // Use the dynamically obtained Bluetooth address.
@@ -146,9 +151,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.unsubscribe().then(() => {
   console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
@@ -170,7 +172,7 @@ Obtains the notification subscription information of this application. This API 
 
 | Type    | Description       | 
 | ------- |-----------|
-| Promise\<[NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md)\> | Promise used to return the [NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) array.|
+| Promise\<[NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md)\> | Promise used to return the [NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md) array.|
 
 **Error codes**
 
@@ -185,11 +187,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info('getSubscribeInfo successfully. Data: ' + JSON.stringify(data));
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
@@ -224,9 +223,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
     console.info('isUserGranted true');
@@ -267,11 +263,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  console.info('getUserGrantedEnabledBundles successfully. Data: ' + JSON.stringify(data));
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
@@ -281,7 +274,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => 
 
 type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionInfo
 
-Describes the information about the notification extension subscription. This API uses a promise to return the result.
+Describes the information about the notification extension subscription.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -294,8 +287,6 @@ Describes the information about the notification extension subscription. This AP
 Describes the type that enables notification extension subscription.
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Type**
 
 | Name                | Value      | Description      |
 | -------------------- | -------- | ---------- |

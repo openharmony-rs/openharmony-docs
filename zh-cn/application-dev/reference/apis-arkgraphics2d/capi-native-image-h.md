@@ -105,7 +105,7 @@ OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t textureId | OpenGL ES的纹理ID，OH_NativeImage实例会与之相关联。 |
-| uint32_t textureTarget | OpenGL ES的纹理目标。 |
+| uint32_t textureTarget | OpenGL ES的纹理目标，取值范围为GL_TEXTURE_2D和GL_TEXTURE_EXTERNAL_OES，具体可见[选择纹理类型](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-12)。 |
 
 **返回：**
 
@@ -627,7 +627,7 @@ OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, ui
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t textureId | OpenGL ES的纹理ID，OH_NativeImage实例会与之相关联。 |
-| uint32_t textureTarget | OpenGL ES的纹理目标。 |
+| uint32_t textureTarget | OpenGL ES的纹理目标，具体可见[选择纹理类型](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-12)。 |
 | bool singleBufferMode | 是否设置单buffer模式。true表示设置为单buffer模式，false表示不设置。 |
 
 **返回：**

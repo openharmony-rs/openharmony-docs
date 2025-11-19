@@ -71,6 +71,6 @@ The API usage does not change, and no additional adaptation is required during A
 
 3. When using **deleteAlbums**, note that all assets within the album are moved to the recycle bin.
 
-4. When renaming an album with **setAlbumName** and **commitModify**, the original album is deleted and a new one is created. To continue working with the album, you should perform operations on the new album. After renaming, call [getAlbums](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis-media-library-kit/js-apis-photoAccessHelper.md#getalbums-2) to obtain the new album name for subsequent operations.
+4. When renaming an album with **setAlbumName** and **commitModify**, the original album is deleted and a new one is created. To continue working with the album, you should perform operations on the new album. After renaming, call [getAlbums](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-media-library-kit/js-apis-photoAccessHelper.md#getalbums-2) to obtain the new album name for subsequent operations.
 
 5. When using **registerChange**, note that you will receive notifications for the addition of copied assets when **addAssets** is called, deletion notifications for assets within the album when **removeAssets** and **deleteAlbums** are called, and update notifications for the album when **setAlbumName** and **commitModify** are called.

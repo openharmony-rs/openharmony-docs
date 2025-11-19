@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_Context* ArkUI_ContextHandle
+```
+
 ## 概述
 
 定义ArkUI native UI的上下文实例对象指针定义。

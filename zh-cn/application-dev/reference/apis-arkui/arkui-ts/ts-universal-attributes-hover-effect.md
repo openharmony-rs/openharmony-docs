@@ -1,7 +1,7 @@
 # 悬浮态效果
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -50,7 +50,9 @@ struct HoverExample {
       Column({ space: 5 }) {
         Text('Scale').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 80 })
         Column()
-          .width('80%').height(200).backgroundColor(Color.Gray)
+          .width('80%')
+          .height(200)
+          .backgroundColor(Color.Gray)
           .position({ x: 40, y: 120 })
           .hoverEffect(HoverEffect.Scale)
           .onHover((isHover?: boolean) => {
@@ -60,16 +62,20 @@ struct HoverExample {
 
         Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 })
         Column()
-          .width('80%').height(200).backgroundColor(Color.Yellow)
+          .width('80%')
+          .height(200)
+          .backgroundColor(Color.Yellow)
           .hoverEffect(HoverEffect.Highlight)
           .position({ x: 40, y: 420 })
           .onHover((isHover?: boolean) => {
-            console.info('Highlight isHover: ' +isHover as string)
+            console.info('Highlight isHover: ' + isHover as string)
             this.isHoverVal = isHover as boolean
           })
       }
       .hoverEffect(HoverEffect.None)
-      .width('100%').height('100%').border({ width: 1 })
+      .width('100%')
+      .height('100%')
+      .border({ width: 1 })
       .onHover((isHover?: boolean) => {
         console.info('HoverEffect.None')
         this.isHoverVal = isHover as boolean

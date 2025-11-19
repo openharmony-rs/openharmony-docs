@@ -1822,7 +1822,7 @@ getDataAnalysisProgress(analysisType?: AnalysisType): Promise&lt;string&gt;
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| analysisType | [AnalysisType](#analysistype11) | 否    | 需要获取的智慧分析类型，默认为空值。<br>该参数在API 12-21为必选参数，从API 22开始及以后为可选参数。 |
+| analysisType | [AnalysisType](#analysistype11) | 否    | 需要获取的智慧分析类型，默认为空值。<br>该参数在API version 12-21为必选参数，从API version 22开始及以后为可选参数。 |
 
 **返回值：**
 
@@ -1934,7 +1934,7 @@ startAssetAnalysis(type: AnalysisType, assetUris?: Array&lt;string&gt;): Promise
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type      | [AnalysisType](#analysistype11) | 是   | 需要启动的智慧分析类型。                                     |
+| type      | [AnalysisType](#analysistype11) | 是   | 需要启动的智慧分析类型，仅支持ANALYSIS_SEARCH_INDEX。                                     |
 | assetUris | Array&lt;string&gt; | 否   | 资产uri的数组。<br>- 填写：仅分析指定资产。<br>- 不填：全量分析。 |
 
 **返回值：**
@@ -3236,6 +3236,120 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   } catch (err) {
     console.error(`query failed with error: ${err.code}, ${err.message}`);
   }
+}
+```
+
+### getClonedAssetUris<sup>22+</sup>
+ 
+getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
+
+通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --------------------- | --------------------------- |
+| Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后URI组成的Map列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| **错误码ID** | **错误信息** |
+| ----------------- | --------------------------------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+ 
+phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('getClonedAssetUrisDemo');
+    // 以下是URI媒体文件。
+    let uris: Array<string> = [
+        'file://media/Photo/1/IMG_datetime_0001/displayName1.jpg',
+        'file://media/Photo/2/IMG_datetime_0002/displayName2.jpg',
+        'file://media/Photo/3/IMG_datetime_0003/displayName3.jpg'
+    ];
+    try {
+        let assets: Map<string, string> = await phAccessHelper.getClonedAssetUris(uris);
+        console.info(`Assets: ${assets}`);
+    } catch (error) {
+        console.error(`Error thrown: ${error}`);
+    }
+}
+```
+
+### getClonedAlbumUris<sup>22+</sup>
+ 
+getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
+
+通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --------------------- | --------------------------- |
+| Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后的URI组成的Map列表。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| **错误码ID** | **错误信息** |
+| ----------------- | --------------------------------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：** 
+
+phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('getClonedAlbumUrisDemo');
+    // 以下是URI媒体文件。
+    let uris: Array<string> = [
+        'file://media/PhotoAlbum/1',
+        'file://media/PhotoAlbum/2',
+        'file://media/AnalysisAlbum/3'
+    ];
+    try {
+        let albums: Map<string, string> = await phAccessHelper.getClonedAlbumUris(uris);
+        console.info(`Albums: ${albums}`);
+    } catch (error) {
+        console.error(`Error thrown: ${error}`);
+    }
 }
 ```
 
@@ -5864,6 +5978,100 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+### getSelectedAssets<sup>22+</sup>
+
+getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchResult\<PhotoAsset>>
+
+获取符合系统预设筛选条件的人像相册资产。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ\_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| optionCheck | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 是 | 检索选项，限制返回资产数量。 |
+| filter | string | 否 | 过滤选项，要求Json字符串。<br>目前只支持传递currentFileId，表示当前精选人像卡片展示图片的file_id。比如:'{"currentFileId":"123"}'。<br>不填时默认从头返回资产，填写则返回currentFileId之后的资产。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;FetchResult&lt;[PhotoAsset](#photoasset)&gt;&gt; | Promise对象，返回获取的图片结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息                                                     |
+| :------- | :----------------------------------------------------------- |
+| 201      | Permission denied.                                           |
+| 202      | Called by non-system application.                            |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper
+](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : Promise<void> {
+  try {
+    console.info('getSelectedAssetsDemo');
+    let predicatesHomePage: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicatesHomePage.equalTo('user_display_level', 1);
+    let optionHome: photoAccessHelper.FetchOptions = {
+      predicates: predicatesHomePage,
+      fetchColumns: [],
+    };
+    let albumFetchResult = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SMART,
+      photoAccessHelper.AlbumSubtype.PORTRAIT, optionHome);
+
+    if (albumFetchResult === undefined) {
+      console.error('getSelected fetchResult is undefined');
+      return;
+    }
+    let album = await albumFetchResult?.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      return;
+    }
+
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult = await album.getSelectedAssets(fetchOption);
+    let photoAsset = await fetchResult.getFirstObject();
+    if (!fetchResult||fetchResult.getCount() <= 0) {
+      console.error('get selected assets in album with empty dataList');
+      return;
+    }
+
+    let uriParts = photoAsset.uri.split('/');
+    let fileId = uriParts[uriParts.length - 3];
+    let filter = `{"currentFileId":"${fileId}"}`;
+    let fetchResult1 = await album.getSelectedAssets(fetchOption, filter);
+    if (!fetchResult1||fetchResult1.getCount() <= 0) {
+      console.error('get selected assets in album with empty dataList');
+      return;
+    }
+    let photoAssetList = fetchResult.getAllObjects();
+    console.info('get selected assets in album sucess');
+  } catch (err) {
+    console.error(`get selected assets in album fail, error: ${err?.code}, ${err?.message}`);
+  }
+}
+```
 
 ## MediaAssetEditData<sup>11+</sup>
 
@@ -5875,11 +6083,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### 属性
 
-| 名称           | 类型    | 可读   | 可写  | 说明   |
+| 名称           | 类型    | 只读 | 可选 | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| compatibleFormat | string | 是    | 是    | 编辑数据的格式。<br>**系统接口**：此接口为系统接口。    |
-| formatVersion | string | 是    | 是   | 编辑数据格式的版本。<br>**系统接口**：此接口为系统接口。    |
-| data | string | 是    | 是   | 编辑数据的内容。<br>**系统接口**：此接口为系统接口。    |
+| compatibleFormat | string | 否   | 否    | 编辑数据的格式。<br>**系统接口**：此接口为系统接口。    |
+| formatVersion | string | 否   | 否   | 编辑数据格式的版本。<br>**系统接口**：此接口为系统接口。    |
+| data | string | 否   | 否   | 编辑数据的内容。<br>**系统接口**：此接口为系统接口。    |
 
 ### constructor<sup>11+</sup>
 
@@ -6555,10 +6763,10 @@ enum linkType {
   LINK_EXIST = 2
 }
 
-async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType) {
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
-        photoAccessHelper.getPhotoAccessHelper(getContext());
+        photoAccessHelper.getPhotoAccessHelper(context);
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
       assetChangeRequest.setHasAppLink(hasAppLink);
@@ -6603,10 +6811,10 @@ setAppLinkInfo(appLink: string): void
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 
-async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string) {
+async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
-        photoAccessHelper.getPhotoAccessHelper(getContext());
+        photoAccessHelper.getPhotoAccessHelper(context);
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
         new photoAccessHelper.MediaAssetChangeRequest(asset);
       assetChangeRequest.setAppLinkInfo(appLinkInfo);
@@ -6614,6 +6822,64 @@ async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string)
     } catch (error) {
       console.error('set appLinkInfo error: ' + error);
       return;
+    }
+}
+```
+
+### setCompositeDisplayMode<sup>22+</sup>
+
+setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise\<void\>
+
+设置复合图的展示模式。使用Promise异步回调。
+
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| compositeDisplayMode | [CompositeDisplayMode](#compositedisplaymode22) | 是    | 设置复合图的展示模式。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   | Called by non-system application.       |
+| 23800151 | Scene parameters validate failed. Possible causes: 1. The CompositeDisplayMode is not within the supported range; 2.The original file does not exist locally in PhotoAsset; 3. The PhotoAsset is not composite Asset; 4. The original file format is not within the supported range; 5. The original file has been edited. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('setCompositeDisplayModeDemo');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    try {
+      let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+      let asset = await fetchResult.getFirstObject();
+      let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+      assetChangeRequest.setCompositeDisplayMode(photoAccessHelper.CompositeDisplayMode.DEFAULT);
+      await phAccessHelper.applyChanges(assetChangeRequest);
+      console.info('apply setCompositeDisplayModeDemo successfully');
+    } catch (err) {
+      console.error(`apply setCompositeDisplayModeDemo failed with error: ${err.code}, ${err.message}`);
     }
 }
 ```
@@ -9909,6 +10175,411 @@ async function example(context: Context) {
 }
 ```
 
+### startDownloadSpecificCloudMedia<sup>21+</sup>
+
+startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, CloudAssetDownloadCode\>\>
+
+开始云端媒体资产批量下载任务。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<Map\<string, [CloudAssetDownloadCode](#cloudassetdownloadcode21)\>\> | Promise对象，返回uri列表对应的下载任务是否添加成功。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris is empty; 2. The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('StartDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
+      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### pauseDownloadSpecificCloudMedia<sup>21+</sup>
+
+pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
+
+暂停云端媒体资产批量下载任务。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('PauseDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    await cloudMediaAssetManagerInstance.pauseDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### resumeDownloadSpecificCloudMedia<sup>21+</sup>
+
+resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
+
+恢复云端媒体资产批量下载任务。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。使用Promise异步回调。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('ResumeDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    await cloudMediaAssetManagerInstance.resumeDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### cancelDownloadSpecificCloudMedia<sup>21+</sup>
+
+cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
+
+取消云端媒体资产批量下载任务。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | 是   | 需要取消下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('CancelDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    await cloudMediaAssetManagerInstance.cancelDownloadSpecificCloudMedia(assetURIs);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### queryDownloadSpecificCloudMediaDetails<sup>21+</sup>
+
+queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataSharePredicates): Promise\<CloudAssetDownloadStatus\>
+
+查询云端媒体资产批量下载任务信息。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 谓词查询，显示过滤条件。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<[CloudAssetDownloadStatus](#cloudassetdownloadstatus21)\> | Promise对象，返回下载任务信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('QueryDownloadSpecificCloudMediaDetailsDemo');
+  try {
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.orderByAsc("file_id");
+    let taskListStatus : photoAccessHelper.CloudAssetDownloadStatus =
+       await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaDetails(predicates);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### queryDownloadSpecificCloudMediaTaskCount<sup>21+</sup>
+
+queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSharePredicates): Promise\<number\>
+
+查询云端媒体资产批量下载任务总量。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 谓词查询，显示过滤条件。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<number\> | Promise对象，返回总量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
+  try {
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.orderByAsc("file_id");
+    let count : number =
+       await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### onDownloadProgressChange<sup>21+</sup>
+
+onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): void
+
+监听云端媒体资产批量下载进度。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | 是   | 注册指定的callback监听，回调返回批量下载进度相关通知。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
+  console.info('jsbatchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+}
+async function example(context: Context) {
+  console.info('OnDownloadProgressChangeDemo');
+  try {
+      let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+        = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+      // 注册onCallback监听。
+      cloudMediaAssetManagerInstance.onDownloadProgressChange(onCallback);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### offDownloadProgressChange<sup>21+</sup>
+
+offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>): void
+
+取消监听云端媒体资产批量下载进度相关通知。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | 否   | 取消监听[onDownloadProgressChange](#ondownloadprogresschange21)注册指定的callback监听；不填时，则取消所有进度相关监听。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  console.info('OffDownloadProgressChangeDemo');
+  try {
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    cloudMediaAssetManagerInstance.offDownloadProgressChange();
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## MovingPhoto<sup>12+</sup>
 
 动态照片对象。
@@ -10456,9 +11127,10 @@ async function example(context: Context) {
 | EXIF_ROTATE<sup>21+</sup>  | 'exif_rotate' | 文件的旋转角度信息。**系统接口**：此接口为系统接口。 |
 | HAS_APPLINK<sup>21+</sup>  | 'has_applink' | 文件记忆链接的状态信息。**系统接口**：此接口为系统接口。 |
 | APPLINK<sup>21+</sup>  | 'applink' | 文件记忆链接的信息。**系统接口**：此接口为系统接口。 |
-| HDR_MODE<sup>21+</sup>  | 'hdr_mode' | 文件的HDR模式。**系统接口**：此接口为系统接口。 |
+| HDR_MODE<sup>22+</sup>  | 'hdr_mode' | 文件的HDR模式。**系统接口**：此接口为系统接口。 |
 | EXIST_COMPATIBLE_DUPLICATE<sup>22+</sup>  | 'exist_compatible_duplicate' | 兼容副本的状态信息。**系统接口**：此接口为系统接口。 |
 | CLOUD_ID<sup>22+</sup>  | 'cloud_id' | 文件在云端的唯一标识。**系统接口**：此接口为系统接口。 |
+| COMPOSITE_DISPLAY_STATUS<sup>22+</sup> | 'composite_display_status' | 复合图资产显示状态。**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 
@@ -10495,11 +11167,11 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subtype           | [PhotoSubtype](#photosubtype) | 否  | 图片或者视频的子类型。  |
-| cameraShotKey           | string | 否  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。   |
-| userId<sup>19+</sup>           | number | 否  | 用户id。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| subtype           | [PhotoSubtype](#photosubtype) | 否 | 是 | 图片或者视频的子类型。  |
+| cameraShotKey           | string | 否 | 是 | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。   |
+| userId<sup>19+</sup>           | number | 否 | 是 | 用户id。  |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -10509,10 +11181,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否  | 获取缩略图的尺寸。  |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否  | 获取的操作类型。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否 | 是 | 获取缩略图的尺寸。  |
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否 | 是 | 获取的操作类型。  |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -10524,10 +11196,10 @@ async function example(context: Context) {
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ---- | ------------------------------------------------ |
-| bundleName           | string | 是  | 是  |需保存图片/视频文件的应用bundle name。  |
-| appName    | string | 是  | 是  |需保存图片/视频文件的app name。  |
-| appId    | string | 是  | 是  |需保存图片/视频文件的app id。  |
-| tokenId    | number | 是  | 是  |应用标识，将访问权限授予tokenId标识的应用。  |
+| bundleName           | string | 否  | 是  |需保存图片/视频文件的应用bundle name。  |
+| appName    | string | 否  | 是  |需保存图片/视频文件的app name。  |
+| appId    | string | 否  | 是  |需保存图片/视频文件的app id。  |
+| tokenId    | number | 否  | 是  |应用标识，将访问权限授予tokenId标识的应用。  |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -10535,9 +11207,9 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                              | 可读 | 可写 | 说明                                              |
+| 名称                   | 类型                              | 只读 | 可选 | 说明                                              |
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
-| sourceMode           | [SourceMode](#sourcemode11)     | 是   | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件，或是编辑后的文件。**系统接口**：此接口为系统接口。 |
+| sourceMode           | [SourceMode](#sourcemode11)     | 否  | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件或编辑后的文件。<br>**系统接口**：此接口为系统接口。 |
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -10563,10 +11235,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId       |string  |是 | 卡片的ID，由图库创建卡片时提供。 |
-|uri          |string  |是 | 卡片绑定的图片的uri。创建卡片时uri可为空或图片的uri，移除卡片时uri不做校验，传空即可。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId       |string  | 否 |否 | 卡片的ID，由图库创建卡片时提供。 |
+|uri          |string  | 否 |否 | 卡片绑定的图片的uri。创建卡片时uri可为空或图片的uri，移除卡片时uri不做校验，传空即可。  |
 
 ## GalleryFormInfo<sup>18+</sup>
 
@@ -10576,10 +11248,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId             |string               |是 | 卡片的ID，由图库创建卡片时提供。 |
-|assetUris          |Array&lt;string&gt;  |是 | 卡片绑定的图片或相册的uri集合。<br>创建和更新卡片时，assetUris不可为空。<br>单次创建或更新卡片时，assetUris中的uri个数如果超出500个，则只创建或更新500个uri的监听，超出500个后的uri不会被注册。<br>移除卡片时，assetUris可省略。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId             |string               | 否 |否 | 卡片的ID，由图库创建卡片时提供。 |
+|assetUris          |Array&lt;string&gt;  | 否 |是 | 卡片绑定的图片或相册的uri集合。<br>创建和更新卡片时，assetUris不可为空。<br>单次创建或更新卡片时，assetUris中的uri个数如果超出500个，则只创建或更新500个uri的监听，超出500个后的uri不会被注册。<br>移除卡片时，assetUris可省略。  |
 
 ## ResourceType<sup>11+</sup>
 
@@ -10764,6 +11436,7 @@ async function example(context: Context) {
 | HIDE_LOCATION_ONLY |  1 |  脱敏地理位置信息。 |
 | HIDE_SHOOTING_PARAM_ONLY |  2 |  脱敏拍摄参数。 |
 | NO_HIDE_SENSITIVE_TYPE |  3 |  不脱敏。 |
+| DEFAULT<sup>22+</sup> |  4 |  根据[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：<br>- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。<br>- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置和拍摄参数。 |
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 
@@ -10980,6 +11653,19 @@ async function example(context: Context) {
 | ------------------------- | ---- | -------------------------------- |
 | NORMAL                    | 0    | 普通图片类型。     |
 | CLOUD_ENHANCEMENT         | 1    | 云增强图片类型。     |
+
+## CompositeDisplayMode<sup>22+</sup>
+
+枚举，表示复合图显示模式。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                      | 值   | 说明                             |
+| ------------------------- | ---- | -------------------------------- |
+| DEFAULT                   | 0    | 复合图显示模式为原图。     |
+| CLOUD_ENHANCEMENT         | 1    | 复合图显示模式为云增强。     |
 
 ## PhotoAssetChangeInfo<sup>20+</sup>
 
@@ -11382,3 +12068,78 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+## CloudAssetDownloadNotifyType<sup>21+</sup>
+
+枚举，下载进度通知事件类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DOWNLOAD_PROGRESS |  0 |  下载进度通知。|
+| DOWNLOAD_FINISHED |  1 |  下载完成通知。  |
+| DOWNLOAD_FAILED |  2 |  下载失败通知。  |
+| DOWNLOAD_ASSET_DELETED |  3 |  下载资产删除通知。  |
+| DOWNLOAD_AUTO_PAUSED |  4 |  下载自动停止通知。  |
+| DOWNLOAD_AUTO_RESUMED |  5 |  下载自动恢复通知。  |
+| DOWNLOAD_REFRESHED |  6 |  下载刷新通知。  |
+
+## CloudAssetDownloadCode<sup>21+</sup>
+
+枚举，批量下载添加返回值类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| ADD_DOWNLOAD_TASK_SUCCESS |  0 |  添加下载任务成功。|
+| DOWNLOAD_ASSET_NOT_EXIST |  1 |  添加下载任务时，资源不存在。  |
+
+## CloudAssetDownloadProgressInfo<sup>21+</sup>
+
+批量下载进度信息。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| downloadEventType | [CloudAssetDownloadNotifyType](#cloudassetdownloadnotifytype21)  | 是 | 否 | 批量下载事件类型。 |
+| fileId  | number  |是 |否 | 批量下载文件id。  |
+| percent  | number  |是 |否 | 下载进度信息。  |
+| autoPauseReason       | number  |是 |否 | 自动通知原因。  |
+
+## CloudAssetDownloadStatus<sup>21+</sup>
+
+批量下载任务信息。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskInfos | string[]  | 是 | 否 | 批量下载任务信息。 |
+
+## HdrMode<sup>22+</sup>
+
+枚举，媒体资产的HDR模式。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  默认类型。|
+| HDR_ISO_SINGLE |  1 |  符合ISO标准的单层HDR图片。  |
+| HDR_ISO_DUAL |  2 |  符合ISO标准的双层HDR图片。  |
+| HDR_CUVA |  3 |  历史产品拍摄的HDR图片。  |
+| HDR_VIVID_SINGLE |  4 |  符合HDR Vivid标准的单层图片。  |
+| HDR_VIVID_DUAL |  5 |  符合HDR Vivid标准的双层图片。  |

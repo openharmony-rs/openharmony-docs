@@ -276,7 +276,7 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。<br />不同的事件有不同的配置项，目前仅支持以下事件：
-- MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#自定义参数)）
+- MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
 - APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
 
@@ -425,7 +425,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 > **说明：**
 >
-> 系统事件中：地址越界事件和任务执行超时事件不支持在元服务中订阅。启动耗时事件、滑动丢帧事件、CPU高负载事件和24h功耗器件分解统计事件均不支持在元服务和分身应用中订阅。
+> 系统事件中：地址越界事件和任务执行超时事件不支持在元服务中订阅。启动耗时事件、滑动丢帧事件、CPU高负载事件、24h功耗器件分解统计事件和音频卡顿事件均不支持在元服务和分身应用中订阅。
 
 ## AppEventPackageHolder
 
@@ -1259,7 +1259,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
 | MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
 | APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。 |
-
+| APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
+| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
 

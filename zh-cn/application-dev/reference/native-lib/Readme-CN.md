@@ -41,4 +41,4 @@
   - [Native api中导出的EGL符号列表](egl-symbol.md)
   - [Native api中导出的ICU4C符号列表](icu4c-symbol.md)
   - [Native api中导出的OpenGL ES 3.2符号列表](openglesv3-symbol.md)
-  - [Native api中导出的OpenGL 3.0符号列表](opengl-symbol.md)
+  - [Native api中导出的OpenGL符号列表](opengl-symbol.md)

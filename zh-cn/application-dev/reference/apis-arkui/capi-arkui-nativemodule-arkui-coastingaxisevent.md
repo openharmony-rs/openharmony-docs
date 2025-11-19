@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_CoastingAxisEvent ArkUI_CoastingAxisEvent
+```
+
 ## 概述
 
 定义惯性滚动轴事件。

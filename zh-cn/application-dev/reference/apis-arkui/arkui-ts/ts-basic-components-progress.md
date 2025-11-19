@@ -136,6 +136,8 @@ color(value: ResourceColor | LinearGradient)
 
 从API version 10开始支持利用LinearGradient设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用[DataPanel](ts-basic-components-datapanel.md)。
 
+从API version 23开始支持利用LinearGradient设置Linear样式和Capsule样式的渐变色。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用，暂不支持LinearGradient。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -181,6 +183,10 @@ contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
 privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 设置隐私敏感。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -686,3 +692,34 @@ struct ProgressExample {
 
 ```
 ![capsuleProgressBorderRadius](figures/arkts-capsuleProgressBorderRadius.png)
+
+### 示例9（设置线性进度条和胶囊进度条属性）
+
+从API version 23开始，该示例通过[color](#color)属性中的LinearGradient，实现线性进度条和胶囊进度条渐变色的功能。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ProgressExample {
+  private gradientColor: LinearGradient = new LinearGradient([{ color: "#87BDF9", offset: 0.5 },
+    { color: "#3662F0", offset: 1.0 }])
+  public gradientColor2: LinearGradient = new LinearGradient([{ color: "#A5A5AF", offset: 0.5 }, 
+    { color: "#67666C", offset: 1.0 }])
+
+  build() {
+    Column({ space: 15 }) {
+      Text('Linear：').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Progress({ value: 70, total: 100, type: ProgressType.Linear })
+        .width(100).style({ strokeWidth: 20 })
+        .color(this.gradientColor)
+
+      Text('Capsule：').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Progress({ value: 50, total: 100, type: ProgressType.Capsule })
+        .width(120).style({ strokeWidth: 40 })
+        .color(this.gradientColor2)
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+![linearProgressGradient](figures/arkts-linearProgressGradient.png)

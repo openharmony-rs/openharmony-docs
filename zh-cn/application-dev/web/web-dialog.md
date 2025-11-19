@@ -23,36 +23,28 @@
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ShowWebPageDialog]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ShowWebPageDialog_';
+    
     @Entry
     @Component
     struct Index {
       @State message: string = 'Hello World';
       webviewController: webview.WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
-      context = this.getUIContext().getHostContext();
     
       build() {
         Row() {
           Web({ src: $rawfile('test.html'), controller: this.webviewController })
             .onAlert((event) => {
               if (event) {
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  // $r('app.string.from')需要替换为开发者所需的资源文件
-                  title: this.context?.resourceManager.getStringSync($r('app.string.from').id) + event.url +
-                    // $r('app.string.warn')需要替换为开发者所需的资源文件
-                  this.context?.resourceManager.getStringSync($r('app.string.warn').id),
+                  title: 'from' + event.url + 'warning',
                   message: event.message,
                   confirm:{
-                    // $r('app.string.notarize')需要替换为开发者所需的资源文件
-                    value: $r('app.string.notarize'),
+                    value: 'confirm',
                     action: () => {
-                      hilog.info(DOMAIN, TAG, BUNDLE, 'Alert confirmed.');
+                      console.info('Alert confirmed.');
                       event.result.handleConfirm();
                     }
                   },
@@ -103,10 +95,6 @@
     ``` TypeScript
     import { AlertDialog } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ShowWebPageDialog]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ShowWebPageDialog_';
     
     @Entry
     @Component
@@ -122,11 +110,10 @@
           secondaryTitle: this.subtitle,
           content: this.message,
           primaryButton: {
-            // $r('app.string.notarize')需要替换为开发者所需的资源文件
-            value: $r('app.string.notarize'),
+            value: 'confirm',
             role: ButtonRole.ERROR,
             action: () => {
-              hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the second button is clicked');
+              console.info('Callback when the second button is clicked');
               this.result?.handleConfirm();
             }
           },
@@ -136,18 +123,14 @@
           this.dialogControllerAlert.close();
         }
       })
-      context = this.getUIContext().getHostContext();
       build() {
         Column() {
           Web({ src: $rawfile('alert.html'), controller: this.webviewController })
             .onAlert((event) => {
               if (event) {
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
-                // $r('app.string.from')需要替换为开发者所需的资源文件
-                this.title = this.context?.resourceManager.getStringSync($r('app.string.from').id) + event.url +
-                  // $r('app.string.warn')需要替换为开发者所需的资源文件
-                this.context?.resourceManager.getStringSync($r('app.string.warn').id);
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
+                this.title = 'from' + event.url + 'warning';
                 this.message = event.message;
                 this.result = event.result;
                 this.dialogControllerAlert.open();
@@ -205,10 +188,6 @@
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ShowWebPageDialog]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ShowWebPageDialog_';
     
     @Entry
     @Component
@@ -216,19 +195,16 @@
       @State message: string = 'Hello World';
       webviewController: webview.WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
-      context = this.getUIContext().getHostContext();
+    
       build() {
         Column() {
           Web({ src: $rawfile('test.html'), controller: this.webviewController })
             .onConfirm((event) => {
               if (event) {
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  // $r('app.string.from')需要替换为开发者所需的资源文件
-                  title: this.context?.resourceManager.getStringSync($r('app.string.from').id) +
-                    // $r('app.string.info')需要替换为开发者所需的资源文件
-                  event.url + this.context?.resourceManager.getStringSync($r('app.string.info').id),
+                  title: 'from' + event.url + 'news',
                   message: event.message,
                   primaryButton: {
                     value: 'cancel',
@@ -289,14 +265,10 @@
 
 - 用[CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog)创建弹框。
     <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { ConfirmDialog } from '@kit.ArkUI';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ShowWebPageDialog]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ShowWebPageDialog_';
     
     @Entry
     @Component
@@ -304,7 +276,6 @@
       @State message: string = 'Hello World';
       @State title: string = 'Hello World';
       @State result: JsResult | null = null;
-      context = this.getUIContext().getHostContext()
       webviewController: webview.WebviewController = new webview.WebviewController();
       isChecked = false;
       dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
@@ -314,27 +285,24 @@
           // 勾选框选中状态
           isChecked: this.isChecked,
           // 勾选框说明文本
-          // $r('app.string.noPrompt')需要替换为开发者所需的资源文件
-          checkTips: $r('app.string.noPrompt'),
+          checkTips: 'No further prompts after prohibition',
           primaryButton: {
-            // $r('app.string.no')需要替换为开发者所需的资源文件
-            value: $r('app.string.no'),
+            value: 'prohibited',
             action: () => {
               this.result?.handleCancel();
             },
           },
           secondaryButton: {
-            // $r('app.string.allow')需要替换为开发者所需的资源文件
-            value: $r('app.string.allow'),
+            value: 'allow',
             action: () => {
               this.isChecked = false;
-              hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the second button is clicked');
+              console.info('Callback when the second button is clicked');
               this.result?.handleConfirm();
             }
           },
           onCheckedChange: (checked) => {
             this.isChecked = checked;
-            hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the checkbox is clicked');
+            console.info('Callback when the checkbox is clicked');
           },
         }),
         onWillDismiss: () => {
@@ -352,12 +320,9 @@
                 if (this.isChecked) {
                   event.result.handleCancel();
                 } else {
-                  hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
-                  hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
-                  // $r('app.string.from')需要替换为开发者所需的资源文件
-                  this.title = this.context?.resourceManager.getStringSync($r('app.string.from').id) +
-                    // $r('app.string.info')需要替换为开发者所需的资源文件
-                  event.url + this.context?.resourceManager.getStringSync($r('app.string.info').id);
+                  console.info('event.url:' + event.url);
+                  console.info('event.message:' + event.message);
+                  this.title = 'from' + event.url + 'news';
                   this.message = event.message;
                   this.result = event.result;
                   this.dialogControllerCheckBox.open();
@@ -421,10 +386,6 @@
     ``` TypeScript
     import { CustomContentDialog } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import hilog from '@ohos.hilog';
-    const TAG = '[Sample_ShowWebPageDialog]';
-    const DOMAIN = 0xF811;
-    const BUNDLE = 'ShowWebPageDialog_';
     
     @Entry
     @Component
@@ -434,7 +395,6 @@
       @State result: JsResult | null = null;
       promptResult: string = '';
       webviewController: webview.WebviewController = new webview.WebviewController();
-      context = this.getUIContext().getHostContext();
       dialogController: CustomDialogController = new CustomDialogController({
         builder: CustomContentDialog({
           primaryTitle: this.title,
@@ -443,17 +403,15 @@
           },
           buttons: [
             {
-              // $r('app.string.cancel')需要替换为开发者所需的资源文件
-              value: $r('app.string.cancel'),
+              value: 'cancel',
               buttonStyle: ButtonStyleMode.TEXTUAL,
               action: () => {
-                hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the button is clicked');
+                console.info('Callback when the button is clicked');
                 this.result?.handleCancel();
               }
             },
             {
-              // $r('app.string.notarize')需要替换为开发者所需的资源文件
-              value: $r('app.string.notarize'),
+              value: 'confirm',
               buttonStyle: ButtonStyleMode.TEXTUAL,
               action: () => {
                 this.result?.handlePromptConfirm(this.promptResult);
@@ -486,13 +444,10 @@
           Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
             .onPrompt((event) => {
               if (event) {
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
-                hilog.info(DOMAIN, TAG, BUNDLE, 'event.value:' + event.value);
-                // $r('app.string.from')需要替换为开发者所需的资源文件
-                this.title = this.context?.resourceManager.getStringSync($r('app.string.from').id) +
-                  // $r('app.string.info')需要替换为开发者所需的资源文件
-                event.url + this.context?.resourceManager.getStringSync($r('app.string.info').id);
+                console.info('event.url:' + event.url);
+                console.info('event.message:' + event.message);
+                console.info('event.value:' + event.value);
+                this.title = 'from' + event.url + 'news';
                 this.message = event.message;
                 this.promptResult = event.value;
                 this.result = event.result;

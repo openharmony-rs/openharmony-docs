@@ -1,8 +1,15 @@
 # @ohos.advertising.AutoAdComponent (Carousel Ad Component)
 
+<!--Kit: Ads Kit-->
+<!--Subsystem: Advertising-->
+<!--Owner: @SukiEvas-->
+<!--Designer: @zhansf1988-->
+<!--Tester: @hongmei_may-->
+<!--Adviser: @RayShih-->
+
 The AutoAdComponent module provides the capability of displaying carousel ads.
 
-> **NOTE**
+> **NOTE**<br>
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -14,9 +21,9 @@ import { AutoAdComponent } from '@kit.AdsKit';
 
 ## AutoAdComponent
 
-AutoAdComponent(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions, displayOptions: advertising.AdDisplayOptions, interactionListener: advertising.AdInteractionListener): void
+AutoAdComponent({adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions, displayOptions: advertising.AdDisplayOptions, interactionListener: advertising.AdInteractionListener})
 
-Component used to automatically play ads.
+**Decorator**: @Component
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -24,14 +31,26 @@ Component used to automatically play ads.
 
 **Parameters**
 
-| Name             | Type                                                                             | Mandatory| Description             |
+| Name               | Type                                                                             | Mandatory| Description             |
 |---------------------|-----------------------------------------------------------------------------------|-----|-----------------|
 | adParam             | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams)             | Yes  | Ad request parameters.    |
-| adOptions           | advertising.[AdOptions](js-apis-advertising.md#adoptions)                         | Yes  | Ad configuration.        |
+| adOptions           | advertising.[AdOptions](js-apis-advertising.md#adoptions)                         | Yes  | Ad configuration options.    |
 | displayOptions      | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions)           | Yes  | Ad display parameters.    |
 | interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes  | Ad status change callback.|
 
-**Example**
+### build
+
+build(): void
+
+A constructor used to create an **AutoAdComponent** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Advertising.Ads
+
+## Example
+
+The sample code shows how to display a carousel ad.
 
 ```ts
 import { advertising, AutoAdComponent } from '@kit.AdsKit';
@@ -40,33 +59,28 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Entry
 @Component
 struct Index {
+  // Ad request parameters.
   private adRequestParams: advertising.AdRequestParams = {
-    // Ad type.
-    adType: 8,
     // Ad ID.
-    adId: 'testw6vs28auh3'
+    adId: 'testw6vs28auh3',
+    // Ad type.
+    adType: 8
   };
-  private adOptions: advertising.AdOptions = {
-    // Set the maximum ad content rating.
-    adContentClassification: 'A'
-  };
+  // Ad configuration options.
+  private adOptions: advertising.AdOptions = {};
   // Ad display parameters.
   private adDisplayOptions: advertising.AdDisplayOptions = {
-    // Whether to mute the ad. By default, the ad is not muted.
-    mute: false,
     // Interval at which the carousel items rotate, in ms. The value range is [30000, 120000].
     refreshTime: 30000
   };
 
   build() {
     Column() {
-      // The AutoAdComponent is used to show the carousel ad in non-full-screen mode.
       AutoAdComponent({
         adParam: this.adRequestParams,
         adOptions: this.adOptions,
         displayOptions: this.adDisplayOptions,
         interactionListener: {
-          // Ad status change callback.
           onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
             switch (status) {
               case 'onAdOpen':
@@ -90,13 +104,3 @@ struct Index {
   }
 }
 ```
-
-## build
-
-build(): void
-
-A constructor used to create an **AutoAdComponent** object.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.Advertising.Ads

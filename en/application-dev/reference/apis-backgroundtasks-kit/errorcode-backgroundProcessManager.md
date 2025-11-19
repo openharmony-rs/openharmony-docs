@@ -4,7 +4,7 @@
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @hongjianfeng-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
@@ -61,7 +61,7 @@ The setting fails due to system scheduling.
 
 **Possible Causes**
 
-The system scheduling is performed.
+The setting fails due to system scheduling.
 
 **Solution**
 

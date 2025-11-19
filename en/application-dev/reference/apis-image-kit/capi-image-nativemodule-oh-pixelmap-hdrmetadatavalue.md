@@ -6,6 +6,10 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_Pixelmap_HdrMetadataValue {...} OH_Pixelmap_HdrMetadataValue
+```
+
 ## Overview
 
 The struct describes the HDR metadata values used by the PixelMap and available for the key [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey). It is used in [OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata) and [OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata).

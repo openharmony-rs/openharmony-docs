@@ -31,8 +31,11 @@
 
 详见[模态转场](arkts-modal-transition.md#使用bindcontentcover构建全屏模态转场效果)章节，了解使用bindContentCover构建全屏模态转场效果。
 
-```ts
+<!-- @[bindContentCover_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindContentCover/template6/BindContentCoverDemo.ets) -->
+
+``` TypeScript
 import { curves } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
 interface PersonList {
   name: string,
@@ -42,11 +45,17 @@ interface PersonList {
 @Entry
 @Component
 struct BindContentCoverDemo {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private manager = this.context.resourceManager;
   private personList: Array<PersonList> = [
-    { name: '王**', cardNum: '1234***********789' },
-    { name: '宋*', cardNum: '2345***********789' },
-    { name: '许**', cardNum: '3456***********789' },
-    { name: '唐*', cardNum: '4567***********789' }
+    // 'Person_example1'资源文件中的value值为'王**'
+    { name: this.manager.getStringByNameSync('Person_example1'), cardNum: '1234***********789' },
+    // 'Person_example2'资源文件中的value值为'宋*'
+    { name: this.manager.getStringByNameSync('Person_example2'), cardNum: '2345***********789' },
+    // 'Person_example3'资源文件中的value值为'许**'
+    { name: this.manager.getStringByNameSync('Person_example3'), cardNum: '3456***********789' },
+    // 'Person_example4'资源文件中的value值为'唐*'
+    { name: this.manager.getStringByNameSync('Person_example4'), cardNum: '4567***********789' }
   ];
   // 半模态转场控制变量
   @State isSheetShow: boolean = false;
@@ -56,8 +65,9 @@ struct BindContentCoverDemo {
   @Builder
   MyContentCoverBuilder() {
     Column() {
+      // 'app.string.Text_choose_person'资源文件中的value值为'选择乘车人'
       Row() {
-        Text('选择乘车人')
+        Text($r('app.string.Text_choose_person'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -67,7 +77,8 @@ struct BindContentCoverDemo {
       .backgroundColor(0x007dfe)
 
       Row() {
-        Text('+ 添加乘车人')
+        // 'app.string.Text_add_person'资源文件中的value值为'+ 添加乘车人'
+        Text($r('app.string.Text_add_person'))
           .fontSize(16)
           .fontColor(0x333333)
           .margin({ top: 10 })
@@ -109,7 +120,8 @@ struct BindContentCoverDemo {
             .alignItems(HorizontalAlign.Start)
 
             Column() {
-              Text('编辑')
+              // 'app.string.Text_edit'资源文件中的value值为'编辑'
+              Text($r('app.string.Text_edit'))
                 .fontColor(0x007dfe)
                 .fontSize(16)
             }
@@ -123,7 +135,8 @@ struct BindContentCoverDemo {
       }
       .padding({ top: 20, bottom: 20 })
 
-      Text('确认')
+      // 'app.string.Text_confirm'资源文件中的value值为'确认'
+      Text($r('app.string.Text_confirm'))
         .width('90%')
         .height(40)
         .textAlign(TextAlign.Center)
@@ -143,19 +156,22 @@ struct BindContentCoverDemo {
     Row() {
       Column() {
         Text('00:25')
-        Text('始发站')
+        // 'app.string.Label_origin_station'资源文件中的value值为'始发站'
+        Text($r('app.string.Label_origin_station'))
       }
       .width('25%')
 
       Column() {
         Text('G1234')
-        Text('8时1分')
+        // 'app.string.Label_start_time'资源文件中的value值为'8时1分'
+        Text($r('app.string.Label_start_time'))
       }
       .width('25%')
 
       Column() {
         Text('08:26')
-        Text('终点站')
+        // 'app.string.Label_destination_station'资源文件中的value值为'终点站'
+        Text($r('app.string.Label_destination_station'))
       }
       .width('25%')
     }
@@ -176,7 +192,8 @@ struct BindContentCoverDemo {
       .borderRadius(10)
 
       Column() {
-        Text('+ 选择乘车人')
+        // 'app.string.Sheet_choose_person'资源文件中的value值为'+ 选择乘车人'
+        Text($r('app.string.Sheet_choose_person'))
           .fontSize(18)
           .fontColor(Color.Orange)
           .fontWeight(FontWeight.Bold)
@@ -188,7 +205,7 @@ struct BindContentCoverDemo {
             // 第三步：通过全模态接口调起全模态展示界面，新拉起的模态面板默认显示在最上层
             this.isPresent = !this.isPresent;
           })
-            // 通过全模态接口，绑定模态展示界面MyContentCoverBuilder。transition属性支持自定义转场效果，此处定义了x轴横向入场
+          // 通过全模态接口，绑定模态展示界面MyContentCoverBuilder。transition属性支持自定义转场效果，此处定义了x轴横向入场
           .bindContentCover($$this.isPresent, this.MyContentCoverBuilder(), {
             transition: TransitionEffect.translate({ x: 500 }).animation({ curve: curves.springMotion(0.6, 0.8) })
           })
@@ -201,7 +218,8 @@ struct BindContentCoverDemo {
     Column() {
       Row() {
         this.TripInfo()
-        Text('有票')
+        // 'app.string.Sheet_tickets_available'资源文件中的value值为'有票'
+        Text($r('app.string.Sheet_tickets_available'))
           .fontColor(Color.Blue)
           .width('25%')
       }
@@ -215,7 +233,8 @@ struct BindContentCoverDemo {
       // 第一步：定义半模态转场效果
       .bindSheet($$this.isSheetShow, this.MySheetBuilder(), {
         height: SheetSize.MEDIUM,
-        title: {title: "确认订单"},
+        // 'app.string.Text_confirm_order'资源文件中的value值为'确认订单'
+        title: {title: $r('app.string.Text_confirm_order')},
       })
     }
     .width('100%')

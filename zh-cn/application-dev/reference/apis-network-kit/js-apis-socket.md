@@ -59,7 +59,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。成功返回空，失败返回错误码、错误信息。        |
 
 **错误码：**
@@ -105,7 +105,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **错误码：**
 
@@ -763,11 +763,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 
-let messageView = '';
 udp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message); 
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
-    let messages = uint8Array[i]
+    let messages = uint8Array[i];
     let message = String.fromCharCode(messages);
     messageView += message;
   }
@@ -1677,7 +1677,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。失败返回错误、错误信息。                   |
 
 **错误码：**
@@ -1728,7 +1728,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **返回值：**
 
@@ -2398,7 +2398,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+  address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -2440,7 +2441,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+    address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -2676,11 +2678,11 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-let messageView = '';
 tcp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message); 
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
-    let messages = uint8Array[i]
+    let messages = uint8Array[i];
     let message = String.fromCharCode(messages);
     messageView += message;
   }
@@ -3997,9 +3999,9 @@ let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance(
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }
@@ -4260,7 +4262,7 @@ bind(address: LocalAddress): Promise\<void\>;
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [LocalAddress](#localaddress11) | 是   | 目标地址信息，参考[LocalAddress](#localaddress11)。 |
+| address  | [LocalAddress](#localaddress11) | 是   | 本端地址信息，参考[LocalAddress](#localaddress11)。 |
 
 **返回值：**
 
@@ -6164,7 +6166,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。成功返回TLSSocket绑定本机的IP地址和端口的结果。失败返回错误码、错误信息。|
 
 **错误码：**
@@ -6215,7 +6217,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress)          | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress)          | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **返回值：**
 
@@ -6523,7 +6525,6 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
-let messageView = '';
 let bindAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
   port: 8080
@@ -6535,9 +6536,10 @@ tls.bind(bindAddr, (err: BusinessError) => {
   }
   console.info('bind success');
   tls.on('message', (value: socket.SocketMessageInfo) => {
+    let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }
@@ -6819,7 +6821,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+    address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -6885,7 +6888,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // 双向认证
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7017,7 +7021,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7087,7 +7092,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // 双向认证
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7873,7 +7879,7 @@ TLS连接的操作。
 | ALPNProtocols  | Array\<string\>                         | 否   | 是 | ALPN协议，支持["spdy/1", "http/1.1"]，默认为[]。      |
 | skipRemoteValidation<sup>12+</sup>  | boolean                         | 否   | 是 | 是否跳过对服务端进行证书认证，默认为false。true：跳过对服务端进行证书认证；false：不跳过对服务端进行证书认证。      |
 | proxy<sup>18+</sup>   | [ProxyOptions](#proxyoptions18) | 否   | 是  | 使用的代理信息，默认不使用代理。 |
-| timeout<sup>22+</sup>   | number | 否   | 是  | TLSSocket连接在超时后会失败，单位：ms。 |
+| timeout<sup>22+</sup>   | number | 否   | 是  | 连接超时时间，单位：ms，默认为0。传入值需为0-4294967295范围内的整数。TLSSocket连接在超时后会失败。 |
 
 ## TLSSecureOptions<sup>9+</sup>
 
@@ -8673,7 +8679,7 @@ getLocalAddress(): Promise\<NetAddress\>
 import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tlsServer: socket.TLSSocket = socket.constructTLSSocketServerInstance();
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
 tlsServer.getLocalAddress().then((localAddress: socket.NetAddress) => {
   console.info("Get success: " + JSON.stringify(localAddress));
 }).catch((err: BusinessError) => {
@@ -9918,9 +9924,9 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }

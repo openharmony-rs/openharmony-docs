@@ -30,7 +30,7 @@ API 12
 
 **变更的接口/组件**
 
-[@ohos.account.osAccount.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.osAccount.d.ts)中如下接口。
+[@ohos.account.osAccount.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.osAccount.d.ts)中如下接口。
 
 - addServerConfig(parameters: Record\<string, Object>): Promise\<DomainServerConfig>
 
@@ -74,7 +74,7 @@ API 12
 
 **变更的接口/组件**
 
-[@ohos.account.osAccount.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.osAccount.d.ts)中如下接口。
+[@ohos.account.osAccount.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.osAccount.d.ts)中如下接口。
 
 - addServerConfig(parameters: Record\<string, Object>): Promise\<DomainServerConfig>
 
@@ -134,7 +134,7 @@ API 12
 
 **变更的接口/组件**
 
-[@ohos.account.osAccount.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.osAccount.d.ts)中如下接口。
+[@ohos.account.osAccount.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.osAccount.d.ts)中如下接口。
 
 - removeServerConfig(configId: string): Promise\<void>
 

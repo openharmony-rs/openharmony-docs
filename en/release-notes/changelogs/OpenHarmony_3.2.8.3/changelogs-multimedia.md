@@ -176,45 +176,45 @@ If the **VideoRecorder** caller is not a system user, the call will fail.
 
 Involved APIs and enumerations:
 
-function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void;
+function createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void;
 
-function createVideoRecorder(): Promise<VideoRecorder>;
+function createVideoRecorder(): Promise\<VideoRecorder>;
 
 type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error';
 
 interface VideoRecorder{
 
-​    prepare(config: VideoRecorderConfig, callback: AsyncCallback<void>): void;
+​    prepare(config: VideoRecorderConfig, callback: AsyncCallback\<void>): void;
 
-​    prepare(config: VideoRecorderConfig): Promise<void>;
+​    prepare(config: VideoRecorderConfig): Promise\<void>;
 
-​    getInputSurface(callback: AsyncCallback<string>): void;
+​    getInputSurface(callback: AsyncCallback\<string>): void;
 
-​    getInputSurface(): Promise<string>;
+​    getInputSurface(): Promise\<string>;
 
-​    start(callback: AsyncCallback<void>): void;
+​    start(callback: AsyncCallback\<void>): void;
 
-​    start(): Promise<void>;
+​    start(): Promise\<void>;
 
-​    pause(callback: AsyncCallback<void>): void;
+​    pause(callback: AsyncCallback\<void>): void;
 
-​    pause(): Promise<void>;
+​    pause(): Promise\<void>;
 
-​    resume(callback: AsyncCallback<void>): void;
+​    resume(callback: AsyncCallback\<void>): void;
 
-​    resume(): Promise<void>;
+​    resume(): Promise\<void>;
 
-​    stop(callback: AsyncCallback<void>): void;
+​    stop(callback: AsyncCallback\<void>): void;
 
-​    stop(): Promise<void>;
+​    stop(): Promise\<void>;
 
-​    release(callback: AsyncCallback<void>): void;
+​    release(callback: AsyncCallback\<void>): void;
 
-​    release(): Promise<void>;
+​    release(): Promise\<void>;
 
-​    reset(callback: AsyncCallback<void>): void;
+​    reset(callback: AsyncCallback\<void>): void;
 
-​    reset(): Promise<void>;
+​    reset(): Promise\<void>;
 
 ​    on(type: 'error', callback: ErrorCallback): void;
 
@@ -292,11 +292,11 @@ Deleted APIs:
 
 interface VideoPlayer {
 
-​    selectBitrate(bitrate: number): Promise<number>;
+​    selectBitrate(bitrate: number): Promise\<number>;
 
-​    selectBitrate(bitrate: number, callback: AsyncCallback<number>): void;
+​    selectBitrate(bitrate: number, callback: AsyncCallback\<number>): void;
 
-​    on(type: 'availableBitratesCollect', callback: (bitrates: Array<number>) => void): void;
+​    on(type: 'availableBitratesCollect', callback: (bitrates: Array\<number>) => void): void;
 
 }
 
@@ -315,5 +315,6 @@ Error codes returned from **VideoRecorder** are changed.
 **Adaptation Guide**
 
 For details about exception handling, see the following documents:
-[Media](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-media.md)
-[Media Error Codes](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/errorcodes/errorcode-media.md)
+[Media](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-media.md)
+[Media Error Codes](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/errorcodes/errorcode-media.md)
+<!--no_check-->

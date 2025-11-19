@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfDataLoadParams OH_UdmfDataLoadParams
+```
+
 ## 概述
 
 表示数据加载参数结构体。

@@ -9,7 +9,7 @@
 
 ## Overview
 
-The file declares the MediaKeySession APIs.
+The file declares the MediaKeySession APIs. 
 
 The APIs can be used to generate media key requests, process responses to media key requests, listen for events, obtain content protection levels, check media key status, and delete media keys.
 

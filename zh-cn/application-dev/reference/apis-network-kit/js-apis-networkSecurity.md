@@ -19,7 +19,7 @@
 import { networkSecurity } from '@kit.NetworkKit';
 ```
 
-## 完整实例
+## 完整示例
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';

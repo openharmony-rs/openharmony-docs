@@ -18,6 +18,8 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 - 默认支持拖入能力的组件（目标组件可响应拖入数据）：[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)，开发者可通过设置这些组件的[allowDrop](ts-universal-attributes-drag-drop.md#allowdrop)属性为null来禁用对默认拖入能力的支持。
 
+- 不支持拖出能力的组件（不可从组件上拖出数据）：[ArcScrollBar](./ts-basic-components-arcscrollbar.md)、[MultiNavigation](./ohos-arkui-advanced-MultiNavigation.md)、[ToolBarItem](./ts-basic-components-toolbaritem.md)、[ArcSlider](./ohos-arkui-advanced-ArcSlider.md)、[Span](./ts-basic-components-span.md)、[ImageSpan](./ts-basic-components-imagespan.md)、[ContainerSpan](./ts-basic-components-containerspan.md)、[SymbolSpan](./ts-basic-components-symbolSpan.md)、[ArcAlphabetIndexer](./ts-container-arc-alphabet-indexer.md)、[OffscreenCanvas](./ts-components-offscreencanvas.md)、[Menu](./ts-basic-components-menu.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[PasteButton](./ts-security-components-pastebutton.md)、[SaveButton](./ts-security-components-savebutton.md)、[WithTheme](./ts-container-with-theme.md)、[NavPushPathHelper](./ohos-atomicservice-NavPushPathHelper.md)、[ContentSlot](./ts-components-contentSlot.md)、[Chip](./ohos-arkui-advanced-Chip.md)、[ExceptionPrompt](./ohos-arkui-advanced-ExceptionPrompt.md)、[Filter](./ohos-arkui-advanced-Filter.md)、[FormMenu](./ohos-arkui-advanced-formmenu.md)、[Popup](./ohos-arkui-advanced-Popup.md)、[SelectionMenu](./ohos-arkui-advanced-SelectionMenu.md)、[SplitLayout](./ohos-arkui-advanced-SplitLayout.md)以及所有弹窗类组件。
+
 <!--RP1--><!--RP1End-->其他支持拖出能力的组件需要开发者将draggable属性设置为true，并在onDragStart等接口中实现数据传输相关内容，才能正确处理拖拽。
 
 > **说明：**
@@ -96,6 +98,10 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 
 自定义组件拖拽过程中的预览图，仅用于设置浮起效果或者禁用浮起效果。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -118,6 +124,10 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions): T
 
 设置拖拽过程中预览图处理模式，数量角标的显示以及预览图浮起的交互模式。不支持onItemDragStart拖拽方式。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

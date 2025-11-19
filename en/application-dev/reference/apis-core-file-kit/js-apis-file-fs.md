@@ -50,7 +50,7 @@ Obtains detailed attribute information of a file or directory. This API uses a p
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | Yes  | Application sandbox path or FD of the file or directory.|
+| file   | string \| number | Yes  | Application sandbox path, URI, or FD of the file or directory.<br>**Note**: URIs can be passed since API version 22.|
 
 **Return value**
 
@@ -88,7 +88,7 @@ Obtains detailed attribute information of a file or directory. This API uses an 
 
 | Name  | Type                              | Mandatory| Description                          |
 | -------- | ---------------------------------- | ---- | ------------------------------ |
-| file     | string \| number                   | Yes  | Application sandbox path or FD of the file or directory.    |
+| file     | string \| number                   | Yes  | Application sandbox path, URI, or FD of the file or directory.<br>**Note**: URIs can be passed since API version 22.|
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | Yes  | Callback used to return the file or directory information obtained.|
 
 **Error codes**
@@ -122,7 +122,7 @@ Obtains detailed attribute information of a file or directory. This API returns 
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | Yes  | Application sandbox path or FD of the file or directory.|
+| file   | string \| number | Yes  | Application sandbox path, URI, or FD of the file or directory.<br>**Note**: URIs can be passed since API version 22.|
 
 **Return value**
 
@@ -1754,7 +1754,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-Removes a directory and all its subdirectories and files. This API uses a synchronous callback to return the result.
+Removes a directory and all its subdirectories and files. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2464,7 +2464,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| path   | string | Yes  | Application sandbox path of the file.|
+| path   | string | Yes  | Application sandbox path or URI of the file.<br>**Note**: URIs can be passed since API version 22.|
 
 **Return value**
 
@@ -2500,7 +2500,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 | Name  | Type                              | Mandatory| Description                                  |
 | -------- | ---------------------------------- | ---- | -------------------------------------- |
-| path     | string                             | Yes  | Application sandbox path of the file.|
+| path     | string                             | Yes  | Application sandbox path or URI of the file.<br>**Note**: URIs can be passed since API version 22.|
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | Yes  | Callback used to return the symbolic link information obtained.      |
 
 **Error codes**
@@ -2533,7 +2533,7 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| path   | string | Yes  | Application sandbox path of the file.|
+| path   | string | Yes  | Application sandbox path or URI of the file.<br>**Note**: URIs can be passed since API version 22.|
 
 **Return value**
 
@@ -4562,9 +4562,9 @@ Provides APIs for observing events.
 
 Defines the event to observe.
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 ### Properties
+
+**System capability**: SystemCapability.FileManagement.File.FileIO
 
 | Name  | Type  | Read-Only  | Optional  | Description     |
 | ---- | ------ | ---- | ---- | ------- |
@@ -4711,9 +4711,9 @@ Listener used to observe the copy progress.
 
 Represents detailed file information. Before calling any API of the **Stat()** class, use [stat()](#fsstat) to create a **Stat** instance.
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 ### Properties
+
+**System capability**: SystemCapability.FileManagement.File.FileIO
 
 | Name    | Type  | Read-Only  | Optional  | Description                                      |
 | ------ | ------ | ---- | ---- | ---------------------------------------- |
@@ -5378,9 +5378,9 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 Represents a **File** object opened by **open()**.
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 ### Properties
+
+**System capability**: SystemCapability.FileManagement.File.FileIO
 
 | Name  | Type  | Read-Only  | Optional  | Description     |
 | ---- | ------ | ---- | ---- | ------- |
@@ -5570,9 +5570,9 @@ Called to return the specified status. Its parameters are passed in by [connectD
 
 Provides APIs for randomly reading and writing a stream. Before invoking any API of **RandomAccessFile**, you need to use **createRandomAccessFile()** to create a **RandomAccessFile** instance synchronously or asynchronously.
 
-**System capability**: SystemCapability.FileManagement.File.FileIO
-
 ### Properties
+
+**System capability**: SystemCapability.FileManagement.File.FileIO
 
 | Name        | Type  | Read-Only | Optional | Description             |
 | ----------- | ------ | ----  | ----- | ---------------- |
@@ -6022,14 +6022,14 @@ Defines the file filtering configuration used by **listFile()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      | Description               |
-| ----------- | --------------- | ------------------ | ------------------ |
-| suffix | Array&lt;string&gt;     | No| Locate files that fully match the specified file name extensions, which are of the OR relationship.          |
-| displayName    | Array&lt;string&gt;     | No| Locate files that fuzzy match the specified file names, which are of the OR relationship. Currently, only the wildcard * is supported.|
-| mimeType    | Array&lt;string&gt; | No| Locate files that fully match the specified MIME types, which are of the OR relationship. This parameter is reserved.     |
-| fileSizeOver    | number | No| Locate files that are greater than the specified size.      |
-| lastModifiedAfter    | number | No| Locate files whose last modification time is the same or later than the specified time.      |
-| excludeMedia    | boolean | No| Whether to exclude the files already in **Media**.<br> The value **true** means to exclude the files already in **Media**; the value **false** means not to exclude the files already in **Media**.   |
+| Name| Type| Read-Only| Optional| Description|
+| ------ | ------ | ---- | ---- | ----- |
+| suffix    | Array&lt;string&gt; | No| Yes| Locate files that fully match the specified file name extensions, which are of the OR relationship.|
+| displayName | Array&lt;string&gt; | No| Yes| Locate files that fuzzy match the specified file names, which are of the OR relationship. Currently, only the wildcard * is supported.|
+| mimeType | Array&lt;string&gt; | No| Yes| Locate files that fully match the specified MIME types, which are of the OR relationship. This parameter is reserved.|
+| fileSizeOver | number | No| Yes| Locate files that are greater than the specified size.|
+| lastModifiedAfter | number | No| Yes| Locate files whose last modification time is the same or later than the specified time.|
+| excludeMedia | boolean | No| Yes| Whether to exclude the files already in **Media**.<br> The value **true** means to exclude the files already in **Media**; the value **false** means not to exclude the files already in **Media**.|
 
 ## ConflictFiles<sup>10+</sup>
 
@@ -6108,10 +6108,10 @@ Defines the options used in **read()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      | Description               |
-| ----------- | --------------- | ------------------ |------------------ |
-| length | number     | No| Length of the data to read, in bytes. This parameter is optional. The default value is the buffer length.          |
-|  offset    | number     | No| Start position of the file to read (current **filePointer** plus **offset**), in bytes. This parameter is optional. By default, data is read from the **filePointer**.|
+| Name| Type| Read-Only| Optional| Description|
+| ------ | ------ | ---- | ---- | ----- |
+| length    | number | No| Yes   | Length of the data to read, in bytes. This parameter is optional. The default value is the buffer length.|
+| offset | number | No| Yes| Start position of the file to read (current **filePointer** plus **offset**), in bytes. This parameter is optional. By default, data is read from the **filePointer**.|
 
 ## ReadTextOptions<sup>11+</sup>
 
@@ -6119,11 +6119,11 @@ Defines the options used in **readText()**. It inherits from [ReadOptions](#read
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      | Description               |
-| ----------- | --------------- | ------------------ | ------------------ |
-| length | number     | No| Length of the data to read, in bytes. This parameter is optional. The default value is the file length.          |
-|  offset    | number     | No| Start position of the file to read, in bytes. This parameter is optional. By default, data is read from the current position.|
-| encoding    | string | No| Format of the data to be encoded. This parameter is valid only when the data type is string. The default value is **'utf-8'**, which is the only value supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.   |
+| Name| Type| Read-Only| Optional| Description|
+| ------ | ------ | ---- | ---- | ----- |
+| length    | number | No| Yes   | Length of the data to read, in bytes. This parameter is optional. The default value is the file length.|
+| offset | number | No| Yes| Start position of the file to read, in bytes. This parameter is optional. By default, data is read from the current position.|
+| encoding | string | No| Yes| Format of the data to be encoded. This parameter is valid only when the data type is string. The default value is **'utf-8'**, which is the only value supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## WriteOptions<sup>11+</sup>
 
@@ -6131,11 +6131,11 @@ Defines the options used in **write()**. It inherits from [Options](#options11).
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      | Description               |
-| ----------- | --------------- | ------------------ | ------------------ |
-| length | number     | No| Length of the data to write, in bytes. This parameter is optional. The default value is the buffer length.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
-|  offset    | number     | No| Start position of the file to write (current **filePointer** plus **offset**), in bytes. This parameter is optional. By default, data is written from the **filePointer**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| encoding    | string | No| Format of the data to be encoded. This parameter is valid only when the data type is string. The default value is **'utf-8'**, which is the only value supported.      |
+| Name| Type| Read-Only| Optional| Description|
+| ------ | ------ | ---- | ---- | ----- |
+| length    | number | No| Yes   | Length of the data to write, in bytes. This parameter is optional. The default value is the buffer length.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| offset | number | No| Yes| Start position of the file to write (current **filePointer** plus **offset**), in bytes. This parameter is optional. By default, data is written from the **filePointer**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| encoding | string | No| Yes| Format of the data to be encoded. This parameter is valid only when the data type is string. The default value is **'utf-8'**, which is the only value supported.|
 
 ## ListFileOptions<sup>11+</sup>
 
@@ -6145,19 +6145,17 @@ Defines the options used in **listFile()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      |  Description               |
-| ----------- | --------------- | ------------------ | ------------------ |
-| recursion | boolean     | No| Whether to list all files in the subdirectories recursively. This parameter is optional. The default value is **false**. If **recursion** is **false**, the names of files and directories that meet the filtering requirements in the current directory are returned. If **recursion** is **true**, relative paths (starting with /) of all files that meet the specified conditions in the current directory are returned.          |
-|  listNum    | number     | No| Number of file names to list. This parameter is optional. The default value is **0**, which means to list all files.|
-| filter    | [Filter](#filter10) | No| File filtering configuration. This parameter is optional. It specifies the file filtering conditions.|
+| Name| Type| Read-Only| Optional| Description|
+| ------ | ------ | ---- | ---- | ----- |
+| recursion    | boolean | No| Yes   | Whether to list all files in the subdirectories recursively. This parameter is optional. The default value is **false**. If **recursion** is **false**, the names of files and directories that meet the filtering requirements in the current directory are returned. If **recursion** is **true**, relative paths (starting with /) of all files that meet the specified conditions in the current directory are returned.|
+| listNum | number | No| Yes| Number of file names to list. This parameter is optional. The default value is **0**, which means to list all files.|
+| filter | [Filter](#filter10) | No| Yes| File filtering configuration. This parameter is optional. It specifies the file filtering conditions.|
 
 ## ReadStream<sup>12+</sup>
 
 Defines a readable stream. You need to use [fs.createReadStream](#fscreatereadstream12) to create a **ReadStream** instance, which is inherited from the [stream base class](../apis-arkts/js-apis-stream.md#readable).
 
 The data obtained by **ReadStream** is a decoded string. Currently, only the UTF-8 format is supported.
-
-### Properties
 
 | Name    | Type  | Read-Only  | Optional  | Description                                      |
 | ------ | ------ | ---- | ---- | ---------------------------------------- |
@@ -6226,6 +6224,8 @@ Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewrit
 
 ### Properties
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 | Name    | Type  | Read-Only  | Optional  | Description                                      |
 | ------ | ------ | ---- | ---- | ---------------------------------------- |
 | bytesWritten    | number | Yes   | No   | Number of bytes written to the writable stream.|
@@ -6292,10 +6292,10 @@ Defines the options used in **createRandomAccessFile()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      |  Description               |
-| ----------- | --------------- | ------------------ | ------------------ |
-| start   | number     | No| Start position to read the data, in bytes. This parameter is optional. By default, data is read from the current position.          |
-| end     | number     | No|  End position to read the data, in bytes. This parameter is optional. The default value is the end of the file.|
+| Name| Type| Read-Only| Optional| Description|
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | number | No| Yes| Start position to read the data, in bytes. This parameter is optional. By default, data is read from the current position.|
+| end | number | No| Yes| End position to read the data, in bytes. This parameter is optional. The default value is the end of the file.|
 
 ## ReadStreamOptions<sup>12+</sup>
 
@@ -6303,10 +6303,10 @@ Defines the options used in **createReadStream()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      |  Description               |
-| ----------- | --------------- | ------------------ | ------------------ |
-| start   | number     | No| Start position to read the data, in bytes. This parameter is optional. By default, data is read from the current position.          |
-| end     | number     | No|  End position to read the data, in bytes. This parameter is optional. The default value is the end of the file.|
+| Name| Type| Read-Only| Optional| Description|
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | number | No| Yes| Start position to read the data, in bytes. This parameter is optional. By default, data is read from the current position.|
+| end | number | No| Yes| End position to read the data, in bytes. This parameter is optional. The default value is the end of the file.|
 
 ## WriteStreamOptions<sup>12+</sup>
 
@@ -6314,7 +6314,7 @@ Defines the options used in **createWriteStream()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
-| Name       | Type      | Mandatory      |  Description               |
-| ----------- | --------------- | ------------------ | ------------------ |
-| start   | number     | No| Start position to write the data, in bytes. This parameter is optional. By default, data is written from the beginning of the file.          |
-| mode     | number     | No| [Option](#openmode) for creating the writeable stream. You must specify one of the following options.<br>- **OpenMode.READ_ONLY(0o0)**: read-only, which is the default value.<br>- **OpenMode.WRITE_ONLY(0o1)**: write-only.<br>- **OpenMode.READ_WRITE(0o2)**: read/write.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.|
+| Name| Type| Read-Only| Optional| Description|
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | number | No| Yes| Start position to read the data, in bytes. This parameter is optional. By default, data is read from the current position.|
+| mode | number | No| Yes| [Option](#openmode) for creating the writeable stream. You must specify one of the following options.<br>- **OpenMode.READ_ONLY(0o0)**: read-only, which is the default value.<br>- **OpenMode.WRITE_ONLY(0o1)**: write-only.<br>- **OpenMode.READ_WRITE(0o2)**: read/write.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.|

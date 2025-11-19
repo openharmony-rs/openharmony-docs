@@ -1,4 +1,10 @@
 # Frame Animation (ohos.animator)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The frame animation allows you to adjust your animation properties on each frame, thanks to its per-frame callback. By leveraging the **onFrame** callback, you can dynamically set property values on each frame, creating smooth and natural animations. For details about the frame animation APIs, see [@ohos.animator (Animator)](../reference/apis-arkui/js-apis-animator.md).
 
@@ -29,22 +35,22 @@ To create a simple animator and print the current interpolation value in each fr
 
    ```ts
    // Initial options for creating an animator object
-   let options: AnimatorOptions = {                        
-      duration: 1500,                               
-      easing: "friction",                        
-      delay: 0,                           
-      fill: "forwards",                                  
-      direction: "normal",                                  
-      iterations: 2,                                        
-      // Initial frame value used for interpolation in the onFrame callback                             
-      begin: 200.0,                                         
-      // End frame value used for interpolation in the onFrame callback                                
-      end: 400.0                                            
-   }; 
+   let options: AnimatorOptions = {
+     duration: 1500,
+     easing: "friction",
+     delay: 0,
+     fill: "forwards",
+     direction: "normal",
+     iterations: 2,
+     // Initial frame value used for interpolation in the onFrame callback                                   
+     begin: 200.0,
+     // End frame value used for interpolation in the onFrame callback                                   
+     end: 400.0
+   };
    let result: AnimatorResult = this.getUIContext().createAnimator(options);
    // Set up a callback for when a frame is received, so that the onFrame callback is called for every frame throughout the animation playback process.
-       result.onFrame = (value: number) => {
-       console.log("current value is :" + value);
+   result.onFrame = (value: number) => {
+     console.info("current value is :" + value);
    }
    ```
 
@@ -83,26 +89,26 @@ To create a simple animator and print the current interpolation value in each fr
 
    ```ts
    onPageShow(): void {
-       // Create an animatorResult object.
-       this.animatorOptions = this.getUIContext().createAnimator(options);
-       this.animatorOptions.onFrame = (progress: number) => {
+     // Create an animatorResult object.
+     this.animatorOptions = this.getUIContext().createAnimator(options);
+     this.animatorOptions.onFrame = (progress: number) => {
        this.translateX = progress;
        if (progress > this.topWidth && this.translateY < this.bottomHeight) {
-          this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
+         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
        }
-    }
-    // Invoked when the animation is canceled.
-    this.animatorOptions.onCancel = () => {
+     }
+     // Invoked when the animation is canceled.
+     this.animatorOptions.onCancel = () => {
        this.animatorStatus = 'Canceled'
-    }
-    // Invoked when the animation finishes playing.
-    this.animatorOptions.onFinish = () => {
+     }
+     // Invoked when the animation finishes playing.
+     this.animatorOptions.onFinish = () => {
        this.animatorStatus = 'Finished'
-    }
-    // Invoked when the animation repeats.
-    this.animatorOptions.onRepeat = () => {
-       console.log("Animation repeating");
-    }
+     }
+     // Invoked when the animation repeats.
+     this.animatorOptions.onRepeat = () => {
+       console.info("Animation repeating");
+     }
    }
    ```
 
@@ -140,10 +146,10 @@ struct Index {
   @State animatorOptions: AnimatorResult | undefined = undefined;
   @State animatorStatus: string =' Created'
   begin: number = 0;
-  end: number = 300
+  end: number = 300;
   topWidth: number = 150;
   bottomHeight: number = 100;
-  g: number = 0.18
+  g: number = 0.18;
   animatorOption: AnimatorOptions = {
     duration: 4000,
     delay: 0,
@@ -172,7 +178,7 @@ struct Index {
       this.animatorStatus = 'Finished'
     }
     this.animatorOptions.onRepeat = () => {
-      console.log("Animation repeating");
+      console.info("Animation repeating");
     }
   }
 

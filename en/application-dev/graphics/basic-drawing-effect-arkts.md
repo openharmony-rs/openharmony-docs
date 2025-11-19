@@ -35,46 +35,51 @@ The following table lists the common APIs for setting drawing effects through Br
 
 1. Create a Brush object.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Set the brush.
    const brush = new drawing.Brush();
    ```
-   <!-- [arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 2. Set basic drawing effects through Brush, for example, setting the fill color and enabling anti-aliasing.
    You can use the setColor() API to set the fill color.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Set the fill color to red.
    brush.setColor(0xFF, 0xFF, 0x00, 0x00);
    ```
-   <!-- [arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    You can use the setAntiAlias() API to enable the anti-aliasing effect so that the edges of the graphics are smoother.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Enable anti-aliasing.
    brush.setAntiAlias(true);
    ```
-   <!-- [arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 3. Use the attachBrush() API to set a brush for the canvas.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Set the brush for the canvas.
    canvas.attachBrush(brush);
    ```
-   <!-- [arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 4. Draw primitives as required. For details, see [Primitive Drawing](primitive-drawing-overview.md).
 
 5. If the filling effect is not required, you can use the detachBrush() API to remove the brush from the canvas.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Remove the brush.
    canvas.detachBrush();
    ```
-   <!-- [arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 
 ## Stroke Effect
@@ -102,54 +107,59 @@ The following table lists the common APIs for setting the drawing effect using a
 
 1. Create a pen object.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Create a pen.
    let pen = new drawing.Pen();
    ```
-   <!-- [arkts_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 2. Use the attachPen() API to set a pen for the canvas. The canvas uses the configured pen style and color to draw the outline of the shape.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Set the pen for the canvas.
    canvas.attachPen(pen);
    ```
-   <!-- [arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 3. (Optional) Use the pen to set the stroke effect. You can select one or more of the following effects:
 
    - Use the setColor() API to set the pen color, which is the color used for drawing the outline of the shape.
 
-      ```ts
-      // BasicEffect.ets
+      <!-- @[arkts_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
       // Set the color to red.
       pen.setColor(0xFF, 0xFF, 0x00, 0x00);
       ```
-      <!-- [arkts_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    - Use the setStrokeWidth() API to set the pen width.
 
-      ```ts
-      // BasicEffect.ets
+      <!-- @[arkts_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // Set the line width.
       pen.setStrokeWidth(15);
       ```
-      <!-- [arkts_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    - Use the setAntiAlias() API to set anti-aliasing for the pen to make the edges of the drawn shape smoother.
 
-      ```ts
-      // BasicEffect.ets
+      <!-- @[arkts_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // Set the anti-aliasing effect.
       pen.setAntiAlias(true);
       ```
-      <!-- [arkts_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
    - Use the setCapStyle() API to set the line cap style of the pen.
 
-      ```ts
-      // BasicEffect.ets
+      <!-- @[arkts_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // Set the cap style for the pen.
       pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
       ```
-      <!-- [arkts_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
       The line cap styles are as follows:
 
@@ -161,11 +171,12 @@ The following table lists the common APIs for setting the drawing effect using a
 
    - Use the setJoinStyle() API to set the corner style of the pen.
 
-      ```ts
-      // BasicEffect.ets
+      <!-- @[arkts_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // Set the join style for the pen.
       pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
       ```
-      <!-- [arkts_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
       The JoinStyle class classifies the corner styles as follows:
 
@@ -179,16 +190,17 @@ The following table lists the common APIs for setting the drawing effect using a
 
 5. If the stroke effect is not required, you can use the detachPen() API to remove the pen from the canvas.
 
-   ```ts
-   // BasicEffect.ets
+   <!-- @[arkts_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // Remove the stroke effect.
    canvas.detachPen();
    ```
-   <!-- [arkts_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 <!--RP1-->
 ## Samples
 
 The following samples can be used as references for Drawing (ArkTS) development:
 
-- [ArkTSGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

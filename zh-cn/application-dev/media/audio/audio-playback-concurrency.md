@@ -289,11 +289,11 @@ async function onAudioInterrupt(): Promise<void> {
 
 ### 音频会话策略（AudioSessionStrategy）
 
-应用在激活AudioSession时，需指定音频会话策略（AudioSessionStrategy），其中包含[音频并发模式（AudioConcurrencyMode）](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)参数，用于声明不同的音频并发策略。
+应用在激活AudioSession时，需先指定音频会话策略（AudioSessionStrategy）。可通过设置[音频并发模式（AudioConcurrencyMode）](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)来指定不同的音频会话策略。
 
 > **注意：**
 > 
-> 音频策略优先级为：STOP > PAUSE > DUCK > PLAYBOTH。当指定的[音频会话策略（AudioSessionStrategy）](#音频会话策略audiosessionstrategy)优先级高于默认策略时，指定的音频会话策略不会生效。
+> 音频并发策略优先级为：STOP > PAUSE > DUCK > PLAYBOTH。当指定的音频会话策略优先级高于默认并发策略时，指定的音频会话策略不会生效。
 
 系统预设了以下四种音频并发模式：
 
@@ -333,7 +333,7 @@ async function onAudioInterrupt(): Promise<void> {
 
 
 ### 通过设置AudioSession场景参数申请焦点
-在保持现有特性的基础上，从API 20开始，应用可通过AudioSession申请焦点，提升多音频流播放的连续性。
+在保持现有特性的基础上，从API version 20开始，应用可通过AudioSession申请焦点，提升多音频流播放的连续性。
 典型使用场景如下：
 - 在多个小视频滑动播放时，多个音频流频繁申请和释放焦点可能导致漏音。使用AudioSession申请一次焦点，可以避免中间多个音频流播放时频繁申请和释放焦点，从而防止漏音。
 - 在VoIP通话场景下，可能需要启动铃声流、录音流和播放流，这些音频流的焦点优先级不同，部分音频流可能被其他应用的音频流中断。为了保持业务体验的连续性，可以使用AudioSession申请焦点，避免音频流被中断。
@@ -366,5 +366,5 @@ AudioSession申请的焦点，跟通过AudioRenderer申请的焦点是同等地�
 > 2. 如果AudioSession的焦点被暂停，恢复暂停状态时，只会给AudioSession发送焦点恢复事件，不会再给AudioRenderer发送焦点恢复事件。
 
 ### 通过AudioSession查询和监听音频输出设备
-应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，无法灵活控制播放设备的选择和设备状态的监听。因此，从API 20开始，AudioSession不仅增加了焦点管理能力，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。具体API接口说明请参考文档[AudiSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)。
+应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，无法灵活控制播放设备的选择和设备状态的监听。因此，从API version 20开始，AudioSession不仅增加了焦点管理能力，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。具体说明请参考文档[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)。
 API接口使用指导请参考[通过AudioSession查询和监听音频输出设备](./audio-output-device-management.md#通过audiosession查询和监听音频输出设备)。

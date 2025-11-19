@@ -93,6 +93,10 @@ title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCus
 
 设置页面标题。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -130,6 +134,10 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 
 设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array<[NavigationMenuItem](#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -166,6 +174,10 @@ titleMode(value: NavigationTitleMode)
 toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: NavigationToolbarOptions)
 
 设置工具栏内容。不设置时不显示工具栏。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -340,6 +352,10 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 
 设置标题栏中返回键图标和无障碍播报内容。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -462,6 +478,10 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 当Navigation中显示Navigation首页时，设置对应系统状态栏的样式。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -680,6 +700,10 @@ onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void)
 customNavContentTransition(delegate:(from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition | undefined)
 
 自定义转场动画回调。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1132,6 +1156,17 @@ pop(animated?: boolean): NavPathInfo | undefined
 pop(result: Object, animated?: boolean): NavPathInfo | undefined
 
 弹出路由栈栈顶元素，并触发onPop回调传入页面处理结果。
+
+>  **说明：**
+>   
+>  连续调用多个导航控制器方法时，若中间存在被pop的页面，会在单次操作中被缓存，后续存在push同名页面时，优先被复用，不会走新的页面创建流程。<br/>
+> 例如：<br/>
+> // 初始页面栈为：[A] <br/>
+> pathStack.pop() <br/>
+> pathStack.pushPath(A) <br/>
+> pathStack.pushPath(B) <br/>
+> // 操作后页面栈为：[A B] <br/>
+> 此时A页面会被复用，不会走新的创建流程。<br/>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1967,20 +2002,15 @@ type SystemBarStyle = SystemBarStyle
 
 ### 示例1（Navigation页面布局）
 
-该示例主要演示Navigation页面的布局包括标题栏(title)，菜单栏(menus)，内容区和工具栏(toolbarConfiguration)。
+该示例主要演示Navigation页面的布局包括标题栏[title](#title)，菜单栏[menus](#menus)，内容区和工具栏[toolbarConfiguration](#toolbarconfiguration10)。
 
 ```ts
 // xxx.ets
-class A {
-  text: string = '';
-  num: number = 0;
-}
 
 @Entry
 @Component
 struct NavigationExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  @State currentIndex: number = 0;
 
   @Builder
   NavigationTitle() {
@@ -2011,7 +2041,7 @@ struct NavigationExample {
         .width(24)
         .height(24)
         .margin({ left: 24 })
-      // 'resources/base/media/ic_public_add.svg'需要替换为开发者所需的资源文件
+      // 'common/ic_public_more.svg'需要替换为开发者所需的资源文件
       Image('common/ic_public_more.svg')
         .width(24)
         .height(24)
@@ -2082,7 +2112,7 @@ struct NavigationExample {
 
 ### 示例2（使用导航控制器方法）
 
-该示例主要演示NavPathStack中方法的使用及路由拦截。
+该示例主要演示[NavPathStack](#navpathstack10)中方法的使用及路由拦截。
 
 ```ts
 // Index.ets
@@ -2343,7 +2373,7 @@ export struct PageTwo {
 
 ### 示例3（设置可交互转场动画）
 
-该示例主要演示设置每个NavDestination子页面的自定义转场动画及可交互转场动画。
+该示例主要演示设置每个[NavDestination](ts-basic-components-navdestination.md)子页面的自定义转场动画及可交互转场动画。
 
 <!--code_no_check-->
 ```ts
@@ -2825,7 +2855,7 @@ export class CustomTransition {
 
 ### 示例4（Navigation带参返回）
 
-该示例主要演示Navigation通过NavPathStack提供的接口来实现将设置的参数传给上一级页面。
+该示例主要演示Navigation通过[NavPathStack](#navpathstack10)提供的接口来实现将设置的参数传给上一级页面。
 
 ```ts
 // Index.ets
@@ -3111,7 +3141,7 @@ export struct PageTwo {
 
 ### 示例5（设置背景颜色和模糊效果）
 
-该示例主要演示设置Navigation主页的标题栏、工具栏和NavDestination页面的标题栏的背景颜色和背景模糊效果。
+该示例主要演示设置Navigation主页的标题栏、工具栏和[NavDestination](ts-basic-components-navdestination.md)页面的标题栏的背景颜色和背景模糊效果。
 
 ```ts
 // Index
@@ -3407,7 +3437,7 @@ export const EFFECT_OPTION_2: BackgroundEffectOptions = {
 
 ### 示例6（嵌套场景下获取外层栈）
 
-该示例主要演示在嵌套Navigation场景下，如何获取父NavPathStack。
+该示例主要演示在嵌套Navigation场景下，如何获取父[NavPathStack](#navpathstack10)。
 
 ```ts
 @Entry
@@ -3476,9 +3506,9 @@ export function PageOneBuilder(name: string) {
 
 该示例主要演示如下两点功能：
 
-1. NavPathStack无需声明为状态变量，也可以实现路由栈操作功能。
+1. [NavPathStack](#navpathstack10)无需声明为状态变量，也可以实现路由栈操作功能。
 
-2. NavDestination通过onReady事件能够拿到对应的NavPathInfo和所属的NavPathStack。
+2. [NavDestination](ts-basic-components-navdestination.md)通过[onReady](ts-basic-components-navdestination.md#onready11)事件能够拿到对应的[NavPathInfo](#navpathinfo10)和所属的[NavPathStack](#navpathstack10)。
 
 ```ts
 class PageParam {
@@ -3584,7 +3614,7 @@ struct NavigationExample2 {
 
 ### 示例8（NavDestination生命周期时序）
 
-该示例演示NavDestination的onAppear，onDisAppear，onShown，onHidden，onWillAppear，onWillDisappear，onWillShow，onWillHide接口的生命周期时序。
+该示例演示[NavDestination](ts-basic-components-navdestination.md)的[onAppear](ts-universal-events-show-hide.md#onappear)，[onDisAppear](ts-universal-events-show-hide.md#ondisappear)，[onShown](ts-basic-components-navdestination.md#onshown10)，[onHidden](ts-basic-components-navdestination.md#onhidden10)，[onWillAppear](ts-basic-components-navdestination.md#onwillappear12)，[onWillDisappear](ts-basic-components-navdestination.md#onwilldisappear12)，[onWillShow](ts-basic-components-navdestination.md#onwillshow12)，[onWillHide](ts-basic-components-navdestination.md#onwillhide12)接口的生命周期时序。
 
 ```ts
 @Builder
@@ -3775,7 +3805,7 @@ struct NavigationExample {
 
 ### 示例10（定义导航控制器派生类）
 
-该示例主要演示如何定义NavPathStack的派生类和派生类在Navigation中的基本用法。
+该示例主要演示如何定义[NavPathStack](#navpathstack10)的派生类和派生类在Navigation中的基本用法。
 
 ```ts
 // Index.ets
@@ -3924,7 +3954,7 @@ export class NewParam {
 
 ### 示例11（使用Symbol组件）
 
-该示例主要演示Navigation和NavDestination如何使用Symbol组件。
+该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何使用Symbol组件。
 
 ```ts
 // Index.ets
@@ -4074,7 +4104,7 @@ export struct NavigationMenu {
 
 ### 示例12（设置自定义标题栏边距）
 
-该示例主要演示Navigation和NavDestination如何设置自定义标题栏边距，如何通过TextModifier修改主副标题文本样式。
+该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何设置自定义标题栏边距，如何通过TextModifier修改主副标题文本样式。
 
 ```ts
 // Index.ets
@@ -4316,8 +4346,6 @@ export class SubTitleTextModifier extends TextModifier {
   ]
 }
 ```
-
-![navigation_symbol.gif](figures/navigation_symbol.gif)
 
 ![titlebarPaddingAndModifier.gif](figures/titlebarPaddingAndModifier.gif)
 
@@ -4703,6 +4731,7 @@ struct NavigationExample {
   @State enable: boolean = false
   @State menuItems:Array<NavigationMenuItem> = [
     {
+      value:'menuItem1',
       symbolIcon: new SymbolGlyphModifier($r('sys.symbol.card_writer')),
     },
     {
@@ -4757,7 +4786,7 @@ struct NavigationExample {
 
 ### 示例16（Navigation使用NavDestination作为导航栏）
 
-该示例代码主要展示Navigation可以使用NavDestination作为导航栏（主页）。
+该示例代码主要展示Navigation可以使用[NavDestination](ts-basic-components-navdestination.md)作为导航栏（主页）。
 
 ```ts
 @Component

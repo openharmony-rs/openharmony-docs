@@ -43,26 +43,72 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 2. 导入依赖的相关头文件。
 
    <!-- @[ndk_graphics_draw_include_native_drawing_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   
+   ``` C
+   #include <native_drawing/drawing_canvas.h>
+   ```
 
    <!-- @[ndk_graphics_draw_include_native_drawing_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   #include <native_drawing/drawing_surface.h>
+   ```
 
 3. 从XComponent对应的NativeWindow中获取BufferHandle对象。NativeWindow相关的API请参考[_native_window](../reference/apis-arkgraphics2d/capi-nativewindow.md)。
 
    <!-- @[ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 通过 OH_NativeWindow_NativeWindowRequestBuffer 获取 OHNativeWindowBuffer 实例
+   int ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow_, &buffer_, &fenceFd_);
+   SAMPLE_LOGI("request buffer ret = %{public}d", ret);
+   // 通过 OH_NativeWindow_GetBufferHandleFromNative 获取 buffer 的 handle
+   bufferHandle_ = OH_NativeWindow_GetBufferHandleFromNative(buffer_);
+   ```
 
 4. 从BufferHandle中获取对应的内存地址。
 
    <!-- @[ndk_graphics_draw_get_mapped_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 使用系统mmap接口拿到bufferHandle的内存虚拟地址
+   mappedAddr_ = static_cast<uint32_t *>(
+       mmap(bufferHandle_->virAddr, bufferHandle_->size, PROT_READ | PROT_WRITE, MAP_SHARED, bufferHandle_->fd, 0));
+   if (mappedAddr_ == MAP_FAILED) {
+       SAMPLE_LOGE("mmap failed");
+   }
+   ```
 
 5. 创建窗口画布。
 
    <!-- @[ndk_graphics_draw_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 创建一个bitmap对象
+   cScreenBitmap_ = OH_Drawing_BitmapCreate();
+   // 定义bitmap的像素格式
+   OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+   // 构造对应格式的bitmap
+   OH_Drawing_BitmapBuild(cScreenBitmap_, width, height_, &cFormat);
+   
+   // 创建一个canvas对象
+   cScreenCanvas_ = OH_Drawing_CanvasCreate();
+   // 将画布与bitmap绑定，画布画的内容会输出到绑定的bitmap内存中
+   OH_Drawing_CanvasBind(cScreenCanvas_, cScreenBitmap_);
+   ```
 
 6. 利用上一步中得到的Canvas进行自定义的绘制操作，即本章下文中的内容。
 
 7. 利用XComponent完成显示。
 
    <!-- @[ndk_graphics_draw_native_window_flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 设置刷新区域，如果Region中的Rect为nullptr,或者rectNumber为0，则认为OHNativeWindowBuffer全部有内容更改。
+   Region region{nullptr, 0};
+   // 通过OH_NativeWindow_NativeWindowFlushBuffer 提交给消费者使用，例如：显示在屏幕上。
+   OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer_, fenceFd_, region);
+   ```
 
 
 ## 离屏Canvas画布的获取与显示
@@ -79,18 +125,50 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 1. 导入依赖的相关头文件。
 
    <!-- @[ndk_graphics_draw_include_native_drawing_canvas_and_bitmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   
+   ``` C
+   #include <native_drawing/drawing_bitmap.h>
+   // ···
+   #include <native_drawing/drawing_canvas.h>
+   ```
 
 2. 创建基于CPU的Canvas。需要通过OH_Drawing_BitmapCreate()接口创建一个位图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasBind()接口将位图绑定到Canvas中，从而使得Canvas绘制的内容可以输出到位图中。
 
    <!-- @[ndk_graphics_draw_create_canvas_by_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 创建一个离屏位图对象
+   cOffScreenBitmap_ = OH_Drawing_BitmapCreate();
+   // 设置位图属性
+   OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_PREMUL};
+   // 设置位图长宽（按需设置）
+   uint32_t width = 800;
+   uint32_t height = 800;
+   // 初始化位图
+   OH_Drawing_BitmapBuild(cOffScreenBitmap_, width, height, &cFormat);
+   // 创建一个离屏Canvas对象
+   cCPUCanvas_ = OH_Drawing_CanvasCreate();
+   // 将离屏Canvas与离屏bitmap绑定，离屏Canvas绘制的内容会输出到绑定的离屏bitmap内存中
+   OH_Drawing_CanvasBind(cCPUCanvas_, cOffScreenBitmap_);
+   ```
 
    如果需要将背景设置为白色，需要执行以下步骤：
 
    <!-- @[ndk_graphics_draw_clear_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 将背景设置为白色
+   OH_Drawing_CanvasClear(cCPUCanvas_, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MAX, 0xFF));
+   ```
 
 3. 将上一步中创建的位图绘制到[窗口画布](#获取可直接显示的canvas画布)上。
 
    <!-- @[ndk_graphics_draw_drawing_to_window_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 将离屏bitmap中的内容绘制到屏幕画布，实现上屏操作
+   OH_Drawing_CanvasDrawBitmap(cScreenCanvas_, cOffScreenBitmap_, 0, 0);
+   ```
 
 
 
@@ -109,13 +187,67 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 2. 导入依赖的相关头文件。
 
    <!-- @[ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+   ```
 
    <!-- @[ndk_graphics_draw_include_drawing_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   #include <native_drawing/drawing_pixel_map.h>
+   ```
 
 
 3. 需要通过OH_Drawing_PixelMapGetFromOhPixelMapNative()接口创建一个像素图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasCreateWithPixelMap()接口借助像素图对象创建Canvas。
 
    <!-- @[ndk_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 图片宽高分别为 600 * 400
+   uint32_t width = 600;
+   uint32_t height = 400;
+   // 字节长度，RGBA_8888每个像素占4字节
+   size_t bufferSize = width * height * 4;
+   uint8_t *pixels = new uint8_t[bufferSize];
+   for (uint32_t i = 0; i < width * height; ++i) {
+       // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
+       uint32_t n = i / 20 % 3;
+       pixels[i * RGBA_SIZE] = RGBA_MIN; // 红色通道
+       pixels[i * RGBA_SIZE + 1] = RGBA_MIN; // +1表示绿色通道
+       pixels[i * RGBA_SIZE + 2] = RGBA_MIN; // +2表示蓝色通道
+       pixels[i * RGBA_SIZE + 3] = 0xFF; // +3表示不透明度通道
+       if (n == 0) {
+           pixels[i * RGBA_SIZE] = 0xFF; // 红色通道赋值，颜色显红色
+       } else if (n == 1) {
+           pixels[i * RGBA_SIZE + 1] = 0xFF; // +1表示绿色通道赋值，其余通道为0，颜色显绿色
+       } else {
+           pixels[i * RGBA_SIZE + 2] = 0xFF; // +2表示蓝色通道赋值，其余通道为0，颜色显蓝色
+       }
+   }
+   // 设置位图格式（长、宽、颜色类型、透明度类型）
+   OH_Pixelmap_InitializationOptions *createOps = nullptr;
+   OH_PixelmapInitializationOptions_Create(&createOps);
+   OH_PixelmapInitializationOptions_SetWidth(createOps, width);
+   OH_PixelmapInitializationOptions_SetHeight(createOps, height);
+   OH_PixelmapInitializationOptions_SetPixelFormat(createOps, PIXEL_FORMAT_RGBA_8888);
+   OH_PixelmapInitializationOptions_SetAlphaType(createOps, PIXELMAP_ALPHA_TYPE_UNKNOWN);
+   // 创建OH_PixelmapNative对象
+   OH_PixelmapNative *pixelMapNative = nullptr;
+   OH_PixelmapNative_CreatePixelmap(pixels, bufferSize, createOps, &pixelMapNative);
+   OH_Drawing_PixelMap *pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
+   // PixelMap中像素的截取区域
+   OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 600, 400);
+   // 画布中显示的区域
+   OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
+   // 采样选项对象
+   OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
+       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+   // 绘制PixelMap
+   OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
+   OH_PixelmapNative_Release(pixelMapNative);
+   delete[] pixels;
+   ```
 
    如果需要将背景设置为白色，需要执行以下步骤：
 
@@ -126,6 +258,18 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 4. 将上一步中创建的像素图绘制到[窗口画布](#获取可直接显示的canvas画布)上。
 
    <!-- @[ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // PixelMap中像素的截取区域
+   OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 600, 400);
+   // 画布中显示的区域
+   OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
+   // 采样选项对象
+   OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
+       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+   // 绘制PixelMap
+   OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
+   ```
 
 
 ### GPU后端Canvas的创建与显示
@@ -142,32 +286,170 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 2. 导入依赖的头文件。
 
    <!-- @[ndk_graphics_draw_include_egl_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   
+   ``` C
+   #include <EGL/egl.h>
+   #include <EGL/eglext.h>
+   ```
 
    <!-- @[ndk_graphics_draw_include_native_drawing_surface_and_gpu_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   #include <native_drawing/drawing_gpu_context.h>
+   #include <native_drawing/drawing_surface.h>
+   ```
 
 3. 初始化EGL上下文。
 
    初始化上下文相关参数:
    <!-- @[ndk_graphics_draw_initialize_egl_context_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   
+   ``` C
+   EGLDisplay EGLDisplay_ = EGL_NO_DISPLAY;
+   EGLConfig EGLConfig_ = nullptr;
+   EGLContext EGLContext_ = EGL_NO_CONTEXT;
+   EGLSurface EGLSurface_ = nullptr;
+   ```
 
    初始化上下文相关配置：
    <!-- @[ndk_graphics_draw_initialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   EGLConfig getConfig(int version, EGLDisplay eglDisplay)
+   {
+       int attribList[] = {EGL_SURFACE_TYPE,
+                           EGL_WINDOW_BIT,
+                           EGL_RED_SIZE,
+                           8,
+                           EGL_GREEN_SIZE,
+                           8,
+                           EGL_BLUE_SIZE,
+                           8,
+                           EGL_ALPHA_SIZE,
+                           8,
+                           EGL_RENDERABLE_TYPE,
+                           EGL_OPENGL_ES2_BIT,
+                           EGL_NONE};
+       EGLConfig configs = NULL;
+       int configsNum;
+   
+       if (!eglChooseConfig(eglDisplay, attribList, &configs, 1, &configsNum)) {
+           SAMPLE_LOGE("eglChooseConfig ERROR");
+           return NULL;
+       }
+   
+       return configs;
+   }
+   
+   int32_t SampleGraphics::InitializeEglContext()
+   {
+       EGLDisplay_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+       if (EGLDisplay_ == EGL_NO_DISPLAY) {
+           SAMPLE_LOGE("unable to get EGL display.");
+           return -1;
+       }
+   
+       EGLint eglMajVers;
+       EGLint eglMinVers;
+       if (!eglInitialize(EGLDisplay_, &eglMajVers, &eglMinVers)) {
+           EGLDisplay_ = EGL_NO_DISPLAY;
+           SAMPLE_LOGE("unable to initialize display");
+           return -1;
+       }
+   
+       int version = 3;
+       EGLConfig_ = getConfig(version, EGLDisplay_);
+       if (EGLConfig_ == nullptr) {
+           SAMPLE_LOGE("GLContextInit config ERROR");
+           return -1;
+       }
+   
+       /* Create EGLContext from */
+       int attribList[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE}; // 2 size
+   
+       EGLContext_ = eglCreateContext(EGLDisplay_, EGLConfig_, EGL_NO_CONTEXT, attribList);
+   
+       EGLint attribs[] = {EGL_WIDTH, 1, EGL_HEIGHT, 1, EGL_NONE};
+       EGLSurface_ = eglCreatePbufferSurface(EGLDisplay_, EGLConfig_, attribs);
+       if (!eglMakeCurrent(EGLDisplay_, EGLSurface_, EGLSurface_, EGLContext_)) {
+           SAMPLE_LOGE("eglMakeCurrent error = %{public}d", eglGetError());
+           return -1;
+       }
+   
+       SAMPLE_LOGE("Init success.");
+       return 0;
+   }
+   ```
 
 4. 创建GPU后端Canvas。GPU后端Canvas需要借助Surface对象来获取，需先创建surface，surface的API请参考[drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md)。通过OH_Drawing_GpuContextCreateFromGL接口创建绘图上下文，再将这个上下文作为参数创建surface，最后通过OH_Drawing_SurfaceGetCanvas接口从surface中获取到canvas。
 
    <!-- @[ndk_graphics_draw_create_canvas_by_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 设置宽高（按需设定）
+   int32_t cWidth = 800;
+   int32_t cHeight = 800;
+   // 设置图像，包括宽度、高度、颜色格式和透明度格式
+   OH_Drawing_Image_Info imageInfo = {cWidth, cHeight, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_PREMUL};
+   // GPU上下文的选项
+   OH_Drawing_GpuContextOptions options{true};
+       
+   // 创建一个使用OpenGL（GL）作为其GPU后端的绘图上下文
+   OH_Drawing_GpuContext *gpuContext = OH_Drawing_GpuContextCreateFromGL(options);
+   // 创建surface对象
+   OH_Drawing_Surface *surface = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext, true, imageInfo);
+   // 创建一个canvas对象
+   cGPUCanvas_ = OH_Drawing_SurfaceGetCanvas(surface);
+   ```
 
    如果需要将背景设置为白色，需要执行以下步骤：
 
    <!-- @[ndk_graphics_draw_clear_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 将背景设置为白色
+   OH_Drawing_CanvasClear(cGPUCanvas_, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MAX, 0xFF));
+   ```
 
 5. 将上一步中的绘制结果拷贝到[窗口画布](#获取可直接显示的canvas画布)上。
 
    <!-- @[ndk_graphics_draw_drawing_to_window_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   void* dstPixels = malloc(cWidth * cHeight * RGBA_SIZE); // 4 for rgba
+   OH_Drawing_CanvasReadPixels(cGPUCanvas_, &imageInfo, dstPixels, RGBA_SIZE * cWidth, 0, 0);
+   OH_Drawing_Bitmap* cOffScreenBitmap_ = OH_Drawing_BitmapCreateFromPixels(&imageInfo, dstPixels,
+       RGBA_SIZE * cWidth);
+   OH_Drawing_CanvasDrawBitmap(cScreenCanvas_, cOffScreenBitmap_, 0, 0);
+   ```
 
 6. 使用完之后需要将EGL上下文销毁。
 
    <!-- @[ndk_graphics_draw_deinitialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   void SampleGraphics::DeInitializeEglContext()
+   {
+       EGLBoolean ret = eglDestroySurface(EGLDisplay_, EGLSurface_);
+       if (!ret) {
+           SAMPLE_LOGE("eglDestroySurface failure.");
+       }
+   
+       ret = eglDestroyContext(EGLDisplay_, EGLContext_);
+       if (!ret) {
+           SAMPLE_LOGE("eglDestroyContext failure.");
+       }
+   
+       ret = eglTerminate(EGLDisplay_);
+       if (!ret) {
+           SAMPLE_LOGE("eglTerminate failure.");
+       }
+   
+       EGLSurface_ = NULL;
+       EGLContext_ = NULL;
+       EGLDisplay_ = NULL;
+   }
+   ```
 
 <!--RP1-->
 ## 相关实例

@@ -31,14 +31,18 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 
 - 使用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)将设备运行的环境变量存入AppStorage中。
 
-  ```ts
+  <!-- @[showfirst_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/ShowDetails.ets) -->
+  
+  ``` TypeScript
   // 将设备的languageCode存入AppStorage，默认值为en
   Environment.envProp('languageCode', 'en');
   ```
 
 - 在自定义组件中通过@StorageProp获取languageCode的值。
 
-  ```ts
+  <!-- @[showsecond_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/ShowDetails.ets) -->
+  
+  ``` TypeScript
   @StorageProp('languageCode') lang: string = 'en';
   ```
 
@@ -47,61 +51,68 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 > **说明：**
 >
 > 应用无法修改环境变量参数，因此使用@StorageProp获取。这样即使在组件内修改，也不会同步回AppStorage中，影响其他组件处获取环境变量的结果。
-
-```ts
-// 将设备languageCode存入AppStorage中
-Environment.envProp('languageCode', 'en');
-
-@Entry
-@Component
-struct Index {
-  @StorageProp('languageCode') languageCode: string = 'en';
-
-  build() {
-    Row() {
-      Column() {
-        // 输出当前设备的languageCode
-        Text(this.languageCode)
+  <!-- @[ui_Environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/UiEnvironment.ets) -->
+  
+  ``` TypeScript
+  // 将设备languageCode存入AppStorage中
+  Environment.envProp('languageCode', 'en');
+  
+  @Entry
+  @Component
+  struct UiEnvironment {
+    @StorageProp('languageCode') languageCode: string = 'en';
+  
+    build() {
+      Row() {
+        Column() {
+          // 输出当前设备的languageCode
+          Text(this.languageCode)
+        }
       }
     }
   }
-}
-```
+  ```
 
 ### 应用逻辑使用Environment
-
-```ts
-// 使用Environment.envProp将设备运行languageCode存入AppStorage中
-Environment.envProp('languageCode', 'en');
-// 从AppStorage获取单向绑定的languageCode的变量
-const lang: SubscribedAbstractProperty<string> = AppStorage.prop('languageCode');
-
-if (lang.get() === 'zh') {
-  console.info('你好');
-} else {
-  console.info('Hello!');
-}
-```
-
+  <!-- @[applied_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/AppliedLogic.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const DOMAIN = 0x0001;
+  const TAG = 'environmentalProject';
+  
+  // 使用Environment.envProp将设备运行languageCode存入AppStorage中
+  Environment.envProp('languageCode', 'en');
+  // 从AppStorage获取单向绑定的languageCode的变量
+  const lang: SubscribedAbstractProperty<string> = AppStorage.prop('languageCode');
+  
+  if (lang.get() === 'zh') {
+    // app.string.AppliedLogic_Hello 资源文件中的value值为'你好'
+    hilog.info(DOMAIN, TAG, `${$r('app.string.AppliedLogic_Hello')}`);
+  } else {
+    hilog.info(DOMAIN, TAG, 'Hello!');
+  }
+  ```
 ## 限制条件
 
 Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)相关联，需要在UIContext明确的时候才可以调用Environment的接口，可以通过在[runScopedTask](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)里调用明确上下文。如果不是在UIContext明确的地方调用，将导致无法查询到设备环境数据。
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent('pages/Index');
-    let window = windowStage.getMainWindow();
-    window.then(window => {
-      let uiContext = window.getUIContext();
-      uiContext.runScopedTask(() => {
-        Environment.envProp('languageCode', 'en');
+  <!-- @[limiting_condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/entryability/EntryAbilityDemo.ets) -->
+  
+  ``` TypeScript
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  
+  export default class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+      windowStage.loadContent('pages/Index');
+      let window = windowStage.getMainWindow();
+      window.then(window => {
+        let uiContext = window.getUIContext();
+        uiContext.runScopedTask(() => {
+          Environment.envProp('languageCode', 'en');
+        });
       });
-    });
+    }
   }
-}
-```
+  ```

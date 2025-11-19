@@ -56,7 +56,7 @@ Slider(options?: SliderOptions)
 
 ## SliderStyle枚举说明
 
-滑动条滑块在滑轨上显示的样式。
+滑动条滑块在滑轨上显示的样式，具体样式请参考[Slider组件滑块与滑轨是如何对齐的](../../../ui/arkts-select-component-faq.md#slider组件滑块与滑轨是如何对齐的)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -525,6 +525,10 @@ enableHapticFeedback(enabled: boolean)
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 设置旋转表冠的灵敏度。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

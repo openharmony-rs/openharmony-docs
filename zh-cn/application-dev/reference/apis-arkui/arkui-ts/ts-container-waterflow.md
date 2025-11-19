@@ -580,6 +580,10 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 瀑布流显示区域上第一个子组件/最后一个组件的索引值有变化就会触发。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1992,11 +1996,15 @@ struct WaterFlowContentSizeDemo {
 
   build() {
     Column({ space: 2 }) {
+      // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(() => {
+          // 通过调用contentSize函数获取内容尺寸的宽度值
           this.contentWidth = this.scroller.contentSize().width;
+          // 通过调用contentSize函数获取内容尺寸的高度值
           this.contentHeight = this.scroller.contentSize().height;
         }).margin(5)
+      // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width:' + this.contentWidth)
         .fontColor(Color.Red)
         .height(30)

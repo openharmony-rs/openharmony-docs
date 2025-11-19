@@ -33,9 +33,11 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 >  **说明：**
 >
->  从API version 12开始，在使用卡片能力时，存在以下限制：
->  1. 如果手指按下的持续时间超过800ms，不能触发点击事件。
->  2. 如果手指按下后移动位移超过20px，不能触发点击事件。
+>  - 从API version 12开始，在使用卡片能力时，存在以下限制：
+>    1. 如果手指按下的持续时间超过800ms，不能触发点击事件。
+>    2. 如果手指按下后移动位移超过20px，不能触发点击事件。
+>
+>  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

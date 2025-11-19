@@ -189,6 +189,6 @@ export async function activatePermissionExample() {
 > 1. 示例中的URI来源自应用存储的持久化数据中。
 > 2. 建议按照使用需求去激活对应的持久化权限，不要盲目的全量激活。
 > 3. 如果激活失败显示未持久化的权限可以按照示例进行持久化。
-> 4. 持久化权限接口(可以使用canIUse接口进行校验能力是否可用)，且需要申请对应的权限。
+> 4. 持久化权限接口可以使用canIUse接口进行校验能力是否可用，且需要申请对应的权限。
 
 **备注**：C/C++持久化授权激活接口说明及开发指南具体参考：[OH_FileShare_ActivatePermission持久化授权激活接口](native-fileshare-guidelines.md)。

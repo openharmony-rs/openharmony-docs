@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_CaptureSession Camera_CaptureSession
+```
+
 ## Overview
 
 The struct describes the capture session object.

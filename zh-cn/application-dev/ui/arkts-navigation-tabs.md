@@ -36,37 +36,56 @@ Tabs使用花括号包裹TabContent，如图2，其中TabContent显示相应的�
 
 每一个TabContent对应的内容需要有一个页签，可以通过TabContent的tabBar属性进行配置。在如下TabContent组件上设置tabBar属性，可以设置其对应页签中的内容，tabBar作为内容的页签。
 
-```ts
- TabContent() {
-   Text('首页的内容').fontSize(30)
- }
-.tabBar('首页')
+<!-- @[basic_layout_displays_one_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
+
+``` TypeScript
+TabContent() {
+  // app.string.homepage_content资源文件中的value值为“首页的内容”
+  Text($r('app.string.homepage_content'))
+    .fontSize(30)
+}
+// app.string.homepage资源文件中的value值为“首页”
+.tabBar($r('app.string.homepage'))
 ```
 
 
 设置多个内容时，需在Tabs内按照顺序放置。
 
-```ts
+<!-- @[basic_layout_displays_many_contents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
+
+``` TypeScript
 Tabs() {
   TabContent() {
-    Text('首页的内容').fontSize(30)
+    // app.string.homepage_content资源文件中的value值为“首页的内容”
+    Text($r('app.string.homepage_content'))
+      .fontSize(30)
   }
-  .tabBar('首页')
+  // app.string.homepage资源文件中的value值为“首页”
+  .tabBar($r('app.string.homepage'))
 
   TabContent() {
-    Text('推荐的内容').fontSize(30)
+    // app.string.recommend_content资源文件中的value值为“推荐的内容”
+    Text($r('app.string.recommend_content'))
+      .fontSize(30)
   }
-  .tabBar('推荐')
+  // app.string.recommend资源文件中的value值为“推荐”
+  .tabBar($r('app.string.recommend'))
 
   TabContent() {
-    Text('发现的内容').fontSize(30)
+    // app.string.discover_content资源文件中的value值为“发现的内容”
+    Text($r('app.string.discover_content'))
+      .fontSize(30)
   }
-  .tabBar('发现')
-  
+  // app.string.discover资源文件中的value值为“发现”
+  .tabBar($r('app.string.discover'))
+
   TabContent() {
-    Text('我的内容').fontSize(30)
+    // app.string.mine_content资源文件中的value值为“我的内容”
+    Text($r('app.string.mine_content'))
+      .fontSize(30)
   }
-  .tabBar("我的")
+  // app.string.mine_content资源文件中的value值为“我的”
+  .tabBar($r('app.string.mine'))
 }
 ```
 
@@ -84,10 +103,12 @@ Tabs() {
 导航栏位置使用Tabs的barPosition参数进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
 
 
-```ts
+<!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.End }) {
   // TabContent的内容：首页、发现、推荐、我的
-  // ...
+  // ···
 }
 ```
 
@@ -103,10 +124,12 @@ Tabs({ barPosition: BarPosition.End }) {
 ![顶部导航](figures/顶部导航.gif)
 
 
-```ts
+<!-- @[top_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TopTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.Start }) {
   // TabContent的内容:关注、视频、游戏、数码、科技、体育、影视
-  // ...
+  // ···
 }
 ```
 
@@ -125,14 +148,17 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 
 
-```ts
-Tabs({ barPosition: BarPosition.Start }) {
-  // TabContent的内容:首页、发现、推荐、我的
-  // ...
-}
-.vertical(true)
-.barWidth(100)
-.barHeight(200)
+<!-- @[side_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SideTabBar.ets) -->
+
+``` TypeScript
+  Tabs({ barPosition: BarPosition.Start }) {
+    // TabContent的内容:首页、发现、推荐、我的
+    // ···
+  }
+// ···
+  .vertical(true)
+  .barWidth(100)
+  .barHeight(200)
 ```
 
 
@@ -154,24 +180,28 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 控制滑动切换的属性为scrollable，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
 
-```ts
-Tabs({ barPosition: BarPosition.End }) {
-  TabContent(){
-    Column(){
-      Tabs(){
-        // 顶部导航栏内容
-        // ...
-      }
-    }
-    .backgroundColor('#ff08a8f1')
-    .width('100%')
-  }
-  .tabBar('首页')
+<!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
-  // 其他TabContent内容：发现、推荐、我的
-  // ...
-}
-.scrollable(false)
+``` TypeScript
+  Tabs({ barPosition: BarPosition.End }) {
+    TabContent() {
+      Column() {
+        Tabs() {
+          // 顶部导航栏内容
+        // ···
+        }
+      }
+      .backgroundColor('#ff08a8f1')
+      .width('100%')
+    }
+    // app.string.homepage资源文件中的value值为“首页”
+    .tabBar($r('app.string.homepage'))
+
+    // 其他TabContent内容：发现、推荐、我的
+    // ···
+  }
+// ···
+  .scrollable(false)
 ```
 
 
@@ -187,10 +217,12 @@ Tabs({ barPosition: BarPosition.End }) {
 
 Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
 
-```ts
+<!-- @[fixed_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/FixedTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.End }) {
   // TabContent的内容：首页、发现、推荐、我的
-  // ...
+  // ···
 }
 .barMode(BarMode.Fixed)
 ```
@@ -208,10 +240,12 @@ Tabs({ barPosition: BarPosition.End }) {
 
 滚动导航栏需要设置Tabs组件的barMode属性，默认值为BarMode.Fixed表示为固定导航栏，BarMode.Scrollable表示可滚动导航栏。
 
-```ts
+<!-- @[scrollable_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ScrollableTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.Start }) {
   // TabContent的内容：关注、视频、游戏、数码、科技、体育、影视、人文、艺术、自然、军事
-  // ...
+  // ···
 }
 .barMode(BarMode.Scrollable)
 ```
@@ -232,10 +266,13 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 设置自定义导航栏需要使用tabBar的参数，以其支持的CustomBuilder的方式传入自定义的函数组件样式。例如这里声明tabBuilder的自定义函数组件，传入参数包括页签文字title，对应位置index，以及选中状态和未选中状态的图片资源。通过当前活跃的currentIndex和页签对应的targetIndex匹配与否，决定UI显示的样式。
 
-```ts
+<!-- @[custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
+
+``` TypeScript
 @State currentIndex: number = 0;
 
-@Builder tabBuilder(title: string, targetIndex: number, selectedImg: Resource, normalImg: Resource) {
+@Builder
+tabBuilder(title: ResourceStr, targetIndex: number, selectedImg: Resource, normalImg: Resource) {
   Column() {
     Image(this.currentIndex === targetIndex ? selectedImg : normalImg)
       .size({ width: 25, height: 25 })
@@ -251,16 +288,20 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 在TabContent对应tabBar属性中传入自定义函数组件，并传递相应的参数。
 
-```ts
+<!-- @[set_custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
+
+``` TypeScript
 TabContent() {
-  Column(){
-    Text('我的内容')  
+  Column() {
+    // app.string.mine_content资源文件中的value值为“我的内容”
+    Text($r('app.string.mine_content'))  
   }
   .width('100%')
   .height('100%')
   .backgroundColor('#007DFF')
 }
-.tabBar(this.tabBuilder('我的', 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
+// app.string.mine资源文件中的value值为“我的”
+.tabBar(this.tabBuilder($r('app.string.mine'), 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
 ```
 
 
@@ -275,47 +316,65 @@ TabContent() {
 
 从API version 18开始，支持使用Tabs提供的[onSelected](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18)事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
 
-```ts
+<!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TabsExample1 {
+export struct ContentPageNoAndTabLinkage {
+
   @State selectIndex: number = 0;
-  @Builder tabBuilder(title: string, targetIndex: number) {
+  @Builder tabBuilder(title: Resource, targetIndex: number) {
     Column() {
       Text(title)
         .fontColor(this.selectIndex === targetIndex ? '#1698CE' : '#6B6B6B')
     }
   }
-
   build() {
-    Column() {
-      Tabs({ barPosition: BarPosition.End }) {
-        TabContent() {
-          Text("首页内容").width('100%').height('100%').backgroundColor('rgb(213,213,213)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('首页', 0))
+    NavDestination() {
+      Column({ space: 12 }) {
+        // ...
+          Tabs({ barPosition: BarPosition.End }) {
+            TabContent() {
+              // app.string.homepage_content资源文件中的value值为“首页内容”
+              Text($r('app.string.homepage_content')).width('100%').height('100%').backgroundColor('rgb(213,213,213)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            //app.string.homepage资源文件中的value值为“首页”
+            }.tabBar(this.tabBuilder($r('app.string.homepage'), 0))
 
-        TabContent() {
-          Text("发现内容").width('100%').height('100%').backgroundColor('rgb(112,112,112)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('发现', 1))
+            TabContent() {
+              // app.string.discover_content资源文件中的value值为“发现内容”
+              Text($r('app.string.discover_content')).width('100%').height('100%').backgroundColor('rgb(112,112,112)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // app.string.discover资源文件中的value值为“发现”
+            }.tabBar(this.tabBuilder($r('app.string.discover'), 1))
 
-        TabContent() {
-          Text("推荐内容").width('100%').height('100%').backgroundColor('rgb(39,135,217)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('推荐', 2))
+            TabContent() {
+              // app.string.recommend_content资源文件中的value值为“推荐内容”
+              Text($r('app.string.recommend_content')).width('100%').height('100%').backgroundColor('rgb(39,135,217)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // app.string.recommend资源文件中的value值为“推荐”
+            }.tabBar(this.tabBuilder($r('app.string.recommend'), 2))
 
-        TabContent() {
-          Text("我的内容").width('100%').height('100%').backgroundColor('rgb(0,74,175)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('我的', 3))
+            TabContent() {
+              // app.string.mine_content资源文件中的value值为“我的内容”
+              Text($r('app.string.mine_content')).width('100%').height('100%').backgroundColor('rgb(0,74,175)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            }
+            // app.string.mine资源文件中的value值为“我的”
+            .tabBar(this.tabBuilder($r('app.string.mine'), 3))
+          }
+          .animationDuration(0)
+          .backgroundColor('#F1F3F5')
+          .onSelected((index: number) => {
+            this.selectIndex = index;
+          })
+        // ...
       }
-      .animationDuration(0)
-      .backgroundColor('#F1F3F5')
-      .onSelected((index: number) => {
-        this.selectIndex = index;
-      })
-    }.width('100%')
+      .width('100%')
+      // ...
+    }
+    // ...
   }
 }
 ```
@@ -324,45 +383,52 @@ struct TabsExample1 {
 ![内容页和页签联动](figures/tabcontent_tabbar_sync.gif)
 
 若希望不滑动内容页和点击页签也能实现内容页和页签的切换，可以将currentIndex传给Tabs的index参数，通过改变currentIndex来实现跳转至指定索引值对应的TabContent内容。也可以使用TabsController，TabsController是Tabs组件的控制器，用于控制Tabs组件进行内容页切换。通过TabsController的changeIndex方法来实现跳转至指定索引值对应的TabContent内容。
-```ts
-@State currentIndex: number = 2;
-@State currentAnimationMode: AnimationMode = AnimationMode.CONTENT_FIRST;
-private controller: TabsController = new TabsController();
+<!-- @[switch_the_tab_specific_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
-Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controller }) {
+``` TypeScript
+// ...
+  @State currentIndex: number = 2;
+  @State currentAnimationMode: AnimationMode = AnimationMode.CONTENT_FIRST;
+  private controller: TabsController = new TabsController();
+
   // ...
-}
-.height(600)
-.animationMode(this.currentAnimationMode)
-.onChange((index: number) => {
-   this.currentIndex = index;
-})
+              Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controller }) {
+                // ...
+              }
+              .animationDuration(0)
+              .height(300)
+              .animationMode(this.currentAnimationMode)
+              .onChange((index: number) => {
+                this.currentIndex = index;
+              })
 
-Button('动态修改AnimationMode').width('50%').margin({ top: 1 }).height(25)
-  .onClick(()=>{
-    if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
-      this.currentAnimationMode = AnimationMode.ACTION_FIRST;
-    } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
-      this.currentAnimationMode = AnimationMode.NO_ANIMATION;
-    } else if (this.currentAnimationMode === AnimationMode.NO_ANIMATION) {
-      this.currentAnimationMode = AnimationMode.CONTENT_FIRST_WITH_JUMP;
-    } else if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST_WITH_JUMP) {
-      this.currentAnimationMode = AnimationMode.ACTION_FIRST_WITH_JUMP;
-    } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST_WITH_JUMP) {
-      this.currentAnimationMode = AnimationMode.CONTENT_FIRST;
-    }
-})
+              // app.string.ContentWillChange_animationMode资源文件中的value值为“动态修改animationMode”
+              Button($r('app.string.ContentWillChange_animationMode')).width('50%').margin({ top: 20 })
+                .onClick(()=>{
+                  if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
+                    this.currentAnimationMode = AnimationMode.NO_ANIMATION;
+                  } else if (this.currentAnimationMode === AnimationMode.NO_ANIMATION) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST;
+                  }
+                })
 
-Button('动态修改index').width('50%').margin({ top: 20 })
-  .onClick(()=>{
-    this.currentIndex = (this.currentIndex + 1) % 4;
-})
+              // app.string.ContentWillChange_changeIndex资源文件中的value值为“动态修改index”
+              Button($r('app.string.ContentWillChange_changeIndex')).width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  this.currentIndex = (this.currentIndex + 1) % 4;
+                })
 
-Button('changeIndex').width('50%').margin({ top: 20 })
-  .onClick(()=>{
-    let index = (this.currentIndex + 1) % 4;
-    this.controller.changeIndex(index);
-})
+              Button('changeIndex').width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  let index = (this.currentIndex + 1) % 4;
+                  this.controller.changeIndex(index);
+                })
 ```
   
   **图12** 切换指定页签    
@@ -371,10 +437,13 @@ Button('changeIndex').width('50%').margin({ top: 20 })
 
 开发者可以通过Tabs组件的onContentWillChange接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
   
-```ts
-Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.currentIndex }) {
-  // ...
+<!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
+
+``` TypeScript
+  Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
+    // ···
   }
+// ···
   .onContentWillChange((currentIndex, comingIndex) => {
     if (comingIndex == 2) {
       return false;
@@ -398,14 +467,19 @@ Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.cu
 
 ![适老化弹窗](figures/tabs11.png)
 
-```ts
+<!-- @[age_friendly_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets) -->
+
+``` TypeScript
 import { abilityManager, Configuration } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { uiAppearance } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
+const TAG: string = 'AgeFriendlyTabs';
 @Entry
 @Component
-struct Demo {
+export struct AgeFriendlyTabs {
   @State fontColor: string = '#182431';
   @State selectedFontColor: string = '#007DFF';
   @State currentIndex: number = 0;
@@ -421,7 +495,7 @@ struct Demo {
     };
     abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
       if (err) {
-        console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
+        hilog.error(DOMAIN, TAG, 'updateConfiguration fail, err: %{public}s', JSON.stringify(err));
         this.getUIContext().getPromptAction().showToast({ message: `scale:${scale}, err:${JSON.stringify(err)}` });
       } else {
         this.currentFontSizeScale = String(scale);
@@ -430,7 +504,7 @@ struct Demo {
         } else {
           this.fontSize = 15;
         }
-        console.info('updateConfiguration success.');
+        hilog.info(DOMAIN, TAG, 'updateConfiguration success.');
         this.getUIContext().getPromptAction().showToast({ message: `scale:${scale}, updateConfiguration success.` });
       }
     });
@@ -442,108 +516,112 @@ struct Demo {
       mode = uiAppearance.DarkMode.ALWAYS_DARK;
     }
     if (mode == uiAppearance.getDarkMode()) {
-      console.info(`TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
+      hilog.info(DOMAIN, TAG, `TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
       return;
     }
     try {
       uiAppearance.setDarkMode(mode).then(() => {
-        console.info(`TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
+        hilog.info(DOMAIN, TAG, `TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
       }).catch((error: Error) => {
-        console.error(`TitleDarkMode Set ${this.darkModeKey[mode]} failed, ${error.message}`);
+        hilog.error(DOMAIN, TAG, `TitleDarkMode Set ${this.darkModeKey[mode]} failed, ${error.message}`);
       });
     } catch (error) {
       let message = (error as BusinessError).message;
-      console.error(`TitleDarkMode Set dark-mode failed, ${message}`);
+      hilog.error(DOMAIN, TAG, `TitleDarkMode Set dark-mode failed, ${message}`);
     }
   }
 
   build() {
-    Column() {
+    NavDestination() {
       Column() {
-        Row() {
-          Text(`current fontSizeScale:${this.currentFontSizeScale}`)
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-        }
+        Column() {
+          Row() {
+            Text(`current fontSizeScale:${this.currentFontSizeScale}`)
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+          }
 
-        Row() {
-          Button('1.75')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(1.75);
-            })
-          Button('2')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(2);
-            })
-        }.margin({ top: 25 })
+          Row() {
+            Button('1.75')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(1.75);
+              })
+            Button('2')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(2);
+              })
+          }.margin({ top: 25 })
 
-        Row() {
-          Button('3.2')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(3.2);
-            })
-          Button('1')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(1);
-            })
-        }
+          Row() {
+            Button('3.2')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(3.2);
+              })
+            Button('1')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(1);
+              })
+          }
 
-        Row() {
-          Button('深色模式')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              this.darkMode(true);
-            })
-          Button('浅色模式')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              this.darkMode(false);
-            })
-        }
-      }.alignItems(HorizontalAlign.Start)
+          Row() {
+            // app.string.Dark_mode资源文件中的value值为“深色模式”
+            Button($r('app.string.Dark_mode'))
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                this.darkMode(true);
+              })
+            // app.string.Light_mode资源文件中的value值为“浅色模式”
+            Button($r('app.string.Light_mode'))
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                this.darkMode(false);
+              })
+          }
+        }.alignItems(HorizontalAlign.Start)
 
-      Column() {
-        Tabs({ barPosition: BarPosition.End }) {
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Pink)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'OverLength'))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Yellow)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'SixLine'))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Blue)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Blue'))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Green)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Green'))
-        }
-        .vertical(false)
-        .scrollable(true)
-        .barMode(BarMode.Fixed)
-        .onChange((index: number) => {
-          console.info(index.toString());
-        })
-        .width('100%')
-        .backgroundColor(0xF1F3F5)
-      }.width('80%').height(200)
-      .margin({ top: 200 })
-    }.width('100%')
+        Column() {
+          Tabs({ barPosition: BarPosition.End }) {
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Pink)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'OverLength'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Yellow)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'SixLine'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Blue)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Blue'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Green)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Green'))
+          }
+          .vertical(false)
+          .scrollable(true)
+          .barMode(BarMode.Fixed)
+          .onChange((index: number) => {
+            hilog.info(DOMAIN, TAG, index.toString());
+          })
+          .width('100%')
+          .backgroundColor(0xF1F3F5)
+        }.width('80%').height(200)
+        .margin({ top: 200 })
+      }.width('100%')
+    }
   }
 }
 ```
@@ -564,36 +642,40 @@ struct Demo {
 **图15** 在页面缓存场景下通过点击yellow按键切换界面。
 
 ![cachedMaxCount2](figures/cachedMaxCount1.gif)
-```ts
+<!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TabsExample {
+export struct NumberOfCachesTabBar {
   build() {
-    Tabs() {
-      TabContent() {
-        MyComponent({ color: '#00CB87' })
-      }.tabBar(SubTabBarStyle.of('green'))
+    // ···
+          Tabs({ barPosition: BarPosition.Start }) {
+            TabContent() {
+              MyComponent({ color: '#00CB87' })
+            }.tabBar(SubTabBarStyle.of('green'))
 
-      TabContent() {
-        MyComponent({ color: '#007DFF' })
-      }.tabBar(SubTabBarStyle.of('blue'))
+            TabContent() {
+              MyComponent({ color: '#007DFF' })
+            }.tabBar(SubTabBarStyle.of('blue'))
 
-      TabContent() {
-        MyComponent({ color: '#FFBF00' })
-      }.tabBar(SubTabBarStyle.of('yellow'))
+            TabContent() {
+              MyComponent({ color: '#FFBF00' })
+            }.tabBar(SubTabBarStyle.of('yellow'))
 
-      TabContent() {
-        MyComponent({ color: '#E67C92' })
-      }.tabBar(SubTabBarStyle.of('pink'))
+            TabContent() {
+              MyComponent({ color: '#E67C92' })
+            }.tabBar(SubTabBarStyle.of('pink'))
 
-      TabContent() {
-        MyComponent({ color: '#FF0000' })
-      }.tabBar(SubTabBarStyle.of('red'))
-    }
-    .width(360)
-    .height(296)
-    .backgroundColor('#F1F3F5')
-    .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+            TabContent() {
+              MyComponent({ color: '#FF0000' })
+            }.tabBar(SubTabBarStyle.of('red'))
+          }
+          .width(360)
+          .height(296)
+          .backgroundColor('#F1F3F5')
+          .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+        // ···
   }
 }
 

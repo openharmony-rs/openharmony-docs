@@ -497,7 +497,9 @@ enableAnalyzer(enable:&nbsp;boolean)
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.INTERNET。
+> - 需要配置权限：ohos.permission.INTERNET。
+>
+> - 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -520,6 +522,10 @@ resizable(value: ResizableOptions)
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -572,6 +578,10 @@ dynamicRangeMode(value: DynamicRangeMode)
 orientation(orientation: ImageRotateOrientation)
 
 设置图像内容的显示方向。
+
+该属性对[alt](#alt)占位图不生效。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -627,7 +637,7 @@ Image组件创建后，不支持动态修改该属性的值。
 
 contentTransition(transition: ContentTransitionEffect)
 
-图片内容发生变化时，会触发过渡动效，OPACITY为淡入淡出效果，IDENTITY为无动画效果。
+图片内容发生变化时，触发过渡动效。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -637,7 +647,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -733,6 +743,8 @@ contentTransition(transition: ContentTransitionEffect)
 ## ImageRotateOrientation<sup>14+</sup>
 
 期望的图像内容显示方向。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -946,7 +958,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -2345,7 +2357,7 @@ struct Index {
 
 ### 示例27（使用ContentTransition属性实现图片淡入淡出切换效果）
 
-该示例演示了在点击图片切换图源时，通过设置[contentTransition](#contenttransition21)属性为淡入淡出效果，实现图片的平滑过渡。
+从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
 
 ```ts
 @Entry

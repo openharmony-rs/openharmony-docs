@@ -67,7 +67,9 @@ The following table lists the APIs commonly used to register and use theme fonts
 
    Include header files.
 
-   ```c++
+   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    #include <native_drawing/drawing_font_collection.h>
    #include <native_drawing/drawing_text_typography.h>
    #include <native_drawing/drawing_register_font.h>
@@ -79,14 +81,18 @@ The following table lists the APIs commonly used to register and use theme fonts
    >
    > The registered theme font takes effect on the global font collection object. Therefore, you must use OH_Drawing_GetFontCollectionGlobalInstance to obtain the global font collection object for drawing. If you use OH_Drawing_CreateSharedFontCollection or OH_Drawing_CreateFontCollection to create a font collection object, the theme font cannot be used. The global font collection obtained by OH_Drawing_GetFontCollectionGlobalInstance cannot be released. Otherwise, the font drawing will be abnormal.
 
-   ```c++
+   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/applications_app_samples/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_GetFontCollectionGlobalInstance();
    ```
 
 5. OH_Drawing_SetTextStyleFontFamilies() can be used to specify the font family name to use the specified font. However, if the theme font is used, you do not need to use OH_Drawing_SetTextStyleFontFamilies() to specify the font. Otherwise, the specified font is used first instead of the theme font.
 
-   ```c++
-   OH_Drawing_TextStyle textStyle = OH_Drawing_CreateTextStyle();
+   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/applications_app_samples/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
+   OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
    // const char* myFontFamilies[] = {"otherFontFamilyName"};
    // Do not use this API to specify the font.
    // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
@@ -94,22 +100,25 @@ The following table lists the APIs commonly used to register and use theme fonts
 
 6. Set the paragraph text content to "Hello World. \nThis is the theme font." In this case, the theme font is used for the paragraph text.
 
-   ```c++
+   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/applications_app_samples/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    // Set other text styles.
-   OH_Drawing_SetTextStyleColor(textStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-   OH_Drawing_SetTextStyleFontSize(textStyle, 50.0);
+   OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   // Set the font size to 100.0.
+   OH_Drawing_SetTextStyleFontSize(myTextStyle, 100.0);
    // Create a paragraph style object to set the typesetting style.
    OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
    OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT); // Set the paragraph style to left alignment.
    // Create a paragraph generator.
-   OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
    // Set the text style in the paragraph generator.
-   OH_Drawing_TypographyHandlerPushTextStyle(handler, textStyle);
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, myTextStyle);
    // Set the text content in the paragraph generator.
-   const char* text = "Hello World. \nThis is the theme font.";
+   const char *text = "Hello World. \nThis is the theme font.";
    OH_Drawing_TypographyHandlerAddText(handler, text);
    // Generate a paragraph using the paragraph generator.
-   OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+   OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
 
 ## Effect

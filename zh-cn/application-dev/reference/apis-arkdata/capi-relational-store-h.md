@@ -127,6 +127,10 @@
 | [int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber)](#oh_rdb_detach) | - | 从当前数据库中分离指定的数据库。 |
 | [int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)](#oh_rdb_setlocale) | - | 支持不同语言的排序规则。 |
 | [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)](#oh_rdb_setsemanticindex) | - | 开启或关闭基于语义索引的知识加工。 |
+| [int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)](#oh_rdb_rekeyex) | - | 更改加密数据库密钥。<br>不支持对非WAL模式的数据库进行密钥更新。<br>手动更新时需要独占访问数据库，此时若存在任何未释放的结果集、事务或其他进程打开的数据库均会导致更新失败。<br>支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。<br>数据库越大，执行更新所需的时间越长。<br>加密参数变更需谨慎，调用OH_Rdb_CreateOrOpen时需要传入正确的加密参数，否则可能打开数据库失败。 |
+| [typedef void (\*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)](#rdb_corruptedhandler) | Rdb_CorruptedHandler | 数据库异常处理的回调函数。 |
+| [int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_registercorruptedhandler) | - | 注册数据库异常处理。当数据库发生异常时，将调用异常处理的回调函数。<br>异常处理逻辑为用户自定义，回调时触发的业务需要用户自行保障。<br>每个路径只允许注册一次。 |
+| [int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_unregistercorruptedhandler) | - | 取消注册的数据库异常处理的回调函数。<br>handler和context必须要和订阅时保持一致，否则取消失败。 |
 
 ## 枚举类型说明
 
@@ -2111,3 +2115,116 @@ int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)
 | 类型 | 说明 |
 | -- | -- |
 | int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_ERR表示函数执行异常。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。 |
+
+### OH_Rdb_RekeyEx()
+
+```
+int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)
+```
+
+**描述**
+
+更改加密数据库密钥。
+
+不支持对非WAL模式的数据库进行密钥更新。
+
+手动更新时需要独占访问数据库，此时若存在任何未释放的结果集、事务或其他进程打开的数据库均会导致更新失败。
+
+支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。
+
+数据库越大，执行更新所需的时间越长。
+
+加密参数变更需谨慎，调用OH_Rdb_CreateOrOpen时需要传入正确的加密参数，否则可能打开数据库失败。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 表示指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_ERROR 表示数据库常见错误。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_ALREADY_CLOSED表示数据库已关闭。<br>返回RDB_E_SQLITE_CORRUPT表示数据库已损坏。<br>返回RDB_E_SQLITE_PERM表示SQLite错误：访问权限被拒绝。<br>返回RDB_E_SQLITE_BUSY表示SQLite错误：数据库文件被锁定。<br>返回RDB_E_SQLITE_NOMEM表示SQLite错误：数据库内存不足。<br>返回RDB_E_SQLITE_READONLY表示SQLite错误：尝试写入只读数据库。<br>返回RDB_E_SQLITE_IOERR表示SQLite错误：磁盘I/O错误。<br>返回RDB_E_SQLITE_FULL表示SQLite错误：数据库已满。 |
+
+### Rdb_CorruptedHandler()
+
+```
+typedef void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)
+```
+
+**描述**
+
+数据库异常处理的回调函数。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void *context | 表示数据异常处理的上下文，生命周期由业务自身管理。 |
+| [ OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 表示指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象的指针，即与此RDB存储相关的数据库配置，不可在回调函数外部使用。 |
+| [ OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 表示指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针，该指针由系统产生，回调函数结束后即刻释放，不可在回调函数外部使用。 |
+
+### OH_Rdb_RegisterCorruptedHandler()
+
+```
+int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)
+```
+
+**描述**
+
+注册数据库异常处理。当数据库发生异常时，将调用异常处理的回调函数。
+
+异常处理逻辑为用户自定义，回调时触发的业务需要用户自行保障。
+
+每个路径只允许注册一次。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 表示指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象的指针，即与此RDB存储相关的数据库配置。 |
+| void *context | 表示数据异常处理的上下文。 |
+| [const Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | 数据库异常处理的回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。<br>返回RDB_E_SUB_LIMIT_REACHED表示注册数量超过限制。 |
+
+### OH_Rdb_UnregisterCorruptedHandler()
+
+```
+int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)
+```
+
+**描述**
+
+取消注册的数据库异常处理的回调函数。
+
+handler和context必须要和订阅时保持一致，否则取消失败。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 表示指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象的指针，即与此RDB存储相关的数据库配置。 |
+| void *context | 表示数据异常处理的上下文。 |
+| [const Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | 数据库异常处理的回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行结果。<br>返回RDB_OK表示执行成功。<br>返回RDB_E_INVALID_ARGS表示输入参数无效。 |

@@ -20,13 +20,13 @@ import { print } from '@kit.BasicServicesKit';
 
 ## PrintTask
 
-Implements event listeners for print tasks.
+Implements event listeners for print jobs.
 
 ### on
 
 on(type: 'block', callback: Callback&lt;void&gt;): void
 
-Registers a listener for the print task block event. This API uses a callback to return the result.
+Subscribes to the block events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -35,8 +35,8 @@ Registers a listener for the print task block event. This API uses a callback to
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**,<br>indicating blocking of the print task.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>It means that the print job is blocked.|
+| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is blocked.|
 
 **Error codes**
 
@@ -69,7 +69,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
-Registers a listener for the print task success event. This API uses a callback to return the result.
+Subscribes to the success events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -78,8 +78,8 @@ Registers a listener for the print task success event. This API uses a callback 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**,<br>indicating success of the print task.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>It means that the print job is successful.|
+| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is successful.|
 
 **Error codes**
 
@@ -112,7 +112,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'fail', callback: Callback&lt;void&gt;): void
 
-Registers a listener for the print task failure event. This API uses a callback to return the result.
+Subscribes to the failure events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -121,8 +121,8 @@ Registers a listener for the print task failure event. This API uses a callback 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**,<br>indicating failure of the print task.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>It means that the print job is failed.|
+| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is failed.|
 
 **Error codes**
 
@@ -155,7 +155,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
-Registers a listener for the print task cancellation event. This API uses a callback to return the result.
+Subscribes to the cancellation events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -164,8 +164,8 @@ Registers a listener for the print task cancellation event. This API uses a call
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**,<br>indicating cancellation of the print task.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>It means that the print job is canceled.|
+| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is canceled.|
 
 **Error codes**
 
@@ -198,7 +198,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'block', callback?: Callback&lt;void&gt;): void
 
-Unregisters the listener for the print task block event. This API uses a callback to return the result.
+Unsubscribes from the block events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -207,8 +207,8 @@ Unregisters the listener for the print task block event. This API uses a callbac
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**,<br>indicating blocking of the print task.|
-| callback | Callback&lt;void&gt; | No| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>It means that the print job is blocked.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the block events of a specified print job.|
 
 **Error codes**
 
@@ -241,7 +241,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
-Unregisters the listener for the print task success event. This API uses a callback to return the result.
+Unsubscribes from the success events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -250,8 +250,8 @@ Unregisters the listener for the print task success event. This API uses a callb
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**,<br>indicating success of the print task.|
-| callback | Callback&lt;void&gt; | No| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>It means that the print job is successful.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the success events of a specified print job.|
 
 **Error codes**
 
@@ -284,7 +284,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
-Unregisters the listener for the print task failure event. This API uses a callback to return the result.
+Unsubscribes from the failure events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -293,8 +293,8 @@ Unregisters the listener for the print task failure event. This API uses a callb
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**,<br>indicating failure of the print task.|
-| callback | Callback&lt;void&gt; | No| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>It means that the print job is failed.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the failure events of a specified print job.|
 
 **Error codes**
 
@@ -327,7 +327,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
-Unregisters the listener for the print task cancellation event. This API uses a callback to return the result.
+Unsubscribes from the cancellation events of a print job. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -336,8 +336,8 @@ Unregisters the listener for the print task cancellation event. This API uses a 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**,<br>indicating cancellation of the print task.|
-| callback | Callback&lt;void&gt; | No| Callback used to return the result.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>It means that the print job is canceled.|
+| callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the cancellation events of a specified print job.|
 
 **Error codes**
 

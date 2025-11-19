@@ -9,9 +9,9 @@
 - C API<!--kernel-c-->
   - 模块<!--kernel-moudle-->
     - [QoS](capi-qos.md)
-  - 头文件<!--ipc-headerfile-->
+  - 头文件<!--kernel-headerfile-->
     - [qos.h](capi-qos-h.md)
-  - 结构体<!--ipc-struct-->
+  - 结构体<!--kernel-struct-->
     - [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md)
     - [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md)
     

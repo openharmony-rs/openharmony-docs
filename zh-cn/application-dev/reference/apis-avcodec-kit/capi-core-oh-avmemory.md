@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVMemory OH_AVMemory
+```
+
 ## 概述
 
 为音视频内存接口定义native层对象。

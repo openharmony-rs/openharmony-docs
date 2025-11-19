@@ -1020,7 +1020,7 @@ try {
 
 removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<void>;
 
-Removes extended resources based on the specified bundle name and HSP file path. This API uses a promise to return the result.
+Removes extended resources based on the specified bundle name and module names. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1082,7 +1082,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, callback: AsyncCallback\<void\>): void
 
-Updates the current bundle. This API uses an asynchronous callback to return the result. It can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application.
+Updates the current bundle. This API can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1161,7 +1161,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void\>): void
 
-Updates the current bundle. This API uses an asynchronous callback to return the result. It can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application.
+Updates the current bundle. This API can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1233,7 +1233,7 @@ try {
 
 updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam): Promise\<void\>
 
-Updates the current bundle. This API uses a promise to return the result. It can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application.
+Updates the current bundle. This API can be called only by enterprise MDM applications on enterprise devices, and the HAPs in **hapFilePaths** must belong to the current application. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

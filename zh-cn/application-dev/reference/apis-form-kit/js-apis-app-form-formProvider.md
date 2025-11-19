@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
 
@@ -64,7 +64,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider setFormNextRefreshTime success`);
+    console.info(`formProvider setFormNextRefreshTime success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -118,7 +118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
-    console.log(`formProvider setFormNextRefreshTime success`);
+    console.info(`formProvider setFormNextRefreshTime success`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -177,7 +177,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider updateForm success`);
+    console.info(`formProvider updateForm success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -235,7 +235,7 @@ let param: Record<string, string> = {
 let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
 try {
   formProvider.updateForm(formId, obj).then(() => {
-    console.log(`formProvider updateForm success`);
+    console.info(`formProvider updateForm success`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
   });
@@ -283,7 +283,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -333,7 +333,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -385,7 +385,7 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.log(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -436,7 +436,7 @@ struct Page {
   @State message: string = 'Hello World';
 
   aboutToAppear(): void {
-    console.log(`${TAG} aboutToAppear.....`);
+    console.info(`${TAG} aboutToAppear.....`);
   }
 
   build() {
@@ -450,7 +450,7 @@ struct Page {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          console.log(`${TAG} onClick.....`);
+          console.info(`${TAG} onClick.....`);
           formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
         })
     }
@@ -557,7 +557,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const formId: string = '388344236';
 try {
   formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
-    console.log(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -604,7 +604,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
-    console.log(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

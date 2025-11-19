@@ -22,7 +22,7 @@ motionBlur(value: MotionBlurOptions): T
 
 2、该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
 
-3、该属性需要与动画的AnimateParam的onFinish参数配合使用,需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
+3、该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
 
 4、在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
 

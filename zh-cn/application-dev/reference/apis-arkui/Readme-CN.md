@@ -40,6 +40,7 @@
       - [Class (SwiperDynamicSyncScene)](arkts-apis-uicontext-swiperdynamicsyncscene.md)
       - [Class (TextMenuController)](arkts-apis-uicontext-textmenucontroller.md)
       - [Class (UIContext)](arkts-apis-uicontext-uicontext.md)
+      - [Class (ResolvedUIContext)](arkts-apis-uicontext-resolveduicontext.md)
       - [Class (UIInspector)](arkts-apis-uicontext-uiinspector.md)
       - [Class (UIObserver)](arkts-apis-uicontext-uiobserver.md)
       - [Interface (AtomicServiceBar)](arkts-apis-uicontext-atomicservicebar.md)
@@ -279,8 +280,6 @@
     - [Navigation](arkui-ts/ts-basic-components-navigation.md)
     - [NavDestination](arkui-ts/ts-basic-components-navdestination.md)
     - [MultiNavigation](arkui-ts/ohos-arkui-advanced-MultiNavigation.md)
-    - [Stepper](arkui-ts/ts-basic-components-stepper.md)
-    - [StepperItem](arkui-ts/ts-basic-components-stepperitem.md)
     - [Tabs](arkui-ts/ts-container-tabs.md)
     - [TabContent](arkui-ts/ts-container-tabcontent.md)
     - [ToolBarItem](arkui-ts/ts-basic-components-toolbaritem.md)
@@ -446,6 +445,7 @@
       - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
       - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
       - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
+      - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
   - 组件预览<!--component-preview-->
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
@@ -518,6 +518,8 @@
     - [Navigator](arkui-ts/ts-container-navigator.md)
     - [点击控制](arkui-ts/ts-universal-attributes-click.md)
     - [栅格设置](arkui-ts/ts-universal-attributes-grid.md)
+    - [Stepper](arkui-ts/ts-basic-components-stepper.md)
+    - [StepperItem](arkui-ts/ts-basic-components-stepperitem.md)
 - JS组件 <!--arkui-js-comp-->
   - [兼容JS的类Web开发范式（ArkUI.Full）](arkui-js/Readme-CN.md)<!--arkui-js-full-comp-->
   - [兼容JS的类Web开发范式（ArkUI.Lite）](arkui-js-lite/Readme-CN.md)<!--arkui-js-lite-comp-->
@@ -618,6 +620,7 @@
     - [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
     - [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
     - [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
     - [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)
     - [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)
     - [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)
@@ -711,7 +714,6 @@
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
     - [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
-    - [ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)
     - [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)
     - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
     - [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md)
@@ -725,6 +727,7 @@
     - [图像AI分析错误码](arkui-ts/errorcode-image-analyzer.md)
     - [焦点错误码](errorcode-focus.md)
     - [系统资源错误码](errorcode-system-resource.md)
+    - [附属节点错误码](errorcode-adopt.md)
     - [半模态错误码](errorcode-bindSheet.md)
     - [滚动类组件错误码](errorcode-scroll.md)
     - [截图错误码](errorcode-snapshot.md)

@@ -83,7 +83,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 
@@ -127,3 +127,50 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | max    | number  | 否    | 否 | 最大支持频率，单位：Hz。 |
 | min    | number  | 否    | 否 | 最小支持频率，单位：Hz。 |
+
+## infraredEmitter.hasIrEmitter<sup>23+</sup>
+
+hasIrEmitter(): Promise&lt;boolean&gt;
+
+查询设备是否配备红外发射器。
+
+**需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
+
+**系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
+
+**返回值**：
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| Promise&lt;boolean&gt; | 如果设备具有红外发射器，则返回true；否则返回false。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[全局快捷键管理错误码](errorcode-inputconsumer.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 3800001 | Input service exception. |
+
+**示例**：
+
+```js
+import { infraredEmitter } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+            infraredEmitter.hasIrEmitter().then((result: boolean) => {
+              console.info(`hasIrEmitter: ${JSON.stringify(result)}`);
+            }).catch((error:Error)=> {
+              console.error(`hasIrEmitter failed: ${JSON.stringify(error)}`);})
+        })
+    }
+  }
+}
+```

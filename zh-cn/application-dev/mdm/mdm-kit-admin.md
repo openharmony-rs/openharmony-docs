@@ -44,13 +44,13 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   // 设备管理器应用激活回调方法，应用可在此回调函数中进行初始化策略设置。
   onAdminEnabled() {
     console.info('onAdminEnabled');
-	// ···
+    // ···
   }
 
   // 设备管理器应用去激活回调方法，应用可在此回调函数中通知企业管理员设备已脱管。
   onAdminDisabled() {
     console.info('onAdminDisabled');
-	// ···
+    // ···
   }
 
   // 应用安装回调方法，应用可在此回调函数中进行事件上报，通知企业管理员。
@@ -71,14 +71,14 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 <!-- @[extension_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
 
 ``` JSON5
-    "extensionAbilities": [
-      {
-        "name": "EnterpriseAdminAbility",
-        "type": "enterpriseAdmin",
-        "exported": true,
-        "srcEntry": "./ets/enterpriseadminability/EnterpriseAdminAbility.ets"
-      }
-    ],
+"extensionAbilities": [
+  {
+    "name": "EnterpriseAdminAbility",
+    "type": "enterpriseAdmin",
+    "exported": true,
+    "srcEntry": "./ets/enterpriseadminability/EnterpriseAdminAbility.ets"
+  }
+],
 ```
 
 

@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_GpuContextOptions
+```
+
 ## Overview
 
 This struct describes the options about the GPU context.

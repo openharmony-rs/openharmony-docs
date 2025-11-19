@@ -339,13 +339,13 @@ enum Camera_ImageRotation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](#camera_imagerotation)。 |
+| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](#camera_imagerotation)。 |
 | CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 21 |
-| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](#camera_imagerotation)。 |
+| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](#camera_imagerotation)。 |
 | CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 21 |
-| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](#camera_imagerotation)。 |
+| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](#camera_imagerotation)。 |
 | CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 21 |
-| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](#camera_imagerotation)。 |
+| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](#camera_imagerotation)。 |
 | CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 21 |
 
 ### Camera_QualityLevel
@@ -396,11 +396,11 @@ enum Camera_TorchMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFF = 0 | 设备手电筒常关。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](#camera_torchmode)。 |
+| OFF = 0 | 设备手电筒常关。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](#camera_torchmode)。 |
 | CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 21 |
-| ON = 1 | 设备手电筒常开。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](#camera_torchmode)。 |
+| ON = 1 | 设备手电筒常开。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](#camera_torchmode)。 |
 | CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 21 |
-| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](#camera_torchmode)。 |
+| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](#camera_torchmode)。 |
 | CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 21 |
 
 ### Camera_SmoothZoomMode
@@ -417,7 +417,7 @@ enum Camera_SmoothZoomMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API 21开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode)。 |
+| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode)。 |
 | CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 21 |
 
 ### Camera_SystemPressureLevel
@@ -509,11 +509,11 @@ enum Camera_FoldStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus)。 |
+| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus)。 |
 | CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 21 |
-| EXPANDED = 1 | 展开状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus)。 |
+| EXPANDED = 1 | 展开状态。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus)。 |
 | CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 21 |
-| FOLDED = 2 | 折叠状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus)。 |
+| FOLDED = 2 | 折叠状态。<br> 从API version 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus)。 |
 | CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 21 |
 
 ### Camera_QualityPrioritization

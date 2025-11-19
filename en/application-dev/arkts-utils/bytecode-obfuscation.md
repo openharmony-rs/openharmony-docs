@@ -1,7 +1,7 @@
 # ArkGuard Principles and Capabilities for Bytecode Obfuscation
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao; @u012789010-->
+<!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @foryourself-->
@@ -665,7 +665,7 @@ const moduleName = './file2'         // The path name file2 corresponding to mod
 const module2 = import(moduleName)
 ```
 
-3. When [dynamic routing](../ui/arkts-navigation-navigation.md#cross-package-dynamic-routing) is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the **pageSourceFile** field in the **resources/base/profile/route_map.json** file of the module should be added to the trustlist.
+3. When [cross-package dynamic routing](../ui/arkts-navigation-navigation.md#cross-package-dynamic-routing) is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the **pageSourceFile** field in the **resources/base/profile/route_map.json** file of the module should be added to the trustlist.
 
 ```json
 {

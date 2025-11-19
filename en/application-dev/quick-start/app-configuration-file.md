@@ -6,10 +6,20 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+An application-level configuration file provides the global configuration of an application and configuration of a specific device type for the compilation tool, OS, and AppGallery. Each project must contain an **app.json5** configuration file, which is stored in the ***project name*/AppScope/app.json5** directory.
+
+>
+> **NOTE**
+>
+> Using the sample code in the actual project may cause a compilation failure. You need to configure the code as required. For example, if the resource file referenced by the **$** symbol does not exist in the project, you need to manually add the resource file or replace it with the actual one.
+>
+> In the configuration file, fields can be repeated. The last field is used.
+>
+
 ## Configuration File Example
 
 
-This topic gives an overview of the **app.json5** configuration file. To start with, let's go through an example of what this file contains.
+The following example describes the structure and content of the **app.json5** configuration file.
 
 <!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
@@ -62,7 +72,7 @@ This topic gives an overview of the **app.json5** configuration file. To start w
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
-    "startMode": "mainTask",
+    "startMode": "mainTask"
     // [EndExclude app_json5_configuration]
     // [EndExclude app_json5_appEnvironments]
     // [EndExclude app_json5_multiAppMode]

@@ -10,7 +10,7 @@
 
 >**说明：**
 >
-> 从API version 22开始，\@Env支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-new-componentV2.md)中使用。
+> 从API version 22开始，\@Env支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
 >
 > 从API version 22开始，该装饰器支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@
       }
     }
     ```
-- \@Env装饰的变量类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`类型。\@Env当前仅支持`SystemProperties.BREAK_POINT`参数，所以其装饰类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`。
+- \@Env装饰的变量类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`类型。\@Env当前仅支持`SystemProperties.BREAK_POINT`参数，所以其装饰类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`，否则会有编译时报错。
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 

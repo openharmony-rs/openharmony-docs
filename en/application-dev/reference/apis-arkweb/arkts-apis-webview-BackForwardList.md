@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Defines the backforward list of the current WebView.
 
@@ -53,7 +53,7 @@ Obtains information about a history item with a specified index in the backforwa
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | Error Code| Error Message                                               |
 | -------- | ------------------------------------------------------ |

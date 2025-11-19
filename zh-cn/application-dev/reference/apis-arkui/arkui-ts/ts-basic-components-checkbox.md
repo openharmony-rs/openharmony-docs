@@ -198,7 +198,7 @@ mark(style: Optional\<MarkStyle>)
 
 shape(value: CheckBoxShape)
 
-设置CheckBox组件形状，包括圆形和圆角方形。如果想要调整当前CheckBox的样式，需使用[contentModifier](#contentmodifier12)属性自定义CheckBox样式。
+设置Checkbox组件形状，包括圆形和圆角方形。如果想要调整当前Checkbox的样式，需使用[contentModifier](#contentmodifier12)属性自定义Checkbox样式。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -210,13 +210,13 @@ shape(value: CheckBoxShape)
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | 是   | CheckBox组件形状，包括圆形和圆角方形。<br/>默认值：CheckBoxShape.CIRCLE |
+| value  | [CheckBoxShape](ts-appendix-enums.md#checkboxshape11) | 是   | Checkbox组件形状，包括圆形和圆角方形。<br/>默认值：CheckBoxShape.CIRCLE |
 
 ### shape<sup>18+</sup>
 
 shape(shape: Optional\<CheckBoxShape>)
 
-设置CheckBox组件形状，包括圆形和圆角方形。与[shape](#shape11)<sup>11+</sup>相比，shape参数新增了对undefined类型的支持。如果想要调整当前CheckBox的样式，需使用[contentModifier](#contentmodifier12)属性自定义CheckBox样式。
+设置Checkbox组件形状，包括圆形和圆角方形。与[shape](#shape11)<sup>11+</sup>相比，shape参数新增了对undefined类型的支持。如果想要调整当前Checkbox的样式，需使用[contentModifier](#contentmodifier12)属性自定义Checkbox样式。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -228,13 +228,13 @@ shape(shape: Optional\<CheckBoxShape>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | 是   | CheckBox组件形状，包括圆形和圆角方形。<br/>当shape的值为undefined时，默认值为CheckBoxShape.CIRCLE。 |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CheckBoxShape](ts-appendix-enums.md#checkboxshape11)> | 是   | Checkbox组件形状，包括圆形和圆角方形。<br/>当shape的值为undefined时，默认值为CheckBoxShape.CIRCLE。 |
 
 ### contentModifier<sup>12+</sup>
 
 contentModifier(modifier: ContentModifier\<CheckBoxConfiguration>)
 
-定制CheckBox内容区的方法。设置该属性时，会导致其他属性设置失效。
+定制Checkbox内容区的方法。设置该属性时，会导致其他属性设置失效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -244,13 +244,13 @@ contentModifier(modifier: ContentModifier\<CheckBoxConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明) | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明) | 是   | 在Checkbox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### contentModifier<sup>18+</sup>
 
 contentModifier(modifier: Optional<ContentModifier\<CheckBoxConfiguration>>)
 
-定制CheckBox内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。设置该属性时，会导致其他属性设置失效。
+定制Checkbox内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。设置该属性时，会导致其他属性设置失效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -260,7 +260,7 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxConfiguration>>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明)> | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明)> | 是   | 在Checkbox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ## 事件
 
@@ -422,7 +422,7 @@ struct Index {
 ![](figures/checkbox2.gif)
 
 ### 示例3（自定义多选框样式）
-该示例通过[contentModifier](#contentmodifier12)属性实现了自定义复选框样式的功能，自定义样式实现了一个五边形复选框，如果选中，内部会出现红色三角图案，标题会显示选中字样，如果取消选中，红色三角图案消失，标题会显示非选中字样。
+该示例通过[contentModifier](#contentmodifier12)属性实现了自定义多选框样式的功能，自定义样式实现了一个五边形多选框，如果选中，内部会出现红色三角图案，标题会显示选中字样，如果取消选中，红色三角图案消失，标题会显示非选中字样。
 
 ```ts
 // xxx.ets
@@ -489,7 +489,7 @@ struct Index {
 
   build() {
     Column({ space: 100 }) {
-      Checkbox({ name: '复选框状态', group: 'checkboxGroup' })
+      Checkbox({ name: '多选框状态', group: 'checkboxGroup' })
         .contentModifier(new MyCheckboxStyle(Color.Red))
         .onChange((value: boolean) => {
           console.info('Checkbox change is' + value);

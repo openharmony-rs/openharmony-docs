@@ -47,6 +47,10 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @mzyan-->
-<!--SE: @liyueric-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @liyueric-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 - ArkTS API<!--performance-analysis-arkts-->
   - [@ohos.hichecker (HiChecker)](js-apis-hichecker.md)
@@ -12,6 +13,8 @@
   - [@ohos.hilog (HiLog)](js-apis-hilog.md)
   - [@ohos.hiTraceChain (HiTraceChain)](js-apis-hitracechain.md)
   - [@ohos.hiTraceMeter (HiTraceMeter)](js-apis-hitracemeter.md)
+  - [@ohos.hiviewdfx.FaultLogExtensionAbility (Delayed Fault Notification)](js-apis-hiviewdfx-FaultLogExtensionAbility.md)
+  - [@ohos.hiviewdfx.FaultLogExtensionContext (Delayed Fault Notification Context)](js-apis-hiviewdfx-FaultLogExtensionContext.md)
   - [@ohos.hiviewdfx.hiAppEvent (HiAppEvent)](js-apis-hiviewdfx-hiappevent.md)
   - [@ohos.hiviewdfx.jsLeakWatcher (JS Leak Watcher)](js-apis-jsleakwatcher.md)
   <!--Del-->
@@ -57,12 +60,15 @@
     - [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)
     - [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md)
     - [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md)
+    - [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md)
+    - [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)
     - [HiTraceId](capi-hitrace-hitraceid.md)
 - Error Codes<!--performance-analysis-errcode-->
   - [FaultLogger Error Codes](errorcode-faultlogger.md)
   - [HiAppEvent Error Codes](errorcode-hiappevent.md)
   - [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md)
   - [HiDebug CPU Usage Error Codes](errorcode-hiviewdfx-hidebug-cpuusage.md)
+  - [HiDebug Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md)
   - [HiCollie Error Codes](errorcode-hiviewdfx-hicollie.md)
   - [JsLeakWatcher Error Codes](errorcode-jsleakwatcher.md)
     <!--Del-->

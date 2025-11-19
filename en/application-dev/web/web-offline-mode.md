@@ -4,7 +4,7 @@
 <!--Owner: @wang-yanhan-->
 <!--Designer: @qianlf-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component can be attached to and detached from the component trees in different windows. With this capability, you can create **Web** components in advance to optimize performance. For example, when a tab page is implemented with a **Web** component, pre-creation of the **Web** component allows for ahead-of-time rendering, so that the page appears instantly when accessed.
 
@@ -79,7 +79,7 @@ export class myNodeController extends NodeController {
   // This method must be overridden, which is used to build a node tree, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info(" uicontext is undefined : "+ (uiContext === undefined));
+    console.info(" uiContext is undefined : "+ (uiContext === undefined));
     if (this.rootNode != null) {
       // Return the FrameNode.
       return this.rootNode.getFrameNode();
@@ -220,7 +220,7 @@ export class myNodeController extends NodeController {
   // This method must be overridden, which is used to build a node tree, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info(" uicontext is undefined : "+ (uiContext === undefined));
+    console.info(" uiContext is undefined : "+ (uiContext === undefined));
     if (this.rootNode != null) {
       // Return the FrameNode.
       return this.rootNode.getFrameNode();
@@ -400,7 +400,7 @@ export class myNodeController extends NodeController {
   // This method must be overridden, which is used to build a node tree, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info(" uicontext is undefined : "+ (uiContext === undefined));
+    console.info(" uiContext is undefined : "+ (uiContext === undefined));
     if (this.rootNode != null) {
       // Return the FrameNode.
       return this.rootNode.getFrameNode();

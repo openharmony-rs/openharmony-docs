@@ -1,9 +1,9 @@
 # progress
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -27,7 +27,7 @@
 
 | 名称   | 类型     | 默认值        | 必填   | 描述                                       |
 | ---- | ------ | ---------- | ---- | ---------------------------------------- |
-| type | string | horizontal | 否    | 设置进度条的类型，该属性不支持动态修改，可选值为：<br/>-&nbsp;horizontal：线性进度条。<br/>-&nbsp;circular：loading样式进度条。<br/>-&nbsp;ring：圆环形进度条。<br/>-&nbsp;scale-ring：带刻度圆环形进度条。<br/>-&nbsp;arc：弧形进度条。<br/>-&nbsp;eclipse5+：圆形进度条，展现类似月圆月缺的进度展示效果。 |
+| type | string | horizontal | 否    | 设置进度条的类型，该属性不支持动态修改，可选值为：<br/>-&nbsp;horizontal：线性进度条。<br/>-&nbsp;circular：loading样式进度条。<br/>-&nbsp;ring：圆环形进度条。<br/>-&nbsp;scale-ring：带刻度圆环形进度条。<br/>-&nbsp;arc：弧形进度条。<br/>-&nbsp;eclipse<sup>5+</sup>：圆形进度条，展现类似月圆月缺的进度展示效果。 |
 
 不同类型的进度条还支持不同的属性：
 
@@ -42,7 +42,7 @@
   | --------- | ------- | ---- | ---- | -------------- |
   | clockwise | boolean | true | 否    | 圆环形进度条是否采用顺时针。<br/>默认值：true，表示圆环形进度条采用顺时针。 |
 
-- 类型为arc、eclipse5+时，支持如下属性：
+- 类型为arc、eclipse<sup>5+</sup>时，支持如下属性：
   | 名称      | 类型     | 默认值  | 必填   | 描述               |
   | ------- | ------ | ---- | ---- | ---------------- |
   | percent | number | 0    | 否    | 当前进度。取值范围为0-100。 |

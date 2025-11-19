@@ -14,12 +14,12 @@
 
 切换屏幕方向即可实现布局切换的旋转屏动画效果。
 
-```ts
-// xx.ets
+<!-- @[rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template1/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct rotation {
-
   build() {
     Stack() {
       Image($r('app.media.tree'))
@@ -32,6 +32,7 @@ struct rotation {
   }
 }
 ```
+
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
@@ -46,8 +47,9 @@ struct rotation {
 
 透明度变化的旋转屏动画在屏幕显示方向变化时启用，当窗口进行旋转动画时，为旋转过程中新增或删除的组件添加默认透明度转场，以实现组件的优雅出现和消失。此功能通过监听窗口旋转事件，在事件中切换组件的视图效果，如果消失视图的根节点和新出现视图的根节点未设置转场效果，会为其自动添加默认透明度转场（即[TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明).OPACITY），展现出透明度的渐隐和渐显效果。
 
-```ts
-// xx.ets
+<!-- @[rotation_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template2/Index.ets) -->
+
+``` TypeScript
 import { display } from '@kit.ArkUI';
 
 @Entry
@@ -66,16 +68,16 @@ struct rotation {
           .size({ width: 100, height: 100 })
           .id('image1')
 
-          // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
-          // .transition(TransitionEffect.OPACITY)
+        // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
+        // .transition(TransitionEffect.OPACITY)
       } else {
         Image($r('app.media.tree'))
           .position({ x: 0, y: 0 })
           .size({ width: 200, height: 200 })
           .id('image2')
-          
-          // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY来实现旋转屏动画的透明度变化
-          // .transition(TransitionEffect.OPACITY)
+
+        // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY来实现旋转屏动画的透明度变化
+        // .transition(TransitionEffect.OPACITY)
       }
     }
     .backgroundColor(Color.White)
@@ -85,11 +87,17 @@ struct rotation {
 ```
 
 监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的onWindowStageCreate方法中添加处理逻辑以获取屏幕的显示方向。
-```ts
-onWindowStageCreate(windowStage: window.WindowStage): void {
+<!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
+const TAG: string = 'EntryAbility';
+// ···
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // ···
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
     let mainWindow: window.Window;
     try {
       mainWindow = windowStage.getMainWindowSync();
@@ -97,11 +105,11 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
       AppStorage.setOrCreate('orientation', displayClass.orientation);
       // 监听窗口的windowsSizeChange事件，旋转屏时会触发该事件
       mainWindow.on('windowSizeChange', (data) => {
-        console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
+        hilog.info(DOMAIN, TAG, 'Succeeded in enabling the listener for window size changes. Data: ' + data);
         let displayClass: display.Display | null = null;
         try {
           displayClass = display.getDefaultDisplaySync();
-          console.info('display orientation is ' + JSON.stringify(displayClass.orientation));
+          hilog.info(DOMAIN, TAG, 'display orientation is ' + displayClass.orientation);
           // 获取屏幕的显示方向
           AppStorage.set('orientation', displayClass.orientation);
         } catch {
@@ -109,18 +117,21 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
         }
       })
     } catch {
-      hilog.error(0x0000, 'testTag', '%{public}s', 'error');
+      hilog.error(DOMAIN, TAG, '%{public}s', 'error');
       return;
     }
+    // ···
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
     });
-}
+  }
+
+// ···
 ```
 
 需要在项目的 module.json5 文件中的 abilities 列表里添加 "orientation"，指定为 "auto_rotation"。

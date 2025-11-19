@@ -4,7 +4,7 @@
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Since API version 9, the **Web** component supports the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class and [onGeolocationShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#ongeolocationshow) method for managing web page location permissions. For details, see <!--RP1-->[Privacy Protection](../../device-dev/security/security-privacy-protection.md)<!--RP1End-->.
 
@@ -27,7 +27,7 @@ To obtain the location, you need to configure the location permission in **modul
     ]
    ```
 
-## Requesting Location Permission
+## Requesting Location Permissions
 In the following example, when a user clicks the **Get Location** button on the frontend page, the **Web** component notifies the application of the location permission request in a dialog box.
 
 

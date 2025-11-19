@@ -9,6 +9,7 @@
 The module is the basic module of ArkGraphics 3D and provides common data types such as **SceneResourceParameters** and **SceneNodeParameters**. It also provides basic methods such as glTF model loading, scene creation, and resource creation.
 
 > **NOTE**
+>
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - For details about the .shader file format, see [Requirements on the .shader File Format](../../graphics3d/arkgraphics3D-shader-resource.md).
 
@@ -352,7 +353,8 @@ Describes the camera parameters, which are used to define additional configurati
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| renderingPipeline | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No  | Yes  | Initial rendering pipeline type. The default value is **FORWARD_LIGHTWEIGHT**.|
+| msaa<sup>22+</sup> | boolean | No| Yes| Whether Multisample Anti-Aliasing (MSAA) is enabled for the camera. **true** if enabled, **false** otherwise. The default value is **false**.|
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No  | Yes  | Initial rendering pipeline type. The default value is **FORWARD_LIGHTWEIGHT**.|
 
 ## EffectParameters<sup>21+</sup>
 

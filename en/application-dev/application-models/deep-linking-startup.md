@@ -29,13 +29,16 @@ To be accessed by other applications, an application must configure the [skills]
 
 A configuration example is as follows:
 
-```json
+<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
+    // ···
       {
-        // ...
+        // ···
         "skills": [
           {
             "entities": [
@@ -60,8 +63,10 @@ A configuration example is as follows:
             ]
           } // Add a skill object for redirection. If there are multiple redirection scenarios, create multiple skill objects.
         ]
-      }
-    ]
+      },
+    // ···
+    ],
+    // ···
   }
 }
 ```
@@ -70,12 +75,16 @@ A configuration example is as follows:
 
 In the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) lifecycle callback of the UIAbility of the target application, obtain and parse the link passed by the caller.
 
-```ts
-// EntryAbility.ets is used as an example.
+<!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
+
+``` TypeScript
+// DeepAbility.ets is used as an example.
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
+const DOMAIN = 0x0000;
+
+export default class DeepAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Obtain the input link information from want.
     // For example, the input URL is link://www.example.com/programs?action=showall.
@@ -85,11 +94,12 @@ export default class EntryAbility extends UIAbility {
       let urlObject = url.URL.parseURL(want?.uri);
       let action = urlObject.params.get('action');
       // For example, if action is set to showall, all programs are displayed.
-      if (action === "showall") {
-         // ...
+      if (action === 'showall') {
+        // ···
       }
     }
   }
+// ···
 }
 ```
 
@@ -104,7 +114,9 @@ Pass in the URL of the target application into **link** of [openLink](../referen
 
 The sample code is as follows:
 
-```ts
+<!-- @[deep_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
+
+``` TypeScript
 import { common, OpenLinkOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -114,7 +126,7 @@ const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Index {
+struct DeepOpenLinkIndex {
   build() {
     Button('start link', { type: ButtonType.Capsule, stateEffect: true })
       .width('87%')
@@ -122,7 +134,7 @@ struct Index {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "link://www.example.com";
+        let link: string = 'link://www.example.com'; // Use the actual application link.
         let openLinkOptions: OpenLinkOptions = {
           appLinkingOnly: false
         };
@@ -132,8 +144,8 @@ struct Index {
             .then(() => {
               hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
             }).catch((err: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. Code is ${err.code}, message is ${err.message}`);
-            });
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. Code is ${err.code}, message is ${err.message}`);
+          });
         } catch (paramError) {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to start link. Code is ${paramError.code}, message is ${paramError.message}`);
         }
@@ -149,7 +161,9 @@ Pass in the target application's link into **want** of [startAbility](../referen
 
 The sample code is as follows:
 
-```ts
+<!-- @[deep_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -159,7 +173,7 @@ const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Index {
+struct DeepStartIndex {
   build() {
     Button('start ability', { type: ButtonType.Capsule, stateEffect: true })
       .width('87%')
@@ -168,7 +182,7 @@ struct Index {
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let want: Want = {
-          uri: "link://www.example.com"
+          uri: 'link://www.example.com' // Use the actual application link.
         };
 
         try {
@@ -191,15 +205,21 @@ You can use the **Web** component to implement application redirection in the ca
 
 The sample code is as follows:
 
-```ts
-// index.ets
+<!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
+
+``` TypeScript
+// DeepWebIndex.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG = '[Sample_PullLinking]';
 
 @Entry
 @Component
-struct WebComponent {
+struct DeepWebIndex {
   controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
@@ -210,10 +230,10 @@ struct WebComponent {
           if (url === 'link://www.example.com') {
             (this.getUIContext().getHostContext() as common.UIAbilityContext).openLink(url)
               .then(() => {
-                console.info('openLink success.');
+                hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
               }).catch((err: BusinessError) => {
-                console.error(`openLink failed, err: ${JSON.stringify(err)}.`);
-              });
+              hilog.error(DOMAIN_NUMBER, TAG, `openLink failed, err: ${JSON.stringify(err)}.`);
+            });
             return true;
           }
           // If true is returned, the loading is blocked. Otherwise, the loading is allowed.

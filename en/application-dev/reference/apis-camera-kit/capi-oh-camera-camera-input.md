@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_Input Camera_Input
+```
+
 ## Overview
 
 The struct describes the camera input object.

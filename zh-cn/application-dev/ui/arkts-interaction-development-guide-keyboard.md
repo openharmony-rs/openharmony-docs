@@ -43,10 +43,9 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 
 当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)，可由该参数获得当前按键事件的按键行为（[KeyType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keytype)）、键码（[keyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
 
+<!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKey.ets) -->
 
-
-```ts
-// xxx.ets
+``` TypeScript
 @Entry
 @Component
 struct KeyEventExample {
@@ -99,7 +98,6 @@ struct KeyEventExample {
 }
 ```
 
-
 上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制见[焦点事件](arkts-common-events-focus-event.md)。
 
 
@@ -116,12 +114,12 @@ struct KeyEventExample {
 
 如果要阻止冒泡，即仅Button响应键盘事件，Column不响应，在Button的onKeyEvent回调中加入event.stopPropagation()方法即可，如下：
 
+<!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreventBubble.ets) -->
 
-
-```ts
+``` TypeScript
 @Entry
 @Component
-struct KeyEventExample {
+struct KeyEventPreventBubble {
   @State buttonText: string = '';
   @State buttonType: string = '';
   @State columnText: string = '';
@@ -175,12 +173,13 @@ struct KeyEventExample {
 }
 ```
 
-
 ![zh-cn_image_0000001511900508](figures/zh-cn_image_0000001511900508.gif)
 
 使用OnKeyPreIme屏蔽在输入框中使用方向左键。
 
-```ts
+<!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreIme.ets) -->
+
+``` TypeScript
 import { KeyCode } from '@kit.InputKit';
 
 @Entry
@@ -194,11 +193,11 @@ struct PreImeEventExample {
   build() {
     Column() {
       Search({
-        placeholder: "Search..."
+        placeholder: 'Search...'
       })
-        .width("80%")
-        .height("40vp")
-        .border({ radius:"20vp" })
+        .width('80%')
+        .height('40vp')
+        .border({ radius:'20vp' })
         .onKeyPreIme((event:KeyEvent) => {
           if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
@@ -212,21 +211,33 @@ struct PreImeEventExample {
 
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
-```ts
+<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Eventproject]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Eventproject_';
+
 @Entry
 @Component
 struct Index {
   build() {
     Row() {
       Row() {
-        Button('button1').id('button1').onKeyEvent((event) => {
-          console.info("button1");
-          return true
-        })
-        Button('button2').id('button2').onKeyEvent((event) => {
-          console.info("button2");
-          return true
-        })
+        Button('button1')
+          .id('button1')
+          .onKeyEvent((event) => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
+            return true
+          })
+        Button('button2')
+          .id('button2')
+          .onKeyEvent((event) => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
+            return true
+          })
       }
       .width('100%')
       .height('100%')
@@ -254,7 +265,15 @@ struct Index {
 
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
 
-```ts
+<!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Eventproject]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Eventproject_';
+
 @Entry
 @Component
 struct TextAreaDemo {
@@ -267,13 +286,13 @@ struct TextAreaDemo {
       Text('Submissions: ' + this.content)
       TextArea({ controller: this.controller, text: this.text })
         .onKeyPreIme((event: KeyEvent) => {
-          console.info(`${JSON.stringify(event)}`);
+          hilog.info(DOMAIN, TAG, `${BUNDLE + JSON.stringify(event)}`);
           if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
             const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
             if (hasCtrl) {
-              console.info('Line break');
+              hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');
             } else {
-              console.info('Submissions：' + this.text);
+              hilog.info(DOMAIN, TAG, BUNDLE + 'Submissions：' + this.text);
               this.content = this.text;
               this.text = '';
               event.stopPropagation();
@@ -283,7 +302,7 @@ struct TextAreaDemo {
           return false;
         })
         .onChange((value: string) => {
-          this.text = value
+          this.text = value;
         })
     }
   }

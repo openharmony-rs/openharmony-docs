@@ -74,7 +74,7 @@ For details, see the ECC section of [Asymmetric Key Generation and Conversion Sp
 
 1. Obtain the binary data of the ECC public key or private key and encapsulate the data into a **DataBlob** object.
 
-   Either the public key or private key can be passed in. As shown in the following example, the public key and private key are passed in separately.
+   You can pass either the public key or the private key. The following example passes both.
 
 2. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'ECC256'** to create an asymmetric key generator (**AsyKeyGenerator**) object for a 256-bit ECC key pair.
 
@@ -165,7 +165,7 @@ For details, see the SM2 section of [Asymmetric Key Generation and Conversion Sp
 
 1. Obtain the binary data of the SM2 public key or private key and encapsulate the data into a **DataBlob** object.
 
-   Either the public key or private key can be passed in. In the following example, the public key and private key are passed in separately.
+   You can pass either the public key or the private key. The following example passes both.
 
 2. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'SM2_256'** to create an asymmetric key generator (**AsyKeyGenerator**) object for a 256-bit SM2 key pair.
 

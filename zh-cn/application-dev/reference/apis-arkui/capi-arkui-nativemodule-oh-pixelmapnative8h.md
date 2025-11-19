@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct OH_PixelmapNative* OH_PixelmapNativeHandle
+```
+
 ## 概述
 
 定义OH_PixelmapNative对象指针类型。

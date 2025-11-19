@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API20开始支持音频低时延耳返。
+从API version 20开始，支持音频低时延耳返。
 
 AudioLoopback是音频返听器，可将音频以更低时延的方式实时传输到耳机中，让用户可以实时听到自己或者其他的相关声音。
 
@@ -248,7 +248,7 @@ async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
   }
 }
 
-// 设置音频返听的混响模式。
+// 设置音频返听的均衡器类型。
 async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
   if (audioLoopback !== undefined) {
     try {

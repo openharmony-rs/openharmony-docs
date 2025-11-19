@@ -7,6 +7,8 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+音视频的编解码能力以及文件格式封装和解封装能力的支持情况，在不同平台存在能力和规格的差异。开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)来获取实际的支持情况和规格情况。
+
 ## 媒体编解码
 
 ### 视频解码
@@ -49,7 +51,11 @@
 
 当前支持的解码能力：
 
-AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE、G711a<!--RP1--><!--RP1End-->。
+AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE<!--RP1--><!--RP1End-->。
+
+从API version 20开始支持：G711a。
+
+从API version 22开始支持：ALAC、AC3、WMA(V1、V2、PRO)、GSM、GSM_MS。
 
 具体开发指导请参考[音频解码](audio-decoding.md)。
 
@@ -58,7 +64,7 @@ AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE、G711a<!--R
 
 当前支持的编码能力：
 
-AAC、Flac、MP3、G711mu<!--RP3--><!--RP3End-->。
+<!--RP3-->AAC、Flac、MPEG(MP3)、G711mu<!--RP3End-->。
 
 具体开发指导请参考[音频编码](audio-encoding.md)。
 
@@ -71,21 +77,26 @@ AAC、Flac、MP3、G711mu<!--RP3--><!--RP3End-->。
 
 | 媒体格式  | 封装格式                      | 轨道格式                      |
 | -------- | :----------------------------| :----------------------------|
-| 音视频     | mp4                        |<!--RP4-->视频轨：AVC(H.264)、MPEG4<br>音频轨：AAC、MPEG(MP3)<br>字幕轨：WEBVTT<br>辅助轨：AUXL(AAC、MP3)<br>timed metadata轨<!--RP4End-->|
+| 音视频     | mp4                        |<!--RP4-->视频轨：AVC(H.264)、MPEG4<br>音频轨：AAC、MPEG(MP3)、ALAC<sup>22+</sup><br>字幕轨：WEBVTT<br>辅助轨：AUXL（如音频RAW信息、视频深度信息等。）<br>timed metadata轨：有时间属性的描述信息，如帧级的维测信息、传感器信息等。<!--RP4End-->|
 | 音视频     | fmp4                       |<!--RP5-->视频轨：AVC(H.264)<br>音频轨：AAC、MPEG(MP3)<!--RP5End-->|
-| 音视频     | mkv                        |<!--RP6-->视频轨：AVC(H.264)<br>音频轨：AAC、MPEG(MP3)、OPUS<!--RP6End-->|
+| 音视频     | mkv                        |<!--RP6-->视频轨：AVC(H.264)、MSVIDEO1<sup>22+</sup><br>音频轨：AAC、MPEG(MP3)、OPUS、ADPCM_YAMAHA<sup>22+</sup>、ADPCM_G722<sup>22+</sup>、ALAC<sup>22+</sup><!--RP6End-->|
 | 音视频     | mpeg-ts                    |<!--RP7-->视频轨：AVC(H.264)、MPEG2、MPEG4<br>音频轨：AAC、MPEG(MP3)<!--RP7End-->|
 | 音视频     | flv                        |<!--RP8-->视频轨：AVC(H.264)<br>音频轨：AAC<!--RP8End-->|
 | 音视频     | mpeg-ps                    |视频轨：AVC(H.264)、MPEG2<br>音频轨：MPEG(MP2、MP3)|
-| 音视频     | avi                        |视频轨：H.263、AVC(H.264)、MPEG2、MPEG4<br>音频轨：AAC、MPEG(MP2、MP3)、PCM|
-| 音频       | m4a                        |<!--RP9-->音频轨：AAC<!--RP9End-->|
+| 音视频     | avi                        |视频轨：H.263、AVC(H.264)、MPEG2、MPEG4、MJPEG<sup>22+</sup>、MSVIDEO1<sup>22+</sup><br>音频轨：AAC、MPEG(MP2、MP3)、PCM、GSM_MS<sup>22+</sup>、ADPCM_YAMAHA<sup>22+</sup>、ADPCM_G722<sup>22+</sup>|
+| 音视频     | 3gp<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
+| 音视频     | 3g2<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
+| 音视频     | m4v<sup>22+</sup>                        |<!--RP12-->视频轨：AVC(H.264)、MPEG4<!--RP12End--><br>音频轨：AAC、ALAC、AC3|
+| 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3<br>音频轨：WMAV1、WMAV2、WMAPRO|
+| 音频       | m4a                        |<!--RP9-->音频轨：AAC、ALAC<sup>22+</sup><!--RP9End-->|
 | 音频       | aac                        |音频轨：AAC|
 | 音频       | mp3                        |音频轨：MPEG(MP3)|
 | 音频       | ogg                        |音频轨：Vorbis|
 | 音频       | flac                       |音频轨：Flac|
-| 音频       | wav                        |音频轨：PCM、G711mu、G711a|
+| 音频       | wav                        |音频轨：PCM、G711mu、G711a、GSM_MS<sup>22+</sup>、ADPCM_YAMAHA<sup>22+</sup>、ADPCM_G722<sup>22+</sup>、ADPCM_G726<sup>22+</sup>|
 | 音频       | amr                        |音频轨：AMR(amrnb、amrwb)|
 | 音频       | ape                        |音频轨：APE|
+| 音频       | wma<sup>22+</sup>                        |音频轨：AC3、WMAV1、WMAV2、Vorbis、Flac、AMR(amrnb、amrwb)、AAC、MPEG(MP2、MP3)、GSM_MS、G711mu、G711a、PCM、ADPCM_G722、ADPCM_G726、ADPCM_IMA_WAV、ADPCM_MS、ADPCM_YAMAHA|
 | 外挂字幕   | srt                        |字幕轨：SRT|
 | 外挂字幕   | webvtt                     |字幕轨：WEBVTT|
 
@@ -124,7 +135,7 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 >
 > 用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API20开始增加支持uint8_t*。
 
-配置选项key值说明：  
+配置选项key值说明：
 
 mp4封装格式：
    |                key                 |         描述         |   aac  |   mp3  |  H.264  |  H.265  |  jpg   |  png   |  bmp   |

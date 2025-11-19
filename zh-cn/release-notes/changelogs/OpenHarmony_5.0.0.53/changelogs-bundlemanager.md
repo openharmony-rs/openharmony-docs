@@ -40,7 +40,7 @@ API 11
 
 **变更的接口/组件**
 
-[module.json5](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/quick-start/module-configuration-file.md#skills%E6%A0%87%E7%AD%BE)中maxFileSupported标签。
+[module.json5](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/quick-start/module-configuration-file.md#skills%E6%A0%87%E7%AD%BE)中maxFileSupported标签。
 
 **适配指导**
 

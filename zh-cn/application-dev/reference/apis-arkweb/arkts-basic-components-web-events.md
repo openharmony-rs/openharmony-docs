@@ -18,7 +18,7 @@
 
 onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
-网页触发alert()告警弹窗时触发回调。
+网页触发alert()告警弹窗时触发回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -177,7 +177,7 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
-网页调用confirm()告警时触发此回调。
+网页调用confirm()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -266,7 +266,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
-网页调用prompt()告警时触发此回调。
+网页调用prompt()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3000,7 +3000,7 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onFirstMeaningfulPaint((details) => {
-            console.log("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
+            console.info("onFirstMeaningfulPaint: [navigationStartTime]= " + details.navigationStartTime +
               ", [firstMeaningfulPaintTime]=" + details.firstMeaningfulPaintTime);
           })
       }
@@ -4032,7 +4032,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
           // 遍历attributes
           let attributeKeys = Object.keys(attributes)
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
           }
 
           if (attributes) {
@@ -4517,11 +4517,11 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
               }
             })
             .onNativeEmbedObjectParamChange((event) => {
-              console.log("embed id: " + event.embedId);
+              console.info("embed id: " + event.embedId);
               let paramItems = event.paramItems;
               if (paramItems) {
                 for (let i = 0; i < paramItems.length; ++i) {
-                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                  console.info("param info: " + JSON.stringify(paramItems[i]));
                 }
               }
             })
@@ -4787,9 +4787,9 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
             detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
           })
           .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
-            console.log(`Found blank screen on ${event.url}.`);
-            console.log(`The blank screen reason is ${event.blankScreenReason}.`);
-            console.log(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
           })
       }
     }

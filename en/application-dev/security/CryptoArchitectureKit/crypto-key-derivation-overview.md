@@ -15,7 +15,7 @@ Password-Based Key Derivation Function (PBKDF) is a key derivation function with
 
 PBKDF2 applies a PRF, such as an [HMAC](crypto-compute-hmac.md), to an input password together with a salt value, and repeats the process multiple times to generate a derived key.
 
-When creating a **KDF** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the KDF algorithm and HMAC algorithm with a vertical bar (|) in between.
+Key derivation can be performed using a string parameter, which is composed of the KDF and HMAC algorithm separated by a vertical bar (|). The string parameter is used to specify the algorithm specifications when the KDF generator is created.
 | KDF Algorithm| HMAC Algorithm| String Parameter| API Version| 
 | -------- | -------- | -------- | -------- |
 | PBKDF2 | SHA1 | PBKDF2\|SHA1 | 11+ | 
@@ -27,7 +27,9 @@ When creating a **KDF** instance, you need to specify the algorithm specificatio
 
 ## HKDF
 
-HMAC-based Extract-and-Expand Key Derivation Function (HKDF) is a simple KDF based on an [HMAC](crypto-compute-hmac.md). It is used to expand limited input key material into a cryptographically strong secret key.
+The HMAC-based Extract-and-Expand Key Derivation Function (HKDF) is a simple key derivation algorithm based on the [HMAC](crypto-compute-hmac.md).
+
+This algorithm extracts keys from the input key material and salt value, and expands keys based on the input key material and extension information. It is used to expand limited input key material into a cryptographically strong secret key.
 
 The HKDF has three modes:
 

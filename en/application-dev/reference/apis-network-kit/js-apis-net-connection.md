@@ -187,6 +187,10 @@ setAppHttpProxy(httpProxy: HttpProxy): void
 
 Sets the application-level HTTP proxy configuration.
 
+> **NOTE**
+>
+> If you want to use the proxy information configured by this API, set **usingProxy** in [HttpRequestOptions](js-apis-http.md#httprequestoptions) to **true** to enable proxy forwarding. This API is used only for configuring proxy rules. It does not verify the validity of the proxy service.
+
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Parameters**
@@ -209,6 +213,7 @@ For details about the error codes, see [Network Connection Management Error Code
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { http } from '@kit.NetworkKit';
 
 let exclusionStr = "192.168,baidu.com";
 let exclusionArray = exclusionStr.split(',');
@@ -217,6 +222,22 @@ connection.setAppHttpProxy({
   port: 8080,
   exclusionList: exclusionArray
 } as connection.HttpProxy);
+let httpRequest = http.createHttp();
+let options: http.HttpRequestOptions = {
+  usingProxy: true, // This field specifies whether to use the network proxy. It is supported since API version 10.
+};
+// Initiate an HTTP request.
+httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+  if (!err) {
+   console.info(`Result: ${data.result}`);
+   console.info(`code: ${data.responseCode}`);
+   console.info(`type: ${JSON.stringify(data.resultType)}`);
+   console.info(`header: ${JSON.stringify(data.header)}`);
+   console.info(`cookies: ${data.cookies}`); // Cookies are supported since API version 8.
+  } else {
+   console.error(`error: ${JSON.stringify(err)}`);
+  }
+});
 ```
 
 ## connection.getDefaultHttpProxy<sup>10+</sup>

@@ -80,7 +80,7 @@ Obtains the flash mode in use.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [FlashMode](arkts-apis-camera-e.md#flashmode)    | Flash mode obtained. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [FlashMode](arkts-apis-camera-e.md#flashmode)    | Flash mode obtained. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
 
 **Error codes**
 

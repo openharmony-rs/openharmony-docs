@@ -315,7 +315,7 @@ struct Index {
 
   private CreateTransferSubWindow(){
     let context = AppStorage.get<common.UIAbilityContext>("currentContext");
-    console.log('LOCAL-TEST try to CreateTransferSubWindow');
+    console.info('LOCAL-TEST try to CreateTransferSubWindow');
     let windowConfig:window.Configuration = {
       name : "systemTypeWindow",
       windowType : window.WindowType.TYPE_FLOAT,
@@ -329,17 +329,17 @@ struct Index {
       await subWin.moveWindowTo(100,100);
       await subWin.resize(200,200);
     }).catch((err:Error)=>{
-      console.log('LOCAL-TEST createSubWindow err:' + JSON.stringify(err));
+      console.error('LOCAL-TEST createSubWindow err:' + JSON.stringify(err));
     })
   }
   private ShowSUBWindow(){
     if(!this.subWindow_){
-      console.log('LOCAL-TEST this.subWindow_is null');
+      console.info('LOCAL-TEST this.subWindow_is null');
       return ;
     }
     let animationConfig = new AnimationConfig();
     let systemTypeWindow = window.findWindow("systemTypeWindow");
-    console.log("LOCAL-TEST try to ShowWindowWithCustomAnimation");
+    console.info("LOCAL-TEST try to ShowWindowWithCustomAnimation");
     animationConfig.ShowWindowWithCustomAnimation(systemTypeWindow, (context:window.TransitionContext) => {
       console.info('LOCAL-TEST start show window animation');
       let toWindow = context.toWindow;
@@ -372,12 +372,12 @@ struct Index {
 
   private HideSUBWindow(){
     if(!this.subWindow_){
-      console.log('LOCAL-TEST this.subWindow_is null');
+      console.info('LOCAL-TEST this.subWindow_is null');
       return ;
     }
     let animationConfig = new AnimationConfig();
     let systemTypeWindow = window.findWindow("systemTypeWindow");
-    console.log("LOCAL-TEST try to HideWindowWithCustomAnimation");
+    console.info("LOCAL-TEST try to HideWindowWithCustomAnimation");
     animationConfig.HideWindowWithCustomAnimation(systemTypeWindow, (context:window.TransitionContext) => {
       console.info('LOCAL-TEST start hide window animation');
       let toWindow = context.toWindow;

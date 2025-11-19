@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_RunBuffer
+```
+
 ## 概述
 
 结构体用于描述一块内存，描述文字和位置信息。

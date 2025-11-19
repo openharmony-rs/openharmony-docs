@@ -229,6 +229,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 | height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为正整数。 |
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。        |
+| supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
 
 ## Position<sup>20+</sup>
 
@@ -837,7 +838,7 @@ display.off('foldStatusChange', callback);
 
 ## display.on('brightnessInfoChange')<sup>22+</sup>
 
-on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
@@ -865,9 +866,7 @@ on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallb
 **示例：**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
@@ -879,7 +878,7 @@ try {
 
 ## display.off('brightnessInfoChange')<sup>22+</sup>
 
-off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 关闭所有屏幕亮度信息状态变化的监听。
 
@@ -907,9 +906,7 @@ off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscal
 **示例：**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
@@ -1238,6 +1235,7 @@ class VirtualScreenConfig {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let config : VirtualScreenConfig = {
@@ -1245,7 +1243,8 @@ let config : VirtualScreenConfig = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {

@@ -14,7 +14,13 @@
 
 在开发过程中，我们经常会需要设置多个组件的同一种属性，比如Text组件的内容、组件的宽度、高度等样式信息等。将这些属性保存在一个数组中，配合ForEach进行使用是一种简单且方便的方法。
 
-```typescript
+<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Entry
 @Component
 struct Index {
@@ -24,17 +30,17 @@ struct Index {
   @State gender: string[] = [];
 
   aboutToAppear() {
-    this.items.push("Head");
-    this.items.push("List");
+    this.items.push('Head');
+    this.items.push('List');
     for (let i = 0; i < 20; i++) {
-      this.ids.push("id: " + Math.floor(Math.random() * 1000));
+      this.ids.push('id: ' + Math.floor(Math.random() * 1000));
       this.age.push(Math.floor(Math.random() * 100 % 40));
-      this.gender.push(Math.floor(Math.random() * 100) % 2 == 0 ? "Male" : "Female");
+      this.gender.push(Math.floor(Math.random() * 100) % 2 == 0 ? 'Male' : 'Female');
     }
   }
 
-  isRenderText(index: number) : number {
-    console.info(`index ${index} is rendered`);
+  isRenderText(index: number): number {
+    hilog.info(DOMAIN_NUMBER, TAG, `index ${index} is rendered`);
     return 1;
   }
 
@@ -42,10 +48,10 @@ struct Index {
     Row() {
       Column() {
         ForEach(this.items, (item: string) => {
-          if (item == "Head") {
-            Text("Personal Info")
+          if (item == 'Head') {
+            Text('Personal Info')
               .fontSize(40)
-          } else if (item == "List") {
+          } else if (item == 'List') {
             List() {
               ForEach(this.ids, (id: string, index) => {
                 ListItem() {
@@ -56,23 +62,23 @@ struct Index {
                         left: 30,
                         right: 5
                       })
-                    Text("age: " + this.age[index as number])
+                    Text('age: ' + this.age[index as number])
                       .fontSize(20)
                       .margin({
                         left: 5,
                         right: 5
                       })
-                      .position({x: 100})
+                      .position({ x: 100 })
                       .opacity(this.isRenderText(index))
                       .onClick(() => {
                         this.age[index]++;
                       })
-                    Text("gender: " + this.gender[index as number])
+                    Text('gender: ' + this.gender[index as number])
                       .margin({
                         left: 5,
                         right: 5
                       })
-                      .position({x: 180})
+                      .position({ x: 180 })
                       .fontSize(20)
                   }
                 }
@@ -90,6 +96,7 @@ struct Index {
 }
 ```
 
+
 上述代码运行效果如下。
 
 ![properly-use-state-management-to-develope-1](figures/properly-use-state-management-to-develope-1.gif)
@@ -102,68 +109,79 @@ struct Index {
 
 为了减少由简单的属性相关的数组引起的“冗余刷新”，需要将属性数组转变为对象数组，配合自定义组件，实现精准控制更新范围。下面为修改后的代码。
 
-```typescript
+<!-- @[Information_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class InfoList extends Array<Info> {
 };
+
 @Observed
 class Info {
-  ids: number;
-  age: number;
-  gender: string;
+  public ids: number;
+  public age: number;
+  public gender: string;
 
   constructor() {
     this.ids = Math.floor(Math.random() * 1000);
     this.age = Math.floor(Math.random() * 100 % 40);
-    this.gender = Math.floor(Math.random() * 100) % 2 == 0 ? "Male" : "Female";
+    this.gender = Math.floor(Math.random() * 100) % 2 == 0 ? 'Male' : 'Female';
   }
 }
+
 @Component
 struct Information {
   @ObjectLink info: Info;
   @State index: number = 0;
-  isRenderText(index: number) : number {
-    console.info(`index ${index} is rendered`);
+
+  isRenderText(index: number): number {
+    hilog.info(DOMAIN_NUMBER, TAG, `index ${index} is rendered`);
     return 1;
   }
 
   build() {
     Row() {
-      Text("id: " + this.info.ids)
+      Text('id: ' + this.info.ids)
         .fontSize(20)
         .margin({
           left: 30,
           right: 5
         })
-      Text("age: " + this.info.age)
+      Text('age: ' + this.info.age)
         .fontSize(20)
         .margin({
           left: 5,
           right: 5
         })
-        .position({x: 100})
+        .position({ x: 100 })
         .opacity(this.isRenderText(this.index))
         .onClick(() => {
           this.info.age++;
         })
-      Text("gender: " + this.info.gender)
+      Text('gender: ' + this.info.gender)
         .margin({
           left: 5,
           right: 5
         })
-        .position({x: 180})
+        .position({ x: 180 })
         .fontSize(20)
     }
   }
 }
+
 @Entry
 @Component
 struct Page {
   @State infoList: InfoList = new InfoList();
   @State items: string[] = [];
+
   aboutToAppear() {
-    this.items.push("Head");
-    this.items.push("List");
+    this.items.push('Head');
+    this.items.push('List');
     for (let i = 0; i < 20; i++) {
       this.infoList.push(new Info());
     }
@@ -173,10 +191,10 @@ struct Page {
     Row() {
       Column() {
         ForEach(this.items, (item: string) => {
-          if (item == "Head") {
-            Text("Personal Info")
+          if (item == 'Head') {
+            Text('Personal Info')
               .fontSize(40)
-          } else if (item == "List") {
+          } else if (item == 'List') {
             List() {
               ForEach(this.infoList, (info: Info, index) => {
                 ListItem() {
@@ -199,6 +217,8 @@ struct Page {
 }
 ```
 
+
+
 上述代码的运行效果如下。
 
 ![properly-use-state-management-to-develope-2](figures/properly-use-state-management-to-develope-2.gif)
@@ -213,32 +233,41 @@ struct Page {
 
 在开发过程中，我们有时会定义一个大的对象，其中包含了很多样式相关的属性，并且在父子组件间传递这个对象，将其中的属性绑定在组件上。
 
-```typescript
+<!-- @[StateArrayBig_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class UiStyle {
-  translateX: number = 0;
-  translateY: number = 0;
-  scaleX: number = 0.3;
-  scaleY: number = 0.3;
-  width: number = 336;
-  height: number = 178;
-  posX: number = 10;
-  posY: number = 50;
-  alpha: number = 0.5;
-  borderRadius: number = 24;
-  imageWidth: number = 78;
-  imageHeight: number = 78;
-  translateImageX: number = 0;
-  translateImageY: number = 0;
-  fontSize: number = 20;
+  public translateX: number = 0;
+  public translateY: number = 0;
+  public scaleX: number = 0.3;
+  public scaleY: number = 0.3;
+  public width: number = 336;
+  public height: number = 178;
+  public posX: number = 10;
+  public posY: number = 50;
+  public alpha: number = 0.5;
+  public borderRadius: number = 24;
+  public imageWidth: number = 78;
+  public imageHeight: number = 78;
+  public translateImageX: number = 0;
+  public translateImageY: number = 0;
+  public fontSize: number = 20;
 }
+
 @Component
 struct SpecialImage {
   @ObjectLink uiStyle: UiStyle;
-  private isRenderSpecialImage() : number { // 显示组件是否渲染的函数
-    console.info("SpecialImage is rendered");
+  private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
+    hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
     return 1;
   }
+
   build() {
     Image($r('app.media.icon')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
       .width(this.uiStyle.imageWidth)
@@ -251,24 +280,29 @@ struct SpecialImage {
       .opacity(this.isRenderSpecialImage()) // 如果Image重新渲染，该函数将被调用
   }
 }
+
 @Component
 struct PageChild {
-  @ObjectLink uiStyle: UiStyle
+  @ObjectLink uiStyle: UiStyle;
+
   // 下面的函数用于显示组件是否被渲染
-  private isRenderColumn() : number {
-    console.info("Column is rendered");
+  private isRenderColumn(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Column is rendered');
     return 1;
   }
-  private isRenderStack() : number {
-    console.info("Stack is rendered");
+
+  private isRenderStack(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Stack is rendered');
     return 1;
   }
-  private isRenderImage() : number {
-    console.info("Image is rendered");
+
+  private isRenderImage(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Image is rendered');
     return 1;
   }
-  private isRenderText() : number {
-    console.info("Text is rendered");
+
+  private isRenderText(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Text is rendered');
     return 1;
   }
 
@@ -291,9 +325,10 @@ struct PageChild {
         }
         .width('100%')
         .position({ y: -80 })
+
         Stack() {
-          Text("Hello World")
-            .fontColor("#182431")
+          Text('Hello World')
+            .fontColor('#182431')
             .fontWeight(FontWeight.Medium)
             .fontSize(this.uiStyle.fontSize)
             .opacity(this.isRenderText())
@@ -310,29 +345,30 @@ struct PageChild {
       .margin({ top: 50 })
       .borderRadius(this.uiStyle.borderRadius)
       .opacity(this.isRenderStack())
-      .backgroundColor("#FFFFFF")
+      .backgroundColor('#FFFFFF')
       .width(this.uiStyle.width)
       .height(this.uiStyle.height)
       .translate({
         x: this.uiStyle.translateX,
         y: this.uiStyle.translateY
       })
+
       Column() {
-        Button("Move")
+        Button('Move')
           .width(312)
           .fontSize(20)
-          .backgroundColor("#FF007DFF")
+          .backgroundColor('#FF007DFF')
           .margin({ bottom: 10 })
           .onClick(() => {
             this.getUIContext().animateTo({
               duration: 500
-            },() => {
+            }, () => {
               this.uiStyle.translateY = (this.uiStyle.translateY + 180) % 250;
-            })
+            });
           })
-        Button("Scale")
+        Button('Scale')
           .borderRadius(20)
-          .backgroundColor("#FF007DFF")
+          .backgroundColor('#FF007DFF')
           .fontSize(20)
           .width(312)
           .onClick(() => {
@@ -340,7 +376,7 @@ struct PageChild {
           })
       }
       .position({
-        y:666
+        y: 666
       })
       .height('100%')
       .width('100%')
@@ -352,20 +388,24 @@ struct PageChild {
 
   }
 }
+
 @Entry
 @Component
 struct Page {
   @State uiStyle: UiStyle = new UiStyle();
+
   build() {
     Stack() {
       PageChild({
         uiStyle: this.uiStyle
       })
     }
-    .backgroundColor("#F1F3F5")
+    .backgroundColor('#F1F3F5')
   }
 }
 ```
+
+
 
 上述代码的运行效果如下。
 
@@ -381,71 +421,89 @@ struct Page {
 
 这个机制会导致在使用一个复杂大对象与多个组件关联时，刷新性能的下降。对此，推荐将一个复杂大对象拆分成多个小对象的集合，在保留原有代码结构的基础上，减少“冗余刷新”，实现精准控制组件的更新范围。
 
-```typescript
+<!-- @[StateArrayPrecise_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayPrecise.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class NeedRenderImage { // 在同一组件中使用的属性可以划分为相同的类
   public translateImageX: number = 0;
   public translateImageY: number = 0;
-  public imageWidth:number = 78;
-  public imageHeight:number = 78;
+  public imageWidth: number = 78;
+  public imageHeight: number = 78;
 }
+
 @Observed
 class NeedRenderScale { // 在一起使用的属性可以划分为相同的类
   public scaleX: number = 0.3;
   public scaleY: number = 0.3;
 }
+
 @Observed
 class NeedRenderAlpha { // 在不同地方使用的属性可以划分为相同的类
   public alpha: number = 0.5;
 }
+
 @Observed
 class NeedRenderSize { // 在一起使用的属性可以划分为相同的类
   public width: number = 336;
   public height: number = 178;
 }
+
 @Observed
 class NeedRenderPos { // 在一起使用的属性可以划分为相同的类
   public posX: number = 10;
   public posY: number = 50;
 }
+
 @Observed
 class NeedRenderBorderRadius { // 在不同地方使用的属性可以划分为相同的类
   public borderRadius: number = 24;
 }
+
 @Observed
 class NeedRenderFontSize { // 在不同地方使用的属性可以划分为相同的类
   public fontSize: number = 20;
 }
+
 @Observed
 class NeedRenderTranslate { // 在一起使用的属性可以划分为相同的类
   public translateX: number = 0;
   public translateY: number = 0;
 }
+
 @Observed
 class UiStyle {
   // 使用NeedRenderxxx类
-  needRenderTranslate: NeedRenderTranslate = new NeedRenderTranslate();
-  needRenderFontSize: NeedRenderFontSize = new NeedRenderFontSize();
-  needRenderBorderRadius: NeedRenderBorderRadius = new NeedRenderBorderRadius();
-  needRenderPos: NeedRenderPos = new NeedRenderPos();
-  needRenderSize: NeedRenderSize = new NeedRenderSize();
-  needRenderAlpha: NeedRenderAlpha = new NeedRenderAlpha();
-  needRenderScale: NeedRenderScale = new NeedRenderScale();
-  needRenderImage: NeedRenderImage = new NeedRenderImage();
+  public needRenderTranslate: NeedRenderTranslate = new NeedRenderTranslate();
+  public needRenderFontSize: NeedRenderFontSize = new NeedRenderFontSize();
+  public needRenderBorderRadius: NeedRenderBorderRadius = new NeedRenderBorderRadius();
+  public needRenderPos: NeedRenderPos = new NeedRenderPos();
+  public needRenderSize: NeedRenderSize = new NeedRenderSize();
+  public needRenderAlpha: NeedRenderAlpha = new NeedRenderAlpha();
+  public needRenderScale: NeedRenderScale = new NeedRenderScale();
+  public needRenderImage: NeedRenderImage = new NeedRenderImage();
 }
+
 @Component
 struct SpecialImage {
-  @ObjectLink uiStyle : UiStyle;
-  @ObjectLink needRenderImage: NeedRenderImage // 从其父组件接收新类
-  private isRenderSpecialImage() : number { // 显示组件是否渲染的函数
-    console.info("SpecialImage is rendered");
+  @ObjectLink uiStyle: UiStyle;
+  @ObjectLink needRenderImage: NeedRenderImage; // 从其父组件接收新类
+
+  private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
+    hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
     return 1;
   }
+
   build() {
-    Image($r('app.media.background')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    Image($r('app.media.icon')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
       .width(this.needRenderImage.imageWidth) // 使用this.needRenderImage.xxx
       .height(this.needRenderImage.imageHeight)
-      .margin({top:20})
+      .margin({ top: 20 })
       .translate({
         x: this.needRenderImage.translateImageX,
         y: this.needRenderImage.translateImageY
@@ -453,6 +511,7 @@ struct SpecialImage {
       .opacity(this.isRenderSpecialImage()) // 如果Image重新渲染，该函数将被调用
   }
 }
+
 @Component
 struct PageChild {
   @ObjectLink uiStyle: UiStyle;
@@ -463,21 +522,25 @@ struct PageChild {
   @ObjectLink needRenderSize: NeedRenderSize;
   @ObjectLink needRenderAlpha: NeedRenderAlpha;
   @ObjectLink needRenderScale: NeedRenderScale;
+
   // 下面的函数用于显示组件是否被渲染
-  private isRenderColumn() : number {
-    console.info("Column is rendered");
+  private isRenderColumn(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Column is rendered');
     return 1;
   }
-  private isRenderStack() : number {
-    console.info("Stack is rendered");
+
+  private isRenderStack(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Stack is rendered');
     return 1;
   }
-  private isRenderImage() : number {
-    console.info("Image is rendered");
+
+  private isRenderImage(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Image is rendered');
     return 1;
   }
-  private isRenderText() : number {
-    console.info("Text is rendered");
+
+  private isRenderText(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Text is rendered');
     return 1;
   }
 
@@ -489,7 +552,7 @@ struct PageChild {
       })
       Stack() {
         Column() {
-          Image($r('app.media.background')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          Image($r('app.media.icon')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
             .opacity(this.needRenderAlpha.alpha)
             .scale({
               x: this.needRenderScale.scaleX, // 使用this.needRenderXxx.xxx
@@ -503,8 +566,8 @@ struct PageChild {
         .position({ y: -80 })
 
         Stack() {
-          Text("Hello World")
-            .fontColor("#182431")
+          Text('Hello World')
+            .fontColor('#182431')
             .fontWeight(FontWeight.Medium)
             .fontSize(this.needRenderFontSize.fontSize)
             .opacity(this.isRenderText())
@@ -521,7 +584,7 @@ struct PageChild {
       .margin({ top: 50 })
       .borderRadius(this.needRenderBorderRadius.borderRadius)
       .opacity(this.isRenderStack())
-      .backgroundColor("#FFFFFF")
+      .backgroundColor('#FFFFFF')
       .width(this.needRenderSize.width)
       .height(this.needRenderSize.height)
       .translate({
@@ -530,30 +593,30 @@ struct PageChild {
       })
 
       Column() {
-        Button("Move")
+        Button('Move')
           .width(312)
           .fontSize(20)
-          .backgroundColor("#FF007DFF")
+          .backgroundColor('#FF007DFF')
           .margin({ bottom: 10 })
           .onClick(() => {
             this.getUIContext().animateTo({
               duration: 500
             }, () => {
               this.needRenderTranslate.translateY = (this.needRenderTranslate.translateY + 180) % 250;
-            })
+            });
           })
-        Button("Scale")
+        Button('Scale')
           .borderRadius(20)
-          .backgroundColor("#FF007DFF")
+          .backgroundColor('#FF007DFF')
           .fontSize(20)
           .width(312)
           .margin({ bottom: 10 })
           .onClick(() => {
             this.needRenderScale.scaleX = (this.needRenderScale.scaleX + 0.6) % 0.8;
           })
-        Button("Change Image")
+        Button('Change Image')
           .borderRadius(20)
-          .backgroundColor("#FF007DFF")
+          .backgroundColor('#FF007DFF')
           .fontSize(20)
           .width(312)
           .onClick(() => { // 在父组件中，仍使用 this.uiStyle.endRenderXxx.xxx 更改属性
@@ -572,10 +635,12 @@ struct PageChild {
     .height('100%')
   }
 }
+
 @Entry
 @Component
 struct Page {
   @State uiStyle: UiStyle = new UiStyle();
+
   build() {
     Stack() {
       PageChild({
@@ -589,10 +654,12 @@ struct Page {
         needRenderScale: this.uiStyle.needRenderScale
       })
     }
-    .backgroundColor("#F1F3F5")
+    .backgroundColor('#F1F3F5')
   }
 }
 ```
+
+
 
 上述代码的运行效果如下。![properly-use-state-management-to-develope-4](figures/properly-use-state-management-to-develope-4.gif)
 
@@ -610,34 +677,42 @@ struct Page {
 
 使用[@Track](./arkts-track.md)装饰器则无需做属性拆分，也能达到同样控制组件更新范围的作用。
 
-```ts
+<!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class UiStyle {
-  @Track translateX: number = 0;
-  @Track translateY: number = 0;
-  @Track scaleX: number = 0.3;
-  @Track scaleY: number = 0.3;
-  @Track width: number = 336;
-  @Track height: number = 178;
-  @Track posX: number = 10;
-  @Track posY: number = 50;
-  @Track alpha: number = 0.5;
-  @Track borderRadius: number = 24;
-  @Track imageWidth: number = 78;
-  @Track imageHeight: number = 78;
-  @Track translateImageX: number = 0;
-  @Track translateImageY: number = 0;
-  @Track fontSize: number = 20;
+  @Track public translateX: number = 0;
+  @Track public translateY: number = 0;
+  @Track public scaleX: number = 0.3;
+  @Track public scaleY: number = 0.3;
+  @Track public width: number = 336;
+  @Track public height: number = 178;
+  @Track public posX: number = 10;
+  @Track public posY: number = 50;
+  @Track public alpha: number = 0.5;
+  @Track public borderRadius: number = 24;
+  @Track public imageWidth: number = 78;
+  @Track public imageHeight: number = 78;
+  @Track public translateImageX: number = 0;
+  @Track public translateImageY: number = 0;
+  @Track public fontSize: number = 20;
 }
+
 @Component
 struct SpecialImage {
   @ObjectLink uiStyle: UiStyle;
-  private isRenderSpecialImage() : number { // 显示组件是否渲染的函数
-    console.info("SpecialImage is rendered");
+  private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
+    hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
     return 1;
   }
+
   build() {
-    Image($r('app.media.foreground')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    Image($r('app.media.icon')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
       .width(this.uiStyle.imageWidth)
       .height(this.uiStyle.imageHeight)
       .margin({ top: 20 })
@@ -648,24 +723,29 @@ struct SpecialImage {
       .opacity(this.isRenderSpecialImage()) // 如果Image重新渲染，该函数将被调用
   }
 }
+
 @Component
 struct PageChild {
-  @ObjectLink uiStyle: UiStyle
+  @ObjectLink uiStyle: UiStyle;
+
   // 下面的函数用于显示组件是否被渲染
-  private isRenderColumn() : number {
-    console.info("Column is rendered");
+  private isRenderColumn(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Column is rendered');
     return 1;
   }
-  private isRenderStack() : number {
-    console.info("Stack is rendered");
+
+  private isRenderStack(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Stack is rendered');
     return 1;
   }
-  private isRenderImage() : number {
-    console.info("Image is rendered");
+
+  private isRenderImage(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Image is rendered');
     return 1;
   }
-  private isRenderText() : number {
-    console.info("Text is rendered");
+
+  private isRenderText(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Text is rendered');
     return 1;
   }
 
@@ -676,7 +756,7 @@ struct PageChild {
       })
       Stack() {
         Column() {
-          Image($r('app.media.foreground')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          Image($r('app.media.icon')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
             .opacity(this.uiStyle.alpha)
             .scale({
               x: this.uiStyle.scaleX,
@@ -688,9 +768,10 @@ struct PageChild {
         }
         .width('100%')
         .position({ y: -80 })
+
         Stack() {
-          Text("Hello World")
-            .fontColor("#182431")
+          Text('Hello World')
+            .fontColor('#182431')
             .fontWeight(FontWeight.Medium)
             .fontSize(this.uiStyle.fontSize)
             .opacity(this.isRenderText())
@@ -707,29 +788,30 @@ struct PageChild {
       .margin({ top: 50 })
       .borderRadius(this.uiStyle.borderRadius)
       .opacity(this.isRenderStack())
-      .backgroundColor("#FFFFFF")
+      .backgroundColor('#FFFFFF')
       .width(this.uiStyle.width)
       .height(this.uiStyle.height)
       .translate({
         x: this.uiStyle.translateX,
         y: this.uiStyle.translateY
       })
+
       Column() {
-        Button("Move")
+        Button('Move')
           .width(312)
           .fontSize(20)
-          .backgroundColor("#FF007DFF")
+          .backgroundColor('#FF007DFF')
           .margin({ bottom: 10 })
           .onClick(() => {
             this.getUIContext().animateTo({
               duration: 500
-            },() => {
+            }, () => {
               this.uiStyle.translateY = (this.uiStyle.translateY + 180) % 250;
-            })
+            });
           })
-        Button("Scale")
+        Button('Scale')
           .borderRadius(20)
-          .backgroundColor("#FF007DFF")
+          .backgroundColor('#FF007DFF')
           .fontSize(20)
           .width(312)
           .onClick(() => {
@@ -737,7 +819,7 @@ struct PageChild {
           })
       }
       .position({
-        y:666
+        y: 666
       })
       .height('100%')
       .width('100%')
@@ -749,17 +831,19 @@ struct PageChild {
 
   }
 }
+
 @Entry
 @Component
 struct Page {
   @State uiStyle: UiStyle = new UiStyle();
+
   build() {
     Stack() {
       PageChild({
         uiStyle: this.uiStyle
       })
     }
-    .backgroundColor("#F1F3F5")
+    .backgroundColor('#F1F3F5')
   }
 }
 ```
@@ -770,32 +854,43 @@ struct Page {
 
 在开发过程中，会有“重置数据”的场景，将一个新创建的对象赋值给原有的状态变量，实现数据的刷新。如果不注意新创建对象的类型，可能会出现UI不刷新的现象。
 
-```typescript
+<!-- @[StateArrayObserve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class Child {
-  count: number;
+  public count: number;
   constructor(count: number) {
-    this.count = count
+    this.count = count;
   }
 }
+
 @Observed
 class ChildList extends Array<Child> {
-};
+}
+
 @Observed
 class Ancestor {
-  childList: ChildList;
+  public childList: ChildList;
+
   constructor(childList: ChildList) {
     this.childList = childList;
   }
+
   public loadData() {
     let tempList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
     this.childList = tempList;
   }
 
   public clearData() {
-    this.childList = []
+    this.childList = [];
   }
 }
+
 @Component
 struct CompChild {
   @Link childList: ChildList;
@@ -803,49 +898,50 @@ struct CompChild {
 
   build() {
     Row() {
-      Text(this.child.count+'')
+      Text(this.child.count + '')
         .height(70)
         .fontSize(20)
         .borderRadius({
           topLeft: 6,
           topRight: 6
         })
-        .margin({left: 50})
+        .margin({ left: 50 })
       Button('X')
         .backgroundColor(Color.Red)
-        .onClick(()=>{
+        .onClick(() => {
           let index = this.childList.findIndex((item) => {
-            return item.count === this.child.count
-          })
+            return item.count === this.child.count;
+          });
           if (index !== -1) {
             this.childList.splice(index, 1);
           }
         })
         .margin({
           left: 200,
-          right:30
+          right: 30
         })
     }
     .margin({
-      top:15,
+      top: 15,
       left: 15,
-      right:10,
-      bottom:15
+      right: 10,
+      bottom: 15
     })
     .borderRadius(6)
     .backgroundColor(Color.Grey)
   }
 }
+
 @Component
 struct CompList {
-  @ObjectLink@Watch('changeChildList') childList: ChildList;
+  @ObjectLink @Watch('changeChildList') childList: ChildList;
 
   changeChildList() {
-    console.info('CompList ChildList change');
+    hilog.info(DOMAIN_NUMBER, TAG, 'CompList ChildList change');
   }
 
-  isRenderCompChild(index: number) : number {
-    console.info("Comp Child is render" + index);
+  isRenderCompChild(index: number): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Comp Child is render' + index);
     return 1;
   }
 
@@ -867,6 +963,7 @@ struct CompList {
     }
   }
 }
+
 @Component
 struct CompAncestor {
   @ObjectLink ancestor: Ancestor;
@@ -875,34 +972,37 @@ struct CompAncestor {
     Column() {
       CompList({ childList: this.ancestor.childList })
       Row() {
-        Button("Clear")
+        Button('Clear')
           .onClick(() => {
-            this.ancestor.clearData()
+            this.ancestor.clearData();
           })
           .width(100)
-          .margin({right: 50})
-        Button("Recover")
+          .margin({ right: 50 })
+        Button('Recover')
           .onClick(() => {
-            this.ancestor.loadData()
+            this.ancestor.loadData();
           })
           .width(100)
       }
     }
   }
 }
+
 @Entry
 @Component
 struct Page {
-  @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4),new Child(5)];
-  @State ancestor: Ancestor = new Ancestor(this.childList)
+  @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
+  @State ancestor: Ancestor = new Ancestor(this.childList);
 
   build() {
     Column() {
-      CompAncestor({ ancestor: this.ancestor})
+      CompAncestor({ ancestor: this.ancestor })
     }
   }
 }
 ```
+
+
 
 上述代码运行效果如下。
 
@@ -912,55 +1012,73 @@ struct Page {
 
 代码中对数据源childList重新赋值时，是通过Ancestor对象的方法loadData。
 
-```typescript
-  public loadData() {
-    let tempList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
-    this.childList = tempList;
-  }
+<!-- @[StateArrayLoadDate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLoadDate.ets) -->
+
+``` TypeScript
+public loadData() {
+  let tempList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
+  this.childList = tempList;
+}
 ```
+
 
 在loadData方法中，创建了一个临时的Child类型的数组tempList，并且将Ancestor对象的成员变量的childList指向了tempList。但是这里创建的Child[]类型的数组tempList其实并没有能被观测的能力（也就说它的变化无法主动触发UI刷新）。当它被赋值给childList之后，触发了ForEach的刷新，使得界面完成了重建，但是再次点击删除时，由于此时的childList已经指向了新的tempList代表的数组，并且这个数组并没有被观测的能力，是个静态的量，所以它的更改不会被观测到，也就不会引起UI的刷新。实际上这个时候childList里的数据已经减少了，只是UI没有刷新。
 
 有些开发者会注意到，在Page中初始化定义childList的时候，也是以这样一种方法去进行初始化的。
 
-```typescript
-@State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4),new Child(5)];
-@State ancestor: Ancestor = new Ancestor(this.childList)
+<!-- @[StateArrayInit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayInit.ets) -->
+
+``` TypeScript
+@State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
+@State ancestor: Ancestor = new Ancestor(this.childList);
 ```
+
 
 但是由于这里的childList实际上是被@State装饰了，根据当前状态管理的观测能力，尽管右边赋值的是一个Child[]类型的数据，它并没有被@Observed装饰，这里的childList却依然具备了被观测的能力，所以能够正常的触发UI的刷新。当去掉childList的@State的装饰器后，不去重置数据源，也无法通过点击“X”按钮触发刷新。
 
 因此，需要将具有观测能力的类对象绑定组件，来确保当改变这些类对象的内容时，UI能够正常的刷新。
 
-```typescript
+<!-- @[StateArrayNo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class Child {
-  count: number;
+  public count: number;
+
   constructor(count: number) {
-    this.count = count
+    this.count = count;
   }
 }
+
 @Observed
 class ChildList extends Array<Child> {
-};
+}
+
 @Observed
 class Ancestor {
-  childList: ChildList;
+  public childList: ChildList;
+
   constructor(childList: ChildList) {
     this.childList = childList;
   }
+
   public loadData() {
     let tempList = new ChildList();
-    for (let i = 1; i < 6; i ++) {
+    for (let i = 1; i < 6; i++) {
       tempList.push(new Child(i));
     }
     this.childList = tempList;
   }
 
   public clearData() {
-    this.childList = []
+    this.childList = [];
   }
 }
+
 @Component
 struct CompChild {
   @Link childList: ChildList;
@@ -968,49 +1086,50 @@ struct CompChild {
 
   build() {
     Row() {
-      Text(this.child.count+'')
+      Text(this.child.count + '')
         .height(70)
         .fontSize(20)
         .borderRadius({
           topLeft: 6,
           topRight: 6
         })
-        .margin({left: 50})
+        .margin({ left: 50 })
       Button('X')
         .backgroundColor(Color.Red)
-        .onClick(()=>{
+        .onClick(() => {
           let index = this.childList.findIndex((item) => {
-            return item.count === this.child.count
-          })
+            return item.count === this.child.count;
+          });
           if (index !== -1) {
             this.childList.splice(index, 1);
           }
         })
         .margin({
           left: 200,
-          right:30
+          right: 30
         })
     }
     .margin({
-      top:15,
+      top: 15,
       left: 15,
-      right:10,
-      bottom:15
+      right: 10,
+      bottom: 15
     })
     .borderRadius(6)
     .backgroundColor(Color.Grey)
   }
 }
+
 @Component
 struct CompList {
-  @ObjectLink@Watch('changeChildList') childList: ChildList;
+  @ObjectLink @Watch('changeChildList') childList: ChildList;
 
   changeChildList() {
-    console.info('CompList ChildList change');
+    hilog.info(DOMAIN_NUMBER, TAG, 'CompList ChildList change');
   }
 
-  isRenderCompChild(index: number) : number {
-    console.info("Comp Child is render" + index);
+  isRenderCompChild(index: number): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Comp Child is render' + index);
     return 1;
   }
 
@@ -1025,13 +1144,13 @@ struct CompList {
             })
               .opacity(this.isRenderCompChild(index))
           }
-
         })
       }
       .height('70%')
     }
   }
 }
+
 @Component
 struct CompAncestor {
   @ObjectLink ancestor: Ancestor;
@@ -1040,34 +1159,36 @@ struct CompAncestor {
     Column() {
       CompList({ childList: this.ancestor.childList })
       Row() {
-        Button("Clear")
+        Button('Clear')
           .onClick(() => {
-            this.ancestor.clearData()
+            this.ancestor.clearData();
           })
           .width(100)
-          .margin({right: 50})
-        Button("Recover")
+          .margin({ right: 50 })
+        Button('Recover')
           .onClick(() => {
-            this.ancestor.loadData()
+            this.ancestor.loadData();
           })
           .width(100)
       }
     }
   }
 }
+
 @Entry
 @Component
 struct Page {
-  @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4),new Child(5)];
-  @State ancestor: Ancestor = new Ancestor(this.childList)
-
+  @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
+  @State ancestor: Ancestor = new Ancestor(this.childList);
   build() {
     Column() {
-      CompAncestor({ ancestor: this.ancestor})
+      CompAncestor({ ancestor: this.ancestor })
     }
   }
 }
 ```
+
+
 
 上述代码运行效果如下。
 
@@ -1075,15 +1196,18 @@ struct Page {
 
 核心的修改点是将原本Child[]类型的tempList修改为具有被观测能力的ChildList类。
 
-```typescript
+<!-- @[StateArrayNo2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo2.ets) -->
+
+``` TypeScript
 public loadData() {
-    let tempList = new ChildList();
-    for (let i = 1; i < 6; i ++) {
-      tempList.push(new Child(i));
-    }
-    this.childList = tempList;
+  let tempList = new ChildList();
+  for (let i = 1; i < 6; i++) {
+    tempList.push(new Child(i));
   }
+  this.childList = tempList;
+}
 ```
+
 
 ChildList类型在定义的时候使用了@Observed进行装饰，所以用new创建的对象tempList具有被观测的能力，因此在点击“X”按钮删除其中一条内容时，变量childList就能够观测到变化，所以触发了ForEach的刷新，最终UI渲染刷新。
 
@@ -1093,7 +1217,13 @@ ChildList类型在定义的时候使用了@Observed进行装饰，所以用new�
 
 开发过程中通常会将[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)和状态变量结合起来使用。
 
-```typescript
+<!-- @[StateArrayLazy_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: StringData[] = [];
@@ -1108,7 +1238,7 @@ class BasicDataSource implements IDataSource {
 
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(DOMAIN_NUMBER, TAG, 'add listener');
       this.listeners.push(listener);
     }
   }
@@ -1116,7 +1246,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(DOMAIN_NUMBER, TAG, 'remove listener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -1179,8 +1309,9 @@ class MyDataSource extends BasicDataSource {
 }
 
 class StringData {
-  message: string;
-  imgSrc: Resource;
+  public message: string;
+  public imgSrc: Resource;
+
   constructor(message: string, imgSrc: Resource) {
     this.message = message;
     this.imgSrc = imgSrc;
@@ -1206,13 +1337,13 @@ struct MyComponent {
           Column() {
             Text(item.message).fontSize(20)
               .onAppear(() => {
-                console.info("text appear:" + item.message);
+                hilog.info(DOMAIN_NUMBER, TAG, 'text appear:' + item.message);
               })
             Image(item.imgSrc)
               .width(100)
               .height(100)
               .onAppear(() => {
-                console.info("image appear");
+                hilog.info(DOMAIN_NUMBER, TAG, 'image appear');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -1226,6 +1357,8 @@ struct MyComponent {
 }
 ```
 
+
+
 上述代码运行效果如下。
 
 ![properly-use-state-management-to-develope-7](figures/properly-use-state-management-to-develope-7.gif)
@@ -1234,7 +1367,13 @@ struct MyComponent {
 
 当前LazyForEach与状态变量都能触发UI的刷新，两者的性能开销是不一样的。使用LazyForEach刷新会对组件进行重建，如果包含了多个组件，则会产生比较大的性能开销。使用状态变量刷新会对组件进行刷新，具体到状态变量关联的组件上，相对于LazyForEach的重建来说，范围更小更精确。因此，推荐使用状态变量来触发LazyForEach中的组件刷新，这就需要使用自定义组件。
 
-```typescript
+<!-- @[StateArrayLazy2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: StringData[] = [];
@@ -1249,7 +1388,7 @@ class BasicDataSource implements IDataSource {
 
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(DOMAIN_NUMBER, TAG, 'add listener');
       this.listeners.push(listener);
     }
   }
@@ -1257,7 +1396,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(DOMAIN_NUMBER, TAG, 'remove listener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -1317,8 +1456,8 @@ class MyDataSource extends BasicDataSource {
 
 @Observed
 class StringData {
-  @Track message: string;
-  @Track imgSrc: Resource;
+  @Track public message: string;
+  @Track public imgSrc: Resource;
   constructor(message: string, imgSrc: Resource) {
     this.message = message;
     this.imgSrc = imgSrc;
@@ -1341,7 +1480,7 @@ struct MyComponent {
     List({ space: 3 }) {
       LazyForEach(this.data, (item: StringData, index: number) => {
         ListItem() {
-          ChildComponent({data: item})
+          ChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
@@ -1353,12 +1492,13 @@ struct MyComponent {
 
 @Component
 struct ChildComponent {
-  @ObjectLink data: StringData
+  @ObjectLink data: StringData;
+
   build() {
     Column() {
       Text(this.data.message).fontSize(20)
         .onAppear(() => {
-          console.info("text appear:" + this.data.message);
+          hilog.info(DOMAIN_NUMBER, TAG, 'text appear:' + this.data.message);
         })
       Image(this.data.imgSrc)
         .width(100)
@@ -1367,6 +1507,8 @@ struct ChildComponent {
   }
 }
 ```
+
+
 
 上述代码运行效果如下。
 
@@ -1380,40 +1522,51 @@ struct ChildComponent {
 
 开发过程中经常会使用对象数组和[ForEach](../rendering-control/arkts-rendering-control-foreach.md)结合起来使用，但是写法不当的话会出现UI不刷新的情况。
 
-```typescript
+<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class StyleList extends Array<TextStyles> {
-};
+}
+
 @Observed
 class TextStyles {
-  fontSize: number;
+  public fontSize: number;
 
   constructor(fontSize: number) {
     this.fontSize = fontSize;
   }
 }
+
 @Entry
 @Component
 struct Page {
   @State styleList: StyleList = new StyleList();
+
   aboutToAppear() {
-    for (let i = 15; i < 50; i++)
-    this.styleList.push(new TextStyles(i));
+    for (let i = 15; i < 50; i++) {
+      this.styleList.push(new TextStyles(i));
+    }
   }
+
   build() {
     Column() {
-      Text("Font Size List")
+      Text('Font Size List')
         .fontSize(50)
         .onClick(() => {
           for (let i = 0; i < this.styleList.length; i++) {
             this.styleList[i].fontSize++;
           }
-          console.info("change font size");
+          hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
-            Text("Hello World")
+            Text('Hello World')
               .fontSize(item.fontSize)
           }
         })
@@ -1423,54 +1576,69 @@ struct Page {
 }
 ```
 
+
+
 上述代码运行效果如下。
 
 ![properly-use-state-management-to-develope-9](figures/properly-use-state-management-to-develope-9.gif)
 
 由于ForEach中生成的item是一个常量，因此当点击改变item中的内容时，没有办法观测到UI刷新，尽管日志表面item中的值已经改变了(这体现在打印了“change font size”的日志)。因此，需要使用自定义组件，配合@ObjectLink来实现观测的能力。
 
-```typescript
+<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
 @Observed
 class StyleList extends Array<TextStyles> {
-};
+}
+
 @Observed
 class TextStyles {
-  fontSize: number;
+  public fontSize: number;
 
   constructor(fontSize: number) {
     this.fontSize = fontSize;
   }
 }
+
 @Component
 struct TextComponent {
   @ObjectLink textStyle: TextStyles;
+
   build() {
-    Text("Hello World")
+    Text('Hello World')
       .fontSize(this.textStyle.fontSize)
   }
 }
+
 @Entry
 @Component
 struct Page {
   @State styleList: StyleList = new StyleList();
+
   aboutToAppear() {
-    for (let i = 15; i < 50; i++)
+    for (let i = 15; i < 50; i++) {
       this.styleList.push(new TextStyles(i));
+    }
   }
+
   build() {
     Column() {
-      Text("Font Size List")
+      Text('Font Size List')
         .fontSize(50)
         .onClick(() => {
           for (let i = 0; i < this.styleList.length; i++) {
             this.styleList[i].fontSize++;
           }
-          console.info("change font size");
+          hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
-            TextComponent({ textStyle: item})
+            TextComponent({ textStyle: item })
           }
         })
       }
@@ -1478,6 +1646,8 @@ struct Page {
   }
 }
 ```
+
+
 
 上述代码的运行效果如下。
 

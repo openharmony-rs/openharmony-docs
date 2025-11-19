@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
+```
+
 ## 概述
 
 定义Grid布局选项。

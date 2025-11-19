@@ -27,58 +27,72 @@
 
 1. 引入相关依赖。
 
-   ```ts
+   <!-- @[animator_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
    ```
 
 2. 创建执行动画的对象。
 
-   ```ts
+   <!-- @[animator_options_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    // 创建动画的初始参数
    let options: AnimatorOptions = {
      duration: 1500,
-     easing: "friction",
+     easing: 'friction',
      delay: 0,
-     fill: "forwards",
-     direction: "normal",
+     fill: 'forwards',
+     direction: 'normal',
      iterations: 2,
-     // 动画onFrame 插值首帧值                                    
+     // 动画onFrame 插值首帧值
      begin: 200.0,
-     // 动画onFrame 插值尾帧值                                    
+     // 动画onFrame 插值尾帧值
      end: 400.0
    };
-   let result: AnimatorResult = this.getUIContext().createAnimator(options);
+   let result: AnimatorResult | undefined = this.getUIContext().createAnimator(options);
    // 设置接收到帧时回调，动画播放过程中每帧会调用onFrame回调
    result.onFrame = (value: number) => {
-     console.info("current value is :" + value);
+     hilog.info(DOMAIN, TAG, 'current value is :' + value);
+   
    }
    ```
 
 3. 播放动画。
 
-   ```ts
+   <!-- @[animator_play_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    // 播放动画
    result.play();
    ```
 
 4. 动画执行完成后手动释放AnimatorResult对象。
 
-   ```ts
+   <!-- @[animator_result_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    // 释放动画对象
    result = undefined;
    ```
+
 
 ## 使用帧动画实现小球抛物运动
 
 1. 引入相关依赖。
 
-   ```ts
+   <!-- @[animator_template4_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
    ```
 
 2. 定义要做动画的组件。
 
-   ```ts
+   <!-- @[animator_template4_button_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    Button()
      .width(60)
      .height(60)
@@ -87,10 +101,12 @@
 
 3. 在onPageShow中创建AnimatorResult对象。
 
-   ```ts
+   <!-- @[animator_template4_show_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    onPageShow(): void {
      //创建animatorResult对象
-     this.animatorOptions = this.getUIContext().createAnimator(options);
+     this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
      this.animatorOptions.onFrame = (progress: number) => {
        this.translateX = progress;
        if (progress > this.topWidth && this.translateY < this.bottomHeight) {
@@ -99,37 +115,51 @@
      }
      //动画取消时执行方法
      this.animatorOptions.onCancel = () => {
-       this.animatorStatus = '取消';
+       // $r('app.string.cancel')资源文件中的value值为'取消'
+       this.animatorStatus = $r('app.string.cancel');
      }
      //动画完成时执行方法
      this.animatorOptions.onFinish = () => {
-       this.animatorStatus = '完成';
+       // $r('app.string.complete')资源文件中的value值为'完成'
+       this.animatorStatus = $r('app.string.complete');
      }
      //动画重复播放时执行方法
      this.animatorOptions.onRepeat = () => {
-       console.info("动画重复播放");
+       // 'repeat'资源文件中的value值为'动画重复播放'
+       hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
      }
    }
    ```
 
 4. 定义动画播放，重置，暂停的按钮。
 
-   ```ts
-   Button('播放').onClick(() => {
+   <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
+   // $r('app.string.play')资源文件中的value值为'播放'
+   Button($r('app.string.play')).onClick(() => {
      this.animatorOptions?.play();
-     this.animatorStatus = '播放中'
+     // $r('app.string.playing')资源文件中的value值为'播放中'
+     this.animatorStatus = $r('app.string.playing');
    }).width(80).height(35)
-   Button("重置").onClick(() => {
+   // $r('app.string.reset')资源文件中的value值为'重置'
+   Button($r('app.string.reset')).onClick(() => {
      this.translateX = 0;
      this.translateY = 0;
    }).width(80).height(35)
-   Button("暂停").onClick(() => {
+   // $r('app.string.pause')资源文件中的value值为'暂停'
+   Button($r('app.string.pause')).onClick(() => {
      this.animatorOptions?.pause();
-     this.animatorStatus = '暂停'
+     // $r('app.string.pause')资源文件中的value值为'暂停'
+     this.animatorStatus = $r('app.string.pause');
    }).width(80).height(35)
    ```
+
 5. 在页面隐藏或销毁的生命周期中释放动画对象，避免内存泄漏。
-   ```ts
+
+   <!-- @[animator_template4_hide_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    onPageHide(): void {
      this.animatorOptions = undefined;
    }
@@ -137,18 +167,29 @@
 
 完整示例如下。
 
-```ts
+<!-- @[animator_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets) -->
+
+``` TypeScript
 import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG: string = '[AnimatorTest]';
 
 @Entry
 @Component
 struct Index {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private manager = this.context.resourceManager;
   @State animatorOptions: AnimatorResult | undefined = undefined;
-  @State animatorStatus: string = '创建';
+  // 'create'资源文件中的value值为'创建'
+  @State animatorStatus: string = 'create';
   begin: number = 0;
   end: number = 300;
   topWidth: number = 150;
   bottomHeight: number = 100;
+  // 自由落体运动的加速度系数
   g: number = 0.18;
   animatorOption: AnimatorOptions = {
     duration: 4000,
@@ -164,7 +205,7 @@ struct Index {
   @State translateY: number = 0;
 
   onPageShow(): void {
-    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption)
+    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
     this.animatorOptions.onFrame = (progress: number) => {
       this.translateX = progress;
       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
@@ -172,13 +213,16 @@ struct Index {
       }
     }
     this.animatorOptions.onCancel = () => {
-      this.animatorStatus = '取消';
+      // 'cancel'资源文件中的value值为'取消'
+      this.animatorStatus = 'cancel';
     }
     this.animatorOptions.onFinish = () => {
-      this.animatorStatus = '完成';
+      // 'complete'资源文件中的value值为'完成'
+      this.animatorStatus = 'complete';
     }
     this.animatorOptions.onRepeat = () => {
-      console.info("动画重复播放");
+      // 'repeat'资源文件中的value值为'动画重复播放'
+      hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
     }
   }
 
@@ -189,19 +233,24 @@ struct Index {
   build() {
     Column() {
       Column({ space: 30 }) {
-        Button('播放').onClick(() => {
+        // $r('app.string.play')资源文件中的value值为'播放'
+        Button($r('app.string.play')).onClick(() => {
           this.animatorOptions?.play();
-          this.animatorStatus = '播放中';
+          // 'playing'资源文件中的value值为'播放中'
+          this.animatorStatus = 'playing';
         }).width(80).height(35)
-        Button("重置").onClick(() => {
+        // $r('app.string.reset')资源文件中的value值为'重置'
+        Button($r('app.string.reset')).onClick(() => {
           this.translateX = 0;
           this.translateY = 0;
         }).width(80).height(35)
-        Button("暂停").onClick(() => {
+        // $r('app.string.pause')资源文件中的value值为'暂停'
+        Button($r('app.string.pause')).onClick(() => {
           this.animatorOptions?.pause();
-          this.animatorStatus = '暂停';
+          // 'pause'资源文件中的value值为'暂停'
+          this.animatorStatus = 'pause';
         }).width(80).height(35)
-      }.width("100%").height('25%')
+      }.width('100%').height('25%')
 
       Stack() {
         Button()
@@ -209,12 +258,12 @@ struct Index {
           .height(60)
           .translate({ x: this.translateX, y: this.translateY })
       }
-      .width("100%")
+      .width('100%')
       .height('45%')
       .align(Alignment.Start)
-
-      Text("当前动画状态为:" + this.animatorStatus)
-    }.width("100%").height('100%')
+      // 'animatorStatus'资源文件中的value值为'当前动画状态为:'
+      Text(this.manager.getStringByNameSync('animatorStatus') + this.manager.getStringByNameSync(this.animatorStatus))
+    }.width('100%').height('100%')
   }
 }
 ```

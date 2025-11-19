@@ -72,7 +72,7 @@ The following table describes the parameters in the **crossAppSharedConfig** fie
 | ------- | ------- | ------- | ------- |
 | uri | Unique ID of a shared configuration, fixed at the format of **"datashareproxy://{*bundleName*}/{*path*}"**, in which **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value but must be unique in the same application. The maximum length is 256 bytes.| String| Yes|
 | value | Value of a shared configuration item, with a maximum of 4096 bytes.| String| Yes|
-| allowList | List of applications that are allowed to access the shared configuration items. The array can contain a maximum of 256 elements. Excess elements are invalid. Each element in the array is the [appIdentifier](../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. **appIdentifier** is a string containing only digits with a maximum of 128 bytes. If the **appIdentifier** exceeds 128 bytes, it does not take effect. You can use the [getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to obtain the **appIdentifier** of an application. | String array| Yes|
+| allowList | List of applications that are allowed to access the shared configuration items. The array can contain a maximum of 256 elements. Excess elements are invalid. Each element in the array is the [appIdentifier](../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. **appIdentifier** is a string containing only digits with a maximum of 128 bytes. If the **appIdentifier** exceeds 128 bytes, it does not take effect. You can use the [getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to obtain the **appIdentifier** of an application.| String array| Yes|
 
 ```json
 {
@@ -101,62 +101,77 @@ You can call the **publish** or **delete** API to manage configuration items as 
 
 - Call the **publish** API to publish or modify configuration items.
 
-  ```ts
-  import { dataShare } from '@kit.ArkData';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  export function publish() {
-    dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-      const newConfigData: dataShare.ProxyData[] = [{
-        uri: 'datashareproxy://com.example.app1/config1',
+<!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+function publishSharedConfig() {
+  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    const newConfigData: dataShare.ProxyData[] = [
+      {
+        uri: 'datashareproxy://com.samples.shareconfig/config1',
         value: 'Value1',
-        allowList: ['com.example.app2', 'com.example.app3'],
-      }, {
-        uri: 'datashareproxy://com.example.app1/config2',
+        allowList: [
+          'appIdentifier1',
+          'appIdentifier2'
+        ]
+      },
+      {
+        uri: 'datashareproxy://com.samples.shareconfig/config2',
         value: 'Value2',
-        allowList: ['com.example.app3', 'com.example.app4'],
-      },];
-      const config: dataShare.DataProxyConfig = {
-        type: dataShare.DataProxyType.SHARED_CONFIG,
-      };
-      dsProxyHelper.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
-        results.forEach((result) => {
-          console.info(`URI: ${result.uri}, Result: ${result.result}`);
-        });
-      }).catch((error: BusinessError) => {
-        console.error('Error publishing config:', error);
+        allowList: [
+          'appIdentifier3',
+          'appIdentifier4'
+        ]
+      }
+    ];
+    const config: dataShare.DataProxyConfig = {
+      type: dataShare.DataProxyType.SHARED_CONFIG,
+    };
+    dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+      results.forEach((result) => {
+        console.info(`URI: ${result.uri}, Result: ${result.result}`);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error creating DataProxyHandle:', error);
+      console.error('Error publishing config:', error);
     });
-  }
-  ```
+  }).catch((error: BusinessError) => {
+    console.error('Error creating DataProxyHandle:', error);
+  });
+}
+
+```
+
+
 
 - Call the **delete** API to delete the configuration items.
 
-  ```ts
-  import { dataShare } from '@kit.ArkData';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  export function deleteShareConfig() {
-    dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-      const urisToDelete: string[] =
-        ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
-      const config: dataShare.DataProxyConfig = {
-        type: dataShare.DataProxyType.SHARED_CONFIG,
-      };
-      dsProxyHelper.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
-        results.forEach((result) => {
-          console.info(`URI: ${result.uri}, Result: ${result.result}`);
-        });
-      }).catch((error: BusinessError) => {
-        console.error('Error deleting config:', error);
+<!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+function deleteSharedConfig() {
+  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    const urisToDelete: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
+    const config: dataShare.DataProxyConfig = {
+      type: dataShare.DataProxyType.SHARED_CONFIG,
+    };
+    dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
+      results.forEach((result) => {
+        console.info(`URI: ${result.uri}, Result: ${result.result}`);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error creating DataProxyHandle:', error);
+      console.error('Error deleting config:', error);
     });
-  }
-  ```
+  }).catch((error: BusinessError) => {
+    console.error('Error creating DataProxyHandle:', error);
+  });
+}
+
+```
+
+
 
 ## Configuring the Accessor
 
@@ -166,18 +181,19 @@ You can call the **get**, **on**, or **off** API to perform operations as follow
 
 Call the **get** API to obtain the configuration information.
 
-```ts
-import { dataShare } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[get_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
-export function get() {
-  dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-    const urisToGet: string[] =
-      ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+``` TypeScript
+function getSharedConfig() {
+  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    const urisToGet: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
     const config: dataShare.DataProxyConfig = {
       type: dataShare.DataProxyType.SHARED_CONFIG,
     };
-    dsProxyHelper.get(urisToGet, config).then((results: dataShare.DataProxyGetResult[]) => {
+    dataProxyHandle.get(urisToGet, config).then((results: dataShare.DataProxyGetResult[]) => {
       results.forEach((result) => {
         console.info(`URI: ${result.uri}, Result: ${result.result}, AllowList: ${result.allowList}`);
       });
@@ -188,20 +204,24 @@ export function get() {
     console.error('Error creating DataProxyHandle:', error);
   });
 }
+
 ```
+
+
 
 ### Subscribing to/Unsubscribing from Configuration Changes
 
 Call the **on** API to subscribe to configuration changes or the **off** API to unsubscribe from the configuration changes.
 
-```ts
-import { dataShare } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[watch_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
-export function watchConfigChanges() {
+``` TypeScript
+function watchConfigChanges() {
   dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-    const uris: string[] =
-      ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+    const uris: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
     const config: dataShare.DataProxyConfig = {
       type: dataShare.DataProxyType.SHARED_CONFIG,
     };
@@ -219,7 +239,7 @@ export function watchConfigChanges() {
     listenResults.forEach((result) => {
       console.info(`URI: ${result.uri}, Result: ${result.result}`);
     });
-    // Unsubscribe from configuration changes.   
+    // Unsubscribe from configuration changes.
     const unListenResults: dataShare.DataProxyResult[] = dsProxyHelper.off('dataChange', uris, config, callback);
     unListenResults.forEach((result) => {
       console.info(`URI: ${result.uri}, Result: ${result.result}`);
@@ -228,4 +248,5 @@ export function watchConfigChanges() {
     console.error('Error creating DataProxyHandle:', error);
   });
 }
+
 ```

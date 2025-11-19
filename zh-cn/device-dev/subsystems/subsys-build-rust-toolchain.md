@@ -88,7 +88,7 @@ Rust 是一门静态强类型语言，具有更安全的内存管理、更好的
 1. 下载 build 仓代码。
 
    ```shell
-   git clone git@gitee.com:openharmony/build.git
+   git clone git@gitcode.com:openharmony/build.git
    ```
 
 2. 执行脚本下载安装工具链。

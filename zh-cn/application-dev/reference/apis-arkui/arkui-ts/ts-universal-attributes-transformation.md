@@ -548,7 +548,6 @@ struct Tests {
 @Entry
 @Component
 struct Index {
-
   build() {
     Row() {
       Column() {
@@ -564,7 +563,13 @@ struct Index {
         Image($r("app.media.startIcon"))
           .width(200)
           .height(200)
-          .rotate({ angleX: 60, angleY: -125, angleZ: 75, centerX: 100, centerZ: 20})
+          .rotate({
+            angleX: 60,
+            angleY: -125,
+            angleZ: 75,
+            centerX: 100,
+            centerZ: 20
+          })
       }
       .width('100%')
     }

@@ -16,9 +16,22 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 
 ## Modules to Import
 
-```
-import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
-```
+> **NOTE**
+>
+> - **MovingPhotoViewAttribute** is essential for configuring the **MovingPhotoView** component. In API version 21 and earlier, you must manually import **MovingPhotoViewAttribute** after importing the **MovingPhotoView** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **MovingPhotoViewAttribute** when it detects the **MovingPhotoView** component, so manual import is no longer necessary.
+> - If you manually import **MovingPhotoViewAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
+API version 21 and earlier:
+
+   ```ts
+   import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+   ```
+
+API version 22 and later:
+
+   ```ts
+   import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
+   ```
 
 ## MovingPhotoView
 
@@ -41,11 +54,11 @@ MovingPhotoView(options: MovingPhotoViewOptions)
 ## MovingPhotoViewOptions
 
 
-| Name     | Type                                                                                        | Mandatory| Description                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhoto | [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | Yes  | MovingPhoto instance. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
-| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No  | AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| Name     | Type                                                                                        | Read-Only| Optional| Description                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| movingPhoto | [photoAccessHelper.MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | No| No | MovingPhoto instance. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No| Yes  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
+| imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No| Yes| AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## Properties
 
@@ -342,7 +355,9 @@ Forcibly refreshes the video and image resources loaded by the **MovingPhotoView
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { emitter } from '@kit.BasicServicesKit';
 import { dataSharePredicates } from '@kit.ArkData';
-import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 21 and earlier, use the following: import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 22 and later, use the following:
+import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 
 const PHOTO_SELECT_EVENT_ID: number = 80001
 
@@ -485,7 +500,9 @@ class MediaDataHandlerMovingPhoto implements photoAccessHelper.MediaAssetDataHan
 
 ```ts
 // xxx.ets
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 21 and earlier, use the following: import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 22 and later, use the following:
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 
 let data: photoAccessHelper.MovingPhoto
 async function loading(context: Context) {

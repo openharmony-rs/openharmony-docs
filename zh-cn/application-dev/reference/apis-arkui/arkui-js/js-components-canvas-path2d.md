@@ -295,20 +295,20 @@ export default {
 
 ## arc
 
-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise: number): void
+arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
 
 绘制弧线路径。
 
 **参数：**  
 
-| 参数            | 类型      | 描述         |
-| ------------- | ------- | ---------- |
-| x             | number  | 弧线圆心的x坐标值。 |
-| y             | number  | 弧线圆心的y坐标值。 |
-| radius        | number  | 弧线的圆半径。    |
-| startAngle    | number  | 弧线的起始弧度。   |
-| endAngle      | number  | 弧线的终止弧度。   |
-| anticlockwise | boolean | 是否逆时针绘制圆弧。 |
+| 参数名 | 类型    | 必填 | 说明                         |
+| ------ | ------- | ---- | ---------------------------- |
+| x             | number  | 是 | 弧线圆心的x坐标值。 |
+| y             | number  | 是 | 弧线圆心的y坐标值。 |
+| radius        | number  | 是 | 弧线的圆半径。    |
+| startAngle    | number  | 是 | 弧线的起始弧度。   |
+| endAngle      | number  | 是 | 弧线的终止弧度。   |
+| counterclockwise | boolean | 否 | 是否逆时针绘制圆弧，true为逆时针，false为顺时针。<br/>默认值：false  |
 
 **示例：**  
 
@@ -378,22 +378,22 @@ export default {
 
 ## ellipse
 
-ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise: number): void
+ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise: number): void
 
 在规定的矩形区域绘制一个椭圆。
 
 **参数：** 
 
-| 参数            | 类型     | 描述                                   |
-| ------------- | ------ | ------------------------------------ |
-| x             | number | 椭圆圆心的x轴坐标。                           |
-| y             | number | 椭圆圆心的y轴坐标。                           |
-| radiusX       | number | 椭圆x轴的半径长度。                           |
-| radiusY       | number | 椭圆y轴的半径长度。                           |
-| rotation      | number | 椭圆的旋转角度，单位为弧度。                       |
-| startAngle    | number | 椭圆绘制的起始点角度，以弧度表示。                    |
-| endAngle      | number | 椭圆绘制的结束点角度，以弧度表示。                    |
-| anticlockwise | number | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。(可选参数，默认为0) |
+| 参数名 | 类型    | 必填 | 说明                         |
+| ------ | ------- | ---- | ---------------------------- |
+| x             | number | 是 | 椭圆圆心的x轴坐标。                           |
+| y             | number | 是 | 椭圆圆心的y轴坐标。                           |
+| radiusX       | number | 是 | 椭圆x轴的半径长度。                           |
+| radiusY       | number | 是 | 椭圆y轴的半径长度。                           |
+| rotation      | number | 是 | 椭圆的旋转角度，单位为弧度。                       |
+| startAngle    | number | 是 | 椭圆绘制的起始点角度，以弧度表示。                    |
+| endAngle      | number | 是 | 椭圆绘制的结束点角度，以弧度表示。                    |
+| counterclockwise | number | 否 | 是否以逆时针方向绘制椭圆，0为顺时针，1为逆时针。其它数值均按默认值处理。<br/>默认值：0 |
 
 **示例：**  
 

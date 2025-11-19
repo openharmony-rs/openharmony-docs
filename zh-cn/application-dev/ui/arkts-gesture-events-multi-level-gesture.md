@@ -24,24 +24,28 @@
 
 对于一般的容器组件（例如：Column），父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件根据布局进行触发。
 
-```ts
-ComponentA() {
-    ComponentB().onTouch(() => {})
-    ComponentC().onTouch(() => {})
-}.onTouch(() => {})
+<!-- @[column_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column().id('ComponentB').onTouch(() => {})
+  Column().id('ComponentC').onTouch(() => {})
+}.id('ComponentA').onTouch(() => {})
 ```
 组件B和组件C作为组件A的子组件，当触摸到组件B或者组件C时，组件A也会被触摸到。onTouch事件允许多个组件同时触发，
 因此，当触摸组件B时，会触发组件A和组件B的onTouch回调，不会触发组件C的onTouch回调。
 当触摸组件C时，会触发组件A和组件C的onTouch回调，不触发组件B的回调。
 
-特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也互相存在遮盖关系。
+特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也存在相互遮盖关系。
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
-```ts
-Stack A() {
-    ComponentB().onTouch(() => {})
-    ComponentC().onTouch(() => {})
-}.onTouch(() => {})
+<!-- @[stack_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column().id('ComponentB').onTouch(() => {})
+  Column().id('ComponentC').onTouch(() => {})
+}.id('Stack A').onTouch(() => {})
 ```
 组件B和组件C作为Stack A的子组件，组件C覆盖在组件B上。当触摸到组件B或者组件C时，Stack A也会被触摸到。onTouch事件允许多个组件同时触发，因此，当触摸组件B和组件C的重叠区域时，会触发Stack A和组件C的onTouch回调，不会触发组件B的onTouch回调（组件B被组件C遮盖）。
 
@@ -59,23 +63,28 @@ Stack A() {
 
 2.当一个组件绑定多个手势时，先达到手势触发条件的手势优先触发。
 
-```ts
-ComponentA() {
-    ComponentB().gesture(TapGesture({count: 1}))
-}.gesture(TapGesture({count: 1}))    
+<!-- @[priorityfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
+
+``` TypeScript
+Column() {
+  Column().id('ComponentB').gesture(TapGesture({ count: 1 }))
+}.id('ComponentA').gesture(TapGesture({ count: 1 }))
 ```
 当父组件和子组件均绑定点击手势时，子组件的优先级高于父组件。
 因此，当在B组件上进行点击时，组件B所绑定的TapGesture的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
 
-```ts
-ComponentA()
-.gesture(
+<!-- @[prioritysecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
+
+``` TypeScript
+Column()
+  .id('ComponentA')
+  .gesture(
     GestureGroup(
-        GestureMode.Exclusive,
-        TapGesture({count: 1}),
-        PanGesture({distance: 5})
+      GestureMode.Exclusive,
+      TapGesture({count: 1}),
+      PanGesture({distance: 5})
     )
-)
+  )
 ```
 当组件A上绑定了由点击和滑动手势组成的互斥手势组时，先达到触发条件的手势触发对应的回调。
 若使用者做了一次点击操作，则响应点击对应的回调。若使用者进行了一次滑动操作并且滑动距离达到了阈值，则响应滑动对应的回调。
@@ -90,16 +99,20 @@ ComponentA()
 
 responseRegion属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
 
-```ts
-ComponentA() {
-    ComponentB()
+<!-- @[response_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
     .onTouch(() => {})
     .gesture(TapGesture({count: 1}))
-    .responseRegion({Rect1, Rect2, Rect3})
+    .responseRegion([rect1, rect2, rect3])
 }
+.id('ComponentA')
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
-.responseRegion({Rect4})
+.responseRegion([rect4])
 ```
 当组件A绑定了.responseRegion({Rect4})的属性后，所有落在Rect4区域范围的触摸事件和手势可被组件A对应的回调响应。
 
@@ -113,21 +126,27 @@ ComponentA() {
 
 hitTestBehavior属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
 
-```ts
-ComponentA() {
-    ComponentB()
+<!-- @[hittestbehavior_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
     .onTouch(() => {})
     .gesture(TapGesture({count: 1}))
 
-    ComponentC() {
-        ComponentD()
-        .onTouch(() => {})
-        .gesture(TapGesture({count: 1}))
-    }
-    .onTouch(() => {})
-    .gesture(TapGesture({count: 1}))
-    .hitTestBehavior(HitTestMode.Block)
+  Column() {
+    Column()
+      .id('ComponentD')
+      .onTouch(() => {})
+      .gesture(TapGesture({count: 1}))
+  }
+  .id('ComponentC')
+  .onTouch(() => {})
+  .gesture(TapGesture({count: 1}))
+  .hitTestBehavior(HitTestMode.Block)
 }
+.id('ComponentA')
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
@@ -137,17 +156,22 @@ HitTestMode.Block自身会响应触摸测试，阻塞子节点和兄弟节点的
 
 当组件C设置了hitTestBehavior为HitTestMode.Block时，点击组件D区域，组件A和组件C的onTouch事件会触发，组件D的onTouch事件未触发。同时，由于组件D的点击手势因为被阻塞而无法触发，组件C的点击手势会触发。
 
-```ts
-Stack A() {
-    ComponentB()
+<!-- @[responseregion_second](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column()
+    .id('ComponentB')
     .onTouch(() => {})
     .gesture(TapGesture({count: 1}))
 
-    ComponentC()
+  Column()
+    .id('ComponentC')
     .onTouch(() => {})
     .gesture(TapGesture({count: 1}))
     .hitTestBehavior(HitTestMode.Transparent)
 }
+.id('Stack A')
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
@@ -157,12 +181,16 @@ HitTestMode.Transparent自身响应触摸测试，不会阻塞兄弟节点的触
 
 而当组件C设置hitTestBehavior为HitTestMode.Transparent时，点击组件B和组件C的重叠区域，组件A和组件C不受到影响与之前一致，组件A和组件C的onTouch事件会触发，组件C的点击手势会触发。而组件B因为组件C设置了HitTestMode.Transparent，组件B也收到了Touch事件，从而组件B的onTouch事件触发。
 
-```ts
-ComponentA() {
-    ComponentB()
+<!-- @[responseregion_thirdly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
     .onTouch(() => {})
     .gesture(TapGesture({count: 1}))
 }
+.id('ComponentA')
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 .hitTestBehavior(HitTestMode.None)
@@ -173,20 +201,26 @@ HitTestMode.None自身不响应触摸测试，不会阻塞子节点和兄弟节�
 
 当组件A设置hitTestBehavior为HitTestMode.None时，点击组件B区域时，组件B的onTouch事件触发，而组件A的onTouch事件无法触发，组件B的点击手势触发。
 
-```ts
-Stack A() {
-    ComponentB()
+<!-- @[responseregion_fourth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column()
+    .id('ComponentB')
     .onTouch(() => {})
     .gesture(TapGesture({count: 1}))
-    ComponentC() {
-        ComponentD()
-        .onTouch(() => {})
-        .gesture(TapGesture({count: 1}))
-    }
-    .onTouch(() => {})
-    .gesture(TapGesture({count: 1}))
-    .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
+  Column() {
+    Column()
+      .id('ComponentD')
+      .onTouch(() => {})
+      .gesture(TapGesture({count: 1}))
+  }
+  .id('ComponentC')
+  .onTouch(() => {})
+  .gesture(TapGesture({count: 1}))
+  .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
 }
+.id('Stack A')
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
@@ -196,20 +230,26 @@ Stack A() {
 
 当组件C设置hitTestBehavior为BLOCK_HIERARCHY时，点击组件B和组件D的重叠区域时，组件C和组件D的onTouch事件触发，组件A和组件B的onTouch事件无法触发，组件D的点击手势会触发。
 
-```ts
-Stack A() {
-    ComponentB()
+<!-- @[responseregion_fifth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column()
+    .id('ComponentB')
     .onTouch(() => {})
     .gesture(TapGesture({count: 1}))
-    ComponentC() {
-        ComponentD()
-        .onTouch(() => {})
-        .gesture(TapGesture({count: 1}))
-    }
-    .onTouch(() => {})
-    .gesture(TapGesture({count: 1}))
-    .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
+  Column() {
+    Column()
+      .id('ComponentD')
+      .onTouch(() => {})
+      .gesture(TapGesture({count: 1}))
+  }
+  .id('ComponentC')
+  .onTouch(() => {})
+  .gesture(TapGesture({count: 1}))
+  .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
 }
+.id('Stack A')
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
@@ -227,11 +267,15 @@ Stack A() {
 
 当父组件使用.gesture绑定手势，父子组件所绑定手势类型相同时，子组件优先于父组件响应。
 
-```ts
-ComponentA() {
-    ComponentB()
+<!-- @[bindingfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
     .gesture(TapGesture({count: 1}))
 }
+.id('ComponentA')
 .gesture(TapGesture({count: 1}))
 ```
 当父子组件均正常绑定点击手势时，子组件优先于父组件响应。
@@ -239,11 +283,15 @@ ComponentA() {
 
 如果以带优先级的方式绑定手势，则可使得父组件所绑定手势的响应优先级高于子组件。
 
-```ts
-ComponentA() {
-    ComponentB()
+<!-- @[bindingsecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
     .gesture(TapGesture({count: 1}))
 }
+.id('ComponentA')
 .priorityGesture(TapGesture({count: 1}))
 ```
 当父组件以.priorityGesture的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
@@ -251,11 +299,15 @@ ComponentA() {
 
 如果需要父子组件所绑定的手势不发生冲突，均可响应，则可以使用并行的方式在父组件绑定手势。
 
-```ts
-ComponentA() {
-    ComponentB()
+<!-- @[bindingthirdly_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
     .gesture(TapGesture({count: 1}))
 }
+.id('ComponentA')
 .parallelGesture(TapGesture({count: 1}))
 ```
 当父组件以.parallelGesture的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
@@ -266,17 +318,22 @@ OverlayManager事件机制，默认优先被WrappedBuilder内组件先接收，�
 
 若希望OverlayManager下方的页面也能感应到事件，可采用hitTestBehavior(HitTestMode.Transparent)来传递事件，参考以下伪代码。
 
-```ts
+<!-- @[overlay_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/OverlayManager.ets) -->
+
+``` TypeScript
 @Builder
 function builderOverlay(params: Params) {
-    Component().hitTestBehavior(HitTestMode.Transparent)
+  Component1().hitTestBehavior(HitTestMode.Transparent)
 }
 
-aboutToAppear(): void {
+// ···
+
+  aboutToAppear(): void {
+    // ···
     let componentContent = new ComponentContent(
-        this.context, wrapBuilder<[Params]>(builderOverlay),
-        new Params(uiContext, {x:0, y: 100})
+      this.context, wrapBuilder<[Params]>(builderOverlay),
+      new Params(uiContext, {x:0, y: 100})
     );
     this.overlayManager.addComponentContent(componentContent, 0);
-}
+  }
 ```

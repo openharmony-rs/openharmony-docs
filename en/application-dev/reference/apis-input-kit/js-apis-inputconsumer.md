@@ -46,7 +46,7 @@ Sets the key event consumption configuration.
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | key       | number  | No     | No     | Key value.<br>**Note**: From API version 21, the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode), [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode), and [KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode) keys.<br>In API version 20 or earlier versions, only the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode) and [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode) keys are supported.|
-| action    | number  | No     | No     | Subscription type. Currently, the value can only be **1** or **2**. The value 1 indicates subscription to only key press events, and the value **2** indicates subscription to both key press and release events.|
+| action    | number  | No     | No     | Subscription type.<br>**Note**: Since API version 21, the value of this parameter can be **1** or **2**. The value **1** indicates subscription to only key press events, and the value **2** indicates subscription to both key press and release events.<br>In API version 20 or earlier versions, the value of this parameter can only be set to **1**, indicating subscription to only key press events.|
 | isRepeat  | boolean  | No     | No     | Whether to report repeated key events. The value **true** means to report repeated key events, and the value **false** means the opposite. The default value is **true**.|
 
 ## inputConsumer.getAllSystemHotkeys

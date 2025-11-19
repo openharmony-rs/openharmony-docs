@@ -440,8 +440,9 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 * Node-API侧暴露ArkTS接口
 
-  ```javascript
-  // entry/src/main/cpp/types/libentry/index.d.ts
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/types/libentry5/Index.d.ts) -->
+  
+  ``` TypeScript
   export const nativeWebInit: (webName: string) => void;
   export const createWebMessagePorts: (webName: string) => void;
   export const postMessage: (webName: string) => void;

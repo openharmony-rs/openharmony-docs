@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_TorchStatusInfo {...} Camera_TorchStatusInfo
+```
+
 ## Overview
 
 The struct describes the flashlight status information.

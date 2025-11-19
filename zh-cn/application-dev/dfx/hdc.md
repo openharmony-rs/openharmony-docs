@@ -74,7 +74,7 @@ hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发
   3. 在文件末尾添加PATH信息。
 
       ```shell
-      PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
+      export PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
       ```
 
       其中{DevEco Studio}需替换为DevEco Studio实际安装目录的绝对路径，例如/home/DevEco-Studio。
@@ -639,9 +639,9 @@ hdc install [-r|-s|-cwd path] src
 
 | 参数名 | 说明 |
 | -------- | -------- |
-| src | 应用安装包的文件名。 |
-| -r | 替换已存在的应用（.hap）。 |
-| -s | 安装一个共享包（.hsp）。 |
+| src | 应用安装包的文件路径。支持安装[HAP](../quick-start/hap-package.md)、应用内[HSP](../quick-start/in-app-hsp.md)。从API version 22开始，支持安装[APP包](../quick-start/application-package-glossary.md#app)。 |
+| -r | 替换已存在的应用。 |
+| -s | 安装应用间HSP时为必选参数，其他场景为可选参数，指定待安装应用间HSP的路径。 |
 | -cwd path | 修改工作目录。<br>用于在应用安装时，切换src到指定path。例如，初始安装应用为test.hap，所在目录为/data，实际安装应用文件路径为/data/test.hap；如果使用-cwd "/user/"，实际安装应用文件路径为/user/test.hap。 |
 
 **返回信息**：
@@ -656,6 +656,14 @@ hdc install [-r|-s|-cwd path] src
 ```shell
 # 以安装example.hap包为例：
 $ hdc install E:\example.hap
+AppMod finish
+
+# 以安装example.app包为例：
+$ hdc install E:\example.app
+AppMod finish
+
+# 以安装example.hsp包为例：
+$ hdc install -s E:\example.hsp
 AppMod finish
 ```
 

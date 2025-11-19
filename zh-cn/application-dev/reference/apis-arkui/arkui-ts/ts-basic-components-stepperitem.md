@@ -10,6 +10,8 @@
 
 
 >  **说明：**
+> 
+> 从API version 22开始，该组件不再维护，推荐使用组件[Swiper](ts-container-swiper.md)。
 >
 >  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 

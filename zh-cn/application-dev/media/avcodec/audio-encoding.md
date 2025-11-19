@@ -179,25 +179,14 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    配置选项key值说明：
 
    <!--RP2-->
-   |             key               |       描述       |  AAC  |  Flac | MPEG(MP3) | G711mu |
-   | ----------------------------- | :--------------: | :---: | :---: | :------: | :---: |
-   | OH_MD_KEY_AUD_SAMPLE_RATE     |      采样率      |  必须  |  必须 |   必须   |  必须  |
-   | OH_MD_KEY_AUD_CHANNEL_COUNT   |      声道数      |  必须  |  必须 |   必须   |  必须  |
-   | OH_MD_KEY_AUDIO_SAMPLE_FORMAT |  输出音频流格式   |  必须  |  必须 |   必须   |  必须  |
-   | OH_MD_KEY_BITRATE             |       码率       |  可选  |  必须 |   必须   |   -   |
-   | OH_MD_KEY_CHANNEL_LAYOUT      |     声道布局     |  可选  |  必须 |    -     |   -   |
-   | OH_MD_KEY_MAX_INPUT_SIZE      |   最大输入长度    |  可选  |  可选 |   可选   |  可选  |
-   | OH_MD_KEY_COMPLIANCE_LEVEL    |    兼容性等级     |  -    |  可选 |    -     |   -    |
+   ![Audio encoder key configuration](figures/encoder_key.png)
    <!--RP2End-->
 
    各音频编码类型参数范围说明：
-   | 音频编码类型 | 采样率(Hz)                                                                       |       声道数       |
-   | ----------- | ------------------------------------------------------------------------------- | :----------------: |
-   | <!--DelRow-->AAC         | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000 | 1、2、3、4、5、6、8 |
-   | Flac        | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000 |        1~8         |
-   | MP3         | 8000、11025、12000、16000、22050、24000、32000、44100、48000                     |        1~2         |
-   | G711mu      | 8000                                                                            |         1          |
-   <!--RP3--><!--RP3End-->
+
+   <!--RP3-->
+   ![Audio encoder format range description](figures/encoder_format.png)
+   <!--RP3End-->
 
    例如对一个44100Hz采样率、2声道立体声、SAMPLE_S16LE采样格式的PCM音频，以32000bps的码率进行AAC编码的调用流程如下：
     <!--RP4-->
@@ -252,7 +241,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-    // 配置音频精度。API 20前，FLAC编码必须设置此参数，设置为1即可；未设置此参数配置FLAC编码器时，调用OH_AudioCodec_Configure会返回错误码AV_ERR_INVALID_VAL。该值无实际作用，不会影响编码结果。从API 20开始，无需设置此参数。
+    // 配置音频精度。API version 20前，FLAC编码必须设置此参数，设置为1即可；未设置此参数配置FLAC编码器时，调用OH_AudioCodec_Configure会返回错误码AV_ERR_INVALID_VAL。该值无实际作用，不会影响编码结果。从API version 20开始，无需设置此参数。
     // constexpr int32_t BITS_PER_CODED_SAMPLE = 1;
     // OH_AVFormat_SetIntValue(format, OH_MD_KEY_BITS_PER_CODED_SAMPLE, BITS_PER_CODED_SAMPLE);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
@@ -358,7 +347,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     ```
    在上方案例中，attr.flags代表缓冲区标记的类别。
 
-   如果是结束，需要将flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
    | 枚举值 | 描述 | 
    | -------- | -------- |

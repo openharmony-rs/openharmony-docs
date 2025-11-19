@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_LineTypography OH_Drawing_LineTypography
+```
+
 ## 概述
 
 用于从一段文字中提取单行数据进行排版。

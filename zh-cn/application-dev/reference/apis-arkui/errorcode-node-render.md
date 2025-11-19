@@ -18,7 +18,7 @@ The node type is not custom node.
 
 **错误描述**
 
-当前的操作的节点不是NDK侧的自定义节点。
+当前操作的节点不是NDK侧的自定义节点。
 
 **可能原因**
 
@@ -36,7 +36,7 @@ Node already has children.
 
 **错误描述**
 
-当前的操作的自定义节点已存在子节点。
+当前操作的自定义节点已存在子节点。
 
 **可能原因**
 
@@ -99,3 +99,59 @@ Param is out of range.
 **处理步骤**
 
 检查接口调用的入参范围。
+
+## 106406 当前渲染节点从FrameNode中获取
+
+**错误信息**
+
+The RenderNode is obtained from a FrameNode.
+
+**错误描述**
+
+该RenderNode是从FrameNode获取得到的，这类节点不允许执行当前操作。
+
+**可能原因**
+
+该RenderNode是从FrameNode获取得到的，除了作为子节点上下树，不允许其他操作。
+
+**处理步骤**
+
+当前节点除了作为子节点上下树，不允许其他操作，执行时可主动跳过当前节点。
+
+## 106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁
+
+**错误信息**
+
+The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is no longer in the adopted state.
+
+**错误描述**
+
+该RenderNode是从FrameNode获取得到的，其对应的FrameNode已经被取消接纳或是销毁。
+接纳：类似于父子关系，但父节点并不会真正将子节点添加为正常的节点，而是仅允许它像子节点一样接收生命周期回调，但不会像正常子节点一样接收父节点的事件、响应事件等。
+
+**可能原因**
+
+在从一个被接纳的FrameNode上获取了RenderNode之后，这个被接纳的节点被取消接纳乃至于析构了，因此这个RenderNode禁止进行释放外的任何读写操作。
+
+**处理步骤**
+
+当一个被接纳的节点被取消接纳时，应该释放从该节点获取的RenderNode。
+
+## 106408 当前节点不处于被接纳状态
+
+**错误信息**
+
+The node is not adopted.
+
+**错误描述**
+
+该节点未被接纳，不能获取其RenderNode。
+接纳：类似于父子关系，但父节点并不会真正将子节点添加为正常的节点，而是仅允许它像子节点一样接收生命周期回调，但不会像正常子节点一样接收父节点的事件、响应事件等。
+
+**可能原因**
+
+该节点未被接纳，不能获取其RenderNode。
+
+**处理步骤**
+
+先通过adoptChild接口使得当前节点被其他节点接纳，然后再获取其RenderNode。

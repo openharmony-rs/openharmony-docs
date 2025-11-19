@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_VObject
+```
+
 ## 概述
 
 表示允许的数据字段类型。

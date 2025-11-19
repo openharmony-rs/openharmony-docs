@@ -2107,7 +2107,7 @@ int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | 指向数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，<br>此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，需要使用[OH_UDMF_GetDataElementAt](capi-udmf-h.md#oh_udmf_getdataelementat)函数通过下标访问每个元素。此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
 | unsigned int* dataSize | 该参数是输出参数，表示获取到的统一数据对象个数。 |
 
 **返回：**

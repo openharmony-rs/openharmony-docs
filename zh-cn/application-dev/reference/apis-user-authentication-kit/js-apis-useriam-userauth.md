@@ -281,7 +281,7 @@ onResult(result: UserAuthResult): void
 **示例1：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -331,7 +331,7 @@ try {
 **示例2：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -385,7 +385,7 @@ try {
 **示例3：**
 
 发起用户认证，采用认证可信等级≥ATL3的锁屏口令+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -466,7 +466,7 @@ type AuthTipCallback = (authTipInfo: AuthTipInfo) => void
 | authTipInfo | [AuthTipInfo](#authtipinfo20)   | 是   | 认证中间状态。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -522,6 +522,9 @@ on(type: 'result', callback: IAuthCallback): void
 
 订阅用户身份认证的最终结果。通过该接口获取到的是用户在认证控件完成身份认证交互后的最终身份认证结果。认证控件消失前，用户中间的认证失败尝试并不会通过该接口返回。如果需要感知整个认证过程中用户的每一次认证失败尝试，请通过[on('authTip')](#on20)接口订阅。
 
+> **说明：**
+> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -545,7 +548,7 @@ on(type: 'result', callback: IAuthCallback): void
 **示例1：**
 
 以模系统方式进行用户身份认证。
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -689,7 +692,7 @@ off(type: 'result', callback?: IAuthCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -767,7 +770,7 @@ start(): void
 | 12500013 | Operation failed because of PIN expired. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -831,7 +834,7 @@ cancel(): void
 | 12500002 | General operation error.        |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -879,6 +882,9 @@ on(type: 'authTip', callback: AuthTipCallback): void
 
 订阅身份认证过程中的提示信息。通过该接口可以获取到认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败尝试。使用callback异步回调。
 
+> **说明：**
+> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -899,7 +905,7 @@ on(type: 'authTip', callback: AuthTipCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -973,7 +979,7 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 | 12500002 | General operation error. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1052,7 +1058,7 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 | 12500006 | The authentication trust level is not supported. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

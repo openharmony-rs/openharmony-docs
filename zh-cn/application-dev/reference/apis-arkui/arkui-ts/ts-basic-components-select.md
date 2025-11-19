@@ -174,6 +174,10 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration>)
 
 定制Select下拉菜单项内容区的方法。在应用了menuItemContentModifier后，下拉菜单的内容将完全由开发者自定义，此时为Select组件设置的分割线、选项颜色及下拉菜单的字体颜色等属性将不再生效。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -189,6 +193,10 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration>)
 menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfiguration>>)
 
 定制Select下拉菜单项内容区的方法。与[menuItemContentModifier](#menuitemcontentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。在应用了menuItemContentModifier后，下拉菜单的内容将完全由开发者自定义，此时为Select组件设置的分割线、选项颜色及下拉菜单的字体颜色等属性将不再生效。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -674,6 +682,10 @@ menuBackgroundColor(value: ResourceColor)
 
 设置下拉菜单的背景色。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -705,6 +717,10 @@ menuBackgroundColor(resColor: Optional\<ResourceColor>)
 menuBackgroundBlurStyle(value: BlurStyle)
 
 设置下拉菜单的背景模糊材质。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -786,6 +802,10 @@ textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribut
 
 定制Select按钮文本样式的方法，在应用了textModifier之后，Select按钮的文本样式将完全由开发者自定义。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -801,6 +821,10 @@ textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribut
 arrowModifier(modifier: Optional\<SymbolGlyphModifier>)
 
 定制Select按钮下拉箭头图标样式的方法，在应用arrowModifier之后，Select按钮下拉箭头的图标样式将完全由开发者自定义。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -820,6 +844,10 @@ optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-at
 
 如果[optionFont](#optionfont)与optionTextModifier的Font属性同时设置，则优先使用[optionFont](#optionfont)设置下拉菜单未选中项的文本样式；[optionFont](#optionfont)中缺省的属性将设置为对应的默认值。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -837,6 +865,10 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 定制Select下拉菜单选中项文本样式的方法，在应用selectedOptionTextModifier之后，下拉菜单选中项的文本样式将完全由开发者自定义。
 
 如果[selectedOptionFont](#selectedoptionfont)与selectedOptionTextModifier的Font属性同时设置，则优先使用[selectedOptionFont](#selectedoptionfont)设置下拉菜单选中项的文本样式；若未设置[selectedOptionFont](#selectedoptionfont)，则优先使用[optionFont](#optionfont)设置下拉菜单选中项的文本样式。其中[selectedOptionFont](#selectedoptionfont)或者[optionFont](#optionfont)缺省的属性将设置为对应的默认值。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -988,7 +1020,7 @@ type OnSelectCallback = (index: number, selectStr: string) => void
 
 ##  示例1（设置下拉菜单）
 
-该示例通过配置SelectOptions实现下拉菜单。
+该示例通过配置[SelectOption](#selectoption对象说明)实现下拉菜单，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
 ```ts
 // xxx.ets
@@ -1036,7 +1068,7 @@ struct SelectExample {
 
 
 ##  示例2（设置symbol类型图标）
-该示例实现了一个下拉菜单中图片为Symbol的Select组件。
+该示例实现了一个下拉菜单中图片为Symbol的Select组件，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
 ```ts
 // xxx.ets
@@ -1162,7 +1194,7 @@ struct SelectExample {
 ![](figures/SelectBuilderSymbol.png)
 
 ##  示例4（设置分割线样式）
-该示例通过配置divider的DividerOptions类型实现分割线样式的下拉菜单。
+该示例通过配置divider的DividerOptions类型实现分割线样式的下拉菜单，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
 ```ts
 // xxx.ets
@@ -1211,7 +1243,7 @@ struct SelectExample {
 ![](figures/SelectCustomDivider.png)
 
 ##  示例5（设置无分割线样式）
-该示例通过配置divider为null实现无分割线样式的下拉菜单。
+该示例通过配置divider为null实现无分割线样式的下拉菜单，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
 ```ts
 // xxx.ets
@@ -1255,7 +1287,8 @@ struct SelectExample {
 ![](figures/SelectHideDivider.png)
 
 ##  示例6（设置Select中文本和箭头样式）
-该示例通过textModifier和arrowModifier设置文本以及箭头样式。
+
+从API version 20开始，该示例通过[textModifier](#textmodifier20)和[arrowModifier](#arrowmodifier20)属性设置文本以及箭头样式。
 
 ```ts
 import { TextModifier, SymbolGlyphModifier } from "@kit.ArkUI";
@@ -1321,7 +1354,8 @@ struct SelectExample {
 ![](figures/SelectModifier.png)
 
 ##  示例7（设置Select下拉菜单选中和非选中项文本样式）
-该示例通过optionTextModifier和selectedOptionTextModifier设置下拉菜单选中和非选中项文本样式。
+
+从API version 20开始，该示例通过[optionTextModifier](#optiontextmodifier20)和[selectedOptionTextModifier](#selectedoptiontextmodifier20)属性设置下拉菜单选中和非选中项文本样式。
 
 ```ts
 import { TextModifier } from "@kit.ArkUI";
@@ -1391,7 +1425,7 @@ struct SelectExample {
 
 ## 示例8（设置分割线模式）
 
-该示例通过配置dividerStyle的mode属性设置分割线模式。
+从API version 19开始，该示例通过配置[DividerStyleOptions](ts-types.md#dividerstyleoptions12)的mode属性设置分割线模式。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI'
@@ -1419,7 +1453,7 @@ struct Index {
 
 ## 示例9（设置Select下拉菜单外描边样式）
 
-该示例通过配置menuOutline的width和color属性设置下拉菜单外描边样式。
+从API version 20开始该示例通过配置menuOutline的width和color属性设置下拉菜单外描边样式。
 
 ```ts
 // xxx.ets

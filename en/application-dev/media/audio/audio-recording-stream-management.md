@@ -99,6 +99,8 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
    > **NOTE**
    > 
    > Before listening for state changes of all audio streams, the application must [declare the ohos.permission.USE_BLUETOOTH permission](../../security/AccessToken/declare-permissions.md), for the device name and device address (Bluetooth related attributes) to be displayed correctly.
+   > 
+   > Starting from API version 20, you can call [isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20) before audio recording starts to determine whether the recording can be successfully started based on the audio source type in the input AudioCapturer information.
 
    ```ts
    async function getCurrentAudioCapturerInfoArray(){

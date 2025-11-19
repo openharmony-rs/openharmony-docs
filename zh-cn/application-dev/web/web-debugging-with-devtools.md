@@ -19,39 +19,33 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
    1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
-    
-        ``` TypeScript
-        import { webview } from '@kit.ArkWeb';
-        import { BusinessError } from '@kit.BasicServicesKit';
-        import hilog from '@ohos.hilog';
-        
-        const TAG = '[Sample_DebuggingWireless]'
-        const DOMAIN = 0xF811
-        const BUNDLE = 'TextMenuItem_'
-        const DEBUGGING_PORT: number = 8888;
-        
-        @Entry
-        @Component
-        struct WebComponent {
-          controller: webview.WebviewController = new webview.WebviewController();
-        
-          aboutToAppear(): void {
-            try {
-              // 配置Web开启无线调试模式，指定TCP Socket的端口。
-              webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
-            } catch (error) {
-              hilog.error(DOMAIN, TAG,
-                BUNDLE + `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          }
-        
-          build() {
-            Column() {
-              Web({ src: 'www.example.com', controller: this.controller })
-            }
+      
+      ``` TypeScript
+      import { webview } from '@kit.ArkWeb';
+      import { BusinessError } from '@kit.BasicServicesKit';
+      const DEBUGGING_PORT: number = 8888;
+      
+      @Entry
+      @Component
+      struct WebComponent {
+        controller: webview.WebviewController = new webview.WebviewController();
+      
+        aboutToAppear(): void {
+          try {
+            // 配置Web开启无线调试模式，指定TCP Socket的端口。
+            webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         }
-        ```
+      
+        build() {
+          Column() {
+            Web({ src: 'www.example.com', controller: this.controller })
+          }
+        }
+      }
+      ```
 
        > **说明：**
        >
@@ -480,7 +474,22 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 
 **问题原因**
 
-* 当同时使用HDC和ADB时，ADB会干扰DevTools与设备之间的WebSocket连接
+* 当同时使用HDC和ADB时，ADB会干扰DevTools与设备之间的WebSocket连接。
 
 **解决方法**
-* 如果同时使用HDC和ADB，先关闭ADB进程，确保DevTools与设备建立WebSocket连接
+* 如果同时使用HDC和ADB，先关闭ADB进程，确保DevTools与设备建立WebSocket连接。
+
+### 使用DevTools工具进行调试出现404报错
+**问题现象**
+
+  在电脑端Chrome浏览器中调试网页时，出现报错：“HTTP/1.1 404 Not Found”。
+
+**问题原因**
+
+* Chrome浏览器版本较低，导致无法使用DevTools调试。
+
+**解决方法**
+* 方案一，将电脑端Chrome升级到最新版本。
+* 方案二，如果不希望升级浏览器，可以手动拼接调试URL。完整的URL链接为：“devtools://devtools/bundled/inspector.html?ws=localhost:9222/devtools/page/xxx”。
+  - 该链接由两部分组成：“devtools://devtools/bundled/inspector.html”前半段固定不变。“?ws=localhost:9222/devtools/page/xxx”后半段需要根据实际配置修改。
+  - 端口转发成功后，使用Chrome浏览器打开 http://localhost:9222/json 页面。请注意，URL中的9222应替换为实际配置的TCP端口。然后取“devtoolsFrontendUrl”后的value值“?ws”及其后部分。

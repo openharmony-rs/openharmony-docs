@@ -66,8 +66,10 @@ each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
 > **说明**
 >
-> `each`属性必须有，否则运行时会报错。
-> `itemGenerator`的参数为`RepeatItem`，该参数将`item`和`index`结合到了一起，请勿将`RepeatItem`参数拆开使用。
+> - `each`属性必须有，否则运行时会报错。
+> - `itemGenerator`的参数为`RepeatItem`，该参数将`item`和`index`结合到了一起，请勿将`RepeatItem`参数拆开使用。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -93,6 +95,10 @@ Repeat<string>(this.arr)
 key(keyGenerator: (item: T, index: number) => string)
 
 键值生成函数。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -122,6 +128,10 @@ virtualScroll(virtualScrollOptions?: VirtualScrollOptions)
 
 `Repeat`开启虚拟滚动。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -148,6 +158,10 @@ List() {
 template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: TemplateOptions)
 
 由template type渲染对应的template子组件。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -179,6 +193,10 @@ List() {
 templateId(typedFunc: TemplateTypedFunc\<T\>)
 
 为当前数据项分配template type。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

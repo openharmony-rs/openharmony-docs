@@ -507,13 +507,15 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 使用前请在module.json5中添加网络权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/module.json5) -->
+
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
 
 应用侧代码。
 

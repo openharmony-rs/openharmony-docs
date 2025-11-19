@@ -102,13 +102,42 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
-
-   ```ts
-   Button("按钮")
-     .responseRegion([
-        { x: 0, y: 0, width: '30%', height: '100%' },      // 第一个热区为按钮的左侧1/3区域
-        { x: '70%', y: 0, width: '30%', height: '100%' },  // 第二个热区为按钮的右侧1/3区域
-      ])
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct FocusOnclickExample {
+     @State text: string = ''
+     @State number:number = 0
+   
+     build() {
+       Column() {
+         Text(this.text)
+           .margin({bottom:20})
+         Button($r('app.string.button'))
+           .responseRegion([
+             {
+               x: 0,
+               y: 0,
+               width: '30%',
+               height: '100%'
+             }, // 第一个热区为按钮的左侧1/3区域
+             {
+               x: '70%',
+               y: 0,
+               width: '30%',
+               height: '100%'
+             },// 第二个热区为按钮的右侧1/3区域
+           ])
+           .onClick(() => {
+             this.number++;
+             this.text = 'button' + this.number + 'clicked'
+           })
+           .width(200)
+       }.width('100%').justifyContent(FlexAlign.Center)
+     }
+   }
    ```
 
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。

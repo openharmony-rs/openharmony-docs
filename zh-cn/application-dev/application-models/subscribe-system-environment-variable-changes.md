@@ -23,10 +23,16 @@
 
 开发者可以使用[getConfigurationSync](../../application-dev/reference/apis-localization-kit/js-apis-resource-manager.md#getconfigurationsync10)主动获取当前[环境变量](../../application-dev/reference/apis-localization-kit/js-apis-resource-manager.md#configuration)，包括深浅色模式、屏幕方向、语言地区、屏幕密度、设备类型等，对应用程序作出相应处理，提供更好的用户体验。
 
-  ```ts
+  <!-- @[get_envconf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility0.ets) -->
+  
+  ``` TypeScript
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-
-  export default class EntryAbility extends UIAbility {
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const DOMAIN_NUMBER = 0xF811;
+  const TAG = '[EnvAbility0]';
+  
+  export default class EnvAbility0 extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       try {
         let value = this.context.resourceManager.getConfigurationSync();
@@ -35,12 +41,12 @@
         // 语言文字国家地区
         let locale = value.locale;
       } catch (error) {
-        console.error("getConfigurationSync error is " + error);
+        hilog.error(DOMAIN_NUMBER, TAG, 'getConfigurationSync error is ' + error);
       }
     }
   }
   ```
-  
+
 ## 设置环境变量
 
 支持应用自定义的环境变量包括[字体大小](#设置字体大小)、[深浅色模式](#设置深浅色模式)、[应用语言](#设置应用语言)，其他环境变量（例如屏幕方向等）均不支持直接设置。
@@ -51,11 +57,13 @@
 
 开发者可以使用[setFontSizeScale](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小。设置后，应用字体将不跟随系统变化，不再支持订阅系统字体大小变化。
 
-```ts
+<!-- @[env_setscale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility1.ets) --> 
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
-export default class MyAbility extends UIAbility {
+export default class EnvAbility1 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -76,12 +84,14 @@ export default class MyAbility extends UIAbility {
 
 - **设置应用的深浅色模式：** 使用ApplicationContext的[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)接口，可以设置应用深浅色模式。
 
-    ```ts
+    <!-- @[env_appsetcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility2.ets) --> 
+    
+    ``` TypeScript
     import { UIAbility, ConfigurationConstant } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
-
-    export default class MyAbility extends UIAbility {
+    
+    export default class EnvAbility2 extends UIAbility {
       onWindowStageCreate(windowStage: window.WindowStage) {
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
@@ -97,12 +107,14 @@ export default class MyAbility extends UIAbility {
 
 - **设置UIAbility的深浅色模式：** 使用UIAbilityContext的[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)，可以设置UIAbility的深浅色模式。
 
-    ```ts
+    <!-- @[env_setabilitycolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility3.ets) --> 
+    
+    ``` TypeScript
     import { UIAbility, ConfigurationConstant } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
-
-    export default class MyAbility extends UIAbility {
+    
+    export default class EnvAbility3 extends UIAbility {
       onWindowStageCreate(windowStage: window.WindowStage) {
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
@@ -118,11 +130,13 @@ export default class MyAbility extends UIAbility {
 
 - **设置UIExtensionAbility的深浅色模式：** 使用UIExtensionContext的[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#setcolormode18)，可以设置UIExtensionAbility的深浅色模式。
 
-    ```ts
+    <!-- @[env_setcolormode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility4.ets) --> 
+    
+    ``` TypeScript
     // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
     import { ShareExtensionAbility, ConfigurationConstant } from '@kit.AbilityKit';
-
-    export default class MyAbility extends ShareExtensionAbility {
+    
+    export default class EnvAbility4 extends ShareExtensionAbility {
       onForeground() {
         let uiExtensionContext = this.context;
         uiExtensionContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
@@ -134,12 +148,14 @@ export default class MyAbility extends UIAbility {
 
 应用语言默认跟随系统语言变化。开发者可以使用[setLanguage](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)设置应用语言。设置后，不再支持订阅系统语言变化。
 
-```ts
+<!-- @[env_setlang](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility5.ets) --> 
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 
-export default class MyAbility extends UIAbility {
+export default class EnvAbility5 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -170,26 +186,28 @@ export default class MyAbility extends UIAbility {
 
 1. 使用[on](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)方法，应用程序可以通过在非应用组件模块中订阅环境变量的变化来动态响应这些变化。例如，使用该方法在页面中监测系统语言的变化。
 
-    ```ts
+    <!-- @[envconf_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage6.ets) --> 
+    
+    ``` TypeScript
     import { common, EnvironmentCallback, Configuration } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[MyAbility]';
+    
+    const TAG: string = '[EnvAbilityPage6]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Index {
+    struct EnvAbilityPage6 {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       private callbackId: number = 0; // 注册订阅系统环境变化的ID
-
+    
       subscribeConfigurationUpdate(): void {
         let systemLanguage: string | undefined = this.context.config.language; // 获取系统当前语言
-
+    
         // 1.获取ApplicationContext
         let applicationContext = this.context.getApplicationContext();
-
+    
         // 2.通过applicationContext订阅环境变量变化
         let environmentCallback: EnvironmentCallback = {
           onConfigurationUpdated(newConfig: Configuration) {
@@ -211,7 +229,7 @@ export default class MyAbility extends UIAbility {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to register applicationContext. Code is ${code}, message is ${message}`);
         }
       }
-
+    
       // 页面展示
       build() {
         //...
@@ -221,20 +239,22 @@ export default class MyAbility extends UIAbility {
 
 2. 在资源使用完成之后，可以通过调用[off](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextoffenvironment-1)方法释放相关资源。
 
-    ```ts
+    <!-- @[envconf_apppage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage7.ets) --> 
+    
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[MyAbility]';
+    
+    const TAG: string = '[EnvAbilityPage7]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
-    struct Index {
+    struct EnvAbilityPage7 {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       private callbackId: number = 0; // 注册订阅系统环境变化的ID
-
+    
       unsubscribeConfigurationUpdate() {
         let applicationContext = this.context.getApplicationContext();
         try {
@@ -245,7 +265,7 @@ export default class MyAbility extends UIAbility {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister applicationContext. Code is ${code}, message is ${message}`);
         }
       }
-
+    
       // 页面展示
       build() {
         //...
@@ -264,20 +284,21 @@ export default class MyAbility extends UIAbility {
 
 例如，在[AbilityStage.onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)回调方法中实现监测系统语言的变化。
 
-```ts
+<!-- @[envconf_language](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbilityStage/EnvAbilityStage.ets) --> 
+
+``` TypeScript
 import { AbilityStage, Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[MyAbilityStage]';
+const TAG: string = '[EnvAbilityStage]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // 系统当前语言
 
-export default class MyAbilityStage extends AbilityStage {
+export default class EnvAbilityStage extends AbilityStage {
   onCreate(): void {
     systemLanguage = this.context.config.language; // Module首次加载时，获取系统当前语言
     hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage is ${systemLanguage}`);
-    //...
   }
 
   onConfigurationUpdate(newConfig: Configuration): void {
@@ -303,16 +324,18 @@ export default class MyAbilityStage extends AbilityStage {
 
 例如，在[onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)回调方法中实现监测系统语言的变化。
 
-```ts
+<!-- @[envconf_lang](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility9.ets) --> 
+
+``` TypeScript
 import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[EnvAbility9]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // 系统当前语言
 
-export default class EntryAbility extends UIAbility {
+export default class EnvAbility9 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     systemLanguage = this.context.config.language; // UIAbility实例首次加载时，获取系统当前语言
     hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage is ${systemLanguage}`);
@@ -326,7 +349,6 @@ export default class EntryAbility extends UIAbility {
       systemLanguage = newConfig.language; // 将变化之后的系统语言保存，作为下一次变化前的系统语言
     }
   }
-  // ...
 }
 ```
 
@@ -340,18 +362,19 @@ export default class EntryAbility extends UIAbility {
 
 以[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)为例说明。例如，在[onConfigurationUpdate()](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonconfigurationupdate)回调方法中实现环境变量的变化。
 
-```ts
+<!-- @[envconf_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvFormExtensionAbility/EnvFormExtensionAbility.ets) --> 
+
+``` TypeScript
 import { FormExtensionAbility } from '@kit.FormKit';
 import { Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[EnvFormExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class EntryFormAbility extends FormExtensionAbility {
+export default class EnvFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
-    hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(newConfig));
+    hilog.info(DOMAIN_NUMBER, TAG, 'onConfigurationUpdate: ' + JSON.stringify(newConfig));
   }
-  // ...
 }
 ```

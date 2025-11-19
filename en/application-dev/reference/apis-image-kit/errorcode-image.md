@@ -795,6 +795,34 @@ The metadata read/write operation is not supported. For example, the Exif field 
 
 Check whether the auxiliary picture type corresponds to the metadata type, and then perform the read and write operations.
 
+## 7600204 Invalid Region
+
+**Error Message**
+
+Invalid region.
+
+**Possible Cause**
+
+The area to crop (its position, width, or height) falls outside the dimensions of the original image.
+
+**Solution**
+
+Adjust the **Region** parameters so that the entire crop area falls within the dimensions of the original image.
+
+## 7600205 Unsupported Format
+
+**Error Message**
+
+Unsupported memory format or pixel format.
+
+**Possible Cause**
+
+The API does not support the memory format or pixel format of the PixelMap.
+
+**Solution**
+
+Check the API specifications for the list of supported formats, and convert the PixelMap to a compatible format before passing it to this API.
+
 ## 7600301 Memory Allocation Failure
 
 **Error Message**

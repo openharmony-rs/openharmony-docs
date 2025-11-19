@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
@@ -83,10 +83,10 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       if (event.data == 'init_web_messageport') {
           const port = event.ports[0]; // 1. Save the port sent from the application.
           if (port) {
-              console.log("hwd In html got message");
+              console.info("hwd In html got message");
               h5Port = port;
               port.onmessage = function (event) {
-                  console.log("hwd In html got message");
+                  console.info("hwd In html got message");
                   // 2. Receive the message sent from the application.
                   var result = event.data;
                   var type_s = typeof (result)
@@ -106,7 +106,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
                       default:
                           break;
                   }
-                  console.log("H5 recv type: " + type_s + "\nH5 recv result: " + result)
+                  console.info("H5 recv type: " + type_s + "\nH5 recv result: " + result)
                   document.getElementById("msg").innerHTML = "recv type: " + type_s;
                   document.getElementById("msg2").innerHTML = "recv value: " + result;
               }
@@ -117,7 +117,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       }
   })
   window.onerror = function(message, url, line, column, error) {
-    console.log("JavaScript Error: " + message + " on line " + line + " in " + url);
+    console.info("JavaScript Error: " + message + " on line " + line + " in " + url);
     document.getElementById("h1").innerHTML = "Failed to execute the function."
   };
 
@@ -172,12 +172,12 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 
     myMethod() {
       // Instance method.
-      console.log(this.myProperty);
+      console.info(this.myProperty);
     }
 
     static myStaticMethod() {
       // Static method.
-      console.log('This is a static method.');
+      console.info('This is a static method.');
     }
   }
   function postObjectToApp() {

@@ -1377,7 +1377,7 @@ The following example shows partial values from the query result of a [Button](a
     }
 }
 ```
-The attributes in the **\$attrs** field vary by component type. For detailed mappings, see <!--RP2-->[getInspectorInfo Return Result $attrs Mapping Table.xlsx](./figures/getInspectorInfo Return Result $attrs Mapping Table.xlsx).<!--RP2End-->
+The attributes in the **\$attrs** field vary by component type. For detailed mappings, see <!--RP2-->[getInspectorInfo Return Result $attrs Mapping Table.xlsx](./figures/getinspectorinfo-return-result-$attrs-mapping-table.xlsx).<!--RP2End-->
 
 **Example**
 

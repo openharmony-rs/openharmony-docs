@@ -3,8 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--SE: @kutcherzhou1-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
@@ -34,7 +35,10 @@ Defines the structs of the HiDebug module.
 | [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | HiDebug_NativeStackFrame | Defines the native stack frame content.|
 | [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | Defines the stack frame content.|
 | [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | HiDebug_MallocDispatch | Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch** table of the application process.|
+| [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md) | HiDebug_GraphicsMemorySummary | Defines the application graphics memory usage details.|
+| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | Defines the sampling configuration.|
 | [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | Defines the object used for stack backtracing and stack parsing.|
+| [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsagePtr | Defines the pointer to **HiDebug_ThreadCpuUsage**.|
 
 ### Enums
 
@@ -46,8 +50,8 @@ Defines the structs of the HiDebug module.
 
 ### Macros
 
-| Name                                                                                                                          | Description                |
-|------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| Name| Description|
+| -- | -- |
 | [HIDEBUG_TRACE_TAG_FFRT](#hidebug_trace_tag_ffrt) (1ULL << 13)                                                               | Indicates a function flow runtime (FFRT) task.<br>**Since**: 12     |
 | [HIDEBUG_TRACE_TAG_COMMON_LIBRARY](#hidebug_trace_tag_common_library) (1ULL << 16)                                           | Indicates the common library subsystem.<br>**Since**: 12         |
 | [HIDEBUG_TRACE_TAG_HDF](#hidebug_trace_tag_hdf) (1ULL << 18)                                                                 | Indicates the HDF subsystem.<br>**Since**: 12         |
@@ -103,7 +107,10 @@ Enumerates the error codes used in the HiDebug module.
 | HIDEBUG_NO_PERMISSION = 11400103 | No file write permission.|
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | Internal system error.|
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | No trace task is running.|
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 |  |
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | PC address passed to the symbol parsing function is invalid.<br>**Since**: 20|
+| HIDEBUG_NOT_SUPPORTED = 11400300 | Current device is not supported.<br>**Since**: 22|
+| HIDEBUG_UNDER_SAMPLING = 11400301 | Current process is being sampled.<br>**Since**: 22|
+| HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | Sampling resources are unavailable.<br>**Since**: 22|
 
 ### HiDebug_TraceFlag
 

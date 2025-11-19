@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_AccessibleRect
+```
+
 ## 概述
 
 节点所在坐标位置。
@@ -23,8 +27,8 @@
 | 名称 | 描述 |
 | -- | -- |
 | int32_t leftTopX | 左上角X轴坐标位置。 |
-| int32_t leftTopY | 左上角y轴坐标位置 |
-| int32_t rightBottomX | 右下角X轴坐标位置 |
+| int32_t leftTopY | 左上角y轴坐标位置。 |
+| int32_t rightBottomX | 右下角X轴坐标位置。 |
 | int32_t rightBottomY | 右下角y轴坐标位置。 |
 
 

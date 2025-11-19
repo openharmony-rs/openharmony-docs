@@ -66,12 +66,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // Obtain the list of domain names associated with the bundle name "com.example.app1".
 let bundleName = "com.example.app1";
 let domains = appDomainVerify.queryAssociatedDomains(bundleName);
 domains.forEach(domain => {
-  console.log(`app:${bundleName} associate with domain:${domain}`);
+  hilog.info(0x0000, 'testTag', `app:${bundleName} associate with domain:${domain}`);
 });
 ```
 
@@ -114,11 +115,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // Obtain the list of bundle names associated with the domain name "example.com".
 let domain = "example.com";
 let bundleNames = appDomainVerify.queryAssociatedBundleNames(domain);
 bundleNames.forEach(bundleName => {
-  console.log(`domain:${domain} associate with app:${bundleName}`);
+  hilog.info(0x0000, 'testTag', `domain:${domain} associate with app:${bundleName}`);
 });
 ```

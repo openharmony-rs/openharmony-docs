@@ -1,4 +1,10 @@
 # Animation for SVG Components
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can use child components in the **\<svg>** component to animate attributes over time.
 
@@ -59,6 +65,7 @@ In the [animateMotion](../reference/apis-arkui/arkui-js/js-components-svg-animat
 ```
 
 ![en-us_image_0000001229510983.gif](figures/en-us_image_0000001229510983.gif)
+
 
 ## animateTransform Animation
 

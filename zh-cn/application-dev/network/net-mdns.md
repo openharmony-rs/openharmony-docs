@@ -158,17 +158,17 @@ discoveryService.stopSearchingMDNS();
 ``` TypeScript
 // 取消订阅的MDNS服务。
 discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
 });
 discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
 });
 discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
   // ···
 });
 discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
   // ···
 });
 ```

@@ -16,7 +16,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 - mode：为GestureMode枚举类。用于声明该组合手势的类型。
 
-- gesture：由多个手势组合而成的数组。用于声明组合成该组合手势的各个手势。
+- gesture：由多个手势组合而成的数组。用于声明该组合手势的各个手势。
 
 
 ## 顺序识别
@@ -27,74 +27,78 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 在一个Column组件上绑定了translate属性，通过修改该属性可以设置组件的位置移动。然后在该组件上绑定LongPressGesture和PanGesture组合而成的Sequence组合手势。当触发LongPressGesture时，更新显示的数字。当长按后进行拖动时，根据滑动手势的回调函数，实现组件的拖动。
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State offsetX: number = 0;
-  @State offsetY: number = 0;
-  @State count: number = 0;
-  @State positionX: number = 0;
-  @State positionY: number = 0;
-  @State borderStyles: BorderStyle = BorderStyle.Solid;
-
-  build() {
-    Column() {
-      Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
-        .fontSize(28)
-    }.margin(10)
-    .borderWidth(1)
-    // 绑定translate属性可以实现组件的位置移动
-    .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
-    .height(250)
-    .width(300)
-    //以下组合手势为顺序识别，当长按手势事件未正常触发时不会触发滑动手势事件
-    .gesture(
-      // 声明该组合手势的类型为Sequence类型
-      GestureGroup(GestureMode.Sequence,
-        // 该组合手势第一个触发的手势为长按手势，且长按手势可多次响应
-        LongPressGesture({ repeat: true })
+  <!-- @[sequence_identification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Sequence.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0001;
+  const TAG = 'Sample_gesturegroup';
+  @Entry
+  @Component
+  struct sequenceIdentification {
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State count: number = 0;
+    @State positionX: number = 0;
+    @State positionY: number = 0;
+    @State borderStyles: BorderStyle = BorderStyle.Solid;
+  
+    build() {
+      Column() {
+        Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
+          .fontSize(28)
+      }.margin(10)
+      .borderWidth(1)
+      // 绑定translate属性可以实现组件的位置移动
+      .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
+      .height(250)
+      .width(300)
+      //以下组合手势为顺序识别，当长按手势事件未正常触发时不会触发滑动手势事件
+      .gesture(
+        // 声明该组合手势的类型为Sequence类型
+        GestureGroup(GestureMode.Sequence,
+          // 该组合手势第一个触发的手势为长按手势，且长按手势可多次响应
+          LongPressGesture({ repeat: true })
           // 当长按手势识别成功，增加Text组件上显示的count次数
-          .onAction((event: GestureEvent|undefined) => {
-            if(event){
-              if (event.repeat) {
-                this.count++;
-              }
-            }
-            console.info('LongPress onAction');
-          })
-          .onActionEnd(() => {
-            console.info('LongPress end');
-          }),
-        // 当长按之后进行拖动，PanGesture手势被触发
-        PanGesture()
-          .onActionStart(() => {
-            this.borderStyles = BorderStyle.Dashed;
-            console.info('pan start');
-          })
+            .onAction((event: GestureEvent|undefined) => {
+              if(event){
+                if (event.repeat) {
+                  this.count++;
+                };
+              };
+              hilog.info(DOMAIN, TAG,'LongPress onAction');
+            })
+            .onActionEnd(() => {
+              hilog.info(DOMAIN, TAG,'LongPress end');
+            }),
+          // 当长按之后进行拖动，PanGesture手势被触发
+          PanGesture()
+            .onActionStart(() => {
+              this.borderStyles = BorderStyle.Dashed;
+              hilog.info(DOMAIN, TAG,'pan start');
+            })
             // 当该手势被触发时，根据回调获得拖动的距离，修改该组件的位移距离从而实现组件的移动
-          .onActionUpdate((event: GestureEvent|undefined) => {
-            if(event){
-              this.offsetX = (this.positionX + event.offsetX);
-              this.offsetY = this.positionY + event.offsetY;
-            }
-            console.info('pan update');
-          })
-          .onActionEnd(() => {
-            this.positionX = this.offsetX;
-            this.positionY = this.offsetY;
-            this.borderStyles = BorderStyle.Solid;
+            .onActionUpdate((event: GestureEvent|undefined) => {
+              if(event){
+                this.offsetX = (this.positionX + event.offsetX);
+                this.offsetY = this.positionY + event.offsetY;
+              };
+              hilog.info(DOMAIN, TAG,'pan update');
+            })
+            .onActionEnd(() => {
+              this.positionX = this.offsetX;
+              this.positionY = this.offsetY;
+              this.borderStyles = BorderStyle.Solid;
+            })
+        )
+          .onCancel(() => {
+            hilog.info(DOMAIN, TAG,'sequence gesture canceled');
           })
       )
-      .onCancel(() => {
-        console.info("sequence gesture canceled")
-      })
-    )
+    }
   }
-}
-```
-
+  ```
 
 ![sequence](figures/sequence.gif)
 
@@ -110,37 +114,39 @@ struct Index {
 
 以在一个Column组件上绑定点击手势和双击手势组成的并行识别手势为例，由于单击手势和双击手势是并行识别，因此两个手势可以同时进行识别，二者互不干涉。
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State count1: number = 0;
-  @State count2: number = 0;
-
-  build() {
-    Column() {
-      Text('Parallel gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
-        .fontSize(28)
-    }
-    .height(200)
-    .width('100%')
-    // 以下组合手势为并行识别，单击手势识别成功后，若在规定时间内再次点击，双击手势也会识别成功
-    .gesture(
-      GestureGroup(GestureMode.Parallel,
-        TapGesture({ count: 1 })
-          .onAction(() => {
-            this.count1++;
-          }),
-        TapGesture({ count: 2 })
-          .onAction(() => {
-            this.count2++;
-          })
+  <!-- @[parallel_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct parallelRecognition {
+    @State count1: number = 0;
+    @State count2: number = 0;
+  
+    build() {
+      Column() {
+        Text('Parallel gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+          .fontSize(28);
+      }
+      .height(200)
+      .width('100%')
+      // 以下组合手势为并行识别，单击手势识别成功后，若在规定时间内再次点击，双击手势也会识别成功
+      .gesture(
+        GestureGroup(GestureMode.Parallel,
+          TapGesture({ count: 1 })
+            .onAction(() => {
+              this.count1++;
+            }),
+          TapGesture({ count: 2 })
+            .onAction(() => {
+              this.count2++;
+            })
+        )
       )
-    )
+    }
   }
-}
-```
+  ```
 
 
 ![parallel](figures/parallel.gif)
@@ -163,37 +169,39 @@ struct Index {
 
 以在一个Column组件上绑定单击手势和双击手势组合而成的互斥识别组合手势为例。若先绑定单击手势后绑定双击手势，由于单击手势只需要一次点击即可触发而双击手势需要两次，每次的点击事件均被单击手势消费而不能积累成双击手势，所以双击手势无法触发。若先绑定双击手势后绑定单击手势，则触发双击手势不触发单击手势。
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State count1: number = 0;
-  @State count2: number = 0;
-
-  build() {
-    Column() {
-      Text('Exclusive gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
-        .fontSize(28)
-    }
-    .height(200)
-    .width('100%')
-    //以下组合手势为互斥识别，单击手势识别成功后，双击手势会识别失败
-    .gesture(
-      GestureGroup(GestureMode.Exclusive,
-        TapGesture({ count: 1 })
-          .onAction(() => {
-            this.count1++;
-          }),
-        TapGesture({ count: 2 })
-          .onAction(() => {
-            this.count2++;
-          })
+  <!-- @[mutual_exclusion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct MutualExclusion {
+    @State count1: number = 0;
+    @State count2: number = 0;
+  
+    build() {
+      Column() {
+        Text('Exclusive gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+          .fontSize(28)
+      }
+      .height(200)
+      .width('100%')
+      //以下组合手势为互斥识别，单击手势识别成功后，双击手势会识别失败
+      .gesture(
+        GestureGroup(GestureMode.Exclusive,
+          TapGesture({ count: 1 })
+            .onAction(() => {
+              this.count1++;
+            }),
+          TapGesture({ count: 2 })
+            .onAction(() => {
+              this.count2++;
+            })
+        )
       )
-    )
+    }
   }
-}
-```
+  ```
 
 
 ![exclusive](figures/exclusive.gif)
@@ -211,65 +219,68 @@ struct Index {
 
 以下示例实现了子组件绑定长按和滑动手势，长按手势和滑动手势需要可以同时触发，但是在长按手势未成功时，需要让父组件Swiper的内置滑动手势触发的功能。由于子组件的滑动手势和父组件的内置滑动手势是竞争关系，且子组件的滑动手势的优先级更高，因此需要通过动态控制子组件的滑动手势是否触发。
 
-```ts
-// xxx.ets
-import { PromptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct CombinedGestureDemo {
-  @State isLongPress: boolean = false;
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-
-  build() {
-    Swiper() {
-      // 页面1
-      Row()
-        .width('100%')
-        .height('100%')
-        .backgroundColor(Color.Grey)
-        .borderRadius(12)
-        // 通过自定义手势判定回调，判断在长按手势未成功时，拒绝子组件的滑动手势，从而让父组件Swiper的滑动手势成功
-        .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>)=>{
-          if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
-            return GestureJudgeResult.CONTINUE;
-          }
-          if (this.isLongPress) {
-            return GestureJudgeResult.CONTINUE;
-          }
-          return GestureJudgeResult.REJECT;
-        })
-        .gesture(
-          // 绑定并行手势组，实现长按手势和滑动手势可以同时触发
-          GestureGroup(GestureMode.Parallel,
-            LongPressGesture()
-              .onAction(() => {
-                this.isLongPress = true;
-                this.promptAction.showToast({ message: "LongPress trigger" })
-              })
-              .onActionEnd(() => {
-                this.isLongPress = false;
-              })
-            ,
-            PanGesture()
-              .onActionStart(() => {
-                this.promptAction.showToast({ message: "child pan start" })
-              })
+  <!-- @[scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/SceneExample.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import { PromptAction } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct CombinedGestureDemo {
+    @State isLongPress: boolean = false;
+    promptAction: PromptAction = this.getUIContext().getPromptAction();
+  
+    build() {
+      Swiper() {
+        // 页面1
+        Row()
+          .width('100%')
+          .height('100%')
+          .backgroundColor(Color.Grey)
+          .borderRadius(12)
+          // 通过自定义手势判定回调，判断在长按手势未成功时，拒绝子组件的滑动手势，从而让父组件Swiper的滑动手势成功
+          .onGestureRecognizerJudgeBegin(
+            (event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>)=>{
+            if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
+              return GestureJudgeResult.CONTINUE;
+            };
+            if (this.isLongPress) {
+              return GestureJudgeResult.CONTINUE;
+            };
+            return GestureJudgeResult.REJECT;
+          })
+          .gesture(
+            // 绑定并行手势组，实现长按手势和滑动手势可以同时触发
+            GestureGroup(GestureMode.Parallel,
+              LongPressGesture()
+                .onAction(() => {
+                  this.isLongPress = true;
+                  this.promptAction.showToast({ message: 'LongPress trigger' });
+                })
+                .onActionEnd(() => {
+                  this.isLongPress = false;
+                })
+              ,
+              PanGesture()
+                .onActionStart(() => {
+                  this.promptAction.showToast({ message: 'child pan start' });
+                })
+            )
           )
-        )
-      // 页面2
-      Row()
-        .width('100%')
-        .height('100%')
-        .backgroundColor(Color.Pink)
-        .borderRadius(12)
+        // 页面2
+        Row()
+          .width('100%')
+          .height('100%')
+          .backgroundColor(Color.Pink)
+          .borderRadius(12)
+      }
+      .borderWidth(2)
+      .width('100%')
+      .height(300)
+      .padding(20)
     }
-    .borderWidth(2)
-    .width('100%')
-    .height(300)
-    .padding(20)
   }
-}
-```
+  ```
 
 ![combined-gesture](figures/combined-gesture.gif)

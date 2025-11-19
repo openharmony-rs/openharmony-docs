@@ -18,21 +18,23 @@
 
 **示例：**
 
-```
+<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
 struct Index {
   build() {
     Column() {
-      CustomLayout({ builder: ColumnChildren })
+      CustomLayout({ builder: columnChildren })
     }
   }
 }
 
 // 通过builder的方式传递多个组件，作为自定义组件的一级子组件（即不包含容器组件，如Column）
 @Builder
-function ColumnChildren() {
+function columnChildren() {
   ForEach([1, 2, 3], (index: number) => { // 暂不支持lazyForEach的写法
     Text('S' + index)
       .fontSize(30)

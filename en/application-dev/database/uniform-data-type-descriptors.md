@@ -185,110 +185,138 @@ The following table describes the commonly used APIs, which are applicable to bo
 The following walks you through on how to obtain **belongingToTypes** of a media file.
 
 1. Import the **uniformTypeDescriptor** module.
+
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    // 1. Import the required modules.
+    import { uniformTypeDescriptor } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID based on the file name extension .mp3, and then obtain properties of the specific UTD.
 3. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **audio/mp3**, and then obtain properties of the specific UTD.
 4. Compare the UTDs obtained in the preceding steps to check whether they are the same.
 5. Check whether **general.mp3** belongs to **general.audio**.
 
-```ts
-// 1. Import the module.
-import { uniformTypeDescriptor } from '@kit.ArkData';
+    <!-- @[uniform_type_descriptor_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
-function uniformTypeDescriptorTest() {
-  try {
-    // 2. Obtain the UTD type ID (typeId) based on the file name extension .mp3, and then obtain properties of the UTD.
-    let fileExtension = '.mp3';
-    let typeIds1 = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
-    if (typeIds1.length == 0) {
-      return;
-    }
-    let typeObj1 = uniformTypeDescriptor.getTypeDescriptor(typeIds1[0]);
-    console.info('typeId:' + typeObj1.typeId);
-    console.info('belongingToTypes:' + typeObj1.belongingToTypes);
-    console.info('description:' + typeObj1.description);
-    console.info('filenameExtensions:' + typeObj1.filenameExtensions);
-    console.info('mimeTypes:' + typeObj1.mimeTypes);
+    ``` TypeScript
+    function uniformTypeDescriptorTest() {
+      try {
+        // 2. Obtain the UTD type ID (typeId) based on the file name extension .mp3, and then obtain properties of the UTD.
+        let fileExtension = '.mp3';
+        let typeIds1 = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
+        if (typeIds1.length == 0) {
+          return;
+        }
+        let typeObj1 = uniformTypeDescriptor.getTypeDescriptor(typeIds1[0]);
+        hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj1.typeId}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj1.belongingToTypes}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj1.description}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj1.filenameExtensions}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj1.mimeTypes}`);
 
-    // 3. Obtain the UTD type ID based on audio/mp3, and then obtain properties of the UTD.
-    let mimeType = 'audio/mp3';
-    let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
-    if (typeIds2.length == 0) {
-      return;
-    }
-    let typeObj2 = uniformTypeDescriptor.getTypeDescriptor(typeIds2[0]);
-    console.info('typeId:' + typeObj2.typeId);
-    console.info('belongingToTypes:' + typeObj2.belongingToTypes);
-    console.info('description:' + typeObj2.description);
-    console.info('filenameExtensions:' + typeObj2.filenameExtensions);
-    console.info('mimeTypes:' + typeObj2.mimeTypes);
+        // 3. Obtain the UTD type ID based on audio/mp3, and then obtain properties of the UTD.
+        let mimeType = 'audio/mp3';
+        let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
+        if (typeIds2.length == 0) {
+          return;
+        }
+        let typeObj2 = uniformTypeDescriptor.getTypeDescriptor(typeIds2[0]);
+        hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj2.typeId}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj2.belongingToTypes}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj2.description}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj2.filenameExtensions}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj2.mimeTypes}`);
 
-    // 4. Compare the two UTDs to check whether they are the same.
-    if (typeObj1 != null && typeObj2 != null) {
-      let ret = typeObj1.equals(typeObj2);
-      console.info('typeObj1 equals typeObj2, ret:' + ret);
-    }
+        // 4. Compare the two UTDs to check whether they are the same.
+        if (typeObj1 != null && typeObj2 != null) {
+          let ret = typeObj1.equals(typeObj2);
+          hilog.info(0xFF00, '[Sample_Udmf]', `typeObj1 equals typeObj2, ret: ${ret}`);
+        }
 
-    // 5. Check whether general.mp3 belongs to general.audio.
-    if (typeObj1 != null) {
-      let ret = typeObj1.belongsTo('general.audio');
-      console.info('belongsTo, ret:' + ret);
-      let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
-      ret = mediaTypeObj.isHigherLevelType('general.audio'); // Check the relationship between them.
-      console.info('isHigherLevelType, ret:' + ret);
+        // 5. Check whether general.mp3 belongs to general.audio.
+        if (typeObj1 != null) {
+          let ret = typeObj1.belongsTo('general.audio');
+          hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: + ${ret}`);
+          let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
+          // Check whether there is an ownership relationship.
+          ret = mediaTypeObj.isHigherLevelType('general.audio');
+          hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: + ${ret}`);
+        }
+      } catch (err) {
+        hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+      }
     }
-  } catch (err) {
-    console.error('err message:' + err.message + ', err code:' + err.code);
-  }
-}
-```
+    ```
 
 ## Obtaining MIME Types Based on a File Name Extension
 
 The following walks you through on how to obtain MIME types based on the file name extension .ts.
 
 1. Import the **uniformTypeDescriptor** module.
+
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    // 1. Import the required modules.
+    import { uniformTypeDescriptor } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. Use **getUniformDataTypesByFilenameExtension()** to obtain the UTD type ID (**typeId**) based on the file name extension .ts.
 3. Use **getTypeDescriptor()** to obtain the MIME types based on the UTD type ID.
 
-```ts
-// 1. Import the module.
-import { uniformTypeDescriptor } from '@kit.ArkData';
-try {
-  // 2. Obtain the UTD type ID based on the file name extension .ts.
-  let fileExtension = '.ts';
-  let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
-  for (let typeId of typeIds) {
-    // 3. Obtain the MIME types based on the UTD type ID.
-    let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
-    let mimeTypes = typeObj.mimeTypes;
-    console.info('mimeTypes:' + mimeTypes);
-  }
-} catch (err) {
-  console.error('err message:' + err.message + ', err code:' + err.code);
-}
-```
+    <!-- @[get_filename_extensions_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    try {
+      // 2. Obtain the UTD type ID based on the file name extension .ts.
+      let fileExtension = '.ts';
+      let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
+      for (let typeId of typeIds) {
+        // 3. Obtain the MIME types based on the UTD type ID.
+        let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        let mimeTypes = typeObj.mimeTypes;
+        hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${mimeTypes}`);
+      }
+    } catch (err) {
+      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+    }
+    ```
+
 ## Obtaining File Name Extensions Based on the MIME Type
 
 The following walks you through on how to obtain the file name extensions based on the MIME type **text/plain**.
 
 1. Import the **uniformTypeDescriptor** module.
+
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    // 1. Import the required modules.
+    import { uniformTypeDescriptor } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **text/plain**.
 3. Use **getTypeDescriptor()** to obtain the MIME types based on the UTD type ID.
 
-```ts
-// 1. Import the module.
-import { uniformTypeDescriptor } from '@kit.ArkData';
-try {
-  // 2. Obtain the UTD type ID based on the MIME type text/plain.
-  let mimeType = 'text/plain';
-  let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
-  for (let typeId of typeIds) {
-    // 3. Obtain the MIME types based on the UTD type ID.
-    let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
-    let filenameExtensions = typeObj.filenameExtensions;
-    console.info('filenameExtensions:' + filenameExtensions);
-  }
-} catch (err) {
-  console.error('err message:' + err.message + ', err code:' + err.code);
-}
-```
+    <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    try {
+      // 2. Obtain the UTD type ID based on the MIME type text/plain.
+      let mimeType = 'text/plain';
+      let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
+      for (let typeId of typeIds) {
+        // 3. Obtain the file name extensions based on the UTD type ID.
+        let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        let filenameExtensions = typeObj.filenameExtensions;
+        hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${filenameExtensions}`);
+      }
+    } catch (err) {
+      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+    }
+    ```

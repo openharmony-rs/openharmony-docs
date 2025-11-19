@@ -27,33 +27,40 @@
 ## 阻止冒泡
 
 参考[事件冒泡](./arkts-interaction-basic-principles.md#事件冒泡)了解冒泡机制，以下是一个简单示例，实现了只要点击在子组件区域内，就阻止父组件接收触摸事件：
+<!-- @[prevent_bubbling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets) -->
 
-```typescript
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_PreventBubbling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_PreventBubbling';
+
 @Entry
 @ComponentV2
-struct Index {
-  
+struct PreventBubbling {
   build() {
     RelativeContainer() {
       Column() { // 父组件
-        Text("  如果点中了我，就阻止父组件收到触摸事件  ")
+        // app.string.preventEvent资源文件中的value值为'如果点中了我，就阻止父组件收到触摸事件'
+        Text($r('app.string.preventEvent'))
           .fontColor(Color.White)
-          .height("40%")
-          .width("80%")
+          .height('40%')
+          .width('80%')
           .backgroundColor(Color.Brown)
           .alignSelf(ItemAlign.Center)
           .padding(10)
           .margin(20)
-          .onTouch((event:TouchEvent)=>{
-            event.stopPropagation() // 子组件优先接收到触摸事件后，阻止父组件接收事件
+          .onTouch((event: TouchEvent) => {
+            event.stopPropagation(); // 子组件优先接收到触摸事件后，阻止父组件接收事件
           })
       }
       .justifyContent(FlexAlign.End)
       .backgroundColor(Color.Green)
       .height('100%')
       .width('100%')
-      .onTouch((event:TouchEvent)=>{
-        console.info("touch event received on parent")
+      .onTouch((event: TouchEvent) => {
+        hilog.info(DOMAIN, TAG, BUNDLE + 'touch event received on parent');
       })
     }
     .height('100%')
@@ -82,11 +89,18 @@ struct Index {
 重采样之前的所有原始点信息也都保留下来上报给了应用，如果需要直接处理它们，则可通过`getHistoricalPoints(): Array`来获取。
 
 以下是一个简单示例：
+<!-- @[samp_ling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/sampling/Sampling.ets) -->
 
-```typescript
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Sampling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_Sampling';
+
 @Entry
 @ComponentV2
-struct Index {
+struct Sampling {
   build() {
     RelativeContainer() {
       Column()
@@ -96,9 +110,10 @@ struct Index {
         .onTouch((event: TouchEvent) => {
           // 从event中获取历史点
           let allHistoricalPoints = event.getHistoricalPoints();
-          if (allHistoricalPoints.length != 0) {
+          if (allHistoricalPoints.length !== 0) {
             for (const point of allHistoricalPoints) {
-              console.info("historical point: [" + point.touchObject.windowX + ", " + point.touchObject.windowY + "]")
+              hilog.info(DOMAIN, TAG, BUNDLE + 'historical point: [' + point.touchObject.windowX +
+                ', ' + point.touchObject.windowY + ']');
             }
           }
         })
@@ -112,13 +127,20 @@ struct Index {
 ## 多指信息
 
 在支持多指触控的触屏设备上，上报的事件中同时包含了窗口所有按压手指的信息，可以通过**touches**获取，如下：
+<!-- @[multiple_finger_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MultipleFingerInformation/MultipleFingerInformation.ets) -->
 
-```typescript
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_MultipleFingerInformation]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_MultipleFingerInformation';
+
 @Entry
 @ComponentV2
-struct Index {
-  private currentFingerCount: number = 0
-  private allFingerIds: number[] = []
+struct MultipleFingerInformation {
+  private currentFingerCount: number = 0;
+  private allFingerIds: number[] = [];
 
   build() {
     RelativeContainer() {
@@ -127,28 +149,28 @@ struct Index {
         .height('100%')
         .width('100%')
         .onTouch((event: TouchEvent) => {
-          if (event.source != SourceType.TouchScreen) {
+          if (event.source !== SourceType.TouchScreen) {
             return;
           }
           // clear数组
-          this.allFingerIds.splice(0, this.allFingerIds.length)
+          this.allFingerIds.splice(0, this.allFingerIds.length);
           // 从event中获取所有触点信息
           let allFingers = event.touches;
-          if (allFingers.length > 0 && this.currentFingerCount == 0) {
+          if (allFingers.length > 0 && this.currentFingerCount === 0) {
             // 第1根手指按下
-            console.info("fingers start to press down")
-            this.currentFingerCount = allFingers.length
+            hilog.info(DOMAIN, TAG, BUNDLE + 'fingers start to press down');
+            this.currentFingerCount = allFingers.length;
           }
-          if (allFingers.length != 0) {
+          if (allFingers.length !== 0) {
             for (const finger of allFingers) {
-              this.allFingerIds.push(finger.id)
+              this.allFingerIds.push(finger.id);
             }
-            console.info("current all fingers : " + this.allFingerIds.toString())
+            hilog.info(DOMAIN, TAG, BUNDLE + 'current all fingers : ' + this.allFingerIds.toString());
           }
-          if (event.type == TouchType.Up && event.touches.length == 1) {
+          if (event.type === TouchType.Up && event.touches.length === 1) {
             // 所有手指都已抬起
-            console.info("all fingers already up")
-            this.currentFingerCount = 0
+            hilog.info(DOMAIN, TAG, BUNDLE + 'all fingers already up');
+            this.currentFingerCount = 0;
           }
         })
     }

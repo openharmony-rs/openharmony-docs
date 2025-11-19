@@ -34,6 +34,10 @@ textBackgroundStyle(style: TextBackgroundStyle)
 
 设置文本背景样式。子组件在不设置该属性时，将继承此属性值。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -84,7 +88,16 @@ struct Index {
             .height('40vp')
             .verticalAlign(ImageSpanAlignment.CENTER)
           Span('   Hello World !   ').fontSize('16fp').fontColor(Color.White)
-        }.textBackgroundStyle({ color: "#7F007DFF", radius: "12vp" })
+        }
+        .textBackgroundStyle({
+          color: "#7F007DFF",
+          radius: {
+            topLeft: 12,
+            topRight: 12,
+            bottomLeft: 12,
+            bottomRight: 12
+          }
+        })
       }
     }.width('100%').alignItems(HorizontalAlign.Center)
   }
@@ -98,7 +111,7 @@ struct Index {
 从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性展示了文本设置背景样式的效果。
 
 ```ts
-import { ContainerSpanModifier } from '@ohos.arkui.modifier';
+import { ContainerSpanModifier } from '@kit.ArkUI';
 
 class MyContainerSpanModifier extends ContainerSpanModifier {
   applyNormalAttribute(instance: ContainerSpanAttribute): void {
@@ -116,8 +129,8 @@ struct ContainerSpanModifierExample {
     Column() {
       Text() {
         ContainerSpan() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
-          ImageSpan($r('app.media.app_icon'))
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+          ImageSpan($r('app.media.startIcon'))
             .width('40vp')
             .height('40vp')
             .verticalAlign(ImageSpanAlignment.CENTER)

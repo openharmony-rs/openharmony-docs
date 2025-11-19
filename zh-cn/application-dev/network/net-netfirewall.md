@@ -209,10 +209,10 @@ let domainRule: netFirewall.NetFirewallRule = {
 // 添加防火墙规则。
 netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
 // ···
-  console.info(`rule Id: ${result}`);
+  hilog.info(0x0000, 'testTag', `rule Id: ${result}`);
 }, (reason: BusinessError) => {
 // ···
-  console.error(`error: add firewall rule failed:  ${JSON.stringify(reason)}`);
+  hilog.error(0x0000, 'testTag', `error: add firewall rule failed:  ${JSON.stringify(reason)}`);
 });
 ```
 <!--Del-->

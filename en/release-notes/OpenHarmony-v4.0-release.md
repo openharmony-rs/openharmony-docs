@@ -563,7 +563,7 @@ Rotation event injection is supported.
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -572,7 +572,7 @@ Rotation event injection is supported.
 
 4. Run the following commands to install the **repo** tool:
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -585,14 +585,14 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -603,14 +603,14 @@ Use the **repo** tool to download the source code over HTTPS.
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-4.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -639,15 +639,15 @@ This version has the following updates.
 
 ### Change APIs
 
-- For details about the API changes over OpenHarmony 4.0 Beta2, see [API Differences](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/en/release-notes/api-diff/v4.0-Release-vs-v4.0-beta2/Readme-EN.md).
-- For details about the API changes over OpenHarmony 3.2 Release, see [API Differences](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/en/release-notes/api-diff/v4.0-Release-vs-v3.2-Release/Readme-EN.md).
+- For details about the API changes over OpenHarmony 4.0 Beta2, see [API Differences](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/en/release-notes/api-diff/v4.0-Release-vs-v4.0-beta2/Readme-EN.md).
+- For details about the API changes over OpenHarmony 3.2 Release, see [API Differences](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/en/release-notes/api-diff/v4.0-Release-vs-v3.2-Release/Readme-EN.md).
 
-A few API changes over OpenHarmony 4.0 Beta2 may cause your application projects to be incompatible. For details about these changes, see [Changelogs](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Release/en/release-notes/changelogs/v4.0-Release/Readme-EN.md).
+A few API changes over OpenHarmony 4.0 Beta2 may cause your application projects to be incompatible. For details about these changes, see [Changelogs](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Release/en/release-notes/changelogs/v4.0-Release/Readme-EN.md).
 
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ### Samples
@@ -656,12 +656,12 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Feature| Name| Introduction| Programming Language|
 | -------- | -------- | -------- | -------- |
-| File management| [Selecting and Viewing Documents and Media Files](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/BasicFeature/FileManagement/FileShare/Picker) (The APL must be system_basic.)| This sample shows how an application uses APIs such as **\@ohos.file.picker**, **\@ohos.multimedia.mediaLibrary**, and **\@ohos.file.fs** to edit and save documents, view images in the album, and play videos.| ArkTS |
-| One-time development for multi-device deployment| [Navigation bar](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/MultiDeviceAppDev/MultiNavBar)| This sample shows the style of the navigation component in different device forms.<br>On a small- or mini-system device, tabs are used, and the content and navigation components are displayed in top-down style. You can touch tabs at the bottom to switch the content.<br>On a standard-system device, side bars are used, and the content and navigation components are displayed in left-right style. You can touch the level-1 and level-2 menus on the side bar to switch the content.<br>In this sample, the adaptive layout and responsive layout are used for adaptation among multiple devices or multiple window sizes. The component provides window breakpoint events to ensure that applications can be properly displayed on different devices or in different window sizes.| ArkTS |
-| Widget| [Application Proactively Adding Data Agent Widgets to the Home Screen](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/Widget/RequestAddForm) (Full SDK)| This sample shows how the **com.ohos.hag.famanager** application adds a data agent widget to the home screen by calling the **\@ohos.app.form.formBindingData** and **\@ohos.app.form.formProvider** APIs.| ArkTS |
-| Security| [Security UI Component](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SystemFeature/Security/AuthorizedButton) (Full SDK)| This sample shows how to use UI components of the security type for temporary authorization. When a user touches a security component of a certain type, temporary authorization is granted to the application. This eliminates authorization popups and provides a smaller authorization scope.| ArkTS |
+| File management| [Selecting and Viewing Documents and Media Files](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/BasicFeature/FileManagement/FileShare/Picker) (The APL must be system_basic.)| This sample shows how an application uses APIs such as **\@ohos.file.picker**, **\@ohos.multimedia.mediaLibrary**, and **\@ohos.file.fs** to edit and save documents, view images in the album, and play videos.| ArkTS |
+| One-time development for multi-device deployment| [Navigation bar](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/MultiDeviceAppDev/MultiNavBar)| This sample shows the style of the navigation component in different device forms.<br>On a small- or mini-system device, tabs are used, and the content and navigation components are displayed in top-down style. You can touch tabs at the bottom to switch the content.<br>On a standard-system device, side bars are used, and the content and navigation components are displayed in left-right style. You can touch the level-1 and level-2 menus on the side bar to switch the content.<br>In this sample, the adaptive layout and responsive layout are used for adaptation among multiple devices or multiple window sizes. The component provides window breakpoint events to ensure that applications can be properly displayed on different devices or in different window sizes.| ArkTS |
+| Widget| [Application Proactively Adding Data Agent Widgets to the Home Screen](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SuperFeature/Widget/RequestAddForm) (Full SDK)| This sample shows how the **com.ohos.hag.famanager** application adds a data agent widget to the home screen by calling the **\@ohos.app.form.formBindingData** and **\@ohos.app.form.formProvider** APIs.| ArkTS |
+| Security| [Security UI Component](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/SystemFeature/Security/AuthorizedButton) (Full SDK)| This sample shows how to use UI components of the security type for temporary authorization. When a user touches a security component of a certain type, temporary authorization is granted to the application. This eliminates authorization popups and provides a smaller authorization scope.| ArkTS |
 
-For more information, visit [Samples](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/).
+For more information, visit [Samples](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/).
 
 
 ## Resolved Issues

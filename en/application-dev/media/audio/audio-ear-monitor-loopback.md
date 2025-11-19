@@ -252,7 +252,7 @@ async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
   }
 }
 
-// Set the reverb mode for audio loopback.
+// Set the equalizer type for audio loopback.
 async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
   if (audioLoopback !== undefined) {
     try {
@@ -321,3 +321,6 @@ async function disable() {
   }
 }
 ```
+
+### Sample of Low-Latency Audio Loopback
+For details, see [Enabling Low-Latency Audio Loopback Using AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio).

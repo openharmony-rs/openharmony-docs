@@ -13,7 +13,7 @@ Before requesting permissions for your application, read and understand the [per
 >
 > - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
 > - The authorization mode of these permissions is system_grant.
-> - These permissions cannot be requested via access control list (ACL).
+> - The following permissions cannot be requested across application levels via ACL.
 
 For details about the process for requesting the permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 

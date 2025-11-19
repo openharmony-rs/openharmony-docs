@@ -6162,7 +6162,7 @@ open接口flags参数常量。文件打开标签。
 | bytesRead    | number | 是    | 否    | 可读流已经读取的字节数。 |
 | path    | string | 是    | 否    | 当前可读流对应的文件路径。 |
 
-### Seek<sup>12+</sup>
+### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
 

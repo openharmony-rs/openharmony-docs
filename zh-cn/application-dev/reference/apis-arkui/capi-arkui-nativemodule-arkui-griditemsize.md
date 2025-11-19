@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_GridItemSize
+```
+
 ## 概述
 
 定义Grid布局选项onGetIrregularSizeByIndex回调返回值结构体。

@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioStreamInfo {...} OH_AudioStreamInfo
+```
+
 ## 概述
 
 定义音频流信息，用于描述基本音频格式。

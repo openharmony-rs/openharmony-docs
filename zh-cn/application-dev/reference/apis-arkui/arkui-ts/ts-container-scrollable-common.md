@@ -499,6 +499,10 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
 回调当前帧将要滚动的偏移量和当前滚动状态和滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。[Scroll](./ts-container-scroll.md)组件的[onWillScroll](./ts-container-scroll.md#onwillscroll12)接口的参数类型是[ScrollOnWillScrollCallback](./ts-container-scroll.md#scrollonwillscrollcallback12)。
 
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -525,6 +529,10 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 onDidScroll(handler: OnScrollCallback): T
 
 滚动组件滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
+
+>**说明：**
+>
+> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

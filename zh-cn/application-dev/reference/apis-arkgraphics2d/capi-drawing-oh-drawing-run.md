@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_Run OH_Drawing_Run
+```
+
 ## 概述
 
 用于管理文本渲染单元。

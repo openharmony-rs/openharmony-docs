@@ -145,7 +145,7 @@ export default struct Index {
   }
 }
 
-// 绘制代码逻辑写在这里
+// 文本绘制代码逻辑
 function drawText(canvas: drawing.Canvas) {
   let myTextStyle: text.TextStyle = {
     // 文本大小

@@ -973,6 +973,12 @@ void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)
 
 **起始版本：** 12
 
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
+
 ### OH_ArkUI_AnimatorOption_SetDuration()
 
 ```

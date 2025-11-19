@@ -30,7 +30,6 @@
     - Name Localization<!--i18n-name-localization-->
         - [Overview](i18n-display-overview.md)
         - [Language and Locale Name Localization](i18n-language-region-display.md)
-        - [Time Zone Name Localization](i18n-time-zone-display.md)
 - Application Localization<!--l10n-->
     - [Multilingual Resource Provisioning](l10n-multilingual-resources.md)
     - Application Translation<!--l10n-translation-->

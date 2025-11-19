@@ -163,9 +163,11 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | -------- | -------- | -------- |
 | file | string | 文件名称。 |
 | symbol | string | 函数名称。symbol为空可能是由于以下两种原因：<br/>**1. 二进制文件中没有保存该函数名信息。**<br/>**2. 函数名称长度超过256字节时将被全部删除，以防止超长字符串引起未知问题。** |
-| buildId | string | 文件唯一标识。**文件可能没有buildId，请参考[CppCrash（NativeCrash）日志规格](cppcrash-guidelines.md#一般故障场景日志规格)**。 |
+| buildId | string | 文件唯一标识。**文件可能没有buildId**。|
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
+
+详细说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 **Js frame字段说明**
 
@@ -176,6 +178,8 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | symbol | string | 函数名称。 |
 | line | number | 代码行号。 |
 | column | number | 代码列号。 |
+
+详细说明请参见[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 ### memory字段说明
 

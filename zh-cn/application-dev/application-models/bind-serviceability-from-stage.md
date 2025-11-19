@@ -116,7 +116,7 @@ struct Page_StartFAModel {
               }
             };
             let connectionId = this.context.connectServiceExtensionAbility(want, options);
-            hilog.info(DOMAIN_NUMBER, TAG, `connectionId is：${JSON.stringify(connectionId)}.`);
+            hilog.info(DOMAIN_NUMBER, TAG, `connectionId is: ${JSON.stringify(connectionId)}.`);
           })
         }
         // ...

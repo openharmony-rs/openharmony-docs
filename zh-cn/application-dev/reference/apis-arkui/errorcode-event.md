@@ -1,7 +1,7 @@
 # 交互事件错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -92,6 +92,10 @@ The input event pointer is not a cloned event pointer.
 
 该事件不是克隆事件。
 
+**可能原因**
+
+克隆事件接口传入非克隆事件指针。
+
 **处理步骤**
 
 NA
@@ -105,6 +109,10 @@ The component status is abnormal.
 **错误描述**
 
 组件状态异常。
+
+**可能原因**
+
+克隆事件分发到组件时组件状态异常。
 
 **处理步骤**
 
@@ -120,6 +128,10 @@ No component hit to response to the event.
 
 未命中可响应事件的组件。
 
+**可能原因**
+
+克隆事件分发时未命中可响应事件的组件。
+
 **处理步骤**
 
 NA
@@ -133,6 +145,10 @@ The gesture recognizer type is not supported.
 **错误描述**
 
 不支持手势识别器类型。
+
+**可能原因**
+
+手势接口调用不支持的手势识别器类型。
 
 **处理步骤**
 

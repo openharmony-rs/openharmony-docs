@@ -6,10 +6,20 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+应用级配置文件，包含应用的全局配置信息和特定设备类型的配置信息，用于向编译工具、操作系统和应用市场提供应用的基本信息。每个工程下必须包含一个app.json5配置文件，文件所在目录为`工程名称/AppScope/app.json5`。
+
+>
+> **说明：**
+>
+> 配置文件中的示例代码直接拷贝到工程中可能编译不通过，请开发者根据需求进行配置。例如：通过$符号引用的资源文件如果工程中不存在，需要开发者手动添加或替换为实际的资源文件。
+>
+> 配置文件中，字段可以重复，以最后一个配置为准。
+>
+
 ## 配置文件示例
 
 
-先通过一个示例，整体认识一下app.json5配置文件。
+先通过一个示例，了解app.json5配置文件的结构和内容。
 
 <!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 

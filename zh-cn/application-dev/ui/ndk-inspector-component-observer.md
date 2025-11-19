@@ -15,10 +15,11 @@
 
 以下示例基于[接入ArkTS页面](ndk-access-the-arkts-page.md)章节，补充相关事件监听。
 在ArkUITextNode对象中实现布局或者绘制送显完成事件注册逻辑。
-```c
+<!-- @[arkUITestNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUITextNode.h) -->
+
+``` C
 // ArkUITextNode.h
 // 实现文本组件的封装类。
-
 #ifndef MYAPPLICATION_ARKUITEXTNODE_H
 #define MYAPPLICATION_ARKUITEXTNODE_H
 
@@ -28,10 +29,12 @@
 #include "ArkUINode.h"
 #include <string>
 
+// ···
 namespace NativeModule {
 const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
 // 布局完成的回调方法
-void OnLayoutCompleted(void* userData) {
+void OnLayoutCompleted(void *userData)
+{
     ArkUI_NodeHandle node = (ArkUI_NodeHandle)userData;
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "the text_node is layout completed");
     ArkUI_NativeNodeAPI_1 *nativeModule = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
@@ -39,78 +42,83 @@ void OnLayoutCompleted(void* userData) {
     nativeModule->setAttribute(node, NODE_TEXT_CONTENT, &item);
 }
 // 绘制送显完成的回调方法
-void OnDrawCompleted(void* userData) {
+void OnDrawCompleted(void *userData)
+{
     ArkUI_NodeHandle node = (ArkUI_NodeHandle)userData;
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "the text_node is draw completed");
     ArkUI_NativeNodeAPI_1 *nativeModule = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
     ArkUI_AttributeItem item = {nullptr, 0, "draw callback"};
     nativeModule->setAttribute(node, NODE_TEXT_CONTENT, &item);
 }
-
+// ···
 class ArkUITextNode : public ArkUINode {
 public:
     ArkUITextNode()
         : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_TEXT)) {}
-    void SetFontSize(float fontSize) {
-        assert(handle_);
+    void SetFontSize(float fontSize)
+    {
         ArkUI_NumberValue value[] = {{.f32 = fontSize}};
         ArkUI_AttributeItem item = {value, 1};
         nativeModule_->setAttribute(handle_, NODE_FONT_SIZE, &item);
     }
-    void SetFontColor(uint32_t color) {
-        assert(handle_);
+    void SetFontColor(uint32_t color)
+    {
         ArkUI_NumberValue value[] = {{.u32 = color}};
         ArkUI_AttributeItem item = {value, 1};
         nativeModule_->setAttribute(handle_, NODE_FONT_COLOR, &item);
     }
-    void SetTextContent(const std::string &content) {
-        assert(handle_);
+    void SetTextContent(const std::string &content)
+    {
         ArkUI_AttributeItem item = {nullptr, 0, content.c_str()};
         nativeModule_->setAttribute(handle_, NODE_TEXT_CONTENT, &item);
     }
-    void SetTextAlign(ArkUI_TextAlignment align) {
-        assert(handle_);
+    void SetTextAlign(ArkUI_TextAlignment align)
+    {
         ArkUI_NumberValue value[] = {{.i32 = align}};
         ArkUI_AttributeItem item = {value, 1};
         nativeModule_->setAttribute(handle_, NODE_TEXT_ALIGN, &item);
     }
-    void SetLayoutCallBack(int32_t nodeId) {
-        assert(handle_);
+    void SetLayoutCallBack(int32_t nodeId)
+    {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "set layout callback");
         // 注册布局完成的回调方法
         OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(handle_, this, OnLayoutCompleted);
     }
-    void ResetLayoutCallBack() {
-        assert(handle_);
+    void ResetLayoutCallBack()
+    {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "reset layout callback");
         // 取消注册布局完成的回调方法
         OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(handle_);
     }
-    void SetDrawCallBack(int32_t nodeId) {
-        assert(handle_);
+    void SetDrawCallBack(int32_t nodeId)
+    {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "set draw callback");
         // 注册绘制送显完成的回调方法
         OH_ArkUI_RegisterDrawCallbackOnNodeHandle(handle_, this, OnDrawCompleted);
     }
-    void ResetDrawCallBack() {
-        assert(handle_);
+    void ResetDrawCallBack()
+    {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback", "reset draw callback");
         // 取消注册绘制送显完成的回调方法
         OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(handle_);
     }
-    void SetInspectorId(std::string inspectorId) {
+    void SetInspectorId(std::string inspectorId)
+    {
         ArkUI_AttributeItem item = {nullptr, 0, inspectorId.c_str()};
         nativeModule_->setAttribute(handle_, NODE_ID, &item);
     }
+    // ···
 };
 } // namespace NativeModule
 
 #endif // MYAPPLICATION_ARKUITEXTNODE_H
 ```
 
-```c
+<!-- @[normalTextListExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NormalTextListExample.h) -->
+
+``` C
 // NormalTextListExample.h
-// 自定义NDK接口入口函数。
+// 自定义接入入口函数
 
 #ifndef MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
 #define MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
@@ -120,10 +128,14 @@ public:
 #include "ArkUIListNode.h"
 #include "ArkUITextNode.h"
 #include <hilog/log.h>
+#define SIZE_16 16
+#define SIZE_100 100
+#define COLOR_BACKGROUND 0xFFfffacd
 
 namespace NativeModule {
 
-std::shared_ptr<ArkUIBaseNode> CreateTextListExample() {
+std::shared_ptr<ArkUIBaseNode> CreateTextListExample()
+{
     // 创建组件并挂载
     // 1：使用智能指针创建List组件。
     auto list = std::make_shared<ArkUIListNode>();
@@ -134,10 +146,10 @@ std::shared_ptr<ArkUIBaseNode> CreateTextListExample() {
         auto listItem = std::make_shared<ArkUIListItemNode>();
         auto textNode = std::make_shared<ArkUITextNode>();
         textNode->SetTextContent(std::to_string(i));
-        textNode->SetFontSize(16);
+        textNode->SetFontSize(SIZE_16);
         textNode->SetPercentWidth(1);
-        textNode->SetHeight(100);
-        textNode->SetBackgroundColor(0xFFfffacd);
+        textNode->SetHeight(SIZE_100);
+        textNode->SetBackgroundColor(COLOR_BACKGROUND);
         textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
         // 在当前节点注册布局回调
         textNode->SetLayoutCallBack(i);

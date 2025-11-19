@@ -1,4 +1,4 @@
-# Display Management
+# Display Management<!--display-manager-->
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk; @logn-->

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct Image_Size {...}
+```
+
 ## Overview
 
 The struct describes the image size.

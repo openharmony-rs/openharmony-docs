@@ -51,24 +51,32 @@ For details about how to remove an asset in a group, see [Removing an Asset from
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. Remove an asset.
-   ```c
-   #include <string.h>
+2. Include header files.
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-   #include "asset/asset_api.h"
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
 
-   static napi_value RemoveAsset(napi_env env, napi_callback_info info) 
-   {
-       static const char *ALIAS = "demo_alias";
-       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
 
-       Asset_Attr attr[] = {
-           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // You can specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
-       };
+3. Remove an asset.
+   <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-       int32_t removeResult = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
-       napi_value ret;
-       napi_create_int32(env, removeResult, &ret);
-       return ret;
-   }
-   ```
+``` C++
+static napi_value RemoveAsset(napi_env env, napi_callback_info info)
+{
+    const char *aliasStr = "demo_alias";
+    
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Attr attr[] = {
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // You can specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
+    };
+
+    int32_t removeResult = OH_Asset_Remove(attr, sizeof(attr) / sizeof(attr[0]));
+    napi_value ret;
+    napi_create_int32(env, removeResult, &ret);
+    return ret;
+}
+```

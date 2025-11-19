@@ -43,8 +43,9 @@ PageTransitionExit({type?: RouteType,duration?: number,curve?: Curve | string,de
 
 type为RouteType.None表示对页面栈的push、pop操作均生效，type的默认值为RouteType.None。
 
+<!-- @[pageTransition_template5_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionSrc3.ets) -->
 
-```ts
+``` TypeScript
 // page A
 pageTransition() {
   // 定义页面进入时的效果，从左侧滑入，时长为1200ms，无论页面栈发生push还是pop操作均可生效
@@ -56,7 +57,11 @@ pageTransition() {
 }
 ```
 
-```ts
+<!-- -->
+
+<!-- @[pageTransition_template5_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionDst3.ets) -->
+
+``` TypeScript
 // page B
 pageTransition() {
   // 定义页面进入时的效果，从右侧滑入，时长为1000ms，无论页面栈发生push还是pop操作均可生效
@@ -67,6 +72,7 @@ pageTransition() {
     .slide(SlideEffect.Right)
 }
 ```
+
 
 
 假设页面跳转配置为多实例模式，即页面栈中允许存在重复的页面。可能会有4种场景，对应的页面转场效果如下表。
@@ -87,8 +93,9 @@ pageTransition() {
 
 type为RouteType.Push表示仅对页面栈的push操作生效，type为RouteType.Pop表示仅对页面栈的pop操作生效。
 
+<!-- @[pageTransition_template6_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionSrc4.ets) -->
 
-```ts
+``` TypeScript
 // page A
 pageTransition() {
   // 定义页面进入时的效果，从右侧滑入，时长为1200ms，页面栈发生push操作时该效果才生效
@@ -106,7 +113,11 @@ pageTransition() {
 }
 ```
 
-```ts
+<!-- -->
+
+<!-- @[pageTransition_template6_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionDst4.ets) -->
+
+``` TypeScript
 // page B
 pageTransition() {
   // 定义页面进入时的效果，从右侧滑入，时长为1000ms，页面栈发生push操作时该效果才生效
@@ -161,13 +172,16 @@ pageTransition() {
 
 下面介绍了利用[pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl)跳转能力定义了所有的四种页面转场样式的页面转场动画示例。
 
-```ts
+<!-- @[pageTransition_template3_pageTransitionSrc1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionSrc1.ets) -->
+
+``` TypeScript
 // PageTransitionSrc1
 @Entry
 @Component
 struct PageTransitionSrc1 {
   build() {
     Column() {
+      // $r('app.media.mountain')需要替换为开发者所需的资源文件
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -179,7 +193,7 @@ struct PageTransitionSrc1 {
         Button("pushUrl")
           .onClick(() => {
             // 路由到下一个页面，push操作
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionDst1' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionDst1' });
           })
         Button("back")
           .onClick(() => {
@@ -188,7 +202,7 @@ struct PageTransitionSrc1 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -209,16 +223,18 @@ struct PageTransitionSrc1 {
 }
 ```
 
+<!-- -->
 
+<!-- @[pageTransition_template3_pageTransitionDst1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionDst1.ets) -->
 
-
-```ts
+``` TypeScript
 // PageTransitionDst1
 @Entry
 @Component
 struct PageTransitionDst1 {
   build() {
     Column() {
+      // $r('app.media.forest')需要替换为开发者所需的资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -230,7 +246,7 @@ struct PageTransitionDst1 {
         Button("pushUrl")
           .onClick(() => {
             // 路由到下一页面，push操作
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionSrc1' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionSrc1' });
           })
         Button("back")
           .onClick(() => {
@@ -239,7 +255,7 @@ struct PageTransitionDst1 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -265,17 +281,18 @@ struct PageTransitionDst1 {
 ![pageTransition_PushPop](figures/pageTransition_PushPop.gif)
 
 
-下面介绍使用了type为None的页面转场动画示例。
+下面介绍使用了type为None的页面转场动画示例。 
 
+<!-- @[pageTransition_template4_pageTransitionSrc2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionSrc2.ets) -->
 
-
-```ts
+``` TypeScript
 // PageTransitionSrc2
 @Entry
 @Component
 struct PageTransitionSrc2 {
   build() {
     Column() {
+      // $r('app.media.mountain')需要替换为开发者所需的资源文件
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -287,7 +304,7 @@ struct PageTransitionSrc2 {
         Button("pushUrl")
           .onClick(() => {
             // 路由到下一页面，push操作
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionDst2' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionDst2' });
           })
         Button("back")
           .onClick(() => {
@@ -296,7 +313,7 @@ struct PageTransitionSrc2 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -312,15 +329,18 @@ struct PageTransitionSrc2 {
 }
 ```
 
+<!-- -->
 
+<!-- @[pageTransition_template4_pageTransitionDst2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionDst2.ets) -->
 
-```ts
+``` TypeScript
 // PageTransitionDst2
 @Entry
 @Component
 struct PageTransitionDst2 {
   build() {
     Column() {
+       // $r('app.media.forest')需要替换为开发者所需的资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -332,7 +352,7 @@ struct PageTransitionDst2 {
         Button("pushUrl")
           .onClick(() => {
             // 路由到下一页面，push操作
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionSrc2' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionSrc2' });
           })
         Button("back")
           .onClick(() => {
@@ -341,7 +361,7 @@ struct PageTransitionDst2 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -356,7 +376,6 @@ struct PageTransitionDst2 {
   }
 }
 ```
-
 
 
 ![pageTransition_None](figures/pageTransition_None.gif)

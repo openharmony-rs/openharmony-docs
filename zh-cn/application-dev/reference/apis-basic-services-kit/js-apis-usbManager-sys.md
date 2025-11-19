@@ -682,7 +682,6 @@ getPortSupportModes(portId: number): PortModeType
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
-| 14400003 | Unsupported operation. The current device does not support port role switching.                         |
 
 **示例：**
 
@@ -736,6 +735,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let portId: number = 1;
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');

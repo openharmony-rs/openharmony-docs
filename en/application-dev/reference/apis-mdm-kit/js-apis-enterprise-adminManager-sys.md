@@ -67,7 +67,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // Replace with actual values.
@@ -130,7 +130,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // Replace with actual values.
@@ -199,7 +199,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // Replace with actual values.
@@ -254,7 +254,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.disableAdmin(wantTemp, (err) => {
@@ -308,7 +308,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.disableAdmin(wantTemp, 100, (err) => {
@@ -459,7 +459,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.isAdminEnabled(wantTemp, (err, result) => {
@@ -509,7 +509,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -566,7 +566,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // Replace parameters with actual values.
@@ -593,7 +593,7 @@ Checks whether a super device administrator application is enabled based on **bu
 
 | Name       | Type                     | Mandatory  | Description                  |
 | ---------- | ----------------------- | ---- | -------------------- |
-| bundleName | String                  | Yes   | Super device administrator application to check.             |
+| bundleName | String                  | Yes   | Super device administrator application.             |
 | callback   | AsyncCallback\<boolean> | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null** and **data** is a Boolean value (**true** means that the device administrator application is enabled; and **false** means the opposite). If the operation fails, **err** is an error object.|
 
 **Error codes**
@@ -639,7 +639,7 @@ Checks whether a super device administrator application is enabled based on **bu
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| bundleName | String | Yes   | Super device administrator application to check.|
+| bundleName | String | Yes   | Super device administrator application.|
 
 **Return value**
 
@@ -731,7 +731,7 @@ Sets the enterprise information of the device administrator application. This AP
 | Name           | Type                                 | Mandatory  | Description                    |
 | -------------- | ----------------------------------- | ---- | ---------------------- |
 | admin          | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.         |
-| enterpriseInfo | [EnterpriseInfo](#enterpriseinfo)   | Yes   | Enterprise information to set.          |
+| enterpriseInfo | [EnterpriseInfo](#enterpriseinfo)   | Yes   | Enterprise information of the device administrator application.          |
 | callback       | AsyncCallback\<void>              | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -754,7 +754,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // Replace with actual values.
@@ -790,7 +790,7 @@ Sets the enterprise information of the device administrator application. This AP
 | Name           | Type                                 | Mandatory  | Description          |
 | -------------- | ----------------------------------- | ---- | ------------ |
 | admin          | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
-| enterpriseInfo | [EnterpriseInfo](#enterpriseinfo)   | Yes   | Enterprise information to set.|
+| enterpriseInfo | [EnterpriseInfo](#enterpriseinfo)   | Yes   | Enterprise information of the device administrator application.|
 
 **Return value**
 
@@ -819,7 +819,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // Replace with actual values.
@@ -870,7 +870,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
@@ -926,7 +926,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.getEnterpriseInfo(wantTemp).then((result) => {
@@ -979,7 +979,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1041,7 +1041,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1094,7 +1094,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1156,7 +1156,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1210,7 +1210,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let bundleName: string = "com.example.application";
@@ -1274,7 +1274,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let bundleName: string = "com.example.application";
@@ -1369,12 +1369,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let oldAdmin: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let newAdmin: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication_new',
-  abilityName: 'NewEntryAbility'
+  abilityName: 'NewEnterpriseAdminAbility'
 };
 try {
   adminManager.replaceSuperAdmin(oldAdmin, newAdmin, false);
@@ -1429,7 +1429,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let admin: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   adminManager.setAdminRunningMode(admin, adminManager.RunningMode.MULTI_USER);
