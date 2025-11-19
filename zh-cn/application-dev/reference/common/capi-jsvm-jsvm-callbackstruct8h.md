@@ -6,7 +6,7 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef JSVM_CallbackStruct* JSVM_Callback
 ```
 
