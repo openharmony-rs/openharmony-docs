@@ -7,7 +7,7 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef void *OH_AI_TrainCfgHandle
 ```
 
