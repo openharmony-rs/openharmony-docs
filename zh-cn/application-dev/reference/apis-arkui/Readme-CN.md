@@ -401,32 +401,32 @@
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - 动态ArkTS自定义组件
       - 自定义组件装饰器
-        - @Component
-        - @ComponentV2
-        - [@Entry](arkui-ts/ts-universal-entry.md)
+        - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component.md)
+        - [@ComponentV2：自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2.md)
+        - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
       - 组件扩展装饰器
         - [@AnimatableExtend装饰器：定义可动画属性](arkui-ts/ts-universal-animatable-extend.md)
         - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-dynamic.md)
         - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-dynamic.md)
-        - @Extend
+        - [@Extend：扩展组件样式](arkui-ts/ts-custom-component-decorator-extend.md)
         - [@LocalBuilder装饰器：维持组件关系](arkui-ts/ts-universal-localbuilder.md)
         - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-dynamic.md)
-        - @Reusable
-        - @ReusableV2
-        - @Styles
+        - [@Reusable：组件复用](arkui-ts/ts-custom-component-decorator-reusable.md)
+        - [@ReusableV2：组件复用V2](arkui-ts/ts-custom-component-decorator-reusablev2.md)
+        - [@Styles：组件重用样式](arkui-ts/ts-custom-component-decorator-styles.md)
         - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-dynamic.md)
     - 静态ArkTS自定义组件
       - 自定义组件装饰器
-        - @Component
-        - @ComponentV2
-        - @Entry
+        - [@Component：自定义组件](arkui-ts/ts-custom-component-decorator-component-static.md)
+        - [@ComponentV2:自定义组件V2](arkui-ts/ts-custom-component-decorator-componentv2-static.md)
+        - [@Entry：页面入口](arkui-ts/ts-custom-component-decorator-entry-static.md)
       - 组件扩展装饰器
         - [@Builder装饰器：自定义构建函数](arkui-ts/ts-universal-builder-static.md)
         - [@BuilderParam装饰器：引用@Builder函数](arkui-ts/ts-universal-builderparam-static.md)
-        - @CustomLayout
+        - [@CustomLayout：自定义布局](arkui-ts/ts-custom-component-decorator-customlayout.md)
         - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-static.md)
-        - @Reusable
-        - @ReusableV2
+        - [@Reusable：组件复用](arkui-ts/ts-custom-component-decorator-reusable-static.md)
+        - @ReusableV2：组件复用V2
         - [applyStyles：定义组件重用样式](arkui-ts/ts-universal-applyStyles.md)
         - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-static.md)
   - 互操作
