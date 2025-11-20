@@ -1098,7 +1098,7 @@ try {
 
 > **说明：**
 >
-> 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[AuthResultInfo](#authresultinfo10)替代。
+> 从 API version 9 开始支持，从 API version 11 开始废弃，请使用[UserAuthResult](#userauthresult10)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2021,7 +2021,7 @@ type SecureLevel = string
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[AuthTrustLevel](#authtrustlevel)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[AuthTrustLevel](#authtrustlevel8)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2037,7 +2037,7 @@ type AuthType = string
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuthType](#userauthtype)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuthType](#userauthtype8)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
