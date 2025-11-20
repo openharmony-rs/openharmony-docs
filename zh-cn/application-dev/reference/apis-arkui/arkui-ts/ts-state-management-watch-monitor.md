@@ -198,7 +198,7 @@ struct Index {
         .onClick(() => {
           this.info.name = 'Bob'; // 输出日志：path: name change from Tom to Bob
         })
-      Text(`info.age: ${this.info.age}, info.name: ${this.info.height}`)
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
         .onClick(() => {
           this.info.age++; // 输出日志：path: age change from 25 to 26
           this.info.height++; // 输出日志：path: height change from 175 to 176
