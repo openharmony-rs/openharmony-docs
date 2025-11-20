@@ -1,19 +1,20 @@
 # UI并行化创建组件树
 从API version 20开始，UI可以并行创建组件树，从而降低组件创建时延并提升应用的流畅度。
 ## 概述
-随着用户对应用响应速度和流畅度提出的更高要求，传统单线程UI渲染方式已无法满足日益复杂UI和数据处理需求，UI卡顿、响应迟缓等问题严重影响用户体验。基于上述问题，ArkUI提出声明式下部分UI并行化创建方案。开发者可指定并行内容，减少组件创建时延，提升用户体验。
+传统单线程UI渲染方式已无法满足日益复杂UI和数据处理需求，UI卡顿、响应迟缓等问题严重影响用户体验。基于上述问题，ArkUI提出声明式下部分UI并行化创建方案。开发者可指定并行内容，减少组件创建时延，提升用户体验。
 
-适用场景：需要对现有复杂页面进行拆分。执行并行构建的部分不会在当前帧立即渲染，因此执行并行的内容一般为屏幕外的内容、可以延迟显示的内容或者可以先用占位替代需要显示的内容。如该页面可以将当前帧显示的内容串行创建，屏幕外的内容并行创建。
+适用场景：需要对现有复杂页面进行拆分。执行并行构建的部分不会在当前帧立即渲染，因此执行并行的内容一般为屏幕外的内容、可以延迟显示的内容或者可以先用占位替代需要显示的内容。
 
-ArkUI对并行任务的数量没有限制，具体数量开发者根据页面中可分帧并行的内容进行划分，由业务逻辑决定。每个并行任务应包含足够多的组件，建议每个任务内的组件数量大于50个，以避免任务调度开销大于并行收益。
+下述页面可以将当前帧显示的内容串行创建，屏幕外的内容并行创建。
 
 ![ui_parallel003](figures/page.png)
 
 ## 约束与限制
   * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)。
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)不支持[Web](../reference/apis-arkweb/arkts-basic-components-web.md)、[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)组件，使用这些组件将触发运行时错误，导致应用崩溃。
-  * 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。
+  * 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。<!--Del-->具体示例可以参考[UI并行化创建组件树接口ParallelizeUI如何确保多线程读写安全(API 20)](../faqs/faqs-arkui-component.md#ui并行化创建组件树接口parallelizeui如何确保多线程读写安全api-20)。<!--DelEnd-->
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持并行化创建，创建完成后的更新操作仍在主线程完成。
+  * ArkUI对并行任务的数量没有限制，具体数量开发者根据页面中可分帧并行的内容进行划分，由业务逻辑决定。每个并行任务应包含足够多的组件，建议每个任务内的组件数量大于50个，以避免任务调度开销大于并行收益。
 
 
 ## 数据传递
@@ -64,6 +65,7 @@ struct Index {
   @State str: string = 'Hello';
   build() {
     Column() {
+      // 使用ParallelizeUI<T>传递外部状态变量来构造参数
       ParallelizeUI<Param>(undefined, () => { return new Param(this.str); }, (param: Param) => {
         Text(param.str)
           .fontSize(50)
@@ -90,7 +92,7 @@ struct Index {
 
 ```ts
 import { Entry, Text, Column, Component, Button, ClickEvent, FontWeight, Stack, Position,
-  TextAlign, Alignment, Margin, Row, GridItem, Image ,ImageFit, $r, Grid } from '@ohos.arkui.component';
+  TextAlign, Alignment, Margin, Row, GridItem, Image ,ImageFit, $r, Grid, ForEach } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
@@ -152,21 +154,18 @@ struct Page {
         })
         .width(200)
         .height(50)
-      let prop1 = ParallelizeUI<WeatherInfo>(() => {
-        return new WeatherInfo(this.infos[0].city, this.infos[0].temperature, this.infos[0].weather);
-      })
       Grid() {
         ParallelizeUI<WeatherInfo>(undefined,
           () => { return new WeatherInfo(this.infos[0].city, this.infos[0].temperature, this.infos[0].weather); },
-          (prop1: WeatherInfo) => {
-            // 并行创建多个组件
+          (param: WeatherInfo) => {
+            // 第一个GridItem使用并行创建
             GridItem() {
               Row() {
                 Column() {
-                  Text(prop1.city).fontSize('25')
-                  Text(prop1.temperature.toString()).fontSize('25')
+                  Text(param.city).fontSize('25')
+                  Text(param.temperature.toString()).fontSize('25')
                 }
-                Image($r(prop1.getImg()))
+                Image($r(param.getImg()))
                   .objectFit(ImageFit.Contain)
               }
               .width('100%')
@@ -176,15 +175,15 @@ struct Page {
             .height(100)
             .borderWidth(2).borderColor(0xAFEEEE)
         })
-        // 其余组件串行创建
-        for (let i = 1; i < this.infos.length; i++) {
+        // 剩余3个GridItem使用串行创建
+        ForEach(this.infos.slice(1), (item: WeatherInfo) => {
           GridItem() {
             Row() {
               Column() {
-                Text(this.infos[i].city).fontSize('25')
-                Text(this.infos[i].temperature.toString()).fontSize('25')
+                Text(item.city).fontSize('25')
+                Text(item.temperature.toString()).fontSize('25')
               }
-              Image($r(this.infos[i].getImg()))
+              Image($r(item.getImg()))
                 .objectFit(ImageFit.Contain)
             }
             .width('100%')
@@ -193,7 +192,7 @@ struct Page {
           .width('100%')
           .height(100)
           .borderWidth(2).borderColor(0xAFEEEE)
-        }
+        })
       }
       .columnsTemplate('1fr 1fr')
       .columnsGap(20)
@@ -240,7 +239,7 @@ struct Page {
     @State arr: Array<Int> = [1]
 
     aboutToAppear() {
-      // 模拟10个卡片数据
+      // 构造并行循环创建的数据源，创建10个Stack组件
       for (let i = 2; i <= 10; i++) {
         this.arr.push(i)
       }
@@ -254,7 +253,7 @@ struct Page {
           .fontColor('#333')
           .margin({ bottom: 12 } as Margin)
 
-        // 并行创建
+        // 循环并行创建
         ParallelizeUI<Int, CardInfo>({ enable: true }, this.arr,
           (item: Int, index: Int) => {
             const coverIndex = ((item - 1) % 5) + 1
@@ -338,6 +337,7 @@ struct Page {
     build() {
       Column() {
         List({ space: 10 }) {
+          // 循环并行创建
           ParallelizeUI<Int, Info>({ enable:true }, this.arr,
             (item: Int, index: Int) => {
               const coverIndex = ((item - 1) % 5) + 1   // 为每个Item生成Index
@@ -410,7 +410,20 @@ struct Page {
 
   ![ui_parallel003](figures/ui_parallellist.jpg)
 
+## UI并行化创建组件树DFX定位指导与性能调优
+参考[使用SmartPerf-Host分析应用性能](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md)文档，抓取Trace以对比并行创建与非并行创建组件时的性能。同时，也可以通过Trace观察BuilderNode是否在子线程中构建和更新。
+
+使用SmartPerf-Host抓取Trace，通过Trace观察UI组件是否在子线程中构建。如图所示，子线程10297中存在`parallelize build`的trace，这表明构建是在子线程中进行的。
+
+  ![parallel_dotask](figures/parallel_build.png)
+
+
+
+<!--Del-->
 ## 相关实例
 
 [使用声明式的并行化方法创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI/README.md)
 
+[List&Grid并行化创建子组件](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS1.2/ListAndGridParallelSample/README.md)
+
+<!--DelEnd-->

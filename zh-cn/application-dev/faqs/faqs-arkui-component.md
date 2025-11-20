@@ -925,11 +925,17 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
 
 **解决措施**
 
-1. 需要依赖外部的状态变量更新UI，请使用[memorizeUpdatedState](../ui/state-management-static/arkts-static-memorizeUpdatedState.md)创建MemoState传递到ParallelizeUI内部使用。
+1. 需要依赖外部的状态变量更新UI，请使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量来构造用于并行创建UI的参数。
 
     ```ts
     import { ParallelizeUI } from '@ohos.arkui.Parallelize';
-    import { memorizeUpdatedState } from '@ohos.arkui.stateManagement';
+
+    class Param {
+      str: string;
+      constructor(str: string) {
+        this.str = str;
+      }
+    }
 
     @Entry
     @Component
@@ -937,17 +943,13 @@ ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于
       @State str: string = 'Hello';
       build() {
         Column() {
-          const str = memorizeUpdatedState<string>(() => {return this.str})
-          ParallelizeUI() {
-            Text(str.value) // 使用memorizeUpdatedState进行数据传递
-            .fontSize(50)
-          }
+          // 使用ParallelizeUI<T>传递外部状态变量来构造参数
+          ParallelizeUI<Param>(undefined, () => { return new Param(this.str); }, (param: Param) => {
+            Text(param.str)
+              .fontSize(50)
+          })
           Text('World')
             .fontSize(50)
-          Button('UpperCase')
-            .onClick((event: ClickEvent) => {
-              this.str = this.str.toUpperCase()
-            })
         }.height('100%')
           .width('100%')
       }
