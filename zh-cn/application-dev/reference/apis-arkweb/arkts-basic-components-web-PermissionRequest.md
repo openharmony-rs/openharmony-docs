@@ -12,7 +12,7 @@ Web组件返回授权或拒绝权限功能的对象。示例代码参考[onPermi
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-## constructor
+## constructor<sup>9+</sup>
 
 constructor()
 
