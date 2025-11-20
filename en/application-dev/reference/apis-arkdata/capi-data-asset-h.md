@@ -26,7 +26,7 @@ Defines data asset structs.<br>Asset is a data struct used in data management. Y
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset, which provides information about a data asset.|
+| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset,单语中调整格式<br>which provides information about a data asset.|
 
 ### Enums
 
