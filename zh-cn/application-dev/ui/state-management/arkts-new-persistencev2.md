@@ -494,16 +494,16 @@ struct Page1 {
             deviceId: '', // deviceId为空代表本设备
             bundleName: 'com.samples.paradigmstatemanagement', // 在app.json5中查看
             moduleName: 'demo', // 在需要跳转的module的module.json5中查看，非必选参数
-            abilityName: 'NewModuleAbility', // 跳转启动的ability，在跳转模块对应的ability.ets文件中查看
+            abilityName: 'NewModuleAbility', // 跳转启动的ability，在需要跳转的module的module.json5中查看
             uri: 'src/main/ets/pages/Index'
-          }
+          };
           // context为调用方UIAbility的UIAbilityContext
           this.context.startAbility(want).then(() => {
             hilog.info(DOMAIN, 'testTag', '%{public}s', 'start ability success');
           }).catch((err: Error) => {
             hilog.error(DOMAIN, 'testTag', '%{public}s',
               `start ability failed. code is ${err.name}, message is ${err.message}`);
-          })
+          });
         })
     }
     .width('100%')

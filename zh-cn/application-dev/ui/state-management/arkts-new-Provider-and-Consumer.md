@@ -720,7 +720,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
 function buildText() {
-  TestRemove();
+  TestRemove()
 }
 
 let globalBuilderNode: BuilderNode<[]> | null = null;
@@ -801,7 +801,7 @@ struct RemoChildDisconnectProvider {
         .onClick(() => {
           this.content += 'Pro';
         })
-      NodeContainer(this.controllerIndex);
+      NodeContainer(this.controllerIndex)
     }
     .width('100%')
     .height('100%')
