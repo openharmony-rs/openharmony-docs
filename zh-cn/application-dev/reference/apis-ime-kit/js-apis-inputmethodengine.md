@@ -1478,6 +1478,8 @@ resize(width: number, height: number, callback: AsyncCallback\<void>): void
 > **说明**
 >
 > 面板宽度不超出屏幕宽度，面板高度不高于屏幕高度的0.7倍。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1520,6 +1522,8 @@ resize(width: number, height: number): Promise\<void>
 > **说明**
 >
 > 面板宽度不超出屏幕宽度，面板高度不高于屏幕高度的0.7倍。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1809,6 +1813,14 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 预设置输入法应用横竖屏大小。接口调用完毕表示adjust请求已提交到输入法框架，不表示执行完毕。
 
+> **说明:**
+>
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+>
+> 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **参数：**
@@ -1865,6 +1877,8 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
 > 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
