@@ -844,9 +844,9 @@ class Params {
   }
 }
 
-// 定义一个buildNodeChild组件，它包含一个message属性和一个index属性
+// 定义一个BuildNodeChild组件，它包含一个message属性和一个index属性
 @ComponentV2
-struct buildNodeChild {
+struct BuildNodeChild {
   // 使用Params实例作为storage属性
   storage: Params = Params.instance();
   @Param index: number = 0;
@@ -855,7 +855,7 @@ struct buildNodeChild {
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
     hilog.info(DOMAIN, 'onMessageChange',
-      `FreezeBuildNode buildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
+      `FreezeBuildNode BuildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
   }
 
   build() {
@@ -867,7 +867,7 @@ struct buildNodeChild {
 @Builder
 function buildText(params: Params) {
   Column() {
-    buildNodeChild({ index: params.index })
+    BuildNodeChild({ index: params.index })
   }
 }
 
