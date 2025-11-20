@@ -3295,7 +3295,7 @@ ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | unde
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | 是 | 请求显示地理位置权限时触发。     |
+| callback      | ArkTS-Dyn: Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\> <br/>ArkTS-Sta: Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\> \| undefined | 是 | 请求显示地理位置权限时触发。     |
 
 **示例：**
 
@@ -3414,7 +3414,7 @@ ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 地理位置信息获取请求已被取消的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
 
 **示例：**
 
