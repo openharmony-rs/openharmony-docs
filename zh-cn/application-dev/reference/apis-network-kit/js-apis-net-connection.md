@@ -3802,11 +3802,12 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称           | 类型                        | 必填 |     说明      |
 | -------------- | --------------------------- | --- |-------------- |
-| interface      | string                      | 是 |网卡名称。       |	
-| destination    | [LinkAddress](#linkaddress) | 是 |目的地址。       |	
-| gateway        | [NetAddress](#netaddress)   | 是 |网关地址。       |	
-| hasGateway     | boolean                     | 是 |true：有网关；false：无网关。     |	
-| isDefaultRoute | boolean                     | 是 |true：默认路由；false：非默认路由。 |
+| interface      | string                      | 是 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|	
+| iface      | string                      | 是 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|	
+| destination    | [LinkAddress](#linkaddress) | 是 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
+| gateway        | [NetAddress](#netaddress)   | 是 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
+| hasGateway     | boolean                     | 是 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
+| isDefaultRoute | boolean                     | 是 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|
 
 ## LinkAddress
 
