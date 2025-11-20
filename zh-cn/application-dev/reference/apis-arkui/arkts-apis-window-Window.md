@@ -1109,7 +1109,7 @@ ArkTS-Sta: resize(width: int, height: int, callback: AsyncCallback&lt;void&gt;):
 
 调用该接口设置的宽度与高度受到此限制约束，规则：
 
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
@@ -1197,7 +1197,7 @@ ArkTS-Sta: resize(width: int, height: int): Promise&lt;void&gt;
 
 调用该接口设置的宽度与高度受到此限制约束，规则：
 
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
@@ -1287,7 +1287,7 @@ ArkTS-Sta: resizeAsync(width: int, height: int): Promise&lt;void&gt;
 
 调用该接口设置的宽度与高度受到此限制约束，规则：
 
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
@@ -10731,7 +10731,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowLimits(): WindowLimits
 
-获取当前应用窗口的尺寸限制。
+获取当前应用窗口的尺寸限制，单位为物理像素px。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10782,7 +10782,10 @@ try {
 setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10867,7 +10870,9 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
 
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
