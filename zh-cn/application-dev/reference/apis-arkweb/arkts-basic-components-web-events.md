@@ -2897,7 +2897,7 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
      }
      ```
 
-## onPermissionRequest
+## onPermissionRequest<sup>9+</sup>
 
 ArkTS-Dyn: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
@@ -2906,6 +2906,10 @@ ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | 
 通知收到获取权限请求，需配置"ohos.permission.CAMERA"、"ohos.permission.MICROPHONE"权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
