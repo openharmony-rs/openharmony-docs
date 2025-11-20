@@ -325,7 +325,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 ### updatePickeOptions<sup>22+</sup>
 
-updatePickeOptions(updateConfig: [UpdatablePickerOptions](#updatablepickeroptions22)): Promise\<void\>;
+updatePickeOptions(updateConfig: [UpdatablePickerConfigs](#updatablepickerconfigs22)): Promise\<void\>;
 
 应用可通过该接口，更新PhotoPickerComponent的属性。
 
@@ -337,7 +337,7 @@ updatePickeOptions(updateConfig: [UpdatablePickerOptions](#updatablepickeroption
 
 | 参数名         | 类型                                                             | 必填  | 说明                |
 |-------------|----------------------------------------------------------------| ----- |-------------------|
-| updateConfig | [UpdatablePickerOptions](#updatablepickeroptions22) | 是 | 支持更新的PhotoPickerComponent属性，为[PickerOptions](#pickeroptions)的子集 |
+| updateConfig | [UpdatablePickerConfigs](#updatablepickerconfigs22) | 是 | 支持更新的PhotoPickerComponent属性，为[PickerOptions](#pickeroptions)的子集 |
 
 ## BaseItemInfo
 
@@ -356,7 +356,7 @@ updatePickeOptions(updateConfig: [UpdatablePickerOptions](#updatablepickeroption
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BRUST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-| movingPhotoBadgeState<sup>22+</sup> | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingPhotoBadgeStateType22) | 否 | 是   | 动态照片的状态（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。 |
+| movingPhotoBadgeState<sup>22+</sup> | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否 | 是   | 动态照片的状态（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。 |
 
 ## ItemInfo
 
@@ -449,7 +449,7 @@ updatePickeOptions(updateConfig: [UpdatablePickerOptions](#updatablepickeroption
 | uri | string | 否   | 否 |选中媒体文件的uri。 |
 | preselectablePickerIndex | number | 否   | 是 | 限制仅在指定序号的PhotoPickerComponent中进行自动选中；默认为-1，即可支持在任意序号的PhotoPickerComponent中自动选中。 |
 
-## UpdatablePickerOptions<sup>22+</sup>
+## UpdatablePickerConfigs<sup>22+</sup>
 
 支持更新的PhotoPickerComponent属性，为[PickerOptions](#pickeroptions)的子集。
 
@@ -460,7 +460,7 @@ updatePickeOptions(updateConfig: [UpdatablePickerOptions](#updatablepickeroption
 | 名称 | 类型                                             | 只读 | 可选 | 说明                                                                           |
 | ---- | ------------------------------------------------ | ---- | ---- | ------------------------------------------------------------------------------ |
 | mimeType | [PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)   | 否 | 是   | 可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。|
-| mimeTypeFilter | [MimeTypeFilter](arkts-apis-photoAccessHelper-e.md#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>当配置mimeTypeFilter参数时，MIMEType的配置自动失效。<br>配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。 |
+| mimeTypeFilter | [MimeTypeFilter](arkts-apis-photoAccessHelper-class.md#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>当配置mimeTypeFilter参数时，MIMEType的配置自动失效。<br>配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。 |
 | maxSelectNumber       | number                          | 否   | 是 | 选择媒体文件数量的最大值（最大可设置的值为500，若不设置则默认为50）。 |
 | maxPhotoSelectNumber            | number                 | 否  | 是 | 图片最大的选择数量。最大值为500，受到最大选择总数的限制。默认为500。                                     |
 | maxVideoSelectNumber            | number                 | 否  | 是 | 视频最大的选择数量。最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。                                      |
