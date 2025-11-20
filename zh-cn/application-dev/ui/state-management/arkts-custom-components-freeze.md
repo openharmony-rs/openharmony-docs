@@ -53,7 +53,7 @@
 ![freezeInPage](./figures/freezeInPage.png)
 
 页面1：
-<!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->
+<!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->    
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1034,7 +1034,7 @@ struct Page {
 **Navigation和TabContent的混用**
 
 代码示例如下：
-<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) -->
+<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) -->    
 
 ``` TypeScript
 // index.ets
