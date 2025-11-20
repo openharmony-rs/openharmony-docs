@@ -51,7 +51,17 @@ HSP对bundleName和签名有一致性要求，在调试阶段需要先安装HSP�
 
 2. 在resource\base\profile文件夹下，删除main_pages.json文件。
 
-3. 修改HSP模块的hvigorfile.ts文件，将内容替换为以下内容。
+    <!-- @[hsp_to_har_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HspToHar/library/hvigorfile.ts) -->
+    
+    ``` TypeScript
+    // MyApplication\library\hvigorfile.ts
+    import { harTasks } from '@ohos/hvigor-ohos-plugin';
+    
+    export default {
+      system: harTasks,  // 编译修改成HAR的任务
+      plugins:[]
+    }
+    ```
 
     <!-- @[hsp_to_har_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HspToHar/library/hvigorfile.ts) -->
 
