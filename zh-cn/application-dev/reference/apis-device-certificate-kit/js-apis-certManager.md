@@ -118,7 +118,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | certNum          | number         | 否  | 否  | 表示凭据中包含的证书个数。 |
 | keyNum          | number   | 否  | 否  | 表示凭据中包含的密钥个数。 |
 | credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。 |
-| certPurpose          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT（签名用途）。 |
+| certPurpose          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。 |
 
 ## CredentialAbstract
 
@@ -242,12 +242,12 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-| 名称         | 值   | 说明                                       |
-| ------------ | ---- | ------------------------------------------ |
-| PURPOSE_DEFAULT  | 0    | 表示凭据默认用途（签名用途）。               |
-| PURPOSE_ALL  | 1    | 表示凭据所有用途，用于查询凭据功能。           |
-| PURPOSE_SIGN  | 2    | 表示凭据签名用途。             |
-| PURPOSE_ENCRYPT  | 3    | 表示凭据加密用途。             |
+| 名称    | 值   | 说明  |
+| --------| ---- | -------- |
+| PURPOSE_DEFAULT  | 0    | 表示凭据默认用途，即凭据签名用途。  |
+| PURPOSE_ALL  | 1    | 表示凭据所有用途，用于查询凭据功能。  |
+| PURPOSE_SIGN  | 2    | 表示凭据签名用途。   |
+| PURPOSE_ENCRYPT  | 3    | 表示凭据加密用途。  |
 
 ## UkeyInfo<sup>22+</sup>
 
@@ -1626,16 +1626,16 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
 **参数**：
 
-| 参数名   | 类型                                      | 必填 | 说明                             |
-| -------- | ----------------------------------------- | ---- | -------------------------------- |
+| 参数名   | 类型   | 必填 | 说明    |
+| -------- | ------- | ---- | ------ |
 | keyUri | string | 是   | 表示USB凭据的唯一标识符，长度限制256字节以内。 |
 | ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB凭据的属性信息。 |
 
 **返回值**：
 
-| 类型                            | 说明                                                         |
-| ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise对象。返回获取到的USB凭据详情的结果。 |
+| 类型  | 说明  |
+| ----- | ----- |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB凭据详情的结果。 |
 
 **错误码：**
 
