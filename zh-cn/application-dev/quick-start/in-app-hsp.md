@@ -170,6 +170,11 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 
 
 <!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
+
+``` TypeScript
+// library/index.ets
+export { nativeMulti } from './src/main/ets/utils/nativeTest';
+```
 ### 通过$r访问HSP中的资源
 在组件中，经常需要使用字符串、图片等资源。HSP中的组件需要使用资源时，一般将其所用资源放在HSP包内，而非放在HSP的使用方处，以符合高内聚低耦合的原则。
 
