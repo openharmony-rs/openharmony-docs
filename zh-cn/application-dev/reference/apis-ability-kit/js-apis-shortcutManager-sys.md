@@ -305,6 +305,7 @@ addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManage
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 代码中使用的id、bundleName、moduleName、userId需为实际快捷方式id、包名、模块名、用户ID。
 const bundleName = "com.example.dynamic";
 let moduleName = 'entry';
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
@@ -313,16 +314,15 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 ]
 
 try {
-  await shortcutManager.addDynamicShortcutInfos(arrShortcutInfo, 100)
+  shortcutManager.addDynamicShortcutInfos(arrShortcutInfo, 100)
     .then(() => {
       console.info('addDynamicShortcutInfos success');
-    }).catch((err: BusinessError) => {
-      console.error(`addDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
+    }).catch((err: Error) => {
+      console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
     });
 } catch (err) {
-  console.error(`addDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
+  console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
-
 ```
 
 ## shortcutManager.deleteDynamicShortcutInfos<sup>23+</sup>
@@ -377,17 +377,17 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?:
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 代码中使用的bundleName、appIndex、userId、id需为实际包名、索引、用户ID、快捷方式id。
 const bundleName = "com.example.dynamic";
 
 try {
-  await shortcutManager.deleteDynamicShortcutInfos(bundleName, 0, 100, ["1", "2"])
+  shortcutManager.deleteDynamicShortcutInfos(bundleName, 0, 100, ["1", "2"])
     .then(() => {
       console.info('deleteDynamicShortcutInfos success');
-    }).catch((err: BusinessError) => {
-      console.error(`deleteDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
+    }).catch((err: Error) => {
+      console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
     });
 } catch (err) {
-  console.error(`deleteDynamicShortcutInfos errData is errCode:${err.code}  message:${err.message}`);
+  console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
-
 ```
