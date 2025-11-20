@@ -2897,9 +2897,11 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
      }
      ```
 
-## onPermissionRequest<sup>9+</sup>
+## onPermissionRequest
 
-onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
+ArkTS-Dyn: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
+
+ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | undefined): this
 
 通知收到获取权限请求，需配置"ohos.permission.CAMERA"、"ohos.permission.MICROPHONE"权限。
 
@@ -2909,10 +2911,11 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\> | 是 | 通知收到获取权限请求触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\><br/>ArkTS-Sta: Callback\<[OnPermissionRequestEvent](./arkts-basic-components-web-i.md#onpermissionrequestevent12)\> \|  undefined | 是 | 通知收到获取权限请求触发。 |
 
 **示例：**
 
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2969,6 +2972,70 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
     }
   }
   ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { UIContext } from "@kit.ArkUI";
+import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { PermissionRequestResult, common } from '@kit.AbilityKit';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext = this.getUIContext();
+
+  aboutToAppear(): void {
+    let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
+      (err: BusinessError | null, data?: PermissionRequestResult) => {
+        if (data) {
+          console.info('data:' + JSON.stringify(data));
+          console.info('data permissions:' + data.permissions);
+          console.info('data authResults:' + data.authResults);
+        }
+      })
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onPermissionRequest((event: OnPermissionRequestEvent): void => {
+          if (event) {
+            const dialogOptions: AlertDialogParamWithButtons = {
+              title: 'title',
+              message: 'text',
+              primaryButton: {
+                value: 'deny',
+                action: () => {
+                  event.request.deny();
+                },
+              } as AlertDialogButtonBaseOptions,
+              secondaryButton: {
+                value: 'onConfirm',
+                action: () => {
+                  event.request.grant(event.request.getAccessibleResource());
+                },
+              } as AlertDialogButtonBaseOptions,
+              cancel: () => {
+                event.request.deny();
+              }
+            };
+            this.uiContext.showAlertDialog(dialogOptions);
+          }
+        })
+    }
+  }
+}
+```
+  
 
   加载的html文件。
  ```html
