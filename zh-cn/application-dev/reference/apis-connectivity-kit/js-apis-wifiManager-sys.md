@@ -1455,7 +1455,7 @@ wifiManager.getP2pGroups().then(data => {
 
 getP2pGroups(callback: AsyncCallback&lt;Array&lt;WifiP2pGroupInfo&gt;&gt;): void
 
-获取创建的所有P2P群组信息，使用callback方式作为异步方法。
+获取创建的所有P2P群组信息，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1533,7 +1533,7 @@ try {
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册WIFI流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1564,7 +1564,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI流变更事件。
+取消注册WIFI流变更事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1611,7 +1611,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册WIFI设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1642,7 +1642,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI设备配置更改事件。
+取消注册WIFI设备配置更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1689,7 +1689,7 @@ wifi.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。
+注册wifi热点sta加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1720,7 +1720,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta加入事件。
+取消注册wifi热点sta加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1767,7 +1767,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。
+注册wifi热点sta离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1780,7 +1780,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -1798,7 +1798,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta离开事件。
+取消注册wifi热点sta离开事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1811,7 +1811,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-| callback | Callback&lt;StationInf]&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
 
 **错误码：**
 

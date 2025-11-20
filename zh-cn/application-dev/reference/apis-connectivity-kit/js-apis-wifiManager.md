@@ -267,7 +267,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
       }
   
       let len = result.length;
-      console.log("wifi received scan info: " + len);
+      console.info("wifi received scan info: " + len);
       for (let i = 0; i < len; ++i) {
           console.info("ssid: " + result[i].ssid);
           console.info("bssid: " + result[i].bssid);
@@ -283,7 +283,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
   
   wifiManager.getScanResults().then(result => {
       let len = result.length;
-      console.log("wifi received scan info: " + len);
+      console.info("wifi received scan info: " + len);
       for (let i = 0; i < len; ++i) {
           console.info("ssid: " + result[i].ssid);
           console.info("bssid: " + result[i].bssid);
@@ -338,7 +338,7 @@ getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;
 		let scanInfoList = wifiManager.getScanResultsSync();
 		console.info("scanInfoList:" + JSON.stringify(scanInfoList));
 		let len = scanInfoList.length;
-        console.log("wifi received scan info: " + len);
+        console.info("wifi received scan info: " + len);
 		if(len > 0){
 			for (let i = 0; i < len; ++i) {
 				console.info("ssid: " + scanInfoList[i].ssid);
@@ -395,7 +395,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 		let scanInfoList = wifiManager.getScanInfoList();
 		console.info("scanInfoList:" + JSON.stringify(scanInfoList));
 		let len = scanInfoList.length;
-        console.log("wifi received scan info: " + len);
+        console.info("wifi received scan info: " + len);
 		if(len > 0){
 			for (let i = 0; i < len; ++i) {
 				console.info("ssid: " + scanInfoList[i].ssid);
@@ -960,7 +960,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 		let configs = wifiManager.getCandidateConfigs();
 		console.info("configs:" + JSON.stringify(configs));
 		let len = configs.length;
-        console.log("result len: " + len);
+        console.info("result len: " + len);
 		if(len > 0){
 			for (let i = 0; i < len; ++i) {
 				console.info("ssid: " + configs[i].ssid);
@@ -2667,7 +2667,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册WLAN状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2707,7 +2707,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN状态改变事件。
+取消注册WLAN状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2753,7 +2753,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN连接状态改变事件，在业务退出时，要调用off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册WLAN连接状态改变事件，在业务退出时，要调用off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2790,7 +2790,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN连接状态改变事件。
+取消注册WLAN连接状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2835,7 +2835,7 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
-注册扫描状态改变事件，在业务退出时，要调用off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册扫描状态改变事件，在业务退出时，要调用off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2872,7 +2872,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
-取消注册扫描状态改变事件。
+取消注册扫描状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2917,7 +2917,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
-注册WIFI接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册WIFI接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2945,7 +2945,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI接收信号强度(RSSI)变化事件。
+取消注册Wi-Fi接收信号强度(RSSI)变化事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2988,7 +2988,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
-注册热点状态改变事件，在业务退出时，要调用off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册热点状态改变事件，在业务退出时，要调用off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3025,7 +3025,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
-取消注册热点状态改变事件。
+取消注册热点状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3069,7 +3069,7 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
-注册P2P开关状态改变事件，在业务退出时，要调用off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册P2P开关状态改变事件，在业务退出时，要调用off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3107,7 +3107,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
-取消注册P2P开关状态改变事件。
+取消注册P2P开关状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3150,7 +3150,7 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-注册P2P连接状态改变事件，在业务退出时，要调用off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口去掉之前的注册回调。
+注册P2P连接状态改变事件，在业务退出时，要调用off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3178,7 +3178,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-取消注册P2P连接状态改变事件。
+取消注册P2P连接状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3221,7 +3221,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 
 on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
-注册P2P设备状态改变事件，在业务退出时，要调用off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;)接口去掉之前的注册回调。
+注册P2P设备状态改变事件，在业务退出时，要调用off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：**
 
@@ -3251,7 +3251,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
-取消注册P2P设备状态改变事件。
+取消注册P2P设备状态改变事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -3292,7 +3292,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
-注册P2P对端设备状态改变事件，在业务退出时，要调用off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;)接口去掉之前的注册回调。
+注册P2P对端设备状态改变事件，在业务退出时，要调用off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：**
 
@@ -3322,7 +3322,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
-取消注册P2P对端设备状态改变事件。
+取消注册P2P对端设备状态改变事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -3363,7 +3363,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
-注册P2P永久组状态改变事件，在业务退出时，要调用off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;)接口去掉之前的注册回调。
+注册P2P永久组状态改变事件，在业务退出时，要调用off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3391,7 +3391,7 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
-取消注册P2P永久组状态改变事件。
+取消注册P2P永久组状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3434,7 +3434,7 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
-注册发现设备状态改变事件，在业务退出时，要调用off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册发现设备状态改变事件，在业务退出时，要调用off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3469,7 +3469,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
-取消注册发现设备状态改变事件。
+取消注册发现设备状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
