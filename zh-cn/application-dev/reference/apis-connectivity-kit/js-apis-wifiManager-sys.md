@@ -777,7 +777,7 @@ startWifiDetection(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID |错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
