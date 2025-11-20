@@ -647,11 +647,7 @@ WAPI认证方式的枚举。
 
 ## WifiCategory<sup>12+</sup>
 
-表示热点支持的最高Wi-Fi类别。
-
-- 枚举类型：用于标识Wi-Fi热点支持的最高Wi-Fi标准版本。
-- 版本支持：从API级别12开始支持。
-- 用途：帮助识别和区分不同Wi-Fi技术标准的热点。
+表示热点支持的最高Wi-Fi类别。可以用于识别和区分不同Wi-Fi技术标准的热点。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -671,7 +667,7 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 - 该接口用于添加一个WLAN候选配置。
 - 通过传入[WifiDeviceConfig](#wifideviceconfig9)对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
-- 返回一个Promise对象，解析后得到一个数字，表示配置的ID。
+- 返回一个Promise对象，解析后得到一个数字，表示配置的ID(区分、管理不同Wi-Fi配置，用于其他相关API操作，错误处理调试等)。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -728,10 +724,8 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 添加候选网络配置，使用callback异步回调。
 
-- 将指定的Wi-Fi设备配置添加为候选网络，系统会在适当时候尝试连接。
-- 参数部分config: WifiDeviceConfig类型，包含要添加的Wi-Fi网络配置信息。callback: 异步回调函数，返回操作结果。
-- API级别9及以上支持。
-- 添加的候选配置不会立即触发连接，而是由系统根据策略决定连接时机。
+- 将指定的Wi-Fi设备配置添加为候选网络，系统会在适当时候尝试连接(具体场景包括设备开机启动后扫描到网络、从无网络环境进入有网络环境、当前Wi-Fi信号弱或断开时、用户手动触发网络重连、系统定期网络优化时)。
+- 添加的候选配置不会立即触发连接，而是由系统根据策略决定连接时机(信号质量策略、网络优先级策略、能耗优化策略、安全评估策略等)。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -782,9 +776,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 移除候选网络配置，使用Promise异步回调。
 
 - 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
-- 只能移除通过addCandidateConfig添加的候选配置，移除后该候选网络将不再被系统自动连接。
-- 如果网络正在使用中，建议先断开连接再移除配置。
-- 提供两种重载形式：Promise和Callback方式。
+- 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig9)添加的候选配置，移除后该候选网络将不再被系统自动连接。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -841,8 +833,6 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
 
 - 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
 - 只能移除通过addCandidateConfig添加的候选配置，移除后该候选网络将不再被系统自动连接。
-- 如果网络正在使用中，建议先断开连接再移除配置。
-- 提供两种重载形式：Promise和Callback方式。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -889,7 +879,8 @@ removeDevice(id: number): void
 
 移除网络配置。
 
-- 通过网络配置ID删除已保存的WI-FI网络配置信息。
+- 通过网络配置ID删除已保存的WIFI网络配置信息。
+- 该操作为同步执行，无需异步回调。
 - 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
