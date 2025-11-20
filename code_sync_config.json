@@ -10747,7 +10747,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":71,
 						"name":"fixed_style_pop_up_box",
 						"start_line":16
 					}
@@ -10767,7 +10767,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":68,
 						"name":"calender_picker_dialog",
 						"start_line":16
 					}
@@ -17741,7 +17741,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogStyleNew.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":75,
 						"name":"dialog_style_new",
 						"start_line":16
 					}
@@ -17771,7 +17771,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":72,
 						"name":"dialog_avoid_soft_key_board",
 						"start_line":16
 					}
@@ -19011,7 +19011,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogComponentWithTransition.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":84,
 						"name":"custom_dialog_with_transition",
 						"start_line":16
 					}
@@ -19021,7 +19021,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogWithKeyboardAvoidDistance.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":64,
 						"name":"custom_dialog_with_key_board_distance",
 						"start_line":16
 					}
