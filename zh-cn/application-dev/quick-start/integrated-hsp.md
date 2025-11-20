@@ -102,6 +102,24 @@
 ```
 
     <!-- @[integrated_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/library/build-profile.json5) -->
+    
+    ``` JSON5
+    // library/build-profile.json5
+    {
+      "apiType": "stageMode",
+      // ...
+      "buildOptionSet": [
+        {
+          // ...
+          "arkOptions": {
+            "integratedHsp": true,
+            // ...
+          },
+        },
+      ],
+      // ...
+    }
+    ```
 
 
 3. 创建方-集成态HSP-打包配置（tgz包）。
