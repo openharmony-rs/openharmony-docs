@@ -219,7 +219,7 @@ class BackupExt extends BackupExtensionAbility {
 
 > **说明：**
 >
-> 1、**有关fullBackupOnly字段的说明**
+> **有关fullBackupOnly字段的说明**
 >
 > - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
 > - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
