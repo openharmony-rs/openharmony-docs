@@ -5165,7 +5165,7 @@
 
 **支持设备**：PC/2in1 | Phone | Tablet | TV | Car
 
-**起始版本**：21
+**起始版本**：22
 
 ## ohos.permission.CAPTURE_SCREEN_ALL
 
