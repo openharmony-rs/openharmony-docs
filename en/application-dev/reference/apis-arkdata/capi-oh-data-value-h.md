@@ -133,7 +133,7 @@ Destroys an [OH_Data_Value](capi-rdb-oh-data-value.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutNull()
 
@@ -158,7 +158,7 @@ Adds empty data to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutInt()
 
@@ -184,7 +184,7 @@ Adds an integer to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutReal()
 
@@ -210,7 +210,7 @@ Adds REAL data to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutText()
 
@@ -236,7 +236,7 @@ Adds a string to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutBlob()
 
@@ -263,7 +263,7 @@ Adds BLOB data to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutAsset()
 
@@ -289,7 +289,7 @@ Adds an asset to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutAssets()
 
@@ -316,7 +316,7 @@ Adds assets to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutFloatVector()
 
@@ -343,7 +343,7 @@ Adds a float array to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_PutUnlimitedInt()
 
@@ -371,7 +371,7 @@ Adds an integer array of any length to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_GetType()
 
@@ -397,7 +397,7 @@ Obtains the data type.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_IsNull()
 
@@ -423,7 +423,7 @@ Checks whether a value is null.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.|
 
 ### OH_Value_GetInt()
 
@@ -634,7 +634,7 @@ Obtains the length of the float array in an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetFloatVector()
 
