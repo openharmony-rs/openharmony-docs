@@ -267,6 +267,18 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 
 <!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
 
+``` TypeScript
+// library/index.ets
+// ...
+export { Log, add, minus } from './src/main/ets/utils/test';
+// ...
+export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+// ...
+export { ResManager } from './src/main/ets/ResManager';
+// ...
+export { nativeMulti } from './src/main/ets/utils/nativeTest';
+```
+
 在使用方的代码中，可以这样使用：
 
 <!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
