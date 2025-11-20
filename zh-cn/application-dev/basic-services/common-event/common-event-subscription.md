@@ -51,7 +51,7 @@
    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
    // 订阅者信息，其中的event字段需要替换为实际的事件名称。
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'], // 订阅灭屏公共事件
+       events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // 订阅灭屏公共事件
    };
    ```
 
