@@ -19,6 +19,8 @@
 | [onAdminDisabled(): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonadmindisabled)                   | 设备管理应用被解除激活回调方法。 |
 | [onBundleAdded(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonbundleadded)   | 应用安装回调方法。             |
 | [onBundleRemoved(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonbundleremoved) | 应用卸载回调方法。             |
+| [onDeviceAdminEnabled(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityondeviceadminenabled23) | 普通设备管理应用被激活回调方法。 |
+| [onDeviceAdminDisabled(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityondeviceadmindisabled23) | 普通设备管理应用被解除激活回调方法。 |
 
 ## 开发步骤
 
@@ -61,6 +63,16 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   // 应用卸载回调方法，应用可在此回调函数中进行事件上报，通知企业管理员。
   onBundleRemoved(bundleName: string) {
     console.info('EnterpriseAdminAbility onBundleRemoved bundleName' + bundleName);
+  }
+
+  // 普通设备管理应用激活回调方法，应用可在此回调函数中进行初始化策略设置
+  onDeviceAdminEnabled(bundleName: string) {
+    console.info("EnterpriseAdminAbility onDeviceAdminEnabled bundleName:" + bundleName);
+  }
+
+  // 普通设备管理应用解除激活回调方法，应用可在此回调函数中通知企业管理员设备已脱管
+  onDeviceAdminDisabled(bundleName: string) {
+    console.info("EnterpriseAdminAbility onDeviceAdminDisabled bundleName" + bundleName);
   }
 };
 ```
