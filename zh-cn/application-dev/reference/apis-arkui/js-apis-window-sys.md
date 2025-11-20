@@ -3098,7 +3098,7 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 禁止/使能主窗口点击抬升功能。使用Promise异步回调。
 
-点击主窗口时，默认会将主窗口及其子窗口显示到最上方。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口显示到最上方，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起显示到最上方。
+点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3139,15 +3139,23 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.getMainWindow().then((window: window.Window) => {
-      try {
-        let raiseEnabled: boolean = false;
-        let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
-        promise.then(() => {
-          console.info('Succeeded in disabling the raise-by-click function.');
-        })
-      } catch(err) {
-        console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
-      };
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
+      });
     });
   }
 }
