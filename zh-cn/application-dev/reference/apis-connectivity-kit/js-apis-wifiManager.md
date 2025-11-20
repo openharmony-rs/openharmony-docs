@@ -889,8 +889,7 @@ removeDevice(id: number): void
 
 移除网络配置。
 
-- 通过网络配置ID删除已保存的WIFI网络配置信息。
-- 该操作为同步执行，无需异步回调。
+- 通过网络配置ID删除已保存的WI-FI网络配置信息。
 - 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
