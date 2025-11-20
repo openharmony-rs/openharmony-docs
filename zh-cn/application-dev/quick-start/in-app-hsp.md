@@ -137,6 +137,11 @@ export { Log, add, minus } from './src/main/ets/utils/test';
 ```
 <!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
+``` TypeScript
+// library/index.ets
+export { Log, add, minus } from './src/main/ets/utils/test';
+```
+
 ### 导出native方法
 在HSP中也可以包含C++编写的`so`。对于`so`中的`native`方法，HSP通过间接的方式导出，以导出`liblibrary.so`的乘法接口`multi`为例：
 
