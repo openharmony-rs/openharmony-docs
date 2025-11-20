@@ -97,6 +97,11 @@ export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
 
 <!-- @[in_app_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
 
+``` TypeScript
+// library/index.ets
+export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+```
+
 
 ### 导出类和方法
 通过`export`导出类和方法，例如：
