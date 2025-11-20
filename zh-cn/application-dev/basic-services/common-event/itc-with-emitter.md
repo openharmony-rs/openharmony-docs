@@ -44,7 +44,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
    订阅事件使用on（持续订阅）或者once（单次订阅）接口进行订阅，设置要订阅的事件以及接收到事件后的回调函数。
    
      <!-- @[emitter_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      // 定义一个eventId为1的事件。
      let event: emitter.InnerEvent = {
@@ -55,7 +55,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
        this.messageOn = eventData.data!.content
        console.info(`eventData: ${JSON.stringify(eventData)}`);
      }
-     // ···
+     // ...
      // 收到eventId为1的事件后执行回调函数
      emitter.on(event, callback);
      ```
