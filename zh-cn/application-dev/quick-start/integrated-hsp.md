@@ -145,6 +145,12 @@
 ```
 
     <!-- @[integrated_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/entry/oh-package.json5) -->
+    
+    ``` JSON5
+    "dependencies": {
+      "library": "file:./libs/library-default.tgz"
+    },
+    ```
 
 6. 使用方-工程配置：在工程级的build-profile.json5文件中，将useNormalizedOHMUrl字段设置为true。
 
