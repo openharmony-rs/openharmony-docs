@@ -118,7 +118,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | certNum          | number         | 否  | 否  | 表示凭据中包含的证书个数。 |
 | keyNum          | number   | 否  | 否  | 表示凭据中包含的密钥个数。 |
 | credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。 |
-| certPurpose          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。 |
+| certPurpose<sup>22+</sup>          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。 |
 
 ## CredentialAbstract
 
@@ -147,7 +147,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | appUidList        | Array\<string>     | 否  | 是   | 表示授权应用列表。 |
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
-| credentialDetailList         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
+| credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
 
 ## CMHandle
 
