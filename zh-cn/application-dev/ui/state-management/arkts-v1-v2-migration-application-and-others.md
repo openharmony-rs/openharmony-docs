@@ -728,7 +728,7 @@ struct NavigationContentMsgStack {
 
 V1:
 
-AppStorage与应用进程绑定，支持跨Ability数据共享。
+AppStorage与应用进程绑定，支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)数据共享。
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
 ```ts
