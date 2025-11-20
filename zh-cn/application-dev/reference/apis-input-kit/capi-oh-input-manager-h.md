@@ -443,7 +443,6 @@ enum Input_Result
 | INPUT_DEVICE_NO_POINTER = 3900010 |  无鼠标类输入外设。<br>**起始版本：** 20。 |
 | INPUT_INVALID_WINDOWID = 26500001 |  无效的窗口ID。<br>**起始版本：** 22。 |
 
-
 ## 函数说明
 
 ### Input_HotkeyCallback()
