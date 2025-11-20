@@ -256,16 +256,15 @@ struct ShortcutExample {
 
 ## shortcutManager.addDynamicShortcutInfos<sup>23+</sup>
 
-addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>, userId: int): Promise\<void>
+addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>, userId: number): Promise\<void>
 
 添加指定用户的动态快捷方式。
+
+**需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
 添加当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS。
 
 添加非当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
-
-
-**需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
 **系统接口：** 此接口为系统接口。
 
@@ -275,14 +274,14 @@ addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManage
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>    |   是  |  待添加的动态快捷方式（其中sourceType字段会被设置为2-动态快捷方式）。  |
+|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。</br> 1.ShortcutInfo中的sourceType字段需设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
 | userId     | number | 是   | 动态快捷方式所属的用户id。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -293,6 +292,8 @@ addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManage
 | 201 | Verify permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundle name is not found.|
+| 17700002 | The specified module name is not found.|
+| 17700003 | The specified ability is not found.|
 | 17700004 | The specified user ID is not found.|
 | 17700026 | The specified bundle is disabled.|
 | 17700061 | The specified app index is invalid.|
@@ -327,7 +328,7 @@ try {
 
 ## shortcutManager.deleteDynamicShortcutInfos<sup>23+</sup>
 
-deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?: Array<string>): Promise\<void>
+deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array<string>): Promise\<void>
 
 删除指定用户的动态快捷方式。
 
@@ -355,7 +356,7 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: int, userId: int, ids?:
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
