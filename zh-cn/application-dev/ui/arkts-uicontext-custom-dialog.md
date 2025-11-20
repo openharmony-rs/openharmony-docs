@@ -128,11 +128,14 @@ PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassN
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
+
 @Entry
 @Component
-export struct customDialogComponentWithTransition {
+export struct CustomDialogComponentWithTransition {
   private customDialogComponentId: number = 0
+
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
@@ -178,7 +181,8 @@ export struct customDialogComponentWithTransition {
                   this.customDialogComponentId = dialogId;
                 })
                 .catch((error: BusinessError) => {
-                  hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`)
+                  hilog.error(DOMAIN, 'testTag',
+                    `openCustomDialog error code is ${error.code}, message is ${error.message}`)
                 })
             })
         }
@@ -204,11 +208,12 @@ export struct customDialogComponentWithTransition {
 import { BusinessError } from '@kit.BasicServicesKit';
 import { LengthMetrics } from '@kit.ArkUI'
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
 
 @Entry
 @Component
-export struct customDialogWithKeyboardAvoidDistance {
+export struct CustomDialogWithKeyboardAvoidDistance {
   @Builder
   customDialogComponent() {
     Column() {
@@ -235,7 +240,8 @@ export struct customDialogWithKeyboardAvoidDistance {
                 keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
                 keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
               }).catch((error: BusinessError) => {
-                hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`);
+                hilog.error(DOMAIN, 'testTag',
+                  `openCustomDialog error code is ${error.code}, message is ${error.message}`);
               })
             })
         }

@@ -50,7 +50,7 @@ import { PromptAction } from '@kit.ArkUI';
 @Component
 export struct ShowActionMenuExample {
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
 
         Column() {
@@ -86,7 +86,7 @@ export struct ShowActionMenuExample {
       }
       .width('100%')
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -204,7 +204,7 @@ export struct CalendarDialog {
                   backgroundColor: '#f7f7f7',
                   borderRadius: 10
                 },
-                onAccept: (date: Date)=>{
+                onAccept: (date: Date) => {
                   // 当弹出框再次弹出时显示选中的是上一次确定的日期
                   this.selectedDate = date;
                 }
@@ -217,7 +217,7 @@ export struct CalendarDialog {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
     // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
     .title($r('app.string.CustomDialog_calender'))
   }

@@ -676,6 +676,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
+
   build() {
     Column() {
       Column() {
@@ -692,15 +693,14 @@ struct CustomDialogExample {
 @Component
 export struct DialogAvoidSoftKeyboard {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-    }),
+    builder: CustomDialogExample({}),
     autoCancel: true,
     gridCount: 4,
     showInSubWindow: true,
     isModal: true,
     customStyle: false,
     cornerRadius: 30,
-    alignment:DialogAlignment.Bottom,
+    alignment: DialogAlignment.Bottom,
     keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
     keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
   })
