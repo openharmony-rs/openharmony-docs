@@ -78,9 +78,9 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| SYSTEM   |-| 系统默认非安全区域，包括状态栏、导航栏。   |
-| CUTOUT   |- | 设备的非安全区域，例如刘海屏或挖孔屏区域。 |
-| KEYBOARD |- |软键盘区域。                               |
+| SYSTEM   |0| 系统默认非安全区域，包括状态栏、导航栏。   |
+| CUTOUT   |1 | 设备的非安全区域，例如刘海屏或挖孔屏区域。 |
+| KEYBOARD |2 |软键盘区域。                               |
 
 ## SafeAreaEdge
 
@@ -92,10 +92,10 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| TOP    |-| 上方区域。 |
-| BOTTOM |-| 下方区域。 |
-| START  |-| 前部区域。 |
-| END    |-| 尾部区域。 |
+| TOP    |0| 上方区域。 |
+| BOTTOM |1| 下方区域。 |
+| START  |2| 前部区域。 |
+| END    |3| 尾部区域。 |
 
 ## setKeyboardAvoidMode<sup>11+</sup>
 
