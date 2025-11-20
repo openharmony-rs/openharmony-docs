@@ -15,13 +15,13 @@ Enumerates the DRM error codes.
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
 | ERROR_UNKNOWN       | 24700101    | Unknown error.  |
-| MAX_SYSTEM_NUM_REACHED   | 24700103    | The number of MediaKeySystem instances reaches the upper limit (64).   |
-| MAX_SESSION_NUM_REACHED    | 24700104    | The number of MediaKeySession instances reaches the upper limit (64).    |
-| SERVICE_FATAL_ERROR  | 24700201    | DRM service error.    |
+| MAX_SYSTEM_NUM_REACHED   | 24700103    | Maximum number of MediaKeySystem instances (64) reached.   |
+| MAX_SESSION_NUM_REACHED    | 24700104    | Maximum number of MediaKeySession instances (64) reached.    |
+| SERVICE_FATAL_ERROR  | 24700201    | DRM service fatal error.    |
 
 ## PreDefinedConfigName
 
-Enumerates the names of predefined configuration items.
+Enumerates the predefined configuration properties.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -31,11 +31,11 @@ Enumerates the names of predefined configuration items.
 | ------------------------- | ---- | ------------    |
 | CONFIG_DEVICE_VENDOR        | 'vendor'    | Plugin vendor name, which corresponds to the value of **vendor** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).  |
 | CONFIG_DEVICE_VERSION    | 'version'    | Plugin version number, which corresponds to the value of **version** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
-| CONFIG_DEVICE_DESCRIPTION     | 'description'    | Device descriptor, which corresponds to the value of **description** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).     |
-| CONFIG_DEVICE_ALGORITHMS   | 'algorithms'    | Supported algorithm names, which correspond to the value of **algorithms** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
+| CONFIG_DEVICE_DESCRIPTION     | 'description'    | Device description, which corresponds to the value of **description** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).     |
+| CONFIG_DEVICE_ALGORITHMS   | 'algorithms'    | Supported algorithms, which correspond to the value of **algorithms** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
 | CONFIG_DEVICE_UNIQUE_ID    | 'deviceUniqueId'    | Unique device ID, which corresponds to the value of **deviceUniqueId** in the return value of [getConfigurationByteArray](arkts-apis-drm-MediaKeySystem.md#getconfigurationbytearray).    |
-| CONFIG_SESSION_MAX         | 'maxSessionNum'    | Maximum number of sessions supported by the device, which corresponds to the value of **maxSessionNum** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
-| CONFIG_SESSION_CURRENT   | 'currentSessionNum'    | Number of existing sessions, which corresponds to the value of **currentSessionNum** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
+| CONFIG_SESSION_MAX         | 'maxSessionNum'    | Maximum number of supported sessions, which corresponds to the value of **maxSessionNum** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
+| CONFIG_SESSION_CURRENT   | 'currentSessionNum'    | Number of active sessions, which corresponds to the value of **currentSessionNum** in the return value of [getConfigurationString](arkts-apis-drm-MediaKeySystem.md#getconfigurationstring).    |
 
 ## MediaKeyType
 
@@ -47,8 +47,8 @@ Enumerates the types of media keys.
 
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
-| MEDIA_KEY_TYPE_OFFLINE        | 0    | Offline.  |
-| MEDIA_KEY_TYPE_ONLINE   | 1    | Online.    |
+| MEDIA_KEY_TYPE_OFFLINE        | 0    | Offline media key.  |
+| MEDIA_KEY_TYPE_ONLINE   | 1    | Online media key.    |
 
 ## OfflineMediaKeyStatus
 
@@ -66,7 +66,7 @@ Enumerates the statuses of offline media keys.
 
 ## CertificateStatus
 
-Enumerates the statuses of DRM certificates.
+Enumerates the statuses of device certificates.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -74,11 +74,11 @@ Enumerates the statuses of DRM certificates.
 
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
-| CERT_STATUS_PROVISIONED        | 0    | A DRM certificate has been installed on the device.  |
-| CERT_STATUS_NOT_PROVISIONED   | 1    | No DRM certificate is installed on the device.    |
-| CERT_STATUS_EXPIRED    | 2    | The DRM certificate has expired.      |
-| CERT_STATUS_INVALID  | 3    | The DRM certificate is invalid.    |
-| CERT_STATUS_UNAVAILABLE  | 4    | The DRM certificate is unavailable.    |
+| CERT_STATUS_PROVISIONED        | 0    | A device certificate is provisioned.  |
+| CERT_STATUS_NOT_PROVISIONED   | 1    | A device certificate is not provisioned.    |
+| CERT_STATUS_EXPIRED    | 2    | The device certificate has expired.      |
+| CERT_STATUS_INVALID  | 3    | The device certificate is invalid.    |
+| CERT_STATUS_UNAVAILABLE  | 4    | The device certificate is unavailable.    |
 
 ## MediaKeyRequestType
 
@@ -94,7 +94,7 @@ Enumerates the types of media key requests.
 | MEDIA_KEY_REQUEST_TYPE_INITIAL    | 1    | Initial request.    |
 | MEDIA_KEY_REQUEST_TYPE_RENEWAL     | 2    | Renewal request.      |
 | MEDIA_KEY_REQUEST_TYPE_RELEASE   | 3    | Release request.    |
-| MEDIA_KEY_REQUEST_TYPE_NONE    | 4    | None.    |
+| MEDIA_KEY_REQUEST_TYPE_NONE    | 4    | No request.    |
 | MEDIA_KEY_REQUEST_TYPE_UPDATE    | 5    | Update request.    |
 
 ## ContentProtectionLevel
@@ -108,7 +108,7 @@ Enumerates the content protection levels.
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
 | CONTENT_PROTECTION_LEVEL_UNKNOWN        | 0    | Unknown content protection level.  |
-| CONTENT_PROTECTION_LEVEL_SW_CRYPTO   | 1    | Software content protection level.    |
-| CONTENT_PROTECTION_LEVEL_HW_CRYPTO    | 2    | Hardware content protection level.      |
-| CONTENT_PROTECTION_LEVEL_ENHANCED_HW  | 3    | Enhanced hardware content protection level.    |
-| CONTENT_PROTECTION_LEVEL_MAX  | 4    | Highest content protection level.    |
+| CONTENT_PROTECTION_LEVEL_SW_CRYPTO   | 1    | Software-based content protection.    |
+| CONTENT_PROTECTION_LEVEL_HW_CRYPTO    | 2    | Hardware-based content protection.      |
+| CONTENT_PROTECTION_LEVEL_ENHANCED_HW  | 3    | Enhanced hardware-based content protection.    |
+| CONTENT_PROTECTION_LEVEL_MAX  | 4    | Maximum content protection level.    |
