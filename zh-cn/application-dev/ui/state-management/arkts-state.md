@@ -966,9 +966,11 @@ struct ConsumerChild {
 
 以上示例，在赋值前，使用getTarget获取了对应状态变量的原始对象，经过对比后，如果和当前对象一样，就不赋值，不触发刷新。
 
-### 不允许在build里改状态变量
+### 不允许在渲染过程中改变状态变量
 
-不允许在build里改变状态变量，状态管理框架会在运行时报出Error级别日志。通过事件回调或异步回调更新状态变量，例如在onClick中修改\@State，是允许的。
+不允许在[渲染过程](./arkts-state-management-glossary.md#渲染过程render-phase)中改变状态变量，包括在build里修改，以及在组件挂载、卸载的同步回调（例如[onAttach](../../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onattach12), [onDetach](../../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondetach12)）中修改等。否则状态管理框架会在运行时报出Error级别的日志。
+
+状态变量应在非[渲染过程](./arkts-state-management-glossary.md#渲染过程render-phase)时更新，例如onClick回调中修改\@State。
 
 下面的示例，渲染的流程是：
 
