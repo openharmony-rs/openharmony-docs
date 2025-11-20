@@ -1622,7 +1622,7 @@ function burstCapture(photoOutput: camera.PhotoOutput): void {
 
 ### confirmCapture<sup>11+</sup>
 
-confirmCapture()
+confirmCapture(): void
 
 确认拍照，一般用于夜景模式下，在曝光倒计时过程中如需终止倒计时提前拍照的时候调用。
 
