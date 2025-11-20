@@ -231,7 +231,7 @@ struct Parent {
 
 ### 声明文件编译报错
 
-由于[ArkTS-Sta wrapBuilder](./state-management/arkts-v1.2-wrapBuilder.md#接口说明)与[ArkTS-Dyn wrapBuilder](./state-management/arkts-wrapBuilder.md#接口说明)的接口规格不一致，在部分复杂的WrappedBuilder场景下，编译时生成的ArkTS-Dyn声明文件可能报错，需要开发者手动修改声明文件报错位置后增量编译，以符合ArkTS-Dyn WrappedBuilder的语法规格。
+由于[ArkTS-Sta wrapBuilder](./state-management/arkts-static-wrapBuilder.md#接口说明)与[ArkTS-Dyn wrapBuilder](./state-management/arkts-wrapBuilder.md#接口说明)的接口规格不一致，在部分复杂的WrappedBuilder场景下，编译时生成的ArkTS-Dyn声明文件可能报错，需要开发者手动修改声明文件报错位置后增量编译，以符合ArkTS-Dyn WrappedBuilder的语法规格。
 
 以上文[按值传递参数](#按值传递参数)示例为例，定义WrappedBuilder的ArkTS-Sta源文件为`library/src/main/ets/components/MainPage.ets`，对应生成的ArkTS-Dyn声明文件位于`library/build/default/intermediates/declgen/default/declgenV1/library/src/main/ets/components/MainPage.d.ets`。正确的声明文件示例如下。
 

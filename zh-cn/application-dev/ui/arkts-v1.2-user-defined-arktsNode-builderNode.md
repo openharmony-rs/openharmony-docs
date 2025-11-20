@@ -18,7 +18,7 @@ BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议使
 
 > **说明：**
 >
-> - BuilderNode只支持一个由[wrapBuilder](../ui/state-management/arkts-v1.2-wrapBuilder.md)包装的[全局自定义构建函数](../ui/state-management/arkts-builder.md#全局自定义构建函数)@Builder。
+> - BuilderNode只支持一个由[wrapBuilder](../ui/state-management/arkts-static-wrapBuilder.md)包装的[全局自定义构建函数](../ui/state-management/arkts-builder.md#全局自定义构建函数)@Builder。
 >
 > - 新建的BuilderNode在[build](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#build)之后，才能通过[getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode-static.md#getframenode)获取到指向根节点的FrameNode对象；否则，返回null。
 >
@@ -34,7 +34,7 @@ BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议使
 
 ## 创建BuilderNode对象
 
-BuilderNode对象为一个模板类，需要在创建的时候指定类型。该类型需要与后续build方法中传入的[WrappedBuilder](../ui/state-management/arkts-v1.2-wrapBuilder.md)的类型保持一致，否则会存在编译告警导致编译失败。
+BuilderNode对象为一个模板类，需要在创建的时候指定类型。该类型需要与后续build方法中传入的[WrappedBuilder](../ui/state-management/arkts-static-wrapBuilder.md)的类型保持一致，否则会存在编译告警导致编译失败。
 
 ## 创建组件树
 

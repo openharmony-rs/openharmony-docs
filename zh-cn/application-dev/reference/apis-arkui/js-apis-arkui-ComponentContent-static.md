@@ -37,7 +37,7 @@ ComponentContent的构造函数。用于按照[CustomBuilder](./arkui-ts/ts-type
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./js-apis-arkui-UIContext.md) | 是 | 创建节点所需UI上下文。 |
-| builder  | WrappedBuilder\<[CustomBuilder](./arkui-ts/ts-types.md#custombuilder20)> | 是   |   封装不带参builder函数的[WrappedBuilder对象](../../ui/state-management/arkts-v1.2-wrapBuilder.md)。 |
+| builder  | WrappedBuilder\<[CustomBuilder](./arkui-ts/ts-types.md#custombuilder20)> | 是   |   封装不带参builder函数的[WrappedBuilder对象](../../ui/state-management/arkts-static-wrapBuilder.md)。 |
 
 **示例**
 
