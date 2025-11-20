@@ -832,7 +832,7 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
 移除指定的候选网络配置，使用callback异步回调。
 
 - 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
-- 只能移除通过addCandidateConfig添加的候选配置，移除后该候选网络将不再被系统自动连接。
+- 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig9)添加的候选配置，移除后该候选网络将不再被系统自动连接。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -923,9 +923,9 @@ getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取候选网络配置。
 
-- 该接口返回系统中所有已保存但当前未连接的WIFI网络配置。
 - 候选网络是指曾经连接过或者手动添加的网络配置。
-- 可用于展示可连接的网络列表或进行网络管理操作。
+- 该接口返回系统中所有已保存但当前未连接的Wi-Fi网络配置。
+- 用于展示可连接的网络列表或进行网络管理操作。
 
 **需要权限：**
 
