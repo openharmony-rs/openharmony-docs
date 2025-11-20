@@ -376,6 +376,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | request | [PermissionRequest](./arkts-basic-components-web-PermissionRequest.md) | 是 | 通知Web组件用户操作行为。 |
