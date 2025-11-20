@@ -103,3 +103,43 @@ Obtains the analysis types supported by the corresponding component.
 | Type    | Description                     |
 | ------ | ----------------------- |
 | [ImageAnalyzerType[]](#imageanalyzertype12) | Analysis type supported by the corresponding component.|
+
+## ContentTransitionEffect<sup>21+</sup>
+
+Defines the content transition effect.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### IDENTITY<sup>21+</sup>
+
+static get IDENTITY(): ContentTransitionEffect
+
+Applies no transition effect during content switching.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                      | Description                                           |
+| ------------------------------------------ | ----------------------------------------------- |
+| [ContentTransitionEffect](#contenttransitioneffect21)   | Content transition effect. |
+
+### OPACITY<sup>21+</sup>
+
+static get OPACITY(): ContentTransitionEffect
+
+Applies a fade-in/fade-out transition animation during content switching.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                      | Description                                           |
+| ------------------------------------------ | ----------------------------------------------- |
+| [ContentTransitionEffect](#contenttransitioneffect21)   | Content transition effect. |
