@@ -5165,7 +5165,7 @@ Allows a system application to invoke the data identification and anonymization 
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
-**Since**: 21
+**Since**: 22
 
 ## ohos.permission.CAPTURE_SCREEN_ALL
 
