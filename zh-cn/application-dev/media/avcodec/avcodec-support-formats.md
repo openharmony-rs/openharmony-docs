@@ -15,11 +15,11 @@
 
 | 视频解码类型       | 视频解码格式的MIME类型   |
 | --------------------- | ---------------- |
-| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
 通过MIME类型创建解码器，如果系统支持硬件解码，系统会创优先建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统会创建软件解码器实例，当系统无对应解码能力，会创建失败。
@@ -57,7 +57,7 @@
 | G711a(API20) | [OH_AVCODEC_MIMETYPE_AUDIO_G711A](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | ALAC(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_ALAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | AC3(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_AC3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| WMA(V1，V2，PRO，API22) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMA(V1，V2，PRO) (API22) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | GSM(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_GSM](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | GSM_MS(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP1--> <!--RP1End-->
