@@ -259,11 +259,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePixelMapUseAllocator() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating pixelmap.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+    console.error("Failed to create pixelmap. code is ", error.code);
   })
 }
 ```
@@ -652,7 +652,7 @@ createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptio
 ```ts
 function CreatePixelMapSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.AUTO);
   return pixelMap;
 }
