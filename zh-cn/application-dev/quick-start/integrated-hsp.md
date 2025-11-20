@@ -183,6 +183,32 @@
 ```
 
     <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5)  -->
+    
+    ``` JSON5
+    {
+      "app": {
+        "signingConfigs": [
+        ],
+        "products": [
+          {
+            "name": "default",
+            "signingConfig": "default",
+            "targetSdkVersion": "5.1.1(19)",
+            "compatibleSdkVersion": "5.1.1(19)",
+            "runtimeOS": "HarmonyOS",
+            "buildOption": {
+              "strictMode": {
+                // ...
+                "useNormalizedOHMUrl": true,
+              }
+            }
+          }
+        ],
+        // ...
+      },
+      // ...
+    }
+    ```
 
     > **说明：** 
     > 安装和运行应用前，必须配置项目签名信息，详见[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
