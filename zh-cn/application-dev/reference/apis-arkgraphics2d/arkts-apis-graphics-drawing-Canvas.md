@@ -826,7 +826,7 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<comm
 
 **错误码：**
 
-以下错误码的详细介绍请参见[图形绘制与显示错误码](\errorcode-drawing.md)。
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
