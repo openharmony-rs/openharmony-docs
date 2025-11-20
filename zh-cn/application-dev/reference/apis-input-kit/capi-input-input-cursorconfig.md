@@ -21,3 +21,9 @@ typedef struct Input_CursorConfig Input_CursorConfig
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 
+**相关接口：**
+
+| 名称 | 描述 |
+| -- | -- |
+| [OH_Input_CursorConfig_Create](capi-oh-input-manager-h.md#oh_input_cursorconfig_create) | 创建自定义鼠标光标配置对象。 |
+| [OH_Input_CursorConfig_Destroy](capi-oh-input-manager-h.md#oh_input_cursorconfig_destroy) | 销毁自定义鼠标光标配置对象。 |
