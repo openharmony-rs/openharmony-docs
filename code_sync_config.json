@@ -10527,9 +10527,9 @@
 						"start_line":101
 					},
 					{
-						"end_line":188,
+						"end_line":195,
 						"name":"CrashEvent_ArkTS_Add_Watcher",
-						"start_line":133
+						"start_line":136
 					}
 				]
 			},
@@ -10587,14 +10587,14 @@
 						"start_line":16
 					},
 					{
-						"end_line":515,
+						"end_line":516,
 						"name":"Sys_Crash_Crash_OnReceive",
 						"start_line":447
 					},
 					{
-						"end_line":591,
+						"end_line":596,
 						"name":"Sys_Crash_Event_OnTrigger",
-						"start_line":517
+						"start_line":518
 					},
 					{
 						"end_line":1277,
