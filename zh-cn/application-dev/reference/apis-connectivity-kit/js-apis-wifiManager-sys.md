@@ -1720,7 +1720,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta加入事件。使用callback异步回调。
+取消注册WIFI热点STA加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
