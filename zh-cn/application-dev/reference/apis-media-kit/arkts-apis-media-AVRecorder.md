@@ -978,7 +978,7 @@ avRecorder.getAudioCapturerMaxAmplitude((err: BusinessError, amplitude: number) 
 
 getAudioCapturerMaxAmplitude(): Promise\<number>
 
-获取当前音频最大振幅参数。使用Promise异步回调。
+获取当前音频最大振幅。使用Promise异步回调。
 
 在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
 
