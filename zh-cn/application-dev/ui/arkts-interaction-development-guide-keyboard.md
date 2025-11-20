@@ -208,6 +208,7 @@ struct PreImeEventExample {
   }
 }
 ```
+
 ![zh-cn_image_00012427222](figures/zh-cn_image_00012427222.gif)
 
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
@@ -263,7 +264,8 @@ struct Index {
   }
 }
 ```
-![zh-cn_image_00012427111](figures/zh-cn_image_00012427111.jpg)
+
+![zh-cn_image_00012427111](figures/zh-cn_image_00012427111.PNG)
 
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
 

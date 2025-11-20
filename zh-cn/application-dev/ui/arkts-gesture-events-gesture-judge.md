@@ -153,7 +153,7 @@
    }
    ```
 
-![StackGesure20251119001](figures/StackGesure20251119001.jpg)
+![StackGesure20251119001](figures/StackGesure20251119001.PNG)
 
 ## 手势并行动态控制
 
