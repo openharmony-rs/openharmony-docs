@@ -3080,11 +3080,9 @@ ArkTS不允许使用TypeScript或JavaScript标准库中的某些接口。大部�
 
 ### 强制进行严格类型检查
 
-**规则：**`arkts-strict-typing`
-
 **级别：错误**
 
-**错误码：10605145**
+**错误码：10605999**
 
 在编译阶段，会进行TypeScript严格模式的类型检查，包括：
 `noImplicitReturns`, 
