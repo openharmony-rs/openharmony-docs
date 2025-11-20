@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_AxisEvent Input_AxisEvent
+```
+
 ## 概述
 
 轴事件对象。
