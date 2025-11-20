@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Toolbar** component is designed to present a set of action options related to the current screen, displayed at the bottom of the screen. It can display up to five child components. If there are six or more child components, the first four are shown directly, and the additional ones are grouped under a **More** item on the rightmost side of the toolbar.<br>
 This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage toolbar data and states with greater flexibility, leading to faster UI updates.<br>
@@ -13,6 +13,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - If the **ToolBarV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ToolBarV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ToolBarV2** component.
 
 ## Modules to Import
 
@@ -49,7 +50,7 @@ Creates a toolbar.
 ## ToolBarV2Item
 Defines an item in the toolbar.
 
-**Decorator type**: @ObservedV2
+**Decorator**: @ObservedV2
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -61,13 +62,13 @@ Defines an item in the toolbar.
 
 | Name                          | Type                                             | Read-Only| Optional| Description                                                                                                                                                                                                                 |
 | ---------------------------- | ----------------------------------------------- | -- | -- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | No | No| Text of the toolbar item.<br>Decorator type: @Trace|                                                                                                                                                                                                           |
-| action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Yes | Click event of the toolbar item.<br></div>By default, there is no click event.<br>Decorator type: @Trace                                                                                                                                                                                     |
-| icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Yes| Icon of the toolbar item.<br></div>By default, there is no icon.<br>Decorator type: @Trace                                                                                                                                                                                       |
-| state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes| State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>Decorator type: @Trace                                                                                                                                                                          |
-| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | No | Yes| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br></div>Default value: value of **content**<br>Decorator type: @Trace                                          |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes|  Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>Decorator type: @Trace                       |
-| accessibilityLevel  | string                                          | No | Yes| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br><br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>Decorator type: @Trace|
+| content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | No | No| Text of the toolbar item.<br>Decorator: @Trace|                                                                                                                                                                                                           |
+| action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Yes | Click event of the toolbar item.<br></div>By default, there is no click event.<br>Decorator: @Trace                                                                                                                                                                                     |
+| icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Yes| Icon of the toolbar item.<br></div>By default, there is no icon.<br>Decorator: @Trace                                                                                                                                                                                       |
+| state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes| State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>Decorator: @Trace                                                                                                                                                                          |
+| accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | No | Yes| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br></div>Default value: value of **content**<br>Decorator: @Trace                                          |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes|  Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>Decorator: @Trace                       |
+| accessibilityLevel  | string                                          | No | Yes| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br><br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>Decorator: @Trace|
 
 ### constructor
 
@@ -129,7 +130,7 @@ Defines the callback for the click event of a toolbar item.
 
 Defines the text of a toolbar item.
 
-**Decorator type**: @ObservedV2
+**Decorator**: @ObservedV2
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -141,9 +142,9 @@ Defines the text of a toolbar item.
 
 | Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
-| text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.<br>Decorator type: @Trace                                               |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.<br>Decorator type: @Trace      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br></div>Default value: **$r('sys.color.font_emphasize')**.<br>Decorator type: @Trace|
+| text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.<br>Decorator: @Trace                                               |
+| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.<br>Decorator: @Trace      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br></div>Default value: **$r('sys.color.font_emphasize')**.<br>Decorator: @Trace|
 
 ### constructor
 
@@ -183,7 +184,7 @@ Defines the options for initializing a **ToolBarV2ItemText** object.
 
 Defines the icon content of a toolbar item.
 
-**Decorator type**: @ObservedV2
+**Decorator**: @ObservedV2
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -195,9 +196,9 @@ Defines the icon content of a toolbar item.
 
 | Name                | Type                                                         | Read-Only| Optional| Description                                                      |
 |:-------------------|:------------------------------------------------------------|:---|:---| :---------------------------------------------------------|
-| src                | [ResourceStr](ts-types.md#resourcestr)                      | No | No|  Icon of the toolbar item.<br>Decorator type: @Trace                                               |
-| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes|  Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.<br>Decorator type: @Trace      |
-| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes| Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.<br>Decorator type: @Trace|
+| src                | [ResourceStr](ts-types.md#resourcestr)                      | No | No|  Icon of the toolbar item.<br>Decorator: @Trace                                               |
+| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes|  Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.<br>Decorator: @Trace      |
+| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes| Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.<br>Decorator: @Trace|
 
 ### constructor
 
@@ -300,7 +301,7 @@ Sets the left and right padding of the toolbar. By overriding this API, you can 
 
 | Name    | Type                                                           | Mandatory| Description                                                                 |
 | ------- |---------------------------------------------------------------| -- | ------------------------------------------------------------------- |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br></div>By default, the padding is 24 vp when there are fewer than five items and 0 when there are five or more items.|
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br></div>By default, the left and right padding is set to 24 vp when there are fewer than five items, and 0 vp when there are five or more items.|
 
 **Return value**
 
@@ -375,7 +376,7 @@ Enumerates the states of the toolbar item.
 
 Defines the icon symbol options.
 
-**Decorator type**: @ObservedV2
+**Decorator**: @ObservedV2
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -387,8 +388,8 @@ Defines the icon symbol options.
 
 | Name       | Type                                                                  | Read-Only| Optional| Description                                                                                  |
 | :-------- | :------------------------------------------------------------------- |:---|:---|  :----------------------------------------------------------------------------------- |
-| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | No | Icon symbol of the toolbar item in normal state.<br>Decorator type: @Trace  |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**<br>Decorator type: @Trace|
+| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | No | Icon symbol of the toolbar item in normal state.<br>Decorator: @Trace  |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**<br>Decorator: @Trace|
 
 ### constructor
 
@@ -728,7 +729,7 @@ struct Index {
         action: () => {
         },
         state: ToolBarV2ItemState.DISABLE,
-        accessibilityLevel: 'no'  // Configure this button to be not recognizable by screen readers.
+        accessibilityLevel: 'no'  // Configure this element not to be focused by accessibility screen readers.
       }))
     this.toolbarList.push(
       new ToolBarV2Item({

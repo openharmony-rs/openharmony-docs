@@ -216,7 +216,7 @@
     - Other<!--other-property-->
       - [Reuse ID](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [Reuse Options](arkui-ts/ts-universal-attributes-reuse.md)
-      - [Toolbar](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [Toolbar Configuration](arkui-ts/ts-universal-attributes-toolbar.md)
   - Gesture Handling<!--gesture-handling-->
     - Gesture Binding<!--gesture-binding-->
       - [Gesture Binding Methods](arkui-ts/ts-gesture-settings.md)
@@ -737,4 +737,3 @@
     - [Window Error Codes](errorcode-window.md)
   - UI Compilation<!--arkui-compile-arkts-errcode-->
     - [Compilation Error Codes](_ark_ui_compile.md)
-<!--no_check-->
