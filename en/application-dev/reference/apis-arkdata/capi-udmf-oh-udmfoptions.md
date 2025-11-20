@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfOptions OH_UdmfOptions
+```
+
 ## Overview
 
 Defines the optional parameters for data operations.

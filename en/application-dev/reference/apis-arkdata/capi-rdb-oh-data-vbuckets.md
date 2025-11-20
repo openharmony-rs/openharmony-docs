@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Data_VBuckets OH_Data_VBuckets
+```
+
 ## Overview
 
 Defines the **OH_Data_VBuckets** struct.
