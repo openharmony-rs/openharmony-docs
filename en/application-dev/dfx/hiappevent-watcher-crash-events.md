@@ -110,7 +110,7 @@ The following table lists the common information predefined in the crash event.
 | exception | object | Exception information in brief. For details, see [exception](#exception). For details about all fault information, see the **external_log** file.|
 | hilog | string[] | Log information, which displays a maximum of 100 lines of HiLog logs. For more logs, see the fault log file.|
 | threads | object[] | Full thread call stack. For details, see [thread](#thread). This field applies only to **NativeCrash** events.|
-| external_log<sup></sup> | string[] | [Application sandbox path](../file-management/app-sandbox-directory.md) of the fault log file. You can read the fault log file through the path. To avoid failed writing of new log files due to insufficient directory space, delete the log files after they are processed. For details about the threshold, see the **log_over_limit** field.|
+| external_log<sup></sup> | string[] | [Application sandbox path](../file-management/app-sandbox-directory.md) of the fault log file. You can read the fault log file through the path. To avoid failures in writing new log files due to insufficient directory space, delete the log files after they are processed. For details about the threshold, see the **log_over_limit** field.|
 | log_over_limit | boolean | Whether the total size of the generated and existing fault log files exceeds the upper limit 5 MB. The value **true** indicates that the upper limit is exceeded and logs fail to be written. The value **false** indicates that the upper limit is not exceeded.|
 
 ### exception
@@ -159,9 +159,11 @@ Native **frame**
 | -------- | -------- | -------- |
 | file | string | File name.|
 | symbol | string | Function name. The symbol may be empty due to the following reasons:<br>1. The function name is not saved in the binary file.<br>2. The function name is deleted because it contains more than 256 bytes.|
-| buildId | string | Unique file ID. The file may not contain **buildId**. For details, see [C++ Crash (Process Crash) Log Specifications](cppcrash-guidelines.md#common-faults).|
+| buildId | string | Unique file ID. The file may not contain **buildId**.|
 | pc | string | Hexadecimal byte offset of the executed instruction within the file.|
 | offset | number | Byte offset of the executed instruction within the function.|
+
+For details, see [Call stack frame](cppcrash-guidelines.md#common-faults).
 
 Js **frame**
 
@@ -172,6 +174,8 @@ Js **frame**
 | symbol | string | Function name.|
 | line | number | Code line number.|
 | column | number | Code column number.|
+
+For details, see [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
 
 ## Customizing Crash Event Parameters
 
