@@ -764,9 +764,9 @@ try {
 
 ## wifiManager.startWifiDetection<sup>21+</sup>
 
-startWifiDetection()：void
+startWifiDetection(): void
 
-随机mac是否被禁用。
+发起WiFi网络探测。
 
 **系统接口：** 此接口为系统接口。
 
