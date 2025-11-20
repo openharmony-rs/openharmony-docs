@@ -24,7 +24,7 @@ PermissionRequest的构造函数。
 
 **ArkTS-Sta起始版本：** 22
 
-## deny
+## deny<sup>9+</sup>
 
 deny(): void
 
@@ -36,7 +36,7 @@ deny(): void
 
 **ArkTS-Sta起始版本：** 22
 
-## getOrigin
+## getOrigin<sup>9+</sup>
 
 getOrigin(): string
 
@@ -54,7 +54,7 @@ getOrigin(): string
 | ------ | ------------ |
 | string | 当前请求权限网页的来源。 |
 
-## getAccessibleResource
+## getAccessibleResource<sup>9+</sup>
 
 getAccessibleResource(): Array\<string\>
 
@@ -72,7 +72,7 @@ getAccessibleResource(): Array\<string\>
 | --------------- | ------------- |
 | Array\<string\> | 网页所请求的权限资源列表。 |
 
-## grant
+## grant<sup>9+</sup>
 
 grant(resources: Array\<string\>): void
 
