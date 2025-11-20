@@ -301,9 +301,18 @@ async function onAudioInterrupt(): Promise<void> {
 
 - 并发模式（CONCURRENCY_MIX_WITH_OTHERS）：和其他音频流并发。
 
+    **典型场景：**
+    - 应用播放音乐时，会被后起的音乐或视频打断，应用希望自身的音频流和后起的音乐或视频并发（该场景需要应用在音频流启动前激活AudioSession）。
+
+    - 应用录音时，会打断后台正在播放的音乐或视频，应用希望自身的音频流和后台正在播放的音乐或视频并发（该场景需要应用在音频流启动前激活AudioSession）。
+
 - 降低音量模式（CONCURRENCY_DUCK_OTHERS）：和其他音频流并发，并且降低其他音频流的音量。
 
+    **典型场景：** 应用播放游戏音效时，会和后台正在播放的音乐并发，应用希望自身的音频流和后台正在播放的音乐并发时压低后台音乐音量（该场景需要应用在音频流启动前激活AudioSession）。
+
 - 暂停模式（CONCURRENCY_PAUSE_OTHERS）：暂停其他音频流，待释放焦点后通知其他音频流恢复。
+
+    **典型场景：** 应用播放短视频时，会打断后台正在播放的音乐，应用希望自身的音频流停止后，后台的音乐可以自动恢复（该场景需要应用在音频流启动前激活AudioSession，音频流停止后停用AudioSession）。
 
 > **注意：**
 >
@@ -333,7 +342,10 @@ async function onAudioInterrupt(): Promise<void> {
 
 
 ### 通过设置AudioSession场景参数申请焦点
-在保持现有特性的基础上，从API version 20开始，应用可通过AudioSession申请焦点，提升多音频流播放的连续性。
+
+**从API version 20开始支持该功能。**
+
+在保持现有特性的基础上，应用可通过AudioSession申请焦点，提升多音频流播放的连续性。
 典型使用场景如下：
 - 在多个小视频滑动播放时，多个音频流频繁申请和释放焦点可能导致漏音。使用AudioSession申请一次焦点，可以避免中间多个音频流播放时频繁申请和释放焦点，从而防止漏音。
 - 在VoIP通话场景下，可能需要启动铃声流、录音流和播放流，这些音频流的焦点优先级不同，部分音频流可能被其他应用的音频流中断。为了保持业务体验的连续性，可以使用AudioSession申请焦点，避免音频流被中断。
@@ -355,6 +367,9 @@ async function onAudioInterrupt(): Promise<void> {
 - AudioSession申请的焦点是应用级别的，如果应用内部包含不同的模块，各个模块间要做好协调处理，避免其中一个模块使用AudioSession申请了焦点，另一个模块的音频流被AudioSession的焦点管控而产生非预期的效果。
 
 ### 监听AudioSession焦点状态变化事件
+
+**从API version 20开始支持该功能。**
+
 AudioSession申请的焦点，跟通过AudioRenderer申请的焦点是同等地位，若有其他应用音频流申请焦点，系统会根据[焦点策略](#音频焦点策略)进行焦点处理。若判定当前AudioSession的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过[AudioSession焦点状态事件（AudioSessionStateChangedEvent）](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20)通知应用。
 
 为了维持应用和系统的状态一致性，确保良好的用户体验，应用应监听AudioSession焦点状态事件，并在焦点变化时做出必要响应。
@@ -366,5 +381,8 @@ AudioSession申请的焦点，跟通过AudioRenderer申请的焦点是同等地�
 > 2. 如果AudioSession的焦点被暂停，恢复暂停状态时，只会给AudioSession发送焦点恢复事件，不会再给AudioRenderer发送焦点恢复事件。
 
 ### 通过AudioSession查询和监听音频输出设备
-应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，无法灵活控制播放设备的选择和设备状态的监听。因此，从API version 20开始，AudioSession不仅增加了焦点管理能力，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。具体说明请参考文档[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)。
+
+**从API version 20开始支持该功能。**
+
+应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，无法灵活控制播放设备的选择和设备状态的监听。因此，AudioSession不仅增加了焦点管理能力，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。具体说明请参考文档[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)。
 API接口使用指导请参考[通过AudioSession查询和监听音频输出设备](./audio-output-device-management.md#通过audiosession查询和监听音频输出设备)。
