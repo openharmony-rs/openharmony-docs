@@ -693,7 +693,7 @@ type YI<Item, T extends Array<Item>> = Item
 
 **错误码：10605025**
 
-ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`作用域内显示声明。
+ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`作用域内显式声明。
 
 **TypeScript**
 
@@ -1486,7 +1486,7 @@ let e1 = (new Number(5.0)) instanceof Number; // true
 
 **错误码：10605055**
 
-ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型。与TypeScript不同，ArkTS禁止隐式的字符串转换到数值，开发者必须使用显示类型的转换方法。
+ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型。与TypeScript不同，ArkTS禁止隐式的字符串转换到数值，开发者必须使用显式类型的转换方法。
 
 **TypeScript**
 
