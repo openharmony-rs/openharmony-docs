@@ -95,6 +95,7 @@ export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
 // [StartExclude in_app_hsp_010]
 ```
 
+<!-- @[in_app_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
 
 
 ### 导出类和方法
@@ -129,6 +130,7 @@ export function minus(a: number, b: number): number {
 export { Log, add, minus } from './src/main/ets/utils/test';
 // [StartExclude in_app_hsp_010]
 ```
+<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
 ### 导出native方法
 在HSP中也可以包含C++编写的`so`。对于`so`中的`native`方法，HSP通过间接的方式导出，以导出`liblibrary.so`的乘法接口`multi`为例：
@@ -157,6 +159,7 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
 
 
+<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 ### 通过$r访问HSP中的资源
 在组件中，经常需要使用字符串、图片等资源。HSP中的组件需要使用资源时，一般将其所用资源放在HSP包内，而非放在HSP的使用方处，以符合高内聚低耦合的原则。
 
@@ -216,6 +219,7 @@ export { ResManager } from './src/main/ets/ResManager';
 // [StartExclude in_app_hsp_010]
 ```
 
+<!-- @[in_app_hsp_009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
 
 
 ## 使用
@@ -240,6 +244,8 @@ export { ResManager } from './src/main/ets/ResManager';
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 // [End in_app_hsp_006]
 ```
+
+<!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
 
 在使用方的代码中，可以这样使用：
 

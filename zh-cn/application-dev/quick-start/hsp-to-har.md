@@ -34,6 +34,7 @@ HSP对bundleName和签名有一致性要求，在调试阶段需要先安装HSP�
   }
 }
 ```
+    <!-- @[hsp_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HspToHar/library/src/main/module.json5) -->
 
 2. 在resource\base\profile文件夹下，删除main_pages.json文件。
 
@@ -50,6 +51,7 @@ export default {
   plugins:[]
 }
 ```
+    <!-- @[hsp_to_har_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HspToHar/library/hvigorfile.ts) -->
 
 4. 修改HSP模块的oh-package.json5文件，删除packageType配置。
 
