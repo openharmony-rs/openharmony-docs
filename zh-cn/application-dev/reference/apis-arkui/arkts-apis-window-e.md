@@ -129,6 +129,19 @@
 | FLOATING    | 4    | 表示APP自由悬浮形式窗口模式。   |
 | SPLIT_SCREEN  | 5    | 表示APP分屏模式。   |
 
+## PixelUnit<sup>22+</sup>
+
+像素单位枚举。
+
+物理像素单位和虚拟像素单位换算可使用[px2vp](./arkts-apis-uicontext-uicontext.md#px2vp12)和[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称    | 值   | 说明   |
+| ------- | ---- | ----- |
+| PX | 0  | 物理像素单位（px）。  |
+| VP | 1  | 虚拟像素单位（vp）。  |
+
 ## MaximizePresentation<sup>12+</sup>
 
 窗口最大化时的布局枚举。
