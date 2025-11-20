@@ -1798,7 +1798,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta离开事件。使用callback异步回调。
+取消注册WIFI热点STA离开事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
