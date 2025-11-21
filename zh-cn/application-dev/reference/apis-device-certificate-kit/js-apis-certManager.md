@@ -244,10 +244,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称    | 值   | 说明  |
 | --------| ---- | -------- |
-| PURPOSE_DEFAULT  | 0    | 表示凭据默认用途，即凭据签名用途。  |
-| PURPOSE_ALL  | 1    | 表示凭据所有用途，用于查询凭据功能。  |
-| PURPOSE_SIGN  | 2    | 表示凭据签名用途。   |
-| PURPOSE_ENCRYPT  | 3    | 表示凭据加密用途。  |
+| PURPOSE_DEFAULT  | 0    | 默认用途，用于凭据签名。  |
+| PURPOSE_ALL  | 1    | 用于查询所有凭据。  |
+| PURPOSE_SIGN  | 2    | 用于凭据签名。   |
+| PURPOSE_ENCRYPT  | 3    | 用于凭据加密。  |
 
 ## UkeyInfo<sup>22+</sup>
 
