@@ -92,6 +92,21 @@
 3. 调用[getWantAgent()](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)方法进行创建WantAgent。
 
    <!-- @[create_get_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   // 创建WantAgent
+   wantAgent.getWantAgent(wantAgentInfo, (err: BusinessError, data: WantAgent) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to get want agent. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in getting want agent.');
+     wantAgentObj = data;
+   
+     // ...
+   });
+   ```
 
 4. 构造NotificationRequest对象，并发布携带WantAgent的通知。
 
