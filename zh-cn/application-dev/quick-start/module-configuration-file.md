@@ -22,135 +22,6 @@
 <!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_metadata]
-// [Start module_abilities_skills]
-// [Start module_systemTheme]
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-    // [StartExclude module_systemTheme]
-    // [StartExclude module_fileContextMenu]
-    // [StartExclude module_metadata]
-    "name": "entry",
-    "type": "entry",
-    "description": "$string:module_desc",
-    "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "tv",
-      "tablet"
-    ],
-    "deliveryWithInstall": true,
-    // [Start module_pages]
-    "pages": "$profile:main_pages",
-    // [End module_pages]
-    "appStartup": "$profile:app_startup_config",
-    // [EndExclude module_metadata]
-    "metadata": [
-      // [StartExclude module_metadata]
-      {
-        "name": "string",
-        "value": "string",
-        "resource": "$profile:distributionFilter_config"
-      },
-      // [EndExclude module_metadata]
-	// ···
-    ],
-    // [StartExclude module_metadata]
-    // [EndExclude module_abilities_metadata]
-    // [EndExclude module_abilities_skills]
-    "abilities": [
-      {
-        // [StartExclude module_abilities_skills]
-        "name": "EntryAbility",
-        "srcEntry": "./ets/entryability/EntryAbility.ets",
-        // [StartExclude module_abilities_metadata]
-        "description": "$string:EntryAbility_desc",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbility_label",
-        "startWindow": "$profile:start_window",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background",
-        "exported": true,
-        // [EndExclude module_abilities_skills]
-        "skills": [
-		// ···
-          // [EndExclude module_abilities_metadata]
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-          // [EndExclude module_abilities_skills]
-        ],
-        // [StartExclude module_abilities_skills]
-		// ···
-        "continueType": [
-          "continueType1"
-        ],
-        "continueBundleName": [
-          "com.example.myapplication1",
-          "com.example.myapplication2"
-        ],
-        // [EndExclude module_abilities_metadata]
-      }
-      // [EndExclude module_abilities_skills]
-    ],
-    // [StartExclude module_abilities_skills]
-    // [StartExclude module_abilities_metadata]
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.ACCESS_BLUETOOTH",
-        "reason": "$string:reason",
-        "usedScene": {
-          "abilities": [
-            "EntryAbility"
-          ],
-          "when": "inuse"
-        }
-      }
-    ],
-    "querySchemes": [
-      "app1Scheme",
-      "app2Scheme"
-    ],
-    "routerMap": "$profile:router_map",
-    // [EndExclude module_appEnvironments]
-    "appEnvironments": [
-      {
-        "name": "name1",
-        "value": "value1"
-      }
-    ],
-    // [StartExclude module_appEnvironments]
-    // [EndExclude module_fileContextMenu]
-    "fileContextMenu": "$profile:menu",
-    // [StartExclude module_fileContextMenu]
-    "crossAppSharedConfig": "$profile:shared_config",
-	// ···
-    // [EndExclude module_fileContextMenu]
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
-  }
-  // [EndExclude module_abilities_skills]
-}
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
-// [End module_systemTheme]
-// [End module_abilities_skills]
-// [End module_metadata]
-```
-<!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
 {
   "module": {
     "name": "entry",
@@ -303,40 +174,6 @@ deviceTypes示例：
 <!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_abilities]
-// [Start module_extensionAbilities]
-// [Start module_proxyData]
-// [Start module_dependencies]
-// [Start module_testRunner]
-{
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
-  "module": {
-    // [StartExclude module_testRunner]
-    // [StartExclude module_proxyData]
-    // [StartExclude module_dependencies]
-    "name": "myHapName",
-    "type": "feature",
-    "deviceTypes": [
-      "tv",
-      "tablet"
-    ],
-	// ···
-    // [StartExclude module_extensionAbilities]
-  }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
-}
-// [End module_testRunner]
-// [End module_dependencies]
-// [End module_proxyData]
-// [End module_extensionAbilities]
-// [End module_abilities]
-```
-
-<!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
-
-``` JSON5
 {
   "module": {
     "name": "myHapName",
@@ -353,30 +190,6 @@ deviceTypes示例：
 ## pages标签
 
 该标签是一个profile文件资源，用于指定描述页面信息的配置文件。
-
-<!-- @[module_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "pages": "$profile:main_pages", // 资源配置，指向profile下面定义的配置文件main_pages.json
-    // ...
-  }
-}
-```
-
-``` JSON5
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-    // ···
-    "pages": "$profile:main_pages", // 资源配置，指向profile下面定义的配置文件main_pages.json
-    // ···
-  }
-  // [EndExclude module_abilities_skills]
-}
-```
 
 <!-- @[module_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
@@ -435,37 +248,6 @@ deviceTypes示例：
 <!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_abilities_skills]
-// [Start module_systemTheme]
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-    // [StartExclude module_systemTheme]
-    // [StartExclude module_fileContextMenu]
-	// ···
-    "metadata": [
-	// ···
-      // [StartExclude module_all]
-      {
-        "name": "module_metadata",
-        "value": "a test demo for module metadata",
-        "resource": "$profile:shortcuts_config"
-      }
-      // [EndExclude module_all]
-    ],
-	// ···
-    // [EndExclude module_all]
-    // [EndExclude module_fileContextMenu]
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
-<!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
 {
   "module": {
     // ...
@@ -481,16 +263,6 @@ deviceTypes示例：
   }
 }
 ```
-  // [EndExclude module_abilities_skills]
-}
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
-// [End module_systemTheme]
-// [End module_abilities_skills]
-```
-
-<!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ## abilities标签
 
@@ -536,79 +308,6 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | process | 标识组件的进程名称。具体使用方式参考[进程模型定义](../application-models/process-model-stage.md#其他进程类型)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和type为embeddedUI的ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 
 abilities示例：
-
-<!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
-
-``` JSON5
-// [Start module_extensionAbilities]
-// [Start module_proxyData]
-// [Start module_dependencies]
-// [Start module_testRunner]
-{
-// ···
-    "abilities": [
-      {
-        "name": "EntryAbility",
-        "srcEntry": "./ets/entryability/EntryAbility.ets",
-        "launchType": "singleton",
-        "description": "$string:description_main_ability",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbility_label",
-        "permissions": [],
-        "metadata": [],
-        "exported": true,
-        "continuable": true,
-        "skills": [
-          {
-            "actions": [
-              "ohos.want.action.home"
-            ],
-            "entities": [
-              "entity.system.home"
-            ],
-            "uris": []
-          }
-        ],
-        "backgroundModes": [
-          "dataTransfer"
-        ],
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:red",
-        "removeMissionAfterTerminate": true,
-        "orientation": "$string:orientation",
-        "supportWindowMode": [
-          "fullscreen",
-          "split",
-          "floating"
-        ],
-        "maxWindowRatio": 3.5,
-        "minWindowRatio": 0.5,
-        "maxWindowWidth": 2560,
-        "minWindowWidth": 1400,
-        "maxWindowHeight": 300,
-        "minWindowHeight": 200,
-        "excludeFromMissions": false,
-        "preferMultiWindowOrientation": "default",
-        "isolationProcess": false,
-        "continueType": [
-          "continueType1",
-          "continueType2"
-        ],
-        "continueBundleName": [
-          "com.example.myapplication1",
-          "com.example.myapplication2"
-        ],
-        "process": ":processTag"
-      }
-    ],
-	// ···
-  // [EndExclude module_extensionAbilities]
-}
-// [End module_testRunner]
-// [End module_dependencies]
-// [End module_proxyData]
-// [End module_extensionAbilities]
-```
 
 <!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
@@ -711,52 +410,6 @@ skills示例：
 <!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_systemTheme]
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
-{
-// ···
-    "abilities": [
-      {
-		// ···
-        "skills": [
-          // [StartExclude module_all]
-          {
-            "actions": [
-              "ohos.want.action.home"
-            ],
-            "entities": [
-              "entity.system.home"
-            ],
-            "uris": [
-              {
-                "scheme":"http",
-                "host":"example.com",
-                "port":"80",
-                "path":"path",
-                "type": "text/*",
-                "linkFeature": "Login"
-              }
-            ],
-            "permissions": [],
-            "domainVerify": false
-          },
-		// ···
-        ],
-		// ···
-    ],
-	// ···
-}
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
-// [End module_systemTheme]
-```
-
-<!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
 {
   // ...
     "abilities": [
@@ -819,55 +472,6 @@ skills示例：
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 
 extensionAbilities示例：
-
-<!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
-
-``` JSON5
-// [Start module_proxyData]
-// [Start module_dependencies]
-// [Start module_testRunner]
-{
-  // [StartExclude module_abilities]
-// ···
-    "extensionAbilities": [
-      {
-        "name": "FormName",
-        "srcEntry": "./ets/form/MyForm.ets",
-        "icon": "$media:icon",
-        "label" : "$string:extension_name",
-        "description": "$string:form_description",
-        "type": "form",
-        "permissions": ["ohos.permission.ACCESS_BLUETOOTH"],
-        "exported": true,
-        "uri":"scheme://authority/path/query",
-        "skills": [{
-          "actions": [],
-          "entities": [],
-          "uris": [],
-          "permissions": []
-        }],
-        "metadata": [
-          {
-            "name": "ohos.extension.form",
-            "resource": "$profile:form_config",
-          }
-        ],
-        "extensionProcessMode": "instance",
-        "dataGroupIds": [
-          "testGroupId1"
-        ]
-      }
-    ],
-    // [EndExclude module_testRunner]
-    // [EndExclude module_dependencies]
-    // [EndExclude module_proxyData]
-    // [EndExclude module_deviceTypes]
-	// ···
-}
-// [End module_testRunner]
-// [End module_dependencies]
-// [End module_proxyData]
-```
 
 <!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
@@ -957,49 +561,6 @@ shortcuts标识应用的快捷方式信息。标签值为数组，包含四个�
 2. 在module.json5配置文件的abilities标签中，针对需要添加快捷方式的UIAbility进行配置metadata标签，使shortcut配置文件对该UIAbility生效。
 
    <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-	// ···
-    // [EndExclude module_abilities_skills]
-    "abilities": [
-      {
-        // [StartExclude module_abilities_skills]
-        "name": "EntryAbility",
-        "srcEntry": "./ets/entryability/EntryAbility.ets",
-		// ···
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-          // [EndExclude module_abilities_skills]
-        ],
-        // [StartExclude module_abilities_skills]
-        // [StartExclude module_all]
-        "metadata": [
-          {
-            "name": "ohos.ability.shortcuts",
-            "resource": "$profile:shortcuts_config"
-          }
-        ],
-		// ···
-      }
-      // [EndExclude module_abilities_skills]
-    ],
-    // [StartExclude module_abilities_skills]
-	// ···
-  }
-  // [EndExclude module_abilities_skills]
-}
-```
-
-   <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
    
    ``` JSON5
    {
@@ -1073,24 +634,6 @@ data标签示例：
 - **适用场景：** 当一个工程中存在多个Entry，且多个Entry配置的deviceTypes存在交集时，则需要通过该标签进行区分。比如下面的两个Entry都支持tablet类型，就需要通过该标签进行区分。
 
   <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
-
-``` JSON5
-// entry1支持的设备类型
-// [Start module_distributionFilter_metadata]
-{
-  "module": {
-    // [StartExclude module_distributionFilter_metadata]
-    "name": "entry1",
-    "type": "entry",
-    "deviceTypes": [
-      "tv",
-      "tablet"
-    ],
-	// ···
-}
-// [End module_distributionFilter_metadata]
-```
-  <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
   
   ``` JSON5
   // entry1支持的设备类型
@@ -1106,22 +649,6 @@ data标签示例：
   }
   ```
 
-
-  <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
-
-``` JSON5
-// entry2支持的设备类型
-{
-  "module": {
-    "name": "entry2",
-    "type": "entry",
-    "deviceTypes": [
-      "tv",
-      "tablet"
-    ],
-	// ···
-}
-```
 
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
   
@@ -1237,23 +764,6 @@ data标签示例：
 
 2. 在module.json5配置文件的module标签中定义metadata信息。
 
-  <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ···
-    "metadata": [
-      {
-        "name": "ohos.module.distribution",
-        "resource": "$profile:distributionFilter_config",
-      }
-    ],
-	// ···
-  // [EndExclude module_distributionFilter_01]
-}
-```
-
   <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
   
   ``` JSON5
@@ -1282,29 +792,6 @@ data标签示例：
 | srcPath | 标识测试框架代码路径，取值为长度不超过255字节的字符串。 | 字符串 | 不可缺省。 |
 
 testRunner标签示例：
-
-<!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
-
-``` JSON5
-{
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
-  "module": {
-	// ···
-    "testRunner": {
-      "name": "myTestRunnerName",
-      "srcPath": "etc/test/TestRunner.ts"
-    },
-	// ···
-    // [EndExclude module_dependencies]
-    // [EndExclude module_proxyData]
-    // [EndExclude module_deviceTypes]
-    // [StartExclude module_extensionAbilities]
-  }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
-}
-```
 
 <!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
@@ -1378,34 +865,6 @@ dependencies标签示例：
 <!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_testRunner]
-{
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
-  "module": {
-    // [StartExclude module_testRunner]
-    // [StartExclude module_proxyData]
-	// ···
-    "dependencies": [
-      {
-        "bundleName":"com.share.library",
-        "moduleName": "library",
-        "versionCode": 10001
-      }
-    ],
-	// ···
-    // [EndExclude module_proxyData]
-    // [EndExclude module_deviceTypes]
-    // [StartExclude module_extensionAbilities]
-  }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
-}
-// [End module_testRunner]
-```
-<!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
-
-``` JSON5
 {
   "module": {
     // ...
@@ -1435,38 +894,6 @@ dependencies标签示例：
 
 proxyData标签示例：
 
-<!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
-
-``` JSON5
-// [Start module_dependencies]
-// [Start module_testRunner]
-{
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
-  "module": {
-    // [StartExclude module_testRunner]
-	// ···
-    "proxyData": [
-      {
-        "uri":"datashareproxy://ohos.app.hap.myapplication/event/Meeting",
-        "requiredReadPermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
-        "requiredWritePermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
-        "metadata": {
-          "name": "datashare_metadata",
-          "resource": "$profile:datashare"
-        }
-      }
-    ],
-	// ···
-    // [EndExclude module_deviceTypes]
-    // [StartExclude module_extensionAbilities]
-  }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
-}
-// [End module_testRunner]
-// [End module_dependencies]
-```
 <!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
@@ -1615,29 +1042,6 @@ appEnvironments标签示例：
 <!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_abilities_metadata]
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-    // [StartExclude module_abilities_metadata]
-	// ···
-    "appEnvironments": [
-      {
-        "name": "name1",
-        "value": "value1"
-      }
-    ],
-	// ···
-    // [EndExclude module_abilities_metadata]
-  }
-  // [EndExclude module_abilities_skills]
-}
-// [End module_abilities_metadata]
-```
-
-<!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
 {
   "module": {
     // ...
@@ -1669,24 +1073,6 @@ hnpPackages示例：
 <!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_definePermissions]
-{
-  "module": {
-	// ···
-    "hnpPackages": [
-      {
-        "package": "hnpsample.hnp",
-        "type": "public"
-      }
-    ],
-	// ···
-  },
-}
-// [End module_definePermissions]
-```
-<!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
-
-``` JSON5
 {
   "module": {
     // ...
@@ -1707,28 +1093,6 @@ hnpPackages示例：
 
 fileContextMenu标签示例
 
-<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-    // [StartExclude module_systemTheme]
-	// ···
-    "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义的配置文件menu.json
-	// ···
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
-  }
-  // [EndExclude module_abilities_skills]
-}
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-```
 <!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
@@ -1850,31 +1214,6 @@ systemTheme标签示例：
 <!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-	// ···
-    "systemTheme": "$profile:theme_config", // 资源配置，指向profile下面定义的配置文件theme_config.json
-    // [EndExclude module_metadata]
-    // [EndExclude module_all]
-    // [EndExclude module_fileContextMenu]
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
-  }
-  // [EndExclude module_abilities_skills]
-}
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
-```
-<!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
 {
   "module": {
     // ...
@@ -1920,28 +1259,6 @@ resources/base/profile路径下的theme_config.json资源文件示例如下：
 
 definePermissions标签示例：
 
-<!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // [StartExclude module_hnpPackages]
-	// ···
-    "definePermissions": [
-      {
-        "name": "ohos.permission.ACCESS_BLUETOOTH",
-        "grantMode": "system_grant",
-        "availableLevel": "system_core",
-        "provisionEnable": true,
-        "distributedSceneEnable": false,
-        "label": "$string:EntryAbility_label"
-      }
-    ],
-	// ···
-    // [EndExclude module_hnpPackages]
-  },
-}
-```
 <!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 
 ``` JSON5
