@@ -57,6 +57,16 @@
 #include <cstdlib>
 ```
     <!-- @[native-bundle-guidelines_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    // napi依赖头文件
+    #include "napi/native_api.h"
+    // native接口依赖头文件
+    #include "bundle/ability_resource_info.h"
+    #include "bundle/native_interface_bundle.h"
+    // free()函数依赖的基础库
+    #include <cstdlib>
+    ```
 
 **3. 修改源文件**
 
