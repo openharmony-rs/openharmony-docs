@@ -441,7 +441,7 @@ enum Input_Result
 | INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 |  其它应用已经授权。<br>**起始版本：** 20。 |
 | INPUT_APP_NOT_FOCUSED = 3900009 |  当前应用不是焦点应用。<br>**起始版本：** 20。 |
 | INPUT_DEVICE_NO_POINTER = 3900010 |  无鼠标类输入外设。<br>**起始版本：** 20。 |
-
+| INPUT_INVALID_WINDOWID = 26500001 |  无效的窗口ID。<br>**起始版本：** 22。 |
 
 ## 函数说明
 
@@ -4606,7 +4606,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br> [INPUT_INVALID_WINDOWID](#input_result) 表示窗口ID无效。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_CursorInfo_Create()
 
