@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef void* ffrt_task_handle_t
+```
+
 ## 概述
 
 并行任务句柄。
