@@ -71,27 +71,27 @@
 
 3. 查询指定类型的通知渠道。
 
-    获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有声音提示，是否有震动，锁屏是否可见等。
+   获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有声音提示，是否有震动，锁屏是否可见等。
 
-    <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
+   <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
     
-    ``` TypeScript
-    // getSlot回调
-    let getSlotCallback = (err: BusinessError, data: notificationManager.NotificationSlot): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `Failed to get slot. Code is ${err.code}, message is ${err.message}`);
-      } else {
-        hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in getting slot.`);
-        if (data != null) {
-          hilog.info(DOMAIN_NUMBER, TAG, `slot enable status is ${JSON.stringify(data.enabled)}`);
-          hilog.info(DOMAIN_NUMBER, TAG, `vibrationEnabled status is ${JSON.stringify(data.vibrationEnabled)}`);
-          hilog.info(DOMAIN_NUMBER, TAG, `lightEnabled status is ${JSON.stringify(data.lightEnabled)}`);
-        }
-      }
-    };
-    let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-    notificationManager.getSlot(slotType, getSlotCallback);
-    ```
+   ``` TypeScript
+   // getSlot回调
+   let getSlotCallback = (err: BusinessError, data: notificationManager.NotificationSlot): void => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG, `Failed to get slot. Code is ${err.code}, message is ${err.message}`);
+     } else {
+       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in getting slot.`);
+       if (data != null) {
+         hilog.info(DOMAIN_NUMBER, TAG, `slot enable status is ${JSON.stringify(data.enabled)}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `vibrationEnabled status is ${JSON.stringify(data.vibrationEnabled)}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `lightEnabled status is ${JSON.stringify(data.lightEnabled)}`);
+       }
+     }
+   };
+   let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+   notificationManager.getSlot(slotType, getSlotCallback);
+   ```
 
 4. 删除指定类型的通知渠道。
 
