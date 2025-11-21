@@ -60,6 +60,24 @@
 3. （可选）拉起通知管理半模态弹窗，向用户再次申请通知授权。
 
     <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
+    
+    ``` TypeScript
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    notificationManager.isNotificationEnabled().then((data: boolean) => {
+      hilog.info(DOMAIN_NUMBER, TAG, 'isNotificationEnabled success, data: ' + JSON.stringify(data));
+      if (!data) {
+        notificationManager.openNotificationSettings(context).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings success`);
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG,
+            `[ANS] openNotificationSettings failed, code is ${err.code}, message is ${err.message}`);
+        });
+      }
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `isNotificationEnabled fail, code is ${err.code}, message is ${err.message}`);
+    });
+    ```
 
 
 
