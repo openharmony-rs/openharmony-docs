@@ -70,10 +70,10 @@
 除支持[通用方法](js-components-common-methods.md)外，还支持如下方法：
 | 名称 | 参数 | 描述 |
 | -------- | -------- | -------- |
-| getColumns | (result: number) => void | 返回栅格容器列数。 |
-| getColumnWidth | (result: number) => void | 返回栅格容器column宽度。 |
-| getGutterWidth | (result: number) => void | 返回栅格容器gutter宽度。 |
-| getSizeType | (result: number) => void | 返回当前容器响应尺寸类型（xs\|sm\|md\|lg）。 |
+| getColumns | (result: number) => void | 获取栅格容器列数。result表示获取到的栅格容器列数。 |
+| getColumnWidth | (result: number) => void | 获取栅格容器column宽度。result表示获取到的栅格容器column宽度。 |
+| getGutterWidth | (result: number) => void | 获取栅格容器gutter宽度。result表示获取到的栅格容器gutter宽度。 |
+| getSizeType | (result: number) => void | 获取当前容器响应尺寸类型（xs\|sm\|md\|lg）。result表示获取到的容器响应尺寸类型。 |
 
 
 ## 示例
