@@ -656,6 +656,25 @@ HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修�
 ```
 
   <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
+  
+  ``` JSON5
+  {
+    "module": {
+      "name": "library",
+      "type": "har",
+      "deviceTypes": [
+        "tablet",
+        "2in1"
+      ],
+      "metadata": [
+        {
+          "name": "UseTsHar",
+          "value": "true"
+        }
+      ]
+    }
+  }
+  ```
 
 ## 发布
 
