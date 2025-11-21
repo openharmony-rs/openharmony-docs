@@ -493,7 +493,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  // 示例代码中为获取统相册VIDEO，默认已预置。
+  // 示例代码中为获取系统相册VIDEO，默认已预置。
   console.info('getAlbumsDemo');
   phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO, async (err, fetchResult) => {
     if (err) {

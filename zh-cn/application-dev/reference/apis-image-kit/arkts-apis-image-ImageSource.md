@@ -207,7 +207,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 | 62980110 | The image source data is incorrect.      |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.       |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980118 | Failed to create the image plugin.   |
 | 62980122 | Failed to decode the image header.   |
@@ -261,7 +261,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 | 401  | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed;     |
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980110| The image source data is incorrect.            |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980116| Failed to decode the image.            |
 
 **示例：**
@@ -1267,7 +1267,7 @@ getFrameCount(callback: AsyncCallback\<number>): void
 | 62980096| The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111| The image source data is incomplete. |
 | 62980112| The image format does not match. |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115| Invalid image parameter. |
 | 62980116| Failed to decode the image. |
 | 62980118| Failed to create the image plugin. |
@@ -1313,7 +1313,7 @@ getFrameCount(): Promise\<number>
 | 62980096 | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.             |
 | 62980111 | The image source data is incomplete. |
 | 62980112 | The image format does not match.        |
-| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted.            |
+| 62980113| Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.            |
 | 62980115 | Invalid image parameter.      |
 | 62980116 | Failed to decode the image.          |
 | 62980118 | Failed to create the image plugin.   |
