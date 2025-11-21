@@ -117,8 +117,10 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
 
 index.d.ts
 <!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const handleScopeTest: () => string;
+
+``` TypeScript
+export const handleScopeTest: () => string; // napi_open_handle_scope、napi_close_handle_scope
+
 export const handleScope: () => string;
 ```
 
