@@ -58,7 +58,7 @@ Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，�
 }
 // [End har_package_008]
 ```
-
+<!-- @[har_package_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
 > **说明：**
 >
@@ -196,7 +196,7 @@ export { nativeAdd } from './src/main/ets/utils/nativeTest';
   // [EndExclude har_package_001]
 }
 ```
-
+<!-- @[har_package_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
 ## 使用
 
@@ -281,7 +281,7 @@ struct Index {
 // [End har_package_012]
 // [End har_package_011]
 ```
-
+<!-- @[har_package_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
 ### 引用HAR的native方法
 通过`import`引用HAR导出的native方法，示例如下所示：
@@ -332,7 +332,7 @@ struct Index {
 }
 // [End har_package_012]
 ```
-
+<!-- @[har_package_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
 ### 引用HAR的资源
 通过`$r`引用HAR中的资源，例如在HAR模块的`src/main/resources`里添加字符串资源（在string.json中定义，name：hello_har）和图片资源（icon_har.png），然后在Entry模块中引用该字符串和图片资源的示例如下所示：
@@ -392,7 +392,7 @@ struct Index {
   }
 }
 ```
-
+<!-- @[har_package_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
 ## 编译
 
@@ -437,7 +437,7 @@ HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，�
   ]
 }
 ```
-
+  <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
 
 ### 编译生成TS文件
 
@@ -478,7 +478,7 @@ HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修�
 }
 ```
 
-
+  <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
 
 ## 发布
 

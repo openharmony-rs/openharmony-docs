@@ -30,7 +30,7 @@
   }
 }
 ```
-
+    <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
 
 2. 在resources\base下新增profile文件夹，在profile下新增一个main_pages.json文件，并配置如下内容。
     ```json
@@ -65,7 +65,7 @@ struct PageIndex {
   }
 }
 ```
-
+    <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
 
 4. 删除HAR模块的build-profile.json5文件中的consumerFiles字段配置。
 
@@ -82,7 +82,7 @@ export default {
   plugins:[]
 }
 ```
-
+    <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
 
 6. 修改oh-package.json5文件，新增packageType配置。
 
@@ -94,7 +94,7 @@ export default {
   "packageType": "InterfaceHar"
 }
 ```
-
+    <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
 
 7. 修改项目根目录下的build-profile.json5文件，在modules标签下找到library的配置，新增targets标签。
 
@@ -117,4 +117,4 @@ export default {
     }
   ],
 ```
-
+    <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
