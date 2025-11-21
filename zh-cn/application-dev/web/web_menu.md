@@ -775,138 +775,147 @@ Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-we
 1. 创建MenuBuilder组件作为菜单弹窗，通过bindContextMenu将MenuBuilder与Web绑定。
 2. 在onContextMenuShow中获取图片url，通过copyLocalPicToDir或copyUrlPicToDir将图片保存至应用沙箱。
 3. 通过detectBarcode.decode解析保存在沙箱中的图片，获取到结果。
-  ```ts
-  import { webview } from '@kit.ArkWeb';
-  import { common } from '@kit.AbilityKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
-  import { systemDateTime } from '@kit.BasicServicesKit';
-  import { http } from '@kit.NetworkKit';
-  import { scanCore, scanBarcode, detectBarcode } from '@kit.ScanKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    saveButtonOptions: SaveButtonOptions = {
-      icon: SaveIconStyle.FULL_FILLED,
-      text: SaveDescription.SAVE_IMAGE,
-      buttonType: ButtonType.Capsule
+<!-- @[web_Scan_QR_code](https://gitee.com/harmonyos_samples/guide-snippets/blob/master/ArkWebKit/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { systemDateTime } from '@kit.BasicServicesKit';
+import { http } from '@kit.NetworkKit';
+import { scanCore, scanBarcode, detectBarcode } from '@kit.ScanKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  saveButtonOptions: SaveButtonOptions = {
+    icon: SaveIconStyle.FULL_FILLED,
+    text: SaveDescription.SAVE_IMAGE,
+    buttonType: ButtonType.Capsule
+  }
+  controller: webview.WebviewController = new webview.WebviewController();
+  private result: WebContextMenuResult | undefined = undefined;
+  @State showMenu: boolean = false;
+  @State imgUrl: string = '';
+  @State decodeResult: string = '';
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
+    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
+    let dstPath = this.context.filesDir + '/' +newFileName;
+    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let bufsize = 4096;
+    let buf = new ArrayBuffer(bufsize);
+    let off = 0;
+    let len = 0;
+    let readedLen = 0;
+    while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
+      readedLen += len;
+      fs.writeSync(dest.fd, buf, { offset: off, length: len });
+      off = off + len;
+      if ((srcFileDes.length - readedLen) < bufsize) {
+        bufsize = srcFileDes.length - readedLen;
+      }
     }
-    controller: webview.WebviewController = new webview.WebviewController();
-    private result: WebContextMenuResult | undefined = undefined;
-    @State showMenu: boolean = false;
-    @State imgUrl: string = '';
-    @State decodeResult: string = '';
-    context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    fs.close(dest.fd);
+    return dest.path;
+  }
 
-    copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
-      let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
-      let dstPath = this.context.filesDir + "/" +newFileName;
+  async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
+    let uri = '';
+    let httpRequest = http.createHttp();
+    let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
+    if (data?.responseCode == http.ResponseCode.OK) {
+      let dstPath = this.context.filesDir + '/' + newFileName;
       let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-      let bufsize = 4096;
-      let buf = new ArrayBuffer(bufsize);
-      let off = 0, len = 0, readedLen = 0;
-      while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
-        readedLen += len;
-        fs.writeSync(dest.fd, buf, { offset: off, length: len });
-        off = off + len;
-        if ((srcFileDes.length - readedLen) < bufsize) {
-          bufsize = srcFileDes.length - readedLen;
-        }
-      }
-      fs.close(dest.fd);
-      return dest.path;
+      let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
+      uri = dest.path;
     }
+    return uri;
+  }
 
-    async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
-      let uri = '';
-      let httpRequest = http.createHttp();
-      let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
-      if (data?.responseCode == http.ResponseCode.OK) {
-        let dstPath = this.context.filesDir + "/" + newFileName;
-        let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-        let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
-        uri = dest.path;
-      }
-      return uri;
-    }
-
-    @Builder
-    MenuBuilder() {
-      Menu() {
-        MenuItem({
-          content: "Scan QR Code",
-        })
-          .width(200)
-          .height(50)
-          .onClick(async () => {
+  @Builder
+  MenuBuilder() {
+    Menu() {
+      MenuItem({
+        content: 'Scan QR Code',
+      })
+        .width(200)
+        .height(50)
+        .onClick(async () => {
+          try {
+            let uri = '';
+            if (this.imgUrl?.includes('rawfile')) {
+              let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
+              uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
+            } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
+              uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
+            }
+            let options: scanBarcode.ScanOptions = { scanTypes: [scanCore.ScanType.ALL],
+              enableMultiMode: true, enableAlbum: true }
+            let inputImage: detectBarcode.InputImage = { uri: uri };
             try {
-              let uri = '';
-              if (this.imgUrl?.includes('rawfile')) {
-                let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
-                uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
-              } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
-                uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
-              }
-              let options: scanBarcode.ScanOptions = { scanTypes: [scanCore.ScanType.ALL], enableMultiMode: true, enableAlbum: true }
-              let inputImage: detectBarcode.InputImage = { uri: uri };
-              try {
-                // 调用图片识码接口
-                detectBarcode.decode(inputImage, options, (error: BusinessError, result: Array<scanBarcode.ScanResult>) => {
+              // 调用图片识码接口
+              detectBarcode.decode(inputImage, options,
+                (error: BusinessError, result: Array<scanBarcode.ScanResult>) => {
                   if (error && error.code) {
                     console.error(`create asset failed with error: ${error.code}, ${error.message}`);
                     return;
                   }
-                this.decodeResult = JSON.stringify(result);
+                  this.decodeResult = JSON.stringify(result);
                 });
-              } catch (err) {
-                console.error(`Failed to detect Barcode. Code: ${err.code}, ${err.message}`);
-              }
+            } catch (err) {
+              console.error(`Failed to detect Barcode. Code: ${err.code}, ${err.message}`);
             }
-            catch (err) {
-              console.error(`create asset failed with error: ${err.code}, ${err.message}`);
-            }
-          })
-      }
-    }
-
-    build() {
-      Column() {
-        Web({src: $rawfile("index.html"), controller: this.controller})
-          .onContextMenuShow((event) => {
-            if (event) {
-              let hitValue = this.controller.getLastHitTest();
-              this.imgUrl = hitValue.extra;
-            }
-            this.showMenu = true;
-            return true;
-          })
-          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-          .fileAccess(true)
-          .javaScriptAccess(true)
-          .domStorageAccess(true)
-          .height('40%')
-        Text('Decode result is ' + this.decodeResult)
-          .fontSize(20)
-          .height('10%')
-      }
+          } catch (err) {
+            console.error(`create asset failed with error: ${err.code}, ${err.message}`);
+          }
+        })
     }
   }
-  ```
-  ```html
-  <!--index.html-->
-  <!DOCTYPE html>
-  <html>
-  <head>
-      <title>test QR code</title>
-  </head>
-  <body>
-  <h1>Long press and click to scan the QR code</h1>
-  <!--img.png为二维码图片-->
-  <img src="img.png" >
-  </body>
-  </html>
-  ```
+
+  build() {
+    Column() {
+      Web({src: $rawfile('index6.html'), controller: this.controller})
+        .onContextMenuShow((event) => {
+          if (event) {
+            let hitValue = this.controller.getLastHitTest();
+            this.imgUrl = hitValue.extra;
+          }
+          this.showMenu = true;
+          return true;
+        })
+        .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+        .fileAccess(true)
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+        .height('40%')
+      Text('Decode result is ' + this.decodeResult)
+        .fontSize(20)
+        .height('10%')
+    }
+  }
+}
+```
+
+<!---->
+
+```html
+<!--index6.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test QR code</title>
+</head>
+<body>
+<h1>Long press and click to scan the QR code</h1>
+<!--img.png为二维码图片-->
+<img src="img.png" >
+</body>
+</html>
+```
 ![web-menu-scan-qr-code](./figures/web-menu-scan-qrcode.gif)
 
 ## 常见问题
