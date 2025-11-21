@@ -395,10 +395,13 @@ V2迁移策略：使用深拷贝。
 <!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->    
 
 ``` TypeScript
+const APPLE_INITIAL_COUNT = 5;
+const ORANGE_INITIAL_COUNT = 10;
+
 @ObservedV2
 class Fruit {
-  @Trace public  apple: number = 5;
-  @Trace public orange: number = 10;
+  @Trace public apple: number = APPLE_INITIAL_COUNT;
+  @Trace public orange: number = ORANGE_INITIAL_COUNT;
 
   // 实现深拷贝，子组件不会修改父组件的数据
   clone(): Fruit {
