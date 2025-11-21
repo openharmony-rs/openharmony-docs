@@ -65,7 +65,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
      hiAppEvent.addWatcher ({
       // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
       name: "watcher",
-      // 开发者可以订阅兴感趣的系统事件，此处是订阅了应用冻屏事件
+      // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
       appEventFilters: [
         {
           domain: hiAppEvent.domain.OS,
