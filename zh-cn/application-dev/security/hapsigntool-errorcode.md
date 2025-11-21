@@ -1,183 +1,194 @@
 # 签名工具错误码
 
-  ## 11106001 不支持的文件格式
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @scuteehuangjun-->
+<!--Designer: @scuteehuangjun; @liuchibin-->
+<!--Tester: @wwrongs-->
+<!--Adviser: @zengyawen-->
 
-  **错误信息**
+## 11106001 无效的文件格式
 
-  Invalid File Format
+**错误信息**
 
-  **错误描述**
+Invalid File Format.
 
-  输入文件格式错误。
+**错误描述**
 
-  **可能原因**
+输入文件格式错误。
 
-  代码签名不支持的文件格式。
+**可能原因**
 
-  **处理步骤**
+代码签名不支持输入的文件格式。
 
-  当前代码签名支持格式为：hap、hsp、hqf。
+**处理步骤**
 
-  ## 11110001 文件流读取错误
+代码签名支持的文件格式为：hap、hsp、hqf。
 
-  **错误信息**
+## 11110001 文件流读取错误
 
-  Input Stream Read Error
+**错误信息**
 
-  **错误描述**
+Input Stream Read Error.
 
-  读取文件异常。
+**错误描述**
 
-  **可能原因**
+文件读取错误。
 
-  文件读取错误。
+**可能原因**
 
-  **处理步骤**
+文件读取错误。
 
-  请重试，或结合故障日志及应用包进一步分析。
+**处理步骤**
 
-  ## 11111002 证书错误
+请重试，或结合故障日志及应用包进一步分析。
 
-  **错误信息**
+## 11111002 证书错误
 
-  Certificates Error
+**错误信息**
 
-  **错误描述**
+Certificates Error.
 
-  证书验证失败。
+**错误描述**
 
-  **可能原因**
+证书验证失败。
 
-  1. 证书不正确。
+**可能原因**
 
-  2. 签名参数 keyAlias 的值不正确。
+1. 证书不正确。
 
-  **处理步骤**
+2. 签名参数keyAlias的值不正确。
 
-  1. 检查证书来源是否正确。
+**处理步骤**
 
-  3. 检查参数 keyAlias 的值是否正确。
+1. 检查证书格式内容是否正确。
 
-  ## 11112001 Profile内容错误
+2. 检查参数keyAlias的值是否正确。
 
-  **错误信息**
+## 11112001 Profile内容错误
 
-  Profile Content Error
+**错误信息**
 
-  **错误描述**
+Profile Content Error.
 
-  Profile 内容错误。
+**错误描述**
 
-  **可能原因**
+Profile内容错误。
 
-  1. profile json 内容格式不符合格式规范。
+**可能原因**
 
-  2. type 缺失或值不合法。
+1. profile json内容格式不符合规范。
 
-  3. bundle-info 缺失。
+2. type缺失或值不合法。
 
-  4. app-identifier 值类型错误或长度不合法。
+3. bundle-info缺失。
 
-  **处理步骤**
+4. app-identifier值类型错误或长度不合法。
 
-  1. 检查 json 内容结构是否符合格式规范。
+**处理步骤**
 
-  2. 检查 type 值是否正确。
+1. 检查json内容结构是否符合格式规范。
 
-  3. 补充 bundle-info 内容。
+2. 检查type值是否正确。
 
-  4. 确认 app-identifier 值类型为 String，并且字符长度要求大于0、小于等于32。
+3. 补充bundle-info内容。
 
-  ## 11112002 module.json内容错误
+4. 确认app-identifier值类型为String，并且字符长度要求大于0、小于等于32。
 
-  **错误信息**
+## 11112002 module.json内容错误
 
-  module.json Content Error
+**错误信息**
 
-  **错误描述**
+module.json Content Error.
 
-  module.json 文件内容错误。
+**错误描述**
 
-  **可能原因**
+module.json文件内容错误。
 
-  1. module.json 内容格式不符合格式规范。
+**可能原因**
 
-  2. 应用包中 hnp 文件未在 module.json 中描述。
+1. module.json内容格式不符合格式规范。
 
-  **处理步骤**
+2. 应用包中hnp文件未在module.json中描述。
 
-  1. 检查 json 内容结构是否符合格式规范。
+**处理步骤**
 
-  2. 在 module.json 中描述 hnp 文件。
+1. 检查json内容结构是否符合格式规范。
 
-  ## 11112003 ELF文件错误
+2. 在module.json中添加hnp文件描述，[开发指导](../quick-start/module-configuration-file.md#hnppackages标签)。
 
-  **错误信息**
+## 11112003 ELF文件错误
 
-  ELF is incorrect
+**错误信息**
 
-  **错误描述**
+ELF is incorrect.
 
-  ELF 文件解析错误。
+**错误描述**
 
-  **可能原因**
+ELF文件解析错误。
 
-  ELF 文件头信息错误。
+**可能原因**
 
-  **处理步骤**
+ELF文件的头信息错误。
 
-  检查 ELF 文件头信息是否符合格式规范。
+**处理步骤**
 
-  ## 11112004 HNP文件错误
+检查ELF文件的头信息是否符合格式规范。
 
-  **错误信息**
+## 11112004 HNP文件错误
 
-  Extract hnp file error
+**错误信息**
 
-  **错误描述**
+Extract hnp file error.
 
-  解压 hnp 文件错误。
+**错误描述**
 
-  **可能原因**
+解压hnp文件错误。
 
-  解压 hnp 文件错误。
+**可能原因**
 
-  **处理步骤**
+1. 提取hnp文件错误。
 
-  检查 hnp 文件打包是否正确。
+2. 解压hnp文件错误。
 
-  ## 11113001 算法错误
+**处理步骤**
 
-  **错误信息**
+1. 再次执行签名。
 
-  Invalid algorithm
+2. 检查hnp文件打包是否正确。
 
-  **错误描述**
+## 11113001 算法错误
 
-  签名算法错误。
+**错误信息**
 
-  **可能原因**
+Invalid algorithm.
 
-  安装的 JDK 不支持此摘要算法。
+**错误描述**
 
-  **处理步骤**
+签名算法错误。
 
-  代码签名需要 SHA-256 和 SHA-512 算法支持，请检查 JDK 版本是否正确。
+**可能原因**
 
-  ## 11114001 签名内部错误
+安装的Java版本不支持此摘要算法。
 
-  **错误信息**
+**处理步骤**
 
-  Code Sign Internal Error
+代码签名需要SHA-256和SHA-512算法支持，请检查Java版本是否正确，当前支持Java8以上Java环境运行。
 
-  **错误描述**
+## 11114001 签名内部错误
 
-  工具签名内部错误。
+**错误信息**
 
-  **可能原因**
+Code Sign Internal Error.
 
-  签名过程中发生了内部错误。
+**错误描述**
 
-  **处理步骤**
+代码签名内部错误。
 
-  结合故障日志及应用包进一步分析。
+**可能原因**
+
+工具签名过程中发生了内部错误。
+
+**处理步骤**
+
+结合故障日志及应用包进一步分析。
