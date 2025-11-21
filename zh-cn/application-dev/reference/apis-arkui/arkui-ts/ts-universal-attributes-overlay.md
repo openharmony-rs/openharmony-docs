@@ -78,8 +78,8 @@ ArkTS-Sta: overlay\<T extends Object>(value: string | CustomBuilder | ComponentC
 
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
 | ------- | ---------------------------------------------------------| ---- | ------| --------------------------------------------------- |
-| x<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 横向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：**7<br/>**ArkTS-Sta起始版本：** 22       |
-| y<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 纵向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：**7<br/>**ArkTS-Sta起始版本：** 22       |
+| x<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 横向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22       |
+| y<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 纵向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22       |
 
 ## 示例
 

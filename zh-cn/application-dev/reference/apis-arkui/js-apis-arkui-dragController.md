@@ -893,7 +893,7 @@ struct DragControllerPage {
 
 ### offStatusChange<sup>22+</sup>
 
-offStatusChange(callback?: Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt;): void
+offStatusChange(callback?: Callback&lt;DragAndDropInfo&gt;): void
 
 取消注册监听拖拽状态改变事件。
 
