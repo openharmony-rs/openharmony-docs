@@ -63,6 +63,16 @@
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
 
    <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+   
+   ``` TypeScript
+   let badgeNumber: number = 9;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 3. 减少角标个数。
 
