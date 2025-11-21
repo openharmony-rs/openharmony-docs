@@ -78,3 +78,17 @@
 4. 删除指定类型的通知渠道。
 
    <!-- @[delete_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
+   
+   ``` TypeScript
+   // removeSlot回调
+   let removeSlotCallback = (err: BusinessError): void => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `removeSlot failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
+     } else {
+       hilog.info(DOMAIN_NUMBER, TAG, 'removeSlot success');
+     }
+   };
+   let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+   notificationManager.removeSlot(slotType, removeSlotCallback);
+   ```
