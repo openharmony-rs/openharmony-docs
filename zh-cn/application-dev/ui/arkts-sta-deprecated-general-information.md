@@ -309,21 +309,29 @@ struct DragControllerPage {
   build() {
     Column() {
       // 一个可以支持长按并移动发起拖拽的column组件
-      Column().width(100).height(100).backgroundColor(Color.Black)
+      Column()
+        .width(100)
+        .height(100)
+        .backgroundColor(Color.Black)
         .draggable(true)
-        .onDragStart(()=>{
+        .onDragStart(() => {
           // 此处简化
         })
 
       Divider().height(10)
 
       // 一个可以感知拖拽移动的组件
-      Column().width(200).height(200).backgroundColor(Color.Blue)
-        .onDragMove((event: DragEvent)=> {
+      Column()
+        .width(200)
+        .height(200)
+        .backgroundColor(Color.Blue)
+        .onDragMove((event: DragEvent) => {
           // 输出拖拽事件相对于窗口的坐标
           let x = event.getX();
           let y = event.getY();
           console.info('drag moving on window[' + x + ', ' + y + ']');
+        })
+        .onDrop(() => {
         })
     }
     .width('100%')

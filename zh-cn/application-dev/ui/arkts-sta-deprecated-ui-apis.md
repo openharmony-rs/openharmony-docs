@@ -687,7 +687,9 @@ struct OffscreenSnapshotExample {
         .margin(10)
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
-          componentSnapshot.createFromBuilder(this.RandomBuilder,
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
                 console.log("error: " + JSON.stringify(error))
@@ -798,7 +800,9 @@ struct OffscreenSnapshotExample {
     Column() {
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
-          componentSnapshot.createFromBuilder(this.RandomBuilder, 320, true, { scale: 2, waitUntilRenderFinished: true })
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          }, 320, true, { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
             }).catch((err: Error) => {
@@ -928,7 +932,7 @@ ArkTS-Sta示例：
 
 ```typescript
 import { Entry, ComponentV2, Local, Column, Image, Button, Text, Margin, $r } from '@kit.ArkUI';
-import { matrix4 } from '@kit.ArkUI';
+import matrix4 from '@ohos.matrix4';
 
 @Entry
 @ComponentV2
@@ -937,7 +941,7 @@ struct Utils {
   @Local y: number = 10;
   @Local z: number = 100;
   @Local value: string = '';
-  private matrix1 = matrix4.identity().translate({ x: this.x, y: this.y, z: this.z });
+  private matrix1: matrix4.Matrix4Transit = matrix4.identity().translate({ x: this.x, y: this.y, z: this.z });
 
   build() {
     Column() {
