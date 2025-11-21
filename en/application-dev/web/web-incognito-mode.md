@@ -29,17 +29,17 @@ When creating a **Web** component, you can enable incognito mode for it by setti
   ```
 
 - Use [isIncognitoMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isincognitomode11) to determine whether incognito mode is enabled for the current **Web** component.
-
-  ```ts
-  // xxx.ets
+  <!-- @[determine_whether_the_current_web_component_is_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('isIncognitoMode')
@@ -48,10 +48,11 @@ When creating a **Web** component, you can enable incognito mode for it by setti
               let result = this.controller.isIncognitoMode();
               console.info('isIncognitoMode' + result);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: 'www.example.com', controller: this.controller })
+        Web({ src: 'www.example.com', controller: this.controller });
       }
     }
   }
@@ -122,24 +123,25 @@ In incognito mode, you can use the following APIs for geolocation information, c
   ```
 
 - Use [getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation) to asynchronously obtain the geolocation permission status of the specified origin.
-
-  ```ts
-  // xxx.ets
+  <!-- @[asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    origin: string = "file:///";
-
+    origin: string = 'file:///';
+  
     build() {
       Column() {
         Button('getAccessibleGeolocation')
           .onClick(() => {
             try {
-              // The third parameter of getAccessibleGeolocation specifies whether to obtain the geolocation permission status of the specified origin in incognito mode (true) or in non-incognito mode (false). This API uses an asynchronous callback to return the result.
+              // The third parameter of getAccessibleGeolocation specifies whether to obtain the geolocation permission status of the specified origin in incognito mode (true) or non-incognito mode (false).
+              // This API uses an asynchronous callback to return the result.
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
                   console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
@@ -148,10 +150,11 @@ In incognito mode, you can use the following APIs for geolocation information, c
                 console.info('getAccessibleGeolocationAsync result: ' + result);
               }, true);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
       }
     }
   }
@@ -233,17 +236,17 @@ In incognito mode, you can use the following APIs for geolocation information, c
   ```
 
 - Use [fetchCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11) to obtain the cookie corresponding to the specified URL.
-
-  ```ts
-  // xxx.ets
+  <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('fetchCookieSync')
@@ -251,29 +254,30 @@ In incognito mode, you can use the following APIs for geolocation information, c
             try {
               // The second parameter of fetchCookieSync specifies whether to obtain the cookie in incognito mode (true) or in non-incognito mode (false).
               let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', true);
-              console.info("fetchCookieSync cookie = " + value);
+              console.info('fetchCookieSync cookie = ' + value);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
       }
     }
   }
   ```
 
 - Use [configCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) to set a cookie for the specified URL.
-
-  ```ts
-  // xxx.ets
+  <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('configCookieSync')
@@ -282,35 +286,36 @@ In incognito mode, you can use the following APIs for geolocation information, c
               // The third parameter of configCookieSync specifies whether to obtain the cookie for the specified URL in incognito mode (true) or non-incognito mode (false).
               webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', true);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
       }
     }
   }
   ```
 
 - Use [existCookie](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie) to check whether cookies exist.
-
-  ```ts
-  // xxx.ets
+  <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('existCookie')
           .onClick(() => {
             // The parameter of existCookie specifies whether to check for cookies in incognito mode (true) or in non-incognito mode (false).
             let result = webview.WebCookieManager.existCookie(true);
-            console.info("result: " + result);
+            console.info('result: ' + result);
           })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
       }
     }
   }

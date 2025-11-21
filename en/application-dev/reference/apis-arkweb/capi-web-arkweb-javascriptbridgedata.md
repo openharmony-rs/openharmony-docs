@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_JavaScriptBridgeData
+```
+
 ## Overview
 
 Defines the JavaScript Bridge data.

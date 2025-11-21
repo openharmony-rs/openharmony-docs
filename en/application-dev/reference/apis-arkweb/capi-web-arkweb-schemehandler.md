@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_SchemeHandler_ ArkWeb_SchemeHandler
+```
+
 ## Overview
 
 Defines a handler for intercepting requests of a specified scheme.

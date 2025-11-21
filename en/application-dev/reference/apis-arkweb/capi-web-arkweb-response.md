@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_Response_ ArkWeb_Response
+```
+
 ## Overview
 
 Defines an **ArkWeb_Response** for the intercepted request.
