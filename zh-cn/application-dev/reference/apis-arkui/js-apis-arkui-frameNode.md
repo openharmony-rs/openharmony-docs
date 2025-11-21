@@ -4336,7 +4336,7 @@ createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 typeNode.createNode(uiContext, 'Checkbox');
 ```
 
-### createCheckboxNode()<sup>22+</sup>
+### createCheckboxNode<sup>22+</sup>
 createCheckboxNode(context: UIContext): Checkbox
 
 创建Checkbox类型的FrameNode节点。
@@ -4408,7 +4408,7 @@ createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGroup
 typeNode.createNode(uiContext, 'CheckboxGroup');
 ```
 
-### createCheckboxGroupNode()<sup>22+</sup>
+### createCheckboxGroupNode<sup>22+</sup>
 createCheckboxGroupNode(context: UIContext): CheckboxGroup
 
 创建CheckboxGroup类型的FrameNode节点。
@@ -4480,7 +4480,7 @@ createNode(context: UIContext, nodeType: 'Rating'): Rating
 typeNode.createNode(uiContext, 'Rating');
 ```
 
-### createRatingNode()<sup>22+</sup>
+### createRatingNode<sup>22+</sup>
 createRatingNode(context: UIContext): Rating
 
 创建Rating类型的FrameNode节点。
@@ -4552,7 +4552,7 @@ createNode(context: UIContext, nodeType: 'Radio'): Radio
 typeNode.createNode(uiContext, 'Radio');
 ```
 
-### createRadioNode()<sup>22+</sup>
+### createRadioNode<sup>22+</sup>
 createRadioNode(context: UIContext): Radio
 
 创建Radio类型的FrameNode节点。
@@ -4624,7 +4624,7 @@ createNode(context: UIContext, nodeType: 'Slider'): Slider
 typeNode.createNode(uiContext, 'Slider');
 ```
 
-### createSliderNode()<sup>22+</sup>
+### createSliderNode<sup>22+</sup>
 createSliderNode(context: UIContext): Slider
 
 创建Slider类型的FrameNode节点。
@@ -4696,7 +4696,7 @@ createNode(context: UIContext, nodeType: 'Select'): Select
 typeNode.createNode(uiContext, 'Select');
 ```
 
-### createSelectNode()<sup>22+</sup>
+### createSelectNode<sup>22+</sup>
 createSelectNode(context: UIContext): Select
 
 创建Select类型的FrameNode节点。
@@ -4770,7 +4770,7 @@ let toggleOptions: ToggleOptions = {type: ToggleType.Button, isOn: false};
 typeNode.createNode(uiContext, 'Toggle', toggleOptions);
 ```
 
-### createToggleNode()<sup>22+</sup>
+### createToggleNode<sup>22+</sup>
 createToggleNode(context: UIContext, options?: ToggleOptions): Toggle
 
 创建Toggle类型的FrameNode节点。
