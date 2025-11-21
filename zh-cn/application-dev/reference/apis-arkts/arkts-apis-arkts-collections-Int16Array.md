@@ -1545,3 +1545,7 @@ for (let item of int16Array) {
 let int16Array = collections.Int16Array.from([1, 2, 4]);
 console.info("Element at index 1: ", int16Array[1]);
 ```
+
+<!--RP1-->
+
+<!--RP1End-->
