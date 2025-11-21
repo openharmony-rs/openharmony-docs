@@ -101,6 +101,23 @@
     示例如下：
 
     <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+    
+    ``` TypeScript
+    let badgeNumber: number = 10;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
+      hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
+    badgeNumber = 11;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
+      hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
+    ```
 
 - 正例
 
