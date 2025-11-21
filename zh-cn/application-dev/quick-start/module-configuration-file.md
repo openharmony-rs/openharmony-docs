@@ -756,6 +756,41 @@ skills示例：
 
 <!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  // ...
+    "abilities": [
+      {
+        // ...
+        "skills": [
+          {
+            "actions": [
+              "ohos.want.action.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+            "uris": [
+              {
+                "scheme":"http",
+                "host":"example.com",
+                "port":"80",
+                "path":"path",
+                "type": "text/*",
+                "linkFeature": "Login"
+              }
+            ],
+            "permissions": [],
+            "domainVerify": false
+          },
+          // ...
+        ],
+        // ...
+    ],
+    // ...
+}
+```
+
 ## extensionAbilities标签
 
 描述extensionAbilities的配置信息，标签值为数组类型，该标签下的配置只对当前extensionAbilities生效。
