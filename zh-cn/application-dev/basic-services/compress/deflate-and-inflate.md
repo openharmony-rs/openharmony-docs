@@ -147,6 +147,46 @@ struct Index {
 }
 ```
   <!-- @[deflate_and_inflate_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages1/Index.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError, zlib } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct Index {
+    build() {
+      Row() {
+        // 示例一：将测试文件data.txt压缩并归档到data.zip中。
+        Button('compressFile').onClick(() => {
+          let path = this.getUIContext()?.getHostContext()?.filesDir;
+          let inFile = path + '/data.txt';
+          let outFile = path + '/data.zip';
+          let options: zlib.Options = {};
+          zlib.compressFile(inFile, outFile, options).then((data: void) => {
+            console.info('compressFile success, data: ' + JSON.stringify(data));
+          }).catch((errData: BusinessError) => {
+            console.error(`compressFile errCode: ${errData.code}, message: ${errData.message}`);
+          })
+        })
+  
+        // 示例二：将data.zip文件解压到应用沙箱目录下。
+        Button('decompressFile').onClick(() => {
+          let path = this.getUIContext()?.getHostContext()?.filesDir;
+          let inFile = path + '/data.zip';
+          let outFile = path;
+          let options: zlib.Options = {};
+          zlib.decompressFile(inFile, outFile, options).then((data: void) => {
+            console.info('decompressFile success, data: ' + JSON.stringify(data));
+          }).catch((errData: BusinessError) => {
+            console.error(`decompressFile errCode: ${errData.code}, message: ${errData.message}`);
+          })
+        })
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
+  ```
 
 ### 已知大小缓冲区的压缩与解压
 
