@@ -401,11 +401,15 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
 
 // index.d.ts
 <!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const addFinalizer: () => Object | undefined;
-export const createReference: () => Object | undefined;
-export const useReference: () => Object | undefined;
-export const deleteReference: () => string | undefined;
+
+``` TypeScript
+export const addFinalizer: () => Object | undefined; // napi_add_finalizer
+
+export const createReference: () => Object | undefined; // napi_create_reference、napi_reference_ref
+
+export const useReference: () => Object | undefined; // napi_get_reference_value
+
+export const deleteReference: () => string | undefined; // napi_delete_reference、napi_reference_unref
 ```
 
 
