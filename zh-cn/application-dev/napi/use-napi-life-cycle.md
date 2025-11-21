@@ -175,7 +175,9 @@ napi_value NewObject(napi_env env, napi_callback_info info)
 cpp部分代码
 
 <!-- @[napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
 static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info)
 {
     // 创建一个可逃逸的句柄作用域
