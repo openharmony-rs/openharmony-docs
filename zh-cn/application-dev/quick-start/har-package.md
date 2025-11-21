@@ -206,6 +206,17 @@ export { nativeAdd } from './src/main/ets/utils/nativeTest';
 ```
 <!-- @[har_package_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
+``` JSON5
+{
+  // ...
+  "dependencies": {
+    // ...
+    "dayjs": "file:../dayjs",
+    "lottie": "file:../lottie",
+  },
+}
+```
+
 ## 使用
 
 介绍如何配置HAR依赖，并引用HAR的ArkUI组件、接口、资源。
