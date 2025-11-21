@@ -497,8 +497,8 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | ---------- | ------------- | -------------------------------------- | ------------------------------------------------ |
 | name       | String        | 当前静态公共事件对应的类名。             | Stage模型从staticSubscriber类型的Extension中获取。 |
 | permission | String        | 标识实现该静态公共事件需要申请的权限。   | Stage模型从staticSubscriber类型的Extension中获取。 |
-| data       | List\<String> | 当前静态公共时间需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
-| type       | List\<String> | 配置当前静态公共时间的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
+| data       | List\<String> | 当前静态公共事件需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
+| type       | List\<String> | 配置当前静态公共事件的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
 | events     | List\<String> | 标识能够接收的意图的event值的集合。      | Stage模型从staticSubscriber类型的Extension中获取。 |
 
 ### DependencyItem结构体信息
@@ -567,7 +567,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | 字段        | 类型    | 描述                         | 备注 |
 |-------------|---------|------------------------------| ---- |
 | name        | String  | 标识DefPermissionGroup的名称。 | NA   |
-| order       | String  | 标识DefPermissionGrou的顺序。  | NA   |
+| order       | String  | 标识DefPermissionGroup的顺序。  | NA   |
 | icon        | String  | 标识DefPermissionGroup的图标。 | NA   |
 | label       | String  | 标识DefPermissionGroup的标签。 | NA   |
 | description | String  | 标识DefPermissionGroup的描述。 | NA   |
