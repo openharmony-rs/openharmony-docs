@@ -463,7 +463,24 @@ deviceTypes示例：
     // [EndExclude module_fileContextMenu]
     // [EndExclude module_appEnvironments]
     // [EndExclude module_abilities_metadata]
+<!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "metadata": [
+      // ...
+      {
+        "name": "module_metadata",
+        "value": "a test demo for module metadata",
+        "resource": "$profile:shortcuts_config"
+      }
+    ],
+    // ...
   }
+}
+```
   // [EndExclude module_abilities_skills]
 }
 // [End module_abilities_metadata]
