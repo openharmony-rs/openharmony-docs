@@ -145,6 +145,17 @@
 | [float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltay) | 获取惯性滚动轴事件垂直方向的增量值。单位为px，表示为单次滚动增量，非滚动总量。数值的正负代表方向，双指从上往下滑动时为负数，双指从下往上滑动时为正数。  |
 | [float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltax) | 获取惯性滚动轴事件水平方向的增量值。单位为px，表示为单次滚动增量，非滚动总量。数值的正负代表方向，双指从左往右滑动时为负数，双指从右往左滑动时为正数。  |
 | [int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent event, bool propagation)](#oh_arkui_coastingaxisevent_setpropagation) | 设置惯性滚动轴事件是否启用冒泡，默认禁止冒泡。|
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo* info, ArkUI_TouchTestInfoItemArray* array, int32_t* size)](#oh_arkui_touchtestinfo_gettouchtestinfolist) | 获取触摸测试信息中的触摸测试信息项数组。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getx) | 从触摸测试信息项中获取相对于子组件左上角的X坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_gety) | 从触摸测试信息项中获取相对于子组件左上角的Y坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getwindowx) | 从触摸测试信息项中获取相对于当前应用窗口左上角的X坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getwindowy) | 从触摸测试信息项中获取相对于当前应用窗口左上角的Y坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getxrelativetoparent) | 从触摸测试信息项中获取相对于父组件左上角的X坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getyrelativetoparent) | 从触摸测试信息项中获取相对于父组件左上角的Y坐标，单位为px。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInfoItem* info, ArkUI_Rect* childRect)](#oh_arkui_touchtestinfoitem_getchildrect) | 从触摸测试信息项中获取子组件的帧矩形信息。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoItem* info, char* buffer, int32_t bufferSize)](#oh_arkui_touchtestinfoitem_getchildid) | 从触摸测试信息项中获取子组件的ID。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInfo* info, ArkUI_TouchTestStrategy strategy)](#oh_arkui_touchtestinfo_settouchresultstrategy) | 设置触摸测试策略，即组件及其子组件在命中测试过程中的行为方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* info, const char* id)](#oh_arkui_touchtestinfo_settouchresultid) | 设置命中测试过程中需要作用的子组件ID。 |
 
 ## 枚举类型说明
 
@@ -419,6 +430,25 @@ enum ArkUI_CoastingAxisEventPhase
 | ARKUI_COASTING_AXIS_EVENT_PHASE_BEGIN = 1 | 惯性滚动轴事件开始，此为惯性阶段的第一个事件。  |
 | ARKUI_COASTING_AXIS_EVENT_PHASE_UPDATE = 2 | 惯性滚动轴事件更新，此阶段可以获取惯性轴值增量来处理滚动偏移。  |
 | ARKUI_COASTING_AXIS_EVENT_PHASE_END = 3 | 惯性滚动轴事件结束，此值在惯性被刹停（惯性滚动阶段用户重新触摸触控板或通过鼠标及触屏与组件产生交互等）或惯性衰减至自然停止时发送，到达此阶段时，应立即停止惯性滚动效果。  |
+
+### ArkUI_TouchTestStrategy
+
+```
+enum ArkUI_TouchTestStrategy
+```
+
+**描述：**
+
+
+定义触摸测试策略。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_TOUCH_TEST_STRATEGY_DEFAULT = 0 | 自定义分发不产生影响，系统按当前节点命中状态分发事件。  |
+| ARKUI_TOUCH_TEST_STRATEGY_FORWARD_COMPETITION = 1 | 应用指定分发事件到某个子节点，其他兄弟节点是否分发事件交由系统决定。  |
+| ARKUI_TOUCH_TEST_STRATEGY_FORWARD = 2 | 应用指定分发事件到某个子节点，系统不再分发事件到其他兄弟节点。  |
 
 ## 函数说明
 
@@ -2868,3 +2898,268 @@ int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         |
+
+### OH_ArkUI_TouchTestInfo_GetTouchTestInfoList
+
+```
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo* info,
+    ArkUI_TouchTestInfoItemArray* array, int32_t* size);
+```
+**描述：**
+
+获取触摸测试信息项数组。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | 指向触摸测试信息的指针。 |
+| [ArkUI_TouchTestInfoItemArray](./capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)* array | 指向触摸测试信息项数组的指针。 |
+| int32_t* size | 触摸测试信息项数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         |
+
+### OH_ArkUI_TouchTestInfoItem_GetX
+
+```
+float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于子组件左上角的X坐标，单位为px。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于子组件左上角的X坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetY
+
+```
+float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于子组件左上角的Y坐标，单位为px。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于子组件左上角的Y坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetWindowX
+
+```
+float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于当前应用窗口左上角的X坐标，单位为px。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于当前应用窗口左上角的X坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetWindowY
+
+```
+float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于当前应用窗口左上角的Y坐标，单位为px。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于当前应用窗口左上角的Y坐标，单位为px。若参数错误，返回0.0f。|
+
+
+### OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent
+
+```
+float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于父组件左上角的X坐标，单位为px。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于父组件左上角的X坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent
+
+```
+float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于父组件左上角的Y坐标，单位为px。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于父组件左上角的Y坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetChildRect
+
+```
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInfoItem* info, ArkUI_Rect* childRect);
+```
+**描述：**
+
+从触摸测试信息项中获取子组件的帧矩形信息。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+| [ArkUI_Rect](./capi-arkui-nativemodule-arkui-rect.md)* childRect | 指向子组件帧矩形的指针，用于存储获取到的帧矩形信息。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>      |
+
+### OH_ArkUI_TouchTestInfoItem_GetChildId
+
+```
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoItem* info, char* buffer,
+    int32_t bufferSize);
+```
+**描述：**
+
+从触摸测试信息项中获取子组件的ID。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+| char* buffer | 存储结果的缓冲区。 |
+| int32_t bufferSize | 缓冲区的大小。 |
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>如果缓冲区空间不足，则返回[ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_TouchTestInfo_SetTouchResultStrategy
+
+```
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInfo* info, ArkUI_TouchTestStrategy strategy);
+```
+**描述：**
+
+设置触摸测试策略，即组件及其子组件在命中测试过程中的行为方式。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | 指向触摸测试信息的指针。 |
+| [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) strategy | 触摸测试策略，定义组件及子组件在命中测试中的行为规则。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_TouchTestInfo_SetTouchResultId
+
+```
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* info, const char* id);
+```
+**描述：**
+
+设置命中测试过程中需要作用的子组件ID。
+
+**起始版本：** 23
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | 指向触摸测试信息的指针。 |
+| const char* id | 子组件的ID，指定命中测试中需要作用的目标子组件。 |
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。|
