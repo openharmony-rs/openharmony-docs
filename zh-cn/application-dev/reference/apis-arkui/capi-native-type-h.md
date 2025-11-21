@@ -207,6 +207,7 @@
 | [ArkUI_LayoutPolicy](#arkui_layoutpolicy)                         | ArkUI_LayoutPolicy             | 布局策略枚举。                         |
 | [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | 定义像素取整计算策略枚举。 |
 | [ArkUI_GridItemStyle](#arkui_griditemstyle)                         | ArkUI_GridItemStyle             | GridItem样式枚举。                         |
+| [ArkUI_ResponseRegionSupportedTool](#arkui_responseregionsupportedtool)                         | ArkUI_ResponseRegionSupportedTool             | 定义支持响应区域设置的事件工具类型。                         |
 
 ### 函数
 
@@ -3089,6 +3090,26 @@ GridItem样式枚举。
 | -- | -- |
 | GRID_ITEM_STYLE_NONE  = 0 | 无样式。 |
 | GRID_ITEM_STYLE_PLAIN  = 1  | 显示Hover、Press态样式。 |
+
+### ArkUI_ResponseRegionSupportedTool
+
+```
+enum ArkUI_ResponseRegionSupportedTool
+```
+
+**描述：**
+
+
+定义支持响应区域设置的事件工具类型。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL  = 0 | 所有输入工具类型。 |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER  = 1  | 手指类型。 |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN  = 2  | 手写笔类型。 |
+| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE  = 3  | 鼠标类型。 |
 
 ## 函数说明
 
