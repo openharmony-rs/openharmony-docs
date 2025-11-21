@@ -35,6 +35,11 @@
 1. 导入模块。
 
    <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ClearDuplicateNotifications.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. 发布通知消息，通知消息中包含`appMessageId`字段。
 
