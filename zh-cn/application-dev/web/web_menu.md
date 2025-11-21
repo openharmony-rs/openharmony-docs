@@ -903,7 +903,7 @@ struct WebComponent {
 <!---->
 
 ```html
-<!--index.html-->
+<!--index6.html-->
 <!DOCTYPE html>
 <html>
 <head>
