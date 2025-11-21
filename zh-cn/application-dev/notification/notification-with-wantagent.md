@@ -71,6 +71,23 @@
    场景二：创建发布[公共事件](../basic-services/common-event/common-event-overview.md)的WantAgent的[WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md)信息。
 
    <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   let wantAgentObj: WantAgent; // 用于保存创建成功的WantAgent对象，后续使用其完成触发的动作。
+   
+   // 通过WantAgentInfo的operationType设置动作类型
+   let wantAgentInfo: wantAgent.WantAgentInfo = {
+     wants: [
+       {
+         action: 'event_name', // 设置事件名
+         parameters: {},
+       }
+     ],
+     actionType: wantAgent.OperationType.SEND_COMMON_EVENT,
+     requestCode: 0,
+     actionFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG],
+   };
+   ```
 
 3. 调用[getWantAgent()](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)方法进行创建WantAgent。
 
