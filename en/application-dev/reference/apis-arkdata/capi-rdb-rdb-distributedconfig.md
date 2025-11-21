@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_DistributedConfig
+```
+
 ## Overview
 
 Defines a struct for distributed configuration of a table.

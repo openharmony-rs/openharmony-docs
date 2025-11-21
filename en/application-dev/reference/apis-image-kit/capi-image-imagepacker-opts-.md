@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+struct ImagePacker_Opts_ {...}
+```
+
 ## Overview
 
 The struct describes the image encoding options.

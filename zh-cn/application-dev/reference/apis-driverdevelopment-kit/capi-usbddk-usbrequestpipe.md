@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
+```
+
 ## 概述
 
 请求管道。

@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+struct Rect { ... }
+```
+
 ## 概述
 
 如果rects是空指针nullptr，默认Buffer大小为脏区。

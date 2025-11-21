@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
+```
+
 ## 概述
 
 相机并发能力信息。

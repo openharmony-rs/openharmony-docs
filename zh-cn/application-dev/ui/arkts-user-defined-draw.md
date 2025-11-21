@@ -10,7 +10,7 @@ NDK提供了自定义绘制节点的能力，通过以下接口，开发者可�
 
 ## 自定义绘制内容
 
-当监听到注册的事件为绘制类型时，可通过自定义绘制功能执行绘制逻辑，自定义绘制的内容。
+当监听到注册的事件为绘制类型时，可通过自定义绘制功能执行绘制逻辑，自定义内容。
 > **说明：**
 > - 在事件注册过程中，需将事件注册为绘制事件（如ARKUI_NODE_CUSTOM_EVENT_ON_DRAW），通过查阅[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)枚举值，获取事件类型及含义。
 > 
@@ -345,9 +345,11 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
     
     // 全局环境变量声明
     static napi_env g_env = nullptr;
-    // ···
+    // ...
     namespace NativeModule {
-    // ···
+    // ...
+    #define SIZE_150 150
+    // ...
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -371,7 +373,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
         // 保持Native侧对象到管理类中，维护生命周期。
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
         g_env = env;
-            // ···
+            // ...
         return nullptr;
     }
     

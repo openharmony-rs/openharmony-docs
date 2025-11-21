@@ -6,6 +6,10 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+struct OH_NativeBundle_AbilityResourceInfo
+```
+
 ## 概述
 
 表示组件资源信息。

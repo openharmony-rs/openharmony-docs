@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr
+```
+
 ## 概述
 
 定义字体管理类, 用于字体管理。

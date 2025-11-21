@@ -281,7 +281,7 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
 }
 ```
 
-**napi_create_arraybuffer** is equivalent to **new ArrayBuffer(size)** in JS. The object generated cannot be directly read in TS/JS. It can be read or written only after being encapsulated into a TyppedArray or DataView object.
+**napi_create_arraybuffer** is equivalent to **new ArrayBuffer(size)** in JS. The object generated cannot be directly read in TS/JS. It can be read or written only after being encapsulated into a TypedArray or DataView object.
 
 **Benchmark performance test result**:
 
@@ -305,14 +305,14 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
 ## Module Registration and Naming
 
 **[Rule]**
-Add "static" to the function corresponding to **nm_register_func** to prevent conflicts with symbols in other .so files.
+Add "static" to the function corresponding to **nm_register_func** to prevent conflicts with symbols in other binary .so files.
 
 The module registration entry, that is, the name of the function decorated by **__attribute__((constructor))** must be different from that of other modules.
 
-The **.nm_modname** field must completely match the module name and is case sensitive.
+The **.nm_modname** field must completely match the name of the binary .so file and is case sensitive.
 
 **Example (incorrect)**
-In the following example, the module name is **nativerender**.
+The following is an incorrect example when the name of the binary .so file is **nativerender**.
 
 ```cpp
 EXTERN_C_START
@@ -341,6 +341,13 @@ extern "C" __attribute__((constructor)) void RegisterModule()
     napi_module_register(&nativeModule);
 }
 ```
+Figure 1
+
+![demoModule](./figures/image.png)
+
+Figure 2
+
+![CMakeLists](./figures/image-1.png)
 
 **Example (correct)**
 In the following example, the module name is **nativerender**.
@@ -406,7 +413,7 @@ extern "C" void napi_onLoad()
 
 ## Using JS Objects Created by napi_create_external APIs
 
-**[Rule]** The JS object created by **napi_create_external** APIs can be passed and used only in the calling thread. If it is passed across threads (for example, using **post_message** of the **worker** interface), the application may crash. If a JS object bound with a native object needs to be passed across threads, use **napi_coerce_to_native_binding_object** to bind the two objects.
+**[Rule]** The JS object created by **napi_create_external** APIs can be passed and used only in the calling thread. If it is passed across threads (for example, using **post_message** of the **worker** interface), the application may crash. If a JS object bound with a native object needs to be passed across threads, use **napi_coerce_to_native_binding_object** to bind the two objects. For details about the APIs, see [napi_create_external](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-object#napi_create_external).
 
 **Example (incorrect)**
 
@@ -428,7 +435,7 @@ export const createMyExternal: () => Object;
 
 // Application code.
 import testNapi from 'libentry.so';
-import worker from '@ohos.worker';
+import { worker } from '@kit.Arkts';
 
 const mWorker = new worker.ThreadWorker('../workers/Worker');
 

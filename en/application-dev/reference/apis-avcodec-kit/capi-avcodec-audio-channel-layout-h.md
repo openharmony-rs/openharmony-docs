@@ -9,7 +9,7 @@
 
 ## Overview
 
-The file declares the enums used for audio encoding and decoding.
+The file declares the enums used for audio codec channel layouts.
 
 **File to include**: <multimedia/player_framework/avcodec_audio_channel_layout.h>
 

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -66,7 +66,7 @@ export struct Embedded {
     abilityName: 'ExampleEmbeddedAbility',
   };
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
           Text(this.message).fontSize(30)
@@ -85,8 +85,7 @@ export struct Embedded {
         .width('100%')
       }
       .height('100%')
-    }
-    // ···
+      // ...
   }
 }
 ```

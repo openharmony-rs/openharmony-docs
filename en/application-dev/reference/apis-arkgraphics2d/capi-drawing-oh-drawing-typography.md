@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_Typography OH_Drawing_Typography
+```
+
 ## Overview
 
 Defines a struct used to manage the typography layout and display.

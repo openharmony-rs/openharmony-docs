@@ -10,7 +10,7 @@ The ContinuationExtraParams module provides the filter parameters required by th
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8 and deprecated since API version 22. You are advised to use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 ## ContinuationExtraParams<sup>(deprecated)</sup>
 
@@ -18,7 +18,7 @@ Describes the extra parameters required by the device selection module in the co
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
+> This API is deprecated since API version 22. You are advised to use [devicebasicinfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

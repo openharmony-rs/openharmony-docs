@@ -3390,7 +3390,7 @@ setLineDash(segments: number[]): void
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('#D5D5D5')
           .onReady(() =>{
             this.context.arc(100, 75, 50, 0, 6.28)
             this.context.setLineDash([10,20])
@@ -3442,19 +3442,16 @@ getLineDash(): number[]
           Text(this.message)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=>{
-              console.error('before getlinedash clicked')
-              let res = this.context.getLineDash()
-              console.error(JSON.stringify(res))
-            })
           Canvas(this.context)
             .width('100%')
             .height('100%')
-            .backgroundColor('#ffff00')
+            .backgroundColor('#D5D5D5')
             .onReady(() => {
               this.context.arc(100, 75, 50, 0, 6.28)
-              this.context.setLineDash([10,20])
+              this.context.setLineDash([10, 20])
               this.context.stroke()
+              let res = this.context.getLineDash()
+              this.message = JSON.stringify(res)
             })
         }
         .width('100%')
@@ -4343,4 +4340,4 @@ constructor(antialias?: boolean)
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |
+| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |

@@ -25,7 +25,7 @@ OpenHarmony SDK 5.0.0.23
 
 **Adaptation Guide**
 
-For details, see [AVScreenCapture](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1) of Media Kit.
+For details, see [AVScreenCapture](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1) of Media Kit.
 
 
 ## c1.multimedia.2 Internal Audio Recording APIs in native_audiostream_base.h Are Deprecated
@@ -51,4 +51,4 @@ Enumerated value **AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE** of **OH_AudioStrea
 
 **Adaptation Guide**
 
-For details, see [AVScreenCapture](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1) of Media Kit.
+For details, see [AVScreenCapture](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1) of Media Kit.

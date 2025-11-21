@@ -720,7 +720,8 @@ export struct ScopeFocusExample {
     NavDestination() {
       Column() {
         Column({ space: 5 }) {
-          Text('容器获焦').textAlign(TextAlign.Center)
+          // app.string.Container_Coking资源文件中的value值为'容器获焦'
+          Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
         }
         .justifyContent(FlexAlign.Center)
         .width('80%')
@@ -744,7 +745,7 @@ export struct ScopeFocusExample {
           .margin(5)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```

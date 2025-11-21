@@ -44,36 +44,53 @@ The [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 
 
 To enable [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) backup and restore during application module initialization, refer to the code snippet below.
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ···
+
+const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-    onCreate() {
-        console.info('[Demo] EntryAbility onCreate');
-        this.context.setRestoreEnabled(true);
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
+    this.context.setRestoreEnabled(true);
+    // ···
+  }
+
+// ···
 }
 ```
 
 To proactively save data and restore the data when the UIAbility is started, refer to the code snippet below.
 
-```ts
+<!-- @[onSaveState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ···
+
+const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info('[Demo] EntryAbility onCreate');
-        this.context.setRestoreEnabled(true);
-        if (want && want.parameters) {
-          let recoveryMyData = want.parameters['myData'];
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
+    this.context.setRestoreEnabled(true);
+    if (want && want.parameters) {
+      let recoveryMyData = want.parameters['myData'];
     }
+  }
 
-    onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // Save the application data.
-        console.info('[Demo] EntryAbility onSaveState');
-        wantParams['myData'] = 'my1234567';
-        return AbilityConstant.OnSaveResult.ALL_AGREE;
-    }
+  onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult {
+    // Save the application data.
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onSaveState');
+    wantParam['myData'] = 'my1234567';
+    return AbilityConstant.OnSaveResult.ALL_AGREE;
+  }
+
+// ···
 }
 ```

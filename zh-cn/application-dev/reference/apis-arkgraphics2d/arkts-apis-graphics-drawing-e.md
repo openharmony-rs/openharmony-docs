@@ -249,7 +249,7 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                          | 值        | 说明                           |
 | ----------------------------- | --------- | ------------------------------ |
-| UNDERLINE_THICKNESS_VALID     | 1 << 0    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中的underlineThickness（下划线厚度）字有效。    |
+| UNDERLINE_THICKNESS_VALID     | 1 << 0    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中的underlineThickness（下划线厚度）字段有效。    |
 | UNDERLINE_POSITION_VALID      | 1 << 1    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中的underlinePosition（下划线位置）字段有效。  |
 | STRIKETHROUGH_THICKNESS_VALID | 1 << 2    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中strikethroughThickness（删除线厚度）是有效的。|
 | STRIKETHROUGH_POSITION_VALID  | 1 << 3    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中strikethroughPosition（删除线位置）字段有效。  |
@@ -373,3 +373,15 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 | TOP_RIGHT_POS         | 1    | 右上角圆角位置。 |
 | BOTTOM_RIGHT_POS      | 2    | 右下角圆角位置。   |
 | BOTTOM_LEFT_POS       | 3    | 左下角圆角位置。   |
+
+## VertexMode<sup>23+</sup>
+
+顶点绘制的连接方式枚举。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称                   | 值   | 说明                           | 示意图   |
+| --------------------- | ---- | ------------------------------ | -------- |
+| TRIANGLES_VERTEXMODE           | 0    | 每三个顶点来自不同的三角形。  |![TRIANGLES_VERTEXMODE](figures/zh-ch_image_Triangles_VertexMode.png) |
+| TRIANGLESSTRIP_VERTEXMODE          | 1    | 连续的三角形共享一条边。对于连续表面效率高。 |![TRIANGLESSTRIP_VERTEXMODE](figures/zh-ch_image_TrianglesStrip_VertexMode.png) |
+| TRIANGLESFAN_VERTEXMODE       | 2    | 所有三角形共享一个顶点。非常适合圆形/扇形。   |![TRIANGLESFAN_VERTEXMODE](figures/zh-ch_image_TrianglesFan_VertexMode.png) |

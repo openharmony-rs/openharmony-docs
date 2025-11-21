@@ -6,6 +6,10 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVSession OH_AVSession
+```
+
 ## Overview
 
 The struct describes the playback control session object. You can use **OH_AVSession_Create** to create such an object.

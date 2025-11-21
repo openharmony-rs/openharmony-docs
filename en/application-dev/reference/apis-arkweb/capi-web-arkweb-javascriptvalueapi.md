@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 ## Overview
 
@@ -28,7 +28,7 @@ Defines the JavaScriptValue API of ArkWeb. Before calling this API, you are advi
 
 | Name                                                                                                                     | Description|
 |-------------------------------------------------------------------------------------------------------------------------|----|
-| [ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | Creates a JavaScript value to be returned to HTML.  |
+| [ArkWeb_JavaScriptValuePtr (\*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | Creates a JavaScript value to be returned to HTML.  |
 
 ## Member Function Description
 
@@ -50,7 +50,7 @@ Sets the mode for processing key events.
 |---------------------------------|----|
 | ArkWeb_JavaScriptValueType type | Type of the JavaScript value.  |
 | void* data                                | Pointer to the JavaScript value data.  |
-| size_t dataLength                               | Length of the JavaScript value data.  |
+| size_t dataLength                         | Length of the JavaScript value data.  |
 
 **Returns**
 

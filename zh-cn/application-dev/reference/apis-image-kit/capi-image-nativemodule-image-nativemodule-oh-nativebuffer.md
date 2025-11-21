@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct OH_NativeBuffer
+```
+
 ## 概述
 
 NativeBuffer结构体类型，用于执行NativeBuffer相关操作。

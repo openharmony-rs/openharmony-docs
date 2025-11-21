@@ -1,4 +1,14 @@
 # OH_NativeVSync_ExpectedRateRange
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_NativeVSync_ExpectedRateRange
+```
 
 ## Overview
 

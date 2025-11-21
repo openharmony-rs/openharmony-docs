@@ -1,4 +1,4 @@
-# Game Controller kitAPI参考
+# Game Controller Kit（游戏控制器服务）
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @zhaoshuhao123-->

@@ -73,9 +73,11 @@ Native frame
 | -------- | -------- | -------- |
 | symbol | string | Function name. If the name length exceeds 256 bytes, the name is deleted to prevent unknown issues.|
 | file | string | File name.|
-| buildId | string | Unique file ID. The file may not contain **buildId**. For details, see [Log Specifications](cppcrash-guidelines.md#common-faults).|
+| buildId | string | Unique file ID. The file may not contain **buildId**.|
 | pc | string | Hexadecimal byte offset of the executed instruction within the file.|
 | offset | number | Byte offset of the executed instruction within the function.|
+
+For details, see [Call stack frame](cppcrash-guidelines.md#common-faults).
 
 JS frame
 
@@ -86,6 +88,8 @@ JS frame
 | symbol | string | Function name.|
 | line | number | Code line number.|
 | column | number | Code column number.|
+
+For details, see [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
 
 ### memory
 

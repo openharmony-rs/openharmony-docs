@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct OhosImageComponent {...}
+```
+
 ## 概述
 
 定义图像组成信息。

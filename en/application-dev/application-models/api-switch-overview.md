@@ -14,7 +14,7 @@ Due to the differences in the thread model and process model, certain APIs can b
 
  
 
-- Sample code of **startAbility()** in the FA model:
+- Sample code in the FA model:
 
   ```ts
   import featureAbility from '@ohos.ability.featureAbility';
@@ -63,7 +63,7 @@ Due to the differences in the thread model and process model, certain APIs can b
 
   ```
 
-- Sample code of **startAbility()** in the stage model:
+- Sample code in the stage model:
 
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';

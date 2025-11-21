@@ -37,7 +37,7 @@
 | V2->V1 built-in类型Array、Map、Set、Date  | 报错 | 不报错 |
 | \@ObjectLink被非\@Observed装饰的class初始化  | 报错 | 不报错 |
 
-依旧禁止第1条，是因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[\@ComponentV2](./arkts-new-componentV2.md)中使用，也可以独立在\@Component中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
+依旧禁止第1条，是因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[\@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
 
 ## 新增接口
 ### makeV1Observed

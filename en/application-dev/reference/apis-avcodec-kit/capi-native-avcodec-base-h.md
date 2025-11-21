@@ -1,12 +1,10 @@
 # native_avcodec_base.h
-
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-
 
 ## Overview
 
@@ -70,7 +68,7 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef void (\*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)](#oh_avcodeconerror) | OH_AVCodecOnError | Defines the pointer to the function that is called to report error information when an error occurs during the running of an OH_AVCodec instance.|
-| [typedef void (\*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)](#oh_avcodeconstreamchanged) | OH_AVCodecOnStreamChanged | Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> From API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.|
+| [typedef void (\*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)](#oh_avcodeconstreamchanged) | OH_AVCodecOnStreamChanged | Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> Starting from API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.|
 | [typedef void (\*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)](#oh_avcodeconneedinputdata) | OH_AVCodecOnNeedInputData | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data. (It is deprecated from API version 11.)|
 | [typedef void (\*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)](#oh_avcodeconnewoutputdata) | OH_AVCodecOnNewOutputData | Defines the pointer to the function that is called when new output data is generated during the running of an OH_AVCodec instance. The function carries a buffer filled with new output data. Note that the lifecycle of the pointer to the OH_AVCodecBufferAttr instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called. (It is deprecated from API version 11.)|
 | [typedef void (\*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)](#oh_avcodeconneedinputbuffer) | OH_AVCodecOnNeedInputBuffer | Defines the pointer to the function that is called when new input data is required during the running of an OH_AVCodec instance. The function carries a buffer to fill in new input data.|
@@ -100,6 +98,15 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | Pointer to the key that describes the MIME type of the AMR-WB audio <!--RP4--><!--RP4End--> decoder.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_OPUS | Pointer to the key that describes the MIME type of the Opus audio codec. <!--Del-->(This specification is not available yet.)<!--DelEnd--><br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_G711MU | Pointer to the key that describes the MIME type of the G.711 mu-law audio codec.<br>**Since**: 11<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_ALAC | Pointer to the key that describes the MIME type of the Apple Lossless Audio Codec (ALAC) audio decoder.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_AC3 | Pointer to the key that describes the MIME type of the Dolby Audio Coding 3 (AC 3) audio decoder.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_EAC3 | Pointer to the key that describes the MIME type of the Enhanced AC-3 (EAC3) audio decoder.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | Pointer to the key that describes the MIME type of the Windows Media Audio (WMA) V1 audio decoder.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | Pointer to the key that describes the MIME type of the WMA V2 audio decoder.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | Pointer to the key that describes the MIME type of the WMA Pro audio decoder.<br>**Since**: 22|
+| const char * OH_MD_KEY_BLOCK_ALIGN | Size of the audio data block, in bytes. The value type is int32_t. This key is used only for WMA (V1, V2, and PRO) decoders.<br> The allowed MIME types include **OH_AVCODEC_MIMETYPE_AUDIO_WMAV1**, **OH_AVCODEC_MIMETYPE_AUDIO_WMAV2**, and **OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO**.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_GSM | Pointer to the key that describes the MIME type of the Global System for Mobile Communications (GSM) audio decoder.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | Pointer to the key that describes the MIME type of the GSM Microsoft variant (MS) audio decoder.<br>**Since**: 22|
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_VVC | Pointer to the key that describes the MIME type of the VVC (H.266) video codec.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_APE | Pointer to the key that describes the MIME type of the APE audio decoder.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_SUBTITLE_SRT | Pointer to the key that describes the MIME type of the SRT subtitle demuxer.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
@@ -201,6 +208,7 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | const char * OH_MD_KEY_TRACK_DESCRIPTION | Pointer to the key that describes the auxiliary track description of a media file. The value type is string.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_ENABLE_SYNC_MODE | Pointer to the key that describes the enabled status of audio/video codec synchronization. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional.<br>If this feature is enabled, pay attention to the following:<br> 1. The codec cannot have a callback function.<br> 2. You must use the buffer query API instead of the callback function.<br> 3. The key can be used only in the configuration phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | Pointer to the key that specifies whether to output blank frames when the video decoder is disabled. The value type is int32_t. **1** to output, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and is used only for video decoding in surface mode.<br> When this feature is enabled, the video decoder outputs blank frames (usually black) when it is stopped or released. This helps the display device smoothly transition to the no-signal state and prevents issues like display residuals or screen flickering that can happen if the decoder stops suddenly.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | Pointer to the key that is used to query the native buffer pixel format in video encoding and decoding. The value type is int32_t.<br> For details, see the pixel formats defined in [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format). This key is used in the following scenarios:<br> 1. Video decoding: Call [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) or [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged) to obtain the current output format from the returned OH_AVFormat object.<br> 2. Video encoding: Call [OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) to obtain the current input format from the returned OH_AVFormat object.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 
 ## Enum Description
 
@@ -836,7 +844,7 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 **Description**
 
-Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> From API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.
+Defines the pointer to the function that is called to report the new stream description when the resolution of the input video stream being decoded or the output video stream that has been encoded changes.<br> Starting from API version 15, this function pointer is called to report the new stream description when the stream sampling rate, number of audio channels, or audio sampling format changes during audio decoding. The decoding formats that can detect these changes include <!--RP3--><!--RP3End-->AAC, FLAC, MP3, and VORBIS.<br> Note that the lifecycle of the pointer to the OH_AVFormat instance is valid only when the function pointer is being called. Do not access the pointer to the instance after the function pointer is called.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -1007,3 +1015,5 @@ Defines a function pointer used to provide the capability of obtaining user-defi
 | Type| Description|
 | -- | -- |
 | int32_t | Actual length of the data read to the buffer.|
+
+<!--no_check-->

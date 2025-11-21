@@ -331,8 +331,7 @@ const builderValue: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
-    Text($r('app.string.builder_param_scene_text_01', builderValue))
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -346,8 +345,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
-      Text($r('app.string.builder_param_scene_text_02', this.label))
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -556,8 +554,7 @@ const builderValue: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
-    Text($r('app.string.builder_param_scene_text_01', builderValue))
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -571,8 +568,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
-      Text($r('app.string.builder_param_scene_text_02', this.label))
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -645,8 +641,7 @@ const builderValue: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
-    Text($r('app.string.builder_param_scene_text_01', builderValue))
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -660,8 +655,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
-      Text($r('app.string.builder_param_scene_text_02', this.label))
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }

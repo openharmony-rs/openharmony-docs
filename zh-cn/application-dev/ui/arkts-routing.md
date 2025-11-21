@@ -138,7 +138,8 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
     }
   
     build() {
-      // ···
+      // ...
+    }
   }
   ```
     
@@ -165,11 +166,13 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           return;
         }
         hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
-      })
+      });
     }
   
     build() {
-      // ···
+      // ...
+    }
+  
   }
   ```
   

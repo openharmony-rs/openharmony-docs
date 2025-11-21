@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_DialogDismissEvent ArkUI_DialogDismissEvent
+```
+
 ## 概述
 
 定义弹窗关闭事件对象。

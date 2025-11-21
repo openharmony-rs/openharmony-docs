@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_String
+```
+
 ## 概述
 
 采用UTF-16编码的字符串信息结构体。

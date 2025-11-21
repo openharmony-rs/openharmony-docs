@@ -372,7 +372,7 @@ Creates a PhotoOutput instance. This API returns the result synchronously.
 
 | Name    | Type                                        | Mandatory| Description                                 |
 | -------- | ------------------------------------------- |----| ----------------------------------- |
-| profile  | [Profile](arkts-apis-camera-i.md#profile)                         | No | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability11).<br>In API version 11, this parameter is mandatory. Since API version 12, it will overwrite the preconfigured parameters passed in through [preconfig](arkts-apis-camera-PhotoSession.md#preconfig12).|
+| profile  | [Profile](arkts-apis-camera-i.md#profile)                         | No | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability11).<br>In API version 11, this parameter is mandatory. Starting from API version 12, it will overwrite the preconfigured parameters passed in through [preconfig](arkts-apis-camera-PhotoSession.md#preconfig12).|
 
 **Return value**
 

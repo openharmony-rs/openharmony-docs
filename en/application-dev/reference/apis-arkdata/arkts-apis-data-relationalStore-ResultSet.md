@@ -52,7 +52,7 @@ Obtains the column index based on the column name.
 | ---------- | ------ | ---- | -------------------------- |
 | columnName | string | Yes  | Column name.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description              |
 | ------ | ------------------ |
@@ -110,7 +110,7 @@ Obtains the column name based on the column index.
 | ----------- | ------ | ---- | -------------------------- |
 | columnIndex | number | Yes  | Column index.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description              |
 | ------ | ------------------ |
@@ -167,7 +167,7 @@ Obtains the column type based on the specified column index or column name. This
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
 | columnIdentifier | number \| string | Yes  | Index or name of column in a result set. The index must be a non-negative integer and cannot exceed the length of **columnNames**. The column name must be a name in **columnNames**.|
 
-**Returns**:
+**Return value**
 
 | Type                                | Description                               |
 | ------------------------------------ | ----------------------------------- |
@@ -231,7 +231,7 @@ Obtains the column type based on the specified column index or column name. This
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
 | columnIdentifier | number \| string | Yes  | Index or name of column in a result set. The index must be a non-negative integer and cannot exceed the length of **columnNames**. The column name must be a name in **columnNames**.|
 
-**Returns**:
+**Return value**
 
 | Type                       | Description                  |
 | --------------------------- | ---------------------- |
@@ -295,7 +295,7 @@ Moves the result set pointer based on the offset specified.
 | ------ | ------ | ---- | ---------------------------- |
 | offset | number | Yes  | Offset relative to the position of the current result set pointer. A positive value means to move the pointer backward, and a negative value means to move the pointer forward.|
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -350,7 +350,7 @@ Moves to the specified row in the result set.
 | -------- | ------ | ---- | ------------------------ |
 | position | number | Yes  | Destination position to move to.|
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -400,7 +400,7 @@ Moves to the first row of the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -448,7 +448,7 @@ Moves to the last row of the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -496,7 +496,7 @@ Moves to the next row in the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -544,7 +544,7 @@ Moves to the previous row in the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
@@ -598,7 +598,7 @@ Obtains the value from the specified column and current row. If the value type i
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type      | Description                            |
 | ---------- | -------------------------------- |
@@ -660,7 +660,7 @@ Obtains the value from the specified column and current row, and returns it in a
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type      | Description                            |
 | ---------- | -------------------------------- |
@@ -715,7 +715,7 @@ Obtains the value from the specified column and current row, and returns it in t
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description                        |
 | ------ | ---------------------------- |
@@ -770,7 +770,7 @@ Obtains the value from the specified column and current row, and returns a value
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
@@ -831,7 +831,7 @@ Obtains the value from the specified column and current row, and returns a value
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type  | Description                        |
 | ------ | ---------------------------- |
@@ -892,7 +892,7 @@ Obtains the value from the specified column and current row, and returns the val
 | ----------- | ------ | --- | ------------ |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type             | Description                        |
 | --------------- | -------------------------- |
@@ -947,7 +947,7 @@ Obtains the value from the specified column and current row, and returns the val
 | ----------- | ------ | --- | ------------ |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
@@ -996,7 +996,7 @@ Obtains the current row.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
@@ -1049,10 +1049,10 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 | Name     | Type  | Mandatory| Description                   |
 | ----------- | ------ | ---- | ----------------------- |
 | maxCount | number | Yes  | Number of rows to obtain. The value is a positive integer. If the value is not a positive integer, error 401 will be thrown.|
-| position | number | No  | Start position for obtaining data from the result set. The value is a non-negative integer. If this parameter is not specified, data is obtained from the current row of the result set (by default, it is the first row of the result set when data is obtained for the first time). If it is not a non-negative integer, error code 401 will be thrown.|
+| position | number | No  | Start position for obtaining data from the result set. The value is a non-negative integer. If this parameter is not specified, data is obtained from the current row of the result set (by default, it is the first row of the result set when data is obtained for the first time). If the value is not a non-negative integer, error code 401 will be thrown.|
 
 
-**Returns**:
+**Return value**
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
@@ -1119,7 +1119,7 @@ Obtains the sendable data from the current row. The sendable data can be passed 
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Returns**:
+**Return value**
 
 | Type                                                                                          | Description                                        |
 | ---------------------------------------------------------------------------------------------- | -------------------------------------------- |
@@ -1152,6 +1152,8 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800034     | SQLite: Library used incorrectly.             |
 
 **Example**:
+
+For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 <!--code_no_check-->
 ```ts
@@ -1211,7 +1213,7 @@ Checks whether the value in the specified column is null.
 | ----------- | ------ | ---- | ----------------------- |
 | columnIndex | number | Yes  | Index of the target column, starting from 0.|
 
-**Returns**:
+**Return value**
 
 | Type   | Description                                                     |
 | ------- | --------------------------------------------------------- |

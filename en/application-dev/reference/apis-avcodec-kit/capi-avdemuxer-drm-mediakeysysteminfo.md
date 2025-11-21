@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
+```
+
 ## Overview
 
 The struct describes a native object for the DRM_MediaKeySystemInfo interface.

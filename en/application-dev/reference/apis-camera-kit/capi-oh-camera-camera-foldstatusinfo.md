@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_FoldStatusInfo {...} Camera_FoldStatusInfo
+```
+
 ## Overview
 
 The struct describes the fold status information of the camera.

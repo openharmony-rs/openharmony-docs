@@ -3558,7 +3558,7 @@ Sets the icon for this UIAbility, which is displayed in the application window, 
 
 > **NOTE**
 >
-> There is no priority relationship among the **setMissionWindowIcon**, [setMissionIcon](./js-apis-inner-application-uiAbilityContext-sys.md#setmissionicon), and [setAbilityInstanceInfo](./js-apis-inner-application-uiAbilityContext.md#setabilityinstanceinfo15) APIs. The icon set by the last called API takes effect. If these APIs are called sequentially, the icon set by the last call takes precedence and overwrites any previous settings.
+> There is no priority relationship among the **setMissionWindowIcon**<!--Del-->, [setMissionIcon](./js-apis-inner-application-uiAbilityContext-sys.md#setmissionicon),<!--DelEnd--> and [setAbilityInstanceInfo](./js-apis-inner-application-uiAbilityContext.md#setabilityinstanceinfo15). The icon set by the last called API takes effect. If these APIs are called sequentially, the icon set by the last call takes precedence and overwrites any previous settings.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

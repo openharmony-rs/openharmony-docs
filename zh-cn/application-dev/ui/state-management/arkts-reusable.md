@@ -1,4 +1,4 @@
-# \@Reusable装饰器：组件复用
+# \@Reusable装饰器：V1组件复用
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
@@ -27,7 +27,7 @@
 
 - \@Reusable装饰器仅用于自定义组件。
 
-- \@Reusable不支持跟[\@ComponentV2](./arkts-new-componentV2.md)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
+- \@Reusable不支持跟[\@ComponentV2](./arkts-create-custom-components.md#componentv2)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
 
     <!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
     

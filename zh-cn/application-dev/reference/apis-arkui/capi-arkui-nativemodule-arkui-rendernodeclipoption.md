@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption
+```
+
 ## 概述
 
 定义节点裁剪配置项。

@@ -231,6 +231,7 @@ Describes the virtual screen parameters.
 | height    | number   | No  | No  | Height of the virtual screen, in px. The value must be a positive integer.|
 | density   | number   | No  | No  | Density of the virtual screen, in px. The value is a floating-point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen, which can be customized. The maximum length for this parameter is 4096 bytes. If it goes beyond that, only the first 4096 bytes are used.       |
+| supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable, **false** otherwise. The default value is **true**.|
 
 ## Position<sup>20+</sup>
 
@@ -839,7 +840,7 @@ display.off('foldStatusChange', callback);
 
 ## display.on('brightnessInfoChange')<sup>22+</sup>
 
-on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 Subscribes to events related to screen brightness information changes. If the screen does not support HDR, the **currentHeadroom** and **maxHeadroom** fields in the [BrightnessInfo](#brightnessinfo22) object use the default values. For virtual screens, the **sdrNits** field in the BrightnessInfo object uses the default value.
 
@@ -867,9 +868,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
@@ -881,7 +880,7 @@ try {
 
 ## display.off('brightnessInfoChange')<sup>22+</sup>
 
-off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 Unsubscribes from events related to screen brightness information changes.
 
@@ -909,9 +908,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
@@ -1002,7 +999,7 @@ display.off('foldAngleChange', callback);
 
 on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
-Subscribes to screen capture, casting, or recording status changes.
+Subscribes to events indicating whether the device's screen content is being captured.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1012,8 +1009,8 @@ Subscribes to screen capture, casting, or recording status changes.
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture, casting, or recording status changes.|
-| callback | Callback&lt;boolean&gt; | Yes| Callback used to return the status change during screen capture, casting, or recording. The value **true** means the start of screen casting or recording, and **false** means the end of screen casting or recording. In the case of screen capture, only **true** is returned once.|
+| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture status changes.|
+| callback | Callback&lt;boolean&gt; | Yes| Callback used to return the result indicating whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured. In the case of screen capture, **true** is returned only once.|
 
 **Error codes**
 
@@ -1039,7 +1036,7 @@ display.on('captureStatusChange', callback);
 
 off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
-Unsubscribes from screen capture, casting, or recording status changes.
+Unsubscribes from events indicating whether the device's screen content is being captured.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1049,8 +1046,8 @@ Unsubscribes from screen capture, casting, or recording status changes.
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture, casting, or recording status changes.|
-| callback | Callback&lt;boolean&gt; | No| Callback used to return the status change during screen capture, casting, or recording. The value **true** means the start of screen casting or recording, and **false** means the end of screen casting or recording. In the case of screen capture, only **true** is returned once. If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture status changes.|
+| callback | Callback&lt;boolean&gt; | No| Callback used to return the result indicating whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured. In the case of screen capture, **true** is returned only once. If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -1078,7 +1075,7 @@ display.off('captureStatusChange', callback);
 ## display.isCaptured<sup>12+</sup>
 isCaptured(): boolean
 
-Checks whether the display is being captured, projected, or recorded.
+Checks whether the device's screen content is being captured.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1088,7 +1085,7 @@ Checks whether the display is being captured, projected, or recorded.
 
 | Type| Description|
 | ----------------------------------------------- | ------------------------------------------------------- |
-| boolean | **true**: The display is being captured, projected, or recorded.<br> **false**: The display is not being captured, projected, or recorded.|
+| boolean | Check result for whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured.|
 
 **Error codes**
 
@@ -1240,6 +1237,7 @@ class VirtualScreenConfig {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let config : VirtualScreenConfig = {
@@ -1247,7 +1245,8 @@ let config : VirtualScreenConfig = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {

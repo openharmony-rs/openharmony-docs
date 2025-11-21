@@ -158,7 +158,7 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 <!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
 
 ``` TypeScript
-const MAX_NUM: number = 50; // 大字体尺寸
+const MAX_NUM: number = 50;
 ```
 <!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
 
@@ -166,7 +166,7 @@ const MAX_NUM: number = 50; // 大字体尺寸
 PersistentStorage.persistProp('aProp', 48);
 if ((AppStorage.get<number>('aProp') ?? 0) > MAX_NUM) {
   // 如果PersistentStorage存储的值超过50，设置为47
-  AppStorage.setOrCreate('aProp',47);
+  AppStorage.setOrCreate('aProp', 47);
 }
 ```
 
@@ -200,7 +200,7 @@ struct TestCase6 {
           .fontSize(FONT_SIZE_LARGE)
           .fontWeight(FontWeight.Bold)
         Button('changeToNumber').onClick(() => {
-          this.p = DEFAULT_NUMBER; // 引用常量，避免直接写10
+          this.p = DEFAULT_NUMBER;
         })
         Button('changeTo undefined').onClick(() => {
           this.p = undefined;

@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_ShaderEffect OH_Drawing_ShaderEffect
+```
+
 ## 概述
 
 定义一个着色器，用于描述绘制内容的源颜色。

@@ -171,12 +171,12 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   ``` TypeScript
   
   // pages/Button2.ets
-  import { MyButtonModifier2 } from '../Common/ButtonModifier02'
+  import { MyButtonModifier } from '../Common/ButtonModifier01'
   
   @Entry
   @Component
   struct Button2 {
-    @State modifier: MyButtonModifier2 = new MyButtonModifier2(true);
+    @State modifier: MyButtonModifier = new MyButtonModifier(true);
   
     build() {
       Row() {

@@ -62,7 +62,9 @@ Set the decoding format and HDR effect format for moving photos in a system appl
 
 ```ts
 // This example illustrates how to use the parameters. For detailed implementation, check the public API documentation for moving photos.
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 21 and earlier, use the following: import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+// For API version 22 and later, use the following:
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
 import { PixelMapFormat, DynamicRangeMode } from '@ohos.multimedia.movingphotoview';
 
 let data: photoAccessHelper.MovingPhoto

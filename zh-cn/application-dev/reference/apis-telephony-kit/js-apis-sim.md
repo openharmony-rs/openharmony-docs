@@ -1512,14 +1512,9 @@ getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async function exampleGetSimLabel(slotId) {
-    try {
-        const simLabel = await sim.getSimLabel(slotId);
-        console.info(`SIM卡标签: ${simLabel}`);
-    } catch (err) {
-        console.error(`获取SIM卡标签失败: ${err.code} - ${err.message}`);
-    }
-}
+sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
+  console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
 ```
 
 ## sim.getSimLabel<sup>20+</sup>
@@ -1561,16 +1556,11 @@ getSimLabel(slotId: number): Promise\<SimLabel\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async getSimLabel(slotId: number): Promise<sim.SimLabel|null> {
-    try {
-      const simLabel: sim.SimLabel =
-        await sim.getSimLabel(slotId);
-      return simLabel;
-    } catch (err) {
-      this.handleError(this.getSimLabel.name, err);
-      return null;
-    }
-  }
+sim.getSimLabel(0).then((data: sim.SimLabel) => {
+  console.info(`getSimLabel success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## sim.getSimLabelSync<sup>20+</sup>
@@ -1599,15 +1589,8 @@ getSimLabelSync(slotId: number): SimLabel
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-function exampleGetSimLabelSync() {
-    try {
-        const slotId = 0; 
-        const simLabel = sim.getSimLabelSync(slotId);
-        console.info(`SIM卡标签: ${simLabel}`);
-    } catch (err) {
-        console.error(`获取SIM卡标签失败: ${err.message}`);
-    }
-}
+let simState: sim.SimLabel = sim.getSimLabelSync(0);
+console.info(`The sim state is:` + simLabel);
 ```
 
 ## SimType<sup>20+</sup>

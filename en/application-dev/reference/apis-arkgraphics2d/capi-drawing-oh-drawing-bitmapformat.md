@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} OH_Drawing_BitmapFormat
+```
+
 ## Overview
 
 This struct describes the pixel format of a bitmap, including the color type and alpha type.

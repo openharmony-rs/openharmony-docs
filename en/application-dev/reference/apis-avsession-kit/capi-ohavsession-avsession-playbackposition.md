@@ -6,6 +6,10 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
+```
+
 ## Overview
 
 The struct describes the information related to the playback position.

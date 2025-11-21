@@ -313,4 +313,3 @@ Obtains the pointer to an OH_NativeBuffer instance. You must call [OH_NativeBuff
 | Type| Description|
 | -- | -- |
 | [OH_NativeBuffer](capi-core-oh-nativebuffer.md) * | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The value of **buffer** is a null pointer.<br> 2. The value of **OH_AVBuffer** fails parameter structure verification.<br> 3. An internal error occurs.|
-<!--no_check-->

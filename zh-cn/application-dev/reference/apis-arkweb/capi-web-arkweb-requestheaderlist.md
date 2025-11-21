@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_RequestHeaderList_ ArkWeb_RequestHeaderList
+```
+
 ## 概述
 
 请求头列表。

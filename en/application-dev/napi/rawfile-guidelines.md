@@ -1,5 +1,12 @@
 # Raw File Development
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## When to Use
 
 This document describes how to use native RawFile APIs to manage raw file directories and files in OpenHarmony. You can use the APIs to perform operations such as traversing a file list and opening, searching for, reading, and closing raw files. 
@@ -44,19 +51,23 @@ After the project is created, the **cpp** directory is created in the project di
 
 2. Open the **src/main/cpp/types/libentry/index.d.ts** file and declare the ArkTS APIs **getFileList**, **getRawFileContent**, **getRawFileDescriptor**, and **isRawDir** in this file.
 
-    ```js
-    import resourceManager from '@ohos.resourceManager';
-    export const getFileList: (resmgr: resourceManager.ResourceManager, path: string) => Array<String>;
-    export const getRawFileContent: (resmgr: resourceManager.ResourceManager, path: string) => Uint8Array;
-    export const getRawFileDescriptor: (resmgr: resourceManager.ResourceManager, path: string) => resourceManager.RawFileDescriptor;
-    export const isRawDir: (resmgr: resourceManager.ResourceManager, path: string) => boolean;
+    <!-- @[declare_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
+    import resourceManager from '@kit.LocalizationKit';
+    export const getFileList: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Array<String>;
+    export const getRawFileContent: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Uint8Array;
+    export const getRawFileDescriptor: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => resourceManager.resourceManager.RawFileDescriptor;
+    export const isRawDir: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => boolean;
     ```
 
 3. Modify the source file.
 
 1. Open the **src/main/cpp/hello.cpp** file, and add the mapping between ArkTS APIs and C++ APIs in the **Init** method. The ArkTS APIs **getFileList**, **getRawFileContent**, **getRawFileDescriptor**, and **isRawDir** map to the C++ APIs **GetFileList**, **GetRawFileContent**, **GetRawFileDescriptor**, and **IsRawDir**, respectively.
 
-    ```c++
+    <!-- @[module_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    
+    ``` C++
     EXTERN_C_START
     static napi_value Init(napi_env env, napi_value exports)
     {
@@ -66,80 +77,92 @@ After the project is created, the **cpp** directory is created in the project di
             { "getRawFileDescriptor", nullptr, GetRawFileDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr },
             { "isRawDir", nullptr, IsRawDir, nullptr, nullptr, nullptr, napi_default, nullptr }
         };
-
+    
         napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
         return exports;
     }
     EXTERN_C_END
     ```
-    <!-- @[module_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
-2. Add the four C++ native APIs to the **src/main/cpp/hello.cpp** file.
+2. Create the **hello.h** file in the **src/main/cpp/** directory and add the following four methods to the **hello.h** file:
 
-    ```c++
-    static napi_value GetFileList(napi_env env, napi_callback_info info)
-    static napi_value GetRawFileContent(napi_env env, napi_callback_info info)
-    static napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info)
-    static napi_value IsRawDir(napi_env env, napi_callback_info info)
-    ```
-
-3. Implement the four APIs in the **hello.cpp** file. Obtain the JS **resourceManager** object through the specified **env** and **info**, and convert it into the native **resourceManager** object. Then, you can call the APIs of the native **resourceManager** object to implement resource management. The sample code is as follows:
+    <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.h) -->
     
-    Import the header files.
-    ```c++
+    ``` C
+    #ifndef RAWFILE_HELLO_H
+    #define RAWFILE_HELLO_H
+    
     #include <js_native_api.h>
     #include <js_native_api_types.h>
     #include <string>
     #include <vector>
     #include <cstdlib>
     #include "napi/native_api.h"
+    
+    napi_value GetFileList(napi_env env, napi_callback_info info);
+    napi_value GetRawFileContent(napi_env env, napi_callback_info info);
+    napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info);
+    napi_value IsRawDir(napi_env env, napi_callback_info info);
+    
+    #endif //RAWFILE_HELLO_H
+    ```
+
+3. Implement the four APIs in the **hello.cpp** file. Obtain the JS **resourceManager** object through the specified **env** and **info**, and convert it into the native **resourceManager** object. Then, you can call the APIs of the native **resourceManager** object to implement resource management. The sample code is as follows:
+    
+    Import the header files.
+    <!-- @[includes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    
+    ``` C++
+    #include "hello.h"
     #include "rawfile/raw_file_manager.h"
     #include "rawfile/raw_file.h"
     #include "rawfile/raw_dir.h"
     #include "hilog/log.h"
     ```
-    <!-- @[includes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
     Declare the **DOMAIN** and **TAG** constants of HiLog.
-    ```c++
+    <!-- @[constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    
+    ``` C++
     const int GLOBAL_RESMGR = 0xFF00;
     const char *TAG = "[Sample_rawfile]";
     ```
-    <!-- @[constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
     Examples:
-    ```c++
+    <!-- @[example_get_file_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    
+    ``` C++
     // Example 1: Use GetFileList to obtain the raw file list.
-    static napi_value GetFileList(napi_env env, napi_callback_info info)
+    napi_value GetFileList(napi_env env, napi_callback_info info)
     {
         OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "NDKTest GetFileList Begin");
         size_t argc = 2;
         napi_value argv[2] = { nullptr };
         // Obtain arguments of the native API.
         napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-
+    
         // argv[0] is the first parameter of the function, which is a JS resource object. The  OH_ResourceManager_InitNativeResourceManager function converts this JS resource object into a native object.
         NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-
+    
         // Obtain argv[1], which specifies the relative path of the rawfile.
         size_t strSize;
         char strBuf[256];
         napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
         std::string dirName(strBuf, strSize);
-
+    
         // Obtain the corresponding rawDir pointer object.
         RawDir* rawDir = OH_ResourceManager_OpenRawDir(mNativeResMgr, dirName.c_str());
-
+    
         // Obtain the number of files and folders in rawDir.
         int count = OH_ResourceManager_GetRawFileCount(rawDir);
-
+    
         // Traverse rawDir to obtain the list of file names and save it.
         std::vector<std::string> tempArray;
         for (int i = 0; i < count; i++) {
             std::string filename = OH_ResourceManager_GetRawFileName(rawDir, i);
             tempArray.emplace_back(filename);
         }
-
+    
         // Convert the object to a JS array.
         napi_value fileList;
         napi_create_array(env, &fileList);
@@ -148,17 +171,18 @@ After the project is created, the **cpp** directory is created in the project di
             napi_create_string_utf8(env, tempArray[i].c_str(), NAPI_AUTO_LENGTH, &jsString);
             napi_set_element(env, fileList, i, jsString);
         }
-
+    
         // Close the rawDir pointer object.
         OH_ResourceManager_CloseRawDir(rawDir);
         OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
         return fileList;
     }
     ```
-    <!-- @[example_get_file_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
 
-    ```c++
+    <!-- @[example_get_rawfile_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    
+    ``` C++
     // Example 2: Use GetRawFileContent to obtain the content of the raw file.
     napi_value CreateJsArrayValue(napi_env env, std::unique_ptr<uint8_t[]> &data, long length)
     {
@@ -183,22 +207,22 @@ After the project is created, the **cpp** directory is created in the project di
         data.release();
         return result;
     }
-
-    static napi_value GetRawFileContent(napi_env env, napi_callback_info info)
+    
+    napi_value GetRawFileContent(napi_env env, napi_callback_info info)
     {
         OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "GetFileContent Begin");
         size_t argc = 2;
         napi_value argv[2] = { nullptr };
         // Obtain arguments of the native API.
         napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-
+    
         // argv[0] is the first parameter of the function, which is a JS resource object. The  OH_ResourceManager_InitNativeResourceManager function converts this JS resource object into a native object.
         NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
         size_t strSize;
         char strBuf[256];
         napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
         std::string filename(strBuf, strSize);
-
+    
         // Obtain the raw file pointer object.
         RawFile *rawFile = OH_ResourceManager_OpenRawFile(mNativeResMgr, filename.c_str());
         if (rawFile != nullptr) {
@@ -207,10 +231,10 @@ After the project is created, the **cpp** directory is created in the project di
         // Obtain the size of the raw file and apply for memory.
         long len = OH_ResourceManager_GetRawFileSize(rawFile);
         std::unique_ptr<uint8_t[]> data = std::make_unique<uint8_t[]>(len);
-
+    
         // Read all content of the raw file at a time.
         int res = OH_ResourceManager_ReadRawFile(rawFile, data.get(), len);
-
+    
         // Close the rawDir pointer object.
         OH_ResourceManager_CloseRawFile(rawFile);
         OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
@@ -218,10 +242,11 @@ After the project is created, the **cpp** directory is created in the project di
         return CreateJsArrayValue(env, data, len);
     }
     ```
-    <!-- @[example_get_rawfile_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
 
-    ```c++
+    <!-- @[example_get_rawfile_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    
+    ``` C++
     // Example 3: Use GetRawFileDescriptor to obtain the FD of the raw file.
     // Define a function to convert RawFileDescriptor to a JS object.
     napi_value createJsFileDescriptor(napi_env env, RawFileDescriptor& descriptor)
@@ -232,7 +257,7 @@ After the project is created, the **cpp** directory is created in the project di
         if (status != napi_ok) {
             return result;
         }
-
+    
         // Save df (file descriptor) to the result object.
         napi_value fd;
         status = napi_create_int32(env, descriptor.fd, &fd);
@@ -243,7 +268,7 @@ After the project is created, the **cpp** directory is created in the project di
         if (status != napi_ok) {
             return result;
         }
-
+    
         // Save offset (file offset) to the result object.
         napi_value offset;
         status = napi_create_int64(env, descriptor.start, &offset);
@@ -254,7 +279,7 @@ After the project is created, the **cpp** directory is created in the project di
         if (status != napi_ok) {
             return result;
         }
-
+    
         // Save length (file length) to the result object.
         napi_value length;
         status = napi_create_int64(env, descriptor.length, &length);
@@ -267,15 +292,15 @@ After the project is created, the **cpp** directory is created in the project di
         }
         return result;
     }
-
-    static napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info)
+    
+    napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info)
     {
         OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "NDKTest GetRawFileDescriptor Begin");
         size_t argc = 2;
         napi_value argv[2] = { nullptr };
         // Obtain arguments of the native API.
         napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-
+    
         // argv[0] is the first parameter of the function, which is a JS resource object. The  OH_ResourceManager_InitNativeResourceManager function converts this JS resource object into a native object.
         NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
         size_t strSize;
@@ -297,10 +322,11 @@ After the project is created, the **cpp** directory is created in the project di
         return createJsFileDescriptor(env, descriptor);
     }
     ```
-    <!-- @[example_get_rawfile_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
 
-    ```c++
+    <!-- @[example_is_raw_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    
+    ``` C++
     // Example 4: Use IsRawDir to check whether the path is a subdirectory in the rawfile directory.
     napi_value CreateJsBool(napi_env env, bool &bValue)
     {
@@ -310,18 +336,18 @@ After the project is created, the **cpp** directory is created in the project di
         }
         return jsValue;
     }
-
-    static napi_value IsRawDir(napi_env env, napi_callback_info info)
+    
+    napi_value IsRawDir(napi_env env, napi_callback_info info)
     {
         OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "NDKTest IsRawDir Begin");
         size_t argc = 2;
         napi_value argv[2] = { nullptr };
         // Obtain arguments of the native API.
         napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-
+    
         // argv[0] is the first parameter of the function, which is a JS resource object. The  OH_ResourceManager_InitNativeResourceManager function converts this JS resource object into a native object.
         NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-
+    
         napi_valuetype fileNameType;
         napi_typeof(env, argv[1], &fileNameType);
         if (fileNameType == napi_undefined || fileNameType == napi_null) {
@@ -339,7 +365,6 @@ After the project is created, the **cpp** directory is created in the project di
         return CreateJsBool(env, result);
     }
     ```
-    <!-- @[example_is_raw_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
 **4. Calling ArkTS APIs**
 
@@ -351,64 +376,70 @@ After the project is created, the **cpp** directory is created in the project di
 
    Example: Obtain a **resourceManager** object for intra-package resources within the application.
 
-	```js
-	import { util } from '@kit.ArkTS';
-	import { resourceManager } from '@kit.LocalizationKit';
-	import testNapi from 'libentry.so'  // Import the libentry.so file.
-
-	@Entry
-	@Component
-	struct Index {
-	  @State message: string = 'Hello World';
-	  private resMgr = this.getUIContext().getHostContext()?.resourceManager; // Obtain the resourceManager object for intra-package resources within the application.
-	  @State rawfileListMsg: string = 'FileList = ';
-	  @State retMsg: string = 'isRawDir = ';
-	  @State rawfileContentMsg: string = 'RawFileContent = ';
-	  @State rawfileDescriptorMsg: string = 'RawFileDescriptor.length = ';
-
-	  build() {
-		Row() {
-		  Column() {
-			Text(this.message)
-			  .id('hello_world')
-			  .fontSize(30)
-			  .fontWeight(FontWeight.Bold)
-			  .onClick(async () => {
-				// Pass in the JS resource object and the relative path of the rawfile.
-				let rawFileList: Array<String> = testNapi.getFileList(this.resMgr, '');
-				this.rawfileListMsg = 'FileList = ' + rawFileList;
-				console.log(this.rawfileListMsg);
-
-				let ret: boolean = testNapi.isRawDir(this.resMgr, 'subrawfile');
-				this.retMsg = 'isRawDir = ' + ret;
-				console.log(this.retMsg);
-
-				// Pass in the JS resource object and the relative path of the rawfile.
-				let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
-				// Convert Uint8Array to a string.
-				let textDecoder: util.TextDecoder = new util.TextDecoder();
-				let rawfileContent: string = textDecoder.decodeToString(rawfileArray);
-				this.rawfileContentMsg = 'RawFileContent = ' + rawfileContent;
-				console.log(this.rawfileContentMsg);
-
-				// Pass in the JS resource object and the rawfile name.
-				let rawfileDescriptor: resourceManager.RawFileDescriptor =
-				  testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
-				this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;
-				console.log(this.rawfileDescriptorMsg);
-			  })
-			Text(this.rawfileListMsg).id('get_file_list').fontSize(30);
-			Text(this.retMsg).id('is_raw_dir').fontSize(30);
-			Text(this.rawfileContentMsg).id('get_raw_file_content').fontSize(30);
-			Text(this.rawfileDescriptorMsg).id('get_raw_file_descriptor').fontSize(30);
-		  }
-		  .width('100%')
-		}
-		.height('100%')
-	  }
-	}
-	```
-    <!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+ 
+ ``` TypeScript
+ import { util } from '@kit.ArkTS';
+ import { resourceManager } from '@kit.LocalizationKit';
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+ import testNapi from 'libentry.so'  // Import the libentry.so file.
+ 
+ const DOMAIN = 0x0000;
+ const TAG = '[Sample_rawfile]';
+ 
+ @Entry
+ @Component
+ struct Index {
+   @State message: string = 'Hello World';
+   private resMgr = this.getUIContext().getHostContext()?.resourceManager; // Obtain the resourceManager object for intra-package resources within the application.
+   @State rawfileListMsg: string = 'FileList = ';
+   @State retMsg: string = 'isRawDir = ';
+   @State rawfileContentMsg: string = 'RawFileContent = ';
+   @State rawfileDescriptorMsg: string = 'RawFileDescriptor.length = ';
+ 
+   build() {
+     Row() {
+       Column() {
+         Text(this.message)
+           .id('hello_world')
+           .fontSize(30)
+           .fontWeight(FontWeight.Bold)
+           .onClick(async () => {
+             // Pass in the JS resource object and the relative path of the rawfile.
+             let rawFileList: Array<String> = testNapi.getFileList(this.resMgr, '');
+             this.rawfileListMsg = 'FileList = ' + rawFileList;
+             hilog.info(DOMAIN, TAG, this.rawfileListMsg);
+ 
+             let ret: boolean = testNapi.isRawDir(this.resMgr, 'subrawfile');
+             this.retMsg = 'isRawDir = ' + ret;
+             hilog.info(DOMAIN, TAG, this.retMsg);
+ 
+             // Pass in the JS resource object and the relative path of the rawfile.
+             let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
+             // Convert Uint8Array to a string.
+             let textDecoder: util.TextDecoder = new util.TextDecoder();
+             let rawfileContent: string = textDecoder.decodeToString(rawfileArray);
+             this.rawfileContentMsg = 'RawFileContent = ' + rawfileContent;
+             hilog.info(DOMAIN, TAG, this.rawfileContentMsg);
+ 
+             // Pass in the JS resource object and the rawfile name.
+             let rawfileDescriptor: resourceManager.RawFileDescriptor =
+               testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
+             this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;
+             hilog.info(DOMAIN, TAG, this.rawfileDescriptorMsg);
+           })
+         Text(this.rawfileListMsg).id('get_file_list').fontSize(30);
+         Text(this.retMsg).id('is_raw_dir').fontSize(30);
+         Text(this.rawfileContentMsg).id('get_raw_file_content').fontSize(30);
+         Text(this.rawfileDescriptorMsg).id('get_raw_file_descriptor').fontSize(30);
+       }
+       .width('100%')
+     }
+     .height('100%')
+   }
+ }
+ 
+ ```
 
 ##  
 

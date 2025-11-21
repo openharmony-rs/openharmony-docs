@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoAsymKeySpec OH_CryptoAsymKeySpec
+```
+
 ## 概述
 
 定义非对称密钥规格结构体。

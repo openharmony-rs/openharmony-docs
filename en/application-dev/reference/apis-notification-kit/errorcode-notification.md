@@ -421,11 +421,11 @@ This error code is reported when the application does not implement the Notifica
 
 **Possible Causes**
 
-The [NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md) is not set or is incorrectly set for the application.
+The [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is not set or is incorrectly set for the application.
 
 **Solution**
 
-Create a NotificationSubscriberExtensionAbility for the application. For details about how to configure the extension ability, see [NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md) in [ExtensionAbility Component](../../application-models/extensionability-overview.md).
+Create a NotificationSubscriberExtensionAbility for the application. For details about how to configure the extension ability, see [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) in [ExtensionAbility Component](../../application-models/extensionability-overview.md).
 
 ## 1600024 Custom Ringtones Not Configured
 

@@ -38,7 +38,7 @@ The framework model consists of the following layers:
 
 #### Available APIs
 
-You can obtain the VDI declaration file **/drivers/peripheral/display/composer/hdi_service/include/idisplay_composer_vdi.h** from [https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer).
+You can obtain the VDI declaration file **/drivers/peripheral/display/composer/hdi_service/include/idisplay_composer_vdi.h** from [https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer).
 - idisplay_composer_vdi.h
 
   | API                                                    | Description                                         |
@@ -144,7 +144,7 @@ Implement the APIs defined in **idisplay_composer_vdi.h**.
 
 2. Build a shared library.
 
-Build a shared library named **libdisplay_composer_vdi_impl.z.so**. Write the **BUILD.gn** file. You can obtain the **BUILD.gn** file of rk3568 from [https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn).
+Build a shared library named **libdisplay_composer_vdi_impl.z.so**. Write the **BUILD.gn** file. You can obtain the **BUILD.gn** file of rk3568 from [https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn).
 
 ```
   ohos_shared_library("libdisplay_composer_vdi_impl") {
@@ -183,28 +183,28 @@ Then, you can find **libdisplay_composer_vdi_impl.z.so** in the **out/rk3568/hdf
 
 #### Development Example
 
-A default VDI implementation is provided for your reference. For details, see **drivers/peripheral/display/composer/vdi_base** at [https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base).
+A default VDI implementation is provided for your reference. For details, see **drivers/peripheral/display/composer/vdi_base** at [https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base).
 
 ### Buffer
 
 #### Available APIs
 
-You can obtain the VDI declaration file **/drivers/peripheral/display/buffer/hdi_service/include/idisplay_buffer_vdi.h** from [https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer).
+You can obtain the VDI declaration file **/drivers/peripheral/display/buffer/hdi_service/include/idisplay_buffer_vdi.h** from [https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer).
 - idisplay_composer_vdi.h
 
-  | API                                                    | Description                                         |
-  | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | int32_t AllocMem(const AllocInfo& info, BufferHandle*& handle) | Allocates a buffer. |
-  | void FreeMem(const BufferHandle& handle) | Releases a buffer. |
-  | void* Mmap(const BufferHandle& handle) | Maps a buffer to the memory. |
-  | int32_t Unmap(const BufferHandle& handle) | Unmaps a buffer. |
-  | int32_t FlushCache(const BufferHandle& handle) | Flushes a buffer. |
-  | int32_t InvalidateCache(const BufferHandle& handle) | Invalidates a buffer. |
-  | int32_t IsSupportedAlloc(const std::vector<VerifyAllocInfo>& infos, std::vector<bool>& supporteds) | Checks whether the requested buffer can be allocated. |
-  | int32_t RegisterBuffer(const BufferHandle& handle) | Registers a buffer. |
-  | int32_t GetMetadata(const BufferHandle& handle, uint32_t key, std::vector<uint8_t>& value) | Obtains the metadata of a buffer. |
-  | int32_t ListMetadataKeys(const BufferHandle& handle, std::vector<uint32_t>& keys) | Lists the keys of the metadata. |
-  | int32_t EraseMetadataKey(const BufferHandle& handle, uint32_t key) | Erases the metadata of the specified key. |
+  | API                                                          | Description                                           |
+  | ------------------------------------------------------------ | ----------------------------------------------------- |
+  | int32_t AllocMem(const AllocInfo& info, BufferHandle*& handle) | Allocates a buffer.                                   |
+  | void FreeMem(const BufferHandle& handle)                     | Releases a buffer.                                    |
+  | void* Mmap(const BufferHandle& handle)                       | Maps a buffer to the memory.                          |
+  | int32_t Unmap(const BufferHandle& handle)                    | Unmaps a buffer.                                      |
+  | int32_t FlushCache(const BufferHandle& handle)               | Flushes a buffer.                                     |
+  | int32_t InvalidateCache(const BufferHandle& handle)          | Invalidates a buffer.                                 |
+  | int32_t IsSupportedAlloc(const std::vector\<VerifyAllocInfo>& infos, std::vector\<bool>& supporteds) | Checks whether the requested buffer can be allocated. |
+  | int32_t RegisterBuffer(const BufferHandle& handle)           | Registers a buffer.                                   |
+  | int32_t GetMetadata(const BufferHandle& handle, uint32_t key, std::vector<uint8_t>& value) | Obtains the metadata of a buffer.                     |
+  | int32_t ListMetadataKeys(const BufferHandle& handle, std::vector<uint32_t>& keys) | Lists the keys of the metadata.                       |
+  | int32_t EraseMetadataKey(const BufferHandle& handle, uint32_t key) | Erases the metadata of the specified key.             |
 
 #### How to Develop
 The following walks you through on how to implement the rk3568 buffer VDI.
@@ -241,7 +241,7 @@ The following walks you through on how to implement the rk3568 buffer VDI.
 
 2. Build a shared library.
 
-   Build a shared library named **libdisplay_buffer_vdi_impl.z.so**. Write the **BUILD.gn** file. You can obtain the **BUILD.gn** file of rk3568 from [https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn).
+   Build a shared library named **libdisplay_buffer_vdi_impl.z.so**. Write the **BUILD.gn** file. You can obtain the **BUILD.gn** file of rk3568 from [https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn).
 
 ```
   ohos_shared_library("libdisplay_buffer_vdi_impl") {
@@ -291,4 +291,5 @@ Then, you can find **libdisplay_buffer_vdi_impl.z.so** in the **out/rk3568/hdf/r
 
 #### Development Example
 
-A default VDI implementation is provided for your reference. For details, see **drivers/peripheral/display/buffer/vdi_base** at [https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base).
+A default VDI implementation is provided for your reference. For details, see **drivers/peripheral/display/buffer/vdi_base** at [https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base).
+<!--no_check-->

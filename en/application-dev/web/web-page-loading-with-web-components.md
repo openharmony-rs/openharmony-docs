@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -27,10 +27,9 @@ You can specify the default network page to be loaded when creating a **Web** co
 
 In the following example, after the **www.\example.com** page is loaded by the **Web** component, **loadUrl** is called to change the displayed page to **www\.example1.com**.
 
+<!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->
 
-
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -51,7 +50,7 @@ struct WebComponent {
           }
         })
       // When creating a Web component, set the default network page to be loaded to www.example.com.
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller });
     }
   }
 }
@@ -81,30 +80,30 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('loadUrl')
           .onClick(() => {
             try {
               // Upon button clicking, call loadUrl to redirect to local1.html.
-              this.controller.loadUrl($rawfile("local1.html"));
+              this.controller.loadUrl($rawfile('local1.html'));
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         // When creating a Web component, load the local.html file through $rawfile.
-        Web({ src: $rawfile("local.html"), controller: this.controller })
+        Web({ src: $rawfile('local.html'), controller: this.controller });
       }
     }
   }
@@ -138,48 +137,50 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 Example of loading local page files in the sandbox:
 
 1. Obtain the sandbox path through the constructed singleton object **GlobalContext**. You need to enable the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) permission of the file system in the application.
-
-   ```ts
-   // GlobalContext.ets
+   <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
+   
+   ``` TypeScript
    export class GlobalContext {
      private constructor() {}
      private static instance: GlobalContext;
      private _objects = new Map<string, Object>();
-
+   
      public static getContext(): GlobalContext {
        if (!GlobalContext.instance) {
          GlobalContext.instance = new GlobalContext();
        }
        return GlobalContext.instance;
      }
-
+   
      getObject(value: string): Object | undefined {
        return this._objects.get(value);
      }
-
+   
      setObject(key: string, objectClass: Object): void {
        this._objects.set(key, objectClass);
      }
    }
    ```
-
-   ```ts
-   // xxx.ets
+   <!-- -->
+   
+   <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
+   
+   ``` TypeScript
    import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
-
-   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
-
+   import { GlobalContext } from './GlobalContext';
+   
+   let url = 'file://' + GlobalContext.getContext().getObject('filesDir') + '/index.html';
+   
    @Entry
    @Component
    struct WebComponent {
      controller: webview.WebviewController = new webview.WebviewController();
-
+   
      build() {
        Column() {
+         Text('loading success');
          // Load the files in the sandbox.
-         Web({ src: url, controller: this.controller })
-         .fileAccess(true)
+         Web({ src: url, controller: this.controller });
        }
      }
    }
@@ -199,7 +200,7 @@ Example of loading local page files in the sandbox:
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // Data synchronization between the UIAbility component and UI can be implemented by binding filesDir to the GlobalContext object.
        GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.log("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
      }
    }
    ```
@@ -220,9 +221,9 @@ Example of loading local page files in the sandbox:
 ## Loading HTML Rich Text Data
 
 The **Web** component provides the [loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata) API for you to load HTML rich text data. If you need to display only some page fragments, you can use this feature to quickly load the page. To load a large number of HTML files, set **baseUrl** to data.
+<!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -238,9 +239,9 @@ struct WebComponent {
           try {
             // Upon button clicking, call loadData to load HTML rich text data.
             this.controller.loadData(
-              "<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
-              "text/html",
-              "UTF-8"
+              '<html><body bgcolor=\'white\'>Source:<pre>source</pre></body></html>',
+              'text/html',
+              'UTF-8'
             );
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -254,9 +255,9 @@ struct WebComponent {
 ```
 
 The **Web** component can load HTML strings using data urls.
+<!-- @[web_components_load_html_strings_by_data_url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_two.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -264,12 +265,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  htmlStr: string = "data:text/html, <html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>";
+  htmlStr: string = 'data:text/html, <html><body bgcolor=\'white\'>Source:<pre>source</pre></body></html>';
 
   build() {
     Column() {
       // When creating a Web component, set the default network page to be loaded to htmlStr.
-      Web({ src: this.htmlStr, controller: this.controller })
+      Web({ src: this.htmlStr, controller: this.controller });
     }
   }
 }

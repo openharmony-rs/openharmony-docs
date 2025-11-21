@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_SmoothZoomInfo {...} Camera_SmoothZoomInfo
+```
+
 ## Overview
 
 The struct describes the smooth zoom information.

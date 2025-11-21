@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_NativeImage OH_NativeImage
+```
+
 ## 概述
 
 提供OH_NativeImage结构体声明。

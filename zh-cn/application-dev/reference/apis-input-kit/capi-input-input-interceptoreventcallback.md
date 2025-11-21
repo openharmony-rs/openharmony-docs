@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
+```
+
 ## 概述
 
 拦截回调事件结构体，拦截鼠标事件、触屏输入事件和轴事件。

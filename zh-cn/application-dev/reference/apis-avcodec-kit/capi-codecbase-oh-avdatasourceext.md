@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVDataSourceExt {...} OH_AVDataSourceExt
+```
+
 ## 概述
 
 用户自定义数据源，回调支持通过userData传递用户自定义数据。

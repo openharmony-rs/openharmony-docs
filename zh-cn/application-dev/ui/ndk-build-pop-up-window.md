@@ -10,10 +10,10 @@
 可以通过创建弹窗控制器和创建自定义弹窗的内容对象两种方法显示自定义弹窗，设置其样式和内容。
 
 
-[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：此时在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体里，定义了弹窗接口集合，用于实现各种弹窗控制。
+[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体中，定义了弹窗接口集合，用于实现各种弹窗控制。
 
 
-[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下弹窗接口定义在[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#函数)的函数中。
+[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下的弹窗接口在[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#函数)的函数中定义。
 
 
 > **说明：**
@@ -101,9 +101,10 @@
                                              .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(text, NODE_HEIGHT, &textHeightItem);
        ArkUI_NodeHandle span = nodeAPI->createNode(ARKUI_NODE_SPAN);
-       ArkUI_AttributeItem spanItem = {.string = "这是一个弹窗"};
+       ArkUI_AttributeItem spanItem = {.string = "This is a dialog box"};
        nodeAPI->setAttribute(span, NODE_SPAN_CONTENT, &spanItem);
        ArkUI_NodeHandle imageSpan = nodeAPI->createNode(ARKUI_NODE_IMAGE_SPAN);
+       // 图片src/main/ets/pages/common/sky.jpg需要替换为开发者所需的资源文件
        ArkUI_AttributeItem imageSpanItem = {.string = "/pages/common/sky.jpg"};
        nodeAPI->setAttribute(imageSpan, NODE_IMAGE_SPAN_SRC, &imageSpanItem);
        ArkUI_NumberValue imageSpanWidthValue[] = {{.f32 = 300}};
@@ -231,7 +232,7 @@
        ArkUI_AttributeItem buttonHeightItem = {.value = buttonHeightValue,
                                                .size = sizeof(buttonHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(g_buttonNode, NODE_HEIGHT, &buttonHeightItem);
-       ArkUI_AttributeItem labelItem = {.string = "点击弹窗"};
+       ArkUI_AttributeItem labelItem = {.string = "Click Dialog Box"};
        nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
        ArkUI_NumberValue buttonTypeValue[] = {{.i32 = static_cast<int32_t>(ARKUI_BUTTON_TYPE_NORMAL)}};
        ArkUI_AttributeItem buttonTypeItem = {.value = buttonTypeValue,
@@ -264,12 +265,12 @@
                  OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
              if (g_isShown) {
                  g_isShown = false;
-                 ArkUI_AttributeItem labelItem = {.string = "显示弹窗"};
+                 ArkUI_AttributeItem labelItem = {.string = "Show Dialog Box"};
                  nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
                  CloseDialog();
              } else {
                  g_isShown = true;
-                 ArkUI_AttributeItem labelItem = {.string = "关闭弹窗"};
+                 ArkUI_AttributeItem labelItem = {.string = "Close Dialog Box"};
                  nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
                  ShowDialog();
              }
@@ -293,12 +294,12 @@
                  OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
              if (g_isShown) {
                  g_isShown = false;
-                 ArkUI_AttributeItem labelItem = {.string = "显示弹窗"};
+                 ArkUI_AttributeItem labelItem = {.string = "Show Dialog Box"};
                  nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
                  CloseCustomDialog();
              } else {
                  g_isShown = true;
-                 ArkUI_AttributeItem labelItem = {.string = "关闭弹窗"};
+                 ArkUI_AttributeItem labelItem = {.string = "Close Dialog Box"};
                  nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
                  OpenCustomDialog();
              }
@@ -334,9 +335,10 @@ ArkUI_NodeHandle CreateDialogContent()
                                           .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     ArkUI_NodeHandle span = nodeAPI->createNode(ARKUI_NODE_SPAN);
-    ArkUI_AttributeItem spanItem = {.string = "这是一个弹窗"};
+    ArkUI_AttributeItem spanItem = {.string = "This is a dialog box"};
     nodeAPI->setAttribute(span, NODE_SPAN_CONTENT, &spanItem);
     ArkUI_NodeHandle imageSpan = nodeAPI->createNode(ARKUI_NODE_IMAGE_SPAN);
+    // 图片src/main/ets/pages/common/sky.jpg需要替换为开发者所需的资源文件
     ArkUI_AttributeItem imageSpanItem = {.string = "/pages/common/sky.jpg"};
     nodeAPI->setAttribute(imageSpan, NODE_IMAGE_SPAN_SRC, &imageSpanItem);
     ArkUI_NumberValue imageSpanWidthValue[] = {{.f32 = 300}};

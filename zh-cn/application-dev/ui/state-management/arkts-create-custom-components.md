@@ -100,7 +100,7 @@ struct ParentComponent {
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
   <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) -->
-  
+
   ``` TypeScript
   @Component
   struct MyComponent {
@@ -117,7 +117,7 @@ struct ParentComponent {
   | freezeWhenInactive | boolean | 否 | 否 | 是否开启组件冻结。默认值false。true表示开启组件冻结，false表示不开启组件冻结。 |
 
   <!-- @[freezeWhenInactive_Component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/FreezeWhenInactive.ets) -->
-  
+
   ``` TypeScript
   @Component({ freezeWhenInactive: true })
   struct MyComponent {
@@ -125,12 +125,61 @@ struct ParentComponent {
   }
   ```
 
+### \@ComponentV2
+
+为了在自定义组件中使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)状态变量装饰器的能力，开发者可以使用\@ComponentV2装饰器装饰自定义组件。
+
+>  **说明：**
+>
+> \@ComponentV2装饰器从API version 12开始支持。
+>
+> 从API version 12开始，该装饰器支持在原子化服务中使用。
+
+和[\@Component装饰器](#component)一样，\@ComponentV2装饰器用于装饰自定义组件：
+
+- 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括[\@Local](arkts-new-local.md)、[\@Param](arkts-new-param.md)、[\@Once](arkts-new-once.md)、[\@Event](arkts-new-event.md)、[\@Provider](arkts-new-Provider-and-Consumer.md)、[\@Consumer](arkts-new-Provider-and-Consumer.md)等。
+- \@ComponentV2装饰的自定义组件暂不支持[LocalStorage](arkts-localstorage.md)等现有自定义组件的能力。
+- 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。
+- \@ComponentV2支持一个可选的boolean类型参数freezeWhenInactive，来实现[组件冻结功能](arkts-custom-components-freezeV2.md)。
+
+- 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
+
+    <!-- @[ComponentV2_page_componentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @ComponentV2 // 装饰器
+    struct ComponentV2Test { // struct声明的数据结构
+      @Local message: string = 'Hello World';
+      build() { // build定义的UI
+        RelativeContainer() {
+          Text(this.message)
+            .id('HelloWorld')
+            // $r('app.float.page_text_font_size')需要替换为开发者所需的资源文件;
+            .fontSize($r('app.float.page_text_font_size'))
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              this.message = 'Welcome';
+            })
+        }
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
+
+除非特别说明，\@ComponentV2装饰的自定义组件将与\@Component装饰的自定义组件保持相同的行为。
+
 ### build()函数
 
 build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
 
   <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) -->
-  
+
   ``` TypeScript
   @Component
   struct MyComponent {
@@ -153,7 +202,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
   <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -177,7 +226,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   > 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
 
   <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->
-  
+
   ``` TypeScript
   @Entry({ routeName: 'myPage' })
   @Component
@@ -196,7 +245,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   > 从API version 10开始，该装饰器支持在ArkTS卡片中使用。
 
   <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) -->
-  
+
   ``` TypeScript
   @Reusable
   @Component
@@ -454,7 +503,7 @@ struct Son {
   ```
 
 
-- 不允许直接改变状态变量，反例如下。详细分析见[\@State常见问题：不允许在build里改状态变量](./arkts-state.md#不允许在build里改状态变量)。
+- 不允许直接改变状态变量，反例如下。详细分析见[\@State常见问题：不允许在渲染过程中改变状态变量](./arkts-state.md#不允许在渲染过程中改变状态变量)。
 
   ```ts
   @Component
@@ -586,5 +635,9 @@ struct MyComponent {
   // ···
   }
   ```
+
+### \@Component与\@ComponentV2混用
+
+在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，可参考[混用文档](./arkts-custom-component-mixed-scenarios.md)。
 
 <!--no_check-->

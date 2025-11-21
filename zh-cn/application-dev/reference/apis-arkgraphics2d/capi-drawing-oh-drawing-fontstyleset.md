@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+
+```
+typedef struct OH_Drawing_FontStyleSet OH_Drawing_FontStyleSet
+```
 ## 概述
 
 定义字体样式集, 用于字体样式族匹配。

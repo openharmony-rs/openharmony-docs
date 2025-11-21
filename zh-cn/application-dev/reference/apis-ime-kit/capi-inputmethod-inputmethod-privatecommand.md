@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
+```
+
 ## 概述
 
 表示私有数据的结构体类型。输入框和输入法应用之间交互的私有数据。

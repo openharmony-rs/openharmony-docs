@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfProperty OH_UdmfProperty
+```
+
 ## 概述
 
 定义统一数据对象中数据记录的属性结构。

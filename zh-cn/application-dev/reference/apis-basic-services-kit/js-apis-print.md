@@ -476,11 +476,14 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print
+## print.print<sup>(deprecated)</sup>
+
+> 从API version 10开始支持，从API version 23开始废弃。
+> 建议使用[print](#printprint11-1)替代。
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
-打印接口，传入文件进行打印，使用callback异步回调。
+打印接口，传入文件进行打印，使用callback异步回调。拉起系统打印预览界面，需要使用[print](#printprint11-1)接口，传入context。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -522,11 +525,14 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print
+## print.print<sup>(deprecated)</sup>
+
+> 从API version 10开始支持，从API version 23开始废弃。
+> 建议使用[print](#printprint11-1)替代。
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
-打印接口，传入文件进行打印，使用Promise异步回调。
+打印接口，传入文件进行打印，使用Promise异步回调。拉起系统打印预览界面，需要使用[print](#printprint11-1)接口，传入context。
 
 **需要权限：** ohos.permission.PRINT
 

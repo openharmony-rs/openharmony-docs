@@ -1,10 +1,10 @@
 # Hover Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A hover event is triggered when the cursor slides over a component or when a stylus hovers and moves over the screen.
 
@@ -73,13 +73,13 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 | displayY<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application screen.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
 | stopPropagation | () => void |No|No| Stops the event from bubbling upwards or downwards.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
 | globalDisplayX<sup>20+</sup> | number |No|Yes| X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayY<sup>20+</sup> | number |No|Yes| XY-coordinate of the mouse cursor or stylus position relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number |No|Yes| Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## Example
 
 ### Example 1: Using onHover
 
-This example demonstrates how to set the **onHover()** event on a button. When the mouse or stylus hovers over the button, the **onHover** event is triggered to dynamically change the text content and background color of the button.
+This example demonstrates how to set the [onHover](#onhover) event on a button. When the mouse or stylus hovers over the button, the event is triggered to dynamically change the text content and background color of the button.
 
 ```ts
 // xxx.ets
@@ -127,7 +127,7 @@ The figure below shows how the button looks when a stylus hovers on it.
 
 ### Example 2: Using onHoverMove
 
-This example demonstrates how to use the **onHoverMove()** event to display the current position of a stylus when it hovers over a button.
+This example demonstrates how to configure the [onHoverMove](#onhovermove15) event on a button, available since API version 15. When a stylus hovers over the button, the UI displays the current stylus position.
 
 ```ts
 // xxx.ets
@@ -154,6 +154,6 @@ struct OnHoverMoveEventExample {
 
 Diagrams:
 
-The UI continuously updates to show the position of the stylus tip.
+When a stylus hovers over the button, the UI continuously updates to show the position of the stylus tip.
 
 ![onHoverMove](figures/onHoverMove.png)

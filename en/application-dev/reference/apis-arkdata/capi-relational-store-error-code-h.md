@@ -112,3 +112,4 @@ Enumerates the RDB store error codes.
 | RDB_E_DATA_TYPE_NULL = (E_BASE + 63)                         | The data to be stored is empty.<br>**Since**: 18                    |
 | RDB_E_TYPE_MISMATCH = (E_BASE + 64)                          | The data type is incorrect.<br>**Since**: 18                  |
 | RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)                      | SQLite error code: SQLite constraint.<br>**Since**: 18        |
+| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | The number of subscriptions exceeds the upper limit.<br>**Since**: 22|

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_PhotoNative OH_PhotoNative
+```
+
 ## 概述
 
 相机照片对象。<br> 全质量图对象。

@@ -223,6 +223,7 @@
   
   ``` TypeScript
   import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
+  import { common } from '@kit.AbilityKit';
   
   class AppColors implements CustomColors {
     public fontPrimary: ResourceColor = $r('app.color.brand_purple');
@@ -246,7 +247,9 @@
   @Component
   struct DisplayPage1 {
     @State customTheme: CustomTheme = new AppTheme();
-    @State message: string = 'Set a custom theme style for specific pages';
+    // 'SetCustomThemeStyle'资源文件中的value值为'设置应用局部页面自定义主题风格'
+    @State message: string = (this.getUIContext().getHostContext() as common.UIAbilityContext)
+      .resourceManager.getStringByNameSync('SetCustomThemeStyle');
     count = 0;
   
     build() {

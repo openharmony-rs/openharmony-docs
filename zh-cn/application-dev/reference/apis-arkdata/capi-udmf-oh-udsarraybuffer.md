@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsArrayBuffer OH_UdsArrayBuffer
+```
+
 ## 概述
 
 描述ArrayBuffer类型的统一数据结构。

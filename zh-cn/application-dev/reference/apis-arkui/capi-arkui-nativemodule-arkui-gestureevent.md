@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_GestureEvent ArkUI_GestureEvent
+```
+
 ## 概述
 
 提供手势事件数据类型对象定义。

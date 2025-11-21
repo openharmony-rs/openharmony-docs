@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 By docking the **Web** component to the soft keyboard, you can manage the display and interaction of the soft keyboard in your application, and can also customize its features to suit your specific needs. The main scenarios are as follows:
 
@@ -78,7 +78,7 @@ To support the interaction between the web page and the system soft keyboard and
 
 
 ## Automatically Displaying the Soft Keyboard
-To improve user experience, you can invoke the [showTextInput()](../reference/apis-ime-kit/js-apis-inputmethod.md#showtextinput10) API to automatically display the soft keyboard after the page is loaded.
+To improve user experience, you can call the [showTextInput()](../reference/apis-ime-kit/js-apis-inputmethod.md#showtextinput10) API to automatically display the soft keyboard after the page is loaded.
 
 ```html
 <!-- index.html -->
@@ -129,11 +129,13 @@ On a mobile device, you can set the avoidance mode for the soft keyboard on the 
 
 (1) Set the soft keyboard avoidance mode of **UIContext**.
 
-```ts
-// EntryAbility.ets
+<!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+
+``` TypeScript
 import { KeyboardAvoidMode } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// ···
 onWindowStageCreate(windowStage: window.WindowStage) {
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -164,8 +166,9 @@ onWindowStageCreate(windowStage: window.WindowStage) {
   </body>
 </html>
 ```
+<!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 //Index.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -206,7 +209,9 @@ The **Web** component is re-arranged with ArkUI, as shown in Figure 1 and Figure
 
 Set the soft keyboard avoidance mode of the **Web** component in the application code.
 
-```ts
+<!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+
+``` TypeScript
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -216,11 +221,15 @@ struct KeyboardAvoidExample {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Row().height("50%").width("100%").backgroundColor(Color.Gray)
-      Web({ src: $rawfile("index.html"),controller: this.controller})
+      Row().height('50%').width('100%').backgroundColor(Color.Gray)
+      Web({ src: $rawfile('index.html'),controller: this.controller})
         .keyboardAvoidMode (WebKeyboardAvoidMode.OVERLAYS_CONTENT) // The Web component does not adjust the size of any viewport.
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
-    }.width('100%').height("100%")
+      Text('I can see the bottom of the page')    
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Pink)
+        .layoutWeight(1)
+    }.width('100%').height('100%')
   }
 }
 ```
@@ -349,13 +358,13 @@ An application can invoke the [onInterceptKeyboardAttach](../reference/apis-arkw
           // Traverse attributes.
           let attributeKeys = Object.keys(attributes);
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
           }
 
           if (attributes) {
             if (attributes['data-keyboard'] == 'customKeyboard') {
               // Determine the soft keyboard to use based on the attributes of editable HTML elements. For example, if the attribute includes data-keyboard and its value is customKeyboard, use a custom keyboard.
-              console.log('WebCustomKeyboard use custom keyboard');
+              console.info('WebCustomKeyboard use custom keyboard');
               option.useSystemKeyboard = false;
               // Set the custom keyboard builder.
               option.customKeyboard = () => {

@@ -776,15 +776,15 @@ struct PreciselyModifyingDataTwo {
 <!-- @[changing_data_sub_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
 
 ``` TypeScript
-class SubBasicDataSource implements IDataSource {
+class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
-  private originDataArray: SubStringData[] = [];
+  private originDataArray: StringData[] = [];
 
   public totalCount(): number {
     return this.originDataArray.length;
   }
 
-  public getData(index: number): SubStringData {
+  public getData(index: number): StringData {
     return this.originDataArray[index];
   }
 
@@ -838,25 +838,25 @@ class SubBasicDataSource implements IDataSource {
   }
 }
 
-class MySubDataSource extends SubBasicDataSource {
-  private dataArray: SubStringData[] = [];
+class MySubDataSource extends BasicDataSource {
+  private dataArray: StringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): SubStringData {
+  public getData(index: number): StringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: SubStringData): void {
+  public pushData(data: StringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
 }
 
 @Observed
-class SubStringData {
+class StringData {
   public message: string;
 
   constructor(message: string) {
@@ -871,20 +871,20 @@ struct ChangingDataSubproperties {
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
-      this.data.pushData(new SubStringData(`Hello ${i}`));
+      this.data.pushData(new StringData(`Hello ${i}`));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: SubStringData, index: number) => {
+      LazyForEach(this.data, (item: StringData, index: number) => {
         ListItem() {
           ChangingDataSubpropertiesChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
         })
-      }, (item: SubStringData, index: number) => index.toString())
+      }, (item: StringData, index: number) => index.toString())
     }
     .cachedCount(5)
   }
@@ -892,7 +892,7 @@ struct ChangingDataSubproperties {
 
 @Component
 struct ChangingDataSubpropertiesChildComponent {
-  @ObjectLink data: SubStringData;
+  @ObjectLink data: StringData;
 
   build() {
     Row() {
@@ -904,7 +904,7 @@ struct ChangingDataSubpropertiesChildComponent {
 }
 ```
 
-点击`LazyForEach`子组件改变`item.message`时，重渲染依赖`ChildComponent`的`@ObjectLink`成员变量对子属性的监听。框架仅刷新`Text(this.data.message)`，不会重建整个`ListItem`子组件。
+点击`LazyForEach`子组件改变`item.message`时，重渲染依赖`ChangingDataSubpropertiesChildComponent`的`@ObjectLink`成员变量对子属性的监听。框架仅刷新`Text(this.data.message)`，不会重建整个`ListItem`子组件。
 
 **图11**  LazyForEach改变数据子属性  
 ![LazyForEach-Change-SubProperty](figures/LazyForEach-Change-SubProperty.gif)
@@ -1198,7 +1198,7 @@ struct ObservingComponentChildComponent {
 }
 ```
 
-`@Local`使得自定义组件内被修饰的变量具有观测其变化的能力，该变量必须在组件内部进行初始化。示例中，点击`Text`组件修改`item.message`触发变量更新并刷新使用该变量的组件，`ChildComponent`中`@Local`装饰的变量`message`变化时也能刷新子组件。
+`@Local`使得自定义组件内被修饰的变量具有观测其变化的能力，该变量必须在组件内部进行初始化。示例中，点击`Text`组件修改`item.message`触发变量更新并刷新使用该变量的组件，`ObservingComponentChildComponent`中`@Local`装饰的变量`message`变化时也能刷新子组件。
 
 **组件外部输入**
 
@@ -1331,7 +1331,7 @@ struct ReceivingExternalInputChildComponent {
 }
 ```
 
-使用`@Param`装饰器，子组件可以接受外部输入参数，实现父子组件间的数据同步。在`MyComponent`中创建子组件时，传递`item.message`，并用`@Param`修饰的变量`data`与其关联。点击`ListItem`中的组件修改`item.message`，数据变化会从父组件传递到子组件，触发子组件刷新。
+使用`@Param`装饰器，子组件可以接受外部输入参数，实现父子组件间的数据同步。在`ReceivingExternalInput`中创建子组件时，传递`item.message`，并用`@Param`修饰的变量`data`与其关联。点击`ListItem`中的组件修改`item.message`，数据变化会从父组件传递到子组件，触发子组件刷新。
 
 ### 拖拽排序
 当LazyForEach在List组件下使用，并且设置了[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，可以使能拖拽排序。拖拽排序释放后，如果数据位置发生变化，将触发onMove事件，上报原始索引号和目标索引号。在onMove事件中，根据上报的索引号修改数据源。修改数据源时，无需调用DataChangeListener接口通知数据源变化。
@@ -2158,7 +2158,7 @@ struct ScreenFlickeringInList {
 
 ### 组件复用渲染异常
 
-`@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-new-componentV2.md)混用会导致组件渲染异常。
+`@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
@@ -2401,11 +2401,11 @@ LazyForEach(this.data, (item: string, index: number) => {
 
 ### string类型数组的BasicDataSource代码
 
-<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets) -->
+<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->    
 
 ``` TypeScript
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
-class BasicDataSource1 implements IDataSource {
+export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: string[] = [];
 
@@ -2485,15 +2485,15 @@ class BasicDataSource1 implements IDataSource {
 <!-- @[basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
 
 ``` TypeScript
-class SubBasicDataSource implements IDataSource {
+class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
-  private originDataArray: SubStringData[] = [];
+  private originDataArray: StringData[] = [];
 
   public totalCount(): number {
     return this.originDataArray.length;
   }
 
-  public getData(index: number): SubStringData {
+  public getData(index: number): StringData {
     return this.originDataArray[index];
   }
 

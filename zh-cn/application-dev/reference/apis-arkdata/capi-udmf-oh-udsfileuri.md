@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsFileUri OH_UdsFileUri
+```
+
 ## 概述
 
 描述文件Uri类型的统一数据结构。

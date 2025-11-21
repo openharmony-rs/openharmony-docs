@@ -121,6 +121,6 @@ wifi init success!
 
 Congratulations! You have finished all steps! Proceed to develop samples to better familiarize yourself with OpenHarmony development:
 
-- [LED Peripheral Control](https://gitee.com/openharmony/docs/blob/master/en/device-dev/guide/device-wlan-led-control.md)
+- [LED Peripheral Control](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/guide/device-wlan-led-control.md)
 
-- [Third-Party SDK Integration](https://gitee.com/openharmony/docs/blob/master/en/device-dev/guide/device-wlan-sdk.md)
+- [Third-Party SDK Integration](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/guide/device-wlan-sdk.md)

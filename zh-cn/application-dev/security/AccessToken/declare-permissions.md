@@ -27,7 +27,7 @@
 
 > **说明：**
 >
-> 以下"ohos.permission.APPROXIMATELY_LOCATION"、"ohos.permission.LOCATION"仅为样例示意。请开发者根据实际需要，参照上表要求填写对应属性。
+> 下述"name"中填入的权限仅为样例示意。请开发者根据实际需要，参照上表要求填写对应属性。
 
 <!-- @[request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
 

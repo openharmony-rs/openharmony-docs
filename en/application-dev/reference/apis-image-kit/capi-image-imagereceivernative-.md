@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct ImageReceiverNative_ ImageReceiverNative
+```
+
 ## Overview
 
 The struct describes the data type name of the image receiver at the native layer.

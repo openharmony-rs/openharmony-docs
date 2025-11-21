@@ -973,6 +973,7 @@ Enumerates the types of abilities during uninstallation.
 | Name   | Value  | Description                |
 | ------- | ---- | -------------------- |
 | EXTENSION | 1    | Extension ability.|
+| UI_EXTENSION<sup>22+</sup> | 2    | UIExtensionAbility component.|
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 

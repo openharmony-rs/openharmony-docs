@@ -78,7 +78,6 @@ In the C++ project of OpenHarmony, find the **buildOption/externalNativeOptions*
             "path": "./src/main/cpp/CMakeLists.txt",
             "arguments": "",
             "abiFilters": [
-                "armeabi-v7a",
                 "arm64-v8a"
             ]
         }

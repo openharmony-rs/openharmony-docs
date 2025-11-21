@@ -21,19 +21,6 @@ import NotificationSubscriberExtensionAbility from '@ohos.application.Notificati
 import extensionSubscription from '@ohos.notificationExtensionSubscription';
 ```
 
-在module.json5文件中配置
-```json5
-{
-    "name": "NotificationSubscriberExtAbility",
-    "srcEntry": "./ets/notificationsubscriberextability/NotificationSubscriberExtAbility.ets",
-    "type": "notificationSubscriber",
-    "description": "$string:NotificationSubscriberExtAbility_desc",
-    "icon": "$media:layered_image",
-    "label": "$string:NotificationSubscriberExtAbility_label",
-    "exported": true
-}
-```
-
 ## NotificationSubscriberExtensionAbility
 
 ### 属性
@@ -50,7 +37,7 @@ import extensionSubscription from '@ohos.notificationExtensionSubscription';
 
 onDestroy(): void
 
-分布式协同扩展被销毁时的回调。
+通知订阅扩展被销毁时的回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -84,7 +71,7 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;s
+const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {

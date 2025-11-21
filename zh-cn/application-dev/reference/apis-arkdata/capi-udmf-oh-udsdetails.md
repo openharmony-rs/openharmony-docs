@@ -7,6 +7,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsDetails OH_UdsDetails
+```
+
 ## 概述
 
 描述字典类型的统一数据结构。

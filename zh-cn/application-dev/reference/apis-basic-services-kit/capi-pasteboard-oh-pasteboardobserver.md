@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
+```
+typedef struct OH_PasteboardObserver OH_PasteboardObserver
+```
+
 ## 概述
 
 定义剪贴板数据变更观察者。

@@ -54,7 +54,7 @@ When switching an application from the [FA model](ability-terminology.md#fa-mode
 
 | Example in the FA Model| Example in the Stage Model|
 | -------- | -------- |
-| "meteData": {<br>    "customizeDate": [{<br>        "name": "label",<br>        "value": "string",<br>        "extra": "$string:label",<br>    }]<br>} | "meteData": [{<br>    "name": "label",<br>    "value": "string",<br>    "resource": "$string:label",<br>}] |
+| "metaData": {<br>    "customizeDate": [{<br>        "name": "label",<br>        "value": "string",<br>        "extra": "$string:label",<br>    }]<br>} | "metaData": [{<br>    "name": "label",<br>    "value": "string",<br>    "resource": "$string:label",<br>}] |
 
 
 **Table 5** abilities comparison

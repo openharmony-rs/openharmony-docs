@@ -10,6 +10,8 @@
 
 提供ArkWeb在Native侧的公共类型定义。
 
+**引用文件：** <web/arkweb_type.h>
+
 **库：** libohweb.so
 
 **系统能力：** SystemCapability.Web.Webview.Core

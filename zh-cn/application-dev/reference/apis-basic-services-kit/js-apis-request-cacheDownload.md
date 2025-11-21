@@ -391,3 +391,35 @@ getDownloadInfo(url: string): DownloadInfo | undefined
     console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
+
+## cacheDownload.clearMemoryCache<sup>23+</sup>
+
+clearMemoryCache(): void
+
+清除缓存下载内容的内存缓存。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+**示例：**
+
+```ts
+import { cacheDownload } from '@kit.BasicServicesKit';
+  
+cacheDownload.clearMemoryCache();
+```
+
+## cacheDownload.clearFileCache<sup>23+</sup>
+
+clearFileCache(): void
+
+清除保存下载内容的文件缓存。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+**示例：**
+
+```ts
+import { cacheDownload } from '@kit.BasicServicesKit';
+  
+cacheDownload.clearFileCache();
+```

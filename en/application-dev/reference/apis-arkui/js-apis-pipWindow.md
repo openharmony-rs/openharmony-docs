@@ -134,14 +134,17 @@ struct Index {
     private navId: string = "page_1"; // The navigation ID of the current page is page_1. For details, see the definition of PiPConfiguration. The navigation name is customized.
     private contentWidth: number = 800; // The content width is 800 px.
     private contentHeight: number = 600; // The content height is 600 px.
+    private pageId: number = this.getUniqueId(); // Obtain the ID of the current page.
     private para: Record<string, number> = { 'PropA': 47 };
     private localStorage: LocalStorage = new LocalStorage(this.para);
     private res: boolean = this.localStorage.setOrCreate('PropB', 121);
     private defaultWindowSizeType: number = 1; // Set the window to be a small window when first pulled up in PiP.
+    private cornerAdsorptionEnabled: boolean = true;
     private config: PiPWindow.PiPConfiguration = {
         context: this.getUIContext().getHostContext() as Context,
         componentController: this.mXComponentController,
         navigationId: this.navId,
+        handleId: this.pageId,
         templateType: PiPWindow.PiPTemplateType.VIDEO_PLAY,
         contentWidth: this.contentWidth,
         contentHeight: this.contentHeight,
@@ -149,6 +152,7 @@ struct Index {
         customUIController: this.nodeController, // Optional. Set this parameter if you want to display the custom UI at the top of the PiP window.
         localStorage: this.localStorage, // Optional. Set this parameter if you want to track the main window instance.
         defaultWindowSizeType: this.defaultWindowSizeType, // Optional. If you need to configure the default window size upon launch, set this parameter.
+        cornerAdsorptionEnabled: this.cornerAdsorptionEnabled, // Optional. The default value is true. If you do not want the PiP window to automatically snap to screen corners, set this parameter to false.
     };
 
     createPiP() {
@@ -266,6 +270,7 @@ Defines the parameters for creating a PiP controller.
 | context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No | No| Context environment.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | No | No| Original [XComponent](arkui-ts/ts-basic-components-xcomponent.md) controller.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | navigationId        | string                                                           | No | Yes| Navigation ID of the current page. If no value is passed, the page does not need to be cached.<br>1. When the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages, set the ID of the **Navigation** component for the PiP controller. This ensures that the original page can be restored from the PiP window.<br>2. When the UIAbility uses [Router](js-apis-router.md) to manage pages, you do not need to set the ID of the **Navigation** component for the PiP controller.<br>3. If the UIAbility has only one page, you do not need to set the navigation ID. The original page can be restored from the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| handleId<sup>22+</sup>        | number                                                                     | No | Yes| ID of the page to show when users touch [Full-screen Window](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/pipwindow-overview#section13787164103315) to restore the original screen. This parameter applies only in scenarios where the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages. It can be set to any subpage ID within the Navigation hierarchy. The default value is **-1**, indicating that the topmost page in the Navigation stack is restored. You are advised to use [getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12) to obtain the page ID.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | templateType        | [PiPTemplateType](#piptemplatetype)                                        | No | Yes| Template type, which is used to distinguish video playback, video call, and video meeting scenarios. If no value is passed, the video playback template is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | contentWidth        | number                                                                     | No | Yes| Width of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1920. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the width of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | contentHeight       | number                                                           | No | Yes| Height of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1080. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the height of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
@@ -273,6 +278,7 @@ Defines the parameters for creating a PiP controller.
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | No | Yes| Custom UI that can be displayed at the top of the PiP window. If no value is passed, custom UI is not used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | No | Yes| A page-level UI state storage unit. In multi-instance scenarios, it can be used to track the UI state storage object of the main window instance. If no value is passed, you cannot retrieve the main window's UI storage object through the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                                                                         |
 | defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Initial PiP window size.<br>The value **0** means that no size is set, and the window will launch at the size it was before being closed in the previous PiP session.<br>The value **1** means a small window,<br>and **2** means a large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
+| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | No  | Yes |  Whether the PiP window automatically snaps to screen corners. When this feature is enabled, the screen is divided into four hot zones (top-left, top-right, bottom-left, and bottom-right). When users lift their finger while dragging the PiP window within a hot zone, the PiP window is automatically snapped to the nearest corner.<br>**true**: enables corner snapping.<br>**false**: disables corner snapping.<br>The default value is **true**.<br>**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                                                                |
 
 ## PiPWindowSize<sup>15+</sup>
 
@@ -1192,4 +1198,56 @@ try {
 } catch (exception) {
   console.error(`Failed to disable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+```
+
+### on('activeStatusChange')<sup>22+</sup>
+
+on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
+
+Subscribes to PiP window active status change events. To avoid potential memory leaks, you are advised to stop listening when it is no longer needed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|----------|---------------------------------------------|-------|---------------------------------------------------|
+| type | string | Yes| Event type. The event **'activeStatusChange'** is triggered when the PiP window active status changes.|
+| callback | Callback\<boolean\> | Yes| PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar).|
+
+**Example**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.on('activeStatusChange', callback);
+```
+
+### off('activeStatusChange')<sup>22+</sup>
+
+off(type: 'activeStatusChange', callback?: Callback&lt;boolean&gt;): void
+
+Unsubscribes from PiP window active status change events.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|----------|------------|----|---------------------------------------------------------------------|
+| type | string | Yes| Event type. The event **'activeStatusChange'** is triggered when the PiP window active status changes.|
+| callback | Callback\<boolean\> | No| PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If no value is passed in, all subscriptions to the specified event are canceled.|
+
+**Example**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.off('activeStatusChange', callback);
 ```

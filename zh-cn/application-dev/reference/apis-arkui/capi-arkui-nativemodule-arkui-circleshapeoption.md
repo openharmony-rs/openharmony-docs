@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption
+```
+
 ## 概述
 
 定义圆形形状配置项。

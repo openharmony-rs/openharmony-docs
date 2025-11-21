@@ -6,6 +6,10 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} OH_NativeBundle_ApplicationInfo
+```
+
 ## 概述
 
 应用包信息数据结构，包含应用包名和应用指纹信息。

@@ -32,32 +32,40 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
 使用Emitter实现事件订阅、事件发送以及事件删除，开发步骤如下。
 
 1. 导入模块。
+
+   <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) --> 
    
-   ```ts
+   ``` TypeScript
    import { emitter, Callback } from '@kit.BasicServicesKit';
    ```
 
 2. 订阅事件。
 
    订阅事件使用on（持续订阅）或者once（单次订阅）接口进行订阅，设置要订阅的事件以及接收到事件后的回调函数。
-   ```ts
-    // 定义一个eventId为1的事件。
-    let event: emitter.InnerEvent = {
-      eventId: 1
-    };
-    // 定义一个事件的回调处理函数，当收到对应的事件后执行回调函数
-    let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-      console.info(`eventData: ${JSON.stringify(eventData)}`);
-    }
+   
+     <!-- @[emitter_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
 
-    // 收到eventId为1的事件后执行回调函数
-    emitter.on(event, callback);
-   ```
+     ``` TypeScript
+     // 定义一个eventId为1的事件。
+     let event: emitter.InnerEvent = {
+       eventId: 1
+     };
+     // 定义一个事件的回调处理函数，当收到对应的事件后执行回调函数
+     let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
+       this.messageOn = eventData.data!.content
+       console.info(`eventData: ${JSON.stringify(eventData)}`);
+     }
+     // ···
+     // 收到eventId为1的事件后执行回调函数
+     emitter.on(event, callback);
+     ```
 
-   ```ts
-    // 收到eventId为1的事件后执行回调函数。
-    // 注意：once订阅只接收一次事件，on订阅则一直接收直到取消订阅为止。
-    emitter.once(event, callback);
+   <!-- @[emitter_once](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 收到eventId为1的事件后执行回调函数。
+   // 注意：once订阅只接收一次事件，on订阅则一直接收直到取消订阅为止。
+   emitter.once(event, callback);
    ```
 
 3. 发送事件。
@@ -66,13 +74,16 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > **说明：**
     >
     > emit接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
-   ```ts
+
+   <!-- @[emitter_emit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 定义一个eventId为1的事件，事件优先级为Low。
    let event: emitter.InnerEvent = {
      eventId: 1,
      priority: emitter.EventPriority.LOW
    };
-
+   
    let eventData: emitter.EventData = {
      data: {
        content: 'emitter',
@@ -90,7 +101,11 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     >
     > - 当不需要订阅某个事件时，需要及时取消订阅避免造成内存泄漏。
     > - 使用[off](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteroff)接口取消某个事件订阅后，已通过[emit](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteremit)接口发布但尚未被执行的事件将被取消。
-   ```ts
+
+   <!-- @[emitter_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 取消eventId为1的事件。
    emitter.off(1);
    ```
+

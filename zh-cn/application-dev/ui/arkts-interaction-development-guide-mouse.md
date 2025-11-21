@@ -56,14 +56,18 @@ struct MouseMove {
             this.buttonText = 'Button onMouse:\n' + '' +
               'button = ' + event.button + '\n' +
               'action = ' + event.action + '\n' +
-              'x,y = (' + event.x + ',' + event.y + ')' + '\n' +
-              'windowXY=(' + event.windowX + ',' + event.windowY + ')';
+              'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+              'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
           }
         })
-      Divider()
-      Text(this.buttonText).fontColor(Color.Green)
-      Divider()
-      Text(this.columnText).fontColor(Color.Red)
+      Column() {
+        Divider()
+        Text(this.buttonText).fontColor(Color.Green).padding(5)
+        Divider()
+        Text(this.columnText).fontColor(Color.Red).padding(5)
+      }
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
     }
     .width('100%')
     .height('100%')
@@ -75,8 +79,8 @@ struct MouseMove {
         this.columnText = 'Column onMouse:\n' + '' +
           'button = ' + event.button + '\n' +
           'action = ' + event.action + '\n' +
-          'x,y = (' + event.x + ',' + event.y + ')' + '\n' +
-          'windowXY=(' + event.windowX + ',' + event.windowY + ')';
+          'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+          'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
       }
     })
   }
@@ -123,10 +127,14 @@ struct StopPropagation {
               'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
           }
         })
-      Divider()
-      Text(this.buttonText).fontColor(Color.Green)
-      Divider()
-      Text(this.columnText).fontColor(Color.Red)
+      Column() {
+        Divider()
+        Text(this.buttonText).fontColor(Color.Green).padding(5)
+        Divider()
+        Text(this.columnText).fontColor(Color.Red).padding(5)
+      }
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
     }
     .width('100%')
     .height('100%')
@@ -295,7 +303,7 @@ struct ListExample {
           .onMouse((event: MouseEvent) => {
             // 判断是否按下鼠标左键
             if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
-              // 判断之前是否已经时选中状态
+              // 判断之前是否已经是选中状态
               let isSelected: boolean = this.isItemSelected(index)
               // 判断修饰键状态
               let isCtrlPressing: boolean = false

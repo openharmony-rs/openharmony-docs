@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_Size {...} Camera_Size
+```
+
 ## Overview
 
 The struct describes the parameters related to the size.

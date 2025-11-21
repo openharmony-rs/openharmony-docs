@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_FrameShutterEndInfo {...} Camera_FrameShutterEndInfo
+```
+
 ## Overview
 
 The struct describes the frame shutter end information during capture.

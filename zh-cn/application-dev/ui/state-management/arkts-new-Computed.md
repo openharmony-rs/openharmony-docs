@@ -25,7 +25,7 @@ Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计�
 Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计算
 ```
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-new-componentV2.md)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
 
 >**说明：**
 >
@@ -53,7 +53,7 @@ get varName(): T {
 | ------------------ | ----------------------------------------------------- |
 | 支持类型           | getter访问器。 |
 | 从父组件初始化     | 禁止。 |
-| 可初始化子组件     | \@Param。  |
+| 可初始化子组件     | [\@Param](./arkts-new-param.md)。  |
 | 被执行的时机       | \@ComponentV2中的\@Computed会在自定义组件创建的时候初始化，触发\@Computed计算。</br>\@ObservedV2装饰的类中的\@Computed，会在\@ObservedV2装饰的类实例创建后，异步初始化，触发\@Computed计算。</br>在\@Computed中计算的状态变量被改变时，计算属性会重新计算。 |
 | 是否允许赋值       | @Computed装饰的属性是只读的，不允许赋值，详情见[使用限制](#使用限制)。 |
 

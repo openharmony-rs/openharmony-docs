@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioStreamManager OH_AudioStreamManager
+```
+
 ## 概述
 
 声明音频流管理器，用于管理音频流相关功能。

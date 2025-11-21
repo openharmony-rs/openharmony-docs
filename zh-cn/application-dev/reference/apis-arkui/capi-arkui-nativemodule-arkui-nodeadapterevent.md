@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_NodeAdapterEvent ArkUI_NodeAdapterEvent
+```
+
 ## 概述
 
 定义适配器事件对象。

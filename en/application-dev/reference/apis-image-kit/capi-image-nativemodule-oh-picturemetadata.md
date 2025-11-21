@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_PictureMetadata OH_PictureMetadata
+```
+
 ## Overview
 
 The struct describes the picture metadata.

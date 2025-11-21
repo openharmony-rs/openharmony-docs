@@ -10,6 +10,8 @@
 
 声明用于拦截来自ArkWeb的请求的API。
 
+**引用文件：** <web/arkweb_scheme_handler.h>
+
 **库：** libohweb.so
 
 **系统能力：** SystemCapability.Web.Webview.Core

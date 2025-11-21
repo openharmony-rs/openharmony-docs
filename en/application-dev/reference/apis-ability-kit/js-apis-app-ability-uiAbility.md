@@ -538,7 +538,7 @@ Called when a UIAbility is to be migrated across devices. You can save service d
 
 > **NOTE**
 >
-> Starting from API version 12, **UIAbility.onContinue** supports the return value in the form of Promise\<[AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)\>.
+> For versions prior to API version 18, only synchronous calls are supported. Starting from API version 18, asynchronous calls are also supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

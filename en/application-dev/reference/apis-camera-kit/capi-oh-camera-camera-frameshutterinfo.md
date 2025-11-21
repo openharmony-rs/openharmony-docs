@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_FrameShutterInfo {...} Camera_FrameShutterInfo
+```
+
 ## Overview
 
 The struct describes the frame shutter information.

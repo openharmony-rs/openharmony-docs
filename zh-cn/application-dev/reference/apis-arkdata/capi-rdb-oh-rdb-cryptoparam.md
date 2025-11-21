@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Rdb_CryptoParam OH_Rdb_CryptoParam
+```
+
 ## 概述
 
 指定打开加密数据库时使用的加密参数。

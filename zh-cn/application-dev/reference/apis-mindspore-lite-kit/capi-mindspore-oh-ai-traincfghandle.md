@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_TrainCfgHandle
+```
+
 ## 概述
 
 指向训练配置对象的指针。

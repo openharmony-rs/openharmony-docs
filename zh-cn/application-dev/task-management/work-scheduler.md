@@ -104,14 +104,15 @@
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ```ts
-   export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
+   export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
      // 延迟任务开始回调
      onWorkStart(workInfo: workScheduler.WorkInfo) {
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
        // 打印 parameters中的参数，如：参数key1
-       // console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`)
+       console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
      }
    
      // 延迟任务结束回调。当延迟任务2分钟超时或应用调用stopWork接口取消任务时，触发该回调。
@@ -152,33 +153,36 @@
    ```
 
 2. 申请延迟任务。
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
-   ```ts
-   // 创建workinfo
-   const workInfo: workScheduler.WorkInfo = {
+   ``` TypeScript
+   let workInfo: workScheduler.WorkInfo = {
      workId: 1,
-     networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
-     bundleName: 'com.example.application',
-     abilityName: 'MyWorkSchedulerExtensionAbility'
+     networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY,
+     bundleName: 'ohos.samples.workschedulerextensionability',
+     abilityName: 'WorkSchedulerAbility',
+     // ...
    }
    
    try {
      workScheduler.startWork(workInfo);
      console.info(`startWork success`);
-   } catch (error) {
+   }
+   catch (error) {
      console.error(`startWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
    }
    ```
 
 3. 取消延迟任务。
-   
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+
    ```ts
    // 创建workinfo
-   const workInfo: workScheduler.WorkInfo = {
+   let workInfo: workScheduler.WorkInfo = {
      workId: 1,
      networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
-     bundleName: 'com.example.application', 
-     abilityName: 'MyWorkSchedulerExtensionAbility' 
+     bundleName: 'ohos.samples.workschedulerextensionability',
+     abilityName: 'WorkSchedulerAbility',
    }
    
    try {
