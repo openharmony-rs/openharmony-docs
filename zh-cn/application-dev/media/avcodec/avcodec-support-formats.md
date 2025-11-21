@@ -36,7 +36,7 @@
 | HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 
-如果系统平台无对应编码能力，将无法创建解码器实例。
+如果系统平台无对应编码能力，会创建编码器实例失败。
 
 基于MimeType创建编码器时，可以配置为H.264(OH_AVCODEC_MIMETYPE_VIDEO_AVC)和H.265(OH_AVCODEC_MIMETYPE_VIDEO_HEVC)。
 系统平台支持情况和每种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
@@ -63,7 +63,7 @@
 <!--RP1--> <!--RP1End-->
 <!--RP2--> <!--RP2End-->
 
-通过MIME创建解码器，当系统平台无对应解码能力时，会创建失败。
+如果系统平台无对应解码能力，会创建解码器实例失败。
 
 系统平台提供的解码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统平台支持的解码能力和能力规格。
 
@@ -80,8 +80,7 @@
 <!--RP3--> <!--RP3End-->
 <!--RP4--> <!--RP4End-->
 
-
-通过MIME创建编码器，当系统平台无对应编码能力时，会创建失败。
+如果系统平台无对应编码能力，会创建编码器实例失败。
 
 系统平台提供的编码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统平台支持的编码能力和能力规格。
 
