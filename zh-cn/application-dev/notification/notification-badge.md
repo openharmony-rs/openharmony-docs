@@ -69,6 +69,16 @@
    一条通知被查看后，应用需要调用接口设置剩下未读通知个数，桌面刷新角标。
 
    <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets) -->
+   
+   ``` TypeScript
+   let badgeNumber: number = 8;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 ## 常见问题
 
