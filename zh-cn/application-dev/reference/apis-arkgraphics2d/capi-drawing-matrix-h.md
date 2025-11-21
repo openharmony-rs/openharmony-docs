@@ -783,6 +783,6 @@ void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向字体对象的指针。 |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象的指针。 |
 
 
