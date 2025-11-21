@@ -3574,6 +3574,36 @@ createNode(context: UIContext, nodeType: 'Button'): Button
 typeNode.createNode(uiContext, 'Button');
 ```
 
+### createButtonNode<sup>22+</sup>
+createButtonNode(context: UIContext): Button
+
+创建Button类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Button](#button12) | Button类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createButtonNode(uiContext);
+```
+
+
 ### ListItemGroup<sup>12+</sup>
 type ListItemGroup = TypedFrameNode&lt;ListItemGroupInterface, ListItemGroupAttribute&gt;
 
@@ -4306,6 +4336,35 @@ createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 typeNode.createNode(uiContext, 'Checkbox');
 ```
 
+### createCheckboxNode()<sup>22+</sup>
+createCheckboxNode(context: UIContext): Checkbox
+
+创建Checkbox类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Checkbox](#checkbox18) | Checkbox类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createCheckboxNode(uiContext);
+```
+
 ### CheckboxGroup<sup>18+</sup>
 type CheckboxGroup = TypedFrameNode&lt;CheckboxGroupInterface, CheckboxGroupAttribute&gt;
 
@@ -4347,6 +4406,35 @@ createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGroup
 
 ```ts
 typeNode.createNode(uiContext, 'CheckboxGroup');
+```
+
+### createCheckboxGroupNode()<sup>22+</sup>
+createCheckboxGroupNode(context: UIContext): CheckboxGroup
+
+创建CheckboxGroup类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [CheckboxGroup](#checkboxgroup18) | CheckboxGroup类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createCheckboxGroupNode(uiContext);
 ```
 
 ### Rating<sup>18+</sup>
@@ -4392,6 +4480,35 @@ createNode(context: UIContext, nodeType: 'Rating'): Rating
 typeNode.createNode(uiContext, 'Rating');
 ```
 
+### createRatingNode()<sup>22+</sup>
+createRatingNode(context: UIContext): Rating
+
+创建Rating类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Rating](#rating18) | Rating类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createRatingNode(uiContext);
+```
+
 ### Radio<sup>18+</sup>
 type Radio = TypedFrameNode&lt;RadioInterface, RadioAttribute&gt;
 
@@ -4433,6 +4550,35 @@ createNode(context: UIContext, nodeType: 'Radio'): Radio
 
 ```ts
 typeNode.createNode(uiContext, 'Radio');
+```
+
+### createRadioNode()<sup>22+</sup>
+createRadioNode(context: UIContext): Radio
+
+创建Radio类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Radio](#radio18) | Radio类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createRadioNode(uiContext);
 ```
 
 ### Slider<sup>18+</sup>
@@ -4478,6 +4624,35 @@ createNode(context: UIContext, nodeType: 'Slider'): Slider
 typeNode.createNode(uiContext, 'Slider');
 ```
 
+### createSliderNode()<sup>22+</sup>
+createSliderNode(context: UIContext): Slider
+
+创建Slider类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Slider](#slider18) | Slider类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createSliderNode(uiContext);
+```
+
 ### Select<sup>18+</sup>
 type Select = TypedFrameNode&lt;SelectInterface, SelectAttribute&gt;
 
@@ -4519,6 +4694,35 @@ createNode(context: UIContext, nodeType: 'Select'): Select
 
 ```ts
 typeNode.createNode(uiContext, 'Select');
+```
+
+### createSelectNode()<sup>22+</sup>
+createSelectNode(context: UIContext): Select
+
+创建Select类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Select](#select18) | Select类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+typeNode.createSelectNode(uiContext);
 ```
 
 ### Toggle<sup>18+</sup>
@@ -4564,6 +4768,37 @@ createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Tog
 ```ts
 let toggleOptions: ToggleOptions = {type: ToggleType.Button, isOn: false};
 typeNode.createNode(uiContext, 'Toggle', toggleOptions);
+```
+
+### createToggleNode()<sup>22+</sup>
+createToggleNode(context: UIContext, options?: ToggleOptions): Toggle
+
+创建Toggle类型的FrameNode节点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
+| options | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 否 | 创建Toggle节点的接口参数，仅可通过ToggleOptions中的type属性设置开关样式。 |
+
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Toggle](#toggle18) | Toggle类型的FrameNode节点。 |
+
+**示例：** 
+
+<!--code_no_check-->
+
+```ts
+let toggleOptions: ToggleOptions = {type: ToggleType.Button, isOn: false};
+typeNode.createToggleNode(uiContext, toggleOptions);
 ```
 
 ## NodeAdapter<sup>12+</sup>
