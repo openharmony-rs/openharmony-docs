@@ -208,6 +208,21 @@ appEnvironments标签示例：
 ```
 <!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
+``` JSON5
+{
+  "app": {
+    // ...
+    "appEnvironments": [
+      {
+        "name":"name1",
+        "value": "value1"
+      }
+    ],
+    // ...
+  }
+}
+```
+
 ## multiAppMode标签
 
 应用多开模式。
