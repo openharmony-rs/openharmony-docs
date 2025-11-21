@@ -15,3 +15,4 @@ Defines a handler for intercepted URL requests. You can use **ArkWeb_ResourceHan
 **Related module**: [Web](capi-web.md)
 
 **Header file**: [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
+

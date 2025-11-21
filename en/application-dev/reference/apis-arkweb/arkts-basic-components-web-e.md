@@ -133,6 +133,8 @@ Enumerates the website threat types.
 | THREAT_FRAUD    | 1 | Fraudulent website.             |
 | THREAT_RISK     | 2 | Website that poses security risks.     |
 | THREAT_WARNING  | 3 | Website suspected to contain unsafe content.|
+| THREAT_NONE<sup>21+</sup>      | 4 | Website that passes the security check and no risk is found.|
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | Website that does not perform security check.|
 
 ## RenderExitReason<sup>9+</sup>
 
@@ -261,7 +263,7 @@ Enumerates the lifecycles of the same-layer tag. When a same-layer tag exists on
 
 ## NativeEmbedParamStatus<sup>21+</sup>
 
-Defines the status change type of the **param** element embedded in the same-layer rendering tag **object**. **ADD** is triggered when the **param** element is added, **UPDATE** is triggered when it is modified, and **DELETE** is triggered when it is deleted.
+Enumerates the status change types of the **param** element embedded in the same-layer rendering tag **object**. **ADD** is triggered when the **param** element is added, **UPDATE** is triggered when it is modified, and **DELETE** is triggered when it is deleted.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
