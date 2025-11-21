@@ -398,6 +398,15 @@ libnative_buffer.so
     int ret = OH_NativeImage_AttachContext(nativeImage_, nativeImageTexId_);
     ```
     <!-- @[nativeimage_change_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    
+    ``` C++
+    // 将OH_NativeImage实例从当前OpenGL ES上下文分离
+    OH_NativeImage_DetachContext(nativeImage_);
+    glGenTextures(1, &nativeImageTexId_);
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    // ...
+    int ret = OH_NativeImage_AttachContext(nativeImage_, nativeImageTexId_);
+    ```
 
 8. **OH_NativeImage实例使用完需要销毁掉**。
    <!-- @[destroy_nativeimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
