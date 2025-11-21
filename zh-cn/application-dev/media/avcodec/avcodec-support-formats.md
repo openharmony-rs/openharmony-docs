@@ -12,7 +12,7 @@
 ## 媒体编解码
 
 ### 视频解码
-
+当前支持的解码能力如下：
 | 视频解码类型       | 视频解码格式的MIME类型   |
 | --------------------- | ---------------- |
 | MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
@@ -22,7 +22,7 @@
 | HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
-通过MIME类型创建解码器，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。
+通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。
 
 系统平台提供的解码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统平台支持的软硬件解码能力和能力规格。
 例如可以通过<!--RP15-->OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC<!--RP15End-->来查询系统平台支持的<!--RP16-->H.264、H.265的硬件解码能力。<!--RP16End-->
@@ -30,13 +30,13 @@
 具体开发指导请参考[视频解码](video-decoding.md)。
 
 ### 视频编码
-
+当前支持的编码能力如下：
 | 视频编码类型       | 视频编码格式的MIME类型    |
 | --------------------- | ---------------- |
 | HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 
-通过MIME创建编码器，当系统平台无对应编码能力时，会创建失败。
+如果系统平台无对应编码能力，将无法创建解码器实例。
 
 基于MimeType创建编码器时，可以配置为H.264(OH_AVCODEC_MIMETYPE_VIDEO_AVC)和H.265(OH_AVCODEC_MIMETYPE_VIDEO_HEVC)。
 系统平台支持情况和每种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
@@ -44,7 +44,7 @@
 具体开发指导请参考[视频编码](video-encoding.md)。
 
 ### 音频解码
-
+当前支持的解码能力：
 | 音频解码类型         | 音频解码格式的MIME类型     |
 | --------------------- | ---------------- |
 | AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
@@ -70,7 +70,7 @@
 具体开发指导请参考[音频解码](audio-decoding.md)。
 
 ### 音频编码
-
+当前支持的编码能力：
 | 音频编码类型         | 音频编码格式的MIME类型     |
 | --------------------- | ---------------- |
 | AAC | [OH_AVCODEC_MIMETYPE_AUDIO_AAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
@@ -90,7 +90,7 @@
 ## 媒体数据封装与解析
 
 ### 媒体数据解析
-
+支持的解封装格式如下：
 | 媒体格式  | 封装格式                      | 轨道格式                      |
 | -------- | :----------------------------| :----------------------------|
 | 音视频     | mp4                        |<!--RP4-->视频轨：AVC(H.264)、MPEG4<br>音频轨：AAC、MPEG(MP3)、ALAC<sup>22+</sup><br>字幕轨：WEBVTT<br>辅助轨：AUXL（如音频RAW信息、视频深度信息等。）<br>timed metadata轨：有时间属性的描述信息，如帧级的维测信息、传感器信息等。<!--RP4End-->|
@@ -121,7 +121,7 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 具体开发指导请参考[媒体数据解析](audio-video-demuxer.md)。
 
 ### 媒体数据封装
-
+当前支持的封装能力如下：
 | 封装格式 | 视频编解码类型        | 音频编解码类型   | 封面类型       |
 | -------- | --------------------- | ---------------- | -------------- |
 | mp4      | AVC（H.264）<!--RP11--><!--RP11End-->    | AAC、MPEG（MP3） | jpeg、png、bmp |
