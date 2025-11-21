@@ -50,6 +50,15 @@
    
    <!-- @[CreateSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
 
+   ``` TypeScript
+   // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+   let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+   // 订阅者信息，其中的event字段需要替换为实际的事件名称。
+   let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+       events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // 订阅灭屏公共事件
+   };
+   ```
+
 3. 创建订阅者，保存返回的订阅者对象subscriber，用于执行后续的订阅、退订、接收事件回调等操作。
    
    <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
