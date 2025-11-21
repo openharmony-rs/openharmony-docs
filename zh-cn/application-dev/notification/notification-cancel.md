@@ -45,3 +45,15 @@
 3. 取消通知。
 
    <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/CancelNotification.ets) -->
+   
+   ``` TypeScript
+   // 当拉起应用到前台，查看消息后，调用该接口取消通知。
+   notificationManager.cancel(1, (err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in canceling notification.');
+   });
+   ```
