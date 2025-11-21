@@ -102,7 +102,7 @@
 
   该配置仅当module.json5配置文件中无UIAbility、或者存在UIAbility但abilities标签中未设置icon和label（可手动删除icon和label配置）时生效。
 
-  1. 将前景资源和背景资源文件放在“AppScope\resources\base\media”文件下。
+  1. 将前景资源和背景资源文件放在“AppScope\resources\base\media”文件夹下。
 
       本例中，前景资源文件名为“foreground.png”，背景资源文件名为“background.png”。
 
@@ -133,7 +133,7 @@
 
 - **方式二：配置module.json5**
 
-  1. 将前景资源和背景资源文件放在“entry\src\main\resources\base\media”文件下。
+  1. 将前景资源和背景资源文件放在“entry\src\main\resources\base\media”文件夹下。
 
       本例中采用的前景资源和背景资源的文件名分别为“foreground.png”和“background.png”。
 
