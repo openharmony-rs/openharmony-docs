@@ -8,8 +8,10 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 
 >  **说明：**
 >
->  基础标签支持通用属性
+>  - 基础标签支持通用属性
 >  id、fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、opacity、transform、clip-path、clip-rule，其中transform属性只支持平移。
+>
+>  - 从API version 21开始，当Image组件的[supportSvg2](./ts-basic-components-image.md#supportsvg221)属性设置为true时，transform属性支持平移、旋转、缩放、倾斜、矩阵变换，详细请参考[SVG标签解析能力增强](ts-image-svg2-capabilities.md)。
 
 | 元素 | 说明 | 特有属性 |
 | :-------- | :-------- | :-------- |
@@ -20,6 +22,101 @@ SVG（Scalable Vector Graphics）是可缩放矢量图形，它是一种基于XM
 | \<polyline\> | 折线 | points：顶点坐标。 |  |
 | \<polygon\> | 多边形 | points：顶点坐标。 |  |
 | \<path\> | 路径 | d：路径。 |  |
+
+SVG基础形状标签与支持的通用属性的示例如下。
+
+``` svg
+<!-- svg01.svg -->
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" style="background:#f0f0f0">
+    <!-- 1. <rect> 矩形 -->
+    <rect x="50" y="50" width="100" height="60"
+          id="myRect"
+          fill="#4CAF50"
+          stroke="#333"
+          stroke-width="4"
+          stroke-dasharray="10,5"
+          stroke-linecap="round"
+          opacity="0.9"
+          transform="translate(1,0)"/>
+
+    <!-- 2. <circle> 圆形 -->
+    <circle cx="200" cy="100" r="50"
+            id="myCircle"
+            fill="none"
+            stroke="#FF5722"
+            stroke-width="6"
+            stroke-linejoin="bevel"
+            fill-opacity="0.7"
+            stroke-opacity="0.9"
+            transform="translate(30,0)"/>
+
+    <!-- 3. <ellipse> 椭圆 -->
+    <ellipse cx="350" cy="100" rx="70" ry="40"
+             id="myEllipse"
+             fill="#2196F3"
+             fill-rule="evenodd"
+             stroke="#000"
+             stroke-width="3"
+             opacity="0.8"
+             transform="translate(20,0)"/>
+
+    <!-- 4. <line> 直线 -->
+    <line x1="50" y1="200" x2="350" y2="200"
+          stroke="#9C27B0"
+          stroke-width="5"
+          stroke-dasharray="8,4"
+          stroke-linecap="square"
+          transform="translate(0,100)"/>
+
+    <!-- 5. <polyline> 折线（开放路径） -->
+    <polyline points="50,250 100,220 150,270 200,240 250,280"
+              fill="none"
+              stroke="#FFC107"
+              stroke-width="4"
+              stroke-linejoin="round"
+              opacity="0.9"
+              transform="translate(0,100)"/>
+
+    <!-- 6. <polygon> 多边形（闭合路径） -->
+    <polygon points="400,100 450,50 500,100 450,150"
+             id="myPolygon"
+             fill="#E91E63"
+             fill-rule="nonzero"
+             stroke="#333"
+             stroke-width="3"
+             stroke-dasharray="6,3"
+             fill-opacity="0.8"
+             transform="translate(-350,80)"/>
+
+    <!-- 7. <path> 路径（复杂图形） -->
+    <path d="M550,100 C600,50 700,50 750,100 S800,150 750,200 Z"
+          fill="#00BCD4"
+          fill-rule="evenodd"
+          stroke="#009688"
+          stroke-width="4"
+          stroke-opacity="0.7"
+          transform="translate(-300,90)"/>
+</svg>
+```
+
+``` ts
+//xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      // $r('app.media.svg01')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.svg01'))
+        .objectFit(ImageFit.None)
+        .width('100%')
+        .height('100%')
+    }.width('100%').height('100%')
+  }
+}
+```
+
+![svg](figures/svg.png)
 
 ## 图形效果
 

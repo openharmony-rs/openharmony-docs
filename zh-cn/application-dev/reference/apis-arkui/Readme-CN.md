@@ -253,6 +253,7 @@
     - [Toggle](arkui-ts/ts-basic-components-toggle.md)
     - [Checkbox](arkui-ts/ts-basic-components-checkbox.md)
     - [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)
+    - [Picker](arkui-ts/ts-container-picker.md)
     - [CalendarPicker](arkui-ts/ts-basic-components-calendarpicker.md)
     - [DatePicker](arkui-ts/ts-basic-components-datepicker.md)
     - [TextPicker](arkui-ts/ts-basic-components-textpicker.md)
@@ -290,6 +291,8 @@
     - [ImageAnimator](arkui-ts/ts-basic-components-imageanimator.md)
     - [Video](arkui-ts/ts-media-components-video.md)
     - [图像类型定义](arkui-ts/ts-image-common.md)
+    - [SVG标签说明](arkui-ts/ts-basic-svg.md)
+    - [SVG标签解析能力增强](arkui-ts/ts-image-svg2-capabilities.md)
     <!--Del-->
     - [Image (系统接口)](arkui-ts/ts-basic-components-image-sys.md)
     - [MediaCachedImage (系统接口)](arkui-ts/ts-basic-components-mediacachedimage-sys.md)
@@ -536,7 +539,6 @@
     - [像素单位](arkui-ts/ts-pixel-units.md)
     - [枚举说明](arkui-ts/ts-appendix-enums.md)
     - [设置事件回调](arkui-ts/ts-uicommonevent.md)
-    - [SVG标签说明](arkui-ts/ts-basic-svg.md)
     <!--Del-->
     - [枚举说明 (系统接口)](arkui-ts/ts-appendix-enums-sys.md)
     <!--DelEnd-->
@@ -666,6 +668,7 @@
     - [NodeAdapter错误码](errorcode-nodeadapter.md)
     - [XComponent组件错误码](errorcode-xcomponent.md)
     - [Video组件错误码](errorcode-video.md)
+    - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
