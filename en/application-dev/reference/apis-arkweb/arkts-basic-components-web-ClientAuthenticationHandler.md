@@ -24,15 +24,11 @@ Constructs a **ClientAuthenticationHandler**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-## confirm<sup>(deprecated)</sup>
+## confirm<sup>9+</sup>
 
 confirm(priKeyFile : string, certChainFile : string): void
 
 Uses the specified private key and client certificate chain.
-
-> **NOTE**
->
-> This API is supported since API version 9 and deprecated since API version 22. You are advised to use [confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10)<sup>10+</sup> instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -73,6 +69,21 @@ The following table lists the supported certificate signature algorithms and key
 | SSL_SIGN_ECDSA_SECP256R1_SHA256 | 256 | 
 | SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 | 
 | SSL_SIGN_ECDSA_SECP521R1_SHA512 | 521 | 
+
+## confirm<sup>22+</sup>
+
+confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| string): void
+
+Instructs the **Web** component to use the specified credential and credential type obtained from the certificate management module.  
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name    | Type  | Mandatory  | Description   |
+| ------- | ------ | ---- | ------- |
+| identity | string | Yes   | Unique ID of a credential.|
+| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | Yes| [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) indicates the credential type. **string** indicates the certificate chain file path.|
 
 ## cancel<sup>9+</sup>
 

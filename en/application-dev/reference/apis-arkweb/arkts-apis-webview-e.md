@@ -342,6 +342,17 @@ Enumerates the destroy modes of the **Web** component. When the Web component is
 | NORMAL_MODE | 0 | Normal mode. The system determines the destroy time of **Web** component resources.|
 | FAST_MODE   | 1 | Quick mode. When the **Web** component is destroyed, the related internal resources are destroyed immediately.|
 
+## ScrollbarMode<sup>23+</sup>
+
+Enumerates the global scrollbar modes in the web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name| Value| Description|
+| ------------------------------- | - | ---------- |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | The scrollbar is not always displayed.|
+| FORCE_DISPLAY_SCROLLBAR    | 1 | The scrollbar is always displayed.|
+
 ## WebBlanklessErrorCode<sup>20+</sup>
 
 Enumerates the error codes of the blankless loading.

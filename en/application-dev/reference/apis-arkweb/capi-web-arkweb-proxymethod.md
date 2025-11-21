@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_ProxyMethod
+```
+
 ## Overview
 
 Defines a proxy method to be injected.
