@@ -35,7 +35,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    ``` TypeScript
    @CustomDialog
    struct CustomDialogExample {
-     controller: CustomDialogController;
+     controller?: CustomDialogController;
    
      build() {
        Column() {
@@ -105,7 +105,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
      }
      confirm: () => void = () => {
      }
-     controller: CustomDialogController;
+     controller?: CustomDialogController;
    
      build() {
        Column() {
@@ -114,14 +114,14 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
          Flex({ justifyContent: FlexAlign.SpaceAround }) {
            Button('cancel')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.cancel) {
                  this.cancel();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Black)
            Button('confirm')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.confirm) {
                  this.confirm();
                }
