@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can define a custom theme to apply to components in your application.
 
@@ -103,7 +103,7 @@ Defines a custom theme object.
 | Name                          | Type                                                | Read Only | Optional | Description        |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
 | colors | [CustomColors](#customcolors) | No  | Yes  | Color resources of the custom theme.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | No  | Yes  | Custom dark theme color resources.<br>Note: If darkColors is not set, the color values are the same as those in the colors configuration in light mode and do not change with the color mode unless the color is set through resources in the dark directory.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | No  | Yes  | Custom dark theme color resources.<br>Note: If **darkColors** is not configured, the color values will default to those specified in the **colors** configuration for light mode and will not adapt to dark mode changes, unless the colors are defined using resources from the **dark** directory.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## CustomColors
 
@@ -123,7 +123,7 @@ Defines the type for custom theme color resources.
 
 type CustomDarkColors = Partial\<Colors>
 
-Customizes dark theme color resources.
+Defines the type for dark theme color resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
