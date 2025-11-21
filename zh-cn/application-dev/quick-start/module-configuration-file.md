@@ -1308,6 +1308,19 @@ testRunner标签示例：
 
 <!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ...
+    "testRunner": {
+      "name": "myTestRunnerName",
+      "srcPath": "etc/test/TestRunner.ts"
+    },
+    // ...
+  }
+}
+```
+
 ## atomicService标签
 
 此标签用于支持对原子化服务的配置。此标签仅在app.json中将bundleType设置为atomicService时生效。
