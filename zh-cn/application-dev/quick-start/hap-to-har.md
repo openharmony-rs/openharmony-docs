@@ -37,6 +37,19 @@ HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需
 }
 ```
     <!-- @[hap_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    {
+      "module": {
+        "name": "har",
+        "type": "har",
+        "deviceTypes": [
+          "tablet",
+          "2in1"
+        ]
+      }
+    }
+    ```
 
 2. 在HAP模块的src\main\resource\base\profile文件夹下，删除main_pages.json文件。
 
