@@ -4,6 +4,8 @@ Web组件返回授权或拒绝权限功能的对象。示例代码参考[onGeolo
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
@@ -18,6 +20,10 @@ JsGeolocation的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 ## invoke
 
 invoke(origin: string, allow: boolean, retain: boolean): void
@@ -25,6 +31,10 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 设置网页地理位置权限状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
