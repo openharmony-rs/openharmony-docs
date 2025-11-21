@@ -637,6 +637,7 @@ struct PageB {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
+const TAB_STATE_INITIAL_VALUE = 47;
 
 @ComponentV2
 struct ChildOfParamComponent {
@@ -687,7 +688,7 @@ struct DelayComponent {
 @ComponentV2 ({freezeWhenInactive: true})
 struct TabsComponent {
   private controller: TabsController = new TabsController();
-  @Local tabState: number = 47;
+  @Local tabState: number = TAB_STATE_INITIAL_VALUE;
 
   @Monitor('tabState') onChange(m: IMonitor) {
     hilog.info(DOMAIN, 'testTag', `Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
