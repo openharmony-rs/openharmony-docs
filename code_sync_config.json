@@ -25236,7 +25236,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets",
 				"functions":[
 					{
-						"end_line":112,
+						"end_line":114,
 						"name":"prop_nine_start",
 						"start_line":36
 					}
