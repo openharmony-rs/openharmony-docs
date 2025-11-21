@@ -168,6 +168,16 @@
 ```
 
       <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5)  -->
+      
+      ``` JSON5
+      {
+        "app": {
+          // ...
+          "icon": "$media:layered_image",
+          "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
+        }
+      }
+      ```
 
 - **方式二：配置module.json5**
 
