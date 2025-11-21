@@ -1637,6 +1637,21 @@ appEnvironments标签示例：
 
 <!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ...
+    "appEnvironments": [
+      {
+        "name": "name1",
+        "value": "value1"
+      }
+    ],
+    // ...
+  }
+}
+```
+
 ## hnpPackages标签
 
 该标签标识应用包含的Native软件包信息。
