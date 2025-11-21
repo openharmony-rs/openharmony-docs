@@ -56,7 +56,7 @@
 // free()函数依赖的基础库
 #include <cstdlib>
 ```
-
+    <!-- @[native-bundle-guidelines_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
 
 **3. 修改源文件**
 
@@ -94,7 +94,7 @@ static napi_value Init(napi_env env, napi_value exports)
 }
 EXTERN_C_END
 ```
-
+    <!-- @[native-bundle-guidelines_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
 
 2. 在src/main/cpp/napi_init.cpp文件中获取Native的包信息对象，并转为js的包信息对象，即可在js侧获取应用的信息：
 
@@ -434,7 +434,7 @@ static napi_value GetAbilityResourceInfo(napi_env env, napi_callback_info info)
 }
 ```
 
-
+<!-- @[native-bundle-guidelines_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
 
 **4. 接口暴露**
 
@@ -453,7 +453,7 @@ export const isDebugMode: () => string;                 // 新增暴露方法 is
 export const getModuleMetadata: () => object;           // 新增暴露方法 getModuleMetadata
 export const getAbilityResourceInfo: (fileType: string) => object;      // 新增暴露方法 getAbilityResourceInfo
 ```
-
+<!-- @[native-bundle-guidelines_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 **5. js侧调用**
 
@@ -509,6 +509,7 @@ struct Index {
   }
 }
 ```
+    <!-- @[native-bundle-guidelines_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/ets/pages/Index.ets) -->
 
 
 关于包管理NDK接口说明，可参考[Native_Bundle模块介绍](../reference/apis-ability-kit/capi-native-bundle.md)。

@@ -64,7 +64,7 @@ struct Index {
   }
 }
 ```
-
+  <!-- @[deflate_and_inflate_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages/Index.ets) -->
 
 ### Zip文件的压缩与解压
 
@@ -111,7 +111,7 @@ struct Index {
   }
 }
 ```
-
+  <!-- @[deflate_and_inflate_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages1/Index.ets) -->
 
 ### 已知大小缓冲区的压缩与解压
 
@@ -200,7 +200,7 @@ struct Index {
   }
 }
 ```
-
+  <!-- @[deflate_and_inflate_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages2/Index.ets) -->
 
 ### 未知大小缓冲区的压缩与解压（zlib格式）
 
@@ -353,7 +353,7 @@ async function inflateFile(src: fs.File, dest: fs.File) {
   zip.inflateEnd(strm);
 }
 ```
-
+  <!-- @[deflate_and_inflate_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages3/Index.ets) -->
 
 
 ### 未知大小缓冲区的压缩与解压（gzip格式）
@@ -511,7 +511,7 @@ async function inflateGzipFile(src: fs.File, dest: fs.File) {
   zip.inflateEnd(strm);
 }
 ```
-
+  <!-- @[deflate_and_inflate_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages4/Index.ets) -->
 
 
 ## 常见问题

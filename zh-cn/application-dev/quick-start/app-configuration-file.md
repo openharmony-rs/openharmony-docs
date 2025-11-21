@@ -82,7 +82,7 @@
 // [End app_json5_multiAppMode]
 // [End app_json5_appEnvironments]
 ```
-
+<!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ## 配置文件标签
 
@@ -164,7 +164,7 @@ appEnvironments标签示例：
 // [End app_json5_configuration]
 // [End app_json5_multiAppMode]
 ```
-
+<!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ## multiAppMode标签
 
@@ -196,7 +196,7 @@ multiAppMode标签示例：
 }
 // [End app_json5_configuration]
 ```
-
+<!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ## configuration标签
 
@@ -219,7 +219,7 @@ configuration标签示例：
   }
 }
 ```
-
+<!-- @[app_json5_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 在开发视图的AppScope/resources/base/profile下面定义配置文件configuration.json，其中文件名"configuration"可自定义，需要和configuration标签指定的文件资源对应。配置文件中列举了设置当前应用字体大小跟随系统变化所需要的属性。
 

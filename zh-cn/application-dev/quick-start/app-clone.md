@@ -40,7 +40,7 @@
   }
 }
 ```
-
+    <!-- @[app_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppClone/AppScope/app.json5) -->
 
 2. 创建分身应用。
 

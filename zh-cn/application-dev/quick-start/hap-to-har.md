@@ -36,7 +36,7 @@ HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需
   }
 }
 ```
-
+    <!-- @[hap_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/src/main/module.json5) -->
 
 2. 在HAP模块的src\main\resource\base\profile文件夹下，删除main_pages.json文件。
 
@@ -52,10 +52,10 @@ export default {
   plugins:[]
 }
 ```
-
+    <!-- @[hap_to_har_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/hvigorfile.ts) -->
 
 4. 在HAP模块的根目录下创建名为Index.ets的文件，并在模块的oh-package.json5文件中的main标签配置该文件。Index.ets文件用于导出ArkUI组件或接口，详细导出方法参见[HAR-开发](./har-package.md#开发)。
 
-    <!-- @[hap_to_har_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/oh-package.json5) -->
+    <!-- @[hap_to_har_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/oh-package.json5)  -->
 
 5. 修改项目级的配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)，在 `modules` 标签下找到HAP的配置信息，并删除HAP配置下的 `targets`。
