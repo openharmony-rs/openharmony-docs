@@ -31,6 +31,18 @@
 }
 ```
     <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
+    
+    ``` JSON5
+    {
+      "module": {
+        // ...
+        "type": "shared",
+        "deliveryWithInstall": true,
+        "pages": "$profile:main_pages",
+        // ...
+      }
+    }
+    ```
 
 2. 在resources\base下新增profile文件夹，在profile下新增一个main_pages.json文件，并配置如下内容。
     ```json
