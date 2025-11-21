@@ -664,6 +664,7 @@ struct Person {
           .margin(12)
           .fontColor('#FFFFFF')
           .onClick(() => {
+            // person被@State装饰，@State无法观测到嵌套类型的变化，直接点击该按钮，此时title已经发生变化，但是无法被观测到。
             this.person.son.title = 'ArkUI';
           })
         Text(this.person.name)
@@ -676,6 +677,7 @@ struct Person {
           .textAlign(TextAlign.Center)
           .fontColor('#e6000000')
           .onClick(() => {
+            // 点击该按钮，此次变化会被观测到，同时能够观察到Button('change Son title')点击后的效果。
             this.person.name = 'Bye';
           })
         Text(this.person.son.title)
