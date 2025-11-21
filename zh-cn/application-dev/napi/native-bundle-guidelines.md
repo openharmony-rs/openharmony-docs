@@ -477,6 +477,183 @@ static napi_value GetAbilityResourceInfo(napi_env env, napi_callback_info info)
 
 <!-- @[native-bundle-guidelines_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+static void AddDefaultApp(napi_env env,
+    napi_value &infoObj,
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    bool isDefaultApp = true;
+    // 该接口从API version 21开始支持
+    OH_NativeBundle_CheckDefaultApp(temp, &isDefaultApp);
+    napi_value defaultAppValue;
+    napi_get_boolean(env, isDefaultApp, &defaultAppValue);
+    napi_set_named_property(env, infoObj, "isDefaultApp", defaultAppValue);
+}
+
+static void AddAppIndex(napi_env env,
+    napi_value &infoObj,
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    int appIndex = -1;
+    // 该接口从API version 21开始支持
+    OH_NativeBundle_GetAppIndex(temp, &appIndex);
+    napi_value appIndexValue;
+    napi_create_int32(env, appIndex, &appIndexValue);
+    napi_set_named_property(env, infoObj, "appIndex", appIndexValue);
+}
+
+static void AddLabel(napi_env env,
+    napi_value &infoObj,
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    char *label = nullptr;
+    // 该接口从API version 21开始支持
+    OH_NativeBundle_GetLabel(temp, &label);
+    napi_value labelValue;
+    if (label) {
+        napi_create_string_utf8(env, label, NAPI_AUTO_LENGTH, &labelValue);
+        free(label);
+    } else {
+        napi_get_null(env, &labelValue);
+    }
+    napi_set_named_property(env, infoObj, "label", labelValue);
+}
+
+static void AddBundleName(napi_env env,
+    napi_value &infoObj,
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    char *bundleName = nullptr;
+    // 该接口从API version 21开始支持
+    OH_NativeBundle_GetBundleName(temp, &bundleName);
+    napi_value bundleNameValue;
+    if (bundleName) {
+        napi_create_string_utf8(env, bundleName, NAPI_AUTO_LENGTH, &bundleNameValue);
+        free(bundleName);
+    } else {
+        napi_get_null(env, &bundleNameValue);
+    }
+    napi_set_named_property(env, infoObj, "bundleName", bundleNameValue);
+}
+
+static void AddModuleName(napi_env env,
+    napi_value &infoObj,
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    char *moduleName = nullptr;
+    // 该接口从API version 21开始支持
+    OH_NativeBundle_GetModuleName(temp, &moduleName);
+    napi_value moduleNameValue;
+    if (moduleName) {
+        napi_create_string_utf8(env, moduleName, NAPI_AUTO_LENGTH, &moduleNameValue);
+        free(moduleName);
+    } else {
+        napi_get_null(env, &moduleNameValue);
+    }
+    napi_set_named_property(env, infoObj, "moduleName", moduleNameValue);
+}
+
+static void AddAbilityName(napi_env env,
+    napi_value &infoObj,
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    char *abilityName = nullptr;
+    // 该接口从API version 21开始支持
+    OH_NativeBundle_GetAbilityName(temp, &abilityName);
+    napi_value abilityNameValue;
+    if (abilityName) {
+        napi_create_string_utf8(env, abilityName, NAPI_AUTO_LENGTH, &abilityNameValue);
+        free(abilityName);
+    } else {
+        napi_get_null(env, &abilityNameValue);
+    }
+    napi_set_named_property(env, infoObj, "abilityName", abilityNameValue);
+}
+
+static void GetDrawableDescriptor(
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    ArkUI_DrawableDescriptor *rawDrawable = nullptr;
+    // 该接口从API version 21开始支持
+    OH_NativeBundle_GetDrawableDescriptor(temp, &rawDrawable);
+    if (rawDrawable) {
+        //使用ArkUI_DrawableDescriptor对象绘制图标
+    }
+}
+
+static void AssemblyAbilityResourceInfo(napi_env env,
+    napi_value &infoObj,
+    OH_NativeBundle_AbilityResourceInfo* temp)
+{
+    // 1. 添加Default App
+    AddDefaultApp(env, infoObj, temp);
+    // 2. 添加App Index
+    AddAppIndex(env, infoObj, temp);
+    // 3. 添加Label
+    AddLabel(env, infoObj, temp);
+    // 4. 添加Bundle Name
+    AddBundleName(env, infoObj, temp);
+    // 5. 添加Module Name
+    AddModuleName(env, infoObj, temp);
+    // 6. 添加Ability Name
+    AddAbilityName(env, infoObj, temp);
+    // 7. 获取ArkUI_DrawableDescriptor对象
+    GetDrawableDescriptor(temp);
+}
+
+static napi_value GetAbilityResourceInfo(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    napi_status status;
+    // 获取传入的参数
+    status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    if (status != napi_ok || argc < 1) {
+        napi_throw_error(env, nullptr, "Invalid arguments. Expected fileType string.");
+        return nullptr;
+    }
+    // 检查参数类型是否为字符串
+    napi_valuetype valuetype;
+    status = napi_typeof(env, args[0], &valuetype);
+    if (status != napi_ok || valuetype != napi_string) {
+        napi_throw_error(env, nullptr, "Argument must be a string");
+        return nullptr;
+    }
+    // 获取字符串参数
+    char fileType[256] = {0}; // 假设文件类型不会超过255个字符
+    size_t strLen;
+    status = napi_get_value_string_utf8(env, args[0], fileType, sizeof(fileType) - 1, &strLen);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get fileType string");
+        return nullptr;
+    }
+    size_t infosCount = 0;
+    OH_NativeBundle_AbilityResourceInfo *infos = nullptr;
+    // 调用Native接口获取组件资源信息，使用传入的fileType，该接口从API version 21开始支持
+    BundleManager_ErrorCode ret = OH_NativeBundle_GetAbilityResourceInfo(fileType, &infos, &infosCount);
+    if (ret == BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED) {
+        napi_throw_error(env, nullptr, "BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED");
+        return nullptr;
+    }
+    if (infos == nullptr || infosCount == 0) {
+        napi_throw_error(env, nullptr, "no metadata found");
+        return nullptr;
+    }
+    napi_value result;
+    napi_create_array(env, &result);
+    for (size_t i = 0; i < infosCount; i++) {
+        auto temp = (OH_NativeBundle_AbilityResourceInfo *)((char *)infos + OH_NativeBundle_GetSize() * i);
+        napi_value infoObj;
+        napi_create_object(env, &infoObj);
+        AssemblyAbilityResourceInfo(env, infoObj, temp);
+        napi_set_element(env, result, i, infoObj);
+    }
+    // 释放内存，该接口从API version 21开始支持
+    OH_AbilityResourceInfo_Destroy(infos, infosCount);
+    return result;
+}
+```
+
 **4. 接口暴露**
 
 在src/main/cpp/types/libentry/Index.d.ts文件中，声明暴露接口。
