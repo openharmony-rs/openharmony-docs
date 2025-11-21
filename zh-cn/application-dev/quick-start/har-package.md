@@ -491,6 +491,52 @@ struct Index {
 ```
 <!-- @[har_package_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// entry/src/main/ets/pages/Index.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontFamily('HarmonyHeiTi')
+        .fontWeight(FontWeight.Bold)
+        .fontSize(32)
+
+      // ...
+
+      // ...
+
+      // 引用HAR的字符串资源
+      Text($r('app.string.hello_har'))
+        .id('stringHar')
+        .fontFamily('HarmonyHeiTi')
+        .fontColor($r('app.color.text_color'))
+        .fontSize(24)
+        .fontWeight(500)
+        .margin({ top: '40%' })
+
+      List() {
+        ListItem() {
+          // 引用HAR的图片资源
+          Image($r('app.media.icon_har'))
+            .id('iconHar')
+            .borderRadius('48px')
+        }
+        .margin({ top: '5%' })
+        .width('312px')
+      }
+      .alignListItem(ListItemAlign.Center)
+    }
+    .width('100%')
+    .backgroundColor($r('app.color.page_background'))
+    .height('100%')
+  }
+}
+```
+
 ## 编译
 
 HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆](../arkts-utils/source-obfuscation-guide.md#开启源码混淆)。
