@@ -3366,7 +3366,7 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
             let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(jsonData).threatType;
             console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
           })
       }
@@ -3404,7 +3404,7 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckFinish((callback) => {
             let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(jsonData).threatType;
             console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
           })
       }
