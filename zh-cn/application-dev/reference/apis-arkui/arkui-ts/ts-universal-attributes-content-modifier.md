@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## contentModifier
 
@@ -32,7 +33,9 @@ contentModifier(modifier: ContentModifier\<T>): T
 
 ### applyContent
 
-applyContent(): WrappedBuilder<[T]>
+ArkTS-Dyn: applyContent(): WrappedBuilder<[T]>
+
+ArkTS-Sta: applyContent(): WrappedBuilder<CustomBuilderT\<T\>>
 
 定制内容区的Builder。
 
@@ -40,15 +43,20 @@ applyContent(): WrappedBuilder<[T]>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数**：
+**ArkTS-Dyn起始版本：** 12
 
-| 参数 | 描述                                                         |
-| ---- | ------------------------------------------------------------ |
-| T    | 组件的属性类，用来区别不同组件自定义内容区后所需要的不同信息，比如Button组件的ButtonConfiguration，Checkbox组件的CheckBoxConfiguration等。 |
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型       | 说明                 |
+| -------- | ------------------ |
+| ArkTS-Dyn: [WrappedBuilder](./ts-universal-wrapBuilder-dynamic.md#wrappedbuilder)<[T]><br/>ArkTS-Sta: [WrappedBuilder](./ts-universal-wrapBuilder-static.md#wrappedbuilder)<[CustomBuilderT\<T>](./ts-types.md#custombuildertt20)>  | 返回封装带参builder函数的WrappedBuilder对象 |
+
 
 **T参数支持范围:**
 
-ButtonConfiguration、CheckBoxConfiguration、DataPanelConfiguration、TextClockConfiguration、ToggleConfiguration、GaugeConfiguration、LoadingProgressConfiguration、RadioConfiguration、ProgressConfiguration、RatingConfiguration、SliderConfiguration
+T参数是组件的属性类，用来区别不同组件自定义内容区后所需要的不同信息，支持如下类型：ButtonConfiguration、CheckBoxConfiguration、DataPanelConfiguration、TextClockConfiguration、ToggleConfiguration、GaugeConfiguration、LoadingProgressConfiguration、RadioConfiguration、ProgressConfiguration、RatingConfiguration、SliderConfiguration、MenuItemConfiguration。
 
 **属性支持范围:**
 
@@ -71,6 +79,7 @@ ButtonConfiguration、CheckBoxConfiguration、DataPanelConfiguration、TextClock
 
 通过ContentModifier实现自定义复选框样式的功能，用一个五边形复选框替换原本Checkbox的样式。如果选中，内部会出现红色三角图案，标题会显示选中字样；如果取消选中，红色三角图案消失，标题会显示非选中字样。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 class MyCheckboxStyle implements ContentModifier<CheckBoxConfiguration> {
@@ -148,5 +157,89 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+
+import { Text, Column, Component, Button, ClickEvent, Color, Checkbox, Entry, Builder, WrappedBuilder, ContentModifier, wrapBuilder, CheckBoxConfiguration,
+  Shape, Path, LineJoinStyle, Row, Visibility } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// 此处需要新声明一个类型
+type CheckboxBuiler = @Builder (config: CheckBoxConfiguration) => void
+
+class MyCheckboxStyle implements ContentModifier<CheckBoxConfiguration> {
+  selectedColor: Color = Color.White;
+
+  constructor(selectedColor: Color) {
+    this.selectedColor = selectedColor;
+  }
+
+  applyContent(): WrappedBuilder<CheckboxBuiler> {
+    return wrapBuilder(buildCheckbox);
+  }
+}
+
+@Builder
+function buildCheckbox(config: CheckBoxConfiguration) {
+  Column(undefined) {
+    Text(config.name + (config.selected ? '（选中）' : '（非选中）'))
+    Shape() {
+      Path()
+        .width(200)
+        .height(60)
+        .commands('M100 0 L0 100 L50 200 L150 200 L200 100 Z')
+        .fillOpacity(0)
+        .strokeWidth(3)
+      Path()
+        .width(10)
+        .height(10)
+        .commands('M50 0 L100 100 L0 100 Z')
+        .visibility(config.selected ? Visibility.Visible : Visibility.Hidden)
+        .fill(config.selected ? (config.contentModifier as MyCheckboxStyle).selectedColor : Color.Black)
+        .stroke((config.contentModifier as MyCheckboxStyle).selectedColor)
+    }
+    .width(300)
+    .height(200)
+    .viewPort({
+      x: 0,
+      y: 0,
+      width: 310,
+      height: 310
+    })
+    .strokeLineJoin(LineJoinStyle.Miter)
+    .strokeMiterLimit(5)
+    .onClick((e: ClickEvent) => {
+      if (config.selected) {
+        config.triggerChange(false);
+      } else {
+        config.triggerChange(true);
+      }
+    })
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Checkbox({ name: '复选框状态', group: 'checkboxGroup' })
+          .select(true)
+          .contentModifier(new MyCheckboxStyle(Color.Red))
+          .onChange((value: boolean) => {
+            console.info('Checkbox change is' + value);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+```
+
 
 ![](figures/common_builder.gif)
