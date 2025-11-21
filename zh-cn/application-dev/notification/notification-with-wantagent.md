@@ -29,6 +29,16 @@
 1. 导入模块。
 
    <!-- @[add_behavior_intent_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { wantAgent, WantAgent } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   ```
 
 2. 创建WantAgentInfo信息。
 
