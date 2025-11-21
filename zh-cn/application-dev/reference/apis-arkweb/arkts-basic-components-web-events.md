@@ -3356,8 +3356,14 @@ ArkTS-Sta示例：
               this.uiContext.showAlertDialog({
                 title: 'title',
                 message: 'text',
-                confirm: {
-                  value: 'onConfirm',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.geolocation.invoke(event.origin, false, true);
+                  }
+                },
+                secondaryButton: {
+                  value: 'ok',
                   action: () => {
                     event.geolocation.invoke(event.origin, true, true);
                   }
