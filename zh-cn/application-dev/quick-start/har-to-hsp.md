@@ -167,3 +167,21 @@ export default {
   ],
 ```
     <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
+    
+    ``` JSON5
+    "modules": [
+      // ...
+      {
+        "name": "library",
+        "srcPath": "./library",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ]
+      }
+    ],
+    ```
