@@ -78,7 +78,7 @@
 | MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP3--> <!--RP3End-->
-<!--RP4--> <!--RP4End-->
+<!--RP13--> <!--RP13End-->
 
 如果系统平台无对应编码能力，会创建编码器实例失败。
 
