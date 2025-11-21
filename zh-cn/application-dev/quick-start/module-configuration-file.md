@@ -1405,6 +1405,22 @@ dependencies标签示例：
 ```
 <!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ...
+    "dependencies": [
+      {
+        "bundleName":"com.share.library",
+        "moduleName": "library",
+        "versionCode": 10001
+      }
+    ],
+    // ...
+  }
+}
+```
+
 ## proxyData标签
 
 此标签标识模块提供的数据代理列表，仅限entry和feature配置。
