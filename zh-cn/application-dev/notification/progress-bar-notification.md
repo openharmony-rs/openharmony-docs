@@ -39,6 +39,17 @@
 
    <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
    
+   ``` TypeScript
+   notificationManager.isSupportTemplate('downloadTemplate').then((data: boolean) => {
+     let isSupportTpl: boolean = data; // isSupportTpl的值为true表示支持downloadTemplate模板类通知，false表示不支持
+     hilog.info(DOMAIN_NUMBER, TAG,
+       `Succeeded in supporting download template notification. data is ${isSupportTpl}`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to support download template notification. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+   
    > **说明：**
    > 查询系统支持进度条模板后，再进行后续的步骤操作。
    
