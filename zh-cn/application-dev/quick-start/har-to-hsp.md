@@ -115,6 +115,16 @@ export default {
 }
 ```
     <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
+    
+    ``` TypeScript
+    // library\hvigorfile.ts
+    import { hspTasks } from '@ohos/hvigor-ohos-plugin';
+    
+    export default {
+      system: hspTasks,  // 编译修改成HSP的任务
+      plugins:[]
+    }
+    ```
 
 6. 修改oh-package.json5文件，新增packageType配置。
 
