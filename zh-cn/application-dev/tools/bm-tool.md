@@ -2426,7 +2426,7 @@ error: installd set selinux label failed.
 
     ![示例图](figures/zh-cn_image_9568359.png)
 
-2. 若apl字段有误，修改UnsignedReleasedProfileTemplate.json文件中apl字段，并重新签名。
+2. 若apl字段有误，修改UnsgnedReleasedProfileTemplate.json文件中apl字段，并重新签名。
 
     ![示例图](figures/zh-cn_image_9568359_2.png)
 
