@@ -1255,6 +1255,7 @@ on : (name : AuthEventKey, callback : AuthEvent) => void
 > **说明：**
 >
 > 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[on](#on10)替代。
+>
 > 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行订阅。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1326,6 +1327,7 @@ off : (name : AuthEventKey) => void
 > **说明：**
 >
 > 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[off](#off10)替代。
+>
 > 需要使用已经成功订阅事件的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消订阅。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -1380,6 +1382,7 @@ start : () => void
 > **说明：**
 >
 > 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[start](#start10)替代。
+>
 > 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行认证。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
@@ -1431,6 +1434,7 @@ cancel : () => void
 > **说明：**
 >
 > 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[cancel](#cancel10)替代。
+>
 > 使用获取到的[AuthInstance](#authinstancedeprecated)对象调用该接口进行取消认证，此[AuthInstance](#authinstancedeprecated)需要是正在进行认证的对象。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
@@ -1474,6 +1478,7 @@ getAuthInstance(challenge : Uint8Array, authType : UserAuthType, authTrustLevel 
 > **说明：**
 >
 > 从 API version 9 开始支持，从 API version 10 开始废弃，请使用[getUserAuthInstance](#userauthgetuserauthinstance10)替代。
+>
 > 每个AuthInstance只能进行一次认证，若需要再次进行认证则需重新获取AuthInstance。
 
 
