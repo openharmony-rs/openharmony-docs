@@ -868,9 +868,7 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   })
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
@@ -955,9 +953,7 @@ import {
 struct Index {
   @State selectedIndexes: int[] = new Array<int>(5).fill(0)
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   })
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
@@ -1039,9 +1035,7 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: 'rgb(213,213,213)',
     selectedBackgroundColor: 'rgb(112,112,112)',
     textPadding: {
@@ -1156,9 +1150,7 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3'}] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: 'rgb(213,213,213)',
     selectedBackgroundColor: 'rgb(112,112,112)',
     textPadding: {
@@ -1407,9 +1399,7 @@ import { LengthMetrics, SegmentButton, SegmentButtonOptions } from '@kit.ArkUI';
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }],
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     direction: Direction.Rtl,
     backgroundColor: Color.Green,
     selectedBackgroundColor: Color.Orange,
@@ -1526,9 +1516,7 @@ import { LengthMetrics } from '@ohos.arkui.node';
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }],
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     direction: Direction.Rtl,
     backgroundColor: Color.Green,
     selectedBackgroundColor: Color.Orange,
@@ -1639,11 +1627,11 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮1 新手提醒' },
+    buttons: [
+      { text: '页签按钮1', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮1 新手提醒' },
       { text: '页签按钮2', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮2 新手提醒' },
-      {
-        text: '页签按钮3', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮3 新手提醒'
-      }] as ItemRestriction<SegmentButtonTextItem>,
+      { text: '页签按钮3', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮3 新手提醒' }
+    ] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   })
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
@@ -1793,11 +1781,11 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮1 新手提醒' },
+    buttons: [
+      { text: '页签按钮1', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮1 新手提醒' },
       { text: '页签按钮2', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮2 新手提醒' },
-      {
-        text: '页签按钮3', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮3 新手提醒'
-      }] as ItemRestriction<SegmentButtonTextItem>,
+      { text: '页签按钮3', accessibilityLevel: 'yes', accessibilityDescription: '页签按钮3 新手提醒' }
+    ] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   })
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
@@ -1939,9 +1927,7 @@ import {
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK,
     borderRadiusMode: BorderRadiusMode.CUSTOM,
     backgroundBorderRadius: LengthMetrics.vp(8),
