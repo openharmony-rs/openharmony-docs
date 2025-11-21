@@ -26,17 +26,17 @@
 
 1. 导入NotificationManager模块。
 
-   <!-- @[request_enable_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/EventNotification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
+   <!-- @[request_enable_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
 
 2. 拉起通知弹窗，向用户请求通知授权。
 
     可通过requestEnableNotification的错误码判断用户是否授权。若返回的错误码为1600004，即为拒绝授权。
 
-    <!-- @[request_enable_notification_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/EventNotification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
+    <!-- @[request_enable_notification_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
 
 3. （可选）拉起通知管理半模态弹窗，向用户再次申请通知授权。
 
-    <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/EventNotification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
+    <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
 
 
 

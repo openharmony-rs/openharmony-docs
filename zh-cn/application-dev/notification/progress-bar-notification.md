@@ -24,15 +24,15 @@
 
 1. 导入模块。
 
-   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/EventNotification/entry/src/main/ets/pages/PublishNotification.ets) -->
+   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
 
 2. 查询系统是否支持进度条模板，查询结果为支持downloadTemplate模板类通知。
 
-   <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/EventNotification/entry/src/main/ets/pages/PublishNotification.ets) -->
+   <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
    
    > **说明：**
    > 查询系统支持进度条模板后，再进行后续的步骤操作。
    
 3. 构造进度条模板对象，并发布通知。
 
-   <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/EventNotification/entry/src/main/ets/pages/PublishNotification.ets) -->
+   <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
