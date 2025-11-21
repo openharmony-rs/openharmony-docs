@@ -581,6 +581,40 @@ HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，�
 }
 ```
   <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
+  
+  ``` JSON5
+  {
+    "apiType": "stageMode",
+    "buildOption": {
+      // ...
+    },
+    "buildOptionSet": [
+      {
+        "name": "release",
+        "arkOptions": {
+          "obfuscation": {
+            "ruleOptions": {
+              "enable": true,
+              "files": [
+                "./obfuscation-rules.txt"
+              ]
+            },
+            "consumerFiles": [
+              "./consumer-rules.txt"
+            ]
+          }
+        },
+        // ...
+      },
+    ],
+    "targets": [
+      {
+        "name": "default"
+      },
+      // ...
+    ]
+  }
+  ```
 
 ### 编译生成TS文件
 
