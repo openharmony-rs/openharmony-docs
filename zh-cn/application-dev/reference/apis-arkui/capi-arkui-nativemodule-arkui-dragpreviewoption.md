@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_DragPreviewOption ArkUI_DragPreviewOption
+```
+
 ## 概述
 
 设置拖拽跟手图的相关自定义参数。

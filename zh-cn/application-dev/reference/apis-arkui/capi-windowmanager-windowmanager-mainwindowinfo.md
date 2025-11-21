@@ -7,6 +7,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} WindowManager_MainWindowInfo
+```
+
 ## 概述
 
 主窗口信息。

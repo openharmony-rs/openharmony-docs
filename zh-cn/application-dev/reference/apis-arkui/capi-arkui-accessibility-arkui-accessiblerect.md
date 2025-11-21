@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_AccessibleRect
+```
+
 ## 概述
 
 节点所在坐标位置。

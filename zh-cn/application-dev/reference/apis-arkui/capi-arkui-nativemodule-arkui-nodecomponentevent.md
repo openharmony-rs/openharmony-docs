@@ -1,5 +1,9 @@
 # ArkUI_NodeComponentEvent
 
+```
+typedef struct {...} ArkUI_NodeComponentEvent
+```
+
 ## 概述
 
 定义组件回调事件的参数类型。

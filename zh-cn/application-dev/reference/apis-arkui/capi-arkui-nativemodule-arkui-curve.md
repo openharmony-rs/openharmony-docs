@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_Curve ArkUI_Curve
+```
+
 ## 概述
 
 提供曲线的插值对象定义。

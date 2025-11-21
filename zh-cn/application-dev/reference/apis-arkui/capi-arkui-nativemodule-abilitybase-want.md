@@ -1,5 +1,9 @@
 # AbilityBase_Want
 
+```
+typedef struct AbilityBase_Want AbilityBase_Want
+```
+
 ## 概述
 
 声明want。

@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_WebMessagePort* ArkWeb_WebMessagePortPtr
+```
+
 
 ## 概述
 

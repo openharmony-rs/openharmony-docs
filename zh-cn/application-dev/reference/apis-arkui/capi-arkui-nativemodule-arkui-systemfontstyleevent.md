@@ -1,5 +1,9 @@
 # ArkUI_SystemFontStyleEvent
 
+```
+typedef struct ArkUI_SystemFontStyleEvent ArkUI_SystemFontStyleEvent
+```
+
 ## 概述
 
 系统字体变更事件定义。

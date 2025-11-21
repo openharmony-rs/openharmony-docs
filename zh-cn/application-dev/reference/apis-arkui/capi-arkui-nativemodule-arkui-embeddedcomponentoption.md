@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
+```
+
 ## 概述
 
 为EmbeddedComponent定义EmbeddedComponentOption。

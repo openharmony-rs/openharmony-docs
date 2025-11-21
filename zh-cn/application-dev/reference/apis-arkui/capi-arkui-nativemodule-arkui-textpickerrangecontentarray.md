@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct ArkUI_TextPickerRangeContentArray ArkUI_TextPickerRangeContentArray
+```
+
 ## 概述
 
 定义文本选择器的数据选择列表。

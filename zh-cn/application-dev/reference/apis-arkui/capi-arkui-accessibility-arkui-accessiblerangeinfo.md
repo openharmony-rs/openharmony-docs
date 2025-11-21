@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef struct {...} ArkUI_AccessibleRangeInfo
+```
+
 ## 概述
 
 用于为特定组件（如Slider、Rating、Progress组件）设置和获取其当前值、最大值和最小值。
