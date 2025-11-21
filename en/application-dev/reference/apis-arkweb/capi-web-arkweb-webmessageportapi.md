@@ -95,3 +95,4 @@ Sets a callback for receiving HTML messages.
 | const char* webTag                                                                                     |  Name of the **Web** component.                    |
 | [ArkWeb_OnMessageEventHandler](capi-arkweb-type-h.md#arkweb_onmessageeventhandler) messageEventHandler | Callback used to handle messages.                    |
 | void* userData                                                                                         | User-defined data.                    |
+

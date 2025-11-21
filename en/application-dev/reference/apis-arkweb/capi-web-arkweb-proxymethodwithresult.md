@@ -25,3 +25,5 @@ Defines a proxy method to be injected.
 | const char* methodName                                                                                                  | Pointer to the method name to be injected.|
 | [ArkWeb_OnJavaScriptProxyCallbackWithResult](capi-arkweb-type-h.md#arkweb_onjavascriptproxycallbackwithresult) callback | Callback used when a proxy method is invoked.|
 | void* userData                                                                                                          | Pointer to the user data used in a callback.|
+
+

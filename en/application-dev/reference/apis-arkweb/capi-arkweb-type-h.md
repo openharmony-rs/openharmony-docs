@@ -10,6 +10,8 @@
 
 Defines the native common types of ArkWeb.
 
+**File to include**: <web/arkweb_type.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core
