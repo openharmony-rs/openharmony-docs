@@ -81,7 +81,7 @@ struct Index {
 
 createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
-指定待创建的图片或者视频的文件名，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名，创建图片或视频资源。使用Promise异步回调。
 
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
@@ -139,7 +139,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions): Promise\<PhotoAsset\>
 
-指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源，使用Promise方式返回结果。
+指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源。使用Promise异步回调。
 
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
@@ -201,7 +201,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-根据隐藏文件显示模式和检索选项获取系统中的隐藏相册，使用Promise方式返回结果。
+根据隐藏文件显示模式和检索选项获取系统中的隐藏相册。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -297,7 +297,7 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
 
 requestSource(): Promise&lt;number&gt;
 
-打开源文件并返回fd，该方法使用Promise形式来返回结果。
+打开源文件并返回fd（文件描述符）。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
