@@ -27793,6 +27793,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"harmonyos_samples/guide-snippets/master/ArkWebKit/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets",
+				"functions":[
+					{
+						"end_line":135,
+						"name":"web_Scan_QR_code",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
