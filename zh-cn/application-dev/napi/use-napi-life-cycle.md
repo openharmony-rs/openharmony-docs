@@ -261,7 +261,8 @@ try {
 cpp部分代码
 
 <!-- @[napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
 // 创建一个napi_ref类型的指针，用于存储创建的引用。在调用napi_add_finalizer函数前，分配一个napi_ref类型的变量，并传递其地址作为result参数。
 napi_ref gRefFinalizer = nullptr;
 
@@ -337,7 +338,8 @@ static napi_value CreateReference(napi_env env, napi_callback_info info)
     uint32_t result = 0;
     status = napi_reference_ref(env, gRef, &result);
     OH_LOG_INFO(LOG_APP, "Test Node-API napi_reference_ref, count = %{public}d.", result);
-    if (status != napi_ok || result != 2) {
+    uint32_t numCount = 2;
+    if (status != napi_ok || result != numCount) {
         // 若传入引用的引用计数未增加，则抛出错误
         napi_throw_error(env, nullptr, "napi_reference_ref fail");
         return nullptr;
@@ -365,7 +367,8 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
     napi_value count = nullptr;
     napi_status status = napi_reference_unref(env, gRef, &result);
     OH_LOG_INFO(LOG_APP, "Test Node-API napi_reference_unref, count = %{public}d.", result);
-    if (status != napi_ok || result != 1) {
+    uint32_t numCount = 1;
+    if (status != napi_ok || result != numCount) {
         // 若传入引用的引用计数未减少，则抛出错误
         napi_throw_error(env, nullptr, "napi_reference_unref fail");
         return nullptr;
