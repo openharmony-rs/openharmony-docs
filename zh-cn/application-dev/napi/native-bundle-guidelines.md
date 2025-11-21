@@ -673,6 +673,18 @@ export const getAbilityResourceInfo: (fileType: string) => object;      // 新�
 ```
 <!-- @[native-bundle-guidelines_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
+``` TypeScript
+export const add: (a: number, b: number) => number;
+export const getCurrentApplicationInfo: () => object;   // 新增暴露方法 getCurrentApplicationInfo
+export const getAppId: () => string;                    // 新增暴露方法 getAppId
+export const getAppIdentifier: () => string;            // 新增暴露方法 getAppIdentifier
+export const getMainElementName: () => object;          // 新增暴露方法 getMainElementName
+export const getCompatibleDeviceType: () => string;     // 新增暴露方法 getCompatibleDeviceType
+export const isDebugMode: () => string;                 // 新增暴露方法 isDebugMode
+export const getModuleMetadata: () => object;           // 新增暴露方法 getModuleMetadata
+export const getAbilityResourceInfo: (fileType: string) => object;      // 新增暴露方法 getAbilityResourceInfo
+```
+
 **5. js侧调用**
 
 1. 打开src\main\ets\pages\index.ets, 导入"libentry.so"。
