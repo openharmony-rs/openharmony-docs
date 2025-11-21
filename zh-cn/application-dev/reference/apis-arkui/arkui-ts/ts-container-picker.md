@@ -91,7 +91,7 @@ canLoop(isLoop: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环。<br/>- false：不可循环。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。 |
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
 
 ### enableHapticFeedback
 
@@ -188,7 +188,7 @@ onScrollStop(callback: Optional\<OnPickerCallback>)
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                       |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| type  | [PickerIndicatorType](#pickerindicatortype枚举说明) | 否   | 否   | 选中项指示器的类型。<br/>默认值：PickerIndicatorType.BACKGROUND |
+| type  | [PickerIndicatorType](#pickerindicatortype枚举说明) | 否   | 否   | 选中项指示器的类型。<br/>默认值：PickerIndicatorType.BACKGROUND<br/>当type的值为小数时，使用向下取整后的整数；当type的值不在PickerIndicatorType枚举范围内时，使用默认值。 |
 | strokeWidth |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)      | 否   | 是   | 分割线的线宽。<br/>默认值：2.0px<br/>单位：与LengthMetrics一致。<br/>取值范围：[0, 选中项高度的一半（即20vp）]。strokeWidth小于0或大于选中项高度的一半时使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>1. 当type为PickerIndicatorType.DIVIDER时生效。<br/>2. 通过LengthMetrics.resource方式设置时，使用非长度属性的值会按照0vp处理。  |
 | dividerColor       | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 分割线的颜色。<br/>默认值：'sys.color.comp_divider'<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
 | startMargin |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | 否   | 是   | 分割线与Picker容器侧边起始端的距离。<br/>默认值：0<br/>单位：与LengthMetrics一致。<br/>取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。设置小于0或startMargin与endMargin之和超过Picker容器的宽度时，使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
@@ -292,23 +292,17 @@ struct PickerAttrsExample {
 
 ### 示例2（设置事件回调）
 
-从API version 22开始，该示例实现了Picker容器的onChange和onScrollStop事件回调。
+从API version 22开始，该示例基于状态选择，实现了Picker容器的onChange和onScrollStop事件回调。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct PickerEventsExample {
-  private dataArray: string[] = [];
+  // 构造状态选项数据
+  private dataArray: string[] = ['待办', '进行中', '已完成'];
   @State onChangeDesc: string = '';
   @State onScrollStopDesc: string = '';
-
-  aboutToAppear(): void {
-    // 构造选项数据
-    for (let i = 1; i <= 10; i++) {
-      this.dataArray.push(i.toString())
-    }
-  }
 
   build() {
     Column() {
@@ -412,7 +406,6 @@ struct PickerIndicatorExample {
   @State startMargin: LengthMetrics = LengthMetrics.px(2);
   @State endMargin: LengthMetrics = LengthMetrics.px(2);
   @State selectIndicator: PickerIndicatorStyle | undefined = undefined;
-  @State indicatorDesc: string = '切换分割线指示器';
   @State bgBorderRadius: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses | undefined = undefined
   bgBorderRadiuses1: LengthMetrics = LengthMetrics.vp(10)
   bgBorderRadiuses2: BorderRadiuses = {
@@ -677,10 +670,8 @@ struct PickerIndicatorExample {
         this.curTabIndex = index
         if (this.curTabIndex == 1) {
           this.indicatorType = PickerIndicatorType.DIVIDER
-          this.indicatorDesc = '切换背景指示器'
         } else {
           this.indicatorType = PickerIndicatorType.BACKGROUND
-          this.indicatorDesc = '切换分割线指示器'
         }
       })
       .height(LayoutPolicy.wrapContent)
@@ -747,7 +738,222 @@ struct MonthPickerExample {
 
 ![containerPicker](./figures/ContainerPickerDemo5.gif)
 
-### 示例6（自定义时间选择器）
+### 示例6（自定义地区选择器）
+
+从API version 22开始，该示例使用多列Picker容器组合实现地区选择器。
+
+```ts
+// xxx.ets
+
+type RegionDict = Record<string, Record<string, Array<string>>>;
+// 定义地区字典
+let regionData: RegionDict = {
+  '辽宁省': {
+    '沈阳市': ['沈河区', '和平区', '浑南区'],
+    '大连市': ['中山区', '金州区', '长海县']
+  },
+  '吉林省': {
+    '长春市': ['南关区', '宽城区', '朝阳区'],
+    '四平市': ['铁西区', '铁东区', '梨树县']
+  },
+  '黑龙江省': {
+    '哈尔滨市': ['道里区', '道外区', '南岗区'],
+    '牡丹江市': ['东安区', '西安区', '爱民区']
+  },
+};
+
+@Entry
+@Component
+struct RegionPickerExample {
+  @State provinceIndex: number = 0;
+  @State cityIndex: number = 0;
+  @State countyIndex: number = 0;
+  @State provinces: Array<string> = [];
+  @State cities: Array<string> = [];
+  @State counties: Array<string> = [];
+
+  aboutToAppear(): void {
+    this.provinces = Object.keys(regionData);
+    this.flushCityColumn()
+  }
+
+  flushCityColumn() {
+    let currentProvince = this.provinces[this.provinceIndex]
+    this.cities = Object.keys(regionData[currentProvince])
+    this.cityIndex = 0
+    this.flushCountyColumn()
+  }
+
+  flushCountyColumn() {
+    let currentProvince = this.provinces[this.provinceIndex]
+    let currentCity = this.cities[this.cityIndex]
+    this.counties = regionData[currentProvince][currentCity]
+    this.countyIndex = 0
+  }
+
+  build() {
+    Column() {
+      Row() {
+        // 省级
+        Picker({
+          selectedIndex: this.provinceIndex
+        }) {
+          ForEach(this.provinces, (province: string) => {
+            Text(province)
+          })
+        }
+        .onChange((selectedIndex: number) => {
+          this.provinceIndex = selectedIndex
+          this.flushCityColumn()
+
+        })
+        .onScrollStop((selectedIndex: number) => {
+          this.provinceIndex = selectedIndex
+        })
+        .selectionIndicator({ type: PickerIndicatorType.DIVIDER })
+        .width('25%')
+
+        // 地级
+        Picker({
+          selectedIndex: this.cityIndex
+        }) {
+          ForEach(this.cities, (city: string) => {
+            Text(city)
+          })
+        }
+        .onChange((selectedIndex: number) => {
+          this.cityIndex = selectedIndex
+          this.flushCountyColumn()
+        })
+        .onScrollStop((selectedIndex: number) => {
+          this.cityIndex = selectedIndex
+        })
+        .selectionIndicator({ type: PickerIndicatorType.DIVIDER })
+        .width('25%')
+
+        // 县级
+        Picker({
+          selectedIndex: this.countyIndex
+        }) {
+          ForEach(this.counties, (county: string) => {
+            Text(county)
+          })
+        }
+        .onChange((selectedIndex: number) => {
+          this.countyIndex = selectedIndex
+        })
+        .onScrollStop((selectedIndex: number) => {
+          this.countyIndex = selectedIndex
+        })
+        .selectionIndicator({ type: PickerIndicatorType.DIVIDER })
+        .width('25%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![containerPicker](./figures/ContainerPickerDemo6.gif)
+
+### 示例7（自定义选项类型）
+
+从API version 22开始，该示例使用Picker容器实现不同选项类型的选择器，包含文本选择器、图片选择器、图文组合选择器。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct PickersExample {
+  @State textList: string[] =
+    ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8'];
+  // 以下$r('sys.media.*')资源文件需要替换为开发者所需的图像资源文件。
+  @State imageList: Resource[] =
+    [$r('sys.media.ohos_ic_normal_white_grid_audio'), $r('sys.media.ohos_ic_normal_white_grid_calendar'),
+      $r('sys.media.ohos_ic_normal_white_grid_compress'), $r('sys.media.ohos_ic_normal_white_grid_doc'),
+      $r('sys.media.ohos_ic_normal_white_grid_flac'), $r('sys.media.ohos_ic_normal_white_grid_folder'),
+      $r('sys.media.ohos_ic_normal_white_grid_html'), $r('sys.media.ohos_ic_normal_white_grid_image')];
+  // 以下$r('sys.symbol.*')资源文件需要替换为开发者所需的图像资源文件。
+  @State symbolList: Resource[] =
+    [$r('sys.symbol.calendar_01'), $r('sys.symbol.calendar_02'), $r('sys.symbol.calendar_03'),
+      $r('sys.symbol.calendar_04'), $r('sys.symbol.calendar_05'), $r('sys.symbol.calendar_06'),
+      $r('sys.symbol.calendar_07'), $r('sys.symbol.calendar_08')];
+  private controller: TabsController = new TabsController();
+  @State curTabIndex: number = 0;
+
+  @Builder
+  ImagePicker() {
+    Column() {
+      Picker() {
+        ForEach(this.imageList, (item: Resource) => {
+          Image(item)
+        })
+      }
+      .margin(20)
+      .width(200)
+    }
+  }
+
+  @Builder
+  TextPicker() {
+    Column() {
+      Picker() {
+        ForEach(this.textList, (item: string) => {
+          Text(item)
+        })
+      }
+      .margin(20)
+      .width(200)
+    }
+  }
+
+  @Builder
+  HybridPicker() {
+    Column() {
+      Picker() {
+        ForEach(this.symbolList, (item: Resource, index: number) => {
+          Row() {
+            SymbolGlyph(item)
+              .height('20vp')
+            Text(this.textList[index])
+          }
+        })
+      }
+      .margin(20)
+      .width(200)
+    }
+  }
+
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.Start, index: this.curTabIndex, controller: this.controller }) {
+        TabContent() {
+          this.TextPicker()
+        }.tabBar('文本选择器')
+
+        TabContent() {
+          this.ImagePicker()
+        }.tabBar('图片选择器')
+
+        TabContent() {
+          this.HybridPicker()
+        }.tabBar('图文组合选择器')
+      }
+      .vertical(true)
+      .divider({ strokeWidth: 1 })
+      .barMode(BarMode.Fixed)
+      .barWidth(140)
+      .barHeight(230)
+      .height(230)
+      .animationDuration(400)
+    }
+  }
+}
+```
+
+![containerPicker](./figures/ContainerPickerDemo7.gif)
+
+### 示例8（自定义时间选择器）
 
 从API version 22开始，该示例实现了一个时间选择器，功能包含设置切换是否循环滚动、切换是否显示秒数、切换是否使用24小时制、切换是否显示前导0，还可按照当前系统语言显示对应语言的内容，并根据语言习惯调整各列的显示顺序。
 
@@ -1200,4 +1406,4 @@ struct TimePickerExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo6.gif)
+![containerPicker](./figures/ContainerPickerDemo8.gif)
