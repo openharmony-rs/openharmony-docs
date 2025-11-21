@@ -42,10 +42,11 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
+const BOOK_INITIAL_NAME = '100';
 
 @ObservedV2
 export class Book {
-  @Trace public name: string = '100';
+  @Trace public name: string = BOOK_INITIAL_NAME;
 
   constructor(page: string) {
     this.name = page;
