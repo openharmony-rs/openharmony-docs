@@ -1469,6 +1469,26 @@ proxyData标签示例：
 ```
 <!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ...
+    "proxyData": [
+      {
+        "uri":"datashareproxy://ohos.app.hap.myapplication/event/Meeting",
+        "requiredReadPermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
+        "requiredWritePermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
+        "metadata": {
+          "name": "datashare_metadata",
+          "resource": "$profile:datashare"
+        }
+      }
+    ],
+    // ...
+  }
+}
+```
+
 ## routerMap标签
 
 此标签标识模块配置的路由表的路径。
