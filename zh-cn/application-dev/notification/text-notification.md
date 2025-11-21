@@ -39,4 +39,29 @@
    - 多行文本类型通知继承了普通文本类型的字段，同时新增了多行文本内容、内容概要和通知展开时的标题。详情请参考[NotificationMultiLineContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)。
 
      <!-- @[pub_multi_line_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
+     
+     ``` TypeScript
+     let notificationRequest: notificationManager.NotificationRequest = {
+       id: 3,
+       content: {
+         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE, // 多行文本类型通知
+         multiLine: {
+           title: 'test_multi_line_title',
+           text: 'test_text',
+           briefText: 'test_briefText',
+           longTitle: 'test_longTitle',
+           lines: ['line_01', 'line_02', 'line_03'],
+         }
+       }
+     };
+     // 发布通知
+     notificationManager.publish(notificationRequest, (err: BusinessError) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+     });
+     ```
     
