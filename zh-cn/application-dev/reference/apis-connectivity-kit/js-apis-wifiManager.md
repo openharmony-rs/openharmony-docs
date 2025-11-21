@@ -2695,7 +2695,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 **状态改变事件的枚举：**
 
-| **枚举值** | 说明 |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 未激活。 |
 | 1 | 已激活。 |
@@ -2770,7 +2770,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 **连接状态改变事件的枚举：**
 
-| **枚举值** | 说明 |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 已断开。 |
 | 1 | 已连接。 |
@@ -2852,7 +2852,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 **扫描状态改变事件的枚举：**
 
-| **枚举值** | 说明 |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 扫描失败。 |
 | 1 | 扫描成功。 |
@@ -3003,7 +3003,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 **热点状态改变事件的枚举：**
 
-| **枚举值** | 说明 |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 未激活。 |
 | 1 | 已激活。 |
@@ -3084,7 +3084,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 **P2P状态改变事件的枚举：**
 
-| **枚举值** | 说明 |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 1 | 空闲。 |
 | 2 | 打开中。 |
@@ -3449,7 +3449,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 **发现设备状态改变事件的枚举：**
 
-| **枚举值** | 说明 |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 初始状态。 |
 | 1 | 发现成功。 |
