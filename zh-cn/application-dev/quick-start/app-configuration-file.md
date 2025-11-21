@@ -84,6 +84,48 @@
 ```
 <!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
+``` JSON5
+{
+  "app": {
+    "bundleName": "com.application.myapplication",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:layered_image",
+    "label": "$string:app_name",
+    "description": "$string:description_application",
+    "minAPIVersion": 9,
+    "targetAPIVersion": 9,
+    "debug": false,
+    "car": {
+      "minAPIVersion": 8
+    },
+    "appEnvironments": [
+      {
+        "name":"name1",
+        "value": "value1"
+      }
+    ],
+    "maxChildProcess": 5,
+    "multiAppMode": {
+      "multiAppModeType": "appClone",
+      "maxCount": 5
+    },
+    "hwasanEnabled": false,
+    "ubsanEnabled": false,
+    "cloudFileSyncEnabled": false,
+    "cloudStructuredDataSyncEnabled": false,
+    "configuration": "$profile:configuration",
+    "assetAccessGroups": [
+      "com.ohos.photos",
+      "com.ohos.screenshot",
+      "com.ohos.note"
+    ],
+    "startMode": "mainTask"
+  }
+}
+```
+
 ## 配置文件标签
 
 app.json5配置文件包含以下标签。
