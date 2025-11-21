@@ -255,6 +255,19 @@ multiAppMode标签示例：
 ```
 <!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
+``` JSON5
+{
+  "app": {
+    // ...
+    "multiAppMode": {
+      "multiAppModeType": "appClone",
+      "maxCount": 5
+    },
+    // ...
+  }
+}
+```
+
 ## configuration标签
 
 该标签对应一个profile文件资源，对应文件用于配置应用字体大小是否跟随系统变更。
