@@ -319,11 +319,11 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 规则如下：
 
-- lanes为指定的数量时，列宽由List组件的交叉轴尺寸除以列数得到。
-- lanes设置了{minLength，maxLength}时，根据List组件的宽度自适应决定lanes数量（即列数），保证缩放过程中lane的宽度符合{minLength，maxLength}的限制。其中，minLength条件会被优先满足，即优先保证ListItem的交叉轴尺寸符合最小限制。
-- lanes设置了{minLength，maxLength}，如果父组件交叉轴方向尺寸约束为无穷大时，固定按一列排列，List的列宽等于显示区域内最大的ListItem的列宽。
+- value为number类型时，指定列数或行数，列宽由List组件的交叉轴尺寸除以列数得到。
+- value为LengthConstrain类型时，指定最小和最大的列数或者行数，即lanes的value参数设置为{minLength，maxLength}会根据List组件的宽度自适应决定lanes数量（即列数），保证缩放过程中列的宽度符合{minLength，maxLength}的限制。其中，minLength条件会被优先满足，即优先保证ListItem的交叉轴尺寸符合最小限制。
+ - lanes的value参数设置为{minLength，maxLength}，如果父组件交叉轴方向尺寸约束为无穷大时，固定按一列排列，List的列宽等于显示区域内最大的ListItem的列宽。
 - &nbsp;ListItemGroup在多列模式下也是独占一行，ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
-- lanes设置了{minLength，maxLength}时，计算ListItemGroup中的列数时会按照ListItemGroup的交叉轴尺寸计算。当ListItemGroup交叉轴尺寸与List交叉轴尺寸不一致时ListItemGroup中的列数与List中的列数可能不一样。
+- lanes的value参数设置为{minLength，maxLength}时，计算ListItemGroup中的列数时会按照ListItemGroup的交叉轴尺寸计算。当ListItemGroup交叉轴尺寸与List交叉轴尺寸不一致时ListItemGroup中的列数与List中的列数可能不一样。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -2104,7 +2104,7 @@ struct ListExample {
 
 ### 示例11（设置滚动条的边距）
 
-该示例展示了在设置了[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)属性的情况下，设置滚动条边距的效果。
+从API version 20开始，该示例展示了通过[scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20)属性设置滚动条边距并避让[contentStartOffset](#contentstartoffset11)、[contentEndOffset](#contentendoffset11)区域的效果。
 
 ```ts
 // xxx.ets
