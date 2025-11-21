@@ -60,7 +60,7 @@
   }
 }
 ```
-
+  <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
 
 - **方式二：配置module.json5**
 
@@ -94,7 +94,7 @@
   }
 }
 ```
-
+  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
 
 ## 配置分层图标和应用名称
 
@@ -130,6 +130,7 @@
 }
 ```
 
+      <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5)  -->
 
 - **方式二：配置module.json5**
 
@@ -181,7 +182,7 @@
 }
 ```
 
-
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5)  -->
 
 >
 > **说明：**

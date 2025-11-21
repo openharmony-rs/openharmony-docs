@@ -37,6 +37,7 @@
 }
 ```
 
+    <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5)  -->
 
 2. 创建应用多实例。
 
