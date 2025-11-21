@@ -18,19 +18,6 @@
 
 1. 修改HAR模块下的module.json5文件，将type字段设置为shared，并新增deliveryWithInstall和pages字段。
     <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ···
-    "type": "shared",
-    "deliveryWithInstall": true,
-    "pages": "$profile:main_pages",
-	// ···
-  }
-}
-```
-    <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
     
     ``` JSON5
     {
@@ -56,27 +43,6 @@
 
 3. 在ets目录下新增pages目录，并在pages目录下新增PageIndex.ets文件，配置如下内容。
 
-    <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-struct PageIndex {
-  @State message: string = 'hello world';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
     <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
     
     ``` TypeScript
@@ -104,17 +70,6 @@ struct PageIndex {
 5. 修改HAR模块的hvigorfile.ts文件，将以下内容替换文件内容。
 
     <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
-
-``` TypeScript
-// library\hvigorfile.ts
-import { hspTasks } from '@ohos/hvigor-ohos-plugin';
-
-export default {
-  system: hspTasks,  // 编译修改成hsp的任务
-  plugins:[]
-}
-```
-    <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
     
     ``` TypeScript
     // library\hvigorfile.ts
@@ -129,14 +84,6 @@ export default {
 6. 修改oh-package.json5文件，新增packageType配置。
 
     <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
-
-``` JSON5
-{
-// ···
-  "packageType": "InterfaceHar"
-}
-```
-    <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
     
     ``` JSON5
     {
@@ -147,25 +94,6 @@ export default {
 
 7. 修改项目根目录下的build-profile.json5文件，在modules标签下找到library的配置，新增targets标签。
 
-    <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
-
-``` JSON5
-  "modules": [
-	// ···
-    {
-      "name": "library",
-      "srcPath": "./library",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
-    }
-  ],
-```
     <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
     
     ``` JSON5
