@@ -871,6 +871,42 @@ extensionAbilities示例：
 
 <!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+{
+  // ...
+    "extensionAbilities": [
+      {
+        "name": "FormName",
+        "srcEntry": "./ets/form/MyForm.ets",
+        "icon": "$media:icon",
+        "label" : "$string:extension_name",
+        "description": "$string:form_description",
+        "type": "form",
+        "permissions": ["ohos.permission.ACCESS_BLUETOOTH"],
+        "exported": true,
+        "uri":"scheme://authority/path/query",
+        "skills": [{
+          "actions": [],
+          "entities": [],
+          "uris": [],
+          "permissions": []
+        }],
+        "metadata": [
+          {
+            "name": "ohos.extension.form",
+            "resource": "$profile:form_config",
+          }
+        ],
+        "extensionProcessMode": "instance",
+        "dataGroupIds": [
+          "testGroupId1"
+        ]
+      }
+    ],
+    // ...
+}
+```
+
 
 ## shortcuts标签
 
