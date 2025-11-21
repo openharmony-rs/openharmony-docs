@@ -56,6 +56,18 @@
 2. 创建指定类型的通知渠道。
 
    <!-- @[create_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
+   
+   ``` TypeScript
+   // addSlot回调
+   let addSlotCallBack = (err: BusinessError): void => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG, `addSlot failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       hilog.info(DOMAIN_NUMBER, TAG, `addSlot success`);
+     }
+   };
+   notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+   ```
 
 3. 查询指定类型的通知渠道。
 
