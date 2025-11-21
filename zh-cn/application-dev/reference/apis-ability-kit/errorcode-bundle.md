@@ -62,7 +62,7 @@ The specified ability name is not found.
 **可能原因**<br/>
 1. 输入的abilityName有误。
 2. 系统中对应的应用不存在该abilityName对应的ability。
-3. 调用[bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundleManager.getProfileByAbility)、[bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundleManager.getProfileByExtensionAbility) 等通过abilityName、moduleName组合查询的接口时，对应的应用没有安装moduleName对应的模块，对应模块下的ability也不存在。
+3. 调用[bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)、[bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) 等通过abilityName、moduleName组合查询的接口时，对应的应用没有安装moduleName对应的模块，对应模块下的ability也不存在。
 
 **处理步骤**<br/>
 1. 检查abilityName拼写是否正确。
