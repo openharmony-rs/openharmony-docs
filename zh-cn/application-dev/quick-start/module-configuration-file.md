@@ -358,6 +358,16 @@ deviceTypes示例：
 
 ``` JSON5
 {
+  "module": {
+    // ...
+    "pages": "$profile:main_pages", // 资源配置，指向profile下面定义的配置文件main_pages.json
+    // ...
+  }
+}
+```
+
+``` JSON5
+{
   // [StartExclude module_abilities_skills]
   "module": {
     // ···
