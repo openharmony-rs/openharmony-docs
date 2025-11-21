@@ -302,6 +302,46 @@ struct Index {
 ```
 <!-- @[har_package_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { Log, func } from 'library';
+// ...
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontFamily('HarmonyHeiTi')
+        .fontWeight(FontWeight.Bold)
+        .fontSize(32)
+
+      //引用HAR的ets类和方法
+      Button($r('app.string.button'))
+        .id('button')
+        .height(48)
+        .width('624px')
+        .margin({ top: '4%' })
+        .type(ButtonType.Capsule)
+        .onClick(() => {
+          // 引用HAR的类和方法
+          Log.info('har msg');
+          this.message = 'func return: ' + func();
+        })
+
+      // ...
+
+      // ...
+    }
+    .width('100%')
+    .backgroundColor($r('app.color.page_background'))
+    .height('100%')
+  }
+}
+```
+
 ### 引用HAR的native方法
 通过`import`引用HAR导出的native方法，示例如下所示：
 
