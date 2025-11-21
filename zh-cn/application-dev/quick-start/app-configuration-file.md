@@ -291,6 +291,16 @@ configuration标签示例：
 ```
 <!-- @[app_json5_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
+``` JSON5
+{
+  "app": {
+    // ...
+    "configuration": "$profile:configuration",
+    // ...
+  }
+}
+```
+
 在开发视图的AppScope/resources/base/profile下面定义配置文件configuration.json，其中文件名"configuration"可自定义，需要和configuration标签指定的文件资源对应。配置文件中列举了设置当前应用字体大小跟随系统变化所需要的属性。
 
    **表4** configuration标签说明
