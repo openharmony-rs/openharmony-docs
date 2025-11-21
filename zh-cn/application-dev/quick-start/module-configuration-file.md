@@ -336,6 +336,20 @@ deviceTypes示例：
 
 <!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    "name": "myHapName",
+    "type": "feature",
+    "deviceTypes": [
+      "tv",
+      "tablet"
+    ],
+    // ...
+  }
+}
+```
+
 ## pages标签
 
 该标签是一个profile文件资源，用于指定描述页面信息的配置文件。
