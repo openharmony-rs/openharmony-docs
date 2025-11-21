@@ -57,7 +57,7 @@
 | G711a(API20) | [OH_AVCODEC_MIMETYPE_AUDIO_G711A](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | ALAC(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_ALAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | AC3(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_AC3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| WMA(V1，V2，PRO) (API22) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WMA(V1，V2，PRO) (API22) | [OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | GSM(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_GSM](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | GSM_MS(API22) | [OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP1--> <!--RP1End-->
