@@ -11131,6 +11131,7 @@ async function example(context: Context) {
 | EXIST_COMPATIBLE_DUPLICATE<sup>22+</sup>  | 'exist_compatible_duplicate' | 兼容副本的状态信息。**系统接口**：此接口为系统接口。 |
 | CLOUD_ID<sup>22+</sup>  | 'cloud_id' | 文件在云端的唯一标识。**系统接口**：此接口为系统接口。 |
 | COMPOSITE_DISPLAY_STATUS<sup>22+</sup> | 'composite_display_status' | 复合图资产显示状态。**系统接口**：此接口为系统接口。 |
+| VIDEO_MODE<sup>22+</sup>  | 'video_mode' | 视频文件的log模式。**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 
@@ -11808,6 +11809,19 @@ type ValuesBucket = Record&lt;string, ValueType&gt;
 提供通过查询数据库生成的数据库结果集的访问方法。
 
 下列API示例中，需先使用[query](#query22)方法获取ResultSet实例，再调用对应方法。
+
+## VideoMode<sup>22+</sup>
+
+枚举，视频文件的log模式。
+
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。|
+| LOG_VIDEO |  1 |  log模式视频的文件类型。  |
 
 ### 属性
 
