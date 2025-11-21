@@ -1255,6 +1255,20 @@ data标签示例：
 ```
 
   <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
+  
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "metadata": [
+        {
+          "name": "ohos.module.distribution",
+          "resource": "$profile:distributionFilter_config",
+        }
+      ],
+      // ...
+  }
+  ```
 
 ## testRunner标签
 
