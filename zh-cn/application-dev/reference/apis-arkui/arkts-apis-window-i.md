@@ -127,10 +127,14 @@
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| width  | number   | 否   | 否   | 窗口宽度，单位为px，该参数应为整数。 |
-| height | number   | 否   | 否   | 窗口高度，单位为px，该参数应为整数。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口宽度，单位为px，该参数应为整数。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口高度，单位为px，该参数应为整数。 |
 
 ## Position<sup>20+</sup>
 
