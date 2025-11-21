@@ -113,7 +113,7 @@ let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInf
 atManager.checkAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`checkAccessToken success, result: ${data}`);
 }).catch((err: BusinessError): void => {
-  console.error(`checkAccessToken fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`checkAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -164,8 +164,12 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取，三方应用可以通过bundleManager.getBundleInfoForSelf获取。
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
-let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
-console.info(`Result: ${data}`);
+try {
+  let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
+  console.info(`checkAccessTokenSync success, result: ${data}`);
+} catch(err: Error) {
+  console.error(`checkAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ArkTS-Sta示例：
@@ -175,8 +179,12 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取，三方应用可以通过bundleManager.getBundleInfoForSelf获取。
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
-let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
-console.info(`Result: ${data}`);
+try {
+  let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
+  console.info(`checkAccessTokenSync success, result: ${data}`);
+} catch(err: Error) {
+  console.error(`checkAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ### on<sup>18+</sup>
@@ -227,11 +235,12 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
 try {
-    atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.info(`receive permission state change, result: ${data}`);
-    });
+  atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
+  });
 } catch(err) {
-    console.error(`Code: ${err.code}, message: ${err.message}`);
+  console.error(`Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ### off<sup>18+</sup>
@@ -331,11 +340,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
 try {
-    atManager.onSelfPermissionStateChange(permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.info(`receive permission state change, result: ${data}`);
-    });
-} catch(err: BusinessError) {
-    console.error(`Code: ${err.code}, message: ${err.data}`);
+  atManager.onSelfPermissionStateChange(permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
+  });
+} catch(err: Error) {
+  console.error(`Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ### offSelfPermissionStateChange<sup>22+</sup>
@@ -376,14 +386,13 @@ offSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback?
 
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
 try {
     atManager.offSelfPermissionStateChange(permissionList);
-} catch(err: BusinessError) {
-    console.error(`Code: ${err.code}, message: ${err.data}`);
+} catch(err: Error) {
+    console.error(`Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -394,6 +403,10 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 用于<!--RP1-->[UIAbility](js-apis-app-ability-uiAbility.md#uiability)<!--RP1End-->拉起弹框请求[用户授权](../../security/AccessToken/request-user-authorization.md)。使用callback异步回调。
 
 如果用户拒绝授权，将无法再次拉起弹框，需要用户在系统应用“设置”的界面中，手动授予权限，或是调用[requestPermissionOnSetting](#requestpermissiononsetting12)，拉起权限设置弹框，引导用户授权。
+
+<!--RP3-->
+![requestPermissionsFromUser](figures/requestPermissionsFromUser.png)
+<!--RP3End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -441,7 +454,6 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
   if (err) {
     console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`requestPermissionsFromUser success, result: ${data}`);
     console.info('requestPermissionsFromUser data permissions:' + data.permissions);
     console.info('requestPermissionsFromUser data authResults:' + data.authResults);
     console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
@@ -458,9 +470,8 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError | null, data: PermissionRequestResult | undefined) => {
   if (err) {
-    console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.data}`);
+    console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`requestPermissionsFromUser success, result: ${data}`);
     console.info('requestPermissionsFromUser data permissions:' + data?.permissions);
     console.info('requestPermissionsFromUser data authResults:' + data?.authResults);
     console.info('requestPermissionsFromUser data dialogShownResults:' + data?.dialogShownResults);
@@ -523,7 +534,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
-  console.info(`requestPermissionsFromUser success, result: ${data}`);
   console.info('requestPermissionsFromUser data permissions:' + data.permissions);
   console.info('requestPermissionsFromUser data authResults:' + data.authResults);
   console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
@@ -540,12 +550,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
-  console.info(`requestPermissionsFromUser success, result: ${data}`);
   console.info('requestPermissionsFromUser data permissions:' + data.permissions);
   console.info('requestPermissionsFromUser data authResults:' + data.authResults);
   console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
 }).catch((err: BusinessError): void => {
-  console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -556,6 +565,10 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)二次拉起权限设置弹框。
 
 在调用此接口前，应用需要先调用[requestPermissionsFromUser](#requestpermissionsfromuser9)，如果用户在首次弹窗授权时已授权，调用当前接口将无法拉起弹窗。
+
+<!--RP4-->
+![requestPermissionOnSetting](figures/requestPermissionOnSetting.png)
+<!--RP4End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -587,10 +600,11 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group. |
-| 12100010 | The request already exists. |
+| 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
+| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
 
 **示例：**
 
@@ -621,7 +635,7 @@ let context: Context = this.getUIContext().getHostContext() as common.UIAbilityC
 atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
   console.info(`requestPermissionOnSetting success, result: ${data}`);
 }).catch((err: BusinessError): void => {
-  console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -632,6 +646,10 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 用于UIAbility/UIExtensionAbility拉起全局开关设置弹框。
 
 在某些情况下，如果录音、拍照等功能被禁用，应用可拉起此弹框请求用户同意开启对应功能。如果当前全局开关的状态为开启，则不拉起弹框。
+
+<!--RP5-->
+![requestGlobalSwitch](figures/requestGlobalSwitch.png)
+<!--RP5End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -696,7 +714,7 @@ let context: Context = this.getUIContext().getHostContext() as common.UIAbilityC
 atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: Boolean) => {
   console.info(`requestGlobalSwitch success, result: ${data}`);
 }).catch((err: BusinessError): void => {
-  console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -754,15 +772,83 @@ try {
 ArkTS-Sta示例：
 ```ts
 import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 try {
   let data: abilityAccessCtrl.PermissionStatus = atManager.getSelfPermissionStatus('ohos.permission.CAMERA');
   console.info(`getSelfPermissionStatus success, result: ${data}`);
-} catch(err: BusinessError) {
-  console.error(`getSelfPermissionStatus fail, code: ${err.code}, message: ${err.data}`);
+} catch(err: Error) {
+  console.error(`getSelfPermissionStatus fail, code: ${err.code}, message: ${err.message}`);
 }
+```
+
+### openPermissionOnSetting<sup>22+</sup>
+
+openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
+
+用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)拉起跳转设置页的弹窗。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。 |
+| permission | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 权限名，只支持授权方式为[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise对象，返回跳转设置页弹窗结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission is invalid or not declared in the module.json file. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100014 | Unexpected permission. The permission is not a manual_settings permission. |
+
+**示例：**
+
+示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+ArkTS-Dyn示例：
+```ts
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
+  console.info(`openPermissionOnSetting success, result: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`openPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
+  console.info(`openPermissionOnSetting success, result: ${data}`);
+}).catch((err: BusinessError): void => {
+  console.error(`openPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### verifyAccessTokenSync<sup>9+</sup>
@@ -820,15 +906,14 @@ try {
 ArkTS-Sta示例：
 ```ts
 import { abilityAccessCtrl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: int = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取，三方应用可以通过bundleManager.getBundleInfoForSelf获取。
 try {
   let data: abilityAccessCtrl.GrantStatus = atManager.verifyAccessTokenSync(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS');
   console.info(`verifyAccessTokenSync success, result: ${data}`);
-} catch(err: BusinessError) {
-  console.error(`verifyAccessTokenSync fail, code: ${err.code}, message: ${err.data}`);
+} catch(err: Error) {
+  console.error(`verifyAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -891,7 +976,7 @@ let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
 atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
 }).catch((err: BusinessError): void => {
-  console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.data}`);
+  console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1068,3 +1153,19 @@ type Context = _Context
 | NOT_DETERMINED | 1     | 表示未操作。应用声明[用户授权权限](../../security/AccessToken/permissions-for-all-user.md)，暂未调用[requestPermissionsFromUser](#requestpermissionsfromuser9)接口请求用户授权时，或用户在设置中将权限状态修改为每次询问时，查询权限状态将返回此值。 |
 | INVALID | 2     | 表示无效。应用未[声明权限](../../security/AccessToken/declare-permissions.md)或当前无法处理。例如：当模糊位置权限的状态为NOT_DETERMINED时，查询精确位置权限状态，返回此值。 |
 | RESTRICTED | 3     | 表示受限。<!--RP2-->应用被设置禁止通过[requestPermissionsFromUser](#requestpermissionsfromuser9)接口请求用户授权。<!--RP2End--> |
+
+## SelectedResult<sup>22+</sup>
+
+表示跳转设置页弹窗结果的枚举。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称               |    值 | 说明        |
+| ------------------ | ----- | ----------- |
+| REJECTED | -1    | 表示用户选择不允许前往设置。 |
+| OPENED | 0     | 表示用户选择前往设置。 |
+| GRANTED | 1     | 表示权限已授权，无需弹窗。 |
