@@ -27,8 +27,8 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称        | 类型                       | 只读       | 可选       | 说明                                                         |
-| ----------- | -----------------| -------- | -------------------- | ------------------------------------------------------------ |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |	
+| ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | previewImages<sup>18+</sup> | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
 | enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。 <br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
