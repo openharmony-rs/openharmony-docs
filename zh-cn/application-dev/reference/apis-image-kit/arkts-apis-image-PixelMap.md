@@ -75,7 +75,7 @@ async function ReadPixelsToBuffer(pixelMap : image.PixelMap) {
 
 readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
-按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中，使用callback形式返回。
+按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中。使用callback异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -225,7 +225,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
 
 readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
-固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区中，该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，使用callback形式返回。
+固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区中，该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定。使用callback异步回调。
 
 可用公式计算PositionArea需要申请的内存大小。
 
@@ -538,13 +538,17 @@ async function WritePixelsSync() {
 
 writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
-按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap，使用Promise形式返回。
+按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap。使用Promise异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -560,6 +564,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -579,17 +584,37 @@ async function WriteBufferToPixels() {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import { common } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  try {
+    await pixelMap.writeBufferToPixels(color);
+    console.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
+  } catch (err) {
+    console.error(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
+  }
+}
+```
+
 ## writeBufferToPixels<sup>7+</sup>
 
 writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
-按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap，使用callback形式返回。
+按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap。使用callback异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -600,6 +625,7 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -618,6 +644,27 @@ async function WriteBufferToPixels() {
         console.info("Succeeded in writing data from a buffer to a PixelMap.");
       }
     })
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
+
+function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  try {
+    pixelMap.writeBufferToPixels(color, (err: BusinessError | null) => {
+      if (err) {
+        console.error(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels failed: ' + err);
+      } else {
+        console.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
+      }
+    });
+  } catch (err) {
+    console.error(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
   }
 }
 ```
@@ -2552,9 +2599,13 @@ async function SetColorSpace() {
 
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback: AsyncCallback\<void>): void
 
-根据输入的目标色彩空间对图像像素颜色进行色彩空间转换，使用callback形式返回。
+根据输入的目标色彩空间对图像像素颜色进行色彩空间转换。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2576,6 +2627,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2596,13 +2648,40 @@ async function ApplyColorSpace() {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
+  let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  let colorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  try {
+    pixelMap.applyColorSpace(colorSpace, (err: BusinessError | null) => {
+      if (err) {
+        console.error(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace failed: ' + err);
+      } else {
+        console.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
+      }
+    });
+  } catch (err) {
+    console.error(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
+  }
+}
+```
+
 ## applyColorSpace<sup>11+</sup>
 
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\<void>
 
-根据输入的目标色彩空间对图像像素颜色进行色彩空间转换，使用Promise形式返回。
+根据输入的目标色彩空间对图像像素颜色进行色彩空间转换。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2629,6 +2708,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2646,13 +2726,34 @@ async function ApplyColorSpace() {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
+  let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  let colorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  try {
+    await pixelMap.applyColorSpace(colorSpace);
+    console.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
+  } catch (err) {
+    console.error(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
+  }
+}
+```
+
 ## toSdr<sup>12+<sup>
 
 toSdr(): Promise\<void>
 
-将HDR的图像内容转换为SDR的图像内容，异步使用Promise形式返回。
+将HDR的图像内容转换为SDR的图像内容。Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2670,6 +2771,7 @@ toSdr(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import image from '@ohos.multimedia.image';
@@ -2679,7 +2781,7 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'hdr.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+// 此处'hdr.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
 let img = context.resourceManager.getMediaContentSync($r('app.media.hdr'));
 let imageSource = image.createImageSource(img.buffer.slice(0));
 let decodingOptions: image.DecodingOptions = {
@@ -2696,6 +2798,22 @@ if (pixelmap != undefined) {
   });
 } else {
   console.error('Failed to create pixelMap.');
+}
+```
+
+ArkTS-Sta示例:
+<!--code_no_check-->
+```ts
+import { common } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+function ToSdrFunc(pixelMap: image.PixelMap): void {
+  try {
+    await pixelMap.toSdr();
+    console.info(0x00000, 'ToSdrFunc', 'toSdr success!');
+  } catch (err) {
+    console.error(0x00000, 'ToSdrFunc', 'ToSdrFunc failed: ' + err);
+  }
 }
 ```
 

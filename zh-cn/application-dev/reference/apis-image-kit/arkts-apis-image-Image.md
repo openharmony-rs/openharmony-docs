@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTs-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 
@@ -17,20 +18,25 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+
 | 名称     | 类型               | 只读 | 可选 | 说明                                               |
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
-| clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | 是   | 是   | 要裁剪的图像区域。                                 |
-| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。如果image对象所存储的是相机预览流数据，即YUV图像数据，那么获取到的size中的宽高分别对应YUV图像的宽高； 如果image对象所存储的是相机拍照流数据，即JPEG图像，由于已经是编码后的文件，size中的宽等于JPEG文件大小，高等于1。image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的previewOutput还是captureOutput。相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实现方案(ArkTS)](../../media/camera/camera-shooting-case.md)。                                |
-| format   | number             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format)。 |
-| timestamp<sup>12+</sup> | number         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取相关的EXIF信息。|
+| clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | 是   | 是   | 要裁剪的图像区域。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 22 |
+| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。如果image对象所存储的是相机预览流数据，即YUV图像数据，那么获取到的size中的宽高分别对应YUV图像的宽高； 如果image对象所存储的是相机拍照流数据，即JPEG图像，由于已经是编码后的文件，size中的宽等于JPEG文件大小，高等于1。image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的previewOutput还是captureOutput。相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实现方案(ArkTS)](../../media/camera/camera-shooting-case.md)。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 22 |
+| format<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format)。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 22 |
+| timestamp<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取相关的EXIF信息。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 22 |
 
 ## getComponent<sup>9+</sup>
 
 getComponent(componentType: ComponentType, callback: AsyncCallback\<Component>): void
 
-根据图像的组件类型从图像中获取组件缓存并使用callback返回结果。
+根据图像的组件类型从图像中获取组件缓存。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -41,6 +47,7 @@ getComponent(componentType: ComponentType, callback: AsyncCallback\<Component>):
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -53,13 +60,66 @@ img.getComponent(4, (err: BusinessError, component: image.Component) => {
 })
 ```
 
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageObj: image.Image | null = GetImage(context);
+  if (imageObj != null) {
+    GetComponentFunc(imageObj);
+  } else {
+    console.error(0x00000, 'GetImage', 'imageObj is null!');
+  }
+}
+
+function GetImage(context: common.UIAbilityContext): image.Image | null {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
+    let imageObj: image.Image = await creator.dequeueImage();
+    if (imageObj != undefined) {
+      console.info(0x00000, 'GetImage', 'GetImage success!');
+      return imageObj;
+    } else {
+      return null;
+    }
+  } catch (err) {
+    console.error(0x00000, 'GetImage', 'GetImage failed: ' + err);
+    return null;
+  }
+}
+
+function GetComponentFunc(img: image.Image): void {
+  try {
+    img.getComponent(image.ComponentType.JPEG, (err: BusinessError | null, component: image.Component | undefined) =>{
+      if (err) {
+        console.error(0x00000, 'GetComponentFunc', 'getComponent failed: ' + err);
+      } else {
+        console.info(0x00000, 'GetComponentFunc', 'getComponent success!');
+      }
+    })
+  } catch (err) {
+    console.error(0x00000, 'GetComponentFunc', 'GetComponentFunc failed: ' + err);
+  }
+}
+```
+
 ## getComponent<sup>9+</sup>
 
 getComponent(componentType: ComponentType): Promise\<Component>
 
-根据图像的组件类型从图像中获取组件缓存并使用Promise方式返回结果。
+根据图像的组件类型从图像中获取组件缓存。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -75,6 +135,7 @@ getComponent(componentType: ComponentType): Promise\<Component>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -85,17 +146,64 @@ img.getComponent(4).then((component: image.Component) => {
 })
 ```
 
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageObj: image.Image | null = GetImage(context);
+  if (imageObj != null) {
+    GetComponentFunc(imageObj);
+  } else {
+    console.error(0x00000, 'GetImage', 'imageObj is null!');
+  }
+}
+
+function GetImage(context: common.UIAbilityContext): image.Image | null {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
+    let imageObj: image.Image = await creator.dequeueImage();
+    if (imageObj != undefined) {
+      console.info(0x00000, 'GetImage', 'GetImage success!');
+      return imageObj;
+    } else {
+      return null;
+    }
+  } catch (err) {
+    console.error(0x00000, 'GetImage', 'GetImage failed: ' + err);
+    return null;
+  }
+}
+
+function GetComponentFunc(img: image.Image): void {
+  try {
+    let component: image.Component = await img.getComponent(image.ComponentType.JPEG);
+    console.info(0x00000, 'GetComponentFunc', 'GetComponentFunc success!');
+  } catch (err) {
+    console.error(0x00000, 'GetComponentFunc', 'GetComponentFunc failed: ' + err);
+  }
+}
+```
+
 ## release<sup>9+</sup>
 
 release(callback: AsyncCallback\<void>): void
 
-释放当前图像并使用callback返回结果。
+释放当前图像。使用callback异步回调。
 
 在接收另一个图像前必须先释放对应资源。
 
 ArkTS有内存回收机制，Image对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -105,6 +213,7 @@ ArkTS有内存回收机制，Image对象不调用release方法，内存最终也
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -117,17 +226,70 @@ img.release((err: BusinessError) => {
 })
 ```
 
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageObj: image.Image | null = GetImage(context);
+  if (imageObj != null) {
+    ReleaseFunc(imageObj);
+  } else {
+    console.error(0x00000, 'GetImage', 'imageObj is null!');
+  }
+}
+
+function GetImage(context: common.UIAbilityContext): image.Image | null {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
+    let imageObj: image.Image = await creator.dequeueImage();
+    if (imageObj != undefined) {
+      console.info(0x00000, 'GetImage', 'GetImage success!');
+      return imageObj;
+    } else {
+      return null;
+    }
+  } catch (err) {
+    console.error(0x00000, 'GetImage', 'GetImage failed: ' + err);
+    return null;
+  }
+}
+
+function ReleaseFunc(img: image.Image): void {
+  try {
+    img.release((err: BusinessError | null) => {
+      if (err) {
+        console.error(0x00000, 'ReleaseFunc', 'release failed: ' + err);
+      } else {
+        console.info(0x00000, 'ReleaseFunc', 'release success!');
+      }
+    })
+  } catch (err) {
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+  }
+}
+```
+
 ## release<sup>9+</sup>
 
 release(): Promise\<void>
 
-释放当前图像并使用Promise方式返回结果。
+释放当前图像。使用Promise异步回调。
 
 在接收另一个图像前必须先释放对应资源。
 
 ArkTS有内存回收机制，Image对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -137,6 +299,7 @@ ArkTS有内存回收机制，Image对象不调用release方法，内存最终也
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -145,4 +308,46 @@ img.release().then(() => {
 }).catch((error: BusinessError) => {
   console.error(`Failed to release the image instance.code ${error.code},message is ${error.message}`);
 })
+```
+
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageObj: image.Image | null = GetImage(context);
+  if (imageObj != null) {
+    ReleaseFunc(imageObj);
+  } else {
+    console.error(0x00000, 'GetImage', 'imageObj is null!');
+  }
+}
+
+function GetImage(context: common.UIAbilityContext): image.Image | null {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
+    let imageObj: image.Image = await creator.dequeueImage();
+    if (imageObj != undefined) {
+      console.info(0x00000, 'GetImage', 'GetImage success!');
+      return imageObj;
+    } else {
+      return null;
+    }
+  } catch (err) {
+    console.error(0x00000, 'GetImage', 'GetImage failed: ' + err);
+    return null;
+  }
+}
+
+function ReleaseFunc(img: image.Image): void {
+  try {
+    await img.release()
+  } catch (err) {
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+  }
+}
 ```
