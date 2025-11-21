@@ -105,6 +105,37 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
     <!-- @[native-bundle-guidelines_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    EXTERN_C_START
+    static napi_value Init(napi_env env, napi_value exports)
+    {
+        napi_property_descriptor desc[] = {
+            { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr },
+            // 新增方法getCurrentApplicationInfo
+            { "getCurrentApplicationInfo", nullptr, GetCurrentApplicationInfo, nullptr,
+                nullptr, nullptr, napi_default, nullptr},
+            // 新增方法getAppId
+            { "getAppId", nullptr, GetAppId, nullptr, nullptr, nullptr, napi_default, nullptr},
+            // 新增方法getAppIdentifier
+            { "getAppIdentifier", nullptr, GetAppIdentifier, nullptr, nullptr, nullptr, napi_default, nullptr},
+            // 新增方法getMainElementName
+            { "getMainElementName", nullptr, GetMainElementName, nullptr, nullptr, nullptr, napi_default, nullptr},
+            // 新增方法getCompatibleDeviceType
+            { "getCompatibleDeviceType", nullptr, GetCompatibleDeviceType, nullptr,
+                nullptr, nullptr, napi_default, nullptr},
+            // 新增方法isDebugMode
+            { "isDebugMode", nullptr, IsDebugMode, nullptr, nullptr, nullptr, napi_default, nullptr},
+            // 新增方法getModuleMetadata
+            { "getModuleMetadata", nullptr, GetModuleMetadata, nullptr, nullptr, nullptr, napi_default, nullptr},
+            // 新增方法getAbilityResourceInfo
+            { "getAbilityResourceInfo", nullptr, GetAbilityResourceInfo, nullptr, nullptr, nullptr, napi_default, nullptr}
+        };
+        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+        return exports;
+    }
+    EXTERN_C_END
+    ```
 
 2. 在src/main/cpp/napi_init.cpp文件中获取Native的包信息对象，并转为js的包信息对象，即可在js侧获取应用的信息：
 
