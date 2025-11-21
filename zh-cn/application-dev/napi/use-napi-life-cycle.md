@@ -128,12 +128,19 @@ export const handleScope: () => string;
 ArkTS侧示例代码
 
 <!-- @[ark_napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// napi_open_handle_scope  napi_close_handle_scope
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API handleScopeTest: %{public}s', testNapi.handleScopeTest());
+  hilog.info(0x0000, 'testTag', 'Test Node-API handleScopeTest: %{public}s',
+    testNapi.handleScopeTest());
   hilog.info(0x0000, 'testTag', 'Test Node-API handleScope: %{public}s', testNapi.handleScope());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API handleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API handleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
+    error.message);
+  // ...
 }
 ```
 
