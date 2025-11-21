@@ -41,6 +41,18 @@
 }
 ```
     <!-- @[app_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppClone/AppScope/app.json5) -->
+    
+    ``` JSON5
+    {
+      "app": {
+        // ...
+        "multiAppMode": {
+          "multiAppModeType": "appClone",
+          "maxCount": 2
+        }
+      }
+    }
+    ```
 
 2. 创建分身应用。
 
