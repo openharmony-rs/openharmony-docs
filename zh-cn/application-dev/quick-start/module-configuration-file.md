@@ -612,6 +612,68 @@ abilities示例：
 
 <!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+{
+  // ...
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "launchType": "singleton",
+        "description": "$string:description_main_ability",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "permissions": [],
+        "metadata": [],
+        "exported": true,
+        "continuable": true,
+        "skills": [
+          {
+            "actions": [
+              "ohos.want.action.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+            "uris": []
+          }
+        ],
+        "backgroundModes": [
+          "dataTransfer"
+        ],
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:red",
+        "removeMissionAfterTerminate": true,
+        "orientation": "$string:orientation",
+        "supportWindowMode": [
+          "fullscreen",
+          "split",
+          "floating"
+        ],
+        "maxWindowRatio": 3.5,
+        "minWindowRatio": 0.5,
+        "maxWindowWidth": 2560,
+        "minWindowWidth": 1400,
+        "maxWindowHeight": 300,
+        "minWindowHeight": 200,
+        "excludeFromMissions": false,
+        "preferMultiWindowOrientation": "default",
+        "isolationProcess": false,
+        "continueType": [
+          "continueType1",
+          "continueType2"
+        ],
+        "continueBundleName": [
+          "com.example.myapplication1",
+          "com.example.myapplication2"
+        ],
+        "process": ":processTag"
+      }
+    ],
+    // ...
+}
+```
+
 ## skills标签
 
 该标签标识UIAbility组件或者ExtensionAbility组件能够接收的[Want](../application-models/want-overview.md)的特征。
