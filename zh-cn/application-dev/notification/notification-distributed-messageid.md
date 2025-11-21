@@ -44,3 +44,28 @@
 2. 发布通知消息，通知消息中包含`appMessageId`字段。
 
    <!-- @[pub_appmsgid_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/ClearDuplicateNotifications.ets) -->
+   
+   ``` TypeScript
+   // publish回调
+   let publishCallback = (err: BusinessError): void => {
+     if (err) {
+       console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info(`Succeeded in publishing notification.`);
+     }
+   };
+   // 通知Request对象
+   let notificationRequest: notificationManager.NotificationRequest = {
+     id: 1,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'test_title',
+         text: 'test_text',
+         additionalText: 'test_additionalText'
+       }
+     },
+     appMessageId: 'test_appMessageId_1'
+   };
+   notificationManager.publish(notificationRequest, publishCallback);
+   ```
