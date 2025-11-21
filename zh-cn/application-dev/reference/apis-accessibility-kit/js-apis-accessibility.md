@@ -539,7 +539,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
 'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
-'announceForAccessibilityNotInterrupt' | 'scrolling'
+'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive'
 
 无障碍事件类型。
 
@@ -567,6 +567,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'requestFocusForAccessibilityNotInterrupt'     | 表示主动聚焦不打断的事件。<br>此事件从API version 18开始支持。 |
 | 'announceForAccessibilityNotInterrupt'         | 表示主动播报不打断的事件。<br>此事件从API version 18开始支持。 |
 | 'scrolling'                  | 表示滚动视图中有item被滚出屏幕的事件。<br>此事件从API version 18开始支持。 |
+| 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
 
 ## TextMoveUnit
 
@@ -754,7 +755,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **查询所有已启用的具有语音反馈的辅助应用示例：**
@@ -835,7 +836,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **查询所有已启用的具有语音反馈的辅助应用示例：**
@@ -917,7 +918,7 @@ try {
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **查询所有已启用的具有语音反馈的辅助应用示例：**
