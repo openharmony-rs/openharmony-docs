@@ -22,21 +22,6 @@ HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需
     - 由于HAR模块在API version 13及以下不支持UIAbility，因此在API version 13及以前的版本，需要删除abilities标签，并将关联的UIAbility组件删除或迁移到其他HAP模块中。
 
     <!-- @[hap_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    "name": "har",
-    "type": "har",
-    "deviceTypes": [
-      "default",
-      "tablet",
-      "2in1"
-    ]
-  }
-}
-```
-    <!-- @[hap_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/src/main/module.json5) -->
     
     ``` JSON5
     {
@@ -55,16 +40,6 @@ HAP不支持导出接口或ArkUI组件给其他模块或应用使用，如果需
 
 3. 修改HAP模块的hvigorfile.ts文件，将内容替换为以下内容：
 
-    <!-- @[hap_to_har_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/hvigorfile.ts) -->
-
-``` TypeScript
-import { harTasks } from '@ohos/hvigor-ohos-plugin';
-
-export default {
-  system: harTasks,  // 修改成har编译任务
-  plugins:[]
-}
-```
     <!-- @[hap_to_har_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/hvigorfile.ts) -->
     
     ``` TypeScript
