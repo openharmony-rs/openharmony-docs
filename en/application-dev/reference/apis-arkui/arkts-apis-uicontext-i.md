@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
 <!--Designer: @piggyguy; @liyi0903; @jiangdayuan-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -72,6 +72,33 @@ Specifies the gesture callback phases to listen for (passing an empty array will
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read-Only |  Optional      |Description      |
+| Name  | Type  | Read Only |  Optional      |Description      |
 | ------ | ---- | ---------- |---------- |---------- |
 |  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |No |  No      |Gesture event object.|
+
+## SwiperContentInfo<sup>23+</sup>
+
+Provides content area information of the **Swiper** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type| Read Only | Optional| Description                   |
+| --------- | ---- | ----- | ---- | ----------------------- |
+| id        | string  | No| No| ID of the **Swiper** component.|
+| uniqueId  | number  | No| No| Unique ID of the **Swiper** component.|
+| swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo23)\> | No| No| Information about the currently visible child components within the **Swiper** container.|
+
+## SwiperItemInfo<sup>23+</sup>
+
+Provides information about **Swiper** child components.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type| Read Only | Optional| Description                   |
+| --------- | ---- | ----- | ---- | -----------------------|
+| uniqueId  | number | No| No| Unique ID of the **Swiper** child component.  |
+| index     | number | No| No| Index of the child component in the **Swiper** container.|
