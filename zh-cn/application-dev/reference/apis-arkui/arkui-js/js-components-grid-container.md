@@ -30,7 +30,7 @@
 | columns | string&nbsp;\|&nbsp;number | auto | 否 | 设置当前布局总列数，使用string类型时仅支持auto，配置为auto时按照当前的sizetype决定总列数：<br/>-&nbsp;xs：2列。<br/>-&nbsp;sm：4列。<br/>-&nbsp;md：8列。<br/>-&nbsp;lg：12列。 |
 | sizetype | string | auto | 否 | 设置当前栅格使用的响应尺寸类型，支持xs,&nbsp;sm,&nbsp;md,&nbsp;lg类型，使用auto时按照当前容器大小自动选择xs,&nbsp;sm,&nbsp;md,&nbsp;lg类型。 |
 | gutter | &lt;length&gt; | 24px | 否 | 设置Gutter宽度。 |
-| gridtemplate<sup>6+</sup> | string | default | 否 | 当设置了columns和sizetype属性为auto时，可以设置栅格容器的布局模板，通过布局模块设置不同响应尺寸下的Columns、Gutters和Margins，详见表 gridtemplate可选值说明。 |
+| gridtemplate<sup>6+</sup> | string | default | 否 | 当设置了columns和sizetype属性为auto时，可以设置栅格容器的布局模板，通过布局模板设置不同响应尺寸下的Columns、Gutters和Margins，详见表 gridtemplate可选值说明。 |
 
 **表1** gridtemplate可选值说明<sup>6+</sup>
 
