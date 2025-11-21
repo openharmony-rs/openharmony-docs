@@ -241,7 +241,7 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                          | 值        | 说明                           |
 | ----------------------------- | --------- | ------------------------------ |
-| UNDERLINE_THICKNESS_VALID     | 1 << 0    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中的underlineThickness（下划线厚度）字有效。    |
+| UNDERLINE_THICKNESS_VALID     | 1 << 0    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中的underlineThickness（下划线厚度）字段有效。    |
 | UNDERLINE_POSITION_VALID      | 1 << 1    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中的underlinePosition（下划线位置）字段有效。  |
 | STRIKETHROUGH_THICKNESS_VALID | 1 << 2    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中strikethroughThickness（删除线厚度）是有效的。|
 | STRIKETHROUGH_POSITION_VALID  | 1 << 3    | 表示[FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)结构中strikethroughPosition（删除线位置）字段有效。  |
