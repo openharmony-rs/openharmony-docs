@@ -1000,6 +1000,38 @@ shortcuts标识应用的快捷方式信息。标签值为数组，包含四个�
 ```
 
    <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+   
+   ``` JSON5
+   {
+     "module": {
+       // ...
+       "abilities": [
+         {
+           "name": "EntryAbility",
+           "srcEntry": "./ets/entryability/EntryAbility.ets",
+           // ...
+             {
+               "entities": [
+                 "entity.system.home"
+               ],
+               "actions": [
+                 "ohos.want.action.home"
+               ]
+             }
+           ],
+           "metadata": [
+             {
+               "name": "ohos.ability.shortcuts",
+               "resource": "$profile:shortcuts_config"
+             }
+           ],
+           // ...
+         }
+       ],
+       // ...
+     }
+   }
+   ```
 
 ### wants标签
 
