@@ -27,6 +27,16 @@
 1. 导入NotificationManager模块。
 
    <!-- @[request_enable_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { common } from '@kit.AbilityKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   ```
 
 2. 拉起通知弹窗，向用户请求通知授权。
 
