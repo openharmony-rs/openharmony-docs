@@ -5333,7 +5333,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onControllerAttached(callback: () => void)
 
-onControllerAttached(callback: (() => void) | undefined): this
+ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
 因该回调调用时网页还未加载，无法在回调中使用有关操作网页的接口，例如[zoomIn](./arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](./arkts-apis-webview-WebviewController.md#zoomout)等，可以使用[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)、[getWebId](./arkts-apis-webview-WebviewController.md#getwebid)等操作网页不相关的接口。
@@ -5350,7 +5350,7 @@ onControllerAttached(callback: (() => void) | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
 
 **示例：**
 
