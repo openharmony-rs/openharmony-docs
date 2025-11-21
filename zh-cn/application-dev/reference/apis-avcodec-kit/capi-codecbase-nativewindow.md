@@ -7,6 +7,10 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## 概述
 
 为图形接口定义native层对象。
