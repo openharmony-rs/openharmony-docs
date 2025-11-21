@@ -167,7 +167,7 @@ startScan(): void
 - 应用程序在前台运行时，两分钟内最多可扫描四次。
 - 在后台运行时，三十分钟内最多可扫描一次。
 - 需要先检查Wi-Fi是否已启用，可通过wifiManager.isWifiActive()方法确认。
-- 通过on('wifiScanStateChange')订阅扫描状态变更事件，监听扫描完成通知。
+- 通过[on('wifiScanStateChange')](#wifimanager.on('wifiscanstatechange')9)订阅扫描状态变更事件，监听扫描完成通知。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -560,7 +560,12 @@ WLAN配置信息。
 
 ## WifiEapConfig<sup>10+</sup>
 
-可扩展身份验证协议配置信息。用于需要EAP认证的WLAN网络连接，如企业级网络。包含EAP认证方式、第二阶段认证方式、身份信息、密码、证书等配置项。
+可扩展身份验证协议配置信息。
+
+- WifiEapConfig是一个用于配置WLAN网络EAP认证的类型。
+- 用于需要EAP认证的WLAN网络连接，如企业级网络。
+- 包含EAP认证方式、第二阶段认证方式、身份信息、密码、证书等配置项。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -658,11 +663,11 @@ WAPI认证方式的枚举。
 
 addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加候选网络配置，使用Promise异步回调。
+添加候选网络配置，使用Promise异步回调，使用前先使能WLAN。
 
-- 该接口用于添加一个WLAN候选配置，使用前需要先启用WLAN。
+- 该接口用于添加一个WLAN候选配置。
 - 通过传入[WifiDeviceConfig](#wifideviceconfig9)对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
-- 返回一个Promise对象，解析后得到一个数字，表示配置的ID（用于区分、管理不同Wi-Fi配置，以及其他相关API操作和错误处理调试等)。
+- 返回一个Promise对象，解析后得到一个数字，表示配置的ID(区分、管理不同Wi-Fi配置，用于其他相关API操作，错误处理调试等)。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
