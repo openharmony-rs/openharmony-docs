@@ -208,8 +208,9 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
 
 index.d.ts
 <!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const escapableHandleScopeTest: () => string;
+
+``` TypeScript
+export const escapableHandleScopeTest: () => string; // napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
 ```
 
 
