@@ -38,6 +38,18 @@
 ```
 
     <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5)  -->
+    
+    ``` JSON5
+    {
+      "app": {
+        // ...
+        "multiAppMode": {
+          "multiAppModeType": "multiInstance",
+          "maxCount": 5
+        }
+      }
+    }
+    ```
 
 2. 创建应用多实例。
 
