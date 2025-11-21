@@ -393,6 +393,44 @@ struct Index {
 ```
 <!-- @[har_package_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { nativeAdd } from 'library';
+// ...
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontFamily('HarmonyHeiTi')
+        .fontWeight(FontWeight.Bold)
+        .fontSize(32)
+
+      // ...
+
+      //引用HAR的native方法
+      Button($r('app.string.native_add'))
+        .id('nativeAdd')
+        .height(48)
+        .width('624px')
+        .margin({ top: '4%', bottom: '6%' })
+        .type(ButtonType.Capsule)
+        .onClick(() => {
+          this.message = 'result: ' + nativeAdd(1, 2);
+        })
+
+      // ...
+    }
+    .width('100%')
+    .backgroundColor($r('app.color.page_background'))
+    .height('100%')
+  }
+}
+```
+
 ### 引用HAR的资源
 通过`$r`引用HAR中的资源，例如在HAR模块的`src/main/resources`里添加字符串资源（在string.json中定义，name：hello_har）和图片资源（icon_har.png），然后在Entry模块中引用该字符串和图片资源的示例如下所示：
 
