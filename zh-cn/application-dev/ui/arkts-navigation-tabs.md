@@ -261,7 +261,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 ![custom-navigation-bar](figures/custom-navigation-bar.png)
 
 
-系统默认情况下采用了下划线标志当前活跃的页签，而自定义导航栏需要自行实现相应的样式，用于区分当前活跃页签和未活跃页签。
+系统默认情况下采用了下划线标识当前活跃的页签，而自定义导航栏需要自行实现相应的样式，用于区分当前活跃页签和未活跃页签。
 
 
 设置自定义导航栏需要使用tabBar的参数，以其支持的CustomBuilder的方式传入自定义的函数组件样式。例如这里声明tabBuilder的自定义函数组件，传入参数包括页签文字title，对应位置index，以及选中状态和未选中状态的图片资源。通过当前活跃的currentIndex和页签对应的targetIndex匹配与否，决定UI显示的样式。
@@ -701,13 +701,13 @@ struct MyComponent {
 ```
 基于以上示例代码为例，不同场景下的缓存策略如下：
 
-1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContenet1~2释放，TabContent3~5被缓存。
+1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContent1~2释放，TabContent3~5被缓存。
 
 **图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
 
 ![cachedMaxCount1](figures/cachedMaxCount1.png)
 
-2. 如图17所示，使用默认翻页动画，CACHE_LATEST_SWITCHED模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存，TabContenet2释放。再切换到red页，TabContent1、3、5被缓存，TabContenet4释放。
+2. 如图17所示，使用默认翻页动画，CACHE_LATEST_SWITCHED模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存，TabContent2释放。再切换到red页，TabContent1、3、5被缓存，TabContent4释放。
 
 **图17** 默认翻页动画，CACHE_LATEST_SWITCHED模式示意图
 
