@@ -461,6 +461,54 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## window.setSpecificSystemWindowZIndex<sup>23+</sup>
+setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise&lt;void&gt;
+设置某种类型窗口的zIndex值。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名          | 类型   | 必填  | 说明                    |
+| -------------- | ------ | ----- | ----------------------- |
+| windowType | WindowType | 是    |要设置的窗口类型。|
+| zIndex | int | 是    | zIndex 值，使用整数。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| ------- | --------------------------------------------- |
+| 202     | Permission verification failed, non-system application uses system AP. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation.                       |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  window.setSpecificSystemWindowZIndex(window.WindowType.TYPE_DIALOG, 200).then((data) => {
+    console.info('Succeeded in set zIndex');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set zIndex. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set zIndex. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
