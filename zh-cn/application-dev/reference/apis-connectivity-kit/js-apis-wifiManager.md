@@ -658,11 +658,11 @@ WAPI认证方式的枚举。
 
 addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加候选网络配置，使用Promise异步回调，使用前先使能WLAN。
+添加候选网络配置，使用Promise异步回调。
 
-- 该接口用于添加一个WLAN候选配置。
+- 该接口用于添加一个WLAN候选配置，使用前需要先启用WLAN。
 - 通过传入[WifiDeviceConfig](#wifideviceconfig9)对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
-- 返回一个Promise对象，解析后得到一个数字，表示配置的ID(区分、管理不同Wi-Fi配置，用于其他相关API操作，错误处理调试等)。
+- 返回一个Promise对象，解析后得到一个数字，表示配置的ID（用于区分、管理不同Wi-Fi配置，以及其他相关API操作和错误处理调试等)。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
