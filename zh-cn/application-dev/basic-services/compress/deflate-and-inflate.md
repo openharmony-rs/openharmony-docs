@@ -65,6 +65,41 @@ struct Index {
 }
 ```
   <!-- @[deflate_and_inflate_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { fileIo as fs} from '@kit.CoreFileKit';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State dataSize: number = 0;
+  
+    build() {
+      Row() {
+        Column() {
+          // 在应用沙箱目录下创建文件data.txt，并写入测试数据
+          Button('创建测试文件data.txt').onClick(() => {
+            let path = this.getUIContext()?.getHostContext()?.filesDir;
+            // 创建文件data.txt
+            let inFile = fs.openSync(path + '/data.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+            // 写入测试数据
+            for (let index = 0; index < 100; index++) {
+              fs.writeSync(inFile.fd, index + ': hello world, hello world, hello world, hello world, hello world.\n');
+            }
+            // 获取测试数据原始大小，并保存到dataSize中
+            let stat = fs.statSync(inFile.path);
+            this.dataSize = stat.size;
+            console.info('dataSize: ' + this.dataSize);
+            // 关闭文件
+            fs.closeSync(inFile);
+          })
+        }
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
+  ```
 
 ### Zip文件的压缩与解压
 
