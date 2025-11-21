@@ -1041,6 +1041,7 @@ struct Page {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
+const TAB_STATE_INITIAL_VALUE = 47;
 
 @Component
 struct ChildOfParamComponent {
@@ -1091,7 +1092,7 @@ struct DelayComponent {
 @Component({ freezeWhenInactive: true })
 struct TabsComponent {
   private controller: TabsController = new TabsController();
-  @State @Watch('onChange') tabState: number = 47;
+  @State @Watch('onChange') tabState: number = TAB_STATE_INITIAL_VALUE;
 
   onChange() {
     hilog.info(DOMAIN, TAG, `Appmonitor TabsComponent: tabState changed:${this.tabState}`);
