@@ -42,7 +42,7 @@ List除了提供垂直和水平布局能力、超出屏幕时可以滚动的自�
 
 ![zh-cn_image_0000001511580940](figures/zh-cn_image_0000001511580940.png)
 
-利用水平布局能力可以是构建单行或多行水平滚动列表，如下图所示。
+利用水平布局能力可以构建单行或多行水平滚动列表，如下图所示。
 
   **图3** 水平滚动列表（左：单行；右：多行）  
 
@@ -178,7 +178,7 @@ List组件创建时，所有ListItem将会被创建。显示区域内的ListItem
 ### 使用LazyForEach创建ListItem
 List组件创建时，显示区域中的ListItem会被创建与布局。预加载范围内的ListItem在空闲时创建与布局，但是不会被挂载到组件树上。预加载范围外的ListItem则不会被创建。
 
-当List组件滑动时，进入预加载及显示区域的ListItem将被创建与布局，创建ListItem过程中，若ListItem内部如果包含@Reusable标记的自定义组件，则会优先从缓存池中复用。滑出预加载及显示区域的ListItem将被销毁，其内部若含@Reusable标记的自定义组件，则会被回收并加入缓存池。
+当List组件滑动时，进入预加载及显示区域的ListItem将被创建与布局，创建ListItem过程中，若ListItem内部包含@Reusable标记的自定义组件，则会优先从缓存池中复用。滑出预加载及显示区域的ListItem将被销毁，其内部若含@Reusable标记的自定义组件，则会被回收并加入缓存池。
 
 **图8** LazyForEach创建ListItem的生命周期
 ![](./figures/list_lazyforeach.png)
@@ -188,7 +188,7 @@ List组件创建时，显示区域中的ListItem会被创建与布局。预加�
 
 List组件创建时，显示区域内的ListItem将被创建和布局。预加载范围内的ListItem在空闲时创建和布局，并且挂载至组件树上。预加载范围外的ListItem则不会被创建。
 
-当List组件滑动时，进入预加载及显示区域的ListItem，将从缓存池中获取ListItem并复用及布局，若缓存池中无ListItem，则会新创建并布局。滑出预加载及显示区域的ListItem会将被回收至缓存池。
+当List组件滑动时，进入预加载及显示区域的ListItem，将从缓存池中获取ListItem并复用及布局，若缓存池中无ListItem，则会新创建并布局。滑出预加载及显示区域的ListItem将被回收至缓存池。
 
 **图9** Repeat使用virtualScroll创建ListItem的生命周期
 ![](./figures/list_repeatv.png)
