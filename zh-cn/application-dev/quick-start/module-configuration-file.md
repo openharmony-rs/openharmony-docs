@@ -1943,4 +1943,23 @@ definePermissions标签示例：
 }
 ```
 <!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "definePermissions": [
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH",
+        "grantMode": "system_grant",
+        "availableLevel": "system_core",
+        "provisionEnable": true,
+        "distributedSceneEnable": false,
+        "label": "$string:EntryAbility_label"
+      }
+    ],
+    // ...
+  },
+}
+```
 <!--DelEnd-->
