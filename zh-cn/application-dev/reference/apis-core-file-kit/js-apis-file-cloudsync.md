@@ -232,6 +232,7 @@ start(): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   let callback = (pg: cloudSync.SyncProgress) => {
@@ -277,6 +278,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.start((err: BusinessError) => {
@@ -317,6 +319,7 @@ stop(): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.stop().then(() => {
@@ -355,6 +358,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.stop((err: BusinessError) => {
@@ -393,6 +397,7 @@ getLastSyncTime(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.getLastSyncTime().then((timeStamp: number) => {
@@ -431,6 +436,7 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
@@ -499,6 +505,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let callback = (pg: cloudSync.DownloadProgress) => {
     console.info("download state：" + pg.state);
@@ -587,6 +594,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileCache = new cloudSync.CloudFileCache();
 
   let callback = (pg: cloudSync.DownloadProgress) => {
@@ -682,6 +690,7 @@ start(uri: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -734,6 +743,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -844,6 +854,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -888,6 +899,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -1202,6 +1214,7 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 
   ```ts
   import { fileUri } from '@kit.CoreFileKit';
+
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
   let onCallback1 = (changeData: cloudSync.ChangeData) => {
@@ -1246,6 +1259,7 @@ unregisterChange(uri: string): void
 
   ```ts
   import { fileUri } from '@kit.CoreFileKit';
+
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
   let onCallback1 = (changeData: cloudSync.ChangeData) => {
