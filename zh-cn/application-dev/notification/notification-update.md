@@ -42,6 +42,35 @@
 2. 发布进度条通知。
 
    <!-- @[pub_progress_bar_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/UpdateNotification.ets) -->
+   
+   ``` TypeScript
+   let notificationRequest: notificationManager.NotificationRequest = {
+     id: 5,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'test_title',
+         text: 'test_text',
+         additionalText: 'test_additionalText'
+       }
+     },
+     // 构造进度条模板，name字段当前需要固定配置为downloadTemplate
+     template: {
+       name: 'downloadTemplate',
+       data: { title: 'File Title', fileName: 'music.mp4', progressValue: 50 }
+     }
+   };
+   
+   // 发布通知
+   notificationManager.publish(notificationRequest, (err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+   });
+   ```
 
 3. 通过[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)接口携带updateOnly字段更新进度条通知。
 
