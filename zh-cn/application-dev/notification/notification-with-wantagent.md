@@ -117,6 +117,42 @@
    > - 如果封装WantAgent至通知按钮中，点击通知后，该通知下方会出现通知按钮，可以点击按钮触发WantAgent。
 
    <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification/Notification/entry/src/main/ets/pages/AddWantAgent.ets) -->
+   
+   ``` TypeScript
+   // 构造NotificationActionButton对象
+   let actionButton: notificationManager.NotificationActionButton = {
+     title: 'open_the_app',
+     // wantAgentObj使用前需要保证已被赋值（即步骤3执行完成）
+     // 通知按钮的WantAgent
+     wantAgent: wantAgentObj
+   };
+   
+   // 构造NotificationRequest对象
+   let notificationRequest: notificationManager.NotificationRequest = {
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'one_button_notify',
+         text: 'Click on this notification twice to open the app',
+         additionalText: 'Test_AdditionalText',
+       },
+     },
+     id: 6,
+     // 通知消息的WantAgent
+     wantAgent: wantAgentObj,
+     // 通知按钮
+     actionButtons: [actionButton],
+   };
+   
+   notificationManager.publish(notificationRequest, (err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+   });
+   ```
 
 <!--RP1-->
 
