@@ -1124,6 +1124,20 @@ data标签示例：
 ```
 
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
+  
+  ``` JSON5
+  // entry2支持的设备类型
+  {
+    "module": {
+      "name": "entry2",
+      "type": "entry",
+      "deviceTypes": [
+        "tv",
+        "tablet"
+      ],
+      // ...
+  }
+  ```
 
 
 - **配置规则：** 该标签支持配置四个属性，包括屏幕形状([screenShape](#screenshape标签))、窗口分辨率([screenWindow](#screenwindow标签))、屏幕像素密度([screenDensity](#screendensity标签) )、设备所在国家与地区([countryCode](#countrycode标签))。详见下表。
