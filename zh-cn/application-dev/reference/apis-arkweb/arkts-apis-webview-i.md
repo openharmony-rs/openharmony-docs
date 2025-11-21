@@ -233,7 +233,7 @@ cookie的相关字段。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | ---- |
-| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#WebHttpCookieSameSitePolicy21) | 是 | 否 | cookie的同站策略。 |
+| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy21) | 是 | 否 | cookie的同站策略。 |
 | expiresDate | string | 是 | 否 | cookie的到期日期。 |
 | name | string | 是 | 否 | cookie的名称。 |
 | isSessionCookie | boolean | 是 | 否 | 标记该cookie是否是session cookie。<br>true表示是session cookie，false表示不是session cookie。 |

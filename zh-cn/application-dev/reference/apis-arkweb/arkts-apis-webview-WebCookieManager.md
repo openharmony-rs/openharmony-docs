@@ -1478,7 +1478,7 @@ static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#WebHttpCookie21)\>\> | Promise实例，用于获取所有cookie及其对应的字段值。 |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie21)\>\> | Promise实例，用于获取所有cookie及其对应的字段值。 |
 
 **示例：**
 
