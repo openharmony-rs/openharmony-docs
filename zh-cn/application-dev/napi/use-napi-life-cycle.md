@@ -416,14 +416,24 @@ export const deleteReference: () => string | undefined; // napi_delete_reference
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// napi_add_finalizer
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API addFinalizer: %{public}s', JSON.stringify(testNapi.addFinalizer()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API createReference: %{public}s', JSON.stringify(testNapi.createReference()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API useReference: %{public}s', JSON.stringify(testNapi.useReference()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API deleteReference: %{public}s', testNapi.deleteReference());
+  hilog.info(0x0000, 'testTag', 'Test Node-API addFinalizer: %{public}s',
+    JSON.stringify(testNapi.addFinalizer()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API createReference: %{public}s',
+    JSON.stringify(testNapi.createReference()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API useReference: %{public}s',
+    JSON.stringify(testNapi.useReference()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API deleteReference: %{public}s',
+    testNapi.deleteReference());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
+    error.message);
+  // ...
 }
 ```
 
