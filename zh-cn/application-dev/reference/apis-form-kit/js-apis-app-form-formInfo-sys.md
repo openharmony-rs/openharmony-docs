@@ -12,7 +12,7 @@ formInfo模块提供了卡片信息和状态等相关类型和枚举。
 >
 > - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公共接口参见[@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md)。
 
 ## 导入模块
@@ -29,7 +29,7 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| previewImages<sup>18+</sup> | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
+| previewImages<sup>18+</sup> | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
 | enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。 <br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
 | resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTs-Dyn起始版本：** 20 <br/>**ArkTs-Sta起始版本：** 22|
@@ -57,6 +57,10 @@ import { formInfo } from '@kit.FormKit';
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 22
 
 | 名称        |  值   | 说明         |
 | ----------- | ---- | ------------ |
@@ -112,8 +116,8 @@ import { formInfo } from '@kit.FormKit';
 | 名称        | 类型   | 必填         |说明         |
 | ----------- | ---- | ------------ |------------ |
 | bundleName<sup>12+</sup>    | string    |否    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedDimensions<sup>12+</sup> | Array\<number\> |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedShapes<sup>12+</sup>  | Array\<number\> |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。   |
+| supportedDimensions<sup>12+</sup> | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。  |
+| supportedShapes<sup>12+</sup>  | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。   |
 
 ## FormLocation<sup>12+</sup>
 

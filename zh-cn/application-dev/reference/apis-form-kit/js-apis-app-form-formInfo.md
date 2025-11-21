@@ -1,5 +1,4 @@
 # @ohos.app.form.formInfo (formInfo)
-# @ohos.app.form.formInfo (formInfo)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
