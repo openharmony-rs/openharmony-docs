@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef void* ffrt_loop_t
+```
+
 ## 概述
 
 loop句柄。
