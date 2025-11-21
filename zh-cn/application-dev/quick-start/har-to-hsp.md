@@ -78,6 +78,26 @@ struct PageIndex {
 }
 ```
     <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct PageIndex {
+      @State message: string = 'hello world';
+    
+      build() {
+        Row() {
+          Column() {
+            Text(this.message)
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
 4. 删除HAR模块的build-profile.json5文件中的consumerFiles字段配置。
 
