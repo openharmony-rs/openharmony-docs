@@ -137,6 +137,13 @@ export default {
 }
 ```
     <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
+    
+    ``` JSON5
+    {
+      // ...
+      "packageType": "InterfaceHar"
+    }
+    ```
 
 7. 修改项目根目录下的build-profile.json5文件，在modules标签下找到library的配置，新增targets标签。
 
