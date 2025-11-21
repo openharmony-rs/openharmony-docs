@@ -94,7 +94,34 @@
               "entity.system.home"
             ],
             "actions": [
-              "ohos.want.action.home"
+  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
+  
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "abilities": [
+        {
+          // ...
+          "icon": "$media:icon",
+          // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
+          "label": "$string:EntryAbility_label",
+          "skills": [
+            {
+              "entities": [
+                "entity.system.home"
+              ],
+              "actions": [
+                "ohos.want.action.home"
+              ]
+            }
+          ]
+        }
+      ],
+      // ...
+    }
+  }
+  ```
             ]
           }
         ]
