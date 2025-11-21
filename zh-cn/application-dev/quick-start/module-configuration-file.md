@@ -1686,6 +1686,21 @@ hnpPackages示例：
 ```
 <!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ...
+    "hnpPackages": [
+      {
+        "package": "hnpsample.hnp",
+        "type": "public"
+      }
+    ],
+    // ...
+  },
+}
+```
+
 ## fileContextMenu标签
 
 该标签标识当前HAP的右键菜单配置项，是一个profile文件资源，用于指定描述应用注册右键菜单配置文件。仅在PC/2in1设备上生效。仅允许在entry类型模块中配置。
