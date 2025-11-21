@@ -51,7 +51,7 @@
 | MPEG(MP3) | [OH_AVCODEC_MIMETYPE_AUDIO_MPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | Flac | [OH_AVCODEC_MIMETYPE_AUDIO_FLAC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | Vorbis | [OH_AVCODEC_MIMETYPE_AUDIO_VORBIS](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AMR(amrnb，amrwb) | [OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AMR(amrnb，amrwb) | [OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、[OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | G711mu | [OH_AVCODEC_MIMETYPE_AUDIO_G711MU](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | APE | [OH_AVCODEC_MIMETYPE_AUDIO_APE](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | G711a(API20) | [OH_AVCODEC_MIMETYPE_AUDIO_G711A](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
