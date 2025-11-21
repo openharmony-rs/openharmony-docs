@@ -66,6 +66,15 @@ export default {
 }
 ```
     <!-- @[hap_to_har_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/hvigorfile.ts) -->
+    
+    ``` TypeScript
+    import { harTasks } from '@ohos/hvigor-ohos-plugin';
+    
+    export default {
+      system: harTasks,  // 修改成HAR编译任务
+      plugins:[]
+    }
+    ```
 
 4. 在HAP模块的根目录下创建名为Index.ets的文件，并在模块的oh-package.json5文件中的main标签配置该文件。Index.ets文件用于导出ArkUI组件或接口，详细导出方法参见[HAR-开发](./har-package.md#开发)。
 
