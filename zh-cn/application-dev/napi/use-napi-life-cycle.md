@@ -67,7 +67,9 @@ import testNapi from 'libentry.so';
 cpp部分代码
 
 <!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_open_handle_scope、napi_close_handle_scope
 static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
 {
     // 通过调用napi_open_handle_scope来创建一个句柄作用域
