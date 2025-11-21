@@ -148,7 +148,7 @@
 // [End module_abilities_skills]
 // [End module_metadata]
 ```
-
+<!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ## 配置文件标签
 
@@ -250,7 +250,7 @@ deviceTypes示例：
 // [End module_abilities]
 ```
 
-
+<!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ## pages标签
 
@@ -269,6 +269,8 @@ deviceTypes示例：
   // [EndExclude module_abilities_skills]
 }
 ```
+
+<!-- @[module_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 在开发视图的resources/base/profile下面定义配置文件main_pages.json，其中文件名"main_pages"可自定义，需要和pages标签指定的信息对应。配置文件中列举了当前应用组件中的页面信息，包含页面的路由信息和显示窗口相关的配置。
 
@@ -353,6 +355,7 @@ deviceTypes示例：
 // [End module_abilities_skills]
 ```
 
+<!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ## abilities标签
 
@@ -472,6 +475,7 @@ abilities示例：
 // [End module_extensionAbilities]
 ```
 
+<!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ## skills标签
 
@@ -553,6 +557,7 @@ skills示例：
 // [End module_systemTheme]
 ```
 
+<!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ## extensionAbilities标签
 
@@ -631,6 +636,8 @@ extensionAbilities示例：
 // [End module_dependencies]
 // [End module_proxyData]
 ```
+
+<!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 
 ## shortcuts标签
@@ -724,6 +731,8 @@ shortcuts标识应用的快捷方式信息。标签值为数组，包含四个�
 }
 ```
 
+   <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
 ### wants标签
 
 此标签用于标识快捷方式内定义的目标wants信息集合。
@@ -781,6 +790,7 @@ data标签示例：
 }
 // [End module_distributionFilter_metadata]
 ```
+  <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
 
 
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
@@ -798,6 +808,8 @@ data标签示例：
 	// ···
 }
 ```
+
+  <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
 
 
 - **配置规则：** 该标签支持配置四个属性，包括屏幕形状([screenShape](#screenshape标签))、窗口分辨率([screenWindow](#screenwindow标签))、屏幕像素密度([screenDensity](#screendensity标签) )、设备所在国家与地区([countryCode](#countrycode标签))。详见下表。
@@ -914,6 +926,7 @@ data标签示例：
 }
 ```
 
+  <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
 
 ## testRunner标签
 
@@ -951,6 +964,7 @@ testRunner标签示例：
 }
 ```
 
+<!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ## atomicService标签
 
@@ -1034,7 +1048,7 @@ dependencies标签示例：
 }
 // [End module_testRunner]
 ```
-
+<!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ## proxyData标签
 
@@ -1082,7 +1096,7 @@ proxyData标签示例：
 // [End module_testRunner]
 // [End module_dependencies]
 ```
-
+<!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ## routerMap标签
 
@@ -1230,7 +1244,7 @@ appEnvironments标签示例：
 // [End module_abilities_metadata]
 ```
 
-
+<!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ## hnpPackages标签
 
@@ -1264,7 +1278,7 @@ hnpPackages示例：
 }
 // [End module_definePermissions]
 ```
-
+<!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 
 ## fileContextMenu标签
 
@@ -1294,7 +1308,7 @@ fileContextMenu标签示例
 // [End module_abilities_metadata]
 // [End module_appEnvironments]
 ```
-
+<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 在开发视图的resources/base/profile下面定义配置文件menu.json，其中文件名“menu.json”可自定义，需要和fileContextMenu标签指定的信息对应。配置文件中描述了当前应用注册的右键菜单的项目和响应行为。
 配置文件根节点名称为fileContextMenu，为对象数组，标识当前module注册右键菜单的数量。（单模块和单应用注册数量不能超过5个，配置超过数量当前只解析随机5个）
@@ -1427,7 +1441,7 @@ systemTheme标签示例：
 // [End module_appEnvironments]
 // [End module_fileContextMenu]
 ```
-
+<!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 在开发视图的resources/base/profile下面定义配置文件theme_config.json，其中文件名“theme_config.json”可自定义为“theme_config”开头文件名，例如"theme_config"、"theme_config_1"。需要和systemTheme标签指定的信息对应。配置文件中标识当前应用使用的系统主题。
 
@@ -1488,5 +1502,5 @@ definePermissions标签示例：
   },
 }
 ```
-
+<!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 <!--DelEnd-->
