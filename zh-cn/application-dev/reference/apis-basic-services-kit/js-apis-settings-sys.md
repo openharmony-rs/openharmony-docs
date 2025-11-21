@@ -3,7 +3,7 @@
 本模块提供访问设置数据项的能力。
 
 > **说明：**
->
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.settings (设置数据项名称)](./js-apis-settings.md)。
 
@@ -21,9 +21,13 @@ import settings from '@ohos.settings';
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                | 类型   | 可读 | 可写 | 说明                                                         |
 | ------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| USER_SECURITY<sup>11+</sup>      | string | 是   | 是   | 用户安全属性域                                          |
+| USER_SECURITY<sup></sup>      | string | 是   | 是   | 用户安全属性域                                          |
 
 ## settings.setValue<sup>(deprecated)</sup>
 
@@ -40,6 +44,8 @@ setValue(dataAbilityHelper: DataAbilityHelper, name: string, value: object, call
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -66,6 +72,8 @@ setValue(dataAbilityHelper: DataAbilityHelper, name: string, value: object): Pro
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
