@@ -150,6 +150,90 @@
 ```
 <!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "tv",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "pages": "$profile:main_pages", // 资源配置，指向profile下面定义的配置文件main_pages.json
+    "appStartup": "$profile:app_startup_config",
+    "metadata": [
+      {
+        "name": "string",
+        "value": "string",
+        "resource": "$profile:distributionFilter_config"
+      },
+      // ...
+    ],
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindow": "$profile:start_window",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          // ...
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ],
+        // ...
+        "continueType": [
+          "continueType1"
+        ],
+        "continueBundleName": [
+          "com.example.myapplication1",
+          "com.example.myapplication2"
+        ],
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH",
+        "reason": "$string:reason",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
+      }
+    ],
+    "querySchemes": [
+      "app1Scheme",
+      "app2Scheme"
+    ],
+    "routerMap": "$profile:router_map",
+    "appEnvironments": [
+      {
+        "name": "name1",
+        "value": "value1"
+      }
+    ],
+    "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义的配置文件menu.json
+    "crossAppSharedConfig": "$profile:shared_config",
+    // ...
+  }
+}
+```
+
 ## 配置文件标签
 
 module.json5配置文件包含以下标签。
