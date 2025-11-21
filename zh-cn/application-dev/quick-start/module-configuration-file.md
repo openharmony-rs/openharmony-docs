@@ -926,6 +926,20 @@ data标签示例：
 // [End module_distributionFilter_metadata]
 ```
   <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
+  
+  ``` JSON5
+  // entry1支持的设备类型
+  {
+    "module": {
+      "name": "entry1",
+      "type": "entry",
+      "deviceTypes": [
+        "tv",
+        "tablet"
+      ],
+      // ...
+  }
+  ```
 
 
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
