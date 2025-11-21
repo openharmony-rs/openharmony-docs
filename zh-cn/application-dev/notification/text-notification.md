@@ -64,4 +64,29 @@
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
      });
      ```
+     
+     ``` TypeScript
+     let notificationRequest: notificationManager.NotificationRequest = {
+       id: 3,
+       content: {
+         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE, // 多行文本类型通知
+         multiLine: {
+           title: 'test_multi_line_title',
+           text: 'test_text',
+           briefText: 'test_briefText',
+           longTitle: 'test_longTitle',
+           lines: ['line_01', 'line_02', 'line_03'],
+         }
+       }
+     };
+     // 发布通知
+     notificationManager.publish(notificationRequest, (err: BusinessError) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
+     });
+     ```
     
