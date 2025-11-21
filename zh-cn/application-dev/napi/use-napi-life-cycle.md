@@ -217,11 +217,19 @@ export const escapableHandleScopeTest: () => string; // napi_open_escapable_hand
 ArkTS侧示例代码
 
 <!-- @[ark_napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// napi_open_escapable_handle_scope napi_close_escapable_handle_scope、napi_escape_handle
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest: %{public}s', testNapi.escapableHandleScopeTest());
+  hilog.info(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest: %{public}s',
+    testNapi.escapableHandleScopeTest());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API EscapableHandleScopeTest errorCode: %{public}s, errorMessage: %{public}s',
+    error.code,
+    error.message);
+  // ...
 }
 ```
 
