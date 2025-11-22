@@ -7611,7 +7611,7 @@ try {
 
 ## offSubWindowClose<sup>22+</sup>
 
-offSubWindowClose(callback: Callback&lt;void&gt;): void
+offSubWindowClose(callback?: Callback&lt;void&gt;): void
 
 关闭子窗口关闭事件的监听。
 
