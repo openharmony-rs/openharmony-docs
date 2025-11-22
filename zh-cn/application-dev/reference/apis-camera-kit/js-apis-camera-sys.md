@@ -288,6 +288,15 @@ on(type: 'cameraMute', callback: AsyncCallback\<boolean\>): void
 | type     | string          | 是   | 监听事件，固定为'cameraMute'，系统相机开关，cameraManager对象获取成功后可监听。系统设置打开或禁用相机会触发该事件并返回状态。 |
 | callback | AsyncCallback\<boolean> | 是   | 回调函数，用于获取禁用状态变化信息，返回true为开启状态，返回false为禁用状态。               |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202               |  Not System Application.                  |
+
+
 **示例：**
 
 ```ts
@@ -323,6 +332,14 @@ off(type: 'cameraMute', callback?: AsyncCallback\<boolean\>): void
 | -------- | --------------- | ---- |---------------------------------------------------------|
 | type     | string          | 是   | 监听事件，固定为'cameraMute'，系统相机开关，cameraManager对象获取成功后可监听。 |
 | callback | AsyncCallback\<boolean> | 否   | 回调函数，可选参数，返回true为开启状态，返回false为禁用状态，有就是匹配on('cameraMute') callback（callback对象不可是匿名函数）。                  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202               |  Not System Application.                  |
 
 **示例：**
 
@@ -501,7 +518,7 @@ createDeferredPreviewOutput(profile?: Profile): PreviewOutput
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -622,6 +639,14 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDet
 | type     | string                           | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。相机模组遮挡状态发生改变时触发该事件并返回结果。 |
 | callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 是   | 回调函数，用于获取结果。返回遮挡状态。  |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+
 **示例：**
 
 ```ts
@@ -655,6 +680,14 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionD
 | type     | string          | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。 |
 | callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 否   | 回调函数，可选参数，有就是匹配on('cameraOcclusionDetection') callback（callback对象不可是匿名函数）。                  |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+
 **示例：**
 
 ```ts
@@ -681,10 +714,10 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称      | 类型                          | 只读 | 可选 | 说明            |
-| -------- | ----------------------------- |----- |---| -------------- |
-| DEPTH_DATA_ACCURACY_RELATIVE      | number                        |  是  | 否 | 相对精度，基于视差计算得到的深度图。      |
-| DEPTH_DATA_ACCURACY_ABSOLUTE      | number                        |  是  | 否 | 绝对精度，基于测距计算得到的深度图。      |
+| 名称                               | 值  |                       说明            |
+| --------------------------------- | ----| -------------------------------------- |
+| DEPTH_DATA_ACCURACY_RELATIVE      | 0   | 相对精度，基于视差计算得到的深度图。      |
+| DEPTH_DATA_ACCURACY_ABSOLUTE      | 1   | 绝对精度，基于测距计算得到的深度图。      |
 
 ## DepthProfile<sup>13+</sup>
 
@@ -769,10 +802,11 @@ start(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
+| 202 | Not System Application. |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -805,6 +839,14 @@ stop(): Promise\<void\>
 | 类型            | 说明                     |
 | -------------- | ----------------------- |
 | Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **示例：**
 
@@ -841,6 +883,14 @@ on(type: 'depthDataAvailable', callback: AsyncCallback\<DepthData\>): void
 | type     | string     | 是   | 监听事件，固定为'depthDataAvailable'，depthDataOutput创建成功后可监听。 |
 | callback | AsyncCallback\<[DepthData](#depthdata13)\> | 是   | 回调函数，用于监听深度信息上报。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+
 **示例：**
 
 ```ts
@@ -874,6 +924,14 @@ off(type: 'depthDataAvailable', callback?: AsyncCallback\<DepthData\>): void
 | -------- | ---------------------- | ---- | ------------------------------------------ |
 | type     | string                 | 是   | 监听事件，固定为'depthDataAvailable'，depthDataOutput创建成功后可监听。 |
 | callback | AsyncCallback\<[DepthData](#depthdata13)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **示例：**
 
@@ -913,6 +971,14 @@ on(type: 'error', callback: ErrorCallback): void
 | type     | string        | 是   | 监听事件，固定为'error'，depthDataOutput创建成功可监听。 |
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。  |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
+
 **示例：**
 
 ```ts
@@ -943,6 +1009,14 @@ off(type: 'error', callback?: ErrorCallback): void
 | -------- | --------------| ---- | ------------------------ |
 | type     | string        | 是   | 监听事件，固定为'error'，depthDataOutput创建成功可监听。 |
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **示例：**
 
@@ -1243,7 +1317,7 @@ isSketchSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息                    |
 | --------------- |-------------------------|
@@ -1285,7 +1359,7 @@ getSketchRatio(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1319,7 +1393,7 @@ enableSketch(enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID     | 错误信息                        |
 |-----------|-----------------------------|
@@ -1366,7 +1440,7 @@ attachSketchSurface(surfaceId: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                                           |
 |---------|------------------------------------------------|
@@ -1415,7 +1489,7 @@ on(type: 'sketchStatusChanged', callback: AsyncCallback\<SketchStatusData\>): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 |---------|-------------------------------|
@@ -1458,7 +1532,7 @@ off(type: 'sketchStatusChanged', callback?: AsyncCallback\<SketchStatusData\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 |---------|-------------------------------|
@@ -1508,7 +1582,7 @@ getThumbnail(): Promise<image.PixelMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1544,7 +1618,7 @@ release(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1586,7 +1660,7 @@ burstCapture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1634,7 +1708,7 @@ confirmCapture(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1681,7 +1755,7 @@ isDeferredImageDeliverySupported(type: DeferredDeliveryImageType): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息                                                |
 | --------------- |-----------------------------------------------------|
@@ -1724,7 +1798,7 @@ isDeferredImageDeliveryEnabled(type: DeferredDeliveryImageType): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1761,7 +1835,7 @@ deferImageDelivery(type: DeferredDeliveryImageType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1796,7 +1870,7 @@ isAutoHighQualityPhotoSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1832,7 +1906,7 @@ enableAutoHighQualityPhoto(enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1870,7 +1944,7 @@ on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback\<DeferredPhotoPr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1916,7 +1990,7 @@ off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback\<DeferredPhoto
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1963,7 +2037,7 @@ isQuickThumbnailSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2025,7 +2099,7 @@ enableQuickThumbnail(enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2180,7 +2254,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2391,7 +2465,7 @@ getSupportedBeautyTypes(): Array\<BeautyType\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2438,7 +2512,7 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2495,7 +2569,7 @@ getSupportedExposureRange(): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2535,7 +2609,7 @@ getExposure(): number
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2573,6 +2647,8 @@ setExposure(exposure: number): void
 | value    | number                    | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
 
  **错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2673,7 +2749,7 @@ isSceneFeatureSupported(type: SceneFeatureType): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                                           |
 |---------|------------------------------------------------|
@@ -2708,7 +2784,7 @@ enableSceneFeature(type: SceneFeatureType, enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                                           |
 |---------|------------------------------------------------|
@@ -2781,7 +2857,7 @@ getZoomPointInfos(): Array\<ZoomPointInfo\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2825,7 +2901,7 @@ prepareZoom(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2860,7 +2936,7 @@ unprepareZoom(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2921,7 +2997,7 @@ setBeauty(type: BeautyType, value: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2967,7 +3043,7 @@ getBeauty(type: BeautyType): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3015,7 +3091,7 @@ getSupportedColorEffects(): Array\<ColorEffectType\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3055,7 +3131,7 @@ setColorEffect(type: ColorEffectType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3088,7 +3164,7 @@ getColorEffect(): ColorEffectType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3141,7 +3217,7 @@ getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3175,7 +3251,7 @@ setPortraitEffect(effect: PortraitEffect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3218,7 +3294,7 @@ getPortraitEffect(): PortraitEffect
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3269,7 +3345,7 @@ getSupportedVirtualApertures(): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3303,7 +3379,7 @@ getVirtualAperture(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3337,7 +3413,7 @@ setVirtualAperture(aperture: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3370,7 +3446,7 @@ getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3404,7 +3480,7 @@ getPhysicalAperture(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3438,7 +3514,7 @@ setPhysicalAperture(aperture: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3481,11 +3557,12 @@ getSupportedBeautyTypes(): Array\<BeautyType>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202             |  Not System Application.                      |
 
 **示例：**
 
@@ -3530,11 +3607,12 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202                    |    Not System Application.             |
 
 **示例：**
 
@@ -3571,11 +3649,12 @@ setBeauty(type: BeautyType, value: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202                    |    Not System Application.             |
 
 **示例：**
 
@@ -3619,11 +3698,12 @@ getBeauty(type: BeautyType): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
+| 202                    |    Not System Application.             |
 
 **示例：**
 
@@ -3680,7 +3760,7 @@ on(type: 'featureDetection', featureType: SceneFeatureType, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -3725,7 +3805,7 @@ off(type: 'featureDetection', featureType: SceneFeatureType, callback?: AsyncCal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -3758,7 +3838,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -3802,7 +3882,7 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -3885,7 +3965,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -3929,7 +4009,7 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -3962,7 +4042,7 @@ on(type: 'focusTrackingInfoAvailable', callback: Callback\<FocusTrackingInfo\>):
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -4003,7 +4083,7 @@ off(type: 'focusTrackingInfoAvailable', callback?: Callback\<FocusTrackingInfo\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -4316,7 +4396,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -4360,7 +4440,7 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -4577,7 +4657,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<[LcdFlashStatus](#lcdflashst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -4620,7 +4700,7 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<[LcdFlashStatus](#lcdflash
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -4663,7 +4743,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4701,7 +4781,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4734,7 +4814,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4770,7 +4850,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4832,7 +4912,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -4871,7 +4951,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -4904,7 +4984,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -4947,7 +5027,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -4980,7 +5060,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -5023,7 +5103,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -5056,7 +5136,7 @@ on(type: 'slowMotionStatus', callback: AsyncCallback\<SlowMotionStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -5099,7 +5179,7 @@ off(type: 'slowMotionStatus', callback?: AsyncCallback\<SlowMotionStatus\>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -5133,7 +5213,7 @@ isSlowMotionDetectionSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -5179,7 +5259,7 @@ setSlowMotionDetectionArea(area: Rect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -5429,7 +5509,7 @@ isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5480,7 +5560,7 @@ getExposureMeteringMode(): ExposureMeteringMode
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5523,7 +5603,7 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5591,7 +5671,7 @@ isFocusAssistSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5640,7 +5720,7 @@ isFocusRangeTypeSupported(type: FocusRangeType): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5690,7 +5770,7 @@ isFocusDrivenTypeSupported(type: FocusDrivenType): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5740,7 +5820,7 @@ setFocusAssist(enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5783,7 +5863,7 @@ getFocusAssist(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -5824,7 +5904,7 @@ setFocusRange(type: FocusRangeType): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5868,7 +5948,7 @@ getFocusRange(): FocusRangeType
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -5911,7 +5991,7 @@ setFocusDriven(type: FocusDrivenType): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5955,7 +6035,7 @@ getFocusDriven(): FocusDrivenType
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -6002,7 +6082,7 @@ setFocusDistance(distance: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -6045,7 +6125,7 @@ getFocusDistance(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -6092,7 +6172,7 @@ isManualIsoSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -6135,7 +6215,7 @@ getIsoRange(): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -6183,7 +6263,7 @@ setIso(iso: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -6276,7 +6356,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6315,7 +6395,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6348,7 +6428,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6391,7 +6471,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6424,7 +6504,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6467,7 +6547,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6499,6 +6579,8 @@ on(type: 'isoInfoChange', callback: AsyncCallback\<IsoInfo\>): void
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| 是   | 回调函数，用于获取ISO信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -6541,6 +6623,8 @@ off(type: 'isoInfoChange', callback?: AsyncCallback\<IsoInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6571,6 +6655,8 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -6613,6 +6699,8 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6643,6 +6731,8 @@ on(type: 'apertureInfoChange', callback: AsyncCallback\<ApertureInfo\>): void
 | callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| 是   | 回调函数，用于获取物理光圈信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -6685,6 +6775,8 @@ off(type: 'apertureInfoChange', callback?: AsyncCallback\<ApertureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6715,6 +6807,8 @@ on(type: 'luminationInfoChange', callback: AsyncCallback\<LuminationInfo\>): voi
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| 是   | 回调函数，用于获取光照参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -6757,6 +6851,8 @@ off(type: 'luminationInfoChange', callback?: AsyncCallback\<LuminationInfo\>): v
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -6794,7 +6890,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6833,7 +6929,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6866,7 +6962,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6909,7 +7005,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6942,7 +7038,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -6985,7 +7081,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -7017,6 +7113,8 @@ on(type: 'isoInfoChange', callback: AsyncCallback\<IsoInfo\>): void
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| 是   | 回调函数，用于获取ISO信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -7059,6 +7157,8 @@ off(type: 'isoInfoChange', callback?: AsyncCallback\<IsoInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7089,6 +7189,8 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -7131,6 +7233,8 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7161,6 +7265,8 @@ on(type: 'apertureInfoChange', callback: AsyncCallback\<ApertureInfo\>): void
 | callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| 是   | 回调函数，用于获取物理光圈信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -7203,6 +7309,8 @@ off(type: 'apertureInfoChange', callback?: AsyncCallback\<ApertureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7233,6 +7341,8 @@ on(type: 'luminationInfoChange', callback: AsyncCallback\<LuminationInfo\>): voi
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| 是   | 回调函数，用于获取光照参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -7275,6 +7385,8 @@ off(type: 'luminationInfoChange', callback?: AsyncCallback\<LuminationInfo\>): v
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -7312,7 +7424,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7351,7 +7463,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7384,7 +7496,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7427,7 +7539,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7460,7 +7572,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7503,7 +7615,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7542,7 +7654,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7581,7 +7693,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7614,7 +7726,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7657,7 +7769,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7690,7 +7802,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7733,7 +7845,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -7769,7 +7881,7 @@ isLcdFlashSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -7897,7 +8009,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -7936,7 +8048,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -7969,7 +8081,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8012,7 +8124,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8044,6 +8156,8 @@ on(type: 'isoInfoChange', callback: AsyncCallback\<IsoInfo\>): void
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| 是   | 回调函数，用于获取ISO信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -8086,6 +8200,8 @@ off(type: 'isoInfoChange', callback?: AsyncCallback\<IsoInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -8116,6 +8232,8 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -8158,6 +8276,8 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -8188,6 +8308,8 @@ on(type: 'luminationInfoChange', callback: AsyncCallback\<LuminationInfo\>): voi
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| 是   | 回调函数，用于获取光照参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -8230,6 +8352,8 @@ off(type: 'luminationInfoChange', callback?: AsyncCallback\<LuminationInfo\>): v
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -8260,6 +8384,8 @@ on(type: 'tryAEInfoChange', callback: AsyncCallback\<TryAEInfo\>): void
 | callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| 是   | 回调函数，用于获取TryAE参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -8301,6 +8427,8 @@ off(type: 'tryAEInfoChange', callback?: AsyncCallback\<TryAEInfo\>): void
 | callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| 否   | 回调函数，可选，用于匹配on('tryAEInfoChange')的callback。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -8369,7 +8497,7 @@ startTryAE(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8404,7 +8532,7 @@ stopTryAE(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8445,7 +8573,7 @@ getSupportedTimeLapseIntervalRange(): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8488,7 +8616,7 @@ getTimeLapseInterval(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8530,7 +8658,7 @@ setTimeLapseInterval(interval: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8573,7 +8701,7 @@ getTimeLapseRecordState(): TimeLapseRecordState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8616,7 +8744,7 @@ setTimeLapseRecordState(state: TimeLapseRecordState): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8658,7 +8786,7 @@ getTimeLapsePreviewType(): TimeLapsePreviewType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8701,7 +8829,7 @@ setTimeLapsePreviewType(type: TimeLapsePreviewType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -8750,7 +8878,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -8789,7 +8917,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -8822,7 +8950,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -8865,7 +8993,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -8898,7 +9026,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -8941,7 +9069,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -8972,7 +9100,7 @@ getLightPaintingType(): LightPaintingType
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9005,7 +9133,7 @@ setLightPaintingType(type: LightPaintingType): void
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9047,7 +9175,7 @@ getSupportedLightPaintingTypes(): Array\<LightPaintingType\>
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9096,7 +9224,7 @@ getSupportedColorReservationTypes(): Array\<ColorReservationType\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -9145,7 +9273,7 @@ setColorReservation(type: ColorReservationType): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -9189,7 +9317,7 @@ getColorReservation(): ColorReservationType
 
 **错误码**：
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
