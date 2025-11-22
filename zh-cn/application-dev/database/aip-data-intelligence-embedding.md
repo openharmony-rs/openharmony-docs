@@ -200,6 +200,10 @@
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
   <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError } from '@kit.BasicServicesKit';
+  ```
   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
