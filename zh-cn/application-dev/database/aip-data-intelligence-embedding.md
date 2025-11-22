@@ -71,7 +71,16 @@
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-2. 获取文本嵌入模型。
+  <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  let textConfig:intelligence.ModelConfig = {
+    version:intelligence.ModelVersion.BASIC_MODEL,
+    isNpuAvailable:false,
+    cachePath:"/data"
+  }
+  let textEmbedding:intelligence.TextEmbedding;
+  ```
    调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
 
   <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
