@@ -1014,6 +1014,23 @@ error: install invalid hap name.
 
 检查安装包的名称后缀是否正确。
 
+### 9568276 安装应用已存在
+**错误信息**
+
+error: install already exist.
+
+**错误描述**
+
+应用已存在，bundleName重复导致安装失败。
+
+**可能原因**
+
+bundleName重复导致安装失败。
+
+**处理步骤**
+
+请更换应用的bundleName。
+
 ### 9568267 entry模块已存在
 **错误信息**
 
@@ -1207,8 +1224,6 @@ error: install failed due to update hap token failed.
 hdc file recv /data/log/hilog/
 ```
 
-
-<!--Del-->
 ### 9568291 singleton不一致导致安装失败
 **错误信息**
 
@@ -1226,10 +1241,28 @@ error: install failed due to singleton not same.
 
 方案1：卸载已安装的应用包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的应用包。
 
-方案2：更新包调整singleton配置，与已安装包配置一致，重新打包，再更新应用包。<!--DelEnd-->
+方案2：更新包调整singleton配置，与已安装包配置一致，重新打包，再更新应用包。
 
-<!--Del-->
-### 9568294 应用类别不一致导致的安装失败
+
+### 9568293 SysCap不一致导致安装失败
+**错误信息**
+
+error: install failed due to check syscap filed.
+
+**错误描述**
+
+SysCap不一致导致安装失败。
+
+**可能原因**
+
+多个HAP/HSP中配置的[SysCap](./../reference/syscap.md)不一致。
+
+**处理步骤**
+
+检查多HAP/HSP中配置的SysCap配置，请保持一致。
+
+
+### 9568294 appType不一致导致的安装失败
 **错误信息**
 
 error: install failed due to apptype not same.
@@ -1244,8 +1277,9 @@ error: install failed due to apptype not same.
 
 **处理步骤**
 
-* 方案1：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP包。
-* 方案2：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
+* 方案一：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP包。
+* 方案二：保证多HAP/HSP使用同一个证书签名，保证签名的一致性。
+* 方案三：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。
 
 ### 9568297 由于设备sdk版本较低导致安装失败
 **错误信息**
@@ -1271,8 +1305,6 @@ error: install failed due to older sdk version in the device.
   如果镜像提供的api版本为10，且应用编译所使用的SDK版本也为10，仍出现该报错，可能是由于镜像版本较低，未兼容新版本SDK校验规则，请将镜像版本更新为最新版本。
 
 * 场景二：对于需要运行在OpenHarmony设备上的应用，请确认runtimeOS已改为OpenHarmony。
-
-
 
 ### 9568299 安装信息异常
 
@@ -1550,6 +1582,25 @@ error: install version downgrade.
 **处理步骤**
 
 1. 卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），重新安装新应用。
+
+### 9568264 安装检验签名一致性失败
+**错误信息**
+
+error: install verification failed.
+
+**错误描述**
+
+安装时，校验签名一致性失败。
+
+**可能原因**
+
+校验唯一标识[appIdentifier](./../quick-start/common_problem_of_application.md#什么是appidentifier)不一样，导致安装失败。
+
+**处理步骤**
+
+方法一：如果应用可以卸载，可以先卸载应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再重新安装。
+
+方法二：签名文件Profile可以用文本编辑器打开，搜索`app-identifier`字段，调整安装参数中的appIdentifier，需要和签名文件Profile保持一致。
 
 
 ### 9568301 模块类型不一致
@@ -2432,6 +2483,61 @@ error: installd set selinux label failed.
 
     ![示例图](figures/zh-cn_image_9568359_2.png)
 
+
+### 9568360 安装overlay应用出现错误
+**错误信息**
+
+error: internal error of overlay installation.
+
+**错误描述**
+
+安装overlay应用出现错误。
+
+**可能原因**
+
+解析overlay安装包失败或者安装内部出现异常导致安装失败。
+
+**处理步骤**
+
+方法一：重新编译overlay应用再尝试安装。
+
+方法二：设备重启之后，再尝试安装。
+
+### 9568361 overlay应用中目标包名为空导致安装失败
+**错误信息**
+
+error: invalid bundle name of overlay installation.
+
+**错误描述**
+
+overlay应用中目标包名为空导致安装失败。
+
+**可能原因**
+
+overlay应用中targetBundleName为空。
+
+**处理步骤**
+
+检查overlay应用中的[app.json5配置文件](../quick-start/app-configuration-file.md)的targetBundleName字段是否配置。
+
+### 9568362 overlay应用中目标模块名称为空导致安装失败
+**错误信息**
+
+error: invalid module name of overlay installation.
+
+**错误描述**
+
+overlay应用中目标模块名称为空导致安装失败。
+
+**可能原因**
+
+overlay应用中targetModuleName为空。
+
+**处理步骤**
+
+检查overlay应用中的[module.json5配置文件](../quick-start/module-configuration-file.md)的targetModuleName字段是否配置。
+
+
 ### 9568398 企业MDM应用/普通企业应用不允许安装
 **错误信息**
 
@@ -2927,6 +3033,7 @@ error: Install parse profile prop type error.
 
 使用DevEco Studio重新构建、打包、安装。
 
+
 ### 9568345 配置文件中的字符串长度或者数组大小过大
 **错误信息**
 
@@ -2943,6 +3050,25 @@ error: too large size of string or array type element in the profile.
 **处理步骤**
 
 使用DevEco Studio重新构建、打包、安装。
+
+
+### 9568346 解析安装包获取SysCap信息失败
+
+**错误信息**
+
+error: install parse syscap error.
+
+**错误描述**
+
+安装过程中，解析安装包获取[SysCap](./../reference/syscap.md)信息失败。
+
+**可能原因**
+
+HAP/HSP包损坏。
+
+**处理步骤**
+
+尝试重新安装，如果还是失败，请重新编译签名打包出新的包，再安装新编译的HAP/HSP。
 
 
 ### 9568347 解析本地so文件失败
