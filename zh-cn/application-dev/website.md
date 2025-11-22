@@ -4776,12 +4776,14 @@
           - [@ohos.multimodalAwareness.userStatus (用户状态感知)](reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md)
           <!--Del-->
           - [@ohos.multimodalAwareness.metadataBinding (记忆链接)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding-sys.md)
+          - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-spatialAwareness-sys.md)
           <!--DelEnd-->
         - 错误码<!--ultimodal-awareness-arkts-errcode-->
           - [动作感知错误码](reference/apis-multimodalawareness-kit/errorcode-motion.md)
           - [记忆链接错误码](reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md)
           - [设备状态感知错误码](reference/apis-multimodalawareness-kit/errorcode-deviceStatus.md)
           - [用户状态感知错误码](reference/apis-multimodalawareness-kit/errorcode-userStatus.md)
+          - [空间感知错误码](reference/apis-multimodalawareness-kit/errorcode-spatialAwareness.md)
       - Sensor Service Kit（传感器服务）<!--sensor-service-api-->
         - ArkTS API<!--sensor-service-arkts-->
           - [@ohos.sensor(传感器)](reference/apis-sensor-service-kit/js-apis-sensor.md)
