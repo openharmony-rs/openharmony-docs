@@ -66,6 +66,9 @@
   ``` TypeScript
   import { intelligence } from '@kit.ArkData';
   ```
+2. 获取文本嵌入模型。
+   调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
+  
   <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -76,6 +79,11 @@
   ``` TypeScript
   let textConfig:intelligence.ModelConfig = {
     version:intelligence.ModelVersion.BASIC_MODEL,
+        cachePath:"/data"
+  }
+  let textEmbedding:intelligence.TextEmbedding;
+   ```
+   
   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -90,15 +98,6 @@
       // ...
     })
   ```
-    cachePath:"/data"
-  }
-  let textEmbedding:intelligence.TextEmbedding;
-  ```
-   调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
-
-  <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-  <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
 
 3. 加载文本嵌入模型。
    调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
