@@ -201,6 +201,15 @@
 
   <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  let imageConfig:intelligence.ModelConfig = {
+    version:intelligence.ModelVersion.BASIC_MODEL,
+    isNpuAvailable:false,
+    cachePath:"/data"
+  }
+  let imageEmbedding:intelligence.ImageEmbedding;
+  ```
   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
