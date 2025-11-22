@@ -121,6 +121,24 @@
    调用splitText方法，获取文本的分块结果。示例代码如下所示：
 
   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  let splitConfig:intelligence.SplitConfig = {
+    size:10,
+    overlapRatio:0.1
+  }
+  let splitText = 'text';
+  
+  intelligence.splitText(splitText, splitConfig)
+    .then((data:Array<string>) => {
+      console.info('Succeeded in splitting Text');
+      // ...
+    })
+    .catch((err:BusinessError) => {
+      console.error('Failed to split Text and code is ' + err.code);
+      // ...
+    })
+  ```
 
 5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
    调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
