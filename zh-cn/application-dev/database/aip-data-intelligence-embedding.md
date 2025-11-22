@@ -104,6 +104,18 @@
    调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
 
   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  textEmbedding.loadModel()
+    .then(() => {
+      console.info('Succeeded in loading Model');
+      // ...
+    })
+    .catch((err:BusinessError) => {
+      console.error('Failed to load Model and code is ' + err.code);
+      // ...
+    })
+  ```
 
 4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
    调用splitText方法，获取文本的分块结果。示例代码如下所示：
