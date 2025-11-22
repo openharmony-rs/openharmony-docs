@@ -73,7 +73,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// ···
+// ...
 
 const TITLE_FONT_SIZE = 35; // 标题字体大小
 const BUTTON_FONT_SIZE = 25; // 按钮字体大小
@@ -89,30 +89,30 @@ let want: Want = {
 @Component
 struct StartVpn {
   @State message: string = 'VPN';
-// ···
+  // ...
   build() {
     Row() {
       Column() {
-        // ···
+        // ...
         Text(this.message)
           .fontSize(TITLE_FONT_SIZE)
           .fontWeight(FontWeight.Bold)
-        // ···
+          // ...
           .onClick(() => {
             hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Client');
           })
-        // ···
+        // ...
         Button($r('app.string.start_vpnExt'))
           .onClick(() => {
-            // ···
+            // ...
               vpnExtension.startVpnExtensionAbility(want)
-            // ···
+              // ...
           })
           .width('70%')
-        // ···
+          // ...
           .fontSize(BUTTON_FONT_SIZE)
           .margin(BUTTON_MARGIN)
-        // ···
+        // ...
       }.width('100%');
     }.height('100%');
 
@@ -133,6 +133,7 @@ struct StartVpn {
 您可参考如下示例：
 
 <!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
