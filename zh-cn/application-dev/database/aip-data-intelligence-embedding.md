@@ -79,7 +79,8 @@
   ``` TypeScript
   let textConfig:intelligence.ModelConfig = {
     version:intelligence.ModelVersion.BASIC_MODEL,
-        cachePath:"/data"
+    isNpuAvailable:false,
+    cachePath:"/data"
   }
   let textEmbedding:intelligence.TextEmbedding;
    ```
