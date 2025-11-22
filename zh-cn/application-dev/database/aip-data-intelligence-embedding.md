@@ -202,6 +202,19 @@
   <!-- @[import_the_common_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  intelligence.getImageEmbeddingModel(imageConfig)
+    .then((data:intelligence.ImageEmbedding) => {
+      console.info('Succeeded in getting ImageModel');
+      imageEmbedding = data;
+      // ...
+    })
+    .catch((err:BusinessError) => {
+      console.error('Failed to get ImageModel and code is ' + err.code);
+      // ...
+    })
+  ```
 
 3. 加载图像嵌入模型。
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
