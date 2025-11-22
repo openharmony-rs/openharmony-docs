@@ -678,17 +678,19 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-usbManager.requestRight(devicesList[0].name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-console.info(`controlTransfer = ${ret}`);
-})
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`controlTransfer = ${ret}`);
+  })
+}
 ```
 
 ## usbManager.usbControlTransfer<sup>12+</sup>
@@ -744,7 +746,7 @@ let param: PARA = {
   data: new Uint8Array(18)
 };
 
-function controlTransfer() {
+function usbControlTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -876,42 +878,44 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-//获取endpoint端点地址。
-let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
-  return value.direction === 0 && value.type === 2
-})
-//获取设备的第一个id。
-let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
-
-let transferParams: usbManager.UsbDataTransferParams = {
-  devPipe: devicepipe,
-  flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-  endpoint: 1,
-  type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
-  timeout: 2000,
-  length: 10, 
-  callback: () => {},
-  userData: new Uint8Array(10),
-  buffer: new Uint8Array(10),
-  isoPacketCount: 0,
-};
-try {
-  transferParams.endpoint=endpoint?.address as number;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+function usbSubmitTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
   }
-  usbManager.usbSubmitTransfer(transferParams); 
-  console.info('USB transfer request submitted.');
-} catch (error) {
-  console.error('USB transfer failed:', error);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  //获取endpoint端点地址。
+  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+    return value.direction === 0 && value.type === 2
+  })
+  //获取设备的第一个id。
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+
+  let transferParams: usbManager.UsbDataTransferParams = {
+    devPipe: devicepipe,
+    flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+    endpoint: 1,
+    type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
+    timeout: 2000,
+    length: 10, 
+    callback: () => {},
+    userData: new Uint8Array(10),
+    buffer: new Uint8Array(10),
+    isoPacketCount: 0,
+  };
+  try {
+    transferParams.endpoint=endpoint?.address as number;
+    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callBackData =' +JSON.stringify(callBackData));
+    }
+    usbManager.usbSubmitTransfer(transferParams); 
+    console.info('USB transfer request submitted.');
+  } catch (error) {
+    console.error('USB transfer failed:', error);
+  }
 }
 ```
 
@@ -957,42 +961,44 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-//获取endpoint端点地址。
-let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
-  return value.direction === 0 && value.type === 2
-})
-//获取设备的第一个id。
-let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
-let transferParams: usbManager.UsbDataTransferParams = {
-  devPipe: devicepipe,
-  flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
-  endpoint: 1,
-  type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
-  timeout: 2000,
-  length: 10, 
-  callback: () => {},
-  userData: new Uint8Array(10),
-  buffer: new Uint8Array(10),
-  isoPacketCount: 0,
-};
-try {
-  transferParams.endpoint=endpoint?.address as number;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+function usbCancelTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
   }
-  usbManager.usbSubmitTransfer(transferParams);
-  usbManager.usbCancelTransfer(transferParams);
-  console.info('USB transfer request submitted.');
-} catch (error) {
-  console.error('USB transfer failed:', error);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  //获取endpoint端点地址。
+  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+    return value.direction === 0 && value.type === 2
+  })
+  //获取设备的第一个id。
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let transferParams: usbManager.UsbDataTransferParams = {
+    devPipe: devicepipe,
+    flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+    endpoint: 1,
+    type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
+    timeout: 2000,
+    length: 10, 
+    callback: () => {},
+    userData: new Uint8Array(10),
+    buffer: new Uint8Array(10),
+    isoPacketCount: 0,
+  };
+  try {
+    transferParams.endpoint=endpoint?.address as number;
+    transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
+      console.info('callBackData =' +JSON.stringify(callBackData));
+    }
+    usbManager.usbSubmitTransfer(transferParams);
+    usbManager.usbCancelTransfer(transferParams);
+    console.info('USB transfer request submitted.');
+  } catch (error) {
+    console.error('USB transfer failed:', error);
+  }
 }
 ```
 
