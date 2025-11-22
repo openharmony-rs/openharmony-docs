@@ -191,6 +191,10 @@
 1. 导入模块。
 
   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { intelligence } from '@kit.ArkData';
+  ```
 
 2. 获取图像嵌入模型。
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
