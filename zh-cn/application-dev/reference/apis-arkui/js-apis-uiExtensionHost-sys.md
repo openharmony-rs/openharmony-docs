@@ -12,6 +12,8 @@
 >
 > 后续此接口不再新增功能，相关功能在接口[uiExtension](js-apis-arkui-uiExtension.md)中提供。
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 本模块接口为系统接口。
@@ -28,6 +30,10 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -41,6 +47,10 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 获取宿主应用窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口。
 
@@ -86,7 +96,13 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 注册系统规避区变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange22)。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **系统接口**：此接口为系统接口。
 
@@ -120,13 +136,59 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+### onAvoidAreaChange<sup>22+</sup>
+
+onAvoidAreaChange(callback: Callback<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)>): void;
+
+注册系统规避区变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('avoidAreaChange')](#onavoidareachange)。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                   |
+| -------- | ------ | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 是 | 回调函数：入参用于接收当前规避区的信息。 |
+
+
+**示例：**
+
+```ts
+// ExtensionProvider.ts
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注册避让区变化的监听
+    extensionHostWindow.onAvoidAreaChange((info) => {
+      console.info(`The avoid area of the host window is: ${JSON.stringify(info.area)}.`);
+    });
+  }
+}
+```
+
 ### off('avoidAreaChange')
 
 off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
 注销系统规避区变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange22)。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **系统接口**：此接口为系统接口。
 
@@ -158,13 +220,56 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+### offAvoidAreaChange<sup>22+</sup>
+
+offAvoidAreaChange(callback?: Callback<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)>): void;
+
+注销系统规避区变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('avoidAreaChange')](#offavoidareachange)。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                   |
+| -------- | ------ | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。 |
+
+**示例：**
+
+```ts
+// ExtensionProvider.ts
+import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注销所有避让区变化的监听
+    extensionHostWindow.offAvoidAreaChange();
+  }
+}
+```
+
 ### on('windowSizeChange')
 
 on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 注册组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowSizeChange](#onwindowsizechange22)。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **系统接口**：此接口为系统接口。
 
@@ -192,7 +297,46 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionHostWindow.on('windowSizeChange', (size) => {
-      console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
+    });
+  }
+}
+```
+
+### onWindowSizeChange<sup>22+</sup>
+
+onWindowSizeChange(callback: Callback<window.Size>): void;
+
+注册组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowSizeChange')](#onwindowsizechange)。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                   |
+| -------- | --------------------- | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 是   | 回调函数：入参用于接收当前组件（EmbeddedComponent或UIExtensionComponent）的尺寸。 |
+
+**示例：**
+
+```ts
+// ExtensionProvider.ts
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
+    extensionHostWindow.onWindowSizeChange((size) => {
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
     });
   }
 }
@@ -204,7 +348,13 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowSizeChange](#offwindowsizechange22)。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **系统接口**：此接口为系统接口。
 
@@ -236,11 +386,49 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
+### offWindowSizeChange<sup>22+</sup>
+
+offWindowSizeChange(callback?: Callback<window.Size>): void;
+
+注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowSizeChange')](#offwindowsizechange)。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                   |
+| -------- | --------------------- | ---- | ---------------------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | 否   | 回调函数。返回当前的组件（EmbeddedComponent或UIExtensionComponent）尺寸。如果传入该参数，则关闭该监听。如果未传入参数，则关闭组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。 |
+
+**示例：**
+
+```ts
+// ExtensionProvider.ts
+import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionDestroy(session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    // 注销组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
+    extensionHostWindow.offWindowSizeChange();
+  }
+}
+```
+
 ### hideNonSecureWindows
 
 hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 设置是否隐藏不安全窗口，使用Promise异步回调。
+
 > **说明：**
 >
 > - 不安全窗口是指可能遮挡[EmbeddedComponent](arkui-ts/ts-container-embedded-component.md)（或[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
@@ -250,6 +438,10 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口。
 
@@ -311,6 +503,10 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 创建该UIExtensionHostWindowProxy实例下的子窗口，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口：** 此接口为系统接口。
 
@@ -391,11 +587,16 @@ export default class EntryAbility extends UIExtensionAbility {
 setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 为当前窗口添加或删除安全水印标志，使用Promise异步回调。
+
 > **说明：**
 >
 > 添加安全水印标志后，窗口在前台时会将当前全屏幕覆盖水印。全屏、悬浮窗、分屏等场景下只要有添加了安全水印标志的窗口在前台，就会显示全屏水印。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口。
 
@@ -452,12 +653,17 @@ export default class EntryAbility extends UIExtensionAbility {
 hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 设置UIExtension组件在非系统截图时的隐私内容保护开关，使用Promise异步回调。
+
 > **说明：**
 >
 > 开启截图隐私内容保护后，使用窗口截图[window.snapshot](arkts-apis-window-Window.md#snapshot9)或者组件截图[UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)
 将无法截取到当前组件的内容（不包括该组件下创建的子窗）。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口。
 
@@ -508,6 +714,10 @@ export default class EntryAbility extends UIExtensionAbility {
 用于表示宿主应用窗口和UIExtensionComponent组件的信息。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **系统接口**：此接口为系统接口。
 
