@@ -106,6 +106,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | pickerIndex<sup>21+</sup>    | number                              | 否  | 是  | 通过设置唯一序号来区分不同的pickerComponent。默认值为-1，-1时不做区分。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | 是 | 支持在指定pickerIndex的PhotoPickerComponent中回显用户已选择的数据。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 是 | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标，详见[BadgeType](#badgetype21)。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认不屏蔽用户滚动。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -379,8 +380,8 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>;
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BRUST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-| movingPhotoBadgeState<sup>22+</sup> | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否 | 是   | 动态照片的状态（当[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。 |
-
+| movingPhotoBadgeState<sup>22+</sup> | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否 | 是   | 动态照片的状态（当[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| VideoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#VideoMode22) | 否 | 是   | 视频来源。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
 ## ItemInfo
 
 继承自[BaseItemInfo](#baseiteminfo)，增加私有参数itemType。
@@ -476,26 +477,27 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>;
 
 支持更新的PhotoPickerComponent属性，为[PickerOptions](#pickeroptions)的子集。
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                            | 类型                                             | 只读 | 可选 | 说明  |
 | ------------------------------- | ----------------------------------------------- | ---- | ---- | ---- |
-| mimeType                        | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)            | 否 | 是   | 可选择的媒体文件类型。<br>若无此参数，则默认为图片和视频类型。|
-| mimeTypeFilter                  | [photoAccessHelper.MimeTypeFilter](arkts-apis-photoAccessHelper-class.md#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>- 当配置mimeTypeFilter参数时，MIMEType的配置自动失效。<br>- 当配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。 |
-| maxSelectNumber                 | number                          | 否   | 是 | 选择媒体文件数量的最大值（单位：个）。<br>最大可设置为500，若不设置则默认为50。 |
-| maxPhotoSelectNumber            | number                          | 否  | 是 | 图片最大的选择数量（单位：个）。<br>最大值为500，受到最大选择总数的限制。默认为500。                                     |
-| maxVideoSelectNumber            | number                          | 否  | 是 | 视频最大的选择数量（单位：个）。<br>最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。                                      |
-| selectMode                      | [SelectMode](#selectmode)       | 否  | 是  | Picker选择模式。<br>包括多选和单选，默认为多选。                                                     |
-| singleSelectionMode             | [photoAccessHelper.SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。 |
-| isRepeatSelectSupported         | boolean                         | 否   | 是 | 是否支持单张图片重复选择。<br>true表示支持。默认不支持。 |
-| preselectedUris | Array&lt;string&gt;                             | 否   | 是 | 已选择图片的uri数据。 |
-| checkBoxColor                   | string                          | 否  | 是 | 勾选框的背景色。<br>格式为8位十六进制颜色代码。                                                   |
-| backgroundColor                 | string                          | 否  | 是 | Picker宫格页面背景色。<br>格式为8位十六进制颜色代码。                                            |
-| checkboxTextColor               | string                          | 否  | 是 | 勾选框内文本颜色。<br>格式为8位十六进制颜色代码。 |
-| photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode) | 否  | 是 | 大图背景颜色。<br>包括跟随系统、浅色模式以及深色模式，默认为跟随系统。                                      |
-| uiComponentColorMode            | [PickerColorMode](#pickercolormode) | 否  | 是 | Picker UI组件的颜色模式。<br>Picker宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性一般设置PickerColorMode.LIGHT时不与深颜色的backgroundColor搭配；设置PickerColorMode.DARK时不与浅颜色的backgroundColor搭配，否则会出现组件背景或文字无法看清楚的问题。  |
+| mimeType                        | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)            | 否 | 是   | 可选择的媒体文件类型。<br>若无此参数，则默认为图片和视频类型。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| mimeTypeFilter                  | [photoAccessHelper.MimeTypeFilter](arkts-apis-photoAccessHelper-class.md#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>- 当配置mimeTypeFilter参数时，MIMEType的配置自动失效。<br>- 当配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户仅支持选择指定类型的图片/视频。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| maxSelectNumber                 | number                          | 否   | 是 | 选择媒体文件数量的最大值（单位：个）。<br>最大可设置为500，若不设置则默认为50。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| maxPhotoSelectNumber            | number                          | 否  | 是 | 图片最大的选择数量（单位：个）。<br>最大值为500，受到最大选择总数的限制。默认为500。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                     |
+| maxVideoSelectNumber            | number                          | 否  | 是 | 视频最大的选择数量（单位：个）。<br>最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                      |
+| selectMode                      | [SelectMode](#selectmode)       | 否  | 是  | Picker选择模式。<br>包括多选和单选，默认为多选。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                                    |
+| singleSelectionMode             | [photoAccessHelper.SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| isRepeatSelectSupported         | boolean                         | 否   | 是 | 是否支持单张图片重复选择。<br>true表示支持。默认不支持。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| preselectedUris | Array&lt;string&gt;                             | 否   | 是 | 已选择图片的uri数据。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| checkBoxColor                   | string                          | 否  | 是 | 勾选框的背景色。<br>格式为8位十六进制颜色代码。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                                  |
+| backgroundColor                 | string                          | 否  | 是 | Picker宫格页面背景色。<br>格式为8位十六进制颜色代码。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                           |
+| checkboxTextColor               | string                          | 否  | 是 | 勾选框内文本颜色。<br>格式为8位十六进制颜色代码。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode) | 否  | 是 | 大图背景颜色。<br>包括跟随系统、浅色模式以及深色模式，默认为跟随系统。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                      |
+| uiComponentColorMode            | [PickerColorMode](#pickercolormode) | 否  | 是 | Picker UI组件的颜色模式。<br>Picker宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性一般设置PickerColorMode.LIGHT时不与深颜色的backgroundColor搭配；设置PickerColorMode.DARK时不与浅颜色的backgroundColor搭配，否则会出现组件背景或文字无法看清楚的问题。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。  |
+| isSlidingSupported         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认不屏蔽用户滚动。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## DataType
 

@@ -344,3 +344,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | NOT_MOVING_PHOTO   | 0      | 非动态照片。 |
 | MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
 | MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |
+
+## VideoMode<sup>22+</sup>
+
+枚举，视频来源。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| DEFAULT   | 0      | 非华为视频。 |
+| LOG_VIDEO | 1    | 华为视频。 |
