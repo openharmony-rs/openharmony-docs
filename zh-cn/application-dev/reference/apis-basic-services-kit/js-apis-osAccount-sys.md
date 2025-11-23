@@ -4945,6 +4945,7 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
     credType: osAccount.AuthType.PIN,
     credSubType: osAccount.AuthSubType.PIN_SIX,
     token: new Uint8Array([]),
+    additionalInfo: 'xxx'
   };
   let userIDM = new osAccount.UserIdentityManager();
   userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
@@ -5794,6 +5795,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | credSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示凭据子类型。   |
 | token        | Uint8Array                           | 否    | 否   | 指示认证令牌。     |
 | accountId<sup>12+</sup>    | number | 否    | 是   | 系统账号标识，默认为undefined。 |
+| additionalInfo<sup>23+</sup>    | string | 否    | 是   | 凭据的附加信息，默认为空字符串。 |
 
 ## RequestResult<sup>8+</sup>
 
