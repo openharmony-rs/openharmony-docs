@@ -75,7 +75,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -122,7 +122,7 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -162,7 +162,7 @@ onAvoidAreaChange(callback: Callback<[uiExtension.AvoidAreaInfo](./js-apis-arkui
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -208,7 +208,7 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -245,7 +245,7 @@ offAvoidAreaChange(callback?: Callback<[uiExtension.AvoidAreaInfo](./js-apis-ark
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -289,7 +289,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -328,7 +328,7 @@ onWindowSizeChange(callback: Callback<window.Size>): void;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -374,7 +374,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -411,7 +411,7 @@ offWindowSizeChange(callback?: Callback<window.Size>): void;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -469,7 +469,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -538,7 +538,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -623,7 +623,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -692,7 +692,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
