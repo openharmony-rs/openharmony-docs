@@ -11,7 +11,7 @@
 
 AVSource模块提供用于构造媒体资源对象功能的函数。
 
-**系统能力：** SystemCapability.Multimedia.Media.Splitter
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 10
 
