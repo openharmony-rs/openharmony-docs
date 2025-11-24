@@ -20,7 +20,7 @@ Specifies the target node for component binding.
 
 **Parameters**
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | id | string \| number | No| No| Target node for binding popups or menus.<br>**NOTE**<br>1. When **id** is a number, it corresponds to the component's **UniqueID**, whose uniqueness is guaranteed by the system.<br>2. When **id** is a string, it corresponds to the component specified by the universal attribute [id](arkui-ts/ts-universal-attributes-component-id.md#id). You must ensure the uniqueness of this ID, although there may be multiple instances.|
 | componentId | number | No| Yes| Unique ID of the custom component where the target node is located. When the above **id** is specified as a string, this property can be used to narrow down the scope, helping you ensure the uniqueness of **id: string** within a certain range.|
@@ -33,7 +33,7 @@ Represents the page information of the router or navigation destination. If ther
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- |-------- | -------- |
 | routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | No|Yes| Router information.|
 | navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | No|Yes| Navigation destination information.|
@@ -44,7 +44,7 @@ Provides the parameters used for initializing [OverlayManager](arkts-apis-uicont
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name            | Type               | Read Only| Optional  | Description                    |
+| Name            | Type               | Read-Only| Optional  | Description                    |
 | --------------- | ---------------------- | ------------ | --------------------- | --------------------- |
 | renderRootOverlay   | boolean | No| Yes| Whether to render the overlay root node. The value **true** means to render the overlay root node, and **false** means the opposite. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | enableBackPressedEvent<sup>19+</sup>   | boolean | No| Yes| Whether to enable the swipe-to-dismiss gesture for **ComponentContent** under **OverlayManager**. The value **true** means to enable the swipe-to-dismiss gesture, and **false** means the opposite. Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
@@ -57,7 +57,7 @@ Defines the information provided when a specific gesture callback is triggered.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only  |   Optional   |Description      |
+| Name  | Type  | Read-Only  |   Optional   |Description      |
 | ------ | ---- | ---------- |---------- |---------- |
 | event | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent)   |No |  No      |Gesture event object.|
 | current | [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12)    |No |  No     |Gesture recognizer object. Detailed gesture information can be obtained from this object. However, avoid retaining this object locally as it may become invalid after the node is released.|
@@ -72,7 +72,7 @@ Specifies the gesture callback phases to listen for (passing an empty array will
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only |  Optional      |Description      |
+| Name  | Type  | Read-Only |  Optional      |Description      |
 | ------ | ---- | ---------- |---------- |---------- |
 |  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |No |  No      |Gesture event object.|
 
@@ -84,7 +84,7 @@ Provides content area information of the **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type| Read Only | Optional| Description                   |
+| Name     | Type| Read-Only | Optional| Description                   |
 | --------- | ---- | ----- | ---- | ----------------------- |
 | id        | string  | No| No| ID of the **Swiper** component.|
 | uniqueId  | number  | No| No| Unique ID of the **Swiper** component.|
@@ -98,7 +98,7 @@ Provides information about **Swiper** child components.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type| Read Only | Optional| Description                   |
+| Name     | Type| Read-Only | Optional| Description                   |
 | --------- | ---- | ----- | ---- | -----------------------|
 | uniqueId  | number | No| No| Unique ID of the **Swiper** child component.  |
 | index     | number | No| No| Index of the child component in the **Swiper** container.|

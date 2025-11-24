@@ -44,7 +44,7 @@ Provides information about the slider.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | value | number | No| Yes| Current progress.<br>Default value: same as the value of min.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>Value range: [min, max]<br>Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.<br>The $$ operator provides a reference to the TS variable for system components, so that the TS variable and the value of the slider component are synchronized. For details, see [Example 7: Setting Two-Way Binding for the Slider](#example-7-setting-two-way-binding-for-the-slider).|
 | min | number | No| Yes| Minimum value.<br>Default value: **0**|
@@ -601,7 +601,7 @@ Provides accessibility configuration of the slider prefix and suffix.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                    | Type       | Read Only| Optional| Description                                                        |
+| Name                    | Type       | Read-Only| Optional| Description                                                        |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Text for assistive technologies (for example, screen readers).<br>Default value: **""**.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Detailed functional description for assistive technologies.<br>Default value: **"Double-tap to activate"**.|
@@ -767,7 +767,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Read Only | Optional | Description             |
+| Name | Type   | Read-Only | Optional | Description             |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
 | value | number | No| No| Current progress.|
 | min | number | No| No| Minimum value.|
