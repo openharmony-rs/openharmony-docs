@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **PluginComponentManager** module provides APIs for the **PluginComponent** user to request components and data and send component templates and data.
 
@@ -47,7 +47,7 @@ Defines a key-value pair data structure that conforms to JSON format.
 
 | Name   | Type  | Mandatory| Description                       |
 | ------- | ------ | ---- | --------------------------- |
-|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | Yes  | Key-value pair:<br>**number**: numeric value type.<br> **string**: string value type. The value can be an empty string.<br> **boolean**: boolean value type.<br> **[]**: empty array value.<br>**[KVObject](#kvobject)**: nested KVObject value type.           |
+|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | No  | Key-value pair.<br>**number**: numeric value type.<br> **string**: string value type. The value can be an empty string.<br> **boolean**: boolean value type.<br> **[]**: empty array value.<br>**[KVObject](#kvobject)**: nested KVObject value type.           |
 
 
 ### PushParameters
