@@ -286,7 +286,7 @@ int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 | 参数项 | 描述 |
 | -- | -- |
 | [Sensor_Info](capi-sensor-sensor-info.md)* sensor | - 指向传感器信息的指针。 |
-| float *resolution | - 指向传感器分辨率的指针。 |
+| float *resolution | - 指向传感器分辨率[Sensor_Accuracy](#sensor_accuracy)的指针。 |
 
 **返回：**
 
