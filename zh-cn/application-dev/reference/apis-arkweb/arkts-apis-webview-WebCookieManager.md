@@ -1460,7 +1460,7 @@ struct WebComponent {
 }
 ```
 
-## fetchAllCookies<sup>21+</sup>
+## fetchAllCookies<sup>23+</sup>
 
 static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
@@ -1478,7 +1478,7 @@ static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie21)\>\> | Promise实例，用于获取所有cookie及其对应的字段值。 |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise实例，用于获取所有cookie及其对应的字段值。 |
 
 **示例：**
 

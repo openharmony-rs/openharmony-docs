@@ -225,7 +225,7 @@ WebViewController与Web组件的绑定状态。
 | width  | number   | 否   | 否   | 矩形的宽度。 <br>单位：px   |
 | height | number   | 否   | 否   | 矩形的高度。 <br>单位：px   |
 
-## WebHttpCookie<sup>21+</sup>
+## WebHttpCookie<sup>23+</sup>
 
 cookie的相关字段。
 
@@ -233,7 +233,7 @@ cookie的相关字段。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | ---- |
-| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy21) | 是 | 否 | cookie的同站策略。 |
+| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | 是 | 否 | cookie的同站策略。 |
 | expiresDate | string | 是 | 否 | cookie的到期日期。 |
 | name | string | 是 | 否 | cookie的名称。 |
 | isSessionCookie | boolean | 是 | 否 | 标记该cookie是否是session cookie。<br>true表示是session cookie，false表示不是session cookie。 |
