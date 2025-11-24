@@ -121,7 +121,7 @@
 
 ## Size<sup>7+</sup>
 
-窗口大小。
+窗口大小，单位为px。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -131,6 +131,17 @@
 | ------ | -------- | ---- | ---- | ---------- |
 | width  | number   | 否   | 否   | 窗口宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 窗口高度，单位为px，该参数应为整数。 |
+
+## SizeInVP<sup>23+</sup>
+
+窗口大小，单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | -------- | ---- | ---- | ---------- |
+| width  | number   | 否   | 否   | 窗口宽度，单位为vp，该参数为浮点数。 |
+| height | number   | 否   | 否   | 窗口高度，单位为vp，该参数为浮点数。 |
 
 ## Position<sup>20+</sup>
 
