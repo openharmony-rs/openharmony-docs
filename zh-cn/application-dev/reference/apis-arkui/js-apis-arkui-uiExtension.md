@@ -29,7 +29,7 @@ UIExtension宿主窗代理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 22
 

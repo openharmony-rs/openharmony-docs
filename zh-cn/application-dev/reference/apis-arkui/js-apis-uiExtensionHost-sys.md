@@ -138,7 +138,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ### onAvoidAreaChange<sup>22+</sup>
 
-onAvoidAreaChange(callback: Callback<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)>): void;
+onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void;
 
 注册系统规避区变化的监听。
 
@@ -222,7 +222,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 ### offAvoidAreaChange<sup>22+</sup>
 
-offAvoidAreaChange(callback?: Callback<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)>): void;
+offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void;
 
 注销系统规避区变化的监听。
 
