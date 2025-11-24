@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了动态添加或删除状态管理V2的状态变量的监听函数，开发者可以使用[addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#addmonitor20)或[clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#clearmonitor20)。
+为了动态添加或删除状态管理V2的状态变量的监听函数，开发者可以使用[addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20)或[clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20)。
 
 在阅读本文档前，建议提前阅读：[\@ObservedV2/\@Trace](./arkts-new-observedV2-and-trace.md)、[\@Monitor](./arkts-new-monitor.md)。
 
@@ -18,7 +18,7 @@
 ## 概述
 装饰器[\@Monitor](./arkts-new-monitor.md)如果声明在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)和[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中，会使得开发者构造出的所有的\@ObservedV2和\@ComponentV2的实例，都默认有同样的\@Monitor的监听回调，且无法取消或删除对应的监听回调。
 
-如果开发者希望动态给\@ObservedV2和\@ComponentV2实例添加或者删除监听函数，则可以使用[addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#addmonitor20)和[clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#clearmonitor20)接口。
+如果开发者希望动态给\@ObservedV2和\@ComponentV2实例添加或者删除监听函数，则可以使用[addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20)和[clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20)接口。
 
 - 使用addMonitor/clearMonitor接口需要导入UIUtils工具。
 
@@ -136,7 +136,7 @@ struct Page {
   }
 }
 ```
-- addMonitor设置[isSynchronous](../../reference/apis-arkui/js-apis-StateManagement.md#monitoroptions20)仅第一次有效，即其不能被更改，如果开发者更改`isSynchronous`，则会打印错误日志。
+- addMonitor设置[isSynchronous](../../reference/apis-arkui/js-apis-stateManagement.md#monitoroptions20)仅第一次有效，即其不能被更改，如果开发者更改`isSynchronous`，则会打印错误日志。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 
