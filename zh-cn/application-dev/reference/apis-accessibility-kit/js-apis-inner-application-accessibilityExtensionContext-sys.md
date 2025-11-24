@@ -82,6 +82,22 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 | accessibilityDescription          | string | 否  | 否|超链接文本的辅助功能描述。        |
 | accessibilityLevel          | string | 否  | 否|超链接文本的辅助功能级别。        |
 
+## FocusRule<sup>23+</sup>
+
+type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
+'checkSelf' | 'checkSelfBypassDescendants';
+
+表示查找可聚焦节点时，是否检查起始节点及其子节点的聚焦能力。
+
+**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型            | 说明          |
+| -------- | ------- |
+| 'bypassSelf'       | 跳过对起始节点的检查，只检查其子节点。|
+| 'bypassSelfDescendants'     | 跳过对起始节点及其所有子节点的检查。|
+| 'checkSelf'     | 先检查起始节点是否可以聚焦，如果可以则直接使用它；如果不能聚焦，则继续检查其子节点。|
+| 'checkSelfBypassDescendants' | 先检查起始节点是否可以聚焦，如果可以则使用它；如果不能聚焦，则跳过所有子节点的检查。|
+
 ## FocusCondition<sup>23+</sup>
 
 type FocusCondition = 'forward' | 'backward' |
@@ -99,22 +115,6 @@ type FocusCondition = 'forward' | 'backward' |
 | 'getForwardScrollAncestor' | 获取支持前向滚动父组件。|
 | 'getBackwardScrollAncestor'| 获取支持后向滚动父组件。|
 | 'getScrollableAncestor' | 获取支持任意滚动父组件。|
-
-## FocusRule<sup>23+</sup>
-
-type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants';
-
-表示查找可聚焦节点时，是否检查起始节点及其子节点的聚焦能力。
-
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
-
-| 类型            | 说明          |
-| -------- | ------- |
-| 'bypassSelf'       | 跳过对起始节点的检查，只检查其子节点。|
-| 'bypassSelfDescendants'     | 跳过对起始节点及其所有子节点的检查。|
-| 'checkSelf'     | 先检查起始节点是否可以聚焦，如果可以则直接使用它；如果不能聚焦，则继续检查其子节点。|
-| 'checkSelfBypassDescendants' | 先检查起始节点是否可以聚焦，如果可以则使用它；如果不能聚焦，则跳过所有子节点的检查。|
 
 ## FocusMoveResult<sup>23+</sup>
 
