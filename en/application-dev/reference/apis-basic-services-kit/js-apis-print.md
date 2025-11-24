@@ -480,7 +480,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
-Prints files. This API uses an asynchronous callback to return the result.
+Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -526,7 +526,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
-Prints files. This API uses a promise to return the result.
+Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
 **Required permissions**: ohos.permission.PRINT
 
