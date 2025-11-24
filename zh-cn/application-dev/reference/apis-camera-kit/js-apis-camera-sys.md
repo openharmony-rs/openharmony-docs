@@ -379,7 +379,7 @@ isPrelaunchSupported(camera: CameraDevice): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -426,7 +426,7 @@ setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -555,7 +555,7 @@ preSwitchCamera(cameraId: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                                           |
 | ------- |------------------------------------------------|
@@ -842,11 +842,13 @@ stop(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
 
 **示例：**
 
