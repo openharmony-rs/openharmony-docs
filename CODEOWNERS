@@ -731,7 +731,7 @@ zh-cn/application-dev/inputmethod/inputmethod_application_guide.md  @murphy1984 
 zh-cn/application-dev/inputmethod/switch_inputmehod_guide.md  @murphy1984  @zhang_yixin13  @hanruofei
 
 [开发-Input kit]
-zh-cn/application-dev/device/input  @zhang_yixin13  hanruofei@ @Lyuxin
+zh-cn/application-dev/device/input  @zhang_yixin13  @hanruofei @Lyuxin
 zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanruofei @Lyuxin @zhang_yixin13
 
 [开发-IPC Kit]
