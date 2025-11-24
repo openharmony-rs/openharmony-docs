@@ -294,7 +294,7 @@ on(type: 'cameraMute', callback: AsyncCallback\<boolean\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202               |  Not System Application.                  |
+| 202               |  Permission verification failed. A non-system application calls a system API.       |
 
 
 **示例：**
@@ -339,7 +339,7 @@ off(type: 'cameraMute', callback?: AsyncCallback\<boolean\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202               |  Not System Application.                  |
+| 202               |  Permission verification failed. A non-system application calls a system API.     |
 
 **示例：**
 
