@@ -14921,7 +14921,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":57,
 						"name":"router_hsp12",
 						"start_line":16
 					}
