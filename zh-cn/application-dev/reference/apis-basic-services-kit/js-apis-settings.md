@@ -44,7 +44,7 @@ import { settings } from '@kit.BasicServicesKit';
 | 名称                | 类型   | 只读 | 说明                                                                         |
 | ------------------- | ------ |----|----------------------------------------------------------------------------|
 | DATE_FORMAT<sup>(deprecated)</sup>          | string | 是  | 日期格式。<br/>日期格式包括mm/dd/yyyy、dd/mm/yyyy和yyyy/mm/dd，其中mm、dd和yyyy分别代表月份、日期和年份。 |
-| TIME_FORMAT         | string | 是  | 否  | 时间以12小时格式或24小时格式显示。<br>- 值为 "12"表示12小时格式。<br/>- 值为"24"表示24小时格式。            |
+| TIME_FORMAT         | string | 是  | 时间以12小时格式或24小时格式显示。<br>- 值为 "12"表示12小时格式。<br/>- 值为"24"表示24小时格式。            |
 | AUTO_GAIN_TIME<sup>(deprecated)</sup>       | string | 是  | 是否自动从网络获取日期、时间和时区。 <br>- 值为true，表示自动从网络获取信息。<br/>- 值为false，表示不自动获取信息。      |
 | AUTO_GAIN_TIME_ZONE<sup>(deprecated)</sup>  | string | 是  | 是否自动从NITZ获取时区。 <br>- 值为true，表示自动获取。<br/>- 值为false，表示不自动获取。                 |
 
@@ -132,7 +132,7 @@ import { settings } from '@kit.BasicServicesKit';
 
 ## phone
 
-提供设置来电和去电接听方式的数据项（暂不支持）。
+提供设置来电和去电接听方式的数据项。
 
 ### 常量
 
