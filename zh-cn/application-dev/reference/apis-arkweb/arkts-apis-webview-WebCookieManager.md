@@ -1464,7 +1464,7 @@ struct WebComponent {
 
 static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
-异步promise方式获取所有cookie。
+获取所有cookie，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1478,7 +1478,7 @@ static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise实例，用于获取所有cookie及其对应的字段值。 |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookie及其对应的字段值。 |
 
 **示例：**
 
