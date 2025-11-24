@@ -339,13 +339,11 @@ class RunningLockTest {
 
 unhold(): void
 
-**API description**: Unholds this running lock.
+**API description**: Releases this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
 **Required permission**: ohos.permission.RUNNING_LOCK
-
-**Parameters**: none
 
 **Error codes**
 
@@ -394,8 +392,6 @@ isHolding(): boolean
 **API description**: Checks whether this running lock is held.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
-
-**Parameters**: none
 
 **Returns**
 
@@ -471,8 +467,6 @@ unlock(): void
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
-**Parameters**: none
-
 **Required permission**: ohos.permission.RUNNING_LOCK
 
 **Example**
@@ -497,8 +491,6 @@ isUsed(): boolean
 **API description**: Checks whether this running lock is used.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
-
-**Parameters**: none
 
 **Returns**
 | Type   | Description                                                        |
