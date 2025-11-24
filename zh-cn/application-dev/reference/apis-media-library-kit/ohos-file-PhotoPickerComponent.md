@@ -345,7 +345,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 
-应用可通过该接口，更新PhotoPickerComponent的属性。使用Promise异步回调。
+应用通过该接口，更新PhotoPickerComponent的属性。使用Promise异步回调。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
