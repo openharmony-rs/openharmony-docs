@@ -6161,7 +6161,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
 
-隐私模式窗口在多任务卡片中显示为白色蒙层或应用锁蒙层。
+隐私模式窗口退后台后在多任务卡片中显示为白色蒙层或隐私蒙层。
 
 未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
@@ -6216,7 +6216,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
 
-隐私模式窗口在多任务卡片中显示为白色蒙层或应用锁蒙层。
+隐私模式窗口退后台后在多任务卡片中显示为白色蒙层或隐私蒙层。
 
 未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
