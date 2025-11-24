@@ -4,8 +4,8 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -36,7 +36,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -139,7 +139,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -202,7 +202,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 };
 notificationManager.publish(notificationRequest).then(() => {
   console.info(`Succeeded in publishing notification.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
 });
 
@@ -332,7 +332,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.cancel(0).then(() => {
   console.info(`Succeeded in canceling notification.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to cancel notification. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -425,7 +425,7 @@ cancelAll(callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -509,7 +509,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.cancelAll().then(() => {
   console.info(`Succeeded in canceling all notification.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -632,7 +632,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
   console.info(`Succeeded in adding slot.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -667,7 +667,7 @@ ArkTS-Sta: getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -692,7 +692,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // getSlot回调
-let getSlotCallback = (err: BusinessError<void>|null, data: notificationManager.NotificationSlot|undefined|null) : void => {
+let getSlotCallback = (err: BusinessError<void> | null, data: notificationManager.NotificationSlot | undefined | null) : void => {
   if (err) {
     console.error(`Failed to get slot. Code is ${err.code}, message is ${err.message}`);
   } else if (data) {
@@ -742,7 +742,7 @@ ArkTS-Sta: getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -763,9 +763,9 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-notificationManager.getSlot(slotType).then((data: notificationManager.NotificationSlot|null) => {
+notificationManager.getSlot(slotType).then((data: notificationManager.NotificationSlot | null) => {
     console.info(`Succeeded in getting slot, data is ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) : void => {
+  }).catch((err: BusinessError): void => {
     console.error(`Failed to get slot. Code is ${err.code}, message is ${err.message}`);
   });
 ```
@@ -822,7 +822,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // getSlots回调
-let getSlotsCallback = (err: BusinessError<void>|null, data: Array<notificationManager.NotificationSlot>|undefined|null): void => {
+let getSlotsCallback = (err: BusinessError<void> | null, data: Array<notificationManager.NotificationSlot> | undefined | null): void => {
   if (err) {
     console.error(`Failed to get slots. Code is ${err.code}, message is ${err.message}`);
   } else {
@@ -879,7 +879,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getSlots().then((data: Array<notificationManager.NotificationSlot>) => {
   console.info(`Succeeded in getting slots, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError : void) => {
+}).catch((err: BusinessError ): void => {
   console.error(`Failed to get slots. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1004,7 +1004,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType).then(() => {
   console.info(`Succeeded in removing slot.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1115,7 +1115,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.removeAllSlots().then(() => {
   console.info(`Succeeded in removing all slots.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to remove all slots. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1140,7 +1140,7 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
@@ -1203,7 +1203,7 @@ isNotificationEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1232,7 +1232,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isNotificationEnabled().then((data: boolean) => {
   console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1284,6 +1284,8 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int): Promise\<void\>
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用
+
 **ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
@@ -1334,7 +1336,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let badgeNumber: int = 10;
 notificationManager.setBadgeNumber(badgeNumber).then(() => {
   console.info(`Succeeded in setting badge number.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1519,7 +1521,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getActiveNotificationCount().then((data: long) => {
   console.info(`Succeeded in getting active notification count, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to get active notification count. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1548,7 +1550,7 @@ getActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>): v
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1630,7 +1632,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
   console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to get active notifications. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1727,7 +1729,7 @@ cancelGroup(groupName: string): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1753,7 +1755,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let groupName: string = "GroupName";
 notificationManager.cancelGroup(groupName).then(() => {
   console.info(`Succeeded in canceling group.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to cancel group. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1876,7 +1878,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let templateName: string = 'downloadTemplate';
 notificationManager.isSupportTemplate(templateName).then((data: boolean) => {
   console.info(`isSupportTemplate success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`isSupportTemplate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1957,27 +1959,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AppStorage } from '@ohos.arkui.stateManagement'
+import common from '@ohos.app.ability.common';
 
-class MyAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('pages/Index', (err, data): void => {
-      if (err)  {
-        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err) ?? ''}`);
-        return;
-      }
-      hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data) ?? ''}`);
-      let requestEnableNotificationCallback = (err: BusinessError | null): void => {
-        if (err) {
-          hilog.error(0x0000, 'testTag', `[ANS] requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
-        } else {
-          hilog.info(0x0000, 'testTag', `[ANS] requestEnableNotification success`);
-        }
-      };
-      notificationManager.requestEnableNotification(this.context, requestEnableNotificationCallback);
-    });
+let requestEnableNotificationCallback = (err: BusinessError | null): void => {
+  if (err) {
+    console.info(`requestEnableNotification1 Promise err: ${err.code}, errMes: ${err.message}`)
+  } else {
+    console.info(`requestEnableNotification1 Promise success!`)
   }
-}
+};
+let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
+notificationManager.requestEnableNotification(testAbilityContext, requestEnableNotificationCallback);
 ```
 
 ## notificationManager.requestEnableNotification<sup>10+</sup>
@@ -2059,23 +2052,12 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class MyAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('pages/Index', (err, data) => {
-      if (err) {
-        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err) ?? ''}`);
-        return;
-      }
-      hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data) ?? ''}`);
-      notificationManager.requestEnableNotification(this.context).then(() => {
-        hilog.info(0x0000, 'testTag', `[ANS] requestEnableNotification success`);
-      }).catch((err: BusinessError) : void => {
-        hilog.error(0x0000, 'testTag', `[ANS] requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
-      });
-    });
-  }
-}
+let testAbilityContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>("UIAbilityContext") as common.UIAbilityContext
+    await notificationManager.requestEnableNotification(testAbilityContext).then(() => {
+      console.info(`requestEnableNotification Promise success!`)
+    }).catch((err: BusinessError): void => {
+      console.info(`requestEnableNotification Promise err: ${err.code}, errMes: ${err.message}`)
+    })
 ```
 
 ## notificationManager.requestEnableNotification<sup>(deprecated)</sup>
@@ -2089,6 +2071,10 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 > 从API version 12开始不再维护，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10)代替。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -2135,6 +2121,10 @@ requestEnableNotification(): Promise\<void\>
 > 从API version 12开始不再维护，建议使用有context入参的[requestEnableNotification](#notificationmanagerrequestenablenotification10-1)代替。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：12
 
 **返回值：**
 
@@ -2252,7 +2242,7 @@ isDistributedEnabled(): Promise\<boolean>
 | -------- | ----------------------------------- |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service.   |
 | 1600010  | Distributed operation failed.       |
 
 **示例：**
@@ -2274,7 +2264,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isDistributedEnabled().then((data: boolean) => {
   console.info(`isDistributedEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) : void  => {
+}).catch((err: BusinessError): void  => {
   console.error(`isDistributedEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2298,7 +2288,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                 |
-| -------- | ------------------------ | ---- |--------------------|
+| -------- | ------------------------ | ---- | -------------------- |
 | context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
 
 **返回值：**
@@ -2419,7 +2409,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getNotificationSetting().then((data: notificationManager.NotificationSetting) => {
     console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
     console.error(`getNotificationSetting failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2434,13 +2424,13 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 | 名称                              | 值          | 说明               |
 | --------------------------------- | ----------- |------------------|
-| NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。 **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
-| NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
-| NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。 **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
-| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
-| NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
-| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20|
-| NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。 **ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
+| NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
+| NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
+| NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。<br/> **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
+| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
+| NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
+| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22|
+| NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
 
 ## SlotLevel
 
@@ -2471,13 +2461,13 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 | 名称                 | 值       | 说明       |
 | -------------------- | -------- | ---------- |
-| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
-| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
-| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
-| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
-| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
-| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。 **ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
-| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
+| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
+| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 <br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
+| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
+| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
+| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
 
 ## NotificationSetting<sup>20+</sup>
 
