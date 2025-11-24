@@ -67,7 +67,7 @@ import { policy } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-const context: common.UIAbilityContext = getContext() as common.UIAbilityContext;
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
 policy.showAppNetPolicySettings(context).then(() => {
     console.info("showAppNetPolicySettings success");
 }).catch(() => {
