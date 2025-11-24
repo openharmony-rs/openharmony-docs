@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **componentUtils** module provides API for obtaining the coordinates and size of the drawing area of a component.
 
@@ -29,7 +29,7 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 >
 > - This API is deprecated since API version 18. You are advised to use [getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid) instead on the obtained [ComponentUtils](arkts-apis-uicontext-componentutils.md) object.
 >
-> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API should be called after the target component's layout is complete to obtain its size information. It is recommended that you use this API within the [layout callback](./js-apis-arkui-inspector.md).
+> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API provides access to component coordinates and size information after the target component completes layout. It is recommended that you invoke this API within [layout completion callbacks](./js-apis-arkui-inspector.md). Note that dynamically created components must be mounted to the node tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -172,7 +172,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 | m21    | number | Yes  | The tenth value, which is affected by the rotation of the x, y, and z axes.   |
 | m22    | number | Yes  | Scale factor along the z-axis. Defaults to **1** for the identity matrix.        |
 | m23    | number | Yes  | Meaningless value.                        |
-| m30    | number | Yes  | Translation value of the x-axis, in px. Defaults to **0** for the unit matrix.|
+| m30    | number | Yes  | Translation value of the x-axis, in px. The default value is **0** for the identity matrix.|
 | m31    | number | Yes  | Translation value of the y-axis, in px. The default value is **0** for the identity matrix.|
 | m32    | number | Yes  | Translation value of the z-axis, in px. The default value is **0** for the identity matrix.|
 | m33    | number | Yes  | Valid in homogeneous coordinates, presenting the perspective projection effect.  |
