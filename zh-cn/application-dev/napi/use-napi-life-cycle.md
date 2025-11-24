@@ -145,7 +145,7 @@ try {
 ```
 
 
-框架层的scope嵌入在ArkTS call native的端到端流程中，即：进入开发者自己写的native方法前open scope, native方法结束后close scope。创建的ArkTS对象的生命周期在调用结束就结束了，不会存在内存泄漏的问题。调用前后如下：
+框架层的scope嵌入在ArkTS访问native的端到端流程中，即：进入开发者自己写的native方法前open scope, native方法结束后close scope。创建的ArkTS对象的生命周期在调用结束就结束了，不会存在内存泄漏的问题。调用前后如下：
 ```cpp
 // 调用NewObject前会open scope
 napi_value NewObject(napi_env env, napi_callback_info info)
