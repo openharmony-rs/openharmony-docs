@@ -32,7 +32,9 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 
 ## WindowAnimationCurveParam<sup>20+</sup>
 
-type WindowAnimationCurveParam = Array&lt;number&gt;
+ArkTS-Dyn: type WindowAnimationCurveParam = Array&lt;number&gt;
+
+ArkTS-Sta: type WindowAnimationCurveParam = Array&lt;double&gt;
 
 动画曲线参数。不同曲线类型[WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)，对应的WindowAnimationCurveParam参数含义不同。
 
@@ -40,9 +42,13 @@ type WindowAnimationCurveParam = Array&lt;number&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型      | 说明                          |
 | -----------| ---------------------------- |
-| Array&lt;number&gt;    | 表示值类型为数字数组，元素取值范围见对应曲线描述。     |
+| ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 表示值类型为数字数组，元素取值范围见对应曲线描述。     |
 
 当曲线类型为LINEAR，动画曲线参数选填，且不生效。
 
