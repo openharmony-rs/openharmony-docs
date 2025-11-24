@@ -916,6 +916,8 @@ textShadow(value: ShadowOptions | Array\<ShadowOptions\>)
 
 设置文字阴影效果。
 
+不支持ShadowOptions对象中的type、fill字段和color字段的智能取色模式。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
