@@ -220,15 +220,11 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTs-Dyn起始版本：** 10
-
-**ArkTs-Sta起始版本：** 22
-
 | 名称        |  值   | 说明         |
 | ----------- | ---- | ------------ |
-| FORM_DEFAULT | 1   | 表示卡片创建原因为默认创建。 |
-| FORM_SHARE   | 2   | 表示卡片创建原因为共享创建。 |
-| FORM_SIZE_CHANGE<sup>20+<sup>    | 3   | 表示卡片创建原因为尺寸变化。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| FORM_DEFAULT | 1   | 表示卡片创建原因为默认创建。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22|
+| FORM_SHARE   | 2   | 表示卡片创建原因为共享创建。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22|
+| FORM_SIZE_CHANGE<sup>20+<sup>    | 3   | 表示卡片创建原因为尺寸变化。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTs-Dyn起始版本：** 20 <br/>**ArkTs-Sta起始版本：** 22|
 
 ## OverflowInfo<sup>20+</sup>
 
