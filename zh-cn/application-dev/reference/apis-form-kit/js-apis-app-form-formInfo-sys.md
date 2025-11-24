@@ -82,7 +82,7 @@ import { formInfo } from '@kit.FormKit';
 | visibilityType  | [VisibilityType](js-apis-app-form-formInfo.md#visibilitytype)               | 是    | 否     | 卡片当前可见类型枚举。 <br/>**ArkTs-Dyn起始版本：** 10 <br/>**ArkTs-Sta起始版本：** 22                  |
 | formUsageState<sup>11+</sup> | [FormUsageState](#formusagestate)         | 是    | 否     | 卡片当前使用状态枚举。 <br/>**ArkTs-Dyn起始版本：** 11 <br/>**ArkTs-Sta起始版本：** 22  |
 | formDescription<sup>11+</sup> | string         | 是    | 否     | 提供方卡片配置文件中的描述信息。 <br/>**ArkTs-Dyn起始版本：** 11 <br/>**ArkTs-Sta起始版本：** 22  |
-| extraData<sup>12+</sup> | string         | 是    | 否     | 提供方卡片的扩展数据。 <br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22  |
+| extraData<sup>12+</sup> | string         | 是    | 是     | 提供方卡片的扩展数据。 <br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22  |
 
 ## formProviderFilter<sup>10+</sup>
 
