@@ -46,6 +46,8 @@ test/xxx/generated/
 ├── my.package.ets
 └── temp
     ├── ani_constructor.cpp
+    ├── my.package.*.template.cpp
+    ├── my.package.*.template.hpp
     └── my.package.impl.cpp
 ```
 
@@ -57,6 +59,7 @@ ANI生成的相关文件说明如下：
 - `src/my.package.ani.cpp`：包含了所有`my.package.ohidl`中定义的函数的native侧桥接代码，以及`my::package::ANI_Register`函数的实现。
 - `my.package.ets`：包含了所有`my.package.ohidl`中定义的数据类型和函数的ArkTS侧桥接代码。
 - `temp/ani_constructor.cpp`：`ANI_Constructor`函数的实现模板代码，其中调用了`ANI_Register`函数，将所有函数的native侧实现注册到ANI虚拟机中。
+- `temp/my.package.*.template.{cpp,hpp}`：`interface`类型的实现模板代码。
 
 ## 基本函数的正向调用链
 

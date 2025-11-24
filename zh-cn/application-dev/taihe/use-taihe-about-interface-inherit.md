@@ -2,29 +2,45 @@
 
 ## 简介
 
-Taihe支持interface继承interface，@class interface继承interface，需要用户对[interface](./use-taihe-about-interface.md)和[class](./use-taihe-about-class.md)有基础的了解。
+Taihe支持interface继承interface，@class interface继承interface，@class interface继承@class interface，需要用户对[interface](./use-taihe-about-interface.md)和[class](./use-taihe-about-class.md)有基础的了解。
 
 ## 基本概念
 
 Taihe IDL 语法支持接口单继承和多继承，例如，interface A: B, C {} 表示 interface A 继承了 interface B 和 interface C。
 
-Taihe 相关代码示例
+以下述代码为例，其中包含：
+- interface继承interface：IShape继承IBase；
+- @class interface继承interface：IDerived继承IShape；
+- @class interface继承@class interface：IFancy继承IDerived。
+
+Taihe相关代码示例：
 
 ```rust
 interface IBase {
     getId(): String;
     setId(s: String): void;
 }
+
 interface IShape: IBase {
     calculateArea(): f64;
 }
+
+// @class interface继承interface
 @class
 interface IDerived: IShape {
     call(): void;
 }
+
+// @class interface继承@class interface
+@class
+interface IFancy: IDerived {
+    show(): void;
+}
 ```
 
-以下是对应的 ets 代码
+以下是Taihe生成的ets代码（简化版）：
+
+因为存在多级继承，每个类会实现自身、基类、间接基类的方法。
 
 ```typescript
 export interface IBase {
@@ -39,24 +55,48 @@ export interface IShape extends IBase {
 
 // @class interface 继承 interface 表现为 implements
 export class IDerived implements IShape {
-    native _taihe_call_native(): void;
-    native _taihe_calculateArea_native(): double;
-    native _taihe_getId_native(): string;
-    native _taihe_setId_native(s: string): void;
-    constructor () {
-        _taihe_createIDerived_native();
+    // 拷贝构造函数
+    constructor(other: IDerived) {
+      // 调用Taihe生成的拷贝构造函数
     }
+
+    // 以下方法供开发者使用，从而调用native侧实现
     call(): void {
-        return this._taihe_call_native();
+        // 调用native侧call
     }
     calculateArea(): double {
-        return this._taihe_calculateArea_native();
+        // 调用native侧calculateArea
     }
     getId(): string {
-        return this._taihe_getId_native();
+        // 调用native侧getId
     }
     setId(s: string): void {
-        return this._taihe_setId_native(s);
+        // 调用native侧setId
+    }
+}
+
+// @class interface 继承 @class interface 表现为 extends
+export class IFancy extends IDerived {
+    // 拷贝构造函数
+    constructor(other: IFancy) {
+        // 调用Taihe生成的拷贝构造函数
+    }
+
+    // 以下方法供开发者使用，从而调用native侧实现
+    show(): void {
+        // 调用native侧show
+    }
+    call(): void {
+        // 调用native侧call
+    }
+    calculateArea(): double {
+        // 调用native侧calculateArea
+    }
+    getId(): string {
+        // 调用native侧getId
+    }
+    setId(s: string): void {
+        // 调用native侧setId
     }
 }
 ```
@@ -71,13 +111,13 @@ interface IBase {
     setId(s: String): void;
 }
 
-function makeIBase(id: String): IBase;
-function copyIBase(a: IBase, b: IBase): void;
-
 interface IShape: IBase {
     calculateArea(): f64;
 }
 
+// 自定义的工具函数
+function makeIBase(id: String): IBase;
+function copyIBase(a: IBase, b: IBase): void;
 function makeIShape(id: String, a: f64, b: f64): IShape;
 
 @class
@@ -85,12 +125,24 @@ interface IDerived: IShape {
     call(): void;
 }
 
+@class
+interface IFancy: IDerived {
+    show(): void;
+}
+
+// 为类自定义默认构造函数，详见class文档
 @constructor("IDerived")
 @rename
 function createIDerived(): IDerived;
+
+@constructor("IFancy")
+@rename
+function createIFancy(): IFancy;
 ```
 
 ### C++ 实现
+
+用户的native实现：
 
 ```cpp
 class Base {
@@ -170,6 +222,34 @@ public:
   }
 };
 
+class Fancy {
+protected:
+  ::taihe::string id = "f";
+  float a = 3;
+  float b = 4;
+public:
+  void call() {
+    std::cout << "fancy call!" << std::endl;
+  }
+
+  double calculateArea() {
+    return a * b;
+  }
+
+  ::taihe::string getId() {
+    return id;
+  }
+  
+  void setId(::taihe::string_view s) {
+    this->id = s;
+    return;
+  }
+
+  void show() {
+    std::cout << "Area: " << calculateArea() << std::endl;
+  }
+};
+
 IBase makeIBase(::taihe::string_view id) {
   return ::taihe::make_holder<Base, IBase>(id);
 }
@@ -185,6 +265,10 @@ IShape makeIShape(::taihe::string_view id, double a, double b) {
 
 IDerived createIDerived() {
   return taihe::make_holder<Derived, IDerived>();
+}
+
+IFancy createIFancy() {
+  return taihe::make_holder<Fancy, IFancy>();
 }
 ```
 
@@ -240,17 +324,23 @@ let d = new IDerived();
 d.call();
 // 子类接口调用父类声明方法
 console.log(d.getId());
+
+let f = new IFancy();
+f.show();
+// 子类接口调用父类声明方法
+f.call();
+console.log(f.getId());
 ```
 
 Output：
 
 ```sh
-new base 0x12cf718c0
+new base 0x1359de080
 ibase_1 getId:  abc
 ibase_1 setId:  xyz
-new base 0x12cf73510
+new base 0x1359e09a0
 copyIBase:  test test
-new shape 0x12cf73700
+new shape 0x1359e0bd0
 makeIShape:  7.850000381469727
 interface extends:  shape
 interface extends set:  aaaaa
@@ -258,4 +348,7 @@ impl interface:  A A
 interface extends:  aaaaa aaaaa
 derived call!
 d
+Area: 12
+fancy call!
+f
 ```
