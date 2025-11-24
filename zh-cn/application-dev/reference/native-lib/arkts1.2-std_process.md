@@ -4,7 +4,7 @@
 
 > **说明：**
 >
-> ArkTS版本：该标准库接口仅适用于ArkTS1.2。
+> ArkTS版本：该标准库接口仅适用于ArkTS-Sta。
 
 ## StdProcess.uid
 
@@ -143,6 +143,80 @@ uptime(): long
 ```js
 let time = StdProcess.uptime();
 ```
+
+## StdProcess.on 
+
+on(type: string, listener: EventListener): void
+
+注册标准进程事件监听器，用于捕获当前线程中未处理的异步拒绝对象。
+
+当对应事件触发时，注册的listener将被回调，用于异常处理。
+
+事件触发时会抛出错误信息，建议使用try-catch逻辑进行处理。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明      |
+| ------ | ------ | ---- | ------- |
+| type     | string | 是   | 事件类型，支持取值及对应含义如下所示：<br>'unhandledJobRejection': 注册未处理Job的监听器。<br> 'unhandledPromiseRejection': 注册未处理Promise的监听器。<br>|
+| listener | [EventListener](#eventlistener) | 是 | 事件回调函数，用于处理拒绝对象。|
+
+**示例：**
+
+```ts
+let listener: StdProcess.RejectedObjectListener = (reason: Error, target: Object) => {
+    console.info("unhandled rejection detected");
+    console.info("reason.name:", reason.name);
+    console.info("reason.message:", reason.message);
+    if (reason.stack) {
+        console.info("reason.stack:", reason.stack);
+    }
+}
+try {
+    StdProcess.on("unhandledPromiseRejection", listener);
+    new Promise<void>((res, reject) => {
+        reject(new Error(("uncaught rejection")))
+    })
+} catch (e) {
+    console.info("caught exception:", (e as Error).message);
+}
+```
+
+## EventListener
+
+type EventListener = RejectedObjectListener | UncaughtErrorListener
+
+事件监听器类型，可以是拒绝对象监听器或未捕获异常监听器。根据传入的事件类型，实际触发的回调类型可能不同。
+
+| 类型 | 说明   |
+| ------ | ------ |
+| [RejectedObjectListener](#rejectedobjectlistener)     | 拒绝对象监听器回调函数，用于处理未处理的Promise拒绝或Job拒绝。 |
+| [UncaughtErrorListener](#uncaughterrorlistener)      | 未捕获的异常监听器回调函数，用于处理进程中未被捕获的异常。 |
+
+## RejectedObjectListener
+
+type RejectedObjectListener = (reason: Error, obj: Object) => void
+
+拒绝对象监听器回调函数，用于处理未处理的Promise拒绝或Job拒绝。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明      |
+| ------ | ------ | ---- | ------- |
+| reason     | Error | 是   | 异步拒绝的原因。|
+| obj | Object | 是 | 被拒绝的对象，可能是Job或Promise。|
+
+## UncaughtErrorListener
+
+type UncaughtErrorListener = (error: Object) => void
+
+未捕获的异常监听器回调函数。用于处理进程中未被捕获的异常。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明      |
+| ------ | ------ | ---- | ------- |
+| error     | Object | 是   | 未被捕获的异常对象。|
 
 ## ProcessManager
 
