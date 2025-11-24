@@ -6893,7 +6893,7 @@ export default class EntryAbility extends UIAbility {
 
 maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&lt;void&gt;
 
-实现最大化功能。主窗口可调用此接口实现最大化功能；子窗口需在创建时设置子窗口参数maximizeSupported为true，再调用此接口可实现最大化功能。使用Promise异步回调。
+实现最大化功能。主窗口可调用此接口实现最大化功能；子窗口需在创建时设置子窗口参数maximizeSupported为true，再调用此接口可实现最大化功能。在具备折叠功能的2in1设备上，支持控制悬停态（参考[折叠屏悬停态最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-folded-hover)）下主窗口的瀑布流模式行为，即窗口在悬停态下最大化时是否跨上下两个半屏显示。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6904,7 +6904,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
-| acrossDisplay | boolean | 否 | 该参数用于控制半折态下主窗口在最大化时的瀑布流模式行为。仅在具备折叠功能的2in1设备主窗口上生效；在非主窗口调用时，将返回错误码`1300004`；在不具备折叠功能的2in1设备上主窗口设置该参数无实际作用。<br/>如为`true`，半折态下，窗口将直接进入瀑布流模式；展开态下，窗口进入最大化，并在半折态下保持瀑布流模式。<br/>如为`false`，半折态下，窗口将退出瀑布流模式，进入单面最大化；展开态下，窗口进入最大化，并在半折态下退出瀑布流模式。<br/>如为`undefined` 或不传，不修改窗口瀑布流模式行为。半折态下，窗口进入单面最大化；展开态下，窗口进入最大化，并在半折态下默认保持瀑布流模式。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`或不传值时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
 
 **返回值：**
 
