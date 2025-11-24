@@ -3773,7 +3773,7 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 >
 > - 不锁定因折叠开合默认方向变化导致的旋转。
 >
-> - 不影响应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置orientation属性设置启动方向。
+> - 不影响应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
 
 **系统接口：** 此接口为系统接口。
 
