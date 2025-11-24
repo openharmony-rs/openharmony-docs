@@ -29,7 +29,7 @@ Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计�
 
 ## 概述
 
-@Computed为方法装饰器，装饰getter方法。@Computed会检测被计算的属性变化，当被计算的属性变化时，@Computed只会被求解一次。不推荐在@Computed中修改变量，错误的使用会导致数据无法被追踪或appfreeze等问题，详情见[使用限制](#使用限制)。
+@Computed为方法装饰器，装饰getter方法。@Computed会检测被计算的属性变化，当被计算的属性变化时，@Computed只会被求解一次。不建议在@Computed中修改变量，错误的使用会导致数据无法被追踪或appfreeze等问题，详情见[使用限制](#使用限制)。
 
 但需要注意，对于简单计算，不建议使用计算属性，因为计算属性本身也有开销。对于复杂的计算，\@Computed能带来性能收益。
 
@@ -79,7 +79,7 @@ struct Page {
   @Computed
   get fullName() {
     console.info('fullName');
-    // 不推荐在@Computed的计算中做赋值逻辑，因为@Computed本质是一个getter访问器，用来节约重复计算
+    // 不建议在@Computed的计算中做赋值逻辑，因为@Computed本质是一个getter访问器，用来节约重复计算
     // 在这个例子中，fullNameRequestCount仅代表@Computed计算次数，不能代表fullName被访问的次数
     this.fullNameRequestCount++;
     return this.firstName + ' ' + this.lastName;
