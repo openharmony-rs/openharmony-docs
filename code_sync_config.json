@@ -10017,7 +10017,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":76,
 						"name":"custom_gestures",
 						"start_line":15
 					}
@@ -10077,7 +10077,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets",
 				"functions":[
 					{
-						"end_line":254,
+						"end_line":256,
 						"name":"gesture_recognition",
 						"start_line":16
 					}
@@ -11692,7 +11692,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":65,
 						"name":"key_distribute_event",
 						"start_line":15
 					}
@@ -17376,7 +17376,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets",
 				"functions":[
 					{
-						"end_line":141,
+						"end_line":142,
 						"name":"mouse_button",
 						"start_line":16
 					}
