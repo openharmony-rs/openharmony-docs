@@ -163,6 +163,10 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                | 值   | 说明                                                         |
 | ------------------- | ---- | ------------------------------------------------------------ |
 | LINEAR              | 0    | 表示动画从头到尾的速度都是相同的。<br/>使用该曲线类型时[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中duration必填。<br/>使用该曲线类型时[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中param选填，且不生效。 |

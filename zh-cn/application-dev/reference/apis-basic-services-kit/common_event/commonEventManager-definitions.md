@@ -679,6 +679,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：9
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.USER_PRESENT

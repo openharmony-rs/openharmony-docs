@@ -1,8 +1,9 @@
 # commonEventSubscriber
 
 > **说明：**
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## CommonEventSubscriber
 
@@ -138,7 +139,7 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getCode().then((code: int) => {
   console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to get code. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -274,7 +275,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promis
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<void>   | 无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -303,7 +304,7 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setCode(1).then(() => {
   console.info(`Succeeded in setting code.`);
-}).catch((err: BusinessError) : void  => {
+}).catch((err: BusinessError): void  => {
   console.error(`Failed to set code. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -450,7 +451,7 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getData().then((data: string) => {
   console.info(`Succeeded in getting data, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -565,7 +566,7 @@ setData(data: string): Promise\<void>
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -594,7 +595,7 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setData('publish_data_changed').then(() => {
   console.info(`Succeeded in setting data.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to set data. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -727,7 +728,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -754,7 +755,7 @@ ArkTS-Sta示例：
 ```ts
 subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
   console.info(`Succeeded in setting code and data.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to set code and data. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -836,7 +837,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered:boolean) => {
+subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered: boolean) => {
   if (err) {
     console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -849,7 +850,7 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent((err: BusinessError | null, isOrdered:boolean | undefined | null) => {
+subscriber.isOrderedCommonEvent((err: BusinessError | null, isOrdered: boolean | undefined | null) => {
   if (err) {
     console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -882,7 +883,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent().then((isOrdered:boolean) => {
+subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
 }).catch((err: BusinessError) => {
   console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
@@ -893,9 +894,9 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isOrderedCommonEvent().then((isOrdered:boolean) => {
+subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -959,7 +960,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent((err: BusinessError, isSticky:boolean) => {
+subscriber.isStickyCommonEvent((err: BusinessError, isSticky: boolean) => {
   if (err) {
     console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -972,7 +973,7 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent((err: BusinessError | null, isSticky:boolean | undefined | null) => {
+subscriber.isStickyCommonEvent((err: BusinessError | null, isSticky: boolean | undefined | null) => {
   if (err) {
     console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -1005,7 +1006,7 @@ ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent().then((isSticky:boolean) => {
+subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
 }).catch((err: BusinessError) => {
   console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
@@ -1016,9 +1017,9 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.isStickyCommonEvent().then((isSticky:boolean) => {
+subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1132,7 +1133,7 @@ abortCommonEvent(): Promise\<void>
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1158,12 +1159,12 @@ ArkTS-Sta示例：
 ```ts
 subscriber.abortCommonEvent().then(() => {
   console.info(`Succeeded in aborting common event.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to abort common event. Code is ${err.code}, message is ${err.message}`);
 });
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1201,7 +1202,7 @@ ArkTS-Sta示例：
 subscriber.abortCommonEventSync();
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1290,7 +1291,7 @@ clearAbortCommonEvent(): Promise\<void>
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1316,12 +1317,12 @@ ArkTS-Sta示例：
 ```ts
 subscriber.clearAbortCommonEvent().then(() => {
   console.info(`Succeeded in clearing abort common event.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to clear abort common event. Code is ${err.code}, message is ${err.message}`);
 });
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError) : void  => {
+}).catch((err: BusinessError): void  => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1359,7 +1360,7 @@ ArkTS-Sta示例：
 subscriber.clearAbortCommonEventSync();
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1455,7 +1456,7 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
   console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
-}).catch((err: BusinessError) : void  => {
+}).catch((err: BusinessError): void  => {
   console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1584,9 +1585,9 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEventSubscribeInfo|null) => {
+subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEventSubscribeInfo | null) => {
   console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to get subscribe info. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1701,7 +1702,7 @@ finishCommonEvent(): Promise\<void>
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1722,7 +1723,7 @@ ArkTS-Sta示例：
 ```ts
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```

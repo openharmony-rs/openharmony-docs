@@ -1,13 +1,13 @@
 # NotificationSlot(系统接口)
 
-描述通知槽。
+描述通知渠道，不同通知渠道对应的通知提醒方式不同。
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationSlot](./js-apis-inner-notification-notificationSlot.md)。
+> - 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationSlot](./js-apis-inner-notification-notificationSlot.md)。
 
 ## NotificationSlot
 

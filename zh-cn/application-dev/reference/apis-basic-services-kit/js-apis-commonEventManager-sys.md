@@ -4,10 +4,10 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[CommonEventManager](./js-apis-commonEventManager.md)。
+> - 当前界面仅包含本模块的系统接口，其他公开接口参见[CommonEventManager](./js-apis-commonEventManager.md)。
 
 ## 导入模块
 
@@ -53,6 +53,7 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, callback: AsyncCallback\<vo
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
 | 1500003  | The common event sending frequency too high. |
+| 1500006  | Invalid userId.                     |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -64,7 +65,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 //指定发送的用户
-let userId = 100;
+let userId = 1;
 
 //发布公共事件
 try {
@@ -86,7 +87,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 //指定发送的用户
-let userId = 100;
+let userId = 1;
 
 //发布公共事件
 try {
@@ -153,7 +154,7 @@ let options:commonEventManager.CommonEventPublishData = {
 }
 
 // 指定发送的用户
-let userId = 100;
+let userId = 1;
 // 发布公共事件
 try {
   commonEventManager.publishAsUser('event', userId, options, (err: BusinessError) => {
@@ -180,7 +181,7 @@ let options:commonEventManager.CommonEventPublishData = {
 }
 
 // 指定发送的用户
-let userId = 100;
+let userId = 1;
 // 发布公共事件
 try {
   commonEventManager.publishAsUser('event', userId, options, (err: BusinessError | null) => {
@@ -268,7 +269,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**需要权限**:  ohos.permission.COMMONEVENT_STICKY
+**需要权限**: ohos.permission.COMMONEVENT_STICKY
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
@@ -296,7 +297,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 | -------- | ----------------------------------- |
 | 201      | The application does not have permission to call the interface.     |  
 | 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -320,7 +321,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
   console.info(`removeStickyCommonEvent success`);
-}).catch ((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
 });
 ```
@@ -345,7 +346,7 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true:使能 false：去使能。 |
+| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：使能 false：去使能。 |
 | callback  | AsyncCallback\<void> | 是   | 表示设置静态订阅事件使能状态的回调方法。 |
 
 **错误码：**
@@ -413,7 +414,7 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 | 类型           | 说明                         |
 | -------------- | ---------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -445,7 +446,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.setStaticSubscriberState(false).then(() => {
   console.info(`setStaticSubscriberState success`);
-}).catch ((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
 });
 ```
@@ -479,7 +480,7 @@ ArkTS-Sta: setStaticSubscriberState(enable: boolean, events: Array\<string>): Pr
 
 | 类型           | 说明                                 |
 | -------------- | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -513,7 +514,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let evenName: string[] = ['usual.event.SEND_DATA'];
 commonEventManager.setStaticSubscriberState(true, evenName).then(() => {
   console.info(`setStaticSubscriberState success, state is ${true}`);
-}).catch((err: BusinessError) : void => {
+}).catch((err: BusinessError): void => {
   console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
 });
 ```

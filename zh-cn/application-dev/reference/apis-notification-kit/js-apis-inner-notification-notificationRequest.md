@@ -4,8 +4,8 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## NotificationRequest
 
@@ -15,7 +15,7 @@
 |-------------------------------| -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
 | content                       | [NotificationContent](js-apis-inner-notification-notificationContent.md#notificationcontent-1)   |   否  | 否  | 通知内容。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20                 |
 | id                            | ArkTS-Dyn: number <br/>ArkTS-Sta: int         |   否  | 是  | 通知ID，默认为0。当相同通知ID存在时，将更新该通知的内容。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20         |
-| slotType<sup>(deprecated)</sup> | [notification.SlotType](./js-apis-notification.md#slottype)    |   否  | 是  | 通知渠道类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationSlotType替代。                        |
+| slotType<sup>(deprecated)</sup> | [notification.SlotType](./js-apis-notification.md#slottype)    |   否  | 是  | 通知渠道类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用[notificationSlotType](#notificationrequest)替代。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：7    |
 | notificationSlotType<sup>11+</sup> | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) |   否  | 是  | 通知渠道类型，默认为OTHER_TYPES。    <br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20                    |
 | isOngoing                     | boolean                                                  |   否  | 是  | 预留能力，暂未支持。  <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
 | isUnremovable                 | boolean                                                  |   否  | 是  | 预留能力，暂未支持。  <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
@@ -25,7 +25,6 @@
 | autoDeletedTime               | ArkTS-Dyn: number <br/>ArkTS-Sta: long       |   否  | 是  | 自动清除的时间。<br>数据格式：时间戳。<br>单位：ms。<br>例如，希望某通知存留3秒（3000ms）后对其进行清除，则对应的清除时间为：new Date().getTime() + 3000。  <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20        |
 | wantAgent                     | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)            |   否  | 是  | WantAgent封装了应用的行为意图，点击通知时触发该行为。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20    |
 | extraInfo                     | ArkTS-Dyn: {[key: string]: any} <br/>ArkTS-Sta: Record<string, RecordData> |   否  | 是  | 扩展参数。为应用提供定制服务。    <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20  |
-| extendInfo                     | ArkTS-Dyn: Record<string, Object> <br/>ArkTS-Sta: Record<string, RecordData> |   否  | 是  | 扩展参数。为应用提供定制服务。    <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：20  |
 | color                         | ArkTS-Dyn: number <br/>ArkTS-Sta: long       |   否  | 是  | 通知背景颜色。预留能力，暂未支持。      <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20      |
 | colorEnabled                  | boolean  |   否  | 是  | 通知背景颜色是否使能。预留能力，暂未支持。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20     |
 | isAlertOnce                   | boolean                                                  |   否  | 是  | 发布或更新该通知时，是否只进行一次通知提醒，默认为false。<br/> - true：仅首次发布通知时进行提醒，后续更新该通知时，提醒方式变更为[LEVEL_MIN](js-apis-notificationManager.md#slotlevel)。<br/> - false：每次均按照配置的通知提醒方式进行提醒。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20             |
