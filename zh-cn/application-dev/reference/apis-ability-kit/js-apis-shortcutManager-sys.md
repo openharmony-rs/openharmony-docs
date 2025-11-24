@@ -38,7 +38,7 @@ addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortc
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
-| userId     | number | 是   | 用户id。 |
+| userId     | number | 是   | 用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -123,7 +123,7 @@ deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
-| userId     | number | 是   | 用户id。 |
+| userId     | number | 是   | 用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -203,7 +203,7 @@ getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-api
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| userId     | number | 是   | 被查询的用户id。 |
+| userId     | number | 是   | 被查询的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
 
 **返回值：**
 
@@ -256,15 +256,15 @@ struct ShortcutExample {
 
 ## shortcutManager.addDynamicShortcutInfos<sup>23+</sup>
 
-addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>, userId: number): Promise\<void>
+addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Promise\<void>
 
-添加指定用户的动态快捷方式。
+根据userId参数添加对应用户的动态快捷方式。
 
 **需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
-添加当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS。
+ - 添加应用程序所属用户下的动态快捷方式时，需要ohos.permission.MANAGE_SHORTCUTS权限。
 
-添加非当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+ - 添加其他用户下的动态快捷方式时，需要ohos.permission.MANAGE_SHORTCUTS和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
 **系统接口：** 此接口为系统接口。
 
@@ -274,18 +274,18 @@ addDynamicShortcutInfos(shortcutInfo: Array\<[ShortcutInfo](js-apis-bundleManage
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。</br> 1.ShortcutInfo中的sourceType字段需设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
-| userId     | number | 是   | 动态快捷方式所属的用户id。 |
+|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
+| userId     | number | 是   | 动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -328,16 +328,15 @@ try {
 
 ## shortcutManager.deleteDynamicShortcutInfos<sup>23+</sup>
 
-deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array<string>): Promise\<void>
+deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number, ids?: Array\<string>): Promise\<void>
 
-删除指定用户的动态快捷方式。
-
-删除当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS。
-
-删除非当前用户下的动态快捷方式时需要申请权限ohos.permission.MANAGE_SHORTCUTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
-
+删除与bundleName、appIndex和userId参数匹配的动态快捷方式。
 
 **需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - 删除应用程序所属用户下的动态快捷方式，需要ohos.permission.MANAGE_SHORTCUTS权限。
+
+ - 删除其他用户下的动态快捷方式时，需要ohos.permission.MANAGE_SHORTCUTS和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
 **系统接口：** 此接口为系统接口。
 
@@ -347,20 +346,20 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number,
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-|  bundleName   |   string    |   是  |   要删除的动态快捷方式所属的包名。    |
-| appIndex     | number | 是   | 要删除的动态快捷方式所属的分身索引。 |
-| userId     | number | 是   | 要删除的动态快捷方式所属的用户id。 |
-| ids     |  Array<string> | 否   | 要删除的动态快捷方式id列表。 |
+| bundleName   |   string    |   是  |   要删除的动态快捷方式所属的包名。    |
+| appIndex     | number | 是   | 要删除的动态快捷方式所属的分身索引。取值范围 0 ~ 5 |
+| userId     | number | 是   | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| ids     |  Array<string> | 否   | 要删除的动态快捷方式id列表。不传或列表为空时，表示删除所有符合条件的动态快捷方式。|
 
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<void> | Promise对象，无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
