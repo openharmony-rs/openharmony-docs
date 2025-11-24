@@ -30,7 +30,7 @@
 
 5. 媒体会话控制方通过AVSessionController对象还可以向媒体会话发送控制命令。
 
-6. 媒体会话提供方通过AVSession对象可以监听来自媒体会话控制方的控制命令，例如：“play”播放、“playNext”播放下一首、“fastForward”快进、 “setSpeed”设置播放倍数等。
+6. 媒体会话提供方通过AVSession对象可以监听来自媒体会话控制方的控制命令，例如：“play”播放、“playNext”播放下一首、“fastForward”快进、 “setSpeed”设置播放倍速等。
 
 ## 媒体会话管理器
 
