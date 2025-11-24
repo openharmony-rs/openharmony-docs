@@ -82,6 +82,16 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 | accessibilityDescription          | string | 否  | 否|超链接文本的辅助功能描述。        |
 | accessibilityLevel          | string | 否  | 否|超链接文本的辅助功能级别。        |
 
+## FocusMoveResult<sup>23+</sup>
+无障碍接口[findElementsByCondition](js-apis-inner-application-accessibilityExtensionContext-sys.md)返回值类型。
+
+**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+
+| 名称                  | 类型     | 只读  |可选| 说明                                |
+| ------------------- | ------ | ---- | ----|--------------------------------- |
+| target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 返回查询的节点数组。|
+| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md)  | 否 | 否 | 返回查询结果状态码。|
+
 
 ## startAbility<sup>12+</sup>
 
@@ -1655,6 +1665,56 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
         console.info("findElementById componentId: " + element.componentId);
     }).catch((err: BusinessError) => {
         console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
+    })
+}).catch((err: BusinessError) => {
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+})
+```
+
+### findElementsByCondition<sup>23+</sup>
+
+findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>;
+
+以当前节点为起点，按方向查询下一个可聚焦节点。使用Promise异步回调。
+
+**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 名称 | 类型 | 必填 | 描述 |
+| -------- | ---- | -------- | ------------------------------------------------------------ |
+| rule | [FocusRule](js-apis-inner-application-accessibilityExtensionContext.md) | 是| 检查当前节点以及当前节点子节点的规则 |
+| condition | [FocusCondition](js-apis-inner-application-accessibilityExtensionContext.md) | 是| 表示查询可聚焦节点方式 |
+
+**返回值：**
+
+| 类型                                      | 描述                   |
+| ---------------------------------------- | --------------------- |
+| Promise\<[FocusMoveResult](#focusmoveresult23)> | Promise对象，返回查询结果对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID  | 错误信息                                    |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+
+// AccessibilityExtAbility.ets
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementsByCondition("bypassSelf", "forward").then((res: FocusMoveResult) => {
+        console.info("findElementsByCondition result: " + res.result);
+    }).catch((err: BusinessError) => {
+        console.error(`findElementsByCondition failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
