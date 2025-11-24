@@ -1170,6 +1170,16 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"module_distributionFilter_metadata",
+						"start_line":18
+					}
+				]
 			}
 		]
 	},
