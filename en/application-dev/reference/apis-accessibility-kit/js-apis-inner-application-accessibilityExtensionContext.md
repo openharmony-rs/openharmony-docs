@@ -113,40 +113,6 @@ Enumerates the focus directions.
 | 'forward'  | Search for the next focusable item before the current item in focus.|
 | 'backward' | Search for the next focusable item after the current item in focus.|
 
-## FocusCondition
-
-type FocusCondition = 'forward' | 'backward' |
-'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor';
-
-Indicates the condition of the search focus.
-
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
-
-| Type      | Description     |
-| -------- | ------- |
-| 'forward'       | Search for the next focusable item before the current item.|
-| 'backward'     | Search for the next focusable item after the current item.|
-| 'findLast'     | Search for the last item the current item in focus.|
-| 'getForwardScrollAncestor' | Search for the scrollable parent item before the current item.|
-| 'getBackwardScrollAncestor'| Search for the scrollable parent item after the current item.|
-| 'getScrollableAncestor' | Search for the scrollable parent item of the current item.|
-
-## FocusRule
-
-type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants';
-
-Indicates the rule of the search focus.
-
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
-
-| Type      | Description     |
-| -------- | ------- |
-| 'bypassSelf'       | skip self, need to check child elementInfos.|
-| 'bypassSelfDescendants'     | skip self and child elementInfos.|
-| 'checkSelf'     | check self, then check child elementInfos.|
-| 'checkSelfBypassDescendants' | check self, skip child elementInfos.|
-
 ## FocusType
 
 type FocusType = 'accessibility' | 'normal'

@@ -131,23 +131,3 @@ Accessibility node elements are UI components that support accessibility actions
 | NOTIFICATION_CENTER        | 18   | Opening the notification center.                 |
 | CONTROL_CENTER             | 19   | Opening the control center.                 |
 | SPAN_CLICK                 | 20   | Clicking a part of a text.            |
-
-
-## FocusMoveResultCode
-
-Enumerates the focus move result code.
-
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
-
-| Name                        | Value   | Description                      |
-| -------------------------- | ---- | ------------------------ |
-| NOT_SUPPORTED                             | -1 | The code of not supported.              |
-| SEARCH_SUCCESS                            | 0  | The code of success.            |
-| SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS    | 1  | The code of success next bypass descendants.   |
-| SEARCH_FAILURE                            | 2  | The code of failure.               |
-| SEARCH_FAILURE_IN_CHILD_TREE              | 3  | The code of failure in child tree.             |
-| SEARCH_FAILURE_LOST_NODE                  | 4  | The code of failure lost node.                 |
-| SEARCH_NEXT                               | 5  | The code of search next.               |
-| DOUBLE_CHECK_CHILD_PROPERTY               | 6  | The code of check child property.              |
-| DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | The code of check child property and get last. |
-| SEARCH_FAILURE_IN_SCROLL                  | 8  | The code of failure in scroll component.       |

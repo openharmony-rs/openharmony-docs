@@ -83,17 +83,6 @@ For details, see [AccessibilityElement.spans](#accessibilityelement12).
 | accessibilityLevel          | string | No | No|Accessibility level of the hyperlink.       |
 
 
-## FocusMoveResult<sup>23+</sup>
-Indicates focus move result.
-
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
-
-| Name                 | Type    | Read-Only |Optional| Description                               |
-| ------------------- | ------ | ---- | ----|--------------------------------- |
-| target | Array<[AccessibilityElement](#accessibilityelement12)> | No  |No|The accessibility elementInfos result.|
-| result          | [FocusMoveResultCode](./js-apis-accessibility-sys.md) | No| No|The focus move result code.       |
-
-
 ## startAbility<sup>12+</sup>
 
 startAbility(want: Want): Promise\<void>;
@@ -1666,56 +1655,6 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
         console.info("findElementById componentId: " + element.componentId);
     }).catch((err: BusinessError) => {
         console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
-    })
-}).catch((err: BusinessError) => {
-  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
-})
-```
-
-### findElementsByCondition<sup>23+</sup>
-
-findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>;
-
-Finds elements by rule and condition. This API uses a promise to return the result.
-
-**Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| -------- | ---- | -------- | ------------------------------------------------------------ |
-| rule | [FocusRule](js-apis-inner-application-accessibilityExtensionContext.md) | Yes| the way to use current element |
-| condition | [FocusCondition](js-apis-inner-application-accessibilityExtensionContext.md) | Yes| the direction to find element |
-
-**Return value**
-
-| Type                                     | Description                  |
-| ---------------------------------------- | --------------------- |
-| Promise\<[FocusMoveResult](#focusmoveresult23)> | Promise used to return the result.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
-
-| ID | Error Message                                   |
-| ------- | ---------------------------------------- |
-| 201 | Permission verification failed.The application does not have the permission required to call the API.|
-| 202 | Permission verification failed. A non-system application calls a system API. |
-
-**Example**
-
-```ts
-
-// AccessibilityExtAbility.ets
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-
-axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
-    focus.findElementsByCondition("bypassSelf", "forward").then((res: FocusMoveResult) => {
-        console.info("findElementsByCondition result: " + res.result);
-    }).catch((err: BusinessError) => {
-        console.error(`findElementsByCondition failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
