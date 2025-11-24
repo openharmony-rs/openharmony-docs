@@ -169,3 +169,6 @@ export function har1func(dynamic_obj: Any) {
 | "ArkWeb.WebContextMenuParam" | [WebContextMenuParam](../apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)|
 | "ArkWeb.WebContextMenuResult" | [WebContextMenuResult](../apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)|
 | "ArkWeb.EventResult" | [EventResult](../apis-arkweb/arkts-basic-components-web-EventResult.md)|
+| "BasicServiceKit.IInputData" | [IInputData](../apis-basic-services-kit/js-apis-osAccount-sys.md#iinputdata8) |
+| "BasicServiceKit.AppAccountManager" | [AppAccountManager](../apis-basic-services-kit/js-apis-appAccount.md#appaccountmanager) |
+| "BasicServiceKit.AuthCallback" | [AuthCallback](../apis-basic-services-kit/js-apis-appAccount.md#authcallback9) |
