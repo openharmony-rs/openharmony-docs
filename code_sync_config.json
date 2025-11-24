@@ -28285,5 +28285,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/layered-image.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"layered_image_004",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/multiInstance.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5",
+				"functions":[
+					{
+						"end_line":33,
+						"name":"multi_instance",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/typical-scenario-configuration.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/TypicalScenarioConfiguration/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"typical_scenario_configuration",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
