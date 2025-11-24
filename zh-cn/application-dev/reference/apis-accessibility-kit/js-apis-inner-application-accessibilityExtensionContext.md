@@ -113,41 +113,6 @@ type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'
 | 'forward'  | 表示向前查询。 |
 | 'backward' | 表示向后查询。 |
 
-
-## FocusCondition
-
-type FocusCondition = 'forward' | 'backward' |
-'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor';
-
-表示查询可聚焦节点方式。
-
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
-
-| 类型       | 说明      |
-| -------- | ------- |
-| 'forward'       | 当前节点下一个可聚焦节点。|
-| 'backward'     | 当前节点上一个可聚焦节点。|
-| 'findLast'     | 找起始节点子节点中最后一个节点。|
-| 'getForwardScrollAncestor' | 获取支持前向滚动父组件。|
-| 'getBackwardScrollAncestor'| 获取支持后向滚动父组件。|
-| 'getScrollableAncestor' | 获取支持任意滚动父组件。|
-
-## FocusRule
-
-type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants';
-
-表示查找可聚焦节点时，是否检查起始节点及其子节点的聚焦能力。
-
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
-
-| 类型            | 说明          |
-| -------- | ------- |
-| 'bypassSelf'       | 跳过对起始节点的检查，只检查其子节点。|
-| 'bypassSelfDescendants'     | 跳过对起始节点及其所有子节点的检查。|
-| 'checkSelf'     | 先检查起始节点是否可以聚焦，如果可以则直接使用它；如果不能聚焦，则继续检查其子节点。|
-| 'checkSelfBypassDescendants' | 先检查起始节点是否可以聚焦，如果可以则使用它；如果不能聚焦，则跳过所有子节点的检查。|
-
 ## FocusType
 
 type FocusType = 'accessibility' | 'normal'

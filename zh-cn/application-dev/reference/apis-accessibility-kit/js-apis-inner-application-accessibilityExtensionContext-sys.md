@@ -82,15 +82,50 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 | accessibilityDescription          | string | 否  | 否|超链接文本的辅助功能描述。        |
 | accessibilityLevel          | string | 否  | 否|超链接文本的辅助功能级别。        |
 
+## FocusCondition<sup>23+</sup>
+
+type FocusCondition = 'forward' | 'backward' |
+'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor';
+
+表示查询可聚焦节点方式。
+
+**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型       | 说明      |
+| -------- | ------- |
+| 'forward'       | 当前节点下一个可聚焦节点。|
+| 'backward'     | 当前节点上一个可聚焦节点。|
+| 'findLast'     | 找起始节点子节点中最后一个节点。|
+| 'getForwardScrollAncestor' | 获取支持前向滚动父组件。|
+| 'getBackwardScrollAncestor'| 获取支持后向滚动父组件。|
+| 'getScrollableAncestor' | 获取支持任意滚动父组件。|
+
+## FocusRule<sup>23+</sup>
+
+type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
+'checkSelf' | 'checkSelfBypassDescendants';
+
+表示查找可聚焦节点时，是否检查起始节点及其子节点的聚焦能力。
+
+**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型            | 说明          |
+| -------- | ------- |
+| 'bypassSelf'       | 跳过对起始节点的检查，只检查其子节点。|
+| 'bypassSelfDescendants'     | 跳过对起始节点及其所有子节点的检查。|
+| 'checkSelf'     | 先检查起始节点是否可以聚焦，如果可以则直接使用它；如果不能聚焦，则继续检查其子节点。|
+| 'checkSelfBypassDescendants' | 先检查起始节点是否可以聚焦，如果可以则使用它；如果不能聚焦，则跳过所有子节点的检查。|
+
 ## FocusMoveResult<sup>23+</sup>
-无障碍接口[findElementsByCondition](js-apis-inner-application-accessibilityExtensionContext-sys.md)返回值类型。
+
+无障碍接口[findElementsByCondition](#findelementsbycondition23)返回值类型。
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
 | target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 返回查询的节点数组。|
-| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md)  | 否 | 否 | 返回查询结果状态码。|
+| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 返回查询结果状态码。|
 
 
 ## startAbility<sup>12+</sup>
@@ -1685,8 +1720,8 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 | 名称 | 类型 | 必填 | 描述 |
 | -------- | ---- | -------- | ------------------------------------------------------------ |
-| rule | [FocusRule](js-apis-inner-application-accessibilityExtensionContext.md) | 是| 检查当前节点以及当前节点子节点的规则 |
-| condition | [FocusCondition](js-apis-inner-application-accessibilityExtensionContext.md) | 是| 表示查询可聚焦节点方式 |
+| rule | [FocusRule](#focusrule23) | 是| 检查当前节点以及当前节点子节点的规则 |
+| condition | [FocusCondition](#focuscondition23) | 是| 表示查询可聚焦节点方式 |
 
 **返回值：**
 

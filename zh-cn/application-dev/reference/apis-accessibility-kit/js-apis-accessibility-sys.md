@@ -132,9 +132,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 | CONTROL_CENTER             | 19   | 显示控制中心。                  |
 | SPAN_CLICK                 | 20   | 对局部文本进行点击操作。             |
 
-## FocusMoveResultCode
+## FocusMoveResultCode<sup>23+</sup>
 
-表示无障碍接口[findElementsByCondition](js-apis-inner-application-accessibilityExtensionContext-sys.md)返回值中的状态码
+表示无障碍接口[findElementsByCondition](js-apis-inner-application-accessibilityExtensionContext-sys.md#findelementsbycondition23)返回值中的状态码
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
