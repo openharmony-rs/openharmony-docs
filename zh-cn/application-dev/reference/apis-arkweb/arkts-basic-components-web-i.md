@@ -885,3 +885,14 @@ Web屏幕捕获的配置。
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
 | newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
+
+## AcceptableFileType<sup>23+</sup>
+
+定义文件选择器拉取文件时网页推荐的文件类型信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称  | 类型                     | 只读 | 可选 | 说明             |
+| :---- | :------------------------- | :--- | :--- | :--------------- |
+| mimeType | string | 否 | 否   | 文件MIME类型。 |
+| acceptableType | Array\<string\> | 否 | 否   | 文件类型数组，包含若干可供选择的文件类型。 |
