@@ -230,3 +230,57 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
+
+### getAlphaZeroTransparentProportion<sup>23+</sup>
+
+getAlphaZeroTransparentProportion(): double
+
+获取图像中alpha=0的像素占比。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型                                     | 说明                                            |
+| :--------------------------------------- | :---------------------------------------------- |
+| double | alpha=0像素占比 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```js
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+        let percentage: double = colorPicker.getAlphaZeroTransparentProportion();
+      console.info('Get proportion of fully transparent pixels: ' + percentage);
+    }
+  })
+})
+```
