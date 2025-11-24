@@ -20,7 +20,7 @@
 import { camera } from '@kit.CameraKit';
 ```
 
-## isExposureModeSupported<sup>12+</sup>
+## isExposureModeSupported<sup>11+</sup>
 
 isExposureModeSupported(aeMode: ExposureMode): boolean
 
