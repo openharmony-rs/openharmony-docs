@@ -1518,7 +1518,3 @@ console.info(str);
 | INSTRUCTION      | 8    | XML处理指令声明事件。 |
 | ENTITY_REFERENCE | 9    | 实体引用事件。        |
 | WHITESPACE       | 10   | 空白事件。            |
-
-
-<!--RP1-->
-<!--RP1End-->
