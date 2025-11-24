@@ -78,6 +78,7 @@
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -91,7 +92,6 @@
     struct MyLiveFormPage {
       @State columnScale: number = 1.0;
       @State columnTranslate: number = 0.0;
-    
       private uiContext: UIContext | undefined = undefined;
       private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
       private formId: string | undefined = undefined;
@@ -138,7 +138,8 @@
               hilog.info(DOMAIN, 'testTag', 'startAbilityByLiveForm succeed');
             })
             .catch((err: BusinessError) => {
-              hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
+              hilog.error(DOMAIN, 'testTag',
+                `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
             });
         } catch (e) {
           hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
@@ -146,14 +147,14 @@
       }
     
       build() {
-        Stack({alignContent: Alignment.TopStart}) {
+        Stack({ alignContent: Alignment.TopStart }) {
           // 背景组件和普通卡片一样大
           Column()
-            .width(this.formRect? this.formRect.width : 0)
-            .height(this.formRect? this.formRect.height : 0)
+            .width(this.formRect ? this.formRect.width : 0)
+            .height(this.formRect ? this.formRect.height : 0)
             .offset({
-              x: this.formRect? this.formRect.left : 0,
-              y: this.formRect? this.formRect.top : 0,
+              x: this.formRect ? this.formRect.left : 0,
+              y: this.formRect ? this.formRect.top : 0,
             })
             .borderRadius(this.formBorderRadius ? this.formBorderRadius : 0)
             .backgroundColor('#2875F5')
@@ -335,6 +336,7 @@
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
     import { formInfo, formProvider, FormExtensionAbility } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -370,7 +372,12 @@
         try {
           formProvider.requestOverflow(formId, {
             // 动效申请范围
-            area: { left: left, top: top, width: width, height: height },
+            area: {
+              left: left,
+              top: top,
+              width: width,
+              height: height
+            },
             // 动效持续时间
             duration: duration,
             // 指定是否使用系统提供的默认切换动效

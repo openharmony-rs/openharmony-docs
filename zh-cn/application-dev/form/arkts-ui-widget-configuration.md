@@ -22,7 +22,7 @@
   ``` JSON5
   {
     "module": {
-      // ···
+      // ...
       "extensionAbilities": [
         {
           "name": "EntryFormAbility",
@@ -38,7 +38,8 @@
           ]
         }
       ],
-      "formWidgetModule": "library" // 只在独立卡片包形态中会使用，用来关联卡片包模块。
+      // 只在独立卡片包形态中会使用，用来关联卡片包模块。
+      "formWidgetModule": "library"
     }
   }
   ```
@@ -59,7 +60,8 @@
       "phone"
     ],
     "deliveryWithInstall": true,
-    "formExtensionModule": "entry" // 只在独立卡片包形态中会使用，用来关联应用包模块。
+    // 只在独立卡片包形态中会使用，用来关联应用包模块。
+    "formExtensionModule": "entry"
   }
 }
 ```

@@ -18,18 +18,18 @@
 2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
 
     <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
-   
+    
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
     let storageUpdateByMsg = new LocalStorage();
-
+    
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
-    // ···
+      // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-
+    
       build() {
         Column() {
           Column() {
@@ -45,9 +45,9 @@
               .margin({ top: '5%', left: '10%' })
           }.width('100%').height('50%')
           .alignItems(HorizontalAlign.Start)
-
+    
           Row() {
-            // ···
+            // ...
             Button() {
               // $r('app.string.update')需要替换为开发者所需的资源文件
               Text($r('app.string.update'))
