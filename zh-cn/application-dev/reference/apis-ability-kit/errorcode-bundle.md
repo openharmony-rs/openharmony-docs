@@ -62,10 +62,12 @@ The specified ability name is not found.
 **可能原因**<br/>
 1. 输入的abilityName有误。
 2. 系统中对应的应用不存在该abilityName对应的ability。
+3. 调用[bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)、[bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) 等通过abilityName、moduleName组合查询的接口时，对应的应用没有安装moduleName对应的模块，对应模块下的ability也不存在。
 
 **处理步骤**<br/>
 1. 检查abilityName拼写是否正确。
 2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看对应的应用是否存在这个abilityName。查看输出的打印信息中hapModuleInfos字段对应的abilityInfos下是否包含name等于该abilityName，不包含则说明该abilityName不存在。
+3. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看输出的打印信息中hapModuleNames字段对应的列表是否存在对应的moduleName，不存在则说明应用未安装该模块，对应模块下的ability也不存在。
 ```
 # 需要将com.xxx.demo替换为实际查询的bundleName
 hdc shell bm dump -n com.xxx.demo
