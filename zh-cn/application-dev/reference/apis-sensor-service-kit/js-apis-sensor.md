@@ -72,6 +72,50 @@ try {
 }
 ```
 
+### FUSION_PRESSURE<sup>22+</sup>
+
+on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
+
+订阅融合压力传感器数据。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE  |
+| callback | Callback&lt;[FusionPressureResponse](#FusionPressureResponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.on(sensor.SensorId.FUSION_PRESSURE, (data: sensor.FusionPressureResponse) => {
+    console.info('Succeeded in invoking on. fusionPressure: ' + data.fusionPressure);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.FUSION_PRESSURE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
 ### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>
 
 on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
@@ -118,50 +162,6 @@ try {
   }, { interval: 100000000 });
   setTimeout(() => {
     sensor.off(sensor.SensorId.ACCELEROMETER_UNCALIBRATED);
-  }, 500);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
-### FUSION_PRESSURE<sup>22+</sup>
-
-on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
-
-订阅融合压力传感器数据。
-
-**系统能力**：SystemCapability.Sensors.Sensor
-
-**参数**：
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE  |
-| callback | Callback&lt;[FusionPressureResponse](#FusionPressureResponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
-| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-
-**示例**：
-
-```ts
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 使用try catch对可能出现的异常进行捕获
-try {
-  sensor.on(sensor.SensorId.FUSION_PRESSURE, (data: sensor.FusionPressureResponse) => {
-    console.info('Succeeded in invoking on. fusionPressure: ' + data.fusionPressure);
-  }, { interval: 100000000 });
-  setTimeout(() => {
-    sensor.off(sensor.SensorId.FUSION_PRESSURE);
   }, 500);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -2243,13 +2243,11 @@ try {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>19+</sup>
+### FUSION_PRESSURE<sup>22+</sup>
 
-off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
+off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
 
-取消订阅未校准加速度传感器数据。
-
-**需要权限**：ohos.permission.ACCELEROMETER
+取消融合压力传感器数据。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -2257,9 +2255,9 @@ off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam
 
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type             | [SensorId](#sensorid9).ACCELEROMETER_UNCALIBRATED            | 是   | 传感器类型，该值固定为SensorId.ACCELEROMETER_UNCALIBRATED。  |
+| type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
 | sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
-| callback         | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback         | Callback&lt;[FusionPressureResponse](#FusionPressureResponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
@@ -2267,7 +2265,6 @@ off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2279,11 +2276,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 enum Ret { OK, Failed = -1 }
 
 // 传感器回调
-const sensorCallback = (response: sensor.AccelerometerUncalibratedResponse) => {
+const sensorCallback = (response: sensor.FusionPressureResponse) => {
   console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // 传感器监听类型
-const sensorType = sensor.SensorId.ACCELEROMETER_UNCALIBRATED;
+const sensorType = sensor.SensorId.FUSION_PRESSURE;
 const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
@@ -2330,11 +2327,13 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### FUSION_PRESSURE<sup>22+</sup>
+### ACCELEROMETER_UNCALIBRATED<sup>19+</sup>
 
-off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
+off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
-取消融合压力传感器数据。
+取消订阅未校准加速度传感器数据。
+
+**需要权限**：ohos.permission.ACCELEROMETER
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -2342,9 +2341,9 @@ off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?
 
 | 参数名              | 类型                                                         | 必填 | 说明                                                         |
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
+| type             | [SensorId](#sensorid9).ACCELEROMETER_UNCALIBRATED            | 是   | 传感器类型，该值固定为SensorId.ACCELEROMETER_UNCALIBRATED。  |
 | sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
-| callback         | Callback&lt;[FusionPressureResponse](#FusionPressureResponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback         | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
@@ -2352,6 +2351,7 @@ off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
 **示例**：
@@ -2363,11 +2363,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 enum Ret { OK, Failed = -1 }
 
 // 传感器回调
-const sensorCallback = (response: sensor.FusionPressureResponse) => {
+const sensorCallback = (response: sensor.AccelerometerUncalibratedResponse) => {
   console.info(`callback response: ${JSON.stringify(response)}`);
 }
 // 传感器监听类型
-const sensorType = sensor.SensorId.FUSION_PRESSURE;
+const sensorType = sensor.SensorId.ACCELEROMETER_UNCALIBRATED;
 const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
 
 function sensorSubscribe(): Ret {
