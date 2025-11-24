@@ -2311,10 +2311,10 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;voi
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 错误码ID | 错误信息                                                                                                                                                            |
+| ------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to Orientation; 3. Invalid parameter value range. |
+| 1300002 | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. Send event failed.                                                                      |
 
 **示例：**
 
@@ -2441,9 +2441,10 @@ getPreferredOrientation(): Orientation
 
 以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 错误码ID   | 错误信息                                                              |
+|---------|-------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: Unexpected parameters.           |
+| 1300002 | This window state is abnormal. Possible cause: Window is nullptr. |
 
 **示例：**
 
@@ -9322,12 +9323,12 @@ setWindowShadowRadius(radius: number): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.  |
+| 错误码ID | 错误信息                                                                                                                                            |
+| ------- |-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. Exactly one parameter is required; 2. Napi get radius value failed; 3. The shadow radius is less than zero. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                                            |
+| 1300002 | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. Native window is nullptr; 3. Send event failed.                         |
+| 1300004 | Possible cause: 1. Unauthorized operation; 2. This is not sub window or float window.                                                           |
 
 **示例：**
 
@@ -9374,13 +9375,14 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.  |
+| 错误码ID   | 错误信息                                                                                                                                                      |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. MExactly one parameter is required; 2. Failed to convert parameter to radius; 3. The corner radius is less than zero. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                                                      |
+| 1001    | Native window is nullptr.                                                                                                                                 |
+| 1300002 | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. Send event failed.                                                                |
+| 1300003 | This window manager service works abnormally.                                                                                                             |
+| 1300004 | Unauthorized operation.                                                                                                                                   |
 
 **示例：**
 
@@ -9422,11 +9424,12 @@ getWindowCornerRadius(): number
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.  |
+| 错误码ID   | 错误信息                                                                                       |
+|---------|--------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: Unexpected parameters.                                    |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.       |
+| 1300002 | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. Send event failed. |
+| 1300004 | Unauthorized operation.                                                                    |
 
 **示例：**
 
@@ -9783,13 +9786,14 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                               |
-| 1300003  | This window manager service works abnormally.                |
-| 1300004  | Unauthorized operation.                                      |
-| 1300016  | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length. |
+| 错误码ID   | 错误信息                                                                                                                                                  |
+|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. Incorrect number of parameters. Expected 2;                                                                       |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                                                  |
+| 1300002 | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. Native window is nullptr; 3. Window instance not exist; 4. Send event failed. |
+| 1300003 | This window manager service works abnormally.                                                                                                         |
+| 1300004 | Unauthorized operation.                                                                                                                               |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length; 3. Failed to convert parameter to type.                     |
 
 **示例：**
 
@@ -9866,13 +9870,14 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                               |
-| 1300003  | This window manager service works abnormally.                |
-| 1300004  | Unauthorized operation.                                      |
-| 1300016  | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 错误码ID   | 错误信息                                                                                                                              |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. Exactly one parameter is required; 2. Failed to convert parameter to type.                    |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                              |
+| 1300002 | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. Transition animation is not enable; 3. Send event failed. |
+| 1300003 | This window manager service works abnormally.                                                                                     |
+| 1300004 | Unauthorized operation.                                                                                                           |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range.                                                                      |
 
 **示例：**
 
