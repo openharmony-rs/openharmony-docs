@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_Rect {...} OH_Rect
+```
+
 ## 概述
 
 定义录屏界面的宽高以及画面信息。

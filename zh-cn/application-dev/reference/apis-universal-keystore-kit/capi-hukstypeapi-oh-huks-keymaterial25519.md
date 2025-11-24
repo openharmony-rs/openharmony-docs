@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterial25519 {...}
+```
+
 ## 概述
 
 定义25519类型密钥的结构体类型。
