@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现状态管理V2与[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)等动效的同步刷新，开发者可以使用[applySync](../../reference/apis-arkui/js-apis-StateManagement.md#applysync22)、[flushUpdates](../../reference/apis-arkui/js-apis-StateManagement.md#flushupdates22)或[flushUIUpdates](../../reference/apis-arkui/js-apis-StateManagement.md#flushuiupdates22)接口。
+为了实现状态管理V2与[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)等动效的同步刷新，开发者可以使用[applySync](../../reference/apis-arkui/js-apis-stateManagement.md#applysync22)、[flushUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushupdates22)或[flushUIUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushuiupdates22)接口。
 
 > **说明：**
 >
@@ -25,7 +25,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 ## 使用规则
 
-- applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed](./arkts-new-Computed.md)计算、[@Monitor](./arkts-new-monitor.md)回调以及重新渲染UI节点。
+- applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed](./arkts-new-computed.md)计算、[@Monitor](./arkts-new-monitor.md)回调以及重新渲染UI节点。
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
