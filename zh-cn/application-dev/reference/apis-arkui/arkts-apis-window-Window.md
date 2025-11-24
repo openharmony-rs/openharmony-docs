@@ -7528,9 +7528,9 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[on('windowWillClose')](#onwindowwillclose15)方法。
+该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[onWindowWillClose](#onwindowwillclose22)方法。
 
-如果存在[on('windowWillClose')](#onwindowwillclose15)监听事件，只响应[on('windowWillClose')](#onwindowwillclose15)接口。
+如果存在[onWindowWillClose](#onwindowwillclose22)监听事件，只响应[onWindowWillClose](#onwindowwillclose22)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -7559,10 +7559,12 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+const callback = () => {
+  // ...
+  console.info('Sub Window Close happened');
+}
 try {
-  windowClass.onSubWindowClose(() => {
-    console.info('Sub Window CLose happened');
-  });
+  windowClass.onSubWindowClose(callback);
 } catch (err: Error) {
   console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
 }
