@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 In the stage model, a window stage or window can use the **loadContent** API to load pages, create a UI instance, and render page content to the associated window. Naturally, UI instances and windows are associated on a one-by-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback, the current UI context may fail to be identified, resulting in API execution errors.
 
@@ -65,7 +65,7 @@ struct Index {
 
 ### animateToImmediately<sup>12+</sup>
 
-animateToImmediately(param: AnimateParam , event: () => void): void
+animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 Implements immediate delivery of an explicit animation through a **UIContext** object. When multiple property animations are loaded at once, you can call this API to immediately execute the transition animation for state changes caused by the specified closure function.
 
@@ -78,7 +78,7 @@ Implements immediate delivery of an explicit animation through a **UIContext** o
 | Name  | Type                                      | Mandatory  | Description                                   |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
 | param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
-| event | () => void                               | Yes   | Closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
+| processor | Callback&lt;void&gt;                              | Yes   | Closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
 
 **Example**
 
@@ -191,11 +191,11 @@ struct Index {
         .tabBar('green')
         .id('tab1')
         .onWillHide(() => {
-          // Set the frozen state of the TabContent component whose ID is tab1 to true when the component is hidden.
+          // Set the freeze state of the node with id 'tab1' to true when the TabContent is hidden.
           this.getUIContext().freezeUINode('tab1', true);
         })
         .onWillShow(() => {
-          // Set the frozen state of the tab1 node to false when the TabContent with the id tab1 is displayed.
+          // Set the freeze state of the node with id 'tab1' to false when the TabContent is shown.
           this.getUIContext().freezeUINode('tab1', false);
         })
 
@@ -208,17 +208,17 @@ struct Index {
         .tabBar('blue')
         .id('tab2')
         .onWillHide(() => {
-          // Set the frozen state of the tab2 node to true when the TabContent with the id tab2 is hidden.
+          // Set the freeze state of the node with id 'tab2' to true when the TabContent is hidden.
           this.getUIContext().freezeUINode('tab2', true);
         })
         .onWillShow(() => {
-          // Set the frozen state of the tab1 node to true when the TabContent with the id tab2 is displayed.
+          // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' to true.
           // Change the width of the Column node in the tab1 node based on the state variable. The frozen state of the tab1 node is true. The marking is terminated when the dirty state is marked to the TabContent, and the layout is not triggered.
           this.getUIContext().freezeUINode('tab1', true);
           this.columnWidth1 = '50%';
           // Configure a delayed task.
           setTimeout(() => {
-            // Set the frozen state of the tab1 node to false to trigger the marking and layout again.
+            // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
             this.getUIContext().freezeUINode('tab1', false);
             // Update the width of the Column node in the tab1 node based on the state variable and set this.columnWidth1 to '20%'.
             this.columnWidth1 = '20%';
@@ -238,7 +238,7 @@ struct Index {
           this.getUIContext().freezeUINode('tab3', true);
         })
         .onWillShow(() => {
-          // Set the frozen state of the node to false when the TabContent component whose id is tab3 is displayed.
+          // Set the freeze state of the node with id 'tab3' to false when the TabContent is shown.
           this.getUIContext().freezeUINode('tab3', false);
         })
 
@@ -274,7 +274,7 @@ You can use uniqueId to set the frozen state of a component to prevent the compo
 
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
-| uniqueId | number | Yes| Unique ID of the target component.|
+| uniqueId | number | Yes| Unique ID of a component.|
 | isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
 
 **Error codes**
@@ -309,17 +309,17 @@ struct Index {
         .tabBar('green')
         .id('tab1')
         .onWillHide(() => {
-          // Query the unique ID of the node using the ID.
+          // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
           const uniqueId = node?.getUniqueId();
-          // When the TabContent whose ID is tab1 is hidden, set the frozen state of the node to true using the unique ID.
+          // Set the freeze state of the node with id 'tab1' based on its uniqueId to true when the TabContent is hidden.
           this.getUIContext().freezeUINode(uniqueId, true);
         })
         .onWillShow(() => {
-          // Query the unique ID of the node using the ID.
+          // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
           const uniqueId = node?.getUniqueId();
-          // When the TabContent whose ID is tab1 is displayed, set the frozen state of the node to false using the unique ID.
+          // Set the freeze state of the node with id 'tab1' based on its uniqueId to false when the TabContent is shown.
           this.getUIContext().freezeUINode(uniqueId, false)
         })
 
@@ -332,24 +332,24 @@ struct Index {
         .tabBar('blue')
         .id('tab2')
         .onWillHide(() => {
-          // Query the unique ID of the node using the ID.
+          // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab2');
           const uniqueId = node?.getUniqueId();
-          // Set the frozen state of the node to true through uniqueId when the TabContent whose id is tab2 is hidden.
+          // Set the freeze state of the node with id 'tab2' based on its uniqueId to true when the TabContent is hidden.
           this.getUIContext().freezeUINode(uniqueId, true);
         })
         .onWillShow(() => {
-          // Query the uniqueId of the corresponding node by id.
+          // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
           const uniqueId = node?.getUniqueId();
-          // Set the frozen state of the node whose id is tab1 to true through uniqueId when the TabContent whose id is tab2 is displayed.
-          // Change the width of the internal Column node of the node whose id is tab1 through the state variable. The frozen state of the node whose id is tab1 is true. The dirty marking is terminated when the TabContent is dirty, and the layout is not triggered from the node.
+          // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' based on its uniqueId to true.
+          // Change the width of the Column within the node with id 'tab1' via the state variable. Since the node's freeze state is true, dirty marking stops at TabContent and does not trigger layout.
           this.getUIContext().freezeUINode(uniqueId, true);
           this.columnWidth1 = '50%';
 
           // Set a delayed task.
           setTimeout(() => {
-            // Set the frozen state of the node whose id is tab1 to false to trigger the marking and layout again.
+            // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
             this.getUIContext().freezeUINode(uniqueId, false);
             this.columnWidth1 = '20%';
           }, 5000)
@@ -364,17 +364,17 @@ struct Index {
         .tabBar('yellow')
         .id('tab3')
         .onWillHide(() => {
-          // Query the uniqueId of the corresponding node by id.
+          // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
           const uniqueId = node?.getUniqueId();
-          // Set the frozen state of the node to true through uniqueId when the TabContent whose id is tab3 is hidden.
+          // Set the freeze state of the node with id 'tab3' based on its uniqueId to true when the TabContent is hidden.
           this.getUIContext().freezeUINode(uniqueId, true);
         })
         .onWillShow(() => {
-          // Query the uniqueId of the node using the ID.
+          // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
           const uniqueId = node?.getUniqueId();
-          // When the TabContent of tab3 is displayed, set the frozen state of the node to false using uniqueId.
+          // Set the freeze state of the node with id 'tab3' based on its uniqueId to false when the TabContent is shown.
           this.getUIContext().freezeUINode(uniqueId, false);
         })
 
@@ -400,7 +400,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-Sets the keyboard style, including the blur effect and glow effect. The blur effect takes effect only in immersive mode. For details about the immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The glow effect depends on the blur effect. If the glow effect needs to be enabled, the blur effect must be enabled at the same time. The final display effect depends on the input method processing.
+Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
 
 **System API**: This is a system API.
 
@@ -411,7 +411,7 @@ Sets the keyboard style, including the blur effect and glow effect. The blur eff
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | uniqueId | number | Yes| Unique ID of the component node. The value must be greater than or equal to 0.|
-| config | [KeyboardAppearanceConfig](../apis-arkui/arkui-ts/ts-text-common-sys.md#keyboardappearanceconfig20) | Yes| Keyboard style configuration parameter.|
+| config | [KeyboardAppearanceConfig](../apis-arkui/arkui-ts/ts-text-common-sys.md#keyboardappearanceconfig20) | Yes| Keyboard appearance configuration.|
 
 **Error codes**
 
@@ -421,7 +421,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 202 | The caller is not a system application. |
 
-The following figure shows how to set the keyboard style for the input box and search box components.
+The following example shows how to configure keyboard appearance for **TextInput** and **Search** components:
 
 ```ts
 @Entry
@@ -460,20 +460,48 @@ struct IMEGradient {
 }
 ```
 
+### clearResourceCache<sup>12+</sup>
+
+clearResourceCache(): void
+
+Clears the resource object cache generated when accessing resources across modules ([HSP](../../quick-start/in-app-hsp.md) packages). After the cache is cleared, subsequent access to resources from the affected modules will reload the resources, which may increase loading time.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct MyStateSample {
+  build() {
+    Column() {
+      Button("clearResourceCache")
+        .onClick((event: ClickEvent) => {
+          this.getUIContext().clearResourceCache()
+        })
+        .width('100%')
+    }
+  }
+}
+```
+
 ## ComponentSnapshot<sup>12+</sup>
 
-The following APIs must be called after the [getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in UIContext is used to obtain the ComponentSnapshot object.
+In the following API examples, you must first use [getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) in **UIContext** to obtain a **ComponentSnapshot** instance, and then call the APIs using the obtained instance.
 
 Transformation properties such as scaling, translation, and rotation only apply to the child components of the target component. Applying these transformation properties directly to the target component itself has no effect; the snapshot will still display the component as it appears before any transformations are applied.
 
 ### getWithRange<sup>20+</sup>
 getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
 
-Obtains the screenshot of the components within the range by passing the IDs of the two components and returns the result using a promise.
+Captures a snapshot of the area between two specified components. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> The components corresponding to start and end must be in the same component tree, and the component corresponding to start must be the ancestor component of the component corresponding to end.
+> The components corresponding to **start** and **end** must belong to the same component tree, and the **start** component must be an ancestor of the **end** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -483,10 +511,10 @@ Obtains the screenshot of the components within the range by passing the IDs of 
 
 | Name | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ------- |
-| start   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes   | ID of the component at the start of the range.|
-| end   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes   | ID of the component at the end of the range.|
-| isStartRect   | boolean | Yes   | Whether the range is based on the bounding rectangle of the start component.<br>true indicates that the bounding rectangle of the start component is used, and false indicates that the bounding rectangle of the end component is used.<br>Default value: **true**.|
-| options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | No   | Custom parameters related to screenshots. The region parameter is not supported.|
+| start   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes   | ID of the component marking the start of the capture range.|
+| end   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes   | ID of the component marking the end of the capture range.|
+| isStartRect   | boolean | Yes   | Whether to use the bounding rectangle of the **start** component to determine the capture range.<br>**true**: Use the bounding rectangle of the **start** component. **false**: Use the bounding rectangle of the **end** component.<br>Default value: **true**.|
+| options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | No   | Custom snapshot configuration options. The **region** parameter is not supported.|
 
 **Return value**
 
@@ -496,12 +524,12 @@ Obtains the screenshot of the components within the range by passing the IDs of 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------- |
 | 202     | The caller is not a system application. |
-| 100001 | Invalid ID. |
+| 100001 | Invalid ID detected. |
 
 **Example**
 
