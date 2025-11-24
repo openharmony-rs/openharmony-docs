@@ -7007,7 +7007,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -7025,6 +7025,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
