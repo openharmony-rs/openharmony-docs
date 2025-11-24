@@ -38,7 +38,7 @@ Repeat根据容器组件的**有效加载范围**（屏幕可视区域+预加载
 >
 > Repeat功能依赖数组属性的动态修改。如果数组对象被密封（sealed）或冻结（frozen），将导致Repeat部分功能失效，因为密封操作会禁止对象扩展属性并锁定现有属性的配置。
 >
-> 常见触发场景：<br>1）可观察数据的转换：使用[makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved)将普通数组（如[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)）转换为可观察数据时，某些实现会自动密封数组。<br>2）主动对象保护：显式调用`Object.seal()`或`Object.freeze()`防止数组被修改。
+> 常见触发场景：<br>1）可观察数据的转换：使用[makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)将普通数组（如[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)）转换为可观察数据时，某些实现会自动密封数组。<br>2）主动对象保护：显式调用`Object.seal()`或`Object.freeze()`防止数组被修改。
 
 ## 循环渲染能力说明
 
@@ -1425,7 +1425,7 @@ struct EntryCompSucc {
 
 ### Repeat与@Builder混用
 
-当Repeat与@Builder混用时，如果只传递`RepeatItem.item`或`RepeatItem.index`，参数值的改变不会引起@Builder函数内的UI刷新。推荐使用[按引用传递](../state-management/arkts-builder.md#按引用传递参数)，即将RepeatItem类型整体进行传参，组件才能监听到数据变化。除此之外，从API version 20开始，开发者可以通过使用[UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)函数、[Binding类](../../reference/apis-arkui/js-apis-StateManagement.md#bindingt20)和[MutableBinding类](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)实现@Builder函数中状态变量的刷新。
+当Repeat与@Builder混用时，如果只传递`RepeatItem.item`或`RepeatItem.index`，参数值的改变不会引起@Builder函数内的UI刷新。推荐使用[按引用传递](../state-management/arkts-builder.md#按引用传递参数)，即将RepeatItem类型整体进行传参，组件才能监听到数据变化。除此之外，从API version 20开始，开发者可以通过使用[UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)函数、[Binding类](../../reference/apis-arkui/js-apis-stateManagement.md#bindingt20)和[MutableBinding类](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)实现@Builder函数中状态变量的刷新。
 
 示例代码如下：
 

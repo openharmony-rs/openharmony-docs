@@ -12,7 +12,7 @@ PersistenceV2是应用程序中的可选单例对象。此对象的作用是持�
 
 PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistentV2-API文档](../../reference/apis-arkui/js-apis-StateManagement.md#persistencev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistentV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)。
 
 >**说明：**
 >
@@ -49,7 +49,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-StateManagement.md)。
+以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-stateManagement.md)。
 
 ## 使用限制
 
