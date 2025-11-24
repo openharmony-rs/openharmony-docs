@@ -2998,7 +2998,7 @@ struct WebComponent {
   aboutToAppear(): void {
     let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-    atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'],
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'],
       (err: BusinessError | null, data?: PermissionRequestResult) => {
         if (data) {
           console.info('data:' + JSON.stringify(data));
