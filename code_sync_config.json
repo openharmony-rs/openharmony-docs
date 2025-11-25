@@ -18541,12 +18541,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":353,
+						"end_line":354,
 						"name":"domainVerify_true",
 						"start_line":16
 					},
 					{
-						"end_line":352,
+						"end_line":353,
 						"name":"pull_results",
 						"start_line":17
 					}
@@ -22145,7 +22145,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":116,
+						"end_line":117,
 						"name":"app_link",
 						"start_line":15
 					}
@@ -23121,7 +23121,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":354,
+						"end_line":355,
 						"name":"skills_custom",
 						"start_line":15
 					}
@@ -24456,7 +24456,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":34,
 						"name":"startup_hsp1module",
 						"start_line":15
 					}
@@ -24466,7 +24466,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":34,
 						"name":"startup_hsp2module",
 						"start_line":15
 					}
@@ -24476,7 +24476,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":29,
 						"name":"startup_harmodule",
 						"start_line":15
 					}
@@ -25948,17 +25948,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":137,
+						"end_line":138,
 						"name":"singleton",
 						"start_line":15
 					},
 					{
-						"end_line":136,
+						"end_line":137,
 						"name":"multiton",
 						"start_line":16
 					},
 					{
-						"end_line":135,
+						"end_line":136,
 						"name":"specified",
 						"start_line":17
 					}
@@ -26043,7 +26043,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":74,
 						"name":"module_start",
 						"start_line":16
 					}
@@ -26133,7 +26133,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AbilityStage/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":71,
 						"name":"abilityModule_start",
 						"start_line":16
 					}
@@ -26173,7 +26173,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":111,
 						"name":"my_app_service_module_start",
 						"start_line":15
 					}
