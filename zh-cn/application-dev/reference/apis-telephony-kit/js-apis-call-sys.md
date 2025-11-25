@@ -3157,6 +3157,10 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                    | 必填 | 说明                       |
@@ -3179,9 +3183,18 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArKTS-Sta示例：
+
+```ts
+call.on('callDetailsChange', (data: call.CallAttributeOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3197,6 +3210,10 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3220,9 +3237,18 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.on('callEventChange', (data: call.CallEventOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArKTS-Sta示例：
+
+```ts
+call.on('callEventChange', (data: call.CallEventOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3321,6 +3347,10 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                     | 必填 | 说明                               |
@@ -3343,9 +3373,18 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArKTS-Sta示例：
+
+```ts
+call.off('callDetailsChange', (data: call.CallAttributeOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3361,6 +3400,10 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3384,9 +3427,18 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.off('callEventChange', (data: call.CallEventOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArKTS-Sta示例：
+
+```ts
+call.off('callEventChange', (data: call.CallEventOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3402,6 +3454,10 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3425,12 +3481,22 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+ArKTS-Sta示例：
+
+```ts
+call.off('callDisconnectedCause', (data: call.DisconnectedDetails | undefined) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## call.off('mmiCodeResult')<sup>9+</sup>
 
@@ -3443,6 +3509,10 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3466,9 +3536,18 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArKTS-Sta示例：
+
+```ts
+call.off('mmiCodeResult', (data: call.MmiCodeResults | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3485,6 +3564,10 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3508,6 +3591,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
@@ -3515,6 +3599,13 @@ call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
 });
 ```
 
+ArKTS-Sta示例：
+
+```ts
+call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo | undefined) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
 
 ## call.off('audioDeviceChange')<sup>10+</sup>
 
@@ -3527,6 +3618,10 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3550,9 +3645,18 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArKTS-Sta示例：
+
+```ts
+call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3568,6 +3672,10 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3591,9 +3699,16 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-
+ArKTS-Dyn示例：
 ```ts
 call.on('postDialDelay', (data: string) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArKTS-Sta示例：
+```ts
+call.on('postDialDelay', (data: string | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3609,6 +3724,10 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3632,12 +3751,22 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArKTS-Dyn示例：
 
 ```ts
 call.off('postDialDelay', (data: string) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+ArKTS-Sta示例：
+
+```ts
+call.off('postDialDelay', (data: string | undefined) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## call.isNewCallAllowed<sup>8+</sup>
 
@@ -6898,6 +7027,10 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
+
 |        名称              | 类型                               | 必填 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
 | accountId <sup>8+</sup>  | number                             | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>。此接口为系统接口。                                   |
@@ -8028,6 +8161,10 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                       |
@@ -8050,11 +8187,23 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('imsCallModeChange', (data: call.ImsCallModeInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+**示例：**
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.on('imsCallModeChange', (data: call.ImsCallModeInfo | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -8070,6 +8219,10 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8093,11 +8246,22 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('imsCallModeChange', (data: call.ImsCallModeInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.off('imsCallModeChange', (data: call.ImsCallModeInfo | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -8113,6 +8277,10 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8136,11 +8304,22 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('callSessionEvent', (data: call.CallSessionEvent) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.on('callSessionEvent', (data: call.CallSessionEvent | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -8156,6 +8335,10 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8179,6 +8362,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8187,6 +8371,17 @@ call.off('callSessionEvent', (data: call.CallSessionEvent) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.off('callSessionEvent', (data: call.CallSessionEvent | undefiend) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## call.on('peerDimensionsChange')<sup>11+</sup>
 
@@ -8199,6 +8394,10 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8243,6 +8442,10 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                       | 必填 | 说明                       |
@@ -8286,6 +8489,10 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                   | 必填 | 说明                       |
@@ -8326,6 +8533,10 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
