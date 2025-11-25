@@ -3536,22 +3536,54 @@ type Button = TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt;
 
 Button类型的FrameNode节点类型。以子组件模式创建允许添加一个子组件。以label模式创建不可以添加子组件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Button<sup>22+</sup>](#Button<sup>22+</sup>)
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
 | 类型                                                   | 说明                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
 | TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt; | 提供Button类型FrameNode节点。<br/>**说明：**<br/> ButtonInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Button组件的构造函数类型。 <br/> ButtonAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Button组件的属性设置对象。<br/> 接口入参label不为空时，以label模式创建Button组件，以此模式创建无法包含子组件,并且不允许再设置子组件，否则会抛出异常。且label模式和子组件模式在第一次initialize创建之后无法在后续的initialize进行动态修改，如需要包含子组件，第一次initialize时不要设置label参数。<br/> 以子组件模式创建时，只能包含一个子组件，不能设置多个子组件，否则会抛出异常。 |
+
+### Button<sup>22+</sup>
+type Button = TypedFrameNode&lt;ButtonAttribute&gt;
+
+Button类型的FrameNode节点类型。以子组件模式创建允许添加一个子组件。以label模式创建不可以添加子组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Button<sup>12+</sup>](#Button<sup>12+</sup>)
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                                                   | 说明                                                         |
+| ------------------------------------------------------ | ------------------------------------------------------------ |
+| TypedFrameNode&lt;ButtonAttribute&gt; | 提供Button类型FrameNode节点。<br/>**说明：**<br/> ButtonAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Button组件的属性设置对象。<br/> 接口入参label不为空时，以label模式创建Button组件，以此模式创建无法包含子组件,并且不允许再设置子组件，否则会抛出异常。且label模式和子组件模式在第一次initialize创建之后无法在后续的initialize进行动态修改，如需要包含子组件，第一次initialize时不要设置label参数。<br/> 以子组件模式创建时，只能包含一个子组件，不能设置多个子组件，否则会抛出异常。 |
+
 
 ### createNode('Button')<sup>12+</sup>
 createNode(context: UIContext, nodeType: 'Button'): Button
 
 创建Button类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createButtonNode<sup>22+</sup>](#createButtonNode<sup>22+</sup>)
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3579,9 +3611,15 @@ createButtonNode(context: UIContext): Button
 
 创建Button类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Button')<sup>12+</sup>](#createNode('Button')<sup>12+</sup>)
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3593,7 +3631,7 @@ createButtonNode(context: UIContext): Button
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [Button](#button12) | Button类型的FrameNode节点。 |
+| [Button](#button22) | Button类型的FrameNode节点。 |
 
 **示例：** 
 
@@ -4298,22 +4336,53 @@ type Checkbox = TypedFrameNode&lt;CheckboxInterface, CheckboxAttribute&gt;
 
 Checkbox类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Checkbox<sup>22+</sup>](#Checkbox<sup>22+</sup>)
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;CheckboxInterface, CheckboxAttribute&gt; | 提供Checkbox类型FrameNode节点。<br/>**说明：**<br/> CheckboxInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Checkbox组件的构造函数类型。 <br/> CheckboxAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Checkbox组件的属性设置对象。 |
+
+### Checkbox<sup>22+</sup>
+type Checkbox = TypedFrameNode&lt;CheckboxAttribute&gt;
+
+Checkbox类型的FrameNode节点类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Checkbox<sup>18+</sup>](#Checkbox<sup>18+</sup>)
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| TypedFrameNode&lt;CheckboxAttribute&gt; | 提供Checkbox类型FrameNode节点。<br/>**说明：**<br/> CheckboxAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Checkbox组件的属性设置对象。 |
 
 ### createNode('Checkbox')<sup>18+</sup>
 createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 
 创建Checkbox类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createCheckboxNode<sup>22+</sup>](#createCheckboxNode<sup>22+</sup>)
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4341,9 +4410,15 @@ createCheckboxNode(context: UIContext): Checkbox
 
 创建Checkbox类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Checkbox')<sup>18+</sup>](#createNode('Checkbox')<sup>18+</sup>)
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4355,7 +4430,7 @@ createCheckboxNode(context: UIContext): Checkbox
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [Checkbox](#checkbox18) | Checkbox类型的FrameNode节点。 |
+| [Checkbox](#checkbox22) | Checkbox类型的FrameNode节点。 |
 
 **示例：** 
 
@@ -4370,22 +4445,53 @@ type CheckboxGroup = TypedFrameNode&lt;CheckboxGroupInterface, CheckboxGroupAttr
 
 CheckboxGroup类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[CheckboxGroup<sup>22+</sup>](#CheckboxGroup<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;CheckboxGroupInterface, CheckboxGroupAttribute&gt; | 提供CheckboxGroup类型FrameNode节点。<br/>**说明：**<br/> CheckboxGroupInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为CheckboxGroup组件的构造函数类型。 <br/> CheckboxGroupAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回CheckboxGroup组件的属性设置对象。 |
+
+### CheckboxGroup<sup>22+</sup>
+type CheckboxGroup = TypedFrameNode&lt;CheckboxGroupAttribute&gt;
+
+CheckboxGroup类型的FrameNode节点类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[CheckboxGroup<sup>18+</sup>](#CheckboxGroup<sup>18+</sup>)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| TypedFrameNode&lt;CheckboxGroupAttribute&gt; | 提供CheckboxGroup类型FrameNode节点。<br/>**说明：**<br/> CheckboxGroupAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回CheckboxGroup组件的属性设置对象。 |
 
 ### createNode('CheckboxGroup')<sup>18+</sup>
 createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGroup
 
 创建CheckboxGroup类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createCheckboxGroupNode<sup>22+</sup>](#createCheckboxGroupNode<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4413,9 +4519,15 @@ createCheckboxGroupNode(context: UIContext): CheckboxGroup
 
 创建CheckboxGroup类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('CheckboxGroup')<sup>18+</sup>](#createNode('CheckboxGroup')<sup>18+</sup>)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4427,7 +4539,7 @@ createCheckboxGroupNode(context: UIContext): CheckboxGroup
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [CheckboxGroup](#checkboxgroup18) | CheckboxGroup类型的FrameNode节点。 |
+| [CheckboxGroup](#checkboxgroup22) | CheckboxGroup类型的FrameNode节点。 |
 
 **示例：** 
 
@@ -4442,22 +4554,53 @@ type Rating = TypedFrameNode&lt;RatingInterface, RatingAttribute&gt;
 
 Rating类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Rating<sup>22+</sup>](#Rating<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;RatingInterface, RatingAttribute&gt; | 提供Rating类型FrameNode节点。<br/>**说明：**<br/> RatingInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Rating组件的构造函数类型。 <br/> RatingAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Rating组件的属性设置对象。 |
+
+### Rating<sup>22+</sup>
+type Rating = TypedFrameNode&lt;RatingAttribute&gt;
+
+Rating类型的FrameNode节点类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Rating<sup>18+</sup>](#Rating<sup>18+</sup>)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| TypedFrameNode&lt;RatingAttribute&gt; | 提供Rating类型FrameNode节点。<br/>**说明：**<br/> RatingAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Rating组件的属性设置对象。 |
 
 ### createNode('Rating')<sup>18+</sup>
 createNode(context: UIContext, nodeType: 'Rating'): Rating
 
 创建Rating类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createRatingNode<sup>22+</sup>](#createRatingNode<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4485,9 +4628,15 @@ createRatingNode(context: UIContext): Rating
 
 创建Rating类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Rating')<sup>18+</sup>](#createNode('Rating')<sup>18+</sup>)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4499,7 +4648,7 @@ createRatingNode(context: UIContext): Rating
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [Rating](#rating18) | Rating类型的FrameNode节点。 |
+| [Rating](#rating22) | Rating类型的FrameNode节点。 |
 
 **示例：** 
 
@@ -4514,22 +4663,53 @@ type Radio = TypedFrameNode&lt;RadioInterface, RadioAttribute&gt;
 
 Radio类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Radio<sup>22+</sup>](#Radio<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;RadioInterface, RadioAttribute&gt; | 提供Radio类型FrameNode节点。<br/>**说明：**<br/> RadioInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Radio组件的构造函数类型。 <br/> RadioAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Radio组件的属性设置对象。 |
+
+### Radio<sup>22+</sup>
+type Radio = TypedFrameNode&lt;RadioAttribute&gt;
+
+Radio类型的FrameNode节点类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Radio<sup>18+</sup>](#Radio<sup>18+</sup>)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| TypedFrameNode&lt;RadioAttribute&gt; | 提供Radio类型FrameNode节点。<br/>**说明：**<br/> RadioAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Radio组件的属性设置对象。 |
 
 ### createNode('Radio')<sup>18+</sup>
 createNode(context: UIContext, nodeType: 'Radio'): Radio
 
 创建Radio类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createRadioNode<sup>22+</sup>](#createRadioNode<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4557,9 +4737,15 @@ createRadioNode(context: UIContext): Radio
 
 创建Radio类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Radio')<sup>18+</sup>](#createNode('Radio')<sup>18+</sup>)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4571,7 +4757,7 @@ createRadioNode(context: UIContext): Radio
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [Radio](#radio18) | Radio类型的FrameNode节点。 |
+| [Radio](#radio22) | Radio类型的FrameNode节点。 |
 
 **示例：** 
 
@@ -4586,22 +4772,53 @@ type Slider = TypedFrameNode&lt;SliderInterface, SliderAttribute&gt;
 
 Slider类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Slider<sup>22+</sup>](#Slider<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 18
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;SliderInterface, SliderAttribute&gt; | 提供Slider类型FrameNode节点。<br/>**说明：**<br/> SliderInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Slider组件的构造函数类型。 <br/> SliderAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Slider组件的属性设置对象。 |
+
+### Slider<sup>22+</sup>
+type Slider = TypedFrameNode&lt;SliderAttribute&gt;
+
+Slider类型的FrameNode节点类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Slider<sup>18+</sup>](#Slider<sup>22+</sup>)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| TypedFrameNode&lt;SliderAttribute&gt; | 提供Slider类型FrameNode节点。<br/>**说明：**<br/> SliderAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Slider组件的属性设置对象。 |
 
 ### createNode('Slider')<sup>18+</sup>
 createNode(context: UIContext, nodeType: 'Slider'): Slider
 
 创建Slider类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createSliderNode<sup>22+</sup>](#createSliderNode<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4629,9 +4846,15 @@ createSliderNode(context: UIContext): Slider
 
 创建Slider类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Slider')<sup>18+</sup>](#createNode('Slider')<sup>18+</sup>)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4643,7 +4866,7 @@ createSliderNode(context: UIContext): Slider
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [Slider](#slider18) | Slider类型的FrameNode节点。 |
+| [Slider](#slider22) | Slider类型的FrameNode节点。 |
 
 **示例：** 
 
@@ -4658,22 +4881,53 @@ type Select = TypedFrameNode&lt;SelectInterface, SelectAttribute&gt;
 
 Select类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Select<sup>22+</sup>](#Select<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;SelectInterface, SelectAttribute&gt; | 提供Select类型FrameNode节点。<br/>**说明：**<br/> SelectInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Select组件的构造函数类型。 <br/> SelectAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Select组件的属性设置对象。 |
+
+### Select<sup>22+</sup>
+type Select = TypedFrameNode&lt;SelectAttribute&gt;
+
+Select类型的FrameNode节点类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Select<sup>18+</sup>](#Select<sup>18+</sup>)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| TypedFrameNode&lt;SelectAttribute&gt; | 提供Select类型FrameNode节点。<br/>**说明：**<br/> SelectAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Select组件的属性设置对象。 |
 
 ### createNode('Select')<sup>18+</sup>
 createNode(context: UIContext, nodeType: 'Select'): Select
 
 创建Select类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createSelectNode<sup>22+</sup>](#createSelectNode<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4701,9 +4955,15 @@ createSelectNode(context: UIContext): Select
 
 创建Select类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Select')<sup>18+</sup>](#createNode('Select')<sup>18+</sup>)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4715,7 +4975,7 @@ createSelectNode(context: UIContext): Select
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [Select](#select18) | Select类型的FrameNode节点。 |
+| [Select](#select22) | Select类型的FrameNode节点。 |
 
 **示例：** 
 
@@ -4730,22 +4990,53 @@ type Toggle = TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt;
 
 Toggle类型的FrameNode节点类型。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Toggle<sup>22+</sup>](#Toggle22+)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
 | 类型                            | 说明                   |
 | ----------------------------- | -------------------- |
 | TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt; | 提供Toggle类型FrameNode节点。<br/>**说明：**<br/> ToggleInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Toggle组件的构造函数类型。 <br/> ToggleAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Toggle组件的属性设置对象。 |
+
+### Toggle<sup>22+</sup>
+type Toggle = TypedFrameNode&lt;ToggleAttribute&gt;
+
+Toggle类型的FrameNode节点类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Toggle<sup>18+</sup>](#Toggle<sup>18+</sup>)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                            | 说明                   |
+| ----------------------------- | -------------------- |
+| TypedFrameNode&lt;ToggleAttribute&gt; | 提供Toggle类型FrameNode节点。<br/>**说明：**<br/> ToggleAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Toggle组件的属性设置对象。 |
 
 ### createNode('Toggle')<sup>18+</sup>
 createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Toggle
 
 创建Toggle类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createToggleNode<sup>22+</sup>](#createToggleNode<sup>22+</sup>)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -4775,9 +5066,15 @@ createToggleNode(context: UIContext, options?: ToggleOptions): Toggle
 
 创建Toggle类型的FrameNode节点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Toggle')<sup>18+</sup>](#createNode('Toggle')<sup>18+</sup>)。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4790,7 +5087,7 @@ createToggleNode(context: UIContext, options?: ToggleOptions): Toggle
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| [Toggle](#toggle18) | Toggle类型的FrameNode节点。 |
+| [Toggle](#toggle22) | Toggle类型的FrameNode节点。 |
 
 **示例：** 
 
