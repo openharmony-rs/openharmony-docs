@@ -78,7 +78,7 @@ PhotoPickerComponent({
 
 ## PickerOptions
 
-Picker配置选项，继承自[BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10)。
+Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -152,7 +152,7 @@ type CurrentAlbumDeletedCallback = () => void
 
 type videoPlayStateChangedCallback = (state: VideoPlayerState) => void
 
-大图页视频播放状态改变时回调。
+大图页视频播放状态改变时的回调事件。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
