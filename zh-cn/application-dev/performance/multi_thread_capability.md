@@ -102,6 +102,9 @@ CSP与Actor之间的主要区别：
    ```typescript
    // 引入worker模块
    import { MessageEvents, worker } from '@kit.ArkTS';
+   import { common } from '@kit.AbilityKit';
+   import { request, zlib } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    
    let workerPort = worker.workerPort;
    // 接收宿主线程的postMessage请求
@@ -123,11 +126,11 @@ CSP与Actor之间的主要区别：
        filePath: inFilePath
      }).then((downloadTask) => {
        downloadTask.on('progress', (receivedSize: number, totalSize: number) => {
-         Logger.info(`receivedSize:${receivedSize},totalSize:${totalSize}`);
+         hilog.info(0x0001, "Multi_Thread_Capability", `receivedSize:${receivedSize},totalSize:${totalSize}`);
        });
        downloadTask.on('complete', () => {
          // 下载完成之后执行解压操作
-         zlib.decompressFile(inFilePath, filesDir, options, (errData: BusinessError) => {
+         zlib.decompressFile(inFilePath, filesDir, options, (errData: BusinessError<void>) => {
            if (errData !== null) {
              // ...
              // 异常处理
@@ -140,7 +143,7 @@ CSP与Actor之间的主要区别：
          // ...
          // 异常处理
        });
-     }).catch((err) => {
+     }).catch((err: BusinessError<void>) => {
        // ...
        // 异常处理
      });
