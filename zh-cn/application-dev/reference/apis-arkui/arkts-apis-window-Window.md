@@ -7518,6 +7518,59 @@ try {
 }
 ```
 
+## clearWindowMask<sup>23+</sup>
+
+clearWindowMask(): Promise&lt;void&gt;;
+
+清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+
+该接口只在多个线程操作同一个窗口时可能返回错误码1300002。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 1300002  | This window state is abnormal.                |
+| 1300004  | Unauthorized operation.                       |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let windowMask: Array<Array<number>> = [
+      [0, 0, 0, 1, 0, 0, 0],
+      [0, 0, 1, 1, 1, 0, 0],
+      [0, 1, 1, 0, 1, 1, 0],
+      [1, 1, 0, 0, 0, 1, 1]
+    ];
+  windowClass.resize(7, 4);
+  windowClass.setWindowMask(windowMask);
+  let promise = windowClass.clearWindowMask();
+    promise.then(() => {
+    console.info('Succeeded in clear the window mask.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## keepKeyboardOnFocus<sup>11+</sup>
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
