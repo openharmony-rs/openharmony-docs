@@ -60,8 +60,8 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 设置是否始终允许扫描。
 
-- 该接口控制设备是否可以在Wi-Fi开关关闭时支持热点扫描功能。
-- 启用后即使Wi-Fi开关关闭，系统仍可以扫描附近的Wi-Fi热点。
+- 该接口控制设备是否可以在WLAN开关关闭时支持热点扫描功能。
+- 启用后即使WLAN开关关闭，系统仍可以扫描附近的WLAN热点。
 - 主要用于支持网络发现和位置定位等场景。
 
 **系统接口：** 此接口为系统接口。
@@ -255,7 +255,7 @@ connectToDevice(config: WifiDeviceConfig): void
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled.|
+| 2501001  | WLAN STA disabled.|
 
 **示例：**
 ```ts
@@ -341,7 +341,7 @@ getSupportedFeatures(): number
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | Wifi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
+| 0x0040 | WLAN&nbsp;AWare组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B。|
@@ -455,7 +455,7 @@ reassociate(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled.|
+| 2501001  | WLAN STA disabled.|
 
 **示例：**
 ```ts
@@ -490,7 +490,7 @@ reconnect(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled.|
+| 2501001  | WLAN STA disabled.|
 
 **示例：**
 ```ts
@@ -538,7 +538,7 @@ updateNetwork(config: WifiDeviceConfig): number
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled. |
+| 2501001  | WLAN STA disabled. |
 
 **示例：**
 ```ts
@@ -586,7 +586,7 @@ disableNetwork(netId: number): void
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled. |
+| 2501001  | WLAN STA disabled. |
 
 **示例：**
 ```ts
@@ -629,7 +629,7 @@ disableNetwork(netId: int, blockDuration: int): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled. |
+| 2501001  | WLAN STA disabled. |
 
 **示例：**
 ```ts
@@ -666,7 +666,7 @@ removeAllNetwork(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled. |
+| 2501001  | WLAN STA disabled. |
 
 **示例：**
 ```ts
@@ -761,7 +761,7 @@ try {
 
 ## DisconnectedReason <sup>10+</sup>
 
-表示Wi-Fi断开原因的枚举，用于诊断网络连接问题和优化连接策略。
+表示WLAN断开原因的枚举，用于诊断网络连接问题和优化连接策略。
 
 **系统接口：** 此接口为系统接口。
 
@@ -777,7 +777,7 @@ try {
 
 startPortalCertification(): void
 
-启动Portal认证流程，用于处理需要Web页面认证的公共Wi-Fi网络（如酒店、机场、咖啡厅等场所的网络）。
+启动Portal认证流程，用于处理需要Web页面认证的公共WLAN网络（如酒店、机场、咖啡厅等场所的网络）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -795,7 +795,7 @@ startPortalCertification(): void
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled. |
+| 2501001  | WLAN STA disabled. |
 
 **示例：**
 
@@ -840,7 +840,7 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled. |
+| 2501001  | WLAN STA disabled. |
 
 **示例：**
 
@@ -968,7 +968,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-检查当前设备的Wi-Fi热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
+检查当前设备的WLAN热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1009,7 +1009,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-检查在某些情况下是否能够操作Wi-Fi热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
+检查在某些情况下是否能够操作WLAN热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1050,7 +1050,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-设置Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+设置WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1118,7 +1118,7 @@ try {
 
 getHotspotConfig(): HotspotConfig
 
-获取Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+获取WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1202,7 +1202,7 @@ try {
 
 ## StationInfo<sup>9+</sup>
 
-接入的设备信息。接入的设备信息。包含连接到Wi-Fi网络的设备详细信息。
+接入的设备信息。接入的设备信息。包含连接到WLAN网络的设备详细信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1314,7 +1314,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-获取当前Wi-Fi热点的阻止设备列表。该接口返回被热点拒绝连接或已拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
+获取当前WLAN热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1357,7 +1357,7 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的Wi-Fi网络配置信息，使其不再自动连接。
+删除指定网络ID的永久WLAN组配置。该接口用于清除已保存的WLAN网络配置信息，使其不再自动连接。
 
 - 根据网络ID删除之前与P2P设备建立的永久组信息，后续与该P2P设备进行P2P连接时需要重新进行P2P协商。
 
@@ -1385,7 +1385,7 @@ deletePersistentGroup(netId: number): void
 | 401 | Invalid parameters. Possible causes: 1.Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
-| 2801001  | Wi-Fi STA disabled. |
+| 2801001  | WLAN STA disabled. |
 
 **示例：**
 ```ts
@@ -1483,7 +1483,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 202 | System API is not allowed called by Non-system application. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
-| 2801001  | Wi-Fi STA disabled. |
+| 2801001  | WLAN STA disabled. |
 
 ## wifiManager.setDeviceName<sup>9+</sup>
 
@@ -1514,7 +1514,7 @@ setDeviceName(devName: string): void
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
-| 2801001  | Wi-Fi STA disabled. |
+| 2801001  | WLAN STA disabled. |
 
 **示例：**
 ```ts
@@ -1689,7 +1689,7 @@ wifi.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-注册WIFI热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册WLAN热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1720,7 +1720,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WIFI热点STA加入事件。使用callback异步回调。
+取消注册WLAN热点的STA加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1767,7 +1767,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-注册WIFI热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册WLAN热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1798,7 +1798,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WIFI热点STA离开事件。使用callback异步回调。
+取消注册WLAN热点STA离开事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 

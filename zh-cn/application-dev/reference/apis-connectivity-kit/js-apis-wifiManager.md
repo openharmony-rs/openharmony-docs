@@ -166,8 +166,7 @@ startScan(): void
 
 - 应用程序在前台运行时，两分钟内最多可扫描四次。
 - 在后台运行时，三十分钟内最多可扫描一次。
-- 需要先检查Wi-Fi是否已启用，可通过wifiManager.isWifiActive()方法确认。
-- 通过[on('wifiScanStateChange')](#wifimanager.on('wifiscanstatechange')9)订阅扫描状态变更事件，监听扫描完成通知。
+- 通过[on('wifiScanStateChange')](#wifimanageronwifiscanstatechange9)订阅扫描状态变更事件，监听扫描完成通知。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -647,7 +646,7 @@ WAPI认证方式的枚举。
 
 ## WifiCategory<sup>12+</sup>
 
-表示热点支持的最高Wi-Fi类别。可以用于识别和区分不同Wi-Fi技术标准的热点。
+表示热点支持的最高WLAN类别。可以用于识别和区分不同WLAN技术标准的热点。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -724,7 +723,7 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 添加候选网络配置，使用callback异步回调。
 
-- 将指定的Wi-Fi设备配置添加为候选网络，系统会在适当时候尝试连接（具体场景包括设备开机启动后扫描到网络、从无网络环境进入有网络环境、当前Wi-Fi信号弱或断开时、用户手动触发网络重连、系统定期网络优化时）。
+- 将指定的WLAN设备配置添加为候选网络，系统会在适当时候尝试连接（具体场景包括设备开机启动后扫描到网络、从无网络环境进入有网络环境、当前WLAN信号弱或断开时、用户手动触发网络重连、系统定期网络优化时）。
 - 添加的候选配置不会立即触发连接，而是由系统根据策略决定连接时机（信号质量策略、网络优先级策略、能耗优化策略、安全评估策略等）；。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -775,7 +774,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 移除候选网络配置，使用Promise异步回调。
 
-- 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
+- 从系统中删除指定网络ID的WLAN候选配置，清理不再需要的WLAN候选配置，释放系统资源。
 - 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig9)添加的候选配置，移除后该候选网络将不再被系统自动连接。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -831,7 +830,7 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
 
 移除指定的候选网络配置，使用callback异步回调。
 
-- 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
+- 从系统中删除指定网络ID的WLAN候选配置，清理不再需要的WLAN候选配置，释放系统资源。
 - 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig9)添加的候选配置，移除后该候选网络将不再被系统自动连接。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -879,7 +878,7 @@ removeDevice(id: number): void
 
 移除网络配置。
 
-- 通过网络配置ID删除已保存的WIFI网络配置信息。
+- 通过网络配置ID删除已保存的WLAN网络配置信息。
 - 该操作为同步执行，无需异步回调。
 - 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络。
 
@@ -924,7 +923,7 @@ getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 获取候选网络配置。
 
 - 候选网络是指曾经连接过或者手动添加的网络配置。
-- 该接口返回系统中所有已保存但当前未连接的Wi-Fi网络配置。
+- 该接口返回系统中所有已保存但当前未连接的WLAN网络配置。
 - 用于展示可连接的网络列表或进行网络管理操作。
 
 **需要权限：**
