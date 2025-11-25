@@ -2161,7 +2161,7 @@ Obtains the index of the sector that holds the specified block.
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| number | Index of the sector obtained.|
+| number | Index of the sector obtained. The sector indexes start from **0**.|
 
 **Error codes**
 
