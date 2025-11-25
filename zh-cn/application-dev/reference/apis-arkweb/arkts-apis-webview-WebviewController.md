@@ -6738,11 +6738,9 @@ struct WebComponent {
             let path: string | undefined = AppStorage.get<string>("cacheDir") as string;
             if (path !== undefined) {
               let pathTemp: string = path + '/WebState';
-              console.info("read file data is null" + pathTemp);
               // 以同步方法打开文件。
               let file = fileIo.openSync(pathTemp, fileIo.OpenMode.READ_WRITE);
               let stat = fileIo.statSync(pathTemp);
-              console.info("read file data is null");
               let size = stat.size;
               let buf = new ArrayBuffer(size);
               fileIo.read(file.fd, buf, (err, readLen) => {

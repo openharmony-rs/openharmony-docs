@@ -5605,18 +5605,6 @@ ArkTS-Sta示例：
 import { webview } from '@kit.ArkWeb';
 import { Button, Web, Column, Component, Entry, State, AppStorage } from '@kit.ArkUI';
 
-export enum ThreatType {
-  UNKNOWN = -1,
-  THREAT_ILLEGAL = 0,
-  THREAT_FRAUD = 1,
-  THREAT_RISK = 2,
-  THREAT_WARNING = 3,
-}
-
-export class OnSafeBrowsingCheckResultCallback {
-  threatType: ThreatType = ThreatType.UNKNOWN;
-}
-
 @Entry
 @Component
 struct WebComponent {
