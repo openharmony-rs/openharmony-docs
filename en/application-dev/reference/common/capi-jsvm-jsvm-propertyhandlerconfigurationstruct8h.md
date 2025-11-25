@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg
+```
+
 ## Overview
 
 Defines the pointer type of the struct that contains the property handler.
