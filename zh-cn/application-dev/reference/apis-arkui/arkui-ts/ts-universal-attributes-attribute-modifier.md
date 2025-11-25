@@ -135,6 +135,8 @@ CommonModifier、ColumnModifier、ColumnSplitModifier、RowModifier、RowSplitMo
 
 该示例通过Button绑定Modifier实现了点击切换背景颜色的效果。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -169,14 +171,90 @@ struct attributeDemo {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier,
+  ButtonAttribute } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  public isDark: boolean = false;
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    if (this.isDark) {
+      instance.backgroundColor(Color.Black);
+    } else {
+      instance.backgroundColor(Color.Red);
+    }
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+          .onClick((e: ClickEvent) => {
+            this.modifier.isDark = !this.modifier.isDark;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 ![attributeModifier_ifelse](figures/attributeModifier_ifelse.gif)
 
 ### 示例2（组件绑定Modifier实现按压态效果）
 
 该示例通过Button绑定Modifier实现了按压态的效果。如果配合状态管理V2使用，详情见：[Modifier与makeObserved](../../../ui/state-management/arkts-v1-v2-migration.md#modifier)。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  applyPressedAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+}
+
+@Entry
+@Component
+struct attributePressedDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier,
+  ButtonAttribute } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.backgroundColor(Color.Black);
@@ -327,7 +405,53 @@ struct Index {
 
 该示例通过Button绑定Modifier实现了组件在获得焦点时的样式效果。点击Button2后，Button会显示获得焦点后的样式。
 
+ArkTS-Dyn示例：
+
 ```ts
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Blue);
+  }
+  applyFocusedAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Green);
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+  @State isDisable: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+          .enabled(this.isDisable)
+          .id("app")
+        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
+        Button("Button2")
+          .onClick(() => {
+            this.getUIContext().getFocusController().activate(true);
+            this.getUIContext().getFocusController().requestFocus("app");
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, ButtonAttribute,
+  Divider } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
   applyNormalAttribute(instance: ButtonAttribute): void {
@@ -370,7 +494,47 @@ struct attributeDemo {
 
 该示例通过Button绑定Modifier实现了组件禁用时的样式效果。点击Button2后，Button会显示禁用状态的样式。
 
+ArkTS-Dyn示例：
+
 ```ts
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyDisabledAttribute(instance: ButtonAttribute): void {
+    instance.width(200);
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+  @State isDisable: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+          .enabled(this.isDisable)
+        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
+        Button("Button2")
+          .onClick(() => {
+            this.isDisable = !this.isDisable;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, ButtonAttribute,
+  Divider } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyDisabledAttribute(instance: ButtonAttribute): void {
     instance.width(200);
@@ -407,7 +571,54 @@ struct attributeDemo {
 
 该示例通过Radio绑定Modifier实现了展示组件选中时样式的效果。
 
+ArkTS-Dyn示例：
+
 ```ts
+class MyRadioModifier implements AttributeModifier<RadioAttribute> {
+  applyNormalAttribute(instance: RadioAttribute): void {
+    instance.backgroundColor(Color.Blue);
+  }
+  applySelectedAttribute(instance: RadioAttribute): void {
+    instance.backgroundColor(Color.Red);
+    instance.borderWidth(2);
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyRadioModifier = new MyRadioModifier();
+  @State value: boolean = false;
+  @State value2: boolean = false;
+
+  build() {
+    Row() {
+      Column() {
+        Radio({ value: 'Radio1', group: 'radioGroup1' })
+          .checked(this.value)
+          .height(50)
+          .width(50)
+          .borderWidth(0)
+          .borderRadius(30)
+          .onClick(() => {
+            this.value = !this.value;
+          })
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, RadioAttribute,
+  Radio } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+
 class MyRadioModifier implements AttributeModifier<RadioAttribute> {
   applyNormalAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Blue);
