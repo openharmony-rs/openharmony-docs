@@ -1,4 +1,4 @@
-# Using AVCodec to Play DRM Content (C/C++)
+# DRM Playback with AVCodec (C/C++)
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qin_wei_jie-->
@@ -7,15 +7,15 @@
 <!--Adviser: @w_Machine_cc-->
 ## When to Use
 
-You can call the native APIs of DRM Kit to play DRM-protected programs.
+To play DRM-protected content using AVCodec, you can use the native APIs provided by DRM Kit.
 
 Currently, the following decryption capabilities are supported:
 
-| Audio Container Format| Audio Decryption Type|
+| Audio Container| Audio Decryption|
 |----------|:-------|
 | mp4      | AAC    |
 
-| Video Container Format| Video Decryption Type|
+| Video Container| Video Decryption|
 |----------|:------------|
 | ts       | AVC(H.264)  |
 | mp4      | AVC(H.264)  |
@@ -23,15 +23,15 @@ Currently, the following decryption capabilities are supported:
 
 **Usage Scenario**
 
-Before creating DRM, obtain the DRM information. For details, see step 4 in [Media Data Demultiplexing](../avcodec/audio-video-demuxer.md#how-to-develop).
+Before setting up DRM, obtain the DRM information. For details, see step 4 in [Media Data Demultiplexing](../avcodec/audio-video-demuxer.md#how-to-develop).
 
 ## Development Guidelines
 
-Read [DRM](../../reference/apis-drm-kit/capi-drm.md) for the API reference.
+For details on the APIs, see [DRM API](../../reference/apis-drm-kit/capi-drm.md).
 
-Refer to the following sample code to complete the entire DRM process, including obtaining the name and ID list of the DRM solutions supported by the device, creating MediaKeySystem and MediaKeySession instances, generating a media key request, processing a media key response, checking whether secure video decoding is required, and destroying resources.
+Follow the sample code below to implement the entire DRM workflow, including obtaining a name and ID list of the DRM solutions supported by the device, creating a MediaKeySystem, creating a MediaKeySession, generating a media key request, processing a media key response, checking for secure video decoding requirements, and cleaning up resources.
 
-During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
+When developing your application, follow the specified order of API calls to avoid exceptions or undefined behaviors. The development steps and explanations below outline the correct sequence.
 
 ### Linking the Dynamic Libraries in the CMake Script
 
@@ -41,7 +41,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 
 > **NOTE**
 >
-> The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
+> Replace 'sample' with your actual project name as needed.
 >
 
 ## How to Develop
@@ -58,7 +58,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 2. Obtain the name and ID list of the DRM solutions supported by the device.
 
     ```c++
-    uint32_t count = 3; // count indicates the number of DRM plugins supported by the device. Pass in the actual number.
+    uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));
     Drm_ErrCode ret = OH_MediaKeySystem_GetMediaKeySystems(descriptions, &count);
@@ -67,9 +67,9 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    After obtaining the name and ID list of DRM solutions supported by the device, match against the DRM information and create the corresponding DRM solution. You can obtain the DRM information by referring to step 4 in the [Media Data Demultiplexing](../avcodec/audio-video-demuxer.md#how-to-develop).
+    After obtaining the name and ID list of the DRM solutions supported by the device, match this list with the DRM information to create the appropriate DRM solution. You can obtain the DRM information by referring to step 4 in [Media Data Demultiplexing](../avcodec/audio-video-demuxer.md#how-to-develop).
 
-    Alternatively, directly parse the media protocol or media data to obtain the unique identifier of the DRM solution and the PSSH data, so as to generate the DRM information.
+    Alternatively, directly parse the media protocol or media data to extract the unique identifier of the DRM solution and the PSSH data to generate the DRM information.
 
 3. Create a MediaKeySystem instance.
 
