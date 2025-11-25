@@ -4412,7 +4412,7 @@ createCheckboxNode(context: UIContext): Checkbox
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Checkbox')<sup>18+</sup>](#createNode('Checkbox')18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Checkbox')<sup>18+</sup>](#createNode(%27Checkbox%27)18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4521,7 +4521,7 @@ createCheckboxGroupNode(context: UIContext): CheckboxGroup
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('CheckboxGroup')<sup>18+</sup>](#createNode('CheckboxGroup')18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('CheckboxGroup')<sup>18+</sup>](#createNode(%27CheckboxGroup%27)18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4630,7 +4630,7 @@ createRatingNode(context: UIContext): Rating
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Rating')<sup>18+</sup>](#createNode('Rating')18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Rating')<sup>18+</sup>](#createNode(%27Rating%27)18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4739,7 +4739,7 @@ createRadioNode(context: UIContext): Radio
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Radio')<sup>18+</sup>](#createNode('Radio')18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Radio')<sup>18+</sup>](#createNode(%27Radio%27)18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4848,7 +4848,7 @@ createSliderNode(context: UIContext): Slider
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Slider')<sup>18+</sup>](#createNode('Slider')18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Slider')<sup>18+</sup>](#createNode(%27Slider%27)18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4957,7 +4957,7 @@ createSelectNode(context: UIContext): Select
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Select')<sup>18+</sup>](#createNode('Select')18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Select')<sup>18+</sup>](#createNode(%27Select%27)18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5068,7 +5068,7 @@ createToggleNode(context: UIContext, options?: ToggleOptions): Toggle
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Toggle')<sup>18+</sup>](#createNode('Toggle')18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Toggle')<sup>18+</sup>](#createNode(%27Toggle%27)18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
