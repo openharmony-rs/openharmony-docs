@@ -116,14 +116,14 @@ type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAnc
 
 ## FocusMoveResult<sup>23+</sup>
 
-无障碍接口[findElementsByCondition](#findelementsbycondition23)返回值类型。
+查询无障碍节点返回值类型。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
-| target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 查询结果中的无障碍节点。|
-| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 查询结果对应的状态码。|
+| target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 查询返回的无障碍节点。|
+| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 查询无障碍节点返回结果类型。|
 
 
 ## startAbility<sup>12+</sup>
