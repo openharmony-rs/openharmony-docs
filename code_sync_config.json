@@ -28340,5 +28340,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/hap-to-har.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/HapToHar/entry/oh-package.json5",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"hap_to_har_002",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
