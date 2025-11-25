@@ -7081,7 +7081,29 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void;
 **示例：**
 
 ```ts
-
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  console.info('onWindowStageCreate');
+  let windowClass: window.Window | undefined = undefined;
+  windowStage.getMainWindow((err: BusinessError | null, data: window.Window | undefined) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    windowClass = data;
+    windowClass!.setUIContent('pages/Index').then(() => {
+      try {
+        windowClass?.onWindowTitleButtonRectChange((titleButtonRect: window.TitleButtonRect) => {
+          console.info('Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
+        });
+        console.info('Succeeded in enabling the listener for window title buttons area changes');
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to enable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    })
+  });
+}
 ```
 
 ## off('windowTitleButtonRectChange')<sup>11+</sup>
@@ -7097,6 +7119,8 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -7143,7 +7167,7 @@ offWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void;
 
 **ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[off('windowTitleButtonRectChange')](#offwindowtitlebuttonrectchange11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowTitleButtonRectChange')](#offwindowtitlebuttonrectchange11)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7168,7 +7192,35 @@ offWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void;
 **示例：**
 
 ```ts
-
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  console.info('onWindowStageCreate');
+  let windowClass: window.Window | undefined = undefined;
+  windowStage.getMainWindow((err: BusinessError | null, data: window.Window | undefined) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    windowClass = data;
+    windowClass!.setUIContent('pages/Index').then(() => {
+      const callback = (titleButtonRect: window.TitleButtonRect) => {
+        // ...
+      }
+      try {
+        // 通过on接口开启监听
+        windowClass?.onWindowTitleButtonRectChange(callback);
+        // 关闭指定callback的监听
+        windowClass?.offWindowTitleButtonRectChange(callback);
+        // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+        windowClass?.offWindowTitleButtonRectChange();
+        console.info('Succeeded in disabling the listener for window title buttons area changes');
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to disable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    })
+  });
+}
 ```
 
 ## on('windowRectChange')<sup>12+</sup>
@@ -7714,7 +7766,7 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void;
 
 开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。
 
-该接口触发的回调函数是异步执行。
+该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[onSubWindowClose](#onsubwindowclose22)方法。主窗口的同步关闭事件监听参考[onWindowStageClose](arkts-apis-window-WindowStage.md#onwindowstageclose22)方法。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -7746,7 +7798,43 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void;
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError | null, data: window.Window | undefined) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      windowClass = data;
+      windowClass!.setUIContent('pages/Index').then(() => {
+        try {
+          const callback = () => {
+            // ...
+            return new Promise<boolean>((resolve, reject) => {
+              // 是否关闭该窗口
+              let result: boolean = true;
+              resolve(result);
+            });
+          }
+          let windowClass = windowStage.getMainWindowSync();
+          windowClass.onWindowWillClose(callback);
+          console.info(`Succeeded in on the window will close`);
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      })
+    });
+  }
+}
 ```
 
 ## off('windowWillClose')<sup>15+</sup>
@@ -7825,7 +7913,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 **ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowWillclose15)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowwillclose15)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7853,7 +7941,46 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError | null, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      windowClass = data;
+      windowClass!.setUIContent('pages/Index').then(() => {
+        try {
+          const callback = () => {
+            // ...
+            return new Promise<boolean>((resolve, reject) => {
+              // 是否关闭该窗口
+              let result: boolean = true;
+              resolve(result);
+            });
+          }
+          let windowClass = windowStage.getMainWindowSync();
+          windowClass.onWindowWillClose(callback);
+          windowClass.offWindowWillClose(callback);
+          // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+          windowClass.offWindowWillClose();
+          console.info(`Succeeded in off the window will close`);
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      })
+    });
+  }
+}
 ```
 
 ## on('windowHighlightChange')<sup>15+</sup>

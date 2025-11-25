@@ -1456,7 +1456,27 @@ onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void;
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      windowStage.onWindowStageClose(() => {
+        console.info('Succeeded in enabling the listener for window stage close event.');
+        return false;
+      });
+      console.info('Succeeded in onWindowStageClose');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to enable the listener for window stage close event. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+};
 ```
 
 ## off('windowStageClose')<sup>14+</sup>
@@ -1560,7 +1580,30 @@ onWindowStageClose(callback?: Callback&lt;void, boolean&gt;): void;
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    const callback = () => {
+      // ...
+      return false;
+    }
+    try {
+      windowStage.onWindowStageClose(callback);
+      windowStage.offWindowStageClose(callback);
+      windowStage.offWindowStageClose();
+      console.info('Succeeded in offWindowStageClose');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to disable the listener for window stage close changes. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+};
 ```
 
 ## setDefaultDensityEnabled<sup>12+</sup>
