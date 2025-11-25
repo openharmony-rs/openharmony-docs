@@ -523,8 +523,8 @@ Router可以通过命名路由的方式实现跨包跳转。
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import('library/src/main/ets/pages/routerToNavigation/router/Index');  // 引入共享包中的命名路由页面
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   import('library/src/main/ets/pages/routerToNavigation/router/Index'); // 引入共享包中的命名路由页面
    const DOMAIN = 0xF811;
    const TAG = '[Sample_ArkTSRouter]';
    
@@ -539,8 +539,7 @@ Router可以通过命名路由的方式实现跨包跳转。
            .margin({ top: 20 })
            .backgroundColor('#ccc')
            .onClick(() => { // 点击跳转到其他共享包中的页面
-             try {
-               this.getUIContext().getRouter().pushNamedRoute({
+             this.getUIContext().getRouter().pushNamedRoute({
                  name: 'myPage',
                  params: {
                    data1: 'message',
@@ -549,11 +548,14 @@ Router可以通过命名路由的方式实现跨包跳转。
                    }
                  }
                })
-             } catch (err) {
-               let message = (err as BusinessError).message
-               let code = (err as BusinessError).code
-               hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
-             }
+               .then(() => {
+                 hilog.info(DOMAIN, TAG, 'pushNamedRoute succeeded.');
+               })
+               .catch((err: BusinessError) => {
+                 let code = err.code;
+                 let message = err.message;
+                 hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
+               });
            })
        }
        .width('100%')
