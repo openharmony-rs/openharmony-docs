@@ -273,7 +273,7 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device not support. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -319,7 +319,7 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device not support. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -446,8 +446,8 @@ occupyEvents(eventFlags: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
-| 1300002  | This window state is abnormal. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.   |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is nullptr; 2. Send event failed. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**

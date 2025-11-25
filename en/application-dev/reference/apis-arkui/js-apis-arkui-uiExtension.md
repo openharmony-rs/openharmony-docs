@@ -273,7 +273,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device not support. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example:**
 
@@ -319,7 +319,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. Possible cause: The device not support.|
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example:**
 
@@ -446,8 +446,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
-| 1300002  | This window state is abnormal. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.   |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is nullptr; 2. Send event failed. |
 | 1300003  | This window manager service works abnormally. |
 
 **Example:**
