@@ -60,6 +60,8 @@ This function is prohibited by enterprise management policies.
 
 Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
 
+**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。
+
 **错误描述**
 
 1. 必填参数为空。
