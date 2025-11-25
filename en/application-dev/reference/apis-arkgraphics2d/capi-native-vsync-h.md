@@ -1,6 +1,6 @@
 # native_vsync.h
 
-## Purpose
+## Overview
 
 This file declares the functions for obtaining and using native virtual synchronization (VSync).
 <!--RP1-->

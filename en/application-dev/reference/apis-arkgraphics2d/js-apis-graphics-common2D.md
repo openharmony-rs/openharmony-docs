@@ -1,10 +1,4 @@
 # @ohos.graphics.common2D (Common Data Types of 2D Graphics)
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
-<!--Tester: @nobuggers-->
-<!--Adviser: @ge-yafang-->
 
 This module defines some common data types in the 2D graphics field.
 

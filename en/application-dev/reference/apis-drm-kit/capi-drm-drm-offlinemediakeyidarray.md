@@ -2,7 +2,7 @@
 
 ## Overview
 
-The struct describes an array holding the IDs of offline media keys.
+The struct describes an array of offline media key IDs.
 
 **Since**: 11
 
@@ -16,6 +16,6 @@ The struct describes an array holding the IDs of offline media keys.
 
 | Name| Description|
 | -- | -- |
-| uint32_t idsCount | Number of IDs.|
-| int32_t idsLen[MAX_OFFLINE_MEDIA_KEY_ID_COUNT] | ID length set.|
-| uint8_t ids[MAX_OFFLINE_MEDIA_KEY_ID_COUNT][MAX_OFFLINE_MEDIA_KEY_ID_LEN] | ID data set.|
+| uint32_t idsCount | Number of IDs in the array.|
+| int32_t idsLen[MAX_OFFLINE_MEDIA_KEY_ID_COUNT] | Array of lengths for each media key ID.|
+| uint8_t ids[MAX_OFFLINE_MEDIA_KEY_ID_COUNT][MAX_OFFLINE_MEDIA_KEY_ID_LEN] | Array of media key ID data.|

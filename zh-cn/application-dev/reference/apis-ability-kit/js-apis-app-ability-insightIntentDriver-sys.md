@@ -405,7 +405,7 @@ getAllInsightIntentInfo(intentFlags: number): Promise<Array\<[InsightIntentInfo]
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例：**
 
@@ -463,7 +463,7 @@ getInsightIntentInfoByBundleName(bundleName: string, intentFlags: number): Promi
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
 
 **示例：**
 
@@ -524,7 +524,7 @@ getInsightIntentInfoByIntentName(bundleName: string, moduleName: string, intentN
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
 
 **示例：**
 

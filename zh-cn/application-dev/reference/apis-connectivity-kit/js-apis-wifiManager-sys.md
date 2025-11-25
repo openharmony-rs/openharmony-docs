@@ -153,11 +153,12 @@ WLAN配置信息。
 | randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
 | ipType | [IpType](#iptype9) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig9) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
+| startWifiDetection<sup>21+</sup> | void | 否 | 是 | 发起一次WiFi网络探测。<br /> **系统接口：** 此接口为系统接口。|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
 | configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
 | isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。|
-
+| isRandomMacDisabled<sup>21+</sup> | boolean | 否 | 是 | 是否禁用随机MAC地址。false:未禁用随机MAC地址，true：禁用随机MAC地址。<br /> **系统接口：** 此接口为系统接口。|
 ## IpType<sup>9+</sup>
 
 表示IP类型的枚举。
@@ -756,6 +757,41 @@ import { wifiManager } from '@kit.ConnectivityKit';
 try {
 	wifiManager.startPortalCertification();
 } catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```
+
+## wifiManager.startWifiDetection<sup>21+</sup>
+
+startWifiDetection(): void
+
+发起WiFi网络探测。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed. |
+| 2501001  | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+	wifiManager.startWifiDetection();
+}catch (error) {
 	console.error("failed:" + JSON.stringify(error));
 }
 ```
@@ -1797,3 +1833,44 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPrp网络。<br /> **系统接口：** 此接口为系统接口。 |
+
+## wifiManager.isRandomMacDisabled<sup>21+</sup>
+
+isRandomMacDisabled(): boolean
+
+随机MAC地址是否被禁用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG，仅系统应用可用。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**返回值：**
+
+  | **类型** | **说明** |
+  | -------- | -------- |
+  | boolean | true:禁用随机MAC地址; false:未禁用随机MAC地址。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+	let ret = wifiManager.isRandomMacDisabled();
+	console.info("result:" + ret);
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+```

@@ -9,9 +9,9 @@
 
 ## Overview
 
-The file declares the MediaKeySession APIs. 
+The file declares the MediaKeySession APIs for DRM operations.
 
-The APIs can be used to generate media key requests, process responses to media key requests, listen for events, obtain content protection levels, check media key status, and delete media keys.
+The APIs can be used to generate media key requests, process responses to media key requests, listen for events, obtain content protection levels, check media key status, and remove media keys.
 
 **File to include**: <multimedia/drm_framework/native_mediakeysession.h>
 
@@ -29,23 +29,23 @@ The APIs can be used to generate media key requests, process responses to media 
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | MediaKeySession_Callback | Describes the callback used to listen for events such as media key expiry or change, without returning media key session instances. It applies to the scenario where a single media key session needs to be decrypted.|
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback | Describes the callback used to listen for events such as media key expiry or change, with media key session instances returned. It applies to the scenario where multiple media key sessions need to be decrypted.|
+| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | MediaKeySession_Callback | Defines the callbacks for media key session events such as key expiration and key changes. It does not provide a MediaKeySession instance, making it suitable for single-session decryption scenarios.|
+| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback | Defines the callbacks for media key session events such as key expiration and key changes. It provides a MediaKeySession instance, making it suitable for multi-session decryption scenarios.|
 
 ### Functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef  Drm_ErrCode (\*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)](#mediakeysession_eventcallback) | MediaKeySession_EventCallback | Defines the callback used to listen for media key session events, for example, a key expiration event.|
-| [typedef  Drm_ErrCode (\*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#mediakeysession_keychangecallback) | MediaKeySession_KeyChangeCallback | Defines the callback that is invoked when the key is changed.|
-| [typedef Drm_ErrCode (\*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysession_eventcallback) | OH_MediaKeySession_EventCallback | Defines the callback that is invoked when a media key session event is triggered.|
-| [typedef Drm_ErrCode (\*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#oh_mediakeysession_keychangecallback) | OH_MediaKeySession_KeyChangeCallback | Defines the callback that is invoked when the key is changed.|
+| [typedef  Drm_ErrCode (\*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)](#mediakeysession_eventcallback) | MediaKeySession_EventCallback | Defines the callback used to listen for media key session events, for example, key expiration events.|
+| [typedef  Drm_ErrCode (\*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#mediakeysession_keychangecallback) | MediaKeySession_KeyChangeCallback | Defines the callback used to listen for media key change events.|
+| [typedef Drm_ErrCode (\*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysession_eventcallback) | OH_MediaKeySession_EventCallback | Defines the callback used to listen for media key session events.|
+| [typedef Drm_ErrCode (\*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#oh_mediakeysession_keychangecallback) | OH_MediaKeySession_KeyChangeCallback | Defines the callback used to listen for media key change events.|
 | [Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKeySession, DRM_MediaKeyRequestInfo *info, DRM_MediaKeyRequest *mediaKeyRequest)](#oh_mediakeysession_generatemediakeyrequest) | - | Generates a media key request.|
-| [Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKeySession, uint8_t *response, int32_t responseLen, uint8_t *offlineMediaKeyId, int32_t *offlineMediaKeyIdLen)](#oh_mediakeysession_processmediakeyresponse) | - | Processes a media key response.|
-| [Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession, DRM_MediaKeyStatus *mediaKeyStatus)](#oh_mediakeysession_checkmediakeystatus) | - | Checks the status of media keys.|
+| [Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKeySession, uint8_t *response, int32_t responseLen, uint8_t *offlineMediaKeyId, int32_t *offlineMediaKeyIdLen)](#oh_mediakeysession_processmediakeyresponse) | - | Processes the response to a media key request.|
+| [Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession, DRM_MediaKeyStatus *mediaKeyStatus)](#oh_mediakeysession_checkmediakeystatus) | - | Checks the status of a media key.|
 | [Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)](#oh_mediakeysession_clearmediakeys) | - | Clears media keys.|
 | [Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseRequest,int32_t *releaseRequestLen)](#oh_mediakeysession_generateofflinereleaserequest) | - | Generates a request to release offline media keys.|
-| [Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse,int32_t releaseResponseLen)](#oh_mediakeysession_processofflinereleaseresponse) | - | Processes a response to a request for releasing offline media keys.|
+| [Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse,int32_t releaseResponseLen)](#oh_mediakeysession_processofflinereleaseresponse) | - | Processes the response to a request for releasing offline media keys.|
 | [Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysession_restoreofflinemediakeys) | - | Restores offline media keys.|
 | [Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaKeySession, DRM_ContentProtectionLevel *contentProtectionLevel)](#oh_mediakeysession_getcontentprotectionlevel) | - | Obtains the content protection level of a media key session.|
 | [Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *mediaKeySession, const char *mimeType, bool *status)](#oh_mediakeysession_requiresecuredecodermodule) | - | Checks whether secure decoding is required.|
@@ -63,7 +63,7 @@ typedef  Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, u
 
 **Description**
 
-Defines the callback used to listen for media key session events, for example, a key expiration event.
+Defines the callback used to listen for media key session events, for example, key expiration events.
 
 **Since**: 11
 
@@ -91,7 +91,7 @@ typedef  Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo
 
 **Description**
 
-Defines the callback that is invoked when the key is changed.
+Defines the callback used to listen for media key change events.
 
 **Since**: 11
 
@@ -101,7 +101,7 @@ Defines the callback that is invoked when the key is changed.
 | Name| Description|
 | -- | -- |
 | [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | Pointer to the media key information.|
-|  bool newKeysAvailable | Whether the new key is available.|
+|  bool newKeysAvailable | Whether the new keys are available.|
 
 **Returns**
 
@@ -117,7 +117,7 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 
 **Description**
 
-Defines the callback that is invoked when a media key session event is triggered.
+Defines the callback used to listen for media key session events.
 
 **Since**: 12
 
@@ -130,7 +130,7 @@ Defines the callback that is invoked when a media key session event is triggered
 | [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type.|
 | uint8_t *info | Pointer to the event information.|
 |  int32_t infoLen | Length of the event information.|
-|  char *extra | Pointer to extended event information.|
+|  char *extra | Pointer to the additional information.|
 
 **Returns**
 
@@ -146,7 +146,7 @@ typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *med
 
 **Description**
 
-Defines the callback that is invoked when the key is changed.
+Defines the callback used to listen for media key change events.
 
 **Since**: 12
 
@@ -190,7 +190,7 @@ Generates a media key request.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or **info** or **mediaKeyRequest** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or **info** or **mediaKeyRequest** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySession_ProcessMediaKeyResponse()
 
@@ -200,7 +200,7 @@ Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKey
 
 **Description**
 
-Processes a media key response.
+Processes the response to a media key request.
 
 **Since**: 11
 
@@ -210,8 +210,8 @@ Processes a media key response.
 | Name| Description|
 | -- | -- |
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
-| uint8_t *response | Pointer to a media key response.|
-| int32_t responseLen | Pointer to the length of the media key response.|
+| uint8_t *response | Pointer to the response to a media key request.|
+| int32_t responseLen | Pointer to the length of the response.|
 | uint8_t *offlineMediaKeyId | Pointer to the ID of an offline media key.|
 | int32_t *offlineMediaKeyIdLen | Length of the offline media key ID.|
 
@@ -219,7 +219,7 @@ Processes a media key response.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySession_CheckMediaKeyStatus()
 
@@ -229,7 +229,7 @@ Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySess
 
 **Description**
 
-Checks the status of media keys.
+Checks the status of a media key.
 
 **Since**: 11
 
@@ -245,7 +245,7 @@ Checks the status of media keys.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or **mediaKeyStatus** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or **mediaKeyStatus** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySession_ClearMediaKeys()
 
@@ -292,14 +292,14 @@ Generates a request to release offline media keys.
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
 | uint8_t *offlineMediaKeyId | Pointer to the ID of an offline media key.|
 | int32_t *releaseRequestLen | Length of the offline media key ID.|
-| uint8_t *releaseRequest | Pointer to a request to release offline media keys.|
+| uint8_t *releaseRequest | Pointer to the request to release offline media keys.|
 | int32_t *releaseRequestLen | Length of the request to release offline media keys.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs or the DRM solution on the device does not support offline media key release. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs or the DRM solution on the device does not support the release of offline media keys. Check the log details.|
 
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
@@ -309,7 +309,7 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 
 **Description**
 
-Processes a response to a request for releasing offline media keys.
+Processes the response to a request for releasing offline media keys.
 
 **Since**: 11
 
@@ -328,7 +328,7 @@ Processes a response to a request for releasing offline media keys.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs or the DRM solution on the device does not support offline media key release. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySession** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs or the DRM solution on the device does not support the release of offline media keys. Check the log details.|
 
 ### OH_MediaKeySession_RestoreOfflineMediaKeys()
 

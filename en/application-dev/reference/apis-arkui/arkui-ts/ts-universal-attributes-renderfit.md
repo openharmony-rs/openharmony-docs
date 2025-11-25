@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **renderFit** attribute sets how the final state of a component's content is rendered during its width and height animation process.
 
@@ -64,7 +64,7 @@ Sets how the final state of the component's content is rendered during its width
 >
 >  For the [XComponent](./ts-basic-components-xcomponent.md) component of the TEXTURE or SURFACE type, if the **renderFit** attribute is not set, it defaults to **RenderFit.RESIZE_FILL**.
 >
-> For the **XComponent** component of the SURFACE type with an opaque black background color: In versions earlier than API version 18, the **renderFit** attribute only supports **RenderFit.RESIZE_FILL**; since API version 18, the **renderFit** attribute supports all its available enum values.
+> For the [XComponent](./ts-basic-components-xcomponent.md) component of the SURFACE type with an opaque black background color: In versions earlier than API version 18, the **renderFit** attribute only supports **RenderFit.RESIZE_FILL**; since API version 18, the **renderFit** attribute supports all its available enum values.
 >
 >  For the **XComponent** component created using the [ArkUI NDK API](../../../ui/ndk-access-the-arkts-page.md), the [getAttribute](../capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute) function is not supported for obtaining the **renderFit** attribute value.
 

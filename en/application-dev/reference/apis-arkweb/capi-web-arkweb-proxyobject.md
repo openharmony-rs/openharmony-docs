@@ -25,3 +25,5 @@ Defines a proxy object to be injected.
 | const char* objName                      | Pointer to the object name to be injected.|
 | const [ArkWeb_ProxyMethod](capi-web-arkweb-proxymethod.md)* methodList | Pointer to the method struct array of an object to be injected.|
 | size_t size                              | Length of the method struct array.|
+
+

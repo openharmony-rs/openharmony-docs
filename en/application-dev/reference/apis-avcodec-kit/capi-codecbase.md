@@ -19,7 +19,7 @@ The CodecBase module provides the variables, attributes, and functions for basic
 
 | Name| Description|
 | -- | -- |
-| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio encoding and decoding.|
+| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio codec channel layouts.|
 | [native_avcodec_base.h](capi-native-avcodec-base-h.md) | Declares the native APIs used for basic audio and video multiplexing, demultiplexing, encoding, and decoding.|
 
 ## Media Codec Formats

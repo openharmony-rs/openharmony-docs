@@ -5092,17 +5092,3 @@ Allows an application to simulate user operations.
 **Supported devices**: general devices
 
 **Valid since**: 20
-
-## ohos.permission.DATA_IDENTIFY_ANONYMIZE
-
-Allows a system application to invoke the data identification and anonymization capability.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
-
-**Since**: 21

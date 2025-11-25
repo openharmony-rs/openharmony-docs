@@ -24,4 +24,4 @@ Defines a struct for the primary key or number of the row that changes.
 | ---------------------------------------- | ------------------------------------------------------------ |
 | int count                                | Number of the changed primary keys or row numbers.                          |
 | int type                                 | Type of the primary key. For details, see [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype).|
-| [Rdb_KeyData](capi-rdb-rdb-keydata.md)* data | Holds the changed data.                                          |
+| [Rdb_KeyData](capi-rdb-rdb-keydata.md)* data | Pointer to the changed data.                                          |

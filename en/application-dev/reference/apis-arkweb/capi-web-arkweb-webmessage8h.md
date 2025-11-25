@@ -16,3 +16,4 @@ Defines a pointer to the post message.
 **Related module**: [Web](capi-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
+

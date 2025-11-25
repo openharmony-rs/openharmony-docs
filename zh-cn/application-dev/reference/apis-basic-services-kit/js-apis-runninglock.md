@@ -7,7 +7,7 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
 
-该模块主要提供RunningLock锁相关操作的接口，包括创建、查询、持锁、释放锁等操作。
+该模块为RunningLock锁相关操作的接口，RunningLock锁提供使能接近光亮灭屏或者设备熄屏后阻止进入睡眠的能力，包括创建、查询、持锁、释放锁等操作，RunningLock锁的类型详情见[RunningLockType](#runninglocktype)。
 
 > **说明：**
 >
@@ -277,7 +277,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ## RunningLock
 
-阻止系统休眠的锁。
+阻止系统睡眠的锁。
 
 ### hold<sup>9+</sup>
 
@@ -526,5 +526,5 @@ RunningLock锁的类型。
 
 | 名称                              | 值   | 说明                                                         |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统休眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
+| BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
 | PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。  |
