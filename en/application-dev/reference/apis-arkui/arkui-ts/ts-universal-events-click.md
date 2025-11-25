@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A click event is triggered when a component is clicked.
 
@@ -33,9 +33,11 @@ For scenarios where there is no restriction on the finger movement distance duri
 
 >  **NOTE**
 >
->  Since API version 12, the following constraints apply when this API is used in service widgets:
->  1. Click events will not be triggered if the finger is pressed for more than 800 ms.
->  2. Click events will not be triggered if the finger moves more than 20 px after pressing down.
+>  - Since API version 12, the following constraints apply when this API is used in service widgets:
+>    1. Click events will not be triggered if the finger is pressed for more than 800 ms.
+>    2. Click events will not be triggered if the finger moves more than 20 px after pressing down.
+>
+>  - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

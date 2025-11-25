@@ -15,3 +15,4 @@ Defines an **ArkWeb_Response** for the intercepted request.
 **Related module**: [Web](capi-web.md)
 
 **Header file**: [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
+

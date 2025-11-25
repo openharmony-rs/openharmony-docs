@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -80,7 +80,7 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 
-当前触摸位置处于注册了回调接口的组件区域，但未能响应无障碍悬浮事件。仅支持手指触摸。不支持如下组件在触摸位置中的场景，包括[UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)与第三方UI框架对接。在上述场景下，该回调接口无法生效。
+在开启朗读类辅助应用以及手指触摸在组件区域的前提下，当该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，会触发该回调，并且返回无障碍悬浮事件。仅支持手指触摸。不支持如下组件在触摸位置中的场景，包括[UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)与第三方UI框架对接。在上述场景下，该回调接口无法生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

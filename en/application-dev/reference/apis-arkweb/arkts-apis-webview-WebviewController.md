@@ -4740,6 +4740,70 @@ struct WebComponent {
 }
 ```
 
+## prefetchPage<sup>21+</sup>
+
+prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions?: PrefetchOptions): void
+
+Prefetches resources in the background for a page that is likely to be accessed in the near future, without executing the page JavaScript code or presenting the page. This can significantly reduce the load time for the prefetched page.
+
+> **NOTE**
+>
+> - The downloaded page resources are cached for about 5 minutes. After this period, the **Web** component automatically releases the resources.
+>
+> - **prefetchPage** can also prefetch 302 redirect pages.
+>
+> - When a page is loaded after **prefetchPage** is executed, the prefetched resources are directly loaded from the cache.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name            | Type                            | Mandatory | Description                     |
+| ------------------| --------------------------------| ---- | ------------- |
+| url               | string                          | Yes   | URL to be preloaded.|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No   | Additional HTTP headers of the URL.<br>Default value: **[]**.|
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No   | Options for customizing the prefetch behavior. <br>For details about the default value, see [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md)|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2*1024*1024.                      |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Button('prefetchPopularPage')
+        .onClick(() => {
+          try {
+            // Replace 'https://www.example.com' with a real URL for the API to work.
+            let options = new webview.PrefetchOptions();
+            options.ignoreCacheControlNoStore = true;
+            options.minTimeBetweenPrefetchesMs = 100;
+            this.controller.prefetchPage('https://www.example.com', [{ headerKey: "headerKey", headerValue: "headerValue" }], options);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // Replace ''www.example1.com' with a real URL for the API to work.
+      Web({ src: 'www.example1.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## prefetchPage<sup>10+</sup>
 
 prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
@@ -5780,6 +5844,10 @@ export default class EntryAbility extends UIAbility {
 enableAdsBlock(enable: boolean): void
 
 Enables ad blocking.
+
+> **NOTE**
+>
+> - The ad blocking feature works only for the release-type application, not the debug-type application.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9950,7 +10018,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
-    // If the web page of the application will be greatly changed on May 6, 2022, for example, during product promotion activities, you are advised to clear the frame interpolation to optimize the cache.
+    // If the web page of the application will be greatly changed on June 10, 2025, for example, during product promotion activities, you are advised to clear the frame interpolation to optimize the cache.
     webview.WebviewController.initializeWebEngine();
     let pageUpdateTime: number = Date.UTC(2025, 5, 10, 0, 0, 0, 0);
     let pageUpdateTime1: number = Date.UTC(2025, 5, 11, 0, 0, 0, 0);

@@ -583,8 +583,9 @@ HAP包签名文件存在异常。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568320 签名文件不存在
 **错误信息**
@@ -601,8 +602,9 @@ HAP包没有签名。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568321 签名文件解析失败
 **错误信息**
@@ -619,8 +621,9 @@ HAP包签名文件存在异常。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568323 签名摘要验证未通过
 **错误信息**
@@ -637,8 +640,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568324 签名完整性校验未通过
 **错误信息**
@@ -655,8 +659,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568326 签名公钥存在异常
 **错误信息**
@@ -673,8 +678,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568327 签名获取异常
 **错误信息**
@@ -691,8 +697,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568328 未找到配置文件区块
 **错误信息**
@@ -709,8 +716,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568330 初始化签名源失败
 **错误信息**
@@ -727,8 +735,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 ### 9568257 签名文件Pkcs7校验失败
 
@@ -750,8 +759,9 @@ error: fail to verify pkcs7 file.
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 
 ### 9568344 解析配置文件失败
@@ -1755,18 +1765,18 @@ error: bundle manager service is died.
 
 2. 重复上述步骤3到5次后依旧安装失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
 
-  ```
-  hdc shell
-  cd /data/log/faultlog/faultlogger/
-  ls -ls
-  ```
+    ```
+    hdc shell
+    cd /data/log/faultlog/faultlogger/
+    ls -ls
+    ```
 
 3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-  ```
-  hdc file recv /data/log/faultlog/faultlogger/
-  hdc file recv /data/log/hilog/
-  ```
+    ```
+    hdc file recv /data/log/faultlog/faultlogger/
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568393 验证代码签名失败
 **错误信息**

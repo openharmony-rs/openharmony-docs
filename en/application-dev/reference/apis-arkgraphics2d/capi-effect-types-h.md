@@ -1,12 +1,5 @@
 # effect_types.h
 
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
-<!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @ge-yafang-->
-
 ## Overview
 
 This file declares the data types of the image effect filter.

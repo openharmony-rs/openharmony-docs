@@ -5541,11 +5541,7 @@ unlock(): void
   fs.closeSync(file);
   ```
 
-  ## fs.DfsListeners<sup>12+</sup>
-
-interface DfsListeners {
-  onStatus(networkId: string, status: number): void
-}
+## fs.DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
@@ -6162,7 +6158,7 @@ open接口flags参数常量。文件打开标签。
 | bytesRead    | number | 是    | 否    | 可读流已经读取的字节数。 |
 | path    | string | 是    | 否    | 当前可读流对应的文件路径。 |
 
-### Seek<sup>12+</sup>
+### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
 

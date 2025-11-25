@@ -553,6 +553,8 @@ orientation(orientation: ImageRotateOrientation)
 
 设置图像内容的显示方向。
 
+该属性对[alt](#alt)占位图不生效。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -602,6 +604,22 @@ Image组件创建后，不支持动态修改该属性的值。
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | enable | boolean | 是   | 控制是否开启SVG标签解析能力增强功能。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
+
+### contentTransition<sup>21+</sup>
+
+contentTransition(transition: ContentTransitionEffect)
+
+图片内容发生变化时，触发过渡动效。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -806,15 +824,15 @@ onComplete(callback: (event?: { width: number, height: number, componentWidth: n
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | 是   | 图片的宽。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| height                       | number | 是   | 图片的高。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| componentWidth               | number | 是   | 组件的宽。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| componentHeight              | number | 是   | 组件的高。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素                                    |
-| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth<sup>10+</sup>   | number | 是   | 图片实际绘制的宽度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight<sup>10+</sup>  | number | 是   | 图片实际绘制的高度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| width                        | number | 是   | 图片的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| height                       | number | 是   | 图片的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| componentWidth               | number | 是   | 组件的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| componentHeight              | number | 是   | 组件的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。                                    |
+| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| contentWidth<sup>10+</sup>   | number | 是   | 图片实际绘制的宽度。<br/>单位：px<br>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentHeight<sup>10+</sup>  | number | 是   | 图片实际绘制的高度。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentOffsetX<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| contentOffsetY<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：px<br/>**说明：**<br/>仅在loadingStatus返回1时有效。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
 
 ### onError<sup>9+</sup>
 
@@ -888,14 +906,14 @@ type ImageErrorCallback = (error: ImageError) => void
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
 | --------------- | ------ | ---- | ------------------------- | ------------------------- |
-| componentWidth  | number | 否  | 否  | 组件的宽。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| componentHeight | number | 否  | 否  | 组件的高。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentWidth  | number | 否  | 否  | 组件的宽。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentHeight | number | 否  | 否  | 组件的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | message<sup>10+</sup>         | string | 否  | 否  | 报错信息。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | 否  | 是  | 图片加载异常返回的报错信息，其中code为错误码，message为错误信息。报错信息请参考以下错误信息的详细介绍。<br/>默认值：{ code : -1, message : "" }<br/>**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -2291,3 +2309,35 @@ struct Index {
 ```
 
 ![sandBox](figures/svg2.PNG)
+
+### 示例27（使用contentTransition属性实现图片淡入淡出切换效果）
+
+从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Column() {
+        Image(this.imageResource)
+          .width(200)
+          .height(200)
+          // 启用淡入淡出过渡效果。
+          .contentTransition(ContentTransitionEffect.OPACITY)
+          .onClick(() => {
+            // $r('app.media.cloud1')需要替换为开发者所需的图像资源文件。
+            this.imageResource = $r('app.media.cloud1')
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![sandBox](figures/trans.gif)

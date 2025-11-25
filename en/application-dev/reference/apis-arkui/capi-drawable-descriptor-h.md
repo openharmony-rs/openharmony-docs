@@ -1,4 +1,10 @@
 # drawable_descriptor.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -13,6 +19,8 @@ Declares the APIs of **NativeDrawableDescriptor**.
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Sample**: <!--RP1-->[DrawableDescriptorSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/DrawableDescriptorSample)<!--RP1End-->
 
 ## Summary
 
@@ -38,7 +46,7 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | [void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t iteration)](#oh_arkui_drawabledescriptor_setanimationiteration) | Sets the number of times that an array of **PixelMap** objects is played.|
 | [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_getanimationiteration) | Obtains the number of times that an array of **PixelMap** objects is played.|
 
-## Function Description
+## Enum Description
 
 ### OH_ArkUI_DrawableDescriptor_CreateFromPixelMap()
 
@@ -284,3 +292,5 @@ Obtains the number of times that an array of **PixelMap** objects is played.
 | Type| Description|
 | -- | -- |
 | int32_t | Number of playback times.|
+
+

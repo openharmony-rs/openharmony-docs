@@ -1,10 +1,4 @@
 # OH_Drawing_GpuContext
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
-<!--Tester: @nobuggers-->
-<!--Adviser: @ge-yafang-->
 
 ## Overview
 

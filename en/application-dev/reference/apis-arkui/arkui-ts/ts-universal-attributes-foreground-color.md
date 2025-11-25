@@ -4,9 +4,9 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The foreground color attributes set the foreground color of a component. Corresponds to the background color. The foreground color affects the color of the component content. The color of the text and the fill color of the shape drawing component are affected.
+The foreground color attributes set the foreground color of components. The foreground color affects the coloration of component content, contrasting with the background color. It influences text color and shape fill colors in drawing components.
 
 >  **NOTE**
 >
@@ -16,7 +16,7 @@ The foreground color attributes set the foreground color of a component. Corresp
 
 foregroundColor(value: ResourceColor | ColoringStrategy): T
 
-Sets the foreground color of the component. If the component does not have a foreground color set, it inherits the color from its parent component by default.
+Sets the foreground color of the component. Components without explicit foreground color settings inherit from their parent components by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -38,7 +38,7 @@ Sets the foreground color of the component. If the component does not have a for
 
 foregroundColor(color: Optional\<ResourceColor | ColoringStrategy>): T
 
-Sets the foreground color of the component. If the component does not have a foreground color set, it inherits the color from its parent component by default. Compared to [foregroundColor](#foregroundcolor), the **color** parameter supports the **undefined** type.
+Sets the foreground color of the component. Components without explicit foreground color settings inherit from their parent components by default. Compared to [foregroundColor](#foregroundcolor), the **color** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -48,7 +48,7 @@ Sets the foreground color of the component. If the component does not have a for
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.<br>If the value of color is undefined, the previous value or the default value of the component is retained. The specific behavior may vary depending on the component. You are advised to use a determined color or [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).|
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.<br>If the color value is **undefined**, the previous setting or the component's default value is retained. The specific behavior may vary across components. It is recommended that you use explicit color values or [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).|
 
 **Return value**
 
@@ -91,7 +91,7 @@ This example shows how to use **ColoringStrategy.INVERT** to set the foreground 
 struct ColoringStrategyExample {
   build() {
     Column({ space: 100 }) {
-      // Draw a circle with a diameter of 15. The default fill color is black.
+      // Draw a circle with a diameter of 150. The default fill color is black.
       Circle({ width: 150, height: 200 })
       // Draw a circle with a diameter of 150 and set its foreground color to the inverse of the component background color.
       Circle({ width: 150, height: 200 })

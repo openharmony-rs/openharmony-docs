@@ -1,12 +1,5 @@
 # OH_Filter
 
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
-<!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @ge-yafang-->
-
 ## Overview
 
 Defines a struct for a filter used to generate a filter PixelMap.

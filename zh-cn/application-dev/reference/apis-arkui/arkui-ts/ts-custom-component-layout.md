@@ -44,7 +44,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 ## onPlaceChildren<sup>10+</sup>
 
-onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions):void
+onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions): void
 
 ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节点自身的尺寸范围通过onPlaceChildren传递给该自定义组件。不允许在onPlaceChildren函数中改变状态变量。
 
@@ -93,7 +93,7 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 ### layout
 
-layout(position: Position) : void
+layout(position: Position): void
 
 调用此方法对子组件的位置信息进行限制。
 
@@ -109,7 +109,7 @@ layout(position: Position) : void
 
 ### getMargin<sup>12+</sup>
 
-getMargin() : DirectionalEdgesT\<number>
+getMargin(): DirectionalEdgesT\<number>
 
 调用此方法获取子组件的margin信息。
 
@@ -125,7 +125,7 @@ getMargin() : DirectionalEdgesT\<number>
 
  ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number>
+getPadding(): DirectionalEdgesT\<number>
 
  调用此方法获取子组件的padding信息。
 
@@ -141,7 +141,7 @@ getPadding() : DirectionalEdgesT\<number>
 
 ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number>
+getBorderWidth(): DirectionalEdgesT\<number>
 
 调用此方法获取子组件的borderWidth信息。
 
@@ -198,7 +198,7 @@ getBorderWidth() : DirectionalEdgesT\<number>
 
  ### getMargin<sup>12+</sup>
 
- getMargin() : DirectionalEdgesT\<number\>
+ getMargin(): DirectionalEdgesT\<number\>
 
  获取子组件的margin信息。
 
@@ -214,7 +214,7 @@ getBorderWidth() : DirectionalEdgesT\<number>
 
 ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number\>
+getPadding(): DirectionalEdgesT\<number\>
 
 获取子组件的padding信息。
 
@@ -230,7 +230,7 @@ getPadding() : DirectionalEdgesT\<number\>
 
  ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number\>
+getBorderWidth(): DirectionalEdgesT\<number\>
 
 获取子组件的borderWidth信息。
 
@@ -280,7 +280,9 @@ onLayout?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions)
 
 ArkUI框架会在自定义组件布局时，将该自定义组件的子节点信息和自身的尺寸范围通过onLayout传递给该自定义组件。不允许在onLayout函数中改变状态变量。
 
-该接口从API version 9开始支持，从API version 10开始废弃，推荐使用[onPlaceChildren](#onplacechildren10)替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，推荐使用[onPlaceChildren](#onplacechildren10)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -299,7 +301,9 @@ onMeasure?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions
 
 ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节点信息和自身的尺寸范围通过onMeasure传递给该自定义组件。不允许在onMeasure函数中改变状态变量。
 
-该接口从API version 9开始支持，从API version 10开始废弃，推荐使用[onMeasureSize](#onmeasuresize10)替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，推荐使用[onMeasureSize](#onmeasuresize10)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -378,7 +382,9 @@ layout(childLayoutInfo: LayoutInfo)
 
 子组件border信息。
 
-从API version 9开始，从API version 10开始废弃，该接口支持在ArkTS卡片中使用。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[getBorderWidth](#getborderwidth12)，[getMargin](#getmargin12)和[getPadding](#getpadding12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -394,7 +400,9 @@ layout(childLayoutInfo: LayoutInfo)
 
 子组件layout信息。
 
-从API version 9开始，从API version 10开始废弃，该接口支持在ArkTS卡片中使用。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

@@ -267,7 +267,7 @@ export default class EntryAbility extends UIAbility {
 
 destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 
-销毁当前窗口，使用callback异步回调，仅支持系统窗口及应用子窗口。
+销毁当前窗口，使用callback异步回调，支持系统窗口及应用子窗口，全局悬浮窗和模态窗。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -306,7 +306,7 @@ windowClass.destroyWindow((err) => {
 
 destroyWindow(): Promise&lt;void&gt;
 
-销毁当前窗口，使用Promise异步回调，仅支持系统窗口及应用子窗口。
+销毁当前窗口，使用Promise异步回调，支持系统窗口及应用子窗口，全局悬浮窗和模态窗。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -464,11 +464,11 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
 >
-> - 该方法对非自由窗口状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -526,11 +526,11 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
 >
-> - 该方法对非自由窗口状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -593,9 +593,9 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -654,9 +654,9 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -719,9 +719,9 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -861,19 +861,23 @@ try {
 
 resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-改变当前窗口大小，使用callback异步回调。
+基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。
+
+调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
 
 窗口存在大小限制[WindowLimits](arkts-apis-window-i.md#windowlimits11)，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
-调用该接口设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+调用该接口设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -883,8 +887,8 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height   | number                    | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                |
 
 **错误码：**
@@ -920,19 +924,23 @@ try {
 
 resize(width: number, height: number): Promise&lt;void&gt;
 
-改变当前窗口大小，使用Promise异步回调。调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
+基于窗口左上角顶点改变当前窗口大小，使用Promise异步回调。
+
+调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
 
 窗口存在大小限制[WindowLimits](arkts-apis-window-i.md#windowlimits11)，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
-调用该接口设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+调用该接口设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -942,8 +950,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height | number | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 
 **返回值：**
 
@@ -982,19 +990,23 @@ try {
 
 resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
-改变当前窗口大小，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
+基于窗口左上角顶点改变当前窗口大小，使用Promise异步回调。
+
+调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
 窗口存在大小限制[WindowLimits](arkts-apis-window-i.md#windowlimits11)，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
-调用该接口设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+调用该接口设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 > **说明：**
 >
-> - 仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）下支持该操作。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
-> - 该方法对非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下的主窗口无效。
+> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1004,8 +1016,8 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height | number | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 
 **返回值：**
 
@@ -1048,7 +1060,7 @@ try {
 
 getWindowProperties(): WindowProperties
 
-获取当前窗口的属性，返回WindowProperties。
+获取当前窗口的属性。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2350,7 +2362,7 @@ export default class EntryAbility extends UIAbility {
 
 getPreferredOrientation(): Orientation
 
-主窗口调用，获取窗口的显示方向属性。
+获取窗口的显示方向属性。未指定方向时，返回window.Orientation.UNSPECIFIED。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6973,7 +6985,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowLimits(): WindowLimits
 
-获取当前应用窗口的尺寸限制。
+获取当前应用窗口的尺寸限制，单位为物理像素px。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7009,7 +7021,10 @@ try {
 setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7067,7 +7082,9 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
 
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -10179,16 +10196,18 @@ promise.then(() => {
 
 resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-改变当前窗口大小，使用callback异步回调。
+基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
-设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 全屏模式窗口不支持该操作。
 
@@ -10202,8 +10221,8 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名   | 类型                      | 必填 | 说明                       |
 | -------- | ------------------------- | ---- | -------------------------- |
-| width    | number                    | 是   | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height   | number                    | 是   | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                 |
 
 **示例：**
@@ -10225,16 +10244,18 @@ windowClass.resetSize(500, 1000, (err: BusinessError) => {
 
 resetSize(width: number, height: number): Promise&lt;void&gt;
 
-改变当前窗口大小，使用Promise异步回调。
+基于窗口左上角顶点改变当前窗口大小，使用Promise异步回调。
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
 应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
 
-设置的宽度与高度受到此约束限制，规则：
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限值，则窗口最小宽/高限值生效；
-若所设置的窗口宽/高尺寸大于窗口最大宽/高限值，则窗口最大宽/高限值生效。
+设置的宽度与高度受到此限制约束，规则：
+
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+
+若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
 全屏模式窗口不支持该操作。
 
@@ -10248,8 +10269,8 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| width  | number | 是   | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height | number | 是   | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
 
 **返回值：**
 

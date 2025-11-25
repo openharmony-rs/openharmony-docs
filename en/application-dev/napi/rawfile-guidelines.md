@@ -233,7 +233,7 @@ After the project is created, the **cpp** directory is created in the project di
             return result;
         }
 
-        // Save df (file descriptor) to the result object.
+        // Save fd to the result object.
         napi_value fd;
         status = napi_create_int32(env, descriptor.fd, &fd);
         if (status != napi_ok) {
@@ -341,7 +341,7 @@ After the project is created, the **cpp** directory is created in the project di
     ```
     <!-- @[example_is_raw_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
 
-**4. Calling ArkTS APIs**
+4. Call ArkTS APIs.
 
 1. Open the **src\main\ets\pages\index.ets** file, and import **libentry.so**.
 
@@ -410,3 +410,8 @@ After the project is created, the **cpp** directory is created in the project di
 	```
     <!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
 
+##  
+
+ 
+
+- [Native Rawfile](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkRawfile)

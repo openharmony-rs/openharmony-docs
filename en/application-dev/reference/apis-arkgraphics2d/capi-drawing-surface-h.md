@@ -1,10 +1,4 @@
 # drawing_surface.h
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
-<!--Tester: @nobuggers-->
-<!--Adviser: @ge-yafang-->
 
 ## Overview
 

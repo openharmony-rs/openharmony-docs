@@ -56,7 +56,7 @@ Note that the ArkTS method can be executed only on the ArkTS thread.
 
 Answer to question 2:
 As mentioned above, C++ threads throw tasks to ArkTS threads to execute ArkTS methods. For details about thread safety, see [Thread Safety Development Using Node-API](use-napi-thread-safety.md). 
-  
+In addition, you can enable the Ark multi-thread check during development to intercept multi-thread security issues. 
 
 ## What should I do if the content of napi_value changes
 

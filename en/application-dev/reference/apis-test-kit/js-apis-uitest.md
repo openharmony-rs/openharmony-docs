@@ -174,9 +174,9 @@ Provides information about the UI event.
 
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| bundleName | string | Yes  | No  | Bundle name of the application.     |
-| type       | string | Yes  | No  | Component or window type.      |
-| text       | string | Yes  | No  | Text information of the component or window. |
+| bundleName | string | Yes  | No  | Bundle name of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| type       | string | Yes  | No  | Component or window type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| text       | string | Yes  | No  | Text information of the component or window.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -302,7 +302,7 @@ let on:On = ON.id('123'); // Use the static constructor ON to create an On objec
 
 id(id: string, pattern: MatchPattern): On
 
-Specifies the ID attribute of the target component.
+Specifies the **id** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -378,7 +378,7 @@ let on:On = ON.type('Button'); // Use the static constructor ON to create an On 
 
 type(tp: string, pattern: MatchPattern): On
 
-Specifies the type attribute of the target component.
+Specifies the **type** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1809,7 +1809,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on a scrollable component to search for the target component. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -2179,11 +2179,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-Obtains the original text information of this component.
-
-> **NOTE**
->
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
+Obtains the original text information of this component. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2193,7 +2189,7 @@ Obtains the original text information of this component.
 
 | Type            | Description                             |
 | ---------------- | --------------------------------- |
-| Promise\<string> | Promise used to return the original text information of the component.|
+| Promise\<string> | Promise used to return the text information of the component.|
 
 **Error codes**
 
@@ -3023,7 +3019,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3066,7 +3062,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3114,7 +3110,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3160,7 +3156,7 @@ Drags from the start point to the target point. You can specify the drag speed a
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -3889,7 +3885,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-Simulates a fling operation on a specified display with the specified direction and speed.
+Simulates a fling operation on a display with the specified direction and speed.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

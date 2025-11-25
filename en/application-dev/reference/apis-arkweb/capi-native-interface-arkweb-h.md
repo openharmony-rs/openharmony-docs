@@ -10,6 +10,8 @@
 
 Declares APIs used to register objects and execute JavaScript code.
 
+**File to include**: <web/native_interface_arkweb.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -24,7 +26,7 @@ Declares APIs used to register objects and execute JavaScript code.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) | ArkWeb_BlanklessInfo | Prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable frame insertion for blankless loading based on the prediction information.|
+| [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) | ArkWeb_BlanklessInfo | Defines the prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable frame insertion for blankless loading based on the prediction information.|
 
 ### Enums
 

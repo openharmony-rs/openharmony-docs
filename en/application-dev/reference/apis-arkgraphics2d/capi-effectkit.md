@@ -1,12 +1,5 @@
 # effectKit
 
-<!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
-<!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @ge-yafang-->
-
 ## Overview
 
 This module provides the basic image processing capabilities, including brightness adjustment, blurring, and grayscale adjustment.

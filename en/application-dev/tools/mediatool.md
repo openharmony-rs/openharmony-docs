@@ -334,7 +334,7 @@ When the preceding URIs are used during mediatool operations, the target asset c
 
 ## hdc Commands
 
-Since API version 20, the hdc command can be used to access media library file paths, including the **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** indicates the ID of the current user.
+Since API version 21, the hdc command can be used to access media library file paths, including the **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** indicates the ID of the current user.
 
 ### Querying Media Library Files
 
@@ -387,7 +387,7 @@ FileTransfer finish, Size:xxx, File...
 
 ### Importing Media Library Files
 
-You can import files and directories, but cannot create directories. If the directory names are the same, the content is combined (all files with different names are retained). If the file names are the same, the target file is overwritten.
+You can import media files (such as images and videos) and directories, but cannot create directories. If the directory names are the same, the content is combined (all files with different names are retained). If the file names are the same, the target file is overwritten.
 
 ```shell
 hdc file send SOURCE DEST

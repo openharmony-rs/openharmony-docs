@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 With the gesture modifier, you can dynamically set gestures bound to components, complete with the **if/else** syntax.
 
@@ -21,6 +21,8 @@ Creates a gesture modifier.
 >  **NOTE**
 >
 >  **gestureModifier** does not support custom components.
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -116,7 +118,7 @@ struct Index {
   }
 }
 ```
-![gesture_moodifier_1](figures/gesture_modifier_1.png)
+![gesture_modifier_1](figures/gesture_modifier_1.png)
 
 ### Example 2: Dynamically Binding a Gesture Group
 
@@ -193,4 +195,4 @@ struct Index {
   }
 }
 ```
-![gesture_moodifier_2](figures/gesture_modifier_2.png)
+![gesture_modifier_2](figures/gesture_modifier_2.png)

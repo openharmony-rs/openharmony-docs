@@ -267,7 +267,6 @@
   - [Querying and Operating Custom Nodes](ndk-node-query-operate.md)
   - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md)
   - [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md)
-  - [Creating Multi-threaded Components with the NDK](ndk-build-on-multi-thread.md)
 - UI Development (JavaScript-compatible Web-like Development Paradigm)<!--ui-js-dev-->
   - [UI Development (JavaScript-compatible Web-like Development Paradigm) Overview](ui-js-overview.md)
   - Framework Overview<!--js-framework-overview-->
@@ -351,5 +350,8 @@
   - [UI Preview](ui-ide-previewer.md)
   - [UI Profiling](ui-inspector-profiler.md)
   - [High-Performance UI Development](ui-performance-overview.md)
+  - UI Development FAQs<!--ui-development-faq-->
+    - [FAQs About Custom Nodes](arkts-user-defined-node-faq.md)
+    - [FAQs About Buttons and Selection Components](arkts-select-component-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
