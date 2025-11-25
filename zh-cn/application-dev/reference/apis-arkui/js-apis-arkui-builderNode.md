@@ -1623,7 +1623,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 ### build<sup>22+</sup>
 
-build(builder: WrappedBuilder\<Args>, options: BuildOptions, ...args: Args): void
+build(builder: WrappedBuilder\<Args>, config: BuildOptions, ...args: Args): void
 
 依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
 
@@ -1643,7 +1643,7 @@ build(builder: WrappedBuilder\<Args>, options: BuildOptions, ...args: Args): voi
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | builder | [WrappedBuilder\<Args>](../../ui/state-management/arkts-wrapBuilder.md) | 是   | 创建对应节点树时所需的无状态UI方法[@Builder](../../ui/state-management/arkts-builder.md)。   |
-| options | [BuildOptions](#buildoptions12)                                           | 是   | 作用是配置Builder的构建行为，BuildOptions中所有属性都是可选的，默认值为BuildOptions中对应的默认值。                                         |
+| config | [BuildOptions](#buildoptions12)                                           | 是   | 作用是配置Builder的构建行为，BuildOptions中所有属性都是可选的，默认值为BuildOptions中对应的默认值。                                         |
 | ...args     | Args    | 否   | builder的入参，用于构造WrappedBuilder对象封装的builder函数。支持多个入参。默认值为undefined。                                                     |
 
 **示例：**
