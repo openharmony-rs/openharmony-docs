@@ -776,69 +776,10 @@ struct PreciselyModifyingDataTwo {
 <!-- @[changing_data_sub_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
 
 ``` TypeScript
-class SubBasicDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: SubStringData[] = [];
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-  public totalCount(): number {
-    return this.originDataArray.length;
-  }
-
-  public getData(index: number): SubStringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-
-  notifyDatasetChange(operations: DataOperation[]): void {
-    this.listeners.forEach(listener => {
-      listener.onDatasetChange(operations);
-    });
-  }
-}
-
-class MySubDataSource extends SubBasicDataSource {
+class MySubDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: SubStringData[] = [];
 
   public totalCount(): number {
@@ -918,69 +859,10 @@ struct ChangingDataSubpropertiesChildComponent {
 <!-- @[observing_nested_class_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingNestedClassProperties.ets) -->    
 
 ``` TypeScript
-class ClassPropertiesDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: ClassPropertiesStringData[] = [];
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-  public totalCount(): number {
-    return this.originDataArray.length;
-  }
-
-  public getData(index: number): ClassPropertiesStringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-
-  notifyDatasetChange(operations: DataOperation[]): void {
-    this.listeners.forEach(listener => {
-      listener.onDatasetChange(operations);
-    });
-  }
-}
-
-class PropertiesDataSource extends ClassPropertiesDataSource {
+class PropertiesDataSource extends GenericBasicDataSource<ClassPropertiesStringData> {
   private dataArray: ClassPropertiesStringData[] = [];
 
   public totalCount(): number {
@@ -1064,69 +946,10 @@ struct ObservingNestedClassProperties {
 <!-- @[observing_component_internal_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingComponentInternalState.ets) -->    
 
 ``` TypeScript
-class StateBasicDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: StateStringData[] = [];
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-  public totalCount(): number {
-    return this.originDataArray.length;
-  }
-
-  public getData(index: number): StateStringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-
-  notifyDatasetChange(operations: DataOperation[]): void {
-    this.listeners.forEach(listener => {
-      listener.onDatasetChange(operations);
-    });
-  }
-}
-
-class MyStateDataSource extends StateBasicDataSource {
+class MyStateDataSource extends GenericBasicDataSource<StateStringData> {
   private dataArray: StateStringData[] = [];
 
   public totalCount(): number {
@@ -1205,69 +1028,10 @@ struct ObservingComponentChildComponent {
 <!-- @[receiving_external_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ReceivingExternalInput.ets) -->    
 
 ``` TypeScript
-class InputDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: InputStringData[] = [];
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-  public totalCount(): number {
-    return this.originDataArray.length;
-  }
-
-  public getData(index: number): InputStringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-
-  notifyDatasetChange(operations: DataOperation[]): void {
-    this.listeners.forEach(listener => {
-      listener.onDatasetChange(operations);
-    });
-  }
-}
-
-class MyInputDataSource extends InputDataSource {
+class MyInputDataSource extends GenericBasicDataSource<InputStringData> {
   private dataArray: InputStringData[] = [];
 
   public totalCount(): number {
@@ -1630,72 +1394,12 @@ struct MyComponent {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-class ImageFliceringDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: ImageFliceringStringData[] = [];
-
-  public totalCount(): number {
-    return this.originDataArray.length;
-  }
-
-  public getData(index: number): ImageFliceringStringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-
-  notifyDatasetChange(operations: DataOperation[]): void {
-    this.listeners.forEach(listener => {
-      listener.onDatasetChange(operations);
-    });
-  }
-}
-
-class FliceringDataSource extends ImageFliceringDataSource {
+class FliceringDataSource extends GenericBasicDataSource<ImageFliceringStringData> {
   private dataArray: ImageFliceringStringData[] = [];
 
   public totalCount(): number {
@@ -1864,69 +1568,10 @@ struct ChildComponent {
 <!-- @[ui_not_rerendered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UINotRerenderedWhenObjectLinkIsChanged.ets) -->    
 
 ``` TypeScript
-class UINoteRenderingDataSource implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: UINoteRenderingStringData[] = [];
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-  public totalCount(): number {
-    return this.originDataArray.length;
-  }
-
-  public getData(index: number): UINoteRenderingStringData {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-
-  notifyDatasetChange(operations: DataOperation[]): void {
-    this.listeners.forEach(listener => {
-      listener.onDatasetChange(operations);
-    });
-  }
-}
-
-class UINoteRenderingSource extends UINoteRenderingDataSource {
+class UINoteRenderingSource extends GenericBasicDataSource<UINoteRenderingStringData> {
   private dataArray: UINoteRenderingStringData[] = [];
 
   public totalCount(): number {
