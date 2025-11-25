@@ -4474,6 +4474,12 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         console.info('Succeeded in loading the content.');
+      windowStage.loadContent('pages/Index', (err: BusinessError | null): void => {
+        if (err && err.code) {
+          console.error(Failed to load the content. Cause code: ${err.code}, message: ${err.message});
+          return;
+        }
+        console.info('Succeeded in loading the content.');
         try {
           let raiseEnabled: boolean = false;
           let promise = mainWindow.setMainWindowRaiseByClickEnabled(raiseEnabled);
