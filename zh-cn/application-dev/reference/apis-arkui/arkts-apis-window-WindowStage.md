@@ -1358,6 +1358,10 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 如果存在[on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15)监听事件，只响应[on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15)接口。
 
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStageClose](#onwindowstageclose22)。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -1365,6 +1369,8 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -1407,11 +1413,61 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+## onWindowStageClose<sup>22+</sup>
+
+onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void;
+
+开启点击主窗三键区的关闭按钮监听事件。点击主窗口的三键区域的关闭键时触发该回调函数，将不执行注册的[UIAbility.onPrepareToTerminate](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onpreparetoterminate10)生命周期回调函数。
+
+当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
+
+触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)方法。
+
+如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)接口。
+
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowStageClose')](#onwindowstageclose14)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即开启主窗三键区的关闭按钮监听。|
+| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗是否继续关闭，true表示不关闭，false表示关闭。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+
+```
+
 ## off('windowStageClose')<sup>14+</sup>
 
 off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 
 关闭主窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStageClose](#offwindowstageclose22)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1420,6 +1476,8 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -1463,6 +1521,46 @@ export default class EntryAbility extends UIAbility {
     }
   }
 };
+```
+
+## offWindowStageClose<sup>22+</sup>
+
+onWindowStageClose(callback?: Callback&lt;void, boolean&gt;): void;
+
+关闭主窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowStageClose')](#offwindowstageclose14)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| eventType  | string                                                       | 是   | 监听事件，固定为'windowStageClose'，即关闭主窗口关闭事件的监听。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击主窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有boolean类型的返回值，该返回值决定当前主窗是否继续关闭，true表示不关闭，false表示关闭。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有主窗口关闭的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+
 ```
 
 ## setDefaultDensityEnabled<sup>12+</sup>

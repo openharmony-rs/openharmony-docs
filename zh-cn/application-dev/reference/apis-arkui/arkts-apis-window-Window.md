@@ -7056,7 +7056,7 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void;
 
 **ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[on('windowTitleButtonRectChange')](#onwindowtitlebuttonrectchange11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowTitleButtonRectChange')](#onwindowtitlebuttonrectchange11)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7825,7 +7825,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 **ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowWillClose15)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowWillclose15)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
