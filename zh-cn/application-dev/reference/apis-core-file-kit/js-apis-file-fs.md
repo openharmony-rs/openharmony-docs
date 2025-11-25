@@ -5541,11 +5541,7 @@ unlock(): void
   fs.closeSync(file);
   ```
 
-  ## fs.DfsListeners<sup>12+</sup>
-
-interface DfsListeners {
-  onStatus(networkId: string, status: number): void
-}
+## fs.DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
