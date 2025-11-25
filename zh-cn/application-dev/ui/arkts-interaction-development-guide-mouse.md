@@ -18,7 +18,7 @@
 
 ## 处理鼠标移动
 
-鼠标事件通过onMouse接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
+鼠标事件通过[onMouse](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
 
 ### onMouse
 
@@ -202,7 +202,7 @@ struct MouseExample {
 
 ## 处理鼠标按键
 
-当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过MouseEvent访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过**getModifierKeyState**接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
+当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过[**getModifierKeyState**](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12)接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
@@ -254,17 +254,17 @@ class ListDataSource implements IDataSource {
 @Component
 struct ListExample {
   private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  private allSelectedItems: Array<number> = []
-  @State isSelected: boolean[] = []
+  private allSelectedItems: Array<number> = [];
+  @State isSelected: boolean[] = [];
 
   @Styles
   selectedStyle(): void {
-    .backgroundColor(Color.Green)
+    .backgroundColor(Color.Blue);
   }
 
   isItemSelected(item: number): boolean {
     for (let i = 0; i < this.allSelectedItems.length; i++) {
-      if (this.allSelectedItems[i] == item) {
+      if (this.allSelectedItems[i] === item) {
         this.isSelected[item] = true;
         return true;
       }
@@ -293,27 +293,27 @@ struct ListExample {
           })
           .onMouse((event: MouseEvent) => {
             // 判断是否按下鼠标左键
-            if (event.button == MouseButton.Left && event.action == MouseAction.Press) {
+            if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
               // 判断之前是否已经时选中状态
-              let isSelected: boolean = this.isItemSelected(index)
+              let isSelected: boolean = this.isItemSelected(index);
               // 判断修饰键状态
-              let isCtrlPressing: boolean = false
+              let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl'])
+                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
               }
               // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
               if (!isCtrlPressing) {
-                this.allSelectedItems = []
+                this.allSelectedItems = [];
                 for (let i = 0; i < this.isSelected.length; i++) {
-                  this.isSelected[i] = false
+                  this.isSelected[i] = false;
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item != index)
-                this.isSelected[index] = false
+                this.allSelectedItems.filter(item => item !== index);
+                this.isSelected[index] = false;
               } else {
-                this.allSelectedItems.push(index)
-                this.isSelected[index] = true
+                this.allSelectedItems.push(index);
+                this.isSelected[index] = true;
               }
             }
           })
@@ -333,6 +333,7 @@ struct ListExample {
 }
 ```
 
+![ChangeMouse](figures/ChangeMouse.gif)
 
 ## 处理滚轮
 

@@ -743,7 +743,7 @@ defaultFocus(value: boolean)
 // xxx.ets
 @Entry
 @Component
-struct morenjiaodian {
+struct DefaultFocus {
   @State oneButtonColor: Color = Color.Gray;
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;
