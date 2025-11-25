@@ -193,6 +193,9 @@ struct Father {
 
 - \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)等通过NAPI提供的复杂类型，由于有部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据。
 
+- \@Prop不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@Prop装饰Function类型变量的校验，编译期会报错。
+
 ## 使用场景
 
 ### 父组件\@State到子组件\@Prop简单数据类型同步

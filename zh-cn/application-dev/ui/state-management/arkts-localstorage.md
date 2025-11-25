@@ -199,7 +199,8 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
     @LocalStorageLink('PropA') localStorageLink: number = 2;
     ```
 
-2. \@LocalStorageProp与\@LocalStorageLink不支持装饰Function类型的变量，框架会抛出运行时错误。
+2. \@LocalStorageProp与\@LocalStorageLink不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@LocalStorageProp与\@LocalStorageLink装饰Function类型变量的校验，编译期会报错。
 
 3. LocalStorage创建后，命名属性的类型不可更改。后续调用Set时必须使用相同类型的值。
 
