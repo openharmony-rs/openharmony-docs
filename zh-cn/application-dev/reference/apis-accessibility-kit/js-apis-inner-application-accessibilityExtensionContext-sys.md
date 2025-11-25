@@ -87,7 +87,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
 'checkSelf' | 'checkSelfBypassDescendants';
 
-表示查找可聚焦节点时，是否检查起始节点及其子节点的聚焦能力。
+表示查找可聚焦节点时，如何判断起始节点及其子节点的聚焦能力。
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
@@ -111,10 +111,10 @@ type FocusCondition = 'forward' | 'backward' |
 | -------- | ------- |
 | 'forward'       | 当前节点下一个可聚焦节点。|
 | 'backward'     | 当前节点上一个可聚焦节点。|
-| 'findLast'     | 找起始节点子节点中最后一个节点。|
-| 'getForwardScrollAncestor' | 获取支持前向滚动父组件。|
-| 'getBackwardScrollAncestor'| 获取支持后向滚动父组件。|
-| 'getScrollableAncestor' | 获取支持任意滚动父组件。|
+| 'findLast'     | 查找起始节点子节点中最后一个节点。|
+| 'getForwardScrollAncestor' | 查找支持前向滚动父组件。|
+| 'getBackwardScrollAncestor'| 查找支持后向滚动父组件。|
+| 'getScrollableAncestor' | 查找支持任意滚动父组件。|
 
 ## FocusMoveResult<sup>23+</sup>
 
@@ -1710,7 +1710,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>;
 
-以当前节点为起点，按方向查询下一个可聚焦节点。使用Promise异步回调。
+以当前节点为起点，查询下一个/上一个/最后一个可聚焦节点。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 

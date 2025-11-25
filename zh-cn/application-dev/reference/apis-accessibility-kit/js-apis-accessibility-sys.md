@@ -134,7 +134,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 ## FocusMoveResultCode<sup>23+</sup>
 
-表示无障碍接口[findElementsByCondition](js-apis-inner-application-accessibilityExtensionContext-sys.md#findelementsbycondition23)返回值中的状态码
+表示无障碍接口[findElementsByCondition](js-apis-inner-application-accessibilityExtensionContext-sys.md#findelementsbycondition23)方法调用返回结果中的状态码
 
 **系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
 
@@ -143,11 +143,11 @@ import { accessibility } from '@kit.AccessibilityKit';
 | NOT_SUPPORTED                             | -1 | 不支持。              |
 | SEARCH_SUCCESS                            | 0  | 成功。         |
 | SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS    | 1  | 成功，下一次查询建议使用参数：bypassSelfDescendants。   |
-| SEARCH_FAILURE                            | 2  | 失败, 当前页面无可聚焦节点。              |
+| SEARCH_FAILURE                            | 2  | 失败，当前页面无可聚焦节点。              |
 | SEARCH_FAILURE_IN_CHILD_TREE              | 3  | 失败，当前子树容器中无可聚焦节点。             |
 | SEARCH_FAILURE_LOST_NODE                  | 4  | 失败，未找到起始节点。                 |
-| SEARCH_NEXT                               | 5  | 返回节点不可聚焦，使用返回节点继续查询。               |
-| DOUBLE_CHECK_CHILD_PROPERTY               | 6  | 返回节点是子树容器，需要使用返回节点的子节点继续查询。    |
-| DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | 返回节点是子树容器，需要使用返回节点的最后一个节点继续查询。  |
+| SEARCH_NEXT                               | 5  | 返回节点不具备可聚焦属性，使用返回节点继续查询。               |
+| DOUBLE_CHECK_CHILD_PROPERTY               | 6  | 返回节点是子树容器，需要使用返回节点的所有子节点继续查询。    |
+| DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | 返回节点是子树容器，需要使用返回节点的子节点列表中的最后一个节点继续查询。  |
 | SEARCH_FAILURE_IN_SCROLL                  | 8  | 在滚动组件内查询失败。        |
 
