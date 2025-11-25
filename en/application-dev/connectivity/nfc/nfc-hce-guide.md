@@ -172,7 +172,7 @@ export default class EntryAbility extends UIAbility {
   onBackground() {
     // Switch the application to the background.
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-    // When exiting the NFC tag page of the application, call the tag module API to exit the foreground mode.
+    // Switch the application to the foreground and stop HCE.
     if (hceElementName != undefined) {
       try {
         hceService.stop(hceElementName);
