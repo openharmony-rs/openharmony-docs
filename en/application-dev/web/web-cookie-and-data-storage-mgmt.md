@@ -16,9 +16,9 @@ The **Web** component provides the [WebCookieManager](../reference/apis-arkweb/a
 
 The following uses the [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) API to set a cookie value to **test** for **www\.example.com**. For details about features and usage of other APIs, see [WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md).
 
+<!-- @[set_the_value_of_a_single_cookie](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -34,10 +34,11 @@ struct WebComponent {
           try {
             webview.WebCookieManager.configCookieSync('https://www.example.com', 'value=test');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller });
     }
   }
 }

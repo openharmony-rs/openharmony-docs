@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbSerial_DeviceHandle UsbSerial_DeviceHandle
+```
+
 ## 概述
 
 USB串口设备数据结构（不透明）。

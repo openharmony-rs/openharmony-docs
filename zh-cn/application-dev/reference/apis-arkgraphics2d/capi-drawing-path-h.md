@@ -946,8 +946,8 @@ bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
-| float x | 轴上坐标点。 |
-| float y | 轴上坐标点。 |
+| float x | x轴上坐标点。 |
+| float y | y轴上坐标点。 |
 
 **返回：**
 
@@ -1143,8 +1143,8 @@ void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx
 | -- | -- |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向当前路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* dst | 指向目标路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针，为NULL时会将结果存储到当前路径对象中。 |
-| float dx | 轴方向的偏移量。 |
-| float dy | 轴方向的偏移量。 |
+| float dx | x轴方向的偏移量。 |
+| float dy | y轴方向的偏移量。 |
 
 ### OH_Drawing_PathReset()
 

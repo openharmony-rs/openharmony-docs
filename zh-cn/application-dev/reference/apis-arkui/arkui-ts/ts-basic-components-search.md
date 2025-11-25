@@ -773,6 +773,22 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
+### dividerColor<sup>23+</sup>
+
+dividerColor(color: Optional\<ColorMetrics>)
+
+设置输入框分割线颜色。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| color | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置分割线颜色。<br/>默认使用系统的主题色：浅色模式下为0x33000000，显示为浅黑色，深色模式下为0x33FFFFFF，显示为浅白色。 |
+
 ## IconOptions<sup>10+</sup>对象说明
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -1746,8 +1762,9 @@ struct SearchExample {
   }
 }
 ```
-
-![searchEditMenuOptions](figures/searchEditMenuOptions-2.gif)
+<!--RP2-->
+![searchEditMenuOptions](figures/searchEditMenuOptions-2.png)
+<!--RP2End-->
 
 ### 示例11（设置symbol类型清除按钮）
 
@@ -2283,3 +2300,44 @@ struct SearchExample {
   }
 }
 ```
+
+### 示例24（设置输入框分割线颜色）
+
+从API version 23开始，该示例通过[dividerColor](#dividercolor23)接口设置输入框分割线颜色。
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SearchExample {
+  @State colorTypeRGB: ColorMetrics = ColorMetrics.numeric(0x00FF00);
+  @State colorTypeARGB: ColorMetrics = ColorMetrics.numeric(0x3300FF00);
+  @State colorTypeColorWithSpace: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 0, 1.0, 0, 1.0);
+  @State colorTypeRGBA: ColorMetrics = ColorMetrics.rgba(255, 0, 0, 1.0);
+  // 需要替换为开发者所需的资源文件
+  @State colorTypeRes: ColorMetrics = ColorMetrics.resourceColor($r('app.color.color'));
+  @State colorType: ColorMetrics[] =
+    [this.colorTypeRGB, this.colorTypeARGB, this.colorTypeColorWithSpace, this.colorTypeRGBA, this.colorTypeRes];
+  @State colorTypeName: string[] =
+    ["colorTypeRGB", "colorTypeARGB", "colorTypeColorWithSpace", "colorTypeRGBA", "colorTypeRes"];
+  @State count: number = 0;
+
+  build() {
+    Column() {
+      Blank(30)
+      Search({ value: "Input search text" })
+        .searchButton("SEARCH", { fontSize: '14vp' })
+        .dividerColor(this.colorType[this.count])
+      Button("Change ColorType: " + this.colorTypeName[this.count]).onClick(() => {
+        this.count = (this.count + 1) % (this.colorType.length)
+      })
+        .fontSize('14vp')
+        .width('100%')
+    }
+  }
+}
+```
+
+![searchDividerColor](figures/searchDividerColor-360.jpg)

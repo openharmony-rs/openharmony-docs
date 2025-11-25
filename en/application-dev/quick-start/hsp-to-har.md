@@ -11,6 +11,8 @@ The HSP has requirements on the consistency of bundle names and signatures. Inst
 >
 > **NOTE**
 >
+> Before reading this topic, you should learn the following concepts first: [HSP](in-app-hsp.md), [HAR](hap-package.md), [module.json5](module-configuration-file.md), [hvigorfile.ts](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-config-ohos-guide), [oh-package.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-oh-package-json5), and [build-profile.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app).
+>
 > There are differences when some components and modules are integrated and used in the HAP, HSP, and HAR. For example, separate constraints are provided on loading the Worker thread file in the HAR compared with that in the HSP. For details, see [Precautions for File URLs](../arkts-utils/worker-introduction.md#precautions-for-file-urls). Therefore, after HSP is converted to HAR by performing the following steps, pay attention to the corresponding components and modules and perform adaptation.
 >
 

@@ -1769,3 +1769,5 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
   
 
 ![](figures/text_too_long_scroll.gif)
+
+<!--RP4--><!--RP4End-->

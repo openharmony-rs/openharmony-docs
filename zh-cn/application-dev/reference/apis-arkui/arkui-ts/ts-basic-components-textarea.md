@@ -289,7 +289,7 @@ maxLength(value: number)
 
 showCounter(value: boolean, options?: InputCounterOptions)
 
-设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。
+设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。未调用showCounter接口时，默认不显示计数器。
 
 参数value为true时，才能设置options，文本框开启计数器功能，需要配合maxLength（设置最大字符限制）一起使用。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
 
@@ -305,7 +305,7 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 | 参数名                | 类型                                                         | 必填 | 说明             |
 | --------------------- | ------------------------------------------------------------ | ---- | ---------------- |
-| value                 | boolean                                                      | 是   | 是否显示计数器。<br/>true表示显示计时器，false表示不显示。 |
+| value                 | boolean                                                      | 是   | 是否显示计数器。<br/>true表示显示计数器，false表示不显示。 |
 | options<sup>11+</sup> | [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明) | 否   | 计数器的配置项。 |
 
 ### style<sup>10+</sup>
@@ -2136,8 +2136,9 @@ struct TextAreaExample {
   }
 }
 ```
-
-![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.gif)
+<!--RP4-->
+![textAreaEditMenuOptions](figures/textAreaEditMenuOptions.png)
+<!--RP4End-->
 
 ### 示例15（文本设置省略模式）
 

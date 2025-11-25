@@ -45,10 +45,10 @@ ArkUI包含的V2状态管理装饰器列表如下：
 |[\@Param](./arkts-new-param.md)|
 |[\@Once](./arkts-new-once.md)|
 |[\@Event](./arkts-new-event.md)    |
-|[\@Provider](./arkts-new-Provider-and-Consumer.md)                | 
-|[\@Consumer](./arkts-new-Provider-and-Consumer.md)                |
+|[\@Provider](./arkts-new-provider-and-consumer.md)                | 
+|[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 |[\@Monitor](./arkts-new-monitor.md)                |
-|[\@Computed](./arkts-new-Computed.md) |
+|[\@Computed](./arkts-new-computed.md) |
 |[\@ObservedV2](./arkts-new-observedV2-and-trace.md)|
 |[\@Trace](./arkts-new-observedV2-and-trace.md)|
 |[\@Type](./arkts-new-type.md) | 

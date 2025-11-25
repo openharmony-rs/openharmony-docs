@@ -276,7 +276,7 @@ Enumerates the lifecycles of the same-layer tag. When a same-layer tag exists on
 
 ## NativeEmbedParamStatus<sup>21+</sup>
 
-Defines the status change type of the **param** element embedded in the same-layer rendering tag **object**. **ADD** is triggered when the **param** element is added, **UPDATE** is triggered when it is modified, and **DELETE** is triggered when it is deleted.
+Enumerates the status change types of the **param** element embedded in the same-layer rendering tag **object**. **ADD** is triggered when the **param** element is added, **UPDATE** is triggered when it is modified, and **DELETE** is triggered when it is deleted.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -350,7 +350,7 @@ Enumerates the soft keyboard avoidance modes.
 | RESIZE_VISUAL      | 0 | For soft keyboard avoidance, the visual viewport is resized, but not the layout viewport.  |
 | RESIZE_CONTENT     | 1 | For soft keyboard avoidance, both the visual viewport and layout viewport are resized. Default value.|
 | OVERLAYS_CONTENT   | 2 | No viewport is resized, and soft keyboard avoidance is not triggered.  |
-| RETURN_TO_UICONTEXT<sup>22+</sup> | 2 | The soft keyboard avoidance behavior of the **Web** component follows the [KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) set by UIcontext. The **Web** component does not process the avoidance behavior of the component.|
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | The soft keyboard avoidance behavior of the **Web** component follows the [KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11) set by UIcontext. The **Web** component does not process the avoidance behavior of the component.|
 
 ## WebElementType<sup>13+</sup>
 
@@ -458,3 +458,26 @@ Enumerates the methods for the blank screen detection.
 | Name         | Value| Description                |
 | ----------- | -- | ------------------ |
 | DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | The page is detected using the 17-point detection method. When a rendered and contentful node is detected by a detection point, it is considered that the detection point is hit. A contentful node refers to an image, video, or text node.<br>If no contentful node is detected or the number of contentful nodes is less than the threshold, a blank or near-blank screen is displayed.<br>The 17 detection points are as follows:<br>Center point (1): The center point is at the geometric center of the page.<br>Internal grid intersection points (16): A 5 × 5 uniform grid is defined in the page area. The 16 points are the intersection points of four vertical equal division lines and four horizontal equal division lines in the page.        |
+
+## CredentialType<sup>22+</sup>
+
+Enumerates the credential types.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name         | Value| Description                |
+| ----------- | -- | ------------------ |
+| CREDENTIAL_USER        | 2 | User credential.        |
+| CREDENTIAL_APP        | 3 | Application credential.        |
+| CREDENTIAL_UKEY        | 4 | UKey credential.        |
+
+## PinVerifyResult<sup>22+</sup>
+
+Enumerates the PIN verification results.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name         | Value| Description                |
+| ----------- | -- | ------------------ |
+| PIN_VERIFICATION_SUCCESS        | 0 | Verification successful.        |
+| PIN_VERIFICATION_FAILED        | 1 | Verification failed.        |

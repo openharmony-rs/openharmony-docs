@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_JavaScriptObject
+```
+
 ## Overview
 
 Defines a JavaScript object.

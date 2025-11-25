@@ -345,9 +345,11 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
     
     // 全局环境变量声明
     static napi_env g_env = nullptr;
-    // ···
+    // ...
     namespace NativeModule {
-    // ···
+    // ...
+    #define SIZE_150 150
+    // ...
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -371,7 +373,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
         // 保持Native侧对象到管理类中，维护生命周期。
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
         g_env = env;
-            // ···
+            // ...
         return nullptr;
     }
     

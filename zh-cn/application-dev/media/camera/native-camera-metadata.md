@@ -98,7 +98,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
         }
 
         // 向会话中添加相机输入流。
-        Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+        ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
             return ret;

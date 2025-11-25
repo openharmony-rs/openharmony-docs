@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了将普通不可观察数据变为可观察数据，开发者可以使用[makeObserved接口](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved)。
+为了将普通不可观察数据变为可观察数据，开发者可以使用[makeObserved接口](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)。
 
 
 makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档前，建议提前阅读：[\@Trace](./arkts-new-observedV2-and-trace.md)。
@@ -544,7 +544,7 @@ struct Page7 {
 
 
 ### makeObserved和V2装饰器配合使用
-makeObserved可以和V2的装饰器一起使用。对于[@Monitor](./arkts-new-monitor.md)和[@Computed](./arkts-new-Computed.md)，因为makeObserved传入@Observed或ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
+makeObserved可以和V2的装饰器一起使用。对于[@Monitor](./arkts-new-monitor.md)和[@Computed](./arkts-new-computed.md)，因为makeObserved传入@Observed或ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
 
 例子如下：
 <!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) -->

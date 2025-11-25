@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
+```
+
 ## 概述
 
 输入框避让信息。输入框用于避让键盘的信息。

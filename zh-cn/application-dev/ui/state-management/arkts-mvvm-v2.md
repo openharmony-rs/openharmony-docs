@@ -16,7 +16,7 @@
 
 ## 通过状态管理V2版本实现ViewModel
 
-在MVVM模式中，ViewModel负责管理数据状态，并在数据变化时自动更新视图。ArkUI的状态管理V2版本提供了丰富的装饰器和工具，帮助开发者在自定义组件之间共享数据，确保数据变化自动同步到UI。常用的状态管理装饰器包括\@Local、\@Param、\@Event、\@ObservedV2、\@Trace等等。此外，V2还提供了AppStorageV2和PersistenceV2作为全局状态存储工具，用于应用间的状态共享和持久化存储。
+在MVVM模式中，ViewModel负责管理数据状态，并在数据变化时自动更新视图。ArkUI的状态管理V2版本提供了丰富的装饰器和工具，帮助开发者在自定义组件之间共享数据，确保数据变化自动同步到UI。常用的状态管理装饰器包括[\@Local](./arkts-new-local.md)、[\@Param](./arkts-new-param.md)、[\@Event](./arkts-new-event.md)、[\@ObservedV2、\@Trace](./arkts-new-observedV2-and-trace.md)等等。此外，V2还提供了[AppStorageV2](./arkts-new-appstoragev2.md)和[PersistenceV2](./arkts-new-persistencev2.md)作为全局状态存储工具，用于应用间的状态共享和持久化存储。
 
 本节将通过一个简单的todolist示例，逐步引入和使用状态管理V2的装饰器及工具，从基础的静态任务列表开始，逐步扩展功能。每个步骤都基于上一步扩展，帮助开发者循序渐进地理解并掌握各个装饰器的使用方法。
 
@@ -83,7 +83,7 @@ struct TodoList {
 ```
 
 ### 添加\@Param，实现组件接受外部输入
-实现任务本地状态切换后，为增强待办事项列表的灵活性，需要能够动态设置每个任务的名称，而不是固定在代码中。引入\@Param装饰器后，子组件被装饰的变量可以接收父组件传入的值，实现单向数据同步。\@Param默认只读，使用\@Param \@Once可在子组件中对传入的值进行本地更新。
+实现任务本地状态切换后，为增强待办事项列表的灵活性，需要能够动态设置每个任务的名称，而不是固定在代码中。引入\@Param装饰器后，子组件被装饰的变量可以接收父组件传入的值，实现单向数据同步。\@Param默认只读，使用\@Param [\@Once](./arkts-new-once.md)可在子组件中对传入的值进行本地更新。
 
 在示例3中，每个待办事项抽象为TaskItem组件。\@Param修饰的taskName属性从父组件TodoList传入任务名称，使TaskItem组件灵活且可复用，能够接收并渲染不同的任务名称。\@Param \@Once装饰的isFinish属性接收初始值后，可在子组件内更新。
 
@@ -194,7 +194,7 @@ struct TodoList {
 
 ### 添加Repeat，实现子组件复用
 
-添加任务增删功能后，任务列表项增加，需要高效渲染多个结构相同的子组件，提高界面性能。引入Repeat方法，优化任务列表渲染。
+添加任务增删功能后，任务列表项增加，需要高效渲染多个结构相同的子组件，提高界面性能。引入[Repeat](../rendering-control/arkts-new-rendering-control-repeat.md)组件，优化任务列表渲染。
 
 Repeat支持两种场景：懒加载场景和非懒加载场景。
 - 懒加载场景适用于大量数据的场景，在滚动类容器中按需加载组件，极大节省内存和提升渲染效率。
@@ -356,7 +356,7 @@ struct TodoList {
 
 ### 添加\@Monitor，\@Computed，实现监听状态变量和计算属性
 
-在当前任务列表功能基础上，为了提升体验，可以增加一些额外的功能，如任务状态变化的监听和未完成任务数量的动态计算。为此，引入\@Monitor和\@Computed装饰器。\@Monitor用于深度监听状态变量，在属性变化时触发自定义回调方法。\@Computed用于装饰getter方法，检测被计算的属性变化。被计算的值变化时，仅计算一次，减少重复计算开销。
+在当前任务列表功能基础上，为了提升体验，可以增加一些额外的功能，如任务状态变化的监听和未完成任务数量的动态计算。为此，引入[\@Monitor](./arkts-new-monitor.md)和[\@Computed](./arkts-new-computed.md)装饰器。\@Monitor用于深度监听状态变量，在属性变化时触发自定义回调方法。\@Computed用于装饰getter方法，检测被计算的属性变化。被计算的值变化时，仅计算一次，减少重复计算开销。
 
 在示例7中，使用\@Monitor装饰器深度监听TaskItem中task的isFinish属性。当任务完成状态变化时，触发onTasksFinished回调，记录任务完成状态的变化。同时，新增对todolist中未完成任务数量的记录。使用\@Computed装饰器定义tasksUnfinished，每当任务状态变化时自动重新计算。通过这两个装饰器，实现了状态变量的深度监听和高效的计算属性。
 

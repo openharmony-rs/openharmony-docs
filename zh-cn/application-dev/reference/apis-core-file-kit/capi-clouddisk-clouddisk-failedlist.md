@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
+```
+
 ## 概述
 
 同步操作中失败的文件列表信息。该结构包含文件路径信息以及失败的具体错误原因。

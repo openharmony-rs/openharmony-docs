@@ -460,7 +460,7 @@ You can analyze other log information by referring to [Log Specifications](#log-
 
 ## Enhanced AppFreeze Logs
 
-Since API version 21, enhanced AppFreeze logs can be obtained. In these logs, the running loads of the device and main thread are collected, and multiple call stacks of the main thread are captured to help you accurately analyze the cause. Compared with the original logs, the enhanced AppFreeze logs address the following issues:
+Since API version 21, enhanced AppFreeze logs can be obtained. In these logs, the running loads of the device and main thread are collected, and multiple call stacks of the main thread are captured to help you analyze the cause. Compared with the original logs, the enhanced AppFreeze logs address the following issues:
 
 1. It is difficult to locate the main thread hotspot during the fault.
 
@@ -553,8 +553,8 @@ T1:  StaticsDuration, EndTime - StartTime.
 T2:  CpuTime              --Time that spend on CPU.
 T3:  SyncWaitTime         --SleepingTime + Runnable Time, etc.
 T4:  OptimalCpuTime       --run the thread at the max Core's max cpu capacity.
-T5:  SupplyAvailableTime  --T2 - T3. Time can be optimized by scheduling.
-Equation:  T1 = T2 + T3. T2 = T4 = T5.
+T5:  SupplyAvailableTime  --T2 - T4. Time can be optimized by scheduling.
+Equation:  T1 = T2 + T3. T2 = T4 + T5.
 |-----------------------------------StaticsDuration-----------------------------------|.
 |-------------------------CpuTime----------------------|--------SyncWaitTime----------|.
 |----OptimalCpuTime----|------SupplyAvailableTime------|--------SyncWaitTime----------|.

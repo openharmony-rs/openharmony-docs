@@ -4,31 +4,11 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-## 100001 Internal Error
-
-**Error Message**
-
-When used as an error code for @ohos.router: Internal error. UI execution context is not found.
-
-When used as an error code for the **Navigation** routing framework: Internal error. Create NavDestination failed, probably caused by wrong UIContext.
-
-**Description**
-
-This error code is reported when an internal error that cannot be rectified by developers occurs. The internal error type is included in the error information. When used in @ohos.router, this error code is represented as a string type. When used in the **Navigation** routing framework, this error code is represented as a number type.
-
-**Possible Causes**
-
-The operation for obtaining the rendering engine or parsing parameters fails.
-
-**Solution**
-
-NA
 
 ## 100002 Incorrect URI During Page Redirection
 
@@ -80,7 +60,11 @@ This error code is reported when the specified route name for redirection is inc
 
 The specified route name for redirection is incorrect or does not exist.
 
-## 100005 Builder Function Not Registered
+**Solution**
+
+Verify that the specified route name for redirection is correct and exists.
+
+## 100005 Builder Function Not Registered During Navigation
 
 **Error Message**
 
@@ -88,7 +72,7 @@ Builder function not registered.
 
 **Description**
 
-This error code is reported when the builder function for creating the navigation destination page is not registered.
+This error code is reported during navigation when the builder function for creating the **NavDestination** component is not registered.
 
 **Possible Causes**
 

@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct {...} ArkWeb_ProxyObjectWithResult
+```
+
 ## Overview
 
 Defines a proxy object to be injected.

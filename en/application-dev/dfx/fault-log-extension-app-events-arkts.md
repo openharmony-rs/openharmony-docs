@@ -96,62 +96,62 @@ The following walks you through on how to subscribe to the appfreeze event.
     // Override onFaultReportReady().
     onFaultReportReady() {
       hilog.info(0x0000, 'testTag', `FaultLogExtensionAbility onFaultReportReady`);
-     hiAppEvent.addWatcher({
-      // Set the watcher name. The system identifies different watchers based on their names.
-      name: "watcher",
-      // You can subscribe to system events that you are interested in. Here, the application freeze event is subscribed to.
-      appEventFilters: [
-        {
-          domain: hiAppEvent.domain.OS,
-          names: [hiAppEvent.event.APP_FREEZE]
-        }
-      ],
-      // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
-      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-        hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
-        for (const eventGroup of appEventGroups) {
-          // The event name uniquely identifies a system event.
-          hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
-          for (const eventInfo of eventGroup.appEventInfos) {
-            // Apply custom processing to the event data obtained, for example, print the event data in the log.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
-            // Obtain the timestamp when the application freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
-            // Obtain the foreground/background status of the application when the application freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
-            // Obtain the version information of the application when the application freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
-            // Obtain the bundle name of the application when the application freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
-            // Obtain the process name of the application when the application freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
-            // Obtain the process ID of the application when the application freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
-            // Obtain the exception type and cause of the application freeze event.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
-            // Obtain the log information when the application freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-            // Obtain the messages that are not yet processed by the main thread when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler=${eventInfo.params['event_handler']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
-            // Obtain the synchronous binder call information when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder=${eventInfo.params['peer_binder']}`);
-            // Obtain the full thread call stack when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
-            // Obtain the memory information when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
-            // Obtain the fault log file when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+      hiAppEvent.addWatcher({
+        // Set the watcher name. The system identifies different watchers based on their names.
+        name: "watcher",
+        // You can subscribe to system events that you are interested in. Here, the application freeze event is subscribed to.
+        appEventFilters: [
+          {
+            domain: hiAppEvent.domain.OS,
+            names: [hiAppEvent.event.APP_FREEZE]
+          }
+        ],
+        // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
+        onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+          hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
+          for (const eventGroup of appEventGroups) {
+            // The event name uniquely identifies a system event.
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+            for (const eventInfo of eventGroup.appEventInfos) {
+              // Apply custom processing to the event data obtained, for example, print the event data in the log.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
+              // Obtain the timestamp when the application freeze event occurs.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
+              // Obtain the foreground/background status of the application when the application freeze event occurs.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
+              // Obtain the version information of the application when the application freeze event occurs.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+              // Obtain the bundle name of the application when the application freeze event occurs.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
+              // Obtain the process name of the application when the application freeze event occurs.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
+              // Obtain the process ID of the application when the application freeze event occurs.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
+              // Obtain the exception type and cause of the application freeze event.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
+              // Obtain the log information when the application freeze event occurs.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
+              // Obtain the messages that are not yet processed by the main thread when the application freezes.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler=${eventInfo.params['event_handler']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
+              // Obtain the synchronous binder call information when the application freezes.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder=${eventInfo.params['peer_binder']}`);
+              // Obtain the full thread call stack when the application freezes.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
+              // Obtain the memory information when the application freezes.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
+              // Obtain the fault log file when the application freezes.
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+            }
           }
         }
-      }
-    });
+      });
     }
    }
    ```

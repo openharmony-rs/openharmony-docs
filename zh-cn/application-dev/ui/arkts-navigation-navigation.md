@@ -435,7 +435,7 @@ NavPathStack通过Push相关的接口（如[pushPath](../reference/apis-arkui/ar
 
 ### 页面返回
 
-NavPathStack通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口去实现页面返回功能。
+NavPathStack通过pop相关接口（如[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10)、[popToName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoname10)、[popToIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoindex10)、[clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10)）去实现页面返回功能。
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
    

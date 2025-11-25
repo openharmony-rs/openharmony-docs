@@ -22,20 +22,8 @@ This topic gives an overview of the **module.json5** configuration file. To star
 <!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_metadata]
-// [Start module_abilities_skills]
-// [Start module_systemTheme]
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
 {
-  // [StartExclude module_abilities_skills]
   "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-    // [StartExclude module_systemTheme]
-    // [StartExclude module_fileContextMenu]
-    // [StartExclude module_metadata]
     "name": "entry",
     "type": "entry",
     "description": "$string:module_desc",
@@ -45,30 +33,20 @@ This topic gives an overview of the **module.json5** configuration file. To star
       "tablet"
     ],
     "deliveryWithInstall": true,
-    // [Start module_pages]
-    "pages": "$profile:main_pages",
-    // [End module_pages]
+    "pages": "$profile:main_pages", // Resource configuration, pointing to the main_pages.json configuration file defined in the profile.
     "appStartup": "$profile:app_startup_config",
-    // [EndExclude module_metadata]
     "metadata": [
-      // [StartExclude module_metadata]
       {
         "name": "string",
         "value": "string",
         "resource": "$profile:distributionFilter_config"
       },
-      // [EndExclude module_metadata]
-	// ...
+      // ...
     ],
-    // [StartExclude module_metadata]
-    // [EndExclude module_abilities_metadata]
-    // [EndExclude module_abilities_skills]
     "abilities": [
       {
-        // [StartExclude module_abilities_skills]
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
-        // [StartExclude module_abilities_metadata]
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
         "label": "$string:EntryAbility_label",
@@ -76,10 +54,8 @@ This topic gives an overview of the **module.json5** configuration file. To star
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
-        // [EndExclude module_abilities_skills]
         "skills": [
-		// ...
-          // [EndExclude module_abilities_metadata]
+          // ...
           {
             "entities": [
               "entity.system.home"
@@ -88,10 +64,8 @@ This topic gives an overview of the **module.json5** configuration file. To star
               "ohos.want.action.home"
             ]
           }
-          // [EndExclude module_abilities_skills]
         ],
-        // [StartExclude module_abilities_skills]
-		// ...
+        // ...
         "continueType": [
           "continueType1"
         ],
@@ -99,12 +73,8 @@ This topic gives an overview of the **module.json5** configuration file. To star
           "com.example.myapplication1",
           "com.example.myapplication2"
         ],
-        // [EndExclude module_abilities_metadata]
       }
-      // [EndExclude module_abilities_skills]
     ],
-    // [StartExclude module_abilities_skills]
-    // [StartExclude module_abilities_metadata]
     "requestPermissions": [
       {
         "name": "ohos.permission.ACCESS_BLUETOOTH",
@@ -122,33 +92,18 @@ This topic gives an overview of the **module.json5** configuration file. To star
       "app2Scheme"
     ],
     "routerMap": "$profile:router_map",
-    // [EndExclude module_appEnvironments]
     "appEnvironments": [
       {
         "name": "name1",
         "value": "value1"
       }
     ],
-    // [StartExclude module_appEnvironments]
-    // [EndExclude module_fileContextMenu]
-    "fileContextMenu": "$profile:menu",
-    // [StartExclude module_fileContextMenu]
+    "fileContextMenu": "$profile:menu", // Resource configuration, which points to the menu.json configuration file defined in the profile.
     "crossAppSharedConfig": "$profile:shared_config",
-	// ...
-    // [EndExclude module_fileContextMenu]
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
+    // ...
   }
-  // [EndExclude module_abilities_skills]
 }
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
-// [End module_systemTheme]
-// [End module_abilities_skills]
-// [End module_metadata]
 ```
-
 
 ## Tags in the Configuration File
 
@@ -219,38 +174,18 @@ Example of the **deviceTypes** structure:
 <!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_abilities]
-// [Start module_extensionAbilities]
-// [Start module_proxyData]
-// [Start module_dependencies]
-// [Start module_testRunner]
 {
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
   "module": {
-    // [StartExclude module_testRunner]
-    // [StartExclude module_proxyData]
-    // [StartExclude module_dependencies]
     "name": "myHapName",
     "type": "feature",
     "deviceTypes": [
       "tv",
       "tablet"
     ],
-	// ...
-    // [StartExclude module_extensionAbilities]
+    // ...
   }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
 }
-// [End module_testRunner]
-// [End module_dependencies]
-// [End module_proxyData]
-// [End module_extensionAbilities]
-// [End module_abilities]
 ```
-
-
 
 ## pages
 
@@ -260,13 +195,11 @@ The **pages** tag is a profile that represents information about specified pages
 
 ``` JSON5
 {
-  // [StartExclude module_abilities_skills]
   "module": {
     // ...
     "pages": "$profile:main_pages", // Resource configuration, pointing to the main_pages.json configuration file defined in the profile.
     // ...
   }
-  // [EndExclude module_abilities_skills]
 }
 ```
 
@@ -315,44 +248,21 @@ The **metadata** tag represents the custom metadata of the HAP. The tag value is
 <!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_abilities_skills]
-// [Start module_systemTheme]
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
 {
-  // [StartExclude module_abilities_skills]
   "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-    // [StartExclude module_systemTheme]
-    // [StartExclude module_fileContextMenu]
-	// ...
+    // ...
     "metadata": [
-	// ...
-      // [StartExclude module_all]
+      // ...
       {
         "name": "module_metadata",
         "value": "a test demo for module metadata",
         "resource": "$profile:shortcuts_config"
       }
-      // [EndExclude module_all]
     ],
-	// ...
-    // [EndExclude module_all]
-    // [EndExclude module_fileContextMenu]
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
+    // ...
   }
-  // [EndExclude module_abilities_skills]
 }
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
-// [End module_systemTheme]
-// [End module_abilities_skills]
 ```
-
 
 ## abilities
 
@@ -402,12 +312,8 @@ Example of the **abilities** structure:
 <!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_extensionAbilities]
-// [Start module_proxyData]
-// [Start module_dependencies]
-// [Start module_testRunner]
 {
-// ...
+  // ...
     "abilities": [
       {
         "name": "EntryAbility",
@@ -463,15 +369,9 @@ Example of the **abilities** structure:
         "process": ":processTag"
       }
     ],
-	// ...
-  // [EndExclude module_extensionAbilities]
+    // ...
 }
-// [End module_testRunner]
-// [End module_dependencies]
-// [End module_proxyData]
-// [End module_extensionAbilities]
 ```
-
 
 ## skills
 
@@ -510,17 +410,12 @@ Example of the **skills** structure:
 <!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_systemTheme]
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
 {
-// ...
+  // ...
     "abilities": [
       {
-		// ...
+        // ...
         "skills": [
-          // [StartExclude module_all]
           {
             "actions": [
               "ohos.want.action.home"
@@ -541,18 +436,13 @@ Example of the **skills** structure:
             "permissions": [],
             "domainVerify": false
           },
-		// ...
+          // ...
         ],
-		// ...
+        // ...
     ],
-	// ...
+    // ...
 }
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
-// [End module_systemTheme]
 ```
-
 
 ## extensionAbilities
 
@@ -586,12 +476,8 @@ Example of the **extensionAbilities** structure:
 <!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_proxyData]
-// [Start module_dependencies]
-// [Start module_testRunner]
 {
-  // [StartExclude module_abilities]
-// ...
+  // ...
     "extensionAbilities": [
       {
         "name": "FormName",
@@ -621,15 +507,8 @@ Example of the **extensionAbilities** structure:
         ]
       }
     ],
-    // [EndExclude module_testRunner]
-    // [EndExclude module_dependencies]
-    // [EndExclude module_proxyData]
-    // [EndExclude module_deviceTypes]
-	// ...
+    // ...
 }
-// [End module_testRunner]
-// [End module_dependencies]
-// [End module_proxyData]
 ```
 
 
@@ -682,47 +561,38 @@ The **shortcut** information is specified in **metadata**, where:
 2. In the **abilities** tag of the **module.json5** file, configure the **metadata** tag for the UIAbility component to which a shortcut needs to be added so that the shortcut configuration file takes effect for the UIAbility.
 
    <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  // [StartExclude module_abilities_skills]
-  "module": {
-	// ...
-    // [EndExclude module_abilities_skills]
-    "abilities": [
-      {
-        // [StartExclude module_abilities_skills]
-        "name": "EntryAbility",
-        "srcEntry": "./ets/entryability/EntryAbility.ets",
-		// ...
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-          // [EndExclude module_abilities_skills]
-        ],
-        // [StartExclude module_abilities_skills]
-        // [StartExclude module_all]
-        "metadata": [
-          {
-            "name": "ohos.ability.shortcuts",
-            "resource": "$profile:shortcuts_config"
-          }
-        ],
-		// ...
-      }
-      // [EndExclude module_abilities_skills]
-    ],
-    // [StartExclude module_abilities_skills]
-	// ...
-  }
-  // [EndExclude module_abilities_skills]
-}
-```
+   
+   ``` JSON5
+   {
+     "module": {
+       // ...
+       "abilities": [
+         {
+           "name": "EntryAbility",
+           "srcEntry": "./ets/entryability/EntryAbility.ets",
+           // ...
+             {
+               "entities": [
+                 "entity.system.home"
+               ],
+               "actions": [
+                 "ohos.want.action.home"
+               ]
+             }
+           ],
+           "metadata": [
+             {
+               "name": "ohos.ability.shortcuts",
+               "resource": "$profile:shortcuts_config"
+             }
+           ],
+           // ...
+         }
+       ],
+       // ...
+     }
+   }
+   ```
 
 ### wants
 
@@ -764,40 +634,37 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
 - **Application scenario**: If a project has multiple entry-type modules and the values of **deviceType** configured for these modules overlap, you need to use this tag to distinguish the modules. In the following example, both entry-type modules support the tablet type, and therefore the **distributionFilter** tag is required.
 
   <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
-
-``` JSON5
-// Device types supported by entry1
-// [Start module_distributionFilter_metadata]
-{
-  "module": {
-    // [StartExclude module_distributionFilter_metadata]
-    "name": "entry1",
-    "type": "entry",
-    "deviceTypes": [
-      "tv",
-      "tablet"
-    ],
-	// ...
-}
-// [End module_distributionFilter_metadata]
-```
+  
+  ``` JSON5
+  // Device types supported by entry1
+  {
+    "module": {
+      "name": "entry1",
+      "type": "entry",
+      "deviceTypes": [
+        "tv",
+        "tablet"
+      ],
+      // ...
+  }
+  ```
 
 
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
-
-``` JSON5
-// Device types supported by entry2
-{
-  "module": {
-    "name": "entry2",
-    "type": "entry",
-    "deviceTypes": [
-      "tv",
-      "tablet"
-    ],
-	// ...
-}
-```
+  
+  ``` JSON5
+  // Device types supported by entry2
+  {
+    "module": {
+      "name": "entry2",
+      "type": "entry",
+      "deviceTypes": [
+        "tv",
+        "tablet"
+      ],
+      // ...
+  }
+  ```
 
 
 - **Configuration rule**: This tag consists of four attributes, including [screenShape](#screenshape), [screenWindow](#screenwindow), [screenDensity](#screendensity), and [countryCode](#countrycode). For details, see the following table.
@@ -897,23 +764,21 @@ Example:
 
 2. Configure **metadata** in the **module** tag in the **module.json5** file.
 
-  <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ...
-    "metadata": [
-      {
-        "name": "ohos.module.distribution",
-        "resource": "$profile:distributionFilter_config",
-      }
-    ],
-	// ...
-  // [EndExclude module_distributionFilter_01]
-}
-```
-
+  <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
+  
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "metadata": [
+        {
+          "name": "ohos.module.distribution",
+          "resource": "$profile:distributionFilter_config",
+        }
+      ],
+      // ...
+  }
+  ```
 
 ## testRunner
 
@@ -932,25 +797,16 @@ Example of the **testRunner** structure:
 
 ``` JSON5
 {
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
   "module": {
-	// ...
+    // ...
     "testRunner": {
       "name": "myTestRunnerName",
       "srcPath": "etc/test/TestRunner.ts"
     },
-	// ...
-    // [EndExclude module_dependencies]
-    // [EndExclude module_proxyData]
-    // [EndExclude module_deviceTypes]
-    // [StartExclude module_extensionAbilities]
+    // ...
   }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
 }
 ```
-
 
 ## atomicService
 
@@ -1009,14 +865,9 @@ Example of the **dependencies** structure:
 <!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_testRunner]
 {
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
   "module": {
-    // [StartExclude module_testRunner]
-    // [StartExclude module_proxyData]
-	// ...
+    // ...
     "dependencies": [
       {
         "bundleName":"com.share.library",
@@ -1024,17 +875,10 @@ Example of the **dependencies** structure:
         "versionCode": 10001
       }
     ],
-	// ...
-    // [EndExclude module_proxyData]
-    // [EndExclude module_deviceTypes]
-    // [StartExclude module_extensionAbilities]
+    // ...
   }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
 }
-// [End module_testRunner]
 ```
-
 
 ## proxyData
 
@@ -1053,14 +897,9 @@ Example of the **proxyData** structure:
 <!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_dependencies]
-// [Start module_testRunner]
 {
-  // [StartExclude module_abilities]
-  // [StartExclude module_extensionAbilities]
   "module": {
-    // [StartExclude module_testRunner]
-	// ...
+    // ...
     "proxyData": [
       {
         "uri":"datashareproxy://ohos.app.hap.myapplication/event/Meeting",
@@ -1072,17 +911,10 @@ Example of the **proxyData** structure:
         }
       }
     ],
-	// ...
-    // [EndExclude module_deviceTypes]
-    // [StartExclude module_extensionAbilities]
+    // ...
   }
-  // [EndExclude module_abilities]
-  // [EndExclude module_extensionAbilities]
 }
-// [End module_testRunner]
-// [End module_dependencies]
 ```
-
 
 ## routerMap
 
@@ -1210,27 +1042,19 @@ Example of the **appEnvironments** structure:
 <!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_abilities_metadata]
 {
-  // [StartExclude module_abilities_skills]
   "module": {
-    // [StartExclude module_abilities_metadata]
-	// ...
+    // ...
     "appEnvironments": [
       {
         "name": "name1",
         "value": "value1"
       }
     ],
-	// ...
-    // [EndExclude module_abilities_metadata]
+    // ...
   }
-  // [EndExclude module_abilities_skills]
 }
-// [End module_abilities_metadata]
 ```
-
-
 
 ## hnpPackages
 
@@ -1249,22 +1073,19 @@ Example of the **hnpPackages** structure:
 <!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_definePermissions]
 {
   "module": {
-	// ...
+    // ...
     "hnpPackages": [
       {
         "package": "hnpsample.hnp",
         "type": "public"
       }
     ],
-	// ...
+    // ...
   },
 }
-// [End module_definePermissions]
 ```
-
 
 ## fileContextMenu
 
@@ -1275,26 +1096,14 @@ Example of the **fileContextMenu** structure:
 <!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
 {
-  // [StartExclude module_abilities_skills]
   "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-    // [StartExclude module_systemTheme]
-	// ...
+    // ...
     "fileContextMenu": "$profile:menu", // Resource configuration, which points to the menu.json configuration file defined in the profile.
-	// ...
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
+    // ...
   }
-  // [EndExclude module_abilities_skills]
 }
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
 ```
-
 
 Define the **menu.json** file under **resources/base/profile** in the development view. The file name (**menu.json** in this example) can be customized, but must be consistent with the information specified by the **fileContextMenu** tag. The file describes the items and response behavior of the context menu registered by the application.
 The root node of the file is **fileContextMenu**, which is an object array and indicates the number of context menus registered by the current module. (The number must not exceed 5 per module and per application. If the number exceeds 5, only five random menus are parsed.)
@@ -1405,29 +1214,13 @@ Example:
 <!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 ``` JSON5
-// [Start module_fileContextMenu]
-// [Start module_appEnvironments]
-// [Start module_abilities_metadata]
 {
-  // [StartExclude module_abilities_skills]
   "module": {
-    // [StartExclude module_abilities_metadata]
-    // [StartExclude module_appEnvironments]
-	// ...
+    // ...
     "systemTheme": "$profile:theme_config", // Resource configuration, which points to the theme_config.json configuration file defined in the profile.
-    // [EndExclude module_metadata]
-    // [EndExclude module_all]
-    // [EndExclude module_fileContextMenu]
-    // [EndExclude module_appEnvironments]
-    // [EndExclude module_abilities_metadata]
   }
-  // [EndExclude module_abilities_skills]
 }
-// [End module_abilities_metadata]
-// [End module_appEnvironments]
-// [End module_fileContextMenu]
 ```
-
 
 Define the **theme_config.json** configuration file in **resources/base/profile**. The file name is customizable, for example, **theme_config** or **theme_config_1**. The configuration file specifies the system theme used by the current application, corresponding to the information specified by the **systemTheme** tag.
 
@@ -1471,8 +1264,7 @@ Example of the **definePermissions** structure:
 ``` JSON5
 {
   "module": {
-    // [StartExclude module_hnpPackages]
-	// ...
+    // ...
     "definePermissions": [
       {
         "name": "ohos.permission.ACCESS_BLUETOOTH",
@@ -1483,12 +1275,8 @@ Example of the **definePermissions** structure:
         "label": "$string:EntryAbility_label"
       }
     ],
-	// ...
-    // [EndExclude module_hnpPackages]
+    // ...
   },
 }
 ```
-
 <!--DelEnd-->
-
- <!--no_check--> 

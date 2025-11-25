@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-```
+```c
 typedef struct Crypto_DataBlob {...} Crypto_DataBlob
 ```
 

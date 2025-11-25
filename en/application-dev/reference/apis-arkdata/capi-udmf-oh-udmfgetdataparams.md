@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdmfGetDataParams OH_UdmfGetDataParams
+```
+
 ## Overview
 
 Defines a struct for the parameters used to obtain UDMF data asynchronously.
