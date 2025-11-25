@@ -26,7 +26,7 @@ DrawingRenderingContext(unit?: LengthMetricsUnit)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type| Read Only| Optional| Description|
+| Name      | Type| Read-Only| Optional| Description|
 | ---------- | ------------ | -------------------- | ---------------------------- | ---------------------------- |
 | size       | [Size](#size)    | No| No| Width and height of the context.<br>Default unit: vp                                           |
 | canvas     | [Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | No| No| **Canvas** object. For details, see [Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).|
@@ -37,7 +37,7 @@ DrawingRenderingContext(unit?: LengthMetricsUnit)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
 | width | number | No| No| Width of the **DrawingRenderingContext** object, which corresponds to the width of the associated **Canvas** component.|
 | height | number | No| No| Height of the **DrawingRenderingContext** object, which corresponds to the height of the associated **Canvas** component.|

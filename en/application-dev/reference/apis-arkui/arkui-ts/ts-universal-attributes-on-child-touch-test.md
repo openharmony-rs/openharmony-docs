@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 When handling a touch event, ArkUI performs [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered – to determine the components targeted by the event – and dispatches the event based on the test result. You can use **onChildTouchTest** on a parent node to specify how to perform the hit test on child nodes and thereby exert an impact on touch event dispatch. For details about the impact, see [TouchTestStrategy](#touchteststrategy11).
 
@@ -19,6 +19,12 @@ When handling a touch event, ArkUI performs [hit testing](../../../ui/arkts-inte
 onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 Allows the current component to customize the hit test and control child component behavior during the test by setting a callback.
+
+>**NOTE**
+>
+>- The array of child node information only includes information about named nodes, that is, nodes for which the **id** attribute is explicitly set.
+>
+>- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -35,12 +41,6 @@ Allows the current component to customize the hit test and control child compone
 | Type| Description|
 | -------- | -------- |
 | T | Current component.|
-
->**NOTE**
->
->- The array of child node information only includes information about named nodes, that is, nodes for which the **id** attribute is explicitly set.
->
->- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 ## TouchTestInfo<sup>11+</sup>
 
@@ -109,7 +109,7 @@ Event dispatch strategy.
 
 ### Example 1: Setting the Event Dispatch Strategy to FORWARD_COMPETITION
 
-In this example, clicking and dragging in the blank area below the **List** component causes the **List** component to scroll. The **Button** component still responds to clicks.
+In this example, clicking and dragging in the blank area below the **List** component causes the **List** component to scroll. The **Button** component still responds to **onClick** events.
 
 ```ts
 // xxx.ets
@@ -184,7 +184,7 @@ struct ListExample {
 
 ### Example 2: Setting the Event Dispatch Strategy to FORWARD
 
-In this example, clicking and dragging in the blank area below the **List** component causes the **List** component to scroll. The **Button** component does not respond to clicks.
+In this example, clicking and dragging in the blank area below the **List** component causes the **List** component to scroll. The **Button** component does not respond to **onClick** events.
 
 ```ts
 // xxx.ets
@@ -259,7 +259,7 @@ struct ListExample {
 
 ### Example 3: Setting the Event Dispatch Strategy to DEFAULT
 
-In this example, clicking and dragging in the blank area below the **List** component does not cause the **List** component to scroll. The **Button** component responds to clicks.
+In this example, clicking and dragging in the blank area below the **List** component does not cause the **List** component to scroll. The **Button** component still responds to **onClick** events.
 
 ```ts
 // xxx.ets

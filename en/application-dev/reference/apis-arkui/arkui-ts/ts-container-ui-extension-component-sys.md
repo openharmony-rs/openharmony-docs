@@ -460,7 +460,7 @@ struct Second {
             });
           })
 
-        Button ("Send to UIExtensionAbility").onClick(() => {
+        Button("Send to UIExtensionAbility").onClick(() => {
           if (this.proxy != undefined) {
             this.proxy.send({data: "Hello 1"});
 

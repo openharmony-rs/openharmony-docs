@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The sizing attributes set the width, height, and margins of a component.
 
@@ -22,7 +22,7 @@ Sets the width of the component. By default, the width required to fully hold th
 
 Since API version 10, this API supports the calc calculation feature.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -54,7 +54,7 @@ Sets the height of the component. By default, the height required to fully hold 
 
 Since API version 10, this API supports the calc calculation feature.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -132,7 +132,7 @@ Sets the width and height of the component.
 
 Since API version 10, this API supports the calc calculation feature.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -142,7 +142,7 @@ Since API version 10, this API supports the calc calculation feature.
 
 | Name  | Type                             | Mandatory  | Description               |
 | ----- | ------------------------------- | ---- | ----------------- |
-| value | [SizeOptions](ts-types.md#sizeoptions) | Yes   | Size of the component to set.<br>Exception handling: If the parameter is **undefined**, the attribute setting does not take effect. For other invalid values, the **size** attribute reverts to its default behavior when unconfigured.<br>Unit: vp|
+| value | [SizeOptions](ts-types.md#sizeoptions) | Yes   | The **SizeOptions** type is used to set the width and height.<br>Exception handling: If the parameter is **undefined**, the attribute setting does not take effect. For other invalid values, the **size** attribute reverts to its default behavior when unconfigured.<br>Unit: vp|
 
 **Return value**
 
@@ -158,7 +158,7 @@ Sets the padding of the component.
 
 Since API version 10, this API supports the calc calculation feature.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -184,7 +184,7 @@ Sets the margin of the component. The margin is considered as a part of the comp
 
 Since API version 10, this API supports the calc calculation feature.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -207,6 +207,10 @@ Since API version 10, this API supports the calc calculation feature.
 safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 
 Sets the safe area padding. This allows the container to add a component-level safe area for its child components to extend into. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 14.
 
@@ -238,7 +242,7 @@ layoutWeight(value: number | string): T
 
 Sets the weight of the component during layout. A component with this attribute set is allocated space along the main axis of its parent container ([Row](./ts-container-row.md), [Column](./ts-container-column.md), or [Flex](./ts-container-flex.md)) based on its specified weight.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -264,7 +268,7 @@ Sets the constraint size of the component, which is used to limit the size range
 
 Since API version 10, this API supports the calc calculation feature.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -317,6 +321,8 @@ Enumerates the layout policies for component width and height.
 > - When a container is set to **wrapContent** and contains child components set to **matchParent** (including cases where only one side is set to **matchParent**): (1) The container is first expanded by child components with determinate sizes. (2) Child components set to **matchParent** then adapt to the container's size. (3) If no child components have determinate sizes, both the container and its child components have a zero size.
 >
 > - **LayoutPolicy** has lower priority than **constraintSize**.
+> 
+> - Since API version 15, only the width and height attributes of **Row** and **Column** components support the **LayoutPolicy** type. Setting **LayoutPolicy** on other components produces the same behavior as having no width or height specified. Since API version 20, all basic components support the **LayoutPolicy** type.
 
 ## Example
 
