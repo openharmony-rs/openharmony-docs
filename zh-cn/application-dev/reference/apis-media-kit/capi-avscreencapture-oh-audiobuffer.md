@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AudioBuffer {...} OH_AudioBuffer
+```
+
 ## 概述
 
 定义了音频数据的大小、类型、时间戳等配置信息。
