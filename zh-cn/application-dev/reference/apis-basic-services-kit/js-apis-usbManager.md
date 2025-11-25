@@ -254,16 +254,18 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  return;
-  console.info(`device list is empty`);
-}
+function requestRight() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name).then(ret => {
-  console.info(`requestRight = ${ret}`);
-});
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name).then(ret => {
+    console.info(`requestRight = ${ret}`);
+  });
+}
 ```
 
 ## usbManager.removeRight
@@ -353,18 +355,20 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 **示例：**
 
 ```ts
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-if (!devicesList || devicesList.length == 0) {
-  console.info(`device list is empty`);
-  return;
-}
+function claimInterface() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
 
-let device: usbManager.USBDevice = devicesList[0];
-usbManager.requestRight(device.name);
-let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-console.info(`claimInterface = ${ret}`);
+  let device: usbManager.USBDevice = devicesList[0];
+  usbManager.requestRight(device.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
+  console.info(`claimInterface = ${ret}`);
+}
 ```
 
 ## usbManager.releaseInterface
@@ -404,7 +408,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 **示例：**
 
 ```ts
-function claimInterface() {
+function releaseInterface() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -416,7 +420,8 @@ function claimInterface() {
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
   let ret: number= usbManager.claimInterface(devicepipe, interfaces);
-  console.info(`claimInterface = ${ret}`);
+  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
 }
 ```
 
