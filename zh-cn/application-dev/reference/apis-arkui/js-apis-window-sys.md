@@ -4468,15 +4468,10 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.getMainWindow().then((mainWindow: window.Window) => {
       // 加载主窗口对应的页面
-      windowStage.loadContent('pages/Index', (err) => {
-        if (err.code) {
-          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        console.info('Succeeded in loading the content.');
       windowStage.loadContent('pages/Index', (err: BusinessError | null): void => {
-        if (err && err.code) {
-          console.error(Failed to load the content. Cause code: ${err.code}, message: ${err.message});
+        const errCode = err?.code;
+        if (errCode) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
           return;
         }
         console.info('Succeeded in loading the content.');
