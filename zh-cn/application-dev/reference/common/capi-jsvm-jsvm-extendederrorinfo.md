@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_ExtendedErrorInfo
+```
+
 ## 概述
 
 扩展的异常信息。

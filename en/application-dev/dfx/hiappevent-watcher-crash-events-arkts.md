@@ -31,47 +31,55 @@ The following describes how to subscribe to the crash event triggered by a butto
 
 1. Create a native C++ project in DevEco Studio. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, import the dependent modules. The sample code is as follows:
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   ```
+    <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+    import { deviceInfo } from '@kit.BasicServicesKit';
+    ```
 
 2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, set the [custom parameters of the crash event](hiappevent-watcher-crash-events.md#customizing-crash-event-parameters) and [custom parameters of the crash log specifications](hiappevent-watcher-crash-events.md#customizing-crash-log-specifications) in **onCreate()**.
 
-   ```ts
+
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     // Build custom parameters for the crash event.
-    let params: Record<string, hiAppEvent.ParamType> = {
+    let crashParams: Record<string, hiAppEvent.ParamType> = {
       "test_data": 100, // test_data is the custom data. You can customize the params parameter as required.
     };
     // Set custom parameters for the crash event.
-    hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
+    hiAppEvent.setEventParam(crashParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to set event param`);
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
-   
-    // Build custom parameters for crash log specifications.
-    let configParams: Record<string, hiAppEvent.ParamType> = {
-      "extend_pc_lr_printing": true, // Enable the functionality of printing the memory values near the PC and LR.
-      "log_file_cutoff_sz_bytes": 102400, // Truncate the crash log to 100 KB.
-      "simplify_vma_printing": true // Enable simplified printing of maps.
-    };
-   
-    // Set the crash log configuration parameters.
-    hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, configParams).then(() => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
-    });
-   ```
+    
+    if (deviceInfo.sdkApiVersion >= 20) {  // Since API Version 20, you can set crash log configuration parameters.
+      // Build custom parameters for crash log specifications.
+      let crashConfigParams: Record<string, hiAppEvent.ParamType> = {
+        "extend_pc_lr_printing": true, // Enable the functionality of printing the memory values near the PC and LR.
+        "log_file_cutoff_sz_bytes": 1024000, // Truncate the crash log to 1000 KB.
+        "simplify_vma_printing": true // Enable simplified printing of maps.
+      };
+      // Set the crash log configuration parameters.
+      hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
+    ```
 
 3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
-   ```ts
+    <!-- @[CrashEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    // Add a crash event watcher.
     let watcher: hiAppEvent.Watcher = {
       // Set the watcher name. The system identifies different watchers based on their names.
-      name: "watcher",
+      name: 'crashEventWatcher',
       // Add the system events to watch, for example, crash events.
       appEventFilters: [
         {
@@ -108,7 +116,7 @@ The following describes how to subscribe to the crash event triggered by a butto
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
             // Obtain the log information about the crash event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-            // Obtain the life time of the faulty process when the crash event occurs.
+            // Obtain the lifetime of the faulty process when the crash event occurs.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
             // Obtain the memory information about the crash event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
@@ -122,37 +130,86 @@ The following describes how to subscribe to the crash event triggered by a butto
       }
     };
     hiAppEvent.addWatcher(watcher);
-   ```
+    ```
 
 4. Construct a crash scenario.
 
     - Construct a **NativeCrash**
 
-      In the **entry/src/main/cpp/napi_init.cpp** file, add the following code to the **Add** method:
+      In **entry/src/main/cpp/napi_init.cpp** of the project, add the **TestNullptr** method, and register it as an ArkTS API as follows:
 
-      ```cpp
-      int *p = nullptr;
-      int a = *p; // Null pointer dereference. The program crashes.
+      <!-- @[Sys_Native_Nullptr_Event_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      static napi_value TestNullptr(napi_env env, napi_callback_info info)
+      {
+          int *p = nullptr;
+          int a = *p; // Null pointer dereference. The program crashes.
+          return {};
+      }
       ```
 
-       In the **entry/src/main/ets/pages/index.ets** file, add the **appCrash** button and construct a scenario for triggering a crash event in **onClick()**. The sample code is as follows:
+      <!-- @[Sys_Native_Nullptr_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      static napi_value Init(napi_env env, napi_value exports)
+      {
+          napi_property_descriptor desc[] = {
+              // ···
+              { "testNullptr", nullptr, TestNullptr, nullptr, nullptr, nullptr, napi_default, nullptr },
+              // ···
+          };
+          napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+          return exports;
+      }
+      ```
 
-      ```ts
-      Button("NativeCrash").onClick(()=>{
-        // In the onClick() function, call the Add method of napi_init.cpp to trigger the NativeCrash event.
-        testNapi.add(2, 3);
-      })
+      Define the ArkTS API in the **index.d.ts** file.
+
+      <!-- @[Sys_Native_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+      
+      ``` TypeScript
+      export const testNullptr: () => void;
+      ```
+
+      In the **entry/src/main/ets/pages/index.ets** file, add the **appCrash** button and construct a scenario for triggering a crash event in **onClick()**. The sample code is as follows:
+
+      <!-- @[Native_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      Button('NativeCrash')
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('80%')
+        .height('5%')
+        .onClick(() => {
+          // Construct a scenario in onClick() to trigger a crash event.
+          testNapi.testNullptr();
+        })
       ```
 
     - Construct a **JsError**
 
       In the **entry/src/main/ets/pages/index.ets** file, add the **appCrash** button and construct a scenario for triggering a crash event in **onClick()**. The sample code is as follows:
 
-      ```ts
-      Button("JsError").onClick(()=>{
-        // Construct a JsError in the button click function to trigger an application crash event.
-        let result: object = JSON.parse("");
-      })
+      <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      Button('JsError')
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('80%')
+        .height('5%')
+        .onClick(() => {
+          // Construct a scenario in onClick() to trigger a crash event.
+          JSON.parse('');
+        })
       ```
 
 5. In DevEco Studio, click the **Run** button to run the project. Tap the **NativeCrash** or **JsError** button on the application screen to trigger a crash event. The system generates logs based on the crash type and triggers the callback.
@@ -189,28 +246,21 @@ HiAppEvent eventName=APP_CRASH
 HiAppEvent eventInfo.domain=OS
 HiAppEvent eventInfo.name=APP_CRASH
 HiAppEvent eventInfo.eventType=1
-HiAppEvent eventInfo.params.time=1711440614001
+HiAppEvent eventInfo.params.time=1503045716054
 HiAppEvent eventInfo.params.crash_type=JsError
 HiAppEvent eventInfo.params.foreground=true
 HiAppEvent eventInfo.params.bundle_version=1.0.0
-HiAppEvent eventInfo.params.bundle_name=com.example.myapplication
-HiAppEvent eventInfo.params.pid=2043
-HiAppEvent eventInfo.params.uid=20010043
-HiAppEvent eventInfo.params.uuid=b1e953ba0022c112e4502e28e8b3ad6d95cf3c87bae74068038f03b38ce7f66a
-HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON","name":"SyntaxError","stack":"at anonymous (entry/src/main/ets/pages/Index.ets:55:34)"}
-HiAppEvent eventInfo.params.hilog.size=90
-HiAppEvent eventInfo.params.process_life_time=1
-HiAppEvent eventInfo.params.memory={"rss":150748,"sys_avail_mem":5387264,"sys_free_mem":218902,"sys_total_mem":11679236}
-HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1711440614112_2043.log"]
+HiAppEvent eventInfo.params.bundle_name=com.samples.eventsub
+HiAppEvent eventInfo.params.pid=2610
+HiAppEvent eventInfo.params.uid=20010044
+HiAppEvent eventInfo.params.uuid=7c3b1579c8ca8629af3858f8145254c2867ee402dc16ee18034337aae258620b
+HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON: Empty Text","name":"SyntaxError","stack":"    at anonymous (entry|entry|1.0.0|src/main/ets/pages/Index.ts:163:22)\n","thread_name":"amples.eventsub"}
+HiAppEvent eventInfo.params.hilog.size=100
+HiAppEvent eventInfo.params.process_life_time=25
+HiAppEvent eventInfo.params.memory={"rss":181964,"sys_avail_mem":1230456,"sys_free_mem":676940,"sys_total_mem":2001932}
+HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log"]
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.test_data=100
-```
-
-### Removing an Event Watcher
-
-```ts
-// Remove the event watcher to unsubscribe from events.
-hiAppEvent.removeWatcher(watcher);
 ```
 <!--RP1-->
 <!--RP1End-->

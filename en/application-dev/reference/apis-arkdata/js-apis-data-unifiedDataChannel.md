@@ -420,7 +420,7 @@ Summarizes the data information of the **unifiedData** object, including the dat
 | -------- | -------- | -------- | -------- | -------- |
 | summary   | Record<string, number> | No| No| Dictionary type object, where the key indicates the data type (see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)), and the value indicates the total size (in bytes) of this type of records in the unified data object.|
 | totalSize | number | No| No| Total size of all the records in the **UnifiedData** object, in bytes.|
-| overview<sup>22+</sup>   | Record<string, number> | Yes| No| Mapping between all types of unified data objects and the size of data records of the types (in bytes).|
+| overview<sup>22+</sup>   | Record<string, number> | Yes| No| Mapping between all types of unified data objects and the size of data records of the types (in bytes). If the obtained unified data object is empty, the **overview** property is empty.|
 
 **Example**
 

@@ -869,7 +869,7 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 调用该接口设置的宽度与高度受到此限制约束，规则：
 
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
@@ -932,7 +932,7 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 调用该接口设置的宽度与高度受到此限制约束，规则：
 
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
@@ -998,7 +998,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 调用该接口设置的宽度与高度受到此限制约束，规则：
 
-若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效；
+若所设置的窗口宽/高尺寸小于窗口最小宽/高限制值，则窗口最小宽/高限制值生效，系统窗口和全局悬浮窗设置最小值不受窗口最小宽/高限制值限制；
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
@@ -1060,7 +1060,7 @@ try {
 
 getWindowProperties(): WindowProperties
 
-获取当前窗口的属性，返回WindowProperties。
+获取当前窗口的属性。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1683,10 +1683,6 @@ getImmersiveModeEnabledState(): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
 **返回值：**
 | 类型     | 说明                                                                                 |
 | ------- | ------------------------------------------------------------------------------------ |
@@ -1704,24 +1700,11 @@ getImmersiveModeEnabledState(): boolean
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 try {
   let isEnabled = windowClass.getImmersiveModeEnabledState();
 } catch (exception) {
   console.error(`Failed to get the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-try {
-  let isEnabled = windowClass.getImmersiveModeEnabledState();
-} catch (exception) {
-  let error = exception as BusinessError;
-  console.error(`Failed to get the window immersive mode enabled status. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2425,7 +2408,7 @@ export default class EntryAbility extends UIAbility {
 
 getPreferredOrientation(): Orientation
 
-主窗口调用，获取窗口的显示方向属性。
+获取窗口的显示方向属性。未指定方向时，返回window.Orientation.UNSPECIFIED。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6159,7 +6142,9 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 设置窗口是否为隐私模式，使用callback异步回调。
 
-设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
+
+隐私模式窗口退后台后在多任务卡片中显示为白色蒙层或隐私蒙层。
 
 未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
@@ -6212,7 +6197,9 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 设置窗口是否为隐私模式，使用Promise异步回调。
 
-设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
+
+隐私模式窗口退后台后在多任务卡片中显示为白色蒙层或隐私蒙层。
 
 未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
@@ -7003,6 +6990,67 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+## maximize<sup>22+</sup>
+
+maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&lt;void&gt;
+
+实现最大化功能。主窗口可调用此接口实现最大化功能；子窗口需在创建时设置子窗口参数maximizeSupported为true，再调用此接口可实现最大化功能。在具备折叠功能的2in1设备上，支持控制悬停态（参考[折叠屏悬停态最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-folded-hover)）下主窗口的瀑布流模式行为，即窗口在悬停态下最大化时是否跨上下两个半屏显示。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明 |
+| ----- | ---------------------------- | -- | --------------------------------- |
+| presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`或不传值时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation.                       |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      let mainWindow = windowStage.getMainWindowSync();
+      mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE, true)
+        .then(() => {
+          console.info('Window maximized successfully.');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+    });
+  }
+};
+```
+
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -7218,7 +7266,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowLimits(): WindowLimits
 
-获取当前应用窗口的尺寸限制。
+获取当前应用窗口的尺寸限制，单位为物理像素px。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7249,12 +7297,50 @@ try {
 }
 ```
 
+## getWindowLimitsVP<sup>22+</sup>
+
+getWindowLimitsVP(): WindowLimits
+
+获取当前应用窗口的尺寸限制，单位为虚拟像素vp。
+
+对于系统窗口和全局悬浮窗，默认窗口宽高的系统限制最小值为1px，通过此接口获取到的1vp，是计算取整后的值。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型                          | 说明           |
+| ----------------------------- | ------------------ |
+| [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 当前窗口尺寸限制。 |
+
+**错误码：**
+
+错误码详情请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| :------- | :----------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
+} catch (exception) {
+  console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setWindowLimits<sup>11+</sup>
 
 setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7264,7 +7350,7 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px。 |
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px或vp。 |
 
 **返回值：**
 
@@ -7312,7 +7398,9 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 设置当前应用窗口的尺寸限制，使用Promise异步回调。
 
-默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)可获取系统限制。
+默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
+
+未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -7328,8 +7416,8 @@ API version 19之前，该接口在2in1设备中可正常调用，在其他设�
 
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px。 |
-| isForcible | boolean | 是   | 是否强制设置窗口的尺寸限制。<br>设置为true，表示窗口宽高最小值以系统限制值和40vp两者中的低数值为准，窗口宽高的最大值仍取决于系统限制。<br>设置为false，表示窗口宽高的最小值和最大值都取决于系统限制。|
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px或vp。 |
+| isForcible | boolean | 是   | 是否强制设置窗口的尺寸限制。<br>当入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为vp时：无论设置true还是false，都按照false处理，窗口宽高的最小值和最大值都取决于系统限制。<br>当入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为px时：设置为true，表示窗口宽高最小值以系统限制值和40vp两者中的低数值为准，窗口宽高的最大值仍取决于系统限制；设置为false，表示窗口宽高的最小值和最大值都取决于系统限制。|
 
 **返回值：**
 

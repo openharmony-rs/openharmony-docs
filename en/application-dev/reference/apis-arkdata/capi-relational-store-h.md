@@ -30,7 +30,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md)                | OH_Rdb_Store | Defines the RDB store type.                                                               |
 | [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | Defines a struct for distributed configuration of a table.                                                           |
 | [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md)                      | Rdb_KeyInfo | Defines a struct for the primary key or number of the row that changes.                                                       |
-| [Rdb_KeyData](capi-rdb-rdb-keydata.md)                      | - | Holds the changed data.                                                             |
+| [Rdb_KeyData](capi-rdb-rdb-keydata.md)                      | - | Stores the changed data.                                                             |
 | [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)                | Rdb_ChangeInfo | Defines a struct for the details about the device-cloud sync process.                                                            |
 | [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md)  | Rdb_SubscribeCallback | Defines a callback used to return the subscribed event.                                                                |
 | [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md)            | Rdb_DataObserver | Defines a struct for the data observer.                                                               |
@@ -83,11 +83,11 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)](#oh_rdb_getoropen) | - | Obtains a related [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance to operate the RDB store.|
 | [OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)](#oh_rdb_createoropen) | - | Creates or opens an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance based on the given [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md).|
 | [int OH_Rdb_CloseStore(OH_Rdb_Store *store)](#oh_rdb_closestore) | - | Closes an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) object and reclaims the memory occupied by the object.|
-| [int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)](#oh_rdb_deletestore) | - | Deletes a graph store.|
+| [int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)](#oh_rdb_deletestore) | - | Deletes an RDB store with the specified configuration. |
 | [int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config)](#oh_rdb_deletestorev2) | - | Deletes an RDB store based on the given [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md).<br>Before calling **DeleteStoreV2**, ensure that the **OH_Rdb_Store** and **OH_Cursor** of the vector store have been closed.|
 | [int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket)](#oh_rdb_insert) | - | Inserts a row of data into a table.|
 | [int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, OH_VBucket *row,Rdb_ConflictResolution resolution, int64_t *rowId)](#oh_rdb_insertwithconflictresolution) | - | Inserts a row of data into the target table and supports conflict resolution.|
-| [int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdb_batchinsert) | - | Inserts a batch of data into a table.|
+| [int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdb_batchinsert) | - | Inserts data into a table in batches.|
 | [int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates)](#oh_rdb_update) | - | Updates data in an RDB store based on specified conditions.|
 | [int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates,Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdb_updatewithconflictresolution) | - | Updates data in the database based on specified conditions and supports conflict resolution.|
 | [int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_delete) | - | Deletes data from an RDB store based on specified conditions.|
@@ -127,6 +127,10 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber)](#oh_rdb_detach) | - | Detaches a specified store from the current database.|
 | [int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)](#oh_rdb_setlocale) | - | Sets locale.|
 | [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)](#oh_rdb_setsemanticindex) | - | Sets whether to enable knowledge processing based on semantic indexes.|
+| [int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)](#oh_rdb_rekeyex) | - | Changes the key used to encrypt the database.<br>Key update is not supported for databases in non-WAL mode.<br>Manual update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.<br>Parameter update for an encrypted database and conversion between an encrypted database and a non-encrypted database are supported.<br>The larger the database, the longer the update takes.<br>Exercise caution when changing the encryption parameters. The correct encryption parameters must be passed when **OH_Rdb_CreateOrOpen** is called. Otherwise, the database may fail to be opened.|
+| [typedef void (\*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)](#rdb_corruptedhandler) | Rdb_CorruptedHandler | Defines a handler for processing database exceptions.|
+| [int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_registercorruptedhandler) | - | Registers a handler for processing database exceptions. When a database exception occurs, this handler is called.<br>The exception handling logic is user-defined. You should ensure the service quality each time the callback is triggered.<br>Only one handler can be registered for each path.|
+| [int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_unregistercorruptedhandler) | - | Unregisters the handler for processing database exceptions.<br>The handler and context must be the same as those during subscription. Otherwise, the operation fails.|
 
 ## Enum Description
 
@@ -332,7 +336,7 @@ Sets whether to enable knowledge processing based on semantic indexes.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error code, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**ERR_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns an error code. For details about the error code, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CreateConfig()
 
@@ -1061,7 +1065,7 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuc
 
 **Description**
 
-Inserts a batch of data into a table.
+Inserts data into a table in batches.
 
 **Since**: 18
 
@@ -1636,7 +1640,7 @@ Sets distributed database tables.
 | const char *tables[] |  Pointer to the names of the distributed tables to set.|
 | uint32_t count | Number of distributed database tables to be set.|
 | [Rdb_DistributedType](#rdb_distributedtype) type | [Rdb_DistributedType](capi-relational-store-h.md#rdb_distributedtype) of the table.|
-| const [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) *config | Distributed configuration information of a table ([Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)).|
+| const [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) *config | Pointer to the distributed configuration of a table ([Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)).|
 
 **Returns**
 
@@ -1726,7 +1730,7 @@ int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Data
 
 **Description**
 
-Registers an observer for an RDB store. The registered callback will be called when data in a distributed or local RDB store changes.
+Registers an observer for an RDB store. The registered callback will be invoked when data in a distributed or local RDB store changes.
 
 **Since**: 11
 
@@ -2111,3 +2115,116 @@ Sets locale.
 | Type| Description|
 | -- | -- |
 | int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_ERR** indicates that the execute function is abnormal.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.|
+
+### OH_Rdb_RekeyEx()
+
+```
+int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)
+```
+
+**Description**
+
+Changes the key used to encrypt the database.
+
+Key update is not supported for databases in non-WAL mode.
+
+Manual update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.
+
+Parameter update for an encrypted database and conversion between an encrypted database and a non-encrypted database are supported.
+
+The larger the database, the longer the update takes.
+
+Exercise caution when changing the encryption parameters. The correct encryption parameters must be passed when **OH_Rdb_CreateOrOpen** is called. Otherwise, the database may fail to be opened.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | Pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.|
+
+### Rdb_CorruptedHandler()
+
+```
+typedef void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)
+```
+
+**Description**
+
+Defines a handler for processing database exceptions.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| void *context | Pointer to the context of the handler. The lifecycle is managed by the service.|
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) object, that is, the database configuration related to the RDB storage. This parameter cannot be used outside the callback function.|
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance, which is generated by the system and is released immediately after the callback function ends. This parameter cannot be used outside the callback function.|
+
+### OH_Rdb_RegisterCorruptedHandler()
+
+```
+int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)
+```
+
+**Description**
+
+Registers a handler for processing database exceptions. When a database exception occurs, this handler is called.
+
+The exception handling logic is user-defined. You should ensure the service quality each time the callback is triggered.
+
+Only one handler can be registered for each path.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
+| void *context | Pointer to the context of the handler.|
+| [const Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_SUB_LIMIT_REACHED** indicates that the number of registration exceeds the upper limit.|
+
+### OH_Rdb_UnregisterCorruptedHandler()
+
+```
+int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)
+```
+
+**Description**
+
+Unregisters the handler for processing database exceptions.
+
+The handler and context must be the same as those during subscription. Otherwise, the operation fails.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
+| void *context | Pointer to the context of the handler.|
+| [const Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Returns the execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|

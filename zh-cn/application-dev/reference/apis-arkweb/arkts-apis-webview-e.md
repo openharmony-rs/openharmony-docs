@@ -409,3 +409,15 @@ Web软键盘自动控制模式。
 | ------------------------------- | - | ---------- |
 | DEFAULT | 0 | 当Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起（默认值）。 |
 | DISABLE_AUTO_KEYBOARD_ON_ACTIVE | 1 | Web组件在inactive或active状态切换时，系统不再尝试触发软键盘自动隐藏或拉起。 |
+
+## WebHttpCookieSameSitePolicy<sup>23+</sup>
+
+控制cookie在跨站请求中的发送行为。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- |----------------------------------------- |
+| NONE | 0 | 允许在跨站请求中携带cookie，但必须同时设置secure属性。 |
+| LAX | 1 | 允许特定的跨站请求携带cookie，如某些get请求的导航场景。 |
+| STRICT | 2 | 禁止在跨站请求中携带cookie。 |

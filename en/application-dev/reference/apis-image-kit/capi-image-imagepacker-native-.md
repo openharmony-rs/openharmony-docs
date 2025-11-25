@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct ImagePacker_Native_ ImagePacker_Native
+```
+
 ## Overview
 
 The struct describes an image packer object at the native layer.

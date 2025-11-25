@@ -262,7 +262,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。当前版本AVRecorder不支持该属性的设置。|
 
-### AVMetadata.tracks支持的MediaDescriptionKey说明
+### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
 AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)的范围如下：
 
@@ -276,11 +276,11 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 | MD_KEY_FRAME_RATE | 'frame_rate' | 视频 |
 | MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | 音频 |
 | MD_KEY_AUD_SAMPLE_RATE | 'sample_rate' | 音频 |
-| MD_KEY_HDR_TYPE | 'hdr_type' | 视频 |
-| MD_KEY_ORIGINAL_WIDTH | 'original_width' | 视频 |
-| MD_KEY_ORIGINAL_HEIGHT | 'original_height' | 视频 |
-| MD_KEY_BITRATE | 'bitrate' | 音频 |
-| MD_KEY_AUD_SAMPLE_DEPTH | 'sample_depth' | 音频 |
+| MD_KEY_HDR_TYPE<sup>12+</sup> | 'hdr_type' | 视频 |
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup> | 'original_width' | 视频 |
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup> | 'original_height' | 视频 |
+| MD_KEY_BITRATE | 'bitrate' | 音频、视频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | 音频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
 
 ## PixelMapParams<sup>12+</sup>
 

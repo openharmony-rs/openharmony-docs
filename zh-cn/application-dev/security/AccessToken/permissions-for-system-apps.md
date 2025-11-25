@@ -365,6 +365,20 @@
 
 **起始版本**：8
 
+## ohos.permission.FORCE_FACTORY_RESET
+
+允许系统应用强制恢复设备至出厂设置，中途无法打断。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**ACL使能**：true
+
+**起始版本**：23
+
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
 允许拉起升级服务对其他设备做辅助、协同升级。
@@ -5151,7 +5165,7 @@
 
 **支持设备**：PC/2in1 | Phone | Tablet | TV | Car
 
-**起始版本**：21
+**起始版本**：22
 
 ## ohos.permission.CAPTURE_SCREEN_ALL
 

@@ -1530,6 +1530,13 @@ get commonAttribute(): CommonAttribute
 
 仅可以修改自定义节点的属性。
 
+> **说明：**
+>
+> FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
+>
+> FrameNode的属性支持情况参考[属性或事件对attributemodifier的支持情况](./../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
+>
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1539,11 +1546,6 @@ get commonAttribute(): CommonAttribute
 | 类型                                                           | 说明                                                                                                             |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | CommonAttribute | 获取FrameNode中持有的CommonAttribute接口，用于设置通用属性和通用事件。|
-
-> **说明：**
->
-> FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
->
 
 **示例：**
 
@@ -2358,7 +2360,7 @@ struct ListNodeTest {
 
 adoptChild(child: FrameNode): void
 
-当前节点接纳目标节点为附属节点。被接纳的附属节点不能已有父节点。此操作实际上不会将其添加为子节点，而仅是允许其接收生命周期回调，就像它是子节点一样。
+当前节点接纳目标节点为附属节点。被接纳的附属节点不能已有父节点。调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2368,7 +2370,7 @@ adoptChild(child: FrameNode): void
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | 是   | 将要被接纳的节点。 |
+| child | [FrameNode](#framenode-1) | 是   | 指定待被接纳的节点。 |
 
 **错误码：**
 
@@ -2388,7 +2390,7 @@ adoptChild(child: FrameNode): void
 
 removeAdoptedChild(child: FrameNode): void
 
-移除目标接纳的附属节点。
+移除被接纳的目标附属节点。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2398,7 +2400,7 @@ removeAdoptedChild(child: FrameNode): void
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | 是   | 正在被接纳的节点 |
+| child | [FrameNode](#framenode-1) | 是   | 正在被接纳的节点。 |
 
 **错误码：**
 
@@ -2532,6 +2534,7 @@ struct ConvertPositionTestOnly {
 **示例：**
 
 ```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -2540,7 +2543,7 @@ struct Index {
   @State @Watch('change') isShow: boolean = true;
   data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
 
-  // 监听状态变化后打印节点是否处于渲染状态
+  // 监听状态变化后打印是否处于渲染状态
   change() {
     let buttonNode = this.getUIContext().getFrameNodeById("testButton");
     if (buttonNode == null) {
@@ -2548,9 +2551,9 @@ struct Index {
     }
     let isOnRenderTree = buttonNode!.isInRenderState();
     if (isOnRenderTree) {
-      console.log('is on render tree')
+      hilog.info(1,'frameNode', 'is on render tree');
     } else {
-      console.log('is not no render tree')
+      hilog.info(1,'frameNode', 'is not no render tree');
     }
   }
 
@@ -2563,7 +2566,7 @@ struct Index {
         .margin({ top: 20 })
       Button('test button')
         .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
-        .margin({ top: 20 }).id('testButton')
+        .margin(20).id('testButton')
 
       List() {
         ForEach(this.data, (item: string, index: number) => {
@@ -2579,13 +2582,13 @@ struct Index {
         let textNode8 = this.getUIContext().getFrameNodeById("hello8");
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
-          console.log('is hello8 on RenderTree:' + isOnRenderTree);
+          hilog.info(1,'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
           isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
-          console.log('is hello1 on RenderTree:' + isOnRenderTree);
+          hilog.info(1,'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
     }

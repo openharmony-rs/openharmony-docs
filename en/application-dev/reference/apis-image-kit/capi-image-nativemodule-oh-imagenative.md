@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_ImageNative OH_ImageNative
+```
+
 ## Overview
 
 The struct describes the alias for an image object at the native layer.

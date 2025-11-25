@@ -131,80 +131,83 @@ The **cryptoParam** setting involves the following scenarios:
 If **cryptoParam** is not set, the default configuration is used for database encryption and decryption.
 
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit'
+```
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
 
-    try {
-      const STORE_CONFIG: relationalStore.StoreConfig = {
-        name: 'RdbTest.db',
-        securityLevel: relationalStore.SecurityLevel.S3,
-        encrypt: true
-      };
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      console.info('Succeeded in getting RdbStore.');
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
-  }
+
+<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+
+try {
+  const STORE_CONFIG: relationalStore.StoreConfig = {
+    name: 'RdbTest.db',
+    securityLevel: relationalStore.SecurityLevel.S3,
+    encrypt: true
+  };
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  hilog.info(DOMAIN, 'Encryption', 'Succeeded in getting RdbStore.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'Encryption', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
+
+
 
 If **cryptoParam** is set, the specified key and algorithm are used for database encryption and decryption.
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
-    // Initialize the key to be used.
-    let key = new Uint8Array(32);
-    for (let i = 0; i < 32; i++) {
-      key[i] = i;
-    }
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+// Initialize the key to be used. Hard-coded keys are used as an example. You should use a secure key management service in actual development.
+let key = new Uint8Array(32);
+for (let i = 0; i < 32; i++) {
+  key[i] = i;
+}
 
-    // Initialize the encryption algorithm.
-    const CRYPTO_PARAM: relationalStore.CryptoParam = {
-      encryptionKey: key, // (Mandatory) Key used to open the encrypted database. If this parameter is not specified, the database generates and saves the key and uses the generated key to open the database file.
-      iterationCount: 25000, // (Optional) Number of iterations. The value must be greater than or equal to 0. If this parameter is not specified or is set to 0, the default value 10000 and the default encryption algorithm are used.
-      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC, // (Optional) Encryption/Decryption algorithm. If this parameter is not specified, the default algorithm AES_256_GCM is used.
-      hmacAlgo: relationalStore.HmacAlgo.SHA256, // (Optional) HMAC algorithm. If this parameter is not specified, the default value SHA256 is used.
-      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512, // (Optional) KDF algorithm. If this parameter is not specified, the default value (same as the HMAC algorithm) is used.
-      cryptoPageSize: 2048 // (Optional) Page size used for encryption/decryption. The value must be an integer within the range of 1024 to 65536 and a power of 2. The default value is 1024.
-    }
+// Initialize the encryption algorithm.
+const CRYPTO_PARAM: relationalStore.CryptoParam = {
+  encryptionKey: key, // (Mandatory) Key used to open the encrypted database. If this parameter is not specified, the database generates and saves the key and uses the generated key to open the database file.
+  iterationCount: 25000, // (Optional) Number of iterations. The value must be greater than or equal to 0. If this parameter is not specified or is set to 0, the default value 10000 and the default encryption algorithm are used.
+  encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC, // (Optional) Encryption/Decryption algorithm. If this parameter is not specified, the default algorithm AES_256_GCM is used.
+  hmacAlgo: relationalStore.HmacAlgo.SHA256, // (Optional) HMAC algorithm. If this parameter is not specified, the default value SHA256 is used.
+  kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512, // (Optional) KDF algorithm. If this parameter is not specified, the default value (same as the HMAC algorithm) is used.
+  cryptoPageSize: 2048 // (Optional) Page size used for encryption/decryption. The value must be an integer within the range of 1024 to 65536 and a power of 2. The default value is 1024.
+}
 
-    const STORE_CONFIG: relationalStore.StoreConfig = {
-      name: "encrypted.db",
-      securityLevel: relationalStore.SecurityLevel.S3,
-      encrypt: true,
-      cryptoParam: CRYPTO_PARAM
-    }
-    try {
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      if (store == null) {
-        console.error('Failed to get RdbStore.');
-      } else {
-        console.info('Succeeded in getting RdbStore.');
-      }
-      // Clear the key.
-      CRYPTO_PARAM.encryptionKey.fill(0);
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: 'encrypted.db',
+  securityLevel: relationalStore.SecurityLevel.S3,
+  encrypt: true,
+  cryptoParam: CRYPTO_PARAM
+}
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  if (store == null) {
+    hilog.error(DOMAIN, 'Encryption', 'Failed to get RdbStore.');
+  } else {
+    hilog.info(DOMAIN, 'Encryption', 'Succeeded in getting RdbStore.');
   }
+  // Clear the key.
+  CRYPTO_PARAM.encryptionKey.fill(0);
+  key.fill(0);
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'Encryption', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
+
+
 
 If you do not care about the algorithm and other parameters used for encryption, leave **cryptoParam** unspecified. In this case, the default encryption configuration is used. If you want to customize the encryption configuration or open an encrypted database that is not configured by default, set **cryptoParam**.

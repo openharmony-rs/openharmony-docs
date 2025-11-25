@@ -351,7 +351,7 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 hidumper --mem-smaps [pid] [-v]命令调试的进程应为“使用调试证书签名的应用”，同[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)。
 
-要确认命令指定的应用是否为可调试应用，可以执行以下命令进行查询：hdc shell "bm dump -n [应用包名] | grep appProvisionType"查询，预期返回信息为"appProvisionType": "debug"。
+要确认命令指定的应用是否为可调试应用，可以执行以下命令进行查询：hdc shell "bm dump -n [应用包名] | grep appProvisionType"，预期返回信息为"appProvisionType": "debug"。
 
 以包名com.example.myapplication为例，可执行如下命令查询：
 

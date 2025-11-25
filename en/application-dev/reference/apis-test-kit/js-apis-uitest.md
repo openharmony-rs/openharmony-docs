@@ -196,7 +196,7 @@ Enumerates the component operation event types that can be listened for.
 | COMPONENT_LONG_CLICKED | 2    | Component long-clicked event.|
 | COMPONENT_SCROLL_START | 3    | Component scroll start event.|
 | COMPONENT_SCROLL_END  | 4    | Component scroll end event.  |
-| COMPONENT_TEXT_CHANGED | 5    | Component text changed event.|
+| COMPONENT_TEXT_CHANGED | 5    | Text change event of the [text input component](../../ui/arkts-common-components-text-input.md).|
 | COMPONENT_HOVER_ENTER | 6    | Event triggered when the mouse pointer hovers over a component and enters it.|
 | COMPONENT_HOVER_EXIT | 7    | Event triggered when the mouse pointer hovers over a component and leaves it.|
 
@@ -369,7 +369,7 @@ let on:On = ON.id('123'); // Use the static constructor ON to create an On objec
 
 id(id: string, pattern: MatchPattern): On
 
-Specifies the ID attribute of the target component.
+Specifies the **id** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -445,7 +445,7 @@ let on:On = ON.type('Button'); // Use the static constructor ON to create an On 
 
 type(tp: string, pattern: MatchPattern): On
 
-Specifies the type attribute of the target component.
+Specifies the **type** attribute and match pattern of the target component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1876,7 +1876,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on a scrollable component to search for the target component. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -2246,11 +2246,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-Obtains the original text information of this component.
-
-> **NOTE**
->
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
+Obtains the original text information of this component. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2260,7 +2256,7 @@ Obtains the original text information of this component.
 
 | Type            | Description                             |
 | ---------------- | --------------------------------- |
-| Promise\<string> | Promise used to return the original text information of the component.|
+| Promise\<string> | Promise used to return the text information of the component.|
 
 **Error codes**
 
@@ -3090,7 +3086,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3133,7 +3129,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3181,7 +3177,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 
 **Return value**
 
@@ -3227,7 +3223,7 @@ Drags from the start point to the target point. You can specify the drag speed a
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -3956,7 +3952,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-Simulates a fling operation on a specified display with the specified direction and speed.
+Simulates a fling operation on a display with the specified direction and speed.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4668,6 +4664,54 @@ async function demo() {
 }
 ```
 
+### touchPadTwoFingersScroll<sup>22+</sup>
+
+touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
+
+Simulates a two-finger scroll gesture on the touchpad.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                           | Mandatory| Description                   |
+| ------ |-----------------------------------------------|----|-----------------------|
+| point       | [Point](#point9) | Yes  | Point of the mouse cursor when the two-finger scrolling is performed on the touchpad.                                           |
+| direction   | [UiDirection](#uidirection10)                 | Yes | Direction of two-finger scrolling on the touchpad.          |
+| d           | number           | Yes  | Number of grids scrolled by two fingers on the touchpad. A grid indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
+| speed       | number           | No  | Speed of two-finger scrolling on the touchpad, in cell/second. The value is an integer ranging from 1 to 500. If the value is not within the range, the default value **20** is used.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.        |
+| 17000007 | Parameter verification failed.     |
+
+**Example**
+
+```ts
+import { Driver, UiDirection } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.touchPadTwoFingersScroll({x: 100, y: 100}, UiDirection.UP, 20, 10);
+}
+```
+
 ### penClick<sup>18+</sup>
 
 penClick(point: Point): Promise\<void>
@@ -4931,6 +4975,251 @@ async function demo() {
   await driver.crownRotate(50, 30);
   // Rotate 20 ticks counterclockwise at a speed of 30 ticks per second.
   await driver.crownRotate(-20, 30);
+}
+```
+
+### knuckleKnock<sup>22+</sup>
+
+knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
+
+Simulates a knuckle knock on the display.
+
+> **NOTE**
+> 
+> If the knuckle gesture is disabled on the device<!--RP4--><!--RP4End-->, 17000005 is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called on phones and tablets that support knuckle operations. On other devices, the error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | Array<[Point](#point9)>   | Yes  | Array of knuckle knock coordinates on the display. The array length can be 1 or 2.        |
+| times     | number   | Yes  | Number of consecutive knocks on the display. The value can be 1 or 2.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, Point } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Simulate a single-knuckle double-knock gesture.
+  let points: Array<Point> = [{x: 100, y: 100}];
+  await driver.knuckleKnock(points, 2);
+}
+```
+
+### injectKnucklePointerAction<sup>22+</sup>
+
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<\void>
+
+Simulates a multi-point knuckle scrolling operation.
+
+> **NOTE**
+> 
+> If the knuckle gesture is disabled on the device<!--RP4--><!--RP4End-->, 17000005 is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Device behavior differences**: This API can be properly called on phones and tablets that support knuckle operations. On other devices, the error code 17000005 is returned.
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
+| speed    | number                           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, PointerMatrix } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // Simulate a knuckle gesture to draw an S on the screen.
+  let pointers: PointerMatrix = PointerMatrix.create(1, 6);
+  pointers.setPoint(0, 0, {x: 750, y: 300});
+  pointers.setPoint(0, 1, {x: 500, y: 100});
+  pointers.setPoint(0, 2, {x: 250, y: 300});
+  pointers.setPoint(0, 3, {x: 750, y: 800});
+  pointers.setPoint(0, 4, {x: 500, y: 1000});
+  pointers.setPoint(0, 5, {x: 250, y: 800});
+  await driver.injectKnucklePointerAction(pointers);
+}
+```
+
+### isComponentPresentWhenLongClick<sup>22+</sup>
+
+isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
+
+Long-clicks at the specified coordinates and checks whether the target component exists.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| point  | [Point](#point9) | Yes  | Coordinates of the long-clicked point.|
+| duration   | number     | No  | Long-click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the long-press operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), {x: 100, y: 100}, 2000);
+}
+```
+
+### isComponentPresentWhenDrag<sup>22+</sup>
+
+isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
+
+Drags from the start point to the end point and checks whether the target component exists.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the drag operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), {x: 100, y: 100}, {x: 200, y: 200}, 1000, 2000);
+}
+```
+
+### isComponentPresentWhenSwipe<sup>22+</sup>
+
+isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
+
+Swipes from the start point to the end point and checks whether the target component exists.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Parameters**
+
+| Name| Type                                        | Mandatory| Description                                                            |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | Yes  | Attributes of the target component.|
+| from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
+| to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
+| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<boolean> | Promise used to return whether the target component exists during the swipe operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**Example**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), {x: 100, y: 100}, {x: 200, y: 200}, 1000);
 }
 ```
 
@@ -5736,7 +6025,7 @@ async function demo() {
 
 once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
 
-Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected.
+Starts listening for window change events of the specified type with extended configuration supported. This API triggers a callback when a specified window change event is detected. This API can be used only in [free windows](../../windowmanager/window-terminology.md#free-windows) mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

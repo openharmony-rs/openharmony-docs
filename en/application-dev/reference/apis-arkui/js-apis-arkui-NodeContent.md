@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **NodeContent** module implements a manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md) components in ArkUI.
 
@@ -77,6 +77,14 @@ Adds a FrameNode to this **NodeContent** object.
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | FrameNode to add.|
+
+**Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
 
 ### removeFrameNode<sup>12+</sup>
 

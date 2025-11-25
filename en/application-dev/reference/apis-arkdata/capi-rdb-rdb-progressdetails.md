@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} Rdb_ProgressDetails
+```
+
 ## Overview
 
 Defines a struct for statistics of the overall device-cloud sync (upload and download) tasks of an RDB store.

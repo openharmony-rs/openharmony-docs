@@ -476,7 +476,7 @@ struct PageOne {
 
 ## 转场动画
 
-Router和Navigation都提供了系统的转场动画也提供了自定义转场的能力。
+Router和Navigation都提供了系统的转场动画，也提供了自定义转场的能力。
 
 其中Router自定义页面转场通过通用方法`pageTransition()`实现，具体可参考Router[页面转场动画](arkts-page-transition-animation.md)。
 

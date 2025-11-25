@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsPixelMap OH_UdsPixelMap
+```
+
 ## Overview
 
 Defines a struct for the pixel map type.

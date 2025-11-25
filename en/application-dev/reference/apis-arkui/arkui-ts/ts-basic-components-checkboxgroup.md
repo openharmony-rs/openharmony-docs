@@ -319,7 +319,7 @@ Name and status of a check box group.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Read Only| Optional| Description     |
+| Name   | Type  | Read-Only| Optional| Description     |
 | ------ | ------ | ------- | ------- | ------- |
 | name   | Array&lt;string&gt; | No| No| Names of all the selected check boxes in the group.|
 | status | [SelectStatus](#selectstatus) | No| No| Selected status.|
@@ -348,7 +348,7 @@ You must customize this class to implement the ContentModifier interface. For de
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type   |    Read Only   |    Optional     |  Description             |
+| Name| Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | No| No|Name of the check box group.|
 | status | [SelectStatus](#selectstatus) | No| No| Selected status of the check box group.|

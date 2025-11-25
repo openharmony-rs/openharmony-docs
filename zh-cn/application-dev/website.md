@@ -397,8 +397,6 @@
             - [自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
             - [自定义组件的自定义布局](ui/state-management/arkts-page-custom-components-layout.md)
             - [自定义组件成员属性访问限定符使用限制](ui/state-management/arkts-custom-components-access-restrictions.md)
-            - [自定义组件复用](ui/state-management/arkts-component-reusable.md)
-            - [自定义组件冻结](ui/state-management/arkts-component-freeze-inactive.md)
           - UI装饰器<!--arkts-ui-decorator-->
             - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
           - 组件扩展<!--arkts-extend-components-->
@@ -419,7 +417,7 @@
           - [状态管理原理介绍](ui/state-management/arkts-state-management-introduce.md)
           - [状态管理V1和V2更新机制差异](ui/state-management/arkts-v1-v2-update-difference.md)
           - [MVVM模式（V1）](ui/state-management/arkts-mvvm.md)
-          - [MVVM模式（V2）](ui/state-management/arkts-mvvm-V2.md)
+          - [MVVM模式（V2）](ui/state-management/arkts-mvvm-v2.md)
           - 状态管理（V1）<!--arkts-state-management-v1-->
             - 管理组件拥有的状态<!--arkts-v1-component-state-management-->
               - [\@State装饰器：组件内状态](ui/state-management/arkts-state.md)
@@ -442,11 +440,11 @@
               - [\@Param装饰器：组件外部输入](ui/state-management/arkts-new-param.md)
               - [\@Once装饰器：初始化同步一次](ui/state-management/arkts-new-once.md)
               - [\@Event装饰器：组件输出](ui/state-management/arkts-new-event.md)
-              - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](ui/state-management/arkts-new-Provider-and-Consumer.md)
+              - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](ui/state-management/arkts-new-provider-and-consumer.md)
             - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
               - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](ui/state-management/arkts-new-observedV2-and-trace.md)
               - [\@Monitor装饰器：状态变量修改监听](ui/state-management/arkts-new-monitor.md)
-              - [\@Computed装饰器：计算属性](ui/state-management/arkts-new-Computed.md)
+              - [\@Computed装饰器：计算属性](ui/state-management/arkts-new-computed.md)
               - [\@Type装饰器: 标记类属性的类型](ui/state-management/arkts-new-type.md)
             - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
               - [AppStorageV2: 应用全局UI状态存储](ui/state-management/arkts-new-appstoragev2.md)
@@ -1666,7 +1664,7 @@
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
-      - 不再推荐使用<!--not-recommended-->
+      - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
         - [从OpenSL ES切换OHAudio(C/C++)](media/audio/replace-opensles-by-ohaudio.md)
         - [使用OpenSL ES开发音频播放功能(C/C++)](media/audio/using-opensl-es-for-playback.md)
         - [使用OpenSL ES开发音频录制功能(C/C++)](media/audio/using-opensl-es-for-recording.md)
@@ -2792,7 +2790,7 @@
             - [Enums](reference/apis-arkui/arkts-apis-uicontext-e.md)
             - [Types](reference/apis-arkui/arkts-apis-uicontext-t.md)
           - [@ohos.arkui.uiExtension (uiExtension)](reference/apis-arkui/js-apis-arkui-uiExtension.md)
-          - [@ohos.arkui.StateManagement (状态管理)](reference/apis-arkui/js-apis-StateManagement.md)
+          - [@ohos.arkui.StateManagement (状态管理)](reference/apis-arkui/js-apis-stateManagement.md)
           - [@ohos.curves (插值计算)](reference/apis-arkui/js-apis-curve.md)
           - [@ohos.font (注册自定义字体)](reference/apis-arkui/js-apis-font.md)
           - [@ohos.matrix4 (矩阵变换)](reference/apis-arkui/js-apis-matrix4.md)
@@ -3632,6 +3630,10 @@
           - [ArkUI_GridItemRect](reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)
           - [ArkUI_GridItemSize](reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemsize.md)
           - [ArkUI_GridLayoutOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
+          - [ArkUI_TouchTestInfo](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfo.md)
+          - [ArkUI_TouchTestInfoItem](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
+          - [ArkUI_TouchTestInfoItem*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
+          - [ArkUI_TouchTestInfoItemHandle*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
@@ -3695,6 +3697,7 @@
           - [Class (WebSchemeHandlerRequest)](reference/apis-arkweb/arkts-apis-webview-WebSchemeHandlerRequest.md)
           - [Class (WebSchemeHandlerResponse)](reference/apis-arkweb/arkts-apis-webview-WebSchemeHandlerResponse.md)
           - [Class (WebStorage)](reference/apis-arkweb/arkts-apis-webview-WebStorage.md)
+          - [Class (VerifyPinHandler)](reference/apis-arkweb/arkts-basic-components-web-VerifyPinHandler.md)
           - [Interface (BackForwardList)](reference/apis-arkweb/arkts-apis-webview-BackForwardList.md)
           - [Interface (NativeMediaPlayerBridge)](reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)
           - [Interface (NativeMediaPlayerHandler)](reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md)
@@ -5480,6 +5483,9 @@
     - ArkGraphics 2D（方舟2D图形服务）<!--arkgraphics-api-->
       - ArkTS API<!--arkgraphics-arkts-->
         - [@ohos.effectKit (图像效果)](reference/apis-arkgraphics2d/js-apis-effectKit.md)
+        <!--Del-->
+        - [@ohos.effectKit (图像效果)(系统接口)](reference/apis-arkgraphics2d/js-apis-effectKit-sys.md)
+        <!--DelEnd-->
         - [@ohos.graphics.colorSpaceManager (色彩管理)](reference/apis-arkgraphics2d/js-apis-colorSpaceManager.md)
         - [@ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)](reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)
         - [@ohos.graphics.common2D (2D图形通用数据类型)](reference/apis-arkgraphics2d/js-apis-graphics-common2D.md)

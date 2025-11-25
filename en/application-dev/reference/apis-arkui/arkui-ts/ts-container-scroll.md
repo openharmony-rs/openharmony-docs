@@ -358,7 +358,7 @@ Defines a scroll snapping mode object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type   | Read Only  | Optional| Description      |
+| Name      | Type   | Read-Only  | Optional| Description      |
 | ---------- | --------------------|-------------------- | -- | -------- |
 | snapAlign  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10)   | No| No| Alignment mode for the scroll snap position.<br>**NOTE**<br>1. Default value: **ScrollSnapAlign.NONE**|
 | snapPagination | [Dimension](ts-types.md#dimension10) \| Array\<Dimension\> | No| Yes| Pagination points for scroll snapping.<br>**NOTE**<br>1. If the value is of the Dimension type, it indicates the size of each page, and the system will paginate based on this size.<br>2. If the value is of the Array\<Dimension\> type, each **Dimension** represents a pagination point, and the system will paginate accordingly. Each **Dimension** value must be within the [0, scrollable distance] range.<br>3. If this parameter is not set or **Dimension** is set to a value less than or equal to 0, the value is regarded as an invalid value. In this case, there is no scroll snapping. When the value is of the Array\<Dimension\> type, the items in the array must be monotonically increasing.<br>4. When the value is a percentage, the actual size is the product of the viewport of the **Scroll** component and the percentage value.|
@@ -713,7 +713,7 @@ Actual scrolling offset returned by [OnScrollFrameBeginCallback](#onscrollframeb
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type | Read Only| Optional| Description |
+| Name | Type | Read-Only| Optional| Description |
 | ----- | ------ | ---- | -- | ----- |
 | offsetRemain<sup>9+</sup>     | number | No  | No| Actual scroll offset.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
@@ -1032,7 +1032,7 @@ Represents the offset values resulting from a scroll operation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type  | Read Only| Optional| Description                            |
+| Name    | Type  | Read-Only| Optional| Description                            |
 | ------- |------- | ---- | ---- | -------------------------------- |
 | xOffset | number |  No |  No | Horizontal scrolling offset.<br>The unit of the return value is vp.|
 | yOffset | number |  No |  No | Vertical scrolling offset.<br>The unit of the return value is vp.|
@@ -1045,7 +1045,7 @@ Provides parameters for customizing scroll animations.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only  | Optional| Description             |
+| Name  | Type  | Read-Only  | Optional| Description             |
 | ----- | ------ | ------ | -- | ----------------- |
 | duration | number | No| Yes| Scrolling duration.<br>Default value: **1000**<br>**NOTE**<br>A value less than 0 evaluates to the default value.|
 | curve | [Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9) | No| Yes| Scrolling curve.<br>Default value: **Curve.Ease**|
@@ -1074,7 +1074,7 @@ Provides parameters for scrolling to a specific index.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type | Read Only| Optional| Description             |
+| Name  | Type | Read-Only| Optional| Description             |
 | ----- | ------ | ------ | -- | ----------------- |
 | extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Extra offset for scrolling to a specified index. If the value is positive, the scrollbar is offset to the bottom. If the value is negative, the scrollbar is offset to the top.|
 
@@ -1086,7 +1086,7 @@ Provides parameters for page scrolling behavior.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type| Read Only| Optional| Description                                                    |
+| Name   | Type| Read-Only| Optional| Description                                                    |
 | --------- | -------- | ---- | -- | ------------------------------------------------------------ |
 | next      | boolean  | No  | No| Whether to turn to the next page. The value **true** means to scroll to the next page, and **false** means to scroll to the previous page.         |
 | animation | boolean  | No  | Yes| Whether to enable the page-turning animation. The value **true** means to enable the page-turning animation, and **false** means the opposite.<br>Default value: **false**|
@@ -1099,7 +1099,7 @@ Provides parameters for setting the initial scrolling offset.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type | Read Only| Optional| Description             |
+| Name  | Type | Read-Only| Optional| Description             |
 | ----- | ------| ------- | -- | ----------------- |
 | xOffset | [Dimension](ts-types.md#dimension10) | No| Yes|Horizontal scrolling offset.<br>Default value: **0**|
 | yOffset | [Dimension](ts-types.md#dimension10) | No| Yes|Vertical scrolling offset.<br>Default value: **0**|
@@ -1112,7 +1112,7 @@ Provides parameters for scrolling to the edge of a scrollable container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type| Read Only| Optional| Description                                                  |
+| Name   | Type| Read-Only| Optional| Description                                                  |
 | --------- | -------- | ---- | -- | ------------------------------------------------------------ |
 | velocity      | number  | No  | Yes| Fixed velocity for scrolling to the edge of the container. If the value specified is less than or equal to 0, the parameter will not take effect.<br>Default value: **0**<br>  Unit: vp/s         |
 
@@ -1128,7 +1128,7 @@ Provides parameters for scrolling to a specific position in a scrollable contain
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                    | Read Only| Optional| Description                                                    |
+| Name   | Type                                                    | Read-Only| Optional| Description                                                    |
 | --------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
 | xOffset<sup>10+</sup>   | number \| string                                   | No  | No| Horizontal scrolling offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the x-axis.<br>Value range: If the value is less than 0, scrolling without animation is performed and the value 0 is used. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | yOffset<sup>10+</sup>   | number \| string                                   | No  | No| Vertical scrolling offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the y-axis.<br>Value range: If the value is less than 0, scrolling without animation is performed and the value 0 is used. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|

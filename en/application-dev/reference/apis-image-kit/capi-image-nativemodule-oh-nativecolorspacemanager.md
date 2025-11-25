@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
+```
+
 ## Overview
 
 The struct describes the native color space manager, which is used to perform operations related to the native color space manager.

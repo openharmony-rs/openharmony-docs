@@ -425,6 +425,8 @@ The following describes the content of a three-layer call stack in detail:
 >
 >   - The length of the function name saved in the binary file exceeds 256 bytes.
 >
+> - The function name is obtained by parsing the binary symbol table and [MiniDebugInfo](https://sourceware.org/gdb/current/onlinedocs/gdb.html/MiniDebugInfo.html). Therefore, it may change with the version function name and compilation optimization.
+>
 > - If **BuildID** is not printed, you can run the **readelf -n xxx.so** command to check whether the binary file has **BuildID**. If not, add the compilation parameter <b class="+ topic/ph hi-d/b " id="b0166624191214">--enable-linker-build-id</b> to the compilation options. Do not add <b class="+ topic/ph hi-d/b " id="b1911913393125">--build-id=none</b>.
 
 **JS hybrid stack frame**

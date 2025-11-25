@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NNModel OH_NNModel
+```
+
 ## 概述
 
 模型句柄。

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_StatusInfo {...} Camera_StatusInfo
+```
+
 ## Overview
 
 The struct describes the camera status information.

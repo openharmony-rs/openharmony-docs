@@ -23,16 +23,14 @@ To obtain network resources during page loading, configure the network access pe
   ```
 
 In the following example, when a user clicks the button, **backward()** is called to go back to the previous page.
+<!-- @[button_click_trigger_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/HistoryNavigati.ets) -->
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
+``` TypeScript
 @Entry
 @Component
 struct WebComponent {
   webviewController: webview.WebviewController = new webview.WebviewController();
-  
+
   build() {
     Column() {
       Button('loadData')
@@ -41,7 +39,7 @@ struct WebComponent {
             this.webviewController.backward();
           }
         })
-      Web({ src: 'https://www.example.com/cn/', controller: this.webviewController })
+      Web({ src: 'https://www.example.com/cn/', controller: this.webviewController });
     }
   }
 }
@@ -58,16 +56,17 @@ The **Web** component provides the [onLoadIntercept()](../reference/apis-arkweb/
 In the following example, the frontend page **route.html** is loaded on to the application home page **Index.ets**, and the user is redirected to the application page **ProfilePage.ets** when clicking the **Me** link on the **route.html** page.
 
 - Code of the **Index.ets** page:
+  <!-- @[index_load_route_link_to_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/PageRedirection.ets) -->
   
-  ```ts
-  // index.ets
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  import { router } from '@kit.ArkUI';
+  
   @Entry
   @Component
   struct WebComponent {
     webviewController: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         // Path for storing the route.html resource file: src/main/resources/rawfile
@@ -128,17 +127,17 @@ The **Web** component supports redirection from one application to another.
 In the following example, when a user clicks the link on the frontend page **call.html**, the user will be redirected to the dial screen of the phone app.
 
 - Application code:
+  <!-- @[click_link_call_html_to_reach_phone_dialing_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/CrossApplicationRedirection.ets) -->
   
-  ```ts
-  // xxx.ets
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { call } from '@kit.TelephonyKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     webviewController: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('call.html'), controller: this.webviewController })

@@ -154,8 +154,8 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)
 | 参数项 | 描述 |
 | -- | -- |
 | float deg | 旋转的角度，单位为度。正数表示按顺时针旋转，负数表示按逆时针旋转。 |
-| float x | 轴上坐标点。 |
-| float y | 轴上坐标点。 |
+| float x | x轴上坐标点。 |
+| float y | y轴上坐标点。 |
 
 **返回：**
 
@@ -184,8 +184,8 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, fl
 | -- | -- |
 | float sx | 水平缩放因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float sy | 垂直缩放因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float px | 轴上坐标点。 |
-| float py | 轴上坐标点。 |
+| float px | x轴上坐标点。 |
+| float py | y轴上坐标点。 |
 
 **返回：**
 
@@ -327,8 +327,8 @@ void OH_Drawing_MatrixPreScale(OH_Drawing_Matrix* matrix, float sx, float sy, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
-| float sx | 轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float sy | 轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sx | x轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sy | y轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float px | 缩放中心点的横坐标。 |
 | float py | 缩放中心点的纵坐标。 |
 
@@ -399,8 +399,8 @@ void OH_Drawing_MatrixPostScale(OH_Drawing_Matrix* matrix, float sx, float sy, f
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
-| float sx | 轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float sy | 轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sx | x轴方向的缩放比例因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
+| float sy | y轴方向的缩放比例因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float px | 缩放中心点的横坐标。 |
 | float py | 缩放中心点的纵坐标。 |
 
@@ -548,8 +548,8 @@ void OH_Drawing_MatrixRotate(OH_Drawing_Matrix* matrix, float degree, float px, 
 | -- | -- |
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
 | float degree | 角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转。 |
-| float px | 轴上坐标点。 |
-| float py | 轴上坐标点。 |
+| float px | x轴上坐标点。 |
+| float py | y轴上坐标点。 |
 
 ### OH_Drawing_MatrixTranslate()
 
@@ -596,8 +596,8 @@ void OH_Drawing_MatrixScale(OH_Drawing_Matrix* matrix, float sx, float sy, float
 | [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
 | float sx | 水平缩放因子，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
 | float sy | 垂直缩放因子，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| float px | 轴上坐标点。 |
-| float py | 轴上坐标点。 |
+| float px | x轴上坐标点。 |
+| float py | y轴上坐标点。 |
 
 ### OH_Drawing_MatrixInvert()
 
@@ -784,7 +784,7 @@ void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向字体对象的指针。 |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象的指针。 |
 
 
 ### OH_Drawing_MatrixPreConcat()

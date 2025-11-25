@@ -49,8 +49,11 @@ The following example describes how to develop a UI test based on the JsUnit scr
 
 Perform the following steps:
 
-1. Write the **Index.ets** page code in the **main** > **ets** > **pages** folder as the test demo.
-    ```ts
+1. Write the **clickToAfter.ets** page code in the **main** > **ets** > **pages** folder as the test demo.
+    
+    <!-- @[clickToAfter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/main/ets/pages/ClickToAfter.ets) -->
+    
+    ```TypeScript
     @Entry
     @Component
     struct Index {
@@ -79,24 +82,27 @@ Perform the following steps:
         }
     }
     ```
-2. Create the **uitest.test.ets** file in the **ohosTest** > **ets** > **test** folder and write the test code.
-    ```ts
+    
+2. Create the test file in the **ohosTest** > **ets** > **test** folder and write the test code.
+    
+    <!-- @[click_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
+    
+    ```TypeScript
     import { describe, it, expect, Level } from '@ohos/hypium';
     // Import the test dependencies.
     import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
     import { UIAbility, Want } from '@kit.AbilityKit';
-
+    
     const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
     export default function abilityTest() {
       describe('ActsAbilityTest', () => {
         it('testUiExample',Level.LEVEL3, async (done: Function) => {
-          console.info("uitest: TestUiExample begin");        
           // Initialize the Driver object.
           const driver = Driver.create();
           const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
           // Specify the bundle name and ability name of the application to be tested.
           const want: Want = {
-              bundleName: bundleName,
+            bundleName: bundleName,
               abilityName: 'EntryAbility'
           }
           // Start the application to be tested.
@@ -105,9 +111,8 @@ Perform the following steps:
           await driver.waitForIdle(4000,5000);
           // Ensure that the top ability of the application is the specified ability.
           const ability: UIAbility = await delegator.getCurrentTopAbility();
-          console.info("get top ability");
           expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
-
+    
           // Search for the target component based on the specified text Next.
           const next = await driver.findComponent(ON.text('Next'));
           // Tap the target component.
@@ -128,9 +133,9 @@ With UITest, you can <!--RP3-->[create a matcher based on attributes](../referen
 
 The following example shows how to search for and operate a component. Before executing the following code, implement the code of the **Index.ets** page by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+<!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
+
+  ```TypeScript
   // Import the test dependencies.
   import { Driver, Component, ON, On } from '@kit.TestKit';
 
@@ -141,6 +146,7 @@ The following example shows how to search for and operate a component. Before ex
        */
       it("componentSearchAndOperation", TestType.FUNCTION, async () => {
         let driver: Driver = Driver.create();
+        await driver.delayMs(1000);
         let button: Component = await driver.findComponent(ON.type('Button'));
         await button.click();
       })
@@ -172,14 +178,15 @@ UITest supports simulating events such as tap, double-tap, long press, swipe, dr
 
 The following example shows how to simulate touch operations at the coordinate level. Before executing the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[touchScreen_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver, PointerMatrix, UiDirection } from '@kit.TestKit';
 
   export default function abilityTest() {
-    describe('screenOperationTest', () => {
+    describe('touchScreen_sample', () => {
       /**
        * Simulate touch operations based on coordinates.
        */
@@ -188,7 +195,7 @@ The following example shows how to simulate touch operations at the coordinate l
         // Tap.
         await driver.click(100,100);
         // Tap the specified display.
-        await driver.clickAt({ x: 100, y: 100, displayId: 0 });
+            await driver.clickAt({ x: 100, y: 100, displayId: 0 });
         // Swipe.
         await driver.swipe(100, 100, 200, 200, 600);
         // Swipe the specified display.
@@ -218,25 +225,25 @@ When interacting with a page, you can determine whether the page redirection is 
 
 The following example describes how to wait for page loading completion. Before executing the following code, implement the **Index.ets** page code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[waitForComp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WaitForCom.test.ets) -->
+
+  ```TypeScript
   import { describe, it, Level, TestType, Size } from '@ohos/hypium';
   // Import the test dependencies.
   import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 
   const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
   // Specify the bundle name and ability name of the application to be tested.
-  const bundleName: string = 'com.uitestScene.acts'
-  const abilityName: string = 'com.uitestScene.acts.MainAbility'
+  const bundleName: string = 'com.uitestScene.acts';
+  const abilityName: string = 'com.uitestScene.acts.MainAbility';
   export default function abilityTest() {
-    describe('ActsAbilityTest', () => {
-      it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    describe('waitForComp_sample', () => {
+      it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function): Promise<void> => {
         let driver = Driver.create();
         // Start the target application.     
         await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
-          console.info(`UITestCase, start abilityFinished: ${result}`)
         }).catch((err: Error) => {
-            console.error(`UITestCase, start abilityFailed: ${err}`)
+            done();
         })
         // Wait for the specified component on the target application's home screen to appear, confirming that the application has started.
         let button = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
@@ -251,8 +258,9 @@ UITest supports text input at a specified coordinate or to a specified component
 
 The following example describes how to input text based on components and coordinates. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[inputText_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputText.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver, ON } from '@kit.TestKit';
@@ -322,15 +330,16 @@ The following example describes how to input text based on components and coordi
 
 The following example shows how to capture a screenshot with the display ID and area specified and save the screenshot to a specified path. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example". In the multi-display scenario, to capture a screenshot of a specified display, you can call the API of the display module to <!--RP8-->[obtain the display object](../displaymanager/screenProperty-guideline.md#obtaining-a-display-object)<!--RP8End-->, and then <!--RP9-->[obtain display properties](../displaymanager/screenProperty-guideline.md#obtaining-display-properties)<!--RP9End-->.
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[screenCap_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCap.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver } from '@kit.TestKit';
   import { display } from '@kit.ArkUI';
 
   export default function abilityTest() {
-    describe('screenCaptureTest', () => {
+    describe('screenCap_sample', () => {
       /**
        * Capture the screen of a specified area and save the screenshot to a specified path.
        */
@@ -361,14 +370,15 @@ The following example shows how to capture a screenshot with the display ID and 
 
 The following example describes how to listen for UI events, including setting the listening callback, listening for the **Toast** and **Dialog** components, and proceeding after an event occurs. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver, UIElementInfo } from '@kit.TestKit';
 
   export default function abilityTest() {
-    describe('observerTest', () => {
+    describe('eventObserver_sample', () => {
       // Listen for the display of the Toast component.
       it("toastObserver", TestType.FUNCTION, async () => {
         let driver = Driver.create();
@@ -388,15 +398,16 @@ The following example describes how to listen for UI events, including setting t
 
 The following example describes how to simulate keyboard and mouse operations, including single key and combination key input, mouse click, move, and drag, and key and mouse combination operations. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[mouseAndKey_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver, MouseButton } from '@kit.TestKit';
   import { KeyCode } from '@ohos.multimodalInput.keyCode';
 
   export default function abilityTest() {
-    describe('KeyboardMouseTest', () => {
+    describe('mouseAndKey_sample', () => {
       // Simulate key input and combination key input.
       it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -432,15 +443,17 @@ The following example describes how to simulate keyboard and mouse operations, i
 ### Searching for and Operating Windows
 The following example describes how to search for and minimize a window based on the window properties. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, expect } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver } from '@kit.TestKit';
+  // Error code when the device is not supported.
   const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
-    describe('windowOperationTest', () => {
+    describe('findWindowAndOp_sample', () => {
       // Search for an active window based on specified properties and minimize the window.
       it("windowSearchAndOperation", TestType.FUNCTION, async () => {
         let driver = Driver.create();
@@ -449,7 +462,6 @@ The following example describes how to search for and minimize a window based on
           await window.minimize();
         } catch (error) {
           // If the minimize API is called on a device that does not support window operations, the 17000005 error code will be thrown.
-          console.log(`$ windowSearchAndOperation error is: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(DeviceErrorCode);
         }
       })
@@ -460,15 +472,17 @@ The following example describes how to search for and minimize a window based on
 ### Simulating Touchpad Operations
 The following example describes how to simulate the touchpad operations of swiping up with three fingers to return to the home screen and swiping down with three fingers to return to the application window. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver, UiDirection } from '@kit.TestKit';
+  // Error code when the device is not supported.
   const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
-    describe('touchPadOperationTest', () => {
+    describe('touchPadOp_sample', () => {
       // Simulate the three-finger swipe up (to return to the home screen) and three-finger swipe down (to restore the window) operations on the touchpad in the PC/2-in-1 device.
       it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -479,7 +493,6 @@ The following example describes how to simulate the touchpad operations of swipi
           await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
         } catch (error) {
           // If this API is called on a device that does not support touchpad operations, the 17000005 error code will be thrown.
-          console.log(`$ windowSearchAndOperation error is: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(DeviceErrorCode);
         }
       })
@@ -491,14 +504,15 @@ The following example describes how to simulate the touchpad operations of swipi
 ### Simulating Stylus Operations
 The following example describes how to simulate stylus operations such as clicking, swiping, and setting pressure. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[penOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PenOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver } from '@kit.TestKit';
 
   export default function abilityTest() {
-    describe('penOperationTest', () => {
+    describe('penOp_sample', () => {
       // Simulate stylus operations such as click, double-click, long-click, and swipe.
       it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -518,15 +532,17 @@ The following example describes how to simulate stylus operations such as clicki
 ### Simulating Crown Operations
 The following example shows how to simulate clockwise and counter-clockwise crown rotations. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver } from '@kit.TestKit';
+  // Error code when the device is not supported.
   const CapabilityCode = 801;
 
   export default function abilityTest() {
-    describe('crownRotateTest', () => {
+    describe('watchOp_sample', () => {
       // Simulate clockwise and counter-clockwise crown rotations.
       it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -537,7 +553,6 @@ The following example shows how to simulate clockwise and counter-clockwise crow
           await driver.crownRotate(-20, 30);
         } catch (error) {
           // driver.crownRotate is valid only on smart watches. If it is called on other devices, error code 801 will be thrown.
-          console.log(`$ testCrownRotate error is: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(CapabilityCode);
         }
       })
@@ -548,14 +563,15 @@ The following example shows how to simulate clockwise and counter-clockwise crow
 ### Simulating Display Operations
 The following example shows how to simulate display operations, including obtaining display properties such as size and density, waking up the display, and rotating it. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example".
 
-  ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
-  import { Driver, Point } from '@kit.TestKit';
+  import { DisplayRotation, Driver, Point } from '@kit.TestKit';
   
   export default function abilityTest() {
-    describe('crownRotateTest', () => {
+    describe('displayOp_sample', () => {
       // Obtain display properties and operate the display.
       it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -604,7 +620,7 @@ hdc shell uitest screenCap
 # Specify the file name and save the file in /data/local/tmp/.
 hdc shell uitest screenCap -p /data/local/tmp/1.png
 ```
- 
+
 ### Obtaining the Component Tree
 | Parameter   | Level-2 Parameter  |  Description      | 
 |---------|---------|-----------|

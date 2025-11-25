@@ -365,6 +365,20 @@ Allows an application to call the API for restoring factory settings.
 
 **Valid since**: 8
 
+## ohos.permission.FORCE_FACTORY_RESET
+
+Allows a system application to forcibly restore a device to its factory settings, which cannot be interrupted.
+
+**Permission level**：system_core
+
+**Authorization mode**：system_grant
+
+**Supported devices**：general devices
+
+**Enable via ACL**：true
+
+**Valid since**：23
+
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
 Allows an application to start the upgrade service to perform assisted or collaborative update for other devices.
@@ -5151,7 +5165,7 @@ Allows a system application to invoke the data identification and anonymization 
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
-**Since**: 21
+**Since**: 22
 
 ## ohos.permission.CAPTURE_SCREEN_ALL
 

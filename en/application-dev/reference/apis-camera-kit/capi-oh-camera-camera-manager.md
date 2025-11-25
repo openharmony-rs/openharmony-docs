@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct Camera_Manager Camera_Manager
+```
+
 ## Overview
 
 The struct describes the camera manager.

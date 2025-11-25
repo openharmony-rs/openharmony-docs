@@ -143,7 +143,7 @@ struct WebComponent {
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册时，注册后需调用[refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh)方法生效。
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。
 
 - 可选参数permission是一个json字符串，示例如下：
   ```json

@@ -28,7 +28,7 @@
 >
 > 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
 
-当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+当页面1调用this.getUIContext().getRouter().pushUrl()接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
 
 图示如下：
 
@@ -36,16 +36,17 @@
 
 页面1：
 
-<!-- @[freeze_template1_Page1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page1.ets) -->
+<!-- @[freeze_template1_Page1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page1.ets) -->    
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
+const BOOK_INITIAL_NAME = '100';
 
 @ObservedV2
 export class Book {
-  @Trace public name: string = '100';
+  @Trace public name: string = BOOK_INITIAL_NAME;
 
   constructor(page: string) {
     this.name = page;
@@ -197,12 +198,15 @@ struct FreezeChild {
 
 需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)组件中的[onActive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17)和[onInactive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17)不同。
 
-<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->
+<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->    
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
+const PAGE_ONE_INDEX = 1;
+const PAGE_TWO_INDEX = 2;
+const PAGE_THREE_INDEX = 3;
 
 @Entry
 @ComponentV2
@@ -248,7 +252,7 @@ struct MyNavigationTestStack {
 @ComponentV2
 struct PageOneStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 1;
+  @Local index: number = PAGE_ONE_INDEX;
   @Param message: number = 0;
 
   build() {
@@ -277,7 +281,7 @@ struct PageOneStack {
 @ComponentV2
 struct PageTwoStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 2;
+  @Local index: number = PAGE_TWO_INDEX;
   @Param message: number = 0;
 
   build() {
@@ -306,7 +310,7 @@ struct PageTwoStack {
 @ComponentV2
 struct PageThreeStack {
   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
-  @Local index: number = 3;
+  @Local index: number = PAGE_THREE_INDEX;
   @Param message: number = 0;
 
   build() {
@@ -628,12 +632,13 @@ struct PageB {
 
 **Navigation和TabContent的混用**
 
-<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) -->
+<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) -->    
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
+const TAB_STATE_INITIAL_VALUE = 47;
 
 @ComponentV2
 struct ChildOfParamComponent {
@@ -684,7 +689,7 @@ struct DelayComponent {
 @ComponentV2 ({freezeWhenInactive: true})
 struct TabsComponent {
   private controller: TabsController = new TabsController();
-  @Local tabState: number = 47;
+  @Local tabState: number = TAB_STATE_INITIAL_VALUE;
 
   @Monitor('tabState') onChange(m: IMonitor) {
     hilog.info(DOMAIN, 'testTag', `Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
@@ -844,9 +849,9 @@ class Params {
   }
 }
 
-// 定义一个buildNodeChild组件，它包含一个message属性和一个index属性
+// 定义一个BuildNodeChild组件，它包含一个storage属性和一个index属性
 @ComponentV2
-struct buildNodeChild {
+struct BuildNodeChild {
   // 使用Params实例作为storage属性
   storage: Params = Params.instance();
   @Param index: number = 0;
@@ -855,7 +860,7 @@ struct buildNodeChild {
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
     hilog.info(DOMAIN, 'onMessageChange',
-      `FreezeBuildNode buildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
+      `FreezeBuildNode BuildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
   }
 
   build() {
@@ -867,7 +872,7 @@ struct buildNodeChild {
 @Builder
 function buildText(params: Params) {
   Column() {
-    buildNodeChild({ index: params.index })
+    BuildNodeChild({ index: params.index })
   }
 }
 

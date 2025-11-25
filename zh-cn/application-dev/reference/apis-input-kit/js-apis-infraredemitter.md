@@ -28,7 +28,7 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-**系统能力**：SystemCapability.MultimodalInput.Input. InfraredEmitter
+**系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
 **参数**：
 
@@ -157,6 +157,7 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 
 ```js
 import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -167,7 +168,7 @@ struct Index {
         .onClick(() => {
             infraredEmitter.hasIrEmitter().then((result: boolean) => {
               console.info(`hasIrEmitter: ${JSON.stringify(result)}`);
-            }).catch((error:Error)=> {
+            }).catch((error: BusinessError)=> {
               console.error(`hasIrEmitter failed: ${JSON.stringify(error)}`);})
         })
     }

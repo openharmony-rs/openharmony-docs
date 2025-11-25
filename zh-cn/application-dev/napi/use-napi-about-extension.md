@@ -1,4 +1,4 @@
-# 使用Node-API扩展能力接口
+# 使用Node-API进行扩展能力功能开发
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
@@ -123,7 +123,8 @@ export const add: (a: number, b: number) => number; // 模块加载
 ArkTS侧示例代码
 
 <!-- @[ark_node_api_module_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+
+``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API 2 + 3 = %{public}d', testNapi.add(2, 3));
 ```
 
@@ -762,24 +763,29 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- [napi_serialize_deserialize_delete_serialization_data_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const aboutSerialize: (obj: {numKey:number}) => number | undefined;
+<!-- @[napi_serialize_deserialize_delete_serialization_data_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+export const aboutSerialize: (obj: {numKey:number}) => number | undefined; // 序列化和反序列化
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_serialize_deserialize_delete_serialization_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+<!-- @[ark_napi_serialize_deserialize_delete_serialization_data_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
+
+``` TypeScript
 class Obj {
-  numKey:number = 0;
+  numKey: number = 0;
 }
+```
+<!-- @[ark_napi_serialize_deserialize_delete_serialization_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// 序列化和反序列化
 let obj: Obj = { numKey: 500 };
 hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.aboutSerialize(obj));
 ```
-
 
 ## 根据任务指定的优先级和入队方式进行处理异步线程向ArkTS线程投递的任务
 
@@ -821,9 +827,12 @@ hilog.info(0x0000, 'testTag', ' Node-API aboutSerialize: %{public}d', testNapi.a
 
 cpp部分代码
 
-<!-- [napi_is_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-static napi_value IsSendable(napi_env env, napi_callback_info info) {
+<!-- @[napi_is_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
+
+``` C++
+// Sendable相关 napi_is_sendable
+static napi_value IsSendable(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -838,17 +847,19 @@ static napi_value IsSendable(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_is_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const isSendable: <T>(a: T) => boolean;
+<!-- @[napi_is_sendable_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+export const isSendable: <T>(a: T) => boolean; // Sendable相关 napi_is_sendable
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_is_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+<!-- @[ark_napi_is_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
+
+``` TypeScript
+// Sendable相关 napi_is_sendable
 let value = testNapi.isSendable('createObject');
 hilog.info(0x0000, 'testTag', 'Node-API napi_is_sendable: %{public}s', JSON.stringify(value));
 ```
@@ -933,23 +944,25 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 接口声明
 
-<!-- [napi_define_sendable_class_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
+<!-- @[napi_define_sendable_class_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
 @Sendable
 export class SendableClass {
   static staticStr: string;
   static staticFunc(): string;
   str: string;
   func(): string;
-}
+} // Sendable相关 napi_define_sendable_class
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_define_sendable_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+<!-- @[ark_napi_define_sendable_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->      
+
+``` TypeScript
+// Sendable相关 napi_define_sendable_class
 let value = new testNapi.SendableClass();
 hilog.info(0x0000, 'testTag', 'Node-API napi_define_sendable_class: %{public}s', value.str);
 ```
@@ -961,9 +974,12 @@ hilog.info(0x0000, 'testTag', 'Node-API napi_define_sendable_class: %{public}s',
 
 cpp部分代码
 
-<!-- [napi_create_sendable_object_with_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-static napi_value GetSendableObject(napi_env env, napi_callback_info info) {
+<!-- @[napi_create_sendable_object_with_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
+
+``` C++
+// Sendable相关 napi_create_sendable_object_with_properties
+static napi_value GetSendableObject(napi_env env, napi_callback_info info)
+{
     napi_value val_true;
     napi_get_boolean(env, true, &val_true);
     napi_property_descriptor desc1[] = {
@@ -978,19 +994,22 @@ static napi_value GetSendableObject(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_create_sendable_object_with_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const getSendableObject: () => { x: true };
+<!-- @[napi_create_sendable_object_with_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+export const getSendableObject: () => { x: true }; // Sendable相关 napi_create_sendable_object_with_properties
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_create_sendable_object_with_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+<!-- @[ark_napi_create_sendable_object_with_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
+
+``` TypeScript
+// Sendable相关 napi_create_sendable_object_with_properties
 let value = testNapi.getSendableObject();
-hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_object_with_properties: %{public}s', JSON.stringify(value));
+hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_object_with_properties: %{public}s',
+  JSON.stringify(value));
 ```
 
 
@@ -1000,9 +1019,12 @@ hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_object_with_propert
 
 cpp部分代码
 
-<!-- [napi_create_sendable_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-static napi_value GetSendableArray(napi_env env, napi_callback_info info) {
+<!-- @[napi_create_sendable_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
+
+``` C++
+// Sendable相关 napi_create_sendable_array
+static napi_value GetSendableArray(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_create_sendable_array(env, &result);
     return result;
@@ -1012,19 +1034,22 @@ static napi_value GetSendableArray(napi_env env, napi_callback_info info) {
 
 接口声明
 
-<!-- [napi_create_sendable_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const getSendableArray: () => [];
+<!-- @[napi_create_sendable_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+export const getSendableArray: () => []; // Sendable相关 napi_create_sendable_array
 ```
 
 
 ArkTS侧示例代码
 
-<!-- [ark_napi_create_sendable_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
+<!-- @[ark_napi_create_sendable_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
+
+``` TypeScript
+// Sendable相关 napi_create_sendable_array
 let value = testNapi.getSendableArray();
-hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array: %{public}s', JSON.stringify(value));
+hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array: %{public}s',
+  JSON.stringify(value));
 ```
 
 
@@ -1034,9 +1059,12 @@ hilog.info(0x0000, 'testTag', 'Node-API napi_create_sendable_array: %{public}s',
 
 cpp部分代码
 
-<!-- [napi_create_sendable_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
-static napi_value GetSendableArrayWithLength(napi_env env, napi_callback_info info) {
+<!-- @[napi_create_sendable_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->       
+
+``` C++
+// Sendable相关 napi_create_sendable_array_with_length
+static napi_value GetSendableArrayWithLength(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_create_sendable_array_with_length(env, 1, &result);
     return result;

@@ -7,6 +7,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_UdsDetails OH_UdsDetails
+```
+
 ## Overview
 
 Defines a struct for the unified data of the dictionary type.
