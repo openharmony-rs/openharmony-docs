@@ -57,7 +57,7 @@ import { Environment, StoragePropRef } from '@ohos.arkui.stateManagement';
 @Component
 struct Index {
   @StoragePropRef('languageCode') languageCode: string = 'en';
-  // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+  // 在ArkTS-Sta中，全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移至static代码块中，以达到与ArkTS-Dyn一样的效果。
   static {
     Environment.envProp<string>('languageCode', 'en');
   }
