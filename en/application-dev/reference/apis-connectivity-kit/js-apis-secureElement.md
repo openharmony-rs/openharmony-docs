@@ -423,7 +423,7 @@ A Reader instance indicates the SEs supported by a device. If eSE, SIM, and SIM2
 
 getName(): string
 
-Obtains the name of this reader. The name is **SIM** for a SIM reader The name is **SIM2** for a SIM2 reader. and **eSE** for an eSE.
+Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** for a SIM2 reader, and **eSE** for an eSE.
 
 **System capability**: SystemCapability.Communication.SecureElement
 
