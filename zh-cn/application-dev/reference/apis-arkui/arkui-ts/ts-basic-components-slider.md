@@ -393,38 +393,6 @@ stepSize(value: Length)
 | ------ | ---------------------------- | ---- | ------------------------------------- |
 | value  | [Length](ts-types.md#length) | 是   | 刻度大小（直径）。 <br/>默认值：'4vp'<br/>取值范围：[0, [trackThickness](#trackthickness8)) |
 
-### minLabel<sup>(deprecated)</sup>
-
-minLabel(value: string)
-
-设置最小值。
-
-从API Version 9开始废弃，使用min替代。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明     |
-| ------ | ------ | ---- | -------- |
-| value  | string | 是   | 最小值。 |
-
-### maxLabel<sup>(deprecated)</sup>
-
-maxLabel(value: string)
-
-设置最大值。
-
-从API Version 9开始废弃，使用max替代。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明     |
-| ------ | ------ | ---- | -------- |
-| value  | string | 是   | 最大值。 |
-
 ### sliderInteractionMode<sup>12+</sup>
 
 sliderInteractionMode(value: SliderInteraction)
@@ -596,6 +564,42 @@ showSteps(value: boolean, options?: SliderShowStepOptions)
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
 | value | boolean | 是 | 当前是否显示步长刻度值。<br/>true：显示刻度值；false：不显示刻度值。<br />默认值：false |
 | options | [SliderShowStepOptions](#slidershowstepoptions20) | 否 | 刻度点无障碍文本的配置选项，用于设置与无障碍功能相关的属性。<br/>默认值：null |
+
+### minLabel<sup>(deprecated)</sup>
+
+minLabel(value: string)
+
+设置最小值。
+
+> **说明：** 
+>
+> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的min属性替代。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明     |
+| ------ | ------ | ---- | -------- |
+| value  | string | 是   | 最小值。 |
+
+### maxLabel<sup>(deprecated)</sup>
+
+maxLabel(value: string)
+
+设置最大值。
+
+> **说明：** 
+>
+> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的max属性替代。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明     |
+| ------ | ------ | ---- | -------- |
+| value  | string | 是   | 最大值。 |
 
 ## SliderCustomContentOptions<sup>20+</sup>
 
