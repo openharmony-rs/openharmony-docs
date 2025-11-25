@@ -57,6 +57,8 @@ AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE<!--RP1--><!-
 
 从API version 22开始支持：ALAC、AC3、WMA(V1、V2、PRO)、GSM、GSM_MS。
 
+从API version 23开始支持：TWINVQ、ILBC、TRUEHD。
+
 具体开发指导请参考[音频解码](audio-decoding.md)。
 
 
@@ -77,10 +79,10 @@ AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE<!--RP1--><!-
 
 | 媒体格式  | 封装格式                      | 轨道格式                      |
 | -------- | :----------------------------| :----------------------------|
-| 音视频     | mp4                        |<!--RP4-->视频轨：AVC(H.264)、MPEG4<br>音频轨：AAC、MPEG(MP3)、ALAC<sup>22+</sup><br>字幕轨：WEBVTT<br>辅助轨：AUXL（如音频RAW信息、视频深度信息等。）<br>timed metadata轨：有时间属性的描述信息，如帧级的维测信息、传感器信息等。<!--RP4End-->|
-| 音视频     | fmp4                       |<!--RP5-->视频轨：AVC(H.264)<br>音频轨：AAC、MPEG(MP3)<!--RP5End-->|
-| 音视频     | mkv                        |<!--RP6-->视频轨：AVC(H.264)、MSVIDEO1<sup>22+</sup><br>音频轨：AAC、MPEG(MP3)、OPUS、ADPCM_YAMAHA<sup>22+</sup>、ADPCM_G722<sup>22+</sup>、ALAC<sup>22+</sup><!--RP6End-->|
-| 音视频     | mpeg-ts                    |<!--RP7-->视频轨：AVC(H.264)、MPEG2、MPEG4<br>音频轨：AAC、MPEG(MP3)<!--RP7End-->|
+| 音视频     | mp4                        |<!--RP4-->视频轨：AVC(H.264)、MPEG4<br>音频轨：AAC、MPEG(MP3)、ALAC<sup>22+</sup>、TRUEHD<sup>23+</sup><br>字幕轨：WEBVTT<br>辅助轨：AUXL（如音频RAW信息、视频深度信息等。）<br>timed metadata轨：有时间属性的描述信息，如帧级的维测信息、传感器信息等。<!--RP4End-->|
+| 音视频     | fmp4                       |<!--RP5-->视频轨：AVC(H.264)<br>音频轨：AAC、MPEG(MP3)、TRUEHD<sup>23+</sup><!--RP5End-->|
+| 音视频     | mkv                        |<!--RP6-->视频轨：AVC(H.264)、MSVIDEO1<sup>22+</sup><br>音频轨：AAC、MPEG(MP3)、OPUS、ADPCM_YAMAHA<sup>22+</sup>、ADPCM_G722<sup>22+</sup>、ALAC<sup>22+</sup>、TRUEHD<sup>23+</sup><!--RP6End-->|
+| 音视频     | mpeg-ts                    |<!--RP7-->视频轨：AVC(H.264)、MPEG2、MPEG4<br>音频轨：AAC、MPEG(MP3)、TRUEHD<sup>23+</sup><!--RP7End-->|
 | 音视频     | flv                        |<!--RP8-->视频轨：AVC(H.264)<br>音频轨：AAC<!--RP8End-->|
 | 音视频     | mpeg-ps                    |视频轨：AVC(H.264)、MPEG2<br>音频轨：MPEG(MP2、MP3)|
 | 音视频     | avi                        |视频轨：H.263、AVC(H.264)、MPEG2、MPEG4、MJPEG<sup>22+</sup>、MSVIDEO1<sup>22+</sup><br>音频轨：AAC、MPEG(MP2、MP3)、PCM、GSM_MS<sup>22+</sup>、ADPCM_YAMAHA<sup>22+</sup>、ADPCM_G722<sup>22+</sup>|
