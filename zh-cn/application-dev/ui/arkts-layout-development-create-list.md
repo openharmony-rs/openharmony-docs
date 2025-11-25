@@ -1221,7 +1221,7 @@ List() {
     }
     ```
 
-2. 构造列表结构，同时把stackFromEnd接口值设置为true，即可实现list列表在底部插入数据时，内容向上滚动。
+2. 构造列表结构，同时把[stackFromEnd](../reference/apis-arkui/arkui-ts/ts-container-list.md#stackfromend19)接口值设置为true，即可实现List列表在底部插入数据时，内容向上滚动。
 
     ```ts
     @State messages: Message[] = [
