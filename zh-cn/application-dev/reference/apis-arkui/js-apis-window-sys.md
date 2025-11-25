@@ -3688,6 +3688,10 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型     | 必填 | 说明                                            |
@@ -3714,6 +3718,8 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3727,6 +3733,44 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set handwriting flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例
+
+```ts
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  // 加载主窗口对应的页面。
+  windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
+    let mainWindow: window.Window | undefined = undefined;
+    // 获取应用主窗口。
+    windowStage.getMainWindow().then(
+      data => {
+        if (!data) {
+          console.error('Failed to get main window. Cause: The data is undefined.');
+          return null;
+        }
+        mainWindow = data;
+        console.info(`Succeeded in obtaining the main window.`);
+        try {
+          let enable = true;
+          let promise = mainWindow!.setHandwritingFlag(enable);
+          promise.then(() => {
+            console.info('Succeeded in setting handwriting flag of window.');
+          }).catch((err: Error) => {
+            console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      }
+    ).catch((err: Error) => {
+      if(err.code){
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  });
 }
 ```
 
@@ -5111,7 +5155,7 @@ export default class EntryAbility extends UIAbility {
           console.info('Succeeded in setTitleButtonVisible.');
         } catch (exception) {
           let err = exception as BusinessError;
-          console.error(Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message});
+          console.error(`Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message}`);
         }
       });
     });

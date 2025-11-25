@@ -1936,6 +1936,10 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
@@ -1962,6 +1966,8 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1980,6 +1986,32 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to set window rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    try {
+      let promise = windowStage.setWindowRectAutoSave(true);
+      promise.then(() => {
+        console.info('Succeeded in setting window rect auto-save');
+      }).catch((err: Error) => {
+        console.error(`Failed to set window rect auto-save. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to set window rect auto-save. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -2012,6 +2044,10 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
@@ -2039,6 +2075,8 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **示例：**
 
+ArkTS-Dyn示例
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -2062,6 +2100,32 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    try {
+      let promise = windowStage.setWindowRectAutoSave(true, true);
+      promise.then(() => {
+        console.info('Succeeded in setting window rect auto-save');
+      }).catch((err: Error) => {
+        console.error(`Failed to set window rect auto-save. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to set window rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
 ## isWindowRectAutoSave<sup>14+</sup>
 
 isWindowRectAutoSave(): Promise&lt;boolean&gt;
@@ -2075,6 +2139,10 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2094,6 +2162,8 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -2112,6 +2182,32 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to check whether the window support the rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    try {
+      let promise = windowStage.isWindowRectAutoSave();
+      promise.then((data: boolean) => {
+        console.info(`Succeeded in checking whether the window support the rect auto-save. Data: ${data}`);
+      }).catch((err: Error) => {
+        console.error(`Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
