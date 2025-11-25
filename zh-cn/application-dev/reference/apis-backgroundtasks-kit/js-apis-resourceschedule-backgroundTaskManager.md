@@ -1815,4 +1815,4 @@ export default class EntryAbility extends UIAbility {
 | NOT_DETERMINED | 1 | 用户未操作。 |
 | DENIED  | 2 | 拒绝。    |
 | GRANTED_ONCE | 3 | 本次允许。<br/>**说明：** 在应用退出时该授权记录会被清除。  |
-| GRANTED_ALWAYS | 4 | 始终允许。<br/>**说明：** 在应用卸载、升级等场景下该授权记录会被清除。  |
+| GRANTED_ALWAYS | 4 | 始终允许。<br/>**说明：** 在接收到下列公共事件时[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added)、[COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed)、[COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed)该授权记录会被清除。  |

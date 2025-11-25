@@ -544,7 +544,7 @@
 
 <!--Del-->
 ### FA模型
-| GRANTED_ALWAYS | 4 | 始终允许。<br/>**说明：** 在接收到下列公共事件时[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added)、[COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed)、[COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed)该授权记录会被清除。  |
+
 1. 启动并连接ServiceAbility。
 
    - 不需要与用户进行交互时，采用startAbility()方法启动ServiceAbility（具体使用请参考[ServiceAbility组件](../application-models/serviceability-overview.md)，并在ServiceAbility的onStart回调方法中，调用长时任务的申请和取消接口。
