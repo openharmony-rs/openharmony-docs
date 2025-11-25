@@ -3769,9 +3769,9 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 >
 > - 如果在锁定期间应用调用[setOrientation](./js-apis-screen-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
 >
-> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation](./arkts-apis-window-Window.md#setpreferredorientation9)、sensor方向等决定应用显示方向[](../../windowmanager/window-rotation.md#窗口旋转简介)。
+> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation](./arkts-apis-window-Window.md#setpreferredorientation9)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../windowmanager/window-rotation.md#窗口旋转简介)。
 >
-> - 不锁定因折叠开合默认方向变化导致的旋转。
+> - 不影响因折叠开合默认方向变化导致的旋转。
 >
 > - 不影响应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
 
@@ -3823,7 +3823,7 @@ promise.then(() => {
 
 getRotationLocked(): boolean
 
-获取当前窗口的旋转锁定状态，仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)，非系统窗口调用返回1300029错误码。。
+获取当前窗口的旋转锁定状态，仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)，非系统窗口调用返回1300029错误码。
 
 **系统接口：** 此接口为系统接口。
 
