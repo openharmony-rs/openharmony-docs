@@ -26,7 +26,7 @@ Defines the **Theme** object in use, which can be obtained through [onWillApplyT
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type               | Read Only| Optional| Description      |
+| Name| Type               | Read-Only| Optional| Description      |
 | ------ |-------------------|-----|-----|----------|
 | colors | [Colors](#colors) | No  | No  |  Color resources of the theme.|
 
@@ -40,7 +40,7 @@ Defines the color resources of a theme.
 
 <!--RP1--><!--RP1End-->
 
-| Name                          | Type                                                | Read Only| Optional| Description              |
+| Name                          | Type                                                | Read-Only| Optional| Description              |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------------|
 | brand                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Brand color.<br>Affected components: [TextInput](./arkui-ts/ts-basic-components-textinput.md), [Search](./arkui-ts/ts-basic-components-search.md)       |
 | warning                       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | No  | Warning color.<br>Affected components: [TipsDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#tipsdialog), [AlertDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog), [CustomContentDialog](./arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12),<br>[Badge](./arkui-ts/ts-container-badge.md), [Button](./arkui-ts/ts-basic-components-button.md)         |
@@ -100,7 +100,7 @@ Defines a custom theme object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                          | Type                                                | Read Only | Optional | Description        |
+| Name                          | Type                                                | Read-Only | Optional | Description        |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
 | colors | [CustomColors](#customcolors) | No  | Yes  | Color resources of the custom theme.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | No  | Yes  | Custom dark theme color resources.<br>Note: If **darkColors** is not configured, the color values will default to those specified in the **colors** configuration for light mode and will not adapt to dark mode changes, unless the colors are defined using resources from the **dark** directory.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|

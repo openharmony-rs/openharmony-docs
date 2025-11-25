@@ -81,7 +81,7 @@ The **Padding** type is used to describe the paddings in different directions of
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | top    | [Length](#length) | No| Yes   | Height of the padding on the top of the component. |
 | right  | [Length](#length) | No| Yes   | Width of the padding on the right of the component.|
@@ -98,7 +98,7 @@ The **Padding** type is used to describe the paddings in different directions of
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Height of the padding on the top of the component. |
 | end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No| Yes   | Width of the padding on the right of the component.<br> <br>Width of the padding on the left of the component in RTL mode.|
@@ -115,7 +115,7 @@ The **Margin** type is used to describe the margins in different directions of a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type               | Read Only |  Optional  | Description                  |
+| Name    | Type               | Read-Only |  Optional  | Description                  |
 | ------ | ----------------- | ---- | -------------------- | -------- |
 | top    | [Length](#length) | No  |  Yes| Height of the margin above the component. |
 | right  | [Length](#length) | No  |  Yes| Width of the margin on the right of the component.|
@@ -132,7 +132,7 @@ The **Margin** type is used to describe the margins in different directions of a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type               | Read Only |  Optional  | Description                  |
+| Name    | Type               | Read-Only |  Optional  | Description                  |
 | ------ | ----------------- | ---- | -------------------- | -------- |
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No | Yes | Height of the margin above the component. |
 | end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No  | Yes| Width of the margin on the right of the component.<br> <br>Width of the margin on the left of the component in RTL mode.|
@@ -150,7 +150,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type|Read Only|Optional| Description            |
+| Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
 | top    | [Length](#length) | No|Yes   | Width of the top edge of the component.|
 | right  | [Length](#length) | No|Yes   | Width of the right edge of the component.|
@@ -168,7 +168,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type|Read Only|Optional| Description            |
+| Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes  | Width of the top edge of the component.|
 | end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes  | Width of the right edge of the component.<br>Width of the left edge of the component in RTL mode.|
@@ -186,7 +186,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | topLeft     | [Length](#length) | No|Yes   | Radius of the upper left corner of the component.|
 | topRight    | [Length](#length) | No|Yes   | Radius of the upper right corner of the component.|
@@ -204,7 +204,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | topStart    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the upper left corner of the component.<br>Radius of the upper left right of the component in RTL mode.|
 | topEnd      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No|Yes   | Radius of the upper right corner of the component.<br>Radius of the upper left corner of the component in RTL mode.|
@@ -222,7 +222,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type|Read Only|Optional| Description            |
+| Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
 | top    | [ResourceColor](#resourcecolor) | No|Yes   | Color of the top edge of the component.|
 | right  | [ResourceColor](#resourcecolor) | No|Yes   | Color of the right edge of the component.|
@@ -240,7 +240,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type|Read Only|Optional| Description            |
+| Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
 | top    | [ResourceColor](#resourcecolor) | No|Yes   | Color of the top edge of the component.|
 | end    | [ResourceColor](#resourcecolor) | No|Yes   | Color of the right edge of the component.<br>Color of the left edge of the component in RTL mode.|
@@ -258,7 +258,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | top    | [BorderStyle](ts-appendix-enums.md#borderstyle) | No|Yes   | Style of the top edge of the component.|
 | right  | [BorderStyle](ts-appendix-enums.md#borderstyle) | No|Yes   | Style of the right edge of the component.|
@@ -273,7 +273,7 @@ The **Offset** type is used to describe the offset coordinates of a component in
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type               | Read Only |  Optional  | Description      |
+| Name  | Type               | Read-Only |  Optional  | Description      |
 | ---- | ----------------- | ---- | -------- | -------- |
 | dx   | [Length](#length) | No |  No   | X coordinate of the offset.|
 | dy   | [Length](#length) | No |  No   | Y coordinate of the offset.|
@@ -286,7 +286,7 @@ The **RectResult** type is used to describe the position, width, and height of a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type  | Read Only| Optional | Description|
+| Name     | Type  | Read-Only| Optional | Description|
 | ------- | ------ | ----- | -------- | ---------- |
 | x     | number | No| No| Horizontal coordinate.|
 | y     | number |  No| No| Vertical coordinate.|
@@ -322,7 +322,7 @@ The **LengthConstrain** type is used to describe the maximum and minimum lengths
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type               | Read Only |  Optional  | Description     |
+| Name       | Type               | Read-Only |  Optional  | Description     |
 | --------- | ----------------- | ---- | ------- | -------- |
 | minLength | [Length](#length) | No |  No   | Minimum length of the component.|
 | maxLength | [Length](#length) | No |  No   | Maximum length of the component.|
@@ -336,7 +336,7 @@ The **Font** type is used to set the text style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type                                                        | Read Only |  Optional| Description                                                        |
+| Name  | Type                                                        | Read-Only |  Optional| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
 | size   | [Length](#length)                                            | No  |  Yes | Font size. If the value is of the number type, the unit fp is used. Percentage strings are not supported.<br>Default value: **16.0**|
 | weight | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | No |  Yes| Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a thicker font.<br>Default value: **400** \| **FontWeight.Normal** |
@@ -370,7 +370,7 @@ The **Position** type is used to represent coordinates of a point.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type               | Read Only |  Optional  | Description                         |
+| Name  | Type               | Read-Only |  Optional  | Description                         |
 | ---- | ----------------- | ---- | -------- | --------------------------- |
 | x    | [Length](#length) | No  |  Yes| X-coordinate<br>Unit: vp|
 | y    | [Length](#length) | No  |  Yes| Y-coordinate.<br>Unit: vp|
@@ -383,7 +383,7 @@ The **LocalizedPosition** type is used to represent coordinates of a point.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type               | Read Only |  Optional  | Description                         |
+| Name  | Type               | Read-Only |  Optional  | Description                         |
 | ---- | ----------------- | ---- | -------- | --------------------------- |
 | start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No |  Yes | X-coordinate relative to the left for left-to-right (LTR) scripts; X-coordinate relative to the right for right-to-left (RTL) scripts. |
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  |  Yes| Y-coordinate.|
@@ -398,7 +398,7 @@ The **Edges** type is used to describe the offset relative to the four edges. If
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type    | Read Only |  Optional  | Description                         |
+| Name  | Type    | Read-Only |  Optional  | Description                         |
 | ---- | ------ | ---- | -------- | --------------------------- |
 | top    | [Dimension](#dimension10) | No | Yes | Offset relative to the top edge.|
 | bottom    | [Dimension](#dimension10) | No | Yes | Offset relative to the bottom edge.|
@@ -413,7 +413,7 @@ The **LocalizedEdges** type is used to describe the offset relative to the four 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type    | Read Only |  Optional  | Description                         |
+| Name  | Type    | Read-Only |  Optional  | Description                         |
 | ---- | ------ | ---- | -------- | --------------------------- |
 | top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No |  Yes | Offset relative to the top edge.|
 | bottom    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Offset relative to the bottom edge.|
@@ -430,7 +430,7 @@ Describes the size constraints of a component during layout.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | minWidth  | [Length](#length) | No|Yes   | Minimum width of the component.|
 | maxWidth  | [Length](#length) | No|Yes   | Maximum width of the component.|
@@ -451,7 +451,7 @@ Describes the width and height of a component during layout.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | width  | [Length](#length) | No|Yes  | Width of the component.|
 | height | [Length](#length) | No|Yes  | Height of the component.|
@@ -463,7 +463,7 @@ The **BorderOptions** type is used to provide border information.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type|Read Only|Optional| Description            |
+| Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
 | width  | [EdgeWidths](./ts-types.md#edgewidths9)<sup>9+</sup> \| [Length](ts-types.md#length) \| [LocalizedEdgeWidths](./ts-types.md#localizededgewidths12)<sup>12+</sup> | No|Yes  | Border width.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.    |
 | color  | [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup> \| [ResourceColor](ts-types.md#resourcecolor) \| [LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No|Yes  | Border color.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.    |
@@ -501,7 +501,7 @@ The **CustomBuilder** type is used to define custom UI descriptions in component
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                      | Read Only |  Optional| Default Value     | Description                                                        |
+| Name       | Type                                      | Read-Only |  Optional| Default Value     | Description                                                        |
 | ----------- | ------------------------------------------ | ---- | -------- | ----------- | ------------------------------------------------------------ |
 | strokeColor | [ResourceColor](ts-types.md#resourcecolor) | No |  Yes | Color.White | Color of the check mark.                                              |
 | size        | [Length](ts-types.md#length)               | No |  Yes | -           | Size of the check mark, in vp. The default size is the same as the width of the check box component.<br>Percentage values are not supported. If an invalid value is set, the default value is used.|
@@ -529,7 +529,7 @@ Outer outline options.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
-| Name  | Type                  | Read Only  |   Optional                            | Description                                                        |
+| Name  | Type                  | Read-Only  |   Optional                            | Description                                                        |
 | ------ | ----------------------|----------------- | --------------------- | ------------------------------------------------------------ |
 | width  | [Dimension](#dimension10) \| [EdgeOutlineWidths](#edgeoutlinewidths11)| No| Yes| Width of the outline. Percentage values are not supported.<br>Default value: **0**.<br>**width** must be set to display the outline effect.|
 | color  | [ResourceColor](#resourcecolor) \| [EdgeColors](#edgecolors9) \| [LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No| Yes| Color of the outline.<br>Default value: **Color.Black**.                  |
@@ -544,7 +544,7 @@ To reference this object, at least one parameter must be passed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
-| Name    | Type                        | Read Only| Optional  | Description     |
+| Name    | Type                        | Read-Only| Optional  | Description     |
 | ------ | ---------------------------- | -- | -- | ------- |
 | left   | [Dimension](#dimension10) | No| Yes  | Thickness of the left outline.|
 | right  | [Dimension](#dimension10) | No| Yes   | Thickness of the right outline.|
@@ -561,7 +561,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                        | Read Only| Optional  | Description      |
+| Name         | Type                        | Read-Only| Optional  | Description      |
 | ----------- | -------------------- | -------- | ---- | -------- |
 | topLeft     | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the upper left corner.|
 | topRight    | [Dimension](ts-types.md#dimension10) | No| Yes  | Radius of the upper right corner.|
@@ -578,7 +578,7 @@ To reference this object, at least one parameter must be passed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type                                    | Read Only| Optional | Description     |
+| Name    | Type                                    | Read-Only| Optional | Description     |
 | ------ | ---------------------------------------- | -- | -- | ------- |
 | left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the left outline.|
 | right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the right outline.|
@@ -713,7 +713,7 @@ The **DividerStyleOptions** type is used to provide the information about the di
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type                                     | Read Only| Optional| Description             |
+| Name    | Type                                     | Read-Only| Optional| Description             |
 | ------ | --------------------------------------- |---| -------- |-----------------|
 | strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup>  | No| Yes| Width of the divider.        |
 | color  | [ResourceColor](#resourcecolor) | No | Yes| Color of the divider.        |
@@ -744,7 +744,7 @@ The **Configuration** type is used to describe the color mode and font scale.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type  | Read Only| Optional| Description      |
+| Name     | Type  | Read-Only| Optional| Description      |
 | --------- | ------ | ---- | ---- | ---------- |
 | colorMode | string | Yes  | No  | Color mode.|
 | fontScale | number | Yes  | No  | Font scale.|
@@ -755,7 +755,7 @@ The **Configuration** type is used to describe the color mode and font scale.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                  | Type   | Read Only| Optional| Description                                                        |
+| Name                  | Type   | Read-Only| Optional| Description                                                        |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | accessibilityPreferred | boolean | No| Yes  | Whether to prioritize the accessibility text of child components during a deep traversal. The value **true** means to prioritize the accessibility text of child components.<br>If the accessibility text is empty, the text is selected. The combined text is set to the parent node whose accessibilityText and text are empty.<br>The value **false** means not to prioritize the accessibility text of child components.<br>Default value: **false**.|
 
@@ -767,7 +767,7 @@ Scroll bar margin.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type                                                        | Read Only| Optional| Description                                  |
+| Name | Type                                                        | Read-Only| Optional| Description                                  |
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
 | start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Start margin of the scroll bar.<br>Default value: **0**, in vp|
 | end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes| Margin at the end of the scroll bar.<br>Default value: **0**, in vp|
@@ -782,7 +782,7 @@ Edge width type, which is used to describe the width of the component edge in di
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type|Read Only|Optional| Description            |
+| Name  | Type|Read-Only|Optional| Description            |
 | ------ | ---- |------|------| ---------------- |
 | start   | T    |No|No| Start edge. It is the left edge if the direction is left-to-right and the right edge if the direction is right-to-left.|
 | end    | T    | No|No|End edge. It is the right edge if the direction is left-to-right and the left edge if the direction is right-to-left.|
@@ -802,7 +802,7 @@ Defines the offset of the component under the anchor constraints.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | horizontal  | number | No|Yes| Bias value in the horizontal direction.<br>This parameter is valid only when the width attribute of the child component has a correct value and two horizontal anchors are available. The value must be greater than or equal to 0.<br>Default value: **0.5**|
 | vertical  | number | No|Yes| Returns the bias value in the vertical direction.<br>This parameter is valid only when the height attribute of the child component has a correct value and two vertical anchors are available. The value must be greater than or equal to 0.<br>Default value: **0.5**|
