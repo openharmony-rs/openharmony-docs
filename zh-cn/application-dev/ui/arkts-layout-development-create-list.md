@@ -1301,7 +1301,7 @@ List() {
      })
      ```
 
-   - 通过getItemRect接口方法获取当前项位置信息。
+   - 通过[getItemRect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#getitemrect11)接口方法获取当前项位置信息。
 
      ```ts
      // 实现参考
