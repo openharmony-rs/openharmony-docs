@@ -266,9 +266,7 @@ import { formInfo } from '@kit.FormKit';
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
-### (formId: string)
-
-(formId: string): Promise&lt;formInfo.Rect&gt;
+type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 卡片位置、尺寸查询回调。使用Promise异步回调。
 
