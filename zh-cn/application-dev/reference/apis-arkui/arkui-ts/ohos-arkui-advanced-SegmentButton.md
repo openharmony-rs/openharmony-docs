@@ -83,7 +83,7 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 | localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否 | 是                | 按钮内边距，默认值：仅图标按钮和仅文字按钮`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`，图标+文本按钮`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22 |
 | localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否 | 是                | 文本内边距。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22 |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否 | 是                                            | 布局方向。<br/>默认值：Direction.Auto<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22 |
-| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否 | 是                | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 22 |
+| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否 | 否                | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 22 |
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 |
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本：** 20 |
@@ -930,7 +930,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -1125,7 +1124,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -1311,7 +1309,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -1392,7 +1389,7 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
-import { LengthMetrics, SegmentButton, SegmentButtonOptions } from '@kit.ArkUI';
+import { LengthMetrics, SegmentButton, SegmentButtonOptions, ItemRestriction, SegmentButtonTextItem } from '@kit.ArkUI';
 
 
 @Entry
@@ -1491,7 +1488,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -1508,7 +1504,8 @@ import {
   SegmentButton,
   SegmentButtonOptions,
   SegmentButtonIconItem,
-  SegmentButtonIconTextItem
+  SegmentButtonIconTextItem,
+  SegmentButtonTextItem
 } from '@kit.ArkUI';
 import { LengthMetrics } from '@ohos.arkui.node';
 
@@ -1757,7 +1754,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import {
   Entry,
   Component,
