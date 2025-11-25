@@ -3536,9 +3536,9 @@ type Button = TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt;
 
 Button类型的FrameNode节点类型。以子组件模式创建允许添加一个子组件。以label模式创建不可以添加子组件。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[Button<sup>22+</sup>](#Button22)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Button<sup>22+</sup>](#Button22)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3555,9 +3555,9 @@ type Button = TypedFrameNode&lt;ButtonAttribute&gt;
 
 Button类型的FrameNode节点类型。以子组件模式创建允许添加一个子组件。以label模式创建不可以添加子组件。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[Button<sup>12+</sup>](#Button12)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Button<sup>12+</sup>](#Button12)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3577,7 +3577,7 @@ createNode(context: UIContext, nodeType: 'Button'): Button
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[createButtonNode<sup>22+</sup>](#createButtonNode22)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createButtonNode<sup>22+</sup>](#createButtonNode22)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3613,7 +3613,7 @@ createButtonNode(context: UIContext): Button
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Button')<sup>12+</sup>](#createNode('Button')12)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Button')<sup>12+</sup>](#createNode(%27Button%27)12)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4338,7 +4338,7 @@ Checkbox类型的FrameNode节点类型。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[Checkbox<sup>22+</sup>](#Checkbox22)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[Checkbox<sup>22+</sup>](#Checkbox22)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4357,7 +4357,7 @@ Checkbox类型的FrameNode节点类型。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[Checkbox<sup>18+</sup>](#Checkbox18)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Checkbox<sup>18+</sup>](#Checkbox18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4376,7 +4376,7 @@ createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[createCheckboxNode<sup>22+</sup>](#createCheckboxNode22)
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createCheckboxNode<sup>22+</sup>](#createCheckboxNode22)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4412,7 +4412,7 @@ createCheckboxNode(context: UIContext): Checkbox
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Checkbox')<sup>18+</sup>](#createNode('Checkbox')18)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createNode('Checkbox')<sup>18+</sup>](#createNode('Checkbox')18)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4554,7 +4554,7 @@ type Rating = TypedFrameNode&lt;RatingInterface, RatingAttribute&gt;
 
 Rating类型的FrameNode节点类型。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[Rating<sup>22+</sup>](#Rating22)。
 
