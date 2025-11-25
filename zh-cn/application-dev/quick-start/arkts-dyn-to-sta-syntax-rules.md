@@ -4528,6 +4528,104 @@ let s1: Record<string, number> = {
 }
 ```
 
+## 自定义类型名不能与内置类型名相同
+
+**场景描述：**
+
+在ArkTS-Sta中，标准库已经定义了如下类、常量、枚举、函数、接口、名称空间、类型，不允许用户自定义类型与其重名。
+
+内置类名列表:
+| Package | 类名 |
+|---------|---------|
+| escompat | Array, ErrorOptionsImpl, Error, EvalError, NonIntegralIndexError, TypeError, ReferenceError, URIError, AggregateError, Int8Array, Int16Array, Int32Array, BigInt64Array, Float32Array, Float64Array, Uint8ClampedArray, Uint8Array, Uint16Array, Uint32Array, BigUint64Array, WeakMap, WeakSet |
+| std.concurrency | AsyncLock, AsyncLockState, AsyncLockInfo, AsyncLockOptions, AbortSignal, Waiter, WorkerGroup, LaunchParams, Message, MessageHandler, WorkerLocal, Task, LongTask, TaskGroup, SequenceRunner, AsyncRunner, TaskInfo, ThreadInfo, TaskPoolInfo |
+| std.containers | ArrayAsListInt, ArrayAsListString, ArrayBlockingQueue, ConcurrentHashMap, ConcurrentSet, LinkedBlockingQueue, UndefinableObjectArray, UndefinableStringArray |
+| std.core | AbcFile, AbcFileNotFoundError, AbcRuntimeLinker, ArrayBuffer, BaseEnum, BigInt, Boolean, BootRuntimeLinker, Box, BooleanBox, ByteBox, CharBox, ShortBox, IntBox, LongBox, FloatBox, DoubleBox, Byte, Char, Class, Console, Formatter, Coroutine, DataView, Date, Double, EAWorker, MainWorker, EnumConstant, ProcessErrorHandler, AssertionError, DivideByZeroError, NullPointerError, UncaughtExceptionError, SyntaxError, JSONTypeError, RangeError, NegativeArraySizeError, ArrayIndexOutOfBoundsError, ArithmeticError, OutOfMemoryError, StackOverflowError, InstantiationError, InternalError, IllegalMonitorStateError, IndexOutOfBoundsError, StringIndexOutOfBoundsError, ClassCastError, ArrayStoreError, ExceptionInInitializerError, CoroutinesLimitExceedError, IllegalLockStateError, InvalidCoroutineOperationError, ArgumentsUnderapplicationError, InvalidStoreAccessError, NoDataError, ArgumentOutOfRangeError, IllegalStateError, UnsupportedOperationError, IllegalArgumentError, RuntimeError, Field, FinalizationRegistry, Float, LambdaN, LambdaR0, Lambda0, LambdaR1, Lambda1, LambdaR2, Lambda2, LambdaR3, Lambda3, LambdaR4, Lambda4, LambdaR5, Lambda5, LambdaR6, Lambda6, LambdaR7, Lambda7, LambdaR8, Lambda8, LambdaR9, Lambda9, LambdaR10, Lambda10, LambdaR11, Lambda11, LambdaR12, Lambda12, LambdaR13, Lambda13, LambdaR14, Lambda14, LambdaR15, Lambda15, LambdaR16, Lambda16, Int, Collator, DateTimeFormat, DisplayNames, ListFormat, Locale, NumberRangeFormatPart, NumberFormatPart, NumberFormat, PluralRules, RelativeTimeFormat, Segments, Segmenter, IteratorResult, Job, CompletableJob, JsonError, JsonTypeError, JsonElement, LocaleMatch, Long, MapIterator, EmptyMapIterator, Map, Record, Math, MemoryRuntimeLinker, Method, never, Null, Numeric, Integral, Floating, Object, Parameter, ChildProcess, ConditionType, ProcessManager, PromiseStatus, PromiseFulfilledResult, PromiseRejectedResult, Promise, Proxy, DefaultProxyHandler, DefaultArrayProxyHandler, DefaultReadonlyArrayProxyHandler, Reflect, Constructor, InstanceField, InstanceMethod, StaticField, StaticMethod, RegExpResultArray, RegExpMatchArray, RegExpExecArray, RegExp, RejectedHandler, Runtime, RuntimeLinker, LinkerVerificationError, LinkerUnresolvedClassError, LinkerUnresolvedFieldError, LinkerUnresolvedMethodError, LinkerBadSupertypeError, LinkerTypeCircularityError, LinkerMethodConflictError, LinkerAbstractMethodError, LinkerClassNotFoundError, SetIterator, Set, Short, StackTraceElement, StackTrace, String, StringBuilder, Mutex, RWLock, ReadLock, WriteLock, Tuple0, Tuple1, Tuple2, Tuple3, Tuple4, Tuple5, Tuple6, Tuple7, Tuple8, Tuple9, Tuple10, Tuple11, Tuple12, Tuple13, Tuple14, Tuple15, Tuple16, TupleN, TypeKind, Attributes, AccessModifier, Type, Types, NullType, UndefinedType, VoidType, CharType, BooleanType, ByteType, ShortType, IntType, LongType, FloatType, DoubleType, ClassType, InterfaceType, ArrayType, TupleType, FunctionType, LambdaType, MethodType, StringType, EnumType, UnionType, TypeAPICreateError, TypeCreator, TypeOrCreator, TypeCreatorCtx, ClassTypeCreator, InterfaceTypeCreator, LambdaTypeCreator, FreezableImpl, HasAttributes, FieldCreator, ParameterCreator, MethodCreator, CallableBody, CallableBodyDefault, CallableBodyMethod, CallableBodyFunction, CallableBodyErasedFunction, UnionCase, Value, ClassValue, ArrayValue, LambdaValue, BooleanValue, ByteValue, ShortValue, CharValue, IntValue, FloatValue, DoubleValue, LongValue, StringValue, NullValue, UndefinedValue, VoidValue, Void, WeakRef, JsonReplacerTemp, JSON, JSONParser, JsonTokenSpan, JsonToken, JsonParseError, JsonLexer, JSONValue, JSONObject, JSONArray, JSONNumber, JSONString, JSONTrue, JSONFalse, JSONNull |
+| std.debug | DebuggerAPI, Logger, RuntimeDebug |
+| std.debug.concurrency | AtomicFlag, CoroutineExtras |
+| std.interop | ESValuePropertyDescriptor, ESValue, InteropContext, InteropArgRecord, InteropSerializeHelper |
+| std.interop.js | ESError, InteropTransferHelper, MimicJSValueIteratableIterator, DynamicFunction, JSRuntime, JSValue, NoInteropContextError |
+| std.testing | ArkTest, ArkTestsuite |
+| std.time | Chrono |
+
+内置常量名列表:
+| Package | 常量名 |
+|---------|---------|
+| escompat | NaN, Infinity |
+| std.core | KEY_NOT_FOUND, console, coroutine, NOT_IN_PLACE_MODE, IN_PLACE_MODE, ARRAY_LENGTH_MEMBER_NAME, FUNCTION_LENGTH_MEMBER_NAME, FUNCTION_NAME_MEMBER_NAME, OBJECT_TO_STRING_MEMBER_NAME, OBJECT_TO_LOCALE_STRING_MEMBER_NAME, OBJECT_HAS_OWN_PROPERTY_MEMBER_NAME, ObjectType |
+| std.math.consts | PI, E, LN10, LN2, LOG2E, LOG10E, SQRT1_2, SQRT2, doubleEpsilon, doubleMinimum, doubleMaximum, doubleNaN, doubleInf, doubleNegInf |
+
+内置枚举类名列表:
+| Package | 枚举类名 |
+|---------|---------|
+| std.concurrency | AsyncLockMode, WorkerDomain, Priority, State |
+| std.core | WorkerPriority, ObjectSpaceType, Cause, BigIntMode, JsonType, JsonTokenKind |
+| std.interop | InteropArgType |
+
+内置函数名列表:
+| Package | 函数名 |
+|---------|---------|
+| escompat | decodeURI, encodeURI, decodeURIComponent, encodeURIComponent, escape, unescape, parseInt, parseFloat, isNaN, isFinite, isInteger, isSafeInteger, setTimeout, clearTimeout, setInterval, clearInterval, deepcopy |
+| std.concurrency | isLockFree, add, and, compareExchange, exchange, load, or, store, sub, xor, wait, waitAsync, notify, launch, waitForCompletion, execute, executeDelayed, executePeriodically, cancel, terminateTask, getTaskPoolInfo |
+| std.core | getBootRuntimeLinker, getNearestNonBootRuntimeLinker, at, copyWithin, fill, find, findIndex, findLast, every, some, findLastIndex, reduce, reduceRight, forEach, slice, lastIndexOf, join, toString, toLocaleString, toSpliced, includes, indexOf, toSorted, reverse, toReversed, with, values, entries, map, filter, concat, sort, keys, sort_stable, sort_default, lowerBoundSearch, upperBoundSearch, copyOf, copyTo, arr_sort_stable, swap, sort_subarray, mergeSort, createFromJSONValue, getFreeHeapSize, getUsedHeapSize, getReservedHeapSize, startGC, waitForFinishGC, scheduleGcAfterNthAlloc, isScheduledGCTriggered, postponeGCStart, postponeGCEnd, pinObject, unpinObject, allocatePinnedBooleanArray, allocatePinnedByteArray, allocatePinnedCharArray, allocatePinnedShortArray, allocatePinnedIntArray, allocatePinnedLongArray, allocatePinnedFloatArray, allocatePinnedDoubleArray, getObjectSpaceType, getObjectAddress, getObjectSize, registerNativeAllocation, registerNativeFree, iteratorForEach, tryGetIteratorLength, intlLookUpLocale, intlBestFitLocale, intlLookUpLocales, intlBestFitLocales, intlLocalesToLanguageTags, egid, euid, gid, uid, groups, pid, ppid, tid, isIsolatedProcess, is64Bit, getStartRealtime, getPastCpuTime, runCmd, abort, on, off, cwd, chdir, uptime, __narrowAny, loadLibrary, loadLibraryWithPermissionCheck, exit, printStackTrace, stackTraceLines, writeInt8, writeBoolean, writeInt16, writeInt32, writeFloat32, writeInt64, writeFloat64, writeNumber, writeString, readInt8, readBoolean, readInt16, readInt32, readInt64, readFloat32, readFloat64, readNumber, readString, getStringSizeInBytes |
+| std.math | abs, acosh, acos, asinh, asin, atan2, atanh, atan, cbrt, ceil, clz64, clz32, clz32Double, cosh, cos, power2, expm1, exp, floor, hypot, log10, log1p, log2, log, max, min, mod, power, rem, round, scalbn, signbit, sign, sinh, sin, sqrt, tanh, tan, trunc, seedRandom, random, imul, fround |
+| std.testing | assertTrue, assertFalse, assertEQ, assertNE, assertDoubleEQ, assertLT, assertLE, expectThrow, expectError, expectNoThrow |
+
+内置接口名列表:
+| Package | 接口名 |
+|---------|---------|
+| escompat | ErrorOptions, Cloneable |
+| std.containers | BlockingQueue, ListInt, ListObject, ListString |
+| std.core | ArrayBufferView, ArrayLike, BigIntToLocaleStringOptions, Comparable, ConcatArray, Function, FunctionN, FunctionR0, Function0, FunctionR1, Function1, FunctionR2, Function2, FunctionR3, Function3, FunctionR4, Function4, FunctionR5, Function5, FunctionR6, Function6, FunctionR7, Function7, FunctionR8, Function8, FunctionR9, Function9, FunctionR10, Function10, FunctionR11, Function11, FunctionR12, Function12, FunctionR13, Function13, FunctionR14, Function14, FunctionR15, Function15, FunctionR16, Function16, ResolvedCollatorOptions, CollatorOptions, ResolvedDateTimeFormatOptions, DateTimeFormatPart, DateTimeRangeFormatPart, DateTimeFormatOptions, DisplayNamesOptions, DisplayNamesLocaleMatcherOptions, ResolvedDisplayNamesOptions, ListFormatOptions, FormatToPartsResult, LocaleOptions, NumberFormatOptions, ResolvedNumberFormatOptions, PluralRulesOptions, ResolvedPluralRulesOptions, SupportedLocalesOfOptions, PluralRulesSelectOptions, ResolvedRelativeTimeFormatOptions, RelativeTimeFormatOptions, RelativeTimeFormatPart, SegmentData, SegmenterOptions, ResolvedSegmenterOptions, Iterator, Iterable, IterableIterator, ParseOptions, JsonElementSerializable, JsonElementDeserializable, ReadonlyMap, PromiseLike, ProxyHandler, ArrayProxyHandler, ReadonlyArray, ReadonlyArrayProxyHandler, InvocationHandler, ReadonlySet, Lock, Tuple, Freezable, JsonReplacer |
+
+内置名称空间名列表:
+| Package | 名称空间名 |
+|---------|---------|
+| std.annotations | ani.unsafe, functions |
+| std.concurrency | Atomics, concurrency, taskpool |
+| std.containers | containers |
+| std.core | GC, Intl, jsonx, StdProcess, proxy, reflect, unsafeMemory |
+| std.debug | StdDebug |
+| std.testing | arktest |
+
+内置类型名列表:
+| Package | 类型名 |
+|---------|---------|
+| std.concurrency | WorkerGroupId, CoroutineId, WorkerId, CallbackFunction, CallbackFunctionWithError |
+| std.core | ArrayBufferLike, bigint, UTF_16_CodePoint, Number, number, BCP47LanguageTag, DisplayNamesFallback, DisplayNamesLanguageDisplay, DisplayNamesType, ES2018NumberFormatPartType, ES2020NumberFormatPartType, LDMLPluralRule, ListFormatLocaleMatcher, ListFormatStyle, ListFormatType, LocaleCollationCaseFirst, LocaleHourCycleKey, NumberFormatPartTypes, PluralRuleType, RelativeTimeFormatLocaleMatcher, RelativeTimeFormatNumeric, RelativeTimeFormatStyle, RelativeTimeFormatUnit, RelativeTimeFormatUnitSingular, UnicodeBCP47LocaleIdentifier, DateTimeFormatPartTypes, DateTimeRangeFormatPartSource, LocalesArgument, NullableType, Nullish, NullishType, PropertyKey, object, RejectedObjectListener, UncaughtErrorListener, EventListener, PromiseSettledResult, NullablePromise, string, TypeDescriptor |
+| std.interop | StaticOrESValue, ESValueCallbackData, ESValueCallback |
+| std.interop.js | ESObject, JSValueN |
+
+**适配建议：**
+
+在给用户自定义类型进行命名时，规避内置类型的名称。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+let ErrorOptions = 1;    // ArkTS-Sta报错，该变量已经被定义为其他类型
+
+class ErrorOptionsImpl{}    // ArkTS-Sta报错，该变量已经被定义为其他类型
+
+interface NonIntegralIndexError{}    // ArkTS-Sta报错，该变量已经被定义为其他类型
+
+enum NAN{}    // ArkTS-Sta报错，该变量已经被定义为其他类型
+```
+
+ArkTS-Sta
+
+```typescript
+let myErrorOptions = 1;
+
+class MyErrorOptionsImpl{}
+
+interface MyNonIntegralIndexError{}
+
+enum MyNAN{}
+```
+
 ## 术语解释
 
 ### 逆变和协变
