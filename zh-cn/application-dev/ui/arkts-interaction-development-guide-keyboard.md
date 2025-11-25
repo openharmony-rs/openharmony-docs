@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-物理按键产生的按键事件为非指向性事件，与触摸等指向性事件不同，其事件并没有坐标位置信息，所以其会按照一定次序向获焦组件进行派发，大多数文字输入场景下，按键事件都会优先派发给输入法进行处理，以便其处理文字的联想和候选词，应用可以通过`onKeyPreIme`提前感知事件。
+物理按键产生的按键事件为非指向性事件，与触摸等指向性事件不同，其事件并没有坐标位置信息，所以其会按照一定次序向获焦组件进行派发，大多数文字输入场景下，按键事件都会优先派发给输入法进行处理，以便其处理文字的联想和候选词，应用可以通过[onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12)提前感知事件。
 
 > **说明：**
 >
@@ -19,15 +19,15 @@
 
 按键事件由外设键盘等设备触发，经驱动和多模处理转换后发送给当前获焦的窗口，窗口获取到事件后，会尝试分发三次事件。三次分发的优先顺序如下，一旦事件被消费，则跳过后续分发流程。
 
-1. 首先分发给ArkUI框架用于触发获焦组件绑定的onKeyPreIme回调和页面快捷键。
+1. 首先分发给ArkUI框架用于触发获焦组件绑定的[onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12)回调和页面快捷键。
 2. 再向输入法分发，输入法会消费按键用作输入。
-3. 再次将事件发给ArkUI框架，用于响应onKeyEventDispatch事件、获焦组件绑定的onKeyEvent回调以及走焦。
+3. 再次将事件发给ArkUI框架，用于响应[onKeyEventDispatch](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyeventdispatch15)事件、获焦组件绑定的[onKeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)回调以及走焦。
 
 因此，当某输入框组件获焦，且打开了输入法，此时大部分按键事件均会被输入法消费。例如字母键会被输入法用来往输入框中输入对应字母字符、方向键会被输入法用来切换选中备选词。如果在此基础上给输入框组件绑定了快捷键，那么快捷键会优先响应事件，事件也不再会被输入法消费。
 
 按键事件到ArkUI框架之后，会先找到完整的节点获焦链。从叶子节点到根节点，逐一发送按键事件，若有子组件可以处理则优先给子组件处理，若子组件无法处理，则进行冒泡寻找父组件进行处理。 
 
-Web组件的KeyEvent流程与上述过程有所不同。在onKeyPreIme返回false时，Web组件不会匹配快捷键。而在第三次按键派发过程中，Web组件会将未消费的KeyEvent通过ReDispatch重新派发回ArkUI，在ReDispatch中再执行匹配快捷键等操作。
+Web组件的KeyEvent流程与上述过程有所不同。在[onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12)返回false时，Web组件不会匹配快捷键。而在第三次按键派发过程中，Web组件会将未消费的[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)通过ReDispatch重新派发回ArkUI，在ReDispatch中再执行匹配快捷键等操作。
 
 ## onKeyEvent & onKeyPreIme
 
@@ -209,6 +209,8 @@ struct PreImeEventExample {
 }
 ```
 
+![zh-cn_image_00012427222](figures/zh-cn_image_00012427222.gif)
+
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
 <!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
@@ -262,6 +264,8 @@ struct Index {
   }
 }
 ```
+
+![zh-cn_image_00012427111](figures/zh-cn_image_00012427111.PNG)
 
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
 
