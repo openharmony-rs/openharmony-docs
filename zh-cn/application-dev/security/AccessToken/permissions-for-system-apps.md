@@ -5180,3 +5180,27 @@
 **支持设备**：General
 
 **起始版本**：13
+
+## ohos.permission.GET_BACKGROUND_TASK_INFO
+
+允许应用获取后台任务状态信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.SET_BACKGROUND_TASK_STATE
+
+允许应用获取和设置特殊长时任务用户授权状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：23
