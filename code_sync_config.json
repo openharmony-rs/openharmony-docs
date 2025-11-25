@@ -4840,7 +4840,7 @@
 						"start_line":32
 					},
 					{
-						"end_line":47,
+						"end_line":48,
 						"name":"strategyDefine_sample",
 						"start_line":38
 					},
@@ -4860,7 +4860,7 @@
 						"start_line":57
 					},
 					{
-						"end_line":69,
+						"end_line":71,
 						"name":"CPUMetric_sample",
 						"start_line":15
 					}
@@ -4870,7 +4870,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/perftest/entry/src/main/ets/utils/Utils.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":31,
 						"name":"utils_sample",
 						"start_line":15
 					}
@@ -4880,7 +4880,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/perftest/entry/src/main/ets/pages/PageListPage.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":50,
 						"name":"scroll_sample",
 						"start_line":16
 					}
@@ -4890,7 +4890,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/SlideFps.test.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":84,
 						"name":"slideFps_sample",
 						"start_line":15
 					}
@@ -4905,7 +4905,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/main/ets/pages/ClickToAfter.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":46,
 						"name":"clickToAfter",
 						"start_line":16
 					}
@@ -4915,7 +4915,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":56,
 						"name":"click_sample",
 						"start_line":16
 					}
@@ -4925,7 +4925,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":53,
 						"name":"findAndOp_sample",
 						"start_line":16
 					}
@@ -4935,7 +4935,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchScreenEvent.test.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":55,
 						"name":"touchScreen_sample",
 						"start_line":16
 					}
@@ -4945,7 +4945,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WaitForCom.test.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":42,
 						"name":"waitForComp_sample",
 						"start_line":16
 					}
@@ -4955,7 +4955,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputText.test.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":81,
 						"name":"inputText_sample",
 						"start_line":16
 					}
@@ -4965,7 +4965,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCap.test.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":54,
 						"name":"screenCap_sample",
 						"start_line":16
 					}
@@ -4975,7 +4975,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":37,
 						"name":"eventObserver_sample",
 						"start_line":16
 					}
@@ -4985,7 +4985,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseAndKeyOp.test.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":55,
 						"name":"mouseAndKey_sample",
 						"start_line":16
 					}
@@ -4995,7 +4995,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":40,
 						"name":"findWindowAndOp_sample",
 						"start_line":16
 					}
@@ -5005,7 +5005,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":42,
 						"name":"touchPadOp_sample",
 						"start_line":16
 					}
@@ -5015,7 +5015,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PenOp.test.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"penOp_sample",
 						"start_line":16
 					}
@@ -5025,7 +5025,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":42,
 						"name":"watchOp_sample",
 						"start_line":16
 					}
@@ -5035,7 +5035,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"displayOp_sample",
 						"start_line":16
 					}
@@ -5050,7 +5050,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":49,
 						"name":"basic_sample",
 						"start_line":15
 					}
@@ -5060,7 +5060,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":61,
 						"name":"order1_sample",
 						"start_line":16
 					}
@@ -5070,7 +5070,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"order2_sample",
 						"start_line":16
 					}
@@ -5080,7 +5080,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":32,
 						"name":"order3_sample",
 						"start_line":16
 					}
@@ -5090,7 +5090,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets",
 				"functions":[
 					{
-						"end_line":209,
+						"end_line":211,
 						"name":"assert_sample",
 						"start_line":45
 					}
@@ -5100,7 +5100,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":47,
 						"name":"afterReturn_sample",
 						"start_line":16
 					}
@@ -5110,7 +5110,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":47,
 						"name":"argumentMatchersForAny_sample",
 						"start_line":16
 					}
@@ -5120,7 +5120,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":46,
 						"name":"argumentMatchersForString_sample",
 						"start_line":16
 					}
@@ -5130,7 +5130,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":45,
 						"name":"argumentMatchersForRegex_sample",
 						"start_line":16
 					}
@@ -5140,7 +5140,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":57,
 						"name":"verify_sample",
 						"start_line":16
 					}
@@ -5150,7 +5150,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":57,
 						"name":"ignoreMock_sample",
 						"start_line":16
 					}
@@ -5160,7 +5160,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":58,
 						"name":"clearMock_sample",
 						"start_line":16
 					}
@@ -5170,7 +5170,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":49,
 						"name":"afterThrow_sample",
 						"start_line":16
 					}
@@ -5180,7 +5180,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":53,
 						"name":"returnPromise_sample",
 						"start_line":16
 					}
@@ -5190,7 +5190,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":55,
 						"name":"verifyTimes_sample",
 						"start_line":16
 					}
@@ -5200,7 +5200,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":49,
 						"name":"mockStatic_sample",
 						"start_line":16
 					}
@@ -5210,7 +5210,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/testability/TestAbility.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":40,
 						"name":"dataDriverAbility_sample",
 						"start_line":16
 					}
@@ -5220,7 +5220,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":35,
 						"name":"dataDriver_sample",
 						"start_line":16
 					}
