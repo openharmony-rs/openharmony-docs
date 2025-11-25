@@ -136,6 +136,10 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **系统能力：** SystemCapability.Applications.Contacts
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Dyn起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                      | 必填 | 说明                                       |
@@ -156,8 +160,10 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall("138xxxxxxxx", (err: BusinessError) => {
@@ -169,6 +175,20 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+// 从API15开始支持tel格式电话号码，如："tel:13xxxx"
+call.makeCall("138xxxxxxxx", (err: BusinessError | null) => {
+    if (err) {
+        console.error(`makeCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`makeCall success`);
+    }
+});
+```
 
 ## call.makeCall<sup>7+</sup>
 
@@ -179,6 +199,10 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Applications.Contacts
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -206,6 +230,8 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
@@ -216,6 +242,21 @@ call.makeCall("138xxxxxxxx").then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+// 从API15开始支持tel格式电话号码，如："tel:13xxxx"
+call.makeCall("138xxxxxxxx").then(() => {
+    console.info(`makeCall success`);
+}).catch((err: Error) => {
+    let err = error as BusinessError;
+    console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
 ## call.makeCall<sup>12+</sup>
 
 makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
@@ -225,6 +266,10 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Applications.Contacts
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -256,6 +301,8 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 <!--code_no_check-->
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 // 获取context
@@ -267,6 +314,22 @@ call.makeCall(context, "138xxxxxxxx").then(() => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+// 从API15开始支持tel格式电话号码，如："tel:13xxxx"
+call.makeCall(this.context, "138xxxxxxxx").then(() => {
+    console.info(`makeCall success`);
+}).catch((err: Error) => {
+    let err = error as BusinessError;
+    console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
 
 ## call.hasCall
 
@@ -790,6 +853,10 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                        | 必填 | 说明                                 |
@@ -810,6 +877,7 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -823,6 +891,22 @@ call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+
 ## call.formatPhoneNumber<sup>7+</sup>
 
 formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: AsyncCallback\<string\>\): void
@@ -832,6 +916,10 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -854,6 +942,7 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -871,6 +960,24 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
 ```
 
 
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let options: call.NumberFormatOptions = {
+    countryCode: "CN"
+}
+call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
 ## call.formatPhoneNumber<sup>7+</sup>
 
 formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise\<string\>
@@ -880,6 +987,10 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -907,6 +1018,7 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -920,6 +1032,24 @@ call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
     console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let options: call.NumberFormatOptions = {
+    countryCode: "CN"
+}
+call.formatPhoneNumber("138xxxxxxxx", options).then((data: string | undefined) => {
+    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+    let err = error as BusinessError;
+    console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
 
 ## call.formatPhoneNumberToE164<sup>7+</sup>
 
@@ -1064,6 +1194,10 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
+
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
 | extras                   | boolean                            | 否   | 是   | 根据extras的值判断是否为视频通话，默认为语音通话。<br/>- true：视频通话。<br/>- false：语音通话。   | 
@@ -1074,6 +1208,10 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称               | 值   | 说明                                                         |
 | ------------------ | ---- | ------------------------------------------------------------ |
 | CALL_STATE_UNKNOWN | -1   | 无效状态，当获取呼叫状态失败时返回。                         |
@@ -1081,6 +1219,24 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 | CALL_STATE_RINGING | 1    | 表示来电正在振铃或等待。                                     |
 | CALL_STATE_OFFHOOK | 2    | 表示至少有一个呼叫处于拨号、通话中或呼叫保持状态，并且没有新的来电振铃或等待。 |
 | CALL_STATE_ANSWERED<sup>11+</sup> | 3    | 表示来电已经接听。 |
+
+## TelCallState
+
+通话状态码。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称                     | 值   | 说明                                                         |
+| ------------------------ | ---- | ------------------------------------------------------------ |
+| TEL_CALL_STATE_UNKNOWN   | -1   | 无效状态，当获取呼叫状态失败时返回。                         |
+| TEL_CALL_STATE_IDLE      | 0    | 表示没有正在进行的呼叫。                                     |
+| TEL_CALL_STATE_RINGING   | 1    | 表示来电正在振铃或等待。                                     |
+| TEL_CALL_STATE_OFFHOOK   | 2    | 表示至少有一个呼叫处于拨号、通话中或呼叫保持状态，并且没有新的来电振铃或等待。 |
+| TEL_CALL_STATE_ANSWERED  | 3    | 表示来电已经接听。 |
+| TEL_CALL_STATE_CONNECTED | 4    | 表示来电已经连接。 |
+
 
 ## EmergencyNumberOptions<sup>7+</sup>
 
