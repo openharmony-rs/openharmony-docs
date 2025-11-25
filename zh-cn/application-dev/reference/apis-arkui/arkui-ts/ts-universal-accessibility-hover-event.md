@@ -111,7 +111,7 @@ type AccessibilityTransparentCallback = (event: TouchEvent) => void
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)| 是   | 原始touch事件。 <br/>**说明：** TouchEvent对象的触摸事件的类型[TouchType](ts-appendix-enums.md#touchtype)为四种无障碍悬浮事件类型中的一种，四种无障碍悬浮事件类型为HOVER_ENTER、HOVER_MOVE、HOVER_EXIT和HOVER_CANCEL。
+| event | [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)| 是   | 原始touch事件。 <br/>**说明：** TouchEvent对象的触摸事件的类型[TouchType](ts-appendix-enums.md#touchtype)为四种无障碍悬浮事件类型中的一种，四种无障碍悬浮事件类型为HOVER_ENTER、HOVER_MOVE、HOVER_EXIT和HOVER_CANCEL。 |
 
 ## 示例
 
