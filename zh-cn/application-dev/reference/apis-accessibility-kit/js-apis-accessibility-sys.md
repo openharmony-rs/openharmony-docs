@@ -134,15 +134,15 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 ## FocusMoveResultCode<sup>23+</sup>
 
-表示无障碍接口[findElementsByCondition](js-apis-inner-application-accessibilityExtensionContext-sys.md#findelementsbycondition23)方法调用返回结果中的状态码
+表示查询无障碍节点返回结果类型的枚举。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
-| NOT_SUPPORTED                             | -1 | 不支持。              |
-| SEARCH_SUCCESS                            | 0  | 成功。         |
-| SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS    | 1  | 成功，下一次查询建议使用参数：bypassSelfDescendants。   |
+| NOT_SUPPORTED                             | -1 | 当前节点不支持查询操作。              |
+| SEARCH_SUCCESS                            | 0  | 查询成功。         |
+| SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS    | 1  | 成功，建议下一次查询建议使用参数：bypassSelfDescendants可更快获取结果。   |
 | SEARCH_FAILURE                            | 2  | 失败，当前页面无可聚焦节点。              |
 | SEARCH_FAILURE_IN_CHILD_TREE              | 3  | 失败，当前子树容器中无可聚焦节点。             |
 | SEARCH_FAILURE_LOST_NODE                  | 4  | 失败，未找到起始节点。                 |

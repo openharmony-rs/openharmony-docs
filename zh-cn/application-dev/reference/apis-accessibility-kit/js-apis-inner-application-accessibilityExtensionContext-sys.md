@@ -84,34 +84,32 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## FocusRule<sup>23+</sup>
 
-type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants';
+type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' | 'checkSelf' | 'checkSelfBypassDescendants'
 
 表示查找可聚焦节点时，如何判断起始节点及其子节点的聚焦能力。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型            | 说明          |
 | -------- | ------- |
 | 'bypassSelf'       | 跳过对起始节点的检查，只检查其子节点。|
 | 'bypassSelfDescendants'     | 跳过对起始节点及其所有子节点的检查。|
-| 'checkSelf'     | 先检查起始节点是否可以聚焦，如果可以则直接使用它；如果不能聚焦，则继续检查其子节点。|
-| 'checkSelfBypassDescendants' | 先检查起始节点是否可以聚焦，如果可以则使用它；如果不能聚焦，则跳过所有子节点的检查。|
+| 'checkSelf'     | 先检查起始节点是否可以聚焦，如果可以则直接使用；如果不能聚焦，则继续检查其子节点。|
+| 'checkSelfBypassDescendants' | 先检查起始节点是否可以聚焦，如果可以则使用；如果不能聚焦，则跳过所有子节点的检查。|
 
 ## FocusCondition<sup>23+</sup>
 
-type FocusCondition = 'forward' | 'backward' |
-'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor';
+type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
 
 表示查询可聚焦节点方式。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型       | 说明      |
 | -------- | ------- |
 | 'forward'       | 当前节点下一个可聚焦节点。|
 | 'backward'     | 当前节点上一个可聚焦节点。|
-| 'findLast'     | 查找起始节点子节点中最后一个节点。|
+| 'findLast'     | 查找起始节点的子节点中的最后一个节点。|
 | 'getForwardScrollAncestor' | 查找支持前向滚动父组件。|
 | 'getBackwardScrollAncestor'| 查找支持后向滚动父组件。|
 | 'getScrollableAncestor' | 查找支持任意滚动父组件。|
@@ -120,12 +118,12 @@ type FocusCondition = 'forward' | 'backward' |
 
 无障碍接口[findElementsByCondition](#findelementsbycondition23)返回值类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
-| target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 返回查询的节点数组。|
-| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 返回查询结果状态码。|
+| target | Array<[AccessibilityElement](#accessibilityelement12)> | 否 | 否 | 查询结果中的无障碍节点。|
+| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 查询结果对应的状态码。|
 
 
 ## startAbility<sup>12+</sup>
@@ -1708,11 +1706,13 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 ### findElementsByCondition<sup>23+</sup>
 
-findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>;
+findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>
 
-以当前节点为起点，查询下一个可聚焦节点。使用Promise异步回调。
+查询满足条件的可聚焦节点。使用Promise异步回调。
 
-**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**系统接口**：此接口为系统接口。
+
+**需要权限**： ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1720,8 +1720,8 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 | 名称 | 类型 | 必填 | 描述 |
 | -------- | ---- | -------- | ------------------------------------------------------------ |
-| rule | [FocusRule](#focusrule23) | 是| 检查当前节点以及当前节点子节点的规则 |
-| condition | [FocusCondition](#focuscondition23) | 是| 表示查询可聚焦节点方式 |
+| rule | [FocusRule](#focusrule23) | 是| 检查当前节点及其子节点的规则。 |
+| condition | [FocusCondition](#focuscondition23) | 是| 表示查询可聚焦节点方式。 |
 
 **返回值：**
 
@@ -1731,7 +1731,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息                                    |
 | ------- | ---------------------------------------- |
@@ -1742,7 +1742,6 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 ```ts
 
-// AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
