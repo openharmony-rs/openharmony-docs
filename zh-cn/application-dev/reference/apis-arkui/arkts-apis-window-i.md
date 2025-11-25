@@ -217,12 +217,12 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| colorMode   | [ConfigurationConstant.ColorMode](../apis-ability-kit/js-apis-app-ability-configurationConstant.md#colormode) | 否   | 是   | 颜色模式。深色模式下按钮颜色适配为浅色，浅色模式下按钮颜色适配为深色。未设置则默认跟随系统颜色模式。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| buttonBackgroundSize   | number        | 否   | 是   | 按钮高亮显示时的大小，取值范围20vp-40vp，默认值28vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| spacingBetweenButtons  | number        | 否   | 是   | 按钮间距，取值范围8vp-24vp，默认值12vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| closeButtonRightMargin | number        | 否   | 是   | 关闭按钮右侧距窗口边距，取值范围6vp-22vp，默认值20vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| buttonIconSize<sup>20+</sup> | number        | 否   | 是   | 按键icon的大小，取值范围16vp-24vp，默认值20vp。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| buttonBackgroundCornerRadius<sup>20+</sup> | number        | 否   | 是   | 按键背板圆角半径，取值范围4vp-8vp，默认值4vp。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| colorMode   | [ConfigurationConstant.ColorMode](../apis-ability-kit/js-apis-app-ability-configurationConstant.md#colormode) | 否   | 是   | 颜色模式。深色模式下按钮颜色适配为浅色，浅色模式下按钮颜色适配为深色。未设置则默认跟随系统颜色模式。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| buttonBackgroundSize   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按钮高亮显示时的大小，取值范围20vp-40vp，默认值28vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| spacingBetweenButtons  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按钮间距，取值范围8vp-24vp，默认值12vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| closeButtonRightMargin | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 关闭按钮右侧距窗口边距，取值范围6vp-22vp，默认值20vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| buttonIconSize<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按键icon的大小，取值范围16vp-24vp，默认值20vp。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
+| buttonBackgroundCornerRadius<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按键背板圆角半径，取值范围4vp-8vp，默认值4vp。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 
 ## WindowLimits<sup>11+</sup>
 
@@ -257,12 +257,16 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- | ------------------------------------------ |
-| right  | number | 否   | 否   | 矩形区域的右边界，单位为vp，该参数为整数。 |
-| top    | number | 否   | 否   | 矩形区域的上边界，单位为vp，该参数为整数。 |
-| width  | number | 否   | 否   | 矩形区域的宽度，单位为vp，该参数为整数。   |
-| height | number | 否   | 否   | 矩形区域的高度，单位为vp，该参数为整数。   |
+| right  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域的右边界，单位为vp，该参数为整数。 |
+| top    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域的上边界，单位为vp，该参数为整数。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域的宽度，单位为vp，该参数为整数。   |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 矩形区域的高度，单位为vp，该参数为整数。   |
 
 ## MoveConfiguration<sup>15+</sup>
 
