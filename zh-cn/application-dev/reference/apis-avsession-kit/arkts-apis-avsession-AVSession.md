@@ -652,6 +652,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
