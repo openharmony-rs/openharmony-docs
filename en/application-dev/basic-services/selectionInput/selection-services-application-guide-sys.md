@@ -79,6 +79,7 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
     ```
 
 4. Create a word selection panel using the **createPanel** API when SelectionExtensionAbility is started.
+    <!--code_no_check-->
     ```ts
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
