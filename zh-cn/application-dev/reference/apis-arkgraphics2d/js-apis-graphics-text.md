@@ -935,6 +935,122 @@ struct RenderTest {
 }
 ```
 
+### loadFontSyncWithCheck
+
+loadFontSyncWithCheck(name: string, path: string | Resource): void
+
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
+| name  | string             | 是   | 加载成字体后，调用该字体所使用的名称。                                                |
+| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要导入的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+|   index  | int | 否   | 字体文件格式为ttc时，指定加载的字体索引。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fontCollection: text.FontCollection = new text.FontCollection();
+
+@Entry
+@Component
+struct RenderTest {
+  LoadFontSyncTest() {
+    fontCollection.loadFontSyncWithCheck('Clock_01', 'file:///system/fonts/HarmonyClock_01.ttf')
+    let fontFamilies: Array<string> = ["Clock_01"]
+    let myTextStyle: text.TextStyle = {
+      fontFamilies: fontFamilies
+    };
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+    }
+    let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+    let textData = "测试 loadFontSyncWithCheck 加载字体HarmonyClock_01.ttf";
+    paragraphBuilder.addText(textData);
+    let paragraph: text.Paragraph = paragraphBuilder.build();
+    paragraph.layoutSync(600);
+  }
+
+  aboutToAppear() {
+    this.LoadFontSyncTest();
+  }
+
+  build() {
+  }
+}
+```
+
+### loadFontWithCheck<sup>18+</sup>
+
+loadFontWithCheck(name: string, path: string | Resource): Promise\<void>
+
+异步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+|   参数名 | 类型               | 必填 | 说明                              |
+|   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
+|   name   | string             | 是   | 加载字体后，调用该字体所使用的别名，可填写任意字符串，可使用该别名指定并使用该字体。 |
+|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+|   index  | int | 否   | 字体文件格式为ttc时，指定加载的字体索引。 |
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fontCollection: text.FontCollection = new text.FontCollection();
+
+@Entry
+@Component
+struct RenderTest {
+  async loadFontPromise() {
+    fontCollection.loadFontWithCheck('testName', 'file:///system/fonts/a.ttf').then((data) => {
+      console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+    }).catch((error: Error) => {
+      console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+    });
+  }
+
+  aboutToAppear() {
+    this.loadFontPromise();
+  }
+
+  build() {
+  }
+}
+```
+
 ### unloadFontSync<sup>20+</sup>
 unloadFontSync(name: string): void
 
