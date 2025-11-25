@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides capabilities to control focus, including features such as clearing, moving, and activating focus.
 
@@ -27,6 +27,8 @@ Clears the focus and forcibly moves the focus to the root container node of the 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
+In this example, **button2** receives initial focus by default. After **clearFocus** is clicked, focus returns to the page's root container node **column1**. Pressing the **Tab** key then restores focus to **button2**. Clicking **button1** transfers focus to that button. Following another **clearFocus** click, focus again returns to **column1**, and pressing **Tab** subsequently moves focus to **button1**.
 
 ```ts
 @Entry
@@ -66,7 +68,9 @@ struct ClearFocusExample {
             this.getUIContext().getFocusController().clearFocus();
           })
       }
+      .id('column2')
     }
+    .id('column1')
     .width('100%')
     .height('100%')
   }

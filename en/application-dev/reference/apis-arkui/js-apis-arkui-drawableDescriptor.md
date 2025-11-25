@@ -41,13 +41,13 @@ Represents the result of loading an image resource or URI.
 **Example**
 
 ```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
+import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
 let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options)
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
 try {
     // You can preload animated image resources into the memory.
-    let result: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
     console.info(`load result = ${JSON.stringify(result)}`)
 } catch(e) {
     console.error("load failed")
@@ -82,7 +82,7 @@ import { image } from '@kit.ImageKit'
 let resManager = this.getUIContext().getHostContext()?.resourceManager;
 // Replace $r('app.media.app_icon') with the image resource file you use.
 let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-    .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
+  .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
 let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
 ```
 
