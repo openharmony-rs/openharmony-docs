@@ -640,8 +640,8 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
 | 参数名   | 类型  | 必填 | 描述              |
 | ----- | ------| ------- | ----------------- |
-| alwaysEnabled | boolean | 是 | 组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。|
-| effectEdge<sup>18+</sup> | number | 否 | 设置边缘效果生效的边缘。<br/>如果设置[EffectEdge](#effectedge18枚举说明).START表示只有起始边生效。如果设置[EffectEdge](#effectedge18枚举说明).END表示只有末尾边生效。<br/>默认值为[EffectEdge](#effectedge18枚举说明).START \| [EffectEdge](#effectedge18枚举说明).END表示双边同时生效。当设置为其它异常值时，则默认双边同时生效。<br/>如果需要双边都不生效，可将edgeEffect设置为EdgeEffect.None。 |
+| alwaysEnabled | boolean | 是 | 组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| effectEdge<sup>18+</sup> | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否 | 设置边缘效果生效的边缘。<br/>如果设置[EffectEdge](#effectedge18枚举说明).START表示只有起始边生效。如果设置[EffectEdge](#effectedge18枚举说明).END表示只有末尾边生效。<br/>默认值为[EffectEdge](#effectedge18枚举说明).START \| [EffectEdge](#effectedge18枚举说明).END表示双边同时生效。当设置为其它异常值时，则默认双边同时生效。<br/>如果需要双边都不生效，可将edgeEffect设置为EdgeEffect.None。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 22 |
 
 ## FadingEdgeOptions<sup>14+</sup>对象说明
 
@@ -701,7 +701,9 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
 ## OnWillScrollCallback<sup>12+</sup>
 
-type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
+ArkTS-Dyn：type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
+
+ArkTS-Sta：type OnWillScrollCallback = (scrollOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => undefined | ScrollResult
 
 滚动组件滑动前触发的回调。
 
@@ -709,11 +711,15 @@ type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scr
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | 是 | 每帧滑动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| scrollOffset | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是 | 每帧滑动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | 是 | 当前滑动操作的来源。 |
 
@@ -721,11 +727,13 @@ type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scr
 
 | 类型                          | 说明                                  |
 | ----------------------------- | ------------------------------------ |
-| void \| [ScrollResult](#scrollresult12对象说明) |  返回ScrollResult时按照开发者指定的偏移量滑动；不返回时按回调参数scrollOffset滑动。  <br/>取值范围：(-∞, +∞)|
+| ArkTS-Dyn: void \| [ScrollResult](#scrollresult12对象说明)<br/> ArkTS-Sta: undefined \| [ScrollResult](#scrollresult12对象说明) |  返回ScrollResult时按照开发者指定的偏移量滑动；不返回时按回调参数scrollOffset滑动。  <br/>取值范围：(-∞, +∞)|
 
 ## OnScrollCallback<sup>12+</sup>
 
-type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
+ArkTS-Dyn: type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
+
+ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollState) => void
 
 滚动组件滑动时触发的回调。
 
@@ -735,9 +743,13 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | 是 | 每帧滚动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| scrollOffset | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是 | 每帧滚动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
 ## ScrollResult<sup>12+</sup>对象说明
@@ -748,9 +760,13 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| offsetRemain | number | 是 | 将要滑动偏移量，单位vp。 |
+| offsetRemain | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是 | 将要滑动偏移量，单位vp。 |
 
 ## ChildrenMainSize<sup>12+</sup>对象说明
 
@@ -766,7 +782,9 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
 ### constructor<sup>12+</sup>
 
-constructor(childDefaultSize: number): void
+ArkTS-Dyn: constructor(childDefaultSize: number): void
+
+ArkTS-Sta: constructor(childDefaultSize: double): void
 
 ChildrenMainSize有参构造函数。
 
@@ -774,16 +792,22 @@ ChildrenMainSize有参构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称   | 类型                            | 必填   | 描述                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| childDefaultSize | number | 是    | 子组件在主轴方向的默认大小。<br/>单位：vp<br/>**说明：** <br/>必须是有限的非负数值，否则抛出异常。|
+| childDefaultSize | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是    | 子组件在主轴方向的默认大小。<br/>单位：vp<br/>**说明：** <br/>必须是有限的非负数值，否则抛出异常。|
 
 
 ### childDefaultSize<sup>12+</sup>
 
-set childDefaultSize(value: number): void
+ArkTS-Dyn: set childDefaultSize(value: number): void
+
+ArkTS-Sta: set childDefaultSize(value: double): void
 
 修改子组件在主轴方向的默认大小。
 
@@ -791,11 +815,15 @@ set childDefaultSize(value: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称   | 类型                            | 必填   | 描述                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| value | number | 是    | 子组件在主轴方向的默认大小。<br/>单位：vp<br/>**说明：** <br/>必须是有限的非负数值，否则抛出异常。|
+| value | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是    | 子组件在主轴方向的默认大小。<br/>单位：vp<br/>**说明：** <br/>必须是有限的非负数值，否则抛出异常。|
 
 **错误码**：
 
@@ -805,7 +833,9 @@ set childDefaultSize(value: number): void
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
 
-get childDefaultSize(): number
+ArkTS-Dyn: get childDefaultSize(): number
+
+ArkTS-Sta: get childDefaultSize(): double
 
 获取子组件在主轴方向的默认大小。
 
@@ -813,15 +843,21 @@ get childDefaultSize(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：** 
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| number | 子组件在主轴方向的默认大小。<br/>单位：vp <br/>取值范围：[0, +∞)|
+| ArkTS-Dyn: number<br/> ArkTS-Sta: double | 子组件在主轴方向的默认大小。<br/>单位：vp <br/>取值范围：[0, +∞)|
 
 ### splice<sup>12+</sup>
 
-splice(start: number, deleteCount?: number, childrenSize?: Array\<number>): void
+ArkTS-Dyn: splice(start: number, deleteCount?: number, childrenSize?: Array\<number>): void
+
+ArkTS-Dyn: splice(start: int, deleteCount?: int, childrenSize?: Array\<double>): void
 
 批量增删改子组件在主轴方向的大小信息。
 
@@ -829,13 +865,17 @@ splice(start: number, deleteCount?: number, childrenSize?: Array\<number>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称   | 类型                            | 必填   | 描述                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| start | number | 是    | 从0开始计算的索引值，表示要开始修改子组件在主轴方向大小信息的位置。<br/>**说明：** <br/>1. 必须是有限的非负数值，否则抛出异常。<br/>2. 非整数会被截断为整数。<br/>3. 超过最大索引值不生效。<br/>取值范围：[0, +∞) |
-| deleteCount | number | 否    | 从start开始删除的大小信息的数量。<br/>**说明：** <br/>1.  必须是有限的非负数值，否则处理为0。<br/>2. 非整数会被截断为整数。<br/>3. start + deleteCount - 1可以超过最大索引值，会删除索引值start开始之后的所有子组件的大小信息。<br/>默认值为+∞。 <br/>取值范围：[0, +∞) |
-| childrenSize | Array\<number > | 否    | 要在start位置插入的所有子组件的主轴方向的大小。<br/>Array中各个数值单位：vp <br/>**说明：** <br/>1.数组中数值如果是有限的非负值，则认为是指定的大小，后续不随默认大小的变化而变化。<br/>2. 数组中数值如果不是有限的非负值，会被处理成默认大小，后续会随默认大小的变化而变化。<br/>默认值为空数组。 <br/>取值范围：[0, +∞) |
+| start | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | 从0开始计算的索引值，表示要开始修改子组件在主轴方向大小信息的位置。<br/>**说明：** <br/>1. 必须是有限的非负数值，否则抛出异常。<br/>2. 非整数会被截断为整数。<br/>3. 超过最大索引值不生效。<br/>取值范围：[0, +∞) |
+| deleteCount | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否    | 从start开始删除的大小信息的数量。<br/>**说明：** <br/>1.  必须是有限的非负数值，否则处理为0。<br/>2. 非整数会被截断为整数。<br/>3. start + deleteCount - 1可以超过最大索引值，会删除索引值start开始之后的所有子组件的大小信息。<br/>默认值为+∞。 <br/>取值范围：[0, +∞) |
+| childrenSize | ArkTS-Dyn: Array\<number><br/> ArkTS-Sta: Array\<double> | 否    | 要在start位置插入的所有子组件的主轴方向的大小。<br/>Array中各个数值单位：vp <br/>**说明：** <br/>1.数组中数值如果是有限的非负值，则认为是指定的大小，后续不随默认大小的变化而变化。<br/>2. 数组中数值如果不是有限的非负值，会被处理成默认大小，后续会随默认大小的变化而变化。<br/>默认值为空数组。 <br/>取值范围：[0, +∞) |
 
 
 **错误码**：
@@ -856,7 +896,9 @@ splice(start: number, deleteCount?: number, childrenSize?: Array\<number>): void
 
 ### update<sup>12+</sup>
 
-update(index: number, childSize: number): void
+ArkTS-Dyn: update(index: number, childSize: number): void
+
+ArkTS-Sta: update(index: int, childSize: double): void
 
 修改指定索引值对应的子组件的主轴方向的大小信息。
 
@@ -864,12 +906,16 @@ update(index: number, childSize: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称   | 类型                            | 必填   | 描述                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| index | number | 是    | 从0开始计算的索引值，表示要开始修改子组件在主轴方向大小信息的位置。<br/>**说明：** <br/>1. 必须是有限的非负数值，否则抛出异常。<br/>2. 非整数会被截断为整数。<br/>3. 超过最大索引值不生效。 <br/>取值范围：[0, +∞)|
-| childSize | number | 是    | 要更新成的大小。<br/>单位：vp <br/>**说明：** <br/>1.数值如果是有限的非负值，则认为是指定的大小，后续不随默认大小的变化而变化。<br/>2. 数值如果不是有限的非负值，会被处理成默认大小，后续会随默认大小的变化而变化。  <br/>取值范围：[0, +∞)|
+| index | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | 从0开始计算的索引值，表示要开始修改子组件在主轴方向大小信息的位置。<br/>**说明：** <br/>1. 必须是有限的非负数值，否则抛出异常。<br/>2. 非整数会被截断为整数。<br/>3. 超过最大索引值不生效。 <br/>取值范围：[0, +∞)|
+| childSize | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是    | 要更新成的大小。<br/>单位：vp <br/>**说明：** <br/>1.数值如果是有限的非负值，则认为是指定的大小，后续不随默认大小的变化而变化。<br/>2. 数值如果不是有限的非负值，会被处理成默认大小，后续会随默认大小的变化而变化。  <br/>取值范围：[0, +∞)|
 
 **错误码**：
 

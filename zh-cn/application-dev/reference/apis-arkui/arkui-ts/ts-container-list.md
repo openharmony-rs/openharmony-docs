@@ -70,9 +70,9 @@ List(options?: [ListOptions](#listoptions18对象说明))
 
 | 名称       | 类型                                    | 必填 | 说明                                                     |
 | ------------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| initialIndex<sup>7+</sup> | number | 否 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| space<sup>7+</sup>        | number&nbsp;\|&nbsp;string                  | 否   | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/> List子组件的visibility属性设置为None时不显示，但该子组件上下的space还是会生效。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| scroller<sup>7+</sup>      | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| initialIndex<sup>7+</sup> | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 22 |
+| space<sup>7+</sup>        | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/> ArkTS-Sta: double&nbsp;\|&nbsp;string                  | 否   | 子组件主轴方向的间隔。<br/>默认值：0<br/>参数类型为number时单位为vp。<br/>**说明：** <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。<br/>space参数值小于List分割线宽度时，子组件主轴方向的间隔取分割线宽度。<br/> List子组件的visibility属性设置为None时不显示，但该子组件上下的space还是会生效。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 22 |
+| scroller<sup>7+</sup>      | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 22 |
 
 ## 属性
 
@@ -1087,7 +1087,9 @@ listScroller: ListScroller = new ListScroller();
 
 ### getItemRectInGroup<sup>11+</sup>
 
-getItemRectInGroup(index: number, indexInGroup: number): RectResult
+ArkTS-Dyn: getItemRectInGroup(index: number, indexInGroup: number): RectResult
+
+ArkTS-Sta: getItemRectInGroup(index: int, indexInGroup: int): RectResult
 
 获取[ListItemGroup](ts-container-listitemgroup.md)中的[ListItem](ts-container-listitem.md)的大小和相对于List的位置。
 
@@ -1095,12 +1097,16 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明              |
 | ----- | ------ | ---- | ----------------- |
-| index | number | 是    | ListItemGroup在List中的索引值。 |
-| indexInGroup | number | 是    | ListItem在ListItemGroup中的索引值。 |
+| index | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | ListItemGroup在List中的索引值。 |
+| indexInGroup | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | ListItem在ListItemGroup中的索引值。 |
 
 > **说明：**
 >
@@ -1126,7 +1132,9 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 | 100004   | Controller not bound to component.                               |
 ### getVisibleListContentInfo<sup>14+</sup>
 
-getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
+ArkTS-Dyn: getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
+
+ArkTS-Sta: getVisibleListContentInfo(x: double, y: double): VisibleListContentInfo
 
 根据坐标获取子组件的索引信息。
 
@@ -1134,12 +1142,16 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明              |
 | ----- | ------ | ---- | ----------------- |
-| x | number | 是    | x轴坐标，单位为vp。 |
-| y | number | 是    | y轴坐标，单位为vp。 |
+| x | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是    | x轴坐标，单位为vp。 |
+| y | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是    | y轴坐标，单位为vp。 |
 
 **返回值：**
 
@@ -1166,7 +1178,9 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 | 100004   |The controller not bound to component.|
 ### scrollToItemInGroup<sup>11+</sup>
 
-scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
+ArkTS-Dyn: scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
+
+ArkTS-Sta: scrollToItemInGroup(index: int, indexInGroup: int, smooth?: boolean, align?: ScrollAlign): void
 
 滑动到指定的ListItemGroup中指定的ListItem。
 
@@ -1174,12 +1188,16 @@ scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名                | 类型 | 必填 | 说明                                                     |
 | --------------------- | -------- | ---- | ------------------------------------------------------------ |
-| index                 | number   | 是   | 要滑动到的目标元素所在的ListItemGroup在当前容器中的索引值。      <br/>**说明：** <br/>index值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。                     |
-| indexInGroup          | number   | 是   | 要滑动到的目标元素在index指定的ListItemGroup中的索引值。      <br/>**说明：** <br/>indexInGroup值设置成负值或者大于index指定的ListItemGroup容器子组件的最大索引值，视为异常值，本次跳转不生效。|
+| index                 | ArkTS-Dyn: number<br/> ArkTS-Sta: int   | 是   | 要滑动到的目标元素所在的ListItemGroup在当前容器中的索引值。      <br/>**说明：** <br/>index值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。                     |
+| indexInGroup          | ArkTS-Dyn: number<br/> ArkTS-Sta: int   | 是   | 要滑动到的目标元素在index指定的ListItemGroup中的索引值。      <br/>**说明：** <br/>indexInGroup值设置成负值或者大于index指定的ListItemGroup容器子组件的最大索引值，视为异常值，本次跳转不生效。|
 | smooth                | boolean  | 否   | 设置该次滑动是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false<br/>**说明：** <br/>开启动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。 |
 | align                 | [ScrollAlign](ts-container-scroll.md#scrollalign10枚举说明)  | 否   | 指定滑动到的元素与当前容器的对齐方式。<br/>默认值：ScrollAlign.START。 |
 
@@ -1249,11 +1267,15 @@ start和end的index同时返回0，代表List内只有一个子组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| index | number | 是 | 表示ListItem或ListItemGroup在List中的索引值。 |
+| index | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是 | 表示ListItem或ListItemGroup在List中的索引值。 |
 | itemGroupArea | [ListItemGroupArea](#listitemgrouparea12枚举说明) | 否 | 表示处于ListItemGroup的哪一个区域。 |
-| itemIndexInGroup | number | 否 | 表示ListItem在ListItemGroup中的索引值。 |
+| itemIndexInGroup | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否 | 表示ListItem在ListItemGroup中的索引值。 |
 
 ## ListItemGroupArea<sup>12+</sup>枚举说明
 
