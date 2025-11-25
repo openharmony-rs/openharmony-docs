@@ -25,7 +25,7 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import taskpool from '@kit.ArkTS';
+import { taskpool } from '@kit.ArkTS';
 ```
 
 ## 模块加载
